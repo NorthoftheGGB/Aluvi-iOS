@@ -1,0 +1,521 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CC26291E90FA484191AB6374 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 351E93948BFC43989C411DB5 /* libPods.a */; };
+		F4FA0BE8192BF6BF005D8645 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BE7192BF6BF005D8645 /* Foundation.framework */; };
+		F4FA0BEA192BF6BF005D8645 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BE9192BF6BF005D8645 /* CoreGraphics.framework */; };
+		F4FA0BEC192BF6BF005D8645 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BEB192BF6BF005D8645 /* UIKit.framework */; };
+		F4FA0BEE192BF6BF005D8645 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BED192BF6BF005D8645 /* CoreData.framework */; };
+		F4FA0BF4192BF6BF005D8645 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4FA0BF2192BF6BF005D8645 /* InfoPlist.strings */; };
+		F4FA0BF6192BF6BF005D8645 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FA0BF5192BF6BF005D8645 /* main.m */; };
+		F4FA0BFA192BF6BF005D8645 /* VCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FA0BF9192BF6BF005D8645 /* VCAppDelegate.m */; };
+		F4FA0BFD192BF6BF005D8645 /* Voco.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4FA0BFB192BF6BF005D8645 /* Voco.xcdatamodeld */; };
+		F4FA0BFF192BF6BF005D8645 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4FA0BFE192BF6BF005D8645 /* Images.xcassets */; };
+		F4FA0C06192BF6BF005D8645 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0C05192BF6BF005D8645 /* XCTest.framework */; };
+		F4FA0C07192BF6BF005D8645 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BE7192BF6BF005D8645 /* Foundation.framework */; };
+		F4FA0C08192BF6BF005D8645 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BEB192BF6BF005D8645 /* UIKit.framework */; };
+		F4FA0C09192BF6BF005D8645 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BED192BF6BF005D8645 /* CoreData.framework */; };
+		F4FA0C11192BF6BF005D8645 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4FA0C0F192BF6BF005D8645 /* InfoPlist.strings */; };
+		F4FA0C13192BF6BF005D8645 /* VocoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FA0C12192BF6BF005D8645 /* VocoTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F4FA0C0A192BF6BF005D8645 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F4FA0BDC192BF6BF005D8645 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F4FA0BE3192BF6BF005D8645;
+			remoteInfo = Voco;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		351E93948BFC43989C411DB5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD677E046A804589A26C0608 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		F4FA0BE4192BF6BF005D8645 /* Voco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voco.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4FA0BE7192BF6BF005D8645 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F4FA0BE9192BF6BF005D8645 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F4FA0BEB192BF6BF005D8645 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F4FA0BED192BF6BF005D8645 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F4FA0BF1192BF6BF005D8645 /* Voco-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Voco-Info.plist"; sourceTree = "<group>"; };
+		F4FA0BF3192BF6BF005D8645 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F4FA0BF5192BF6BF005D8645 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F4FA0BF7192BF6BF005D8645 /* Voco-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Voco-Prefix.pch"; sourceTree = "<group>"; };
+		F4FA0BF8192BF6BF005D8645 /* VCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VCAppDelegate.h; sourceTree = "<group>"; };
+		F4FA0BF9192BF6BF005D8645 /* VCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VCAppDelegate.m; sourceTree = "<group>"; };
+		F4FA0BFC192BF6BF005D8645 /* Voco.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Voco.xcdatamodel; sourceTree = "<group>"; };
+		F4FA0BFE192BF6BF005D8645 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F4FA0C04192BF6BF005D8645 /* VocoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VocoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4FA0C05192BF6BF005D8645 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		F4FA0C0E192BF6BF005D8645 /* VocoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VocoTests-Info.plist"; sourceTree = "<group>"; };
+		F4FA0C10192BF6BF005D8645 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F4FA0C12192BF6BF005D8645 /* VocoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VocoTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F4FA0BE1192BF6BF005D8645 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4FA0BEA192BF6BF005D8645 /* CoreGraphics.framework in Frameworks */,
+				F4FA0BEE192BF6BF005D8645 /* CoreData.framework in Frameworks */,
+				F4FA0BEC192BF6BF005D8645 /* UIKit.framework in Frameworks */,
+				F4FA0BE8192BF6BF005D8645 /* Foundation.framework in Frameworks */,
+				CC26291E90FA484191AB6374 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4FA0C01192BF6BF005D8645 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4FA0C06192BF6BF005D8645 /* XCTest.framework in Frameworks */,
+				F4FA0C09192BF6BF005D8645 /* CoreData.framework in Frameworks */,
+				F4FA0C08192BF6BF005D8645 /* UIKit.framework in Frameworks */,
+				F4FA0C07192BF6BF005D8645 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F4FA0BDB192BF6BF005D8645 = {
+			isa = PBXGroup;
+			children = (
+				F4FA0BEF192BF6BF005D8645 /* Voco */,
+				F4FA0C0C192BF6BF005D8645 /* VocoTests */,
+				F4FA0BE6192BF6BF005D8645 /* Frameworks */,
+				F4FA0BE5192BF6BF005D8645 /* Products */,
+				CD677E046A804589A26C0608 /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		F4FA0BE5192BF6BF005D8645 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F4FA0BE4192BF6BF005D8645 /* Voco.app */,
+				F4FA0C04192BF6BF005D8645 /* VocoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F4FA0BE6192BF6BF005D8645 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F4FA0BE7192BF6BF005D8645 /* Foundation.framework */,
+				F4FA0BE9192BF6BF005D8645 /* CoreGraphics.framework */,
+				F4FA0BEB192BF6BF005D8645 /* UIKit.framework */,
+				F4FA0BED192BF6BF005D8645 /* CoreData.framework */,
+				F4FA0C05192BF6BF005D8645 /* XCTest.framework */,
+				351E93948BFC43989C411DB5 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F4FA0BEF192BF6BF005D8645 /* Voco */ = {
+			isa = PBXGroup;
+			children = (
+				F4FA0BF8192BF6BF005D8645 /* VCAppDelegate.h */,
+				F4FA0BF9192BF6BF005D8645 /* VCAppDelegate.m */,
+				F4FA0BFE192BF6BF005D8645 /* Images.xcassets */,
+				F4FA0BFB192BF6BF005D8645 /* Voco.xcdatamodeld */,
+				F4FA0BF0192BF6BF005D8645 /* Supporting Files */,
+			);
+			path = Voco;
+			sourceTree = "<group>";
+		};
+		F4FA0BF0192BF6BF005D8645 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F4FA0BF1192BF6BF005D8645 /* Voco-Info.plist */,
+				F4FA0BF2192BF6BF005D8645 /* InfoPlist.strings */,
+				F4FA0BF5192BF6BF005D8645 /* main.m */,
+				F4FA0BF7192BF6BF005D8645 /* Voco-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F4FA0C0C192BF6BF005D8645 /* VocoTests */ = {
+			isa = PBXGroup;
+			children = (
+				F4FA0C12192BF6BF005D8645 /* VocoTests.m */,
+				F4FA0C0D192BF6BF005D8645 /* Supporting Files */,
+			);
+			path = VocoTests;
+			sourceTree = "<group>";
+		};
+		F4FA0C0D192BF6BF005D8645 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F4FA0C0E192BF6BF005D8645 /* VocoTests-Info.plist */,
+				F4FA0C0F192BF6BF005D8645 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F4FA0BE3192BF6BF005D8645 /* Voco */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4FA0C16192BF6BF005D8645 /* Build configuration list for PBXNativeTarget "Voco" */;
+			buildPhases = (
+				127C3440BEE44F71B51F18C3 /* Check Pods Manifest.lock */,
+				F4FA0BE0192BF6BF005D8645 /* Sources */,
+				F4FA0BE1192BF6BF005D8645 /* Frameworks */,
+				F4FA0BE2192BF6BF005D8645 /* Resources */,
+				A2C77502DF4D49478F120063 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Voco;
+			productName = Voco;
+			productReference = F4FA0BE4192BF6BF005D8645 /* Voco.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F4FA0C03192BF6BF005D8645 /* VocoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4FA0C19192BF6BF005D8645 /* Build configuration list for PBXNativeTarget "VocoTests" */;
+			buildPhases = (
+				F4FA0C00192BF6BF005D8645 /* Sources */,
+				F4FA0C01192BF6BF005D8645 /* Frameworks */,
+				F4FA0C02192BF6BF005D8645 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F4FA0C0B192BF6BF005D8645 /* PBXTargetDependency */,
+			);
+			name = VocoTests;
+			productName = VocoTests;
+			productReference = F4FA0C04192BF6BF005D8645 /* VocoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F4FA0BDC192BF6BF005D8645 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = VC;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = Voco;
+				TargetAttributes = {
+					F4FA0C03192BF6BF005D8645 = {
+						TestTargetID = F4FA0BE3192BF6BF005D8645;
+					};
+				};
+			};
+			buildConfigurationList = F4FA0BDF192BF6BF005D8645 /* Build configuration list for PBXProject "Voco" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F4FA0BDB192BF6BF005D8645;
+			productRefGroup = F4FA0BE5192BF6BF005D8645 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F4FA0BE3192BF6BF005D8645 /* Voco */,
+				F4FA0C03192BF6BF005D8645 /* VocoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F4FA0BE2192BF6BF005D8645 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4FA0BF4192BF6BF005D8645 /* InfoPlist.strings in Resources */,
+				F4FA0BFF192BF6BF005D8645 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4FA0C02192BF6BF005D8645 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4FA0C11192BF6BF005D8645 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		127C3440BEE44F71B51F18C3 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A2C77502DF4D49478F120063 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F4FA0BE0192BF6BF005D8645 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4FA0BFD192BF6BF005D8645 /* Voco.xcdatamodeld in Sources */,
+				F4FA0BF6192BF6BF005D8645 /* main.m in Sources */,
+				F4FA0BFA192BF6BF005D8645 /* VCAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4FA0C00192BF6BF005D8645 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4FA0C13192BF6BF005D8645 /* VocoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F4FA0C0B192BF6BF005D8645 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F4FA0BE3192BF6BF005D8645 /* Voco */;
+			targetProxy = F4FA0C0A192BF6BF005D8645 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F4FA0BF2192BF6BF005D8645 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4FA0BF3192BF6BF005D8645 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F4FA0C0F192BF6BF005D8645 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F4FA0C10192BF6BF005D8645 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F4FA0C14192BF6BF005D8645 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F4FA0C15192BF6BF005D8645 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F4FA0C17192BF6BF005D8645 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD677E046A804589A26C0608 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Voco/Voco-Prefix.pch";
+				INFOPLIST_FILE = "Voco/Voco-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F4FA0C18192BF6BF005D8645 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD677E046A804589A26C0608 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Voco/Voco-Prefix.pch";
+				INFOPLIST_FILE = "Voco/Voco-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		F4FA0C1A192BF6BF005D8645 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Voco.app/Voco";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Voco/Voco-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "VocoTests/VocoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		F4FA0C1B192BF6BF005D8645 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Voco.app/Voco";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Voco/Voco-Prefix.pch";
+				INFOPLIST_FILE = "VocoTests/VocoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F4FA0BDF192BF6BF005D8645 /* Build configuration list for PBXProject "Voco" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4FA0C14192BF6BF005D8645 /* Debug */,
+				F4FA0C15192BF6BF005D8645 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4FA0C16192BF6BF005D8645 /* Build configuration list for PBXNativeTarget "Voco" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4FA0C17192BF6BF005D8645 /* Debug */,
+				F4FA0C18192BF6BF005D8645 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4FA0C19192BF6BF005D8645 /* Build configuration list for PBXNativeTarget "VocoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4FA0C1A192BF6BF005D8645 /* Debug */,
+				F4FA0C1B192BF6BF005D8645 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F4FA0BFB192BF6BF005D8645 /* Voco.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F4FA0BFC192BF6BF005D8645 /* Voco.xcdatamodel */,
+			);
+			currentVersion = F4FA0BFC192BF6BF005D8645 /* Voco.xcdatamodel */;
+			path = Voco.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = F4FA0BDC192BF6BF005D8645 /* Project object */;
+}
