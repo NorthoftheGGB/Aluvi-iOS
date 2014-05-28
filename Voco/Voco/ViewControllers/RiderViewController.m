@@ -12,6 +12,7 @@
 #import "VCRideRequest.h"
 #import "VCRideRequestCreated.h"
 #import "WRUtilities.h"
+#import "DriverViewController.h"
 
 
 @interface RiderViewController ()
@@ -22,6 +23,7 @@
 
 - (IBAction)didTapRequestButton:(id)sender;
 - (IBAction)didTapCancelRequestButton:(id)sender;
+- (IBAction)didTapDriverModeButton:(id)sender;
 
 @end
 
@@ -78,5 +80,9 @@
     _requestButton.enabled = YES;
     _cancelRequestButton.enabled = NO;
     _stateLabel.text = @"Idle";
+}
+
+- (IBAction)didTapDriverModeButton:(id)sender {
+    [[[UIApplication sharedApplication] delegate].window setRootViewController:[[DriverViewController alloc] init] ];
 }
 @end

@@ -19,6 +19,8 @@
 		F45F7C0A193589A600A94721 /* VCRideRequestCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C09193589A600A94721 /* VCRideRequestCreated.m */; };
 		F45F7C0F1935976E00A94721 /* WRUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C0E1935976E00A94721 /* WRUtilities.m */; };
 		F45F7C12193597F500A94721 /* NSDate+Pretty.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C10193597F500A94721 /* NSDate+Pretty.m */; };
+		F45F7C181935A3F900A94721 /* DriverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C161935A3F900A94721 /* DriverViewController.m */; };
+		F45F7C191935A3F900A94721 /* DriverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F45F7C171935A3F900A94721 /* DriverViewController.xib */; };
 		F4FA0BE8192BF6BF005D8645 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BE7192BF6BF005D8645 /* Foundation.framework */; };
 		F4FA0BEA192BF6BF005D8645 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BE9192BF6BF005D8645 /* CoreGraphics.framework */; };
 		F4FA0BEC192BF6BF005D8645 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BEB192BF6BF005D8645 /* UIKit.framework */; };
@@ -68,6 +70,9 @@
 		F45F7C0E1935976E00A94721 /* WRUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WRUtilities.m; sourceTree = "<group>"; };
 		F45F7C10193597F500A94721 /* NSDate+Pretty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Pretty.m"; sourceTree = "<group>"; };
 		F45F7C11193597F500A94721 /* NSDate+Pretty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Pretty.h"; sourceTree = "<group>"; };
+		F45F7C151935A3F900A94721 /* DriverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DriverViewController.h; path = ViewControllers/DriverViewController.h; sourceTree = "<group>"; };
+		F45F7C161935A3F900A94721 /* DriverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DriverViewController.m; path = ViewControllers/DriverViewController.m; sourceTree = "<group>"; };
+		F45F7C171935A3F900A94721 /* DriverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DriverViewController.xib; path = ViewControllers/DriverViewController.xib; sourceTree = "<group>"; };
 		F4FA0BE4192BF6BF005D8645 /* Voco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voco.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FA0BE7192BF6BF005D8645 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F4FA0BE9192BF6BF005D8645 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -120,9 +125,8 @@
 		F45F7BE71935756000A94721 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				F45F7BE8193575A900A94721 /* RiderViewController.h */,
-				F45F7BE9193575A900A94721 /* RiderViewController.m */,
-				F45F7BEA193575A900A94721 /* RiderViewController.xib */,
+				F45F7C141935A3AF00A94721 /* Driver */,
+				F45F7C131935A3A500A94721 /* Rider */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -185,6 +189,26 @@
 				F45F7C11193597F500A94721 /* NSDate+Pretty.h */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		F45F7C131935A3A500A94721 /* Rider */ = {
+			isa = PBXGroup;
+			children = (
+				F45F7BE8193575A900A94721 /* RiderViewController.h */,
+				F45F7BE9193575A900A94721 /* RiderViewController.m */,
+				F45F7BEA193575A900A94721 /* RiderViewController.xib */,
+			);
+			name = Rider;
+			sourceTree = "<group>";
+		};
+		F45F7C141935A3AF00A94721 /* Driver */ = {
+			isa = PBXGroup;
+			children = (
+				F45F7C151935A3F900A94721 /* DriverViewController.h */,
+				F45F7C161935A3F900A94721 /* DriverViewController.m */,
+				F45F7C171935A3F900A94721 /* DriverViewController.xib */,
+			);
+			name = Driver;
 			sourceTree = "<group>";
 		};
 		F4FA0BDB192BF6BF005D8645 = {
@@ -316,6 +340,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Voco;
 				TargetAttributes = {
+					F4FA0BE3192BF6BF005D8645 = {
+						DevelopmentTeam = 6JQGNMU28F;
+					};
 					F4FA0C03192BF6BF005D8645 = {
 						TestTargetID = F4FA0BE3192BF6BF005D8645;
 					};
@@ -344,6 +371,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F45F7C191935A3F900A94721 /* DriverViewController.xib in Resources */,
 				F45F7BEC193575A900A94721 /* RiderViewController.xib in Resources */,
 				F4FA0BF4192BF6BF005D8645 /* InfoPlist.strings in Resources */,
 				F4FA0BFF192BF6BF005D8645 /* Images.xcassets in Resources */,
@@ -398,6 +426,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F45F7C181935A3F900A94721 /* DriverViewController.m in Sources */,
 				F4FA0BFD192BF6BF005D8645 /* Voco.xcdatamodeld in Sources */,
 				F45F7BF6193578DE00A94721 /* VCRiderApi.m in Sources */,
 				F45F7BFC19357B8A00A94721 /* VCRideRequest.m in Sources */,
@@ -526,10 +555,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Voco/Voco-Prefix.pch";
 				INFOPLIST_FILE = "Voco/Voco-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1B7DA6BC-B599-4561-A4C1-2A6AD2ADDD39";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -540,10 +573,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Voco/Voco-Prefix.pch";
 				INFOPLIST_FILE = "Voco/Voco-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "1B7DA6BC-B599-4561-A4C1-2A6AD2ADDD39";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
