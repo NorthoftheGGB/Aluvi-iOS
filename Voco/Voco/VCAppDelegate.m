@@ -7,6 +7,14 @@
 //
 
 #import "VCAppDelegate.h"
+#import "VCRiderApi.h"
+#import "RiderViewController.h"
+
+@interface VCAppDelegate ()
+
+@property (nonatomic, strong) RiderViewController * riderViewController;
+
+@end
 
 @implementation VCAppDelegate
 
@@ -16,8 +24,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+    [VCRiderApi setup];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+    _riderViewController = [[RiderViewController alloc] init];
+    self.window.rootViewController = _riderViewController;
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

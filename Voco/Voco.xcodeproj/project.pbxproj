@@ -8,6 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		CC26291E90FA484191AB6374 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 351E93948BFC43989C411DB5 /* libPods.a */; };
+		F45F7BEB193575A900A94721 /* RiderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BE9193575A900A94721 /* RiderViewController.m */; };
+		F45F7BEC193575A900A94721 /* RiderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F45F7BEA193575A900A94721 /* RiderViewController.xib */; };
+		F45F7BF6193578DE00A94721 /* VCRiderApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BF5193578DE00A94721 /* VCRiderApi.m */; };
+		F45F7BF91935798B00A94721 /* VCApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BF81935798B00A94721 /* VCApi.m */; };
+		F45F7BFC19357B8A00A94721 /* VCRideRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BFB19357B8A00A94721 /* VCRideRequest.m */; };
+		F45F7BFE19357C5C00A94721 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45F7BFD19357C5C00A94721 /* CoreLocation.framework */; };
+		F45F7C0019357C6100A94721 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45F7BFF19357C6100A94721 /* MapKit.framework */; };
+		F45F7C031935880500A94721 /* Ride.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C021935880500A94721 /* Ride.m */; };
+		F45F7C0A193589A600A94721 /* VCRideRequestCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C09193589A600A94721 /* VCRideRequestCreated.m */; };
+		F45F7C0F1935976E00A94721 /* WRUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C0E1935976E00A94721 /* WRUtilities.m */; };
+		F45F7C12193597F500A94721 /* NSDate+Pretty.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C10193597F500A94721 /* NSDate+Pretty.m */; };
 		F4FA0BE8192BF6BF005D8645 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BE7192BF6BF005D8645 /* Foundation.framework */; };
 		F4FA0BEA192BF6BF005D8645 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BE9192BF6BF005D8645 /* CoreGraphics.framework */; };
 		F4FA0BEC192BF6BF005D8645 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BEB192BF6BF005D8645 /* UIKit.framework */; };
@@ -38,6 +49,25 @@
 /* Begin PBXFileReference section */
 		351E93948BFC43989C411DB5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD677E046A804589A26C0608 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		F45F7BE8193575A900A94721 /* RiderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RiderViewController.h; path = ViewControllers/RiderViewController.h; sourceTree = "<group>"; };
+		F45F7BE9193575A900A94721 /* RiderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RiderViewController.m; path = ViewControllers/RiderViewController.m; sourceTree = "<group>"; };
+		F45F7BEA193575A900A94721 /* RiderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RiderViewController.xib; path = ViewControllers/RiderViewController.xib; sourceTree = "<group>"; };
+		F45F7BF4193578DE00A94721 /* VCRiderApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderApi.h; path = API/Rider/VCRiderApi.h; sourceTree = "<group>"; };
+		F45F7BF5193578DE00A94721 /* VCRiderApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRiderApi.m; path = API/Rider/VCRiderApi.m; sourceTree = "<group>"; };
+		F45F7BF71935798B00A94721 /* VCApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCApi.h; path = API/VCApi.h; sourceTree = "<group>"; };
+		F45F7BF81935798B00A94721 /* VCApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCApi.m; path = API/VCApi.m; sourceTree = "<group>"; };
+		F45F7BFA19357B8A00A94721 /* VCRideRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRideRequest.h; path = API/Rider/VCRideRequest.h; sourceTree = "<group>"; };
+		F45F7BFB19357B8A00A94721 /* VCRideRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRideRequest.m; path = API/Rider/VCRideRequest.m; sourceTree = "<group>"; };
+		F45F7BFD19357C5C00A94721 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F45F7BFF19357C6100A94721 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		F45F7C011935880500A94721 /* Ride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ride.h; path = Model/Ride.h; sourceTree = "<group>"; };
+		F45F7C021935880500A94721 /* Ride.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Ride.m; path = Model/Ride.m; sourceTree = "<group>"; };
+		F45F7C08193589A600A94721 /* VCRideRequestCreated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRideRequestCreated.h; path = API/Rider/Responses/VCRideRequestCreated.h; sourceTree = "<group>"; };
+		F45F7C09193589A600A94721 /* VCRideRequestCreated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRideRequestCreated.m; path = API/Rider/Responses/VCRideRequestCreated.m; sourceTree = "<group>"; };
+		F45F7C0D1935976E00A94721 /* WRUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRUtilities.h; sourceTree = "<group>"; };
+		F45F7C0E1935976E00A94721 /* WRUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WRUtilities.m; sourceTree = "<group>"; };
+		F45F7C10193597F500A94721 /* NSDate+Pretty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Pretty.m"; sourceTree = "<group>"; };
+		F45F7C11193597F500A94721 /* NSDate+Pretty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Pretty.h"; sourceTree = "<group>"; };
 		F4FA0BE4192BF6BF005D8645 /* Voco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voco.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FA0BE7192BF6BF005D8645 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F4FA0BE9192BF6BF005D8645 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -63,6 +93,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F45F7C0019357C6100A94721 /* MapKit.framework in Frameworks */,
+				F45F7BFE19357C5C00A94721 /* CoreLocation.framework in Frameworks */,
 				F4FA0BEA192BF6BF005D8645 /* CoreGraphics.framework in Frameworks */,
 				F4FA0BEE192BF6BF005D8645 /* CoreData.framework in Frameworks */,
 				F4FA0BEC192BF6BF005D8645 /* UIKit.framework in Frameworks */,
@@ -85,6 +117,76 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F45F7BE71935756000A94721 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F45F7BE8193575A900A94721 /* RiderViewController.h */,
+				F45F7BE9193575A900A94721 /* RiderViewController.m */,
+				F45F7BEA193575A900A94721 /* RiderViewController.xib */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		F45F7BED193575C100A94721 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F4FA0BFB192BF6BF005D8645 /* Voco.xcdatamodeld */,
+				F45F7C011935880500A94721 /* Ride.h */,
+				F45F7C021935880500A94721 /* Ride.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		F45F7BF2193578AA00A94721 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				F45F7BF71935798B00A94721 /* VCApi.h */,
+				F45F7BF81935798B00A94721 /* VCApi.m */,
+				F45F7BF3193578B500A94721 /* Rider */,
+			);
+			name = Api;
+			sourceTree = "<group>";
+		};
+		F45F7BF3193578B500A94721 /* Rider */ = {
+			isa = PBXGroup;
+			children = (
+				F45F7BF4193578DE00A94721 /* VCRiderApi.h */,
+				F45F7BF5193578DE00A94721 /* VCRiderApi.m */,
+				F45F7BFA19357B8A00A94721 /* VCRideRequest.h */,
+				F45F7BFB19357B8A00A94721 /* VCRideRequest.m */,
+				F45F7C071935898200A94721 /* Responses */,
+			);
+			name = Rider;
+			sourceTree = "<group>";
+		};
+		F45F7C071935898200A94721 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				F45F7C08193589A600A94721 /* VCRideRequestCreated.h */,
+				F45F7C09193589A600A94721 /* VCRideRequestCreated.m */,
+			);
+			name = Responses;
+			sourceTree = "<group>";
+		};
+		F45F7C0B1935975D00A94721 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				F45F7C0C1935976400A94721 /* Utilities */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		F45F7C0C1935976400A94721 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F45F7C0D1935976E00A94721 /* WRUtilities.h */,
+				F45F7C0E1935976E00A94721 /* WRUtilities.m */,
+				F45F7C10193597F500A94721 /* NSDate+Pretty.m */,
+				F45F7C11193597F500A94721 /* NSDate+Pretty.h */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		F4FA0BDB192BF6BF005D8645 = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +210,8 @@
 		F4FA0BE6192BF6BF005D8645 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F45F7BFF19357C6100A94721 /* MapKit.framework */,
+				F45F7BFD19357C5C00A94721 /* CoreLocation.framework */,
 				F4FA0BE7192BF6BF005D8645 /* Foundation.framework */,
 				F4FA0BE9192BF6BF005D8645 /* CoreGraphics.framework */,
 				F4FA0BEB192BF6BF005D8645 /* UIKit.framework */,
@@ -121,10 +225,13 @@
 		F4FA0BEF192BF6BF005D8645 /* Voco */ = {
 			isa = PBXGroup;
 			children = (
+				F45F7C0B1935975D00A94721 /* Libraries */,
+				F45F7BF2193578AA00A94721 /* Api */,
+				F45F7BED193575C100A94721 /* Model */,
+				F45F7BE71935756000A94721 /* ViewControllers */,
 				F4FA0BF8192BF6BF005D8645 /* VCAppDelegate.h */,
 				F4FA0BF9192BF6BF005D8645 /* VCAppDelegate.m */,
 				F4FA0BFE192BF6BF005D8645 /* Images.xcassets */,
-				F4FA0BFB192BF6BF005D8645 /* Voco.xcdatamodeld */,
 				F4FA0BF0192BF6BF005D8645 /* Supporting Files */,
 			);
 			path = Voco;
@@ -237,6 +344,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F45F7BEC193575A900A94721 /* RiderViewController.xib in Resources */,
 				F4FA0BF4192BF6BF005D8645 /* InfoPlist.strings in Resources */,
 				F4FA0BFF192BF6BF005D8645 /* Images.xcassets in Resources */,
 			);
@@ -291,7 +399,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4FA0BFD192BF6BF005D8645 /* Voco.xcdatamodeld in Sources */,
+				F45F7BF6193578DE00A94721 /* VCRiderApi.m in Sources */,
+				F45F7BFC19357B8A00A94721 /* VCRideRequest.m in Sources */,
+				F45F7BEB193575A900A94721 /* RiderViewController.m in Sources */,
+				F45F7BF91935798B00A94721 /* VCApi.m in Sources */,
+				F45F7C031935880500A94721 /* Ride.m in Sources */,
 				F4FA0BF6192BF6BF005D8645 /* main.m in Sources */,
+				F45F7C0F1935976E00A94721 /* WRUtilities.m in Sources */,
+				F45F7C0A193589A600A94721 /* VCRideRequestCreated.m in Sources */,
+				F45F7C12193597F500A94721 /* NSDate+Pretty.m in Sources */,
 				F4FA0BFA192BF6BF005D8645 /* VCAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
