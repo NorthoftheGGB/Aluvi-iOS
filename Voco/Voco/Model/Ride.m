@@ -39,6 +39,11 @@
     if(self != nil){
         _stateMachine = [TKStateMachine new];
         
+        // The state and events can be created in a separate class
+        // (which can also be used to translated state string to state and vice verson)
+        // and which can also return states and events separately for on demand or commuter
+        // to be fed into the state machine here.
+        // perhaps a singleton
         // On Demand
         TKState * created = [TKState stateWithName:@"created"];
         TKState * requested = [TKState stateWithName:@"requested"];

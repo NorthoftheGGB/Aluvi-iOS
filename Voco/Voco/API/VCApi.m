@@ -10,4 +10,8 @@
 
 @implementation VCApi
 
++ (NSString *) devicesObjectPathPattern {
+    return [NSString stringWithFormat:@"%@:uuid", API_DEVICES];
+}
+
 @end

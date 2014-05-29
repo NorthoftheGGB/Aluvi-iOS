@@ -36,6 +36,7 @@
 		F4FA0C09192BF6BF005D8645 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BED192BF6BF005D8645 /* CoreData.framework */; };
 		F4FA0C11192BF6BF005D8645 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4FA0C0F192BF6BF005D8645 /* InfoPlist.strings */; };
 		F4FA0C13192BF6BF005D8645 /* VocoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FA0C12192BF6BF005D8645 /* VocoTests.m */; };
+		F4FE1AF11936BE0900354886 /* VCDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AF01936BE0900354886 /* VCDevice.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,9 @@
 		F4FA0C0E192BF6BF005D8645 /* VocoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VocoTests-Info.plist"; sourceTree = "<group>"; };
 		F4FA0C10192BF6BF005D8645 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F4FA0C12192BF6BF005D8645 /* VocoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VocoTests.m; sourceTree = "<group>"; };
+		F4FE1AEF1936BE0900354886 /* VCDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCDevice.h; path = API/Devices/VCDevice.h; sourceTree = "<group>"; };
+		F4FE1AF01936BE0900354886 /* VCDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCDevice.m; path = API/Devices/VCDevice.m; sourceTree = "<group>"; };
+		F4FE1AF41936BE8D00354886 /* VCRestKitMappableObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VCRestKitMappableObject.h; path = API/Base/VCRestKitMappableObject.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,8 +148,10 @@
 		F45F7BF2193578AA00A94721 /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				F4FE1AF31936BE6800354886 /* Base */,
 				F45F7BF71935798B00A94721 /* VCApi.h */,
 				F45F7BF81935798B00A94721 /* VCApi.m */,
+				F4FE1AEE1936BDE500354886 /* Devices */,
 				F45F7BF3193578B500A94721 /* Rider */,
 			);
 			name = Api;
@@ -211,6 +217,13 @@
 			name = Driver;
 			sourceTree = "<group>";
 		};
+		F476908D1935B7FA00B9EF69 /* State Machines */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "State Machines";
+			sourceTree = "<group>";
+		};
 		F4FA0BDB192BF6BF005D8645 = {
 			isa = PBXGroup;
 			children = (
@@ -251,6 +264,7 @@
 			children = (
 				F45F7C0B1935975D00A94721 /* Libraries */,
 				F45F7BF2193578AA00A94721 /* Api */,
+				F476908D1935B7FA00B9EF69 /* State Machines */,
 				F45F7BED193575C100A94721 /* Model */,
 				F45F7BE71935756000A94721 /* ViewControllers */,
 				F4FA0BF8192BF6BF005D8645 /* VCAppDelegate.h */,
@@ -288,6 +302,23 @@
 				F4FA0C0F192BF6BF005D8645 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F4FE1AEE1936BDE500354886 /* Devices */ = {
+			isa = PBXGroup;
+			children = (
+				F4FE1AEF1936BE0900354886 /* VCDevice.h */,
+				F4FE1AF01936BE0900354886 /* VCDevice.m */,
+			);
+			name = Devices;
+			sourceTree = "<group>";
+		};
+		F4FE1AF31936BE6800354886 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				F4FE1AF41936BE8D00354886 /* VCRestKitMappableObject.h */,
+			);
+			name = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -432,6 +463,7 @@
 				F45F7BFC19357B8A00A94721 /* VCRideRequest.m in Sources */,
 				F45F7BEB193575A900A94721 /* RiderViewController.m in Sources */,
 				F45F7BF91935798B00A94721 /* VCApi.m in Sources */,
+				F4FE1AF11936BE0900354886 /* VCDevice.m in Sources */,
 				F45F7C031935880500A94721 /* Ride.m in Sources */,
 				F4FA0BF6192BF6BF005D8645 /* main.m in Sources */,
 				F45F7C0F1935976E00A94721 /* WRUtilities.m in Sources */,

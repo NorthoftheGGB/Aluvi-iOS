@@ -11,6 +11,7 @@
 #import "VCApi.h"
 #import "VCRideRequest.h"
 #import "VCRideRequestCreated.h"
+#import "VCDevice.h"
 
 @implementation VCRiderApi
 
@@ -21,6 +22,7 @@
 
     [VCRideRequest createMappings:objectManager];
     [VCRideRequestCreated createMappings:objectManager];
+    [VCDevice createMappings:objectManager];
     
      RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
     RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);

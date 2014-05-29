@@ -9,6 +9,9 @@
 #import "VCAppDelegate.h"
 #import "VCRiderApi.h"
 #import "RiderViewController.h"
+#import "VCDevice.h"
+#import "VCApi.h"
+#import "WRUtilities.h"
 
 @interface VCAppDelegate ()
 
@@ -176,8 +179,31 @@
     NSLog(@"%@", str);
     
     // update device registration
-    NSString *uuid = [[NSUUID UUID] UUIDString];
-    // need to design PUT path
+    NSUUID *uuidForVendor = [[UIDevice currentDevice] identifierForVendor];
+    NSString *uuid = [uuidForVendor UUIDString];
+
+    // send PATCH
+    
+    VCDevice * device = [[VCDevice alloc] init];
+    device.pushToken = [[[[deviceToken description]
+                            stringByReplacingOccurrencesOfString:@"<"withString:@""]
+                           stringByReplacingOccurrencesOfString:@">" withString:@""]
+                          stringByReplacingOccurrencesOfString: @" " withString: @""];
+    
+    [[RKObjectManager sharedManager] patchObject:device
+                                           path: [NSString stringWithFormat:@"%@%@", API_DEVICES, uuid]
+                                     parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            NSLog(@"Push token accepted by server!");
+                                            
+                                        }
+                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            NSLog(@"Failed send request %@", error);
+                                            [WRUtilities criticalError:error];
+                                            
+                                            // TODO Re-transmit push token later
+                                        }];
+
     
 }
 

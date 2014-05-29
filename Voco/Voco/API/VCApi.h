@@ -24,6 +24,11 @@
 #define API_GEO_RIDER @"geo/rider"
 #define API_GEO_CARS @"geo/cars"
 
+// devices API - RESTful
+#define API_DEVICES @"devices/"
+
 @interface VCApi : NSObject
+
++ (NSString *) devicesObjectPathPattern;
 
 @end
