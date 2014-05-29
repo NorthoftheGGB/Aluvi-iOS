@@ -185,11 +185,9 @@
     // send PATCH
     
     VCDevice * device = [[VCDevice alloc] init];
-    device.pushToken = [[[[deviceToken description]
-                            stringByReplacingOccurrencesOfString:@"<"withString:@""]
-                           stringByReplacingOccurrencesOfString:@">" withString:@""]
-                          stringByReplacingOccurrencesOfString: @" " withString: @""];
-    
+    device.pushToken = [self stringFromDeviceTokenData: deviceToken];
+    device.userId = [NSNumber numberWithInt:1]; // TODO get the current logged in user
+                                                // TODO once user logs in, need to update this as well
     [[RKObjectManager sharedManager] patchObject:device
                                            path: [NSString stringWithFormat:@"%@%@", API_DEVICES, uuid]
                                      parameters:nil
@@ -222,5 +220,15 @@
     
 }
 
+- (NSString*) stringFromDeviceTokenData: (NSData *) deviceToken
+{
+    const char *data = [deviceToken bytes];
+    NSMutableString* token = [NSMutableString string];
+    for (int i = 0; i < [deviceToken length]; i++) {
+        [token appendFormat:@"%02.2hhX", data[i]];
+    }
+    
+    return [token copy];
+}
 
 @end

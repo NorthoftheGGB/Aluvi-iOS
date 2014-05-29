@@ -11,6 +11,7 @@
 
 @interface VCDevice : NSObject<VCRestKitMappableObject>
 
+@property (nonatomic, strong) NSNumber * userId;
 @property (nonatomic, strong) NSString * pushToken;
 
 @end

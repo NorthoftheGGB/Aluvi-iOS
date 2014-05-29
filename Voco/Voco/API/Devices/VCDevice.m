@@ -13,6 +13,7 @@
 + (void) createMappings: (RKObjectManager *) objectManager{
     RKObjectMapping * deviceMapping = [RKObjectMapping mappingForClass:[VCDevice class]];
     [deviceMapping addAttributeMappingsFromDictionary:@{
+                                                        @"user_id" : @"userId",
                                                         @"push_token" : @"pushToken"
                                                         }];
     RKObjectMapping * transmitDeviceMapping = [deviceMapping inverseMapping];
