@@ -7,11 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIAlertView+Blocks.h>
 #import "Offer.h"
+
+#define VC_INTERFACE_STATE_IDLE @"VC_INTERFACE_STATE_IDLE"
+#define VC_INTERFACE_STATE_OFFER_DIALOG @"VC_INTERFACE_STATE_OFFER_DIALOG"
 
 @interface VCDialogs : NSObject
 
-+ (void) offerNextRideToDriver;
-+ (void) offerRideToDriver: (Offer *) rideOffer;
+@property(nonatomic, strong) NSString * interfaceState;
+
++ (VCDialogs *) instance;
+
+- (void) offerNextRideToDriver;
+- (void) offerRideToDriver: (Offer *) offer;
+- (void) retractOfferDialog: (Offer *) offer;
 
 @end

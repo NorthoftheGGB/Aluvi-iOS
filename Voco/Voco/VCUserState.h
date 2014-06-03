@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#define VC_INTERFACE_STATE_IDLE @"VC_INTERFACE_STATE_IDLE"
-#define VC_INTERFACE_STATE_OFFER_DIALOG @"VC_INTERFACE_STATE_OFFER_DIALOG"
 
 // placeholder class for user state tracking, enabling KVO
 
@@ -19,7 +17,6 @@
 @property(nonatomic, strong) NSNumber * userId;
 @property(nonatomic, strong) NSString * riderState;
 @property(nonatomic, strong) NSString * driverState;
-@property(nonatomic, strong) NSString * interfaceState;
 
 + (VCUserState *) instance;
 + (BOOL) driverIsAvailable;

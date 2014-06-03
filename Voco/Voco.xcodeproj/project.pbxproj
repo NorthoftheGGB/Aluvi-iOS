@@ -47,6 +47,7 @@
 		F4FE1B1519385CAA00354886 /* VCUserState.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B1419385CAA00354886 /* VCUserState.m */; };
 		F4FE1B18193D2F3F00354886 /* Offer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B17193D2F3F00354886 /* Offer.m */; };
 		F4FE1B1B193D301F00354886 /* VCCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B1A193D301F00354886 /* VCCoreData.m */; };
+		F4FE1B20193D8FE500354886 /* VCPushApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B1F193D8FE500354886 /* VCPushApi.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +128,8 @@
 		F4FE1B17193D2F3F00354886 /* Offer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Offer.m; path = Model/Offer.m; sourceTree = "<group>"; };
 		F4FE1B19193D301F00354886 /* VCCoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCCoreData.h; sourceTree = "<group>"; };
 		F4FE1B1A193D301F00354886 /* VCCoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCoreData.m; sourceTree = "<group>"; };
+		F4FE1B1E193D8FE500354886 /* VCPushApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCPushApi.h; path = API/VCPushApi.h; sourceTree = "<group>"; };
+		F4FE1B1F193D8FE500354886 /* VCPushApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCPushApi.m; path = API/VCPushApi.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +190,8 @@
 				F4FE1AF31936BE6800354886 /* Base */,
 				F45F7BF71935798B00A94721 /* VCApi.h */,
 				F45F7BF81935798B00A94721 /* VCApi.m */,
+				F4FE1B1E193D8FE500354886 /* VCPushApi.h */,
+				F4FE1B1F193D8FE500354886 /* VCPushApi.m */,
 				F4FE1AEE1936BDE500354886 /* Devices */,
 				F45F7BF3193578B500A94721 /* Rider */,
 				F4FE1B0419384D9500354886 /* Driver */,
@@ -533,6 +538,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4FE1B0119383AE300354886 /* VCRideStateMachineFactory.m in Sources */,
+				F4FE1B20193D8FE500354886 /* VCPushApi.m in Sources */,
 				F45F7C181935A3F900A94721 /* DriverViewController.m in Sources */,
 				F4FA0BFD192BF6BF005D8645 /* Voco.xcdatamodeld in Sources */,
 				F45F7BF6193578DE00A94721 /* VCRiderApi.m in Sources */,

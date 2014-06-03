@@ -8,6 +8,7 @@
 
 #import "RiderViewController.h"
 #import <RestKit.h>
+#import <Reachability.h>
 #import "VCApi.h"
 #import "VCRideRequest.h"
 #import "VCRideRequestCreated.h"
@@ -50,8 +51,8 @@ static void * XXContext = &XXContext;
 
 
 - (void)viewWillAppear:(BOOL)animated {
-    
-    [VCUserState instance].userId = [NSNumber numberWithInteger:1];
+    [super viewWillAppear:animated];
+    [VCUserState instance].userId = [NSNumber numberWithInteger:3];
 
     
     NSUUID *uuidForVendor = [[UIDevice currentDevice] identifierForVendor];
@@ -73,6 +74,10 @@ static void * XXContext = &XXContext;
                                              // TODO Re-transmit push token later
                                          }];
     
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning

@@ -12,6 +12,9 @@
 #import "VCRideOffer.h"
 #import "VCDialogs.h"
 #import "VCUserState.h"
+#import "VCPushApi.h"
+#import "VCCoreData.h"
+#import "Offer.h"
 
 @implementation VCPushManager
 
@@ -84,36 +87,37 @@
 
 + (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-    
-    NSDictionary * aps = [userInfo objectForKey:@"aps"];
+    // App is in foreground
+
     for (id key in userInfo) {
         NSLog(@"recieved remote notification foreground key: %@, value: %@", key, [userInfo objectForKey:key]);
     }
-    // App is in foreground
-    //  Get offers
-    if(true) { //condition
-        [[RKObjectManager sharedManager] getObjectsAtPath:[VCApi getRideOffersPath:[VCUserState instance].userId]
-                                           parameters:nil
-                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                  NSLog(@"Got ride offers!");
-                                                  
-                                                  // save in database - done automatically by Entity Mapping
-                                                  
-                                                  // check state of the application
-                                                  // for now just assume in drive mode if we get here
-                                                  if([VCUserState driverIsAvailable]
-                                                     && [[VCUserState instance].interfaceState isEqualToString:VC_INTERFACE_STATE_IDLE]){  // guard against invalid state
-                                                      
-                                                      [VCDialogs offerNextRideToDriver];
-                                                  } 
-                                                  
-                                              }
-                                              failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                  NSLog(@"Failed send request %@", error);
-                                                  [WRUtilities criticalError:error];
-
-                                                  // TODO Re-transmit push token later
-                                              }];
+    NSString * type = [userInfo objectForKey:VC_PUSH_TYPE_KEY];
+    if([type isEqualToString:@"ride_offer"]) {
+        if(true) { //condition
+            [[RKObjectManager sharedManager] getObjectsAtPath:[VCApi getRideOffersPath:[VCUserState instance].userId]
+                                                   parameters:nil
+                                                      success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                          // save in database - done automatically by Entity Mapping
+                                                          
+                                                          // check state of the application
+                                                          // for now just assume in drive mode if we get here
+                                                          if([VCUserState driverIsAvailable]
+                                                             && [[VCDialogs instance].interfaceState isEqualToString:VC_INTERFACE_STATE_IDLE]){  // guard against invalid state
+                                                              
+                                                              [[VCDialogs instance] offerNextRideToDriver];
+                                                          }
+                                                          
+                                                      }
+                                                      failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                          NSLog(@"Failed send request %@", error);
+                                                          [WRUtilities criticalError:error];
+                                                          
+                                                          // TODO Re-transmit push token later
+                                                      }];
+        }
+    } else if([type isEqualToString:@"ride_offer_closed"]){
+        [[VCDialogs instance] retractOfferDialog: [userInfo objectForKey:VC_PUSH_OFFER_ID_KEY]];
     }
     
     
@@ -130,6 +134,47 @@
     
     handler(UIBackgroundFetchResultNewData);
 }
+
++ (void)handleRemoteNotification:(NSDictionary *)payload {
+    NSString * type = [payload objectForKey:VC_PUSH_TYPE_KEY];
+    if([type isEqualToString:@"ride_offer"]){
+        NSNumber * offer_id = [payload objectForKey:VC_PUSH_OFFER_ID_KEY];
+        [[RKObjectManager sharedManager] getObjectsAtPath:[VCApi getRideOffersPath:[VCUserState instance].userId]
+                                               parameters:nil
+                                                  success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                      
+                                                      if([VCUserState driverIsAvailable]
+                                                         && [[VCDialogs instance].interfaceState isEqualToString:VC_INTERFACE_STATE_IDLE]){  // guard against invalid state
+                                                          
+                                                          NSFetchRequest * request = [[NSFetchRequest alloc] initWithEntityName:@"Offer"];
+                                                          NSPredicate * predicate = [NSPredicate predicateWithFormat:@"id = %@", offer_id];
+                                                          [request setPredicate:predicate];
+                                                          NSError * error;
+                                                          
+                                                          NSArray * offers = [[VCCoreData managedObjectContext] executeFetchRequest:request error:&error];
+                                                          if(offers == nil){
+                                                              [WRUtilities criticalError:error];
+                                                          } else if ([offers count] == 0) {
+                                                              [UIAlertView showWithTitle:@"Ride not longer available" message:@"Sorry, that ride is no longer available" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                                                  //do nothing
+                                                              }];
+                                                          } else {
+                                                              Offer * offer = [offers objectAtIndex:0];
+                                                              [[VCDialogs instance] offerRideToDriver:offer];
+                                                          }
+                                                          
+                                                      }
+                                                      
+                                                  }
+                                                  failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                      NSLog(@"Failed send request %@", error);
+                                                      [WRUtilities criticalError:error];
+                                                      
+                                                      // TODO Re-transmit push token later
+                                                  }];
+    }
+}
+
 
 
 

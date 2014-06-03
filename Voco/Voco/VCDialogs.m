@@ -8,13 +8,38 @@
 
 #import "VCDialogs.h"
 #import <RestKit.h>
-#import <UIAlertView+Blocks.h>
 #import "VCRideDriverAssignment.h"
 #import "VCUserState.h"
 
+static VCDialogs *sharedSingleton;
+
+@interface VCDialogs ()
+
+@property(nonatomic, strong) UIAlertView * currentAlertView;
+@property(nonatomic, strong) Offer * offer;
+
+@end
+
 @implementation VCDialogs
 
-+ (void)offerNextRideToDriver
++ (VCDialogs *) instance {
+    if(sharedSingleton == nil){
+        sharedSingleton = [[VCDialogs alloc] init];
+        sharedSingleton.interfaceState = VC_INTERFACE_STATE_IDLE;
+    }
+    return sharedSingleton;
+}
+
+- (id) init {
+    self = [super init];
+    if(self != nil){
+        _currentAlertView = nil;
+        _offer = nil;
+    }
+    return self;
+}
+
+- (void)offerNextRideToDriver
 {
     NSFetchRequest * request = [[NSFetchRequest alloc] initWithEntityName:@"Offer"];
     NSPredicate * predicate = [NSPredicate predicateWithFormat:@"decided = %@", [NSNumber numberWithBool:NO]];
@@ -30,15 +55,16 @@
     
     
     [VCUserState instance].driverState = @"ride offered";
-    [VCDialogs offerRideToDriver:[offers objectAtIndex:0]];
+    [self offerRideToDriver:[offers objectAtIndex:0]];
 }
 
-+ (void) offerRideToDriver: (Offer *) rideOffer {
-    [VCUserState instance].interfaceState = VC_INTERFACE_STATE_OFFER_DIALOG;
+- (void) offerRideToDriver: (Offer *) rideOffer {
+    _interfaceState = VC_INTERFACE_STATE_OFFER_DIALOG;
+    _offer = rideOffer;
 
     NSString * message = [NSString stringWithFormat:@"From: %@, To: %@. Do you want to accept this ride?", rideOffer.meetingPointPlaceName, rideOffer.destinationPlaceName ];
     
-    [UIAlertView showWithTitle:[NSString stringWithFormat:@"New ride request %@", rideOffer.ride_id]
+    _currentAlertView = [UIAlertView showWithTitle:[NSString stringWithFormat:@"New ride request %@", rideOffer.ride_id]
                        message:message
              cancelButtonTitle:@"No"
              otherButtonTitles:@[@"Yes"]
@@ -59,7 +85,7 @@
                                       [WRUtilities criticalError:error];
                                   }
                                   
-                                  [VCUserState instance].interfaceState = VC_INTERFACE_STATE_IDLE;
+                                  _interfaceState = VC_INTERFACE_STATE_IDLE;
                                   
                                   [self offerNextRideToDriver];
 
@@ -68,15 +94,21 @@
                                   if(operation.HTTPRequestOperation.response.statusCode == 404){
                                       // ride is actually assigned to this driver already, can't be decline
                                       [WRUtilities criticalErrorWithString:@"This ride is already assigned to the logged in driver.  It cannot be decline and must be cancelled instead"];
-                                      [VCUserState instance].interfaceState = VC_INTERFACE_STATE_IDLE;
+                                      _interfaceState = VC_INTERFACE_STATE_IDLE;
 
                                   } else if(operation.HTTPRequestOperation.response.statusCode == 403){
                                       // ride isn't available anymore anyway, just continue
-                                      [VCUserState instance].interfaceState = VC_INTERFACE_STATE_IDLE;
-                                      [VCDialogs offerNextRideToDriver];
+                                      rideOffer.decided = [NSNumber numberWithBool:YES];
+                                      NSError * error = nil;
+                                      [[VCCoreData managedObjectContext] save:&error];
+                                      if(error != nil){
+                                          [WRUtilities criticalError:error];
+                                      }
+                                      _interfaceState = VC_INTERFACE_STATE_IDLE;
+                                      [self offerNextRideToDriver];
                                   } else {
                                       [WRUtilities criticalError:error];
-                                      [VCUserState instance].interfaceState = VC_INTERFACE_STATE_IDLE;
+                                      _interfaceState = VC_INTERFACE_STATE_IDLE;
                                   }
                               }];
 
@@ -100,28 +132,42 @@
                                   if(error != nil){
                                       [WRUtilities criticalError:error];
                                   }
-                                  [VCUserState instance].interfaceState = VC_INTERFACE_STATE_IDLE;
+                                  _interfaceState = VC_INTERFACE_STATE_IDLE;
 
                                   
                               } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                  // network error.. what to do?
+                                  // network error..
                                   
                                   if(operation.HTTPRequestOperation.response.statusCode == 403){
                                       // already accepted by another driver
                                       [UIAlertView showWithTitle:@"Ride no longer available!" message:@"Unfortunately another driver beat you too this ride!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                                          [VCUserState instance].interfaceState = VC_INTERFACE_STATE_IDLE;
-                                          [VCDialogs offerNextRideToDriver];
+                                          _interfaceState = VC_INTERFACE_STATE_IDLE;
+                                          rideOffer.decided = [NSNumber numberWithBool:YES];
+                                          NSError * error = nil;
+                                          [[VCCoreData managedObjectContext] save:&error];
+                                          if(error != nil){
+                                              [WRUtilities criticalError:error];
+                                          }
+                                          
+                                          [self offerNextRideToDriver];
                                       }];
                                   } else {
                                       //network or server error
                                       [WRUtilities criticalError:error];
-                                      [VCUserState instance].interfaceState = VC_INTERFACE_STATE_IDLE;
+                                      _interfaceState = VC_INTERFACE_STATE_IDLE;
                                   }
                                
                               }];
                               
                           }
                       }];
+}
+
+- (void) retractOfferDialog: (NSNumber *) offerId {
+    if(_currentAlertView != nil && _offer != nil && [offerId isEqualToNumber: _offer.id]){
+        [_currentAlertView dismissWithClickedButtonIndex:-1 animated:YES];
+        _offer = nil;
+    }
 }
 
 

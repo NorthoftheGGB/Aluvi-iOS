@@ -10,10 +10,13 @@
 #import "VCRiderApi.h"
 #import "VCDriverApi.h"
 #import "RiderViewController.h"
+#import "DriverViewController.h"
 #import "VCPushManager.h"
 #import "WRUtilities.h"
 #import <RestKit.h>
 #import "VCApi.h"
+#import "VCUserState.h"
+#import "VCDialogs.h"
 
 @interface VCAppDelegate ()
 
@@ -35,18 +38,27 @@
     [VCRiderApi setup: objectManager];
     [VCDriverApi setup: objectManager];
     objectManager.managedObjectStore = [self managedObjectStore];
+    
+    [VCDialogs instance];
 
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    _riderViewController = [[RiderViewController alloc] init];
-    self.window.rootViewController = _riderViewController;
-    
+    if([[VCUserState instance].userId isEqualToNumber:[NSNumber numberWithInt:1]]){
+        self.window.rootViewController = [[DriverViewController alloc] init];
+    } else {
+        self.window.rootViewController = [[RiderViewController alloc] init];
+    }
+        
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
     
     NSLog(@"Registering for push notifications...");
     [VCPushManager registerForRemoteNotifications];
+    
+    if([launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey] != nil){
+        [VCPushManager handleRemoteNotification:[launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey]];
+    }
     
     return YES;
 }
@@ -197,12 +209,20 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     // app is in foreground
-    [VCPushManager application:application didReceiveRemoteNotification:userInfo];
+    
+    if ( application.applicationState == UIApplicationStateActive ) {
+        [VCPushManager application:application didReceiveRemoteNotification:userInfo];
+    } else {
+        [VCPushManager handleRemoteNotification:userInfo];
+    }
+    
 }
 
+/*
 + (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))handler {
     // app is in background
     [VCPushManager application:application didReceiveRemoteNotification:userInfo fetchCompletionHandler:handler];
 }
+*/
 
 @end

@@ -31,7 +31,7 @@
                                                         @"state" : @"state",
                                                         @"created_at" : @"createdAt",
                                                         @"updated_at" : @"updatedAt",
-                                                      //  @"meeting_point_place_name" : @"meetingPointPlaceName",
+                                                        @"meeting_point_place_name" : @"meetingPointPlaceName",
                                                         @"destination_place_name" : @"destinationPlaceName"}];
     entityMapping.identificationAttributes = @[ @"id" ];
 
