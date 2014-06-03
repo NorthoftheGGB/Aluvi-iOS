@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <RestKit.h>
 
 @interface VCRiderApi : NSObject
 
-+ (void) setup;
++ (void) setup: (RKObjectManager *) objectManager;
 
 @end

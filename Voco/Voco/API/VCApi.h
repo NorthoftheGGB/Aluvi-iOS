@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 // rides API
-#define API_BASE_URL @"http://10.112.18.138:3000/"
+#define API_BASE_URL @"http://192.168.1.108:3000/api/"
 #define API_POST_RIDE_REQUEST @"rides/request"
 #define API_GET_RIDES_STATE @"rides/state"
 #define API_POST_RIDE_ACCEPTED @"rides/accepted"
@@ -18,6 +18,11 @@
 #define API_POST_RIDER_CANCELLED @"rides/rider_cancelled"
 #define API_POST_RIDE_PICKUP @"rides/pickup"
 #define API_POST_RIDE_ARRIVED @"rides/arrived"
+
+// TODO there must be a better way to deal with path patterns and params via restkit or other library
+#define API_GET_RIDE_OFFERS @"rides/offers/"
+#define API_GET_RIDE_OFFERS_PATH_PATTERN @"rides/offers/:id"
+
 
 // geo API
 #define API_GEO_CAR @"geo/car"
@@ -30,5 +35,6 @@
 @interface VCApi : NSObject
 
 + (NSString *) devicesObjectPathPattern;
++ (NSString *) getRideOffersPath:(NSNumber*) driverId;
 
 @end

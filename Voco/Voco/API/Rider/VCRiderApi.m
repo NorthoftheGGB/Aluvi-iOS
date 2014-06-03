@@ -7,7 +7,6 @@
 //
 
 #import "VCRiderApi.h"
-#import <RestKit.h>
 #import "VCApi.h"
 #import "VCRideRequest.h"
 #import "VCRideRequestCreated.h"
@@ -15,8 +14,8 @@
 
 @implementation VCRiderApi
 
-+ (void) setup {
-    RKObjectManager * objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:API_BASE_URL]];
++ (void) setup: (RKObjectManager *) objectManager {
+    //RKObjectManager * objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:API_BASE_URL]];
     
     // RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:self.managedObjectModel];
 
@@ -24,8 +23,8 @@
     [VCRideRequestCreated createMappings:objectManager];
     [VCDevice createMappings:objectManager];
     
-     RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
-    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
+    RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
+    // RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
 
     
 }

@@ -14,4 +14,9 @@
     return [NSString stringWithFormat:@"%@:uuid", API_DEVICES];
 }
 
++ (NSString *) getRideOffersPath:(NSNumber*) driverId {
+    return [NSString stringWithFormat:@"%@%@", API_GET_RIDE_OFFERS, driverId];
+}
+
+
 @end

@@ -13,7 +13,10 @@
 #import "VCRideRequestCreated.h"
 #import "WRUtilities.h"
 #import "DriverViewController.h"
+#import "VCDevice.h"
+#import "VCUserState.h"
 
+static void * XXContext = &XXContext;
 
 @interface RiderViewController ()
 
@@ -42,6 +45,34 @@
 {
     [super viewDidLoad];
     _stateLabel.text = @"Idle";
+
+}
+
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [VCUserState instance].userId = [NSNumber numberWithInteger:1];
+
+    
+    NSUUID *uuidForVendor = [[UIDevice currentDevice] identifierForVendor];
+    NSString *uuid = [uuidForVendor UUIDString];
+    VCDevice * device = [[VCDevice alloc] init];
+    device.userId = [VCUserState instance].userId;
+    // TODO once user logs in, need to update this as well
+    [[RKObjectManager sharedManager] patchObject:device
+                                            path: [NSString stringWithFormat:@"%@%@", API_DEVICES, uuid]
+                                      parameters:nil
+                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                             NSLog(@"Push token accepted by server!");
+                                             
+                                         }
+                                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                             NSLog(@"Failed send request %@", error);
+                                             [WRUtilities criticalError:error];
+                                             
+                                             // TODO Re-transmit push token later
+                                         }];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,7 +83,7 @@
 
 - (IBAction)didTapRequestButton:(id)sender {
     VCRideRequest * request = [[VCRideRequest alloc] init];
-    request.customerId = 1;
+    request.customerId = 3;
     request.type = RIDE_REQUEST_TYPE_ON_DEMAND;
     request.departureLatitude = [NSNumber numberWithDouble:((double)(-122000 + arc4random() % 1000)) / 1000];
     request.departureLongitude = [NSNumber numberWithDouble: ((double)(37000 + arc4random() % 1000)) / 1000];

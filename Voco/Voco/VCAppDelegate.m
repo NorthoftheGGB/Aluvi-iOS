@@ -8,10 +8,12 @@
 
 #import "VCAppDelegate.h"
 #import "VCRiderApi.h"
+#import "VCDriverApi.h"
 #import "RiderViewController.h"
-#import "VCDevice.h"
-#import "VCApi.h"
+#import "VCPushManager.h"
 #import "WRUtilities.h"
+#import <RestKit.h>
+#import "VCApi.h"
 
 @interface VCAppDelegate ()
 
@@ -24,11 +26,16 @@
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+@synthesize managedObjectStore = _managedObjectStore;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    [VCRiderApi setup];
+    RKObjectManager * objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:API_BASE_URL]];
+    [VCRiderApi setup: objectManager];
+    [VCDriverApi setup: objectManager];
+    objectManager.managedObjectStore = [self managedObjectStore];
+
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     _riderViewController = [[RiderViewController alloc] init];
@@ -39,11 +46,7 @@
     
     
     NSLog(@"Registering for push notifications...");
-    [[UIApplication sharedApplication]
-     registerForRemoteNotificationTypes:
-     (UIRemoteNotificationTypeAlert |
-      UIRemoteNotificationTypeBadge |
-      UIRemoteNotificationTypeSound)];
+    [VCPushManager registerForRemoteNotifications];
     
     return YES;
 }
@@ -163,6 +166,15 @@
     return _persistentStoreCoordinator;
 }
 
+- (RKManagedObjectStore *) managedObjectStore {
+    if (_managedObjectStore != nil) {
+        return _managedObjectStore;
+    }
+    _managedObjectStore = [[RKManagedObjectStore alloc] initWithPersistentStoreCoordinator:[self persistentStoreCoordinator]];
+    [_managedObjectStore createManagedObjectContexts];
+    return _managedObjectStore;
+}
+
 #pragma mark - Application's Documents directory
 
 // Returns the URL to the application's Documents directory.
@@ -173,62 +185,24 @@
 
 #pragma mark - Push Notifications
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    
-    NSString *str = [NSString
-                     stringWithFormat:@"Device Token=%@",deviceToken];
-    NSLog(@"%@", str);
-    
-    // update device registration
-    NSUUID *uuidForVendor = [[UIDevice currentDevice] identifierForVendor];
-    NSString *uuid = [uuidForVendor UUIDString];
-
-    // send PATCH
-    
-    VCDevice * device = [[VCDevice alloc] init];
-    device.pushToken = [self stringFromDeviceTokenData: deviceToken];
-    device.userId = [NSNumber numberWithInt:1]; // TODO get the current logged in user
-                                                // TODO once user logs in, need to update this as well
-    [[RKObjectManager sharedManager] patchObject:device
-                                           path: [NSString stringWithFormat:@"%@%@", API_DEVICES, uuid]
-                                     parameters:nil
-                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                            NSLog(@"Push token accepted by server!");
-                                            
-                                        }
-                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                            NSLog(@"Failed send request %@", error);
-                                            [WRUtilities criticalError:error];
-                                            
-                                            // TODO Re-transmit push token later
-                                        }];
-
-    
+    [VCPushManager application:app didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }
 
 - (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
     
-    NSString *str = [NSString stringWithFormat: @"Error: %@", err];
-    NSLog(@"%@", str);
+    [VCPushManager application:app didFailToRegisterForRemoteNotificationsWithError:err];
+    
     
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    
-    for (id key in userInfo) {
-        NSLog(@"key: %@, value: %@", key, [userInfo objectForKey:key]);
-    }    
-    
+    // app is in foreground
+    [VCPushManager application:application didReceiveRemoteNotification:userInfo];
 }
 
-- (NSString*) stringFromDeviceTokenData: (NSData *) deviceToken
-{
-    const char *data = [deviceToken bytes];
-    NSMutableString* token = [NSMutableString string];
-    for (int i = 0; i < [deviceToken length]; i++) {
-        [token appendFormat:@"%02.2hhX", data[i]];
-    }
-    
-    return [token copy];
++ (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))handler {
+    // app is in background
+    [VCPushManager application:application didReceiveRemoteNotification:userInfo fetchCompletionHandler:handler];
 }
 
 @end
