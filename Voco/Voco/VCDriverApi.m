@@ -21,8 +21,8 @@
     [VCRideDriverAssignment createMappings:objectManager];
     [Offer createMappings:objectManager];
     
-    RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
-    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
+    //RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
+    //RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
     
     
 }

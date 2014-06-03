@@ -11,6 +11,7 @@
 
 @interface VCDialogs : NSObject
 
++ (void) offerNextRideToDriver;
 + (void) offerRideToDriver: (Offer *) rideOffer;
 
 @end

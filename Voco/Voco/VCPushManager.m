@@ -80,6 +80,8 @@
     [VCPushManager registerForRemoteNotifications];
 }
 
+
+
 + (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     
@@ -88,19 +90,6 @@
         NSLog(@"recieved remote notification foreground key: %@, value: %@", key, [userInfo objectForKey:key]);
     }
     // App is in foreground
-    // Show the message as an alert
-    /*
-     * Don't show alert, wait for updated state
-     UIAlertView * alert = [[UIAlertView alloc] initWithTitle:[aps objectForKey:@"alert"] message:@"" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-     [alert show];
-     */
-    /*
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"debug" message:@"recieved remote notification foreground" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-    [alert show];
-     */
-    // And start the process to update state
-    // which for now will check BOTH the driver and rider state paths
-    
     //  Get offers
     if(true) { //condition
         [[RKObjectManager sharedManager] getObjectsAtPath:[VCApi getRideOffersPath:[VCUserState instance].userId]
@@ -112,21 +101,10 @@
                                                   
                                                   // check state of the application
                                                   // for now just assume in drive mode if we get here
-                                                  if([VCUserState driverIsAvailable]){  // guard against invalid state
+                                                  if([VCUserState driverIsAvailable]
+                                                     && [[VCUserState instance].interfaceState isEqualToString:VC_INTERFACE_STATE_IDLE]){  // guard against invalid state
                                                       
-                                                      NSFetchRequest * request = [[NSFetchRequest alloc] initWithEntityName:@"Offer"];
-                                                      NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"updatedAt" ascending:YES];
-                                                      [request setSortDescriptors:@[sort]];
-                                                      
-                                                      NSError * error;
-                                                      NSArray * offers = [[VCCoreData managedObjectContext] executeFetchRequest:request error:&error];
-                                                      if([offers count] < 1){
-                                                          return;
-                                                      }
-                                                      
-                                                      
-                                                      [VCUserState instance].driverState = @"ride offered";
-                                                      [VCDialogs offerRideToDriver:[offers objectAtIndex:0]];
+                                                      [VCDialogs offerNextRideToDriver];
                                                   } 
                                                   
                                               }

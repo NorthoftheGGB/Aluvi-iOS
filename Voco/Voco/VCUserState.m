@@ -16,6 +16,7 @@ static VCUserState *sharedSingleton;
 + (VCUserState *) instance {
     if(sharedSingleton == nil){
         sharedSingleton = [[VCUserState alloc] init];
+        sharedSingleton.interfaceState = VC_INTERFACE_STATE_IDLE;
     }
     return sharedSingleton;
 }
