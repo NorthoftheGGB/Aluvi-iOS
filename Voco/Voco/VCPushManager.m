@@ -88,7 +88,6 @@
 + (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     // App is in foreground
-
     for (id key in userInfo) {
         NSLog(@"recieved remote notification foreground key: %@, value: %@", key, [userInfo objectForKey:key]);
     }
@@ -118,6 +117,15 @@
         }
     } else if([type isEqualToString:@"ride_offer_closed"]){
         [[VCDialogs instance] retractOfferDialog: [userInfo objectForKey:VC_PUSH_OFFER_ID_KEY]];
+    } else if ([type isEqualToString:@"ride_found"]){
+        [self handleRideFoundNotification: userInfo];
+    } else if ([type isEqualToString:@"ride_cancelled_by_rider"]){
+        NSNumber * rideId = [userInfo objectForKey:VC_PUSH_RIDE_ID_KEY];
+        if([[VCUserState instance].rideId isEqualToNumber:rideId]){
+            [[VCDialogs instance] rideCancelledByRider];
+            [VCUserState instance].rideId = nil;
+            [VCUserState instance].driverState = kUserStateIdle;
+        }
     }
     
     
@@ -135,6 +143,7 @@
     handler(UIBackgroundFetchResultNewData);
 }
 
+// Called when the user selected a remote notification from outside the application
 + (void)handleRemoteNotification:(NSDictionary *)payload {
     NSString * type = [payload objectForKey:VC_PUSH_TYPE_KEY];
     if([type isEqualToString:@"ride_offer"]){
@@ -172,7 +181,41 @@
                                                       
                                                       // TODO Re-transmit push token later
                                                   }];
+    } else if ([type isEqualToString:@"ride_found"]){
+        [self handleRideFoundNotification:payload];
     }
+}
+
++ (void) handleRideFoundNotification:(NSDictionary *) payload {
+    // TODO And update all rides for this user using RestKit entity
+    [[RKObjectManager sharedManager] getObjectsAtPath:[VCApi getScheduledRidesPath:[VCUserState instance].userId] parameters:nil
+                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                  
+                                                  NSNumber * rideId = [payload objectForKey:VC_PUSH_RIDE_ID_KEY];
+                                                  NSFetchRequest * request = [[NSFetchRequest alloc] initWithEntityName:@"Ride"];
+                                                  NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ride_id = %@", rideId];
+                                                  [request setPredicate:predicate];
+                                                  NSError * error;
+                                                  NSArray * rides = [[VCCoreData managedObjectContext] executeFetchRequest:request error:&error];
+                                                  if(rides == nil){
+                                                      [WRUtilities criticalError:error];
+                                                      return;
+                                                  }
+                                                  if([rides count] > 0){
+                                                      [VCUserState instance].riderState = kUserStateRideScheduled;
+                                                      [VCUserState instance].rideId = rideId;
+                                                      [[VCDialogs instance] rideFound: [payload objectForKey:VC_PUSH_REQUEST_ID_KEY]];
+                                                      
+                                                  } else {
+                                                      [WRUtilities criticalErrorWithString:@"Ride no longer exists"];
+                                                      
+                                                  }
+                                                  
+                                              } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                  
+                                              }];
+    
+
 }
 
 

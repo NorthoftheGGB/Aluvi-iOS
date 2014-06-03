@@ -22,6 +22,7 @@
 @dynamic car_id;
 @dynamic driver_id;
 @dynamic state;
+@dynamic request_id;
 @dynamic requested_timestamp;
 @dynamic estimated_arrival_time;
 @dynamic origin_latitude;
@@ -30,9 +31,32 @@
 @dynamic meeting_point_longitude;
 @dynamic destination_longitude;
 @dynamic destination_latitude;
-@dynamic request_id;
 
 @synthesize stateMachine = _stateMachine;
+
++ (void)createMappings:(RKObjectManager *)objectManager{
+    RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Ride"
+                                                          inManagedObjectStore: [VCCoreData managedObjectStore]];
+    
+    [entityMapping addAttributeMappingsFromDictionary:@{
+                                                        @"request_id" : @"request_id",
+                                                        @"id" : @"ride_id",
+                                                        @"meeting_point_place_name" : @"meetingPointPlaceName",
+                                                        @"meeting_point_latitude" : @"meetingPointLattitude",
+                                                        @"meeting_point_longitude" : @"meetingPointLongitude",
+                                                        @"destination_place_name" : @"destinationPlaceName"}];
+
+    entityMapping.identificationAttributes = @[ @"request_id" ]; // for riders request_id is the primary key
+    
+    RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping
+                                                                                             method:RKRequestMethodGET
+                                                                                        pathPattern:API_GET_SCHEDULED_RIDES_PATH_PATTERN
+                                                                                            keyPath:nil
+                                                                                        statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor];
+}
+
+
 
 - (id) init{
     self = [super init];

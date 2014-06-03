@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+#define kUserStateIdle @"Idle"
+#define kUserStateRideOffered @"Ride Offered"
+#define kUserStateRideScheduled @"Ride Scheduled"
 
 // placeholder class for user state tracking, enabling KVO
 
@@ -15,6 +18,7 @@
 
 
 @property(nonatomic, strong) NSNumber * userId;
+@property(nonatomic, strong) NSNumber * rideId;
 @property(nonatomic, strong) NSString * riderState;
 @property(nonatomic, strong) NSString * driverState;
 

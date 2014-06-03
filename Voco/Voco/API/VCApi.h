@@ -23,6 +23,9 @@
 #define API_GET_RIDE_OFFERS @"rides/offers/"
 #define API_GET_RIDE_OFFERS_PATH_PATTERN @"rides/offers/:id"
 
+#define API_GET_SCHEDULED_RIDES @"rides/"
+#define API_GET_SCHEDULED_RIDES_PATH_PATTERN @"rides/:rider_id"
+
 
 // geo API
 #define API_GEO_CAR @"geo/car"
@@ -36,5 +39,6 @@
 
 + (NSString *) devicesObjectPathPattern;
 + (NSString *) getRideOffersPath:(NSNumber*) driverId;
++ (NSString *) getScheduledRidesPath:(NSNumber*) riderId;
 
 @end

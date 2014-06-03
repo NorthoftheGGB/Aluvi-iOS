@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RiderViewController">
             <connections>
                 <outlet property="cancelRequestButton" destination="uOu-te-sul" id="w59-rG-JQd"/>
+                <outlet property="cancelRideButton" destination="7Bw-6X-fNB" id="N4a-03-kxq"/>
                 <outlet property="requestButton" destination="hT0-VV-Kot" id="vjl-wH-iyV"/>
                 <outlet property="stateLabel" destination="Lil-Tz-7mE" id="iBE-Jx-SKP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -58,6 +59,16 @@
                     </state>
                     <connections>
                         <action selector="didTapDriverModeButton:" destination="-1" eventType="touchUpInside" id="KqZ-iP-v4w"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Bw-6X-fNB">
+                    <rect key="frame" x="0.0" y="260" width="320" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Cancel Ride">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapCancelRideButton:" destination="-1" eventType="touchUpInside" id="QXl-h1-eBp"/>
                     </connections>
                 </button>
             </subviews>

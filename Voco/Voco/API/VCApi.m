@@ -18,5 +18,9 @@
     return [NSString stringWithFormat:@"%@%@", API_GET_RIDE_OFFERS, driverId];
 }
 
++ (NSString *) getScheduledRidesPath:(NSNumber*) riderId {
+    return [NSString stringWithFormat:@"%@%@", API_GET_SCHEDULED_RIDES, riderId];
+}
+
 
 @end

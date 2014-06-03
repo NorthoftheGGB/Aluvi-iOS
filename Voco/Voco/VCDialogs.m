@@ -124,6 +124,7 @@ static VCDialogs *sharedSingleton;
                                   // but at a later date we may add a step that waits for the rider to confirm that
                                   // they know about the ride being scheduled (handshake)
                                   [VCUserState instance].driverState = @"Ride Accepted";
+                                  [VCUserState instance].rideId = rideOffer.ride_id;
                                   
                                   rideOffer.state = @"accepted";
                                   rideOffer.decided = [NSNumber numberWithBool:YES];
@@ -164,11 +165,32 @@ static VCDialogs *sharedSingleton;
 }
 
 - (void) retractOfferDialog: (NSNumber *) offerId {
-    if(_currentAlertView != nil && _offer != nil && [offerId isEqualToNumber: _offer.id]){
+    if([_interfaceState isEqualToString:VC_INTERFACE_STATE_OFFER_DIALOG] && [offerId isEqualToNumber: _offer.id]){
         [_currentAlertView dismissWithClickedButtonIndex:-1 animated:YES];
+        _offer.decided = [NSNumber numberWithBool:YES];
+        NSError * error = nil;
+        [[VCCoreData managedObjectContext] save:&error];
+        if(error != nil){
+            [WRUtilities criticalError:error];
+        }
         _offer = nil;
+        [VCUserState instance].driverState = kUserStateIdle;
+        _interfaceState = VC_INTERFACE_STATE_IDLE;
+        [self offerNextRideToDriver];
     }
 }
 
+- (void) rideFound: (NSNumber *) requestId {
+    [UIAlertView showWithTitle:@"Ride Found!" message:@"Your ride has been scheduled" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+    [VCUserState instance].driverState = kUserStateRideScheduled;
+}
+
+- (void) rideCancelledByRider {
+    [UIAlertView showWithTitle:@"Ride Cancelled!" message:@"The rider cancelled the ride" cancelButtonTitle:@"OK" otherButtonTitles:nil
+                      tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                          [[VCDialogs instance] offerNextRideToDriver];
+                      }];
+
+}
 
 @end

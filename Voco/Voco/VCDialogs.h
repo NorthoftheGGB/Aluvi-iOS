@@ -22,5 +22,6 @@
 - (void) offerNextRideToDriver;
 - (void) offerRideToDriver: (Offer *) offer;
 - (void) retractOfferDialog: (Offer *) offer;
-
+- (void) rideFound: (NSNumber *) requestId;
+- (void) rideCancelledByRider;
 @end

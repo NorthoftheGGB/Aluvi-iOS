@@ -48,6 +48,7 @@
 		F4FE1B18193D2F3F00354886 /* Offer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B17193D2F3F00354886 /* Offer.m */; };
 		F4FE1B1B193D301F00354886 /* VCCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B1A193D301F00354886 /* VCCoreData.m */; };
 		F4FE1B20193D8FE500354886 /* VCPushApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B1F193D8FE500354886 /* VCPushApi.m */; };
+		F4FE1B24193E722B00354886 /* VCRideIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B23193E722B00354886 /* VCRideIdentity.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +131,9 @@
 		F4FE1B1A193D301F00354886 /* VCCoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCoreData.m; sourceTree = "<group>"; };
 		F4FE1B1E193D8FE500354886 /* VCPushApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCPushApi.h; path = API/VCPushApi.h; sourceTree = "<group>"; };
 		F4FE1B1F193D8FE500354886 /* VCPushApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCPushApi.m; path = API/VCPushApi.m; sourceTree = "<group>"; };
+		F4FE1B21193DCB6700354886 /* Voco 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 2.xcdatamodel"; sourceTree = "<group>"; };
+		F4FE1B22193E722B00354886 /* VCRideIdentity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRideIdentity.h; path = API/Rider/VCRideIdentity.h; sourceTree = "<group>"; };
+		F4FE1B23193E722B00354886 /* VCRideIdentity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRideIdentity.m; path = API/Rider/VCRideIdentity.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +210,8 @@
 				F45F7BF5193578DE00A94721 /* VCRiderApi.m */,
 				F45F7BFA19357B8A00A94721 /* VCRideRequest.h */,
 				F45F7BFB19357B8A00A94721 /* VCRideRequest.m */,
+				F4FE1B22193E722B00354886 /* VCRideIdentity.h */,
+				F4FE1B23193E722B00354886 /* VCRideIdentity.m */,
 				F45F7C071935898200A94721 /* Responses */,
 			);
 			name = Rider;
@@ -541,6 +547,7 @@
 				F4FE1B20193D8FE500354886 /* VCPushApi.m in Sources */,
 				F45F7C181935A3F900A94721 /* DriverViewController.m in Sources */,
 				F4FA0BFD192BF6BF005D8645 /* Voco.xcdatamodeld in Sources */,
+				F4FE1B24193E722B00354886 /* VCRideIdentity.m in Sources */,
 				F45F7BF6193578DE00A94721 /* VCRiderApi.m in Sources */,
 				F4FE1B121938581C00354886 /* VCDialogs.m in Sources */,
 				F4FE1AFE193839DF00354886 /* Drive.m in Sources */,
@@ -784,6 +791,7 @@
 		F4FA0BFB192BF6BF005D8645 /* Voco.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				F4FE1B21193DCB6700354886 /* Voco 2.xcdatamodel */,
 				F4FA0BFC192BF6BF005D8645 /* Voco.xcdatamodel */,
 			);
 			currentVersion = F4FA0BFC192BF6BF005D8645 /* Voco.xcdatamodel */;

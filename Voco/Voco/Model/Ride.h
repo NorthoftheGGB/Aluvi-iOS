@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "VCRestKitMappableObject.h"
 
-
-@interface Ride : NSManagedObject
+@interface Ride : NSManagedObject <VCRestKitMappableObject>
 
 @property (nonatomic, retain) NSNumber * ride_id;
 @property (nonatomic, retain) NSString * type;

@@ -66,6 +66,11 @@ static void * XXContext = &XXContext;
     
 }
 
+- (void) viewDidUnload
+{
+    [[VCUserState instance] removeObserver:self forKeyPath:@"driverState"];
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     _stateLabel.text = [change objectForKey:NSKeyValueChangeNewKey];
 }

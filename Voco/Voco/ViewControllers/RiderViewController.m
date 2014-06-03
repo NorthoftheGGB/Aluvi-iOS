@@ -16,6 +16,7 @@
 #import "DriverViewController.h"
 #import "VCDevice.h"
 #import "VCUserState.h"
+#import "VCRideIdentity.h"
 
 static void * XXContext = &XXContext;
 
@@ -24,10 +25,12 @@ static void * XXContext = &XXContext;
 @property (weak, nonatomic) IBOutlet UILabel *stateLabel;
 @property (weak, nonatomic) IBOutlet UIButton *requestButton;
 @property (weak, nonatomic) IBOutlet UIButton *cancelRequestButton;
+@property (weak, nonatomic) IBOutlet UIButton *cancelRideButton;
 
 - (IBAction)didTapRequestButton:(id)sender;
 - (IBAction)didTapCancelRequestButton:(id)sender;
 - (IBAction)didTapDriverModeButton:(id)sender;
+- (IBAction)didTapCancelRideButton:(id)sender;
 
 @end
 
@@ -46,14 +49,29 @@ static void * XXContext = &XXContext;
 {
     [super viewDidLoad];
     _stateLabel.text = @"Idle";
+    
+    [[VCUserState instance] addObserver:self forKeyPath:@"riderState" options:NSKeyValueObservingOptionNew context:XXContext];
+    
+}
 
+- (void) viewDidUnload
+{
+    [[VCUserState instance] removeObserver:self forKeyPath:@"riderState"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    _stateLabel.text = [change objectForKey:NSKeyValueChangeNewKey];
+    
+    if([[change objectForKey:NSKeyValueChangeNewKey] isEqualToString:kUserStateRideScheduled]){
+        _cancelRequestButton.enabled = NO;
+        _cancelRideButton.enabled = YES;
+    }
 }
 
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [VCUserState instance].userId = [NSNumber numberWithInteger:3];
-
     
     NSUUID *uuidForVendor = [[UIDevice currentDevice] identifierForVendor];
     NSString *uuid = [uuidForVendor UUIDString];
@@ -120,5 +138,21 @@ static void * XXContext = &XXContext;
 
 - (IBAction)didTapDriverModeButton:(id)sender {
     [[[UIApplication sharedApplication] delegate].window setRootViewController:[[DriverViewController alloc] init] ];
+}
+
+- (IBAction)didTapCancelRideButton:(id)sender {
+    // Send cancel request to server
+    VCRideIdentity * rideIdentity = [[VCRideIdentity alloc] init];
+    rideIdentity.rideId = [VCUserState instance].rideId;
+    rideIdentity.riderId = [VCUserState instance].userId;
+    [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_RIDER_CANCELLED parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            _requestButton.enabled = YES;
+                                            _cancelRideButton.enabled = NO;
+                                            _cancelRequestButton.enabled = NO;
+                                            [VCUserState instance].riderState = kUserStateIdle;
+                                        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            [WRUtilities criticalError:error];
+                                        }];
 }
 @end

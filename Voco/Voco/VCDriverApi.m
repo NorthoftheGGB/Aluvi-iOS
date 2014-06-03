@@ -10,6 +10,7 @@
 #import "VCApi.h"
 #import "VCRideOffer.h"
 #import "VCRideDriverAssignment.h"
+#import "VCRideIdentity.h"
 #import "Offer.h"
 
 @implementation VCDriverApi
@@ -19,6 +20,7 @@
     // RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:self.managedObjectModel];
     
     [VCRideDriverAssignment createMappings:objectManager];
+    [VCRideIdentity createMappings:objectManager];
     [Offer createMappings:objectManager];
     
     //RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
