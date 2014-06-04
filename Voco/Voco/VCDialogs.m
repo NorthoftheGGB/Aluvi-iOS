@@ -118,6 +118,7 @@ static VCDialogs *sharedSingleton;
                               assignment.rideId = rideOffer.ride_id;
                               assignment.driverId = [VCUserState instance].userId;
                               
+                              CLS_LOG(@"%@", @"API_POST_RIDE_ACCEPTED");
                               [[RKObjectManager sharedManager] postObject:assignment path:API_POST_RIDE_ACCEPTED parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                   
                                   // TODO at this point we assume ride is confirmed
@@ -199,6 +200,16 @@ static VCDialogs *sharedSingleton;
                       tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                       }];
     
+}
+
+- (void) showRideReceipt: (NSNumber *) rideId {
+    [UIAlertView showWithTitle:@"Receipt"
+                       message:@"This is a placeholder for the ride receipt.  Thanks for riding!"
+             cancelButtonTitle:@"OK"
+             otherButtonTitles:nil
+                      tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                          [VCUserState instance].riderState = kUserStateIdle;
+                      }];
 }
 
 @end

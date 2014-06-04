@@ -17,4 +17,5 @@
     #import "UIAlertView+Blocks.h"
     #import "WRUtilities.h"
     #import "VCCoreData.h"
+    #import <Crashlytics/Crashlytics.h>
 #endif

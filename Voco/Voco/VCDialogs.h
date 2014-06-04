@@ -25,5 +25,6 @@
 - (void) rideFound: (NSNumber *) requestId;
 - (void) rideCancelledByRider;
 - (void) rideCancelledByDriver;
+- (void) showRideReceipt: (NSNumber *) rideId;
 
 @end

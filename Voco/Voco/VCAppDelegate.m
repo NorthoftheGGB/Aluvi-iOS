@@ -60,7 +60,7 @@
     [VCPushManager registerForRemoteNotifications];
     
     if([launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey] != nil){
-        [VCPushManager handleRemoteNotification:[launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey]];
+        [VCPushManager handleTappedRemoteNotification:[launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey]];
     }
     
     return YES;
@@ -216,7 +216,7 @@
     if ( application.applicationState == UIApplicationStateActive ) {
         [VCPushManager application:application didReceiveRemoteNotification:userInfo];
     } else {
-        [VCPushManager handleRemoteNotification:userInfo];
+        [VCPushManager handleTappedRemoteNotification:userInfo];
     }
     
 }

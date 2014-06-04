@@ -117,23 +117,12 @@
         }
     } else if([type isEqualToString:@"ride_offer_closed"]){
         [[VCDialogs instance] retractOfferDialog: [userInfo objectForKey:VC_PUSH_OFFER_ID_KEY]];
-    } else if ([type isEqualToString:@"ride_found"]){
-        [self handleRideFoundNotification: userInfo];
-    } else if ([type isEqualToString:@"ride_cancelled_by_rider"]){
-        NSNumber * rideId = [userInfo objectForKey:VC_PUSH_RIDE_ID_KEY];
-        if([[VCUserState instance].rideId isEqualToNumber:rideId]){
-            [[VCDialogs instance] rideCancelledByRider];
-            [VCUserState instance].rideId = nil;
-            [VCUserState instance].driverState = kUserStateIdle;
-        }
-    } else if([type isEqualToString:@"ride_cancelled_by_driver"]){
-        NSNumber * rideId = [userInfo objectForKey:VC_PUSH_RIDE_ID_KEY];
-        if([[VCUserState instance].rideId isEqualToNumber:rideId]){
-            [[VCDialogs instance] rideCancelledByDriver];
-            [VCUserState instance].rideId = nil;
-            [VCUserState instance].riderState = kUserStateIdle;
-        }
+    } else {
+        [self handleRemoteNotification:userInfo];
     }
+    
+    
+
     
     
 }
@@ -151,7 +140,7 @@
 }
 
 // Called when the user selected a remote notification from outside the application
-+ (void)handleRemoteNotification:(NSDictionary *)payload {
++ (void)handleTappedRemoteNotification:(NSDictionary *)payload {
     NSString * type = [payload objectForKey:VC_PUSH_TYPE_KEY];
     if([type isEqualToString:@"ride_offer"]){
         NSNumber * offer_id = [payload objectForKey:VC_PUSH_OFFER_ID_KEY];
@@ -190,6 +179,36 @@
                                                   }];
     } else if ([type isEqualToString:@"ride_found"]){
         [self handleRideFoundNotification:payload];
+    } else {
+        [self handleRemoteNotification:payload];
+    }
+}
+
++ (void) handleRemoteNotification:(NSDictionary *) payload {
+    NSString * type = [payload objectForKey:VC_PUSH_TYPE_KEY];
+    if ([type isEqualToString:@"ride_found"]){
+        [self handleRideFoundNotification: payload];
+    } else if ([type isEqualToString:@"ride_cancelled_by_rider"]){
+        NSNumber * rideId = [payload objectForKey:VC_PUSH_RIDE_ID_KEY];
+        if([[VCUserState instance].rideId isEqualToNumber:rideId]){
+            [[VCDialogs instance] rideCancelledByRider];
+            [VCUserState instance].rideId = nil;
+            [VCUserState instance].driverState = kUserStateIdle;
+        }
+    } else if([type isEqualToString:@"ride_cancelled_by_driver"]){
+        NSNumber * rideId = [payload objectForKey:VC_PUSH_RIDE_ID_KEY];
+        if([[VCUserState instance].rideId isEqualToNumber:rideId]){
+            [[VCDialogs instance] rideCancelledByDriver];
+            [VCUserState instance].rideId = nil;
+            [VCUserState instance].riderState = kUserStateIdle;
+        }
+    } else if([type isEqualToString:@"ride_receipt"]){
+        NSNumber * rideId = [payload objectForKey:VC_PUSH_RIDE_ID_KEY];
+        if([[VCUserState instance].rideId isEqualToNumber:rideId]){
+            [VCUserState instance].rideId = nil;
+            [VCUserState instance].riderState = kUserStateIdle;
+            [[VCDialogs instance] showRideReceipt:rideId];
+        }
     }
 }
 

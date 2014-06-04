@@ -7,6 +7,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DriverViewController">
             <connections>
                 <outlet property="cancelRideButton" destination="VRT-0A-IiN" id="NXn-eK-Pa4"/>
+                <outlet property="pickedUpRiderButton" destination="VDV-3X-0K3" id="nZD-Xk-Sjg"/>
+                <outlet property="rideCompletedButton" destination="LXs-Wb-IbO" id="dyy-gN-Zz1"/>
                 <outlet property="stateLabel" destination="XYP-P7-sYV" id="j8N-py-PXI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -40,13 +42,33 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRT-0A-IiN">
-                    <rect key="frame" x="0.0" y="292" width="320" height="30"/>
+                    <rect key="frame" x="0.0" y="209" width="320" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Cancel Ride">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="didTapCancelRide:" destination="-1" eventType="touchUpInside" id="pZ6-47-BwH"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDV-3X-0K3">
+                    <rect key="frame" x="0.0" y="274" width="320" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Picked Up Rider">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapPickedUpRider:" destination="-1" eventType="touchUpInside" id="cNB-Jh-uHk"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LXs-Wb-IbO">
+                    <rect key="frame" x="0.0" y="335" width="320" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Ride Completed">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapRideCompleted:" destination="-1" eventType="touchUpInside" id="i9a-ox-n16"/>
                     </connections>
                 </button>
             </subviews>
