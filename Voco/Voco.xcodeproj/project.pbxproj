@@ -50,6 +50,7 @@
 		F4FE1B20193D8FE500354886 /* VCPushApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B1F193D8FE500354886 /* VCPushApi.m */; };
 		F4FE1B24193E722B00354886 /* VCRideIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B23193E722B00354886 /* VCRideIdentity.m */; };
 		F4FE1B2D193EA18E00354886 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FE1B2C193EA18E00354886 /* Crashlytics.framework */; };
+		F4FE1B31193EE06400354886 /* VCLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B30193EE06400354886 /* VCLocation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +137,8 @@
 		F4FE1B22193E722B00354886 /* VCRideIdentity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRideIdentity.h; path = API/Rider/VCRideIdentity.h; sourceTree = "<group>"; };
 		F4FE1B23193E722B00354886 /* VCRideIdentity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRideIdentity.m; path = API/Rider/VCRideIdentity.m; sourceTree = "<group>"; };
 		F4FE1B2C193EA18E00354886 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		F4FE1B2F193EE06400354886 /* VCLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCLocation.h; path = Common/VCLocation.h; sourceTree = "<group>"; };
+		F4FE1B30193EE06400354886 /* VCLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCLocation.m; path = Common/VCLocation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				F4FE1AF31936BE6800354886 /* Base */,
+				F4FE1B2E193EDFEE00354886 /* Common */,
 				F45F7BF71935798B00A94721 /* VCApi.h */,
 				F45F7BF81935798B00A94721 /* VCApi.m */,
 				F4FE1B1E193D8FE500354886 /* VCPushApi.h */,
@@ -406,6 +410,15 @@
 			name = Driver;
 			sourceTree = "<group>";
 		};
+		F4FE1B2E193EDFEE00354886 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F4FE1B2F193EE06400354886 /* VCLocation.h */,
+				F4FE1B30193EE06400354886 /* VCLocation.m */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -578,6 +591,7 @@
 				F4FE1B0B19384F9000354886 /* VCDriverApi.m in Sources */,
 				F45F7BEB193575A900A94721 /* RiderViewController.m in Sources */,
 				F45F7BF91935798B00A94721 /* VCApi.m in Sources */,
+				F4FE1B31193EE06400354886 /* VCLocation.m in Sources */,
 				F4FE1AF11936BE0900354886 /* VCDevice.m in Sources */,
 				F45F7C031935880500A94721 /* Ride.m in Sources */,
 				F4FA0BF6192BF6BF005D8645 /* main.m in Sources */,

@@ -7,7 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+@import CoreLocation;
+
 
 @interface VCGeolocation : NSObject
+
++ (VCGeolocation *) sharedGeolocation;
++ (CLLocation *) location;
+
+- (id) init;
+- (CLLocation *) location;
+- (void) startTrackingDriverLocation;
 
 @end

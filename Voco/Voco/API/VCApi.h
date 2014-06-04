@@ -28,7 +28,8 @@
 
 
 // geo API
-#define API_GEO_CAR @"geo/car"
+#define API_GEO_CAR @"geo/car/"
+#define API_GEO_CAR_PATH_PATTERN @"geo/car/:id"
 #define API_GEO_RIDER @"geo/rider"
 #define API_GEO_CARS @"geo/cars"
 
@@ -40,5 +41,6 @@
 + (NSString *) devicesObjectPathPattern;
 + (NSString *) getRideOffersPath:(NSNumber*) driverId;
 + (NSString *) getScheduledRidesPath:(NSNumber*) riderId;
++ (NSString *) getPutGeoCarPath:(NSNumber *) carId;
 
 @end

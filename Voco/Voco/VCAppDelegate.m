@@ -18,6 +18,7 @@
 #import "VCApi.h"
 #import "VCUserState.h"
 #import "VCDialogs.h"
+#import "VCGeolocation.h"
 
 @interface VCAppDelegate ()
 
@@ -44,6 +45,8 @@
     [Crashlytics startWithAPIKey:@"f7d1a0eeca165a46710d606ff21a38fea3c9ec43"];
     
     [VCDialogs instance];
+    [[VCGeolocation sharedGeolocation] startTrackingDriverLocation];
+
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     if([[VCUserState instance].userId isEqualToNumber:[NSNumber numberWithInt:1]]){
@@ -57,11 +60,15 @@
     
     
     NSLog(@"Registering for push notifications...");
+    #if !(TARGET_IPHONE_SIMULATOR)
     [VCPushManager registerForRemoteNotifications];
+    #endif
     
     if([launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey] != nil){
         [VCPushManager handleTappedRemoteNotification:[launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey]];
     }
+    
+
     
     return YES;
 }

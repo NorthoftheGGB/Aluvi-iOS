@@ -13,6 +13,7 @@
 #import "VCUserState.h"
 #import "VCRideDriverAssignment.h"
 #import "VCRideIdentity.h"
+#import "VCGeolocation.h"
 
 static void * XXContext = &XXContext;
 

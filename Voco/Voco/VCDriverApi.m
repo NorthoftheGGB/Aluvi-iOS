@@ -12,6 +12,7 @@
 #import "VCRideDriverAssignment.h"
 #import "VCRideIdentity.h"
 #import "Offer.h"
+#import "VCLocation.h"
 
 @implementation VCDriverApi
 
@@ -22,6 +23,7 @@
     [VCRideDriverAssignment createMappings:objectManager];
     [VCRideIdentity createMappings:objectManager];
     [Offer createMappings:objectManager];
+    [VCLocation createMappings:objectManager];
     
     //RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
     //RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);

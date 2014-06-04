@@ -25,7 +25,7 @@
     [VCDevice createMappings:objectManager];
     [Ride createMappings:objectManager];
     
-    // RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
+    RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
     RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
 
     
