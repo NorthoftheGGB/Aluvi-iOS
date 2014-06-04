@@ -27,6 +27,6 @@
 
 + (VCUserState *) instance;
 + (BOOL) driverIsAvailable;
-
+- (void) saveState;
 
 @end
