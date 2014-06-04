@@ -49,6 +49,7 @@
 		F4FE1B1B193D301F00354886 /* VCCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B1A193D301F00354886 /* VCCoreData.m */; };
 		F4FE1B20193D8FE500354886 /* VCPushApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B1F193D8FE500354886 /* VCPushApi.m */; };
 		F4FE1B24193E722B00354886 /* VCRideIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B23193E722B00354886 /* VCRideIdentity.m */; };
+		F4FE1B2D193EA18E00354886 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FE1B2C193EA18E00354886 /* Crashlytics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +135,7 @@
 		F4FE1B21193DCB6700354886 /* Voco 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 2.xcdatamodel"; sourceTree = "<group>"; };
 		F4FE1B22193E722B00354886 /* VCRideIdentity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRideIdentity.h; path = API/Rider/VCRideIdentity.h; sourceTree = "<group>"; };
 		F4FE1B23193E722B00354886 /* VCRideIdentity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRideIdentity.m; path = API/Rider/VCRideIdentity.m; sourceTree = "<group>"; };
+		F4FE1B2C193EA18E00354886 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 			files = (
 				F45F7C0019357C6100A94721 /* MapKit.framework in Frameworks */,
 				F45F7BFE19357C5C00A94721 /* CoreLocation.framework in Frameworks */,
+				F4FE1B2D193EA18E00354886 /* Crashlytics.framework in Frameworks */,
 				F4FA0BEA192BF6BF005D8645 /* CoreGraphics.framework in Frameworks */,
 				F4FA0BEE192BF6BF005D8645 /* CoreData.framework in Frameworks */,
 				F4FA0BEC192BF6BF005D8645 /* UIKit.framework in Frameworks */,
@@ -297,6 +300,7 @@
 		F4FA0BE6192BF6BF005D8645 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F4FE1B2C193EA18E00354886 /* Crashlytics.framework */,
 				F45F7BFF19357C6100A94721 /* MapKit.framework */,
 				F45F7BFD19357C5C00A94721 /* CoreLocation.framework */,
 				F4FA0BE7192BF6BF005D8645 /* Foundation.framework */,
@@ -414,6 +418,7 @@
 				F4FA0BE1192BF6BF005D8645 /* Frameworks */,
 				F4FA0BE2192BF6BF005D8645 /* Resources */,
 				A2C77502DF4D49478F120063 /* Copy Pods Resources */,
+				F4FE1B25193E9CCF00354886 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -535,6 +540,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/../Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		F4FE1B25193E9CCF00354886 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run f7d1a0eeca165a46710d606ff21a38fea3c9ec43 30443cbde3ed6a69c0f8176acfb84b3b3a6de64d3e74596b70f376616eff7558";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -687,6 +705,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Voco/Voco-Prefix.pch";
 				INFOPLIST_FILE = "Voco/Voco-Info.plist";
@@ -705,6 +727,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Voco/Voco-Prefix.pch";
 				INFOPLIST_FILE = "Voco/Voco-Info.plist";

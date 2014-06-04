@@ -11,6 +11,7 @@
 #define kUserStateIdle @"Idle"
 #define kUserStateRideOffered @"Ride Offered"
 #define kUserStateRideScheduled @"Ride Scheduled"
+#define kUserStateRideAccepted @"Ride Accepted"
 
 // placeholder class for user state tracking, enabling KVO
 

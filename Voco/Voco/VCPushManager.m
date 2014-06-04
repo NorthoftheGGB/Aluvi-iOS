@@ -126,6 +126,13 @@
             [VCUserState instance].rideId = nil;
             [VCUserState instance].driverState = kUserStateIdle;
         }
+    } else if([type isEqualToString:@"ride_cancelled_by_driver"]){
+        NSNumber * rideId = [userInfo objectForKey:VC_PUSH_RIDE_ID_KEY];
+        if([[VCUserState instance].rideId isEqualToNumber:rideId]){
+            [[VCDialogs instance] rideCancelledByDriver];
+            [VCUserState instance].rideId = nil;
+            [VCUserState instance].riderState = kUserStateIdle;
+        }
     }
     
     

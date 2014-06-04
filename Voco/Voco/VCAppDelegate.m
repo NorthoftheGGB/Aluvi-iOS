@@ -7,13 +7,14 @@
 //
 
 #import "VCAppDelegate.h"
+#import <RestKit.h>
+#import <Crashlytics/Crashlytics.h>
 #import "VCRiderApi.h"
 #import "VCDriverApi.h"
 #import "RiderViewController.h"
 #import "DriverViewController.h"
 #import "VCPushManager.h"
 #import "WRUtilities.h"
-#import <RestKit.h>
 #import "VCApi.h"
 #import "VCUserState.h"
 #import "VCDialogs.h"
@@ -38,9 +39,11 @@
     [VCRiderApi setup: objectManager];
     [VCDriverApi setup: objectManager];
     objectManager.managedObjectStore = [self managedObjectStore];
+
+
+    [Crashlytics startWithAPIKey:@"f7d1a0eeca165a46710d606ff21a38fea3c9ec43"];
     
     [VCDialogs instance];
-
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     if([[VCUserState instance].userId isEqualToNumber:[NSNumber numberWithInt:1]]){

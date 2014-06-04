@@ -123,7 +123,7 @@ static VCDialogs *sharedSingleton;
                                   // TODO at this point we assume ride is confirmed
                                   // but at a later date we may add a step that waits for the rider to confirm that
                                   // they know about the ride being scheduled (handshake)
-                                  [VCUserState instance].driverState = @"Ride Accepted";
+                                  [VCUserState instance].driverState = kUserStateRideAccepted;
                                   [VCUserState instance].rideId = rideOffer.ride_id;
                                   
                                   rideOffer.state = @"accepted";
@@ -191,6 +191,14 @@ static VCDialogs *sharedSingleton;
                           [[VCDialogs instance] offerNextRideToDriver];
                       }];
 
+}
+
+- (void) rideCancelledByDriver {
+    [UIAlertView showWithTitle:@"Ride Cancelled!" message:@"The driver cancelled the ride."
+             cancelButtonTitle:@"OK" otherButtonTitles:nil
+                      tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                      }];
+    
 }
 
 @end

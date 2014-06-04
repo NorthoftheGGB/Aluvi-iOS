@@ -56,6 +56,11 @@ static void * XXContext = &XXContext;
 
 - (void) viewDidUnload
 {
+    [super viewDidUnload];
+    [[VCUserState instance] removeObserver:self forKeyPath:@"riderState"];
+}
+
+- (void)dealloc {
     [[VCUserState instance] removeObserver:self forKeyPath:@"riderState"];
 }
 
@@ -65,7 +70,13 @@ static void * XXContext = &XXContext;
     if([[change objectForKey:NSKeyValueChangeNewKey] isEqualToString:kUserStateRideScheduled]){
         _cancelRequestButton.enabled = NO;
         _cancelRideButton.enabled = YES;
+    } else if ([[change objectForKey:NSKeyValueChangeNewKey] isEqualToString:kUserStateIdle]){
+        _cancelRequestButton.enabled = NO;
+        _cancelRideButton.enabled = NO;
+        _requestButton.enabled = YES;
     }
+    
+    
 }
 
 

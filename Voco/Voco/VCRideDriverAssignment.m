@@ -36,7 +36,12 @@
                                                                                         statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor2];
     
-    
+    RKResponseDescriptor * responseDescriptor3 = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
+                                                                                              method:RKRequestMethodPOST
+                                                                                         pathPattern:API_POST_DRIVER_CANCELLED
+                                                                                             keyPath:nil
+                                                                                         statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:responseDescriptor3];
 }
 
 @end
