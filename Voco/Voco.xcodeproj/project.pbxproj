@@ -19,6 +19,9 @@
 		4FE641D019415A7A0059BED1 /* KlinicSlabLightIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641CC19415A7A0059BED1 /* KlinicSlabLightIt.otf */; };
 		4FE641D119415A7A0059BED1 /* KlinicSlabMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641CD19415A7A0059BED1 /* KlinicSlabMedium.otf */; };
 		4FE641D219415A7A0059BED1 /* KlinicSlabMediumIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641CE19415A7A0059BED1 /* KlinicSlabMediumIt.otf */; };
+		4FE641DA1941607B0059BED1 /* VCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641D91941607B0059BED1 /* VCTextField.m */; };
+		4FE641DD1941621E0059BED1 /* VCTextFieldItalic.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DC1941621E0059BED1 /* VCTextFieldItalic.m */; };
+		4FE641E0194162360059BED1 /* VCTextFieldBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DF194162360059BED1 /* VCTextFieldBold.m */; };
 		CC26291E90FA484191AB6374 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 351E93948BFC43989C411DB5 /* libPods.a */; };
 		F45F7BEB193575A900A94721 /* RiderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BE9193575A900A94721 /* RiderViewController.m */; };
 		F45F7BEC193575A900A94721 /* RiderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F45F7BEA193575A900A94721 /* RiderViewController.xib */; };
@@ -93,6 +96,12 @@
 		4FE641CC19415A7A0059BED1 /* KlinicSlabLightIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KlinicSlabLightIt.otf; path = Voco/Fonts/KlinicSlabLightIt.otf; sourceTree = "<group>"; };
 		4FE641CD19415A7A0059BED1 /* KlinicSlabMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KlinicSlabMedium.otf; path = Voco/Fonts/KlinicSlabMedium.otf; sourceTree = "<group>"; };
 		4FE641CE19415A7A0059BED1 /* KlinicSlabMediumIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KlinicSlabMediumIt.otf; path = Voco/Fonts/KlinicSlabMediumIt.otf; sourceTree = "<group>"; };
+		4FE641D81941607B0059BED1 /* VCTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCTextField.h; path = Controls/VCTextField.h; sourceTree = "<group>"; };
+		4FE641D91941607B0059BED1 /* VCTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCTextField.m; path = Controls/VCTextField.m; sourceTree = "<group>"; };
+		4FE641DB1941621E0059BED1 /* VCTextFieldItalic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCTextFieldItalic.h; path = Controls/VCTextFieldItalic.h; sourceTree = "<group>"; };
+		4FE641DC1941621E0059BED1 /* VCTextFieldItalic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCTextFieldItalic.m; path = Controls/VCTextFieldItalic.m; sourceTree = "<group>"; };
+		4FE641DE194162360059BED1 /* VCTextFieldBold.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCTextFieldBold.h; path = Controls/VCTextFieldBold.h; sourceTree = "<group>"; };
+		4FE641DF194162360059BED1 /* VCTextFieldBold.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCTextFieldBold.m; path = Controls/VCTextFieldBold.m; sourceTree = "<group>"; };
 		CD677E046A804589A26C0608 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		F45F7BE8193575A900A94721 /* RiderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RiderViewController.h; path = ViewControllers/RiderViewController.h; sourceTree = "<group>"; };
 		F45F7BE9193575A900A94721 /* RiderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RiderViewController.m; path = ViewControllers/RiderViewController.m; sourceTree = "<group>"; };
@@ -216,6 +225,19 @@
 				4FE641C81941584D0059BED1 /* SignUpViewController.xib */,
 			);
 			name = "Sign-In and Registration";
+			sourceTree = "<group>";
+		};
+		4FE641D7194160450059BED1 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				4FE641D81941607B0059BED1 /* VCTextField.h */,
+				4FE641D91941607B0059BED1 /* VCTextField.m */,
+				4FE641DB1941621E0059BED1 /* VCTextFieldItalic.h */,
+				4FE641DC1941621E0059BED1 /* VCTextFieldItalic.m */,
+				4FE641DE194162360059BED1 /* VCTextFieldBold.h */,
+				4FE641DF194162360059BED1 /* VCTextFieldBold.m */,
+			);
+			name = Controls;
 			sourceTree = "<group>";
 		};
 		F45F7BE71935756000A94721 /* ViewControllers */ = {
@@ -372,6 +394,7 @@
 		F4FA0BEF192BF6BF005D8645 /* Voco */ = {
 			isa = PBXGroup;
 			children = (
+				4FE641D7194160450059BED1 /* Controls */,
 				F4FE1AF51937DD1A00354886 /* Application */,
 				F45F7C0B1935975D00A94721 /* Libraries */,
 				F45F7BF2193578AA00A94721 /* Api */,
@@ -640,6 +663,8 @@
 				F4FA0BFD192BF6BF005D8645 /* Voco.xcdatamodeld in Sources */,
 				F4FE1B24193E722B00354886 /* VCRideIdentity.m in Sources */,
 				F45F7BF6193578DE00A94721 /* VCRiderApi.m in Sources */,
+				4FE641E0194162360059BED1 /* VCTextFieldBold.m in Sources */,
+				4FE641DD1941621E0059BED1 /* VCTextFieldItalic.m in Sources */,
 				F4FE1B121938581C00354886 /* VCDialogs.m in Sources */,
 				4FE641BA194157510059BED1 /* SignInViewController.m in Sources */,
 				F4FE1AFE193839DF00354886 /* Drive.m in Sources */,
@@ -659,6 +684,7 @@
 				F45F7C031935880500A94721 /* Ride.m in Sources */,
 				F4FA0BF6192BF6BF005D8645 /* main.m in Sources */,
 				F45F7C0F1935976E00A94721 /* WRUtilities.m in Sources */,
+				4FE641DA1941607B0059BED1 /* VCTextField.m in Sources */,
 				F45F7C0A193589A600A94721 /* VCRideRequestCreated.m in Sources */,
 				4FE641C91941584D0059BED1 /* SignUpViewController.m in Sources */,
 				F45F7C12193597F500A94721 /* NSDate+Pretty.m in Sources */,
