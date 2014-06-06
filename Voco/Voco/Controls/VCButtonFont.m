@@ -1,14 +1,14 @@
 //
-//  VCTextFieldBold.m
+//  VCButtonFont.m
 //  Voco
 //
 //  Created by Elliott De Aratanha on 6/5/14.
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCTextFieldBold.h"
+#import "VCButtonFont.h"
 
-@implementation VCTextFieldBold
+@implementation VCButtonFont
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -18,14 +18,6 @@
     }
     return self;
 }
-
-- (void)awakeFromNib{
-    UIFont *customFont = [UIFont fontWithName:@"KlinicSlabMedium" size:16];
-    
-    self.font = customFont;
-}
-    
-
 
 /*
 // Only override drawRect: if you perform custom drawing.
