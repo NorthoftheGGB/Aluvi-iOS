@@ -19,6 +19,7 @@
 #import "VCUserState.h"
 #import "VCDialogs.h"
 #import "VCGeolocation.h"
+#import "VCRestKitSetup.h"
 
 @interface VCAppDelegate ()
 
@@ -36,11 +37,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    RKObjectManager * objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:API_BASE_URL]];
-    [VCRiderApi setup: objectManager];
-    [VCDriverApi setup: objectManager];
-    objectManager.managedObjectStore = [self managedObjectStore];
-
+    [VCRestKitSetup setup];
 
     [Crashlytics startWithAPIKey:@"f7d1a0eeca165a46710d606ff21a38fea3c9ec43"];
     
@@ -51,18 +48,21 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     if([[VCUserState instance].userId isEqualToNumber:[NSNumber numberWithInt:1]]){
         self.window.rootViewController = [[DriverViewController alloc] init];
-    } else {
+    } else{
+        if([VCUserState instance].userId == nil ||  ![[VCUserState instance].userId isEqualToNumber:[NSNumber numberWithInt:3]]){
+            [VCUserState instance].userId = [NSNumber numberWithInt:3];
+        }
         self.window.rootViewController = [[RiderViewController alloc] init];
     }
         
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    
     NSLog(@"Registering for push notifications...");
-    #if !(TARGET_IPHONE_SIMULATOR)
+
+#if !(TARGET_IPHONE_SIMULATOR)
     [VCPushManager registerForRemoteNotifications];
-    #endif
+#endif
     
     if([launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey] != nil){
         [VCPushManager handleTappedRemoteNotification:[launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey]];

@@ -1,17 +1,19 @@
 //
-//  Copyright (c) 2013 David Whiteman Enterprises LLC. All rights reserved.
-//  Permission is hereby granted to Phaze 4 Media and AMCI Global to deal in the Software with rights to use, copy, modify, merge, and publish solely for distribution on Kia Ride and Drive Tour.  
-//  Distribution outside of the above mentioned entities is strictly prohibited without written consent by an authorized agent of David Whiteman Enterprises LLC
+//  WRUtilities
+//  WinterRoot LLC
 //
-//  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+//  Created by Matthew Shultz on 6/3/12.
+//  Copyright (c) 2012 WinterRoot LLC. All rights reserved.
 //
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//
-
-
 
 #import "WRUtilities.h"
 #import "NSDate+Pretty.h"
+
+static UIAlertView * criticalErrorView = nil;
+
+@interface WRUtilities () <UIAlertViewDelegate>
+
+@end
 
 @implementation WRUtilities
 
@@ -32,12 +34,17 @@
     
     NSLog(@"%@ Critical Error: %@", [[NSDate date] pretty], [error debugDescription]);
     
+    if(criticalErrorView != nil){
+        [criticalErrorView dismissWithClickedButtonIndex:0 animated:NO];
+    }
+    
     UIAlertView *alert = [[UIAlertView alloc]
                           initWithTitle: @"Critical Error"
                           message: [error debugDescription]
                           delegate: nil
                           cancelButtonTitle:@"OK"
                           otherButtonTitles:nil];
+    criticalErrorView = alert;
     [alert show];
     
 }
@@ -46,12 +53,18 @@
     
     NSLog(@"%@ Critical Error: %@", [[NSDate date] pretty] , error);
     
+    if(criticalErrorView != nil){
+        [criticalErrorView dismissWithClickedButtonIndex:0 animated:NO];
+        criticalErrorView = nil;
+    }
+    
     UIAlertView *alert = [[UIAlertView alloc]
                           initWithTitle: @"Critical Error"
                           message: error
-                          delegate: nil
+                          delegate: self
                           cancelButtonTitle:@"OK"
                           otherButtonTitles:nil];
+    criticalErrorView = alert;
     [alert performSelectorOnMainThread:@selector(show) withObject:nil waitUntilDone:YES];
     
 }
@@ -76,4 +89,7 @@
     return [emailTest evaluateWithObject:checkString];
 }
 
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    criticalErrorView = nil;
+}
 @end
