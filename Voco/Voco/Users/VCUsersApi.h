@@ -13,7 +13,7 @@
 
 + (void) setup: (RKObjectManager *) objectManager;
 
-+ (void) login:( RKObjectManager *) objectManager email:(NSString*) email password: (NSString *) password
++ (void) login:( RKObjectManager *) objectManager phone:(NSString*) phone password: (NSString *) password
        success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
        failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
@@ -26,5 +26,12 @@
             success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
             failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
-
++ (void) driverInterested:( RKObjectManager *) objectManager
+                     name:(NSString*) name
+                    email:(NSString*) email
+                   region:(NSString*) region
+                    phone:(NSString*) phone
+       driverReferralCode:(NSString*) driverReferralCode
+                  success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                  failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 @end

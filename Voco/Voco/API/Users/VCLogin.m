@@ -14,7 +14,7 @@
     
     RKObjectMapping * mapping = [RKObjectMapping mappingForClass:[VCLogin class]];
     [mapping addAttributeMappingsFromDictionary:@{
-                                                  @"email" : @"email",
+                                                  @"phone" : @"phone",
                                                   @"password" : @"password"
                                                   }];
     return mapping;

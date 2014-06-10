@@ -53,12 +53,12 @@
     
 }
 
-+ (void) login:( RKObjectManager *) objectManager email:(NSString*) email password: (NSString *) password
++ (void) login:( RKObjectManager *) objectManager phone:(NSString*) phone password: (NSString *) password
        success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
        failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     
     VCLogin * login = [[VCLogin alloc] init];
-    login.email = email;
+    login.phone = phone;
     login.password = password;
     [objectManager postObject:login path:API_LOGIN parameters:nil success:success failure:failure];
 }

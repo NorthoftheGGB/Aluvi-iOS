@@ -11,7 +11,7 @@
 
 @interface VCLogin : NSObject
 
-@property (nonatomic, strong) NSString * email;
+@property (nonatomic, strong) NSString * phone;
 @property (nonatomic, strong) NSString * password;
 
 + (RKObjectMapping *)getMapping;
