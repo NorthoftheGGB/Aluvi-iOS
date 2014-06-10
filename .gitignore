@@ -3,3 +3,4 @@ Podfile.lock
 *xcuserdata/
 *xcshareddata/
 *xccheckout
+.DS_Store
