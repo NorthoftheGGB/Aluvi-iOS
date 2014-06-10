@@ -1,15 +1,13 @@
 //
-//  VCRestKitSetup.h
+//  VCRiderHomeViewController.h
 //  Voco
 //
 //  Created by Matthew Shultz on 6/9/14.
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@interface VCRestKitSetup : NSObject
-
-+ (void) setup;
+@interface VCRiderHomeViewController : UIViewController
 
 @end

@@ -50,6 +50,8 @@
 		F45F7C12193597F500A94721 /* NSDate+Pretty.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C10193597F500A94721 /* NSDate+Pretty.m */; };
 		F45F7C181935A3F900A94721 /* DriverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C161935A3F900A94721 /* DriverViewController.m */; };
 		F45F7C191935A3F900A94721 /* DriverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F45F7C171935A3F900A94721 /* DriverViewController.xib */; };
+		F49EDD0B1946D27F0020B8BB /* VCRiderHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */; };
+		F49EDD0C1946D27F0020B8BB /* VCRiderHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */; };
 		F4D8904419468A84007C4671 /* VCUsersApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904319468A84007C4671 /* VCUsersApi.m */; };
 		F4D8904719468B69007C4671 /* VCLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904619468B69007C4671 /* VCLogin.m */; };
 		F4D8904A19468E44007C4671 /* VCNewUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904919468E44007C4671 /* VCNewUser.m */; };
@@ -57,7 +59,6 @@
 		F4D8905019469018007C4671 /* VCTokenResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904F19469018007C4671 /* VCTokenResponse.m */; };
 		F4D8905319469F0F007C4671 /* VCDriverInterestedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8905219469F0F007C4671 /* VCDriverInterestedRequest.m */; };
 		F4D890561946A2D9007C4671 /* VCObjectRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D890551946A2D9007C4671 /* VCObjectRequestOperation.m */; };
-		F4D890591946A38E007C4671 /* VCRestKitSetup.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D890581946A38E007C4671 /* VCRestKitSetup.m */; };
 		F4FA0BE8192BF6BF005D8645 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BE7192BF6BF005D8645 /* Foundation.framework */; };
 		F4FA0BEA192BF6BF005D8645 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BE9192BF6BF005D8645 /* CoreGraphics.framework */; };
 		F4FA0BEC192BF6BF005D8645 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BEB192BF6BF005D8645 /* UIKit.framework */; };
@@ -162,6 +163,9 @@
 		F45F7C151935A3F900A94721 /* DriverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DriverViewController.h; path = ViewControllers/DriverViewController.h; sourceTree = "<group>"; };
 		F45F7C161935A3F900A94721 /* DriverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DriverViewController.m; path = ViewControllers/DriverViewController.m; sourceTree = "<group>"; };
 		F45F7C171935A3F900A94721 /* DriverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DriverViewController.xib; path = ViewControllers/DriverViewController.xib; sourceTree = "<group>"; };
+		F49EDD081946D27F0020B8BB /* VCRiderHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderHomeViewController.h; path = ViewControllers/VCRiderHomeViewController.h; sourceTree = "<group>"; };
+		F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRiderHomeViewController.m; path = ViewControllers/VCRiderHomeViewController.m; sourceTree = "<group>"; };
+		F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCRiderHomeViewController.xib; path = ViewControllers/VCRiderHomeViewController.xib; sourceTree = "<group>"; };
 		F4D8904219468A84007C4671 /* VCUsersApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCUsersApi.h; path = Users/VCUsersApi.h; sourceTree = "<group>"; };
 		F4D8904319468A84007C4671 /* VCUsersApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCUsersApi.m; path = Users/VCUsersApi.m; sourceTree = "<group>"; };
 		F4D8904519468B69007C4671 /* VCLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCLogin.h; path = API/Users/VCLogin.h; sourceTree = "<group>"; };
@@ -176,8 +180,6 @@
 		F4D8905219469F0F007C4671 /* VCDriverInterestedRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCDriverInterestedRequest.m; path = API/Users/VCDriverInterestedRequest.m; sourceTree = "<group>"; };
 		F4D890541946A2D9007C4671 /* VCObjectRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCObjectRequestOperation.h; path = API/VCObjectRequestOperation.h; sourceTree = "<group>"; };
 		F4D890551946A2D9007C4671 /* VCObjectRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCObjectRequestOperation.m; path = API/VCObjectRequestOperation.m; sourceTree = "<group>"; };
-		F4D890571946A38E007C4671 /* VCRestKitSetup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRestKitSetup.h; sourceTree = "<group>"; };
-		F4D890581946A38E007C4671 /* VCRestKitSetup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRestKitSetup.m; sourceTree = "<group>"; };
 		F4FA0BE4192BF6BF005D8645 /* Voco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voco.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FA0BE7192BF6BF005D8645 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F4FA0BE9192BF6BF005D8645 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -407,6 +409,9 @@
 				F45F7BE8193575A900A94721 /* RiderViewController.h */,
 				F45F7BE9193575A900A94721 /* RiderViewController.m */,
 				F45F7BEA193575A900A94721 /* RiderViewController.xib */,
+				F49EDD081946D27F0020B8BB /* VCRiderHomeViewController.h */,
+				F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */,
+				F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */,
 			);
 			name = Rider;
 			sourceTree = "<group>";
@@ -574,8 +579,6 @@
 				F4FE1B1419385CAA00354886 /* VCUserState.m */,
 				F4FE1B19193D301F00354886 /* VCCoreData.h */,
 				F4FE1B1A193D301F00354886 /* VCCoreData.m */,
-				F4D890571946A38E007C4671 /* VCRestKitSetup.h */,
-				F4D890581946A38E007C4671 /* VCRestKitSetup.m */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -690,6 +693,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FE641F7194168E80059BED1 /* signup_box@2x.png in Resources */,
+				F49EDD0C1946D27F0020B8BB /* VCRiderHomeViewController.xib in Resources */,
 				4FE641F5194168E80059BED1 /* loginBox@2x.png in Resources */,
 				4FE641CF19415A7A0059BED1 /* KlinicSlabLight.otf in Resources */,
 				4FE641D019415A7A0059BED1 /* KlinicSlabLightIt.otf in Resources */,
@@ -792,13 +796,13 @@
 				4FE641BA194157510059BED1 /* SignInViewController.m in Sources */,
 				F4FE1AFE193839DF00354886 /* Drive.m in Sources */,
 				F4D8904A19468E44007C4671 /* VCNewUser.m in Sources */,
+				F49EDD0B1946D27F0020B8BB /* VCRiderHomeViewController.m in Sources */,
 				4FE641FE194170F50059BED1 /* VCButtonFont.m in Sources */,
 				F45F7BFC19357B8A00A94721 /* VCRideRequest.m in Sources */,
 				F4FE1AF81937DD5600354886 /* VCPushManager.m in Sources */,
 				F4FE1AFB1937DD6600354886 /* VCGeolocation.m in Sources */,
 				4FE641BF194157C60059BED1 /* DriverRequestViewController.m in Sources */,
 				F4FE1B18193D2F3F00354886 /* Offer.m in Sources */,
-				F4D890591946A38E007C4671 /* VCRestKitSetup.m in Sources */,
 				F4FE1B1B193D301F00354886 /* VCCoreData.m in Sources */,
 				F4FE1B0F1938571E00354886 /* VCRideDriverAssignment.m in Sources */,
 				4FE641C4194157EB0059BED1 /* PasswordRecoveryViewController.m in Sources */,

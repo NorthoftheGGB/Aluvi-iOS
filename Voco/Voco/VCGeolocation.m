@@ -85,6 +85,7 @@ static VCGeolocation * sharedGeolocation;
     
     NSString *errorType = (error.code == kCLErrorDenied) ?
     @"Access Denied" : @"Unknown Error";
+
     UIAlertView *alert = [[UIAlertView alloc]
                           initWithTitle:@"Error getting Location"
                           message:errorType

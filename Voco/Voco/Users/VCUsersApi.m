@@ -15,14 +15,14 @@
 
 @implementation VCUsersApi
 + (void) setup: (RKObjectManager *) objectManager {
-   
+    
     RKObjectMapping * loginMapping = [VCLogin getMapping];
     RKObjectMapping * loginRequestMapping = [loginMapping inverseMapping];
     RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:loginRequestMapping objectClass:[VCLogin class] rootKeyPath:nil method:RKRequestMethodPOST];
     [objectManager addRequestDescriptor:requestDescriptor];
     
     RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[VCTokenResponse getMapping]
-                                                                                             method:RKRequestMethodPUT
+                                                                                             method:RKRequestMethodPOST
                                                                                         pathPattern:API_LOGIN
                                                                                             keyPath:nil
                                                                                         statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
@@ -35,21 +35,36 @@
     
     
     RKResponseDescriptor * newUserResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
-                                                                                             method:RKRequestMethodPUT
-                                                                                        pathPattern:API_USERS
-                                                                                            keyPath:nil
-                                                                                        statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+                                                                                                    method:RKRequestMethodPOST
+                                                                                               pathPattern:API_USERS
+                                                                                                   keyPath:nil
+                                                                                               statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:newUserResponseDescriptor];
     
-    RKRequestDescriptor *forgotPasswordRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:[VCForgotPasswordRequest getMapping] objectClass:[VCForgotPasswordRequest class] rootKeyPath:nil method:RKRequestMethodPOST];
+    RKRequestDescriptor *forgotPasswordRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:[[VCForgotPasswordRequest getMapping] inverseMapping] objectClass:[VCForgotPasswordRequest class] rootKeyPath:nil method:RKRequestMethodPOST];
     [objectManager addRequestDescriptor:forgotPasswordRequestDescriptor];
+    RKResponseDescriptor * forgotPasswordResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
+                                                                                                           method:RKRequestMethodPOST
+                                                                                                      pathPattern:API_FORGOT_PASSWORD
+                                                                                                          keyPath:nil
+                                                                                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:forgotPasswordResponseDescriptor];
     
-    RKRequestDescriptor * driverInterestedRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:[VCDriverInterestedRequest getMapping]
-                                                                                                    objectClass:[VCDriverInterestedRequest class]
-                                                                                                    rootKeyPath:nil
-                                                                                                         method:RKRequestMethodPOST];
+    
+    RKRequestDescriptor * driverInterestedRequestDescriptor =
+    [RKRequestDescriptor requestDescriptorWithMapping:[[VCDriverInterestedRequest getMapping] inverseMapping]
+                                          objectClass:[VCDriverInterestedRequest class]
+                                          rootKeyPath:nil
+                                               method:RKRequestMethodPOST];
     [objectManager addRequestDescriptor:driverInterestedRequestDescriptor];
-
+    RKResponseDescriptor * driverInterestedResponseDescriptor =
+    [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
+                                                 method:RKRequestMethodPOST
+                                            pathPattern:API_DRIVER_INTERESTED
+                                                keyPath:nil
+                                            statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:driverInterestedResponseDescriptor];
+    
     
 }
 
@@ -60,7 +75,15 @@
     VCLogin * login = [[VCLogin alloc] init];
     login.phone = phone;
     login.password = password;
-    [objectManager postObject:login path:API_LOGIN parameters:nil success:success failure:failure];
+    [objectManager postObject:login path:API_LOGIN parameters:nil
+                      success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                          
+                          VCTokenResponse * tokenResponse = mappingResult.firstObject;
+                          [VCApi setApiToken: tokenResponse.token];
+                          
+                          success(operation, mappingResult);
+                      }
+                      failure:failure];
 }
 
 + (void) createUser:( RKObjectManager *) objectManager
@@ -68,7 +91,7 @@
               email:(NSString*) email
            password:(NSString*) password
               phone:(NSString*) phone
-      referralCode:(NSString*) referralCode
+       referralCode:(NSString*) referralCode
             success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
             failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     
@@ -83,8 +106,8 @@
 }
 
 + (void) forgotPassword:( RKObjectManager *) objectManager email:(NSString*) email phone: (NSString *) phone
-       success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
-       failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+                success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     
     VCForgotPasswordRequest * forgotPasswordRequest = [[VCForgotPasswordRequest alloc] init];
     forgotPasswordRequest.email = email;
@@ -94,13 +117,13 @@
 }
 
 + (void) driverInterested:( RKObjectManager *) objectManager
-               name:(NSString*) name
-              email:(NSString*) email
-           region:(NSString*) region
-              phone:(NSString*) phone
+                     name:(NSString*) name
+                    email:(NSString*) email
+                   region:(NSString*) region
+                    phone:(NSString*) phone
        driverReferralCode:(NSString*) driverReferralCode
-            success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
-            failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+                  success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                  failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     VCDriverInterestedRequest * driverInterestedRequest = [[VCDriverInterestedRequest alloc] init];
     driverInterestedRequest.email = email;
     driverInterestedRequest.name = name;

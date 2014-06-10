@@ -7,8 +7,43 @@
 //
 
 #import "VCApi.h"
+#import <RestKit.h>
+#import "VCApi.h"
+#import "VCRiderApi.h"
+#import "VCDriverApi.h"
+#import "VCUsersApi.h"
+#import "VCObjectRequestOperation.h"
+#import "VCAppDelegate.h"
+
+static NSString * apiToken;
 
 @implementation VCApi
+
++ (void) setup {
+    RKObjectManager * objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:API_BASE_URL]];
+    [objectManager registerRequestOperationClass:[VCObjectRequestOperation class]];
+    
+    [VCRiderApi setup: objectManager];
+    [VCDriverApi setup: objectManager];
+    [VCUsersApi setup: objectManager];
+    
+    objectManager.managedObjectStore = [((VCAppDelegate*)[UIApplication sharedApplication].delegate) managedObjectStore];
+    
+    
+    [self setApiToken: [[NSUserDefaults standardUserDefaults] stringForKey:API_TOKEN_KEY]];
+}
+
++ (NSString *) apiToken {
+    return apiToken;
+}
+
++ (void) setApiToken: (NSString *) token {
+    apiToken = token;
+    [[NSUserDefaults standardUserDefaults] setObject:apiToken forKey:API_TOKEN_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[RKObjectManager sharedManager].HTTPClient setAuthorizationHeaderWithToken:apiToken];
+}
+
 
 + (NSString *) devicesObjectPathPattern {
     return [NSString stringWithFormat:@"%@:uuid", API_DEVICES];

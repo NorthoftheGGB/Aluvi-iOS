@@ -48,8 +48,17 @@
 #define API_DRIVER_INTERESTED @"users/driver_interested"
 
 
+// state
+#define API_TOKEN_KEY @"API_TOKEN"
+
 @interface VCApi : NSObject
 
+//Setup
++ (void) setup;
++ (NSString *) apiToken;
++ (void) setApiToken: (NSString *) token;
+
+// path helpers
 + (NSString *) devicesObjectPathPattern;
 + (NSString *) getRideOffersPath:(NSNumber*) driverId;
 + (NSString *) getScheduledRidesPath:(NSNumber*) riderId;

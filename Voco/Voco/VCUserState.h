@@ -25,6 +25,9 @@
 @property(nonatomic, strong) NSString * riderState;
 @property(nonatomic, strong) NSString * driverState;
 
+@property(nonatomic, strong) NSString * apiToken;
+
+
 + (VCUserState *) instance;
 + (BOOL) driverIsAvailable;
 - (void) saveState;

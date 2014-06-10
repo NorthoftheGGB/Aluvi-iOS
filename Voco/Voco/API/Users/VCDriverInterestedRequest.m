@@ -17,8 +17,8 @@
                                                   @"name" : @"name",
                                                   @"email" : @"email",
                                                   @"phone" : @"phone",
-                                                  @"region" : @"driver_request_region",
-                                                  @"driverReferralCode" : @"driver_referral_code"
+                                                  @"driver_request_region" : @"region",
+                                                  @"driver_referral_code" : @"driverReferralCode"
                                                   }];
     return mapping;
     

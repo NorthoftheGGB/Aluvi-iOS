@@ -10,6 +10,12 @@
 
 @implementation VCObjectRequestOperation
 
+- (id)initWithRequest:(NSURLRequest *)request responseDescriptors:(NSArray *)responseDescriptors {
+    
+    return [super initWithRequest:request responseDescriptors:responseDescriptors];
+}
+
+
 - (void)setCompletionBlockWithSuccess:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure
 {
     [super setCompletionBlockWithSuccess:^void(RKObjectRequestOperation *operation , RKMappingResult *mappingResult) {
@@ -21,6 +27,36 @@
         
         //[[NSNotificationCenter defaultCenter] postNotificationName:@"connectionFailure" object:operation];
         
+      //  [self connectionFailedWithOperation:operation];
+        
+        NSInteger statusCode = operation.HTTPRequestOperation.response.statusCode;
+        
+        switch (statusCode) {
+            case 0: // No internet connection
+            {
+                // Notify user there is an internet connectivity problem
+                // UI should be locked by reachability
+                [UIAlertView showWithTitle:@"Network Unavailable" message:@"This application requires internet connectivity" cancelButtonTitle:@"OK'" otherButtonTitles:nil tapBlock:nil];
+            }
+                break;
+            case  401: // not authenticated
+            {
+                [UIAlertView showWithTitle:@"Invalid Login" message:@"You are no longer logged into Voco.  Please log back in"
+                         cancelButtonTitle:@"OK"
+                         otherButtonTitles:nil
+                                  tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                      // Bump the user back out to the login screen
+                                  }];
+            }
+                break;
+                
+            default:
+            {
+            }
+                break;
+        }
+
+        
         if (failure) {
             failure(operation, error);
         }
@@ -28,9 +64,9 @@
     }];
 }
 
-- (void)connectionFailedWithOperation:(NSNotification *)notification
+- (void)connectionFailedWithOperation:(RKObjectRequestOperation *)operation
 {
-    RKObjectRequestOperation *operation = (RKObjectRequestOperation *)notification.object;
+    //RKObjectRequestOperation *operation = (RKObjectRequestOperation *)notification.object;
     if (operation) {
         
         NSInteger statusCode = operation.HTTPRequestOperation.response.statusCode;
@@ -45,7 +81,12 @@
                 break;
             case  401: // not authenticated
             {
-                // Bump the user back out to the login screen
+                [UIAlertView showWithTitle:@"Invalid Login" message:@"You are no longer logged into Voco.  Please log back in"
+                         cancelButtonTitle:@"OK"
+                         otherButtonTitles:nil
+                                  tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                      // Bump the user back out to the login screen
+                                    }];
             }
                 break;
                 

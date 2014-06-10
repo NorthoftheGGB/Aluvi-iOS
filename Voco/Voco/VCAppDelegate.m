@@ -19,7 +19,9 @@
 #import "VCUserState.h"
 #import "VCDialogs.h"
 #import "VCGeolocation.h"
-#import "VCRestKitSetup.h"
+#import "VCApi.h"
+
+#import "SignInViewController.h"
 
 @interface VCAppDelegate ()
 
@@ -37,15 +39,22 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    [VCRestKitSetup setup];
+    [VCApi setup];
 
     [Crashlytics startWithAPIKey:@"f7d1a0eeca165a46710d606ff21a38fea3c9ec43"];
     
     [VCDialogs instance];
-    [[VCGeolocation sharedGeolocation] startTrackingDriverLocation];
+    [VCGeolocation sharedGeolocation];
 
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    // Interface control
+    SignInViewController * signInViewController = [[SignInViewController alloc] init];
+    UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:signInViewController];
+    self.window.rootViewController = navigationController;
+    
+    /*
     if([[VCUserState instance].userId isEqualToNumber:[NSNumber numberWithInt:1]]){
         self.window.rootViewController = [[DriverViewController alloc] init];
     } else{
@@ -54,6 +63,7 @@
         }
         self.window.rootViewController = [[RiderViewController alloc] init];
     }
+    */
         
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

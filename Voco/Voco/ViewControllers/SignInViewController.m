@@ -8,6 +8,8 @@
 
 #import "SignInViewController.h"
 #import "VCTextField.h"
+#import "VCUsersApi.h"
+#import "VCRiderHomeViewController.h"
 
 @interface SignInViewController ()
 
@@ -17,6 +19,7 @@
 - (IBAction)didTapLogin:(id)sender;
 - (IBAction)didTapForgotPassword:(id)sender;
 - (IBAction)didTapInterestedInDriving:(id)sender;
+- (IBAction)didTapReturnKey:(id)sender;
 
 @end
 
@@ -43,17 +46,29 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)didTapSignIn:(id)sender {
-}
+
 - (IBAction)didTapSignUp:(id)sender {
 }
 
 - (IBAction)didTapLogin:(id)sender {
+    [VCUsersApi login:[RKObjectManager sharedManager] phone:_phoneNumberField.text password:_passwordField.text
+              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                    
+                  VCRiderHomeViewController * vc = [[VCRiderHomeViewController alloc] init];
+                  [self.navigationController pushViewController:vc animated:YES];
+              } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                  [UIAlertView showWithTitle:@"Invalid" message:@"Invalid" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+              }];
+    
 }
 
 - (IBAction)didTapForgotPassword:(id)sender {
 }
 
 - (IBAction)didTapInterestedInDriving:(id)sender {
+}
+
+- (IBAction)didTapReturnKey:(id)sender {
+    [sender resignFirstResponder];
 }
 @end
