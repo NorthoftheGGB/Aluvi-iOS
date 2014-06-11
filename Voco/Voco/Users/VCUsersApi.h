@@ -34,4 +34,8 @@
        driverReferralCode:(NSString*) driverReferralCode
                   success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                   failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
+
++ (void) forgotPassword:( RKObjectManager *) objectManager email:(NSString*) email phone: (NSString *) phone
+                success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 @end
