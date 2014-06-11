@@ -20,8 +20,7 @@
 #import "VCDialogs.h"
 #import "VCGeolocation.h"
 #import "VCApi.h"
-
-#import "SignInViewController.h"
+#import "VCInterfaceModes.h"
 
 @interface VCAppDelegate ()
 
@@ -49,10 +48,7 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    // Interface control
-    SignInViewController * signInViewController = [[SignInViewController alloc] init];
-    UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:signInViewController];
-    self.window.rootViewController = navigationController;
+    [VCInterfaceModes showRiderSigninInterface];
     
     /*
     if([[VCUserState instance].userId isEqualToNumber:[NSNumber numberWithInt:1]]){

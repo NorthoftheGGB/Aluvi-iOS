@@ -34,7 +34,6 @@ static VCUserState *sharedSingleton;
         _rideId = [userDefaults objectForKey:@"rideId"];
         _riderState = [userDefaults objectForKey:@"riderState"];
         _driverState = [userDefaults objectForKey:@"driverState"];
-        _apiToken = [userDefaults objectForKey:APPLICATION_STATE_API_TOKEN_KEY];
     }
     return self;
 }

@@ -46,6 +46,8 @@
                          otherButtonTitles:nil
                                   tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                                       // Bump the user back out to the login screen
+                                      // Call logout
+                                      
                                   }];
             }
                 break;
