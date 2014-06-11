@@ -20,7 +20,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="VOCOfinal.png" translatesAutoresizingMaskIntoConstraints="NO" id="NmZ-uF-Ojg">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VOCOfinal.png" translatesAutoresizingMaskIntoConstraints="NO" id="NmZ-uF-Ojg">
                     <rect key="frame" x="75" y="103" width="171" height="78"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
@@ -51,8 +51,8 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeL-Zq-Gd0" customClass="VCButtonFontBold">
-                    <rect key="frame" x="70" y="531" width="181" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeL-Zq-Gd0" customClass="VCButtonFontBold">
+                    <rect key="frame" x="70" y="526" width="181" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <state key="normal" title="Interested in driving for Voco?">
@@ -90,7 +90,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="1GZ-ud-xG6" firstAttribute="height" secondItem="yEQ-oe-BMG" secondAttribute="height" id="0Q0-hn-AUt"/>
-                <constraint firstItem="eeL-Zq-Gd0" firstAttribute="top" secondItem="M5d-ze-Lg1" secondAttribute="bottom" constant="37" id="0Sf-SL-ous"/>
+                <constraint firstItem="eeL-Zq-Gd0" firstAttribute="top" secondItem="M5d-ze-Lg1" secondAttribute="bottom" constant="32" id="0Sf-SL-ous"/>
                 <constraint firstItem="yEQ-oe-BMG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="93" id="0xo-lU-mme"/>
                 <constraint firstItem="KMO-pG-vEJ" firstAttribute="leading" secondItem="gbU-dq-jQQ" secondAttribute="trailing" constant="27" id="1fb-7y-6Ht"/>
                 <constraint firstItem="eeL-Zq-Gd0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="70" id="3Q9-mv-FTC"/>
@@ -100,7 +100,7 @@
                 <constraint firstItem="gbU-dq-jQQ" firstAttribute="top" secondItem="HiT-az-SKO" secondAttribute="bottom" constant="6" id="BBk-NZ-kfJ"/>
                 <constraint firstAttribute="centerX" secondItem="NmZ-uF-Ojg" secondAttribute="centerX" constant="-0.5" id="BUE-zn-sd7"/>
                 <constraint firstItem="NmZ-uF-Ojg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="103" id="Dqs-5k-bAf"/>
-                <constraint firstItem="HiT-az-SKO" firstAttribute="top" secondItem="NmZ-uF-Ojg" secondAttribute="bottom" constant="8" symbolic="YES" id="Eou-u5-mWl"/>
+                <constraint firstItem="HiT-az-SKO" firstAttribute="top" secondItem="NmZ-uF-Ojg" secondAttribute="bottom" constant="27" id="Eou-u5-mWl"/>
                 <constraint firstItem="M5d-ze-Lg1" firstAttribute="top" secondItem="HiT-az-SKO" secondAttribute="bottom" constant="144" id="JUu-i2-apO"/>
                 <constraint firstAttribute="trailing" secondItem="1GZ-ud-xG6" secondAttribute="trailing" constant="45" id="Ohm-I8-tEu"/>
                 <constraint firstItem="1GZ-ud-xG6" firstAttribute="width" secondItem="yEQ-oe-BMG" secondAttribute="width" id="RXZ-hv-a1E"/>
@@ -108,12 +108,12 @@
                 <constraint firstItem="NmZ-uF-Ojg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="75" id="UQQ-y5-x5x"/>
                 <constraint firstItem="gbU-dq-jQQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="XZz-Vz-gVs"/>
                 <constraint firstItem="1GZ-ud-xG6" firstAttribute="top" secondItem="yEQ-oe-BMG" secondAttribute="bottom" constant="9" id="b86-6g-x0n"/>
-                <constraint firstAttribute="bottom" secondItem="eeL-Zq-Gd0" secondAttribute="bottom" constant="20" symbolic="YES" id="c6F-WU-7Rn"/>
+                <constraint firstAttribute="bottom" secondItem="eeL-Zq-Gd0" secondAttribute="bottom" constant="12" id="c6F-WU-7Rn"/>
                 <constraint firstItem="gbU-dq-jQQ" firstAttribute="top" secondItem="KMO-pG-vEJ" secondAttribute="top" constant="-2" id="dKs-Sj-m4Z"/>
                 <constraint firstItem="yEQ-oe-BMG" firstAttribute="leading" secondItem="HiT-az-SKO" secondAttribute="trailing" constant="-187" id="dfv-va-228"/>
                 <constraint firstAttribute="trailing" secondItem="NmZ-uF-Ojg" secondAttribute="trailing" constant="74" id="h9b-ie-tzW"/>
                 <constraint firstItem="HiT-az-SKO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="iv3-ct-S1p"/>
-                <constraint firstAttribute="centerY" secondItem="NmZ-uF-Ojg" secondAttribute="centerY" constant="147" id="jtm-rV-AFo"/>
+                <constraint firstAttribute="centerY" secondItem="NmZ-uF-Ojg" secondAttribute="centerY" constant="142" id="jtm-rV-AFo"/>
                 <constraint firstAttribute="trailing" secondItem="KMO-pG-vEJ" secondAttribute="trailing" constant="45" id="kAo-Ie-Pxt"/>
                 <constraint firstItem="HiT-az-SKO" firstAttribute="top" secondItem="yEQ-oe-BMG" secondAttribute="bottom" constant="-35" id="kbu-d6-OOO"/>
                 <constraint firstAttribute="bottom" secondItem="M5d-ze-Lg1" secondAttribute="bottom" constant="74" id="m0Z-IX-J4w"/>
@@ -122,7 +122,7 @@
                 <constraint firstAttribute="trailing" secondItem="HiT-az-SKO" secondAttribute="trailing" constant="40" id="qx4-Gg-W87"/>
                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="eeL-Zq-Gd0" secondAttribute="bottom" constant="7" id="u7c-Ts-hzU"/>
                 <constraint firstAttribute="trailing" secondItem="M5d-ze-Lg1" secondAttribute="trailing" constant="57" id="usH-lk-VEN"/>
-                <constraint firstItem="HiT-az-SKO" firstAttribute="top" secondItem="NmZ-uF-Ojg" secondAttribute="bottom" constant="37" id="yYY-ER-Gp7"/>
+                <constraint firstItem="HiT-az-SKO" firstAttribute="top" secondItem="NmZ-uF-Ojg" secondAttribute="bottom" constant="27" id="yYY-ER-Gp7"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
