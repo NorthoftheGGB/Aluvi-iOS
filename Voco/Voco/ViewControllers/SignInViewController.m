@@ -10,6 +10,10 @@
 #import "VCTextField.h"
 #import "VCUsersApi.h"
 #import "VCRiderHomeViewController.h"
+#import "SignUpViewController.h"
+#import "PasswordRecoveryViewController.h"
+#import "DriverRequestViewController.h"
+
 
 @interface SignInViewController ()
 
@@ -37,7 +41,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
+    [tapBackground setNumberOfTapsRequired:1];
+    [self.view addGestureRecognizer:tapBackground];
+}
+
+- (void) dismissKeyboard:(id) sender{
+    [self.view endEditing:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,27 +59,39 @@
 
 
 - (IBAction)didTapSignUp:(id)sender {
-}
-
-- (IBAction)didTapLogin:(id)sender {
-    [VCUsersApi login:[RKObjectManager sharedManager] phone:_phoneNumberField.text password:_passwordField.text
-              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                    
-                  VCRiderHomeViewController * vc = [[VCRiderHomeViewController alloc] init];
-                  [self.navigationController pushViewController:vc animated:YES];
-              } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                  [UIAlertView showWithTitle:@"Invalid" message:@"Invalid" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
-              }];
+    SignUpViewController * signUpViewController = [[SignUpViewController alloc] init];
+    [self.navigationController pushViewController:signUpViewController animated:YES];
     
 }
 
+- (IBAction)didTapLogin:(id)sender {
+    [self login];
+}
+
+- (void) login {
+    [VCUsersApi login:[RKObjectManager sharedManager] phone:_phoneNumberField.text password:_passwordField.text
+              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                  
+                  VCRiderHomeViewController * vc = [[VCRiderHomeViewController alloc] init];
+                  [self.navigationController pushViewController:vc animated:YES];
+              } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                  [UIAlertView showWithTitle:@"Login Failed!" message:@"Invalid" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+              }];
+}
+
 - (IBAction)didTapForgotPassword:(id)sender {
+    PasswordRecoveryViewController * passwordRecoveryViewController = [[PasswordRecoveryViewController alloc] init];
+    [self.navigationController pushViewController:passwordRecoveryViewController animated:YES];
 }
 
 - (IBAction)didTapInterestedInDriving:(id)sender {
+    DriverRequestViewController * driverRequestViewController = [[DriverRequestViewController alloc] init];
+    [self.navigationController pushViewController:driverRequestViewController animated:YES];
 }
 
 - (IBAction)didTapReturnKey:(id)sender {
-    [sender resignFirstResponder];
+    [self.view endEditing:YES];
+    [self login];
+    
 }
 @end
