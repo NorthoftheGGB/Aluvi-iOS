@@ -10,6 +10,13 @@
 
 @interface SignInViewController ()
 
+@property (strong, nonatomic) IBOutlet UITextField *phonenumber;
+@property (strong, nonatomic) IBOutlet UITextField *password;
+@property (strong, nonatomic) IBOutlet UIButton *passwordResetButton;
+@property (strong, nonatomic) IBOutlet UIButton *loginButton;
+@property (strong, nonatomic) IBOutlet UIButton *signupButton;
+@property (strong, nonatomic) IBOutlet UIButton *driverRequestButton;
+
 @end
 
 @implementation SignInViewController
