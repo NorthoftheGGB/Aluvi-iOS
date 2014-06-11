@@ -19,6 +19,13 @@
     return self;
 }
 
+- (void)awakeFromNib{
+    UIFont *customFont = [UIFont fontWithName:@"KlinicSlabLight" size:16];
+    
+    [self setFont:customFont];
+    
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

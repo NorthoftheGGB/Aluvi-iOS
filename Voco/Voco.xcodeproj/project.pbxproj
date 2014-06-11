@@ -50,6 +50,7 @@
 		F45F7C12193597F500A94721 /* NSDate+Pretty.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C10193597F500A94721 /* NSDate+Pretty.m */; };
 		F45F7C181935A3F900A94721 /* DriverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C161935A3F900A94721 /* DriverViewController.m */; };
 		F45F7C191935A3F900A94721 /* DriverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F45F7C171935A3F900A94721 /* DriverViewController.xib */; };
+		F473EFDC19491C2B00D8C900 /* VCValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFDB19491C2B00D8C900 /* VCValidation.m */; };
 		F49EDD0B1946D27F0020B8BB /* VCRiderHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */; };
 		F49EDD0C1946D27F0020B8BB /* VCRiderHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */; };
 		F49EDD101946E2F90020B8BB /* VCInterfaceModes.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD0F1946E2F90020B8BB /* VCInterfaceModes.m */; };
@@ -164,6 +165,8 @@
 		F45F7C151935A3F900A94721 /* DriverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DriverViewController.h; path = ViewControllers/DriverViewController.h; sourceTree = "<group>"; };
 		F45F7C161935A3F900A94721 /* DriverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DriverViewController.m; path = ViewControllers/DriverViewController.m; sourceTree = "<group>"; };
 		F45F7C171935A3F900A94721 /* DriverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DriverViewController.xib; path = ViewControllers/DriverViewController.xib; sourceTree = "<group>"; };
+		F473EFDA19491C2B00D8C900 /* VCValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCValidation.h; sourceTree = "<group>"; };
+		F473EFDB19491C2B00D8C900 /* VCValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCValidation.m; sourceTree = "<group>"; };
 		F49EDD081946D27F0020B8BB /* VCRiderHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderHomeViewController.h; path = ViewControllers/VCRiderHomeViewController.h; sourceTree = "<group>"; };
 		F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRiderHomeViewController.m; path = ViewControllers/VCRiderHomeViewController.m; sourceTree = "<group>"; };
 		F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCRiderHomeViewController.xib; path = ViewControllers/VCRiderHomeViewController.xib; sourceTree = "<group>"; };
@@ -402,6 +405,8 @@
 				F45F7C0E1935976E00A94721 /* WRUtilities.m */,
 				F45F7C10193597F500A94721 /* NSDate+Pretty.m */,
 				F45F7C11193597F500A94721 /* NSDate+Pretty.h */,
+				F473EFDA19491C2B00D8C900 /* VCValidation.h */,
+				F473EFDB19491C2B00D8C900 /* VCValidation.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -828,6 +833,7 @@
 				F4FE1AF11936BE0900354886 /* VCDevice.m in Sources */,
 				F45F7C031935880500A94721 /* Ride.m in Sources */,
 				F4D890561946A2D9007C4671 /* VCObjectRequestOperation.m in Sources */,
+				F473EFDC19491C2B00D8C900 /* VCValidation.m in Sources */,
 				F4FA0BF6192BF6BF005D8645 /* main.m in Sources */,
 				F45F7C0F1935976E00A94721 /* WRUtilities.m in Sources */,
 				4FE641DA1941607B0059BED1 /* VCTextField.m in Sources */,
