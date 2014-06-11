@@ -10,6 +10,9 @@
 
 @interface PasswordRecoveryViewController ()
 
+@property (strong, nonatomic) IBOutlet UITextField *phoneNumber;
+
+
 @end
 
 @implementation PasswordRecoveryViewController

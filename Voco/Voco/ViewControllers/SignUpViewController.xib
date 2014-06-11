@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5023" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -13,9 +13,109 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VOCOfinal.png" translatesAutoresizingMaskIntoConstraints="NO" id="35T-6B-RMk">
+                    <rect key="frame" x="89" y="80" width="147" height="78"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signup_box.png" translatesAutoresizingMaskIntoConstraints="NO" id="lVL-nv-53q">
+                    <rect key="frame" x="39" y="181" width="246" height="200"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Phone Number" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HWX-Nc-rV4" customClass="VCTextField">
+                    <rect key="frame" x="95" y="227" width="182" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Full Name" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4tz-EA-61T" customClass="VCTextField">
+                    <rect key="frame" x="95" y="187" width="182" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="New Password" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oUS-7v-08g" customClass="VCTextField">
+                    <rect key="frame" x="95" y="267" width="182" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mfu-MK-ETL" customClass="VCTextField">
+                    <rect key="frame" x="95" y="307" width="182" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Referal code" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2DV-EA-Yr3" customClass="VCTextField">
+                    <rect key="frame" x="95" y="345" width="182" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mAT-xD-K9f" customClass="VCButtonFont">
+                    <rect key="frame" x="60" y="427" width="205" height="63"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="63" id="w1y-ku-pmH"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <state key="normal" title="Sign Up!" backgroundImage="signUp_btn.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="2DV-EA-Yr3" secondAttribute="trailing" constant="43" id="26R-64-aDW"/>
+                <constraint firstItem="4tz-EA-61T" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="95" id="2jD-98-El3"/>
+                <constraint firstItem="HWX-Nc-rV4" firstAttribute="height" secondItem="mfu-MK-ETL" secondAttribute="height" id="34d-fn-pqT"/>
+                <constraint firstItem="HWX-Nc-rV4" firstAttribute="height" secondItem="oUS-7v-08g" secondAttribute="height" id="4fI-he-3n1"/>
+                <constraint firstItem="mAT-xD-K9f" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="427" id="Bxv-4M-80B"/>
+                <constraint firstItem="oUS-7v-08g" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="95" id="EpN-s7-MrD"/>
+                <constraint firstItem="HWX-Nc-rV4" firstAttribute="width" secondItem="4tz-EA-61T" secondAttribute="width" id="F4o-eX-IPz"/>
+                <constraint firstAttribute="trailing" secondItem="4tz-EA-61T" secondAttribute="trailing" constant="43" id="FDZ-AP-dOQ"/>
+                <constraint firstAttribute="trailing" secondItem="oUS-7v-08g" secondAttribute="trailing" constant="43" id="O3P-gv-UzC"/>
+                <constraint firstItem="mAT-xD-K9f" firstAttribute="top" secondItem="lVL-nv-53q" secondAttribute="bottom" constant="46" id="Ohw-Pr-4bA"/>
+                <constraint firstItem="HWX-Nc-rV4" firstAttribute="width" secondItem="mfu-MK-ETL" secondAttribute="width" id="PFW-ex-4GM"/>
+                <constraint firstItem="lVL-nv-53q" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="39" id="QAn-La-3Sf"/>
+                <constraint firstItem="mfu-MK-ETL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="95" id="Qy0-n3-liS"/>
+                <constraint firstItem="2DV-EA-Yr3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="95" id="SG3-KO-7th"/>
+                <constraint firstAttribute="trailing" secondItem="lVL-nv-53q" secondAttribute="trailing" constant="35" id="TLf-9e-R5i"/>
+                <constraint firstAttribute="trailing" secondItem="35T-6B-RMk" secondAttribute="trailing" constant="84" id="UB7-j6-su1"/>
+                <constraint firstItem="35T-6B-RMk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="UcT-e3-AFI"/>
+                <constraint firstAttribute="bottom" secondItem="mAT-xD-K9f" secondAttribute="bottom" constant="78" id="ZBh-sR-B1Z"/>
+                <constraint firstAttribute="trailing" secondItem="HWX-Nc-rV4" secondAttribute="trailing" constant="43" id="a6s-Ma-gjc"/>
+                <constraint firstItem="lVL-nv-53q" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="181" id="bA0-0W-n2k"/>
+                <constraint firstItem="HWX-Nc-rV4" firstAttribute="top" secondItem="4tz-EA-61T" secondAttribute="bottom" constant="10" id="fDd-jX-wLM"/>
+                <constraint firstAttribute="trailing" secondItem="mAT-xD-K9f" secondAttribute="trailing" constant="55" id="ffX-H9-J1b"/>
+                <constraint firstItem="4tz-EA-61T" firstAttribute="top" secondItem="35T-6B-RMk" secondAttribute="bottom" constant="29" id="gCs-by-Ngr"/>
+                <constraint firstItem="mfu-MK-ETL" firstAttribute="top" secondItem="oUS-7v-08g" secondAttribute="bottom" constant="10" id="guk-td-pwN"/>
+                <constraint firstItem="HWX-Nc-rV4" firstAttribute="height" secondItem="2DV-EA-Yr3" secondAttribute="height" id="hA9-Oe-aeF"/>
+                <constraint firstItem="2DV-EA-Yr3" firstAttribute="top" secondItem="mfu-MK-ETL" secondAttribute="bottom" constant="8" symbolic="YES" id="huw-VC-IwV"/>
+                <constraint firstAttribute="trailing" secondItem="mfu-MK-ETL" secondAttribute="trailing" constant="43" id="l2v-lG-CBJ"/>
+                <constraint firstItem="mAT-xD-K9f" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="60" id="lxY-7P-MJr"/>
+                <constraint firstItem="HWX-Nc-rV4" firstAttribute="height" secondItem="4tz-EA-61T" secondAttribute="height" id="oqs-qA-Vs5"/>
+                <constraint firstItem="HWX-Nc-rV4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="95" id="ouX-h8-X2z"/>
+                <constraint firstItem="HWX-Nc-rV4" firstAttribute="width" secondItem="oUS-7v-08g" secondAttribute="width" id="qcO-8L-ATK"/>
+                <constraint firstAttribute="bottom" secondItem="lVL-nv-53q" secondAttribute="bottom" constant="187" id="qdr-wr-Lk9"/>
+                <constraint firstItem="lVL-nv-53q" firstAttribute="top" secondItem="35T-6B-RMk" secondAttribute="bottom" constant="23" id="sgB-ud-iPi"/>
+                <constraint firstItem="HWX-Nc-rV4" firstAttribute="width" secondItem="2DV-EA-Yr3" secondAttribute="width" id="tKR-1h-t78"/>
+                <constraint firstItem="35T-6B-RMk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="89" id="uNq-N6-HhL"/>
+                <constraint firstItem="oUS-7v-08g" firstAttribute="top" secondItem="HWX-Nc-rV4" secondAttribute="bottom" constant="10" id="x9p-mG-Xfq"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
+    <resources>
+        <image name="VOCOfinal.png" width="780" height="237"/>
+        <image name="signUp_btn.png" width="203" height="61"/>
+        <image name="signup_box.png" width="240" height="197"/>
+    </resources>
 </document>

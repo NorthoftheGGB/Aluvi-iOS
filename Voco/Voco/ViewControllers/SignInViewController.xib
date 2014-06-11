@@ -20,8 +20,8 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="voco_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="NmZ-uF-Ojg">
-                    <rect key="frame" x="75" y="103" width="171" height="68"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="VOCOfinal.png" translatesAutoresizingMaskIntoConstraints="NO" id="NmZ-uF-Ojg">
+                    <rect key="frame" x="75" y="103" width="171" height="78"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_form.png" translatesAutoresizingMaskIntoConstraints="NO" id="HiT-az-SKO">
@@ -129,8 +129,8 @@
         </view>
     </objects>
     <resources>
+        <image name="VOCOfinal.png" width="780" height="237"/>
         <image name="login_form.png" width="240" height="80"/>
         <image name="signUp_btn.png" width="203" height="61"/>
-        <image name="voco_logo.png" width="94" height="29"/>
     </resources>
 </document>
