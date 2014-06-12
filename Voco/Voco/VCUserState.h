@@ -20,10 +20,13 @@
 @interface VCUserState : NSObject
 
 
-@property(nonatomic, strong) NSNumber * userId;
 @property(nonatomic, strong) NSNumber * rideId;
 @property(nonatomic, strong) NSString * riderState;
 @property(nonatomic, strong) NSString * driverState;
+
+@property(nonatomic, strong) NSNumber * carId;
+@property(nonatomic, strong) NSNumber * userId;
+
 
 @property(nonatomic, strong) NSString * apiToken;
 
@@ -31,5 +34,10 @@
 + (VCUserState *) instance;
 + (BOOL) driverIsAvailable;
 - (void) saveState;
+
+- (void) loginWithPhone:(NSString*) phone
+               password: (NSString *) password
+                success:(void ( ^ ) () )success
+                failure:(void ( ^ ) () )failure;
 
 @end

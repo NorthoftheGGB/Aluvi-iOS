@@ -86,6 +86,7 @@ static VCGeolocation * sharedGeolocation;
     NSString *errorType = (error.code == kCLErrorDenied) ?
     @"Access Denied" : @"Unknown Error";
 
+    /*
     UIAlertView *alert = [[UIAlertView alloc]
                           initWithTitle:@"Error getting Location"
                           message:errorType
@@ -93,7 +94,8 @@ static VCGeolocation * sharedGeolocation;
                           cancelButtonTitle:@"Okay"
                           otherButtonTitles:nil];
     [alert show];
-    
+    */
+    NSLog(@"Error Getting Location: %@", errorType);
 }
 
 - (CLLocation *) location {
@@ -111,7 +113,7 @@ static VCGeolocation * sharedGeolocation;
     objectLocation.latitude = [NSNumber numberWithDouble: _currentLocation.coordinate.latitude];
     objectLocation.longitude = [NSNumber numberWithDouble: _currentLocation.coordinate.longitude];
     [[RKObjectManager sharedManager] putObject:objectLocation
-                                           path:[VCApi getPutGeoCarPath:[VCUserState instance].userId]
+                                           path:[VCApi getPutGeoCarPath:[VCUserState instance].carId]
                                      parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             // nothing to do!

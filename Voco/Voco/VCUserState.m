@@ -7,7 +7,7 @@
 //
 
 #import "VCUserState.h"
-
+#import "VCUsersApi.h"
 
 static VCUserState *sharedSingleton;
 
@@ -16,8 +16,10 @@ static VCUserState *sharedSingleton;
 + (VCUserState *) instance {
     if(sharedSingleton == nil){
         sharedSingleton = [[VCUserState alloc] init];
- 
-        
+        NSLog(@"%@", @"Warning: hard coded car id");
+        sharedSingleton.carId = [NSNumber numberWithInt:1];
+        NSLog(@"%@", @"Warning: hard coded user id");
+        sharedSingleton.userId = [NSNumber numberWithInt:1];
     }
     return sharedSingleton;
 }
@@ -30,7 +32,6 @@ static VCUserState *sharedSingleton;
     self = [super init];
     if(self != nil){
         NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
-        _userId = [userDefaults objectForKey:@"userId"];
         _rideId = [userDefaults objectForKey:@"rideId"];
         _riderState = [userDefaults objectForKey:@"riderState"];
         _driverState = [userDefaults objectForKey:@"driverState"];
@@ -40,11 +41,24 @@ static VCUserState *sharedSingleton;
 
 - (void) saveState {
     NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:_userId forKey:@"userId"];
     [userDefaults setObject:_rideId forKey:@"rideId"];
     [userDefaults setObject:_riderState forKey:@"riderState"];
     [userDefaults setObject:_driverState forKey:@"driverState"];
     [userDefaults synchronize];
+}
+
+- (void) loginWithPhone:(NSString*) phone
+               password: (NSString *) password
+                success:(void ( ^ ) () )success
+                failure:(void ( ^ ) () )failure {
+    
+    [VCUsersApi login:[RKObjectManager sharedManager] phone:phone password:password
+              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                  success();
+              } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                  failure();
+              }];
+    
 }
 
 
