@@ -15,6 +15,9 @@
 #import "DriverRequestViewController.h"
 #import "VCInterfaceModes.h"
 
+#define kPhoneFieldTag 1
+#define kPasswordFieldTag 2
+
 @interface SignInViewController ()
 
 @property (weak, nonatomic) IBOutlet VCTextField *phoneNumberField;
@@ -23,7 +26,7 @@
 - (IBAction)didTapLogin:(id)sender;
 - (IBAction)didTapForgotPassword:(id)sender;
 - (IBAction)didTapInterestedInDriving:(id)sender;
-- (IBAction)didTapReturnKey:(id)sender;
+- (IBAction)didEndOnExit:(id)sender;
 
 @end
 
@@ -91,9 +94,20 @@
     [self.navigationController pushViewController:driverRequestViewController animated:YES];
 }
 
-- (IBAction)didTapReturnKey:(id)sender {
-    [self.view endEditing:YES];
-    [self login];
+
+- (IBAction)didEndOnExit:(id)sender {
     
+    UITextField * textField = (UITextField *) sender;
+    switch(textField.tag){
+        case kPhoneFieldTag:
+            [_passwordField becomeFirstResponder];
+            break;
+        case kPasswordFieldTag:
+            [self.view endEditing:YES];
+            [self login];
+            break;
+        }
 }
+
+
 @end

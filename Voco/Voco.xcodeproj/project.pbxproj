@@ -65,6 +65,7 @@
 		F473F005194A54AC00D8C900 /* VCMapQuestRouting.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F004194A54AC00D8C900 /* VCMapQuestRouting.m */; };
 		F473F009194A5A0200D8C900 /* MQRouteResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F008194A5A0200D8C900 /* MQRouteResponse.m */; };
 		F473F00C194A5A6100D8C900 /* MQShape.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F00B194A5A6100D8C900 /* MQShape.m */; };
+		F473F011194A6D3C00D8C900 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F010194A6D3C00D8C900 /* BaseViewController.m */; };
 		F49EDD0B1946D27F0020B8BB /* VCRiderHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */; };
 		F49EDD0C1946D27F0020B8BB /* VCRiderHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */; };
 		F49EDD101946E2F90020B8BB /* VCInterfaceModes.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD0F1946E2F90020B8BB /* VCInterfaceModes.m */; };
@@ -203,6 +204,8 @@
 		F473F008194A5A0200D8C900 /* MQRouteResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MQRouteResponse.m; path = Geolocation/MQRouteResponse.m; sourceTree = "<group>"; };
 		F473F00A194A5A6100D8C900 /* MQShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MQShape.h; path = Geolocation/MQShape.h; sourceTree = "<group>"; };
 		F473F00B194A5A6100D8C900 /* MQShape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MQShape.m; path = Geolocation/MQShape.m; sourceTree = "<group>"; };
+		F473F00F194A6D3C00D8C900 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		F473F010194A6D3C00D8C900 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		F49EDD081946D27F0020B8BB /* VCRiderHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderHomeViewController.h; path = ViewControllers/VCRiderHomeViewController.h; sourceTree = "<group>"; };
 		F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRiderHomeViewController.m; path = ViewControllers/VCRiderHomeViewController.m; sourceTree = "<group>"; };
 		F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCRiderHomeViewController.xib; path = ViewControllers/VCRiderHomeViewController.xib; sourceTree = "<group>"; };
@@ -370,6 +373,7 @@
 		F45F7BE71935756000A94721 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F473F00E194A6D3400D8C900 /* Common */,
 				F49EDD0D1946E2B30020B8BB /* Modes */,
 				F45F7C141935A3AF00A94721 /* Driver */,
 				F45F7C131935A3A500A94721 /* Rider */,
@@ -532,6 +536,15 @@
 				F473F00B194A5A6100D8C900 /* MQShape.m */,
 			);
 			name = MapQuest;
+			sourceTree = "<group>";
+		};
+		F473F00E194A6D3400D8C900 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F473F00F194A6D3C00D8C900 /* BaseViewController.h */,
+				F473F010194A6D3C00D8C900 /* BaseViewController.m */,
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 		F476908D1935B7FA00B9EF69 /* State Machines */ = {
@@ -909,6 +922,7 @@
 				F4FE1B0119383AE300354886 /* VCRideStateMachineFactory.m in Sources */,
 				F4FE1B20193D8FE500354886 /* VCPushApi.m in Sources */,
 				F45F7C181935A3F900A94721 /* DriverViewController.m in Sources */,
+				F473F011194A6D3C00D8C900 /* BaseViewController.m in Sources */,
 				F4FA0BFD192BF6BF005D8645 /* Voco.xcdatamodeld in Sources */,
 				F4D8905019469018007C4671 /* VCTokenResponse.m in Sources */,
 				F4FE1B24193E722B00354886 /* VCRideIdentity.m in Sources */,

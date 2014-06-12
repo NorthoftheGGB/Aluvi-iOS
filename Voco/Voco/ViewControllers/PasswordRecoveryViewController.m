@@ -8,6 +8,7 @@
 
 #import "PasswordRecoveryViewController.h"
 #import "VCTextField.h"
+#import "VCUsersApi.h"
 
 #define kPhoneFieldTag 1
 #define kEmailFieldTag 2
@@ -17,7 +18,7 @@
 @property (strong, nonatomic) IBOutlet VCTextField *phoneField;
 @property (weak, nonatomic) IBOutlet VCTextField *emailField;
 - (IBAction)didTapSendPassword:(id)sender;
-
+- (IBAction)didEndOnExit:(id)sender;
 
 @end
 
@@ -70,7 +71,22 @@
 }
 
 - (void) recoverEmail{
-// Validation & server stuff
+    // Validation & server stuff
+    [VCUsersApi forgotPassword:[RKObjectManager sharedManager]
+                         email:_emailField.text
+                         phone:_phoneField.text
+                       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                           [UIAlertView showWithTitle:@"Success"
+                                              message:@"Your new password with be emailed to you"
+                                    cancelButtonTitle: @"OK"
+                                    otherButtonTitles:nil
+                                             tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                                 [self.navigationController popViewControllerAnimated:YES];
+                                             }];
+                       }
+                       failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                           [UIAlertView showWithTitle:@"Error" message:@"Unable to reset your password.  Check your email and phone number" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                       }];
     
 }
 

@@ -25,7 +25,7 @@
                       MAPQUEST_API_KEY, start.latitude, start.longitude, end.latitude, end.longitude, width, height ];
     [[RKObjectManager sharedManager] getObject:nil path:url parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
 
-        MQRo
+        MQRouteResponse * route = mappingResult.firstObject;
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         
