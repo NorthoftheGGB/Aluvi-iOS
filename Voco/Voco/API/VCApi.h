@@ -60,6 +60,7 @@
 + (NSString *) apiToken;
 + (void) setApiToken: (NSString *) token;
 + (BOOL) loggedIn;
++ (void) clearApiToken;
 
 // path helpers
 + (NSString *) devicesObjectPathPattern;

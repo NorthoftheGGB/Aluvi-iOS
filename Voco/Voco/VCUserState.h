@@ -39,5 +39,6 @@
                password: (NSString *) password
                 success:(void ( ^ ) () )success
                 failure:(void ( ^ ) () )failure;
+- (void) logout;
 
 @end

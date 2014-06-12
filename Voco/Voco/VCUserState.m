@@ -8,6 +8,7 @@
 
 #import "VCUserState.h"
 #import "VCUsersApi.h"
+#import "VCApi.h"
 
 static VCUserState *sharedSingleton;
 
@@ -61,5 +62,8 @@ static VCUserState *sharedSingleton;
     
 }
 
+- (void) logout {
+    [VCApi clearApiToken];
+}
 
 @end

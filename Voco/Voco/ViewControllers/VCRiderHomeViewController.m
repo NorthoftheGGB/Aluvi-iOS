@@ -8,9 +8,10 @@
 
 #import "VCRiderHomeViewController.h"
 #import <MapKit/MapKit.h>
+#import <MBProgressHUD.h>
 #import "VCRideRequest.h"
 #import "VCUserState.h"
-#import <MBProgressHUD.h>
+#import "VCInterfaceModes.h"
 
 #import <RestKit.h>
 #import "VCApi.h"
@@ -35,6 +36,7 @@
 - (IBAction)didTapCommute:(id)sender;
 - (IBAction)didTapOnDemand:(id)sender;
 - (IBAction)didTapConfirmLocation:(id)sender;
+- (IBAction)didTapLogout:(id)sender;
 
 @end
 
@@ -144,5 +146,10 @@
                                                 [WRUtilities criticalError:error];
                                             }];
     }
+}
+
+- (IBAction)didTapLogout:(id)sender {
+    [[VCUserState instance] logout];
+    [VCInterfaceModes showRiderSigninInterface];
 }
 @end
