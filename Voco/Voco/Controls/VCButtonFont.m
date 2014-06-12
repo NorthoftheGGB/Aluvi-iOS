@@ -16,7 +16,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        fontSize = [NSNumber numberWithInt:24];
+        fontSize = [NSNumber numberWithInt:30];
     }
     return self;
 }
