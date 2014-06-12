@@ -8,21 +8,27 @@
 
 #import "VCButtonFontBold.h"
 
+
 @implementation VCButtonFontBold
+
+@synthesize fontSize;
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        fontSize = [NSNumber numberWithInt:13];
     }
     return self;
 }
 
 - (void)awakeFromNib{
-    UIFont *customFont = [UIFont fontWithName:@"KlinicSlabMedium" size:16];
     
-    self.font = customFont;
+    UIFont *customFont = [UIFont fontWithName:@"KlinicSlab-Medium" size:[fontSize intValue] ];
+
+    
+    [self.titleLabel setFont:customFont];
+    
 }
     
 

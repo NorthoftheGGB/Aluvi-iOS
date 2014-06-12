@@ -9,21 +9,23 @@
 #import "VCTextField.h"
 
 @implementation VCTextField
+@synthesize fontSize;
 
 - (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
+{self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        fontSize = [NSNumber numberWithInt:13];
     }
     return self;
 }
 
 
 - (void)awakeFromNib{
-    UIFont *customFont = [UIFont fontWithName:@"KlinicSlabLight" size:16];
+        
     
-    self.font = customFont;
+    UIFont *customFont = [UIFont fontWithName:@"KlinicSlab-Light" size:[fontSize intValue] ];
+    
+    [self setFont:customFont];
 
 }
 /*

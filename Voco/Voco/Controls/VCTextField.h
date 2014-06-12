@@ -10,4 +10,7 @@
 
 @interface VCTextField : UITextField
 
+@property(nonatomic, strong) NSNumber * fontSize;
+
+
 @end

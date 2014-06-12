@@ -10,4 +10,6 @@
 
 @interface VCButtonFontBold : UIButton
 
+@property(nonatomic, strong) NSNumber * fontSize;
+
 @end
