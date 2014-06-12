@@ -10,19 +10,22 @@
 
 @implementation VCButtonFont
 
+@synthesize fontSize;
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        fontSize = [NSNumber numberWithInt:24];
     }
     return self;
 }
 
 - (void)awakeFromNib{
-    UIFont *customFont = [UIFont fontWithName:@"KlinicSlabLight" size:16];
     
-    [self setFont:customFont];
+    UIFont *customFont = [UIFont fontWithName:@"KlinicSlab-Light" size:[fontSize intValue] ];
+    
+    [self.titleLabel setFont:customFont];
     
 }
 

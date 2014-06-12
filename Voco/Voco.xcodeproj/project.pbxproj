@@ -15,7 +15,6 @@
 		4FE641C5194157EB0059BED1 /* PasswordRecoveryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641C3194157EB0059BED1 /* PasswordRecoveryViewController.xib */; };
 		4FE641C91941584D0059BED1 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641C71941584D0059BED1 /* SignUpViewController.m */; };
 		4FE641CA1941584D0059BED1 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641C81941584D0059BED1 /* SignUpViewController.xib */; };
-		4FE641CF19415A7A0059BED1 /* KlinicSlabLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641CB19415A7A0059BED1 /* KlinicSlabLight.otf */; };
 		4FE641D019415A7A0059BED1 /* KlinicSlabLightIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641CC19415A7A0059BED1 /* KlinicSlabLightIt.otf */; };
 		4FE641D119415A7A0059BED1 /* KlinicSlabMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641CD19415A7A0059BED1 /* KlinicSlabMedium.otf */; };
 		4FE641D219415A7A0059BED1 /* KlinicSlabMediumIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641CE19415A7A0059BED1 /* KlinicSlabMediumIt.otf */; };
@@ -51,6 +50,7 @@
 		F45F7C181935A3F900A94721 /* DriverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C161935A3F900A94721 /* DriverViewController.m */; };
 		F45F7C191935A3F900A94721 /* DriverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F45F7C171935A3F900A94721 /* DriverViewController.xib */; };
 		F473EFDC19491C2B00D8C900 /* VCValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFDB19491C2B00D8C900 /* VCValidation.m */; };
+		F473EFDE194921C100D8C900 /* KlinicSlabLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F473EFDD194921C100D8C900 /* KlinicSlabLight.ttf */; };
 		F49EDD0B1946D27F0020B8BB /* VCRiderHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */; };
 		F49EDD0C1946D27F0020B8BB /* VCRiderHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */; };
 		F49EDD101946E2F90020B8BB /* VCInterfaceModes.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD0F1946E2F90020B8BB /* VCInterfaceModes.m */; };
@@ -117,7 +117,6 @@
 		4FE641C61941584D0059BED1 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignUpViewController.h; path = ViewControllers/SignUpViewController.h; sourceTree = "<group>"; };
 		4FE641C71941584D0059BED1 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignUpViewController.m; path = ViewControllers/SignUpViewController.m; sourceTree = "<group>"; };
 		4FE641C81941584D0059BED1 /* SignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignUpViewController.xib; path = ViewControllers/SignUpViewController.xib; sourceTree = "<group>"; };
-		4FE641CB19415A7A0059BED1 /* KlinicSlabLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KlinicSlabLight.otf; path = ../Fonts/KlinicSlabLight.otf; sourceTree = "<group>"; };
 		4FE641CC19415A7A0059BED1 /* KlinicSlabLightIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KlinicSlabLightIt.otf; path = ../Fonts/KlinicSlabLightIt.otf; sourceTree = "<group>"; };
 		4FE641CD19415A7A0059BED1 /* KlinicSlabMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KlinicSlabMedium.otf; path = ../Fonts/KlinicSlabMedium.otf; sourceTree = "<group>"; };
 		4FE641CE19415A7A0059BED1 /* KlinicSlabMediumIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KlinicSlabMediumIt.otf; path = ../Fonts/KlinicSlabMediumIt.otf; sourceTree = "<group>"; };
@@ -167,6 +166,7 @@
 		F45F7C171935A3F900A94721 /* DriverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DriverViewController.xib; path = ViewControllers/DriverViewController.xib; sourceTree = "<group>"; };
 		F473EFDA19491C2B00D8C900 /* VCValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCValidation.h; sourceTree = "<group>"; };
 		F473EFDB19491C2B00D8C900 /* VCValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCValidation.m; sourceTree = "<group>"; };
+		F473EFDD194921C100D8C900 /* KlinicSlabLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KlinicSlabLight.ttf; sourceTree = "<group>"; };
 		F49EDD081946D27F0020B8BB /* VCRiderHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderHomeViewController.h; path = ViewControllers/VCRiderHomeViewController.h; sourceTree = "<group>"; };
 		F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRiderHomeViewController.m; path = ViewControllers/VCRiderHomeViewController.m; sourceTree = "<group>"; };
 		F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCRiderHomeViewController.xib; path = ViewControllers/VCRiderHomeViewController.xib; sourceTree = "<group>"; };
@@ -447,7 +447,7 @@
 		F49EDD071946A63F0020B8BB /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				4FE641CB19415A7A0059BED1 /* KlinicSlabLight.otf */,
+				F473EFDD194921C100D8C900 /* KlinicSlabLight.ttf */,
 				4FE641CC19415A7A0059BED1 /* KlinicSlabLightIt.otf */,
 				4FE641CD19415A7A0059BED1 /* KlinicSlabMedium.otf */,
 				4FE641CE19415A7A0059BED1 /* KlinicSlabMediumIt.otf */,
@@ -710,10 +710,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F473EFDE194921C100D8C900 /* KlinicSlabLight.ttf in Resources */,
 				4FE641F7194168E80059BED1 /* signup_box@2x.png in Resources */,
 				F49EDD0C1946D27F0020B8BB /* VCRiderHomeViewController.xib in Resources */,
 				4FE641F5194168E80059BED1 /* loginBox@2x.png in Resources */,
-				4FE641CF19415A7A0059BED1 /* KlinicSlabLight.otf in Resources */,
 				4FE641D019415A7A0059BED1 /* KlinicSlabLightIt.otf in Resources */,
 				4FE641FB194168E80059BED1 /* VOCOfinal@2x.png in Resources */,
 				4FE641F1194168E80059BED1 /* driver_must_box@2x.png in Resources */,
