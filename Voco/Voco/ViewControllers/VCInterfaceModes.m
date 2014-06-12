@@ -11,8 +11,19 @@
 #import "VCRiderHomeViewController.h"
 #import "VCRiderMenuViewController.h"
 #import "IIViewDeckController.h"
+#import "VCApi.h"
 
 @implementation VCInterfaceModes
+
++ (void) showInterface {
+    
+    if([VCApi loggedIn]){
+        [VCInterfaceModes showRiderInterface];
+    } else {
+        [VCInterfaceModes showRiderSigninInterface];
+        
+    }
+}
 
 + (void) showRiderSigninInterface {
     SignInViewController * signInViewController = [[SignInViewController alloc] init];
@@ -25,7 +36,7 @@
     VCRiderMenuViewController * riderMenuViewController = [[VCRiderMenuViewController alloc] init];
     
     IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:riderHomeViewController leftViewController:riderMenuViewController rightViewController:nil];
-    deckController.leftSize = 320;
+    deckController.leftSize = 0;
     deckController.openSlideAnimationDuration = 0.20f;
     deckController.closeSlideAnimationDuration = 0.20f;
     [[UIApplication sharedApplication] delegate].window.rootViewController = deckController;

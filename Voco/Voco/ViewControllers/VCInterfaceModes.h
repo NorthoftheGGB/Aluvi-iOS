@@ -10,6 +10,7 @@
 
 @interface VCInterfaceModes : NSObject
 
++ (void) showInterface;
 + (void) showRiderSigninInterface;
 + (void) showRiderInterface;
 + (void) showDriverInterface;

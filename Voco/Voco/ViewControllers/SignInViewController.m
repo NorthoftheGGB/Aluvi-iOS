@@ -8,7 +8,7 @@
 
 #import "SignInViewController.h"
 #import "VCTextField.h"
-#import "VCUsersApi.h"
+#import "VCUserState.h"
 #import "VCRiderHomeViewController.h"
 #import "SignUpViewController.h"
 #import "PasswordRecoveryViewController.h"
@@ -69,14 +69,16 @@
 }
 
 - (void) login {
-    [VCUsersApi login:[RKObjectManager sharedManager] phone:_phoneNumberField.text password:_passwordField.text
-              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                  
-                  [VCInterfaceModes showRiderInterface];
-
-              } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                  [UIAlertView showWithTitle:@"Login Failed!" message:@"Invalid" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
-              }];
+    
+    [[VCUserState instance] loginWithPhone:_phoneNumberField.text
+                                  password:_passwordField.text
+                                   success:^{
+                                       [VCInterfaceModes showRiderInterface];
+                                   } failure:^{
+                                       [UIAlertView showWithTitle:@"Login Failed!" message:@"Invalid" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                                   }];
+    
+    
 }
 
 - (IBAction)didTapForgotPassword:(id)sender {

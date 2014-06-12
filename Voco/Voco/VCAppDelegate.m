@@ -48,7 +48,8 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    [VCInterfaceModes showRiderSigninInterface];
+    
+    [VCInterfaceModes showInterface];
     
     /*
     if([[VCUserState instance].userId isEqualToNumber:[NSNumber numberWithInt:1]]){

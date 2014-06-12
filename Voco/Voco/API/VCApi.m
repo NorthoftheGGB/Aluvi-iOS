@@ -44,6 +44,15 @@ static NSString * apiToken;
     [[RKObjectManager sharedManager].HTTPClient setAuthorizationHeaderWithToken:apiToken];
 }
 
++ (BOOL) loggedIn {
+    if(apiToken == nil){
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
+
 
 + (NSString *) devicesObjectPathPattern {
     return [NSString stringWithFormat:@"%@:uuid", API_DEVICES];

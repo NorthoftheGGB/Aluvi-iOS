@@ -132,10 +132,7 @@
 - (void) login {
     [VCUsersApi login:[RKObjectManager sharedManager] phone:_phoneField.text password:_passwordField.text
               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                  
-                  //VCRiderHomeViewController * vc = [[VCRiderHomeViewController alloc] init];
-                  //[self.navigationController pushViewController:vc animated:YES];
-                  
+ 
                   [VCInterfaceModes showRiderInterface];
                   
               } failure:^(RKObjectRequestOperation *operation, NSError *error) {

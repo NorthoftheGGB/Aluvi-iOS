@@ -56,6 +56,11 @@
 		F473EFE819492C2A00D8C900 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE519492C2A00D8C900 /* IIWrapController.m */; };
 		F473EFEE1949304300D8C900 /* VCRiderMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFEC1949304300D8C900 /* VCRiderMenuViewController.m */; };
 		F473EFEF1949304300D8C900 /* VCRiderMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F473EFED1949304300D8C900 /* VCRiderMenuViewController.xib */; };
+		F473EFF119494DB100D8C900 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F473EFF019494DB100D8C900 /* QuartzCore.framework */; };
+		F473EFF51949513F00D8C900 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F473EFF41949513F00D8C900 /* AddressBook.framework */; };
+		F473EFF71949514A00D8C900 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F473EFF61949514A00D8C900 /* libxml2.dylib */; };
+		F473EFF91949515800D8C900 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F473EFF81949515800D8C900 /* SystemConfiguration.framework */; };
+		F473EFFE19497FBF00D8C900 /* map_pin_fill-512.png in Resources */ = {isa = PBXBuildFile; fileRef = F473EFFD19497FBF00D8C900 /* map_pin_fill-512.png */; };
 		F49EDD0B1946D27F0020B8BB /* VCRiderHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */; };
 		F49EDD0C1946D27F0020B8BB /* VCRiderHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */; };
 		F49EDD101946E2F90020B8BB /* VCInterfaceModes.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD0F1946E2F90020B8BB /* VCInterfaceModes.m */; };
@@ -181,6 +186,11 @@
 		F473EFEB1949304300D8C900 /* VCRiderMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderMenuViewController.h; path = ViewControllers/VCRiderMenuViewController.h; sourceTree = "<group>"; };
 		F473EFEC1949304300D8C900 /* VCRiderMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRiderMenuViewController.m; path = ViewControllers/VCRiderMenuViewController.m; sourceTree = "<group>"; };
 		F473EFED1949304300D8C900 /* VCRiderMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCRiderMenuViewController.xib; path = ViewControllers/VCRiderMenuViewController.xib; sourceTree = "<group>"; };
+		F473EFF019494DB100D8C900 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F473EFF41949513F00D8C900 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		F473EFF61949514A00D8C900 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		F473EFF81949515800D8C900 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F473EFFD19497FBF00D8C900 /* map_pin_fill-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_pin_fill-512.png"; sourceTree = "<group>"; };
 		F49EDD081946D27F0020B8BB /* VCRiderHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderHomeViewController.h; path = ViewControllers/VCRiderHomeViewController.h; sourceTree = "<group>"; };
 		F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRiderHomeViewController.m; path = ViewControllers/VCRiderHomeViewController.m; sourceTree = "<group>"; };
 		F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCRiderHomeViewController.xib; path = ViewControllers/VCRiderHomeViewController.xib; sourceTree = "<group>"; };
@@ -259,6 +269,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F45F7C0019357C6100A94721 /* MapKit.framework in Frameworks */,
+				F473EFF91949515800D8C900 /* SystemConfiguration.framework in Frameworks */,
+				F473EFF71949514A00D8C900 /* libxml2.dylib in Frameworks */,
+				F473EFF51949513F00D8C900 /* AddressBook.framework in Frameworks */,
+				F473EFF119494DB100D8C900 /* QuartzCore.framework in Frameworks */,
 				F45F7BFE19357C5C00A94721 /* CoreLocation.framework in Frameworks */,
 				F4FE1B2D193EA18E00354886 /* Crashlytics.framework in Frameworks */,
 				F4FA0BEA192BF6BF005D8645 /* CoreGraphics.framework in Frameworks */,
@@ -320,6 +334,7 @@
 		4FE641E1194168E80059BED1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				F473EFFD19497FBF00D8C900 /* map_pin_fill-512.png */,
 				F49EDD071946A63F0020B8BB /* Fonts */,
 				4FE641E2194168E80059BED1 /* bubble@2x.png */,
 				4FE641E3194168E80059BED1 /* commute_logo@2x.png */,
@@ -553,6 +568,10 @@
 		F4FA0BE6192BF6BF005D8645 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F473EFF81949515800D8C900 /* SystemConfiguration.framework */,
+				F473EFF61949514A00D8C900 /* libxml2.dylib */,
+				F473EFF41949513F00D8C900 /* AddressBook.framework */,
+				F473EFF019494DB100D8C900 /* QuartzCore.framework */,
 				F4FE1B2C193EA18E00354886 /* Crashlytics.framework */,
 				F45F7BFF19357C6100A94721 /* MapKit.framework */,
 				F45F7BFD19357C5C00A94721 /* CoreLocation.framework */,
@@ -770,6 +789,7 @@
 				4FE641F2194168E80059BED1 /* driving_car@2x.png in Resources */,
 				4F37E2DF1949574000753172 /* KlinicSlabMedium.ttf in Resources */,
 				4FE641BB194157510059BED1 /* SignInViewController.xib in Resources */,
+				F473EFFE19497FBF00D8C900 /* map_pin_fill-512.png in Resources */,
 				4FE641C5194157EB0059BED1 /* PasswordRecoveryViewController.xib in Resources */,
 				4F37E2E01949574000753172 /* KlinicSlabMediumIt.ttf in Resources */,
 				4FE641F4194168E80059BED1 /* login_form@2x.png in Resources */,
