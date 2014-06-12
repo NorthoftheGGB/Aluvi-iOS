@@ -61,6 +61,7 @@
 		F473EFF71949514A00D8C900 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F473EFF61949514A00D8C900 /* libxml2.dylib */; };
 		F473EFF91949515800D8C900 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F473EFF81949515800D8C900 /* SystemConfiguration.framework */; };
 		F473EFFE19497FBF00D8C900 /* map_pin_fill-512.png in Resources */ = {isa = PBXBuildFile; fileRef = F473EFFD19497FBF00D8C900 /* map_pin_fill-512.png */; };
+		F473F001194A498E00D8C900 /* VCLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F000194A498E00D8C900 /* VCLabel.m */; };
 		F49EDD0B1946D27F0020B8BB /* VCRiderHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */; };
 		F49EDD0C1946D27F0020B8BB /* VCRiderHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */; };
 		F49EDD101946E2F90020B8BB /* VCInterfaceModes.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD0F1946E2F90020B8BB /* VCInterfaceModes.m */; };
@@ -191,6 +192,8 @@
 		F473EFF61949514A00D8C900 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		F473EFF81949515800D8C900 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F473EFFD19497FBF00D8C900 /* map_pin_fill-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_pin_fill-512.png"; sourceTree = "<group>"; };
+		F473EFFF194A498E00D8C900 /* VCLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCLabel.h; path = Controls/VCLabel.h; sourceTree = "<group>"; };
+		F473F000194A498E00D8C900 /* VCLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCLabel.m; path = Controls/VCLabel.m; sourceTree = "<group>"; };
 		F49EDD081946D27F0020B8BB /* VCRiderHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderHomeViewController.h; path = ViewControllers/VCRiderHomeViewController.h; sourceTree = "<group>"; };
 		F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRiderHomeViewController.m; path = ViewControllers/VCRiderHomeViewController.m; sourceTree = "<group>"; };
 		F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCRiderHomeViewController.xib; path = ViewControllers/VCRiderHomeViewController.xib; sourceTree = "<group>"; };
@@ -327,6 +330,8 @@
 				4FE641FD194170F50059BED1 /* VCButtonFont.m */,
 				4FE641DE194162360059BED1 /* VCButtonFontBold.h */,
 				4FE641DF194162360059BED1 /* VCButtonFontBold.m */,
+				F473EFFF194A498E00D8C900 /* VCLabel.h */,
+				F473F000194A498E00D8C900 /* VCLabel.m */,
 			);
 			name = Controls;
 			sourceTree = "<group>";
@@ -893,6 +898,7 @@
 				F4FE1B18193D2F3F00354886 /* Offer.m in Sources */,
 				F49EDD101946E2F90020B8BB /* VCInterfaceModes.m in Sources */,
 				F4FE1B1B193D301F00354886 /* VCCoreData.m in Sources */,
+				F473F001194A498E00D8C900 /* VCLabel.m in Sources */,
 				F473EFEE1949304300D8C900 /* VCRiderMenuViewController.m in Sources */,
 				F4FE1B0F1938571E00354886 /* VCRideDriverAssignment.m in Sources */,
 				4FE641C4194157EB0059BED1 /* PasswordRecoveryViewController.m in Sources */,

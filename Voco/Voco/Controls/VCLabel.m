@@ -1,14 +1,15 @@
 //
-//  VCTextField.m
+//  VCLabel.m
 //  Voco
 //
-//  Created by Elliott De Aratanha on 6/5/14.
+//  Created by Matthew Shultz on 6/12/14.
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCTextField.h"
+#import "VCLabel.h"
 
-@implementation VCTextField
+@implementation VCLabel
+
 @synthesize fontSize;
 
 - (id)initWithFrame:(CGRect)frame
@@ -22,20 +23,20 @@
 
 
 - (void)awakeFromNib{
-        
+    
     
     UIFont *customFont = [UIFont fontWithName:@"KlinicSlab-Light" size:[fontSize intValue] ];
     
     [self setFont:customFont];
-
+    
 }
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect
+ {
+ // Drawing code
+ }
+ */
 
 @end
