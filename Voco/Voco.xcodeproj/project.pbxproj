@@ -56,6 +56,7 @@
 		F473EFE819492C2A00D8C900 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE519492C2A00D8C900 /* IIWrapController.m */; };
 		F473EFEE1949304300D8C900 /* VCRiderMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFEC1949304300D8C900 /* VCRiderMenuViewController.m */; };
 		F473EFEF1949304300D8C900 /* VCRiderMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F473EFED1949304300D8C900 /* VCRiderMenuViewController.xib */; };
+		F473EFF119494DB100D8C900 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F473EFF019494DB100D8C900 /* QuartzCore.framework */; };
 		F49EDD0B1946D27F0020B8BB /* VCRiderHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */; };
 		F49EDD0C1946D27F0020B8BB /* VCRiderHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */; };
 		F49EDD101946E2F90020B8BB /* VCInterfaceModes.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD0F1946E2F90020B8BB /* VCInterfaceModes.m */; };
@@ -181,6 +182,7 @@
 		F473EFEB1949304300D8C900 /* VCRiderMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderMenuViewController.h; path = ViewControllers/VCRiderMenuViewController.h; sourceTree = "<group>"; };
 		F473EFEC1949304300D8C900 /* VCRiderMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRiderMenuViewController.m; path = ViewControllers/VCRiderMenuViewController.m; sourceTree = "<group>"; };
 		F473EFED1949304300D8C900 /* VCRiderMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCRiderMenuViewController.xib; path = ViewControllers/VCRiderMenuViewController.xib; sourceTree = "<group>"; };
+		F473EFF019494DB100D8C900 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F49EDD081946D27F0020B8BB /* VCRiderHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderHomeViewController.h; path = ViewControllers/VCRiderHomeViewController.h; sourceTree = "<group>"; };
 		F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRiderHomeViewController.m; path = ViewControllers/VCRiderHomeViewController.m; sourceTree = "<group>"; };
 		F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCRiderHomeViewController.xib; path = ViewControllers/VCRiderHomeViewController.xib; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F473EFF119494DB100D8C900 /* QuartzCore.framework in Frameworks */,
 				F45F7C0019357C6100A94721 /* MapKit.framework in Frameworks */,
 				F45F7BFE19357C5C00A94721 /* CoreLocation.framework in Frameworks */,
 				F4FE1B2D193EA18E00354886 /* Crashlytics.framework in Frameworks */,
@@ -553,6 +556,7 @@
 		F4FA0BE6192BF6BF005D8645 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F473EFF019494DB100D8C900 /* QuartzCore.framework */,
 				F4FE1B2C193EA18E00354886 /* Crashlytics.framework */,
 				F45F7BFF19357C6100A94721 /* MapKit.framework */,
 				F45F7BFD19357C5C00A94721 /* CoreLocation.framework */,

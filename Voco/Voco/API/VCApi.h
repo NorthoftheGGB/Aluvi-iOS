@@ -55,8 +55,11 @@
 
 //Setup
 + (void) setup;
+
+// Login
 + (NSString *) apiToken;
 + (void) setApiToken: (NSString *) token;
++ (BOOL) loggedIn;
 
 // path helpers
 + (NSString *) devicesObjectPathPattern;
