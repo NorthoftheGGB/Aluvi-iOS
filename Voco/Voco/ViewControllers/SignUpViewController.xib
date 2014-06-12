@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -88,6 +88,11 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="24"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="didTapSignUp:" destination="-1" eventType="touchUpInside" id="ny6-9o-SkB"/>
                     </connections>
@@ -103,6 +108,7 @@
                 <constraint firstItem="oUS-7v-08g" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="95" id="EpN-s7-MrD"/>
                 <constraint firstItem="HWX-Nc-rV4" firstAttribute="width" secondItem="4tz-EA-61T" secondAttribute="width" id="F4o-eX-IPz"/>
                 <constraint firstAttribute="trailing" secondItem="4tz-EA-61T" secondAttribute="trailing" constant="43" id="FDZ-AP-dOQ"/>
+                <constraint firstItem="lVL-nv-53q" firstAttribute="top" secondItem="4tz-EA-61T" secondAttribute="bottom" constant="-36" id="Loh-lY-a2n"/>
                 <constraint firstAttribute="trailing" secondItem="oUS-7v-08g" secondAttribute="trailing" constant="43" id="O3P-gv-UzC"/>
                 <constraint firstItem="mAT-xD-K9f" firstAttribute="top" secondItem="lVL-nv-53q" secondAttribute="bottom" constant="46" id="Ohw-Pr-4bA"/>
                 <constraint firstItem="HWX-Nc-rV4" firstAttribute="width" secondItem="mfu-MK-ETL" secondAttribute="width" id="PFW-ex-4GM"/>
@@ -116,6 +122,7 @@
                 <constraint firstAttribute="trailing" secondItem="HWX-Nc-rV4" secondAttribute="trailing" constant="43" id="a6s-Ma-gjc"/>
                 <constraint firstItem="lVL-nv-53q" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="181" id="bA0-0W-n2k"/>
                 <constraint firstItem="HWX-Nc-rV4" firstAttribute="top" secondItem="4tz-EA-61T" secondAttribute="bottom" constant="10" id="fDd-jX-wLM"/>
+                <constraint firstItem="2DV-EA-Yr3" firstAttribute="top" secondItem="lVL-nv-53q" secondAttribute="bottom" constant="-36" id="fRQ-Oe-5cM"/>
                 <constraint firstAttribute="trailing" secondItem="mAT-xD-K9f" secondAttribute="trailing" constant="55" id="ffX-H9-J1b"/>
                 <constraint firstItem="4tz-EA-61T" firstAttribute="top" secondItem="35T-6B-RMk" secondAttribute="bottom" constant="29" id="gCs-by-Ngr"/>
                 <constraint firstItem="mfu-MK-ETL" firstAttribute="top" secondItem="oUS-7v-08g" secondAttribute="bottom" constant="10" id="guk-td-pwN"/>
