@@ -27,6 +27,9 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>KlinicSlabLight.ttf</string>
+		<string>KlinicSlabLightIt.ttf</string>
+		<string>KlinicSlabMediumIt.ttf</string>
+		<string>KlinicSlabMedium.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
