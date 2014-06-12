@@ -21,15 +21,12 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>205</string>
+	<string>206</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>KlinicSlabLight.otf</string>
-		<string>KlinicSlabLightIt.otf</string>
-		<string>KlinicSlabMedium.otf</string>
-		<string>KlinicSlabMediumIt.otf</string>
+		<string>KlinicSlabLight.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

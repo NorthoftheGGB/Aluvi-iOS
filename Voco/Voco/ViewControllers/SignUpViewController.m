@@ -12,6 +12,7 @@
 #import "VCValidation.h"
 #import "WRUtilities.h"
 #import "VCRiderHomeViewController.h"
+#import "VCInterfaceModes.h"
 
 #define kNameFieldTag 1
 #define kPhoneFieldTag 2
@@ -132,8 +133,10 @@
     [VCUsersApi login:[RKObjectManager sharedManager] phone:_phoneField.text password:_passwordField.text
               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                   
-                  VCRiderHomeViewController * vc = [[VCRiderHomeViewController alloc] init];
-                  [self.navigationController pushViewController:vc animated:YES];
+                  //VCRiderHomeViewController * vc = [[VCRiderHomeViewController alloc] init];
+                  //[self.navigationController pushViewController:vc animated:YES];
+                  
+                  [VCInterfaceModes showRiderInterface];
                   
               } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                   [UIAlertView showWithTitle:@"Login Failed!" message:@"Invalid" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
