@@ -28,6 +28,10 @@
 + (void) showRiderSigninInterface {
     SignInViewController * signInViewController = [[SignInViewController alloc] init];
     UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:signInViewController];
+    [navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [navigationController.navigationBar setShadowImage:[UIImage new]];
+    [navigationController.navigationBar setTranslucent:YES];
+    navigationController.navigationBar.tintColor = [UIColor redColor];
     [[UIApplication sharedApplication] delegate].window.rootViewController = navigationController;
 }
 

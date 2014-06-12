@@ -19,7 +19,7 @@
 #define kStepSetDepartureLocation 1
 #define kStepSetDestinationLocation 2
 
-@interface VCRiderHomeViewController ()
+@interface VCRiderHomeViewController () <MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *mapCenterPin;
 @property (weak, nonatomic) IBOutlet UIView *departureEntryView;
@@ -133,6 +133,8 @@
                                                 NSLog(@"Ride request accepted by server!");
                                                 [hud hide:YES];
                                                 
+                                                // TODO save request in database, with request id from server?
+                                                
                                                 //VCRideRequestCreated * response = mappingResult.firstObject;
                                                 //_stateLabel.text = @"Ride Requested";
                                                 //_requestButton.enabled = NO;
@@ -152,4 +154,20 @@
     [[VCUserState instance] logout];
     [VCInterfaceModes showRiderSigninInterface];
 }
+
+#pragma mark MKMapViewDelegate
+
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
+    if(_step == kStepSetDestinationLocation ){
+        [self showSuggestedRoute];
+    }
+}
+
+- (void) showSuggestedRoute {
+    //http://www.mapquestapi.com/directions/v2/route?key=Fmjtd%7Cluur2guan0%2Cb5%3Do5-9azxgz&from=Lancaster,PA&to=York,PA&shapeFormat=raw&mapWidth=200&mapHeight=200
+
+   
+    
+}
+
 @end
