@@ -62,6 +62,9 @@
 		F473EFF91949515800D8C900 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F473EFF81949515800D8C900 /* SystemConfiguration.framework */; };
 		F473EFFE19497FBF00D8C900 /* map_pin_fill-512.png in Resources */ = {isa = PBXBuildFile; fileRef = F473EFFD19497FBF00D8C900 /* map_pin_fill-512.png */; };
 		F473F001194A498E00D8C900 /* VCLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F000194A498E00D8C900 /* VCLabel.m */; };
+		F473F005194A54AC00D8C900 /* VCMapQuestRouting.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F004194A54AC00D8C900 /* VCMapQuestRouting.m */; };
+		F473F009194A5A0200D8C900 /* MQRouteResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F008194A5A0200D8C900 /* MQRouteResponse.m */; };
+		F473F00C194A5A6100D8C900 /* MQShape.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F00B194A5A6100D8C900 /* MQShape.m */; };
 		F49EDD0B1946D27F0020B8BB /* VCRiderHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */; };
 		F49EDD0C1946D27F0020B8BB /* VCRiderHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */; };
 		F49EDD101946E2F90020B8BB /* VCInterfaceModes.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD0F1946E2F90020B8BB /* VCInterfaceModes.m */; };
@@ -194,6 +197,12 @@
 		F473EFFD19497FBF00D8C900 /* map_pin_fill-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_pin_fill-512.png"; sourceTree = "<group>"; };
 		F473EFFF194A498E00D8C900 /* VCLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCLabel.h; path = Controls/VCLabel.h; sourceTree = "<group>"; };
 		F473F000194A498E00D8C900 /* VCLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCLabel.m; path = Controls/VCLabel.m; sourceTree = "<group>"; };
+		F473F003194A54AC00D8C900 /* VCMapQuestRouting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCMapQuestRouting.h; sourceTree = "<group>"; };
+		F473F004194A54AC00D8C900 /* VCMapQuestRouting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCMapQuestRouting.m; sourceTree = "<group>"; };
+		F473F007194A5A0200D8C900 /* MQRouteResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MQRouteResponse.h; path = Geolocation/MQRouteResponse.h; sourceTree = "<group>"; };
+		F473F008194A5A0200D8C900 /* MQRouteResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MQRouteResponse.m; path = Geolocation/MQRouteResponse.m; sourceTree = "<group>"; };
+		F473F00A194A5A6100D8C900 /* MQShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MQShape.h; path = Geolocation/MQShape.h; sourceTree = "<group>"; };
+		F473F00B194A5A6100D8C900 /* MQShape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MQShape.m; path = Geolocation/MQShape.m; sourceTree = "<group>"; };
 		F49EDD081946D27F0020B8BB /* VCRiderHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderHomeViewController.h; path = ViewControllers/VCRiderHomeViewController.h; sourceTree = "<group>"; };
 		F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRiderHomeViewController.m; path = ViewControllers/VCRiderHomeViewController.m; sourceTree = "<group>"; };
 		F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCRiderHomeViewController.xib; path = ViewControllers/VCRiderHomeViewController.xib; sourceTree = "<group>"; };
@@ -502,6 +511,29 @@
 			name = Dev;
 			sourceTree = "<group>";
 		};
+		F473F002194A549A00D8C900 /* GIS */ = {
+			isa = PBXGroup;
+			children = (
+				F473F006194A59B400D8C900 /* MapQuest */,
+				F4FE1AF91937DD6600354886 /* VCGeolocation.h */,
+				F4FE1AFA1937DD6600354886 /* VCGeolocation.m */,
+			);
+			name = GIS;
+			sourceTree = "<group>";
+		};
+		F473F006194A59B400D8C900 /* MapQuest */ = {
+			isa = PBXGroup;
+			children = (
+				F473F003194A54AC00D8C900 /* VCMapQuestRouting.h */,
+				F473F004194A54AC00D8C900 /* VCMapQuestRouting.m */,
+				F473F007194A5A0200D8C900 /* MQRouteResponse.h */,
+				F473F008194A5A0200D8C900 /* MQRouteResponse.m */,
+				F473F00A194A5A6100D8C900 /* MQShape.h */,
+				F473F00B194A5A6100D8C900 /* MQShape.m */,
+			);
+			name = MapQuest;
+			sourceTree = "<group>";
+		};
 		F476908D1935B7FA00B9EF69 /* State Machines */ = {
 			isa = PBXGroup;
 			children = (
@@ -593,12 +625,13 @@
 		F4FA0BEF192BF6BF005D8645 /* Voco */ = {
 			isa = PBXGroup;
 			children = (
+				F473F002194A549A00D8C900 /* GIS */,
 				F4FE1AF51937DD1A00354886 /* Application */,
-				4FE641D7194160450059BED1 /* Controls */,
 				F45F7C0B1935975D00A94721 /* Libraries */,
 				F45F7BF2193578AA00A94721 /* Api */,
 				F476908D1935B7FA00B9EF69 /* State Machines */,
 				F45F7BED193575C100A94721 /* Model */,
+				4FE641D7194160450059BED1 /* Controls */,
 				F45F7BE71935756000A94721 /* ViewControllers */,
 				F4FA0BFE192BF6BF005D8645 /* Images.xcassets */,
 				F4FA0BF0192BF6BF005D8645 /* Supporting Files */,
@@ -660,8 +693,6 @@
 				F4FA0BF9192BF6BF005D8645 /* VCAppDelegate.m */,
 				F4FE1AF61937DD5600354886 /* VCPushManager.h */,
 				F4FE1AF71937DD5600354886 /* VCPushManager.m */,
-				F4FE1AF91937DD6600354886 /* VCGeolocation.h */,
-				F4FE1AFA1937DD6600354886 /* VCGeolocation.m */,
 				F4FE1B101938581C00354886 /* VCDialogs.h */,
 				F4FE1B111938581C00354886 /* VCDialogs.m */,
 				F4FE1B1319385CAA00354886 /* VCUserState.h */,
@@ -885,17 +916,20 @@
 				4FE641E0194162360059BED1 /* VCButtonFontBold.m in Sources */,
 				4FE641DD1941621E0059BED1 /* VCTextFieldItalic.m in Sources */,
 				F4FE1B121938581C00354886 /* VCDialogs.m in Sources */,
+				F473F009194A5A0200D8C900 /* MQRouteResponse.m in Sources */,
 				4FE641BA194157510059BED1 /* SignInViewController.m in Sources */,
 				F4FE1AFE193839DF00354886 /* Drive.m in Sources */,
 				F4D8904A19468E44007C4671 /* VCNewUser.m in Sources */,
 				F473EFE619492C2A00D8C900 /* IISideController.m in Sources */,
 				F49EDD0B1946D27F0020B8BB /* VCRiderHomeViewController.m in Sources */,
 				4FE641FE194170F50059BED1 /* VCButtonFont.m in Sources */,
+				F473F00C194A5A6100D8C900 /* MQShape.m in Sources */,
 				F45F7BFC19357B8A00A94721 /* VCRideRequest.m in Sources */,
 				F4FE1AF81937DD5600354886 /* VCPushManager.m in Sources */,
 				F4FE1AFB1937DD6600354886 /* VCGeolocation.m in Sources */,
 				4FE641BF194157C60059BED1 /* DriverRequestViewController.m in Sources */,
 				F4FE1B18193D2F3F00354886 /* Offer.m in Sources */,
+				F473F005194A54AC00D8C900 /* VCMapQuestRouting.m in Sources */,
 				F49EDD101946E2F90020B8BB /* VCInterfaceModes.m in Sources */,
 				F4FE1B1B193D301F00354886 /* VCCoreData.m in Sources */,
 				F473F001194A498E00D8C900 /* VCLabel.m in Sources */,
