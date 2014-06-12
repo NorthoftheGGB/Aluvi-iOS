@@ -13,7 +13,7 @@
 #import "SignUpViewController.h"
 #import "PasswordRecoveryViewController.h"
 #import "DriverRequestViewController.h"
-
+#import "VCInterfaceModes.h"
 
 @interface SignInViewController ()
 
@@ -72,8 +72,8 @@
     [VCUsersApi login:[RKObjectManager sharedManager] phone:_phoneNumberField.text password:_passwordField.text
               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                   
-                  VCRiderHomeViewController * vc = [[VCRiderHomeViewController alloc] init];
-                  [self.navigationController pushViewController:vc animated:YES];
+                  [VCInterfaceModes showRiderInterface];
+
               } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                   [UIAlertView showWithTitle:@"Login Failed!" message:@"Invalid" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
               }];

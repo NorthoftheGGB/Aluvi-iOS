@@ -8,6 +8,9 @@
 
 #import "VCInterfaceModes.h"
 #import "SignInViewController.h"
+#import "VCRiderHomeViewController.h"
+#import "VCRiderMenuViewController.h"
+#import "IIViewDeckController.h"
 
 @implementation VCInterfaceModes
 
@@ -18,7 +21,15 @@
 }
 
 + (void) showRiderInterface {
+    VCRiderHomeViewController * riderHomeViewController = [[VCRiderHomeViewController alloc] init];
+    VCRiderMenuViewController * riderMenuViewController = [[VCRiderMenuViewController alloc] init];
     
+    IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:riderHomeViewController leftViewController:riderMenuViewController rightViewController:nil];
+    deckController.leftSize = 320;
+    deckController.openSlideAnimationDuration = 0.20f;
+    deckController.closeSlideAnimationDuration = 0.20f;
+    [[UIApplication sharedApplication] delegate].window.rootViewController = deckController;
+
 }
 
 + (void) showDriverInterface {
