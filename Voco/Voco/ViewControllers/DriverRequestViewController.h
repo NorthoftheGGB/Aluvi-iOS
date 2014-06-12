@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface DriverRequestViewController : UIViewController
+@interface DriverRequestViewController : BaseViewController
 
 @end
