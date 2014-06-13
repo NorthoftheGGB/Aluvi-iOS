@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VCTextFieldItalic : UITextField
+@interface VCLabelItalic : UILabel
+
+@property(nonatomic, strong) NSNumber * fontSize;
+
 
 @end
