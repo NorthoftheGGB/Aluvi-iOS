@@ -8,6 +8,8 @@
 
 #import "DriverRequestViewController.h"
 #import "VCTextField.h"
+#import "VCUsersApi.h"
+#import "VCValidation.h"
 
 
 #define kNameFieldTag 1
@@ -84,5 +86,25 @@
 
 - (void) driverRequest {
     
+    BOOL error = false;
+    if (![VCValidation NSStringIsValidEmail:_emailField.text]){
+        error = true;
+        [UIAlertView showWithTitle:@"Error" message:@"Invalid Email Address" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        [_emailField setTextColor:[UIColor redColor]];
+    }
+    
+    if(error == true){
+        return;
+    }
+
+    
+    [VCUsersApi driverInterested:[RKObjectManager sharedManager] name:_nameField.text email:_emailField.text region:@"Default" phone:_phoneField.text driverReferralCode:_referralCodeField.text
+                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                             [UIAlertView showWithTitle:@"Success" message:@"We will contact you about driving" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                 [self.navigationController popViewControllerAnimated:YES];
+                             }];
+                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                             [WRUtilities criticalError:error];
+                         }];
 }
 @end
