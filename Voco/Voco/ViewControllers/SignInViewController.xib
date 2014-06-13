@@ -17,9 +17,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VOCOfinal.png" translatesAutoresizingMaskIntoConstraints="NO" id="NmZ-uF-Ojg" userLabel="Logo View">
-                    <rect key="frame" x="75" y="142" width="171" height="78"/>
+                    <rect key="frame" x="75" y="92" width="171" height="65"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <constraints>
+                        <constraint firstAttribute="height" constant="65" id="bap-Tz-Y1Q"/>
                         <constraint firstAttribute="width" constant="171" id="mJt-ve-h4h"/>
                     </constraints>
                 </imageView>
@@ -143,7 +144,6 @@
                 <constraint firstItem="1GZ-ud-xG6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="95" id="7Wq-IX-Gj8"/>
                 <constraint firstItem="KMO-pG-vEJ" firstAttribute="top" secondItem="HiT-az-SKO" secondAttribute="bottom" constant="8" symbolic="YES" id="B2b-Bq-C3H"/>
                 <constraint firstItem="gbU-dq-jQQ" firstAttribute="top" secondItem="HiT-az-SKO" secondAttribute="bottom" constant="13" id="BBk-NZ-kfJ"/>
-                <constraint firstItem="HiT-az-SKO" firstAttribute="top" secondItem="NmZ-uF-Ojg" secondAttribute="bottom" constant="39" id="Eou-u5-mWl"/>
                 <constraint firstItem="M5d-ze-Lg1" firstAttribute="top" secondItem="HiT-az-SKO" secondAttribute="bottom" constant="118" id="JUu-i2-apO"/>
                 <constraint firstAttribute="trailing" secondItem="1GZ-ud-xG6" secondAttribute="trailing" constant="43" id="Ohm-I8-tEu"/>
                 <constraint firstItem="1GZ-ud-xG6" firstAttribute="width" secondItem="yEQ-oe-BMG" secondAttribute="width" id="RXZ-hv-a1E"/>
@@ -154,7 +154,7 @@
                 <constraint firstAttribute="bottom" secondItem="eeL-Zq-Gd0" secondAttribute="bottom" constant="12" id="c6F-WU-7Rn"/>
                 <constraint firstItem="gbU-dq-jQQ" firstAttribute="top" secondItem="KMO-pG-vEJ" secondAttribute="top" constant="5" id="dKs-Sj-m4Z"/>
                 <constraint firstItem="yEQ-oe-BMG" firstAttribute="leading" secondItem="HiT-az-SKO" secondAttribute="trailing" constant="-187" id="dfv-va-228"/>
-                <constraint firstItem="NmZ-uF-Ojg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="142" id="ipn-kK-Whe"/>
+                <constraint firstItem="NmZ-uF-Ojg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="92" id="ipn-kK-Whe"/>
                 <constraint firstItem="HiT-az-SKO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="42" id="iv3-ct-S1p"/>
                 <constraint firstItem="NmZ-uF-Ojg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="75" id="jBZ-BZ-D5S"/>
                 <constraint firstAttribute="trailing" secondItem="KMO-pG-vEJ" secondAttribute="trailing" constant="43" id="kAo-Ie-Pxt"/>
@@ -164,7 +164,6 @@
                 <constraint firstAttribute="trailing" secondItem="HiT-az-SKO" secondAttribute="trailing" constant="38" id="qx4-Gg-W87"/>
                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="eeL-Zq-Gd0" secondAttribute="bottom" constant="7" id="u7c-Ts-hzU"/>
                 <constraint firstAttribute="trailing" secondItem="M5d-ze-Lg1" secondAttribute="trailing" constant="68" id="usH-lk-VEN"/>
-                <constraint firstItem="HiT-az-SKO" firstAttribute="top" secondItem="NmZ-uF-Ojg" secondAttribute="bottom" constant="39" id="yYY-ER-Gp7"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

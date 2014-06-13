@@ -104,7 +104,7 @@ static VCGeolocation * sharedGeolocation;
 
 - (void) startTrackingDriverLocation {
     [self sendDriverLocation:nil];
-    _driverLocationTimer = [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(sendDriverLocation:) userInfo:nil repeats:YES];
+    _driverLocationTimer = [NSTimer scheduledTimerWithTimeInterval:30.0 target:self selector:@selector(sendDriverLocation:) userInfo:nil repeats:YES];
     
 }
 

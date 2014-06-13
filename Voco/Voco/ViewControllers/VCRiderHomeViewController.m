@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *commuteButton;
 @property (weak, nonatomic) IBOutlet UIView *locationConfirmationAnnotation;
 @property (weak, nonatomic) IBOutlet UILabel *locationConfirmationLabel;
+@property (weak, nonatomic) IBOutlet UIButton *cancelRideButton;
 @property (strong, nonatomic) MKMapView * map;
 
 @property (nonatomic) NSInteger step;
@@ -37,6 +38,7 @@
 - (IBAction)didTapOnDemand:(id)sender;
 - (IBAction)didTapConfirmLocation:(id)sender;
 - (IBAction)didTapLogout:(id)sender;
+- (IBAction)didTapCancel:(id)sender;
 
 @end
 
@@ -57,6 +59,7 @@
     
     _mapCenterPin.hidden = YES;
     _locationConfirmationAnnotation.hidden = YES;
+    _cancelRideButton.hidden = YES;
     
     _map = [[MKMapView alloc] initWithFrame:self.view.bounds];
     _map.showsUserLocation = YES;
@@ -79,6 +82,8 @@
     _commuteButton.hidden = YES;
     _mapCenterPin.hidden = NO;
     _locationConfirmationAnnotation.hidden = NO;
+    _cancelRideButton.hidden = NO;
+
     
     _rideRequest = [[VCRideRequest alloc] init];
     _rideRequest.type = RIDE_REQUEST_TYPE_ON_DEMAND;
@@ -153,6 +158,20 @@
 - (IBAction)didTapLogout:(id)sender {
     [[VCUserState instance] logout];
     [VCInterfaceModes showRiderSigninInterface];
+}
+
+- (IBAction)didTapCancel:(id)sender {
+    
+    [_map removeAnnotations:_map.annotations];
+    _locationConfirmationLabel.text = @"Set Pick Up Location";
+    _mapCenterPin.hidden = YES;
+    _locationConfirmationAnnotation.hidden = YES;
+    _destinationEntryView.hidden = YES;
+    _departureEntryView.hidden = YES;
+    _onDemandButton.hidden = NO;
+    _commuteButton.hidden = NO;
+    _cancelRideButton.hidden = YES;
+    _step = kStepSetDepartureLocation;
 }
 
 #pragma mark MKMapViewDelegate
