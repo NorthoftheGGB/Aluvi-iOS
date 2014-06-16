@@ -10,16 +10,6 @@
 
 @interface VCRideStateMachineFactory ()
 
-@property (nonatomic, strong) TKState * created;
-@property (nonatomic, strong) TKState * requested;
-@property (nonatomic, strong) TKState * declined;
-@property (nonatomic, strong) TKState * found;
-@property (nonatomic, strong) TKState * scheduled;
-@property (nonatomic, strong) TKState * driverCancelled;
-@property (nonatomic, strong) TKState * riderCancelled;
-@property (nonatomic, strong) TKState * complete;
-@property (nonatomic, strong) TKState * paymentProblem;
-
 @property (nonatomic, strong) TKEvent * rideRequested;
 @property (nonatomic, strong) TKEvent * rideCancelledByRider;
 @property (nonatomic, strong) TKEvent * rideFound;
@@ -82,14 +72,25 @@ static VCRideStateMachineFactory *sharedSingleton;
 - (TKStateMachine *) createOnDemandStateMachine {
     TKStateMachine * stateMachine = [TKStateMachine new];
     [stateMachine addEvents:@[_rideRequested, _rideCancelledByRider, _rideFound, _rideScheduled, _rideDeclined, _rideCancelledByDriver, _paymentProcessedSuccessfully, _paymentFailure]];
-    stateMachine.initialState = _created;
     return stateMachine;
 }
 
 + (TKStateMachine *) createOnDemandStateMachine {
     TKStateMachine * stateMachine = [[self factory] createOnDemandStateMachine];
+    stateMachine.initialState = [self factory].created;
     [stateMachine activate];
     return stateMachine;
+}
+
++ (TKStateMachine *) createOnDemandStateMachineWithState:(NSString *)stateName{
+    if(stateName == nil){
+        return [self createOnDemandStateMachine];
+    } else {
+        TKStateMachine * stateMachine = [[self factory] createOnDemandStateMachine];
+        stateMachine.initialState = [stateMachine stateNamed:stateName];
+        [stateMachine activate];
+        return stateMachine;
+    }
 }
 
 

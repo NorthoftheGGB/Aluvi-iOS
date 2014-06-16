@@ -9,12 +9,10 @@
 #import "VCRiderHomeViewController.h"
 #import <MapKit/MapKit.h>
 #import <MBProgressHUD.h>
-#import "VCRideRequest.h"
 #import "VCUserState.h"
 #import "VCInterfaceModes.h"
-
-#import <RestKit.h>
-#import "VCApi.h"
+#import "Ride.h"
+#import "VCRiderApi.h"
 
 #define kStepSetDepartureLocation 1
 #define kStepSetDestinationLocation 2
@@ -32,7 +30,7 @@
 @property (strong, nonatomic) MKMapView * map;
 
 @property (nonatomic) NSInteger step;
-@property (strong, nonatomic) VCRideRequest * rideRequest;
+@property (strong, nonatomic) Ride * ride;
 
 - (IBAction)didTapCommute:(id)sender;
 - (IBAction)didTapOnDemand:(id)sender;
@@ -85,9 +83,8 @@
     _cancelRideButton.hidden = NO;
 
     
-    _rideRequest = [[VCRideRequest alloc] init];
-    _rideRequest.type = RIDE_REQUEST_TYPE_ON_DEMAND;
-    _rideRequest.customerId = [[VCUserState instance].userId intValue];
+    _ride = (Ride *) [NSEntityDescription insertNewObjectForEntityForName:@"Ride" inManagedObjectContext:[VCCoreData managedObjectContext]];
+    _ride.requestType = RIDE_REQUEST_TYPE_ON_DEMAND;
     
     CGRect frame = _departureEntryView.frame;
     frame.origin.y = 20;
@@ -98,8 +95,8 @@
 - (IBAction)didTapConfirmLocation:(id)sender {
     if(_step == kStepSetDepartureLocation){
         CLLocationCoordinate2D departureLocation = [_map centerCoordinate];
-        _rideRequest.departureLatitude = [NSNumber numberWithDouble: departureLocation.latitude];
-        _rideRequest.departureLongitude = [NSNumber numberWithDouble: departureLocation.longitude];
+        _ride.originLatitude = [NSNumber numberWithDouble: departureLocation.latitude];
+        _ride.originLongitude= [NSNumber numberWithDouble: departureLocation.longitude];
         _step = kStepSetDestinationLocation;
         
         MKPointAnnotation *myAnnotation = [[MKPointAnnotation alloc] init];
@@ -118,8 +115,8 @@
         
     } else if (_step == kStepSetDestinationLocation) {
         CLLocationCoordinate2D destinationLocation = [_map centerCoordinate];
-        _rideRequest.destinationLatitude = [NSNumber numberWithDouble: destinationLocation.latitude];
-        _rideRequest.destinationLongitude = [NSNumber numberWithDouble: destinationLocation.longitude];
+        _ride.destinationLatitude = [NSDecimalNumber numberWithDouble: destinationLocation.latitude];
+        _ride.destinationLongitude = [NSDecimalNumber numberWithDouble: destinationLocation.longitude];
         
         MKPointAnnotation *myAnnotation = [[MKPointAnnotation alloc] init];
         myAnnotation.coordinate = CLLocationCoordinate2DMake(destinationLocation.latitude, destinationLocation.longitude);
@@ -133,25 +130,14 @@
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.mode = MBProgressHUDModeAnnularDeterminate;
         hud.labelText = @"Requesting Ride";
-        [[RKObjectManager sharedManager] postObject:_rideRequest path: API_POST_RIDE_REQUEST parameters:nil
-                                            success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                NSLog(@"Ride request accepted by server!");
-                                                [hud hide:YES];
-                                                
-                                                // TODO save request in database, with request id from server?
-                                                
-                                                //VCRideRequestCreated * response = mappingResult.firstObject;
-                                                //_stateLabel.text = @"Ride Requested";
-                                                //_requestButton.enabled = NO;
-                                                //_cancelRequestButton.enabled = YES;
-                                                
-                                            }
-                                            failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                [hud hide:YES];
-
-                                                NSLog(@"Failed send request %@", error);
-                                                [WRUtilities criticalError:error];
-                                            }];
+        
+        // VC RidesAPI
+        [VCRiderApi requestRide:_ride success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            [hud hide:YES];
+        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            [hud hide:YES];
+        }];
+        
     }
 }
 

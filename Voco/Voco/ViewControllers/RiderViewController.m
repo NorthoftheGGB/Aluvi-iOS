@@ -128,7 +128,7 @@ static void * XXContext = &XXContext;
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             NSLog(@"Request send to server!");
                                             
-                                            VCRideRequestCreated * response = mappingResult.firstObject;
+                                            //VCRideRequestCreated * response = mappingResult.firstObject;
                                             _stateLabel.text = @"Ride Requested";
                                             _requestButton.enabled = NO;
                                             _cancelRequestButton.enabled = YES;

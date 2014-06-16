@@ -31,4 +31,32 @@
     
 }
 
++ (void) requestRide:(Ride *) ride
+             success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+             failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+    
+    [[RKObjectManager sharedManager] postObject:[VCRideRequest requestForRide:ride]
+                                           path: API_POST_RIDE_REQUEST
+                                     parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            NSLog(@"Ride request accepted by server!");
+                                            
+                                            VCRideRequestCreated * response = mappingResult.firstObject;
+                                            ride.request_id = response.rideRequestId;
+                                            
+                                            NSError *error;
+                                            [[VCCoreData managedObjectContext] save:&error];
+                                            if(error != nil){
+                                                [WRUtilities criticalError:error];
+                                            }
+                                            success(operation, mappingResult);
+                                        }
+                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            
+                                            NSLog(@"Failed send request %@", error);
+                                            [WRUtilities criticalError:error];
+                                            failure(operation, error);
+                                        }];
+}
+
 @end
