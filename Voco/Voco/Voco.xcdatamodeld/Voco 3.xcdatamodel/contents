@@ -30,29 +30,29 @@
     </entity>
     <entity name="Transport" isAbstract="YES" syncable="YES">
         <attribute name="car_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="destinationLatitude" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="destinationLongitude" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="destinationLatitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="destinationLongitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="destinationPlaceName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="driver_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="estimated_arrival_time" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="meetingPointLatitude" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="meetingPointLongitude" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="meetingPointLatitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="meetingPointLongitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="meetingPointPlaceName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="originLatitude" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="originLongitude" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="originLatitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="originLongitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="request_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="requestedTimestamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="requestType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ride_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="Car" positionX="0" positionY="0" width="128" height="45"/>
         <element name="Drive" positionX="-252" positionY="-69" width="128" height="60"/>
         <element name="LoggedInUser" positionX="-333" positionY="-162" width="128" height="75"/>
         <element name="Offer" positionX="-252" positionY="81" width="128" height="178"/>
-        <element name="Ride" positionX="-108" positionY="-243" width="128" height="45"/>
+        <element name="Ride" positionX="-108" positionY="-243" width="128" height="28"/>
         <element name="Rider" positionX="-497" positionY="18" width="128" height="135"/>
-        <element name="Transport" positionX="-261" positionY="204" width="128" height="283"/>
+        <element name="Transport" positionX="-261" positionY="204" width="128" height="285"/>
     </elements>
 </model>

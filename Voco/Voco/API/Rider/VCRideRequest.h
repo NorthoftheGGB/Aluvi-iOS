@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import <RestKit.h>
+#import "Ride.h"
 
-#define RIDE_REQUEST_TYPE_ON_DEMAND @"on_demand"
-#define RIDE_REQUEST_TYPE_COMMUTER @"commuter"
+
 
 @interface VCRideRequest : NSObject
 
@@ -23,5 +23,6 @@
 @property (nonatomic, strong) NSNumber * destinationLongitude;
 
 + (void) createMappings: (RKObjectManager *) objectManager;
++ (VCRideRequest *) requestForRide:(Ride *)ride;
 
 @end

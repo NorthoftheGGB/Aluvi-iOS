@@ -8,9 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import <RestKit.h>
+#import "Ride.h"
 
 @interface VCRiderApi : NSObject
 
 + (void) setup: (RKObjectManager *) objectManager;
+
++ (void) requestRide:(Ride *) ride
+             success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+             failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
+    
 
 @end
