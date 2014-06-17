@@ -6,7 +6,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCDriverCreateAccountViewController">
             <connections>
+                <outlet property="driversLicenseField" destination="s2r-OW-KbW" id="5Bz-0X-bNY"/>
+                <outlet property="emailField" destination="nxw-7Z-4sD" id="Yqi-LW-pBe"/>
+                <outlet property="locationField" destination="Dj6-cW-nae" id="S0d-va-fK0"/>
+                <outlet property="nameField" destination="W1l-VO-xMw" id="LOW-ak-a2j"/>
+                <outlet property="passwordField" destination="oaW-Sz-Ucf" id="SBc-d8-unu"/>
+                <outlet property="phoneField" destination="zSj-G6-Srz" id="HuO-4T-vyC"/>
+                <outlet property="referralCodeField" destination="wSz-0u-aGU" id="zdV-Er-Vwa"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outletCollection property="Field" destination="Dj6-cW-nae" id="MIX-ab-Wwb"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -50,7 +58,7 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oaW-Sz-Ucf" customClass="VCTextField">
+                        <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oaW-Sz-Ucf" customClass="VCTextField">
                             <rect key="frame" x="0.0" y="80" width="182" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
@@ -148,7 +156,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4rB-BC-vPh" customClass="VCButtonFont">
-                    <rect key="frame" x="58" y="397" width="205" height="63"/>
+                    <rect key="frame" x="58" y="409" width="205" height="63"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <state key="normal" title="Continue" backgroundImage="signUp_btn.png">
@@ -160,11 +168,15 @@
                             <integer key="value" value="30"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didTapContinue:" destination="-1" eventType="touchUpInside" id="VbI-ra-5vB"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="yaM-ve-a6F" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="92" id="1bQ-67-HdX"/>
+                <constraint firstItem="4rB-BC-vPh" firstAttribute="top" secondItem="yaM-ve-a6F" secondAttribute="bottom" constant="61" id="1qr-dS-vod"/>
                 <constraint firstAttribute="centerX" secondItem="yaM-ve-a6F" secondAttribute="centerX" id="55J-F5-kSX"/>
                 <constraint firstItem="4rB-BC-vPh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="58" id="8Go-cy-Km0"/>
                 <constraint firstAttribute="trailing" secondItem="yaM-ve-a6F" secondAttribute="trailing" constant="69" id="a9X-bI-NVd"/>

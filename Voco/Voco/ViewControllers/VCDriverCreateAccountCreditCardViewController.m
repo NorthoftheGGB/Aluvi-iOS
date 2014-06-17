@@ -7,8 +7,20 @@
 //
 
 #import "VCDriverCreateAccountCreditCardViewController.h"
+#import "VCTextField.h"
 
 @interface VCDriverCreateAccountCreditCardViewController ()
+@property (weak, nonatomic) IBOutlet VCTextField *accountNameField;
+@property (weak, nonatomic) IBOutlet VCTextField *accountNumberField;
+@property (weak, nonatomic) IBOutlet VCTextField *routingNumberField;
+@property (weak, nonatomic) IBOutlet VCTextField *brandField;
+@property (weak, nonatomic) IBOutlet VCTextField *modelField;
+@property (weak, nonatomic) IBOutlet VCTextField *yearField;
+@property (weak, nonatomic) IBOutlet VCTextField *licensePlateField;
+
+- (IBAction)didTapTermsOfService:(id)sender;
+- (IBAction)didTapAgree:(id)sender;
+- (IBAction)didTapContinue:(id)sender;
 
 @end
 
@@ -35,4 +47,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)didTapTermsOfService:(id)sender {
+}
+
+- (IBAction)didTapAgree:(id)sender {
+}
+
+- (IBAction)didTapContinue:(id)sender {
+}
 @end

@@ -7,8 +7,19 @@
 //
 
 #import "VCDriverCreateAccountViewController.h"
+#import "VCTextField.h"
 
 @interface VCDriverCreateAccountViewController ()
+
+@property (weak, nonatomic) IBOutlet VCTextField *nameField;
+@property (weak, nonatomic) IBOutlet VCTextField *phoneField;
+@property (weak, nonatomic) IBOutlet VCTextField *passwordField;
+@property (weak, nonatomic) IBOutlet VCTextField *emailField;
+@property (weak, nonatomic) IBOutlet VCTextField *locationField;
+@property (weak, nonatomic) IBOutlet VCTextField *driversLicenseField;
+@property (weak, nonatomic) IBOutlet VCTextField *referralCodeField;
+
+- (IBAction)didTapContinue:(id)sender;
 
 @end
 
@@ -35,4 +46,6 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)didTapContinue:(id)sender {
+}
 @end
