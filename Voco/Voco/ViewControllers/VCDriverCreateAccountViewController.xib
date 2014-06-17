@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCDriverCreateAccountViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yaM-ve-a6F">
+                    <rect key="frame" x="69" y="92" width="182" height="262"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zSj-G6-Srz" customClass="VCTextField">
+                            <rect key="frame" x="0.0" y="40" width="182" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="enr-2G-iHG"/>
+                                <constraint firstAttribute="width" constant="182" id="yI3-6A-CTk"/>
+                            </constraints>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="next"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                    <integer key="value" value="18"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Full Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W1l-VO-xMw" customClass="VCTextField">
+                            <rect key="frame" x="0.0" y="0.0" width="182" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="5VZ-E7-p30"/>
+                                <constraint firstAttribute="width" constant="182" id="eBQ-LQ-Ihl"/>
+                            </constraints>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                    <integer key="value" value="18"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oaW-Sz-Ucf" customClass="VCTextField">
+                            <rect key="frame" x="0.0" y="80" width="182" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="8g8-WO-oPE"/>
+                                <constraint firstAttribute="width" constant="182" id="kbF-xE-XQF"/>
+                            </constraints>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                    <integer key="value" value="18"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nxw-7Z-4sD" customClass="VCTextField">
+                            <rect key="frame" x="0.0" y="118" width="182" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="182" id="38b-lC-LCC"/>
+                                <constraint firstAttribute="height" constant="30" id="Qpp-eW-d9I"/>
+                            </constraints>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                    <integer key="value" value="18"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dj6-cW-nae" customClass="VCTextField">
+                            <rect key="frame" x="0.0" y="156" width="182" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="182" id="i3b-rZ-SVH"/>
+                                <constraint firstAttribute="height" constant="30" id="iYL-ZH-3pH"/>
+                            </constraints>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                    <integer key="value" value="18"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Drivers License Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s2r-OW-KbW" customClass="VCTextField">
+                            <rect key="frame" x="0.0" y="194" width="182" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="182" id="bPR-kf-Z5n"/>
+                                <constraint firstAttribute="height" constant="30" id="mWT-4x-yno"/>
+                            </constraints>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                    <integer key="value" value="18"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Referral code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wSz-0u-aGU" customClass="VCTextField">
+                            <rect key="frame" x="0.0" y="232" width="182" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="U7P-u3-qdu"/>
+                                <constraint firstAttribute="width" constant="182" id="h3n-Ih-bkz"/>
+                            </constraints>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                    <integer key="value" value="18"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="wSz-0u-aGU" firstAttribute="width" secondItem="W1l-VO-xMw" secondAttribute="width" id="6QG-5a-bSW"/>
+                        <constraint firstItem="wSz-0u-aGU" firstAttribute="height" secondItem="Dj6-cW-nae" secondAttribute="height" id="Ar8-6u-7IN"/>
+                        <constraint firstItem="wSz-0u-aGU" firstAttribute="height" secondItem="s2r-OW-KbW" secondAttribute="height" id="DrW-00-XuC"/>
+                        <constraint firstItem="wSz-0u-aGU" firstAttribute="height" secondItem="nxw-7Z-4sD" secondAttribute="height" id="Ja5-2O-xl5"/>
+                        <constraint firstItem="wSz-0u-aGU" firstAttribute="height" secondItem="W1l-VO-xMw" secondAttribute="height" id="Mw5-eP-lOg"/>
+                        <constraint firstItem="wSz-0u-aGU" firstAttribute="width" secondItem="oaW-Sz-Ucf" secondAttribute="width" id="SpT-0H-HFL"/>
+                        <constraint firstItem="wSz-0u-aGU" firstAttribute="width" secondItem="s2r-OW-KbW" secondAttribute="width" id="UPj-pA-QHB"/>
+                        <constraint firstItem="wSz-0u-aGU" firstAttribute="height" secondItem="zSj-G6-Srz" secondAttribute="height" id="XUO-gw-yT6"/>
+                        <constraint firstItem="wSz-0u-aGU" firstAttribute="width" secondItem="zSj-G6-Srz" secondAttribute="width" id="fHb-tm-tmW"/>
+                        <constraint firstItem="wSz-0u-aGU" firstAttribute="height" secondItem="oaW-Sz-Ucf" secondAttribute="height" id="gHb-km-RFy"/>
+                        <constraint firstItem="wSz-0u-aGU" firstAttribute="width" secondItem="nxw-7Z-4sD" secondAttribute="width" id="hqc-Gj-g8J"/>
+                        <constraint firstItem="wSz-0u-aGU" firstAttribute="width" secondItem="Dj6-cW-nae" secondAttribute="width" id="ng1-Bn-3pB"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4rB-BC-vPh" customClass="VCButtonFont">
+                    <rect key="frame" x="58" y="397" width="205" height="63"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <state key="normal" title="Continue" backgroundImage="signUp_btn.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="30"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="yaM-ve-a6F" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="92" id="1bQ-67-HdX"/>
+                <constraint firstAttribute="centerX" secondItem="yaM-ve-a6F" secondAttribute="centerX" id="55J-F5-kSX"/>
+                <constraint firstItem="4rB-BC-vPh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="58" id="8Go-cy-Km0"/>
+                <constraint firstAttribute="trailing" secondItem="yaM-ve-a6F" secondAttribute="trailing" constant="69" id="a9X-bI-NVd"/>
+                <constraint firstItem="yaM-ve-a6F" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="69" id="fJP-CL-zUl"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="signUp_btn.png" width="203" height="61"/>
+    </resources>
+</document>
