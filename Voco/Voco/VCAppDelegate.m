@@ -21,6 +21,7 @@
 #import "VCGeolocation.h"
 #import "VCApi.h"
 #import "VCInterfaceModes.h"
+#import "VCMapQuestRouting.h"
 
 @interface VCAppDelegate ()
 
@@ -43,8 +44,10 @@
     [Crashlytics startWithAPIKey:@"f7d1a0eeca165a46710d606ff21a38fea3c9ec43"];
     
     [VCDialogs instance];
+    
+    // GIS
     [VCGeolocation sharedGeolocation];
-
+    [VCMapQuestRouting setup];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     

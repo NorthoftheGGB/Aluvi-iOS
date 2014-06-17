@@ -12,17 +12,10 @@
 
 + (RKObjectMapping *) getMapping {
     RKObjectMapping * mapping = [RKObjectMapping mappingForClass:[MQShape class]];
-    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"maneuverIndexes"
-                                                                            toKeyPath:@"maneuverIndexes"
-                                                                          withMapping:[RKObjectMapping mappingForClass:[NSNumber class]]]];
-    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"shapePoints"
-                                                                            toKeyPath:@"shapePoints"
-                                                                          withMapping:[RKObjectMapping mappingForClass:[NSNumber class]]]];
-    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"legIndexes"
-                                                                            toKeyPath:@"legIndexes"
-                                                                          withMapping:[RKObjectMapping mappingForClass:[NSNumber class]]]];
+    [mapping addPropertyMapping:[RKAttributeMapping attributeMappingFromKeyPath:@"shapePoints" toKeyPath:@"shapePoints"]];
+    [mapping addPropertyMapping:[RKAttributeMapping attributeMappingFromKeyPath:@"maneuverIndexes" toKeyPath:@"maneuverIndexes"]];
+    [mapping addPropertyMapping:[RKAttributeMapping attributeMappingFromKeyPath:@"legIndexes" toKeyPath:@"legIndexes"]];
     return mapping;
-     
 }
 
 @end

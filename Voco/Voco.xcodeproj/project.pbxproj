@@ -66,6 +66,7 @@
 		F473F009194A5A0200D8C900 /* MQRouteResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F008194A5A0200D8C900 /* MQRouteResponse.m */; };
 		F473F00C194A5A6100D8C900 /* MQShape.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F00B194A5A6100D8C900 /* MQShape.m */; };
 		F473F011194A6D3C00D8C900 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F010194A6D3C00D8C900 /* BaseViewController.m */; };
+		F473F0161950358000D8C900 /* MQRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F0151950358000D8C900 /* MQRoute.m */; };
 		F49EDD0B1946D27F0020B8BB /* VCRiderHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */; };
 		F49EDD0C1946D27F0020B8BB /* VCRiderHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */; };
 		F49EDD101946E2F90020B8BB /* VCInterfaceModes.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD0F1946E2F90020B8BB /* VCInterfaceModes.m */; };
@@ -208,6 +209,8 @@
 		F473F010194A6D3C00D8C900 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		F473F012194FB1A000D8C900 /* Voco 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 3.xcdatamodel"; sourceTree = "<group>"; };
 		F473F013194FB45400D8C900 /* Voco 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 4.xcdatamodel"; sourceTree = "<group>"; };
+		F473F0141950358000D8C900 /* MQRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MQRoute.h; path = Geolocation/MQRoute.h; sourceTree = "<group>"; };
+		F473F0151950358000D8C900 /* MQRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MQRoute.m; path = Geolocation/MQRoute.m; sourceTree = "<group>"; };
 		F49EDD081946D27F0020B8BB /* VCRiderHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderHomeViewController.h; path = ViewControllers/VCRiderHomeViewController.h; sourceTree = "<group>"; };
 		F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRiderHomeViewController.m; path = ViewControllers/VCRiderHomeViewController.m; sourceTree = "<group>"; };
 		F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCRiderHomeViewController.xib; path = ViewControllers/VCRiderHomeViewController.xib; sourceTree = "<group>"; };
@@ -536,6 +539,8 @@
 				F473F008194A5A0200D8C900 /* MQRouteResponse.m */,
 				F473F00A194A5A6100D8C900 /* MQShape.h */,
 				F473F00B194A5A6100D8C900 /* MQShape.m */,
+				F473F0141950358000D8C900 /* MQRoute.h */,
+				F473F0151950358000D8C900 /* MQRoute.m */,
 			);
 			name = MapQuest;
 			sourceTree = "<group>";
@@ -962,6 +967,7 @@
 				F45F7C031935880500A94721 /* Ride.m in Sources */,
 				F4D890561946A2D9007C4671 /* VCObjectRequestOperation.m in Sources */,
 				F473EFDC19491C2B00D8C900 /* VCValidation.m in Sources */,
+				F473F0161950358000D8C900 /* MQRoute.m in Sources */,
 				F4FA0BF6192BF6BF005D8645 /* main.m in Sources */,
 				F45F7C0F1935976E00A94721 /* WRUtilities.m in Sources */,
 				4FE641DA1941607B0059BED1 /* VCTextField.m in Sources */,

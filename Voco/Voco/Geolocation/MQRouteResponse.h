@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MQShape.h"
+#import "MQRoute.h"
 
 @interface MQRouteResponse : NSObject
 
-@property (nonatomic, strong) MQShape * shape;
+@property (nonatomic, strong) MQRoute * route;
 
 + (RKObjectMapping *) getMapping;
 

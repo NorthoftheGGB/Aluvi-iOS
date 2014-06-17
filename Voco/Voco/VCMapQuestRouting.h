@@ -7,9 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
 
-#define MAPQUEST_API_KEY @"Fmjtd%7Cluur2guan0%2Cb5%3Do5-9azxgz"
 
 @interface VCMapQuestRouting : NSObject
 
++ (void) setup;
+
++ (void) route: (CLLocationCoordinate2D) start
+            to: (CLLocationCoordinate2D) end
+        region: (MKCoordinateRegion) region
+       success: ( void ( ^ ) ( MKPolyline * polyline )) success
+       failure: ( void ( ^ ) ( )) failure;
 @end
