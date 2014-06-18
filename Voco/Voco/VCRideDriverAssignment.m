@@ -13,8 +13,7 @@
 + (void) createMappings: (RKObjectManager *) objectManager{
     RKObjectMapping * mapping = [RKObjectMapping mappingForClass:[VCRideDriverAssignment class]];
     [mapping addAttributeMappingsFromDictionary:@{
-                                                  @"ride_id" : @"rideId",
-                                                  @"driver_id" : @"driverId"
+                                                  @"ride_id" : @"rideId"
                                                   }];
     RKObjectMapping * requestMapping = [mapping inverseMapping];
     RKRequestDescriptor *requestDescriptorPostData = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[VCRideDriverAssignment class] rootKeyPath:nil method:RKRequestMethodPOST];

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "VCRestKitMappableObject.h"
+#import <TransitionKit.h>
 
 #define RIDE_REQUEST_TYPE_ON_DEMAND @"on_demand"
 #define RIDE_REQUEST_TYPE_COMMUTER @"commuter"
@@ -19,7 +20,6 @@
 @property (nonatomic, retain) NSString * requestType;
 @property (nonatomic, retain) NSNumber * car_id;
 @property (nonatomic, retain) NSNumber * driver_id;
-@property (nonatomic, retain) NSString * state;
 @property (nonatomic, retain) NSDate * requestedTimestamp;
 @property (nonatomic, retain) NSDate * estimatedArrivalTime;
 @property (nonatomic, retain) NSNumber * originLatitude;
@@ -29,6 +29,12 @@
 @property (nonatomic, retain) NSNumber * destinationLongitude;
 @property (nonatomic, retain) NSNumber * destinationLatitude;
 @property (nonatomic, retain) NSNumber * request_id;
+@property (nonatomic, strong, readonly) TKStateMachine * stateMachine;
 
+
++ (Ride *) rideWithId: (NSNumber *) rideId;
+
+- (NSString *) state;
+- (void) setState: (NSString*) state;
 
 @end

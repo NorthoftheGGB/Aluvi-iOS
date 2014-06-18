@@ -7,12 +7,11 @@
 //
 
 #import "Ride.h"
-#import <TransitionKit.h>
 #import "VCRideStateMachineFactory.h"
 
 @interface Ride ()
 
-@property (nonatomic, strong) TKStateMachine * stateMachine;
+@property (nonatomic, retain) NSString * state;
 
 @end
 
@@ -51,19 +50,37 @@
     
     RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping
                                                                                              method:RKRequestMethodGET
-                                                                                        pathPattern:API_GET_SCHEDULED_RIDES_PATH_PATTERN
+                                                                                        pathPattern:API_GET_SCHEDULED_RIDES
                                                                                             keyPath:nil
                                                                                         statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 }
 
 
++ (Ride *) rideWithId: (NSNumber *) rideId{
+    NSFetchRequest * request = [[NSFetchRequest alloc] initWithEntityName:@"Ride"];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ride_id = %@", rideId];
+    [request setPredicate:predicate];
+    NSError * error;
+    NSArray * rides = [[VCCoreData managedObjectContext] executeFetchRequest:request error:&error];
+    if(rides == nil){
+        [WRUtilities criticalError:error];
+        return nil;
+    }
+    return [rides objectAtIndex:0];
+}
+
 
 - (id) init{
     self = [super init];
     if(self != nil){
+
     }
     return self;
+}
+
+- (void)awakeFromInsert {
+    _stateMachine = [VCRideStateMachineFactory createOnDemandStateMachine];
 }
 
 - (void)awakeFromFetch {
@@ -75,5 +92,8 @@
         self.state = _stateMachine.currentState.name;
     }
 }
+
+
+
 
 @end

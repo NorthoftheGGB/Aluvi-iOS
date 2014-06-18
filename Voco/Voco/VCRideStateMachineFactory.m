@@ -10,14 +10,7 @@
 
 @interface VCRideStateMachineFactory ()
 
-@property (nonatomic, strong) TKEvent * rideRequested;
-@property (nonatomic, strong) TKEvent * rideCancelledByRider;
-@property (nonatomic, strong) TKEvent * rideFound;
-@property (nonatomic, strong) TKEvent * rideScheduled;
-@property (nonatomic, strong) TKEvent * rideDeclined;
-@property (nonatomic, strong) TKEvent * rideCancelledByDriver;
-@property (nonatomic, strong) TKEvent * paymentProcessedSuccessfully;
-@property (nonatomic, strong) TKEvent * paymentFailure;
+
 @end
 
 @implementation VCRideStateMachineFactory
@@ -71,6 +64,7 @@ static VCRideStateMachineFactory *sharedSingleton;
 
 - (TKStateMachine *) createOnDemandStateMachine {
     TKStateMachine * stateMachine = [TKStateMachine new];
+    [stateMachine addStates:@[_created, _requested, _declined, _found, _scheduled, _driverCancelled, _riderCancelled, _complete, _paymentProblem]];
     [stateMachine addEvents:@[_rideRequested, _rideCancelledByRider, _rideFound, _rideScheduled, _rideDeclined, _rideCancelledByDriver, _paymentProcessedSuccessfully, _paymentFailure]];
     return stateMachine;
 }

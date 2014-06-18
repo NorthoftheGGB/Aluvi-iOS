@@ -13,7 +13,6 @@
 + (void)createMappings:(RKObjectManager *)objectManager {
     RKObjectMapping * mapping = [RKObjectMapping mappingForClass:[VCRideIdentity class]];
     [mapping addAttributeMappingsFromDictionary:@{
-                                                    @"rider_id" : @"riderId",
                                                     @"ride_id" : @"rideId"
                                                 }];
     RKObjectMapping * requestMapping = [mapping inverseMapping];

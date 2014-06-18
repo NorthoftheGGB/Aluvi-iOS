@@ -69,6 +69,26 @@ static UIAlertView * criticalErrorView = nil;
     
 }
 
++ (void) stateErrorWithString: (NSString *) error {
+    
+    NSLog(@"%@ Critical Error: %@", [[NSDate date] pretty] , error);
+    
+    if(criticalErrorView != nil){
+        [criticalErrorView dismissWithClickedButtonIndex:0 animated:NO];
+        criticalErrorView = nil;
+    }
+    
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle: @"Error"
+                          message: error
+                          delegate: self
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil];
+    criticalErrorView = alert;
+    [alert performSelectorOnMainThread:@selector(show) withObject:nil waitUntilDone:YES];
+    
+}
+
 + (void) successMessage: (NSString *) message {
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"

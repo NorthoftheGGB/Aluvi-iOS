@@ -7,14 +7,18 @@
 //
 
 #import "VCPushManager.h"
+#import "VCDevicesApi.h"
+#import "VCPushApi.h"
+#import "VCRiderApi.h"
+
 #import "VCDevice.h"
 #import "WRUtilities.h"
 #import "VCRideOffer.h"
 #import "VCDialogs.h"
 #import "VCUserState.h"
-#import "VCPushApi.h"
 #import "VCCoreData.h"
 #import "Offer.h"
+#import "VCRideStateMachineFactory.h"
 
 @implementation VCPushManager
 
@@ -28,33 +32,14 @@
 
 + (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
     
-    NSString *str = [NSString
-                     stringWithFormat:@"Device Token=%@",deviceToken];
-    NSLog(@"%@", str);
-    
-    // update device registration
-    NSUUID *uuidForVendor = [[UIDevice currentDevice] identifierForVendor];
-    NSString *uuid = [uuidForVendor UUIDString];
-    
     // send PATCH
+    NSString * pushToken = [self stringFromDeviceTokenData: deviceToken];
+    [VCDevicesApi updatePushToken:pushToken success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
     
-    VCDevice * device = [[VCDevice alloc] init];
-    device.pushToken = [self stringFromDeviceTokenData: deviceToken];
-    //device.userId = [NSNumber numberWithInt:1]; // TODO get the current logged in user
-    // TODO once user logs in, need to update this as well
-    [[RKObjectManager sharedManager] patchObject:device
-                                            path: [NSString stringWithFormat:@"%@%@", API_DEVICES, uuid]
-                                      parameters:nil
-                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                             NSLog(@"Push token accepted by server!");
-                                             
-                                         }
-                                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                             NSLog(@"Failed send request %@", error);
-                                             [WRUtilities criticalError:error];
-                                             
-                                             // TODO Re-transmit push token later
-                                         }];
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        //TODO need to save and send again later
+    }];
+
     
     
 }
@@ -94,7 +79,7 @@
     NSString * type = [userInfo objectForKey:VC_PUSH_TYPE_KEY];
     if([type isEqualToString:@"ride_offer"]) {
         if(true) { //condition
-            [[RKObjectManager sharedManager] getObjectsAtPath:[VCApi getRideOffersPath:[VCUserState instance].userId]
+            [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_RIDE_OFFERS
                                                    parameters:nil
                                                       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                           // save in database - done automatically by Entity Mapping
@@ -144,7 +129,7 @@
     NSString * type = [payload objectForKey:VC_PUSH_TYPE_KEY];
     if([type isEqualToString:@"ride_offer"]){
         NSNumber * offer_id = [payload objectForKey:VC_PUSH_OFFER_ID_KEY];
-        [[RKObjectManager sharedManager] getObjectsAtPath:[VCApi getRideOffersPath:[VCUserState instance].userId]
+        [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_RIDE_OFFERS
                                                parameters:nil
                                                   success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                       
@@ -213,33 +198,40 @@
 }
 
 + (void) handleRideFoundNotification:(NSDictionary *) payload {
-    // TODO And update all rides for this user using RestKit entity
-    [[RKObjectManager sharedManager] getObjectsAtPath:[VCApi getScheduledRidesPath:[VCUserState instance].userId] parameters:nil
-                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                  
-                                                  NSNumber * rideId = [payload objectForKey:VC_PUSH_RIDE_ID_KEY];
-                                                  NSFetchRequest * request = [[NSFetchRequest alloc] initWithEntityName:@"Ride"];
-                                                  NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ride_id = %@", rideId];
-                                                  [request setPredicate:predicate];
-                                                  NSError * error;
-                                                  NSArray * rides = [[VCCoreData managedObjectContext] executeFetchRequest:request error:&error];
-                                                  if(rides == nil){
-                                                      [WRUtilities criticalError:error];
-                                                      return;
-                                                  }
-                                                  if([rides count] > 0){
-                                                      [VCUserState instance].riderState = kUserStateRideScheduled;
-                                                      [VCUserState instance].rideId = rideId;
-                                                      [[VCDialogs instance] rideFound: [payload objectForKey:VC_PUSH_REQUEST_ID_KEY]];
-                                                      
-                                                  } else {
-                                                      [WRUtilities criticalErrorWithString:@"Ride no longer exists"];
-                                                      
-                                                  }
-                                                  
-                                              } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                  
-                                              }];
+    
+    [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        
+        NSNumber * rideId = [payload objectForKey:VC_PUSH_RIDE_ID_KEY];
+        NSFetchRequest * request = [[NSFetchRequest alloc] initWithEntityName:@"Ride"];
+        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ride_id = %@", rideId];
+        [request setPredicate:predicate];
+        NSError * error;
+        NSArray * rides = [[VCCoreData managedObjectContext] executeFetchRequest:request error:&error];
+        if(rides == nil){
+            [WRUtilities criticalError:error];
+            return;
+        }
+        if([rides count] > 0){
+            [[VCDialogs instance] rideFound: [payload objectForKey:VC_PUSH_REQUEST_ID_KEY]];
+            Ride * ride = [rides objectAtIndex:0];
+            NSError * error;
+            [ride.stateMachine fireEvent:[VCRideStateMachineFactory factory].rideFound userInfo:@{} error:&error];
+            if(error != nil) {
+                [WRUtilities criticalError:error];
+            }
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"ride_found" object:payload userInfo:@{}];
+            
+        } else {
+            [WRUtilities stateErrorWithString:@"Ride no longer exists"];
+            
+        }
+        
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [WRUtilities criticalError:error];
+    }];
+    
+    
+
     
 
 }

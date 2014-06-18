@@ -16,4 +16,8 @@
 + (NSPersistentStoreCoordinator *) persistentStoreCoordinator;
 + (RKManagedObjectStore *) managedObjectStore;
 
++ (void) clearUserData;
++ (void) saveContext;
+
+
 @end

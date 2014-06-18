@@ -13,8 +13,8 @@
 + (RKObjectMapping *) getMapping {
     RKObjectMapping * mapping = [RKObjectMapping mappingForClass:[MQRouteResponse class]];
     
-    RKObjectMapping * shapeMapping = [MQShape getMapping];
-    [mapping addRelationshipMappingWithSourceKeyPath:@"shape" mapping:shapeMapping];
+    RKObjectMapping * routeMapping = [MQRoute getMapping];
+    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"route" toKeyPath:@"route" withMapping:routeMapping]];
     
     return mapping;
 }

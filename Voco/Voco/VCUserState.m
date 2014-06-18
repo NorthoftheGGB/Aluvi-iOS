@@ -9,6 +9,7 @@
 #import "VCUserState.h"
 #import "VCUsersApi.h"
 #import "VCApi.h"
+#import "VCDevicesApi.h"
 
 static VCUserState *sharedSingleton;
 
@@ -19,8 +20,6 @@ static VCUserState *sharedSingleton;
         sharedSingleton = [[VCUserState alloc] init];
         NSLog(@"%@", @"Warning: hard coded car id");
         sharedSingleton.carId = [NSNumber numberWithInt:1];
-        NSLog(@"%@", @"Warning: hard coded user id");
-        sharedSingleton.userId = [NSNumber numberWithInt:1];
     }
     return sharedSingleton;
 }
@@ -55,7 +54,12 @@ static VCUserState *sharedSingleton;
     
     [VCUsersApi login:[RKObjectManager sharedManager] phone:phone password:password
               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                  success();
+                  [VCDevicesApi updateUserWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                      success();
+                  } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                      [WRUtilities criticalError:error];
+                  }];
+                  
               } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                   failure();
               }];
@@ -63,7 +67,13 @@ static VCUserState *sharedSingleton;
 }
 
 - (void) logout {
+    
     [VCApi clearApiToken];
+    [VCDevicesApi updateUserWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [VCCoreData clearUserData];
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [WRUtilities criticalError:error];
+    }];
 }
 
 @end

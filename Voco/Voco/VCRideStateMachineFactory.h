@@ -31,6 +31,15 @@
 @property (nonatomic, strong) TKState * complete;
 @property (nonatomic, strong) TKState * paymentProblem;
 
+@property (nonatomic, strong) TKEvent * rideRequested;
+@property (nonatomic, strong) TKEvent * rideCancelledByRider;
+@property (nonatomic, strong) TKEvent * rideFound;
+@property (nonatomic, strong) TKEvent * rideScheduled;
+@property (nonatomic, strong) TKEvent * rideDeclined;
+@property (nonatomic, strong) TKEvent * rideCancelledByDriver;
+@property (nonatomic, strong) TKEvent * paymentProcessedSuccessfully;
+@property (nonatomic, strong) TKEvent * paymentFailure;
+
 + (VCRideStateMachineFactory *) factory;
 + (TKStateMachine *) createOnDemandStateMachine;
 + (TKStateMachine *) createOnDemandStateMachineWithState:(NSString *) initialState;

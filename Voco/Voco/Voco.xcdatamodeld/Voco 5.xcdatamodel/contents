@@ -30,7 +30,7 @@
         <attribute name="request_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="requestedTimestamp" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="requestType" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="ride_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="ride_id" optional="YES" attributeType="Integer 64" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Rider" syncable="YES">
@@ -45,7 +45,7 @@
         <element name="Car" positionX="0" positionY="0" width="128" height="45"/>
         <element name="Drive" positionX="-252" positionY="-69" width="128" height="60"/>
         <element name="Offer" positionX="-252" positionY="81" width="128" height="178"/>
-        <element name="Ride" positionX="-108" positionY="-243" width="128" height="283"/>
+        <element name="Ride" positionX="-108" positionY="-243" width="128" height="285"/>
         <element name="Rider" positionX="-497" positionY="18" width="128" height="135"/>
     </elements>
 </model>

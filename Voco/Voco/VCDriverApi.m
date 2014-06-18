@@ -17,17 +17,10 @@
 @implementation VCDriverApi
 
 + (void) setup: (RKObjectManager *) objectManager {
-    // RKObjectManager * objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:API_BASE_URL]];
-    // RKManagedObjectStore *managedObjectStore = [[RKManagedObjectStore alloc] initWithManagedObjectModel:self.managedObjectModel];
-    
     [VCRideDriverAssignment createMappings:objectManager];
     [VCRideIdentity createMappings:objectManager];
     [Offer createMappings:objectManager];
     [VCLocation createMappings:objectManager];
-    
-    //RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
-    //RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
-    
     
 }
 @end

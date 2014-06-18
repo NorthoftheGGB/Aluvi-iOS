@@ -72,7 +72,6 @@ static VCDialogs *sharedSingleton;
                           if (buttonIndex == [alertView cancelButtonIndex]) {
                               VCRideDriverAssignment * assignment = [[VCRideDriverAssignment alloc] init];
                               assignment.rideId = rideOffer.ride_id;
-                              assignment.driverId = [VCUserState instance].userId;
                               
                               [[RKObjectManager sharedManager] postObject:assignment path:API_POST_RIDE_DECLINED parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                   [VCUserState instance].driverState = @"Ride Declined";
@@ -116,7 +115,6 @@ static VCDialogs *sharedSingleton;
                           } else if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Yes"]) {
                               VCRideDriverAssignment * assignment = [[VCRideDriverAssignment alloc] init];
                               assignment.rideId = rideOffer.ride_id;
-                              assignment.driverId = [VCUserState instance].userId;
                               
                               CLS_LOG(@"%@", @"API_POST_RIDE_ACCEPTED");
                               [[RKObjectManager sharedManager] postObject:assignment path:API_POST_RIDE_ACCEPTED parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
