@@ -43,7 +43,19 @@
     deckController.leftSize = 0;
     deckController.openSlideAnimationDuration = 0.20f;
     deckController.closeSlideAnimationDuration = 0.20f;
-    [[UIApplication sharedApplication] delegate].window.rootViewController = deckController;
+    
+    UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:deckController];
+
+    
+    [[UIApplication sharedApplication] delegate].window.rootViewController = navigationController;
+    
+    deckController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu-list"]
+                                                                             style:UIBarButtonItemStyleBordered
+                                                                            target:deckController
+                                                                            action:@selector(toggleLeftView)];
+    
+    [deckController.navigationController.navigationBar setTranslucent:YES];
+
 
 }
 

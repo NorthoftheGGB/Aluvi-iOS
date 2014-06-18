@@ -68,6 +68,8 @@
     _map.showsUserLocation = YES;
     _map.userTrackingMode = YES;
     [self.view insertSubview:_map atIndex:0];
+    
+
 
 }
 
@@ -169,17 +171,35 @@
 
 - (IBAction)didTapCancel:(id)sender {
     
-    [_map removeAnnotations:_map.annotations];
-    _locationConfirmationLabel.text = @"Set Pick Up Location";
-    _mapCenterPin.hidden = YES;
-    _locationConfirmationAnnotation.hidden = YES;
-    _destinationEntryView.hidden = YES;
-    _departureEntryView.hidden = YES;
-    _onDemandButton.hidden = NO;
-    _commuteButton.hidden = NO;
-    _cancelRideButton.hidden = YES;
-    _step = kStepSetDepartureLocation;
-    [_map removeOverlay:_routeOverlay];
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeAnnularDeterminate;
+    hud.labelText = @"Canceling Ride";
+    
+
+    // VC RidesAPI
+    [VCRiderApi cancelRide:_ride success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        
+        [_map removeAnnotations:_map.annotations];
+        _locationConfirmationLabel.text = @"Set Pick Up Location";
+        _mapCenterPin.hidden = YES;
+        _locationConfirmationAnnotation.hidden = YES;
+        _destinationEntryView.hidden = YES;
+        _departureEntryView.hidden = YES;
+        _onDemandButton.hidden = NO;
+        _commuteButton.hidden = NO;
+        _cancelRideButton.hidden = YES;
+        _step = kStepSetDepartureLocation;
+        [_map removeOverlay:_routeOverlay];
+        [hud hide:YES];
+        
+        [UIAlertView showWithTitle:@"Ride Cancelled" message:@"Your ride has been cancelled" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [hud hide:YES];
+        [WRUtilities criticalError:error];
+    }];
+    
 }
 
 #pragma mark MKMapViewDelegate

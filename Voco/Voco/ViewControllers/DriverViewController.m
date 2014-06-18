@@ -44,12 +44,10 @@ static void * XXContext = &XXContext;
 
 - (void)viewWillAppear:(BOOL)animated {
     
-    [VCUserState instance].userId = [NSNumber numberWithInteger:1];
-    
     NSUUID *uuidForVendor = [[UIDevice currentDevice] identifierForVendor];
     NSString *uuid = [uuidForVendor UUIDString];
     VCDevice * device = [[VCDevice alloc] init];
-    device.userId = [VCUserState instance].userId;
+    //device.userId = [VCUserState instance].userId;
     // TODO once user logs in, need to update this as well
     [[RKObjectManager sharedManager] patchObject:device
                                             path: [NSString stringWithFormat:@"%@%@", API_DEVICES, uuid]
@@ -115,7 +113,6 @@ static void * XXContext = &XXContext;
     // Send cancel request to server
     VCRideDriverAssignment * rideIdentity = [[VCRideDriverAssignment alloc] init];
     rideIdentity.rideId = [VCUserState instance].rideId;
-    rideIdentity.driverId = [VCUserState instance].userId;
     [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_DRIVER_CANCELLED parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             _cancelRideButton.enabled = NO;
@@ -131,7 +128,6 @@ static void * XXContext = &XXContext;
 - (IBAction)didTapPickedUpRider:(id)sender {
     VCRideDriverAssignment * rideIdentity = [[VCRideDriverAssignment alloc] init];
     rideIdentity.rideId = [VCUserState instance].rideId;
-    rideIdentity.driverId = [VCUserState instance].userId;
     [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_RIDE_PICKUP parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             [VCUserState instance].driverState = kUserStateRideStarted;
@@ -144,7 +140,6 @@ static void * XXContext = &XXContext;
     VCRideDriverAssignment * rideIdentity = [[VCRideDriverAssignment alloc] init];  // TODO objects like this can be generated from
                                                                     // global state of the app, i.e. in another method
     rideIdentity.rideId = [VCUserState instance].rideId;
-    rideIdentity.driverId = [VCUserState instance].userId;
     [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_RIDE_ARRIVED parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             [VCUserState instance].driverState = kUserStateRideCompleted;

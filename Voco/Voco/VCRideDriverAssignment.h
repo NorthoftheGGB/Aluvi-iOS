@@ -12,6 +12,5 @@
 @interface VCRideDriverAssignment : NSObject <VCRestKitMappableObject>
 
 @property (nonatomic, strong) NSNumber * rideId;
-@property (nonatomic, strong) NSNumber * driverId;
 
 @end

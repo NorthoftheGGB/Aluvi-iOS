@@ -12,6 +12,5 @@
 @interface VCRideIdentity : NSObject <VCRestKitMappableObject>
 
 @property(nonatomic, strong) NSNumber * rideId;
-@property(nonatomic, strong) NSNumber * riderId;
 
 @end

@@ -14,6 +14,7 @@
 #import "VCUsersApi.h"
 #import "VCObjectRequestOperation.h"
 #import "VCAppDelegate.h"
+#import "VCCoreData.h"
 
 static NSString * apiToken;
 
@@ -27,10 +28,13 @@ static NSString * apiToken;
     [VCDriverApi setup: objectManager];
     [VCUsersApi setup: objectManager];
     
-    objectManager.managedObjectStore = [((VCAppDelegate*)[UIApplication sharedApplication].delegate) managedObjectStore];
-    
+    objectManager.managedObjectStore = [VCCoreData managedObjectStore];
     
     [self setApiToken: [[NSUserDefaults standardUserDefaults] stringForKey:API_TOKEN_KEY]];
+    
+    RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
+    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
+
 }
 
 + (NSString *) apiToken {

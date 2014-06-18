@@ -25,8 +25,6 @@
 @property(nonatomic, strong) NSString * driverState;
 
 @property(nonatomic, strong) NSNumber * carId;
-@property(nonatomic, strong) NSNumber * userId;
-
 
 @property(nonatomic, strong) NSString * apiToken;
 

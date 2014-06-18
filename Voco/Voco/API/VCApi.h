@@ -16,6 +16,7 @@
 #endif
 
 #define API_POST_RIDE_REQUEST @"rides/request"
+#define API_POST_REQUEST_CANCELLED @"rides/request/cancel"
 #define API_GET_RIDES_STATE @"rides/state"
 #define API_POST_RIDE_ACCEPTED @"rides/accepted"
 #define API_POST_RIDE_DECLINED @"rides/declined"
@@ -65,7 +66,6 @@
 // path helpers
 + (NSString *) devicesObjectPathPattern;
 + (NSString *) getRideOffersPath:(NSNumber*) driverId;
-+ (NSString *) getScheduledRidesPath:(NSNumber*) riderId;
 + (NSString *) getPutGeoCarPath:(NSNumber *) carId;
 
 @end

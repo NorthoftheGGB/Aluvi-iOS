@@ -67,6 +67,10 @@
 		F473F00C194A5A6100D8C900 /* MQShape.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F00B194A5A6100D8C900 /* MQShape.m */; };
 		F473F011194A6D3C00D8C900 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F010194A6D3C00D8C900 /* BaseViewController.m */; };
 		F473F0161950358000D8C900 /* MQRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F0151950358000D8C900 /* MQRoute.m */; };
+		F473F019195044AA00D8C900 /* menu-list.png in Resources */ = {isa = PBXBuildFile; fileRef = F473F017195044AA00D8C900 /* menu-list.png */; };
+		F473F01A195044AA00D8C900 /* menu-list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F473F018195044AA00D8C900 /* menu-list@2x.png */; };
+		F473F01D195113D100D8C900 /* VCRequestUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F01C195113D100D8C900 /* VCRequestUpdate.m */; };
+		F473F02019511D7700D8C900 /* VCDevicesApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F01F19511D7700D8C900 /* VCDevicesApi.m */; };
 		F49EDD0B1946D27F0020B8BB /* VCRiderHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */; };
 		F49EDD0C1946D27F0020B8BB /* VCRiderHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */; };
 		F49EDD101946E2F90020B8BB /* VCInterfaceModes.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD0F1946E2F90020B8BB /* VCInterfaceModes.m */; };
@@ -211,6 +215,13 @@
 		F473F013194FB45400D8C900 /* Voco 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 4.xcdatamodel"; sourceTree = "<group>"; };
 		F473F0141950358000D8C900 /* MQRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MQRoute.h; path = Geolocation/MQRoute.h; sourceTree = "<group>"; };
 		F473F0151950358000D8C900 /* MQRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MQRoute.m; path = Geolocation/MQRoute.m; sourceTree = "<group>"; };
+		F473F017195044AA00D8C900 /* menu-list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-list.png"; sourceTree = "<group>"; };
+		F473F018195044AA00D8C900 /* menu-list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-list@2x.png"; sourceTree = "<group>"; };
+		F473F01B195113D100D8C900 /* VCRequestUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRequestUpdate.h; path = API/Rider/VCRequestUpdate.h; sourceTree = "<group>"; };
+		F473F01C195113D100D8C900 /* VCRequestUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRequestUpdate.m; path = API/Rider/VCRequestUpdate.m; sourceTree = "<group>"; };
+		F473F01E19511D7700D8C900 /* VCDevicesApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCDevicesApi.h; path = API/Devices/VCDevicesApi.h; sourceTree = "<group>"; };
+		F473F01F19511D7700D8C900 /* VCDevicesApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCDevicesApi.m; path = API/Devices/VCDevicesApi.m; sourceTree = "<group>"; };
+		F473F02119513B6300D8C900 /* Voco 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 5.xcdatamodel"; sourceTree = "<group>"; };
 		F49EDD081946D27F0020B8BB /* VCRiderHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderHomeViewController.h; path = ViewControllers/VCRiderHomeViewController.h; sourceTree = "<group>"; };
 		F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRiderHomeViewController.m; path = ViewControllers/VCRiderHomeViewController.m; sourceTree = "<group>"; };
 		F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCRiderHomeViewController.xib; path = ViewControllers/VCRiderHomeViewController.xib; sourceTree = "<group>"; };
@@ -356,6 +367,8 @@
 		4FE641E1194168E80059BED1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				F473F017195044AA00D8C900 /* menu-list.png */,
+				F473F018195044AA00D8C900 /* menu-list@2x.png */,
 				F473EFFD19497FBF00D8C900 /* map_pin_fill-512.png */,
 				F49EDD071946A63F0020B8BB /* Fonts */,
 				4FE641E2194168E80059BED1 /* bubble@2x.png */,
@@ -428,6 +441,8 @@
 				F45F7BFB19357B8A00A94721 /* VCRideRequest.m */,
 				F4FE1B22193E722B00354886 /* VCRideIdentity.h */,
 				F4FE1B23193E722B00354886 /* VCRideIdentity.m */,
+				F473F01B195113D100D8C900 /* VCRequestUpdate.h */,
+				F473F01C195113D100D8C900 /* VCRequestUpdate.m */,
 				F45F7C071935898200A94721 /* Responses */,
 			);
 			name = Rider;
@@ -469,7 +484,7 @@
 			children = (
 				4FE641B61941562C0059BED1 /* Sign-In and Registration */,
 				F473EFE919492CA400D8C900 /* Ride System */,
-				F473EFEA19492CBE00D8C900 /* Dev */,
+				F473EFEA19492CBE00D8C900 /* Platform V1 */,
 			);
 			name = Rider;
 			sourceTree = "<group>";
@@ -510,14 +525,14 @@
 			name = "Ride System";
 			sourceTree = "<group>";
 		};
-		F473EFEA19492CBE00D8C900 /* Dev */ = {
+		F473EFEA19492CBE00D8C900 /* Platform V1 */ = {
 			isa = PBXGroup;
 			children = (
 				F45F7BE8193575A900A94721 /* RiderViewController.h */,
 				F45F7BE9193575A900A94721 /* RiderViewController.m */,
 				F45F7BEA193575A900A94721 /* RiderViewController.xib */,
 			);
-			name = Dev;
+			name = "Platform V1";
 			sourceTree = "<group>";
 		};
 		F473F002194A549A00D8C900 /* GIS */ = {
@@ -694,6 +709,8 @@
 			children = (
 				F4FE1AEF1936BE0900354886 /* VCDevice.h */,
 				F4FE1AF01936BE0900354886 /* VCDevice.m */,
+				F473F01E19511D7700D8C900 /* VCDevicesApi.h */,
+				F473F01F19511D7700D8C900 /* VCDevicesApi.m */,
 			);
 			name = Devices;
 			sourceTree = "<group>";
@@ -837,6 +854,7 @@
 				4FE641F5194168E80059BED1 /* loginBox@2x.png in Resources */,
 				4F37E2DD1949574000753172 /* KlinicSlabLight.ttf in Resources */,
 				4F37E2DE1949574000753172 /* KlinicSlabLightIt.ttf in Resources */,
+				F473F01A195044AA00D8C900 /* menu-list@2x.png in Resources */,
 				4FE641FB194168E80059BED1 /* VOCOfinal@2x.png in Resources */,
 				4FE641F1194168E80059BED1 /* driver_must_box@2x.png in Resources */,
 				4FE641F9194168E80059BED1 /* signupBox@2x.png in Resources */,
@@ -844,6 +862,7 @@
 				4FE641C0194157C60059BED1 /* DriverRequestViewController.xib in Resources */,
 				4FE641F2194168E80059BED1 /* driving_car@2x.png in Resources */,
 				4F37E2DF1949574000753172 /* KlinicSlabMedium.ttf in Resources */,
+				F473F019195044AA00D8C900 /* menu-list.png in Resources */,
 				4FE641BB194157510059BED1 /* SignInViewController.xib in Resources */,
 				F473EFFE19497FBF00D8C900 /* map_pin_fill-512.png in Resources */,
 				4FE641C5194157EB0059BED1 /* PasswordRecoveryViewController.xib in Resources */,
@@ -939,6 +958,7 @@
 				F4FE1B121938581C00354886 /* VCDialogs.m in Sources */,
 				F473F009194A5A0200D8C900 /* MQRouteResponse.m in Sources */,
 				4FE641BA194157510059BED1 /* SignInViewController.m in Sources */,
+				F473F02019511D7700D8C900 /* VCDevicesApi.m in Sources */,
 				F4FE1AFE193839DF00354886 /* Drive.m in Sources */,
 				F4D8904A19468E44007C4671 /* VCNewUser.m in Sources */,
 				F473EFE619492C2A00D8C900 /* IISideController.m in Sources */,
@@ -952,6 +972,7 @@
 				F4FE1B18193D2F3F00354886 /* Offer.m in Sources */,
 				F473F005194A54AC00D8C900 /* VCMapQuestRouting.m in Sources */,
 				F49EDD101946E2F90020B8BB /* VCInterfaceModes.m in Sources */,
+				F473F01D195113D100D8C900 /* VCRequestUpdate.m in Sources */,
 				F4FE1B1B193D301F00354886 /* VCCoreData.m in Sources */,
 				F473F001194A498E00D8C900 /* VCLabel.m in Sources */,
 				F473EFEE1949304300D8C900 /* VCRiderMenuViewController.m in Sources */,
@@ -1106,7 +1127,7 @@
 				INFOPLIST_FILE = "Voco/Voco-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "59D43E82-A5EF-46E2-9F4B-CF98E089D691";
+				PROVISIONING_PROFILE = "39AC40A3-91DF-4F64-810F-7AE0761CF1D6";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1133,7 +1154,7 @@
 				INFOPLIST_FILE = "Voco/Voco-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "59D43E82-A5EF-46E2-9F4B-CF98E089D691";
+				PROVISIONING_PROFILE = "39AC40A3-91DF-4F64-810F-7AE0761CF1D6";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1217,9 +1238,10 @@
 				F4FE1B21193DCB6700354886 /* Voco 2.xcdatamodel */,
 				F473F012194FB1A000D8C900 /* Voco 3.xcdatamodel */,
 				F473F013194FB45400D8C900 /* Voco 4.xcdatamodel */,
+				F473F02119513B6300D8C900 /* Voco 5.xcdatamodel */,
 				F4FA0BFC192BF6BF005D8645 /* Voco.xcdatamodel */,
 			);
-			currentVersion = F473F013194FB45400D8C900 /* Voco 4.xcdatamodel */;
+			currentVersion = F473F02119513B6300D8C900 /* Voco 5.xcdatamodel */;
 			path = Voco.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

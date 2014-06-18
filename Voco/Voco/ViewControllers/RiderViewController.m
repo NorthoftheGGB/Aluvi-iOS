@@ -82,12 +82,12 @@ static void * XXContext = &XXContext;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [VCUserState instance].userId = [NSNumber numberWithInteger:3];
+    //[VCUserState instance].userId = [NSNumber numberWithInteger:3];
     
     NSUUID *uuidForVendor = [[UIDevice currentDevice] identifierForVendor];
     NSString *uuid = [uuidForVendor UUIDString];
     VCDevice * device = [[VCDevice alloc] init];
-    device.userId = [VCUserState instance].userId;
+    //device.userId = [VCUserState instance].userId;
     // TODO once user logs in, need to update this as well
     [[RKObjectManager sharedManager] patchObject:device
                                             path: [NSString stringWithFormat:@"%@%@", API_DEVICES, uuid]
@@ -155,7 +155,6 @@ static void * XXContext = &XXContext;
     // Send cancel request to server
     VCRideIdentity * rideIdentity = [[VCRideIdentity alloc] init];
     rideIdentity.rideId = [VCUserState instance].rideId;
-    rideIdentity.riderId = [VCUserState instance].userId;
     [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_RIDER_CANCELLED parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             _requestButton.enabled = YES;

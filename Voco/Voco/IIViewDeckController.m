@@ -848,6 +848,8 @@ static NSTimeInterval durationToAnimate(CGFloat pointsToAnimate, CGFloat velocit
     self.originalShadowColor = nil;
     self.originalShadowOffset = CGSizeZero;
     self.originalShadowPath = nil;
+    
+    //[self.navigationController.navigationBar setTranslucent:YES];
 }
 
 - (void)viewDidUnload
