@@ -7,15 +7,18 @@
 //
 
 #import "VCPushManager.h"
+#import "VCDevicesApi.h"
+#import "VCPushApi.h"
+#import "VCRiderApi.h"
+
 #import "VCDevice.h"
 #import "WRUtilities.h"
 #import "VCRideOffer.h"
 #import "VCDialogs.h"
 #import "VCUserState.h"
-#import "VCPushApi.h"
 #import "VCCoreData.h"
 #import "Offer.h"
-#import "VCDevicesApi.h"
+#import "VCRideStateMachineFactory.h"
 
 @implementation VCPushManager
 
@@ -195,33 +198,40 @@
 }
 
 + (void) handleRideFoundNotification:(NSDictionary *) payload {
-    // TODO And update all rides for this user using RestKit entity
-    [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_SCHEDULED_RIDES parameters:nil
-                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                  
-                                                  NSNumber * rideId = [payload objectForKey:VC_PUSH_RIDE_ID_KEY];
-                                                  NSFetchRequest * request = [[NSFetchRequest alloc] initWithEntityName:@"Ride"];
-                                                  NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ride_id = %@", rideId];
-                                                  [request setPredicate:predicate];
-                                                  NSError * error;
-                                                  NSArray * rides = [[VCCoreData managedObjectContext] executeFetchRequest:request error:&error];
-                                                  if(rides == nil){
-                                                      [WRUtilities criticalError:error];
-                                                      return;
-                                                  }
-                                                  if([rides count] > 0){
-                                                      [VCUserState instance].riderState = kUserStateRideScheduled;
-                                                      [VCUserState instance].rideId = rideId;
-                                                      [[VCDialogs instance] rideFound: [payload objectForKey:VC_PUSH_REQUEST_ID_KEY]];
-                                                      
-                                                  } else {
-                                                      [WRUtilities criticalErrorWithString:@"Ride no longer exists"];
-                                                      
-                                                  }
-                                                  
-                                              } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                  
-                                              }];
+    
+    [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        
+        NSNumber * rideId = [payload objectForKey:VC_PUSH_RIDE_ID_KEY];
+        NSFetchRequest * request = [[NSFetchRequest alloc] initWithEntityName:@"Ride"];
+        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ride_id = %@", rideId];
+        [request setPredicate:predicate];
+        NSError * error;
+        NSArray * rides = [[VCCoreData managedObjectContext] executeFetchRequest:request error:&error];
+        if(rides == nil){
+            [WRUtilities criticalError:error];
+            return;
+        }
+        if([rides count] > 0){
+            [[VCDialogs instance] rideFound: [payload objectForKey:VC_PUSH_REQUEST_ID_KEY]];
+            Ride * ride = [rides objectAtIndex:0];
+            NSError * error;
+            [ride.stateMachine fireEvent:[VCRideStateMachineFactory factory].rideFound userInfo:@{} error:&error];
+            if(error != nil) {
+                [WRUtilities criticalError:error];
+            }
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"ride_found" object:payload userInfo:@{}];
+            
+        } else {
+            [WRUtilities stateErrorWithString:@"Ride no longer exists"];
+            
+        }
+        
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [WRUtilities criticalError:error];
+    }];
+    
+    
+
     
 
 }

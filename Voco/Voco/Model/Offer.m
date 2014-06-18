@@ -38,7 +38,7 @@
     
     [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
         RKPathMatcher * pathMatcher;
-        pathMatcher = [RKPathMatcher pathMatcherWithPattern:API_GET_RIDE_OFFERS_PATH_PATTERN];
+        pathMatcher = [RKPathMatcher pathMatcherWithPattern:API_GET_RIDE_OFFERS];
         
         NSDictionary *argsDict = nil;
         BOOL match = [pathMatcher matchesPath:[URL relativePath] tokenizeQueryStrings:NO parsedArguments:&argsDict];
@@ -54,7 +54,7 @@
     
     RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping
                                                                                              method:RKRequestMethodGET
-                                                                                        pathPattern:API_GET_RIDE_OFFERS_PATH_PATTERN
+                                                                                        pathPattern:API_GET_RIDE_OFFERS
                                                                                             keyPath:nil
                                                                                         statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];

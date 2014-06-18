@@ -14,6 +14,7 @@
 #import "Ride.h"
 #import "VCRiderApi.h"
 #import "VCMapQuestRouting.h"
+#import "VCRideRequestCreated.h"
 
 #define kStepSetDepartureLocation 1
 #define kStepSetDestinationLocation 2
@@ -68,9 +69,16 @@
     _map.showsUserLocation = YES;
     _map.userTrackingMode = YES;
     [self.view insertSubview:_map atIndex:0];
-    
+}
 
+- (void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideFoundNotification:) name:@"ride_found" object:nil];
+}
 
+- (void) viewWillDisppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -79,17 +87,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) rideFoundNotification:(id) sender{
+    [[VCCoreData managedObjectContext] refreshObject:_ride mergeChanges:YES];
+}
+
 - (IBAction)didTapCommute:(id)sender {
+    [self showRouteRequestInterface];
+    
 }
 
 - (IBAction)didTapOnDemand:(id)sender {
-    _onDemandButton.hidden = YES;
-    _commuteButton.hidden = YES;
-    _mapCenterPin.hidden = NO;
-    _locationConfirmationAnnotation.hidden = NO;
-    _cancelRideButton.hidden = NO;
+    [self showRouteRequestInterface];
 
-    
     _ride = (Ride *) [NSEntityDescription insertNewObjectForEntityForName:@"Ride" inManagedObjectContext:[VCCoreData managedObjectContext]];
     _ride.requestType = RIDE_REQUEST_TYPE_ON_DEMAND;
     
@@ -151,11 +160,14 @@
         _locationConfirmationAnnotation.hidden = YES;
         
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.mode = MBProgressHUDModeAnnularDeterminate;
+        //hud.mode = MBProgressHUDAnimation;
         hud.labelText = @"Requesting Ride";
         
         // VC RidesAPI
         [VCRiderApi requestRide:_ride success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            VCRideRequestCreated * rideRequestCreatedResponse = mappingResult.firstObject;
+            _ride.request_id = rideRequestCreatedResponse.rideRequestId;
+            [VCCoreData saveContext];
             [hud hide:YES];
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             [hud hide:YES];
@@ -171,6 +183,11 @@
 
 - (IBAction)didTapCancel:(id)sender {
     
+    if(!_ride.request_id){
+        [self resetRequestInterface];
+        return;
+    }
+    
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeAnnularDeterminate;
@@ -179,18 +196,7 @@
 
     // VC RidesAPI
     [VCRiderApi cancelRide:_ride success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        
-        [_map removeAnnotations:_map.annotations];
-        _locationConfirmationLabel.text = @"Set Pick Up Location";
-        _mapCenterPin.hidden = YES;
-        _locationConfirmationAnnotation.hidden = YES;
-        _destinationEntryView.hidden = YES;
-        _departureEntryView.hidden = YES;
-        _onDemandButton.hidden = NO;
-        _commuteButton.hidden = NO;
-        _cancelRideButton.hidden = YES;
-        _step = kStepSetDepartureLocation;
-        [_map removeOverlay:_routeOverlay];
+        [self resetRequestInterface];
         [hud hide:YES];
         
         [UIAlertView showWithTitle:@"Ride Cancelled" message:@"Your ride has been cancelled" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
@@ -198,8 +204,36 @@
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [hud hide:YES];
         [WRUtilities criticalError:error];
+        [self resetRequestInterface];
+
     }];
     
+}
+
+#pragma mark Interface
+
+- (void) showRouteRequestInterface {
+    _onDemandButton.hidden = YES;
+    _commuteButton.hidden = YES;
+    _mapCenterPin.hidden = NO;
+    _locationConfirmationAnnotation.hidden = NO;
+    _cancelRideButton.hidden = NO;
+}
+
+- (void) resetRequestInterface {
+    [_map removeAnnotations:_map.annotations];
+    _locationConfirmationLabel.text = @"Set Pick Up Location";
+    _mapCenterPin.hidden = YES;
+    _locationConfirmationAnnotation.hidden = YES;
+    _destinationEntryView.hidden = YES;
+    _departureEntryView.hidden = YES;
+    _onDemandButton.hidden = NO;
+    _commuteButton.hidden = NO;
+    _cancelRideButton.hidden = YES;
+    _step = kStepSetDepartureLocation;
+    if(_routeOverlay != nil) {
+        [_map removeOverlay:_routeOverlay];
+    }
 }
 
 #pragma mark MKMapViewDelegate
@@ -210,8 +244,7 @@
     {
         MKPolylineRenderer*    aRenderer = [[MKPolylineRenderer alloc] initWithPolyline:(MKPolyline*)overlay];
         
-        aRenderer.fillColor = [[UIColor cyanColor] colorWithAlphaComponent:0.2];
-        aRenderer.strokeColor = [[UIColor greenColor] colorWithAlphaComponent:0.7];
+        aRenderer.strokeColor = [[UIColor yellowColor] colorWithAlphaComponent:0.7];
         aRenderer.lineWidth = 3;
         
         return aRenderer;

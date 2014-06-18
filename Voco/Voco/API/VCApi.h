@@ -25,13 +25,8 @@
 #define API_POST_RIDE_PICKUP @"rides/pickup"
 #define API_POST_RIDE_ARRIVED @"rides/arrived"
 
-// TODO there must be a better way to deal with path patterns and params via restkit or other library
 #define API_GET_RIDE_OFFERS @"rides/offers/"
-#define API_GET_RIDE_OFFERS_PATH_PATTERN @"rides/offers/:id"
-
 #define API_GET_SCHEDULED_RIDES @"rides/"
-#define API_GET_SCHEDULED_RIDES_PATH_PATTERN @"rides/:rider_id"
-
 
 // geo API
 #define API_GEO_CAR @"geo/car/"
