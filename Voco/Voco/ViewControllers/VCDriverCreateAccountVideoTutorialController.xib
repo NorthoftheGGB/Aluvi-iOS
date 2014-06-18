@@ -6,6 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCDriverCreateAccountVideoTutorialController">
             <connections>
+                <outlet property="referralCodeLabel" destination="UPm-AR-XjU" id="Ah2-yf-rKj"/>
+                <outlet property="videoContainer" destination="pBf-c7-1Ii" id="pQR-sF-r0o"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -36,6 +38,9 @@
                             <integer key="value" value="30"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didTapFinish:" destination="-1" eventType="touchUpInside" id="WJ2-8V-bAC"/>
+                    </connections>
                 </button>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Uli-86-Rm0">
                     <rect key="frame" x="20" y="302" width="280" height="29"/>
@@ -46,6 +51,9 @@
                         <segment title="S Email"/>
                     </segments>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <action selector="segmentedControl:" destination="-1" eventType="valueChanged" id="b3S-1w-Ryv"/>
+                    </connections>
                 </segmentedControl>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here is your referral code:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZF-b8-1ZE" customClass="VCLabel">
                     <rect key="frame" x="20" y="273" width="182" height="21"/>

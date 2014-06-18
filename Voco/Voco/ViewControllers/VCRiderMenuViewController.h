@@ -10,4 +10,14 @@
 
 @interface VCRiderMenuViewController : UIViewController
 
+- (IBAction)didTapUserMode:(id)sender;
+- (IBAction)didTapProfile:(id)sender;
+- (IBAction)didTapPaymentInfo:(id)sender;
+- (IBAction)didTapScheduledRide:(id)sender;
+- (IBAction)didTapCummuterPass:(id)sender;
+- (IBAction)didTapAboutUs:(id)sender;
+- (IBAction)didTapTermsAndConditions:(id)sender;
+- (IBAction)didTapSupport:(id)sender;
+- (IBAction)didTapTutorial:(id)sender;
+
 @end

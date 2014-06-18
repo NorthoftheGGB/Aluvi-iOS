@@ -9,6 +9,13 @@
 #import "VCDriverCreateAccountVideoTutorialController.h"
 
 @interface VCDriverCreateAccountVideoTutorialController ()
+@property (weak, nonatomic) IBOutlet UIView *videoContainer;
+@property (weak, nonatomic) IBOutlet UILabel *referralCodeLabel;
+
+
+- (IBAction)segmentedControl:(id)sender;
+
+- (IBAction)didTapFinish:(id)sender;
 
 @end
 
@@ -35,4 +42,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)segmentedControl:(id)sender {
+}
+
+- (IBAction)didTapFinish:(id)sender {
+}
 @end
