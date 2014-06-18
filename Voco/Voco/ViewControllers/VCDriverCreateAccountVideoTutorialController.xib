@@ -45,6 +45,7 @@
                         <segment title="S Social"/>
                         <segment title="S Email"/>
                     </segments>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </segmentedControl>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here is your referral code:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZF-b8-1ZE" customClass="VCLabel">
                     <rect key="frame" x="20" y="273" width="182" height="21"/>
