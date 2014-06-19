@@ -13,10 +13,8 @@
 		4F37E2E01949574000753172 /* KlinicSlabMediumIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F37E2DC1949574000753172 /* KlinicSlabMediumIt.ttf */; };
 		4FB2682A1952207A0028D4ED /* VCDriverCreateAccountVideoTutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB268281952207A0028D4ED /* VCDriverCreateAccountVideoTutorialController.m */; };
 		4FB2682B1952207A0028D4ED /* VCDriverCreateAccountVideoTutorialController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FB268291952207A0028D4ED /* VCDriverCreateAccountVideoTutorialController.xib */; };
-		4FE629D5194FC6A40070F797 /* VCDriverCreateAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE629D3194FC6A40070F797 /* VCDriverCreateAccountViewController.m */; };
-		4FE629D6194FC6A40070F797 /* VCDriverCreateAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE629D4194FC6A40070F797 /* VCDriverCreateAccountViewController.xib */; };
-		4FE629DA194FC6BB0070F797 /* VCDriverCreateAccountCreditCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE629D8194FC6BB0070F797 /* VCDriverCreateAccountCreditCardViewController.m */; };
-		4FE629DB194FC6BB0070F797 /* VCDriverCreateAccountCreditCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE629D9194FC6BB0070F797 /* VCDriverCreateAccountCreditCardViewController.xib */; };
+		4FE629DA194FC6BB0070F797 /* VCDriverRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE629D8194FC6BB0070F797 /* VCDriverRegistrationViewController.m */; };
+		4FE629DB194FC6BB0070F797 /* VCDriverRegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE629D9194FC6BB0070F797 /* VCDriverRegistrationViewController.xib */; };
 		4FE641BA194157510059BED1 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641B8194157510059BED1 /* SignInViewController.m */; };
 		4FE641BB194157510059BED1 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641B9194157510059BED1 /* SignInViewController.xib */; };
 		4FE641BF194157C60059BED1 /* DriverRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641BD194157C60059BED1 /* DriverRequestViewController.m */; };
@@ -78,6 +76,7 @@
 		F473F01D195113D100D8C900 /* VCRequestUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F01C195113D100D8C900 /* VCRequestUpdate.m */; };
 		F473F02019511D7700D8C900 /* VCDevicesApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F01F19511D7700D8C900 /* VCDevicesApi.m */; };
 		F473F0281951931D00D8C900 /* VCRiderHomeDevViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F0271951931D00D8C900 /* VCRiderHomeDevViewController.m */; };
+		F473F02E1952DA8F00D8C900 /* VCDriverRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F02D1952DA8F00D8C900 /* VCDriverRegistration.m */; };
 		F49EDD0B1946D27F0020B8BB /* VCRiderHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */; };
 		F49EDD0C1946D27F0020B8BB /* VCRiderHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */; };
 		F49EDD101946E2F90020B8BB /* VCInterfaceModes.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD0F1946E2F90020B8BB /* VCInterfaceModes.m */; };
@@ -139,12 +138,9 @@
 		4FB268271952207A0028D4ED /* VCDriverCreateAccountVideoTutorialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCDriverCreateAccountVideoTutorialController.h; path = ViewControllers/VCDriverCreateAccountVideoTutorialController.h; sourceTree = "<group>"; };
 		4FB268281952207A0028D4ED /* VCDriverCreateAccountVideoTutorialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCDriverCreateAccountVideoTutorialController.m; path = ViewControllers/VCDriverCreateAccountVideoTutorialController.m; sourceTree = "<group>"; };
 		4FB268291952207A0028D4ED /* VCDriverCreateAccountVideoTutorialController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCDriverCreateAccountVideoTutorialController.xib; path = ViewControllers/VCDriverCreateAccountVideoTutorialController.xib; sourceTree = "<group>"; };
-		4FE629D2194FC6A40070F797 /* VCDriverCreateAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCDriverCreateAccountViewController.h; path = ViewControllers/VCDriverCreateAccountViewController.h; sourceTree = "<group>"; };
-		4FE629D3194FC6A40070F797 /* VCDriverCreateAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCDriverCreateAccountViewController.m; path = ViewControllers/VCDriverCreateAccountViewController.m; sourceTree = "<group>"; };
-		4FE629D4194FC6A40070F797 /* VCDriverCreateAccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCDriverCreateAccountViewController.xib; path = ViewControllers/VCDriverCreateAccountViewController.xib; sourceTree = "<group>"; };
-		4FE629D7194FC6BB0070F797 /* VCDriverCreateAccountCreditCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCDriverCreateAccountCreditCardViewController.h; path = ViewControllers/VCDriverCreateAccountCreditCardViewController.h; sourceTree = "<group>"; };
-		4FE629D8194FC6BB0070F797 /* VCDriverCreateAccountCreditCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCDriverCreateAccountCreditCardViewController.m; path = ViewControllers/VCDriverCreateAccountCreditCardViewController.m; sourceTree = "<group>"; };
-		4FE629D9194FC6BB0070F797 /* VCDriverCreateAccountCreditCardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCDriverCreateAccountCreditCardViewController.xib; path = ViewControllers/VCDriverCreateAccountCreditCardViewController.xib; sourceTree = "<group>"; };
+		4FE629D7194FC6BB0070F797 /* VCDriverRegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCDriverRegistrationViewController.h; path = ViewControllers/VCDriverRegistrationViewController.h; sourceTree = "<group>"; };
+		4FE629D8194FC6BB0070F797 /* VCDriverRegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCDriverRegistrationViewController.m; path = ViewControllers/VCDriverRegistrationViewController.m; sourceTree = "<group>"; };
+		4FE629D9194FC6BB0070F797 /* VCDriverRegistrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCDriverRegistrationViewController.xib; path = ViewControllers/VCDriverRegistrationViewController.xib; sourceTree = "<group>"; };
 		4FE641B7194157510059BED1 /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignInViewController.h; path = ViewControllers/SignInViewController.h; sourceTree = "<group>"; };
 		4FE641B8194157510059BED1 /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignInViewController.m; path = ViewControllers/SignInViewController.m; sourceTree = "<group>"; };
 		4FE641B9194157510059BED1 /* SignInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignInViewController.xib; path = ViewControllers/SignInViewController.xib; sourceTree = "<group>"; };
@@ -240,6 +236,8 @@
 		F473F02119513B6300D8C900 /* Voco 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 5.xcdatamodel"; sourceTree = "<group>"; };
 		F473F0261951931D00D8C900 /* VCRiderHomeDevViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderHomeDevViewController.h; path = ViewControllers/Dev/VCRiderHomeDevViewController.h; sourceTree = "<group>"; };
 		F473F0271951931D00D8C900 /* VCRiderHomeDevViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRiderHomeDevViewController.m; path = ViewControllers/Dev/VCRiderHomeDevViewController.m; sourceTree = "<group>"; };
+		F473F02C1952DA8F00D8C900 /* VCDriverRegistration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCDriverRegistration.h; path = API/Driver/VCDriverRegistration.h; sourceTree = "<group>"; };
+		F473F02D1952DA8F00D8C900 /* VCDriverRegistration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCDriverRegistration.m; path = API/Driver/VCDriverRegistration.m; sourceTree = "<group>"; };
 		F49EDD081946D27F0020B8BB /* VCRiderHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderHomeViewController.h; path = ViewControllers/VCRiderHomeViewController.h; sourceTree = "<group>"; };
 		F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRiderHomeViewController.m; path = ViewControllers/VCRiderHomeViewController.m; sourceTree = "<group>"; };
 		F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCRiderHomeViewController.xib; path = ViewControllers/VCRiderHomeViewController.xib; sourceTree = "<group>"; };
@@ -349,12 +347,9 @@
 		4FE629C3194FAC4E0070F797 /* Sign-in and Registration */ = {
 			isa = PBXGroup;
 			children = (
-				4FE629D2194FC6A40070F797 /* VCDriverCreateAccountViewController.h */,
-				4FE629D3194FC6A40070F797 /* VCDriverCreateAccountViewController.m */,
-				4FE629D4194FC6A40070F797 /* VCDriverCreateAccountViewController.xib */,
-				4FE629D7194FC6BB0070F797 /* VCDriverCreateAccountCreditCardViewController.h */,
-				4FE629D8194FC6BB0070F797 /* VCDriverCreateAccountCreditCardViewController.m */,
-				4FE629D9194FC6BB0070F797 /* VCDriverCreateAccountCreditCardViewController.xib */,
+				4FE629D7194FC6BB0070F797 /* VCDriverRegistrationViewController.h */,
+				4FE629D8194FC6BB0070F797 /* VCDriverRegistrationViewController.m */,
+				4FE629D9194FC6BB0070F797 /* VCDriverRegistrationViewController.xib */,
 				4FB268271952207A0028D4ED /* VCDriverCreateAccountVideoTutorialController.h */,
 				4FB268281952207A0028D4ED /* VCDriverCreateAccountVideoTutorialController.m */,
 				4FB268291952207A0028D4ED /* VCDriverCreateAccountVideoTutorialController.xib */,
@@ -794,6 +789,8 @@
 				F4FE1B0619384DD800354886 /* VCRideOffer.m */,
 				F4FE1B0D1938571E00354886 /* VCRideDriverAssignment.h */,
 				F4FE1B0E1938571E00354886 /* VCRideDriverAssignment.m */,
+				F473F02C1952DA8F00D8C900 /* VCDriverRegistration.h */,
+				F473F02D1952DA8F00D8C900 /* VCDriverRegistration.m */,
 			);
 			name = Driver;
 			sourceTree = "<group>";
@@ -905,7 +902,7 @@
 				4FE641F9194168E80059BED1 /* signupBox@2x.png in Resources */,
 				4FE641EF194168E80059BED1 /* bubble@2x.png in Resources */,
 				4FE641C0194157C60059BED1 /* DriverRequestViewController.xib in Resources */,
-				4FE629DB194FC6BB0070F797 /* VCDriverCreateAccountCreditCardViewController.xib in Resources */,
+				4FE629DB194FC6BB0070F797 /* VCDriverRegistrationViewController.xib in Resources */,
 				4FE641F2194168E80059BED1 /* driving_car@2x.png in Resources */,
 				4F37E2DF1949574000753172 /* KlinicSlabMedium.ttf in Resources */,
 				F473F019195044AA00D8C900 /* menu-list.png in Resources */,
@@ -918,7 +915,6 @@
 				F45F7BEC193575A900A94721 /* RiderViewController.xib in Resources */,
 				4FB2682B1952207A0028D4ED /* VCDriverCreateAccountVideoTutorialController.xib in Resources */,
 				4FE641F6194168E80059BED1 /* red_box@2x.png in Resources */,
-				4FE629D6194FC6A40070F797 /* VCDriverCreateAccountViewController.xib in Resources */,
 				F4FA0BF4192BF6BF005D8645 /* InfoPlist.strings in Resources */,
 				4FE641F8194168E80059BED1 /* signUp_btn@2x.png in Resources */,
 				4FE641CA1941584D0059BED1 /* SignUpViewController.xib in Resources */,
@@ -992,6 +988,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F473EFE819492C2A00D8C900 /* IIWrapController.m in Sources */,
+				F473F02E1952DA8F00D8C900 /* VCDriverRegistration.m in Sources */,
 				F4D8904D19468F87007C4671 /* VCForgotPasswordRequest.m in Sources */,
 				F4FE1B0119383AE300354886 /* VCRideStateMachineFactory.m in Sources */,
 				F4FE1B20193D8FE500354886 /* VCPushApi.m in Sources */,
@@ -1001,7 +998,7 @@
 				F4D8905019469018007C4671 /* VCTokenResponse.m in Sources */,
 				F4FE1B24193E722B00354886 /* VCRideIdentity.m in Sources */,
 				F45F7BF6193578DE00A94721 /* VCRiderApi.m in Sources */,
-				4FE629DA194FC6BB0070F797 /* VCDriverCreateAccountCreditCardViewController.m in Sources */,
+				4FE629DA194FC6BB0070F797 /* VCDriverRegistrationViewController.m in Sources */,
 				4FE641E0194162360059BED1 /* VCButtonFontBold.m in Sources */,
 				4FE641DD1941621E0059BED1 /* VCLabelItalic.m in Sources */,
 				F4FE1B121938581C00354886 /* VCDialogs.m in Sources */,
@@ -1015,7 +1012,6 @@
 				4FE641FE194170F50059BED1 /* VCButtonFont.m in Sources */,
 				F473F00C194A5A6100D8C900 /* MQShape.m in Sources */,
 				F45F7BFC19357B8A00A94721 /* VCRideRequest.m in Sources */,
-				4FE629D5194FC6A40070F797 /* VCDriverCreateAccountViewController.m in Sources */,
 				F4FE1AF81937DD5600354886 /* VCPushManager.m in Sources */,
 				F4FE1AFB1937DD6600354886 /* VCGeolocation.m in Sources */,
 				4FE641BF194157C60059BED1 /* DriverRequestViewController.m in Sources */,

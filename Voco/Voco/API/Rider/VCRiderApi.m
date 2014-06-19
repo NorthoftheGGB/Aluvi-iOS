@@ -26,7 +26,7 @@
     [Ride createMappings:objectManager];
     [VCRequestUpdate createMappings:objectManager];
     
-    // Responses (All responses should be moved here)
+    // Responses (some have not been moved here yet)
     {
         RKResponseDescriptor * responseDescriptor =
         [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]

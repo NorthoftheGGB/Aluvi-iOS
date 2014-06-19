@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCDriverCreateAccountCreditCardViewController.h"
+#import "VCDriverRegistrationViewController.h"
 #import "VCTextField.h"
 
-@interface VCDriverCreateAccountCreditCardViewController ()
+@interface VCDriverRegistrationViewController ()
 @property (weak, nonatomic) IBOutlet VCTextField *accountNameField;
 @property (weak, nonatomic) IBOutlet VCTextField *accountNumberField;
 @property (weak, nonatomic) IBOutlet VCTextField *routingNumberField;
@@ -26,7 +26,7 @@
 
 @end
 
-@implementation VCDriverCreateAccountCreditCardViewController
+@implementation VCDriverRegistrationViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

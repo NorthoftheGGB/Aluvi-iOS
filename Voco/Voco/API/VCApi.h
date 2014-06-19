@@ -43,6 +43,10 @@
 #define API_FORGOT_PASSWORD @"users/forgot_password"
 #define API_DRIVER_INTERESTED @"users/driver_interested"
 
+// drivers
+#define API_DRIVER_REGISTRATION @"drivers/driver_registration"
+#define API_DRIVER_CLOCK_ON @"drivers/clock_on"
+#define API_DRIVER_CLOCK_OFF @"drivers/clock_off"
 
 // state
 #define API_TOKEN_KEY @"API_TOKEN"

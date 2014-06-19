@@ -1,5 +1,5 @@
 //
-//  VCDriverCreateAccountViewController.h
+//  VCDriverCreateAccountCreditCardViewController.h
 //  Voco
 //
 //  Created by Elliott De Aratanha on 6/16/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VCDriverCreateAccountViewController : UIViewController
+@interface VCDriverRegistrationViewController : UIViewController
 
 @end

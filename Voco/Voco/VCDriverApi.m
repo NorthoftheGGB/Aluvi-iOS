@@ -13,6 +13,7 @@
 #import "VCRideIdentity.h"
 #import "Offer.h"
 #import "VCLocation.h"
+#import "VCDriverRegistration.h"
 
 @implementation VCDriverApi
 
@@ -21,6 +22,72 @@
     [VCRideIdentity createMappings:objectManager];
     [Offer createMappings:objectManager];
     [VCLocation createMappings:objectManager];
+    [VCDriverRegistration createMappings:objectManager];
+    
+    // Responses (some have not been moved here yet)
+    {
+        RKResponseDescriptor * responseDescriptor =
+        [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
+                                                     method:RKRequestMethodPOST
+                                                pathPattern:API_DRIVER_REGISTRATION
+                                                    keyPath:nil
+                                                statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor];
+    }
+    
     
 }
+
++ (void) registerDriverWithLicenseNumber: (NSString *) driversLicenseNumber
+                         bankAccountName: (NSString *) bankAccountName
+                       bankAccountNumber: (NSString *) bankAccountNumber
+                      bankAccountRouting: (NSString *) bankAccountRouting
+                                carBrand: (NSString *) carBrand
+                                carModel: (NSString *) carModel
+                                 carYear: (NSString *) carYear
+                         carLicensePlate: (NSString *) carLicensePlate
+                            referralCode: (NSString *) referralCode
+                                 success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                                 failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure{
+    VCDriverRegistration * driverRegistration = [[VCDriverRegistration alloc] init];
+    driverRegistration.driversLicenseNumber = driversLicenseNumber;
+    driverRegistration.bankAccountName = bankAccountName;
+    driverRegistration.bankAccountNumber = bankAccountNumber;
+    driverRegistration.bankAccountRouting = bankAccountRouting;
+    driverRegistration.carBrand = carBrand;
+    driverRegistration.carModel = carModel;
+    driverRegistration.carYear = carYear;
+    driverRegistration.carLicensePlate = carLicensePlate;
+    driverRegistration.referralCode = referralCode;
+    [[RKObjectManager sharedManager] postObject:driverRegistration
+                                           path:API_DRIVER_REGISTRATION
+                                     parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            success(operation, mappingResult);
+                                        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            failure(operation, error);
+                                        }];
+    
+}
+
++ (void) clockOnWithSuccess: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                    failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+    [[RKObjectManager sharedManager] postObject:nil path:API_DRIVER_CLOCK_ON parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            success(operation, mappingResult);
+                                        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            failure(operation, error);
+                                        }];
+}
+
++ (void) clockOffWithSuccess: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                     failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure{
+    [[RKObjectManager sharedManager] postObject:nil path:API_DRIVER_CLOCK_OFF parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            success(operation, mappingResult);
+                                        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            failure(operation, error);
+                                        }];
+}
+
 @end
