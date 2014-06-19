@@ -50,7 +50,6 @@
 - (IBAction)didTapCommute:(id)sender;
 - (IBAction)didTapOnDemand:(id)sender;
 - (IBAction)didTapConfirmLocation:(id)sender;
-- (IBAction)didTapLogout:(id)sender;
 - (IBAction)didTapCancel:(id)sender;
 
 @end
@@ -186,10 +185,6 @@
     }
 }
 
-- (IBAction)didTapLogout:(id)sender {
-    [[VCUserState instance] logout];
-    [VCInterfaceModes showRiderSigninInterface];
-}
 
 - (IBAction)didTapCancel:(id)sender {
     

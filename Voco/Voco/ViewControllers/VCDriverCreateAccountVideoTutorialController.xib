@@ -25,8 +25,8 @@
                         <constraint firstAttribute="width" constant="280" id="zvt-qO-EvX"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rtV-4X-5Zl" customClass="VCButtonFont">
-                    <rect key="frame" x="58" y="487" width="203" height="61"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rtV-4X-5Zl" customClass="VCButtonFont">
+                    <rect key="frame" x="58" y="420" width="203" height="61"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <state key="normal" title="Finished" backgroundImage="signUp_btn.png">
@@ -109,7 +109,7 @@
                 <constraint firstItem="UPm-AR-XjU" firstAttribute="leading" secondItem="yZF-b8-1ZE" secondAttribute="trailing" constant="-7" id="Xp6-RF-NrZ"/>
                 <constraint firstAttribute="trailing" secondItem="hEs-vx-tg8" secondAttribute="trailing" constant="20" id="aXu-f6-zOY"/>
                 <constraint firstItem="pBf-c7-1Ii" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="kXE-Kh-C3F"/>
-                <constraint firstAttribute="bottom" secondItem="rtV-4X-5Zl" secondAttribute="bottom" constant="20" id="kp1-fw-Fda"/>
+                <constraint firstAttribute="bottom" secondItem="rtV-4X-5Zl" secondAttribute="bottom" constant="87" id="kp1-fw-Fda"/>
                 <constraint firstItem="yZF-b8-1ZE" firstAttribute="top" secondItem="pBf-c7-1Ii" secondAttribute="bottom" constant="50" id="sC1-59-g63"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Uli-86-Rm0" secondAttribute="trailing" constant="20" id="sLT-ZY-MX3"/>
                 <constraint firstAttribute="trailing" secondItem="Uli-86-Rm0" secondAttribute="trailing" constant="20" id="tBs-gd-or2"/>

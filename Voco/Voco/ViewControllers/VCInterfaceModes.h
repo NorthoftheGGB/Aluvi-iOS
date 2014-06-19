@@ -8,11 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+#define kDriverMode 0
+#define kRiderMode 1
+#define kNoMode 2
+
+
 @interface VCInterfaceModes : NSObject
 
 + (void) showInterface;
 + (void) showRiderSigninInterface;
 + (void) showRiderInterface;
 + (void) showDriverInterface;
+
++ (int) mode;
 
 @end

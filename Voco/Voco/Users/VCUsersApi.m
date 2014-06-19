@@ -7,11 +7,13 @@
 //
 
 #import "VCUsersApi.h"
+#import "VCUserState.h"
 #import "VCLogin.h"
 #import "VCNewUser.h"
 #import "VCForgotPasswordRequest.h"
-#import "VCTokenResponse.h"
+#import "VCLoginResponse.h"
 #import "VCDriverInterestedRequest.h"
+#import "VCDriverStateResponse.h"
 
 @implementation VCUsersApi
 + (void) setup: (RKObjectManager *) objectManager {
@@ -21,7 +23,7 @@
     RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:loginRequestMapping objectClass:[VCLogin class] rootKeyPath:nil method:RKRequestMethodPOST];
     [objectManager addRequestDescriptor:requestDescriptor];
     
-    RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[VCTokenResponse getMapping]
+    RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[VCLoginResponse getMapping]
                                                                                              method:RKRequestMethodPOST
                                                                                         pathPattern:API_LOGIN
                                                                                             keyPath:nil
@@ -57,13 +59,16 @@
                                           rootKeyPath:nil
                                                method:RKRequestMethodPOST];
     [objectManager addRequestDescriptor:driverInterestedRequestDescriptor];
+    
     RKResponseDescriptor * driverInterestedResponseDescriptor =
-    [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
+    [RKResponseDescriptor responseDescriptorWithMapping:[VCDriverStateResponse getMapping]
                                                  method:RKRequestMethodPOST
                                             pathPattern:API_DRIVER_INTERESTED
                                                 keyPath:nil
                                             statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:driverInterestedResponseDescriptor];
+    
+
     
     
 }
@@ -78,7 +83,7 @@
     [objectManager postObject:login path:API_LOGIN parameters:nil
                       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                           
-                          VCTokenResponse * tokenResponse = mappingResult.firstObject;
+                          VCLoginResponse * tokenResponse = mappingResult.firstObject;
                           [VCApi setApiToken: tokenResponse.token];
                           
                           success(operation, mappingResult);
@@ -131,6 +136,10 @@
     driverInterestedRequest.region = region;
     driverInterestedRequest.driverReferralCode = driverReferralCode;
     [objectManager postObject:driverInterestedRequest path:API_DRIVER_INTERESTED parameters:nil
-                      success:success failure:failure];
+                      success:^( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ) {
+                          VCDriverStateResponse * response = mappingResult.firstObject;
+                          [VCUserState instance].driverState = response.state;
+                          success(operation, mappingResult);
+                      }failure:failure];
 }
 @end

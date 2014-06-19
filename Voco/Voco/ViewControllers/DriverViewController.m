@@ -69,18 +69,18 @@ static void * XXContext = &XXContext;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[VCUserState instance] addObserver:self forKeyPath:@"driverState" options:NSKeyValueObservingOptionNew context:XXContext];
+    [[VCUserState instance] addObserver:self forKeyPath:@"driveProcessState" options:NSKeyValueObservingOptionNew context:XXContext];
     
 }
 
 - (void) viewDidUnload
 {
     [super viewDidUnload];
-    [[VCUserState instance] removeObserver:self forKeyPath:@"driverState"];
+    [[VCUserState instance] removeObserver:self forKeyPath:@"driveProcessState"];
 }
 
 - (void)dealloc {
-    [[VCUserState instance] removeObserver:self forKeyPath:@"driverState"];
+    [[VCUserState instance] removeObserver:self forKeyPath:@"driveProcessState"];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
@@ -112,13 +112,13 @@ static void * XXContext = &XXContext;
 - (IBAction)didTapCancelRide:(id)sender {
     // Send cancel request to server
     VCRideDriverAssignment * rideIdentity = [[VCRideDriverAssignment alloc] init];
-    rideIdentity.rideId = [VCUserState instance].rideId;
+    rideIdentity.rideId = [VCUserState instance].underwayRideId;
     [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_DRIVER_CANCELLED parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             _cancelRideButton.enabled = NO;
                                             _pickedUpRiderButton.enabled = NO;
                                             _rideCompletedButton.enabled = NO;
-                                            [VCUserState instance].driverState = kUserStateIdle;
+                                            [VCUserState instance].driveProcessState = kUserStateIdle;
                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                             [WRUtilities criticalError:error];
                                         }];
@@ -127,10 +127,10 @@ static void * XXContext = &XXContext;
 
 - (IBAction)didTapPickedUpRider:(id)sender {
     VCRideDriverAssignment * rideIdentity = [[VCRideDriverAssignment alloc] init];
-    rideIdentity.rideId = [VCUserState instance].rideId;
+    rideIdentity.rideId = [VCUserState instance].underwayRideId;
     [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_RIDE_PICKUP parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                            [VCUserState instance].driverState = kUserStateRideStarted;
+                                            [VCUserState instance].driveProcessState = kUserStateRideStarted;
                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                             [WRUtilities criticalError:error];
                                         }];
@@ -139,10 +139,10 @@ static void * XXContext = &XXContext;
 - (IBAction)didTapRideCompleted:(id)sender {
     VCRideDriverAssignment * rideIdentity = [[VCRideDriverAssignment alloc] init];  // TODO objects like this can be generated from
                                                                     // global state of the app, i.e. in another method
-    rideIdentity.rideId = [VCUserState instance].rideId;
+    rideIdentity.rideId = [VCUserState instance].underwayRideId;
     [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_RIDE_ARRIVED parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                            [VCUserState instance].driverState = kUserStateRideCompleted;
+                                            [VCUserState instance].driveProcessState = kUserStateRideCompleted;
                                             [self showReceipt];
                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                             [WRUtilities criticalError:error];
@@ -155,7 +155,7 @@ static void * XXContext = &XXContext;
              cancelButtonTitle:@"OK"
              otherButtonTitles:nil
                       tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                          [VCUserState instance].driverState = kUserStateIdle;
+                          [VCUserState instance].driveProcessState = kUserStateIdle;
 
     }];
 }

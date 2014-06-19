@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface VCTokenResponse : NSObject
+@interface VCLoginResponse : NSObject
 
 @property (nonatomic, strong) NSString * token;
+@property (nonatomic, strong) NSString * driverState;
+@property (nonatomic, strong) NSString * riderState;
+
 
 + (RKObjectMapping *)getMapping;
 

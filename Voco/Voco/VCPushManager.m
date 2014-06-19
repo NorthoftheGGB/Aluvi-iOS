@@ -175,23 +175,23 @@
         [self handleRideFoundNotification: payload];
     } else if ([type isEqualToString:@"ride_cancelled_by_rider"]){
         NSNumber * rideId = [payload objectForKey:VC_PUSH_RIDE_ID_KEY];
-        if([[VCUserState instance].rideId isEqualToNumber:rideId]){
+        if([[VCUserState instance].underwayRideId isEqualToNumber:rideId]){
             [[VCDialogs instance] rideCancelledByRider];
-            [VCUserState instance].rideId = nil;
-            [VCUserState instance].driverState = kUserStateIdle;
+            [VCUserState instance].underwayRideId = nil;
+            [VCUserState instance].driveProcessState = kUserStateIdle;
         }
     } else if([type isEqualToString:@"ride_cancelled_by_driver"]){
         NSNumber * rideId = [payload objectForKey:VC_PUSH_RIDE_ID_KEY];
-        if([[VCUserState instance].rideId isEqualToNumber:rideId]){
+        if([[VCUserState instance].underwayRideId isEqualToNumber:rideId]){
             [[VCDialogs instance] rideCancelledByDriver];
-            [VCUserState instance].rideId = nil;
-            [VCUserState instance].riderState = kUserStateIdle;
+            [VCUserState instance].underwayRideId = nil;
+            [VCUserState instance].rideProcessState = kUserStateIdle;
         }
     } else if([type isEqualToString:@"ride_receipt"]){
         NSNumber * rideId = [payload objectForKey:VC_PUSH_RIDE_ID_KEY];
-        if([[VCUserState instance].rideId isEqualToNumber:rideId]){
-            [VCUserState instance].rideId = nil;
-            [VCUserState instance].riderState = kUserStateIdle;
+        if([[VCUserState instance].underwayRideId isEqualToNumber:rideId]){
+            [VCUserState instance].underwayRideId = nil;
+            [VCUserState instance].rideProcessState = kUserStateIdle;
             [[VCDialogs instance] showRideReceipt:rideId];
         }
     }

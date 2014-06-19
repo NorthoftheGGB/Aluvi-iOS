@@ -54,7 +54,7 @@ static VCDialogs *sharedSingleton;
     }
     
     
-    [VCUserState instance].driverState = @"ride offered";
+    [VCUserState instance].driveProcessState = @"ride offered";
     [self offerRideToDriver:[offers objectAtIndex:0]];
 }
 
@@ -74,7 +74,7 @@ static VCDialogs *sharedSingleton;
                               assignment.rideId = rideOffer.ride_id;
                               
                               [[RKObjectManager sharedManager] postObject:assignment path:API_POST_RIDE_DECLINED parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                  [VCUserState instance].driverState = @"Ride Declined";
+                                  [VCUserState instance].driveProcessState = @"Ride Declined";
                                   
                                   rideOffer.state = @"declined";
                                   rideOffer.decided = [NSNumber numberWithBool:YES];
@@ -122,8 +122,8 @@ static VCDialogs *sharedSingleton;
                                   // TODO at this point we assume ride is confirmed
                                   // but at a later date we may add a step that waits for the rider to confirm that
                                   // they know about the ride being scheduled (handshake)
-                                  [VCUserState instance].driverState = kUserStateRideAccepted;
-                                  [VCUserState instance].rideId = rideOffer.ride_id;
+                                  [VCUserState instance].driveProcessState = kUserStateRideAccepted;
+                                  [VCUserState instance].underwayRideId = rideOffer.ride_id;
                                   
                                   rideOffer.state = @"accepted";
                                   rideOffer.decided = [NSNumber numberWithBool:YES];
@@ -173,7 +173,7 @@ static VCDialogs *sharedSingleton;
             [WRUtilities criticalError:error];
         }
         _offer = nil;
-        [VCUserState instance].driverState = kUserStateIdle;
+        [VCUserState instance].driveProcessState = kUserStateIdle;
         _interfaceState = VC_INTERFACE_STATE_IDLE;
         [self offerNextRideToDriver];
     }
@@ -181,7 +181,7 @@ static VCDialogs *sharedSingleton;
 
 - (void) rideFound: (NSNumber *) requestId {
     [UIAlertView showWithTitle:@"Ride Found!" message:@"Your ride has been scheduled" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
-    [VCUserState instance].driverState = kUserStateRideScheduled;
+    [VCUserState instance].driveProcessState = kUserStateRideScheduled;
 }
 
 - (void) rideCancelledByRider {
@@ -206,7 +206,7 @@ static VCDialogs *sharedSingleton;
              cancelButtonTitle:@"OK"
              otherButtonTitles:nil
                       tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                          [VCUserState instance].riderState = kUserStateIdle;
+                          [VCUserState instance].rideProcessState = kUserStateIdle;
                       }];
 }
 

@@ -28,8 +28,8 @@ static RKObjectManager * objectManager;
        success: ( void ( ^ ) ( MKPolyline * polyline )) success
        failure: ( void ( ^ ) ( )) failure {
     
-    int height = region.span.latitudeDelta;
-    int width = region.span.longitudeDelta;
+    //int height = region.span.latitudeDelta;
+    //int width = region.span.longitudeDelta;
    // NSString * url = [NSString stringWithFormat:@?key=%@&from=%f,%f&to=%f,%f&shapeFormat=raw&mapWidth=%d&mapHeight=%d",
    //                   MAPQUEST_API_KEY, start.latitude, start.longitude, end.latitude, end.longitude, width, height ];
     

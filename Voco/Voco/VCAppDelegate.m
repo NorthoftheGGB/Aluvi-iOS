@@ -104,7 +104,6 @@
 {
     [VCCoreData saveContext];
     
-    [[VCUserState instance] saveState];
 }
 
 

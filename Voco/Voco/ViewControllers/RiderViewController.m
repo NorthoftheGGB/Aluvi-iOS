@@ -50,18 +50,18 @@ static void * XXContext = &XXContext;
     [super viewDidLoad];
     _stateLabel.text = @"Idle";
     
-    [[VCUserState instance] addObserver:self forKeyPath:@"riderState" options:NSKeyValueObservingOptionNew context:XXContext];
+    [[VCUserState instance] addObserver:self forKeyPath:@"rideProcessState" options:NSKeyValueObservingOptionNew context:XXContext];
     
 }
 
 - (void) viewDidUnload
 {
     [super viewDidUnload];
-    [[VCUserState instance] removeObserver:self forKeyPath:@"riderState"];
+    [[VCUserState instance] removeObserver:self forKeyPath:@"rideProcessState"];
 }
 
 - (void)dealloc {
-    [[VCUserState instance] removeObserver:self forKeyPath:@"riderState"];
+    [[VCUserState instance] removeObserver:self forKeyPath:@"rideProcessState"];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
@@ -154,13 +154,13 @@ static void * XXContext = &XXContext;
 - (IBAction)didTapCancelRideButton:(id)sender {
     // Send cancel request to server
     VCRideIdentity * rideIdentity = [[VCRideIdentity alloc] init];
-    rideIdentity.rideId = [VCUserState instance].rideId;
+    rideIdentity.rideId = [VCUserState instance].underwayRideId;
     [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_RIDER_CANCELLED parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             _requestButton.enabled = YES;
                                             _cancelRideButton.enabled = NO;
                                             _cancelRequestButton.enabled = NO;
-                                            [VCUserState instance].riderState = kUserStateIdle;
+                                            [VCUserState instance].rideProcessState = kUserStateIdle;
                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                             [WRUtilities criticalError:error];
                                         }];

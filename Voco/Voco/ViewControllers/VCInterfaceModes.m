@@ -13,6 +13,12 @@
 #import "IIViewDeckController.h"
 #import "VCApi.h"
 
+#define kInterfaceModeKey @"INTERFACE_MODE_KEY"
+
+
+static IIViewDeckController* deckController;
+static int mode;
+
 @implementation VCInterfaceModes
 
 + (void) showInterface {
@@ -33,34 +39,63 @@
     [navigationController.navigationBar setTranslucent:YES];
     navigationController.navigationBar.tintColor = [UIColor redColor];
     [[UIApplication sharedApplication] delegate].window.rootViewController = navigationController;
+    deckController = nil;
+    [self setMode:kNoMode];
+}
+
++ (void) createDeckViewController {
+    
+    deckController =  [[IIViewDeckController alloc] init]; //initWithCenterViewController:riderHomeViewController leftViewController:riderMenuViewController rightViewController:nil];
+    deckController.leftSize = 0;
+    deckController.openSlideAnimationDuration = 0.20f;
+    deckController.closeSlideAnimationDuration = 0.20f;
+    deckController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu-list"]
+                                                                                       style:UIBarButtonItemStyleBordered
+                                                                                      target:deckController
+                                                                                      action:@selector(toggleLeftView)];
+    VCRiderMenuViewController * riderMenuViewController = [[VCRiderMenuViewController alloc] init];
+    deckController.leftController = riderMenuViewController;
+    
+    [deckController.navigationController.navigationBar setTranslucent:YES];
+
+    
+    UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:deckController];
+    [[UIApplication sharedApplication] delegate].window.rootViewController = navigationController;
+
+
 }
 
 + (void) showRiderInterface {
     VCRiderHomeViewController * riderHomeViewController = [[VCRiderHomeViewController alloc] init];
-    VCRiderMenuViewController * riderMenuViewController = [[VCRiderMenuViewController alloc] init];
+   
+    if(deckController == nil){
+        [self createDeckViewController];
+    }
     
-    IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:riderHomeViewController leftViewController:riderMenuViewController rightViewController:nil];
-    deckController.leftSize = 0;
-    deckController.openSlideAnimationDuration = 0.20f;
-    deckController.closeSlideAnimationDuration = 0.20f;
+    deckController.centerController = riderHomeViewController;
     
-    UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:deckController];
-
-    
-    [[UIApplication sharedApplication] delegate].window.rootViewController = navigationController;
-    
-    deckController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu-list"]
-                                                                             style:UIBarButtonItemStyleBordered
-                                                                            target:deckController
-                                                                            action:@selector(toggleLeftView)];
-    
-    [deckController.navigationController.navigationBar setTranslucent:YES];
-
+    [self setMode: kRiderMode];
 
 }
 
 + (void) showDriverInterface {
+    if(deckController == nil){
+        [self createDeckViewController];
+    }
     
+    deckController.centerController = nil;
+    [self setMode: kDriverMode];
+
+}
+
++ (void) setMode: (int) newMode {
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:newMode] forKey:kInterfaceModeKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    mode = newMode;
+}
+
++ (int) mode {
+    return mode;
 }
 
 @end
