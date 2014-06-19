@@ -22,6 +22,7 @@
 #import "VCApi.h"
 #import "VCInterfaceModes.h"
 #import "VCMapQuestRouting.h"
+#import "VCUsersApi.h"
 
 @interface VCAppDelegate ()
 
@@ -36,7 +37,9 @@
     
     [VCApi setup];
 
+#if RELEASE==1
     [Crashlytics startWithAPIKey:@"f7d1a0eeca165a46710d606ff21a38fea3c9ec43"];
+#endif
     
     [VCDialogs instance];
     
@@ -92,7 +95,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [[VCUserState instance] synchronizeUserState];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

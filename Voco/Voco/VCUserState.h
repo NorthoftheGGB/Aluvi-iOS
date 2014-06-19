@@ -53,5 +53,6 @@
                 success:(void ( ^ ) () )success
                 failure:(void ( ^ ) () )failure;
 - (void) logout;
+- (void) synchronizeUserState;
 
 @end

@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseViewController.h"
+#import "ScrollableFormViewController.h"
 
-@interface DriverRequestViewController : BaseViewController
+@interface DriverRequestViewController : ScrollableFormViewController
 
 @end

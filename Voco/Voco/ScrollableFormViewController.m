@@ -6,15 +6,15 @@
 //
 //
 
-#import "BaseViewController.h"
+#import "ScrollableFormViewController.h"
 
-@interface BaseViewController () {
+@interface ScrollableFormViewController () {
     CGSize lastKeyboardSize;
 }
 
 @end
 
-@implementation BaseViewController
+@implementation ScrollableFormViewController
 
 @synthesize scrollView;
 

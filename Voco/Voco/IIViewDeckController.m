@@ -3085,16 +3085,6 @@ static NSTimeInterval durationToAnimate(CGFloat pointsToAnimate, CGFloat velocit
     }
 }
 
-/*
-- (void)setCenterController:(UIViewController *)centerController shouldDisplay:(BOOL) shouldDisplay {
-    if(shouldDisplay){
-        [self setCenterController:centerController shouldDisplay:YES];
-    } else {
-        
-    }
-}
-*/
-
 - (void)setAutomaticallyUpdateTabBarItems:(BOOL)automaticallyUpdateTabBarItems {
     if (_automaticallyUpdateTabBarItems) {
         @try {

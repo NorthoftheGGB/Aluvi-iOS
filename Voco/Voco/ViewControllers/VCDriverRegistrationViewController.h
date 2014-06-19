@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ScrollableFormViewController.h"
 
-@interface VCDriverRegistrationViewController : UIViewController
+@interface VCDriverRegistrationViewController : ScrollableFormViewController
 
 @end

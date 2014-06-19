@@ -113,6 +113,15 @@ static VCUserState *sharedSingleton;
     }];
 }
 
+- (void) synchronizeUserState {
+    [VCUsersApi getUserState:[RKObjectManager sharedManager]
+                     success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                         VC
+                     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                         
+                     }];
+}
+
 - (void) clearUserState {
     NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults removeObjectForKey:kRideIdKey];

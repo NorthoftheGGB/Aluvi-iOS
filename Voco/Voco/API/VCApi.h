@@ -42,6 +42,7 @@
 #define API_LOGIN @"users/login"
 #define API_FORGOT_PASSWORD @"users/forgot_password"
 #define API_DRIVER_INTERESTED @"users/driver_interested"
+#define API_USER_STATE @"users/state"
 
 // drivers
 #define API_DRIVER_REGISTRATION @"drivers/driver_registration"

@@ -142,4 +142,15 @@
                           success(operation, mappingResult);
                       }failure:failure];
 }
+
++ (void) getUserState:( RKObjectManager *) objectManager
+              success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+              failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+    [objectManager getObject:nil path:API_USER_STATE parameters:nil
+    success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        success(operation, mappingResult);
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        failure(operation, error);
+    }];
+}
 @end

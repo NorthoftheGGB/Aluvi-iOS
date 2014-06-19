@@ -12,6 +12,7 @@
 #import "VCRiderMenuViewController.h"
 #import "IIViewDeckController.h"
 #import "VCApi.h"
+#import "DriverViewController.h"
 
 #define kInterfaceModeKey @"INTERFACE_MODE_KEY"
 
@@ -79,11 +80,13 @@ static int mode;
 }
 
 + (void) showDriverInterface {
+    DriverViewController * driverViewController = [[DriverViewController alloc] init];
+    
     if(deckController == nil){
         [self createDeckViewController];
     }
     
-    deckController.centerController = nil;
+    deckController.centerController = driverViewController;
     [self setMode: kDriverMode];
 
 }

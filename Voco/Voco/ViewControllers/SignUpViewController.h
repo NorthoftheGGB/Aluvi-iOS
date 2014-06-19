@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseViewController.h"
+#import "ScrollableFormViewController.h"
 
-@interface SignUpViewController : BaseViewController
+@interface SignUpViewController : ScrollableFormViewController
 
 @end

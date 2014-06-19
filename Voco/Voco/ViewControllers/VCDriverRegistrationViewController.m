@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIView *checkboxOutlet;
 @property (weak, nonatomic) IBOutlet VCTextField *driversLicenseField;
 @property (weak, nonatomic) IBOutlet UITextField *referralCodeField;
+@property (strong, nonatomic) IBOutlet UIView *contentView;
 
 - (IBAction)didTapTermsOfService:(id)sender;
 - (IBAction)didTapContinue:(id)sender;
@@ -40,7 +41,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    [self.scrollView setContentSize:_contentView.frame.size];
+    [self.scrollView addSubview:_contentView];
+#if RELEASE==1
+    _accountNumberField.text = @"000123456789";
+    _routingNumberField.text = @"110000000";
+#endif
 }
 
 - (void)didReceiveMemoryWarning
