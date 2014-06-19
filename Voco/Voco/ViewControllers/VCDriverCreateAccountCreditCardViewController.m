@@ -17,9 +17,9 @@
 @property (weak, nonatomic) IBOutlet VCTextField *modelField;
 @property (weak, nonatomic) IBOutlet VCTextField *yearField;
 @property (weak, nonatomic) IBOutlet VCTextField *licensePlateField;
+@property (weak, nonatomic) IBOutlet UIView *checkboxOutlet;
 
 - (IBAction)didTapTermsOfService:(id)sender;
-- (IBAction)didTapAgree:(id)sender;
 - (IBAction)didTapContinue:(id)sender;
 
 @end

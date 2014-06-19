@@ -9,6 +9,7 @@
                 <outlet property="accountNameField" destination="SG8-Nv-vJM" id="hyu-Li-nag"/>
                 <outlet property="accountNumberField" destination="lMK-S6-mmt" id="gPO-O9-YZx"/>
                 <outlet property="brandField" destination="BEK-Dl-9p4" id="Ves-M1-NzE"/>
+                <outlet property="checkboxOutlet" destination="v5A-Ob-Lsj" id="XrF-sy-nEr"/>
                 <outlet property="licensePlateField" destination="ri5-VG-4eX" id="kgR-gy-7ds"/>
                 <outlet property="modelField" destination="rm7-V8-jQ0" id="arM-Ee-AtT"/>
                 <outlet property="routingNumberField" destination="KV8-Cf-q4X" id="rjl-0E-N68"/>
@@ -213,8 +214,8 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v5A-Ob-Lsj">
-                    <rect key="frame" x="58" y="371" width="15" height="15"/>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v5A-Ob-Lsj">
+                    <rect key="frame" x="58" y="371" width="15" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
