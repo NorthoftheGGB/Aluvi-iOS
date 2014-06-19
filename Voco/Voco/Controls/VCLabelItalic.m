@@ -6,9 +6,11 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCTextFieldItalic.h"
+#import "VCLabelItalic.h"
 
-@implementation VCTextFieldItalic
+@implementation VCLabelItalic
+
+@synthesize fontSize;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -21,7 +23,7 @@
 
 
 - (void)awakeFromNib{
-    UIFont *customFont = [UIFont fontWithName:@"KlinicSlabLightlt" size:16];
+    UIFont *customFont = [UIFont fontWithName:@"KlinicSlab-LightItalic" size:18];
     
     self.font = customFont;
 }

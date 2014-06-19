@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCDriverCreateAccountVideoTutorialController">
+            <connections>
+                <outlet property="referralCodeLabel" destination="UPm-AR-XjU" id="Ah2-yf-rKj"/>
+                <outlet property="videoContainer" destination="pBf-c7-1Ii" id="pQR-sF-r0o"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pBf-c7-1Ii">
+                    <rect key="frame" x="20" y="33" width="280" height="190"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="190" id="7E6-18-bAF"/>
+                        <constraint firstAttribute="width" constant="280" id="zvt-qO-EvX"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rtV-4X-5Zl" customClass="VCButtonFont">
+                    <rect key="frame" x="58" y="487" width="203" height="61"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <state key="normal" title="Finished" backgroundImage="signUp_btn.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="30"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didTapFinish:" destination="-1" eventType="touchUpInside" id="WJ2-8V-bAC"/>
+                    </connections>
+                </button>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Uli-86-Rm0">
+                    <rect key="frame" x="20" y="302" width="280" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <segments>
+                        <segment title="S Text"/>
+                        <segment title="S Social"/>
+                        <segment title="S Email"/>
+                    </segments>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <action selector="segmentedControl:" destination="-1" eventType="valueChanged" id="b3S-1w-Ryv"/>
+                    </connections>
+                </segmentedControl>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here is your referral code:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZF-b8-1ZE" customClass="VCLabel">
+                    <rect key="frame" x="20" y="273" width="182" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="hDk-2y-thC"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="14"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ABC123" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPm-AR-XjU">
+                    <rect key="frame" x="195" y="276" width="109" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="14"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$20 for you, and your referral!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEs-vx-tg8" customClass="VCLabel">
+                    <rect key="frame" x="20" y="338" width="280" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="hfq-HW-1CI"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="14"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="yZF-b8-1ZE" secondAttribute="trailing" constant="118" id="5zH-P6-Zb7"/>
+                <constraint firstItem="Uli-86-Rm0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="8rJ-F6-VJZ"/>
+                <constraint firstItem="UPm-AR-XjU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="195" id="EiW-wo-0Rh"/>
+                <constraint firstItem="hEs-vx-tg8" firstAttribute="top" secondItem="Uli-86-Rm0" secondAttribute="bottom" constant="8" id="Fhc-OA-kHf"/>
+                <constraint firstItem="yZF-b8-1ZE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="K5U-AV-cHD"/>
+                <constraint firstItem="hEs-vx-tg8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="LP6-yG-cgQ"/>
+                <constraint firstItem="rtV-4X-5Zl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="58" id="PQY-bJ-Oy9"/>
+                <constraint firstAttribute="trailing" secondItem="UPm-AR-XjU" secondAttribute="trailing" constant="16" id="UId-m6-gXC"/>
+                <constraint firstItem="pBf-c7-1Ii" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="33" id="WJG-25-eZW"/>
+                <constraint firstItem="UPm-AR-XjU" firstAttribute="leading" secondItem="yZF-b8-1ZE" secondAttribute="trailing" constant="-7" id="Xp6-RF-NrZ"/>
+                <constraint firstAttribute="trailing" secondItem="hEs-vx-tg8" secondAttribute="trailing" constant="20" id="aXu-f6-zOY"/>
+                <constraint firstItem="pBf-c7-1Ii" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="kXE-Kh-C3F"/>
+                <constraint firstAttribute="bottom" secondItem="rtV-4X-5Zl" secondAttribute="bottom" constant="20" id="kp1-fw-Fda"/>
+                <constraint firstItem="yZF-b8-1ZE" firstAttribute="top" secondItem="pBf-c7-1Ii" secondAttribute="bottom" constant="50" id="sC1-59-g63"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Uli-86-Rm0" secondAttribute="trailing" constant="20" id="sLT-ZY-MX3"/>
+                <constraint firstAttribute="trailing" secondItem="Uli-86-Rm0" secondAttribute="trailing" constant="20" id="tBs-gd-or2"/>
+                <constraint firstItem="Uli-86-Rm0" firstAttribute="top" secondItem="yZF-b8-1ZE" secondAttribute="bottom" constant="8" id="wf3-QZ-LhS"/>
+                <constraint firstItem="Uli-86-Rm0" firstAttribute="top" secondItem="UPm-AR-XjU" secondAttribute="bottom" constant="10" id="xUT-Mp-sum"/>
+                <constraint firstItem="Uli-86-Rm0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="yks-Te-y0f"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="signUp_btn.png" width="203" height="61"/>
+    </resources>
+</document>
