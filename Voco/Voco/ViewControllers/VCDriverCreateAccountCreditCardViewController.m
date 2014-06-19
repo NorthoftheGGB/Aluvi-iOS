@@ -18,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet VCTextField *yearField;
 @property (weak, nonatomic) IBOutlet VCTextField *licensePlateField;
 @property (weak, nonatomic) IBOutlet UIView *checkboxOutlet;
+@property (weak, nonatomic) IBOutlet VCTextField *driversLicenseField;
+@property (weak, nonatomic) IBOutlet UITextField *referralCodeField;
 
 - (IBAction)didTapTermsOfService:(id)sender;
 - (IBAction)didTapContinue:(id)sender;
