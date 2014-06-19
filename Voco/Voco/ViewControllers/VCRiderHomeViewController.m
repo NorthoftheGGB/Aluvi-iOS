@@ -30,6 +30,16 @@
 @property (weak, nonatomic) IBOutlet UILabel *locationConfirmationLabel;
 @property (weak, nonatomic) IBOutlet UIButton *cancelRideButton;
 
+// Ride Details Drawer
+@property (strong, nonatomic) IBOutlet UIView *rideDetailsDrawer;
+@property (strong, nonatomic) IBOutlet UILabel *riderNameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *carTypeLabel;
+@property (strong, nonatomic) IBOutlet UILabel *currentFareLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *driverPhotoImageView;
+@property (strong, nonatomic) IBOutlet UIImageView *licensePlateImageView;
+
+- (IBAction)didTapCallDriverButton:(id)sender;
+
 // Map
 @property (strong, nonatomic) MKMapView * map;
 @property (strong, nonatomic) MKPolyline * routeOverlay;
@@ -89,6 +99,7 @@
 
 - (void) rideFoundNotification:(id) sender{
     [[VCCoreData managedObjectContext] refreshObject:_ride mergeChanges:YES];
+    [self showRideDetailsDrawer];
 }
 
 - (IBAction)didTapCommute:(id)sender {
@@ -160,7 +171,6 @@
         _locationConfirmationAnnotation.hidden = YES;
         
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        //hud.mode = MBProgressHUDAnimation;
         hud.labelText = @"Requesting Ride";
         
         // VC RidesAPI
@@ -190,7 +200,6 @@
     
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeAnnularDeterminate;
     hud.labelText = @"Canceling Ride";
     
 
@@ -236,6 +245,21 @@
     }
 }
 
+- (void) showRideDetailsDrawer {
+    _rideDetailsDrawer.frame = CGRectMake(0, self.view.frame.size.height - _rideDetailsDrawer.frame.size.height, _rideDetailsDrawer.frame.size.width, _rideDetailsDrawer.frame.size.height);
+    [self.view addSubview:_rideDetailsDrawer];
+    
+    /*
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:_rideDetailsDrawer
+                                                         attribute:NSLayoutAttributeBottom
+                                                         relatedBy:NSLayoutRelationEqual
+                                                            toItem:self.view
+                                                         attribute:NSLayoutAttributeBottom
+                                                        multiplier:1
+                                                          constant:0]];
+     */
+}
+
 #pragma mark MKMapViewDelegate
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay
@@ -253,4 +277,6 @@
     return nil;
 }
 
+- (IBAction)didTapCallDriverButton:(id)sender {
+}
 @end
