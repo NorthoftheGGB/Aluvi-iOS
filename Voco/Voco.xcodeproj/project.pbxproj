@@ -71,6 +71,7 @@
 		F473F01A195044AA00D8C900 /* menu-list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F473F018195044AA00D8C900 /* menu-list@2x.png */; };
 		F473F01D195113D100D8C900 /* VCRequestUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F01C195113D100D8C900 /* VCRequestUpdate.m */; };
 		F473F02019511D7700D8C900 /* VCDevicesApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F01F19511D7700D8C900 /* VCDevicesApi.m */; };
+		F473F0281951931D00D8C900 /* VCRiderHomeDevViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F0271951931D00D8C900 /* VCRiderHomeDevViewController.m */; };
 		F49EDD0B1946D27F0020B8BB /* VCRiderHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */; };
 		F49EDD0C1946D27F0020B8BB /* VCRiderHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */; };
 		F49EDD101946E2F90020B8BB /* VCInterfaceModes.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD0F1946E2F90020B8BB /* VCInterfaceModes.m */; };
@@ -222,6 +223,8 @@
 		F473F01E19511D7700D8C900 /* VCDevicesApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCDevicesApi.h; path = API/Devices/VCDevicesApi.h; sourceTree = "<group>"; };
 		F473F01F19511D7700D8C900 /* VCDevicesApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCDevicesApi.m; path = API/Devices/VCDevicesApi.m; sourceTree = "<group>"; };
 		F473F02119513B6300D8C900 /* Voco 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 5.xcdatamodel"; sourceTree = "<group>"; };
+		F473F0261951931D00D8C900 /* VCRiderHomeDevViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderHomeDevViewController.h; path = ViewControllers/Dev/VCRiderHomeDevViewController.h; sourceTree = "<group>"; };
+		F473F0271951931D00D8C900 /* VCRiderHomeDevViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRiderHomeDevViewController.m; path = ViewControllers/Dev/VCRiderHomeDevViewController.m; sourceTree = "<group>"; };
 		F49EDD081946D27F0020B8BB /* VCRiderHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderHomeViewController.h; path = ViewControllers/VCRiderHomeViewController.h; sourceTree = "<group>"; };
 		F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRiderHomeViewController.m; path = ViewControllers/VCRiderHomeViewController.m; sourceTree = "<group>"; };
 		F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCRiderHomeViewController.xib; path = ViewControllers/VCRiderHomeViewController.xib; sourceTree = "<group>"; };
@@ -391,6 +394,7 @@
 		F45F7BE71935756000A94721 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				F473F022195192D600D8C900 /* Dev */,
 				F473F00E194A6D3400D8C900 /* Common */,
 				F49EDD0D1946E2B30020B8BB /* Modes */,
 				F45F7C141935A3AF00A94721 /* Driver */,
@@ -567,6 +571,15 @@
 				F473F010194A6D3C00D8C900 /* BaseViewController.m */,
 			);
 			name = Common;
+			sourceTree = "<group>";
+		};
+		F473F022195192D600D8C900 /* Dev */ = {
+			isa = PBXGroup;
+			children = (
+				F473F0261951931D00D8C900 /* VCRiderHomeDevViewController.h */,
+				F473F0271951931D00D8C900 /* VCRiderHomeDevViewController.m */,
+			);
+			name = Dev;
 			sourceTree = "<group>";
 		};
 		F476908D1935B7FA00B9EF69 /* State Machines */ = {
@@ -996,6 +1009,7 @@
 				F4D8905319469F0F007C4671 /* VCDriverInterestedRequest.m in Sources */,
 				4FE641C91941584D0059BED1 /* SignUpViewController.m in Sources */,
 				F45F7C12193597F500A94721 /* NSDate+Pretty.m in Sources */,
+				F473F0281951931D00D8C900 /* VCRiderHomeDevViewController.m in Sources */,
 				F4FA0BFA192BF6BF005D8645 /* VCAppDelegate.m in Sources */,
 				F4FE1B1519385CAA00354886 /* VCUserState.m in Sources */,
 				F4D8904419468A84007C4671 /* VCUsersApi.m in Sources */,
