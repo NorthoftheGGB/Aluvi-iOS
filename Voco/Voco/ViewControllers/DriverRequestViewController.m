@@ -69,13 +69,16 @@
     UITextField * textField = (UITextField *) sender;
     switch(textField.tag){
         case kNameFieldTag:
-            [_phoneField becomeFirstResponder];
+            [_phoneField
+             becomeFirstResponder];
             break;
         case kPhoneFieldTag:
-            [_emailField becomeFirstResponder];
+            [_emailField
+             becomeFirstResponder];
             break;
         case kEmailFieldTag:
-            [_referralCodeField becomeFirstResponder];
+            [_referralCodeField
+             becomeFirstResponder];
             break;
         case kReferralCodeFieldTag:
             [self driverRequest];
