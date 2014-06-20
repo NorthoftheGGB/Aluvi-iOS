@@ -94,11 +94,15 @@
     BOOL error = false;
     if (![VCValidation NSStringIsValidEmail:_emailField.text]){
         error = true;
-        [UIAlertView showWithTitle:@"Error" message:@"Invalid Email Address" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
         [_emailField setTextColor:[UIColor redColor]];
+    }
+    if(_phoneField.text == nil || [_phoneField.text isEqualToString:@""] ){
+        error = true;
+        [_phoneField setTextColor:[UIColor redColor]];
     }
     
     if(error == true){
+         [UIAlertView showWithTitle:@"Error" message:@"" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
         return;
     }
     
