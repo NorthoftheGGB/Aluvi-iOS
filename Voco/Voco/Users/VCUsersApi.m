@@ -14,6 +14,7 @@
 #import "VCLoginResponse.h"
 #import "VCDriverInterestedRequest.h"
 #import "VCDriverStateResponse.h"
+#import "VCUserStateResponse.h"
 
 @implementation VCUsersApi
 + (void) setup: (RKObjectManager *) objectManager {
@@ -69,6 +70,15 @@
     [objectManager addResponseDescriptor:driverInterestedResponseDescriptor];
     
 
+    {
+        RKResponseDescriptor * responseDescriptor =
+        [RKResponseDescriptor responseDescriptorWithMapping:[VCUserStateResponse getMapping]
+                                                     method:RKRequestMethodGET
+                                                pathPattern:API_USER_STATE
+                                                    keyPath:nil
+                                                statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor];
+    }
     
     
 }

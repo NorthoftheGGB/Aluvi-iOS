@@ -33,7 +33,6 @@
 
 @interface VCUserState : NSObject
 
-
 @property(nonatomic, strong) NSNumber * underwayRideId;
 @property(nonatomic, strong) NSString * riderState;
 @property(nonatomic, strong) NSString * driverState;

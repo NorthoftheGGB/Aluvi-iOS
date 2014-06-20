@@ -14,7 +14,6 @@
 @property (nonatomic, strong) NSString * driverState;
 @property (nonatomic, strong) NSString * riderState;
 
-
 + (RKObjectMapping *)getMapping;
 
 @end

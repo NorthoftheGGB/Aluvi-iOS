@@ -8,7 +8,7 @@
 
 #import "VCLoginResponse.h"
 
-@implementation VCLoginResponse
+@implementation VCLoginResponse : NSObject 
 + (RKObjectMapping *)getMapping {
     
     RKObjectMapping * mapping = [RKObjectMapping mappingForClass:[VCLoginResponse class]];

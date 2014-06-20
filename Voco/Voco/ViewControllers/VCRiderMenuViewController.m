@@ -82,7 +82,6 @@ static void * XXContext = &XXContext;
             [self showRiderMenu];
             break;
     }
-   // [[VCUserState instance] addObserver:self forKeyPath:@"driverState" options:NSKeyValueObservingOptionNew context:XXContext];
 
 }
 
@@ -98,13 +97,15 @@ static void * XXContext = &XXContext;
     if([VCInterfaceModes mode] == kDriverMode){
         [self showDriverView];
     }
+    [[VCUserState instance] addObserver:self forKeyPath:@"driverState" options:NSKeyValueObservingOptionNew context:XXContext];
+
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.navigationItem.rightBarButtonItem = nil;
+    [[VCUserState instance] removeObserver:self forKeyPath:@"driverState"];
 }
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -112,16 +113,11 @@ static void * XXContext = &XXContext;
     // Dispose of any resources that can be recreated.
 }
 
-- (void)dealloc {
- //   [[VCUserState instance] removeObserver:self forKeyPath:@"driverState"];
-}
-
-/*
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-  
+    if([VCInterfaceModes mode] == kDriverMode && [keyPath isEqualToString:@"driverState"]){
+        [self showDriverView];
+    }
 }
- */
-
 
 - (IBAction)didChangeMode:(id)sender {
     if(_modeSegementedControl.selectedSegmentIndex == 1){
@@ -172,6 +168,7 @@ static void * XXContext = &XXContext;
 
 
 - (IBAction)didTapLogout:(id)sender {
+    [self viewWillDisappear:YES];
     [[VCUserState instance] logout];
     [VCInterfaceModes showRiderSigninInterface];
 }
@@ -234,11 +231,13 @@ static void * XXContext = &XXContext;
 }
 
 - (IBAction)didTapInterestedInDriving:(id)sender {
+    [self viewWillDisappear:YES];
     DriverRequestViewController * vc = [[DriverRequestViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)didTapRegister:(id)sender {
+    [self viewWillDisappear:YES];
     VCDriverRegistrationViewController * vc = [[VCDriverRegistrationViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }

@@ -1,5 +1,5 @@
 //
-//  VCTokenResponse.h
+//  VCUserStateResponse.h
 //  Voco
 //
 //  Created by Matthew Shultz on 6/9/14.
@@ -8,9 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface VCLoginResponse : NSObject
+@interface VCUserStateResponse : NSObject
 
-@property (nonatomic, strong) NSString * token;
 @property (nonatomic, strong) NSString * driverState;
 @property (nonatomic, strong) NSString * riderState;
 
