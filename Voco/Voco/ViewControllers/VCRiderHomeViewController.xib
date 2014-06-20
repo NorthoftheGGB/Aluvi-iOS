@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCRiderHomeViewController">
             <connections>
+                <outlet property="arrivalTimeButton" destination="AOV-ym-gxz" id="qZY-Xw-GDZ"/>
                 <outlet property="cancelRideButton" destination="ViH-R7-hkr" id="Z5O-1c-wN6"/>
                 <outlet property="carTypeLabel" destination="QDG-ga-bae" id="bhS-fg-u49"/>
                 <outlet property="commuteButton" destination="er7-jE-Wpi" id="kdU-sQ-p8R"/>
@@ -17,9 +18,11 @@
                 <outlet property="locationConfirmationAnnotation" destination="Zfe-VM-bsO" id="KNz-6d-aE8"/>
                 <outlet property="locationConfirmationLabel" destination="jyO-17-bWp" id="IJm-zp-qxb"/>
                 <outlet property="mapCenterPin" destination="3G5-uk-oef" id="ccp-fU-RZv"/>
+                <outlet property="morningOrEveningButton" destination="0Hd-Eq-Pb2" id="UMq-SZ-71A"/>
                 <outlet property="onDemandButton" destination="Chj-Ab-zHy" id="bIZ-g6-hCC"/>
                 <outlet property="rideDetailsDrawer" destination="pRU-Fl-aaR" id="Je8-AL-Xpt"/>
                 <outlet property="riderNameLabel" destination="fig-ZR-hzv" id="KWx-C2-eNx"/>
+                <outlet property="scheduleRideButton" destination="4Dx-kF-WgJ" id="qLy-B0-BkE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -52,11 +55,11 @@
                         <action selector="didTapCommute:" destination="-1" eventType="touchUpInside" id="hvA-Ge-aNb"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="map_pin_fill-512.png" translatesAutoresizingMaskIntoConstraints="NO" id="3G5-uk-oef">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_pin_fill-512.png" translatesAutoresizingMaskIntoConstraints="NO" id="3G5-uk-oef">
                     <rect key="frame" x="135" y="160" width="50" height="160"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zfe-VM-bsO">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zfe-VM-bsO">
                     <rect key="frame" x="53" y="129" width="214" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
@@ -99,12 +102,41 @@
                         <action selector="didTapCancel:" destination="-1" eventType="touchUpInside" id="B1i-ag-b8V"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AOV-ym-gxz">
-                    <rect key="frame" x="213" y="44" width="87" height="30"/>
+                <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AOV-ym-gxz">
+                    <rect key="frame" x="176" y="74" width="135" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button">
+                    <color key="backgroundColor" red="0.74117648599999997" green="0.082352943720000002" blue="0.31372550129999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Arrive By: __ am">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="didTapArrivalTimeButton:" destination="-1" eventType="touchUpInside" id="ylx-bC-nMc"/>
+                    </connections>
+                </button>
+                <button opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Hd-Eq-Pb2">
+                    <rect key="frame" x="20" y="74" width="143" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.74117648599999997" green="0.082352943720000002" blue="0.31372550129999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Morning Of">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapMorningOrEveningButton:" destination="-1" eventType="touchUpInside" id="sqn-Db-aIK"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Dx-kF-WgJ">
+                    <rect key="frame" x="33" y="376" width="267" height="46"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Schedule Ride">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapScheduleRideButton:" destination="-1" eventType="touchUpInside" id="nhr-T5-y9F"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

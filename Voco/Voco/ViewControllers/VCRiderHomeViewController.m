@@ -15,6 +15,7 @@
 #import "VCRiderApi.h"
 #import "VCMapQuestRouting.h"
 #import "VCRideRequestCreated.h"
+#import <ActionSheetPicker.h>
 
 #define kStepSetDepartureLocation 1
 #define kStepSetDestinationLocation 2
@@ -29,6 +30,9 @@
 @property (weak, nonatomic) IBOutlet UIView *locationConfirmationAnnotation;
 @property (weak, nonatomic) IBOutlet UILabel *locationConfirmationLabel;
 @property (weak, nonatomic) IBOutlet UIButton *cancelRideButton;
+@property (weak, nonatomic) IBOutlet UIButton *morningOrEveningButton;
+@property (weak, nonatomic) IBOutlet UIButton *arrivalTimeButton;
+@property (weak, nonatomic) IBOutlet UIButton *scheduleRideButton;
 
 // Ride Details Drawer
 @property (strong, nonatomic) IBOutlet UIView *rideDetailsDrawer;
@@ -38,8 +42,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *driverPhotoImageView;
 @property (strong, nonatomic) IBOutlet UIImageView *licensePlateImageView;
 
-- (IBAction)didTapCallDriverButton:(id)sender;
-
 // Map
 @property (strong, nonatomic) MKMapView * map;
 @property (strong, nonatomic) MKPolyline * routeOverlay;
@@ -47,10 +49,17 @@
 @property (nonatomic) NSInteger step;
 @property (strong, nonatomic) Ride * ride;
 
+
+
+- (IBAction)didTapCallDriverButton:(id)sender;
 - (IBAction)didTapCommute:(id)sender;
 - (IBAction)didTapOnDemand:(id)sender;
 - (IBAction)didTapConfirmLocation:(id)sender;
 - (IBAction)didTapCancel:(id)sender;
+- (IBAction)didTapMorningOrEveningButton:(id)sender;
+- (IBAction)didTapArrivalTimeButton:(id)sender;
+- (IBAction)didTapScheduleRideButton:(id)sender;
+
 
 @end
 
@@ -69,15 +78,13 @@
 {
     [super viewDidLoad];
     
-    _mapCenterPin.hidden = YES;
-    _locationConfirmationAnnotation.hidden = YES;
-    _cancelRideButton.hidden = YES;
-    
     _map = [[MKMapView alloc] initWithFrame:self.view.bounds];
     _map.delegate = self;
     _map.showsUserLocation = YES;
     _map.userTrackingMode = YES;
     [self.view insertSubview:_map atIndex:0];
+    [self resetRequestInterface];
+
 }
 
 - (void) viewWillAppear:(BOOL)animated{
@@ -121,6 +128,7 @@
     
     _ride = (Ride *) [NSEntityDescription insertNewObjectForEntityForName:@"Ride" inManagedObjectContext:[VCCoreData managedObjectContext]];
     _ride.requestType = RIDE_REQUEST_TYPE_COMMUTER;
+    _morningOrEveningButton.hidden = NO;
 }
 
 - (IBAction)didTapOnDemand:(id)sender {
@@ -189,20 +197,24 @@
         _locationConfirmationAnnotation.hidden = YES;
         
         if([ _ride.requestType isEqualToString:RIDE_REQUEST_TYPE_ON_DEMAND]) {
-        
-        
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.labelText = @"Requesting Ride";
-        
-        // VC RidesAPI
-        [VCRiderApi requestRide:_ride success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            VCRideRequestCreated * rideRequestCreatedResponse = mappingResult.firstObject;
-            _ride.request_id = rideRequestCreatedResponse.rideRequestId;
-            [VCCoreData saveContext];
-            [hud hide:YES];
-        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            [hud hide:YES];
-        }];
+            
+            
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hud.labelText = @"Requesting Ride";
+            
+            // VC RidesAPI
+            [VCRiderApi requestRide:_ride success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                VCRideRequestCreated * rideRequestCreatedResponse = mappingResult.firstObject;
+                _ride.request_id = rideRequestCreatedResponse.rideRequestId;
+                [VCCoreData saveContext];
+                [hud hide:YES];
+                // TODO: Don't show an alreay, show a HUD
+                [UIAlertView showWithTitle:@"Requested!" message:@"We are finding your driver now!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                    
+                }];
+            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                [hud hide:YES];
+            }];
         } else if ( [ _ride.requestType isEqualToString:RIDE_REQUEST_TYPE_COMMUTER]) {
             // Commuter Confirmation
             
@@ -242,6 +254,81 @@
     
 }
 
+- (IBAction)didTapMorningOrEveningButton:(id)sender {
+    NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"M/d"];
+    NSString * dayString = [dateFormatter stringFromDate:[NSDate date]];
+    
+    NSArray *options = [NSArray arrayWithObjects:[NSString stringWithFormat:@"Morning Of %@", dayString],
+                        [NSString stringWithFormat:@"Evening of %@", dayString], nil];
+    
+    [ActionSheetStringPicker showPickerWithTitle:@"Select morning or evening"
+                                            rows:options
+                                initialSelection:0
+                                       doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+                                           [_morningOrEveningButton setTitle:[options objectAtIndex:selectedIndex ] forState:UIControlStateNormal];
+                                           _arrivalTimeButton.hidden = NO;
+                                       }
+                                     cancelBlock:^(ActionSheetStringPicker *picker) {
+                                         NSLog(@"Block Picker Canceled");
+                                     }
+                                          origin:sender];
+}
+
+- (IBAction)didTapArrivalTimeButton:(id)sender {
+    NSArray *morningOptions = @[
+                        @"6:00", @"6:30", @"7:00", @"7:30",
+                        @"8:00", @"8:30", @"9:00", @"9:30",
+                        @"10:00", @"10:30", @"11:00", @"11:30",
+                        @"12:00"];
+    NSArray *evengingOptions = @[
+                                @"3:00", @"3:30", @"4:00", @"4:30",
+                                @"5:00", @"5:30", @"6:00", @"6:30",
+                                @"7:00", @"7:30", @"8:00", @"8:30",
+                                @"9:00"];
+    NSArray * options;
+    if([_morningOrEveningButton.titleLabel.text rangeOfString:@"Morning" options:NSCaseInsensitiveSearch].location == 0){
+        options = morningOptions;
+    } else {
+        options = evengingOptions;
+    }
+    
+    [ActionSheetStringPicker showPickerWithTitle:@"Select your arrival time"
+                                            rows:options
+                                initialSelection:0
+                                       doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+                                           NSString * title = [NSString stringWithFormat:@"Arrive By: %@", [options objectAtIndex:selectedIndex] ];
+                                           [_arrivalTimeButton setTitle:title forState:UIControlStateNormal];
+                                           _scheduleRideButton.hidden = NO;
+                                       }
+                                     cancelBlock:^(ActionSheetStringPicker *picker) {
+                                         NSLog(@"Block Picker Canceled");
+                                     }
+                                          origin:sender];
+}
+
+- (IBAction)didTapScheduleRideButton:(id)sender {
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Requesting Ride";
+    
+    // VC RidesAPI
+    [VCRiderApi requestRide:_ride success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        VCRideRequestCreated * rideRequestCreatedResponse = mappingResult.firstObject;
+        _ride.request_id = rideRequestCreatedResponse.rideRequestId;
+        [VCCoreData saveContext];
+        [hud hide:YES];
+        [UIAlertView showWithTitle:@"Ride Requested"
+                           message:@"Your commuter ride has been requested with our system.  We will notify you when a ride share has been found"
+                 cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                     [self resetRequestInterface];
+                 }];
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [hud hide:YES];
+    }];
+
+}
+
 #pragma mark Interface
 
 - (void) showRouteRequestInterface {
@@ -263,6 +350,9 @@
     _commuteButton.hidden = NO;
     _cancelRideButton.hidden = YES;
     _step = kStepSetDepartureLocation;
+    _arrivalTimeButton.hidden = YES;
+    _morningOrEveningButton.hidden = YES;
+    _scheduleRideButton.hidden = YES;
     if(_routeOverlay != nil) {
         [_map removeOverlay:_routeOverlay];
     }
