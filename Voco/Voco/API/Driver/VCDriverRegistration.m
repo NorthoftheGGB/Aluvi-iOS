@@ -16,7 +16,7 @@
     [mapping addAttributeMappingsFromDictionary:@{
                                                  @"drivers_license_number" : @"driversLicenseNumber",
                                                  @"bank_account_name" : @"bankAccountName",
-                                                 @"bank_account_number" : @"bankAccoutNumber",
+                                                 @"bank_account_number" : @"bankAccountNumber",
                                                  @"bank_account_routing" : @"bankAccountRouting",
                                                  @"car_brand" : @"carBrand",
                                                  @"car_model" : @"carModel",

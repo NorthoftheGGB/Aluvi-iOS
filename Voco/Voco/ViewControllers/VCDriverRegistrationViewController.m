@@ -7,8 +7,10 @@
 //
 
 #import "VCDriverRegistrationViewController.h"
+#import <M13Checkbox.h>
 #import "VCTextField.h"
 #import "VCDriverApi.h"
+#import "VCDriverVideoTutorialController.h"
 
 #define kDriversLicenseFieldTag 1
 #define kReferralCodeFieldTag 2
@@ -20,9 +22,8 @@
 #define kYearTag 8
 #define kLicensePlateFieldTag 9
 
-
-
 @interface VCDriverRegistrationViewController ()
+
 @property (weak, nonatomic) IBOutlet VCTextField *accountNameField;
 @property (weak, nonatomic) IBOutlet VCTextField *accountNumberField;
 @property (weak, nonatomic) IBOutlet VCTextField *routingNumberField;
@@ -34,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet VCTextField *driversLicenseField;
 @property (weak, nonatomic) IBOutlet UITextField *referralCodeField;
 @property (strong, nonatomic) IBOutlet UIView *contentView;
+@property (strong, nonatomic) M13Checkbox * termsCheckbox;
 
 - (IBAction)didTapTermsOfService:(id)sender;
 - (IBAction)didTapContinue:(id)sender;
@@ -63,6 +65,11 @@
     _routingNumberField.text = @"110000000";
 #endif
     
+    _termsCheckbox = [[M13Checkbox alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    _termsCheckbox.strokeColor = [UIColor blackColor];
+    _termsCheckbox.checkColor = [UIColor redColor];
+    [_checkboxOutlet addSubview:_termsCheckbox];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -82,8 +89,12 @@
                               carLicensePlate:_licensePlateField.text
                                  referralCode:_referralCodeField.text
                                       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                        
-                                          //Matt, Wire this up, dawg.
+                                          
+                                          VCDriverVideoTutorialController * vc = [[VCDriverVideoTutorialController alloc] init];
+                                          NSMutableArray *viewControllers = [NSMutableArray arrayWithArray:[[self navigationController] viewControllers]];
+                                          [viewControllers removeLastObject];
+                                          [viewControllers addObject:vc];
+                                          [[self navigationController] setViewControllers:viewControllers animated:YES];
                                           
                                       } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                           [WRUtilities criticalError:error];
@@ -100,6 +111,8 @@
 }
 
 - (IBAction)didTapContinue:(id)sender {
+    // Validate
+    
     [self registerDriver];
 }
 
