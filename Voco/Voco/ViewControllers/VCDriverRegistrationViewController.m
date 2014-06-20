@@ -8,6 +8,19 @@
 
 #import "VCDriverRegistrationViewController.h"
 #import "VCTextField.h"
+#import "VCDriverApi.h"
+
+#define kDriversLicenseFieldTag 1
+#define kReferralCodeFieldTag 2
+#define kAccountNameFieldTag 3
+#define kAccountNumberFieldTag 4
+#define kRoutingNumberFieldTag 5
+#define kBrandFieldTag 6
+#define kModelFieldtag 7
+#define kYearTag 8
+#define kLicensePlateFieldTag 9
+
+
 
 @interface VCDriverRegistrationViewController ()
 @property (weak, nonatomic) IBOutlet VCTextField *accountNameField;
@@ -48,6 +61,15 @@
     _accountNumberField.text = @"000123456789";
     _routingNumberField.text = @"110000000";
 #endif
+
+    UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
+    [tapBackground setNumberOfTapsRequired:1];
+    [self.view addGestureRecognizer:tapBackground];
+    
+}
+
+- (void) dismissKeyboard:(id) sender{
+    [self.view endEditing:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,6 +78,28 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) registerDriver{
+ [VCDriverApi registerDriverWithLicenseNumber:_driversLicenseField.text
+                              bankAccountName:_accountNameField.text
+                            bankAccountNumber:_accountNumberField.text
+                           bankAccountRouting:_routingNumberField.text
+                                     carBrand:_brandField.text
+                                     carModel:_modelField.text
+                                      carYear:_yearField.text
+                              carLicensePlate:_licensePlateField.text
+                                 referralCode:_referralCodeField.text
+                                      success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                        
+                                          //Matt, Wire this up, dawg.
+                                          
+                                      } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                          [WRUtilities criticalError:error];
+                                      }];
+    
+}
+
+#pragma mark IBActions
+
 - (IBAction)didTapTermsOfService:(id)sender {
 }
 
@@ -63,5 +107,55 @@
 }
 
 - (IBAction)didTapContinue:(id)sender {
+    [self registerDriver];
 }
+
+- (IBAction)didEndOnExit:(id)sender {
+    
+    UITextField * textField = (UITextField *) sender;
+    switch(textField.tag){
+        case kDriversLicenseFieldTag:
+            [_referralCodeField becomeFirstResponder];
+            break;
+            
+        case kReferralCodeFieldTag:
+            [_accountNumberField
+             becomeFirstResponder];
+            break;
+            
+        case kAccountNameFieldTag:
+            [_accountNumberField becomeFirstResponder];
+            break;
+            
+        case kAccountNumberFieldTag:
+            [_routingNumberField
+             becomeFirstResponder];
+            break;
+            
+        case kRoutingNumberFieldTag:
+            [_brandField
+             becomeFirstResponder];
+            break;
+            
+        case kBrandFieldTag:
+            [_modelField
+             becomeFirstResponder];
+            break;
+        
+        case kModelFieldtag:
+            [_yearField
+             becomeFirstResponder];
+            break;
+            
+        case kYearTag:
+            [_licensePlateField becomeFirstResponder];
+            break;
+            
+        case kLicensePlateFieldTag:
+            [self registerDriver];
+            break;
+    }
+    
+}
+
 @end
