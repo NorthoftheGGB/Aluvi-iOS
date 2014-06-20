@@ -1,17 +1,17 @@
 //
-//  VCTokenResponse.m
+//  VCUserStateResponse.m
 //  Voco
 //
 //  Created by Matthew Shultz on 6/9/14.
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCLoginResponse.h"
+#import "VCUserStateResponse.h"
 
-@implementation VCLoginResponse
+@implementation VCUserStateResponse
 + (RKObjectMapping *)getMapping {
     
-    RKObjectMapping * mapping = [RKObjectMapping mappingForClass:[VCLoginResponse class]];
+    RKObjectMapping * mapping = [RKObjectMapping mappingForClass:[VCUserStateResponse class]];
     [mapping addAttributeMappingsFromDictionary:@{
                                                   @"driver_state" : @"driverState",
                                                   @"rider_state" : @"riderState"

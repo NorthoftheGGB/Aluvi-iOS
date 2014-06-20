@@ -11,6 +11,7 @@
 #import "VCApi.h"
 #import "VCDevicesApi.h"
 #import "VCLoginResponse.h"
+#import "VCUserStateResponse.h"
 
 #define kRideProcessStateKey @"kRideProcessStateKey"
 #define kDriveProcessStateKey @"kDriveProcessStateKey"
@@ -21,6 +22,8 @@
 static VCUserState *sharedSingleton;
 
 @implementation VCUserState
+
+@synthesize riderState, driverState;
 
 + (VCUserState *) instance {
     if(sharedSingleton == nil){
@@ -41,8 +44,8 @@ static VCUserState *sharedSingleton;
         NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
         _rideProcessState = [userDefaults objectForKey:kRideProcessStateKey];
         _driveProcessState = [userDefaults objectForKey:kDriveProcessStateKey];
-        _riderState = [userDefaults objectForKey:kRiderStateKey];
-        _driverState = [userDefaults objectForKey:kDriverStateKey];
+        riderState = [userDefaults objectForKey:kRiderStateKey];
+        driverState = [userDefaults objectForKey:kDriverStateKey];
     }
     return self;
 }
@@ -67,16 +70,16 @@ static VCUserState *sharedSingleton;
     [userDefaults setObject:_driveProcessState forKey:kDriveProcessStateKey];
     [userDefaults synchronize];
 }
-- (void) setRiderState:(NSString *)riderState {
-    _riderState = riderState;
+- (void) setRiderState:(NSString *) __riderState {
+    riderState = __riderState;
     NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:_riderState forKey:kRiderStateKey];
+    [userDefaults setObject:self.riderState forKey:kRiderStateKey];
     [userDefaults synchronize];
 }
-- (void) setDriverState:(NSString *)driverState {
-    _driverState = driverState;
+- (void) setDriverState:(NSString *) __driverState {
+    driverState = __driverState;
     NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:_driverState forKey:kDriverStateKey];
+    [userDefaults setObject:self.driverState forKey:kDriverStateKey];
     [userDefaults synchronize];
 }
 
@@ -88,8 +91,8 @@ static VCUserState *sharedSingleton;
     [VCUsersApi login:[RKObjectManager sharedManager] phone:phone password:password
               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                   VCLoginResponse * loginResponse = mappingResult.firstObject;
-                  _riderState = loginResponse.riderState;
-                  _driverState = loginResponse.driverState;
+                  self.riderState = loginResponse.riderState;
+                  self.driverState = loginResponse.driverState;
                   [VCDevicesApi updateUserWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                       success();
                   } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -116,9 +119,11 @@ static VCUserState *sharedSingleton;
 - (void) synchronizeUserState {
     [VCUsersApi getUserState:[RKObjectManager sharedManager]
                      success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                         VC
+                         VCUserStateResponse * response = mappingResult.firstObject;
+                         self.riderState = response.riderState;
+                         self.driverState = response.driverState;
                      } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                         
+                         NSLog(@"Could not synchronize user state");
                      }];
 }
 
@@ -133,8 +138,8 @@ static VCUserState *sharedSingleton;
     _underwayRideId = nil;
     _rideProcessState = nil;
     _driveProcessState = nil;
-    _riderState = nil;
-    _driverState = nil;
+    self.riderState = nil;
+    self.driverState = nil;
 }
 
 @end

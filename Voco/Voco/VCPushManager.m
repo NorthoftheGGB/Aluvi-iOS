@@ -194,6 +194,8 @@
             [VCUserState instance].rideProcessState = kUserStateIdle;
             [[VCDialogs instance] showRideReceipt:rideId];
         }
+    } else if([type isEqualToString:@"user_state_change"]){
+        [[VCUserState instance] synchronizeUserState];
     }
 }
 
