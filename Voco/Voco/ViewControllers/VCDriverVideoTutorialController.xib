@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pBf-c7-1Ii">
-                    <rect key="frame" x="20" y="39" width="280" height="190"/>
+                    <rect key="frame" x="20" y="75" width="280" height="190"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -73,7 +73,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ABC123" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPm-AR-XjU">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ABC123" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPm-AR-XjU" customClass="VCLabel">
                     <rect key="frame" x="195" y="276" width="109" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -110,12 +110,12 @@
                 <constraint firstItem="hEs-vx-tg8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="LP6-yG-cgQ"/>
                 <constraint firstItem="rtV-4X-5Zl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="59" id="PQY-bJ-Oy9"/>
                 <constraint firstAttribute="trailing" secondItem="UPm-AR-XjU" secondAttribute="trailing" constant="16" id="UId-m6-gXC"/>
-                <constraint firstItem="pBf-c7-1Ii" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="39" id="WJG-25-eZW"/>
+                <constraint firstItem="pBf-c7-1Ii" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="75" id="WJG-25-eZW"/>
                 <constraint firstItem="UPm-AR-XjU" firstAttribute="leading" secondItem="yZF-b8-1ZE" secondAttribute="trailing" constant="-7" id="Xp6-RF-NrZ"/>
                 <constraint firstAttribute="trailing" secondItem="hEs-vx-tg8" secondAttribute="trailing" constant="20" id="aXu-f6-zOY"/>
                 <constraint firstItem="pBf-c7-1Ii" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="kXE-Kh-C3F"/>
                 <constraint firstAttribute="bottom" secondItem="rtV-4X-5Zl" secondAttribute="bottom" constant="32" id="kp1-fw-Fda"/>
-                <constraint firstItem="yZF-b8-1ZE" firstAttribute="top" secondItem="pBf-c7-1Ii" secondAttribute="bottom" constant="44" id="sC1-59-g63"/>
+                <constraint firstItem="yZF-b8-1ZE" firstAttribute="top" secondItem="pBf-c7-1Ii" secondAttribute="bottom" constant="8" id="sC1-59-g63"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Uli-86-Rm0" secondAttribute="trailing" constant="20" id="sLT-ZY-MX3"/>
                 <constraint firstAttribute="trailing" secondItem="Uli-86-Rm0" secondAttribute="trailing" constant="20" id="tBs-gd-or2"/>
                 <constraint firstItem="Uli-86-Rm0" firstAttribute="top" secondItem="yZF-b8-1ZE" secondAttribute="bottom" constant="8" id="wf3-QZ-LhS"/>
@@ -123,6 +123,7 @@
                 <constraint firstItem="Uli-86-Rm0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="yks-Te-y0f"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>

@@ -83,6 +83,9 @@
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideFoundNotification:) name:@"ride_found" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideCancelledByDriverNotification:) name:@"ride_cancelled_by_driver" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideComplete:) name:@"ride_complete" object:nil];
+    
 }
 
 - (void) viewWillDisppear:(BOOL)animated{
@@ -101,9 +104,23 @@
     [self showRideDetailsDrawer];
 }
 
+- (void) rideCancelledByDriverNotification:(id) sender{
+    [[VCCoreData managedObjectContext] refreshObject:_ride mergeChanges:YES];
+    [self resetRequestInterface];
+}
+
+- (void) rideComplete:(id) sender{
+    [self resetRequestInterface];
+    _ride = nil;
+}
+
+
+
 - (IBAction)didTapCommute:(id)sender {
     [self showRouteRequestInterface];
     
+    _ride = (Ride *) [NSEntityDescription insertNewObjectForEntityForName:@"Ride" inManagedObjectContext:[VCCoreData managedObjectContext]];
+    _ride.requestType = RIDE_REQUEST_TYPE_COMMUTER;
 }
 
 - (IBAction)didTapOnDemand:(id)sender {
@@ -112,10 +129,12 @@
     _ride = (Ride *) [NSEntityDescription insertNewObjectForEntityForName:@"Ride" inManagedObjectContext:[VCCoreData managedObjectContext]];
     _ride.requestType = RIDE_REQUEST_TYPE_ON_DEMAND;
     
+    /*
     CGRect frame = _departureEntryView.frame;
     frame.origin.y = 20;
     _departureEntryView.frame = frame;
     [self.view addSubview:_departureEntryView];
+     */
 }
 
 - (IBAction)didTapConfirmLocation:(id)sender {
@@ -204,6 +223,8 @@
         [hud hide:YES];
         
         [UIAlertView showWithTitle:@"Ride Cancelled" message:@"Your ride has been cancelled" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        [self resetRequestInterface];
+
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [hud hide:YES];
@@ -238,6 +259,7 @@
     if(_routeOverlay != nil) {
         [_map removeOverlay:_routeOverlay];
     }
+    [self hideRideDetailsDrawer];
 }
 
 - (void) showRideDetailsDrawer {
@@ -255,6 +277,12 @@
      */
 }
 
+- (void) hideRideDetailsDrawer {
+    if( _rideDetailsDrawer.superview != nil) {
+        [_rideDetailsDrawer removeFromSuperview];
+    }
+}
+
 #pragma mark MKMapViewDelegate
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay
@@ -263,7 +291,7 @@
     {
         MKPolylineRenderer*    aRenderer = [[MKPolylineRenderer alloc] initWithPolyline:(MKPolyline*)overlay];
         
-        aRenderer.strokeColor = [[UIColor yellowColor] colorWithAlphaComponent:0.7];
+        aRenderer.strokeColor = [[UIColor greenColor] colorWithAlphaComponent:0.7];
         aRenderer.lineWidth = 3;
         
         return aRenderer;

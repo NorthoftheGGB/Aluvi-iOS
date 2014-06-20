@@ -11,6 +11,7 @@
 #import "VCUserState.h"
 #import "DriverRequestViewController.h"
 #import "VCDriverRegistrationViewController.h"
+#import "VCDriverVideoTutorialController.h"
 
 static void * XXContext = &XXContext;
 
@@ -241,8 +242,13 @@ static void * XXContext = &XXContext;
 
 - (IBAction)didTapRegister:(id)sender {
     [self viewWillDisappear:YES];
-    VCDriverRegistrationViewController * vc = [[VCDriverRegistrationViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+    if([[VCUserState instance].driverState isEqualToString:@"approved" ]){
+        VCDriverRegistrationViewController * vc = [[VCDriverRegistrationViewController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    } else if([[VCUserState instance].driverState isEqualToString:@"registered" ]){
+        VCDriverVideoTutorialController * vc = [[VCDriverVideoTutorialController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 - (IBAction)didChangeOnDutySwitch:(id)sender {

@@ -593,12 +593,12 @@
                         <constraint firstAttribute="width" constant="171" id="Ap8-YQ-2k4"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks for registering to drive for Voco.  We will activate your driver panel shortly." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="240" translatesAutoresizingMaskIntoConstraints="NO" id="Ilt-2j-vKw" customClass="VCLabel">
-                    <rect key="frame" x="40" y="124" width="240" height="48"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks for registering to drive for Voco.  We will activate your driver panel shortly." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="243" translatesAutoresizingMaskIntoConstraints="NO" id="Ilt-2j-vKw" customClass="VCLabel">
+                    <rect key="frame" x="40" y="124" width="243" height="88"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="48" id="Wfq-Dd-HNQ"/>
-                        <constraint firstAttribute="width" constant="240" id="qRj-ZI-FPX"/>
+                        <constraint firstAttribute="height" constant="88" id="Wfq-Dd-HNQ"/>
+                        <constraint firstAttribute="width" constant="243" id="qRj-ZI-FPX"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="tyA-77-Rwi"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>

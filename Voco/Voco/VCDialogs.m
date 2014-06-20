@@ -140,7 +140,7 @@ static VCDialogs *sharedSingleton;
                                   
                                   if(operation.HTTPRequestOperation.response.statusCode == 403){
                                       // already accepted by another driver
-                                      [UIAlertView showWithTitle:@"Ride no longer available!" message:@"Unfortunately another driver beat you too this ride!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                      [UIAlertView showWithTitle:@"Ride no longer available!" message:@"Unfortunately another driver beat you to this ride!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                                           _interfaceState = VC_INTERFACE_STATE_IDLE;
                                           rideOffer.decided = [NSNumber numberWithBool:YES];
                                           NSError * error = nil;

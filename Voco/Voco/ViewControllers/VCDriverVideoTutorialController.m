@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIView *videoContainer;
 @property (weak, nonatomic) IBOutlet UILabel *referralCodeLabel;
 
+@property (strong, nonatomic) MPMoviePlayerController *player;
 
 - (IBAction)segmentedControl:(id)sender;
 
@@ -35,10 +36,10 @@
 {
     [super viewDidLoad];
     
-    MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:@"https://s3-us-west-2.amazonaws.com/voco-development/flight_56_047489AA5D2B80_044D89AA5D2B80_F2CF0D00_47300E00_1393988868447.avi"]];
-    player.view.frame = _videoContainer.frame;
+    _player = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:@"https://s3-us-west-2.amazonaws.com/voco-development/flight_56_047489AA5D2B80_044D89AA5D2B80_F2CF0D00_47300E00_1393988868447.avi"]];
+    _player.view.frame = _videoContainer.frame;
     [self.view addSubview:_videoContainer];
-    [player play];
+    [_player play];
 }
 
 - (void)didReceiveMemoryWarning

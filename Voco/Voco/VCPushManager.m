@@ -186,6 +186,7 @@
             [[VCDialogs instance] rideCancelledByDriver];
             [VCUserState instance].underwayRideId = nil;
             [VCUserState instance].rideProcessState = kUserStateIdle;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"ride_cancelled_by_driver" object:payload userInfo:@{}];
         }
     } else if([type isEqualToString:@"ride_receipt"]){
         NSNumber * rideId = [payload objectForKey:VC_PUSH_RIDE_ID_KEY];
@@ -193,6 +194,7 @@
             [VCUserState instance].underwayRideId = nil;
             [VCUserState instance].rideProcessState = kUserStateIdle;
             [[VCDialogs instance] showRideReceipt:rideId];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"ride_complete" object:payload userInfo:@{}];
         }
     } else if([type isEqualToString:@"user_state_change"]){
         [[VCUserState instance] synchronizeUserState];
@@ -222,6 +224,7 @@
                 [WRUtilities criticalError:error];
             }
             [[NSNotificationCenter defaultCenter] postNotificationName:@"ride_found" object:payload userInfo:@{}];
+            [VCUserState instance].underwayRideId = rideId;
             
         } else {
             [WRUtilities stateErrorWithString:@"Ride no longer exists"];
