@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -25,20 +25,7 @@
         <view contentMode="scaleToFill" id="Fun-TZ-l0P" userLabel="Main View">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hJE-8z-x8q">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </scrollView>
-            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstItem="hJE-8z-x8q" firstAttribute="top" secondItem="Fun-TZ-l0P" secondAttribute="top" id="2rk-Lz-dH1"/>
-                <constraint firstAttribute="trailing" secondItem="hJE-8z-x8q" secondAttribute="trailing" id="RJO-DN-7uC"/>
-                <constraint firstAttribute="bottom" secondItem="hJE-8z-x8q" secondAttribute="bottom" id="nyw-90-LtZ"/>
-                <constraint firstItem="hJE-8z-x8q" firstAttribute="leading" secondItem="Fun-TZ-l0P" secondAttribute="leading" id="yBf-fd-yTU"/>
-            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" userLabel="Content">
@@ -227,7 +214,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I agree." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Lr-0P-zXb" customClass="VCLabel">
-                    <rect key="frame" x="96" y="456" width="60" height="17"/>
+                    <rect key="frame" x="97" y="475" width="60" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <nil key="highlightedColor"/>
@@ -238,7 +225,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v5A-Ob-Lsj">
-                    <rect key="frame" x="63" y="450" width="28" height="28"/>
+                    <rect key="frame" x="64" y="469" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -267,11 +254,11 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Lny-ce-PTo" firstAttribute="top" secondItem="5Lr-0P-zXb" secondAttribute="bottom" constant="100" id="AZe-hv-rQt"/>
+                <constraint firstItem="Lny-ce-PTo" firstAttribute="top" secondItem="5Lr-0P-zXb" secondAttribute="bottom" constant="81" id="AZe-hv-rQt"/>
                 <constraint firstItem="ri5-VG-4eX" firstAttribute="leading" secondItem="hb9-zW-heJ" secondAttribute="trailing" constant="8" id="BJ7-19-PZr"/>
                 <constraint firstItem="rm7-V8-jQ0" firstAttribute="baseline" secondItem="BEK-Dl-9p4" secondAttribute="baseline" id="Byi-qy-gOK"/>
                 <constraint firstItem="Xc2-Zh-Lds" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="97" id="DuV-sw-W42"/>
-                <constraint firstItem="5Lr-0P-zXb" firstAttribute="top" secondItem="Xc2-Zh-Lds" secondAttribute="bottom" id="IMt-d4-S4Y"/>
+                <constraint firstItem="5Lr-0P-zXb" firstAttribute="top" secondItem="Xc2-Zh-Lds" secondAttribute="bottom" constant="19" id="IMt-d4-S4Y"/>
                 <constraint firstItem="ri5-VG-4eX" firstAttribute="leading" secondItem="hb9-zW-heJ" secondAttribute="trailing" constant="8" id="IYi-pm-r5K"/>
                 <constraint firstItem="hb9-zW-heJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="64" id="Jg3-Je-GH6"/>
                 <constraint firstItem="ri5-VG-4eX" firstAttribute="top" secondItem="rm7-V8-jQ0" secondAttribute="bottom" constant="8" id="LGh-BI-S8e"/>
@@ -289,19 +276,24 @@
                 <constraint firstAttribute="trailing" secondItem="Mv7-0G-6De" secondAttribute="trailing" constant="74" id="dEm-gM-1sp"/>
                 <constraint firstItem="Mv7-0G-6De" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="64" id="kXx-Uk-qAV"/>
                 <constraint firstAttribute="trailing" secondItem="rm7-V8-jQ0" secondAttribute="trailing" constant="51" id="ncc-nB-St8"/>
-                <constraint firstItem="v5A-Ob-Lsj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="63" id="og5-3p-fWJ"/>
+                <constraint firstItem="v5A-Ob-Lsj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="64" id="og5-3p-fWJ"/>
                 <constraint firstItem="lMK-S6-mmt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="64" id="qQh-pe-HTd"/>
                 <constraint firstAttribute="bottom" secondItem="Lny-ce-PTo" secondAttribute="bottom" constant="40" id="rhD-ni-dQh"/>
                 <constraint firstItem="KV8-Cf-q4X" firstAttribute="top" secondItem="lMK-S6-mmt" secondAttribute="bottom" constant="8" symbolic="YES" id="rtj-oR-h3D"/>
                 <constraint firstItem="MU2-g3-dGg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="148" id="t5P-RT-Mcb"/>
                 <constraint firstItem="KV8-Cf-q4X" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="64" id="w0h-ZU-W5V"/>
                 <constraint firstItem="rm7-V8-jQ0" firstAttribute="leading" secondItem="BEK-Dl-9p4" secondAttribute="trailing" constant="8" id="xlv-Bs-c5x"/>
-                <constraint firstAttribute="trailing" secondItem="5Lr-0P-zXb" secondAttribute="trailing" constant="164" id="xqo-zm-txW"/>
+                <constraint firstAttribute="trailing" secondItem="5Lr-0P-zXb" secondAttribute="trailing" constant="163" id="xqo-zm-txW"/>
                 <constraint firstItem="BEK-Dl-9p4" firstAttribute="top" secondItem="Mv7-0G-6De" secondAttribute="bottom" constant="8" id="yzh-d1-5yf"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
+        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="hJE-8z-x8q">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </scrollView>
     </objects>
     <resources>
         <image name="signUp_btn.png" width="203" height="61"/>

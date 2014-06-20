@@ -1,6 +1,6 @@
 //
 //  BaseViewController.h
-//  joinman
+//  Voco
 //
 //  Created by Matthew Shultz on 4/12/13.
 //
