@@ -54,22 +54,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"Driver Registration";
     
     [self.scrollView setContentSize:_contentView.frame.size];
     [self.scrollView addSubview:_contentView];
-#if RELEASE==1
+#if DEBUG==1
     _accountNumberField.text = @"000123456789";
     _routingNumberField.text = @"110000000";
 #endif
-
-    UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
-    [tapBackground setNumberOfTapsRequired:1];
-    [self.view addGestureRecognizer:tapBackground];
     
-}
-
-- (void) dismissKeyboard:(id) sender{
-    [self.view endEditing:YES];
 }
 
 - (void)didReceiveMemoryWarning
