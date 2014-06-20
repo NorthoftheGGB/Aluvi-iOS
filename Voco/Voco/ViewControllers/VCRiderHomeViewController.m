@@ -188,6 +188,9 @@
         _mapCenterPin.hidden = YES;
         _locationConfirmationAnnotation.hidden = YES;
         
+        if([ _ride.requestType isEqualToString:RIDE_REQUEST_TYPE_ON_DEMAND]) {
+        
+        
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.labelText = @"Requesting Ride";
         
@@ -200,6 +203,10 @@
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             [hud hide:YES];
         }];
+        } else if ( [ _ride.requestType isEqualToString:RIDE_REQUEST_TYPE_COMMUTER]) {
+            // Commuter Confirmation
+            
+        }
         
     }
 }
