@@ -112,7 +112,7 @@
             break;
             
         case kReferralCodeFieldTag:
-            [_accountNumberField
+            [_accountNameField
              becomeFirstResponder];
             break;
             
@@ -141,11 +141,12 @@
             break;
             
         case kYearTag:
-            [_licensePlateField becomeFirstResponder];
+            [_licensePlateField
+             becomeFirstResponder];
             break;
             
         case kLicensePlateFieldTag:
-            [self registerDriver];
+            [sender resignFirstResponder];
             break;
     }
     
