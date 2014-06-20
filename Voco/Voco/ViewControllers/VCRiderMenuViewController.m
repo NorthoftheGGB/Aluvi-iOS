@@ -23,6 +23,7 @@ static void * XXContext = &XXContext;
 @property (strong, nonatomic) IBOutlet UIView *requestPending;
 @property (strong, nonatomic) IBOutlet UIView *requestDenied;
 @property (strong, nonatomic) IBOutlet UIView *requestApproved;
+@property (strong, nonatomic) IBOutlet UIView *registeredNotActivated;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeSegementedControl;
 @property (weak, nonatomic) IBOutlet UISwitch *onDutySwitch;
 
@@ -139,6 +140,8 @@ static void * XXContext = &XXContext;
         view = _requestApproved;
     } else if ([[VCUserState instance].driverState isEqualToString:kDriverStateInterested]){
         view = _requestPending;
+    } else if ([[VCUserState instance].driverState isEqualToString:kDriverStateRegistered]){
+        view = _registeredNotActivated;
     } else {
         view = _notYetRegistered;
     }

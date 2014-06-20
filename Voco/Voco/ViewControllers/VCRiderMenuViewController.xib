@@ -11,6 +11,7 @@
                 <outlet property="modeSegementedControl" destination="jd1-tl-820" id="O3g-AY-c4h"/>
                 <outlet property="notYetRegistered" destination="NWW-1d-Nm8" id="B0v-AZ-x2q"/>
                 <outlet property="onDutySwitch" destination="H9b-iO-rv9" id="uqx-zv-snE"/>
+                <outlet property="registeredNotActivated" destination="uec-hl-wtV" id="yvr-fG-97s"/>
                 <outlet property="requestApproved" destination="aX1-t4-ey6" id="GK8-tG-oeB"/>
                 <outlet property="requestDenied" destination="w6Z-Xx-rI4" id="Eop-BY-7HD"/>
                 <outlet property="requestPending" destination="Wj6-cH-AOg" id="agY-6R-KnE"/>
@@ -577,6 +578,45 @@
                 <constraint firstItem="bfW-iC-OUs" firstAttribute="top" secondItem="aX1-t4-ey6" secondAttribute="top" constant="20" id="bh8-A8-mgJ"/>
                 <constraint firstItem="DjS-3Q-GQV" firstAttribute="top" secondItem="bfW-iC-OUs" secondAttribute="bottom" constant="39" id="he3-cz-M0L"/>
                 <constraint firstItem="bfW-iC-OUs" firstAttribute="leading" secondItem="aX1-t4-ey6" secondAttribute="leading" constant="69" id="i5T-bd-kbO"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <view contentMode="scaleToFill" id="uec-hl-wtV" userLabel="Registered Not Activated">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="379"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VOCOfinal.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Y0-Uq-222" userLabel="Logo View">
+                    <rect key="frame" x="69" y="20" width="171" height="65"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="65" id="902-kq-Vc7"/>
+                        <constraint firstAttribute="width" constant="171" id="Ap8-YQ-2k4"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks for registering to drive for Voco.  We will activate your driver panel shortly." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="240" translatesAutoresizingMaskIntoConstraints="NO" id="Ilt-2j-vKw" customClass="VCLabel">
+                    <rect key="frame" x="40" y="124" width="240" height="48"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="Wfq-Dd-HNQ"/>
+                        <constraint firstAttribute="width" constant="240" id="qRj-ZI-FPX"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="tyA-77-Rwi"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="18"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="7Y0-Uq-222" firstAttribute="top" secondItem="uec-hl-wtV" secondAttribute="top" constant="20" id="G6y-Uc-9li"/>
+                <constraint firstItem="Ilt-2j-vKw" firstAttribute="leading" secondItem="uec-hl-wtV" secondAttribute="leading" constant="40" id="LJw-vy-Viv"/>
+                <constraint firstItem="Ilt-2j-vKw" firstAttribute="top" secondItem="7Y0-Uq-222" secondAttribute="bottom" constant="39" id="TEH-05-8cK"/>
+                <constraint firstItem="7Y0-Uq-222" firstAttribute="leading" secondItem="uec-hl-wtV" secondAttribute="leading" constant="69" id="ZTc-aO-v9Z"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
