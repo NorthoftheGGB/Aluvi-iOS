@@ -7,7 +7,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DriverRequestViewController">
             <connections>
                 <outlet property="emailField" destination="678-GD-K1j" id="Pyq-vr-YD3"/>
-                <outlet property="nameField" destination="ZBB-gq-i9S" id="5tW-4S-arv"/>
+                <outlet property="firstNameField" destination="ZBB-gq-i9S" id="L35-ob-Iye"/>
+                <outlet property="lastNameField" destination="YRC-ux-C1G" id="Qrd-Ij-z6t"/>
                 <outlet property="phoneField" destination="731-o5-OVd" id="MS1-ZX-xsj"/>
                 <outlet property="referralCodeField" destination="Zis-mN-bbB" id="Xh6-3K-dEf"/>
                 <outlet property="scrollView" destination="fnS-c4-off" id="1Wg-8g-eUt"/>
@@ -35,7 +36,7 @@
                                     <rect key="frame" x="37" y="200" width="246" height="200"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
-                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="731-o5-OVd" customClass="VCTextField">
+                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="731-o5-OVd" customClass="VCTextField">
                                     <rect key="frame" x="93" y="246" width="182" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -50,8 +51,8 @@
                                         <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="DyO-vu-xK5"/>
                                     </connections>
                                 </textField>
-                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Full Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZBB-gq-i9S" customClass="VCTextField">
-                                    <rect key="frame" x="93" y="206" width="182" height="30"/>
+                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZBB-gq-i9S" customClass="VCTextField">
+                                    <rect key="frame" x="93" y="206" width="88" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -65,7 +66,7 @@
                                         <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="75I-65-22w"/>
                                     </connections>
                                 </textField>
-                                <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="678-GD-K1j" customClass="VCTextField">
+                                <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="678-GD-K1j" customClass="VCTextField">
                                     <rect key="frame" x="93" y="326" width="182" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -80,7 +81,7 @@
                                         <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="y4d-hC-MHD"/>
                                     </connections>
                                 </textField>
-                                <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Referral code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zis-mN-bbB" customClass="VCTextField">
+                                <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Referral code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zis-mN-bbB" customClass="VCTextField">
                                     <rect key="frame" x="93" y="364" width="182" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -167,12 +168,39 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </label>
+                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YRC-ux-C1G" customClass="VCTextField">
+                                    <rect key="frame" x="184" y="206" width="91" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                            <integer key="value" value="18"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="w8m-xY-9fA"/>
+                                    </connections>
+                                </textField>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="San Francisco" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x29-WV-PW1" customClass="VCLabelItalic">
+                                    <rect key="frame" x="93" y="289" width="182" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="highlightedColor"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                            <integer key="value" value="18"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="ZBB-gq-i9S" firstAttribute="trailing" secondItem="iYj-p7-yQc" secondAttribute="trailing" id="28E-63-hJj"/>
+                                <constraint firstItem="678-GD-K1j" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="93" id="0on-Uq-1oD"/>
                                 <constraint firstItem="dNp-5t-0m3" firstAttribute="top" secondItem="eEI-8s-Ww8" secondAttribute="bottom" constant="15" id="2qZ-74-Yia"/>
                                 <constraint firstItem="Fpy-0m-PzQ" firstAttribute="top" secondItem="dNp-5t-0m3" secondAttribute="bottom" constant="7" id="43x-OB-hXL"/>
+                                <constraint firstItem="Zis-mN-bbB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="93" id="6c7-Xa-rPj"/>
                                 <constraint firstItem="PwE-wb-Oea" firstAttribute="trailing" secondItem="dNp-5t-0m3" secondAttribute="trailing" id="7aM-cz-qfZ"/>
                                 <constraint firstItem="eEI-8s-Ww8" firstAttribute="leading" secondItem="iYj-p7-yQc" secondAttribute="leading" id="CcY-hu-wxk"/>
                                 <constraint firstItem="4hL-Bc-jSH" firstAttribute="trailing" secondItem="dNp-5t-0m3" secondAttribute="trailing" id="CwZ-GD-L0O"/>
@@ -184,26 +212,28 @@
                                 <constraint firstAttribute="bottom" secondItem="4hL-Bc-jSH" secondAttribute="bottom" constant="-83" id="JUS-cC-XTB"/>
                                 <constraint firstItem="678-GD-K1j" firstAttribute="top" secondItem="731-o5-OVd" secondAttribute="bottom" constant="50" id="JWO-Bt-HSJ"/>
                                 <constraint firstItem="PwE-wb-Oea" firstAttribute="centerX" secondItem="Fpy-0m-PzQ" secondAttribute="centerX" id="NbH-yV-XS2"/>
-                                <constraint firstItem="731-o5-OVd" firstAttribute="width" secondItem="ZBB-gq-i9S" secondAttribute="width" id="RYR-El-VRN"/>
+                                <constraint firstItem="731-o5-OVd" firstAttribute="top" secondItem="ZBB-gq-i9S" secondAttribute="bottom" constant="10" id="PaU-Nl-gKL"/>
+                                <constraint firstItem="YRC-ux-C1G" firstAttribute="top" secondItem="PwE-wb-Oea" secondAttribute="bottom" constant="19" id="QIq-39-G8d"/>
+                                <constraint firstItem="731-o5-OVd" firstAttribute="top" secondItem="YRC-ux-C1G" secondAttribute="bottom" constant="10" id="QMi-FJ-3Il"/>
+                                <constraint firstItem="YRC-ux-C1G" firstAttribute="leading" secondItem="ZBB-gq-i9S" secondAttribute="trailing" constant="3" id="Qvt-YJ-hod"/>
                                 <constraint firstItem="731-o5-OVd" firstAttribute="width" secondItem="678-GD-K1j" secondAttribute="width" id="Rd7-FQ-G7S"/>
-                                <constraint firstItem="731-o5-OVd" firstAttribute="leading" secondItem="ZBB-gq-i9S" secondAttribute="leading" id="Rli-jQ-xAr"/>
-                                <constraint firstItem="dNp-5t-0m3" firstAttribute="top" secondItem="ZBB-gq-i9S" secondAttribute="bottom" constant="-36" id="UGO-IM-WMW"/>
-                                <constraint firstItem="731-o5-OVd" firstAttribute="top" secondItem="ZBB-gq-i9S" secondAttribute="bottom" constant="10" id="UWY-8F-EC2"/>
-                                <constraint firstItem="731-o5-OVd" firstAttribute="height" secondItem="ZBB-gq-i9S" secondAttribute="height" id="Wo8-Ct-yxK"/>
+                                <constraint firstAttribute="trailing" secondItem="YRC-ux-C1G" secondAttribute="trailing" constant="45" id="UxG-dU-LvB"/>
                                 <constraint firstItem="678-GD-K1j" firstAttribute="leading" secondItem="731-o5-OVd" secondAttribute="leading" id="Xis-ZY-JHV"/>
                                 <constraint firstItem="dNp-5t-0m3" firstAttribute="leading" secondItem="4hL-Bc-jSH" secondAttribute="leading" id="YIt-vv-G4Q"/>
                                 <constraint firstItem="dNp-5t-0m3" firstAttribute="top" secondItem="OIm-WY-5GR" secondAttribute="bottom" constant="131" id="aDT-M3-P8T"/>
                                 <constraint firstItem="iYj-p7-yQc" firstAttribute="leading" secondItem="PwE-wb-Oea" secondAttribute="trailing" constant="-225" id="c5V-an-KKb"/>
+                                <constraint firstItem="731-o5-OVd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="93" id="crI-aK-CvA"/>
                                 <constraint firstItem="OIm-WY-5GR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="87" id="dba-Xo-6n7"/>
                                 <constraint firstItem="dNp-5t-0m3" firstAttribute="leading" secondItem="PwE-wb-Oea" secondAttribute="leading" id="deL-aa-GQN"/>
-                                <constraint firstItem="ZBB-gq-i9S" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="93" id="eHI-7J-o9s"/>
                                 <constraint firstItem="eEI-8s-Ww8" firstAttribute="top" secondItem="iYj-p7-yQc" secondAttribute="bottom" constant="-4" id="eLG-r2-64a"/>
                                 <constraint firstItem="eEI-8s-Ww8" firstAttribute="leading" secondItem="Fpy-0m-PzQ" secondAttribute="leading" id="eZn-KQ-lps"/>
                                 <constraint firstItem="PwE-wb-Oea" firstAttribute="centerX" secondItem="OIm-WY-5GR" secondAttribute="centerX" id="f3f-2z-q5a"/>
+                                <constraint firstItem="ZBB-gq-i9S" firstAttribute="top" secondItem="PwE-wb-Oea" secondAttribute="bottom" constant="19" id="jIk-jz-BIp"/>
                                 <constraint firstItem="4hL-Bc-jSH" firstAttribute="top" secondItem="Fpy-0m-PzQ" secondAttribute="bottom" constant="72" id="jbf-vI-bx9"/>
                                 <constraint firstItem="OIm-WY-5GR" firstAttribute="centerX" secondItem="dNp-5t-0m3" secondAttribute="centerX" id="lC2-j8-7dX"/>
                                 <constraint firstAttribute="trailing" secondItem="eEI-8s-Ww8" secondAttribute="trailing" constant="50" id="mgR-vP-yzL"/>
                                 <constraint firstItem="731-o5-OVd" firstAttribute="height" secondItem="Zis-mN-bbB" secondAttribute="height" id="mim-xn-qT7"/>
+                                <constraint firstItem="YRC-ux-C1G" firstAttribute="leading" secondItem="ZBB-gq-i9S" secondAttribute="trailing" constant="3" id="qDL-aO-5fI"/>
                                 <constraint firstItem="731-o5-OVd" firstAttribute="height" secondItem="678-GD-K1j" secondAttribute="height" id="qoK-4H-DNR"/>
                                 <constraint firstItem="Zis-mN-bbB" firstAttribute="top" secondItem="678-GD-K1j" secondAttribute="bottom" constant="8" symbolic="YES" id="rCv-Oo-xlV"/>
                                 <constraint firstItem="iYj-p7-yQc" firstAttribute="top" secondItem="OIm-WY-5GR" secondAttribute="bottom" constant="3" id="sg2-rn-H4b"/>
@@ -212,7 +242,7 @@
                                 <constraint firstItem="dNp-5t-0m3" firstAttribute="top" secondItem="PwE-wb-Oea" secondAttribute="bottom" constant="13" id="tMQ-GM-K9i"/>
                                 <constraint firstItem="OIm-WY-5GR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="-9" id="u6U-bV-Qdk"/>
                                 <constraint firstItem="eEI-8s-Ww8" firstAttribute="top" secondItem="OIm-WY-5GR" secondAttribute="bottom" constant="20" id="ucP-8t-pvF"/>
-                                <constraint firstItem="ZBB-gq-i9S" firstAttribute="top" secondItem="OIm-WY-5GR" secondAttribute="bottom" constant="137" id="vEV-Sr-1In"/>
+                                <constraint firstItem="ZBB-gq-i9S" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="93" id="unt-dq-sOK"/>
                                 <constraint firstItem="PwE-wb-Oea" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="37" id="woA-dT-vXC"/>
                                 <constraint firstItem="Zis-mN-bbB" firstAttribute="leading" secondItem="678-GD-K1j" secondAttribute="leading" id="xau-Z5-vXZ"/>
                             </constraints>
