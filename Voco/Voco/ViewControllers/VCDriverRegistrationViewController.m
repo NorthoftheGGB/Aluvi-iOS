@@ -11,6 +11,7 @@
 #import "VCTextField.h"
 #import "VCDriverApi.h"
 #import "VCDriverVideoTutorialController.h"
+#import <MBProgressHUD.h>
 
 #define kDriversLicenseFieldTag 1
 #define kReferralCodeFieldTag 2
@@ -79,6 +80,11 @@
 }
 
 - (void) registerDriver{
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Registering...";
+
+    
  [VCDriverApi registerDriverWithLicenseNumber:_driversLicenseField.text
                               bankAccountName:_accountNameField.text
                             bankAccountNumber:_accountNumberField.text
@@ -89,7 +95,7 @@
                               carLicensePlate:_licensePlateField.text
                                  referralCode:_referralCodeField.text
                                       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                          
+                                          [hud hide:YES];
                                           VCDriverVideoTutorialController * vc = [[VCDriverVideoTutorialController alloc] init];
                                           NSMutableArray *viewControllers = [NSMutableArray arrayWithArray:[[self navigationController] viewControllers]];
                                           [viewControllers removeLastObject];
@@ -97,6 +103,7 @@
                                           [[self navigationController] setViewControllers:viewControllers animated:YES];
                                           
                                       } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                          [hud hide:YES];
                                           [WRUtilities criticalError:error];
                                       }];
     

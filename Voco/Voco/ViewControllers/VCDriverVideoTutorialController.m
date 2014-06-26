@@ -53,6 +53,7 @@
 }
 
 - (IBAction)didTapFinish:(id)sender {
+    
     [UIAlertView showWithTitle:@"Registered!"
                        message:@"Thank you for completing driver registration, Voco will contact you to complete your activation"
              cancelButtonTitle:@"OK"

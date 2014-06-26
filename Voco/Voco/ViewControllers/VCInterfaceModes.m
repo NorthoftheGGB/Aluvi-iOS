@@ -13,6 +13,7 @@
 #import "IIViewDeckController.h"
 #import "VCApi.h"
 #import "VCDriverViewController.h"
+#import "VCRiderRidesViewController.h"
 
 #define kInterfaceModeKey @"INTERFACE_MODE_KEY"
 
