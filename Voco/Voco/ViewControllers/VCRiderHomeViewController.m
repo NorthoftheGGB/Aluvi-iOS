@@ -12,7 +12,6 @@
 #import <ActionSheetPicker.h>
 #import "VCUserState.h"
 #import "VCInterfaceModes.h"
-#import "Ride.h"
 #import "VCRiderApi.h"
 #import "VCMapQuestRouting.h"
 #import "VCRideRequestCreated.h"
@@ -51,7 +50,6 @@
 @property (strong, nonatomic) MKPolyline * routeOverlay;
 
 @property (nonatomic) NSInteger step;
-@property (strong, nonatomic) Ride * ride;
 
 
 
@@ -89,6 +87,11 @@
     _map.userTrackingMode = YES;
     [self.view insertSubview:_map atIndex:0];
     [self resetRequestInterface];
+    if(_ride != nil){
+        [self placeRideDetailsDrawerInPickupMode];
+        [self showRideDetailsDrawer];
+        [self showSuggestedRoute];
+    }
     
 }
 
@@ -126,6 +129,24 @@
     _ride = nil;
 }
 
+- (void) showSuggestedRoute {
+    
+    //TODO: create confirmation step and UI
+    CLLocationCoordinate2D destinationCoordinate;
+    CLLocationCoordinate2D departureCoordinate;
+    destinationCoordinate.latitude = [_ride.destinationLatitude doubleValue];
+    destinationCoordinate.longitude = [_ride.destinationLongitude doubleValue];
+    departureCoordinate.latitude = [_ride.originLatitude doubleValue];
+    departureCoordinate.longitude = [_ride.originLongitude doubleValue];
+    
+    [VCMapQuestRouting route:destinationCoordinate to:departureCoordinate region:_map.region success:^(MKPolyline *polyline) {
+        _routeOverlay = polyline;
+        [_map addOverlay:_routeOverlay];
+    } failure:^{
+        NSLog(@"%@", @"Error talking with MapQuest routing API");
+    }];
+    
+}
 
 
 - (IBAction)didTapCommute:(id)sender {
@@ -176,21 +197,7 @@
         _ride.destinationLatitude = [NSNumber numberWithDouble: destinationLocation.latitude];
         _ride.destinationLongitude = [NSNumber numberWithDouble: destinationLocation.longitude];
         
-        //TODO: create confirmation step and UI
-        CLLocationCoordinate2D destinationCoordinate;
-        CLLocationCoordinate2D departureCoordinate;
-        destinationCoordinate.latitude = [_ride.destinationLatitude doubleValue];
-        destinationCoordinate.longitude = [_ride.destinationLongitude doubleValue];
-        departureCoordinate.latitude = [_ride.originLatitude doubleValue];
-        departureCoordinate.longitude = [_ride.originLongitude doubleValue];
-        
-        [VCMapQuestRouting route:destinationCoordinate to:departureCoordinate region:_map.region success:^(MKPolyline *polyline) {
-            _routeOverlay = polyline;
-            [_map addOverlay:_routeOverlay];
-        } failure:^{
-            NSLog(@"%@", @"Error talking with MapQuest routing API");
-        }];
-        
+        [self showSuggestedRoute];
         
         MKPointAnnotation *myAnnotation = [[MKPointAnnotation alloc] init];
         myAnnotation.coordinate = CLLocationCoordinate2DMake(destinationLocation.latitude, destinationLocation.longitude);

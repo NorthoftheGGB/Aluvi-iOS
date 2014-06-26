@@ -44,7 +44,7 @@ static RKObjectManager * objectManager;
                               // @"mapWidth": [NSNumber numberWithInt:width],
                              // @"mapHeight": [NSNumber numberWithInt:height]
                               };
-    
+    [objectManager cancelAllObjectRequestOperationsWithMethod:RKRequestMethodGET matchingPathPattern:@"directions/v2/route"];
     [objectManager getObject:nil path:@"directions/v2/route" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
 
         MQRouteResponse * response = mappingResult.firstObject;

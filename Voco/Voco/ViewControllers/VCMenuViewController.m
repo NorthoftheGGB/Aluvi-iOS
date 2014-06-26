@@ -12,6 +12,7 @@
 #import "VCDriverRequestViewController.h"
 #import "VCDriverRegistrationViewController.h"
 #import "VCDriverVideoTutorialController.h"
+#import "VCRiderRidesViewController.h"
 
 static void * XXContext = &XXContext;
 
@@ -32,7 +33,7 @@ static void * XXContext = &XXContext;
 - (IBAction)didTapUserMode:(id)sender;
 - (IBAction)didTapProfile:(id)sender;
 - (IBAction)didTapPaymentInfo:(id)sender;
-- (IBAction)didTapScheduledRide:(id)sender;
+- (IBAction)didTapScheduledRides:(id)sender;
 - (IBAction)didTapCummuterPass:(id)sender;
 - (IBAction)didTapAboutUs:(id)sender;
 - (IBAction)didTapTermsAndConditions:(id)sender;
@@ -193,7 +194,9 @@ static void * XXContext = &XXContext;
 - (IBAction)didTapPaymentInfo:(id)sender {
 }
 
-- (IBAction)didTapScheduledRide:(id)sender {
+- (IBAction)didTapScheduledRides:(id)sender {
+    VCRiderRidesViewController * vc = [[VCRiderRidesViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)didTapCummuterPass:(id)sender {

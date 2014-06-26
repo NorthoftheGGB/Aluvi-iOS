@@ -21,7 +21,7 @@
 @synthesize fullName;
 
 + (RKEntityMapping *)createMappings:(RKObjectManager *)objectManager{
-    RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Driver" inManagedObjectStore:objectManager.managedObjectStore];
+    RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Driver" inManagedObjectStore:[VCCoreData managedObjectStore]];
     [entityMapping addAttributeMappingsFromDictionary:@{
                                                         @"first_name": @"firstName",
                                                         @"last_name" :@"lastName",

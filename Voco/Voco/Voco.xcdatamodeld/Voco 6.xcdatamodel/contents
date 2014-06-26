@@ -43,6 +43,7 @@
         <attribute name="meetingPointPlaceName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="originLatitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="originLongitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="originPlaceName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="request_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="requestedTimestamp" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="requestType" optional="YES" attributeType="String" syncable="YES"/>
@@ -63,7 +64,7 @@
         <element name="Car" positionX="0" positionY="0" width="128" height="148"/>
         <element name="Drive" positionX="-252" positionY="-69" width="128" height="60"/>
         <element name="Offer" positionX="-252" positionY="81" width="128" height="178"/>
-        <element name="Ride" positionX="-108" positionY="-243" width="128" height="313"/>
+        <element name="Ride" positionX="-108" positionY="-243" width="128" height="328"/>
         <element name="Rider" positionX="-497" positionY="18" width="128" height="135"/>
         <element name="Driver" positionX="-261" positionY="-63" width="128" height="133"/>
     </elements>
