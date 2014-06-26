@@ -12,14 +12,16 @@
 #import "VCValidation.h"
 
 
-#define kNameFieldTag 1
-#define kPhoneFieldTag 2
-#define kEmailFieldTag 3
-#define kReferralCodeFieldTag 4
+#define kFirstNameFieldTag 1
+#define kLastNameFieldTag 2
+#define kPhoneFieldTag 3
+#define kEmailFieldTag 4
+#define kReferralCodeFieldTag 5
 
 @interface DriverRequestViewController ()
 
-@property (weak, nonatomic) IBOutlet VCTextField *nameField;
+@property (weak, nonatomic) IBOutlet VCTextField *firstNameField;
+@property (weak, nonatomic) IBOutlet VCTextField *lastNameField;
 @property (weak, nonatomic) IBOutlet VCTextField *phoneField;
 @property (weak, nonatomic) IBOutlet VCTextField *emailField;
 @property (weak, nonatomic) IBOutlet VCTextField *referralCodeField;
@@ -43,6 +45,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"Driver Request";
+    
     UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [tapBackground setNumberOfTapsRequired:1];
     [self.view addGestureRecognizer:tapBackground];
@@ -68,7 +72,11 @@
     
     UITextField * textField = (UITextField *) sender;
     switch(textField.tag){
-        case kNameFieldTag:
+        case kFirstNameFieldTag:
+            [_lastNameField
+             becomeFirstResponder];
+            break;
+        case kLastNameFieldTag:
             [_phoneField
              becomeFirstResponder];
             break;
@@ -101,7 +109,7 @@
     }
 
     
-    [VCUsersApi driverInterested:[RKObjectManager sharedManager] name:_nameField.text email:_emailField.text region:@"Default" phone:_phoneField.text driverReferralCode:_referralCodeField.text
+    [VCUsersApi driverInterested:[RKObjectManager sharedManager] name:_firstNameField.text email:_emailField.text region:@"Default" phone:_phoneField.text driverReferralCode:_referralCodeField.text
                          success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                              [UIAlertView showWithTitle:@"Success" message:@"We will contact you about driving" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                                  [self.navigationController popViewControllerAnimated:YES];

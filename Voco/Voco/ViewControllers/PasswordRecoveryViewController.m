@@ -36,7 +36,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-        
+        self.title = @"Password Recovery";
+    
         UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
         [tapBackground setNumberOfTapsRequired:1];
         [self.view addGestureRecognizer:tapBackground];

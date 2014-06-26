@@ -81,6 +81,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"Home";
     
     _map = [[MKMapView alloc] initWithFrame:self.view.bounds];
     _map.delegate = self;

@@ -14,15 +14,17 @@
 #import "VCRiderHomeViewController.h"
 #import "VCInterfaceModes.h"
 
-#define kNameFieldTag 1
-#define kPhoneFieldTag 2
-#define kPasswordFieldTag 3
-#define kEmailFieldTag 4
-#define kReferralCodeFieldTag 5
+#define kFirstNameFieldTag 1
+#define kLastNameFieldTag 2
+#define kPhoneFieldTag 3
+#define kPasswordFieldTag 4
+#define kEmailFieldTag 5
+#define kReferralCodeFieldTag 6
 
 @interface SignUpViewController ()
 
-@property (weak, nonatomic) IBOutlet VCTextField *nameField;
+@property (weak, nonatomic) IBOutlet VCTextField *firstNameField;
+@property (weak, nonatomic) IBOutlet VCTextField *lastNameField;
 @property (weak, nonatomic) IBOutlet VCTextField *phoneField;
 @property (weak, nonatomic) IBOutlet VCTextField *passwordField;
 @property (weak, nonatomic) IBOutlet VCTextField *emailField;
@@ -46,6 +48,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"Sign Up";
   
     UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [tapBackground setNumberOfTapsRequired:1];
@@ -71,7 +74,10 @@
     
     UITextField * textField = (UITextField *) sender;
     switch(textField.tag){
-        case kNameFieldTag:
+        case kFirstNameFieldTag:
+            [_lastNameField becomeFirstResponder];
+            break;
+        case kLastNameFieldTag:
             [_phoneField becomeFirstResponder];
             break;
         case kPhoneFieldTag:
@@ -112,7 +118,7 @@
 
     
     [VCUsersApi createUser:[RKObjectManager sharedManager]
-                      name:_nameField.text
+                      name:_firstNameField.text
                      email:_emailField.text
                   password:_passwordField.text
                      phone:_phoneField.text
