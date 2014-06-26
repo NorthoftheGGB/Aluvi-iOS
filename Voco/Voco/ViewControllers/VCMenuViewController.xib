@@ -97,12 +97,12 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="124" id="cmq-vy-dZ2"/>
                     </constraints>
-                    <state key="normal" title="Scheduled Ride">
+                    <state key="normal" title="Scheduled Rides">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="didTapScheduledRide:" destination="-1" eventType="touchUpInside" id="Zne-7r-6kl"/>
+                        <action selector="didTapScheduledRides:" destination="-1" eventType="touchUpInside" id="26b-Dr-bha"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dI7-GH-Y6K">
@@ -260,7 +260,7 @@
                     </state>
                     <connections>
                         <action selector="didTapDriverScheduledFares:" destination="-1" eventType="touchUpInside" id="Esn-OT-g6B"/>
-                        <action selector="didTapScheduledRide:" destination="-1" eventType="touchUpInside" id="0Th-WN-7KI"/>
+                        <action selector="didTapScheduledRides:" destination="-1" eventType="touchUpInside" id="lvH-dC-h4c"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWa-Pi-oz9">

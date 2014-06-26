@@ -29,15 +29,19 @@
 @dynamic estimatedArrivalTime;
 @dynamic originLatitude;
 @dynamic originLongitude;
+@dynamic originPlaceName;
 @dynamic meetingPointLatitude;
 @dynamic meetingPointLongitude;
+@dynamic meetingPointPlaceName;
 @dynamic destinationLongitude;
 @dynamic destinationLatitude;
+@dynamic destinationPlaceName;
 @dynamic driver;
 @dynamic car;
 
 
 @synthesize stateMachine = _stateMachine;
+@synthesize forcedState;
 
 + (void)createMappings:(RKObjectManager *)objectManager{
     RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Ride"
@@ -46,10 +50,15 @@
     [entityMapping addAttributeMappingsFromDictionary:@{
                                                         @"request_id" : @"request_id",
                                                         @"id" : @"ride_id",
+                                                        @"state" : @"forcedState",
                                                         @"meeting_point_place_name" : @"meetingPointPlaceName",
                                                         @"meeting_point_latitude" : @"meetingPointLattitude",
                                                         @"meeting_point_longitude" : @"meetingPointLongitude",
-                                                        @"destination_place_name" : @"destinationPlaceName"}];
+                                                        @"destination_place_name" : @"destinationPlaceName",
+                                                        @"destination_latitude" : @"destinationLatitude",
+                                                        @"destination_longitude" : @"destinationLongitude"
+                                                        }];
+    
 
     entityMapping.identificationAttributes = @[ @"request_id" ]; // for riders request_id is the primary key
     
@@ -99,6 +108,24 @@
     if(self.state != _stateMachine.currentState.name ){
         self.state = _stateMachine.currentState.name;
     }
+}
+
+- (NSString *) routeDescription {
+    return [NSString stringWithFormat:@"%@ to %@", self.meetingPointPlaceName, self.destinationPlaceName];
+}
+
+
+- (NSString *) state {
+    NSString * state = [_stateMachine.currentState name];
+    return state;
+}
+
+
+// Manually set the state, for restkit
+- (void) setForcedState: (NSString*) state__ {
+    self.state = state__;
+    _stateMachine = [VCRideStateMachineFactory createOnDemandStateMachineWithState:state__];
+
 }
 
 

@@ -13,6 +13,7 @@
 #import "IIViewDeckController.h"
 #import "VCApi.h"
 #import "DriverViewController.h"
+#import "VCRiderRidesViewController.h"
 
 #define kInterfaceModeKey @"INTERFACE_MODE_KEY"
 
@@ -67,8 +68,9 @@ static int mode;
 }
 
 + (void) showRiderInterface {
-    VCRiderHomeViewController * riderHomeViewController = [[VCRiderHomeViewController alloc] init];
-   
+    //VCRiderHomeViewController * riderHomeViewController = [[VCRiderHomeViewController alloc] init];
+    VCRiderRidesViewController * riderHomeViewController = [[VCRiderRidesViewController alloc] init];
+    
     if(deckController == nil){
         [self createDeckViewController];
     }

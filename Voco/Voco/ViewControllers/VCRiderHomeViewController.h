@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Ride.h"
 
 @interface VCRiderHomeViewController : UIViewController
+
+@property (strong, nonatomic) Ride * ride;
 
 @end

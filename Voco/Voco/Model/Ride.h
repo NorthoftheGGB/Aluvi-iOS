@@ -26,18 +26,24 @@
 @property (nonatomic, retain) NSDate * estimatedArrivalTime;
 @property (nonatomic, retain) NSNumber * originLatitude;
 @property (nonatomic, retain) NSNumber * originLongitude;
+@property (nonatomic, retain) NSString * originPlaceName;
 @property (nonatomic, retain) NSNumber * meetingPointLatitude;
 @property (nonatomic, retain) NSNumber * meetingPointLongitude;
+@property (nonatomic, retain) NSString * meetingPointPlaceName;
 @property (nonatomic, retain) NSNumber * destinationLongitude;
 @property (nonatomic, retain) NSNumber * destinationLatitude;
+@property (nonatomic, retain) NSString * destinationPlaceName;
 @property (nonatomic, retain) NSNumber * request_id;
 @property (nonatomic, strong, readonly) TKStateMachine * stateMachine;
+@property (nonatomic, weak) NSString * forcedState;
 @property (nonatomic, retain) Driver *driver;
 @property (nonatomic, retain) Car *car;
+
 
 + (Ride *) rideWithId: (NSNumber *) rideId;
 
 - (NSString *) state;
-- (void) setState: (NSString*) state;
+
+- (NSString *) routeDescription;
 
 @end
