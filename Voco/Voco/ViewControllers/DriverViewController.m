@@ -120,7 +120,13 @@ static void * XXContext = &XXContext;
                                             _rideCompletedButton.enabled = NO;
                                             [VCUserState instance].driveProcessState = kUserStateIdle;
                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            // TODO: need to cache this action and try again later
+                                            // how else will the server be notified ?
                                             [WRUtilities criticalError:error];
+                                            _cancelRideButton.enabled = NO;
+                                            _pickedUpRiderButton.enabled = NO;
+                                            _rideCompletedButton.enabled = NO;
+                                            [VCUserState instance].driveProcessState = kUserStateIdle;
                                         }];
 
 }

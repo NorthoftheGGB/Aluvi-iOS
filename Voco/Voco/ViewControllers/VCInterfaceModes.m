@@ -9,7 +9,7 @@
 #import "VCInterfaceModes.h"
 #import "SignInViewController.h"
 #import "VCRiderHomeViewController.h"
-#import "VCRiderMenuViewController.h"
+#import "VCMenuViewController.h"
 #import "IIViewDeckController.h"
 #import "VCApi.h"
 #import "DriverViewController.h"
@@ -54,7 +54,7 @@ static int mode;
                                                                                        style:UIBarButtonItemStyleBordered
                                                                                       target:deckController
                                                                                       action:@selector(toggleLeftView)];
-    VCRiderMenuViewController * riderMenuViewController = [[VCRiderMenuViewController alloc] init];
+    VCMenuViewController * riderMenuViewController = [[VCMenuViewController alloc] init];
     deckController.leftController = riderMenuViewController;
     
     [deckController.navigationController.navigationBar setTranslucent:YES];

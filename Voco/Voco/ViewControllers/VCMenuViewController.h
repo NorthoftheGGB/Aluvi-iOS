@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VCRiderMenuViewController : UIViewController
+@interface VCMenuViewController : UIViewController
 
 @end

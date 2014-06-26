@@ -58,8 +58,8 @@
 		F473EFE619492C2A00D8C900 /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE119492C2A00D8C900 /* IISideController.m */; };
 		F473EFE719492C2A00D8C900 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE319492C2A00D8C900 /* IIViewDeckController.m */; };
 		F473EFE819492C2A00D8C900 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE519492C2A00D8C900 /* IIWrapController.m */; };
-		F473EFEE1949304300D8C900 /* VCRiderMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFEC1949304300D8C900 /* VCRiderMenuViewController.m */; };
-		F473EFEF1949304300D8C900 /* VCRiderMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F473EFED1949304300D8C900 /* VCRiderMenuViewController.xib */; };
+		F473EFEE1949304300D8C900 /* VCMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFEC1949304300D8C900 /* VCMenuViewController.m */; };
+		F473EFEF1949304300D8C900 /* VCMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F473EFED1949304300D8C900 /* VCMenuViewController.xib */; };
 		F473EFF119494DB100D8C900 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F473EFF019494DB100D8C900 /* QuartzCore.framework */; };
 		F473EFF51949513F00D8C900 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F473EFF41949513F00D8C900 /* AddressBook.framework */; };
 		F473EFF71949514A00D8C900 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F473EFF61949514A00D8C900 /* libxml2.dylib */; };
@@ -79,6 +79,11 @@
 		F473F02E1952DA8F00D8C900 /* VCDriverRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F02D1952DA8F00D8C900 /* VCDriverRegistration.m */; };
 		F473F0321952F68D00D8C900 /* VCDriverStateResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F0311952F68D00D8C900 /* VCDriverStateResponse.m */; };
 		F473F03519539F2A00D8C900 /* VCUserStateResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F03419539F2A00D8C900 /* VCUserStateResponse.m */; };
+		F473F03C195B971B00D8C900 /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F03B195B971B00D8C900 /* Car.m */; };
+		F473F03F195B971C00D8C900 /* Driver.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F03E195B971C00D8C900 /* Driver.m */; };
+		F473F046195BA16D00D8C900 /* DTLazyImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F045195BA16D00D8C900 /* DTLazyImageView.m */; };
+		F473F050195BA54F00D8C900 /* VCRiderRidesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F04E195BA54F00D8C900 /* VCRiderRidesViewController.m */; };
+		F473F051195BA54F00D8C900 /* VCRiderRidesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F473F04F195BA54F00D8C900 /* VCRiderRidesViewController.xib */; };
 		F49EDD0B1946D27F0020B8BB /* VCRiderHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */; };
 		F49EDD0C1946D27F0020B8BB /* VCRiderHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */; };
 		F49EDD101946E2F90020B8BB /* VCInterfaceModes.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD0F1946E2F90020B8BB /* VCInterfaceModes.m */; };
@@ -207,9 +212,9 @@
 		F473EFE319492C2A00D8C900 /* IIViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIViewDeckController.m; sourceTree = "<group>"; };
 		F473EFE419492C2A00D8C900 /* IIWrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIWrapController.h; sourceTree = "<group>"; };
 		F473EFE519492C2A00D8C900 /* IIWrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIWrapController.m; sourceTree = "<group>"; };
-		F473EFEB1949304300D8C900 /* VCRiderMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderMenuViewController.h; path = ViewControllers/VCRiderMenuViewController.h; sourceTree = "<group>"; };
-		F473EFEC1949304300D8C900 /* VCRiderMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRiderMenuViewController.m; path = ViewControllers/VCRiderMenuViewController.m; sourceTree = "<group>"; };
-		F473EFED1949304300D8C900 /* VCRiderMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCRiderMenuViewController.xib; path = ViewControllers/VCRiderMenuViewController.xib; sourceTree = "<group>"; };
+		F473EFEB1949304300D8C900 /* VCMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCMenuViewController.h; path = ViewControllers/VCMenuViewController.h; sourceTree = "<group>"; };
+		F473EFEC1949304300D8C900 /* VCMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCMenuViewController.m; path = ViewControllers/VCMenuViewController.m; sourceTree = "<group>"; };
+		F473EFED1949304300D8C900 /* VCMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCMenuViewController.xib; path = ViewControllers/VCMenuViewController.xib; sourceTree = "<group>"; };
 		F473EFF019494DB100D8C900 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F473EFF41949513F00D8C900 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		F473EFF61949514A00D8C900 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -244,6 +249,16 @@
 		F473F0311952F68D00D8C900 /* VCDriverStateResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCDriverStateResponse.m; path = API/Driver/VCDriverStateResponse.m; sourceTree = "<group>"; };
 		F473F03419539F2A00D8C900 /* VCUserStateResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCUserStateResponse.m; path = API/Users/VCUserStateResponse.m; sourceTree = "<group>"; };
 		F473F03619539F3C00D8C900 /* VCUserStateResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCUserStateResponse.h; path = API/Users/VCUserStateResponse.h; sourceTree = "<group>"; };
+		F473F039195B93C700D8C900 /* Voco 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 6.xcdatamodel"; sourceTree = "<group>"; };
+		F473F03A195B971B00D8C900 /* Car.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Car.h; path = Model/Car.h; sourceTree = "<group>"; };
+		F473F03B195B971B00D8C900 /* Car.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Car.m; path = Model/Car.m; sourceTree = "<group>"; };
+		F473F03D195B971C00D8C900 /* Driver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Driver.h; path = Model/Driver.h; sourceTree = "<group>"; };
+		F473F03E195B971C00D8C900 /* Driver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Driver.m; path = Model/Driver.m; sourceTree = "<group>"; };
+		F473F044195BA16D00D8C900 /* DTLazyImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTLazyImageView.h; path = Controls/DTLazyImageView.h; sourceTree = "<group>"; };
+		F473F045195BA16D00D8C900 /* DTLazyImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTLazyImageView.m; path = Controls/DTLazyImageView.m; sourceTree = "<group>"; };
+		F473F04D195BA54F00D8C900 /* VCRiderRidesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderRidesViewController.h; path = ViewControllers/VCRiderRidesViewController.h; sourceTree = "<group>"; };
+		F473F04E195BA54F00D8C900 /* VCRiderRidesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRiderRidesViewController.m; path = ViewControllers/VCRiderRidesViewController.m; sourceTree = "<group>"; };
+		F473F04F195BA54F00D8C900 /* VCRiderRidesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCRiderRidesViewController.xib; path = ViewControllers/VCRiderRidesViewController.xib; sourceTree = "<group>"; };
 		F49EDD081946D27F0020B8BB /* VCRiderHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderHomeViewController.h; path = ViewControllers/VCRiderHomeViewController.h; sourceTree = "<group>"; };
 		F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRiderHomeViewController.m; path = ViewControllers/VCRiderHomeViewController.m; sourceTree = "<group>"; };
 		F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCRiderHomeViewController.xib; path = ViewControllers/VCRiderHomeViewController.xib; sourceTree = "<group>"; };
@@ -385,6 +400,8 @@
 		4FE641D7194160450059BED1 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				F473F044195BA16D00D8C900 /* DTLazyImageView.h */,
+				F473F045195BA16D00D8C900 /* DTLazyImageView.m */,
 				4FE641D81941607B0059BED1 /* VCTextField.h */,
 				4FE641D91941607B0059BED1 /* VCTextField.m */,
 				4FE641DB1941621E0059BED1 /* VCLabelItalic.h */,
@@ -430,6 +447,7 @@
 				F473F022195192D600D8C900 /* Dev */,
 				F473F00E194A6D3400D8C900 /* Common */,
 				F49EDD0D1946E2B30020B8BB /* Modes */,
+				F473F047195BA4E000D8C900 /* Menu */,
 				F45F7C141935A3AF00A94721 /* Driver */,
 				F45F7C131935A3A500A94721 /* Rider */,
 			);
@@ -440,6 +458,10 @@
 			isa = PBXGroup;
 			children = (
 				F4FA0BFB192BF6BF005D8645 /* Voco.xcdatamodeld */,
+				F473F03D195B971C00D8C900 /* Driver.h */,
+				F473F03E195B971C00D8C900 /* Driver.m */,
+				F473F03A195B971B00D8C900 /* Car.h */,
+				F473F03B195B971B00D8C900 /* Car.m */,
 				F4FE1B16193D2F3F00354886 /* Offer.h */,
 				F4FE1B17193D2F3F00354886 /* Offer.m */,
 				F4FE1AFC193839DF00354886 /* Drive.h */,
@@ -552,9 +574,9 @@
 				F49EDD081946D27F0020B8BB /* VCRiderHomeViewController.h */,
 				F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */,
 				F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */,
-				F473EFEB1949304300D8C900 /* VCRiderMenuViewController.h */,
-				F473EFEC1949304300D8C900 /* VCRiderMenuViewController.m */,
-				F473EFED1949304300D8C900 /* VCRiderMenuViewController.xib */,
+				F473F04D195BA54F00D8C900 /* VCRiderRidesViewController.h */,
+				F473F04E195BA54F00D8C900 /* VCRiderRidesViewController.m */,
+				F473F04F195BA54F00D8C900 /* VCRiderRidesViewController.xib */,
 			);
 			name = "Ride System";
 			sourceTree = "<group>";
@@ -633,6 +655,16 @@
 				F473F03419539F2A00D8C900 /* VCUserStateResponse.m */,
 			);
 			name = Responses;
+			sourceTree = "<group>";
+		};
+		F473F047195BA4E000D8C900 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				F473EFEB1949304300D8C900 /* VCMenuViewController.h */,
+				F473EFEC1949304300D8C900 /* VCMenuViewController.m */,
+				F473EFED1949304300D8C900 /* VCMenuViewController.xib */,
+			);
+			name = Menu;
 			sourceTree = "<group>";
 		};
 		F476908D1935B7FA00B9EF69 /* State Machines */ = {
@@ -934,6 +966,7 @@
 				F473F019195044AA00D8C900 /* menu-list.png in Resources */,
 				4FE641BB194157510059BED1 /* SignInViewController.xib in Resources */,
 				F473EFFE19497FBF00D8C900 /* map_pin_fill-512.png in Resources */,
+				F473F051195BA54F00D8C900 /* VCRiderRidesViewController.xib in Resources */,
 				4FE641C5194157EB0059BED1 /* PasswordRecoveryViewController.xib in Resources */,
 				4F37E2E01949574000753172 /* KlinicSlabMediumIt.ttf in Resources */,
 				4FE641F4194168E80059BED1 /* login_form@2x.png in Resources */,
@@ -947,7 +980,7 @@
 				4FE641FA194168E80059BED1 /* voco_logo@2x.png in Resources */,
 				4FE641F0194168E80059BED1 /* commute_logo@2x.png in Resources */,
 				F4FA0BFF192BF6BF005D8645 /* Images.xcassets in Resources */,
-				F473EFEF1949304300D8C900 /* VCRiderMenuViewController.xib in Resources */,
+				F473EFEF1949304300D8C900 /* VCMenuViewController.xib in Resources */,
 				4FE641F3194168E80059BED1 /* login_btn@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1028,9 +1061,11 @@
 				4FE629DA194FC6BB0070F797 /* VCDriverRegistrationViewController.m in Sources */,
 				4FE641E0194162360059BED1 /* VCButtonFontBold.m in Sources */,
 				4FE641DD1941621E0059BED1 /* VCLabelItalic.m in Sources */,
+				F473F03F195B971C00D8C900 /* Driver.m in Sources */,
 				F4FE1B121938581C00354886 /* VCDialogs.m in Sources */,
 				F473F009194A5A0200D8C900 /* MQRouteResponse.m in Sources */,
 				4FE641BA194157510059BED1 /* SignInViewController.m in Sources */,
+				F473F03C195B971B00D8C900 /* Car.m in Sources */,
 				F473F02019511D7700D8C900 /* VCDevicesApi.m in Sources */,
 				F4FE1AFE193839DF00354886 /* Drive.m in Sources */,
 				F4D8904A19468E44007C4671 /* VCNewUser.m in Sources */,
@@ -1049,7 +1084,7 @@
 				F473F01D195113D100D8C900 /* VCRequestUpdate.m in Sources */,
 				F4FE1B1B193D301F00354886 /* VCCoreData.m in Sources */,
 				F473F001194A498E00D8C900 /* VCLabel.m in Sources */,
-				F473EFEE1949304300D8C900 /* VCRiderMenuViewController.m in Sources */,
+				F473EFEE1949304300D8C900 /* VCMenuViewController.m in Sources */,
 				4FB2682A1952207A0028D4ED /* VCDriverVideoTutorialController.m in Sources */,
 				F4FE1B0F1938571E00354886 /* VCRideDriverAssignment.m in Sources */,
 				4FE641C4194157EB0059BED1 /* PasswordRecoveryViewController.m in Sources */,
@@ -1061,6 +1096,7 @@
 				F4D8904719468B69007C4671 /* VCLogin.m in Sources */,
 				F4FE1AF11936BE0900354886 /* VCDevice.m in Sources */,
 				F45F7C031935880500A94721 /* Ride.m in Sources */,
+				F473F046195BA16D00D8C900 /* DTLazyImageView.m in Sources */,
 				F4D890561946A2D9007C4671 /* VCObjectRequestOperation.m in Sources */,
 				F473EFDC19491C2B00D8C900 /* VCValidation.m in Sources */,
 				F473F0161950358000D8C900 /* MQRoute.m in Sources */,
@@ -1068,6 +1104,7 @@
 				F45F7C0F1935976E00A94721 /* WRUtilities.m in Sources */,
 				4FE641DA1941607B0059BED1 /* VCTextField.m in Sources */,
 				F45F7C0A193589A600A94721 /* VCRideRequestCreated.m in Sources */,
+				F473F050195BA54F00D8C900 /* VCRiderRidesViewController.m in Sources */,
 				F4D8905319469F0F007C4671 /* VCDriverInterestedRequest.m in Sources */,
 				4FE641C91941584D0059BED1 /* SignUpViewController.m in Sources */,
 				F45F7C12193597F500A94721 /* NSDate+Pretty.m in Sources */,
@@ -1315,6 +1352,7 @@
 				F473F012194FB1A000D8C900 /* Voco 3.xcdatamodel */,
 				F473F013194FB45400D8C900 /* Voco 4.xcdatamodel */,
 				F473F02119513B6300D8C900 /* Voco 5.xcdatamodel */,
+				F473F039195B93C700D8C900 /* Voco 6.xcdatamodel */,
 				F4FA0BFC192BF6BF005D8645 /* Voco.xcdatamodel */,
 			);
 			currentVersion = F473F02119513B6300D8C900 /* Voco 5.xcdatamodel */;

@@ -119,7 +119,7 @@ static VCCoreData * sharedInstance;
          
          */
         NSLog(@"Unresolved error in core data persistent store setup %@, %@", error, [error userInfo]);
-        [WRUtilities criticalError:error];
+        [UIAlertView showWithTitle:@"Reinstall Required" message:@"Please reinstall the application!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
     }
 
 }

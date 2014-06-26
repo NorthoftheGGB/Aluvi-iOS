@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCRiderMenuViewController.h"
+#import "VCMenuViewController.h"
 #import "VCInterfaceModes.h"
 #import "VCUserState.h"
 #import "DriverRequestViewController.h"
@@ -15,7 +15,7 @@
 
 static void * XXContext = &XXContext;
 
-@interface VCRiderMenuViewController ()
+@interface VCMenuViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *menuContainer;
 @property (strong, nonatomic) IBOutlet UIView *riderMenu;
@@ -60,7 +60,7 @@ static void * XXContext = &XXContext;
 
 @end
 
-@implementation VCRiderMenuViewController
+@implementation VCMenuViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -147,7 +147,8 @@ static void * XXContext = &XXContext;
         view = _notYetRegistered;
     }
     if(! [_menuContainer.subviews containsObject:view]){
-    
+        
+        view.frame = _menuContainer.frame;
         [UIView transitionWithView:_menuContainer
                           duration:.45f
                            options:UIViewAnimationOptionTransitionCrossDissolve
@@ -160,6 +161,8 @@ static void * XXContext = &XXContext;
 }
 
 - (void) showRiderMenu {
+    
+    _riderMenu.frame = _menuContainer.frame;
     [UIView transitionWithView:_menuContainer
                       duration:.45f
                        options:UIViewAnimationOptionTransitionCrossDissolve

@@ -8,6 +8,8 @@
 
 #import "Ride.h"
 #import "VCRideStateMachineFactory.h"
+#import "Car.h"
+#import "Driver.h"
 
 @interface Ride ()
 
@@ -31,6 +33,9 @@
 @dynamic meetingPointLongitude;
 @dynamic destinationLongitude;
 @dynamic destinationLatitude;
+@dynamic driver;
+@dynamic car;
+
 
 @synthesize stateMachine = _stateMachine;
 
@@ -47,6 +52,9 @@
                                                         @"destination_place_name" : @"destinationPlaceName"}];
 
     entityMapping.identificationAttributes = @[ @"request_id" ]; // for riders request_id is the primary key
+    
+    [entityMapping addRelationshipMappingWithSourceKeyPath:@"driver" mapping:[Driver createMappings:objectManager]];
+    [entityMapping addRelationshipMappingWithSourceKeyPath:@"car" mapping:[Car createMappings:objectManager]];
     
     RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping
                                                                                              method:RKRequestMethodGET

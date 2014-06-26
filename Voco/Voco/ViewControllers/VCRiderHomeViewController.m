@@ -9,13 +9,16 @@
 #import "VCRiderHomeViewController.h"
 #import <MapKit/MapKit.h>
 #import <MBProgressHUD.h>
+#import <ActionSheetPicker.h>
 #import "VCUserState.h"
 #import "VCInterfaceModes.h"
 #import "Ride.h"
 #import "VCRiderApi.h"
 #import "VCMapQuestRouting.h"
 #import "VCRideRequestCreated.h"
-#import <ActionSheetPicker.h>
+#import "Car.h"
+#import "Driver.h"
+#import "DTLazyImageView.h"
 
 #define kStepSetDepartureLocation 1
 #define kStepSetDestinationLocation 2
@@ -36,11 +39,12 @@
 
 // Ride Details Drawer
 @property (strong, nonatomic) IBOutlet UIView *rideDetailsDrawer;
-@property (strong, nonatomic) IBOutlet UILabel *riderNameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *driverNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *carTypeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *currentFareLabel;
-@property (strong, nonatomic) IBOutlet UIImageView *driverPhotoImageView;
-@property (strong, nonatomic) IBOutlet UIImageView *licensePlateImageView;
+@property (strong, nonatomic) IBOutlet DTLazyImageView *driverPhotoImageView;
+@property (strong, nonatomic) IBOutlet DTLazyImageView *licensePlateImageView;
+@property (weak, nonatomic) IBOutlet UILabel *licensePlatNumberLabel;
 
 // Map
 @property (strong, nonatomic) MKMapView * map;
@@ -84,7 +88,7 @@
     _map.userTrackingMode = YES;
     [self.view insertSubview:_map atIndex:0];
     [self resetRequestInterface];
-
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated{
@@ -133,15 +137,15 @@
 
 - (IBAction)didTapOnDemand:(id)sender {
     [self showRouteRequestInterface];
-
+    
     _ride = (Ride *) [NSEntityDescription insertNewObjectForEntityForName:@"Ride" inManagedObjectContext:[VCCoreData managedObjectContext]];
     _ride.requestType = RIDE_REQUEST_TYPE_ON_DEMAND;
     
     /*
-    CGRect frame = _departureEntryView.frame;
-    frame.origin.y = 20;
-    _departureEntryView.frame = frame;
-    [self.view addSubview:_departureEntryView];
+     CGRect frame = _departureEntryView.frame;
+     frame.origin.y = 20;
+     _departureEntryView.frame = frame;
+     [self.view addSubview:_departureEntryView];
      */
 }
 
@@ -178,7 +182,7 @@
         destinationCoordinate.longitude = [_ride.destinationLongitude doubleValue];
         departureCoordinate.latitude = [_ride.originLatitude doubleValue];
         departureCoordinate.longitude = [_ride.originLongitude doubleValue];
-
+        
         [VCMapQuestRouting route:destinationCoordinate to:departureCoordinate region:_map.region success:^(MKPolyline *polyline) {
             _routeOverlay = polyline;
             [_map addOverlay:_routeOverlay];
@@ -203,18 +207,19 @@
             hud.labelText = @"Requesting Ride";
             
             // VC RidesAPI
-            [VCRiderApi requestRide:_ride success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                VCRideRequestCreated * rideRequestCreatedResponse = mappingResult.firstObject;
-                _ride.request_id = rideRequestCreatedResponse.rideRequestId;
-                [VCCoreData saveContext];
-                [hud hide:YES];
-                // TODO: Don't show an alreay, show a HUD
-                [UIAlertView showWithTitle:@"Requested!" message:@"We are finding your driver now!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                    
-                }];
-            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                [hud hide:YES];
-            }];
+            [VCRiderApi requestRide:_ride
+                            success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                VCRideRequestCreated * rideRequestCreatedResponse = mappingResult.firstObject;
+                                _ride.request_id = rideRequestCreatedResponse.rideRequestId;
+                                [VCCoreData saveContext];
+                                [hud hide:YES];
+                                // TODO: Don't show an alreay, show a HUD
+                                [UIAlertView showWithTitle:@"Requested!" message:@"We are finding your driver now!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                    
+                                }];
+                            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                [hud hide:YES];
+                            }];
         } else if ( [ _ride.requestType isEqualToString:RIDE_REQUEST_TYPE_COMMUTER]) {
             // Commuter Confirmation
             
@@ -235,7 +240,7 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Canceling Ride";
     
-
+    
     // VC RidesAPI
     [VCRiderApi cancelRide:_ride success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [self resetRequestInterface];
@@ -243,13 +248,13 @@
         
         [UIAlertView showWithTitle:@"Ride Cancelled" message:@"Your ride has been cancelled" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
         [self resetRequestInterface];
-
+        
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [hud hide:YES];
         [WRUtilities criticalError:error];
         [self resetRequestInterface];
-
+        
     }];
     
 }
@@ -277,15 +282,15 @@
 
 - (IBAction)didTapArrivalTimeButton:(id)sender {
     NSArray *morningOptions = @[
-                        @"6:00", @"6:30", @"7:00", @"7:30",
-                        @"8:00", @"8:30", @"9:00", @"9:30",
-                        @"10:00", @"10:30", @"11:00", @"11:30",
-                        @"12:00"];
+                                @"6:00", @"6:30", @"7:00", @"7:30",
+                                @"8:00", @"8:30", @"9:00", @"9:30",
+                                @"10:00", @"10:30", @"11:00", @"11:30",
+                                @"12:00"];
     NSArray *evengingOptions = @[
-                                @"3:00", @"3:30", @"4:00", @"4:30",
-                                @"5:00", @"5:30", @"6:00", @"6:30",
-                                @"7:00", @"7:30", @"8:00", @"8:30",
-                                @"9:00"];
+                                 @"3:00", @"3:30", @"4:00", @"4:30",
+                                 @"5:00", @"5:30", @"6:00", @"6:30",
+                                 @"7:00", @"7:30", @"8:00", @"8:30",
+                                 @"9:00"];
     NSArray * options;
     if([_morningOrEveningButton.titleLabel.text rangeOfString:@"Morning" options:NSCaseInsensitiveSearch].location == 0){
         options = morningOptions;
@@ -326,7 +331,7 @@
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [hud hide:YES];
     }];
-
+    
 }
 
 #pragma mark Interface
@@ -359,24 +364,49 @@
     [self hideRideDetailsDrawer];
 }
 
+- (void) placeRideDetailsDrawerInPickupMode {
+    _currentFareLabel.text = @"Ride not started";
+    _driverNameLabel.text= _ride.driver.fullName;
+    _carTypeLabel.text = _ride.car.description;
+    _licensePlatNumberLabel.text = _ride.car.licensePlate;
+    [_driverPhotoImageView loadImageAtURL:[NSURL URLWithString:_ride.driver.driversLicenseUrl]];
+    
+}
+
+- (void) placeRideDetailsDrawerInRidingMode {
+    _currentFareLabel.text = @"Ride started";
+}
+
 - (void) showRideDetailsDrawer {
-    _rideDetailsDrawer.frame = CGRectMake(0, self.view.frame.size.height - _rideDetailsDrawer.frame.size.height, _rideDetailsDrawer.frame.size.width, _rideDetailsDrawer.frame.size.height);
-    [self.view addSubview:_rideDetailsDrawer];
+    [UIView transitionWithView:self.view
+                      duration:.45f
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    animations:^{
+                        _rideDetailsDrawer.frame = CGRectMake(0, self.view.frame.size.height - _rideDetailsDrawer.frame.size.height, _rideDetailsDrawer.frame.size.width, _rideDetailsDrawer.frame.size.height);
+                        [self.view addSubview:_rideDetailsDrawer];
+                    } completion:nil];
+  
     
     /*
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:_rideDetailsDrawer
-                                                         attribute:NSLayoutAttributeBottom
-                                                         relatedBy:NSLayoutRelationEqual
-                                                            toItem:self.view
-                                                         attribute:NSLayoutAttributeBottom
-                                                        multiplier:1
-                                                          constant:0]];
+     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:_rideDetailsDrawer
+     attribute:NSLayoutAttributeBottom
+     relatedBy:NSLayoutRelationEqual
+     toItem:self.view
+     attribute:NSLayoutAttributeBottom
+     multiplier:1
+     constant:0]];
      */
 }
 
 - (void) hideRideDetailsDrawer {
+    
     if( _rideDetailsDrawer.superview != nil) {
-        [_rideDetailsDrawer removeFromSuperview];
+        [UIView transitionWithView:self.view
+                          duration:.45f
+                           options:UIViewAnimationOptionTransitionCrossDissolve
+                        animations:^{
+                            [_rideDetailsDrawer removeFromSuperview];
+                        } completion:nil];
     }
 }
 

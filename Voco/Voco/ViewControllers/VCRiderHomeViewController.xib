@@ -10,10 +10,12 @@
                 <outlet property="cancelRideButton" destination="ViH-R7-hkr" id="Z5O-1c-wN6"/>
                 <outlet property="carTypeLabel" destination="QDG-ga-bae" id="bhS-fg-u49"/>
                 <outlet property="commuteButton" destination="er7-jE-Wpi" id="kdU-sQ-p8R"/>
-                <outlet property="currentFareLabel" destination="oFA-Ey-owG" id="NZH-jB-iNl"/>
+                <outlet property="currentFareLabel" destination="qJX-e7-JNt" id="boX-Tk-JZ6"/>
                 <outlet property="departureEntryView" destination="kkl-v7-H5h" id="8Vg-1p-STe"/>
                 <outlet property="destinationEntryView" destination="RCN-Xj-T7f" id="OFZ-aH-3xs"/>
+                <outlet property="driverNameLabel" destination="fig-ZR-hzv" id="awT-CR-L7x"/>
                 <outlet property="driverPhotoImageView" destination="8hM-bf-rTY" id="4qU-gQ-emL"/>
+                <outlet property="licensePlatNumberLabel" destination="QEP-gz-7jD" id="cVr-BH-YXS"/>
                 <outlet property="licensePlateImageView" destination="hpo-vb-UfW" id="3hd-fI-okn"/>
                 <outlet property="locationConfirmationAnnotation" destination="Zfe-VM-bsO" id="KNz-6d-aE8"/>
                 <outlet property="locationConfirmationLabel" destination="jyO-17-bWp" id="IJm-zp-qxb"/>
@@ -21,7 +23,6 @@
                 <outlet property="morningOrEveningButton" destination="0Hd-Eq-Pb2" id="UMq-SZ-71A"/>
                 <outlet property="onDemandButton" destination="Chj-Ab-zHy" id="bIZ-g6-hCC"/>
                 <outlet property="rideDetailsDrawer" destination="pRU-Fl-aaR" id="Je8-AL-Xpt"/>
-                <outlet property="riderNameLabel" destination="fig-ZR-hzv" id="KWx-C2-eNx"/>
                 <outlet property="scheduleRideButton" destination="4Dx-kF-WgJ" id="qLy-B0-BkE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -55,11 +56,11 @@
                         <action selector="didTapCommute:" destination="-1" eventType="touchUpInside" id="hvA-Ge-aNb"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map_pin_fill-512.png" translatesAutoresizingMaskIntoConstraints="NO" id="3G5-uk-oef">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="map_pin_fill-512.png" translatesAutoresizingMaskIntoConstraints="NO" id="3G5-uk-oef">
                     <rect key="frame" x="135" y="160" width="50" height="160"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zfe-VM-bsO">
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zfe-VM-bsO">
                     <rect key="frame" x="53" y="129" width="214" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
@@ -200,11 +201,11 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8hM-bf-rTY">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8hM-bf-rTY" customClass="DTLazyImageView">
                     <rect key="frame" x="160" y="0.0" width="160" height="100"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hpo-vb-UfW">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hpo-vb-UfW" customClass="DTLazyImageView">
                     <rect key="frame" x="0.0" y="33" width="160" height="67"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
@@ -245,19 +246,33 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fare:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJX-e7-JNt">
-                            <rect key="frame" x="5" y="6" width="39" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFA-Ey-owG">
-                            <rect key="frame" x="55" y="6" width="20" height="21"/>
+                            <rect key="frame" x="5" y="6" width="141" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" white="0.56210082120000004" alpha="1" colorSpace="calibratedWhite"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                </view>
+                <view alpha="0.59999999999999998" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uqJ-MK-nKM">
+                    <rect key="frame" x="163" y="55" width="75" height="42"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Plate Number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aia-FT-ctN">
+                            <rect key="frame" x="0.0" y="1" width="75" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEP-gz-7jD">
+                            <rect key="frame" x="0.0" y="19" width="75" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.73317746350364976" alpha="1" colorSpace="calibratedWhite"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                 </view>
             </subviews>

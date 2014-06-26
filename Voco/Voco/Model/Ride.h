@@ -14,6 +14,8 @@
 #define RIDE_REQUEST_TYPE_ON_DEMAND @"on_demand"
 #define RIDE_REQUEST_TYPE_COMMUTER @"commuter"
 
+@class Car, Driver;
+
 @interface Ride : NSManagedObject <VCRestKitMappableObject>
 
 @property (nonatomic, retain) NSNumber * ride_id;
@@ -30,7 +32,8 @@
 @property (nonatomic, retain) NSNumber * destinationLatitude;
 @property (nonatomic, retain) NSNumber * request_id;
 @property (nonatomic, strong, readonly) TKStateMachine * stateMachine;
-
+@property (nonatomic, retain) Driver *driver;
+@property (nonatomic, retain) Car *car;
 
 + (Ride *) rideWithId: (NSNumber *) rideId;
 
