@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignInViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCSignInViewController">
             <connections>
                 <outlet property="passwordField" destination="1GZ-ud-xG6" id="JuZ-Ub-juT"/>
                 <outlet property="phoneNumberField" destination="yEQ-oe-BMG" id="Rio-Ea-kah"/>

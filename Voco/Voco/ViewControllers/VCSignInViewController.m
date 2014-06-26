@@ -6,19 +6,19 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "SignInViewController.h"
+#import "VCSignInViewController.h"
 #import "VCTextField.h"
 #import "VCUserState.h"
 #import "VCRiderHomeViewController.h"
-#import "SignUpViewController.h"
-#import "PasswordRecoveryViewController.h"
-#import "DriverRequestViewController.h"
+#import "VCSignUpViewController.h"
+#import "VCPasswordRecoveryViewController.h"
+#import "VCDriverRequestViewController.h"
 #import "VCInterfaceModes.h"
 
 #define kPhoneFieldTag 1
 #define kPasswordFieldTag 2
 
-@interface SignInViewController ()
+@interface VCSignInViewController ()
 
 @property (weak, nonatomic) IBOutlet VCTextField *phoneNumberField;
 @property (weak, nonatomic) IBOutlet VCTextField *passwordField;
@@ -30,7 +30,7 @@
 
 @end
 
-@implementation SignInViewController
+@implementation VCSignInViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -62,7 +62,7 @@
 
 
 - (IBAction)didTapSignUp:(id)sender {
-    SignUpViewController * signUpViewController = [[SignUpViewController alloc] init];
+    VCSignUpViewController * signUpViewController = [[VCSignUpViewController alloc] init];
     [self.navigationController pushViewController:signUpViewController animated:YES];
     
 }
@@ -85,12 +85,12 @@
 }
 
 - (IBAction)didTapForgotPassword:(id)sender {
-    PasswordRecoveryViewController * passwordRecoveryViewController = [[PasswordRecoveryViewController alloc] init];
+    VCPasswordRecoveryViewController * passwordRecoveryViewController = [[VCPasswordRecoveryViewController alloc] init];
     [self.navigationController pushViewController:passwordRecoveryViewController animated:YES];
 }
 
 - (IBAction)didTapInterestedInDriving:(id)sender {
-    DriverRequestViewController * driverRequestViewController = [[DriverRequestViewController alloc] init];
+    VCDriverRequestViewController * driverRequestViewController = [[VCDriverRequestViewController alloc] init];
     [self.navigationController pushViewController:driverRequestViewController animated:YES];
 }
 

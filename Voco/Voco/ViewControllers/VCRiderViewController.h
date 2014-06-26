@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RiderViewController : UIViewController
+@interface VCRiderViewController : UIViewController
 
 @end

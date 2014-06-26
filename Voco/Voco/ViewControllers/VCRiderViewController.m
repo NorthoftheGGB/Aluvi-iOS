@@ -6,21 +6,21 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "RiderViewController.h"
+#import "VCRiderViewController.h"
 #import <RestKit.h>
 #import <Reachability.h>
 #import "VCApi.h"
 #import "VCRideRequest.h"
 #import "VCRideRequestCreated.h"
 #import "WRUtilities.h"
-#import "DriverViewController.h"
+#import "VCDriverViewController.h"
 #import "VCDevice.h"
 #import "VCUserState.h"
 #import "VCRideIdentity.h"
 
 static void * XXContext = &XXContext;
 
-@interface RiderViewController ()
+@interface VCRiderViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *stateLabel;
 @property (weak, nonatomic) IBOutlet UIButton *requestButton;
@@ -34,7 +34,7 @@ static void * XXContext = &XXContext;
 
 @end
 
-@implementation RiderViewController
+@implementation VCRiderViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "SignUpViewController.h"
+#import "VCSignUpViewController.h"
 #import "VCTextField.h"
 #import "VCUsersApi.h"
 #import "VCValidation.h"
@@ -21,7 +21,7 @@
 #define kEmailFieldTag 5
 #define kReferralCodeFieldTag 6
 
-@interface SignUpViewController ()
+@interface VCSignUpViewController ()
 
 @property (weak, nonatomic) IBOutlet VCTextField *firstNameField;
 @property (weak, nonatomic) IBOutlet VCTextField *lastNameField;
@@ -34,7 +34,7 @@
 
 @end
 
-@implementation SignUpViewController
+@implementation VCSignUpViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

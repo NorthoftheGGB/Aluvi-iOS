@@ -7,12 +7,12 @@
 //
 
 #import "VCInterfaceModes.h"
-#import "SignInViewController.h"
+#import "VCSignInViewController.h"
 #import "VCRiderHomeViewController.h"
 #import "VCMenuViewController.h"
 #import "IIViewDeckController.h"
 #import "VCApi.h"
-#import "DriverViewController.h"
+#import "VCDriverViewController.h"
 
 #define kInterfaceModeKey @"INTERFACE_MODE_KEY"
 
@@ -33,7 +33,7 @@ static int mode;
 }
 
 + (void) showRiderSigninInterface {
-    SignInViewController * signInViewController = [[SignInViewController alloc] init];
+    VCSignInViewController * signInViewController = [[VCSignInViewController alloc] init];
     UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:signInViewController];
     [navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [navigationController.navigationBar setShadowImage:[UIImage new]];
@@ -80,7 +80,7 @@ static int mode;
 }
 
 + (void) showDriverInterface {
-    DriverViewController * driverViewController = [[DriverViewController alloc] init];
+    VCDriverViewController * driverViewController = [[VCDriverViewController alloc] init];
     
     if(deckController == nil){
         [self createDeckViewController];

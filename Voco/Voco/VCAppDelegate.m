@@ -11,8 +11,8 @@
 #import <Crashlytics/Crashlytics.h>
 #import "VCRiderApi.h"
 #import "VCDriverApi.h"
-#import "RiderViewController.h"
-#import "DriverViewController.h"
+#import "VCRiderViewController.h"
+#import "VCDriverViewController.h"
 #import "VCPushManager.h"
 #import "WRUtilities.h"
 #import "VCApi.h"
@@ -26,7 +26,7 @@
 
 @interface VCAppDelegate ()
 
-@property (nonatomic, strong) RiderViewController * riderViewController;
+@property (nonatomic, strong) VCRiderViewController * riderViewController;
 
 @end
 

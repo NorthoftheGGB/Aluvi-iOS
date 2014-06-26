@@ -1,5 +1,5 @@
 //
-//  SignUpViewController.h
+//  PasswordRecoveryViewController.h
 //  Voco
 //
 //  Created by Elliott De Aratanha on 6/5/14.
@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ScrollableFormViewController.h"
 
-@interface SignUpViewController : ScrollableFormViewController
+@interface VCPasswordRecoveryViewController : UIViewController
 
 @end

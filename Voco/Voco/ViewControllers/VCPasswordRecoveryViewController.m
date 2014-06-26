@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "PasswordRecoveryViewController.h"
+#import "VCPasswordRecoveryViewController.h"
 #import "VCTextField.h"
 #import "VCUsersApi.h"
 
 #define kPhoneFieldTag 1
 #define kEmailFieldTag 2
 
-@interface PasswordRecoveryViewController ()
+@interface VCPasswordRecoveryViewController ()
 
 @property (strong, nonatomic) IBOutlet VCTextField *phoneField;
 @property (weak, nonatomic) IBOutlet VCTextField *emailField;
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation PasswordRecoveryViewController
+@implementation VCPasswordRecoveryViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

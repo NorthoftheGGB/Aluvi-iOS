@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "DriverRequestViewController.h"
+#import "VCDriverRequestViewController.h"
 #import "VCTextField.h"
 #import "VCUsersApi.h"
 #import "VCValidation.h"
@@ -18,7 +18,7 @@
 #define kEmailFieldTag 4
 #define kReferralCodeFieldTag 5
 
-@interface DriverRequestViewController ()
+@interface VCDriverRequestViewController ()
 
 @property (weak, nonatomic) IBOutlet VCTextField *firstNameField;
 @property (weak, nonatomic) IBOutlet VCTextField *lastNameField;
@@ -31,7 +31,7 @@
 
 @end
 
-@implementation DriverRequestViewController
+@implementation VCDriverRequestViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

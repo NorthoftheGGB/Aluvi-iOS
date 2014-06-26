@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DriverRequestViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCDriverRequestViewController">
             <connections>
                 <outlet property="emailField" destination="678-GD-K1j" id="Pyq-vr-YD3"/>
                 <outlet property="firstNameField" destination="ZBB-gq-i9S" id="L35-ob-Iye"/>

@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "DriverViewController.h"
+#import "VCDriverViewController.h"
 #import "VCDevice.h"
 #import "WRUtilities.h"
-#import "RiderViewController.h"
+#import "VCRiderViewController.h"
 #import "VCUserState.h"
 #import "VCRideDriverAssignment.h"
 #import "VCRideIdentity.h"
@@ -17,7 +17,7 @@
 
 static void * XXContext = &XXContext;
 
-@interface DriverViewController ()
+@interface VCDriverViewController ()
 
 
 @property (weak, nonatomic) IBOutlet UILabel *stateLabel;
@@ -31,7 +31,7 @@ static void * XXContext = &XXContext;
 
 @end
 
-@implementation DriverViewController
+@implementation VCDriverViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
