@@ -12,8 +12,8 @@
 #import "VCValidation.h"
 
 
-#define kfirstNameFieldTag 1
-#define klastNameFieldTag 2
+#define kFirstNameFieldTag 1
+#define kLastNameFieldTag 2
 #define kPhoneFieldTag 3
 #define kEmailFieldTag 4
 #define kReferralCodeFieldTag 5
@@ -70,11 +70,11 @@
     
     UITextField * textField = (UITextField *) sender;
     switch(textField.tag){
-        case kfirstNameFieldTag:
+        case kFirstNameFieldTag:
             [_lastNameField
              becomeFirstResponder];
             break;
-        case klastNameFieldTag:
+        case kLastNameFieldTag:
             [_phoneField
              becomeFirstResponder];
             break;

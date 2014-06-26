@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnS-c4-off">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i5M-Pr-FkT">
@@ -36,9 +36,13 @@
                                     <rect key="frame" x="37" y="200" width="246" height="200"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
-                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="731-o5-OVd" customClass="VCTextField">
+                                <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="731-o5-OVd" customClass="VCTextField">
                                     <rect key="frame" x="93" y="246" width="182" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="182" id="AvF-QY-bqU"/>
+                                        <constraint firstAttribute="height" constant="30" id="TOw-Tb-w7T"/>
+                                    </constraints>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="next"/>
@@ -52,8 +56,11 @@
                                     </connections>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZBB-gq-i9S" customClass="VCTextField">
-                                    <rect key="frame" x="93" y="206" width="88" height="30"/>
+                                    <rect key="frame" x="93" y="206" width="90" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="90" id="6UR-io-Utn"/>
+                                    </constraints>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
@@ -66,7 +73,7 @@
                                         <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="75I-65-22w"/>
                                     </connections>
                                 </textField>
-                                <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="678-GD-K1j" customClass="VCTextField">
+                                <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="678-GD-K1j" customClass="VCTextField">
                                     <rect key="frame" x="93" y="326" width="182" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -81,7 +88,7 @@
                                         <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="y4d-hC-MHD"/>
                                     </connections>
                                 </textField>
-                                <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Referral code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zis-mN-bbB" customClass="VCTextField">
+                                <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Referral code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zis-mN-bbB" customClass="VCTextField">
                                     <rect key="frame" x="93" y="364" width="182" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -168,8 +175,8 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </label>
-                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YRC-ux-C1G" customClass="VCTextField">
-                                    <rect key="frame" x="184" y="206" width="91" height="30"/>
+                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YRC-ux-C1G" customClass="VCTextField">
+                                    <rect key="frame" x="185" y="206" width="90" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -204,6 +211,7 @@
                                 <constraint firstItem="PwE-wb-Oea" firstAttribute="trailing" secondItem="dNp-5t-0m3" secondAttribute="trailing" id="7aM-cz-qfZ"/>
                                 <constraint firstItem="eEI-8s-Ww8" firstAttribute="leading" secondItem="iYj-p7-yQc" secondAttribute="leading" id="CcY-hu-wxk"/>
                                 <constraint firstItem="4hL-Bc-jSH" firstAttribute="trailing" secondItem="dNp-5t-0m3" secondAttribute="trailing" id="CwZ-GD-L0O"/>
+                                <constraint firstItem="YRC-ux-C1G" firstAttribute="leading" secondItem="ZBB-gq-i9S" secondAttribute="trailing" constant="2" id="Dyx-DN-k0z"/>
                                 <constraint firstItem="731-o5-OVd" firstAttribute="width" secondItem="Zis-mN-bbB" secondAttribute="width" id="EKE-zn-cLS"/>
                                 <constraint firstAttribute="trailing" secondItem="iYj-p7-yQc" secondAttribute="trailing" constant="45" id="GQO-ni-WlL"/>
                                 <constraint firstItem="eEI-8s-Ww8" firstAttribute="leading" secondItem="PwE-wb-Oea" secondAttribute="trailing" constant="-225" id="GWS-Vv-Mat"/>
@@ -215,7 +223,7 @@
                                 <constraint firstItem="731-o5-OVd" firstAttribute="top" secondItem="ZBB-gq-i9S" secondAttribute="bottom" constant="10" id="PaU-Nl-gKL"/>
                                 <constraint firstItem="YRC-ux-C1G" firstAttribute="top" secondItem="PwE-wb-Oea" secondAttribute="bottom" constant="19" id="QIq-39-G8d"/>
                                 <constraint firstItem="731-o5-OVd" firstAttribute="top" secondItem="YRC-ux-C1G" secondAttribute="bottom" constant="10" id="QMi-FJ-3Il"/>
-                                <constraint firstItem="YRC-ux-C1G" firstAttribute="leading" secondItem="ZBB-gq-i9S" secondAttribute="trailing" constant="3" id="Qvt-YJ-hod"/>
+                                <constraint firstItem="YRC-ux-C1G" firstAttribute="leading" secondItem="ZBB-gq-i9S" secondAttribute="trailing" constant="2" id="Qvt-YJ-hod"/>
                                 <constraint firstItem="731-o5-OVd" firstAttribute="width" secondItem="678-GD-K1j" secondAttribute="width" id="Rd7-FQ-G7S"/>
                                 <constraint firstAttribute="trailing" secondItem="YRC-ux-C1G" secondAttribute="trailing" constant="45" id="UxG-dU-LvB"/>
                                 <constraint firstItem="678-GD-K1j" firstAttribute="leading" secondItem="731-o5-OVd" secondAttribute="leading" id="Xis-ZY-JHV"/>
@@ -233,7 +241,7 @@
                                 <constraint firstItem="OIm-WY-5GR" firstAttribute="centerX" secondItem="dNp-5t-0m3" secondAttribute="centerX" id="lC2-j8-7dX"/>
                                 <constraint firstAttribute="trailing" secondItem="eEI-8s-Ww8" secondAttribute="trailing" constant="50" id="mgR-vP-yzL"/>
                                 <constraint firstItem="731-o5-OVd" firstAttribute="height" secondItem="Zis-mN-bbB" secondAttribute="height" id="mim-xn-qT7"/>
-                                <constraint firstItem="YRC-ux-C1G" firstAttribute="leading" secondItem="ZBB-gq-i9S" secondAttribute="trailing" constant="3" id="qDL-aO-5fI"/>
+                                <constraint firstItem="YRC-ux-C1G" firstAttribute="leading" secondItem="ZBB-gq-i9S" secondAttribute="trailing" constant="2" id="qDL-aO-5fI"/>
                                 <constraint firstItem="731-o5-OVd" firstAttribute="height" secondItem="678-GD-K1j" secondAttribute="height" id="qoK-4H-DNR"/>
                                 <constraint firstItem="Zis-mN-bbB" firstAttribute="top" secondItem="678-GD-K1j" secondAttribute="bottom" constant="8" symbolic="YES" id="rCv-Oo-xlV"/>
                                 <constraint firstItem="iYj-p7-yQc" firstAttribute="top" secondItem="OIm-WY-5GR" secondAttribute="bottom" constant="3" id="sg2-rn-H4b"/>
@@ -251,8 +259,8 @@
                         </view>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" constant="88" id="SiR-Aj-LFI"/>
-                        <constraint firstItem="i5M-Pr-FkT" firstAttribute="centerY" secondItem="fnS-c4-off" secondAttribute="centerY" constant="-44" id="Y1n-89-p63"/>
+                        <constraint firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="SiR-Aj-LFI"/>
+                        <constraint firstItem="i5M-Pr-FkT" firstAttribute="centerY" secondItem="fnS-c4-off" secondAttribute="centerY" id="Y1n-89-p63"/>
                         <constraint firstItem="i5M-Pr-FkT" firstAttribute="centerX" secondItem="fnS-c4-off" secondAttribute="centerX" id="a1g-qg-X4R"/>
                         <constraint firstItem="i5M-Pr-FkT" firstAttribute="top" secondItem="fnS-c4-off" secondAttribute="top" id="f1y-iA-NvZ"/>
                         <constraint firstItem="i5M-Pr-FkT" firstAttribute="leading" secondItem="fnS-c4-off" secondAttribute="leading" id="m9Z-y5-4QJ"/>

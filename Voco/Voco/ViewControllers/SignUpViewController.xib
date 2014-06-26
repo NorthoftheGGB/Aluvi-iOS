@@ -7,7 +7,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpViewController">
             <connections>
                 <outlet property="emailField" destination="mfu-MK-ETL" id="rml-Cj-FhR"/>
-                <outlet property="nameField" destination="4tz-EA-61T" id="EmE-PD-AtZ"/>
+                <outlet property="firstNameField" destination="22v-LN-4YI" id="sUS-Yf-TMk"/>
+                <outlet property="lastNameField" destination="yqR-wC-tPa" id="p4t-bZ-erl"/>
                 <outlet property="passwordField" destination="oUS-7v-08g" id="8v8-Nr-mAC"/>
                 <outlet property="phoneField" destination="HWX-Nc-rV4" id="fDZ-AG-gms"/>
                 <outlet property="referralCodeField" destination="2DV-EA-Yr3" id="mr4-Jg-fJG"/>
@@ -17,11 +18,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="Fru-o9-Eki" userLabel="Main View">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wKg-ur-P0p">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i5M-Pr-FkT" userLabel="Sub View">
@@ -36,7 +37,7 @@
                                     <rect key="frame" x="39" y="153" width="246" height="200"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
-                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HWX-Nc-rV4" customClass="VCTextField">
+                                <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HWX-Nc-rV4" customClass="VCTextField">
                                     <rect key="frame" x="95" y="199" width="182" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -51,22 +52,7 @@
                                         <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="su9-jM-mFP"/>
                                     </connections>
                                 </textField>
-                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Full Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4tz-EA-61T" customClass="VCTextField">
-                                    <rect key="frame" x="95" y="159" width="182" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                                            <integer key="value" value="18"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                    <connections>
-                                        <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="uCd-zq-rKC"/>
-                                    </connections>
-                                </textField>
-                                <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oUS-7v-08g" customClass="VCTextField">
+                                <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oUS-7v-08g" customClass="VCTextField">
                                     <rect key="frame" x="95" y="239" width="182" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -81,7 +67,7 @@
                                         <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="xvk-8i-KEu"/>
                                     </connections>
                                 </textField>
-                                <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mfu-MK-ETL" customClass="VCTextField">
+                                <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mfu-MK-ETL" customClass="VCTextField">
                                     <rect key="frame" x="95" y="279" width="182" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -96,7 +82,7 @@
                                         <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="hZW-oV-ObB"/>
                                     </connections>
                                 </textField>
-                                <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Referral code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2DV-EA-Yr3" customClass="VCTextField">
+                                <textField opaque="NO" clipsSubviews="YES" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Referral code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2DV-EA-Yr3" customClass="VCTextField">
                                     <rect key="frame" x="95" y="317" width="182" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -132,19 +118,58 @@
                                         <action selector="didTapSignUp:" destination="-1" eventType="touchUpInside" id="ny6-9o-SkB"/>
                                     </connections>
                                 </button>
+                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="22v-LN-4YI" customClass="VCTextField">
+                                    <rect key="frame" x="95" y="159" width="90" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="1c1-c7-kUT"/>
+                                        <constraint firstAttribute="width" constant="90" id="JU0-SR-eIc"/>
+                                        <constraint firstAttribute="height" constant="30" id="bwa-NW-X8D"/>
+                                    </constraints>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                            <integer key="value" value="18"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="c5n-RC-WVA"/>
+                                    </connections>
+                                </textField>
+                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yqR-wC-tPa" customClass="VCTextField">
+                                    <rect key="frame" x="187" y="159" width="90" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="3mt-RD-AOi"/>
+                                        <constraint firstAttribute="width" constant="90" id="vlA-Sj-eig"/>
+                                    </constraints>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                            <integer key="value" value="18"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="LkV-sU-cRL"/>
+                                    </connections>
+                                </textField>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstItem="22v-LN-4YI" firstAttribute="top" secondItem="35T-6B-RMk" secondAttribute="bottom" constant="8" id="1jg-bm-shK"/>
                                 <constraint firstAttribute="trailing" secondItem="2DV-EA-Yr3" secondAttribute="trailing" constant="43" id="26R-64-aDW"/>
-                                <constraint firstItem="4tz-EA-61T" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="95" id="2jD-98-El3"/>
                                 <constraint firstItem="HWX-Nc-rV4" firstAttribute="height" secondItem="mfu-MK-ETL" secondAttribute="height" id="34d-fn-pqT"/>
                                 <constraint firstItem="HWX-Nc-rV4" firstAttribute="height" secondItem="oUS-7v-08g" secondAttribute="height" id="4fI-he-3n1"/>
+                                <constraint firstItem="yqR-wC-tPa" firstAttribute="leading" secondItem="22v-LN-4YI" secondAttribute="trailing" constant="2" id="BN4-qr-ehi"/>
                                 <constraint firstItem="oUS-7v-08g" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="95" id="EpN-s7-MrD"/>
-                                <constraint firstItem="HWX-Nc-rV4" firstAttribute="width" secondItem="4tz-EA-61T" secondAttribute="width" id="F4o-eX-IPz"/>
-                                <constraint firstAttribute="trailing" secondItem="4tz-EA-61T" secondAttribute="trailing" constant="43" id="FDZ-AP-dOQ"/>
-                                <constraint firstItem="lVL-nv-53q" firstAttribute="top" secondItem="4tz-EA-61T" secondAttribute="bottom" constant="-36" id="Loh-lY-a2n"/>
+                                <constraint firstItem="yqR-wC-tPa" firstAttribute="leading" secondItem="22v-LN-4YI" secondAttribute="trailing" constant="2" id="M4G-Nc-AqA"/>
                                 <constraint firstAttribute="trailing" secondItem="oUS-7v-08g" secondAttribute="trailing" constant="43" id="O3P-gv-UzC"/>
                                 <constraint firstAttribute="width" constant="320" id="OM5-iU-gtG"/>
+                                <constraint firstAttribute="trailing" secondItem="yqR-wC-tPa" secondAttribute="trailing" constant="43" id="OVr-I1-aSA"/>
                                 <constraint firstItem="HWX-Nc-rV4" firstAttribute="width" secondItem="mfu-MK-ETL" secondAttribute="width" id="PFW-ex-4GM"/>
                                 <constraint firstItem="lVL-nv-53q" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="39" id="QAn-La-3Sf"/>
                                 <constraint firstItem="mfu-MK-ETL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="95" id="Qy0-n3-liS"/>
@@ -152,18 +177,22 @@
                                 <constraint firstAttribute="trailing" secondItem="lVL-nv-53q" secondAttribute="trailing" constant="35" id="TLf-9e-R5i"/>
                                 <constraint firstAttribute="trailing" secondItem="35T-6B-RMk" secondAttribute="trailing" constant="84" id="UB7-j6-su1"/>
                                 <constraint firstItem="35T-6B-RMk" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="73" id="UcT-e3-AFI"/>
+                                <constraint firstItem="HWX-Nc-rV4" firstAttribute="top" secondItem="22v-LN-4YI" secondAttribute="bottom" constant="10" id="Uwy-KY-m1X"/>
+                                <constraint firstItem="22v-LN-4YI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="95" id="VU6-I3-ZHZ"/>
                                 <constraint firstAttribute="bottom" secondItem="mAT-xD-K9f" secondAttribute="bottom" constant="18" id="ZBh-sR-B1Z"/>
                                 <constraint firstAttribute="trailing" secondItem="HWX-Nc-rV4" secondAttribute="trailing" constant="43" id="a6s-Ma-gjc"/>
                                 <constraint firstItem="lVL-nv-53q" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="153" id="bA0-0W-n2k"/>
-                                <constraint firstItem="HWX-Nc-rV4" firstAttribute="top" secondItem="4tz-EA-61T" secondAttribute="bottom" constant="10" id="fDd-jX-wLM"/>
+                                <constraint firstItem="yqR-wC-tPa" firstAttribute="leading" secondItem="22v-LN-4YI" secondAttribute="trailing" constant="2" id="cNA-TE-jzd"/>
+                                <constraint firstItem="yqR-wC-tPa" firstAttribute="top" secondItem="35T-6B-RMk" secondAttribute="bottom" constant="8" id="eLV-B5-zIv"/>
+                                <constraint firstItem="yqR-wC-tPa" firstAttribute="leading" secondItem="22v-LN-4YI" secondAttribute="trailing" constant="2" id="ePH-Jh-Qoi"/>
                                 <constraint firstItem="2DV-EA-Yr3" firstAttribute="top" secondItem="lVL-nv-53q" secondAttribute="bottom" constant="-36" id="fRQ-Oe-5cM"/>
-                                <constraint firstItem="4tz-EA-61T" firstAttribute="top" secondItem="35T-6B-RMk" secondAttribute="bottom" constant="8" id="gCs-by-Ngr"/>
                                 <constraint firstItem="mfu-MK-ETL" firstAttribute="top" secondItem="oUS-7v-08g" secondAttribute="bottom" constant="10" id="guk-td-pwN"/>
                                 <constraint firstItem="HWX-Nc-rV4" firstAttribute="height" secondItem="2DV-EA-Yr3" secondAttribute="height" id="hA9-Oe-aeF"/>
                                 <constraint firstItem="2DV-EA-Yr3" firstAttribute="top" secondItem="mfu-MK-ETL" secondAttribute="bottom" constant="8" symbolic="YES" id="huw-VC-IwV"/>
+                                <constraint firstItem="yqR-wC-tPa" firstAttribute="leading" secondItem="22v-LN-4YI" secondAttribute="trailing" constant="2" id="kQG-mG-7H8"/>
                                 <constraint firstAttribute="trailing" secondItem="mfu-MK-ETL" secondAttribute="trailing" constant="43" id="l2v-lG-CBJ"/>
                                 <constraint firstItem="mAT-xD-K9f" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="60" id="lxY-7P-MJr"/>
-                                <constraint firstItem="HWX-Nc-rV4" firstAttribute="height" secondItem="4tz-EA-61T" secondAttribute="height" id="oqs-qA-Vs5"/>
+                                <constraint firstItem="HWX-Nc-rV4" firstAttribute="top" secondItem="yqR-wC-tPa" secondAttribute="bottom" constant="10" id="ncn-uG-aA4"/>
                                 <constraint firstItem="HWX-Nc-rV4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="95" id="ouX-h8-X2z"/>
                                 <constraint firstItem="HWX-Nc-rV4" firstAttribute="width" secondItem="oUS-7v-08g" secondAttribute="width" id="qcO-8L-ATK"/>
                                 <constraint firstAttribute="bottom" secondItem="lVL-nv-53q" secondAttribute="bottom" constant="127" id="qdr-wr-Lk9"/>
@@ -191,7 +220,7 @@
                 <constraint firstItem="wKg-ur-P0p" firstAttribute="top" secondItem="Fru-o9-Eki" secondAttribute="top" id="OoJ-Bv-kCq"/>
                 <constraint firstAttribute="bottom" secondItem="wKg-ur-P0p" secondAttribute="bottom" id="iXt-Sz-7Li"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
     <resources>
