@@ -73,10 +73,21 @@
     [self signUp];
 }
 
+- (IBAction)editDidBegin:(id)sender {
+    UITextField * textField = (UITextField *) sender;
+    if([textField.text length] > 0){
+        textField.backgroundColor = [UIColor whiteColor];
+    }
+}
+
 - (IBAction)didEndOnExit:(id)sender {
     
     UITextField * textField = (UITextField *) sender;
-    switch(textField.tag){
+    if([textField.text length] > 0){
+        textField.backgroundColor = [UIColor whiteColor];
+    }
+    
+        switch(textField.tag){
         case kFirstNameFieldTag:
             [_lastNameField becomeFirstResponder];
             break;
@@ -103,11 +114,27 @@
     BOOL error = false;
     if (![VCValidation NSStringIsValidEmail:_emailField.text]){
         error = true;
-        [_emailField setTextColor:[UIColor redColor]];
+        [_emailField setBackgroundColor:[UIColor redColor]];
     }
     if(_phoneField.text == nil || [_phoneField.text isEqualToString:@""] ){
         error = true;
-        [_phoneField setTextColor:[UIColor redColor]];
+        [_phoneField setBackgroundColor:[UIColor redColor]];
+    }
+    
+    if (_passwordField.text == nil || [_passwordField.text isEqualToString:@""]){
+        error = true;
+        [_passwordField setBackgroundColor:[UIColor redColor]];
+    }
+    
+    if (_firstNameField.text == nil || [_firstNameField.text isEqualToString:@""]){
+        error = true;
+        [_firstNameField setBackgroundColor:[UIColor redColor]];
+    }
+    
+    
+    if (_lastNameField.text == nil || [_lastNameField.text isEqualToString:@""]){
+        error = true;
+        [_lastNameField setBackgroundColor:[UIColor redColor]];
     }
     
     if(error == true){
