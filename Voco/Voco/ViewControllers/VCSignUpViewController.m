@@ -13,6 +13,7 @@
 #import "WRUtilities.h"
 #import "VCRiderHomeViewController.h"
 #import "VCInterfaceModes.h"
+#import <MBProgressHUD.h>
 
 #define kFirstNameFieldTag 1
 #define kLastNameFieldTag 2
@@ -29,6 +30,8 @@
 @property (weak, nonatomic) IBOutlet VCTextField *passwordField;
 @property (weak, nonatomic) IBOutlet VCTextField *emailField;
 @property (weak, nonatomic) IBOutlet VCTextField *referralCodeField;
+@property (strong, nonatomic) MBProgressHUD *hud;
+
 
 - (IBAction)didTapSignUp:(id)sender;
 
@@ -116,6 +119,8 @@
     [_emailField setTextColor:[UIColor blackColor]];
 
 
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    // _hud.labelText = @"Signing Up";
     
     [VCUsersApi createUser:[RKObjectManager sharedManager]
                       name:_firstNameField.text

@@ -14,6 +14,7 @@
 #import "VCPasswordRecoveryViewController.h"
 #import "VCDriverRequestViewController.h"
 #import "VCInterfaceModes.h"
+#import <MBProgressHUD.h>
 
 #define kPhoneFieldTag 1
 #define kPasswordFieldTag 2
@@ -73,11 +74,17 @@
 
 - (void) login {
     
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Logging In";
+    
     [[VCUserState instance] loginWithPhone:_phoneNumberField.text
                                   password:_passwordField.text
                                    success:^{
+                                       [hud hide:YES];
                                        [VCInterfaceModes showRiderInterface];
+                                       
                                    } failure:^{
+                                       [hud hide:YES];
                                        [UIAlertView showWithTitle:@"Login Failed!" message:@"Invalid" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
                                    }];
     

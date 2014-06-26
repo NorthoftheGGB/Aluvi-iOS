@@ -148,7 +148,7 @@ static void * XXContext = &XXContext;
 }
 
 - (IBAction)didTapDriverModeButton:(id)sender {
-    [[[UIApplication sharedApplication] delegate].window setRootViewController:[[DriverViewController alloc] init] ];
+    [[[UIApplication sharedApplication] delegate].window setRootViewController:[[VCDriverViewController alloc] init] ];
 }
 
 - (IBAction)didTapCancelRideButton:(id)sender {

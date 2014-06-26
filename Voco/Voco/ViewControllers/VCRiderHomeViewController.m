@@ -214,7 +214,7 @@
                                 _ride.request_id = rideRequestCreatedResponse.rideRequestId;
                                 [VCCoreData saveContext];
                                 [hud hide:YES];
-                                // TODO: Don't show an alreay, show a HUD
+                                // TODO: Don't show an alert, show a HUD
                                 [UIAlertView showWithTitle:@"Requested!" message:@"We are finding your driver now!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                                     
                                 }];
@@ -252,9 +252,9 @@
         
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [self resetRequestInterface];
         [hud hide:YES];
         [WRUtilities criticalError:error];
-        [self resetRequestInterface];
         
     }];
     

@@ -105,7 +105,7 @@ static void * XXContext = &XXContext;
 }
 
 - (IBAction)didTapRiderModeButton:(id)sender {
-    [[[UIApplication sharedApplication] delegate].window setRootViewController:[[RiderViewController alloc] init] ];
+    [[[UIApplication sharedApplication] delegate].window setRootViewController:[[VCRiderViewController alloc] init] ];
 
 }
 
