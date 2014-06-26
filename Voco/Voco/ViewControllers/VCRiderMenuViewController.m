@@ -74,6 +74,8 @@ static void * XXContext = &XXContext;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"settings";
+    
     switch([VCInterfaceModes mode]){
         case kDriverMode:
             [_modeSegementedControl setSelectedSegmentIndex:1];

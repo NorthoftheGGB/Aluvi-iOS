@@ -35,6 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"Video Tutorial";
     
     _player = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:@"https://s3-us-west-2.amazonaws.com/voco-development/flight_56_047489AA5D2B80_044D89AA5D2B80_F2CF0D00_47300E00_1393988868447.avi"]];
     _player.view.frame = _videoContainer.frame;
