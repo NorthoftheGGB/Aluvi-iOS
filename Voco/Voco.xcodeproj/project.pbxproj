@@ -84,6 +84,7 @@
 		F473F046195BA16D00D8C900 /* DTLazyImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F045195BA16D00D8C900 /* DTLazyImageView.m */; };
 		F473F050195BA54F00D8C900 /* VCRiderRidesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F04E195BA54F00D8C900 /* VCRiderRidesViewController.m */; };
 		F473F051195BA54F00D8C900 /* VCRiderRidesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F473F04F195BA54F00D8C900 /* VCRiderRidesViewController.xib */; };
+		F473F059195CB96300D8C900 /* VCStateMachineManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F058195CB96300D8C900 /* VCStateMachineManagedObject.m */; };
 		F49EDD0B1946D27F0020B8BB /* VCRiderHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */; };
 		F49EDD0C1946D27F0020B8BB /* VCRiderHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */; };
 		F49EDD101946E2F90020B8BB /* VCInterfaceModes.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD0F1946E2F90020B8BB /* VCInterfaceModes.m */; };
@@ -259,6 +260,9 @@
 		F473F04D195BA54F00D8C900 /* VCRiderRidesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderRidesViewController.h; path = ViewControllers/VCRiderRidesViewController.h; sourceTree = "<group>"; };
 		F473F04E195BA54F00D8C900 /* VCRiderRidesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRiderRidesViewController.m; path = ViewControllers/VCRiderRidesViewController.m; sourceTree = "<group>"; };
 		F473F04F195BA54F00D8C900 /* VCRiderRidesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCRiderRidesViewController.xib; path = ViewControllers/VCRiderRidesViewController.xib; sourceTree = "<group>"; };
+		F473F055195BE11000D8C900 /* Voco 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 7.xcdatamodel"; sourceTree = "<group>"; };
+		F473F057195CB96300D8C900 /* VCStateMachineManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCStateMachineManagedObject.h; path = Model/VCStateMachineManagedObject.h; sourceTree = "<group>"; };
+		F473F058195CB96300D8C900 /* VCStateMachineManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCStateMachineManagedObject.m; path = Model/VCStateMachineManagedObject.m; sourceTree = "<group>"; };
 		F49EDD081946D27F0020B8BB /* VCRiderHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderHomeViewController.h; path = ViewControllers/VCRiderHomeViewController.h; sourceTree = "<group>"; };
 		F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRiderHomeViewController.m; path = ViewControllers/VCRiderHomeViewController.m; sourceTree = "<group>"; };
 		F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCRiderHomeViewController.xib; path = ViewControllers/VCRiderHomeViewController.xib; sourceTree = "<group>"; };
@@ -457,6 +461,7 @@
 		F45F7BED193575C100A94721 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F473F056195CB94400D8C900 /* Base */,
 				F4FA0BFB192BF6BF005D8645 /* Voco.xcdatamodeld */,
 				F473F03D195B971C00D8C900 /* Driver.h */,
 				F473F03E195B971C00D8C900 /* Driver.m */,
@@ -665,6 +670,15 @@
 				F473EFED1949304300D8C900 /* VCMenuViewController.xib */,
 			);
 			name = Menu;
+			sourceTree = "<group>";
+		};
+		F473F056195CB94400D8C900 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				F473F057195CB96300D8C900 /* VCStateMachineManagedObject.h */,
+				F473F058195CB96300D8C900 /* VCStateMachineManagedObject.m */,
+			);
+			name = Base;
 			sourceTree = "<group>";
 		};
 		F476908D1935B7FA00B9EF69 /* State Machines */ = {
@@ -1067,6 +1081,7 @@
 				4FE641BA194157510059BED1 /* SignInViewController.m in Sources */,
 				F473F03C195B971B00D8C900 /* Car.m in Sources */,
 				F473F02019511D7700D8C900 /* VCDevicesApi.m in Sources */,
+				F473F059195CB96300D8C900 /* VCStateMachineManagedObject.m in Sources */,
 				F4FE1AFE193839DF00354886 /* Drive.m in Sources */,
 				F4D8904A19468E44007C4671 /* VCNewUser.m in Sources */,
 				F473EFE619492C2A00D8C900 /* IISideController.m in Sources */,
@@ -1353,9 +1368,10 @@
 				F473F013194FB45400D8C900 /* Voco 4.xcdatamodel */,
 				F473F02119513B6300D8C900 /* Voco 5.xcdatamodel */,
 				F473F039195B93C700D8C900 /* Voco 6.xcdatamodel */,
+				F473F055195BE11000D8C900 /* Voco 7.xcdatamodel */,
 				F4FA0BFC192BF6BF005D8645 /* Voco.xcdatamodel */,
 			);
-			currentVersion = F473F039195B93C700D8C900 /* Voco 6.xcdatamodel */;
+			currentVersion = F473F055195BE11000D8C900 /* Voco 7.xcdatamodel */;
 			path = Voco.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

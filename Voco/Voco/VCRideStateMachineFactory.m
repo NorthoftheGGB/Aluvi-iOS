@@ -56,6 +56,10 @@ static VCRideStateMachineFactory *sharedSingleton;
     _paymentProcessedSuccessfully = [TKEvent eventWithName:@"payment_processed_successfully" transitioningFromStates:@[_scheduled] toState:_complete];
     _paymentFailure = [TKEvent eventWithName:@"payment_failure" transitioningFromStates:@[_scheduled] toState:_paymentProblem];
     
+        [_rideRequested setDidFireEventBlock:^(TKEvent *event, TKTransition *transition) {
+            // Update the delegate
+        }];
+        
     }
     return self;
 }

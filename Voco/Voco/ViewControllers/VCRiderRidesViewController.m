@@ -63,12 +63,7 @@
 	if (![[self fetchedResultsController] performFetch:&error]) {
 		[WRUtilities criticalError:error];
 	}
-    [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        //
-        NSLog(@"%@", @"Refreshed Scheduled Rides");
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        //
-    }];
+
 
 }
 

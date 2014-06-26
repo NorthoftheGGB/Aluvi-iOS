@@ -10,10 +10,10 @@
 #import "VCRideStateMachineFactory.h"
 #import "Car.h"
 #import "Driver.h"
+#import <RKPathMatcher.h>
 
 @interface Ride ()
 
-@property (nonatomic, retain) NSString * state;
 
 @end
 
@@ -23,7 +23,6 @@
 @dynamic requestType;
 @dynamic car_id;
 @dynamic driver_id;
-@dynamic state;
 @dynamic request_id;
 @dynamic requestedTimestamp;
 @dynamic estimatedArrivalTime;
@@ -61,6 +60,22 @@
     
 
     entityMapping.identificationAttributes = @[ @"request_id" ]; // for riders request_id is the primary key
+
+    /*
+    [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
+        RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:API_GET_SCHEDULED_RIDES];
+        
+        NSString * relativePath = [URL relativePath];
+        NSDictionary *argsDict = nil;
+        BOOL match = [pathMatcher matchesPath:relativePath tokenizeQueryStrings:NO parsedArguments:&argsDict];
+        if (match) {
+            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Ride"];
+            return fetchRequest;
+        }
+        
+        return nil;
+    }];
+     */
     
     [entityMapping addRelationshipMappingWithSourceKeyPath:@"driver" mapping:[Driver createMappings:objectManager]];
     [entityMapping addRelationshipMappingWithSourceKeyPath:@"car" mapping:[Car createMappings:objectManager]];
@@ -101,12 +116,12 @@
 }
 
 - (void)awakeFromFetch {
-    _stateMachine = [VCRideStateMachineFactory createOnDemandStateMachineWithState:self.state];
+    _stateMachine = [VCRideStateMachineFactory createOnDemandStateMachineWithState:self.savedState];
 }
 
 - (void)willSave {
-    if(self.state != _stateMachine.currentState.name ){
-        self.state = _stateMachine.currentState.name;
+    if(! [self.savedState isEqualToString: _stateMachine.currentState.name] ){
+        self.savedState = _stateMachine.currentState.name;
     }
 }
 
@@ -120,10 +135,9 @@
     return state;
 }
 
-
 // Manually set the state, for restkit
 - (void) setForcedState: (NSString*) state__ {
-    self.state = state__;
+   // self.savedState = state__;
     _stateMachine = [VCRideStateMachineFactory createOnDemandStateMachineWithState:state__];
 
 }

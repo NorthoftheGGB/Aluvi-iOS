@@ -76,8 +76,6 @@
         [VCPushManager handleTappedRemoteNotification:[launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey]];
     }
     
-
-    
     return YES;
 }
 
@@ -95,12 +93,20 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    [[VCUserState instance] synchronizeUserState];
+
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [[VCUserState instance] synchronizeUserState];
+    
+    [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        //
+        NSLog(@"%@", @"Refreshed Scheduled Rides");
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [WRUtilities criticalError:error];
+    }];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
