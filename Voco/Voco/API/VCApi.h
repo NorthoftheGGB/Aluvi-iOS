@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 // rides API
-#if RELEASE==1
+#if 1 //RELEASE==1
 #define API_BASE_URL @"http://54.187.62.13:3000/api/"
 #else
 #define API_BASE_URL @"http://192.168.1.109:3000/api/"
