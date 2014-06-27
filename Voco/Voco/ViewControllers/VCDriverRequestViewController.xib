@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DriverRequestViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCDriverRequestViewController">
             <connections>
                 <outlet property="emailField" destination="678-GD-K1j" id="Pyq-vr-YD3"/>
                 <outlet property="firstNameField" destination="ZBB-gq-i9S" id="L35-ob-Iye"/>
@@ -32,12 +32,12 @@
                                     <rect key="frame" x="87" y="-9" width="147" height="78"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signup_box.png" translatesAutoresizingMaskIntoConstraints="NO" id="dNp-5t-0m3">
-                                    <rect key="frame" x="37" y="200" width="246" height="200"/>
+                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="driver-request-form.png" translatesAutoresizingMaskIntoConstraints="NO" id="dNp-5t-0m3">
+                                    <rect key="frame" x="36" y="183" width="248" height="234"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="731-o5-OVd" customClass="VCTextField">
-                                    <rect key="frame" x="93" y="246" width="182" height="30"/>
+                                    <rect key="frame" x="93" y="245" width="182" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="182" id="AvF-QY-bqU"/>
@@ -56,7 +56,7 @@
                                     </connections>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZBB-gq-i9S" customClass="VCTextField">
-                                    <rect key="frame" x="93" y="206" width="90" height="30"/>
+                                    <rect key="frame" x="93" y="207" width="90" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="90" id="6UR-io-Utn"/>
@@ -74,7 +74,7 @@
                                     </connections>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="678-GD-K1j" customClass="VCTextField">
-                                    <rect key="frame" x="93" y="326" width="182" height="30"/>
+                                    <rect key="frame" x="93" y="323" width="182" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -89,7 +89,7 @@
                                     </connections>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Referral code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zis-mN-bbB" customClass="VCTextField">
-                                    <rect key="frame" x="93" y="364" width="182" height="30"/>
+                                    <rect key="frame" x="93" y="362" width="182" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -176,7 +176,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </label>
                                 <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YRC-ux-C1G" customClass="VCTextField">
-                                    <rect key="frame" x="185" y="206" width="90" height="30"/>
+                                    <rect key="frame" x="185" y="207" width="90" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -191,7 +191,7 @@
                                     </connections>
                                 </textField>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="San Francisco" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x29-WV-PW1" customClass="VCLabelItalic">
-                                    <rect key="frame" x="93" y="289" width="182" height="21"/>
+                                    <rect key="frame" x="100" y="289" width="182" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="highlightedColor"/>
@@ -205,12 +205,12 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="678-GD-K1j" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="93" id="0on-Uq-1oD"/>
-                                <constraint firstItem="dNp-5t-0m3" firstAttribute="top" secondItem="eEI-8s-Ww8" secondAttribute="bottom" constant="15" id="2qZ-74-Yia"/>
-                                <constraint firstItem="Fpy-0m-PzQ" firstAttribute="top" secondItem="dNp-5t-0m3" secondAttribute="bottom" constant="7" id="43x-OB-hXL"/>
+                                <constraint firstItem="dNp-5t-0m3" firstAttribute="top" secondItem="eEI-8s-Ww8" secondAttribute="bottom" constant="-2" id="2qZ-74-Yia"/>
+                                <constraint firstItem="Fpy-0m-PzQ" firstAttribute="top" secondItem="dNp-5t-0m3" secondAttribute="bottom" constant="-10" id="43x-OB-hXL"/>
                                 <constraint firstItem="Zis-mN-bbB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="93" id="6c7-Xa-rPj"/>
-                                <constraint firstItem="PwE-wb-Oea" firstAttribute="trailing" secondItem="dNp-5t-0m3" secondAttribute="trailing" id="7aM-cz-qfZ"/>
+                                <constraint firstItem="PwE-wb-Oea" firstAttribute="trailing" secondItem="dNp-5t-0m3" secondAttribute="trailing" constant="-1" id="7aM-cz-qfZ"/>
                                 <constraint firstItem="eEI-8s-Ww8" firstAttribute="leading" secondItem="iYj-p7-yQc" secondAttribute="leading" id="CcY-hu-wxk"/>
-                                <constraint firstItem="4hL-Bc-jSH" firstAttribute="trailing" secondItem="dNp-5t-0m3" secondAttribute="trailing" id="CwZ-GD-L0O"/>
+                                <constraint firstItem="4hL-Bc-jSH" firstAttribute="trailing" secondItem="dNp-5t-0m3" secondAttribute="trailing" constant="-1" id="CwZ-GD-L0O"/>
                                 <constraint firstItem="YRC-ux-C1G" firstAttribute="leading" secondItem="ZBB-gq-i9S" secondAttribute="trailing" constant="2" id="Dyx-DN-k0z"/>
                                 <constraint firstItem="731-o5-OVd" firstAttribute="width" secondItem="Zis-mN-bbB" secondAttribute="width" id="EKE-zn-cLS"/>
                                 <constraint firstAttribute="trailing" secondItem="iYj-p7-yQc" secondAttribute="trailing" constant="45" id="GQO-ni-WlL"/>
@@ -218,36 +218,36 @@
                                 <constraint firstItem="iYj-p7-yQc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="58" id="Iho-Hc-V5j"/>
                                 <constraint firstAttribute="height" constant="480" id="Imo-BN-X0K"/>
                                 <constraint firstAttribute="bottom" secondItem="4hL-Bc-jSH" secondAttribute="bottom" constant="-83" id="JUS-cC-XTB"/>
-                                <constraint firstItem="678-GD-K1j" firstAttribute="top" secondItem="731-o5-OVd" secondAttribute="bottom" constant="50" id="JWO-Bt-HSJ"/>
+                                <constraint firstItem="678-GD-K1j" firstAttribute="top" secondItem="731-o5-OVd" secondAttribute="bottom" constant="48" id="JWO-Bt-HSJ"/>
                                 <constraint firstItem="PwE-wb-Oea" firstAttribute="centerX" secondItem="Fpy-0m-PzQ" secondAttribute="centerX" id="NbH-yV-XS2"/>
-                                <constraint firstItem="731-o5-OVd" firstAttribute="top" secondItem="ZBB-gq-i9S" secondAttribute="bottom" constant="10" id="PaU-Nl-gKL"/>
-                                <constraint firstItem="YRC-ux-C1G" firstAttribute="top" secondItem="PwE-wb-Oea" secondAttribute="bottom" constant="19" id="QIq-39-G8d"/>
-                                <constraint firstItem="731-o5-OVd" firstAttribute="top" secondItem="YRC-ux-C1G" secondAttribute="bottom" constant="10" id="QMi-FJ-3Il"/>
+                                <constraint firstItem="731-o5-OVd" firstAttribute="top" secondItem="ZBB-gq-i9S" secondAttribute="bottom" constant="8" id="PaU-Nl-gKL"/>
+                                <constraint firstItem="YRC-ux-C1G" firstAttribute="top" secondItem="PwE-wb-Oea" secondAttribute="bottom" constant="20" id="QIq-39-G8d"/>
+                                <constraint firstItem="731-o5-OVd" firstAttribute="top" secondItem="YRC-ux-C1G" secondAttribute="bottom" constant="8" id="QMi-FJ-3Il"/>
                                 <constraint firstItem="YRC-ux-C1G" firstAttribute="leading" secondItem="ZBB-gq-i9S" secondAttribute="trailing" constant="2" id="Qvt-YJ-hod"/>
                                 <constraint firstItem="731-o5-OVd" firstAttribute="width" secondItem="678-GD-K1j" secondAttribute="width" id="Rd7-FQ-G7S"/>
                                 <constraint firstAttribute="trailing" secondItem="YRC-ux-C1G" secondAttribute="trailing" constant="45" id="UxG-dU-LvB"/>
                                 <constraint firstItem="678-GD-K1j" firstAttribute="leading" secondItem="731-o5-OVd" secondAttribute="leading" id="Xis-ZY-JHV"/>
-                                <constraint firstItem="dNp-5t-0m3" firstAttribute="leading" secondItem="4hL-Bc-jSH" secondAttribute="leading" id="YIt-vv-G4Q"/>
-                                <constraint firstItem="dNp-5t-0m3" firstAttribute="top" secondItem="OIm-WY-5GR" secondAttribute="bottom" constant="131" id="aDT-M3-P8T"/>
+                                <constraint firstItem="dNp-5t-0m3" firstAttribute="leading" secondItem="4hL-Bc-jSH" secondAttribute="leading" constant="-1" id="YIt-vv-G4Q"/>
+                                <constraint firstItem="dNp-5t-0m3" firstAttribute="top" secondItem="OIm-WY-5GR" secondAttribute="bottom" constant="114" id="aDT-M3-P8T"/>
                                 <constraint firstItem="iYj-p7-yQc" firstAttribute="leading" secondItem="PwE-wb-Oea" secondAttribute="trailing" constant="-225" id="c5V-an-KKb"/>
                                 <constraint firstItem="731-o5-OVd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="93" id="crI-aK-CvA"/>
                                 <constraint firstItem="OIm-WY-5GR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="87" id="dba-Xo-6n7"/>
-                                <constraint firstItem="dNp-5t-0m3" firstAttribute="leading" secondItem="PwE-wb-Oea" secondAttribute="leading" id="deL-aa-GQN"/>
+                                <constraint firstItem="dNp-5t-0m3" firstAttribute="leading" secondItem="PwE-wb-Oea" secondAttribute="leading" constant="-1" id="deL-aa-GQN"/>
                                 <constraint firstItem="eEI-8s-Ww8" firstAttribute="top" secondItem="iYj-p7-yQc" secondAttribute="bottom" constant="-4" id="eLG-r2-64a"/>
                                 <constraint firstItem="eEI-8s-Ww8" firstAttribute="leading" secondItem="Fpy-0m-PzQ" secondAttribute="leading" id="eZn-KQ-lps"/>
                                 <constraint firstItem="PwE-wb-Oea" firstAttribute="centerX" secondItem="OIm-WY-5GR" secondAttribute="centerX" id="f3f-2z-q5a"/>
-                                <constraint firstItem="ZBB-gq-i9S" firstAttribute="top" secondItem="PwE-wb-Oea" secondAttribute="bottom" constant="19" id="jIk-jz-BIp"/>
+                                <constraint firstItem="ZBB-gq-i9S" firstAttribute="top" secondItem="PwE-wb-Oea" secondAttribute="bottom" constant="20" id="jIk-jz-BIp"/>
                                 <constraint firstItem="4hL-Bc-jSH" firstAttribute="top" secondItem="Fpy-0m-PzQ" secondAttribute="bottom" constant="72" id="jbf-vI-bx9"/>
                                 <constraint firstItem="OIm-WY-5GR" firstAttribute="centerX" secondItem="dNp-5t-0m3" secondAttribute="centerX" id="lC2-j8-7dX"/>
                                 <constraint firstAttribute="trailing" secondItem="eEI-8s-Ww8" secondAttribute="trailing" constant="50" id="mgR-vP-yzL"/>
                                 <constraint firstItem="731-o5-OVd" firstAttribute="height" secondItem="Zis-mN-bbB" secondAttribute="height" id="mim-xn-qT7"/>
                                 <constraint firstItem="YRC-ux-C1G" firstAttribute="leading" secondItem="ZBB-gq-i9S" secondAttribute="trailing" constant="2" id="qDL-aO-5fI"/>
                                 <constraint firstItem="731-o5-OVd" firstAttribute="height" secondItem="678-GD-K1j" secondAttribute="height" id="qoK-4H-DNR"/>
-                                <constraint firstItem="Zis-mN-bbB" firstAttribute="top" secondItem="678-GD-K1j" secondAttribute="bottom" constant="8" symbolic="YES" id="rCv-Oo-xlV"/>
+                                <constraint firstItem="Zis-mN-bbB" firstAttribute="top" secondItem="678-GD-K1j" secondAttribute="bottom" constant="9" id="rCv-Oo-xlV"/>
                                 <constraint firstItem="iYj-p7-yQc" firstAttribute="top" secondItem="OIm-WY-5GR" secondAttribute="bottom" constant="3" id="sg2-rn-H4b"/>
-                                <constraint firstItem="Zis-mN-bbB" firstAttribute="top" secondItem="dNp-5t-0m3" secondAttribute="bottom" constant="-36" id="sni-lC-dJ8"/>
+                                <constraint firstItem="Zis-mN-bbB" firstAttribute="top" secondItem="dNp-5t-0m3" secondAttribute="bottom" constant="-55" id="sni-lC-dJ8"/>
                                 <constraint firstItem="dNp-5t-0m3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="tAA-R4-NCf"/>
-                                <constraint firstItem="dNp-5t-0m3" firstAttribute="top" secondItem="PwE-wb-Oea" secondAttribute="bottom" constant="13" id="tMQ-GM-K9i"/>
+                                <constraint firstItem="dNp-5t-0m3" firstAttribute="top" secondItem="PwE-wb-Oea" secondAttribute="bottom" constant="-4" id="tMQ-GM-K9i"/>
                                 <constraint firstItem="OIm-WY-5GR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="-9" id="u6U-bV-Qdk"/>
                                 <constraint firstItem="eEI-8s-Ww8" firstAttribute="top" secondItem="OIm-WY-5GR" secondAttribute="bottom" constant="20" id="ucP-8t-pvF"/>
                                 <constraint firstItem="ZBB-gq-i9S" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="93" id="unt-dq-sOK"/>
@@ -278,8 +278,8 @@
     </objects>
     <resources>
         <image name="VOCOfinal.png" width="780" height="237"/>
+        <image name="driver-request-form.png" width="240" height="195"/>
         <image name="driver_must_box.png" width="237" height="118"/>
         <image name="signUp_btn.png" width="203" height="61"/>
-        <image name="signup_box.png" width="240" height="197"/>
     </resources>
 </document>

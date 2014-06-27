@@ -11,18 +11,19 @@
 		4F37E2DE1949574000753172 /* KlinicSlabLightIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F37E2DA1949574000753172 /* KlinicSlabLightIt.ttf */; };
 		4F37E2DF1949574000753172 /* KlinicSlabMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F37E2DB1949574000753172 /* KlinicSlabMedium.ttf */; };
 		4F37E2E01949574000753172 /* KlinicSlabMediumIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F37E2DC1949574000753172 /* KlinicSlabMediumIt.ttf */; };
+		4F9909C5195CCE6500E83164 /* log-in-box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9909C4195CCE6500E83164 /* log-in-box@2x.png */; };
 		4FB2682A1952207A0028D4ED /* VCDriverVideoTutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB268281952207A0028D4ED /* VCDriverVideoTutorialController.m */; };
 		4FB2682B1952207A0028D4ED /* VCDriverVideoTutorialController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FB268291952207A0028D4ED /* VCDriverVideoTutorialController.xib */; };
 		4FE629DA194FC6BB0070F797 /* VCDriverRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE629D8194FC6BB0070F797 /* VCDriverRegistrationViewController.m */; };
 		4FE629DB194FC6BB0070F797 /* VCDriverRegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE629D9194FC6BB0070F797 /* VCDriverRegistrationViewController.xib */; };
-		4FE641BA194157510059BED1 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641B8194157510059BED1 /* SignInViewController.m */; };
-		4FE641BB194157510059BED1 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641B9194157510059BED1 /* SignInViewController.xib */; };
-		4FE641BF194157C60059BED1 /* DriverRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641BD194157C60059BED1 /* DriverRequestViewController.m */; };
-		4FE641C0194157C60059BED1 /* DriverRequestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641BE194157C60059BED1 /* DriverRequestViewController.xib */; };
-		4FE641C4194157EB0059BED1 /* PasswordRecoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641C2194157EB0059BED1 /* PasswordRecoveryViewController.m */; };
-		4FE641C5194157EB0059BED1 /* PasswordRecoveryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641C3194157EB0059BED1 /* PasswordRecoveryViewController.xib */; };
-		4FE641C91941584D0059BED1 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641C71941584D0059BED1 /* SignUpViewController.m */; };
-		4FE641CA1941584D0059BED1 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641C81941584D0059BED1 /* SignUpViewController.xib */; };
+		4FE641BA194157510059BED1 /* VCSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641B8194157510059BED1 /* VCSignInViewController.m */; };
+		4FE641BB194157510059BED1 /* VCSignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641B9194157510059BED1 /* VCSignInViewController.xib */; };
+		4FE641BF194157C60059BED1 /* VCDriverRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641BD194157C60059BED1 /* VCDriverRequestViewController.m */; };
+		4FE641C0194157C60059BED1 /* VCDriverRequestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641BE194157C60059BED1 /* VCDriverRequestViewController.xib */; };
+		4FE641C4194157EB0059BED1 /* VCPasswordRecoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641C2194157EB0059BED1 /* VCPasswordRecoveryViewController.m */; };
+		4FE641C5194157EB0059BED1 /* VCPasswordRecoveryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641C3194157EB0059BED1 /* VCPasswordRecoveryViewController.xib */; };
+		4FE641C91941584D0059BED1 /* VCSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641C71941584D0059BED1 /* VCSignUpViewController.m */; };
+		4FE641CA1941584D0059BED1 /* VCSignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641C81941584D0059BED1 /* VCSignUpViewController.xib */; };
 		4FE641DA1941607B0059BED1 /* VCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641D91941607B0059BED1 /* VCTextField.m */; };
 		4FE641DD1941621E0059BED1 /* VCLabelItalic.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DC1941621E0059BED1 /* VCLabelItalic.m */; };
 		4FE641E0194162360059BED1 /* VCButtonFontBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DF194162360059BED1 /* VCButtonFontBold.m */; };
@@ -40,9 +41,10 @@
 		4FE641FA194168E80059BED1 /* voco_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641ED194168E80059BED1 /* voco_logo@2x.png */; };
 		4FE641FB194168E80059BED1 /* VOCOfinal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641EE194168E80059BED1 /* VOCOfinal@2x.png */; };
 		4FE641FE194170F50059BED1 /* VCButtonFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641FD194170F50059BED1 /* VCButtonFont.m */; };
+		4FF142D6195CE4BD00CC61B6 /* driver-request-form@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FF142D5195CE4BD00CC61B6 /* driver-request-form@2x.png */; };
 		CC26291E90FA484191AB6374 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 351E93948BFC43989C411DB5 /* libPods.a */; };
-		F45F7BEB193575A900A94721 /* RiderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BE9193575A900A94721 /* RiderViewController.m */; };
-		F45F7BEC193575A900A94721 /* RiderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F45F7BEA193575A900A94721 /* RiderViewController.xib */; };
+		F45F7BEB193575A900A94721 /* VCRiderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BE9193575A900A94721 /* VCRiderViewController.m */; };
+		F45F7BEC193575A900A94721 /* VCRiderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F45F7BEA193575A900A94721 /* VCRiderViewController.xib */; };
 		F45F7BF6193578DE00A94721 /* VCRiderApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BF5193578DE00A94721 /* VCRiderApi.m */; };
 		F45F7BF91935798B00A94721 /* VCApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BF81935798B00A94721 /* VCApi.m */; };
 		F45F7BFC19357B8A00A94721 /* VCRideRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BFB19357B8A00A94721 /* VCRideRequest.m */; };
@@ -52,8 +54,8 @@
 		F45F7C0A193589A600A94721 /* VCRideRequestCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C09193589A600A94721 /* VCRideRequestCreated.m */; };
 		F45F7C0F1935976E00A94721 /* WRUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C0E1935976E00A94721 /* WRUtilities.m */; };
 		F45F7C12193597F500A94721 /* NSDate+Pretty.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C10193597F500A94721 /* NSDate+Pretty.m */; };
-		F45F7C181935A3F900A94721 /* DriverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C161935A3F900A94721 /* DriverViewController.m */; };
-		F45F7C191935A3F900A94721 /* DriverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F45F7C171935A3F900A94721 /* DriverViewController.xib */; };
+		F45F7C181935A3F900A94721 /* VCDriverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C161935A3F900A94721 /* VCDriverViewController.m */; };
+		F45F7C191935A3F900A94721 /* VCDriverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F45F7C171935A3F900A94721 /* VCDriverViewController.xib */; };
 		F473EFDC19491C2B00D8C900 /* VCValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFDB19491C2B00D8C900 /* VCValidation.m */; };
 		F473EFE619492C2A00D8C900 /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE119492C2A00D8C900 /* IISideController.m */; };
 		F473EFE719492C2A00D8C900 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE319492C2A00D8C900 /* IIViewDeckController.m */; };
@@ -69,7 +71,7 @@
 		F473F005194A54AC00D8C900 /* VCMapQuestRouting.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F004194A54AC00D8C900 /* VCMapQuestRouting.m */; };
 		F473F009194A5A0200D8C900 /* MQRouteResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F008194A5A0200D8C900 /* MQRouteResponse.m */; };
 		F473F00C194A5A6100D8C900 /* MQShape.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F00B194A5A6100D8C900 /* MQShape.m */; };
-		F473F011194A6D3C00D8C900 /* ScrollableFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F010194A6D3C00D8C900 /* ScrollableFormViewController.m */; };
+		F473F011194A6D3C00D8C900 /* VCScrollableFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F010194A6D3C00D8C900 /* VCScrollableFormViewController.m */; };
 		F473F0161950358000D8C900 /* MQRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F0151950358000D8C900 /* MQRoute.m */; };
 		F473F019195044AA00D8C900 /* menu-list.png in Resources */ = {isa = PBXBuildFile; fileRef = F473F017195044AA00D8C900 /* menu-list.png */; };
 		F473F01A195044AA00D8C900 /* menu-list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F473F018195044AA00D8C900 /* menu-list@2x.png */; };
@@ -143,24 +145,25 @@
 		4F37E2DA1949574000753172 /* KlinicSlabLightIt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KlinicSlabLightIt.ttf; path = Voco/Fonts/KlinicSlabLightIt.ttf; sourceTree = SOURCE_ROOT; };
 		4F37E2DB1949574000753172 /* KlinicSlabMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KlinicSlabMedium.ttf; path = Voco/Fonts/KlinicSlabMedium.ttf; sourceTree = SOURCE_ROOT; };
 		4F37E2DC1949574000753172 /* KlinicSlabMediumIt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KlinicSlabMediumIt.ttf; path = Voco/Fonts/KlinicSlabMediumIt.ttf; sourceTree = SOURCE_ROOT; };
+		4F9909C4195CCE6500E83164 /* log-in-box@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log-in-box@2x.png"; sourceTree = "<group>"; };
 		4FB268271952207A0028D4ED /* VCDriverVideoTutorialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCDriverVideoTutorialController.h; path = ViewControllers/VCDriverVideoTutorialController.h; sourceTree = "<group>"; };
 		4FB268281952207A0028D4ED /* VCDriverVideoTutorialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCDriverVideoTutorialController.m; path = ViewControllers/VCDriverVideoTutorialController.m; sourceTree = "<group>"; };
 		4FB268291952207A0028D4ED /* VCDriverVideoTutorialController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCDriverVideoTutorialController.xib; path = ViewControllers/VCDriverVideoTutorialController.xib; sourceTree = "<group>"; };
 		4FE629D7194FC6BB0070F797 /* VCDriverRegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCDriverRegistrationViewController.h; path = ViewControllers/VCDriverRegistrationViewController.h; sourceTree = "<group>"; };
 		4FE629D8194FC6BB0070F797 /* VCDriverRegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCDriverRegistrationViewController.m; path = ViewControllers/VCDriverRegistrationViewController.m; sourceTree = "<group>"; };
 		4FE629D9194FC6BB0070F797 /* VCDriverRegistrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCDriverRegistrationViewController.xib; path = ViewControllers/VCDriverRegistrationViewController.xib; sourceTree = "<group>"; };
-		4FE641B7194157510059BED1 /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignInViewController.h; path = ViewControllers/SignInViewController.h; sourceTree = "<group>"; };
-		4FE641B8194157510059BED1 /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignInViewController.m; path = ViewControllers/SignInViewController.m; sourceTree = "<group>"; };
-		4FE641B9194157510059BED1 /* SignInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignInViewController.xib; path = ViewControllers/SignInViewController.xib; sourceTree = "<group>"; };
-		4FE641BC194157C60059BED1 /* DriverRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DriverRequestViewController.h; path = ViewControllers/DriverRequestViewController.h; sourceTree = "<group>"; };
-		4FE641BD194157C60059BED1 /* DriverRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DriverRequestViewController.m; path = ViewControllers/DriverRequestViewController.m; sourceTree = "<group>"; };
-		4FE641BE194157C60059BED1 /* DriverRequestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DriverRequestViewController.xib; path = ViewControllers/DriverRequestViewController.xib; sourceTree = "<group>"; };
-		4FE641C1194157EB0059BED1 /* PasswordRecoveryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PasswordRecoveryViewController.h; path = ViewControllers/PasswordRecoveryViewController.h; sourceTree = "<group>"; };
-		4FE641C2194157EB0059BED1 /* PasswordRecoveryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PasswordRecoveryViewController.m; path = ViewControllers/PasswordRecoveryViewController.m; sourceTree = "<group>"; };
-		4FE641C3194157EB0059BED1 /* PasswordRecoveryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PasswordRecoveryViewController.xib; path = ViewControllers/PasswordRecoveryViewController.xib; sourceTree = "<group>"; };
-		4FE641C61941584D0059BED1 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignUpViewController.h; path = ViewControllers/SignUpViewController.h; sourceTree = "<group>"; };
-		4FE641C71941584D0059BED1 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignUpViewController.m; path = ViewControllers/SignUpViewController.m; sourceTree = "<group>"; };
-		4FE641C81941584D0059BED1 /* SignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SignUpViewController.xib; path = ViewControllers/SignUpViewController.xib; sourceTree = "<group>"; };
+		4FE641B7194157510059BED1 /* VCSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCSignInViewController.h; path = ViewControllers/VCSignInViewController.h; sourceTree = "<group>"; };
+		4FE641B8194157510059BED1 /* VCSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCSignInViewController.m; path = ViewControllers/VCSignInViewController.m; sourceTree = "<group>"; };
+		4FE641B9194157510059BED1 /* VCSignInViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCSignInViewController.xib; path = ViewControllers/VCSignInViewController.xib; sourceTree = "<group>"; };
+		4FE641BC194157C60059BED1 /* VCDriverRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCDriverRequestViewController.h; path = ViewControllers/VCDriverRequestViewController.h; sourceTree = "<group>"; };
+		4FE641BD194157C60059BED1 /* VCDriverRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCDriverRequestViewController.m; path = ViewControllers/VCDriverRequestViewController.m; sourceTree = "<group>"; };
+		4FE641BE194157C60059BED1 /* VCDriverRequestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCDriverRequestViewController.xib; path = ViewControllers/VCDriverRequestViewController.xib; sourceTree = "<group>"; };
+		4FE641C1194157EB0059BED1 /* VCPasswordRecoveryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCPasswordRecoveryViewController.h; path = ViewControllers/VCPasswordRecoveryViewController.h; sourceTree = "<group>"; };
+		4FE641C2194157EB0059BED1 /* VCPasswordRecoveryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCPasswordRecoveryViewController.m; path = ViewControllers/VCPasswordRecoveryViewController.m; sourceTree = "<group>"; };
+		4FE641C3194157EB0059BED1 /* VCPasswordRecoveryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCPasswordRecoveryViewController.xib; path = ViewControllers/VCPasswordRecoveryViewController.xib; sourceTree = "<group>"; };
+		4FE641C61941584D0059BED1 /* VCSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCSignUpViewController.h; path = ViewControllers/VCSignUpViewController.h; sourceTree = "<group>"; };
+		4FE641C71941584D0059BED1 /* VCSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCSignUpViewController.m; path = ViewControllers/VCSignUpViewController.m; sourceTree = "<group>"; };
+		4FE641C81941584D0059BED1 /* VCSignUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCSignUpViewController.xib; path = ViewControllers/VCSignUpViewController.xib; sourceTree = "<group>"; };
 		4FE641D81941607B0059BED1 /* VCTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCTextField.h; path = Controls/VCTextField.h; sourceTree = "<group>"; };
 		4FE641D91941607B0059BED1 /* VCTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCTextField.m; path = Controls/VCTextField.m; sourceTree = "<group>"; };
 		4FE641DB1941621E0059BED1 /* VCLabelItalic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCLabelItalic.h; path = Controls/VCLabelItalic.h; sourceTree = "<group>"; };
@@ -182,10 +185,11 @@
 		4FE641EE194168E80059BED1 /* VOCOfinal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VOCOfinal@2x.png"; sourceTree = "<group>"; };
 		4FE641FC194170F50059BED1 /* VCButtonFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCButtonFont.h; path = Controls/VCButtonFont.h; sourceTree = "<group>"; };
 		4FE641FD194170F50059BED1 /* VCButtonFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCButtonFont.m; path = Controls/VCButtonFont.m; sourceTree = "<group>"; };
+		4FF142D5195CE4BD00CC61B6 /* driver-request-form@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "driver-request-form@2x.png"; sourceTree = "<group>"; };
 		CD677E046A804589A26C0608 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../Pods/Pods.xcconfig; sourceTree = "<group>"; };
-		F45F7BE8193575A900A94721 /* RiderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RiderViewController.h; path = ViewControllers/RiderViewController.h; sourceTree = "<group>"; };
-		F45F7BE9193575A900A94721 /* RiderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RiderViewController.m; path = ViewControllers/RiderViewController.m; sourceTree = "<group>"; };
-		F45F7BEA193575A900A94721 /* RiderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RiderViewController.xib; path = ViewControllers/RiderViewController.xib; sourceTree = "<group>"; };
+		F45F7BE8193575A900A94721 /* VCRiderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderViewController.h; path = ViewControllers/VCRiderViewController.h; sourceTree = "<group>"; };
+		F45F7BE9193575A900A94721 /* VCRiderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRiderViewController.m; path = ViewControllers/VCRiderViewController.m; sourceTree = "<group>"; };
+		F45F7BEA193575A900A94721 /* VCRiderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCRiderViewController.xib; path = ViewControllers/VCRiderViewController.xib; sourceTree = "<group>"; };
 		F45F7BF4193578DE00A94721 /* VCRiderApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderApi.h; path = API/Rider/VCRiderApi.h; sourceTree = "<group>"; };
 		F45F7BF5193578DE00A94721 /* VCRiderApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRiderApi.m; path = API/Rider/VCRiderApi.m; sourceTree = "<group>"; };
 		F45F7BF71935798B00A94721 /* VCApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCApi.h; path = API/VCApi.h; sourceTree = "<group>"; };
@@ -202,9 +206,9 @@
 		F45F7C0E1935976E00A94721 /* WRUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WRUtilities.m; sourceTree = "<group>"; };
 		F45F7C10193597F500A94721 /* NSDate+Pretty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Pretty.m"; sourceTree = "<group>"; };
 		F45F7C11193597F500A94721 /* NSDate+Pretty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Pretty.h"; sourceTree = "<group>"; };
-		F45F7C151935A3F900A94721 /* DriverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DriverViewController.h; path = ViewControllers/DriverViewController.h; sourceTree = "<group>"; };
-		F45F7C161935A3F900A94721 /* DriverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DriverViewController.m; path = ViewControllers/DriverViewController.m; sourceTree = "<group>"; };
-		F45F7C171935A3F900A94721 /* DriverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DriverViewController.xib; path = ViewControllers/DriverViewController.xib; sourceTree = "<group>"; };
+		F45F7C151935A3F900A94721 /* VCDriverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCDriverViewController.h; path = ViewControllers/VCDriverViewController.h; sourceTree = "<group>"; };
+		F45F7C161935A3F900A94721 /* VCDriverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCDriverViewController.m; path = ViewControllers/VCDriverViewController.m; sourceTree = "<group>"; };
+		F45F7C171935A3F900A94721 /* VCDriverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCDriverViewController.xib; path = ViewControllers/VCDriverViewController.xib; sourceTree = "<group>"; };
 		F473EFDA19491C2B00D8C900 /* VCValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCValidation.h; sourceTree = "<group>"; };
 		F473EFDB19491C2B00D8C900 /* VCValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCValidation.m; sourceTree = "<group>"; };
 		F473EFE019492C2A00D8C900 /* IISideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IISideController.h; sourceTree = "<group>"; };
@@ -229,8 +233,8 @@
 		F473F008194A5A0200D8C900 /* MQRouteResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MQRouteResponse.m; path = Geolocation/MQRouteResponse.m; sourceTree = "<group>"; };
 		F473F00A194A5A6100D8C900 /* MQShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MQShape.h; path = Geolocation/MQShape.h; sourceTree = "<group>"; };
 		F473F00B194A5A6100D8C900 /* MQShape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MQShape.m; path = Geolocation/MQShape.m; sourceTree = "<group>"; };
-		F473F00F194A6D3C00D8C900 /* ScrollableFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollableFormViewController.h; sourceTree = "<group>"; };
-		F473F010194A6D3C00D8C900 /* ScrollableFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollableFormViewController.m; sourceTree = "<group>"; };
+		F473F00F194A6D3C00D8C900 /* VCScrollableFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCScrollableFormViewController.h; sourceTree = "<group>"; };
+		F473F010194A6D3C00D8C900 /* VCScrollableFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCScrollableFormViewController.m; sourceTree = "<group>"; };
 		F473F012194FB1A000D8C900 /* Voco 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 3.xcdatamodel"; sourceTree = "<group>"; };
 		F473F013194FB45400D8C900 /* Voco 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 4.xcdatamodel"; sourceTree = "<group>"; };
 		F473F0141950358000D8C900 /* MQRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MQRoute.h; path = Geolocation/MQRoute.h; sourceTree = "<group>"; };
@@ -385,18 +389,18 @@
 		4FE641B61941562C0059BED1 /* Sign-In and Registration */ = {
 			isa = PBXGroup;
 			children = (
-				4FE641B7194157510059BED1 /* SignInViewController.h */,
-				4FE641B8194157510059BED1 /* SignInViewController.m */,
-				4FE641B9194157510059BED1 /* SignInViewController.xib */,
-				4FE641BC194157C60059BED1 /* DriverRequestViewController.h */,
-				4FE641BD194157C60059BED1 /* DriverRequestViewController.m */,
-				4FE641BE194157C60059BED1 /* DriverRequestViewController.xib */,
-				4FE641C1194157EB0059BED1 /* PasswordRecoveryViewController.h */,
-				4FE641C2194157EB0059BED1 /* PasswordRecoveryViewController.m */,
-				4FE641C3194157EB0059BED1 /* PasswordRecoveryViewController.xib */,
-				4FE641C61941584D0059BED1 /* SignUpViewController.h */,
-				4FE641C71941584D0059BED1 /* SignUpViewController.m */,
-				4FE641C81941584D0059BED1 /* SignUpViewController.xib */,
+				4FE641B7194157510059BED1 /* VCSignInViewController.h */,
+				4FE641B8194157510059BED1 /* VCSignInViewController.m */,
+				4FE641B9194157510059BED1 /* VCSignInViewController.xib */,
+				4FE641BC194157C60059BED1 /* VCDriverRequestViewController.h */,
+				4FE641BD194157C60059BED1 /* VCDriverRequestViewController.m */,
+				4FE641BE194157C60059BED1 /* VCDriverRequestViewController.xib */,
+				4FE641C1194157EB0059BED1 /* VCPasswordRecoveryViewController.h */,
+				4FE641C2194157EB0059BED1 /* VCPasswordRecoveryViewController.m */,
+				4FE641C3194157EB0059BED1 /* VCPasswordRecoveryViewController.xib */,
+				4FE641C61941584D0059BED1 /* VCSignUpViewController.h */,
+				4FE641C71941584D0059BED1 /* VCSignUpViewController.m */,
+				4FE641C81941584D0059BED1 /* VCSignUpViewController.xib */,
 			);
 			name = "Sign-In and Registration";
 			sourceTree = "<group>";
@@ -423,6 +427,8 @@
 		4FE641E1194168E80059BED1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				4FF142D5195CE4BD00CC61B6 /* driver-request-form@2x.png */,
+				4F9909C4195CCE6500E83164 /* log-in-box@2x.png */,
 				F473F017195044AA00D8C900 /* menu-list.png */,
 				F473F018195044AA00D8C900 /* menu-list@2x.png */,
 				F473EFFD19497FBF00D8C900 /* map_pin_fill-512.png */,
@@ -589,12 +595,12 @@
 		F473EFEA19492CBE00D8C900 /* Platform V1 */ = {
 			isa = PBXGroup;
 			children = (
-				F45F7C151935A3F900A94721 /* DriverViewController.h */,
-				F45F7C161935A3F900A94721 /* DriverViewController.m */,
-				F45F7C171935A3F900A94721 /* DriverViewController.xib */,
-				F45F7BE8193575A900A94721 /* RiderViewController.h */,
-				F45F7BE9193575A900A94721 /* RiderViewController.m */,
-				F45F7BEA193575A900A94721 /* RiderViewController.xib */,
+				F45F7C151935A3F900A94721 /* VCDriverViewController.h */,
+				F45F7C161935A3F900A94721 /* VCDriverViewController.m */,
+				F45F7C171935A3F900A94721 /* VCDriverViewController.xib */,
+				F45F7BE8193575A900A94721 /* VCRiderViewController.h */,
+				F45F7BE9193575A900A94721 /* VCRiderViewController.m */,
+				F45F7BEA193575A900A94721 /* VCRiderViewController.xib */,
 			);
 			name = "Platform V1";
 			sourceTree = "<group>";
@@ -627,8 +633,8 @@
 		F473F00E194A6D3400D8C900 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				F473F00F194A6D3C00D8C900 /* ScrollableFormViewController.h */,
-				F473F010194A6D3C00D8C900 /* ScrollableFormViewController.m */,
+				F473F00F194A6D3C00D8C900 /* VCScrollableFormViewController.h */,
+				F473F010194A6D3C00D8C900 /* VCScrollableFormViewController.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -967,34 +973,36 @@
 				F49EDD0C1946D27F0020B8BB /* VCRiderHomeViewController.xib in Resources */,
 				4FE641F5194168E80059BED1 /* loginBox@2x.png in Resources */,
 				4F37E2DD1949574000753172 /* KlinicSlabLight.ttf in Resources */,
+				4FF142D6195CE4BD00CC61B6 /* driver-request-form@2x.png in Resources */,
 				4F37E2DE1949574000753172 /* KlinicSlabLightIt.ttf in Resources */,
 				F473F01A195044AA00D8C900 /* menu-list@2x.png in Resources */,
 				4FE641FB194168E80059BED1 /* VOCOfinal@2x.png in Resources */,
 				4FE641F1194168E80059BED1 /* driver_must_box@2x.png in Resources */,
 				4FE641F9194168E80059BED1 /* signupBox@2x.png in Resources */,
 				4FE641EF194168E80059BED1 /* bubble@2x.png in Resources */,
-				4FE641C0194157C60059BED1 /* DriverRequestViewController.xib in Resources */,
+				4FE641C0194157C60059BED1 /* VCDriverRequestViewController.xib in Resources */,
 				4FE629DB194FC6BB0070F797 /* VCDriverRegistrationViewController.xib in Resources */,
 				4FE641F2194168E80059BED1 /* driving_car@2x.png in Resources */,
 				4F37E2DF1949574000753172 /* KlinicSlabMedium.ttf in Resources */,
 				F473F019195044AA00D8C900 /* menu-list.png in Resources */,
-				4FE641BB194157510059BED1 /* SignInViewController.xib in Resources */,
+				4FE641BB194157510059BED1 /* VCSignInViewController.xib in Resources */,
 				F473EFFE19497FBF00D8C900 /* map_pin_fill-512.png in Resources */,
 				F473F051195BA54F00D8C900 /* VCRiderRidesViewController.xib in Resources */,
-				4FE641C5194157EB0059BED1 /* PasswordRecoveryViewController.xib in Resources */,
+				4FE641C5194157EB0059BED1 /* VCPasswordRecoveryViewController.xib in Resources */,
 				4F37E2E01949574000753172 /* KlinicSlabMediumIt.ttf in Resources */,
 				4FE641F4194168E80059BED1 /* login_form@2x.png in Resources */,
-				F45F7C191935A3F900A94721 /* DriverViewController.xib in Resources */,
-				F45F7BEC193575A900A94721 /* RiderViewController.xib in Resources */,
+				F45F7C191935A3F900A94721 /* VCDriverViewController.xib in Resources */,
+				F45F7BEC193575A900A94721 /* VCRiderViewController.xib in Resources */,
 				4FB2682B1952207A0028D4ED /* VCDriverVideoTutorialController.xib in Resources */,
 				4FE641F6194168E80059BED1 /* red_box@2x.png in Resources */,
 				F4FA0BF4192BF6BF005D8645 /* InfoPlist.strings in Resources */,
 				4FE641F8194168E80059BED1 /* signUp_btn@2x.png in Resources */,
-				4FE641CA1941584D0059BED1 /* SignUpViewController.xib in Resources */,
+				4FE641CA1941584D0059BED1 /* VCSignUpViewController.xib in Resources */,
 				4FE641FA194168E80059BED1 /* voco_logo@2x.png in Resources */,
 				4FE641F0194168E80059BED1 /* commute_logo@2x.png in Resources */,
 				F4FA0BFF192BF6BF005D8645 /* Images.xcassets in Resources */,
 				F473EFEF1949304300D8C900 /* VCMenuViewController.xib in Resources */,
+				4F9909C5195CCE6500E83164 /* log-in-box@2x.png in Resources */,
 				4FE641F3194168E80059BED1 /* login_btn@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1065,9 +1073,9 @@
 				F4D8904D19468F87007C4671 /* VCForgotPasswordRequest.m in Sources */,
 				F4FE1B0119383AE300354886 /* VCRideStateMachineFactory.m in Sources */,
 				F4FE1B20193D8FE500354886 /* VCPushApi.m in Sources */,
-				F45F7C181935A3F900A94721 /* DriverViewController.m in Sources */,
+				F45F7C181935A3F900A94721 /* VCDriverViewController.m in Sources */,
 				F473F03519539F2A00D8C900 /* VCUserStateResponse.m in Sources */,
-				F473F011194A6D3C00D8C900 /* ScrollableFormViewController.m in Sources */,
+				F473F011194A6D3C00D8C900 /* VCScrollableFormViewController.m in Sources */,
 				F4FA0BFD192BF6BF005D8645 /* Voco.xcdatamodeld in Sources */,
 				F4D8905019469018007C4671 /* VCLoginResponse.m in Sources */,
 				F4FE1B24193E722B00354886 /* VCRideIdentity.m in Sources */,
@@ -1078,7 +1086,7 @@
 				F473F03F195B971C00D8C900 /* Driver.m in Sources */,
 				F4FE1B121938581C00354886 /* VCDialogs.m in Sources */,
 				F473F009194A5A0200D8C900 /* MQRouteResponse.m in Sources */,
-				4FE641BA194157510059BED1 /* SignInViewController.m in Sources */,
+				4FE641BA194157510059BED1 /* VCSignInViewController.m in Sources */,
 				F473F03C195B971B00D8C900 /* Car.m in Sources */,
 				F473F02019511D7700D8C900 /* VCDevicesApi.m in Sources */,
 				F473F059195CB96300D8C900 /* VCStateMachineManagedObject.m in Sources */,
@@ -1092,7 +1100,7 @@
 				F4FE1AF81937DD5600354886 /* VCPushManager.m in Sources */,
 				F473F0321952F68D00D8C900 /* VCDriverStateResponse.m in Sources */,
 				F4FE1AFB1937DD6600354886 /* VCGeolocation.m in Sources */,
-				4FE641BF194157C60059BED1 /* DriverRequestViewController.m in Sources */,
+				4FE641BF194157C60059BED1 /* VCDriverRequestViewController.m in Sources */,
 				F4FE1B18193D2F3F00354886 /* Offer.m in Sources */,
 				F473F005194A54AC00D8C900 /* VCMapQuestRouting.m in Sources */,
 				F49EDD101946E2F90020B8BB /* VCInterfaceModes.m in Sources */,
@@ -1102,10 +1110,10 @@
 				F473EFEE1949304300D8C900 /* VCMenuViewController.m in Sources */,
 				4FB2682A1952207A0028D4ED /* VCDriverVideoTutorialController.m in Sources */,
 				F4FE1B0F1938571E00354886 /* VCRideDriverAssignment.m in Sources */,
-				4FE641C4194157EB0059BED1 /* PasswordRecoveryViewController.m in Sources */,
+				4FE641C4194157EB0059BED1 /* VCPasswordRecoveryViewController.m in Sources */,
 				F4FE1B0B19384F9000354886 /* VCDriverApi.m in Sources */,
 				F473EFE719492C2A00D8C900 /* IIViewDeckController.m in Sources */,
-				F45F7BEB193575A900A94721 /* RiderViewController.m in Sources */,
+				F45F7BEB193575A900A94721 /* VCRiderViewController.m in Sources */,
 				F45F7BF91935798B00A94721 /* VCApi.m in Sources */,
 				F4FE1B31193EE06400354886 /* VCLocation.m in Sources */,
 				F4D8904719468B69007C4671 /* VCLogin.m in Sources */,
@@ -1121,7 +1129,7 @@
 				F45F7C0A193589A600A94721 /* VCRideRequestCreated.m in Sources */,
 				F473F050195BA54F00D8C900 /* VCRiderRidesViewController.m in Sources */,
 				F4D8905319469F0F007C4671 /* VCDriverInterestedRequest.m in Sources */,
-				4FE641C91941584D0059BED1 /* SignUpViewController.m in Sources */,
+				4FE641C91941584D0059BED1 /* VCSignUpViewController.m in Sources */,
 				F45F7C12193597F500A94721 /* NSDate+Pretty.m in Sources */,
 				F473F0281951931D00D8C900 /* VCRiderHomeDevViewController.m in Sources */,
 				F4FA0BFA192BF6BF005D8645 /* VCAppDelegate.m in Sources */,

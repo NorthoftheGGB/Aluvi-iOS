@@ -6,14 +6,15 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "PasswordRecoveryViewController.h"
+#import "VCPasswordRecoveryViewController.h"
 #import "VCTextField.h"
 #import "VCUsersApi.h"
+#import <MBProgressHUD.h>
 
 #define kPhoneFieldTag 1
 #define kEmailFieldTag 2
 
-@interface PasswordRecoveryViewController ()
+@interface VCPasswordRecoveryViewController ()
 
 @property (strong, nonatomic) IBOutlet VCTextField *phoneField;
 @property (weak, nonatomic) IBOutlet VCTextField *emailField;
@@ -22,7 +23,7 @@
 
 @end
 
-@implementation PasswordRecoveryViewController
+@implementation VCPasswordRecoveryViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -72,11 +73,17 @@
 }
 
 - (void) recoverEmail{
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Recovering Password";
+    
     // Validation & server stuff
+    
     [VCUsersApi forgotPassword:[RKObjectManager sharedManager]
                          email:_emailField.text
                          phone:_phoneField.text
                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                           [hud hide:YES];
                            [UIAlertView showWithTitle:@"Success"
                                               message:@"Your new password with be emailed to you"
                                     cancelButtonTitle: @"OK"
@@ -86,6 +93,7 @@
                                              }];
                        }
                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                           [hud hide:YES];
                            [UIAlertView showWithTitle:@"Error" message:@"Unable to reset your password.  Check your email and phone number" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
                        }];
     

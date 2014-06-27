@@ -9,7 +9,7 @@
 #import "VCMenuViewController.h"
 #import "VCInterfaceModes.h"
 #import "VCUserState.h"
-#import "DriverRequestViewController.h"
+#import "VCDriverRequestViewController.h"
 #import "VCDriverRegistrationViewController.h"
 #import "VCDriverVideoTutorialController.h"
 #import "VCRiderRidesViewController.h"
@@ -244,7 +244,7 @@ static void * XXContext = &XXContext;
 
 - (IBAction)didTapInterestedInDriving:(id)sender {
     [self viewWillDisappear:YES];
-    DriverRequestViewController * vc = [[DriverRequestViewController alloc] init];
+    VCDriverRequestViewController * vc = [[VCDriverRequestViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

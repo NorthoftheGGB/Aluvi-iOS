@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "DriverRequestViewController.h"
+#import "VCDriverRequestViewController.h"
 #import "VCTextField.h"
 #import "VCUsersApi.h"
 #import "VCValidation.h"
-
+#import <MBProgressHUD.h>
 
 #define kFirstNameFieldTag 1
 #define kLastNameFieldTag 2
@@ -18,7 +18,7 @@
 #define kEmailFieldTag 4
 #define kReferralCodeFieldTag 5
 
-@interface DriverRequestViewController ()
+@interface VCDriverRequestViewController ()
 
 @property (weak, nonatomic) IBOutlet VCTextField *firstNameField;
 @property (weak, nonatomic) IBOutlet VCTextField *lastNameField;
@@ -31,7 +31,7 @@
 
 @end
 
-@implementation DriverRequestViewController
+@implementation VCDriverRequestViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -108,13 +108,18 @@
         return;
     }
 
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Submitting Request";
     
     [VCUsersApi driverInterested:[RKObjectManager sharedManager] name:_firstNameField.text email:_emailField.text region:@"Default" phone:_phoneField.text driverReferralCode:_referralCodeField.text
                          success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                             
+                             [hud hide:YES];
                              [UIAlertView showWithTitle:@"Success" message:@"We will contact you about driving" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                                  [self.navigationController popViewControllerAnimated:YES];
                              }];
                          } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                             [hud hide:YES];
                              [WRUtilities criticalError:error];
                          }];
 }

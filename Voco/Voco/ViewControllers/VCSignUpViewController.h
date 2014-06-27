@@ -1,5 +1,5 @@
 //
-//  SignInViewController.h
+//  SignUpViewController.h
 //  Voco
 //
 //  Created by Elliott De Aratanha on 6/5/14.
@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VCScrollableFormViewController.h"
 
-@interface SignInViewController : UIViewController
+@interface VCSignUpViewController : VCScrollableFormViewController
 
 @end

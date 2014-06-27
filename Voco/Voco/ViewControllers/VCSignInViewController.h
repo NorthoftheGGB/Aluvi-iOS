@@ -1,5 +1,5 @@
 //
-//  PasswordRecoveryViewController.h
+//  SignInViewController.h
 //  Voco
 //
 //  Created by Elliott De Aratanha on 6/5/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PasswordRecoveryViewController : UIViewController
+@interface VCSignInViewController : UIViewController
 
 @end

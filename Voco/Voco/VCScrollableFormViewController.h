@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ScrollableFormViewController : UIViewController < UITextFieldDelegate >
+@interface VCScrollableFormViewController : UIViewController < UITextFieldDelegate >
 
 
 @property(strong, nonatomic) IBOutlet UIScrollView * scrollView;

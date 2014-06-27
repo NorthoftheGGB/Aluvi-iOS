@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCSignUpViewController">
             <connections>
                 <outlet property="emailField" destination="mfu-MK-ETL" id="rml-Cj-FhR"/>
                 <outlet property="firstNameField" destination="22v-LN-4YI" id="sUS-Yf-TMk"/>
@@ -50,6 +50,7 @@
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="su9-jM-mFP"/>
+                                        <action selector="editDidBegin:" destination="-1" eventType="editingDidEnd" id="Okh-UF-Mo6"/>
                                     </connections>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oUS-7v-08g" customClass="VCTextField">
@@ -65,6 +66,7 @@
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="xvk-8i-KEu"/>
+                                        <action selector="editDidBegin:" destination="-1" eventType="editingDidEnd" id="OnK-NH-0lb"/>
                                     </connections>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mfu-MK-ETL" customClass="VCTextField">
@@ -80,6 +82,7 @@
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="hZW-oV-ObB"/>
+                                        <action selector="editDidBegin:" destination="-1" eventType="editingDidEnd" id="wyc-yB-qV2"/>
                                     </connections>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Referral code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2DV-EA-Yr3" customClass="VCTextField">
@@ -95,6 +98,7 @@
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="50N-CL-TSJ"/>
+                                        <action selector="editDidBegin:" destination="-1" eventType="editingDidEnd" id="u7K-qq-djF"/>
                                     </connections>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mAT-xD-K9f" customClass="VCButtonFont">
@@ -136,6 +140,7 @@
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="c5n-RC-WVA"/>
+                                        <action selector="editDidBegin:" destination="-1" eventType="editingDidBegin" id="vM2-Fm-6bF"/>
                                     </connections>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yqR-wC-tPa" customClass="VCTextField">
@@ -155,6 +160,7 @@
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="LkV-sU-cRL"/>
+                                        <action selector="editDidBegin:" destination="-1" eventType="editingDidEnd" id="jjS-5E-0hh"/>
                                     </connections>
                                 </textField>
                             </subviews>
