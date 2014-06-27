@@ -83,7 +83,6 @@ static int mode;
 }
 
 + (void) showDriverInterface {
-    VCDriverViewController * driverViewController = [[VCDriverViewController alloc] init];
     
     if(deckController == nil){
         [self createDeckViewController];
@@ -91,7 +90,7 @@ static int mode;
     
     if([[VCUserState instance].driverState isEqualToString:kDriverStateActive]
        || [[VCUserState instance].driverState isEqualToString:kDriverStateOnDuty] ) {
-           DriverViewController * driverViewController = [[DriverViewController alloc] init];
+           VCDriverViewController * driverViewController = [[VCDriverViewController alloc] init];
            deckController.centerController = driverViewController;
            [self setMode: kDriverMode];
     }

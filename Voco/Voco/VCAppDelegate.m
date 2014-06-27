@@ -11,8 +11,6 @@
 #import <Crashlytics/Crashlytics.h>
 #import "VCRiderApi.h"
 #import "VCDriverApi.h"
-#import "VCRiderViewController.h"
-#import "VCDriverViewController.h"
 #import "VCPushManager.h"
 #import "WRUtilities.h"
 #import "VCApi.h"
@@ -25,8 +23,6 @@
 #import "VCUsersApi.h"
 
 @interface VCAppDelegate ()
-
-@property (nonatomic, strong) VCRiderViewController * riderViewController;
 
 @end
 
@@ -49,20 +45,8 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    
     [VCInterfaceModes showInterface];
     
-    /*
-    if([[VCUserState instance].userId isEqualToNumber:[NSNumber numberWithInt:1]]){
-        self.window.rootViewController = [[DriverViewController alloc] init];
-    } else{
-        if([VCUserState instance].userId == nil ||  ![[VCUserState instance].userId isEqualToNumber:[NSNumber numberWithInt:3]]){
-            [VCUserState instance].userId = [NSNumber numberWithInt:3];
-        }
-        self.window.rootViewController = [[RiderViewController alloc] init];
-    }
-    */
-        
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
@@ -99,14 +83,17 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    [[VCUserState instance] synchronizeUserState];
     
-    [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        //
-        NSLog(@"%@", @"Refreshed Scheduled Rides");
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [WRUtilities criticalError:error];
-    }];
+    if([[VCUserState instance] isLoggedIn]){
+        [[VCUserState instance] synchronizeUserState];
+    
+        [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            //
+            NSLog(@"%@", @"Refreshed Scheduled Rides");
+        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            [WRUtilities criticalError:error];
+        }];
+    }
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

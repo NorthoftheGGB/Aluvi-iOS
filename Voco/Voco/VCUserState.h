@@ -53,5 +53,6 @@
                 failure:(void ( ^ ) () )failure;
 - (void) logout;
 - (void) synchronizeUserState;
+- (BOOL) isLoggedIn;
 
 @end

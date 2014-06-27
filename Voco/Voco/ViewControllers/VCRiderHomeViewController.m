@@ -48,6 +48,7 @@
 // Map
 @property (strong, nonatomic) MKMapView * map;
 @property (strong, nonatomic) MKPolyline * routeOverlay;
+@property (strong, nonatomic) CLGeocoder * geocoder;
 
 @property (nonatomic) NSInteger step;
 
@@ -91,6 +92,7 @@
         [self placeRideDetailsDrawerInPickupMode];
         [self showRideDetailsDrawer];
         [self showSuggestedRoute];
+        self.title = _ride.routeDescription;
     }
     
 }
@@ -178,6 +180,16 @@
         _ride.originLongitude= [NSNumber numberWithDouble: departureLocation.longitude];
         _step = kStepSetDestinationLocation;
         
+        CLLocation * location = [[CLLocation alloc] initWithLatitude:departureLocation.latitude  longitude:departureLocation.longitude];
+        if (!_geocoder)
+            _geocoder = [[CLGeocoder alloc] init];
+        [_geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+            MKPlacemark * placemark = [placemarks objectAtIndex:0];
+            _ride.originPlaceName = [placemark name];
+        }];
+
+        
+        
         MKPointAnnotation *myAnnotation = [[MKPointAnnotation alloc] init];
         myAnnotation.coordinate = CLLocationCoordinate2DMake(departureLocation.latitude, departureLocation.longitude);
         myAnnotation.title = @"Pickup Location";
@@ -196,6 +208,15 @@
         CLLocationCoordinate2D destinationLocation = [_map centerCoordinate];
         _ride.destinationLatitude = [NSNumber numberWithDouble: destinationLocation.latitude];
         _ride.destinationLongitude = [NSNumber numberWithDouble: destinationLocation.longitude];
+        
+        CLLocation * location = [[CLLocation alloc] initWithLatitude:destinationLocation.latitude  longitude:destinationLocation.longitude];
+        if (!_geocoder)
+            _geocoder = [[CLGeocoder alloc] init];
+        [_geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+            MKPlacemark * placemark = [placemarks objectAtIndex:0];
+            _ride.destinationPlaceName = [placemark name];
+        }];
+        
         
         [self showSuggestedRoute];
         
@@ -239,7 +260,7 @@
 
 - (IBAction)didTapCancel:(id)sender {
     
-    if(!_ride.request_id){
+    if(!_ride.request_id || _ride.request_id == nil){
         [self resetRequestInterface];
         return;
     }

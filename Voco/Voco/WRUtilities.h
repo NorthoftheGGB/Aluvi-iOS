@@ -19,8 +19,6 @@
 + (void) criticalErrorWithString: (NSString *) error;
 + (void) successMessage: (NSString *) message;
 + (void) stateErrorWithString: (NSString*) message;
-
-// Validation
-+ (BOOL) NSStringIsValidEmail:(NSString *)checkString;
++ (void) showNetworkUnavailableMessage;
 
 @end

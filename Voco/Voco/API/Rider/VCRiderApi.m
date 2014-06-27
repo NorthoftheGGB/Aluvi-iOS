@@ -15,7 +15,6 @@
 #import "VCRideIdentity.h"
 #import "VCUserState.h"
 #import "VCRequestUpdate.h"
-#import "VCRideStateMachineFactory.h"
 
 @implementation VCRiderApi
 
@@ -49,7 +48,7 @@
                                             NSLog(@"Ride request accepted by server!");
                                             
                                             NSError * error = nil;
-                                            [ride.stateMachine fireEvent:[VCRideStateMachineFactory factory].rideRequested userInfo:@{} error:&error];
+                                            [ride fireEvent:kEventRideRequested userInfo:@{} error:&error];
                                             if(error != nil){
                                                 [WRUtilities criticalError:error];
                                             }
@@ -84,7 +83,7 @@
             [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_RIDER_CANCELLED parameters:nil
                                                 success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                     NSError * error;
-                                                    [ride.stateMachine fireEvent:[VCRideStateMachineFactory factory].rideCancelledByRider userInfo:@{} error:&error];
+                                                    [ride fireEvent:kEventRideCancelledByRider userInfo:@{} error:&error];
                                                     if(error != nil){
                                                         [WRUtilities criticalError:error];
                                                     }
@@ -105,7 +104,7 @@
                                                 success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                     
                                                     NSError * error = nil;
-                                                    [ride.stateMachine fireEvent:[VCRideStateMachineFactory factory].rideCancelledByRider userInfo:@{} error:&error];
+                                                    [ride fireEvent:kEventRideCancelledByRider userInfo:@{} error:&error];
                                                     if(error != nil){
                                                         [WRUtilities criticalError:error];
                                                     }

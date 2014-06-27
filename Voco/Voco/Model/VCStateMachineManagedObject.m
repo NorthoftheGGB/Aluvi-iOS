@@ -11,7 +11,7 @@
 @interface VCStateMachineManagedObject ()
 
 @property (nonatomic, strong) TKStateMachine * stateMachine;
-@property (nonatomic, retain) NSString * savedState;
+@property (nonatomic, strong) NSString * savedState;
 
 @end
 
@@ -21,6 +21,14 @@
 
 @dynamic savedState;
 @synthesize stateMachine = _stateMachine;
+@synthesize forcedState;
+
+-(id)init {
+    self = [super init];
+    if(self != nil) {
+    }
+    return self;
+}
 
 
 - (BOOL)canFireEvent:(id)eventOrEventName {
@@ -35,12 +43,55 @@
     [NSException raise:@"Invoked abstract method" format:@"Invoked abstract method"];
 }
 
+- (NSString *) getInitialState {
+    [NSException raise:@"Invoked abstract method" format:@"Invoked abstract method"];
+    return nil;
+}
+
+
 - (void)awakeFromInsert {
-    _stateMachine = [VCRideStateMachineFactory createOnDemandStateMachine];
+    if(self.savedState == nil){
+        self.savedState = [self getInitialState];
+    }
+    [self createStateMachine];
 }
 
 - (void)awakeFromFetch {
-    _stateMachine = [VCRideStateMachineFactory createOnDemandStateMachineWithState:self.savedState];
+    if(self.savedState == nil){
+        self.savedState = [self getInitialState];
+    }
+    [self createStateMachine];
+}
+
+
+// Manually set the state, for restkit object mapping
+- (void) setForcedState: (NSString*) state__ {
+    self.savedState = state__;
+    [self createStateMachine];
+}
+
+- (NSString *) state {
+    NSString * state = [_stateMachine.currentState name];
+    return state;
+}
+
+
+#pragma mark - State Machine
+
+- (void)prepareStateMachine {
+    for(TKEvent * event in _stateMachine.events){
+        [event setDidFireEventBlock:^(TKEvent *event, TKTransition *transition) {
+            self.savedState = transition.destinationState.name;
+        }];
+    }
+}
+
+- (void) createStateMachine {
+    _stateMachine = [TKStateMachine new];
+    [self assignStatesAndEvents:_stateMachine];
+    [self prepareStateMachine];
+    _stateMachine.initialState = [_stateMachine stateNamed:self.savedState];
+    [_stateMachine activate];
 }
 
 

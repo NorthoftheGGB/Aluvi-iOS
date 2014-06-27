@@ -9,9 +9,7 @@
         <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="rides" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ride" inverseName="car" inverseEntity="Ride" syncable="YES"/>
     </entity>
-    <entity name="Drive" syncable="YES">
-        <relationship name="riders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Rider" syncable="YES"/>
-    </entity>
+    <entity name="Drive" syncable="YES"/>
     <entity name="Driver" representedClassName="Driver" syncable="YES">
         <attribute name="driversLicenseNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="driversLicenseUrl" optional="YES" attributeType="String" syncable="YES"/>
@@ -62,10 +60,10 @@
     </entity>
     <elements>
         <element name="Car" positionX="0" positionY="0" width="128" height="148"/>
-        <element name="Drive" positionX="-252" positionY="-69" width="128" height="60"/>
+        <element name="Drive" positionX="-252" positionY="-69" width="128" height="45"/>
+        <element name="Driver" positionX="-261" positionY="-63" width="128" height="133"/>
         <element name="Offer" positionX="-252" positionY="81" width="128" height="178"/>
         <element name="Ride" positionX="-108" positionY="-243" width="128" height="328"/>
         <element name="Rider" positionX="-497" positionY="18" width="128" height="135"/>
-        <element name="Driver" positionX="-261" positionY="-63" width="128" height="133"/>
     </elements>
 </model>
