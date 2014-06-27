@@ -41,6 +41,112 @@
 		4FE641FB194168E80059BED1 /* VOCOfinal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641EE194168E80059BED1 /* VOCOfinal@2x.png */; };
 		4FE641FE194170F50059BED1 /* VCButtonFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641FD194170F50059BED1 /* VCButtonFont.m */; };
 		CC26291E90FA484191AB6374 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 351E93948BFC43989C411DB5 /* libPods.a */; };
+		F4354D5E195D0D6A00C06CF7 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE519492C2A00D8C900 /* IIWrapController.m */; };
+		F4354D5F195D0D6A00C06CF7 /* VCDriverRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F02D1952DA8F00D8C900 /* VCDriverRegistration.m */; };
+		F4354D60195D0D6A00C06CF7 /* VCForgotPasswordRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904C19468F87007C4671 /* VCForgotPasswordRequest.m */; };
+		F4354D61195D0D6A00C06CF7 /* VCRideStateMachineFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B0019383AE300354886 /* VCRideStateMachineFactory.m */; };
+		F4354D62195D0D6A00C06CF7 /* VCPushApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B1F193D8FE500354886 /* VCPushApi.m */; };
+		F4354D63195D0D6A00C06CF7 /* DriverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C161935A3F900A94721 /* DriverViewController.m */; };
+		F4354D64195D0D6A00C06CF7 /* VCUserStateResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F03419539F2A00D8C900 /* VCUserStateResponse.m */; };
+		F4354D65195D0D6A00C06CF7 /* ScrollableFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F010194A6D3C00D8C900 /* ScrollableFormViewController.m */; };
+		F4354D66195D0D6A00C06CF7 /* Voco.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4FA0BFB192BF6BF005D8645 /* Voco.xcdatamodeld */; };
+		F4354D67195D0D6A00C06CF7 /* VCLoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904F19469018007C4671 /* VCLoginResponse.m */; };
+		F4354D68195D0D6A00C06CF7 /* VCRideIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B23193E722B00354886 /* VCRideIdentity.m */; };
+		F4354D69195D0D6A00C06CF7 /* VCRiderApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BF5193578DE00A94721 /* VCRiderApi.m */; };
+		F4354D6A195D0D6A00C06CF7 /* VCDriverRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE629D8194FC6BB0070F797 /* VCDriverRegistrationViewController.m */; };
+		F4354D6B195D0D6A00C06CF7 /* VCButtonFontBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DF194162360059BED1 /* VCButtonFontBold.m */; };
+		F4354D6C195D0D6A00C06CF7 /* VCLabelItalic.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DC1941621E0059BED1 /* VCLabelItalic.m */; };
+		F4354D6D195D0D6A00C06CF7 /* VCDialogs.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B111938581C00354886 /* VCDialogs.m */; };
+		F4354D6E195D0D6A00C06CF7 /* MQRouteResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F008194A5A0200D8C900 /* MQRouteResponse.m */; };
+		F4354D6F195D0D6A00C06CF7 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641B8194157510059BED1 /* SignInViewController.m */; };
+		F4354D70195D0D6A00C06CF7 /* VCDevicesApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F01F19511D7700D8C900 /* VCDevicesApi.m */; };
+		F4354D71195D0D6A00C06CF7 /* Drive.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AFD193839DF00354886 /* Drive.m */; };
+		F4354D72195D0D6A00C06CF7 /* VCNewUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904919468E44007C4671 /* VCNewUser.m */; };
+		F4354D73195D0D6A00C06CF7 /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE119492C2A00D8C900 /* IISideController.m */; };
+		F4354D74195D0D6A00C06CF7 /* VCRiderHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */; };
+		F4354D75195D0D6A00C06CF7 /* VCButtonFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641FD194170F50059BED1 /* VCButtonFont.m */; };
+		F4354D76195D0D6A00C06CF7 /* MQShape.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F00B194A5A6100D8C900 /* MQShape.m */; };
+		F4354D77195D0D6A00C06CF7 /* VCRideRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BFB19357B8A00A94721 /* VCRideRequest.m */; };
+		F4354D78195D0D6A00C06CF7 /* VCPushManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AF71937DD5600354886 /* VCPushManager.m */; };
+		F4354D79195D0D6A00C06CF7 /* VCDriverStateResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F0311952F68D00D8C900 /* VCDriverStateResponse.m */; };
+		F4354D7A195D0D6A00C06CF7 /* VCGeolocation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AFA1937DD6600354886 /* VCGeolocation.m */; };
+		F4354D7B195D0D6A00C06CF7 /* DriverRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641BD194157C60059BED1 /* DriverRequestViewController.m */; };
+		F4354D7C195D0D6A00C06CF7 /* Offer.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B17193D2F3F00354886 /* Offer.m */; };
+		F4354D7D195D0D6A00C06CF7 /* VCMapQuestRouting.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F004194A54AC00D8C900 /* VCMapQuestRouting.m */; };
+		F4354D7E195D0D6A00C06CF7 /* VCInterfaceModes.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD0F1946E2F90020B8BB /* VCInterfaceModes.m */; };
+		F4354D7F195D0D6A00C06CF7 /* VCRequestUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F01C195113D100D8C900 /* VCRequestUpdate.m */; };
+		F4354D80195D0D6A00C06CF7 /* VCCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B1A193D301F00354886 /* VCCoreData.m */; };
+		F4354D81195D0D6A00C06CF7 /* VCLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F000194A498E00D8C900 /* VCLabel.m */; };
+		F4354D82195D0D6A00C06CF7 /* VCRiderMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFEC1949304300D8C900 /* VCRiderMenuViewController.m */; };
+		F4354D83195D0D6A00C06CF7 /* VCDriverVideoTutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB268281952207A0028D4ED /* VCDriverVideoTutorialController.m */; };
+		F4354D84195D0D6A00C06CF7 /* VCRideDriverAssignment.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B0E1938571E00354886 /* VCRideDriverAssignment.m */; };
+		F4354D85195D0D6A00C06CF7 /* PasswordRecoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641C2194157EB0059BED1 /* PasswordRecoveryViewController.m */; };
+		F4354D86195D0D6A00C06CF7 /* VCDriverApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B0A19384F9000354886 /* VCDriverApi.m */; };
+		F4354D87195D0D6A00C06CF7 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE319492C2A00D8C900 /* IIViewDeckController.m */; };
+		F4354D88195D0D6A00C06CF7 /* RiderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BE9193575A900A94721 /* RiderViewController.m */; };
+		F4354D89195D0D6A00C06CF7 /* VCApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BF81935798B00A94721 /* VCApi.m */; };
+		F4354D8A195D0D6A00C06CF7 /* VCLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B30193EE06400354886 /* VCLocation.m */; };
+		F4354D8B195D0D6A00C06CF7 /* VCLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904619468B69007C4671 /* VCLogin.m */; };
+		F4354D8C195D0D6A00C06CF7 /* VCDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AF01936BE0900354886 /* VCDevice.m */; };
+		F4354D8D195D0D6A00C06CF7 /* Ride.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C021935880500A94721 /* Ride.m */; };
+		F4354D8E195D0D6A00C06CF7 /* VCObjectRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D890551946A2D9007C4671 /* VCObjectRequestOperation.m */; };
+		F4354D8F195D0D6A00C06CF7 /* VCValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFDB19491C2B00D8C900 /* VCValidation.m */; };
+		F4354D90195D0D6A00C06CF7 /* MQRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F0151950358000D8C900 /* MQRoute.m */; };
+		F4354D91195D0D6A00C06CF7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FA0BF5192BF6BF005D8645 /* main.m */; };
+		F4354D92195D0D6A00C06CF7 /* WRUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C0E1935976E00A94721 /* WRUtilities.m */; };
+		F4354D93195D0D6A00C06CF7 /* VCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641D91941607B0059BED1 /* VCTextField.m */; };
+		F4354D94195D0D6A00C06CF7 /* VCRideRequestCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C09193589A600A94721 /* VCRideRequestCreated.m */; };
+		F4354D95195D0D6A00C06CF7 /* VCDriverInterestedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8905219469F0F007C4671 /* VCDriverInterestedRequest.m */; };
+		F4354D96195D0D6A00C06CF7 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641C71941584D0059BED1 /* SignUpViewController.m */; };
+		F4354D97195D0D6A00C06CF7 /* NSDate+Pretty.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C10193597F500A94721 /* NSDate+Pretty.m */; };
+		F4354D98195D0D6A00C06CF7 /* VCRiderHomeDevViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F0271951931D00D8C900 /* VCRiderHomeDevViewController.m */; };
+		F4354D99195D0D6A00C06CF7 /* VCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FA0BF9192BF6BF005D8645 /* VCAppDelegate.m */; };
+		F4354D9A195D0D6A00C06CF7 /* VCUserState.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B1419385CAA00354886 /* VCUserState.m */; };
+		F4354D9B195D0D6A00C06CF7 /* VCUsersApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904319468A84007C4671 /* VCUsersApi.m */; };
+		F4354D9D195D0D6A00C06CF7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45F7BFF19357C6100A94721 /* MapKit.framework */; };
+		F4354D9E195D0D6A00C06CF7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F473EFF81949515800D8C900 /* SystemConfiguration.framework */; };
+		F4354D9F195D0D6A00C06CF7 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F473EFF61949514A00D8C900 /* libxml2.dylib */; };
+		F4354DA0195D0D6A00C06CF7 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F473EFF41949513F00D8C900 /* AddressBook.framework */; };
+		F4354DA1195D0D6A00C06CF7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F473EFF019494DB100D8C900 /* QuartzCore.framework */; };
+		F4354DA2195D0D6A00C06CF7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45F7BFD19357C5C00A94721 /* CoreLocation.framework */; };
+		F4354DA3195D0D6A00C06CF7 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FE1B2C193EA18E00354886 /* Crashlytics.framework */; };
+		F4354DA4195D0D6A00C06CF7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BE9192BF6BF005D8645 /* CoreGraphics.framework */; };
+		F4354DA5195D0D6A00C06CF7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BED192BF6BF005D8645 /* CoreData.framework */; };
+		F4354DA6195D0D6A00C06CF7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BEB192BF6BF005D8645 /* UIKit.framework */; };
+		F4354DA7195D0D6A00C06CF7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BE7192BF6BF005D8645 /* Foundation.framework */; };
+		F4354DA8195D0D6A00C06CF7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 351E93948BFC43989C411DB5 /* libPods.a */; };
+		F4354DAA195D0D6A00C06CF7 /* signup_box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641EA194168E80059BED1 /* signup_box@2x.png */; };
+		F4354DAB195D0D6A00C06CF7 /* VCRiderHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */; };
+		F4354DAC195D0D6A00C06CF7 /* loginBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E8194168E80059BED1 /* loginBox@2x.png */; };
+		F4354DAD195D0D6A00C06CF7 /* KlinicSlabLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F37E2D91949574000753172 /* KlinicSlabLight.ttf */; };
+		F4354DAE195D0D6A00C06CF7 /* KlinicSlabLightIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F37E2DA1949574000753172 /* KlinicSlabLightIt.ttf */; };
+		F4354DAF195D0D6A00C06CF7 /* menu-list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F473F018195044AA00D8C900 /* menu-list@2x.png */; };
+		F4354DB0195D0D6A00C06CF7 /* VOCOfinal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641EE194168E80059BED1 /* VOCOfinal@2x.png */; };
+		F4354DB1195D0D6A00C06CF7 /* driver_must_box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E4194168E80059BED1 /* driver_must_box@2x.png */; };
+		F4354DB2195D0D6A00C06CF7 /* signupBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641EC194168E80059BED1 /* signupBox@2x.png */; };
+		F4354DB3195D0D6A00C06CF7 /* bubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E2194168E80059BED1 /* bubble@2x.png */; };
+		F4354DB4195D0D6A00C06CF7 /* DriverRequestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641BE194157C60059BED1 /* DriverRequestViewController.xib */; };
+		F4354DB5195D0D6A00C06CF7 /* VCDriverRegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE629D9194FC6BB0070F797 /* VCDriverRegistrationViewController.xib */; };
+		F4354DB6195D0D6A00C06CF7 /* driving_car@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E5194168E80059BED1 /* driving_car@2x.png */; };
+		F4354DB7195D0D6A00C06CF7 /* KlinicSlabMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F37E2DB1949574000753172 /* KlinicSlabMedium.ttf */; };
+		F4354DB8195D0D6A00C06CF7 /* menu-list.png in Resources */ = {isa = PBXBuildFile; fileRef = F473F017195044AA00D8C900 /* menu-list.png */; };
+		F4354DB9195D0D6A00C06CF7 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641B9194157510059BED1 /* SignInViewController.xib */; };
+		F4354DBA195D0D6A00C06CF7 /* map_pin_fill-512.png in Resources */ = {isa = PBXBuildFile; fileRef = F473EFFD19497FBF00D8C900 /* map_pin_fill-512.png */; };
+		F4354DBB195D0D6A00C06CF7 /* PasswordRecoveryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641C3194157EB0059BED1 /* PasswordRecoveryViewController.xib */; };
+		F4354DBC195D0D6A00C06CF7 /* KlinicSlabMediumIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F37E2DC1949574000753172 /* KlinicSlabMediumIt.ttf */; };
+		F4354DBD195D0D6A00C06CF7 /* login_form@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E7194168E80059BED1 /* login_form@2x.png */; };
+		F4354DBE195D0D6A00C06CF7 /* DriverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F45F7C171935A3F900A94721 /* DriverViewController.xib */; };
+		F4354DBF195D0D6A00C06CF7 /* RiderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F45F7BEA193575A900A94721 /* RiderViewController.xib */; };
+		F4354DC0195D0D6A00C06CF7 /* VCDriverVideoTutorialController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FB268291952207A0028D4ED /* VCDriverVideoTutorialController.xib */; };
+		F4354DC1195D0D6A00C06CF7 /* red_box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E9194168E80059BED1 /* red_box@2x.png */; };
+		F4354DC2195D0D6A00C06CF7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4FA0BF2192BF6BF005D8645 /* InfoPlist.strings */; };
+		F4354DC3195D0D6A00C06CF7 /* signUp_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641EB194168E80059BED1 /* signUp_btn@2x.png */; };
+		F4354DC4195D0D6A00C06CF7 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641C81941584D0059BED1 /* SignUpViewController.xib */; };
+		F4354DC5195D0D6A00C06CF7 /* voco_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641ED194168E80059BED1 /* voco_logo@2x.png */; };
+		F4354DC6195D0D6A00C06CF7 /* commute_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E3194168E80059BED1 /* commute_logo@2x.png */; };
+		F4354DC7195D0D6A00C06CF7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4FA0BFE192BF6BF005D8645 /* Images.xcassets */; };
+		F4354DC8195D0D6A00C06CF7 /* VCRiderMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F473EFED1949304300D8C900 /* VCRiderMenuViewController.xib */; };
+		F4354DC9195D0D6A00C06CF7 /* login_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E6194168E80059BED1 /* login_btn@2x.png */; };
 		F45F7BEB193575A900A94721 /* RiderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BE9193575A900A94721 /* RiderViewController.m */; };
 		F45F7BEC193575A900A94721 /* RiderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F45F7BEA193575A900A94721 /* RiderViewController.xib */; };
 		F45F7BF6193578DE00A94721 /* VCRiderApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BF5193578DE00A94721 /* VCRiderApi.m */; };
@@ -177,6 +283,8 @@
 		4FE641FC194170F50059BED1 /* VCButtonFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCButtonFont.h; path = Controls/VCButtonFont.h; sourceTree = "<group>"; };
 		4FE641FD194170F50059BED1 /* VCButtonFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCButtonFont.m; path = Controls/VCButtonFont.m; sourceTree = "<group>"; };
 		CD677E046A804589A26C0608 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		F4354DCF195D0D6A00C06CF7 /* Voco Testing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Voco Testing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4354DD0195D0D6A00C06CF7 /* Voco Testing-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Voco Testing-Info.plist"; path = "/Users/deepwinter1/software-development/Clients/Will OBrien/voco-ios/Voco/Voco Testing-Info.plist"; sourceTree = "<absolute>"; };
 		F45F7BE8193575A900A94721 /* RiderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RiderViewController.h; path = ViewControllers/RiderViewController.h; sourceTree = "<group>"; };
 		F45F7BE9193575A900A94721 /* RiderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RiderViewController.m; path = ViewControllers/RiderViewController.m; sourceTree = "<group>"; };
 		F45F7BEA193575A900A94721 /* RiderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RiderViewController.xib; path = ViewControllers/RiderViewController.xib; sourceTree = "<group>"; };
@@ -263,7 +371,7 @@
 		F4D8905219469F0F007C4671 /* VCDriverInterestedRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCDriverInterestedRequest.m; path = API/Users/VCDriverInterestedRequest.m; sourceTree = "<group>"; };
 		F4D890541946A2D9007C4671 /* VCObjectRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCObjectRequestOperation.h; path = API/VCObjectRequestOperation.h; sourceTree = "<group>"; };
 		F4D890551946A2D9007C4671 /* VCObjectRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCObjectRequestOperation.m; path = API/VCObjectRequestOperation.m; sourceTree = "<group>"; };
-		F4FA0BE4192BF6BF005D8645 /* Voco.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voco.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4FA0BE4192BF6BF005D8645 /* Voco Development.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Voco Development.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FA0BE7192BF6BF005D8645 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F4FA0BE9192BF6BF005D8645 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		F4FA0BEB192BF6BF005D8645 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -317,6 +425,25 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F4354D9C195D0D6A00C06CF7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4354D9D195D0D6A00C06CF7 /* MapKit.framework in Frameworks */,
+				F4354D9E195D0D6A00C06CF7 /* SystemConfiguration.framework in Frameworks */,
+				F4354D9F195D0D6A00C06CF7 /* libxml2.dylib in Frameworks */,
+				F4354DA0195D0D6A00C06CF7 /* AddressBook.framework in Frameworks */,
+				F4354DA1195D0D6A00C06CF7 /* QuartzCore.framework in Frameworks */,
+				F4354DA2195D0D6A00C06CF7 /* CoreLocation.framework in Frameworks */,
+				F4354DA3195D0D6A00C06CF7 /* Crashlytics.framework in Frameworks */,
+				F4354DA4195D0D6A00C06CF7 /* CoreGraphics.framework in Frameworks */,
+				F4354DA5195D0D6A00C06CF7 /* CoreData.framework in Frameworks */,
+				F4354DA6195D0D6A00C06CF7 /* UIKit.framework in Frameworks */,
+				F4354DA7195D0D6A00C06CF7 /* Foundation.framework in Frameworks */,
+				F4354DA8195D0D6A00C06CF7 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F4FA0BE1192BF6BF005D8645 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -690,14 +817,16 @@
 				F4FA0BE6192BF6BF005D8645 /* Frameworks */,
 				F4FA0BE5192BF6BF005D8645 /* Products */,
 				CD677E046A804589A26C0608 /* Pods.xcconfig */,
+				F4354DD0195D0D6A00C06CF7 /* Voco Testing-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
 		F4FA0BE5192BF6BF005D8645 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F4FA0BE4192BF6BF005D8645 /* Voco.app */,
+				F4FA0BE4192BF6BF005D8645 /* Voco Development.app */,
 				F4FA0C04192BF6BF005D8645 /* VocoTests.xctest */,
+				F4354DCF195D0D6A00C06CF7 /* Voco Testing.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -833,9 +962,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F4FA0BE3192BF6BF005D8645 /* Voco */ = {
+		F4354D5B195D0D6A00C06CF7 /* Voco Testing */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F4FA0C16192BF6BF005D8645 /* Build configuration list for PBXNativeTarget "Voco" */;
+			buildConfigurationList = F4354DCC195D0D6A00C06CF7 /* Build configuration list for PBXNativeTarget "Voco Testing" */;
+			buildPhases = (
+				F4354D5C195D0D6A00C06CF7 /* Check Pods Manifest.lock */,
+				F4354D5D195D0D6A00C06CF7 /* Sources */,
+				F4354D9C195D0D6A00C06CF7 /* Frameworks */,
+				F4354DA9195D0D6A00C06CF7 /* Resources */,
+				F4354DCA195D0D6A00C06CF7 /* Copy Pods Resources */,
+				F4354DCB195D0D6A00C06CF7 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Voco Testing";
+			productName = Voco;
+			productReference = F4354DCF195D0D6A00C06CF7 /* Voco Testing.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F4FA0BE3192BF6BF005D8645 /* Voco Development */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4FA0C16192BF6BF005D8645 /* Build configuration list for PBXNativeTarget "Voco Development" */;
 			buildPhases = (
 				127C3440BEE44F71B51F18C3 /* Check Pods Manifest.lock */,
 				F4FA0BE0192BF6BF005D8645 /* Sources */,
@@ -848,9 +997,9 @@
 			);
 			dependencies = (
 			);
-			name = Voco;
+			name = "Voco Development";
 			productName = Voco;
-			productReference = F4FA0BE4192BF6BF005D8645 /* Voco.app */;
+			productReference = F4FA0BE4192BF6BF005D8645 /* Voco Development.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F4FA0C03192BF6BF005D8645 /* VocoTests */ = {
@@ -906,13 +1055,53 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F4FA0BE3192BF6BF005D8645 /* Voco */,
+				F4FA0BE3192BF6BF005D8645 /* Voco Development */,
+				F4354D5B195D0D6A00C06CF7 /* Voco Testing */,
 				F4FA0C03192BF6BF005D8645 /* VocoTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F4354DA9195D0D6A00C06CF7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4354DAA195D0D6A00C06CF7 /* signup_box@2x.png in Resources */,
+				F4354DAB195D0D6A00C06CF7 /* VCRiderHomeViewController.xib in Resources */,
+				F4354DAC195D0D6A00C06CF7 /* loginBox@2x.png in Resources */,
+				F4354DAD195D0D6A00C06CF7 /* KlinicSlabLight.ttf in Resources */,
+				F4354DAE195D0D6A00C06CF7 /* KlinicSlabLightIt.ttf in Resources */,
+				F4354DAF195D0D6A00C06CF7 /* menu-list@2x.png in Resources */,
+				F4354DB0195D0D6A00C06CF7 /* VOCOfinal@2x.png in Resources */,
+				F4354DB1195D0D6A00C06CF7 /* driver_must_box@2x.png in Resources */,
+				F4354DB2195D0D6A00C06CF7 /* signupBox@2x.png in Resources */,
+				F4354DB3195D0D6A00C06CF7 /* bubble@2x.png in Resources */,
+				F4354DB4195D0D6A00C06CF7 /* DriverRequestViewController.xib in Resources */,
+				F4354DB5195D0D6A00C06CF7 /* VCDriverRegistrationViewController.xib in Resources */,
+				F4354DB6195D0D6A00C06CF7 /* driving_car@2x.png in Resources */,
+				F4354DB7195D0D6A00C06CF7 /* KlinicSlabMedium.ttf in Resources */,
+				F4354DB8195D0D6A00C06CF7 /* menu-list.png in Resources */,
+				F4354DB9195D0D6A00C06CF7 /* SignInViewController.xib in Resources */,
+				F4354DBA195D0D6A00C06CF7 /* map_pin_fill-512.png in Resources */,
+				F4354DBB195D0D6A00C06CF7 /* PasswordRecoveryViewController.xib in Resources */,
+				F4354DBC195D0D6A00C06CF7 /* KlinicSlabMediumIt.ttf in Resources */,
+				F4354DBD195D0D6A00C06CF7 /* login_form@2x.png in Resources */,
+				F4354DBE195D0D6A00C06CF7 /* DriverViewController.xib in Resources */,
+				F4354DBF195D0D6A00C06CF7 /* RiderViewController.xib in Resources */,
+				F4354DC0195D0D6A00C06CF7 /* VCDriverVideoTutorialController.xib in Resources */,
+				F4354DC1195D0D6A00C06CF7 /* red_box@2x.png in Resources */,
+				F4354DC2195D0D6A00C06CF7 /* InfoPlist.strings in Resources */,
+				F4354DC3195D0D6A00C06CF7 /* signUp_btn@2x.png in Resources */,
+				F4354DC4195D0D6A00C06CF7 /* SignUpViewController.xib in Resources */,
+				F4354DC5195D0D6A00C06CF7 /* voco_logo@2x.png in Resources */,
+				F4354DC6195D0D6A00C06CF7 /* commute_logo@2x.png in Resources */,
+				F4354DC7195D0D6A00C06CF7 /* Images.xcassets in Resources */,
+				F4354DC8195D0D6A00C06CF7 /* VCRiderMenuViewController.xib in Resources */,
+				F4354DC9195D0D6A00C06CF7 /* login_btn@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F4FA0BE2192BF6BF005D8645 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -993,6 +1182,49 @@
 			shellScript = "\"${SRCROOT}/../Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F4354D5C195D0D6A00C06CF7 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F4354DCA195D0D6A00C06CF7 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4354DCB195D0D6A00C06CF7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run f7d1a0eeca165a46710d606ff21a38fea3c9ec43 30443cbde3ed6a69c0f8176acfb84b3b3a6de64d3e74596b70f376616eff7558";
+		};
 		F4FE1B25193E9CCF00354886 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1009,6 +1241,75 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F4354D5D195D0D6A00C06CF7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4354D5E195D0D6A00C06CF7 /* IIWrapController.m in Sources */,
+				F4354D5F195D0D6A00C06CF7 /* VCDriverRegistration.m in Sources */,
+				F4354D60195D0D6A00C06CF7 /* VCForgotPasswordRequest.m in Sources */,
+				F4354D61195D0D6A00C06CF7 /* VCRideStateMachineFactory.m in Sources */,
+				F4354D62195D0D6A00C06CF7 /* VCPushApi.m in Sources */,
+				F4354D63195D0D6A00C06CF7 /* DriverViewController.m in Sources */,
+				F4354D64195D0D6A00C06CF7 /* VCUserStateResponse.m in Sources */,
+				F4354D65195D0D6A00C06CF7 /* ScrollableFormViewController.m in Sources */,
+				F4354D66195D0D6A00C06CF7 /* Voco.xcdatamodeld in Sources */,
+				F4354D67195D0D6A00C06CF7 /* VCLoginResponse.m in Sources */,
+				F4354D68195D0D6A00C06CF7 /* VCRideIdentity.m in Sources */,
+				F4354D69195D0D6A00C06CF7 /* VCRiderApi.m in Sources */,
+				F4354D6A195D0D6A00C06CF7 /* VCDriverRegistrationViewController.m in Sources */,
+				F4354D6B195D0D6A00C06CF7 /* VCButtonFontBold.m in Sources */,
+				F4354D6C195D0D6A00C06CF7 /* VCLabelItalic.m in Sources */,
+				F4354D6D195D0D6A00C06CF7 /* VCDialogs.m in Sources */,
+				F4354D6E195D0D6A00C06CF7 /* MQRouteResponse.m in Sources */,
+				F4354D6F195D0D6A00C06CF7 /* SignInViewController.m in Sources */,
+				F4354D70195D0D6A00C06CF7 /* VCDevicesApi.m in Sources */,
+				F4354D71195D0D6A00C06CF7 /* Drive.m in Sources */,
+				F4354D72195D0D6A00C06CF7 /* VCNewUser.m in Sources */,
+				F4354D73195D0D6A00C06CF7 /* IISideController.m in Sources */,
+				F4354D74195D0D6A00C06CF7 /* VCRiderHomeViewController.m in Sources */,
+				F4354D75195D0D6A00C06CF7 /* VCButtonFont.m in Sources */,
+				F4354D76195D0D6A00C06CF7 /* MQShape.m in Sources */,
+				F4354D77195D0D6A00C06CF7 /* VCRideRequest.m in Sources */,
+				F4354D78195D0D6A00C06CF7 /* VCPushManager.m in Sources */,
+				F4354D79195D0D6A00C06CF7 /* VCDriverStateResponse.m in Sources */,
+				F4354D7A195D0D6A00C06CF7 /* VCGeolocation.m in Sources */,
+				F4354D7B195D0D6A00C06CF7 /* DriverRequestViewController.m in Sources */,
+				F4354D7C195D0D6A00C06CF7 /* Offer.m in Sources */,
+				F4354D7D195D0D6A00C06CF7 /* VCMapQuestRouting.m in Sources */,
+				F4354D7E195D0D6A00C06CF7 /* VCInterfaceModes.m in Sources */,
+				F4354D7F195D0D6A00C06CF7 /* VCRequestUpdate.m in Sources */,
+				F4354D80195D0D6A00C06CF7 /* VCCoreData.m in Sources */,
+				F4354D81195D0D6A00C06CF7 /* VCLabel.m in Sources */,
+				F4354D82195D0D6A00C06CF7 /* VCRiderMenuViewController.m in Sources */,
+				F4354D83195D0D6A00C06CF7 /* VCDriverVideoTutorialController.m in Sources */,
+				F4354D84195D0D6A00C06CF7 /* VCRideDriverAssignment.m in Sources */,
+				F4354D85195D0D6A00C06CF7 /* PasswordRecoveryViewController.m in Sources */,
+				F4354D86195D0D6A00C06CF7 /* VCDriverApi.m in Sources */,
+				F4354D87195D0D6A00C06CF7 /* IIViewDeckController.m in Sources */,
+				F4354D88195D0D6A00C06CF7 /* RiderViewController.m in Sources */,
+				F4354D89195D0D6A00C06CF7 /* VCApi.m in Sources */,
+				F4354D8A195D0D6A00C06CF7 /* VCLocation.m in Sources */,
+				F4354D8B195D0D6A00C06CF7 /* VCLogin.m in Sources */,
+				F4354D8C195D0D6A00C06CF7 /* VCDevice.m in Sources */,
+				F4354D8D195D0D6A00C06CF7 /* Ride.m in Sources */,
+				F4354D8E195D0D6A00C06CF7 /* VCObjectRequestOperation.m in Sources */,
+				F4354D8F195D0D6A00C06CF7 /* VCValidation.m in Sources */,
+				F4354D90195D0D6A00C06CF7 /* MQRoute.m in Sources */,
+				F4354D91195D0D6A00C06CF7 /* main.m in Sources */,
+				F4354D92195D0D6A00C06CF7 /* WRUtilities.m in Sources */,
+				F4354D93195D0D6A00C06CF7 /* VCTextField.m in Sources */,
+				F4354D94195D0D6A00C06CF7 /* VCRideRequestCreated.m in Sources */,
+				F4354D95195D0D6A00C06CF7 /* VCDriverInterestedRequest.m in Sources */,
+				F4354D96195D0D6A00C06CF7 /* SignUpViewController.m in Sources */,
+				F4354D97195D0D6A00C06CF7 /* NSDate+Pretty.m in Sources */,
+				F4354D98195D0D6A00C06CF7 /* VCRiderHomeDevViewController.m in Sources */,
+				F4354D99195D0D6A00C06CF7 /* VCAppDelegate.m in Sources */,
+				F4354D9A195D0D6A00C06CF7 /* VCUserState.m in Sources */,
+				F4354D9B195D0D6A00C06CF7 /* VCUsersApi.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F4FA0BE0192BF6BF005D8645 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1091,7 +1392,7 @@
 /* Begin PBXTargetDependency section */
 		F4FA0C0B192BF6BF005D8645 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F4FA0BE3192BF6BF005D8645 /* Voco */;
+			target = F4FA0BE3192BF6BF005D8645 /* Voco Development */;
 			targetProxy = F4FA0C0A192BF6BF005D8645 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1116,6 +1417,60 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		F4354DCD195D0D6A00C06CF7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD677E046A804589A26C0608 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Voco/Voco-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"TESTING=1",
+				);
+				INFOPLIST_FILE = "Voco Testing-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "Voco Testing";
+				PROVISIONING_PROFILE = "418972A1-44A9-45F6-89B8-DFD7529D357B";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F4354DCE195D0D6A00C06CF7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD677E046A804589A26C0608 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Voco/Voco-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"TESTING=1",
+				);
+				INFOPLIST_FILE = "Voco Testing-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "Voco Testing";
+				PROVISIONING_PROFILE = "418972A1-44A9-45F6-89B8-DFD7529D357B";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 		F4FA0C14192BF6BF005D8645 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1203,7 +1558,7 @@
 				INFOPLIST_FILE = "Voco/Voco-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "E3105F87-1CEB-4007-BB86-99A40EFA3374";
+				PROVISIONING_PROFILE = "418972A1-44A9-45F6-89B8-DFD7529D357B";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1230,7 +1585,7 @@
 				INFOPLIST_FILE = "Voco/Voco-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "E3105F87-1CEB-4007-BB86-99A40EFA3374";
+				PROVISIONING_PROFILE = "418972A1-44A9-45F6-89B8-DFD7529D357B";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1278,6 +1633,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F4354DCC195D0D6A00C06CF7 /* Build configuration list for PBXNativeTarget "Voco Testing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F4354DCD195D0D6A00C06CF7 /* Debug */,
+				F4354DCE195D0D6A00C06CF7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F4FA0BDF192BF6BF005D8645 /* Build configuration list for PBXProject "Voco" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1287,7 +1651,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F4FA0C16192BF6BF005D8645 /* Build configuration list for PBXNativeTarget "Voco" */ = {
+		F4FA0C16192BF6BF005D8645 /* Build configuration list for PBXNativeTarget "Voco Development" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F4FA0C17192BF6BF005D8645 /* Debug */,
