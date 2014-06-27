@@ -68,8 +68,8 @@ static int mode;
 }
 
 + (void) showRiderInterface {
-    //VCRiderHomeViewController * riderHomeViewController = [[VCRiderHomeViewController alloc] init];
-    VCRiderRidesViewController * riderHomeViewController = [[VCRiderRidesViewController alloc] init];
+    VCRiderHomeViewController * riderHomeViewController = [[VCRiderHomeViewController alloc] init];
+    //VCRiderRidesViewController * riderHomeViewController = [[VCRiderRidesViewController alloc] init];
     
     if(deckController == nil){
         [self createDeckViewController];
