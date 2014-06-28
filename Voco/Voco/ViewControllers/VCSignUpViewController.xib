@@ -226,7 +226,6 @@
                 <constraint firstItem="wKg-ur-P0p" firstAttribute="top" secondItem="Fru-o9-Eki" secondAttribute="top" id="OoJ-Bv-kCq"/>
                 <constraint firstAttribute="bottom" secondItem="wKg-ur-P0p" secondAttribute="bottom" id="iXt-Sz-7Li"/>
             </constraints>
-            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
