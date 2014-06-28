@@ -30,7 +30,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *onDemandButton;
 @property (weak, nonatomic) IBOutlet UIButton *commuteButton;
 @property (weak, nonatomic) IBOutlet UIView *locationConfirmationAnnotation;
-@property (weak, nonatomic) IBOutlet UILabel *locationConfirmationLabel;
+@property (weak, nonatomic) IBOutlet UIButton *locationConfirmationButtonLabel;
 @property (weak, nonatomic) IBOutlet UIButton *cancelRideButton;
 @property (weak, nonatomic) IBOutlet UIButton *morningOrEveningButton;
 @property (weak, nonatomic) IBOutlet UIButton *arrivalTimeButton;
@@ -196,7 +196,7 @@
         myAnnotation.subtitle = @"Click to change";
         [_map addAnnotation:myAnnotation];
         
-        _locationConfirmationLabel.text = @"Set Drop Off Location";
+        [_locationConfirmationButtonLabel setTitle:@"Set Drop Off Location" forState:UIControlStateNormal];
         
         [_departureEntryView removeFromSuperview];
         CGRect frame = _destinationEntryView.frame;
@@ -376,7 +376,7 @@
 
 - (void) resetRequestInterface {
     [_map removeAnnotations:_map.annotations];
-    _locationConfirmationLabel.text = @"Set Pick Up Location";
+    [_locationConfirmationButtonLabel setTitle:@"Set Pick Up Location" forState:UIControlStateNormal];
     _mapCenterPin.hidden = YES;
     _locationConfirmationAnnotation.hidden = YES;
     _destinationEntryView.hidden = YES;

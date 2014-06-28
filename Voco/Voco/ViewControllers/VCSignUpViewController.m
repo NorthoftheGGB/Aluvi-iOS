@@ -52,11 +52,11 @@
 {
     [super viewDidLoad];
     self.title = @"Sign Up";
-  
+    
     UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [tapBackground setNumberOfTapsRequired:1];
     [self.view addGestureRecognizer:tapBackground];
-
+    
 }
 
 - (void) dismissKeyboard:(id) sender{
@@ -87,7 +87,7 @@
         textField.backgroundColor = [UIColor whiteColor];
     }
     
-        switch(textField.tag){
+    switch(textField.tag){
         case kFirstNameFieldTag:
             [_lastNameField becomeFirstResponder];
             break;
@@ -101,7 +101,11 @@
             [_emailField becomeFirstResponder];
             break;
         case kEmailFieldTag:
-            [_referralCodeField becomeFirstResponder];
+            if(!_emailField.isValid){
+                _emailField.backgroundColor = [UIColor redColor];
+            } else {
+                [_referralCodeField becomeFirstResponder];
+            }
             break;
         case kReferralCodeFieldTag:
             [self signUp];
@@ -111,41 +115,46 @@
 
 - (void) signUp {
     
-    BOOL error = false;
-    if (![VCValidation NSStringIsValidEmail:_emailField.text]){
-        error = true;
-        [_emailField setBackgroundColor:[UIColor redColor]];
-    }
-    if(_phoneField.text == nil || [_phoneField.text isEqualToString:@""] ){
-        error = true;
-        [_phoneField setBackgroundColor:[UIColor redColor]];
-    }
+    /*
+     BOOL error = false;
+     if (![VCValidation NSStringIsValidEmail:_emailField.text] || _emailField.text == nil || [_emailField.text isEqualToString:@""]){
+     error = true;
+     [_emailField setBackgroundColor:[UIColor redColor]];
+     }
+     
+     if(_phoneField.text == nil || [_phoneField.text isEqualToString:@""] ){
+     error = true;
+     [_phoneField setBackgroundColor:[UIColor redColor]];
+     }
+     
+     if (_passwordField.text == nil || [_passwordField.text isEqualToString:@""]){
+     error = true;
+     [_passwordField setBackgroundColor:[UIColor redColor]];
+     }
+     
+     if (_firstNameField.text == nil || [_firstNameField.text isEqualToString:@""]){
+     error = true;
+     [_firstNameField setBackgroundColor:[UIColor redColor]];
+     }
+     
+     
+     if (_lastNameField.text == nil || [_lastNameField.text isEqualToString:@""]){
+     error = true;
+     [_lastNameField setBackgroundColor:[UIColor redColor]];
+     }
+     
+     if(error == true){
+     [UIAlertView showWithTitle:@"Error" message:@"" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+     return;
+     }
+     */
     
-    if (_passwordField.text == nil || [_passwordField.text isEqualToString:@""]){
-        error = true;
-        [_passwordField setBackgroundColor:[UIColor redColor]];
-    }
     
-    if (_firstNameField.text == nil || [_firstNameField.text isEqualToString:@""]){
-        error = true;
-        [_firstNameField setBackgroundColor:[UIColor redColor]];
-    }
-    
-    
-    if (_lastNameField.text == nil || [_lastNameField.text isEqualToString:@""]){
-        error = true;
-        [_lastNameField setBackgroundColor:[UIColor redColor]];
-    }
-    
-    if(error == true){
-         [UIAlertView showWithTitle:@"Error" message:@"" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
-        return;
-    }
     
     // Validations Pass
-    [_emailField setTextColor:[UIColor blackColor]];
-
-
+    //[_emailField setTextColor:[UIColor blackColor]];
+    
+    
     _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     // _hud.labelText = @"Signing Up";
     
@@ -174,7 +183,7 @@
 - (void) login {
     [VCUsersApi login:[RKObjectManager sharedManager] phone:_phoneField.text password:_passwordField.text
               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
- 
+                  
                   [VCInterfaceModes showRiderInterface];
                   
               } failure:^(RKObjectRequestOperation *operation, NSError *error) {
