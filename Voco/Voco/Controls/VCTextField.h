@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "US2ValidatorTextField.h"
 
-@interface VCTextField : UITextField
+@interface VCTextField : US2ValidatorTextField
 
 @property(nonatomic, strong) NSNumber * fontSize;
 

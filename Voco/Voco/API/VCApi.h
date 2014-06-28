@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 // rides API
-#if 1 //RELEASE==1
+#if RELEASE==1
 #define API_BASE_URL @"http://54.187.62.13:3000/api/"
 #elsif TESTING==1
 #define API_BASE_URL @"http://voco-test-server.herokuapp.com/api/"

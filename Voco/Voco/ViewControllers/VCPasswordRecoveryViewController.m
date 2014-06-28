@@ -8,6 +8,7 @@
 
 #import "VCPasswordRecoveryViewController.h"
 #import "VCTextField.h"
+#import "VCValidation.h"
 #import "VCUsersApi.h"
 #import <MBProgressHUD.h>
 
@@ -73,6 +74,18 @@
 }
 
 - (void) recoverEmail{
+    
+    BOOL error = false;
+    if (![VCValidation NSStringIsValidEmail:_emailField.text]){
+        error = true;
+        [_emailField setBackgroundColor:[UIColor redColor]];
+        
+    }
+    
+    if(error == true){
+        [UIAlertView showWithTitle:@"Error" message:@"Some Fields Are Incorrect" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        return;
+    }
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Recovering Password";
