@@ -93,7 +93,9 @@ static VCUserState *sharedSingleton;
               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                   VCLoginResponse * loginResponse = mappingResult.firstObject;
                   self.riderState = loginResponse.riderState;
-                  self.driverState = loginResponse.driverState;
+                  if(loginResponse.driverState != nil){
+                      self.driverState = loginResponse.driverState;
+                  }
                   [VCDevicesApi updateUserWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                       success();
                   } failure:^(RKObjectRequestOperation *operation, NSError *error) {

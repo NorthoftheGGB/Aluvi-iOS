@@ -11,7 +11,6 @@
 @interface VCStateMachineManagedObject ()
 
 @property (nonatomic, strong) TKStateMachine * stateMachine;
-@property (nonatomic, strong) NSString * savedState;
 
 @end
 
@@ -60,6 +59,19 @@
     if(self.savedState == nil){
         self.savedState = [self getInitialState];
     }
+    [self addObserver:self forKeyPath:@"savedState" options:NSKeyValueObservingOptionNew context:nil];
+    [self createStateMachine];
+}
+
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if(![[_stateMachine.currentState name] isEqualToString:self.savedState]){
+        [self createStateMachine];
+    }
+}
+
+- (void) willSave {
+    NSLog(@"%@", self.savedState);
     [self createStateMachine];
 }
 
@@ -67,12 +79,18 @@
 // Manually set the state, for restkit object mapping
 - (void) setForcedState: (NSString*) state__ {
     self.savedState = state__;
+}
+
+- (void) setSavedState:(NSString *)savedState__{
+    [self willChangeValueForKey:@"savedState"];
+    [self setPrimitiveValue:savedState__ forKey:@"savedState"];
+    [self didChangeValueForKey:@"savedState"];
     [self createStateMachine];
 }
 
 - (NSString *) state {
     NSString * state = [_stateMachine.currentState name];
-    return state;
+    return [NSString stringWithFormat:@"%@ %@", state, self.savedState];
 }
 
 

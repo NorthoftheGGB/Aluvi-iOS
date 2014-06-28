@@ -82,7 +82,7 @@
     [super viewDidLoad];
     self.title = @"Home";
     
-    _map = [[MKMapView alloc] initWithFrame:self.view.bounds];
+    _map = [[MKMapView alloc] initWithFrame:self.view.frame];
     _map.delegate = self;
     _map.showsUserLocation = YES;
     _map.userTrackingMode = YES;
@@ -240,6 +240,7 @@
                             success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                 VCRideRequestCreated * rideRequestCreatedResponse = mappingResult.firstObject;
                                 _ride.request_id = rideRequestCreatedResponse.rideRequestId;
+                                _ride.requestedTimestamp = [NSDate date];
                                 [VCCoreData saveContext];
                                 [hud hide:YES];
                                 // TODO: Don't show an alert, show a HUD

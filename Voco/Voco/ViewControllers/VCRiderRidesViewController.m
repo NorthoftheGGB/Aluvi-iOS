@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+- (IBAction)didTapRefresh:(id)sender;
 
 @end
 
@@ -58,6 +59,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
+
+- (void)viewDidUnload {
+    self.fetchedResultsController = nil;
+}
+
+
+- (void)viewWillAppear:(BOOL)animated {    
     
     NSError *error;
 	if (![[self fetchedResultsController] performFetch:&error]) {
@@ -65,10 +74,6 @@
 	}
 
 
-}
-
-- (void)viewDidUnload {
-    self.fetchedResultsController = nil;
 }
 
 - (void)didReceiveMemoryWarning
@@ -94,6 +99,7 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     Ride *ride = [_fetchedResultsController objectAtIndexPath:indexPath];
+    [[VCCoreData managedObjectContext] refreshObject:ride mergeChanges:YES];
     cell.textLabel.text = [ride routeDescription];
     cell.detailTextLabel.text = ride.state;
     
@@ -178,4 +184,16 @@
     [self.tableView endUpdates];
 }
 
+- (IBAction)didTapRefresh:(id)sender {
+    [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSLog(@"%@", @"Refreshed Scheduled Rides");
+        NSError *error;
+        if (![[self fetchedResultsController] performFetch:&error]) {
+            [WRUtilities criticalError:error];
+        }
+        
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [WRUtilities criticalError:error];
+    }];
+}
 @end
