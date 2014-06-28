@@ -23,13 +23,12 @@ static NSString * apiToken;
 + (void) setup {
     RKObjectManager * objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:API_BASE_URL]];
     [objectManager registerRequestOperationClass:[VCObjectRequestOperation class]];
+    objectManager.managedObjectStore = [VCCoreData managedObjectStore];
     
     [VCRiderApi setup: objectManager];
     [VCDriverApi setup: objectManager];
     [VCUsersApi setup: objectManager];
-    
-    objectManager.managedObjectStore = [VCCoreData managedObjectStore];
-    
+        
     [self setApiToken: [[NSUserDefaults standardUserDefaults] stringForKey:API_TOKEN_KEY]];
     
     RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);

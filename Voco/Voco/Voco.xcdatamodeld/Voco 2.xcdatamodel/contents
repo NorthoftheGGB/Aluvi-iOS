@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="12F45" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Car" syncable="YES"/>
-    <entity name="Drive" syncable="YES">
-        <relationship name="riders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Rider" syncable="YES"/>
-    </entity>
+    <entity name="Drive" syncable="YES"/>
     <entity name="LoggedInUser" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
@@ -30,7 +28,7 @@
     </entity>
     <elements>
         <element name="Car" positionX="0" positionY="0" width="128" height="43"/>
-        <element name="Drive" positionX="-252" positionY="-69" width="128" height="60"/>
+        <element name="Drive" positionX="-252" positionY="-69" width="128" height="45"/>
         <element name="LoggedInUser" positionX="-333" positionY="-162" width="128" height="75"/>
         <element name="Offer" positionX="-252" positionY="81" width="128" height="178"/>
         <element name="Ride" positionX="-108" positionY="-243" width="128" height="43"/>

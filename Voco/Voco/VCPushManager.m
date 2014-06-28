@@ -18,7 +18,6 @@
 #import "VCUserState.h"
 #import "VCCoreData.h"
 #import "Offer.h"
-#import "VCRideStateMachineFactory.h"
 
 @implementation VCPushManager
 
@@ -219,7 +218,7 @@
             [[VCDialogs instance] rideFound: [payload objectForKey:VC_PUSH_REQUEST_ID_KEY]];
             Ride * ride = [rides objectAtIndex:0];
             NSError * error;
-            [ride.stateMachine fireEvent:[VCRideStateMachineFactory factory].rideFound userInfo:@{} error:&error];
+            [ride fireEvent:kEventRideFound userInfo:@{} error:&error];
             if(error != nil) {
                 [WRUtilities criticalError:error];
             }

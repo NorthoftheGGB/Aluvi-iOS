@@ -28,8 +28,6 @@
         
         //[[NSNotificationCenter defaultCenter] postNotificationName:@"connectionFailure" object:operation];
         
-      //  [self connectionFailedWithOperation:operation];
-        
         NSInteger statusCode = operation.HTTPRequestOperation.response.statusCode;
         
         switch (statusCode) {
@@ -37,7 +35,9 @@
             {
                 // Notify user there is an internet connectivity problem
                 // UI should be locked by reachability
-                [UIAlertView showWithTitle:@"Network Unavailable" message:@"This application requires internet connectivity" cancelButtonTitle:@"OK'" otherButtonTitles:nil tapBlock:nil];
+                [WRUtilities showNetworkUnavailableMessage];
+                 
+              
             }
                 break;
             case  401: // not authenticated
@@ -46,60 +46,24 @@
                          cancelButtonTitle:@"OK"
                          otherButtonTitles:nil
                                   tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                                      // Bump the user back out to the login screen
-                                      // Call logout
+                                      // Call logout and Bump the user back out to the login screen
                                       [[VCUserState instance] logout];
-                                      
                                   }];
             }
                 break;
                 
             default:
             {
+                if (failure) {
+                    failure(operation, error);
+                }
             }
                 break;
         }
 
         
-        if (failure) {
-            failure(operation, error);
-        }
+   
         
     }];
 }
-
-- (void)connectionFailedWithOperation:(RKObjectRequestOperation *)operation
-{
-    //RKObjectRequestOperation *operation = (RKObjectRequestOperation *)notification.object;
-    if (operation) {
-        
-        NSInteger statusCode = operation.HTTPRequestOperation.response.statusCode;
-        
-        switch (statusCode) {
-            case 0: // No internet connection
-            {
-                // Notify user there is an internet connectivity problem
-                // UI should be locked by reachability
-                [UIAlertView showWithTitle:@"Network Unavailable" message:@"This application requires internet connectivity" cancelButtonTitle:@"OK'" otherButtonTitles:nil tapBlock:nil];
-            }
-                break;
-            case  401: // not authenticated
-            {
-                [UIAlertView showWithTitle:@"Invalid Login" message:@"You are no longer logged into Voco.  Please log back in"
-                         cancelButtonTitle:@"OK"
-                         otherButtonTitles:nil
-                                  tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                                      // Bump the user back out to the login screen
-                                    }];
-            }
-                break;
-                
-            default:
-            {
-            }
-                break;
-        }
-    }
-}
-
 @end

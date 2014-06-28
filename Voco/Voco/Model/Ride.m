@@ -7,13 +7,12 @@
 //
 
 #import "Ride.h"
-#import "VCRideStateMachineFactory.h"
 #import "Car.h"
 #import "Driver.h"
+#import <RKPathMatcher.h>
 
 @interface Ride ()
 
-@property (nonatomic, retain) NSString * state;
 
 @end
 
@@ -23,7 +22,6 @@
 @dynamic requestType;
 @dynamic car_id;
 @dynamic driver_id;
-@dynamic state;
 @dynamic request_id;
 @dynamic requestedTimestamp;
 @dynamic estimatedArrivalTime;
@@ -39,9 +37,6 @@
 @dynamic driver;
 @dynamic car;
 
-
-@synthesize stateMachine = _stateMachine;
-@synthesize forcedState;
 
 + (void)createMappings:(RKObjectManager *)objectManager{
     RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Ride"
@@ -61,6 +56,22 @@
     
 
     entityMapping.identificationAttributes = @[ @"request_id" ]; // for riders request_id is the primary key
+
+    /*
+    [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
+        RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:API_GET_SCHEDULED_RIDES];
+        
+        NSString * relativePath = [URL relativePath];
+        NSDictionary *argsDict = nil;
+        BOOL match = [pathMatcher matchesPath:relativePath tokenizeQueryStrings:NO parsedArguments:&argsDict];
+        if (match) {
+            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Ride"];
+            return fetchRequest;
+        }
+        
+        return nil;
+    }];
+     */
     
     [entityMapping addRelationshipMappingWithSourceKeyPath:@"driver" mapping:[Driver createMappings:objectManager]];
     [entityMapping addRelationshipMappingWithSourceKeyPath:@"car" mapping:[Car createMappings:objectManager]];
@@ -96,37 +107,43 @@
     return self;
 }
 
-- (void)awakeFromInsert {
-    _stateMachine = [VCRideStateMachineFactory createOnDemandStateMachine];
+- (void)assignStatesAndEvents:(TKStateMachine *)stateMachine {
+    
+    TKState * created = [TKState stateWithName:kCreatedState];
+    TKState * requested = [TKState stateWithName:kRequestedState];
+    TKState * declined = [TKState stateWithName:kDeclinedState];
+    TKState * found = [TKState stateWithName:kFoundState];
+    TKState * scheduled = [TKState stateWithName:kScheduledState];
+    TKState * driverCancelled = [TKState stateWithName:kDriverCancelledState];
+    TKState * riderCancelled = [TKState stateWithName:kRiderCancelledState];
+    TKState * complete = [TKState stateWithName:kCompleteState];
+    TKState * paymentProblem = [TKState stateWithName:kPaymentProblemState];
+    
+    TKEvent * rideRequested = [TKEvent eventWithName:kEventRideRequested transitioningFromStates:@[created] toState:requested];
+    TKEvent * rideCancelledByRider = [TKEvent eventWithName:kEventRideCancelledByRider transitioningFromStates:@[requested, found, scheduled] toState:riderCancelled];
+    TKEvent * rideFound = [TKEvent eventWithName:kEventRideFound transitioningFromStates:@[requested] toState:found];
+    TKEvent * rideScheduled = [TKEvent eventWithName:kEventRideScheduled transitioningFromStates:@[found] toState:scheduled];
+    TKEvent * rideDeclined = [TKEvent eventWithName:kEventRideDeclined transitioningFromStates:@[created, requested] toState:declined];
+    TKEvent * rideCancelledByDriver = [TKEvent eventWithName:kEventRideCancelledByDriver transitioningFromStates:@[scheduled] toState:driverCancelled];
+    TKEvent * paymentProcessedSuccessfully = [TKEvent eventWithName:kEventPaymentProcessedSuccessfully transitioningFromStates:@[scheduled] toState:complete];
+    TKEvent * paymentFailure = [TKEvent eventWithName:kEventPaymentFailed transitioningFromStates:@[scheduled] toState:paymentProblem];
+
+    
+    [stateMachine addStates:@[created, requested, declined, found, scheduled, driverCancelled, riderCancelled, complete, paymentProblem]];
+    [stateMachine addEvents:@[rideRequested, rideCancelledByRider, rideFound, rideScheduled, rideDeclined, rideCancelledByDriver, paymentProcessedSuccessfully, paymentFailure]];
 }
 
-- (void)awakeFromFetch {
-    _stateMachine = [VCRideStateMachineFactory createOnDemandStateMachineWithState:self.state];
+- (NSString *)getInitialState {
+    return kCreatedState;
 }
 
-- (void)willSave {
-    if(self.state != _stateMachine.currentState.name ){
-        self.state = _stateMachine.currentState.name;
-    }
-}
+
 
 - (NSString *) routeDescription {
-    return [NSString stringWithFormat:@"%@ to %@", self.meetingPointPlaceName, self.destinationPlaceName];
+    return [NSString stringWithFormat:@"%@ to %@", self.originPlaceName, self.destinationPlaceName];
 }
 
 
-- (NSString *) state {
-    NSString * state = [_stateMachine.currentState name];
-    return state;
-}
-
-
-// Manually set the state, for restkit
-- (void) setForcedState: (NSString*) state__ {
-    self.state = state__;
-    _stateMachine = [VCRideStateMachineFactory createOnDemandStateMachineWithState:state__];
-
-}
 
 
 

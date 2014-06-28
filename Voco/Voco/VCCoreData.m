@@ -37,6 +37,8 @@ static VCCoreData * sharedInstance;
 // If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
 + (NSManagedObjectContext *)managedObjectContext
 {
+    return [self instance].managedObjectStore.persistentStoreManagedObjectContext;
+    /*
     if ([self instance].managedObjectContext != nil) {
         return [self instance].managedObjectContext;
     }
@@ -47,6 +49,7 @@ static VCCoreData * sharedInstance;
         [[self instance].managedObjectContext setPersistentStoreCoordinator:coordinator];
     }
     return [self instance].managedObjectContext;
+     */
 }
 
 // Returns the managed object model for the application.
@@ -84,6 +87,7 @@ static VCCoreData * sharedInstance;
     }
     [self instance].managedObjectStore = [[RKManagedObjectStore alloc] initWithPersistentStoreCoordinator:[self persistentStoreCoordinator]];
     [[self instance].managedObjectStore createManagedObjectContexts];
+    
     return [self instance].managedObjectStore;
 }
 

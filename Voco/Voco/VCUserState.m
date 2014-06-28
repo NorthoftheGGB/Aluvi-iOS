@@ -12,6 +12,7 @@
 #import "VCDevicesApi.h"
 #import "VCLoginResponse.h"
 #import "VCUserStateResponse.h"
+#import "VCInterfaceModes.h"
 
 #define kRideProcessStateKey @"kRideProcessStateKey"
 #define kDriveProcessStateKey @"kDriveProcessStateKey"
@@ -111,6 +112,7 @@ static VCUserState *sharedSingleton;
     [VCDevicesApi updateUserWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [self clearUserState];
         [VCCoreData clearUserData];
+        [VCInterfaceModes showRiderSigninInterface];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [WRUtilities criticalError:error];
     }];
@@ -141,5 +143,14 @@ static VCUserState *sharedSingleton;
     self.riderState = nil;
     self.driverState = nil;
 }
+
+- (BOOL) isLoggedIn {
+    if(self.riderState != nil || self.driverState != nil ){
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
 
 @end

@@ -10,6 +10,7 @@
 #import "NSDate+Pretty.h"
 
 static UIAlertView * criticalErrorView = nil;
+static UIAlertView * networkUnavailableErrorView = nil;
 
 @interface WRUtilities () <UIAlertViewDelegate>
 
@@ -99,17 +100,18 @@ static UIAlertView * criticalErrorView = nil;
     [alert show];
 }
 
-+ (BOOL) NSStringIsValidEmail:(NSString *)checkString
-{
-    BOOL stricterFilter = YES; // Discussion http://blog.logichigh.com/2010/09/02/validating-an-e-mail-address/
-    NSString *stricterFilterString = @"[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}";
-    NSString *laxString = @".+@([A-Za-z0-9]+\\.)+[A-Za-z]{2}[A-Za-z]*";
-    NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
-    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
-    return [emailTest evaluateWithObject:checkString];
-}
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     criticalErrorView = nil;
 }
+
++ (void)showNetworkUnavailableMessage {
+    if(networkUnavailableErrorView == nil) {
+        networkUnavailableErrorView = [UIAlertView showWithTitle:@"Network Unavailable" message:@"This application requires internet connectivity" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            networkUnavailableErrorView = nil;
+        }];
+    }
+}
+
+
 @end

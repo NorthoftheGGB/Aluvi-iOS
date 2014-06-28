@@ -14,6 +14,7 @@
 #import "VCApi.h"
 #import "VCDriverViewController.h"
 #import "VCRiderRidesViewController.h"
+#import "VCUserState.h"
 
 #define kInterfaceModeKey @"INTERFACE_MODE_KEY"
 
@@ -82,15 +83,17 @@ static int mode;
 }
 
 + (void) showDriverInterface {
-    VCDriverViewController * driverViewController = [[VCDriverViewController alloc] init];
     
     if(deckController == nil){
         [self createDeckViewController];
     }
     
-    deckController.centerController = driverViewController;
-    [self setMode: kDriverMode];
-
+    if([[VCUserState instance].driverState isEqualToString:kDriverStateActive]
+       || [[VCUserState instance].driverState isEqualToString:kDriverStateOnDuty] ) {
+           VCDriverViewController * driverViewController = [[VCDriverViewController alloc] init];
+           deckController.centerController = driverViewController;
+           [self setMode: kDriverMode];
+    }
 }
 
 + (void) setMode: (int) newMode {
