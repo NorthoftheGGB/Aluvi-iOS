@@ -13,7 +13,10 @@
 #import "WRUtilities.h"
 #import "VCRiderHomeViewController.h"
 #import "VCInterfaceModes.h"
+#import "VCEmailTextField.h"
 #import <MBProgressHUD.h>
+#import "US2ConditionCollection.h"
+#import "US2Condition.h"
 
 #define kFirstNameFieldTag 1
 #define kLastNameFieldTag 2
@@ -28,7 +31,7 @@
 @property (weak, nonatomic) IBOutlet VCTextField *lastNameField;
 @property (weak, nonatomic) IBOutlet VCTextField *phoneField;
 @property (weak, nonatomic) IBOutlet VCTextField *passwordField;
-@property (weak, nonatomic) IBOutlet VCTextField *emailField;
+@property (weak, nonatomic) IBOutlet VCEmailTextField *emailField;
 @property (weak, nonatomic) IBOutlet VCTextField *referralCodeField;
 @property (strong, nonatomic) MBProgressHUD *hud;
 
@@ -75,9 +78,7 @@
 
 - (IBAction)editDidBegin:(id)sender {
     UITextField * textField = (UITextField *) sender;
-    if([textField.text length] > 0){
-        textField.backgroundColor = [UIColor whiteColor];
-    }
+    textField.backgroundColor = [UIColor whiteColor];
 }
 
 - (IBAction)didEndOnExit:(id)sender {
@@ -86,6 +87,7 @@
     if([textField.text length] > 0){
         textField.backgroundColor = [UIColor whiteColor];
     }
+    
     
     switch(textField.tag){
         case kFirstNameFieldTag:
@@ -101,9 +103,7 @@
             [_emailField becomeFirstResponder];
             break;
         case kEmailFieldTag:
-            if(!_emailField.isValid){
-                _emailField.backgroundColor = [UIColor redColor];
-            } else {
+            if([_emailField validate]){
                 [_referralCodeField becomeFirstResponder];
             }
             break;
@@ -112,6 +112,8 @@
             break;
     }
 }
+
+
 
 - (void) signUp {
     
@@ -148,6 +150,10 @@
      return;
      }
      */
+    
+    if(![_emailField validate]){
+        return;
+    }
     
     
     

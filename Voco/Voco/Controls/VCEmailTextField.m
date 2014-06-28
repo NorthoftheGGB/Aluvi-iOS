@@ -12,13 +12,14 @@
 
 @implementation VCEmailTextField
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithFrame:frame];
+    self = [super initWithCoder:aDecoder];
     if (self) {
         
-        US2ConditionEmail *emailCondition = [[US2ConditionEmail alloc] init];
+        self.fieldName = @"Email";
         
+        US2ConditionEmail *emailCondition = [[US2ConditionEmail alloc] init];
         US2Validator *validator = [[US2Validator alloc] init];
         [validator addCondition:emailCondition];
         self.validator = validator;

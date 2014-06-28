@@ -11,9 +11,9 @@
 @implementation VCTextField
 @synthesize fontSize;
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithFrame:frame];
+    self = [super initWithCoder:aDecoder];
     if (self) {
         fontSize = [NSNumber numberWithInt:13];
     }

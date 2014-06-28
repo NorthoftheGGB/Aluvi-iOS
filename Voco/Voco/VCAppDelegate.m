@@ -130,11 +130,5 @@
     
 }
 
-/*
-+ (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))handler {
-    // app is in background
-    [VCPushManager application:application didReceiveRemoteNotification:userInfo fetchCompletionHandler:handler];
-}
-*/
 
 @end
