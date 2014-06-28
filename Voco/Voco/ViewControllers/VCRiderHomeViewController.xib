@@ -10,6 +10,7 @@
                 <outlet property="cancelRideButton" destination="ViH-R7-hkr" id="Z5O-1c-wN6"/>
                 <outlet property="carTypeLabel" destination="QDG-ga-bae" id="bhS-fg-u49"/>
                 <outlet property="commuteButton" destination="er7-jE-Wpi" id="kdU-sQ-p8R"/>
+                <outlet property="currentAddressLabel" destination="Sme-XE-lJh" id="5JT-09-Xgf"/>
                 <outlet property="currentFareLabel" destination="qJX-e7-JNt" id="boX-Tk-JZ6"/>
                 <outlet property="departureEntryView" destination="kkl-v7-H5h" id="8Vg-1p-STe"/>
                 <outlet property="destinationEntryView" destination="RCN-Xj-T7f" id="OFZ-aH-3xs"/>
@@ -19,9 +20,11 @@
                 <outlet property="licensePlateImageView" destination="hpo-vb-UfW" id="3hd-fI-okn"/>
                 <outlet property="locationConfirmationAnnotation" destination="Zfe-VM-bsO" id="KNz-6d-aE8"/>
                 <outlet property="locationConfirmationButtonLabel" destination="sf3-yf-yAH" id="jfT-AI-UyL"/>
+                <outlet property="locationHud" destination="7MI-Vw-p2G" id="cr1-ZQ-f4g"/>
                 <outlet property="mapCenterPin" destination="3G5-uk-oef" id="ccp-fU-RZv"/>
                 <outlet property="morningOrEveningButton" destination="0Hd-Eq-Pb2" id="UMq-SZ-71A"/>
                 <outlet property="onDemandButton" destination="Chj-Ab-zHy" id="bIZ-g6-hCC"/>
+                <outlet property="pickupLocationLabel" destination="zIe-r7-HcG" id="iek-RF-Qc4"/>
                 <outlet property="rideDetailsDrawer" destination="pRU-Fl-aaR" id="Je8-AL-Xpt"/>
                 <outlet property="scheduleRideButton" destination="4Dx-kF-WgJ" id="qLy-B0-BkE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -335,6 +338,62 @@
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <view contentMode="scaleToFill" id="7MI-Vw-p2G" userLabel="Location HUD">
+            <rect key="frame" x="0.0" y="0.0" width="307" height="42"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RT6-2m-A9U">
+                    <rect key="frame" x="274" y="6" width="30" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="A">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapCurrentLocationButton:" destination="-1" eventType="touchUpInside" id="sHs-xj-fgh"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HdU-OB-rPv">
+                    <rect key="frame" x="3" y="6" width="30" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="O">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapSearchButton:" destination="-1" eventType="touchUpInside" id="YQU-qf-lbo"/>
+                    </connections>
+                </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="123 Address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sme-XE-lJh" customClass="VCLabel">
+                    <rect key="frame" x="38" y="19" width="231" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fonSize">
+                            <integer key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pickup Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIe-r7-HcG" customClass="VCLabel">
+                    <rect key="frame" x="99" y="0.0" width="108" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="14"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.87843143940000001" green="0.094117656349999995" blue="0.09803922474" alpha="1" colorSpace="deviceRGB"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>

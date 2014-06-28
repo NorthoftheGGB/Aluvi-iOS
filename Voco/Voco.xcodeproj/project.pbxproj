@@ -53,6 +53,8 @@
 		4FFBA44E195E7BC600A51B84 /* VCEmailTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFBA44D195E7BC600A51B84 /* VCEmailTextField.m */; };
 		4FFBA44F195E7BCD00A51B84 /* VCPasswordTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFBA440195E608600A51B84 /* VCPasswordTextField.m */; };
 		4FFBA450195E7BCF00A51B84 /* VCEmailTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFBA44D195E7BC600A51B84 /* VCEmailTextField.m */; };
+		4FFBA453195E976800A51B84 /* VCPhoneNumberTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFBA452195E976800A51B84 /* VCPhoneNumberTextField.m */; };
+		4FFBA454195E976B00A51B84 /* VCPhoneNumberTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFBA452195E976800A51B84 /* VCPhoneNumberTextField.m */; };
 		CC26291E90FA484191AB6374 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 351E93948BFC43989C411DB5 /* libPods.a */; };
 		F4354D5E195D0D6A00C06CF7 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE519492C2A00D8C900 /* IIWrapController.m */; };
 		F4354D5F195D0D6A00C06CF7 /* VCDriverRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F02D1952DA8F00D8C900 /* VCDriverRegistration.m */; };
@@ -307,6 +309,8 @@
 		4FFBA440195E608600A51B84 /* VCPasswordTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCPasswordTextField.m; path = Controls/VCPasswordTextField.m; sourceTree = "<group>"; };
 		4FFBA44C195E7BC600A51B84 /* VCEmailTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCEmailTextField.h; path = Controls/VCEmailTextField.h; sourceTree = "<group>"; };
 		4FFBA44D195E7BC600A51B84 /* VCEmailTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCEmailTextField.m; path = Controls/VCEmailTextField.m; sourceTree = "<group>"; };
+		4FFBA451195E976800A51B84 /* VCPhoneNumberTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCPhoneNumberTextField.h; path = Controls/VCPhoneNumberTextField.h; sourceTree = "<group>"; };
+		4FFBA452195E976800A51B84 /* VCPhoneNumberTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCPhoneNumberTextField.m; path = Controls/VCPhoneNumberTextField.m; sourceTree = "<group>"; };
 		CD677E046A804589A26C0608 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		F4354DCF195D0D6A00C06CF7 /* Voco Testing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Voco Testing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4354DD0195D0D6A00C06CF7 /* Voco Testing-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Voco Testing-Info.plist"; path = "/Users/deepwinter1/software-development/Clients/Will OBrien/voco-ios/Voco/Voco Testing-Info.plist"; sourceTree = "<absolute>"; };
@@ -598,6 +602,8 @@
 				4FFBA44D195E7BC600A51B84 /* VCEmailTextField.m */,
 				F4F157A0195E8DB1009A33C8 /* VCBaseValidatorTextField.h */,
 				F4F157A1195E8DB1009A33C8 /* VCBaseValidatorTextField.m */,
+				4FFBA451195E976800A51B84 /* VCPhoneNumberTextField.h */,
+				4FFBA452195E976800A51B84 /* VCPhoneNumberTextField.m */,
 			);
 			name = Validation;
 			sourceTree = "<group>";
@@ -1358,6 +1364,7 @@
 				F4354D81195D0D6A00C06CF7 /* VCLabel.m in Sources */,
 				F4354D82195D0D6A00C06CF7 /* VCMenuViewController.m in Sources */,
 				4FFBA450195E7BCF00A51B84 /* VCEmailTextField.m in Sources */,
+				4FFBA454195E976B00A51B84 /* VCPhoneNumberTextField.m in Sources */,
 				F4354D83195D0D6A00C06CF7 /* VCDriverVideoTutorialController.m in Sources */,
 				F4354D84195D0D6A00C06CF7 /* VCRideDriverAssignment.m in Sources */,
 				F4354D85195D0D6A00C06CF7 /* VCPasswordRecoveryViewController.m in Sources */,
@@ -1422,6 +1429,7 @@
 				F45F7BFC19357B8A00A94721 /* VCRideRequest.m in Sources */,
 				F4FE1AF81937DD5600354886 /* VCPushManager.m in Sources */,
 				F473F0321952F68D00D8C900 /* VCDriverStateResponse.m in Sources */,
+				4FFBA453195E976800A51B84 /* VCPhoneNumberTextField.m in Sources */,
 				F4FE1AFB1937DD6600354886 /* VCGeolocation.m in Sources */,
 				4FE641BF194157C60059BED1 /* VCDriverRequestViewController.m in Sources */,
 				F4FE1B18193D2F3F00354886 /* Offer.m in Sources */,
