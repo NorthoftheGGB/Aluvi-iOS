@@ -344,7 +344,7 @@
             <rect key="frame" x="0.0" y="0.0" width="307" height="42"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RT6-2m-A9U">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RT6-2m-A9U">
                     <rect key="frame" x="274" y="6" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -356,10 +356,13 @@
                         <action selector="didTapCurrentLocationButton:" destination="-1" eventType="touchUpInside" id="sHs-xj-fgh"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HdU-OB-rPv">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HdU-OB-rPv">
                     <rect key="frame" x="3" y="6" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="VTa-80-Xid"/>
+                    </constraints>
                     <state key="normal" title="O">
                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -368,7 +371,7 @@
                         <action selector="didTapSearchButton:" destination="-1" eventType="touchUpInside" id="YQU-qf-lbo"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="123 Address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sme-XE-lJh" customClass="VCLabel">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123 Address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sme-XE-lJh" customClass="VCLabel">
                     <rect key="frame" x="38" y="19" width="231" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -380,7 +383,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pickup Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIe-r7-HcG" customClass="VCLabel">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIe-r7-HcG" customClass="VCLabel">
                     <rect key="frame" x="99" y="0.0" width="108" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -394,6 +397,19 @@
                 </label>
             </subviews>
             <color key="backgroundColor" red="0.87843143940000001" green="0.094117656349999995" blue="0.09803922474" alpha="1" colorSpace="deviceRGB"/>
+            <constraints>
+                <constraint firstItem="zIe-r7-HcG" firstAttribute="centerX" secondItem="Sme-XE-lJh" secondAttribute="centerX" id="6rH-FY-wjq"/>
+                <constraint firstItem="HdU-OB-rPv" firstAttribute="leading" secondItem="7MI-Vw-p2G" secondAttribute="leading" constant="3" id="8h3-bS-pbV"/>
+                <constraint firstItem="zIe-r7-HcG" firstAttribute="centerX" secondItem="7MI-Vw-p2G" secondAttribute="centerX" id="AVC-jS-txA"/>
+                <constraint firstItem="RT6-2m-A9U" firstAttribute="leading" secondItem="Sme-XE-lJh" secondAttribute="trailing" constant="5" id="Afj-xG-SZS"/>
+                <constraint firstAttribute="bottom" secondItem="zIe-r7-HcG" secondAttribute="bottom" constant="21" id="Fdn-s8-Nom"/>
+                <constraint firstItem="zIe-r7-HcG" firstAttribute="leading" secondItem="HdU-OB-rPv" secondAttribute="trailing" constant="66" id="HCe-pH-XvM"/>
+                <constraint firstItem="RT6-2m-A9U" firstAttribute="baseline" secondItem="HdU-OB-rPv" secondAttribute="baseline" id="N8w-lT-npE"/>
+                <constraint firstItem="RT6-2m-A9U" firstAttribute="centerY" secondItem="7MI-Vw-p2G" secondAttribute="centerY" id="XZ0-BJ-9sa"/>
+                <constraint firstItem="Sme-XE-lJh" firstAttribute="leading" secondItem="HdU-OB-rPv" secondAttribute="trailing" constant="5" id="efb-MU-jZf"/>
+                <constraint firstItem="Sme-XE-lJh" firstAttribute="top" secondItem="7MI-Vw-p2G" secondAttribute="top" constant="19" id="mEi-1w-X4A"/>
+                <constraint firstItem="zIe-r7-HcG" firstAttribute="top" secondItem="7MI-Vw-p2G" secondAttribute="top" id="pad-O7-a4M"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
