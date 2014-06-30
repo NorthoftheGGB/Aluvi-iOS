@@ -11,6 +11,10 @@
 		4F2EF99C1960D280006A1962 /* VCDriverHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2EF9991960D280006A1962 /* VCDriverHomeViewController.m */; };
 		4F2EF99D1960D280006A1962 /* VCDriverHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF99A1960D280006A1962 /* VCDriverHomeViewController.xib */; };
 		4F2EF99E1960D280006A1962 /* VCDriverHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF99A1960D280006A1962 /* VCDriverHomeViewController.xib */; };
+		4F2EF9A21960EC8C006A1962 /* profile-menu-button-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9A01960EC8C006A1962 /* profile-menu-button-select@2x.png */; };
+		4F2EF9A31960EC8C006A1962 /* profile-menu-button-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9A01960EC8C006A1962 /* profile-menu-button-select@2x.png */; };
+		4F2EF9A41960EC8C006A1962 /* profile-menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9A11960EC8C006A1962 /* profile-menu-button@2x.png */; };
+		4F2EF9A51960EC8C006A1962 /* profile-menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9A11960EC8C006A1962 /* profile-menu-button@2x.png */; };
 		4F37E2DD1949574000753172 /* KlinicSlabLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F37E2D91949574000753172 /* KlinicSlabLight.ttf */; };
 		4F37E2DE1949574000753172 /* KlinicSlabLightIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F37E2DA1949574000753172 /* KlinicSlabLightIt.ttf */; };
 		4F37E2DF1949574000753172 /* KlinicSlabMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F37E2DB1949574000753172 /* KlinicSlabMedium.ttf */; };
@@ -264,6 +268,8 @@
 		4F2EF9981960D280006A1962 /* VCDriverHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCDriverHomeViewController.h; sourceTree = "<group>"; };
 		4F2EF9991960D280006A1962 /* VCDriverHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCDriverHomeViewController.m; sourceTree = "<group>"; };
 		4F2EF99A1960D280006A1962 /* VCDriverHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCDriverHomeViewController.xib; sourceTree = "<group>"; };
+		4F2EF9A01960EC8C006A1962 /* profile-menu-button-select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-menu-button-select@2x.png"; sourceTree = "<group>"; };
+		4F2EF9A11960EC8C006A1962 /* profile-menu-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-menu-button@2x.png"; sourceTree = "<group>"; };
 		4F37E2D91949574000753172 /* KlinicSlabLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KlinicSlabLight.ttf; path = Voco/Fonts/KlinicSlabLight.ttf; sourceTree = SOURCE_ROOT; };
 		4F37E2DA1949574000753172 /* KlinicSlabLightIt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KlinicSlabLightIt.ttf; path = Voco/Fonts/KlinicSlabLightIt.ttf; sourceTree = SOURCE_ROOT; };
 		4F37E2DB1949574000753172 /* KlinicSlabMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KlinicSlabMedium.ttf; path = Voco/Fonts/KlinicSlabMedium.ttf; sourceTree = SOURCE_ROOT; };
@@ -532,6 +538,15 @@
 			name = "Drive System";
 			sourceTree = "<group>";
 		};
+		4F2EF99F1960EC62006A1962 /* Rider Menu Assets */ = {
+			isa = PBXGroup;
+			children = (
+				4F2EF9A01960EC8C006A1962 /* profile-menu-button-select@2x.png */,
+				4F2EF9A11960EC8C006A1962 /* profile-menu-button@2x.png */,
+			);
+			name = "Rider Menu Assets";
+			sourceTree = "<group>";
+		};
 		4FE629C3194FAC4E0070F797 /* Sign-in and Registration */ = {
 			isa = PBXGroup;
 			children = (
@@ -587,6 +602,7 @@
 		4FE641E1194168E80059BED1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				4F2EF99F1960EC62006A1962 /* Rider Menu Assets */,
 				4FF142D5195CE4BD00CC61B6 /* driver-request-form@2x.png */,
 				4F9909C4195CCE6500E83164 /* log-in-box@2x.png */,
 				F473F017195044AA00D8C900 /* menu-list.png */,
@@ -1167,6 +1183,7 @@
 				F4354DAF195D0D6A00C06CF7 /* menu-list@2x.png in Resources */,
 				F4354DB0195D0D6A00C06CF7 /* VOCOfinal@2x.png in Resources */,
 				F4354DB1195D0D6A00C06CF7 /* driver_must_box@2x.png in Resources */,
+				4F2EF9A31960EC8C006A1962 /* profile-menu-button-select@2x.png in Resources */,
 				F4354DB2195D0D6A00C06CF7 /* signupBox@2x.png in Resources */,
 				F4354DB3195D0D6A00C06CF7 /* bubble@2x.png in Resources */,
 				F4354DB4195D0D6A00C06CF7 /* VCDriverRequestViewController.xib in Resources */,
@@ -1186,6 +1203,7 @@
 				4FF142DD195D128700CC61B6 /* VCRiderViewController.xib in Resources */,
 				F4354DC3195D0D6A00C06CF7 /* signUp_btn@2x.png in Resources */,
 				F4354DC4195D0D6A00C06CF7 /* VCSignUpViewController.xib in Resources */,
+				4F2EF9A51960EC8C006A1962 /* profile-menu-button@2x.png in Resources */,
 				F4354DC5195D0D6A00C06CF7 /* voco_logo@2x.png in Resources */,
 				F4354DC6195D0D6A00C06CF7 /* commute_logo@2x.png in Resources */,
 				F4354DC7195D0D6A00C06CF7 /* Images.xcassets in Resources */,
@@ -1225,6 +1243,7 @@
 				4FB2682B1952207A0028D4ED /* VCDriverVideoTutorialController.xib in Resources */,
 				4FE641F6194168E80059BED1 /* red_box@2x.png in Resources */,
 				F4FA0BF4192BF6BF005D8645 /* InfoPlist.strings in Resources */,
+				4F2EF9A21960EC8C006A1962 /* profile-menu-button-select@2x.png in Resources */,
 				4FE641F8194168E80059BED1 /* signUp_btn@2x.png in Resources */,
 				4FE641CA1941584D0059BED1 /* VCSignUpViewController.xib in Resources */,
 				4FE641FA194168E80059BED1 /* voco_logo@2x.png in Resources */,
@@ -1234,6 +1253,7 @@
 				F473EFEF1949304300D8C900 /* VCMenuViewController.xib in Resources */,
 				4F9909C5195CCE6500E83164 /* log-in-box@2x.png in Resources */,
 				4FE641F3194168E80059BED1 /* login_btn@2x.png in Resources */,
+				4F2EF9A41960EC8C006A1962 /* profile-menu-button@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
