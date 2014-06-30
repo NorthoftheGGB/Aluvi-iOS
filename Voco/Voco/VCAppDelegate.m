@@ -88,10 +88,8 @@
         [[VCUserState instance] synchronizeUserState];
     
         [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            //
             NSLog(@"%@", @"Refreshed Scheduled Rides");
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            [WRUtilities criticalError:error];
         }];
     }
 }
