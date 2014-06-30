@@ -655,7 +655,30 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aoP-If-5VE">
                     <rect key="frame" x="160" y="240" width="160" height="120"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i1F-Dt-ZnN">
+                            <rect key="frame" x="18" y="17" width="124" height="86"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="124" id="1Fz-5C-g6Z"/>
+                                <constraint firstAttribute="width" constant="124" id="CAF-x6-27b"/>
+                                <constraint firstAttribute="height" constant="86" id="lBQ-jp-Dxp"/>
+                            </constraints>
+                            <state key="normal" title="T and C">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="didTapTermsAndConditions:" destination="-1" eventType="touchUpInside" id="CTE-gV-o2q"/>
+                            </connections>
+                        </button>
+                    </subviews>
                     <color key="backgroundColor" red="1" green="0.2914665937" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="centerY" secondItem="i1F-Dt-ZnN" secondAttribute="centerY" id="V7d-Lz-tJN"/>
+                        <constraint firstAttribute="centerX" secondItem="i1F-Dt-ZnN" secondAttribute="centerX" id="YmL-gK-JvC"/>
+                    </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kj2-kk-OfN">
                     <rect key="frame" x="0.0" y="120" width="160" height="120"/>
@@ -716,22 +739,114 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qSF-Gs-nT4">
                     <rect key="frame" x="160" y="120" width="160" height="120"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWh-A5-JTb">
+                            <rect key="frame" x="18" y="17" width="124" height="86"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="124" id="7pd-pv-8fj"/>
+                                <constraint firstAttribute="height" constant="86" id="XNp-FQ-Egl"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="124" id="w6C-rr-YJK"/>
+                            </constraints>
+                            <state key="normal" title="Commuter Pass">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="didTapCummuterPass:" destination="-1" eventType="touchUpInside" id="jaE-qX-L2Q"/>
+                            </connections>
+                        </button>
+                    </subviews>
                     <color key="backgroundColor" red="0.54901963470000004" green="0.69019609689999994" blue="0.26274511220000002" alpha="1" colorSpace="deviceRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="centerY" secondItem="KWh-A5-JTb" secondAttribute="centerY" id="U0E-zF-DHT"/>
+                        <constraint firstAttribute="centerX" secondItem="KWh-A5-JTb" secondAttribute="centerX" id="yps-Dq-mUC"/>
+                    </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZsT-TA-eFj">
                     <rect key="frame" x="0.0" y="240" width="160" height="120"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iqq-4r-Zmm">
+                            <rect key="frame" x="18" y="17" width="124" height="86"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="124" id="FJ6-sf-qfv"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="124" id="JHP-xK-zIP"/>
+                                <constraint firstAttribute="height" constant="86" id="nIZ-a4-oy5"/>
+                            </constraints>
+                            <state key="normal" title="About Us">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="didTapAboutUs:" destination="-1" eventType="touchUpInside" id="NNJ-oW-3hf"/>
+                            </connections>
+                        </button>
+                    </subviews>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="centerX" secondItem="iqq-4r-Zmm" secondAttribute="centerX" id="6ub-KS-amv"/>
+                        <constraint firstAttribute="centerY" secondItem="iqq-4r-Zmm" secondAttribute="centerY" id="zvT-3O-zzz"/>
+                    </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s0F-qQ-phN">
                     <rect key="frame" x="0.0" y="360" width="160" height="120"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n8R-ML-xXa">
+                            <rect key="frame" x="18" y="17" width="124" height="86"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="86" id="MO6-BF-OZL"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="124" id="dyU-K6-qdX"/>
+                                <constraint firstAttribute="width" constant="124" id="qV1-iV-PGN"/>
+                            </constraints>
+                            <state key="normal" title="Support">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="didTapSupport:" destination="-1" eventType="touchUpInside" id="GuU-do-Lq4"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="centerY" secondItem="n8R-ML-xXa" secondAttribute="centerY" id="TTi-g2-Qnw"/>
+                        <constraint firstAttribute="centerX" secondItem="n8R-ML-xXa" secondAttribute="centerX" id="UdS-Ya-Fqd"/>
+                    </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JGa-HF-v5r">
                     <rect key="frame" x="160" y="360" width="160" height="120"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2bP-W6-kVu">
+                            <rect key="frame" x="18" y="17" width="124" height="86"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="124" id="Dwr-l6-fLx"/>
+                                <constraint firstAttribute="height" constant="86" id="Lbx-qT-Cn0"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="124" id="pqN-pm-Wmo"/>
+                            </constraints>
+                            <state key="normal" title="Tutorial">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="didTapTutorial:" destination="-1" eventType="touchUpInside" id="DtY-Py-YAe"/>
+                            </connections>
+                        </button>
+                    </subviews>
                     <color key="backgroundColor" red="1" green="0.73400433389999997" blue="0.62451528280000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="centerX" secondItem="2bP-W6-kVu" secondAttribute="centerX" id="AkN-Rq-yeE"/>
+                        <constraint firstAttribute="centerY" secondItem="2bP-W6-kVu" secondAttribute="centerY" id="XmU-HW-71P"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
