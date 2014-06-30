@@ -15,7 +15,7 @@
                 <outlet property="requestApproved" destination="aX1-t4-ey6" id="GK8-tG-oeB"/>
                 <outlet property="requestDenied" destination="w6Z-Xx-rI4" id="Eop-BY-7HD"/>
                 <outlet property="requestPending" destination="Wj6-cH-AOg" id="agY-6R-KnE"/>
-                <outlet property="riderMenu" destination="i5M-Pr-FkT" id="s4E-6b-dTz"/>
+                <outlet property="riderMenu" destination="rc2-SZ-ssZ" id="N9a-oS-XTz"/>
                 <outlet property="view" destination="gkU-8M-Zby" id="9z3-r7-Fjd"/>
             </connections>
         </placeholder>
@@ -43,7 +43,7 @@
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dte-E5-7Kz">
                     <rect key="frame" x="0.0" y="101" width="320" height="379"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.90588235289999997" green="0.52156862749999999" blue="0.1529411765" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -216,7 +216,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="379"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OUM-Fb-NDf">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OUM-Fb-NDf">
                     <rect key="frame" x="22" y="40" width="124" height="78"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -247,7 +247,7 @@
                         <action selector="didTapPaymentInfo:" destination="-1" eventType="touchUpInside" id="5cJ-AO-2wr"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPb-d0-6Ef">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPb-d0-6Ef">
                     <rect key="frame" x="22" y="126" width="124" height="78"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -263,7 +263,7 @@
                         <action selector="didTapScheduledRides:" destination="-1" eventType="touchUpInside" id="lvH-dC-h4c"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWa-Pi-oz9">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWa-Pi-oz9">
                     <rect key="frame" x="22" y="212" width="124" height="78"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -279,7 +279,7 @@
                         <action selector="didTapDriverAboutUs:" destination="-1" eventType="touchUpInside" id="2Sf-mh-tbw"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kO9-7a-QNA">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kO9-7a-QNA">
                     <rect key="frame" x="22" y="298" width="124" height="78"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -295,7 +295,7 @@
                         <action selector="didTapSupport:" destination="-1" eventType="touchUpInside" id="T8E-I3-eOy"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Pq-OB-q6o">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Pq-OB-q6o">
                     <rect key="frame" x="174" y="298" width="124" height="78"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -311,7 +311,7 @@
                         <action selector="didTapTutorial:" destination="-1" eventType="touchUpInside" id="feq-ob-mwC"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWE-X0-aVi">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWE-X0-aVi">
                     <rect key="frame" x="174" y="126" width="124" height="78"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -327,7 +327,7 @@
                         <action selector="didTapDriverMyCar:" destination="-1" eventType="touchUpInside" id="lqQ-kG-9lK"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZU-G2-ch2">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mZU-G2-ch2">
                     <rect key="frame" x="174" y="212" width="124" height="78"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -619,6 +619,92 @@
                 <constraint firstItem="7Y0-Uq-222" firstAttribute="leading" secondItem="uec-hl-wtV" secondAttribute="leading" constant="69" id="ZTc-aO-v9Z"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <view contentMode="scaleToFill" id="rc2-SZ-ssZ">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cud-le-Aa8">
+                    <rect key="frame" x="0.0" y="0.0" width="160" height="120"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" red="1" green="0.2914665937" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aoP-If-5VE">
+                    <rect key="frame" x="160" y="240" width="160" height="120"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" red="1" green="0.2914665937" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kj2-kk-OfN">
+                    <rect key="frame" x="0.0" y="120" width="160" height="120"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" red="0.30291971559999997" green="0.68978101020000004" blue="0.54379564520000001" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Imk-tg-CIX">
+                    <rect key="frame" x="160" y="0.0" width="160" height="120"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" red="0.74117648599999997" green="0.082352943720000002" blue="0.31372550129999999" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qSF-Gs-nT4">
+                    <rect key="frame" x="160" y="120" width="160" height="120"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" red="0.54901963470000004" green="0.69019609689999994" blue="0.26274511220000002" alpha="1" colorSpace="deviceRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZsT-TA-eFj">
+                    <rect key="frame" x="0.0" y="240" width="160" height="120"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s0F-qQ-phN">
+                    <rect key="frame" x="0.0" y="360" width="160" height="120"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JGa-HF-v5r">
+                    <rect key="frame" x="160" y="360" width="160" height="120"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" red="1" green="0.73400433389999997" blue="0.62451528280000002" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="JGa-HF-v5r" secondAttribute="trailing" id="02V-HH-YJZ"/>
+                <constraint firstItem="Kj2-kk-OfN" firstAttribute="height" secondItem="cud-le-Aa8" secondAttribute="height" id="0pU-sT-2lZ"/>
+                <constraint firstItem="Imk-tg-CIX" firstAttribute="top" secondItem="rc2-SZ-ssZ" secondAttribute="top" id="1EG-0Z-9Uf"/>
+                <constraint firstItem="Imk-tg-CIX" firstAttribute="height" secondItem="cud-le-Aa8" secondAttribute="height" id="3zt-aK-EZU"/>
+                <constraint firstItem="aoP-If-5VE" firstAttribute="top" secondItem="qSF-Gs-nT4" secondAttribute="bottom" id="5al-dR-jNM"/>
+                <constraint firstItem="ZsT-TA-eFj" firstAttribute="top" secondItem="Kj2-kk-OfN" secondAttribute="bottom" id="8nN-OU-S6x"/>
+                <constraint firstItem="JGa-HF-v5r" firstAttribute="width" secondItem="cud-le-Aa8" secondAttribute="width" id="98D-jf-w4I"/>
+                <constraint firstItem="Kj2-kk-OfN" firstAttribute="leading" secondItem="rc2-SZ-ssZ" secondAttribute="leading" id="At0-Ps-SjI"/>
+                <constraint firstAttribute="bottom" secondItem="s0F-qQ-phN" secondAttribute="bottom" id="Cis-IM-qhr"/>
+                <constraint firstItem="ZsT-TA-eFj" firstAttribute="width" secondItem="cud-le-Aa8" secondAttribute="width" id="DKh-2H-QG6"/>
+                <constraint firstAttribute="trailing" secondItem="qSF-Gs-nT4" secondAttribute="trailing" id="FfW-Us-Wkh"/>
+                <constraint firstItem="JGa-HF-v5r" firstAttribute="top" secondItem="aoP-If-5VE" secondAttribute="bottom" id="I2V-jm-3zd"/>
+                <constraint firstItem="ZsT-TA-eFj" firstAttribute="height" secondItem="cud-le-Aa8" secondAttribute="height" id="IA9-Y0-Rq5"/>
+                <constraint firstItem="s0F-qQ-phN" firstAttribute="width" secondItem="cud-le-Aa8" secondAttribute="width" id="LG8-xB-2ri"/>
+                <constraint firstItem="qSF-Gs-nT4" firstAttribute="leading" secondItem="Kj2-kk-OfN" secondAttribute="trailing" id="LuK-bm-D85"/>
+                <constraint firstItem="Imk-tg-CIX" firstAttribute="width" secondItem="cud-le-Aa8" secondAttribute="width" id="NjW-UL-ilv"/>
+                <constraint firstItem="Imk-tg-CIX" firstAttribute="leading" secondItem="cud-le-Aa8" secondAttribute="trailing" id="Sm1-3V-3E5"/>
+                <constraint firstItem="aoP-If-5VE" firstAttribute="leading" secondItem="ZsT-TA-eFj" secondAttribute="trailing" id="W9s-Dx-OjP"/>
+                <constraint firstItem="Kj2-kk-OfN" firstAttribute="width" secondItem="cud-le-Aa8" secondAttribute="width" id="WAz-Qc-yrB"/>
+                <constraint firstItem="aoP-If-5VE" firstAttribute="width" secondItem="cud-le-Aa8" secondAttribute="width" id="XTV-SS-IFM"/>
+                <constraint firstItem="s0F-qQ-phN" firstAttribute="top" secondItem="ZsT-TA-eFj" secondAttribute="bottom" id="aHw-6X-qib"/>
+                <constraint firstItem="aoP-If-5VE" firstAttribute="height" secondItem="cud-le-Aa8" secondAttribute="height" id="aiu-my-600"/>
+                <constraint firstItem="cud-le-Aa8" firstAttribute="top" secondItem="rc2-SZ-ssZ" secondAttribute="top" id="eD8-Ma-tUf"/>
+                <constraint firstItem="qSF-Gs-nT4" firstAttribute="width" secondItem="cud-le-Aa8" secondAttribute="width" id="env-lW-70D"/>
+                <constraint firstAttribute="trailing" secondItem="Imk-tg-CIX" secondAttribute="trailing" id="gXa-AA-i2z"/>
+                <constraint firstItem="qSF-Gs-nT4" firstAttribute="height" secondItem="cud-le-Aa8" secondAttribute="height" id="hM9-2E-J5F"/>
+                <constraint firstItem="ZsT-TA-eFj" firstAttribute="leading" secondItem="rc2-SZ-ssZ" secondAttribute="leading" id="jB5-3N-Z3V"/>
+                <constraint firstItem="qSF-Gs-nT4" firstAttribute="top" secondItem="Imk-tg-CIX" secondAttribute="bottom" id="jj5-Vj-rRC"/>
+                <constraint firstAttribute="bottom" secondItem="JGa-HF-v5r" secondAttribute="bottom" id="kO3-Cg-oKr"/>
+                <constraint firstItem="cud-le-Aa8" firstAttribute="leading" secondItem="rc2-SZ-ssZ" secondAttribute="leading" id="myD-kC-HaZ"/>
+                <constraint firstItem="Kj2-kk-OfN" firstAttribute="top" secondItem="cud-le-Aa8" secondAttribute="bottom" id="ojS-Yb-VBh"/>
+                <constraint firstItem="JGa-HF-v5r" firstAttribute="height" secondItem="cud-le-Aa8" secondAttribute="height" id="qyo-UH-nY5"/>
+                <constraint firstAttribute="trailing" secondItem="aoP-If-5VE" secondAttribute="trailing" id="r1q-H7-gkp"/>
+                <constraint firstItem="s0F-qQ-phN" firstAttribute="height" secondItem="cud-le-Aa8" secondAttribute="height" id="s2P-gR-iuz"/>
+                <constraint firstItem="s0F-qQ-phN" firstAttribute="leading" secondItem="rc2-SZ-ssZ" secondAttribute="leading" id="tZC-oo-Pdz"/>
+                <constraint firstItem="JGa-HF-v5r" firstAttribute="leading" secondItem="s0F-qQ-phN" secondAttribute="trailing" id="vae-4E-gFZ"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
     <resources>

@@ -165,7 +165,10 @@ static void * XXContext = &XXContext;
 
 - (void) showRiderMenu {
     
-    _riderMenu.frame = _menuContainer.frame;
+    CGRect frame = _menuContainer.frame;
+    frame.origin.x = 0;
+    frame.origin.y = 0;
+    _riderMenu.frame = frame;
     [UIView transitionWithView:_menuContainer
                       duration:.45f
                        options:UIViewAnimationOptionTransitionCrossDissolve
