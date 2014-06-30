@@ -315,7 +315,6 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.98593795299530029" green="0.44947996105548232" blue="0.67937132222953667" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="centerX" secondItem="2DQ-o3-NGa" secondAttribute="centerX" id="FYV-IY-cBP"/>
                         <constraint firstAttribute="centerY" secondItem="2DQ-o3-NGa" secondAttribute="centerY" id="XYL-bG-ZSh"/>
@@ -343,7 +342,6 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.15617753977124593" green="0.98593795299530029" blue="0.2649257537959695" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="centerX" secondItem="Cxu-yM-e2v" secondAttribute="centerX" id="cOs-7k-zQx"/>
                         <constraint firstAttribute="centerY" secondItem="Cxu-yM-e2v" secondAttribute="centerY" id="sYD-fG-usn"/>
@@ -371,7 +369,6 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="centerX" secondItem="dpb-D6-DO4" secondAttribute="centerX" id="gdw-Pu-FAX"/>
                         <constraint firstAttribute="centerY" secondItem="dpb-D6-DO4" secondAttribute="centerY" id="yPf-a1-e7n"/>
@@ -399,7 +396,6 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.38845876850585942" green="0.98593795299530029" blue="0.67837536080100114" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="centerX" secondItem="Kyd-ab-cnO" secondAttribute="centerX" id="oTA-AM-Suy"/>
                         <constraint firstAttribute="centerY" secondItem="Kyd-ab-cnO" secondAttribute="centerY" id="pNG-cd-mih"/>
@@ -427,7 +423,6 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.59573132717578914" green="0.57582243617444506" blue="0.98593795299530029" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="centerY" secondItem="IzT-gS-cz9" secondAttribute="centerY" id="bCb-iR-ZCa"/>
                         <constraint firstItem="IzT-gS-cz9" firstAttribute="centerX" secondItem="1uc-bM-yae" secondAttribute="centerX" id="xtT-xW-gdg"/>
@@ -455,7 +450,6 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.98593795299530029" green="0.92901266479332034" blue="0.1168817913098867" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="centerY" secondItem="G77-VX-zuN" secondAttribute="centerY" id="SCM-xw-ZiX"/>
                         <constraint firstAttribute="centerX" secondItem="G77-VX-zuN" secondAttribute="centerX" id="qVR-ET-VxJ"/>
@@ -483,7 +477,6 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.91916454079999999" green="0.91916454079999999" blue="0.91916454079999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="centerX" secondItem="Ldu-Dd-Tvc" secondAttribute="centerX" id="9ik-nb-OQq"/>
                         <constraint firstAttribute="centerY" secondItem="Ldu-Dd-Tvc" secondAttribute="centerY" id="BXK-TD-l5C"/>
@@ -511,7 +504,6 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="1" green="0.0" blue="0.090196080509999998" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>
                         <constraint firstAttribute="centerX" secondItem="lJG-iV-QfJ" secondAttribute="centerX" id="v71-LQ-PAm"/>
                         <constraint firstAttribute="centerY" secondItem="lJG-iV-QfJ" secondAttribute="centerY" id="wxp-44-CWT"/>
