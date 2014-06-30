@@ -18,7 +18,7 @@
 #import "Car.h"
 #import "Driver.h"
 #import "DTLazyImageView.h"
-
+#import "VCLabel.h"
 #define kStepSetDepartureLocation 1
 #define kStepSetDestinationLocation 2
 
@@ -55,6 +55,15 @@
 // Data Entry
 @property (nonatomic) NSInteger step;
 @property (strong, nonatomic) NSDate * desiredArrivalDateTime;
+
+//Location HUD
+
+
+@property (strong, nonatomic) IBOutlet UIView *locationHud;
+@property (weak, nonatomic) IBOutlet VCLabel *currentAddressLabel;
+@property (weak, nonatomic) IBOutlet VCLabel *pickupLocationLabel;
+- (IBAction)didTapCurrentLocationButton:(id)sender;
+- (IBAction)didTapSearchButton:(id)sender;
 
 
 - (IBAction)didTapCallDriverButton:(id)sender;
@@ -567,6 +576,12 @@
     }
     
     return nil;
+}
+
+- (IBAction)didTapCurrentLocationButton:(id)sender {
+}
+
+- (IBAction)didTapSearchButton:(id)sender {
 }
 
 - (IBAction)didTapCallDriverButton:(id)sender {

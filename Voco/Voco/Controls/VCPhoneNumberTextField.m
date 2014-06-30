@@ -1,14 +1,14 @@
 //
-//  VCPasswordTextField.m
+//  VCPhoneNumberTextField.m
 //  Voco
 //
 //  Created by Elliott De Aratanha on 6/27/14.
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCPasswordTextField.h"
+#import "VCPhoneNumberTextField.h"
 
-@implementation VCPasswordTextField
+@implementation VCPhoneNumberTextField
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -18,8 +18,6 @@
     }
     return self;
 }
-
-
 
 /*
 // Only override drawRect: if you perform custom drawing.
