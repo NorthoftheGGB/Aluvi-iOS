@@ -628,8 +628,8 @@
                     <rect key="frame" x="0.0" y="0.0" width="160" height="120"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W8Z-f8-Q3V">
-                            <rect key="frame" x="18" y="17" width="124" height="86"/>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W8Z-f8-Q3V">
+                            <rect key="frame" x="18" y="17" width="158" height="84"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -684,8 +684,8 @@
                     <rect key="frame" x="0.0" y="120" width="160" height="120"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B19-L3-1pX">
-                            <rect key="frame" x="18" y="17" width="124" height="86"/>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B19-L3-1pX">
+                            <rect key="frame" x="-1" y="18" width="158" height="84"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -712,8 +712,8 @@
                     <rect key="frame" x="160" y="0.0" width="160" height="120"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5B-oz-ooJ">
-                            <rect key="frame" x="18" y="17" width="124" height="86"/>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5B-oz-ooJ">
+                            <rect key="frame" x="18" y="17" width="158" height="84"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -740,8 +740,8 @@
                     <rect key="frame" x="160" y="120" width="160" height="120"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWh-A5-JTb">
-                            <rect key="frame" x="18" y="17" width="124" height="86"/>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KWh-A5-JTb">
+                            <rect key="frame" x="18" y="17" width="158" height="84"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -769,13 +769,12 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iqq-4r-Zmm">
-                            <rect key="frame" x="18" y="17" width="124" height="86"/>
+                            <rect key="frame" x="1" y="18" width="158" height="84"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="124" id="FJ6-sf-qfv"/>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="124" id="JHP-xK-zIP"/>
-                                <constraint firstAttribute="height" constant="86" id="nIZ-a4-oy5"/>
+                                <constraint firstAttribute="width" constant="158" id="FJ6-sf-qfv"/>
+                                <constraint firstAttribute="height" constant="84" id="nIZ-a4-oy5"/>
                             </constraints>
                             <state key="normal" title="About Us">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -797,13 +796,12 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n8R-ML-xXa">
-                            <rect key="frame" x="18" y="17" width="124" height="86"/>
+                            <rect key="frame" x="1" y="18" width="158" height="84"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="86" id="MO6-BF-OZL"/>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="124" id="dyU-K6-qdX"/>
-                                <constraint firstAttribute="width" constant="124" id="qV1-iV-PGN"/>
+                                <constraint firstAttribute="height" constant="84" id="MO6-BF-OZL"/>
+                                <constraint firstAttribute="width" constant="158" id="qV1-iV-PGN"/>
                             </constraints>
                             <state key="normal" title="Support">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -824,14 +822,13 @@
                     <rect key="frame" x="160" y="360" width="160" height="120"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2bP-W6-kVu">
-                            <rect key="frame" x="18" y="17" width="124" height="86"/>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2bP-W6-kVu">
+                            <rect key="frame" x="1" y="18" width="158" height="84"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="124" id="Dwr-l6-fLx"/>
                                 <constraint firstAttribute="height" constant="86" id="Lbx-qT-Cn0"/>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="124" id="pqN-pm-Wmo"/>
                             </constraints>
                             <state key="normal" title="Tutorial">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
