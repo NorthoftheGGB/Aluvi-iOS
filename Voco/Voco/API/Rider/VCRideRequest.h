@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NSNumber * departureLongitude;
 @property (nonatomic, strong) NSNumber * destinationLatitude;
 @property (nonatomic, strong) NSNumber * destinationLongitude;
+@property (nonatomic, strong) NSDate * desiredArrival;
 
 + (void) createMappings: (RKObjectManager *) objectManager;
 + (VCRideRequest *) requestForRide:(Ride *)ride;

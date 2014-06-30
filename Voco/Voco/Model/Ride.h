@@ -54,6 +54,7 @@
 @property (nonatomic, retain) NSNumber * destinationLatitude;
 @property (nonatomic, retain) NSString * destinationPlaceName;
 @property (nonatomic, retain) NSNumber * request_id;
+@property (nonatomic, retain) NSDate * desiredArrival;
 
 
 @property (nonatomic, retain) Driver *driver;

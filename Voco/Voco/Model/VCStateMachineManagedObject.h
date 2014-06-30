@@ -12,8 +12,7 @@
 @interface VCStateMachineManagedObject : NSManagedObject
 
 @property (nonatomic, weak) NSString * forcedState;
-@property (nonatomic, strong) NSString * savedState;
-
+@property (nonatomic, retain) NSString * savedState;
 
 - (BOOL)canFireEvent:(id)eventOrEventName;
 - (BOOL)fireEvent:(id)eventOrEventName userInfo:(NSDictionary *)userInfo error:(NSError **)error;

@@ -424,6 +424,8 @@
 		F4D890551946A2D9007C4671 /* VCObjectRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCObjectRequestOperation.m; path = API/VCObjectRequestOperation.m; sourceTree = "<group>"; };
 		F4F157A0195E8DB1009A33C8 /* VCBaseValidatorTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCBaseValidatorTextField.h; path = Controls/VCBaseValidatorTextField.h; sourceTree = "<group>"; };
 		F4F157A1195E8DB1009A33C8 /* VCBaseValidatorTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCBaseValidatorTextField.m; path = Controls/VCBaseValidatorTextField.m; sourceTree = "<group>"; };
+		F4F157A4195E976C009A33C8 /* Voco 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 8.xcdatamodel"; sourceTree = "<group>"; };
+		F4F157A5195EA30A009A33C8 /* Voco 9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 9.xcdatamodel"; sourceTree = "<group>"; };
 		F4FA0BE4192BF6BF005D8645 /* Voco Development.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Voco Development.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FA0BE7192BF6BF005D8645 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F4FA0BE9192BF6BF005D8645 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1813,9 +1815,11 @@
 				F473F013194FB45400D8C900 /* Voco 4.xcdatamodel */,
 				F473F02119513B6300D8C900 /* Voco 5.xcdatamodel */,
 				F473F039195B93C700D8C900 /* Voco 6.xcdatamodel */,
+				F4F157A4195E976C009A33C8 /* Voco 8.xcdatamodel */,
+				F4F157A5195EA30A009A33C8 /* Voco 9.xcdatamodel */,
 				F4FA0BFC192BF6BF005D8645 /* Voco.xcdatamodel */,
 			);
-			currentVersion = F473F039195B93C700D8C900 /* Voco 6.xcdatamodel */;
+			currentVersion = F4F157A5195EA30A009A33C8 /* Voco 9.xcdatamodel */;
 			path = Voco.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

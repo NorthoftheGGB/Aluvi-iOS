@@ -99,7 +99,6 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     Ride *ride = [_fetchedResultsController objectAtIndexPath:indexPath];
-    [[VCCoreData managedObjectContext] refreshObject:ride mergeChanges:YES];
     cell.textLabel.text = [ride routeDescription];
     cell.detailTextLabel.text = ride.state;
     
@@ -151,7 +150,9 @@
             break;
             
         case NSFetchedResultsChangeUpdate:
+        {
             [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+        }
             break;
             
         case NSFetchedResultsChangeMove:

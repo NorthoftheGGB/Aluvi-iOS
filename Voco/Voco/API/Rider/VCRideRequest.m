@@ -14,12 +14,12 @@
 
     RKObjectMapping * rideRequestMapping = [RKObjectMapping mappingForClass:[VCRideRequest class]];
     [rideRequestMapping addAttributeMappingsFromDictionary:@{
-                                                                 @"rider_id" : @"customerId",
                                                                  @"type" : @"type",
                                                                  @"departure_latitude" : @"departureLatitude",
                                                                  @"departure_longitude" : @"departureLongitude",
                                                                  @"destination_latitude" : @"destinationLatitude",
-                                                                 @"destination_longitude" : @"destinationLongitude"
+                                                                 @"destination_longitude" : @"destinationLongitude",
+                                                                 @"desired_arrival" : @"desiredArrival"
                                                                 }];
     RKObjectMapping * postRideRequestMapping = [rideRequestMapping inverseMapping];
     RKRequestDescriptor *requestDescriptorPostData = [RKRequestDescriptor requestDescriptorWithMapping:postRideRequestMapping objectClass:[VCRideRequest class] rootKeyPath:nil method:RKRequestMethodPOST];
@@ -34,6 +34,7 @@
     request.departureLongitude = ride.originLongitude;
     request.destinationLatitude = ride.destinationLatitude;
     request.destinationLongitude = ride.destinationLongitude;
+    request.desiredArrival = ride.desiredArrival;
     return request;
 }
 

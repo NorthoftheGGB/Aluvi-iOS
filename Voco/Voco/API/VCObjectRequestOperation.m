@@ -54,13 +54,13 @@
                 
             default:
             {
-                if (failure) {
-                    failure(operation, error);
-                }
+                
             }
                 break;
         }
-
+        if (failure) {
+            failure(operation, error);
+        }
         
    
         

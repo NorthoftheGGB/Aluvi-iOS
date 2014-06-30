@@ -45,12 +45,16 @@
 @property (strong, nonatomic) IBOutlet DTLazyImageView *licensePlateImageView;
 @property (weak, nonatomic) IBOutlet UILabel *licensePlatNumberLabel;
 
+@property (strong, nonatomic) MBProgressHUD * progressHUD;
+
 // Map
 @property (strong, nonatomic) MKMapView * map;
 @property (strong, nonatomic) MKPolyline * routeOverlay;
 @property (strong, nonatomic) CLGeocoder * geocoder;
 
+// Data Entry
 @property (nonatomic) NSInteger step;
+@property (strong, nonatomic) NSDate * desiredArrivalDateTime;
 
 //Location HUD
 
@@ -96,10 +100,28 @@
     _map.userTrackingMode = YES;
     [self.view insertSubview:_map atIndex:0];
     [self resetRequestInterface];
+    
     if(_ride != nil){
-        [self placeRideDetailsDrawerInPickupMode];
-        [self showRideDetailsDrawer];
-        [self showSuggestedRoute];
+        // Setup interface for ride state
+        if([_ride.requestType isEqualToString:RIDE_REQUEST_TYPE_ON_DEMAND]){
+
+            [self showSuggestedRoute];
+
+            [self placeRideDetailsDrawerInPickupMode];
+            [self showRideDetailsDrawer];
+
+        } else if ([_ride.requestType isEqualToString:RIDE_REQUEST_TYPE_COMMUTER]){
+
+            if([_ride.state isEqualToString:kRequestedState]){
+                [self showRequestedModeInterface];
+                //_arrivalTimeButton setTitle:_ride. forState:<#(UIControlState)#>
+            } else if([_ride.state isEqualToString:kScheduledState]){
+                //[self showScheduledModeInterface];
+
+            }
+            [self showSuggestedRoute];
+
+        }
         self.title = _ride.routeDescription;
     }
     
@@ -108,6 +130,7 @@
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideFoundNotification:) name:@"ride_found" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideNotFoundNotification:) name:@"ride_not_found" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideCancelledByDriverNotification:) name:@"ride_cancelled_by_driver" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideComplete:) name:@"ride_complete" object:nil];
     
@@ -127,6 +150,10 @@
 - (void) rideFoundNotification:(id) sender{
     [[VCCoreData managedObjectContext] refreshObject:_ride mergeChanges:YES];
     [self showRideDetailsDrawer];
+    if(_progressHUD != nil) {
+        [_progressHUD hide:YES];
+    }
+
 }
 
 - (void) rideCancelledByDriverNotification:(id) sender{
@@ -240,8 +267,8 @@
         if([ _ride.requestType isEqualToString:RIDE_REQUEST_TYPE_ON_DEMAND]) {
             
             
-            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.labelText = @"Requesting Ride";
+            _progressHUD = [MBProgressHUD showHUDAddedTo:self.view.window animated:YES];
+            _progressHUD.labelText = @"Requesting Ride";
             
             // VC RidesAPI
             [VCRiderApi requestRide:_ride
@@ -250,13 +277,16 @@
                                 _ride.request_id = rideRequestCreatedResponse.rideRequestId;
                                 _ride.requestedTimestamp = [NSDate date];
                                 [VCCoreData saveContext];
-                                [hud hide:YES];
+                                //[hud hide:YES];
                                 // TODO: Don't show an alert, show a HUD
-                                [UIAlertView showWithTitle:@"Requested!" message:@"We are finding your driver now!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                //[UIAlertView showWithTitle:@"Requested!" message:@"We are finding your driver now!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                                     
-                                }];
+                                //}];
+                                _progressHUD.labelText = @"We are finding your driver now!";
+                                UITapGestureRecognizer *HUDSingleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hudSingleTap:)];
+                                [_progressHUD addGestureRecognizer:HUDSingleTap];
                             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                [hud hide:YES];
+                                [_progressHUD hide:YES];
                             }];
         } else if ( [ _ride.requestType isEqualToString:RIDE_REQUEST_TYPE_COMMUTER]) {
             // Commuter Confirmation
@@ -266,8 +296,18 @@
     }
 }
 
+- (void) hudSingleTap:(id) sender {
+    [_progressHUD hide:YES];
+    [self cancelRide];
+}
+
 
 - (IBAction)didTapCancel:(id)sender {
+    
+    [self cancelRide];
+}
+
+- (void) cancelRide {
     
     if(!_ride.request_id || _ride.request_id == nil){
         [self resetRequestInterface];
@@ -294,16 +334,49 @@
         [WRUtilities criticalError:error];
         
     }];
-    
 }
 
 - (IBAction)didTapMorningOrEveningButton:(id)sender {
     NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"M/d"];
-    NSString * dayString = [dateFormatter stringFromDate:[NSDate date]];
     
-    NSArray *options = [NSArray arrayWithObjects:[NSString stringWithFormat:@"Morning Of %@", dayString],
-                        [NSString stringWithFormat:@"Evening of %@", dayString], nil];
+    // Is it after the morning or evening commute?
+    NSDate * firstSlotDate;
+    NSDate * secondSlotDate;
+    [dateFormatter setDateFormat:@"H"];
+    NSString * currentHourString = [dateFormatter stringFromDate:[NSDate date]];
+    int currentHour = [currentHourString intValue];
+    NSArray *options;
+    BOOL midday = NO;
+    [dateFormatter setDateFormat:@"M/d"];
+    if (currentHour < 11){
+        // morning of same date
+        firstSlotDate = [NSDate date];
+        secondSlotDate = [NSDate date];
+        options = [NSArray arrayWithObjects:[NSString stringWithFormat:@"Morning Of %@", [dateFormatter stringFromDate:firstSlotDate]],
+                   [NSString stringWithFormat:@"Evening of %@", [dateFormatter stringFromDate:secondSlotDate]], nil];
+    } else if (currentHour > 11 && currentHour < 20) {
+        midday = YES;
+        // daytime of same date
+        firstSlotDate = [NSDate date];
+        NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
+        dayComponent.day = 1;
+        NSCalendar *theCalendar = [NSCalendar currentCalendar];
+        NSDate *nextDate = [theCalendar dateByAddingComponents:dayComponent toDate:[NSDate date] options:0];
+        secondSlotDate = nextDate;
+        options = [NSArray arrayWithObjects:[NSString stringWithFormat:@"Evening Of %@", [dateFormatter stringFromDate:firstSlotDate]],
+                   [NSString stringWithFormat:@"Morning of %@", [dateFormatter stringFromDate:secondSlotDate]], nil];
+    } else {
+        // late night, following date
+        NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
+        dayComponent.day = 1;
+        NSCalendar *theCalendar = [NSCalendar currentCalendar];
+        NSDate *nextDate = [theCalendar dateByAddingComponents:dayComponent toDate:[NSDate date] options:0];
+        firstSlotDate = nextDate;
+        secondSlotDate = nextDate;
+        options = [NSArray arrayWithObjects:[NSString stringWithFormat:@"Morning Of %@", [dateFormatter stringFromDate:firstSlotDate]],
+                  [NSString stringWithFormat:@"Evening of %@", [dateFormatter stringFromDate:secondSlotDate]], nil];
+    }
+    
     
     [ActionSheetStringPicker showPickerWithTitle:@"Select morning or evening"
                                             rows:options
@@ -311,6 +384,11 @@
                                        doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
                                            [_morningOrEveningButton setTitle:[options objectAtIndex:selectedIndex ] forState:UIControlStateNormal];
                                            _arrivalTimeButton.hidden = NO;
+                                           if(selectedIndex == 0){
+                                               _desiredArrivalDateTime = firstSlotDate;
+                                           } else if (selectedIndex == 1){
+                                               _desiredArrivalDateTime = secondSlotDate;
+                                           }
                                        }
                                      cancelBlock:^(ActionSheetStringPicker *picker) {
                                          NSLog(@"Block Picker Canceled");
@@ -343,6 +421,32 @@
                                            NSString * title = [NSString stringWithFormat:@"Arrive By: %@", [options objectAtIndex:selectedIndex] ];
                                            [_arrivalTimeButton setTitle:title forState:UIControlStateNormal];
                                            _scheduleRideButton.hidden = NO;
+                                           
+                                           NSDateComponents* comps = [[NSCalendar currentCalendar] components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:_desiredArrivalDateTime];
+                                           _desiredArrivalDateTime = [[NSCalendar currentCalendar] dateFromComponents:comps];
+                    
+                                           NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
+                                           
+                                           if(options == morningOptions){
+                                               dayComponent.hour = selectedIndex / 2 + 6;
+                                               if(selectedIndex % 2 == 0){
+                                                   dayComponent.minute = 0;
+                                               } else {
+                                                   dayComponent.minute = 30;
+                                               }
+                                           } else {
+                                               dayComponent.hour = selectedIndex / 2 + 3 + 12;
+                                               if(selectedIndex % 2 == 0){
+                                                   dayComponent.minute = 0;
+                                               } else {
+                                                   dayComponent.minute = 30;
+                                               }
+                                           }
+                                           
+                                           NSCalendar *theCalendar = [NSCalendar currentCalendar];
+                                           _desiredArrivalDateTime = [theCalendar dateByAddingComponents:dayComponent toDate:_desiredArrivalDateTime options:0];
+                                           _ride.desiredArrival = _desiredArrivalDateTime;
+
                                        }
                                      cancelBlock:^(ActionSheetStringPicker *picker) {
                                          NSLog(@"Block Picker Canceled");
@@ -373,6 +477,15 @@
 }
 
 #pragma mark Interface
+
+
+- (void) showRequestedModeInterface {
+    _cancelRideButton.hidden = NO;
+    _onDemandButton.hidden = YES;
+    _commuteButton.hidden = YES;
+    _mapCenterPin.hidden = YES;
+    _locationConfirmationAnnotation.hidden = YES;
+}
 
 - (void) showRouteRequestInterface {
     _onDemandButton.hidden = YES;

@@ -49,16 +49,17 @@
 
 
 - (void)awakeFromInsert {
-    if(self.savedState == nil){
-        self.savedState = [self getInitialState];
+    if([self primitiveValueForKey:@"savedState"] == nil){
+        [self setPrimitiveValue:[self getInitialState] forKey:@"savedState"];
     }
     [self createStateMachine];
 }
 
 - (void)awakeFromFetch {
-    if(self.savedState == nil){
-        self.savedState = [self getInitialState];
+    if([self primitiveValueForKey:@"savedState"] == nil){
+        [self setPrimitiveValue:[self getInitialState] forKey:@"savedState"];
     }
+
     [self addObserver:self forKeyPath:@"savedState" options:NSKeyValueObservingOptionNew context:nil];
     [self createStateMachine];
 }
@@ -81,6 +82,7 @@
     self.savedState = state__;
 }
 
+/*
 - (void) setSavedState:(NSString *)savedState__{
     [self willChangeValueForKey:@"savedState"];
     [self setPrimitiveValue:savedState__ forKey:@"savedState"];
@@ -88,9 +90,15 @@
     [self createStateMachine];
 }
 
+- (NSString*) savedState {
+    
+}
+ */
+
 - (NSString *) state {
     NSString * state = [_stateMachine.currentState name];
-    return [NSString stringWithFormat:@"%@ %@", state, self.savedState];
+    return state;
+    //return [NSString stringWithFormat:@"%@ %@", state, self.savedState];
 }
 
 

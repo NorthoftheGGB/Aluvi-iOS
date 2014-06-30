@@ -36,6 +36,7 @@
 @dynamic destinationPlaceName;
 @dynamic driver;
 @dynamic car;
+@dynamic desiredArrival;
 
 
 + (void)createMappings:(RKObjectManager *)objectManager{
@@ -51,13 +52,13 @@
                                                         @"meeting_point_longitude" : @"meetingPointLongitude",
                                                         @"destination_place_name" : @"destinationPlaceName",
                                                         @"destination_latitude" : @"destinationLatitude",
-                                                        @"destination_longitude" : @"destinationLongitude"
+                                                        @"destination_longitude" : @"destinationLongitude",
                                                         }];
     
 
     entityMapping.identificationAttributes = @[ @"request_id" ]; // for riders request_id is the primary key
 
-    /*
+    
     [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
         RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:API_GET_SCHEDULED_RIDES];
         
@@ -71,7 +72,7 @@
         
         return nil;
     }];
-     */
+     
     
     [entityMapping addRelationshipMappingWithSourceKeyPath:@"driver" mapping:[Driver createMappings:objectManager]];
     [entityMapping addRelationshipMappingWithSourceKeyPath:@"car" mapping:[Car createMappings:objectManager]];
