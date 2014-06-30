@@ -151,7 +151,12 @@ static void * XXContext = &XXContext;
     }
     if(! [_menuContainer.subviews containsObject:view]){
         
-        view.frame = _menuContainer.frame;
+        //view.frame = _menuContainer.frame;
+        
+        CGRect frame = _menuContainer.frame;
+        frame.origin.x = 0;
+        frame.origin.y = 0;
+        _driverMenu.frame = frame;
         [UIView transitionWithView:_menuContainer
                           duration:.45f
                            options:UIViewAnimationOptionTransitionCrossDissolve
