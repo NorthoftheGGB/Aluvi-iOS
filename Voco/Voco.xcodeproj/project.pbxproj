@@ -58,6 +58,18 @@
 		4F9909C5195CCE6500E83164 /* log-in-box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9909C4195CCE6500E83164 /* log-in-box@2x.png */; };
 		4FB2682A1952207A0028D4ED /* VCDriverVideoTutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB268281952207A0028D4ED /* VCDriverVideoTutorialController.m */; };
 		4FB2682B1952207A0028D4ED /* VCDriverVideoTutorialController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FB268291952207A0028D4ED /* VCDriverVideoTutorialController.xib */; };
+		4FE286E91962B89700FD8AF6 /* current-location-arrow-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286E71962B89700FD8AF6 /* current-location-arrow-select@2x.png */; };
+		4FE286EA1962B89700FD8AF6 /* current-location-arrow-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286E71962B89700FD8AF6 /* current-location-arrow-select@2x.png */; };
+		4FE286EB1962B89700FD8AF6 /* current-location-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286E81962B89700FD8AF6 /* current-location-arrow@2x.png */; };
+		4FE286EC1962B89700FD8AF6 /* current-location-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286E81962B89700FD8AF6 /* current-location-arrow@2x.png */; };
+		4FE286EF1962BB3F00FD8AF6 /* search-location-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286ED1962BB3F00FD8AF6 /* search-location-select@2x.png */; };
+		4FE286F01962BB3F00FD8AF6 /* search-location-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286ED1962BB3F00FD8AF6 /* search-location-select@2x.png */; };
+		4FE286F11962BB3F00FD8AF6 /* search-location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286EE1962BB3F00FD8AF6 /* search-location@2x.png */; };
+		4FE286F21962BB3F00FD8AF6 /* search-location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286EE1962BB3F00FD8AF6 /* search-location@2x.png */; };
+		4FE286F51962BDB300FD8AF6 /* zoom-ride-bounds-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286F31962BDB300FD8AF6 /* zoom-ride-bounds-select@2x.png */; };
+		4FE286F61962BDB300FD8AF6 /* zoom-ride-bounds-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286F31962BDB300FD8AF6 /* zoom-ride-bounds-select@2x.png */; };
+		4FE286F71962BDB300FD8AF6 /* zoom-ride-bounds@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286F41962BDB300FD8AF6 /* zoom-ride-bounds@2x.png */; };
+		4FE286F81962BDB300FD8AF6 /* zoom-ride-bounds@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286F41962BDB300FD8AF6 /* zoom-ride-bounds@2x.png */; };
 		4FE629DA194FC6BB0070F797 /* VCDriverRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE629D8194FC6BB0070F797 /* VCDriverRegistrationViewController.m */; };
 		4FE629DB194FC6BB0070F797 /* VCDriverRegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE629D9194FC6BB0070F797 /* VCDriverRegistrationViewController.xib */; };
 		4FE641BA194157510059BED1 /* VCSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641B8194157510059BED1 /* VCSignInViewController.m */; };
@@ -340,6 +352,12 @@
 		4FB268271952207A0028D4ED /* VCDriverVideoTutorialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCDriverVideoTutorialController.h; path = ViewControllers/VCDriverVideoTutorialController.h; sourceTree = "<group>"; };
 		4FB268281952207A0028D4ED /* VCDriverVideoTutorialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCDriverVideoTutorialController.m; path = ViewControllers/VCDriverVideoTutorialController.m; sourceTree = "<group>"; };
 		4FB268291952207A0028D4ED /* VCDriverVideoTutorialController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCDriverVideoTutorialController.xib; path = ViewControllers/VCDriverVideoTutorialController.xib; sourceTree = "<group>"; };
+		4FE286E71962B89700FD8AF6 /* current-location-arrow-select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "current-location-arrow-select@2x.png"; sourceTree = "<group>"; };
+		4FE286E81962B89700FD8AF6 /* current-location-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "current-location-arrow@2x.png"; sourceTree = "<group>"; };
+		4FE286ED1962BB3F00FD8AF6 /* search-location-select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-location-select@2x.png"; sourceTree = "<group>"; };
+		4FE286EE1962BB3F00FD8AF6 /* search-location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-location@2x.png"; sourceTree = "<group>"; };
+		4FE286F31962BDB300FD8AF6 /* zoom-ride-bounds-select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zoom-ride-bounds-select@2x.png"; sourceTree = "<group>"; };
+		4FE286F41962BDB300FD8AF6 /* zoom-ride-bounds@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zoom-ride-bounds@2x.png"; sourceTree = "<group>"; };
 		4FE629D7194FC6BB0070F797 /* VCDriverRegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCDriverRegistrationViewController.h; path = ViewControllers/VCDriverRegistrationViewController.h; sourceTree = "<group>"; };
 		4FE629D8194FC6BB0070F797 /* VCDriverRegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCDriverRegistrationViewController.m; path = ViewControllers/VCDriverRegistrationViewController.m; sourceTree = "<group>"; };
 		4FE629D9194FC6BB0070F797 /* VCDriverRegistrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCDriverRegistrationViewController.xib; path = ViewControllers/VCDriverRegistrationViewController.xib; sourceTree = "<group>"; };
@@ -611,7 +629,7 @@
 			name = "Drive System";
 			sourceTree = "<group>";
 		};
-		4F2EF99F1960EC62006A1962 /* Rider Menu Assets */ = {
+		4F2EF99F1960EC62006A1962 /* Menu Assets */ = {
 			isa = PBXGroup;
 			children = (
 				4F2EF9D019614115006A1962 /* mycar-menu-button-selected@2x.png */,
@@ -635,7 +653,7 @@
 				4F2EF9A01960EC8C006A1962 /* profile-menu-button-select@2x.png */,
 				4F2EF9A11960EC8C006A1962 /* profile-menu-button@2x.png */,
 			);
-			name = "Rider Menu Assets";
+			name = "Menu Assets";
 			sourceTree = "<group>";
 		};
 		4FE629C3194FAC4E0070F797 /* Sign-in and Registration */ = {
@@ -693,7 +711,13 @@
 		4FE641E1194168E80059BED1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				4F2EF99F1960EC62006A1962 /* Rider Menu Assets */,
+				4FE286F31962BDB300FD8AF6 /* zoom-ride-bounds-select@2x.png */,
+				4FE286F41962BDB300FD8AF6 /* zoom-ride-bounds@2x.png */,
+				4FE286ED1962BB3F00FD8AF6 /* search-location-select@2x.png */,
+				4FE286EE1962BB3F00FD8AF6 /* search-location@2x.png */,
+				4FE286E71962B89700FD8AF6 /* current-location-arrow-select@2x.png */,
+				4FE286E81962B89700FD8AF6 /* current-location-arrow@2x.png */,
+				4F2EF99F1960EC62006A1962 /* Menu Assets */,
 				4FF142D5195CE4BD00CC61B6 /* driver-request-form@2x.png */,
 				4F9909C4195CCE6500E83164 /* log-in-box@2x.png */,
 				F473F017195044AA00D8C900 /* menu-list.png */,
@@ -1272,6 +1296,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FE286EA1962B89700FD8AF6 /* current-location-arrow-select@2x.png in Resources */,
 				4F2EF9BA1961391B006A1962 /* scheduledrides-menu-button-selected@2x.png in Resources */,
 				F4354DAA195D0D6A00C06CF7 /* signup_box@2x.png in Resources */,
 				4F2EF9C41961391B006A1962 /* tutorial-menu-button-selected@2x.png in Resources */,
@@ -1283,6 +1308,7 @@
 				F4354DAF195D0D6A00C06CF7 /* menu-list@2x.png in Resources */,
 				4F2EF9C61961391B006A1962 /* tutorial-menu-button@2x.png in Resources */,
 				4F2EF9B41961391B006A1962 /* about-menu-button@2x.png in Resources */,
+				4FE286F01962BB3F00FD8AF6 /* search-location-select@2x.png in Resources */,
 				4F2EF9BE1961391B006A1962 /* support-menu-button@2x.png in Resources */,
 				F4354DB0195D0D6A00C06CF7 /* VOCOfinal@2x.png in Resources */,
 				F4354DB1195D0D6A00C06CF7 /* driver_must_box@2x.png in Resources */,
@@ -1304,6 +1330,7 @@
 				F4354DBB195D0D6A00C06CF7 /* VCPasswordRecoveryViewController.xib in Resources */,
 				4F2EF9B81961391B006A1962 /* commuter-menu-button@2x.png in Resources */,
 				4F2EF9DB19614115006A1962 /* scheduledfares-menu-button@2x.png in Resources */,
+				4FE286F81962BDB300FD8AF6 /* zoom-ride-bounds@2x.png in Resources */,
 				4F2EF9D519614115006A1962 /* mycar-menu-button-selected@2x.png in Resources */,
 				F4354DBC195D0D6A00C06CF7 /* KlinicSlabMediumIt.ttf in Resources */,
 				F4354DBD195D0D6A00C06CF7 /* login_form@2x.png in Resources */,
@@ -1313,15 +1340,18 @@
 				4F2EF9C21961391B006A1962 /* terms-menu-button@2x.png in Resources */,
 				F4354DC1195D0D6A00C06CF7 /* red_box@2x.png in Resources */,
 				F4354DC2195D0D6A00C06CF7 /* InfoPlist.strings in Resources */,
+				4FE286F61962BDB300FD8AF6 /* zoom-ride-bounds-select@2x.png in Resources */,
 				4FF142DD195D128700CC61B6 /* VCRiderViewController.xib in Resources */,
 				F4354DC3195D0D6A00C06CF7 /* signUp_btn@2x.png in Resources */,
 				F4A7C80D19625237007E05AD /* VCDebugViewController.xib in Resources */,
 				F4354DC4195D0D6A00C06CF7 /* VCSignUpViewController.xib in Resources */,
 				4F2EF9A51960EC8C006A1962 /* profile-menu-button@2x.png in Resources */,
 				4F2EF9CF19613B41006A1962 /* support-menu-button-selected@2x.png in Resources */,
+				4FE286F21962BB3F00FD8AF6 /* search-location@2x.png in Resources */,
 				F4354DC5195D0D6A00C06CF7 /* voco_logo@2x.png in Resources */,
 				F4354DC6195D0D6A00C06CF7 /* commute_logo@2x.png in Resources */,
 				F4354DC7195D0D6A00C06CF7 /* Images.xcassets in Resources */,
+				4FE286EC1962B89700FD8AF6 /* current-location-arrow@2x.png in Resources */,
 				F4354DC8195D0D6A00C06CF7 /* VCMenuViewController.xib in Resources */,
 				4F2EF9BC1961391B006A1962 /* scheduledrides-menu-button@2x.png in Resources */,
 				F4354DC9195D0D6A00C06CF7 /* login_btn@2x.png in Resources */,
@@ -1337,6 +1367,7 @@
 				4F2EF9DA19614115006A1962 /* scheduledfares-menu-button@2x.png in Resources */,
 				F49EDD0C1946D27F0020B8BB /* VCRiderHomeViewController.xib in Resources */,
 				4F2EF9CE19613B41006A1962 /* support-menu-button-selected@2x.png in Resources */,
+				4FE286EB1962B89700FD8AF6 /* current-location-arrow@2x.png in Resources */,
 				4FE641F5194168E80059BED1 /* loginBox@2x.png in Resources */,
 				4F37E2DD1949574000753172 /* KlinicSlabLight.ttf in Resources */,
 				4FF142D6195CE4BD00CC61B6 /* driver-request-form@2x.png in Resources */,
@@ -1354,12 +1385,14 @@
 				4FE629DB194FC6BB0070F797 /* VCDriverRegistrationViewController.xib in Resources */,
 				4FE641F2194168E80059BED1 /* driving_car@2x.png in Resources */,
 				4F2EF9B91961391B006A1962 /* scheduledrides-menu-button-selected@2x.png in Resources */,
+				4FE286F71962BDB300FD8AF6 /* zoom-ride-bounds@2x.png in Resources */,
 				4F2EF9C11961391B006A1962 /* terms-menu-button@2x.png in Resources */,
 				4F37E2DF1949574000753172 /* KlinicSlabMedium.ttf in Resources */,
 				4F2EF9C51961391B006A1962 /* tutorial-menu-button@2x.png in Resources */,
 				F473F019195044AA00D8C900 /* menu-list.png in Resources */,
 				4F2EF99D1960D280006A1962 /* VCDriverHomeViewController.xib in Resources */,
 				4FE641BB194157510059BED1 /* VCSignInViewController.xib in Resources */,
+				4FE286E91962B89700FD8AF6 /* current-location-arrow-select@2x.png in Resources */,
 				F473EFFE19497FBF00D8C900 /* map_pin_fill-512.png in Resources */,
 				4F2EF9B71961391B006A1962 /* commuter-menu-button@2x.png in Resources */,
 				4F2EF9B31961391B006A1962 /* about-menu-button@2x.png in Resources */,
@@ -1369,8 +1402,11 @@
 				4FE641F4194168E80059BED1 /* login_form@2x.png in Resources */,
 				F45F7C191935A3F900A94721 /* VCDriverViewController.xib in Resources */,
 				4F2EF9D819614115006A1962 /* scheduledfares-menu-button-selected@2x.png in Resources */,
+				4FE286F11962BB3F00FD8AF6 /* search-location@2x.png in Resources */,
 				4FB2682B1952207A0028D4ED /* VCDriverVideoTutorialController.xib in Resources */,
+				4FE286EF1962BB3F00FD8AF6 /* search-location-select@2x.png in Resources */,
 				4FE641F6194168E80059BED1 /* red_box@2x.png in Resources */,
+				4FE286F51962BDB300FD8AF6 /* zoom-ride-bounds-select@2x.png in Resources */,
 				F4FA0BF4192BF6BF005D8645 /* InfoPlist.strings in Resources */,
 				4F2EF9BF1961391B006A1962 /* terms-menu-button-selected@2x.png in Resources */,
 				4F2EF9A21960EC8C006A1962 /* profile-menu-button-select@2x.png in Resources */,
