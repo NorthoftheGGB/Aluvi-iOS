@@ -148,6 +148,9 @@ static void * XXContext = &XXContext;
     if([[VCUserState instance].driverState isEqualToString:kDriverStateActive]
        || [[VCUserState instance].driverState isEqualToString:kDriverStateOnDuty]){
         view = _driverMenu;
+        if([[VCUserState instance].driverState isEqualToString:kDriverStateOnDuty]){
+            _onDutySwitch.on = YES;
+        }
     } else if ([[VCUserState instance].driverState isEqualToString:kDriverStateApproved]){
         view = _requestApproved;
     } else if ([[VCUserState instance].driverState isEqualToString:kDriverStateInterested]){

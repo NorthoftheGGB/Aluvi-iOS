@@ -145,7 +145,6 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="didTapRideCompleted:" destination="-1" eventType="touchUpInside" id="Gnx-6J-3bS"/>
-                        <action selector="didTapeRideCompleted:" destination="-1" eventType="touchUpInside" id="kJl-I7-gz5"/>
                     </connections>
                 </button>
             </subviews>
@@ -175,6 +174,10 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afx-O4-19K" userLabel="Current Location">
                     <rect key="frame" x="9" y="6" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="3sV-Fw-ryr"/>
+                        <constraint firstAttribute="width" constant="30" id="JOr-iV-LQL"/>
+                    </constraints>
                     <state key="normal" image="current-location-arrow.png">
                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>

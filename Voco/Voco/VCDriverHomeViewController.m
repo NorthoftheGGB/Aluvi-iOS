@@ -7,8 +7,9 @@
 //
 
 #import "VCDriverHomeViewController.h"
-#import "VCLabel.h"
 #import <MapKit/MapKit.h>
+#import <MBProgressHUD.h>
+#import "VCLabel.h"
 #import "VCDialogs.h"
 #import "VCButtonFontBold.h"
 #import "VCUserState.h"
@@ -62,6 +63,7 @@
 {
     [super viewDidLoad];
     
+    [self resetButtons];
     if(self.transport != nil){
         [self showRide];
     }
@@ -125,7 +127,7 @@
     if(_driverLocationHud.superview == nil) {
         CGRect frame = _driverLocationHud.frame;
         frame.origin.x = 0;
-        frame.origin.y = 0;
+        frame.origin.y = 64;
         _driverLocationHud.frame = frame;
         [self.view addSubview:self.driverLocationHud];
     }
@@ -165,6 +167,8 @@
     VCRideDriverAssignment * assignment = [[VCRideDriverAssignment alloc] init];
     assignment.rideId = self.transport.ride_id;
     
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Accepting Ride";
     CLS_LOG(@"%@", @"API_POST_RIDE_ACCEPTED");
     [[RKObjectManager sharedManager] postObject:assignment path:API_POST_RIDE_ACCEPTED parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         
@@ -174,10 +178,10 @@
         [VCUserState instance].driveProcessState = kUserStateRideAccepted;
         [VCUserState instance].underwayRideId = self.transport.ride_id;
         
-        
         [((Drive *) self.transport) markOfferAsAccepted];
         
-                
+        [hud hide:YES];
+        [self showPickupInterface];
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         // network error..
@@ -191,36 +195,52 @@
                 [[VCDialogs instance] offerNextRideToDriver];
             }];
         }
+        
+        [hud hide:YES];
+
     }];
 
 }
 
 - (IBAction)didTapDecline:(id)sender {
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Declining";
     [VCDriverApi cancelRide:self.transport.ride_id
                     success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                         [VCUserState instance].driveProcessState = @"Ride Declined";
                         [((Drive *) self.transport) markOfferAsDeclined];
                         [VCCoreData saveContext];
                         [[VCDialogs instance] offerNextRideToDriver];
+                        [hud hide:YES];
+
                     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                        
+                        [hud hide:YES];
+
                     }];
     
 }
 
 - (IBAction)didTapRiderPickedUp:(id)sender {
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Notifying Server";
     VCRideDriverAssignment * rideIdentity = [[VCRideDriverAssignment alloc] init];
     rideIdentity.rideId = [VCUserState instance].underwayRideId;
     [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_RIDE_PICKUP parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             [self showRideInProgressInterface];
                                             [VCUserState instance].driveProcessState = kUserStateRideStarted;
+                                            [hud hide:YES];
+
                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            [hud hide:YES];
+
                                         }];
 }
 
 - (IBAction)didTapCancelRide:(id)sender {
     // Send cancel request to server
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Cancelling";
     VCRideDriverAssignment * rideIdentity = [[VCRideDriverAssignment alloc] init];
     rideIdentity.rideId = [VCUserState instance].underwayRideId;
     [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_DRIVER_CANCELLED parameters:nil
@@ -228,14 +248,20 @@
                                             [UIAlertView showWithTitle:@"Cancelled Ride" message:@"The ride was successfully cancelled" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
                                             [self resetButtons];
                                             [VCUserState instance].driveProcessState = kUserStateIdle;
+                                            [hud hide:YES];
+
                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                             // TODO: need to cache this action and try again later
                                             // how else will the server be notified ? could be a bad edge case
+                                            [hud hide:YES];
+
                                         }];
     
 }
 
 - (IBAction)didTapRideCompleted:(id)sender {
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Notifying Server";
     VCRideDriverAssignment * rideIdentity = [[VCRideDriverAssignment alloc] init];  // TODO objects like this can be generated from
     // global state of the app, i.e. in another method
     rideIdentity.rideId = [VCUserState instance].underwayRideId;
@@ -243,15 +269,19 @@
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             [VCUserState instance].driveProcessState = kUserStateRideCompleted;
                                             [self showRideCompletedInterface];
+                                            [hud hide:YES];
+
                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            [hud hide:YES];
+
                                         }];
 }
 
 - (IBAction)didTapZoomToRideBounds:(id)sender {
-    [self.map setRegion:self.rideRegion];
+    [self.map setRegion:self.rideRegion animated:YES];
 }
 
 - (IBAction)didTapCurrentLocation:(id)sender {
-    [self.map setCenterCoordinate:self.map.userLocation.coordinate];
+    [self.map setCenterCoordinate:self.map.userLocation.coordinate animated:YES];
 }
 @end
