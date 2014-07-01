@@ -6,6 +6,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCDriverHomeViewController">
             <connections>
+                <outlet property="addressLabel" destination="sAr-VL-Uem" id="nYo-Jc-muf"/>
+                <outlet property="driverLocationHud" destination="mDj-An-QgP" id="eJH-J9-JeV"/>
+                <outlet property="pickupLocationLabel" destination="Kap-iR-Fyb" id="0Xp-kv-TIf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -158,6 +161,74 @@
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <view contentMode="scaleToFill" id="mDj-An-QgP" userLabel="Location HUD">
+            <rect key="frame" x="0.0" y="0.0" width="307" height="42"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afx-O4-19K">
+                    <rect key="frame" x="5" y="6" width="30" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.96542171556122447" green="0.96542171556122447" blue="0.96542171556122447" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="A">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapCurrentLocation:" destination="-1" eventType="touchUpInside" id="w7Q-hY-zMQ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7XZ-mg-COX">
+                    <rect key="frame" x="271" y="6" width="30" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.96542171560000001" green="0.96542171560000001" blue="0.96542171560000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="O">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapZoomRideBounds:" destination="-1" eventType="touchUpInside" id="Oq8-b6-cKK"/>
+                    </connections>
+                </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123 Address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAr-VL-Uem" customClass="VCLabel">
+                    <rect key="frame" x="38" y="19" width="231" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kap-iR-Fyb" customClass="VCLabel">
+                    <rect key="frame" x="99" y="0.0" width="108" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.87843143940000001" green="0.094117656349999995" blue="0.09803922474" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="13"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="sAr-VL-Uem" firstAttribute="leading" secondItem="mDj-An-QgP" secondAttribute="leading" constant="38" id="4dt-1X-tvn"/>
+                <constraint firstAttribute="trailing" secondItem="7XZ-mg-COX" secondAttribute="trailing" constant="6" id="712-qC-5Nz"/>
+                <constraint firstAttribute="bottom" secondItem="Kap-iR-Fyb" secondAttribute="bottom" constant="21" id="GtJ-s1-Vrj"/>
+                <constraint firstItem="Kap-iR-Fyb" firstAttribute="top" secondItem="mDj-An-QgP" secondAttribute="top" id="Ijk-GU-xV3"/>
+                <constraint firstItem="afx-O4-19K" firstAttribute="leading" secondItem="mDj-An-QgP" secondAttribute="leading" constant="5" id="LmW-bY-euM"/>
+                <constraint firstItem="Kap-iR-Fyb" firstAttribute="leading" secondItem="mDj-An-QgP" secondAttribute="leading" constant="99" id="aBa-nP-7fW"/>
+                <constraint firstItem="Kap-iR-Fyb" firstAttribute="centerX" secondItem="sAr-VL-Uem" secondAttribute="centerX" id="bZG-qz-fpK"/>
+                <constraint firstAttribute="bottom" secondItem="7XZ-mg-COX" secondAttribute="bottom" constant="6" id="eGM-bn-GEY"/>
+                <constraint firstItem="Kap-iR-Fyb" firstAttribute="centerX" secondItem="mDj-An-QgP" secondAttribute="centerX" id="mn0-qg-kDX"/>
+                <constraint firstItem="sAr-VL-Uem" firstAttribute="top" secondItem="mDj-An-QgP" secondAttribute="top" constant="19" id="sS1-Wn-nOd"/>
+                <constraint firstAttribute="bottom" secondItem="afx-O4-19K" secondAttribute="bottom" constant="6" id="tpd-BN-5Ci"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
 </document>
