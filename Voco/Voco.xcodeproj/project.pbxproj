@@ -70,6 +70,12 @@
 		4FE286F61962BDB300FD8AF6 /* zoom-ride-bounds-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286F31962BDB300FD8AF6 /* zoom-ride-bounds-select@2x.png */; };
 		4FE286F71962BDB300FD8AF6 /* zoom-ride-bounds@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286F41962BDB300FD8AF6 /* zoom-ride-bounds@2x.png */; };
 		4FE286F81962BDB300FD8AF6 /* zoom-ride-bounds@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286F41962BDB300FD8AF6 /* zoom-ride-bounds@2x.png */; };
+		4FE286FD1962C25400FD8AF6 /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286FC1962C25400FD8AF6 /* pin@2x.png */; };
+		4FE286FE1962C25400FD8AF6 /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286FC1962C25400FD8AF6 /* pin@2x.png */; };
+		4FE287011962C52800FD8AF6 /* confirm-location-select.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286FF1962C52700FD8AF6 /* confirm-location-select.png */; };
+		4FE287021962C52800FD8AF6 /* confirm-location-select.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286FF1962C52700FD8AF6 /* confirm-location-select.png */; };
+		4FE287031962C52800FD8AF6 /* confirm-location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE287001962C52700FD8AF6 /* confirm-location@2x.png */; };
+		4FE287041962C52800FD8AF6 /* confirm-location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE287001962C52700FD8AF6 /* confirm-location@2x.png */; };
 		4FE629DA194FC6BB0070F797 /* VCDriverRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE629D8194FC6BB0070F797 /* VCDriverRegistrationViewController.m */; };
 		4FE629DB194FC6BB0070F797 /* VCDriverRegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE629D9194FC6BB0070F797 /* VCDriverRegistrationViewController.xib */; };
 		4FE641BA194157510059BED1 /* VCSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641B8194157510059BED1 /* VCSignInViewController.m */; };
@@ -358,6 +364,9 @@
 		4FE286EE1962BB3F00FD8AF6 /* search-location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-location@2x.png"; sourceTree = "<group>"; };
 		4FE286F31962BDB300FD8AF6 /* zoom-ride-bounds-select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zoom-ride-bounds-select@2x.png"; sourceTree = "<group>"; };
 		4FE286F41962BDB300FD8AF6 /* zoom-ride-bounds@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zoom-ride-bounds@2x.png"; sourceTree = "<group>"; };
+		4FE286FC1962C25400FD8AF6 /* pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pin@2x.png"; sourceTree = "<group>"; };
+		4FE286FF1962C52700FD8AF6 /* confirm-location-select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "confirm-location-select.png"; sourceTree = "<group>"; };
+		4FE287001962C52700FD8AF6 /* confirm-location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "confirm-location@2x.png"; sourceTree = "<group>"; };
 		4FE629D7194FC6BB0070F797 /* VCDriverRegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCDriverRegistrationViewController.h; path = ViewControllers/VCDriverRegistrationViewController.h; sourceTree = "<group>"; };
 		4FE629D8194FC6BB0070F797 /* VCDriverRegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCDriverRegistrationViewController.m; path = ViewControllers/VCDriverRegistrationViewController.m; sourceTree = "<group>"; };
 		4FE629D9194FC6BB0070F797 /* VCDriverRegistrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCDriverRegistrationViewController.xib; path = ViewControllers/VCDriverRegistrationViewController.xib; sourceTree = "<group>"; };
@@ -711,6 +720,9 @@
 		4FE641E1194168E80059BED1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				4FE286FF1962C52700FD8AF6 /* confirm-location-select.png */,
+				4FE287001962C52700FD8AF6 /* confirm-location@2x.png */,
+				4FE286FC1962C25400FD8AF6 /* pin@2x.png */,
 				4FE286F31962BDB300FD8AF6 /* zoom-ride-bounds-select@2x.png */,
 				4FE286F41962BDB300FD8AF6 /* zoom-ride-bounds@2x.png */,
 				4FE286ED1962BB3F00FD8AF6 /* search-location-select@2x.png */,
@@ -1313,6 +1325,7 @@
 				F4354DB0195D0D6A00C06CF7 /* VOCOfinal@2x.png in Resources */,
 				F4354DB1195D0D6A00C06CF7 /* driver_must_box@2x.png in Resources */,
 				4F2EF9A31960EC8C006A1962 /* profile-menu-button-select@2x.png in Resources */,
+				4FE287021962C52800FD8AF6 /* confirm-location-select.png in Resources */,
 				F4354DB2195D0D6A00C06CF7 /* signupBox@2x.png in Resources */,
 				4F2EF9CC196139C6006A1962 /* payment-menu-button@2x.png in Resources */,
 				F4354DB3195D0D6A00C06CF7 /* bubble@2x.png in Resources */,
@@ -1344,10 +1357,12 @@
 				4FF142DD195D128700CC61B6 /* VCRiderViewController.xib in Resources */,
 				F4354DC3195D0D6A00C06CF7 /* signUp_btn@2x.png in Resources */,
 				F4A7C80D19625237007E05AD /* VCDebugViewController.xib in Resources */,
+				4FE286FE1962C25400FD8AF6 /* pin@2x.png in Resources */,
 				F4354DC4195D0D6A00C06CF7 /* VCSignUpViewController.xib in Resources */,
 				4F2EF9A51960EC8C006A1962 /* profile-menu-button@2x.png in Resources */,
 				4F2EF9CF19613B41006A1962 /* support-menu-button-selected@2x.png in Resources */,
 				4FE286F21962BB3F00FD8AF6 /* search-location@2x.png in Resources */,
+				4FE287041962C52800FD8AF6 /* confirm-location@2x.png in Resources */,
 				F4354DC5195D0D6A00C06CF7 /* voco_logo@2x.png in Resources */,
 				F4354DC6195D0D6A00C06CF7 /* commute_logo@2x.png in Resources */,
 				F4354DC7195D0D6A00C06CF7 /* Images.xcassets in Resources */,
@@ -1375,6 +1390,7 @@
 				4F37E2DE1949574000753172 /* KlinicSlabLightIt.ttf in Resources */,
 				F473F01A195044AA00D8C900 /* menu-list@2x.png in Resources */,
 				4F2EF9BB1961391B006A1962 /* scheduledrides-menu-button@2x.png in Resources */,
+				4FE287031962C52800FD8AF6 /* confirm-location@2x.png in Resources */,
 				4FE641FB194168E80059BED1 /* VOCOfinal@2x.png in Resources */,
 				4F2EF9C9196139C6006A1962 /* payment-menu-button-selected@2x.png in Resources */,
 				4F2EF9BD1961391B006A1962 /* support-menu-button@2x.png in Resources */,
@@ -1383,6 +1399,7 @@
 				4FE641EF194168E80059BED1 /* bubble@2x.png in Resources */,
 				4FE641C0194157C60059BED1 /* VCDriverRequestViewController.xib in Resources */,
 				4FE629DB194FC6BB0070F797 /* VCDriverRegistrationViewController.xib in Resources */,
+				4FE287011962C52800FD8AF6 /* confirm-location-select.png in Resources */,
 				4FE641F2194168E80059BED1 /* driving_car@2x.png in Resources */,
 				4F2EF9B91961391B006A1962 /* scheduledrides-menu-button-selected@2x.png in Resources */,
 				4FE286F71962BDB300FD8AF6 /* zoom-ride-bounds@2x.png in Resources */,
@@ -1409,6 +1426,7 @@
 				4FE286F51962BDB300FD8AF6 /* zoom-ride-bounds-select@2x.png in Resources */,
 				F4FA0BF4192BF6BF005D8645 /* InfoPlist.strings in Resources */,
 				4F2EF9BF1961391B006A1962 /* terms-menu-button-selected@2x.png in Resources */,
+				4FE286FD1962C25400FD8AF6 /* pin@2x.png in Resources */,
 				4F2EF9A21960EC8C006A1962 /* profile-menu-button-select@2x.png in Resources */,
 				4FE641F8194168E80059BED1 /* signUp_btn@2x.png in Resources */,
 				4FE641CA1941584D0059BED1 /* VCSignUpViewController.xib in Resources */,
