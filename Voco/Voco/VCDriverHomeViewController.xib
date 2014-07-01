@@ -172,26 +172,26 @@
             <rect key="frame" x="0.0" y="0.0" width="307" height="42"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afx-O4-19K">
-                    <rect key="frame" x="5" y="6" width="30" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afx-O4-19K" userLabel="Current Location">
+                    <rect key="frame" x="9" y="6" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.96542171556122447" green="0.96542171556122447" blue="0.96542171556122447" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="A">
+                    <state key="normal" image="current-location-arrow.png">
                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="highlighted" image="current-location-arrow-select.png"/>
                     <connections>
                         <action selector="didTapCurrentLocation:" destination="-1" eventType="touchUpInside" id="w7Q-hY-zMQ"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7XZ-mg-COX">
-                    <rect key="frame" x="271" y="6" width="30" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7XZ-mg-COX" userLabel="Zoom To Bounds">
+                    <rect key="frame" x="268" y="6" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.96542171560000001" green="0.96542171560000001" blue="0.96542171560000001" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="O">
+                    <state key="normal" image="zoom-ride-bounds.png">
                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="highlighted" image="zoom-ride-bounds-select.png"/>
                     <connections>
                         <action selector="didTapZoomToRideBounds:" destination="-1" eventType="touchUpInside" id="7H3-ae-Ri0"/>
                     </connections>
@@ -223,10 +223,10 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="sAr-VL-Uem" firstAttribute="leading" secondItem="mDj-An-QgP" secondAttribute="leading" constant="38" id="4dt-1X-tvn"/>
-                <constraint firstAttribute="trailing" secondItem="7XZ-mg-COX" secondAttribute="trailing" constant="6" id="712-qC-5Nz"/>
+                <constraint firstAttribute="trailing" secondItem="7XZ-mg-COX" secondAttribute="trailing" constant="9" id="712-qC-5Nz"/>
                 <constraint firstAttribute="bottom" secondItem="Kap-iR-Fyb" secondAttribute="bottom" constant="21" id="GtJ-s1-Vrj"/>
                 <constraint firstItem="Kap-iR-Fyb" firstAttribute="top" secondItem="mDj-An-QgP" secondAttribute="top" id="Ijk-GU-xV3"/>
-                <constraint firstItem="afx-O4-19K" firstAttribute="leading" secondItem="mDj-An-QgP" secondAttribute="leading" constant="5" id="LmW-bY-euM"/>
+                <constraint firstItem="afx-O4-19K" firstAttribute="leading" secondItem="mDj-An-QgP" secondAttribute="leading" constant="9" id="LmW-bY-euM"/>
                 <constraint firstItem="Kap-iR-Fyb" firstAttribute="leading" secondItem="mDj-An-QgP" secondAttribute="leading" constant="99" id="aBa-nP-7fW"/>
                 <constraint firstItem="Kap-iR-Fyb" firstAttribute="centerX" secondItem="sAr-VL-Uem" secondAttribute="centerX" id="bZG-qz-fpK"/>
                 <constraint firstAttribute="bottom" secondItem="7XZ-mg-COX" secondAttribute="bottom" constant="6" id="eGM-bn-GEY"/>
@@ -237,4 +237,10 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
+    <resources>
+        <image name="current-location-arrow-select.png" width="30" height="30"/>
+        <image name="current-location-arrow.png" width="30" height="30"/>
+        <image name="zoom-ride-bounds-select.png" width="30" height="30"/>
+        <image name="zoom-ride-bounds.png" width="30" height="30"/>
+    </resources>
 </document>
