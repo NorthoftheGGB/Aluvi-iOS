@@ -15,6 +15,7 @@
 #import "VCDriverViewController.h"
 #import "VCRiderRidesViewController.h"
 #import "VCUserState.h"
+#import "VCDebugViewController.h"
 
 #define kInterfaceModeKey @"INTERFACE_MODE_KEY"
 
@@ -94,6 +95,11 @@ static int mode;
            deckController.centerController = driverViewController;
            [self setMode: kDriverMode];
     }
+}
+
++ (void) showDebugInterface{
+    VCDebugViewController * vc = [[VCDebugViewController alloc] init];
+    [[UIApplication sharedApplication] delegate].window.rootViewController = vc;
 }
 
 + (void) setMode: (int) newMode {

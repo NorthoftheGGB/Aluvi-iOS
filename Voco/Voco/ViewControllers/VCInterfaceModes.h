@@ -19,6 +19,7 @@
 + (void) showRiderSigninInterface;
 + (void) showRiderInterface;
 + (void) showDriverInterface;
++ (void) showDebugInterface;
 
 + (int) mode;
 

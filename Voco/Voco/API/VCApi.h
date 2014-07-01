@@ -50,6 +50,7 @@
 #define API_DRIVER_REGISTRATION @"drivers/driver_registration"
 #define API_DRIVER_CLOCK_ON @"drivers/clock_on"
 #define API_DRIVER_CLOCK_OFF @"drivers/clock_off"
+#define API_GET_DRIVER_RIDE_PATH_PATTERN @"drivers/rides/:id"
 
 // state
 #define API_TOKEN_KEY @"API_TOKEN"

@@ -14,6 +14,8 @@
 #import "Offer.h"
 #import "VCLocation.h"
 #import "VCDriverRegistration.h"
+#import "Drive.h"
+#import "VCDriveIdentity.h"
 
 @implementation VCDriverApi
 
@@ -21,8 +23,10 @@
     [VCRideDriverAssignment createMappings:objectManager];
     [VCRideIdentity createMappings:objectManager];
     [Offer createMappings:objectManager];
+    [Drive createMappings:objectManager];
     [VCLocation createMappings:objectManager];
     [VCDriverRegistration createMappings:objectManager];
+    [VCDriveIdentity createMappings:objectManager];
     
     // Responses (some have not been moved here yet)
     {
@@ -88,6 +92,23 @@
                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                             failure(operation, error);
                                         }];
+}
+
++ (void) loadDriveDetails: (NSNumber *) rideId success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+    VCDriveIdentity * rideIdentity = [[VCDriveIdentity alloc] init];
+    rideIdentity.id = rideId;
+    //Drive * drive = [[Drive alloc] init];
+    //drive.ride_id = rideId;
+    [[RKObjectManager sharedManager] getObject:rideIdentity
+                                          path:nil
+                                    parameters:nil
+                                       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                           NSLog(@"%@", @"Success");
+                                          }
+                                       failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                           NSLog(@"%@", @"Failure");
+                                          }];
 }
 
 @end

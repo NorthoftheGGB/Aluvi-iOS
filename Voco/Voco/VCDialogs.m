@@ -53,7 +53,6 @@ static VCDialogs *sharedSingleton;
         return;
     }
     
-    
     [VCUserState instance].driveProcessState = @"ride offered";
     [self offerRideToDriver:[offers objectAtIndex:0]];
 }
@@ -62,10 +61,10 @@ static VCDialogs *sharedSingleton;
     _interfaceState = VC_INTERFACE_STATE_OFFER_DIALOG;
     _offer = rideOffer;
 
-    NSString * message = [NSString stringWithFormat:@"From: %@, To: %@. Do you want to accept this ride?", rideOffer.meetingPointPlaceName, rideOffer.destinationPlaceName ];
+    NSString * title = [NSString stringWithFormat:@"Ride requested from: %@, To: %@.", rideOffer.meetingPointPlaceName, rideOffer.destinationPlaceName ];
     
-    _currentAlertView = [UIAlertView showWithTitle:[NSString stringWithFormat:@"New ride request %@", rideOffer.ride_id]
-                       message:message
+    _currentAlertView = [UIAlertView showWithTitle:title
+                       message:@"Do you want view this ride?"
              cancelButtonTitle:@"No"
              otherButtonTitles:@[@"Yes"]
                       tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
@@ -92,7 +91,7 @@ static VCDialogs *sharedSingleton;
                                   
                                   if(operation.HTTPRequestOperation.response.statusCode == 404){
                                       // ride is actually assigned to this driver already, can't be decline
-                                      [WRUtilities criticalErrorWithString:@"This ride is already assigned to the logged in driver.  It cannot be decline and must be cancelled instead"];
+                                      [WRUtilities criticalErrorWithString:@"This ride is already assigned to the logged in driver.  It cannot be declined and must be cancelled instead"];
                                       _interfaceState = VC_INTERFACE_STATE_IDLE;
 
                                   } else if(operation.HTTPRequestOperation.response.statusCode == 403){
@@ -113,6 +112,10 @@ static VCDialogs *sharedSingleton;
 
                               
                           } else if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Yes"]) {
+                              
+                              
+                              
+                              /*
                               VCRideDriverAssignment * assignment = [[VCRideDriverAssignment alloc] init];
                               assignment.rideId = rideOffer.ride_id;
                               
@@ -158,6 +161,7 @@ static VCDialogs *sharedSingleton;
                                   }
                                
                               }];
+                               */
                               
                           }
                       }];
