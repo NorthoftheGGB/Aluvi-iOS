@@ -156,6 +156,10 @@
 
 }
 
+- (void) rideNotFoundNotification:(id) sender{
+    NSAssert(0, @"Not implemented");
+}
+
 - (void) rideCancelledByDriverNotification:(id) sender{
     [[VCCoreData managedObjectContext] refreshObject:_ride mergeChanges:YES];
     [self resetRequestInterface];

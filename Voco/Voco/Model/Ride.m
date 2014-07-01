@@ -18,7 +18,6 @@
 
 @implementation Ride
 
-@dynamic ride_id;
 @dynamic requestType;
 @dynamic car_id;
 @dynamic driver_id;
@@ -28,15 +27,8 @@
 @dynamic originLatitude;
 @dynamic originLongitude;
 @dynamic originPlaceName;
-@dynamic meetingPointLatitude;
-@dynamic meetingPointLongitude;
-@dynamic meetingPointPlaceName;
-@dynamic destinationLongitude;
-@dynamic destinationLatitude;
-@dynamic destinationPlaceName;
 @dynamic driver;
 @dynamic car;
-@dynamic desiredArrival;
 
 
 + (void)createMappings:(RKObjectManager *)objectManager{

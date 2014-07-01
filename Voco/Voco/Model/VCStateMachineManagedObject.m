@@ -82,6 +82,12 @@
     self.savedState = state__;
 }
 
+// forced state never has a value
+- (NSString *) forcedState {
+    return @"";
+}
+
+
 /*
 - (void) setSavedState:(NSString *)savedState__{
     [self willChangeValueForKey:@"savedState"];

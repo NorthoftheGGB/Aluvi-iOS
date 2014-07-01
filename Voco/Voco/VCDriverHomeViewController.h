@@ -6,8 +6,10 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "VCRideViewController.h"
+#import "Ride.h"
 
-@interface VCDriverHomeViewController : UIViewController
+@interface VCDriverHomeViewController : VCRideViewController
+
 
 @end

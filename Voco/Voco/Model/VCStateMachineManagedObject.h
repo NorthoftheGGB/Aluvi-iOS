@@ -21,6 +21,7 @@
 - (NSString *) getInitialState;
 
 - (NSString *) state; 
-
+- (void) setForcedState: (NSString*) state__;
+- (NSString *) forcedState;
 
 @end

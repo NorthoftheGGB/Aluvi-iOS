@@ -28,6 +28,7 @@ static void * XXContext = &XXContext;
 @property (strong, nonatomic) IBOutlet UIView *registeredNotActivated;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *modeSegementedControl;
 @property (weak, nonatomic) IBOutlet UISwitch *onDutySwitch;
+@property (nonatomic) BOOL appeared;
 
 // Rider Menu
 - (IBAction)didTapUserMode:(id)sender;
@@ -77,6 +78,20 @@ static void * XXContext = &XXContext;
     [super viewDidLoad];
     self.title = @"settings";
     
+
+
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(didTapLogout:)];
+    self.navigationItem.rightBarButtonItem = logoutButton;
+}
+
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    // refresh the view in case it has changed
     switch([VCInterfaceModes mode]){
         case kDriverMode:
             [_modeSegementedControl setSelectedSegmentIndex:1];
@@ -87,29 +102,18 @@ static void * XXContext = &XXContext;
             [self showRiderMenu];
             break;
     }
-
-}
-
-- (void) viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(didTapLogout:)];
-    self.navigationItem.rightBarButtonItem = logoutButton;
-}
-
-- (void) viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    // refresh the view in case it has changed
-    if([VCInterfaceModes mode] == kDriverMode){
-        [self showDriverView];
-    }
     [[VCUserState instance] addObserver:self forKeyPath:@"driverState" options:NSKeyValueObservingOptionNew context:XXContext];
+    _appeared = YES;
 
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.navigationItem.rightBarButtonItem = nil;
-    [[VCUserState instance] removeObserver:self forKeyPath:@"driverState"];
+    if(_appeared){
+        [[VCUserState instance] removeObserver:self forKeyPath:@"driverState"];
+        _appeared = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning

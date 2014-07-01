@@ -7,9 +7,13 @@
 //
 
 #import "VCDriverHomeViewController.h"
+
 #import "VCLabel.h"
+#import <MapKit/MapKit.h>
+
 
 @interface VCDriverHomeViewController ()
+
 - (IBAction)didTapAccept:(id)sender;
 - (IBAction)didTapDecline:(id)sender;
 - (IBAction)didTapRiderPickedUp:(id)sender;
@@ -43,7 +47,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+       
+    if(self.ride != nil){
+        
+        [self showSuggestedRoute];
+        [self showRideLocations];
+        self.title = self.ride.routeDescription;
+    }
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,6 +62,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 - (IBAction)didTapAccept:(id)sender {
 }
