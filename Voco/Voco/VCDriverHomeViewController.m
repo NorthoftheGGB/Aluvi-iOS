@@ -9,6 +9,7 @@
 #import "VCDriverHomeViewController.h"
 #import <MapKit/MapKit.h>
 #import <MBProgressHUD.h>
+#import <Crashlytics/Crashlytics.h>
 #import "VCLabel.h"
 #import "VCDialogs.h"
 #import "VCButtonFontBold.h"

@@ -28,6 +28,7 @@ static int mode;
 + (VCInterfaceModes * ) instance {
     if(instance == nil){
         instance = [[VCInterfaceModes alloc] init];
+        mode =  [(NSNumber*) [[NSUserDefaults standardUserDefaults] objectForKey:kInterfaceModeKey] integerValue];
     }
     return instance;
 }
@@ -35,7 +36,11 @@ static int mode;
 + (void) showInterface {
     
     if([VCApi loggedIn]){
-        [VCInterfaceModes showRiderInterface];
+        if(mode == kDriverMode) {
+            [VCInterfaceModes showDriverInterface];
+        } else {
+            [VCInterfaceModes showRiderInterface];
+        }
     } else {
         [VCInterfaceModes showRiderSigninInterface];
         

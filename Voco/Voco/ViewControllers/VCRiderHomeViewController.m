@@ -21,6 +21,7 @@
 #import "VCLabel.h"
 #define kStepSetDepartureLocation 1
 #define kStepSetDestinationLocation 2
+#define kStepConfirmRequest 3
 
 @interface VCRiderHomeViewController () <MKMapViewDelegate>
 
@@ -236,7 +237,11 @@
         myAnnotation.subtitle = @"Click to change";
         [self.map addAnnotation:myAnnotation];
         
+        [_locationConfirmationButtonLabel setTitle:@"Send Ride Request?" forState:UIControlStateNormal];
         self.mapCenterPin.hidden = YES;
+        _step = kStepConfirmRequest;
+        
+    } else if (_step == kStepConfirmRequest) {
         _locationConfirmationAnnotation.hidden = YES;
         
         if([ self.ride.requestType isEqualToString:RIDE_REQUEST_TYPE_ON_DEMAND]) {

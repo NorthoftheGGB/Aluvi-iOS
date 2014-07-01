@@ -9,6 +9,7 @@
 #import "WRUtilities.h"
 #import "NSDate+Pretty.h"
 
+
 static UIAlertView * criticalErrorView = nil;
 static UIAlertView * networkUnavailableErrorView = nil;
 
@@ -34,7 +35,8 @@ static UIAlertView * networkUnavailableErrorView = nil;
 + (void) criticalError: (NSError *) error {
     
     NSLog(@"%@ Critical Error: %@", [[NSDate date] pretty], [error debugDescription]);
-    
+
+#if DEBUG==1
     if(criticalErrorView != nil){
         [criticalErrorView dismissWithClickedButtonIndex:0 animated:NO];
     }
@@ -47,13 +49,16 @@ static UIAlertView * networkUnavailableErrorView = nil;
                           otherButtonTitles:nil];
     criticalErrorView = alert;
     [alert show];
-    
+#else
+    CLS_LOG(@"%@ Critical Error: %@", [[NSDate date] pretty] , error);
+#endif
 }
 
 + (void) criticalErrorWithString: (NSString *) error {
     
     NSLog(@"%@ Critical Error: %@", [[NSDate date] pretty] , error);
-    
+#if DEBUG==1
+  
     if(criticalErrorView != nil){
         [criticalErrorView dismissWithClickedButtonIndex:0 animated:NO];
         criticalErrorView = nil;
@@ -67,6 +72,9 @@ static UIAlertView * networkUnavailableErrorView = nil;
                           otherButtonTitles:nil];
     criticalErrorView = alert;
     [alert performSelectorOnMainThread:@selector(show) withObject:nil waitUntilDone:YES];
+#else
+    CLS_LOG(@"%@ Critical Error: %@", [[NSDate date] pretty] , error);
+#endif
     
 }
 
