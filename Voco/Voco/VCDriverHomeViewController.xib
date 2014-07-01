@@ -6,6 +6,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCDriverHomeViewController">
             <connections>
+                <outlet property="addressLabel" destination="sAr-VL-Uem" id="nYo-Jc-muf"/>
+                <outlet property="driverLocationHud" destination="mDj-An-QgP" id="eJH-J9-JeV"/>
+                <outlet property="pickupLocationLabel" destination="Kap-iR-Fyb" id="0Xp-kv-TIf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,7 +18,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H8D-Wr-6Ns" customClass="VCButtonFontBold">
-                    <rect key="frame" x="26" y="402" width="130" height="30"/>
+                    <rect key="frame" x="26" y="375" width="130" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.87843143940000001" green="0.094117656349999995" blue="0.09803922474" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>
@@ -40,7 +43,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qkB-Bk-332" customClass="VCButtonFontBold">
-                    <rect key="frame" x="164" y="402" width="130" height="30"/>
+                    <rect key="frame" x="164" y="375" width="130" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.87843143940000001" green="0.094117656349999995" blue="0.09803922474" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>
@@ -65,7 +68,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXT-Uz-lV6" customClass="VCButtonFontBold">
-                    <rect key="frame" x="164" y="440" width="130" height="30"/>
+                    <rect key="frame" x="164" y="406" width="130" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.87843143940000001" green="0.094117656349999995" blue="0.09803922474" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>
@@ -90,7 +93,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Awz-9j-gv0" customClass="VCButtonFontBold">
-                    <rect key="frame" x="26" y="440" width="130" height="30"/>
+                    <rect key="frame" x="26" y="406" width="130" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.87843143940000001" green="0.094117656349999995" blue="0.09803922474" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>
@@ -114,22 +117,118 @@
                         <action selector="didTapRiderPickedUp:" destination="-1" eventType="touchUpInside" id="tvs-Qv-mXu"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ckd-PV-Lho" customClass="VCButtonFontBold">
+                    <rect key="frame" x="95" y="437" width="130" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.87843143940000001" green="0.094117656349999995" blue="0.09803922474" alpha="1" colorSpace="deviceRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="ZkV-ch-1Ce"/>
+                        <constraint firstAttribute="width" constant="130" id="vVN-d1-J5x"/>
+                    </constraints>
+                    <state key="normal" title="Ride Completed">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didTapeRideCompleted:" destination="-1" eventType="touchUpInside" id="kJl-I7-gz5"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Awz-9j-gv0" firstAttribute="top" secondItem="H8D-Wr-6Ns" secondAttribute="bottom" constant="8" id="A9D-H3-beh"/>
+                <constraint firstItem="Awz-9j-gv0" firstAttribute="top" secondItem="H8D-Wr-6Ns" secondAttribute="bottom" constant="1" id="A9D-H3-beh"/>
                 <constraint firstAttribute="trailing" secondItem="qkB-Bk-332" secondAttribute="trailing" constant="26" id="HmO-To-Kq5"/>
                 <constraint firstItem="H8D-Wr-6Ns" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="26" id="RSO-5A-GDa"/>
                 <constraint firstAttribute="trailing" secondItem="mXT-Uz-lV6" secondAttribute="trailing" constant="26" id="SWC-At-nIQ"/>
-                <constraint firstItem="mXT-Uz-lV6" firstAttribute="top" secondItem="qkB-Bk-332" secondAttribute="bottom" constant="8" id="XZB-ih-PLX"/>
+                <constraint firstItem="Ckd-PV-Lho" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="95" id="UVv-HM-RKL"/>
+                <constraint firstItem="mXT-Uz-lV6" firstAttribute="top" secondItem="qkB-Bk-332" secondAttribute="bottom" constant="1" id="XZB-ih-PLX"/>
                 <constraint firstItem="qkB-Bk-332" firstAttribute="leading" secondItem="H8D-Wr-6Ns" secondAttribute="trailing" constant="8" id="dsg-si-u6w"/>
                 <constraint firstItem="mXT-Uz-lV6" firstAttribute="leading" secondItem="Awz-9j-gv0" secondAttribute="trailing" constant="8" id="gXB-fL-C59"/>
                 <constraint firstItem="Awz-9j-gv0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="26" id="h0O-Um-14P"/>
-                <constraint firstAttribute="bottom" secondItem="mXT-Uz-lV6" secondAttribute="bottom" constant="10" id="hI5-pG-zWv"/>
-                <constraint firstAttribute="bottom" secondItem="Awz-9j-gv0" secondAttribute="bottom" constant="10" id="swg-5q-ftf"/>
+                <constraint firstAttribute="bottom" secondItem="mXT-Uz-lV6" secondAttribute="bottom" constant="44" id="hI5-pG-zWv"/>
+                <constraint firstItem="Ckd-PV-Lho" firstAttribute="top" secondItem="Awz-9j-gv0" secondAttribute="bottom" constant="1" id="haI-BS-rVb"/>
+                <constraint firstAttribute="bottom" secondItem="Ckd-PV-Lho" secondAttribute="bottom" constant="13" id="i1h-R3-OHJ"/>
+                <constraint firstAttribute="bottom" secondItem="Awz-9j-gv0" secondAttribute="bottom" constant="44" id="swg-5q-ftf"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <view contentMode="scaleToFill" id="mDj-An-QgP" userLabel="Location HUD">
+            <rect key="frame" x="0.0" y="0.0" width="307" height="42"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afx-O4-19K">
+                    <rect key="frame" x="5" y="6" width="30" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.96542171556122447" green="0.96542171556122447" blue="0.96542171556122447" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="A">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapCurrentLocation:" destination="-1" eventType="touchUpInside" id="w7Q-hY-zMQ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7XZ-mg-COX">
+                    <rect key="frame" x="271" y="6" width="30" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.96542171560000001" green="0.96542171560000001" blue="0.96542171560000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="O">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapZoomRideBounds:" destination="-1" eventType="touchUpInside" id="Oq8-b6-cKK"/>
+                    </connections>
+                </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123 Address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAr-VL-Uem" customClass="VCLabel">
+                    <rect key="frame" x="38" y="19" width="231" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kap-iR-Fyb" customClass="VCLabel">
+                    <rect key="frame" x="99" y="0.0" width="108" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.87843143940000001" green="0.094117656349999995" blue="0.09803922474" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="13"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="sAr-VL-Uem" firstAttribute="leading" secondItem="mDj-An-QgP" secondAttribute="leading" constant="38" id="4dt-1X-tvn"/>
+                <constraint firstAttribute="trailing" secondItem="7XZ-mg-COX" secondAttribute="trailing" constant="6" id="712-qC-5Nz"/>
+                <constraint firstAttribute="bottom" secondItem="Kap-iR-Fyb" secondAttribute="bottom" constant="21" id="GtJ-s1-Vrj"/>
+                <constraint firstItem="Kap-iR-Fyb" firstAttribute="top" secondItem="mDj-An-QgP" secondAttribute="top" id="Ijk-GU-xV3"/>
+                <constraint firstItem="afx-O4-19K" firstAttribute="leading" secondItem="mDj-An-QgP" secondAttribute="leading" constant="5" id="LmW-bY-euM"/>
+                <constraint firstItem="Kap-iR-Fyb" firstAttribute="leading" secondItem="mDj-An-QgP" secondAttribute="leading" constant="99" id="aBa-nP-7fW"/>
+                <constraint firstItem="Kap-iR-Fyb" firstAttribute="centerX" secondItem="sAr-VL-Uem" secondAttribute="centerX" id="bZG-qz-fpK"/>
+                <constraint firstAttribute="bottom" secondItem="7XZ-mg-COX" secondAttribute="bottom" constant="6" id="eGM-bn-GEY"/>
+                <constraint firstItem="Kap-iR-Fyb" firstAttribute="centerX" secondItem="mDj-An-QgP" secondAttribute="centerX" id="mn0-qg-kDX"/>
+                <constraint firstItem="sAr-VL-Uem" firstAttribute="top" secondItem="mDj-An-QgP" secondAttribute="top" constant="19" id="sS1-Wn-nOd"/>
+                <constraint firstAttribute="bottom" secondItem="afx-O4-19K" secondAttribute="bottom" constant="6" id="tpd-BN-5Ci"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
 </document>

@@ -7,8 +7,11 @@
 //
 
 #import "VCDriverHomeViewController.h"
+
+#import "VCLabel.h"
 #import <MapKit/MapKit.h>
 #import "VCDialogs.h"
+
 
 @interface VCDriverHomeViewController ()
 
@@ -16,6 +19,18 @@
 - (IBAction)didTapDecline:(id)sender;
 - (IBAction)didTapRiderPickedUp:(id)sender;
 - (IBAction)didTapCancelRide:(id)sender;
+
+//Driver Location HUD
+
+@property (strong, nonatomic) IBOutlet UIView *driverLocationHud;
+
+- (IBAction)didTapZoomRideBounds:(id)sender;
+- (IBAction)didTapCurrentLocation:(id)sender;
+
+@property (weak, nonatomic) IBOutlet VCLabel *pickupLocationLabel;
+@property (weak, nonatomic) IBOutlet VCLabel *addressLabel;
+
+
 
 @end
 
@@ -86,5 +101,12 @@
 }
 
 - (IBAction)didTapCancelRide:(id)sender {
+}
+- (IBAction)didTapeRideCompleted:(id)sender {
+}
+- (IBAction)didTapZoomRideBounds:(id)sender {
+}
+
+- (IBAction)didTapCurrentLocation:(id)sender {
 }
 @end
