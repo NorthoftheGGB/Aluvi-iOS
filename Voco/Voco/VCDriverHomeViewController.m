@@ -50,4 +50,6 @@
 
 - (IBAction)didTapCancelRide:(id)sender {
 }
+- (IBAction)didTapeRideCompleted:(id)sender {
+}
 @end
