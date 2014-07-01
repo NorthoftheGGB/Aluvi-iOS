@@ -18,4 +18,10 @@
 @dynamic destinationPlaceName;
 @dynamic desiredArrival;
 
+
+
+- (NSString *) routeDescription {
+    return [NSString stringWithFormat:@"%@ to %@", self.meetingPointPlaceName, self.destinationPlaceName];
+}
+
 @end

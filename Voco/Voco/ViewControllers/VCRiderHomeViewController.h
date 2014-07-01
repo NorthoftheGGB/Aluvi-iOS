@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Ride.h"
+#import "VCRideViewController.h"
 
-@interface VCRiderHomeViewController : UIViewController
+@interface VCRiderHomeViewController : VCRideViewController
 
 @property (strong, nonatomic) Ride * ride;
 

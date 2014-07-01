@@ -13,6 +13,7 @@
 #import "VCLoginResponse.h"
 #import "VCUserStateResponse.h"
 #import "VCInterfaceModes.h"
+#import "VCDriverApi.h"
 
 #define kRideProcessStateKey @"kRideProcessStateKey"
 #define kDriveProcessStateKey @"kDriveProcessStateKey"
@@ -125,7 +126,9 @@ static VCUserState *sharedSingleton;
                      success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                          VCUserStateResponse * response = mappingResult.firstObject;
                          self.riderState = response.riderState;
-                         self.driverState = response.driverState;
+                         if(response.driverState != nil) {
+                             self.driverState = response.driverState;
+                         }
                      } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                          NSLog(@"Could not synchronize user state");
                      }];
@@ -152,6 +155,27 @@ static VCUserState *sharedSingleton;
     } else {
         return NO;
     }
+}
+
+- (void) clockOnWithSuccess: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                    failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+    [VCDriverApi clockOnWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        self.driverState = kDriverStateOnDuty;
+        success(operation, mappingResult);
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        failure(operation, error);
+    }];
+    
+}
+
+- (void) clockOffWithSuccess: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                     failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+    [VCDriverApi clockOffWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        self.driverState = kDriverStateActive;
+        success(operation, mappingResult);
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        failure(operation, error);
+    }];
 }
 
 

@@ -54,7 +54,7 @@
                 
             default:
             {
-                
+                [WRUtilities criticalError:error];
             }
                 break;
         }

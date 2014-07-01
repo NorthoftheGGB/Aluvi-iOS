@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "MQShape.h"
+#import "MQBoundingBox.h"
 
 @interface MQRoute : NSObject
 
 @property(nonatomic, strong) MQShape * shape;
+@property(nonatomic, strong) MQBoundingBox * boundingBox;
 
 + (RKObjectMapping *) getMapping;
 

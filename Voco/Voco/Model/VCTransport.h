@@ -19,4 +19,6 @@
 @property (nonatomic, retain) NSString * destinationPlaceName;
 @property (nonatomic, retain) NSDate * desiredArrival;
 
+- (NSString *) routeDescription;
+
 @end

@@ -47,11 +47,6 @@
 
 @property (strong, nonatomic) MBProgressHUD * progressHUD;
 
-// Map
-@property (strong, nonatomic) MKMapView * map;
-@property (strong, nonatomic) MKPolyline * routeOverlay;
-@property (strong, nonatomic) CLGeocoder * geocoder;
-
 // Data Entry
 @property (nonatomic) NSInteger step;
 @property (strong, nonatomic) NSDate * desiredArrivalDateTime;
@@ -94,35 +89,30 @@
     [super viewDidLoad];
     self.title = @"Home";
     
-    _map = [[MKMapView alloc] initWithFrame:self.view.frame];
-    _map.delegate = self;
-    _map.showsUserLocation = YES;
-    _map.userTrackingMode = YES;
-    [self.view insertSubview:_map atIndex:0];
     [self resetRequestInterface];
     
-    if(_ride != nil){
+    if(self.ride != nil){
         // Setup interface for ride state
-        if([_ride.requestType isEqualToString:RIDE_REQUEST_TYPE_ON_DEMAND]){
+        if([self.ride.requestType isEqualToString:RIDE_REQUEST_TYPE_ON_DEMAND]){
 
             [self showSuggestedRoute];
 
             [self placeRideDetailsDrawerInPickupMode];
             [self showRideDetailsDrawer];
 
-        } else if ([_ride.requestType isEqualToString:RIDE_REQUEST_TYPE_COMMUTER]){
+        } else if ([self.ride.requestType isEqualToString:RIDE_REQUEST_TYPE_COMMUTER]){
 
-            if([_ride.state isEqualToString:kRequestedState]){
+            if([self.ride.state isEqualToString:kRequestedState]){
                 [self showRequestedModeInterface];
-                //_arrivalTimeButton setTitle:_ride. forState:<#(UIControlState)#>
-            } else if([_ride.state isEqualToString:kScheduledState]){
+                //_arrivalTimeButton setTitle:self.ride. forState:<#(UIControlState)#>
+            } else if([self.ride.state isEqualToString:kScheduledState]){
                 //[self showScheduledModeInterface];
 
             }
             [self showSuggestedRoute];
 
         }
-        self.title = _ride.routeDescription;
+        self.title = self.ride.routeDescription;
     }
     
 }
@@ -148,7 +138,7 @@
 }
 
 - (void) rideFoundNotification:(id) sender{
-    [[VCCoreData managedObjectContext] refreshObject:_ride mergeChanges:YES];
+    [[VCCoreData managedObjectContext] refreshObject:self.ride mergeChanges:YES];
     [self showRideDetailsDrawer];
     if(_progressHUD != nil) {
         [_progressHUD hide:YES];
@@ -161,48 +151,29 @@
 }
 
 - (void) rideCancelledByDriverNotification:(id) sender{
-    [[VCCoreData managedObjectContext] refreshObject:_ride mergeChanges:YES];
+    [[VCCoreData managedObjectContext] refreshObject:self.ride mergeChanges:YES];
     [self resetRequestInterface];
 }
 
 - (void) rideComplete:(id) sender{
     [self resetRequestInterface];
-    _ride = nil;
-}
-
-- (void) showSuggestedRoute {
-    
-    //TODO: create confirmation step and UI
-    CLLocationCoordinate2D destinationCoordinate;
-    CLLocationCoordinate2D departureCoordinate;
-    destinationCoordinate.latitude = [_ride.destinationLatitude doubleValue];
-    destinationCoordinate.longitude = [_ride.destinationLongitude doubleValue];
-    departureCoordinate.latitude = [_ride.originLatitude doubleValue];
-    departureCoordinate.longitude = [_ride.originLongitude doubleValue];
-    
-    [VCMapQuestRouting route:destinationCoordinate to:departureCoordinate region:_map.region success:^(MKPolyline *polyline) {
-        _routeOverlay = polyline;
-        [_map addOverlay:_routeOverlay];
-    } failure:^{
-        NSLog(@"%@", @"Error talking with MapQuest routing API");
-    }];
-    
+    self.ride = nil;
 }
 
 
 - (IBAction)didTapCommute:(id)sender {
     [self showRouteRequestInterface];
     
-    _ride = (Ride *) [NSEntityDescription insertNewObjectForEntityForName:@"Ride" inManagedObjectContext:[VCCoreData managedObjectContext]];
-    _ride.requestType = RIDE_REQUEST_TYPE_COMMUTER;
+    self.ride = (Ride *) [NSEntityDescription insertNewObjectForEntityForName:@"Ride" inManagedObjectContext:[VCCoreData managedObjectContext]];
+    self.ride.requestType = RIDE_REQUEST_TYPE_COMMUTER;
     _morningOrEveningButton.hidden = NO;
 }
 
 - (IBAction)didTapOnDemand:(id)sender {
     [self showRouteRequestInterface];
     
-    _ride = (Ride *) [NSEntityDescription insertNewObjectForEntityForName:@"Ride" inManagedObjectContext:[VCCoreData managedObjectContext]];
-    _ride.requestType = RIDE_REQUEST_TYPE_ON_DEMAND;
+    self.ride = (Ride *) [NSEntityDescription insertNewObjectForEntityForName:@"Ride" inManagedObjectContext:[VCCoreData managedObjectContext]];
+    self.ride.requestType = RIDE_REQUEST_TYPE_ON_DEMAND;
     
     /*
      CGRect frame = _departureEntryView.frame;
@@ -214,17 +185,17 @@
 
 - (IBAction)didTapConfirmLocation:(id)sender {
     if(_step == kStepSetDepartureLocation){
-        CLLocationCoordinate2D departureLocation = [_map centerCoordinate];
-        _ride.originLatitude = [NSNumber numberWithDouble: departureLocation.latitude];
-        _ride.originLongitude= [NSNumber numberWithDouble: departureLocation.longitude];
+        CLLocationCoordinate2D departureLocation = [self.map centerCoordinate];
+        self.ride.originLatitude = [NSNumber numberWithDouble: departureLocation.latitude];
+        self.ride.originLongitude= [NSNumber numberWithDouble: departureLocation.longitude];
         _step = kStepSetDestinationLocation;
         
         CLLocation * location = [[CLLocation alloc] initWithLatitude:departureLocation.latitude  longitude:departureLocation.longitude];
-        if (!_geocoder)
-            _geocoder = [[CLGeocoder alloc] init];
-        [_geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (!self.geocoder)
+            self.geocoder = [[CLGeocoder alloc] init];
+        [self.geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
             MKPlacemark * placemark = [placemarks objectAtIndex:0];
-            _ride.originPlaceName = [placemark name];
+            self.ride.originPlaceName = [placemark name];
         }];
 
         
@@ -233,7 +204,7 @@
         myAnnotation.coordinate = CLLocationCoordinate2DMake(departureLocation.latitude, departureLocation.longitude);
         myAnnotation.title = @"Pickup Location";
         myAnnotation.subtitle = @"Click to change";
-        [_map addAnnotation:myAnnotation];
+        [self.map addAnnotation:myAnnotation];
         
         [_locationConfirmationButtonLabel setTitle:@"Set Drop Off Location" forState:UIControlStateNormal];
         
@@ -244,16 +215,16 @@
         [self.view addSubview:_destinationEntryView];
         
     } else if (_step == kStepSetDestinationLocation) {
-        CLLocationCoordinate2D destinationLocation = [_map centerCoordinate];
-        _ride.destinationLatitude = [NSNumber numberWithDouble: destinationLocation.latitude];
-        _ride.destinationLongitude = [NSNumber numberWithDouble: destinationLocation.longitude];
+        CLLocationCoordinate2D destinationLocation = [self.map centerCoordinate];
+        self.ride.destinationLatitude = [NSNumber numberWithDouble: destinationLocation.latitude];
+        self.ride.destinationLongitude = [NSNumber numberWithDouble: destinationLocation.longitude];
         
         CLLocation * location = [[CLLocation alloc] initWithLatitude:destinationLocation.latitude  longitude:destinationLocation.longitude];
-        if (!_geocoder)
-            _geocoder = [[CLGeocoder alloc] init];
-        [_geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (!self.geocoder)
+            self.geocoder = [[CLGeocoder alloc] init];
+        [self.geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
             MKPlacemark * placemark = [placemarks objectAtIndex:0];
-            _ride.destinationPlaceName = [placemark name];
+            self.ride.destinationPlaceName = [placemark name];
         }];
         
         
@@ -263,23 +234,23 @@
         myAnnotation.coordinate = CLLocationCoordinate2DMake(destinationLocation.latitude, destinationLocation.longitude);
         myAnnotation.title = @"Drop Off Location";
         myAnnotation.subtitle = @"Click to change";
-        [_map addAnnotation:myAnnotation];
+        [self.map addAnnotation:myAnnotation];
         
-        _mapCenterPin.hidden = YES;
+        self.mapCenterPin.hidden = YES;
         _locationConfirmationAnnotation.hidden = YES;
         
-        if([ _ride.requestType isEqualToString:RIDE_REQUEST_TYPE_ON_DEMAND]) {
+        if([ self.ride.requestType isEqualToString:RIDE_REQUEST_TYPE_ON_DEMAND]) {
             
             
             _progressHUD = [MBProgressHUD showHUDAddedTo:self.view.window animated:YES];
             _progressHUD.labelText = @"Requesting Ride";
             
             // VC RidesAPI
-            [VCRiderApi requestRide:_ride
+            [VCRiderApi requestRide:self.ride
                             success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                 VCRideRequestCreated * rideRequestCreatedResponse = mappingResult.firstObject;
-                                _ride.request_id = rideRequestCreatedResponse.rideRequestId;
-                                _ride.requestedTimestamp = [NSDate date];
+                                self.ride.request_id = rideRequestCreatedResponse.rideRequestId;
+                                self.ride.requestedTimestamp = [NSDate date];
                                 [VCCoreData saveContext];
                                 //[hud hide:YES];
                                 // TODO: Don't show an alert, show a HUD
@@ -292,7 +263,7 @@
                             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                 [_progressHUD hide:YES];
                             }];
-        } else if ( [ _ride.requestType isEqualToString:RIDE_REQUEST_TYPE_COMMUTER]) {
+        } else if ( [ self.ride.requestType isEqualToString:RIDE_REQUEST_TYPE_COMMUTER]) {
             // Commuter Confirmation
             
         }
@@ -313,7 +284,7 @@
 
 - (void) cancelRide {
     
-    if(!_ride.request_id || _ride.request_id == nil){
+    if(!self.ride.request_id || self.ride.request_id == nil){
         [self resetRequestInterface];
         return;
     }
@@ -324,7 +295,7 @@
     
     
     // VC RidesAPI
-    [VCRiderApi cancelRide:_ride success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [VCRiderApi cancelRide:self.ride success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [self resetRequestInterface];
         [hud hide:YES];
         
@@ -449,7 +420,7 @@
                                            
                                            NSCalendar *theCalendar = [NSCalendar currentCalendar];
                                            _desiredArrivalDateTime = [theCalendar dateByAddingComponents:dayComponent toDate:_desiredArrivalDateTime options:0];
-                                           _ride.desiredArrival = _desiredArrivalDateTime;
+                                           self.ride.desiredArrival = _desiredArrivalDateTime;
 
                                        }
                                      cancelBlock:^(ActionSheetStringPicker *picker) {
@@ -464,9 +435,9 @@
     hud.labelText = @"Requesting Ride";
     
     // VC RidesAPI
-    [VCRiderApi requestRide:_ride success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [VCRiderApi requestRide:self.ride success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         VCRideRequestCreated * rideRequestCreatedResponse = mappingResult.firstObject;
-        _ride.request_id = rideRequestCreatedResponse.rideRequestId;
+        self.ride.request_id = rideRequestCreatedResponse.rideRequestId;
         [VCCoreData saveContext];
         [hud hide:YES];
         [UIAlertView showWithTitle:@"Ride Requested"
@@ -487,22 +458,22 @@
     _cancelRideButton.hidden = NO;
     _onDemandButton.hidden = YES;
     _commuteButton.hidden = YES;
-    _mapCenterPin.hidden = YES;
+    self.mapCenterPin.hidden = YES;
     _locationConfirmationAnnotation.hidden = YES;
 }
 
 - (void) showRouteRequestInterface {
     _onDemandButton.hidden = YES;
     _commuteButton.hidden = YES;
-    _mapCenterPin.hidden = NO;
+    self.mapCenterPin.hidden = NO;
     _locationConfirmationAnnotation.hidden = NO;
     _cancelRideButton.hidden = NO;
 }
 
 - (void) resetRequestInterface {
-    [_map removeAnnotations:_map.annotations];
+    [self.map removeAnnotations:self.map.annotations];
     [_locationConfirmationButtonLabel setTitle:@"Set Pick Up Location" forState:UIControlStateNormal];
-    _mapCenterPin.hidden = YES;
+    self.mapCenterPin.hidden = YES;
     _locationConfirmationAnnotation.hidden = YES;
     _destinationEntryView.hidden = YES;
     _departureEntryView.hidden = YES;
@@ -513,18 +484,18 @@
     _arrivalTimeButton.hidden = YES;
     _morningOrEveningButton.hidden = YES;
     _scheduleRideButton.hidden = YES;
-    if(_routeOverlay != nil) {
-        [_map removeOverlay:_routeOverlay];
+    if(self.routeOverlay != nil) {
+        [self.map removeOverlay:self.routeOverlay];
     }
     [self hideRideDetailsDrawer];
 }
 
 - (void) placeRideDetailsDrawerInPickupMode {
     _currentFareLabel.text = @"Ride not started";
-    _driverNameLabel.text= _ride.driver.fullName;
-    _carTypeLabel.text = _ride.car.description;
-    _licensePlatNumberLabel.text = _ride.car.licensePlate;
-    [_driverPhotoImageView loadImageAtURL:[NSURL URLWithString:_ride.driver.driversLicenseUrl]];
+    _driverNameLabel.text= self.ride.driver.fullName;
+    _carTypeLabel.text = self.ride.car.description;
+    _licensePlatNumberLabel.text = self.ride.car.licensePlate;
+    [_driverPhotoImageView loadImageAtURL:[NSURL URLWithString:self.ride.driver.driversLicenseUrl]];
     
 }
 
@@ -537,13 +508,13 @@
                       duration:.45f
                        options:UIViewAnimationOptionTransitionCrossDissolve
                     animations:^{
-                        _rideDetailsDrawer.frame = CGRectMake(0, self.view.frame.size.height - _rideDetailsDrawer.frame.size.height, _rideDetailsDrawer.frame.size.width, _rideDetailsDrawer.frame.size.height);
-                        [self.view addSubview:_rideDetailsDrawer];
+                        self.rideDetailsDrawer.frame = CGRectMake(0, self.view.frame.size.height - self.rideDetailsDrawer.frame.size.height, self.rideDetailsDrawer.frame.size.width, self.rideDetailsDrawer.frame.size.height);
+                        [self.view addSubview:self.rideDetailsDrawer];
                     } completion:nil];
   
     
     /*
-     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:_rideDetailsDrawer
+     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.rideDetailsDrawer
      attribute:NSLayoutAttributeBottom
      relatedBy:NSLayoutRelationEqual
      toItem:self.view
@@ -555,32 +526,17 @@
 
 - (void) hideRideDetailsDrawer {
     
-    if( _rideDetailsDrawer.superview != nil) {
+    if( self.rideDetailsDrawer.superview != nil) {
         [UIView transitionWithView:self.view
                           duration:.45f
                            options:UIViewAnimationOptionTransitionCrossDissolve
                         animations:^{
-                            [_rideDetailsDrawer removeFromSuperview];
+                            [self.rideDetailsDrawer removeFromSuperview];
                         } completion:nil];
     }
 }
 
-#pragma mark MKMapViewDelegate
 
-- (MKOverlayRenderer *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay
-{
-    if ([overlay isKindOfClass:[MKPolyline class]])
-    {
-        MKPolylineRenderer*    aRenderer = [[MKPolylineRenderer alloc] initWithPolyline:(MKPolyline*)overlay];
-        
-        aRenderer.strokeColor = [[UIColor greenColor] colorWithAlphaComponent:0.7];
-        aRenderer.lineWidth = 3;
-        
-        return aRenderer;
-    }
-    
-    return nil;
-}
 
 - (IBAction)didTapCurrentLocationButton:(id)sender {
 }

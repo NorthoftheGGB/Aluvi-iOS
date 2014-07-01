@@ -7,13 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 #import "Ride.h"
 
 @interface VCRideViewController : UIViewController
 
-@property (strong, nonatomic) Ride * ride;
+@property (strong, nonatomic) VCTransport * transport;
+
+// Map
+@property (strong, nonatomic) MKMapView * map;
+@property (strong, nonatomic) MKPolyline * routeOverlay;
+@property (strong, nonatomic) MKPolyline * routeToMeetingPointOverlay;
+@property (strong, nonatomic) CLGeocoder * geocoder;
+@property (strong, nonatomic) MKPointAnnotation * dropOffAnnotation;
+@property (strong, nonatomic) MKPointAnnotation * pickupAnnotation;
 
 - (void) showSuggestedRoute;
 - (void) showRideLocations;
+- (void) clearMap;
 
 @end

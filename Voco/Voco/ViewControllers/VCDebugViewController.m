@@ -7,8 +7,11 @@
 //
 
 #import "VCDebugViewController.h"
+#import "VCApi.h"
 #import "VCDriverApi.h"
 #import "VCInterfaceModes.h"
+#import "Offer.h"
+#import "VCDialogs.h"
 
 @interface VCDebugViewController ()
 
@@ -38,11 +41,45 @@
 }
 
 - (IBAction)doIt:(id)sender {
+    
+    [VCInterfaceModes showDriverInterface];
+    [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_RIDE_OFFERS
+                                           parameters:nil
+                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                  
+                                                      NSFetchRequest * request = [[NSFetchRequest alloc] initWithEntityName:@"Offer"];
+                                                      NSError * error;
+                                                      
+                                                      NSArray * offers = [[VCCoreData managedObjectContext] executeFetchRequest:request error:&error];
+                                                      if(offers == nil){
+                                                          [WRUtilities criticalError:error];
+                                                      } else if ([offers count] == 0) {
+                                                          [UIAlertView showWithTitle:@"Ride not longer available" message:@"Sorry, that ride is no longer available" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                                              //do nothing
+                                                          }];
+                                                      } else {
+                                                          Offer * offer = [offers objectAtIndex:0];
+                                                          [[VCDialogs instance] offerRideToDriver:offer];
+                                                      }
+                                                      
+                                                  
+                                                  
+                                              }
+                                              failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                  NSLog(@"Failed send request %@", error);
+                                                  [WRUtilities criticalError:error];
+                                                  
+                                                  // TODO Re-transmit push token later
+                                              }];
+
+    
+    /*
     [VCDriverApi loadDriveDetails:[NSNumber numberWithInt:404] success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        
+     
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
 
     }];
+     */
 }
 
 - (IBAction)exitDebugHelper:(id)sender {

@@ -14,8 +14,10 @@
     RKObjectMapping * mapping = [RKObjectMapping mappingForClass:[MQRoute class]];
     
     RKObjectMapping * shapeMapping = [MQShape getMapping];
+    RKObjectMapping * boundingBoxMapping = [MQBoundingBox getMapping];
     [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"shape" toKeyPath:@"shape" withMapping:shapeMapping]];
-    
+    [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"boundingBox" toKeyPath:@"boundingBox" withMapping:boundingBoxMapping]];
+
     return mapping;
 }
 

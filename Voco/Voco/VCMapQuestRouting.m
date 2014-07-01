@@ -25,7 +25,7 @@ static RKObjectManager * objectManager;
 + (void) route: (CLLocationCoordinate2D) start
             to: (CLLocationCoordinate2D) end
         region: (MKCoordinateRegion) region
-       success: ( void ( ^ ) ( MKPolyline * polyline )) success
+       success: ( void ( ^ ) ( MKPolyline * polyline, MKCoordinateRegion region )) success
        failure: ( void ( ^ ) ( )) failure {
     
     //int height = region.span.latitudeDelta;
@@ -48,6 +48,9 @@ static RKObjectManager * objectManager;
     [objectManager getObject:nil path:@"directions/v2/route" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
 
         MQRouteResponse * response = mappingResult.firstObject;
+        if(response.route.shape == nil){
+            failure();
+        }
         int polylinePointCount = [response.route.shape.shapePoints count] / 2;
         CLLocationCoordinate2D *polylinePoints = (CLLocationCoordinate2D*)malloc(polylinePointCount * sizeof(CLLocationCoordinate2D) );
 
@@ -59,7 +62,17 @@ static RKObjectManager * objectManager;
         }
         MKPolyline * polyline = [MKPolyline polylineWithCoordinates:polylinePoints count:polylinePointCount];
         free(polylinePoints);
-        success(polyline);
+        
+        MKCoordinateRegion region;
+        double maxLatitude = [response.route.boundingBox.ul.lat doubleValue];
+        double maxLongitude = [response.route.boundingBox.lr.lng doubleValue];
+        double minLatitude = [response.route.boundingBox.lr.lat doubleValue];
+        double minLongitude = [response.route.boundingBox.ul.lng doubleValue];
+        region.center.latitude = (minLatitude + maxLatitude) / 2;
+        region.center.longitude = (minLongitude + maxLongitude) / 2;
+        region.span.latitudeDelta = (maxLatitude - minLatitude);
+        region.span.longitudeDelta = (maxLongitude - minLongitude);
+        success(polyline, region);
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [WRUtilities criticalError:error];

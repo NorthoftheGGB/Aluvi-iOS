@@ -13,6 +13,7 @@
 #import "VCDriverRegistrationViewController.h"
 #import "VCDriverVideoTutorialController.h"
 #import "VCRiderRidesViewController.h"
+#import "VCDriverApi.h"
 
 static void * XXContext = &XXContext;
 
@@ -78,7 +79,10 @@ static void * XXContext = &XXContext;
     [super viewDidLoad];
     self.title = @"settings";
     
-
+    UISwipeGestureRecognizer* swipeUpGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeUpFrom:)];
+    swipeUpGestureRecognizer.direction = UISwipeGestureRecognizerDirectionUp;
+    swipeUpGestureRecognizer.numberOfTouchesRequired = 2;
+    [self.view addGestureRecognizer:swipeUpGestureRecognizer];
 
 }
 
@@ -272,6 +276,26 @@ static void * XXContext = &XXContext;
 }
 
 - (IBAction)didChangeOnDutySwitch:(id)sender {
+    UISwitch * onDutySwitch = (UISwitch *) sender;
+    if(onDutySwitch.isOn){
+        [[VCUserState instance] clockOnWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            [UIAlertView showWithTitle:@"Ready to Drive" message:@"You are on duty" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            onDutySwitch.on = NO;
+        }];
+    } else {
+        [[VCUserState instance] clockOffWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            [UIAlertView showWithTitle:@"Clocked off" message:@"You are off duty" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            onDutySwitch.on = YES;
+        }];
+    }
+    
+    
+}
+
+- (void)handleSwipeUpFrom:(UIGestureRecognizer*)recognizer {
+    [VCInterfaceModes showDebugInterface];
 }
 
 @end

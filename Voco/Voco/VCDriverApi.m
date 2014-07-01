@@ -31,9 +31,18 @@
     // Responses (some have not been moved here yet)
     {
         RKResponseDescriptor * responseDescriptor =
-        [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
+        [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSNull class]]
                                                      method:RKRequestMethodPOST
-                                                pathPattern:API_DRIVER_REGISTRATION
+                                                pathPattern:API_DRIVER_CLOCK_ON
+                                                    keyPath:nil
+                                                statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor];
+    }
+    {
+        RKResponseDescriptor * responseDescriptor =
+        [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSNull class]]
+                                                     method:RKRequestMethodPOST
+                                                pathPattern:API_DRIVER_CLOCK_OFF
                                                     keyPath:nil
                                                 statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:responseDescriptor];
@@ -105,9 +114,11 @@
                                     parameters:nil
                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                            NSLog(@"%@", @"Success");
+                                           success(operation, mappingResult);
                                           }
                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                            NSLog(@"%@", @"Failure");
+                                           failure(operation, error);
                                           }];
 }
 

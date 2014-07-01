@@ -257,6 +257,8 @@
 		F4A7C80D19625237007E05AD /* VCDebugViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A7C80919625237007E05AD /* VCDebugViewController.xib */; };
 		F4A7C81119626DDE007E05AD /* VCDriveIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C81019626DDE007E05AD /* VCDriveIdentity.m */; };
 		F4A7C81219626DDE007E05AD /* VCDriveIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C81019626DDE007E05AD /* VCDriveIdentity.m */; };
+		F4A7C81619628F10007E05AD /* MQBoundingBox.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C81519628F10007E05AD /* MQBoundingBox.m */; };
+		F4A7C81719628F10007E05AD /* MQBoundingBox.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C81519628F10007E05AD /* MQBoundingBox.m */; };
 		F4D8904419468A84007C4671 /* VCUsersApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904319468A84007C4671 /* VCUsersApi.m */; };
 		F4D8904719468B69007C4671 /* VCLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904619468B69007C4671 /* VCLogin.m */; };
 		F4D8904A19468E44007C4671 /* VCNewUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904919468E44007C4671 /* VCNewUser.m */; };
@@ -479,6 +481,10 @@
 		F4A7C80F19626DDE007E05AD /* VCDriveIdentity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCDriveIdentity.h; path = API/Driver/VCDriveIdentity.h; sourceTree = "<group>"; };
 		F4A7C81019626DDE007E05AD /* VCDriveIdentity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCDriveIdentity.m; path = API/Driver/VCDriveIdentity.m; sourceTree = "<group>"; };
 		F4A7C81319627C8A007E05AD /* Voco 11.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 11.xcdatamodel"; sourceTree = "<group>"; };
+		F4A7C81419628F10007E05AD /* MQBoundingBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MQBoundingBox.h; path = Geolocation/MQBoundingBox.h; sourceTree = "<group>"; };
+		F4A7C81519628F10007E05AD /* MQBoundingBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MQBoundingBox.m; path = Geolocation/MQBoundingBox.m; sourceTree = "<group>"; };
+		F4A7C8181962A430007E05AD /* Voco 12.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 12.xcdatamodel"; sourceTree = "<group>"; };
+		F4A7C8191962ACE0007E05AD /* Voco 13.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 13.xcdatamodel"; sourceTree = "<group>"; };
 		F4D8904219468A84007C4671 /* VCUsersApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCUsersApi.h; path = Users/VCUsersApi.h; sourceTree = "<group>"; };
 		F4D8904319468A84007C4671 /* VCUsersApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCUsersApi.m; path = Users/VCUsersApi.m; sourceTree = "<group>"; };
 		F4D8904519468B69007C4671 /* VCLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCLogin.h; path = API/Users/VCLogin.h; sourceTree = "<group>"; };
@@ -920,6 +926,8 @@
 				F473F00B194A5A6100D8C900 /* MQShape.m */,
 				F473F0141950358000D8C900 /* MQRoute.h */,
 				F473F0151950358000D8C900 /* MQRoute.m */,
+				F4A7C81419628F10007E05AD /* MQBoundingBox.h */,
+				F4A7C81519628F10007E05AD /* MQBoundingBox.m */,
 			);
 			name = MapQuest;
 			sourceTree = "<group>";
@@ -1526,6 +1534,7 @@
 				F4354D71195D0D6A00C06CF7 /* Drive.m in Sources */,
 				F4354D72195D0D6A00C06CF7 /* VCNewUser.m in Sources */,
 				F4354D73195D0D6A00C06CF7 /* IISideController.m in Sources */,
+				F4A7C81719628F10007E05AD /* MQBoundingBox.m in Sources */,
 				F4354D74195D0D6A00C06CF7 /* VCRiderHomeViewController.m in Sources */,
 				F4354D75195D0D6A00C06CF7 /* VCButtonFont.m in Sources */,
 				F4354D76195D0D6A00C06CF7 /* MQShape.m in Sources */,
@@ -1611,6 +1620,7 @@
 				F45F7BFC19357B8A00A94721 /* VCRideRequest.m in Sources */,
 				F4FE1AF81937DD5600354886 /* VCPushManager.m in Sources */,
 				F473F0321952F68D00D8C900 /* VCDriverStateResponse.m in Sources */,
+				F4A7C81619628F10007E05AD /* MQBoundingBox.m in Sources */,
 				4FFBA453195E976800A51B84 /* VCPhoneNumberTextField.m in Sources */,
 				F4FE1AFB1937DD6600354886 /* VCGeolocation.m in Sources */,
 				4FE641BF194157C60059BED1 /* VCDriverRequestViewController.m in Sources */,
@@ -1959,9 +1969,11 @@
 				F4F157A5195EA30A009A33C8 /* Voco 9.xcdatamodel */,
 				F4A7C80E19626AFE007E05AD /* Voco 10.xcdatamodel */,
 				F4A7C81319627C8A007E05AD /* Voco 11.xcdatamodel */,
+				F4A7C8181962A430007E05AD /* Voco 12.xcdatamodel */,
+				F4A7C8191962ACE0007E05AD /* Voco 13.xcdatamodel */,
 				F4FA0BFC192BF6BF005D8645 /* Voco.xcdatamodel */,
 			);
-			currentVersion = F4A7C81319627C8A007E05AD /* Voco 11.xcdatamodel */;
+			currentVersion = F4A7C8191962ACE0007E05AD /* Voco 13.xcdatamodel */;
 			path = Voco.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -77,5 +77,14 @@
     
 }
 
+#pragma mark state machine methods
+- (void) assignStatesAndEvents:(TKStateMachine *) stateMachine{
+    // Nothing for now
+}
+
+- (NSString *) getInitialState {
+    return @"exists"; // Placeholder
+}
+
 
 @end

@@ -12,18 +12,25 @@
 #import "VCMenuViewController.h"
 #import "IIViewDeckController.h"
 #import "VCApi.h"
-#import "VCDriverViewController.h"
+#import "VCDriverHomeViewController.h"
 #import "VCRiderRidesViewController.h"
 #import "VCUserState.h"
 #import "VCDebugViewController.h"
 
 #define kInterfaceModeKey @"INTERFACE_MODE_KEY"
 
-
+static VCInterfaceModes * instance;
 static IIViewDeckController* deckController;
 static int mode;
 
 @implementation VCInterfaceModes
+
++ (VCInterfaceModes * ) instance {
+    if(instance == nil){
+        instance = [[VCInterfaceModes alloc] init];
+    }
+    return instance;
+}
 
 + (void) showInterface {
     
@@ -91,15 +98,17 @@ static int mode;
     
     if([[VCUserState instance].driverState isEqualToString:kDriverStateActive]
        || [[VCUserState instance].driverState isEqualToString:kDriverStateOnDuty] ) {
-           VCDriverViewController * driverViewController = [[VCDriverViewController alloc] init];
+           VCDriverHomeViewController * driverViewController = [[VCDriverHomeViewController alloc] init];
            deckController.centerController = driverViewController;
            [self setMode: kDriverMode];
     }
+    
 }
 
 + (void) showDebugInterface{
     VCDebugViewController * vc = [[VCDebugViewController alloc] init];
     [[UIApplication sharedApplication] delegate].window.rootViewController = vc;
+    deckController = nil;
 }
 
 + (void) setMode: (int) newMode {
@@ -111,5 +120,25 @@ static int mode;
 + (int) mode {
     return mode;
 }
+
+
+- (id) init {
+    self =  [super init];
+    if (self != nil) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideOfferInvokedNotification:) name:@"ride_offer_invoked" object:nil];
+    }
+    return self;
+}
+
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void) rideOfferInvokedNotification:(NSNotification *)notification{
+    if(mode == kDriverMode){
+        [deckController closeLeftView];
+    }
+}
+
 
 @end

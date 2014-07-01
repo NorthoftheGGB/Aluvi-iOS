@@ -57,7 +57,4 @@
 
 + (Ride *) rideWithId: (NSNumber *) rideId;
 
-
-- (NSString *) routeDescription;
-
 @end

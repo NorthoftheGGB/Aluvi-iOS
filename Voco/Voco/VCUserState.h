@@ -55,4 +55,9 @@
 - (void) synchronizeUserState;
 - (BOOL) isLoggedIn;
 
+- (void) clockOnWithSuccess: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                    failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
+- (void) clockOffWithSuccess: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                     failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
+
 @end

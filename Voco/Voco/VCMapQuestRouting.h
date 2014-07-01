@@ -18,6 +18,6 @@
 + (void) route: (CLLocationCoordinate2D) start
             to: (CLLocationCoordinate2D) end
         region: (MKCoordinateRegion) region
-       success: ( void ( ^ ) ( MKPolyline * polyline )) success
+       success: ( void ( ^ ) ( MKPolyline * polyline, MKCoordinateRegion region )) success
        failure: ( void ( ^ ) ( )) failure;
 @end
