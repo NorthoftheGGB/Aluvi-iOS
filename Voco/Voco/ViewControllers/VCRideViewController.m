@@ -20,7 +20,9 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        if (!self.geocoder) {
+            self.geocoder = [[CLGeocoder alloc] init];
+        }
     }
     return self;
 }
@@ -67,7 +69,7 @@
     CLLocationCoordinate2D departureCoordinate;
     destinationCoordinate.latitude = [_transport.destinationLatitude doubleValue];
     destinationCoordinate.longitude = [_transport.destinationLongitude doubleValue];
-    if(_transport.meetingPointLatitude == nil || _transport.meetingPointLongitude == nil){
+    if([_transport.meetingPointLatitude isEqual:[NSNumber numberWithInt:0]] || [_transport.meetingPointLongitude isEqual:[NSNumber numberWithInt:0]]){
         // If we don't have a meeting point yet, show the route from the origin
         if([_transport isKindOfClass:[Ride class]]){
             departureCoordinate.latitude = [((Ride*) _transport).originLatitude doubleValue];
@@ -82,7 +84,7 @@
     }
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText= @"Fetching Ride";
+    hud.labelText= @"Fetching Route";
     [VCMapQuestRouting route:destinationCoordinate to:departureCoordinate region:_map.region success:^(MKPolyline *polyline, MKCoordinateRegion region) {
         _routeOverlay = polyline;
         [_map addOverlay:_routeOverlay];
@@ -99,7 +101,10 @@
     
     if([_transport isKindOfClass:[Ride class]]){
         Ride * ride = (Ride *) _transport;
-        if(ride.originLatitude != nil && ride.originLongitude != nil && ride.meetingPointLatitude != nil && ride.meetingPointLongitude != nil){
+        if(![ride.originLatitude isEqual:[NSNumber numberWithInt:0]]
+           && ![ride.originLongitude isEqual:[NSNumber numberWithInt:0]]
+           && ![ride.meetingPointLatitude isEqual:[NSNumber numberWithInt:0]]
+           && ![ride.meetingPointLongitude isEqual:[NSNumber numberWithInt:0]] ){
             CLLocationCoordinate2D originCoordinate;
             CLLocationCoordinate2D meetingPointCoordinate;
             originCoordinate.latitude = [ride.originLatitude doubleValue];

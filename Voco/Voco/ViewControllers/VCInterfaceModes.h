@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-#define kDriverMode 0
-#define kRiderMode 1
-#define kNoMode 2
+#define kDriverMode 2
+#define kRiderMode 3
+#define kNoMode 4
 
 
 @interface VCInterfaceModes : NSObject

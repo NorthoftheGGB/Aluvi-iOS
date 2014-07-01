@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import <MBProgressHUD.h>
 #import <ActionSheetPicker.h>
+#import <BlocksKit.h>
 #import "VCUserState.h"
 #import "VCInterfaceModes.h"
 #import "VCRiderApi.h"
@@ -19,11 +20,12 @@
 #import "Driver.h"
 #import "DTLazyImageView.h"
 #import "VCLabel.h"
+#import "VCLocationSearchViewController.h"
 #define kStepSetDepartureLocation 1
 #define kStepSetDestinationLocation 2
 #define kStepConfirmRequest 3
 
-@interface VCRiderHomeViewController () <MKMapViewDelegate>
+@interface VCRiderHomeViewController () <MKMapViewDelegate, VCLocationSearchViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *mapCenterPin;
 @property (weak, nonatomic) IBOutlet UIView *departureEntryView;
@@ -51,13 +53,14 @@
 // Data Entry
 @property (nonatomic) NSInteger step;
 @property (strong, nonatomic) NSDate * desiredArrivalDateTime;
+@property (strong, nonatomic) NSTimer * timer;
+
 
 //Location HUD
-
-
 @property (strong, nonatomic) IBOutlet UIView *locationHud;
-@property (weak, nonatomic) IBOutlet VCLabel *currentAddressLabel;
-@property (weak, nonatomic) IBOutlet VCLabel *pickupLocationLabel;
+@property (strong, nonatomic) IBOutlet VCLabel *currentAddressLabel;
+@property (strong, nonatomic) IBOutlet VCLabel *locationTypeLabel;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *geocodingActivityIndicator;
 - (IBAction)didTapCurrentLocationButton:(id)sender;
 - (IBAction)didTapSearchButton:(id)sender;
 
@@ -76,6 +79,12 @@
 
 @implementation VCRiderHomeViewController
 
+
+- (void) setRide:(Ride *)ride {
+    _ride = ride;
+    self.transport = ride;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -93,29 +102,36 @@
     [self resetRequestInterface];
     
     if(self.ride != nil){
+        self.transport = self.ride;
         // Setup interface for ride state
         if([self.ride.requestType isEqualToString:RIDE_REQUEST_TYPE_ON_DEMAND]){
-
+            
             [self showSuggestedRoute];
-
+            
             [self placeRideDetailsDrawerInPickupMode];
             [self showRideDetailsDrawer];
-
+            
         } else if ([self.ride.requestType isEqualToString:RIDE_REQUEST_TYPE_COMMUTER]){
-
+            
             if([self.ride.state isEqualToString:kRequestedState]){
                 [self showRequestedModeInterface];
                 //_arrivalTimeButton setTitle:self.ride. forState:<#(UIControlState)#>
             } else if([self.ride.state isEqualToString:kScheduledState]){
                 //[self showScheduledModeInterface];
-
+                
             }
             [self showSuggestedRoute];
-
+            
         }
         self.title = self.ride.routeDescription;
     }
     
+    MKCoordinateRegion mapRegion;
+    mapRegion.center.latitude = self.map.userLocation.coordinate.latitude;
+    mapRegion.center.longitude = self.map.userLocation.coordinate.longitude;
+    mapRegion.span.latitudeDelta = 0.02;
+    mapRegion.span.longitudeDelta = 0.02;
+    [self.map setRegion:mapRegion animated: YES];
 }
 
 - (void) viewWillAppear:(BOOL)animated{
@@ -144,7 +160,7 @@
     if(_progressHUD != nil) {
         [_progressHUD hide:YES];
     }
-
+    
 }
 
 - (void) rideNotFoundNotification:(id) sender{
@@ -167,21 +183,33 @@
     
     self.ride = (Ride *) [NSEntityDescription insertNewObjectForEntityForName:@"Ride" inManagedObjectContext:[VCCoreData managedObjectContext]];
     self.ride.requestType = RIDE_REQUEST_TYPE_COMMUTER;
+    self.transport = self.ride;
     _morningOrEveningButton.hidden = NO;
 }
 
 - (IBAction)didTapOnDemand:(id)sender {
     [self showRouteRequestInterface];
+    [self reverseGeocodeMapCenterForHud];
     
     self.ride = (Ride *) [NSEntityDescription insertNewObjectForEntityForName:@"Ride" inManagedObjectContext:[VCCoreData managedObjectContext]];
     self.ride.requestType = RIDE_REQUEST_TYPE_ON_DEMAND;
+    self.transport = self.ride;
     
-    /*
-     CGRect frame = _departureEntryView.frame;
-     frame.origin.y = 20;
-     _departureEntryView.frame = frame;
-     [self.view addSubview:_departureEntryView];
-     */
+    
+    [self showLocationHudIfNotDisplayed];
+    _locationTypeLabel.text = @"Pickup Location";
+    _currentAddressLabel.text = nil;
+}
+
+
+- (void) showLocationHudIfNotDisplayed {
+    if(_locationHud.superview == nil){
+        CGRect frame = _locationHud.frame;
+        frame.origin.x = 0;
+        frame.origin.y = 64;
+        _locationHud.frame = frame;
+        [self.view addSubview:_locationHud];
+    }
 }
 
 - (IBAction)didTapConfirmLocation:(id)sender {
@@ -192,13 +220,11 @@
         _step = kStepSetDestinationLocation;
         
         CLLocation * location = [[CLLocation alloc] initWithLatitude:departureLocation.latitude  longitude:departureLocation.longitude];
-        if (!self.geocoder)
-            self.geocoder = [[CLGeocoder alloc] init];
         [self.geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
             MKPlacemark * placemark = [placemarks objectAtIndex:0];
             self.ride.originPlaceName = [placemark name];
         }];
-
+        
         
         
         MKPointAnnotation *myAnnotation = [[MKPointAnnotation alloc] init];
@@ -207,7 +233,8 @@
         myAnnotation.subtitle = @"Click to change";
         [self.map addAnnotation:myAnnotation];
         
-        [_locationConfirmationButtonLabel setTitle:@"Set Drop Off Location" forState:UIControlStateNormal];
+        [_locationConfirmationButtonLabel setTitle:@"Set Drop-off Location" forState:UIControlStateNormal];
+        _locationTypeLabel.text = @"Drop-off Location";
         
         [_departureEntryView removeFromSuperview];
         CGRect frame = _destinationEntryView.frame;
@@ -233,7 +260,7 @@
         
         MKPointAnnotation *myAnnotation = [[MKPointAnnotation alloc] init];
         myAnnotation.coordinate = CLLocationCoordinate2DMake(destinationLocation.latitude, destinationLocation.longitude);
-        myAnnotation.title = @"Drop Off Location";
+        myAnnotation.title = @"Drop-off Location";
         myAnnotation.subtitle = @"Click to change";
         [self.map addAnnotation:myAnnotation];
         
@@ -260,7 +287,7 @@
                                 //[hud hide:YES];
                                 // TODO: Don't show an alert, show a HUD
                                 //[UIAlertView showWithTitle:@"Requested!" message:@"We are finding your driver now!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                                    
+                                
                                 //}];
                                 _progressHUD.labelText = @"We are finding your driver now!";
                                 UITapGestureRecognizer *HUDSingleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hudSingleTap:)];
@@ -354,7 +381,7 @@
         firstSlotDate = nextDate;
         secondSlotDate = nextDate;
         options = [NSArray arrayWithObjects:[NSString stringWithFormat:@"Morning Of %@", [dateFormatter stringFromDate:firstSlotDate]],
-                  [NSString stringWithFormat:@"Evening of %@", [dateFormatter stringFromDate:secondSlotDate]], nil];
+                   [NSString stringWithFormat:@"Evening of %@", [dateFormatter stringFromDate:secondSlotDate]], nil];
     }
     
     
@@ -404,7 +431,7 @@
                                            
                                            NSDateComponents* comps = [[NSCalendar currentCalendar] components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:_desiredArrivalDateTime];
                                            _desiredArrivalDateTime = [[NSCalendar currentCalendar] dateFromComponents:comps];
-                    
+                                           
                                            NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
                                            
                                            if(options == morningOptions){
@@ -426,7 +453,7 @@
                                            NSCalendar *theCalendar = [NSCalendar currentCalendar];
                                            _desiredArrivalDateTime = [theCalendar dateByAddingComponents:dayComponent toDate:_desiredArrivalDateTime options:0];
                                            self.ride.desiredArrival = _desiredArrivalDateTime;
-
+                                           
                                        }
                                      cancelBlock:^(ActionSheetStringPicker *picker) {
                                          NSLog(@"Block Picker Canceled");
@@ -493,6 +520,10 @@
         [self.map removeOverlay:self.routeOverlay];
     }
     [self hideRideDetailsDrawer];
+    _geocodingActivityIndicator.hidden = YES;
+    if(_locationHud.superview != nil) {
+        [_locationHud removeFromSuperview];
+    }
 }
 
 - (void) placeRideDetailsDrawerInPickupMode {
@@ -516,7 +547,7 @@
                         self.rideDetailsDrawer.frame = CGRectMake(0, self.view.frame.size.height - self.rideDetailsDrawer.frame.size.height, self.rideDetailsDrawer.frame.size.width, self.rideDetailsDrawer.frame.size.height);
                         [self.view addSubview:self.rideDetailsDrawer];
                     } completion:nil];
-  
+    
     
     /*
      [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.rideDetailsDrawer
@@ -544,11 +575,53 @@
 
 
 - (IBAction)didTapCurrentLocationButton:(id)sender {
+    MKCoordinateRegion mapRegion;
+    mapRegion.center.latitude = self.map.userLocation.coordinate.latitude;
+    mapRegion.center.longitude = self.map.userLocation.coordinate.longitude;
+    mapRegion.span.latitudeDelta = 0.2;
+    mapRegion.span.longitudeDelta = 0.2;
+    [self.map setRegion:mapRegion animated: YES];
 }
 
 - (IBAction)didTapSearchButton:(id)sender {
+    VCLocationSearchViewController * vc = [[VCLocationSearchViewController alloc] init];
+    vc.delegate = self;
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 - (IBAction)didTapCallDriverButton:(id)sender {
 }
+
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
+    
+    if(_step == kStepSetDepartureLocation || _step == kStepSetDestinationLocation){
+        
+        [self reverseGeocodeMapCenterForHud];
+        
+        
+    }
+}
+
+- (void) reverseGeocodeMapCenterForHud {
+    
+    if(_timer != nil){
+        [_timer invalidate];
+        _timer = nil;
+    }
+    _timer = [NSTimer bk_scheduledTimerWithTimeInterval:.1 block:^(NSTimer * time) {
+        [_geocodingActivityIndicator startAnimating];
+        _geocodingActivityIndicator.hidden = NO;
+        CLLocation * location = [[CLLocation alloc] initWithLatitude:self.map.centerCoordinate.latitude longitude:self.map.centerCoordinate.longitude];
+        [self.geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+            MKPlacemark * placemark = placemarks.firstObject;
+            _currentAddressLabel.text = placemark.name;
+            _geocodingActivityIndicator.hidden = YES;
+            [_geocodingActivityIndicator stopAnimating];
+            
+        }];
+        _timer = nil;
+        
+    } repeats:NO];
+}
+
 @end

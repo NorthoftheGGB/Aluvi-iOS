@@ -17,8 +17,10 @@
                                                                  @"type" : @"type",
                                                                  @"departure_latitude" : @"departureLatitude",
                                                                  @"departure_longitude" : @"departureLongitude",
+                                                                 @"departure_place_name" : @"departurePlaceName",
                                                                  @"destination_latitude" : @"destinationLatitude",
                                                                  @"destination_longitude" : @"destinationLongitude",
+                                                                 @"destination_place_name" : @"destinationPlaceName",
                                                                  @"desired_arrival" : @"desiredArrival"
                                                                 }];
     RKObjectMapping * postRideRequestMapping = [rideRequestMapping inverseMapping];
@@ -32,8 +34,10 @@
     request.type = ride.requestType;
     request.departureLatitude = ride.originLatitude;
     request.departureLongitude = ride.originLongitude;
+    request.departurePlaceName = ride.originPlaceName;
     request.destinationLatitude = ride.destinationLatitude;
     request.destinationLongitude = ride.destinationLongitude;
+    request.destinationPlaceName = ride.destinationPlaceName;
     request.desiredArrival = ride.desiredArrival;
     return request;
 }

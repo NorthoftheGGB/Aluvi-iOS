@@ -76,6 +76,7 @@ static RKObjectManager * objectManager;
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [WRUtilities criticalError:error];
+        failure(operation, error);
     }];
 }
 

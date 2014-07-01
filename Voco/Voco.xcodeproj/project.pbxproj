@@ -277,6 +277,10 @@
 		F4A7C81219626DDE007E05AD /* VCDriveIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C81019626DDE007E05AD /* VCDriveIdentity.m */; };
 		F4A7C81619628F10007E05AD /* MQBoundingBox.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C81519628F10007E05AD /* MQBoundingBox.m */; };
 		F4A7C81719628F10007E05AD /* MQBoundingBox.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C81519628F10007E05AD /* MQBoundingBox.m */; };
+		F4A7C8251962E235007E05AD /* VCLocationSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C8231962E235007E05AD /* VCLocationSearchViewController.m */; };
+		F4A7C8261962E235007E05AD /* VCLocationSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C8231962E235007E05AD /* VCLocationSearchViewController.m */; };
+		F4A7C8271962E235007E05AD /* VCLocationSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A7C8241962E235007E05AD /* VCLocationSearchViewController.xib */; };
+		F4A7C8281962E235007E05AD /* VCLocationSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A7C8241962E235007E05AD /* VCLocationSearchViewController.xib */; };
 		F4D8904419468A84007C4671 /* VCUsersApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904319468A84007C4671 /* VCUsersApi.m */; };
 		F4D8904719468B69007C4671 /* VCLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904619468B69007C4671 /* VCLogin.m */; };
 		F4D8904A19468E44007C4671 /* VCNewUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904919468E44007C4671 /* VCNewUser.m */; };
@@ -512,6 +516,9 @@
 		F4A7C81519628F10007E05AD /* MQBoundingBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MQBoundingBox.m; path = Geolocation/MQBoundingBox.m; sourceTree = "<group>"; };
 		F4A7C8181962A430007E05AD /* Voco 12.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 12.xcdatamodel"; sourceTree = "<group>"; };
 		F4A7C8191962ACE0007E05AD /* Voco 13.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 13.xcdatamodel"; sourceTree = "<group>"; };
+		F4A7C8221962E235007E05AD /* VCLocationSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCLocationSearchViewController.h; path = ViewControllers/VCLocationSearchViewController.h; sourceTree = "<group>"; };
+		F4A7C8231962E235007E05AD /* VCLocationSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCLocationSearchViewController.m; path = ViewControllers/VCLocationSearchViewController.m; sourceTree = "<group>"; };
+		F4A7C8241962E235007E05AD /* VCLocationSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCLocationSearchViewController.xib; path = ViewControllers/VCLocationSearchViewController.xib; sourceTree = "<group>"; };
 		F4D8904219468A84007C4671 /* VCUsersApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCUsersApi.h; path = Users/VCUsersApi.h; sourceTree = "<group>"; };
 		F4D8904319468A84007C4671 /* VCUsersApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCUsersApi.m; path = Users/VCUsersApi.m; sourceTree = "<group>"; };
 		F4D8904519468B69007C4671 /* VCLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCLogin.h; path = API/Users/VCLogin.h; sourceTree = "<group>"; };
@@ -924,6 +931,9 @@
 				F473F04D195BA54F00D8C900 /* VCRiderRidesViewController.h */,
 				F473F04E195BA54F00D8C900 /* VCRiderRidesViewController.m */,
 				F473F04F195BA54F00D8C900 /* VCRiderRidesViewController.xib */,
+				F4A7C8221962E235007E05AD /* VCLocationSearchViewController.h */,
+				F4A7C8231962E235007E05AD /* VCLocationSearchViewController.m */,
+				F4A7C8241962E235007E05AD /* VCLocationSearchViewController.xib */,
 			);
 			name = "Ride System";
 			sourceTree = "<group>";
@@ -1356,6 +1366,7 @@
 				F4354DBC195D0D6A00C06CF7 /* KlinicSlabMediumIt.ttf in Resources */,
 				F4354DBD195D0D6A00C06CF7 /* login_form@2x.png in Resources */,
 				4F2EF9B21961391B006A1962 /* about-menu-button-selected@2x.png in Resources */,
+				F4A7C8281962E235007E05AD /* VCLocationSearchViewController.xib in Resources */,
 				F4354DBE195D0D6A00C06CF7 /* VCDriverViewController.xib in Resources */,
 				F4354DC0195D0D6A00C06CF7 /* VCDriverVideoTutorialController.xib in Resources */,
 				4F2EF9C21961391B006A1962 /* terms-menu-button@2x.png in Resources */,
@@ -1395,6 +1406,7 @@
 				4F37E2DD1949574000753172 /* KlinicSlabLight.ttf in Resources */,
 				4FF142D6195CE4BD00CC61B6 /* driver-request-form@2x.png in Resources */,
 				F4A7C80C19625237007E05AD /* VCDebugViewController.xib in Resources */,
+				F4A7C8271962E235007E05AD /* VCLocationSearchViewController.xib in Resources */,
 				4F37E2DE1949574000753172 /* KlinicSlabLightIt.ttf in Resources */,
 				F473F01A195044AA00D8C900 /* menu-list@2x.png in Resources */,
 				4F2EF9BB1961391B006A1962 /* scheduledrides-menu-button@2x.png in Resources */,
@@ -1609,6 +1621,7 @@
 				F4354D83195D0D6A00C06CF7 /* VCDriverVideoTutorialController.m in Sources */,
 				F4354D84195D0D6A00C06CF7 /* VCRideDriverAssignment.m in Sources */,
 				F4354D85195D0D6A00C06CF7 /* VCPasswordRecoveryViewController.m in Sources */,
+				F4A7C8261962E235007E05AD /* VCLocationSearchViewController.m in Sources */,
 				F4354D86195D0D6A00C06CF7 /* VCDriverApi.m in Sources */,
 				F4354D87195D0D6A00C06CF7 /* IIViewDeckController.m in Sources */,
 				F4354D89195D0D6A00C06CF7 /* VCApi.m in Sources */,
@@ -1692,6 +1705,7 @@
 				F4FE1B0F1938571E00354886 /* VCRideDriverAssignment.m in Sources */,
 				4FFBA44E195E7BC600A51B84 /* VCEmailTextField.m in Sources */,
 				4FE641C4194157EB0059BED1 /* VCPasswordRecoveryViewController.m in Sources */,
+				F4A7C8251962E235007E05AD /* VCLocationSearchViewController.m in Sources */,
 				F4FE1B0B19384F9000354886 /* VCDriverApi.m in Sources */,
 				F473EFE719492C2A00D8C900 /* IIViewDeckController.m in Sources */,
 				F45F7BF91935798B00A94721 /* VCApi.m in Sources */,

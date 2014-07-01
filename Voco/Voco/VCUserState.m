@@ -37,7 +37,12 @@ static VCUserState *sharedSingleton;
 }
 
 + (BOOL) driverIsAvailable {
-    return true; // assumption for now
+    // Will need a better way to swith on this
+    if([self instance].underwayRideId == nil){
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 - (id) init {
@@ -112,6 +117,7 @@ static VCUserState *sharedSingleton;
 - (void) logout {
     
     [VCApi clearApiToken];
+#warning This logout strategy makes no sense, it can't work because the token is already cleared
     [VCDevicesApi updateUserWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [self clearUserState];
         [VCCoreData clearUserData];

@@ -45,7 +45,7 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-#if DEBUG==1
+#if DEBUG==12
     [VCInterfaceModes showDebugInterface];
 #else
     [VCInterfaceModes showInterface];

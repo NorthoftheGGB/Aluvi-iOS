@@ -183,6 +183,7 @@
         
         [hud hide:YES];
         [self showPickupInterface];
+        [VCUserState instance].underwayRideId = self.transport.ride_id;
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         // network error..
@@ -208,14 +209,17 @@
     hud.labelText = @"Declining";
     [VCDriverApi cancelRide:self.transport.ride_id
                     success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                        [self resetButtons];
                         [VCUserState instance].driveProcessState = @"Ride Declined";
                         [((Drive *) self.transport) markOfferAsDeclined];
                         [VCCoreData saveContext];
                         [[VCDialogs instance] offerNextRideToDriver];
                         [hud hide:YES];
+                        [VCUserState instance].underwayRideId = nil;
 
                     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                         [hud hide:YES];
+                        [VCUserState instance].underwayRideId = nil;
 
                     }];
     
@@ -231,7 +235,7 @@
                                             [self showRideInProgressInterface];
                                             [VCUserState instance].driveProcessState = kUserStateRideStarted;
                                             [hud hide:YES];
-
+                                            
                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                             [hud hide:YES];
 
@@ -250,11 +254,13 @@
                                             [self resetButtons];
                                             [VCUserState instance].driveProcessState = kUserStateIdle;
                                             [hud hide:YES];
+                                            [VCUserState instance].underwayRideId = nil;
 
                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                             // TODO: need to cache this action and try again later
                                             // how else will the server be notified ? could be a bad edge case
                                             [hud hide:YES];
+                                            [VCUserState instance].underwayRideId = nil;
 
                                         }];
     
@@ -271,9 +277,11 @@
                                             [VCUserState instance].driveProcessState = kUserStateRideCompleted;
                                             [self showRideCompletedInterface];
                                             [hud hide:YES];
+                                            [VCUserState instance].underwayRideId = nil;
 
                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                             [hud hide:YES];
+                                            [VCUserState instance].underwayRideId = nil;
 
                                         }];
 }

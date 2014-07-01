@@ -35,7 +35,9 @@
 }
 
 - (BOOL)fireEvent:(id)eventOrEventName userInfo:(NSDictionary *)userInfo error:(NSError **)error{
-   return [_stateMachine fireEvent:eventOrEventName userInfo:userInfo error:error];
+#warning not firing events on state machine
+    return true;
+//   return [_stateMachine fireEvent:eventOrEventName userInfo:userInfo error:error];
 }
 
 - (void) assignStatesAndEvents:(TKStateMachine *) stateMachine {

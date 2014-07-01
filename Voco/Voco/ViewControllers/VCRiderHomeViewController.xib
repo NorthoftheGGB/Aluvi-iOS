@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -16,15 +16,16 @@
                 <outlet property="destinationEntryView" destination="RCN-Xj-T7f" id="OFZ-aH-3xs"/>
                 <outlet property="driverNameLabel" destination="fig-ZR-hzv" id="awT-CR-L7x"/>
                 <outlet property="driverPhotoImageView" destination="8hM-bf-rTY" id="4qU-gQ-emL"/>
+                <outlet property="geocodingActivityIndicator" destination="P8x-0k-SwL" id="1nw-EO-ERk"/>
                 <outlet property="licensePlatNumberLabel" destination="QEP-gz-7jD" id="cVr-BH-YXS"/>
                 <outlet property="licensePlateImageView" destination="hpo-vb-UfW" id="3hd-fI-okn"/>
                 <outlet property="locationConfirmationAnnotation" destination="Zfe-VM-bsO" id="KNz-6d-aE8"/>
                 <outlet property="locationConfirmationButtonLabel" destination="sf3-yf-yAH" id="jfT-AI-UyL"/>
                 <outlet property="locationHud" destination="7MI-Vw-p2G" id="cr1-ZQ-f4g"/>
+                <outlet property="locationTypeLabel" destination="zIe-r7-HcG" id="6QO-zo-j0a"/>
                 <outlet property="mapCenterPin" destination="3G5-uk-oef" id="ccp-fU-RZv"/>
                 <outlet property="morningOrEveningButton" destination="0Hd-Eq-Pb2" id="UMq-SZ-71A"/>
                 <outlet property="onDemandButton" destination="Chj-Ab-zHy" id="bIZ-g6-hCC"/>
-                <outlet property="pickupLocationLabel" destination="zIe-r7-HcG" id="iek-RF-Qc4"/>
                 <outlet property="rideDetailsDrawer" destination="pRU-Fl-aaR" id="Je8-AL-Xpt"/>
                 <outlet property="scheduleRideButton" destination="4Dx-kF-WgJ" id="qLy-B0-BkE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -85,7 +86,7 @@
                         <constraint firstAttribute="height" constant="160" id="LgR-Uo-Z4G"/>
                     </constraints>
                 </imageView>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zfe-VM-bsO">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zfe-VM-bsO">
                     <rect key="frame" x="70" y="184" width="185" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
@@ -125,7 +126,7 @@
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="height" constant="31" id="deB-8f-046"/>
-                        <constraint firstAttribute="width" constant="180" id="vKf-16-gwS"/>
+                        <constraint firstAttribute="width" constant="185" id="vKf-16-gwS"/>
                     </constraints>
                 </view>
                 <button opaque="NO" alpha="0.89999999999999991" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ViH-R7-hkr" customClass="VCButtonFontBold">
@@ -217,7 +218,7 @@
             <constraints>
                 <constraint firstItem="3G5-uk-oef" firstAttribute="top" secondItem="Zfe-VM-bsO" secondAttribute="bottom" constant="-55" id="0dE-Tq-5Kf"/>
                 <constraint firstAttribute="centerY" secondItem="3G5-uk-oef" secondAttribute="centerY" id="MAf-ZO-iTC"/>
-                <constraint firstAttribute="centerX" secondItem="Zfe-VM-bsO" secondAttribute="centerX" id="kz8-WI-ihV"/>
+                <constraint firstAttribute="centerX" secondItem="Zfe-VM-bsO" secondAttribute="centerX" constant="-2.5" id="kz8-WI-ihV"/>
                 <constraint firstAttribute="centerX" secondItem="3G5-uk-oef" secondAttribute="centerX" id="uvA-Te-dh5"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -370,7 +371,7 @@
                         <action selector="didTapCurrentLocationButton:" destination="-1" eventType="touchUpInside" id="sHs-xj-fgh"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HdU-OB-rPv">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HdU-OB-rPv">
                     <rect key="frame" x="268" y="6" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -386,6 +387,10 @@
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123 Address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sme-XE-lJh" customClass="VCLabel">
                     <rect key="frame" x="38" y="19" width="231" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="231" id="bBT-CC-JCt"/>
+                        <constraint firstAttribute="height" constant="21" id="eWh-8t-9z6"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
@@ -398,6 +403,10 @@
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zIe-r7-HcG" customClass="VCLabel">
                     <rect key="frame" x="99" y="0.0" width="108" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="108" id="X83-Yv-8ls"/>
+                        <constraint firstAttribute="height" constant="21" id="bfC-VS-c47"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="0.87843143940000001" green="0.094117656349999995" blue="0.09803922474" alpha="1" colorSpace="deviceRGB"/>
                     <nil key="highlightedColor"/>
@@ -407,23 +416,20 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="P8x-0k-SwL">
+                    <rect key="frame" x="205" y="2" width="20" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="zIe-r7-HcG" firstAttribute="centerX" secondItem="Sme-XE-lJh" secondAttribute="centerX" id="6rH-FY-wjq"/>
-                <constraint firstItem="Sme-XE-lJh" firstAttribute="leading" secondItem="7MI-Vw-p2G" secondAttribute="leading" constant="38" id="9vZ-3e-4LP"/>
-                <constraint firstItem="zIe-r7-HcG" firstAttribute="centerX" secondItem="7MI-Vw-p2G" secondAttribute="centerX" id="AVC-jS-txA"/>
-                <constraint firstAttribute="bottom" secondItem="zIe-r7-HcG" secondAttribute="bottom" constant="21" id="Fdn-s8-Nom"/>
-                <constraint firstItem="RT6-2m-A9U" firstAttribute="leading" secondItem="7MI-Vw-p2G" secondAttribute="leading" constant="9" id="Fe1-z7-RaO"/>
-                <constraint firstAttribute="trailing" secondItem="HdU-OB-rPv" secondAttribute="trailing" constant="9" id="NaF-BI-77x"/>
-                <constraint firstAttribute="trailing" secondItem="Sme-XE-lJh" secondAttribute="trailing" constant="38" id="Tpp-vG-4Xt"/>
-                <constraint firstAttribute="bottom" secondItem="HdU-OB-rPv" secondAttribute="bottom" constant="6" id="Uri-Aw-Fia"/>
-                <constraint firstAttribute="trailing" secondItem="zIe-r7-HcG" secondAttribute="trailing" constant="100" id="aH0-0W-Ae5"/>
-                <constraint firstItem="zIe-r7-HcG" firstAttribute="leading" secondItem="7MI-Vw-p2G" secondAttribute="leading" constant="99" id="kbW-eT-mqF"/>
-                <constraint firstItem="Sme-XE-lJh" firstAttribute="top" secondItem="7MI-Vw-p2G" secondAttribute="top" constant="19" id="mEi-1w-X4A"/>
-                <constraint firstItem="zIe-r7-HcG" firstAttribute="top" secondItem="7MI-Vw-p2G" secondAttribute="top" id="pad-O7-a4M"/>
-                <constraint firstAttribute="bottom" secondItem="RT6-2m-A9U" secondAttribute="bottom" constant="6" id="z3D-qC-xbz"/>
-                <constraint firstAttribute="bottom" secondItem="Sme-XE-lJh" secondAttribute="bottom" constant="2" id="zK4-2J-g21"/>
+                <constraint firstItem="zIe-r7-HcG" firstAttribute="top" secondItem="7MI-Vw-p2G" secondAttribute="top" id="HMx-kQ-jhx"/>
+                <constraint firstItem="zIe-r7-HcG" firstAttribute="leading" secondItem="RT6-2m-A9U" secondAttribute="trailing" constant="60" id="iBb-OM-iOk"/>
+                <constraint firstItem="RT6-2m-A9U" firstAttribute="top" secondItem="7MI-Vw-p2G" secondAttribute="top" constant="6" id="n3i-N6-Gbu"/>
+                <constraint firstItem="RT6-2m-A9U" firstAttribute="leading" secondItem="7MI-Vw-p2G" secondAttribute="leading" constant="9" id="o9z-ZO-HOI"/>
+                <constraint firstItem="Sme-XE-lJh" firstAttribute="top" secondItem="7MI-Vw-p2G" secondAttribute="top" constant="19" id="s9L-xb-9Iw"/>
+                <constraint firstItem="Sme-XE-lJh" firstAttribute="leading" secondItem="7MI-Vw-p2G" secondAttribute="leading" constant="38" id="tkd-36-vNa"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>

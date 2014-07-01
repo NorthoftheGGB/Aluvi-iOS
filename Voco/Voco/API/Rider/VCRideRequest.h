@@ -19,8 +19,10 @@
 @property (nonatomic, strong) NSString * type;
 @property (nonatomic, strong) NSNumber * departureLatitude;
 @property (nonatomic, strong) NSNumber * departureLongitude;
+@property (nonatomic, strong) NSString * departurePlaceName;
 @property (nonatomic, strong) NSNumber * destinationLatitude;
 @property (nonatomic, strong) NSNumber * destinationLongitude;
+@property (nonatomic, strong) NSString * destinationPlaceName;
 @property (nonatomic, strong) NSDate * desiredArrival;
 
 + (void) createMappings: (RKObjectManager *) objectManager;

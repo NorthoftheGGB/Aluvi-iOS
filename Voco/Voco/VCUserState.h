@@ -29,8 +29,6 @@
 #define kUserStateRideStarted @"Ride Started"
 #define kUserStateRideCompleted @"Ride Completed"
 
-// placeholder class for user state tracking, enabling KVO
-
 @interface VCUserState : NSObject
 
 @property(nonatomic, strong) NSNumber * underwayRideId;

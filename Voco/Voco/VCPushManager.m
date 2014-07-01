@@ -34,11 +34,11 @@
     // send PATCH
     NSString * pushToken = [self stringFromDeviceTokenData: deviceToken];
     [VCDevicesApi updatePushToken:pushToken success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-    
+        
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         //TODO need to save and send again later
     }];
-
+    
     
     
 }
@@ -77,28 +77,28 @@
     }
     NSString * type = [userInfo objectForKey:VC_PUSH_TYPE_KEY];
     if([type isEqualToString:@"ride_offer"]) {
-        if(true) { //condition
-            [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_RIDE_OFFERS
-                                                   parameters:nil
-                                                      success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                          // save in database - done automatically by Entity Mapping
+        
+        [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_RIDE_OFFERS
+                                               parameters:nil
+                                                  success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                      // save in database - done automatically by Entity Mapping
+                                                      
+                                                      // check state of the application
+                                                      // for now just assume in drive mode if we get here
+                                                      if([VCUserState driverIsAvailable]
+                                                         && [[VCDialogs instance].interfaceState isEqualToString:VC_INTERFACE_STATE_IDLE]){  // guard against invalid state
                                                           
-                                                          // check state of the application
-                                                          // for now just assume in drive mode if we get here
-                                                          if([VCUserState driverIsAvailable]
-                                                             && [[VCDialogs instance].interfaceState isEqualToString:VC_INTERFACE_STATE_IDLE]){  // guard against invalid state
-                                                              
-                                                              [[VCDialogs instance] offerNextRideToDriver];
-                                                          }
-                                                          
+                                                          [[VCDialogs instance] offerNextRideToDriver];
                                                       }
-                                                      failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                          NSLog(@"Failed send request %@", error);
-                                                          [WRUtilities criticalError:error];
-                                                          
-                                                          // TODO Re-transmit push token later
-                                                      }];
-        }
+                                                      
+                                                  }
+                                                  failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                      NSLog(@"Failed send request %@", error);
+                                                      [WRUtilities criticalError:error];
+                                                      
+                                                      // TODO Re-transmit push token later
+                                                  }];
+        
     } else if([type isEqualToString:@"ride_offer_closed"]){
         [[VCDialogs instance] retractOfferDialog: [userInfo objectForKey:VC_PUSH_OFFER_ID_KEY]];
     } else {
@@ -106,7 +106,7 @@
     }
     
     
-
+    
     
     
 }
@@ -235,9 +235,9 @@
     }];
     
     
-
     
-
+    
+    
 }
 
 
