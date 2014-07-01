@@ -7,6 +7,7 @@
 //
 
 #import "Drive.h"
+#import "Offer.h"
 #import "VCApi.h"
 
 @interface Drive ()
@@ -16,7 +17,7 @@
 @implementation Drive
 
 @dynamic car_id;
-
+@dynamic offer;
 
 - (id) init{
     self = [super init];
@@ -75,6 +76,43 @@
     
        
     
+}
+
+- (void) markOfferAsAccepted {
+    
+    Offer * rideOffer = [self getOffer];
+    if(rideOffer != nil) {
+        [rideOffer markAsAccepted];
+    }
+
+}
+
+- (void) markOfferAsDeclined {
+    Offer *  rideOffer = [self getOffer];
+    if(rideOffer != nil) {
+        [rideOffer markAsDeclined];
+    }
+       }
+
+- (void) markOfferAsClosed {
+    Offer *  rideOffer = [self getOffer];
+    if(rideOffer != nil) {
+        [rideOffer markAsClosed];
+    }
+}
+
+- (Offer *) getOffer {
+    NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"Offer"];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ride_id = %@", self.ride_id];
+    [request setPredicate:predicate];
+    NSError * error;
+    NSArray * results = [[VCCoreData managedObjectContext] executeFetchRequest:request error:&error];
+    if(results == nil){
+        [WRUtilities criticalError:error];
+        return nil;
+    }
+    return results.firstObject;
+
 }
 
 #pragma mark state machine methods

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "VCRestKitMappableObject.h"
+#import "Drive.h"
 
 
 @interface Offer : NSManagedObject <VCRestKitMappableObject>
@@ -21,4 +22,11 @@
 @property (nonatomic, retain) NSNumber * decided;
 @property (nonatomic, retain) NSString * meetingPointPlaceName;
 @property (nonatomic, retain) NSString * destinationPlaceName;
+@property (nonatomic, retain) Drive * ride;
+
+
+- (void) markAsAccepted;
+- (void) markAsDeclined;
+- (void) markAsClosed;
+
 @end

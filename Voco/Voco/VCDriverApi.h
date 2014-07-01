@@ -30,6 +30,8 @@
                     failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 + (void) loadDriveDetails: (NSNumber *) rideId success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                 failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
-
++ (void) cancelRide: (NSNumber *) rideId
+            success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+            failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
 @end

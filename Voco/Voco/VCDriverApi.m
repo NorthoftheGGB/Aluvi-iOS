@@ -104,7 +104,7 @@
 }
 
 + (void) loadDriveDetails: (NSNumber *) rideId success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
-                failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+                  failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     VCDriveIdentity * rideIdentity = [[VCDriveIdentity alloc] init];
     rideIdentity.id = rideId;
     //Drive * drive = [[Drive alloc] init];
@@ -115,11 +115,40 @@
                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                            NSLog(@"%@", @"Success");
                                            success(operation, mappingResult);
-                                          }
+                                       }
                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                            NSLog(@"%@", @"Failure");
                                            failure(operation, error);
-                                          }];
+                                       }];
 }
 
++ (void) cancelRide: (NSNumber *) rideId
+            success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+            failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+    
+    VCRideDriverAssignment * assignment = [[VCRideDriverAssignment alloc] init];
+    assignment.rideId = rideId;
+    
+    [[RKObjectManager sharedManager] postObject:assignment
+                                           path:API_POST_RIDE_DECLINED parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            success(operation, mappingResult);
+                                            
+                                        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            
+                                            if(operation.HTTPRequestOperation.response.statusCode == 404){
+                                                // ride is actually assigned to this driver already, can't be decline
+                                                [WRUtilities criticalErrorWithString:@"This ride is already assigned to the logged in driver.  It cannot be declined and must be cancelled instead"];
+                                                failure(operation, error);
+                                                
+                                            } else if(operation.HTTPRequestOperation.response.statusCode == 403){
+                                                // ride isn't available anymore anyway, just continue
+                                                success(operation, nil); // It's actually a success from the viewpoint of the caller
+                                            } else {
+                                                [WRUtilities criticalError:error];
+                                            }
+                                        }];
+}
+
+    
 @end

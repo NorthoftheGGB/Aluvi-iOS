@@ -20,6 +20,7 @@
 @dynamic decided;
 @dynamic meetingPointPlaceName;
 @dynamic destinationPlaceName;
+@dynamic ride;
 
 + (void)createMappings:(RKObjectManager *)objectManager {
     
@@ -60,5 +61,20 @@
     [objectManager addResponseDescriptor:responseDescriptor];
 
 }
+
+- (void) markAsAccepted {
+    self.state = @"accepted";
+    self.decided = [NSNumber numberWithBool:YES];
+}
+
+- (void) markAsDeclined {
+    self.state = @"declined";
+    self.decided = [NSNumber numberWithBool:YES];
+}
+
+- (void) markAsClosed{
+    self.decided = [NSNumber numberWithBool:YES];
+}
+
 
 @end

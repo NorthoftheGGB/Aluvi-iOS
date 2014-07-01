@@ -7,6 +7,7 @@
 //
 
 #import "VCRideViewController.h"
+#import <MBProgressHUD.h>
 #import "VCMapQuestRouting.h"
 
 @interface VCRideViewController () <MKMapViewDelegate>
@@ -80,14 +81,19 @@
         departureCoordinate.longitude = [_transport.meetingPointLongitude doubleValue];
     }
     
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText= @"Fetching Ride";
     [VCMapQuestRouting route:destinationCoordinate to:departureCoordinate region:_map.region success:^(MKPolyline *polyline, MKCoordinateRegion region) {
         _routeOverlay = polyline;
         [_map addOverlay:_routeOverlay];
         region.span.latitudeDelta *= 1.10;
         region.span.longitudeDelta *= 1.10;
+        self.rideRegion = region;
         [_map setRegion:region];
+        [hud hide:YES];
     } failure:^{
         NSLog(@"%@", @"Error talking with MapQuest routing API");
+        [hud hide:YES];
     }];
     
     

@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCDriverHomeViewController">
             <connections>
+                <outlet property="acceptButton" destination="H8D-Wr-6Ns" id="WfI-zk-BI9"/>
                 <outlet property="addressLabel" destination="sAr-VL-Uem" id="nYo-Jc-muf"/>
+                <outlet property="cancelRideButton" destination="mXT-Uz-lV6" id="dy8-cs-mch"/>
+                <outlet property="declineButton" destination="qkB-Bk-332" id="Uz7-KE-VWE"/>
                 <outlet property="driverLocationHud" destination="mDj-An-QgP" id="eJH-J9-JeV"/>
-                <outlet property="pickupLocationLabel" destination="Kap-iR-Fyb" id="0Xp-kv-TIf"/>
+                <outlet property="locationTypeLabel" destination="Kap-iR-Fyb" id="b6B-lO-VAV"/>
+                <outlet property="rideCompletedButton" destination="Ckd-PV-Lho" id="pjL-In-eA7"/>
+                <outlet property="riderPickedUpButton" destination="Awz-9j-gv0" id="g96-WX-jxp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -139,6 +144,7 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <action selector="didTapRideCompleted:" destination="-1" eventType="touchUpInside" id="Gnx-6J-3bS"/>
                         <action selector="didTapeRideCompleted:" destination="-1" eventType="touchUpInside" id="kJl-I7-gz5"/>
                     </connections>
                 </button>
@@ -187,7 +193,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="didTapZoomRideBounds:" destination="-1" eventType="touchUpInside" id="Oq8-b6-cKK"/>
+                        <action selector="didTapZoomToRideBounds:" destination="-1" eventType="touchUpInside" id="7H3-ae-Ri0"/>
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123 Address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAr-VL-Uem" customClass="VCLabel">

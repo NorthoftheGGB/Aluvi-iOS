@@ -21,6 +21,7 @@
 @property (strong, nonatomic) CLGeocoder * geocoder;
 @property (strong, nonatomic) MKPointAnnotation * dropOffAnnotation;
 @property (strong, nonatomic) MKPointAnnotation * pickupAnnotation;
+@property (nonatomic) MKCoordinateRegion rideRegion;
 
 - (void) showSuggestedRoute;
 - (void) showRideLocations;

@@ -54,7 +54,9 @@
                 
             default:
             {
-                [WRUtilities criticalError:error];
+                if(statusCode > 500) {
+                    [WRUtilities criticalError:error];
+                }
             }
                 break;
         }
