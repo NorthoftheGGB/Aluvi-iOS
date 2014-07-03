@@ -14,7 +14,7 @@
 #import "Offer.h"
 #import "VCLocation.h"
 #import "VCDriverRegistration.h"
-#import "Drive.h"
+#import "Ride.h"
 #import "VCDriveIdentity.h"
 
 @implementation VCDriverApi
@@ -23,7 +23,7 @@
     [VCRideDriverAssignment createMappings:objectManager];
     [VCRideIdentity createMappings:objectManager];
     [Offer createMappings:objectManager];
-    [Drive createMappings:objectManager];
+    [Ride createMappings:objectManager];
     [VCLocation createMappings:objectManager];
     [VCDriverRegistration createMappings:objectManager];
     [VCDriveIdentity createMappings:objectManager];

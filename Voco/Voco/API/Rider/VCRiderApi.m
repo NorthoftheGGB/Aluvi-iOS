@@ -129,7 +129,7 @@
                                   failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     
     // Update all rides for this user using RestKit entity
-    [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_SCHEDULED_RIDES parameters:nil
+    [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_ACTIVE_REQUESTS parameters:nil
                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                   
                                                   // It's completely possible that state is out of sync with the server

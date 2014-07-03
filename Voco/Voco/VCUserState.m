@@ -116,9 +116,8 @@ static VCUserState *sharedSingleton;
 
 - (void) logout {
     
-    [VCApi clearApiToken];
-#warning This logout strategy makes no sense, it can't work because the token is already cleared
     [VCDevicesApi updateUserWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [VCApi clearApiToken];
         [self clearUserState];
         [VCCoreData clearUserData];
         [VCInterfaceModes showRiderSigninInterface];

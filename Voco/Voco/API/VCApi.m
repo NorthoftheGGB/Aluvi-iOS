@@ -73,10 +73,6 @@ static NSString * apiToken;
     return [NSString stringWithFormat:@"%@%@", API_GET_RIDE_OFFERS, driverId];
 }
 
-+ (NSString *) getScheduledRidesPath:(NSNumber*) riderId {
-    return [NSString stringWithFormat:@"%@%@", API_GET_SCHEDULED_RIDES, riderId];
-}
-
 + (NSString *) getPutGeoCarPath:(NSNumber *) carId {
     return [NSString stringWithFormat:@"%@%@", API_GEO_CAR, carId];
 }

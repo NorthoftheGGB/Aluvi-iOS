@@ -12,8 +12,8 @@
 #import <TransitionKit.h>
 #import "Trip.h"
 
-#define RIDE_REQUEST_TYPE_ON_DEMAND @"on_demand"
-#define RIDE_REQUEST_TYPE_COMMUTER @"commuter"
+#define kRideRequestTypeOnDemand @"on_demand"
+#define kRideRequestTypeCommuter @"commuter"
 
 #define kCreatedState @"created"
 #define kRequestedState @"requested"
@@ -38,6 +38,7 @@
 
 @interface Request : Trip <VCRestKitMappableObject>
 
+@property (nonatomic, retain) NSNumber * request_id;
 @property (nonatomic, retain) NSString * requestType;
 @property (nonatomic, retain) NSNumber * car_id;
 @property (nonatomic, retain) NSNumber * driver_id;
@@ -46,8 +47,10 @@
 @property (nonatomic, retain) NSNumber * originLatitude;
 @property (nonatomic, retain) NSNumber * originLongitude;
 @property (nonatomic, retain) NSString * originPlaceName;
+@property (nonatomic, retain) NSNumber * destinationLatitude;
+@property (nonatomic, retain) NSNumber * destinationLongitude;
+@property (nonatomic, retain) NSString * destinationPlaceName;
 
-@property (nonatomic, retain) NSNumber * request_id;
 
 
 
@@ -55,6 +58,6 @@
 @property (nonatomic, retain) Car *car;
 
 
-+ (Request *) rideWithId: (NSNumber *) rideId;
++ (Request *) requestWithRideId: (NSNumber *) rideId;
 
 @end

@@ -54,7 +54,7 @@
                 
             default:
             {
-                if(statusCode > 500) {
+                if(statusCode >= 500) {
                     [WRUtilities criticalError:error];
                 }
             }

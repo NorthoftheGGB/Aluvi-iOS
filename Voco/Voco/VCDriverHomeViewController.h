@@ -6,10 +6,11 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCRideViewController.h"
-#import "Request.h"
+#import "VCTripBaseViewController.h"
+#import "Ride.h"
 
-@interface VCDriverHomeViewController : VCRideViewController
+@interface VCDriverHomeViewController : VCTripBaseViewController
 
+@property (nonatomic, strong) Ride * ride;
 
 @end

@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCRiderRidesViewController.h"
+#import "VCRequestsViewController.h"
 #import "VCCoreData.h"
 #import "Request.h"
 #import "VCRiderHomeViewController.h"
 #import "VCRiderApi.h"
 
-@interface VCRiderRidesViewController () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
+@interface VCRequestsViewController () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -20,7 +20,7 @@
 
 @end
 
-@implementation VCRiderRidesViewController
+@implementation VCRequestsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,7 +37,7 @@
         return _fetchedResultsController;
     }
     
-    NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Ride"];
+    NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Request"];
     
     NSSortDescriptor *sort = [[NSSortDescriptor alloc]
                               initWithKey:@"requestedTimestamp" ascending:YES];
@@ -124,7 +124,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     Request *ride = [_fetchedResultsController objectAtIndexPath:indexPath];
     VCRiderHomeViewController * vc = [[VCRiderHomeViewController alloc] init];
-    vc.ride = ride;
+    vc.request = ride;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

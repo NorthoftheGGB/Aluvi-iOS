@@ -146,4 +146,18 @@ static VCDialogs *sharedSingleton;
                       }];
 }
 
+- (void) commuterRideFound: (Request *) request {
+    [UIAlertView showWithTitle:@"Commuter Ride Found!"
+                       message:[NSString stringWithFormat:@"Your requested pick up at %@ has been found.  Would you like to view the details now?", request.desiredArrival]
+             cancelButtonTitle:@"Not now"
+             otherButtonTitles:@[@"Yes!"]
+                      tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                          if(buttonIndex == 1){
+                              [[NSNotificationCenter defaultCenter] postNotificationName:@"commuter_ride_invoked" object:request userInfo:@{}];
+
+                          }
+                      }];
+}
+
+
 @end

@@ -118,7 +118,7 @@ static void * XXContext = &XXContext;
 - (IBAction)didTapRequestButton:(id)sender {
     VCRideRequest * request = [[VCRideRequest alloc] init];
     request.customerId = 3;
-    request.type = RIDE_REQUEST_TYPE_ON_DEMAND;
+    request.type = kRideRequestTypeOnDemand;
     request.departureLatitude = [NSNumber numberWithDouble:((double)(-122000 + arc4random() % 1000)) / 1000];
     request.departureLongitude = [NSNumber numberWithDouble: ((double)(37000 + arc4random() % 1000)) / 1000];
     request.destinationLatitude = [NSNumber numberWithDouble:((double)(-122000 + arc4random() % 1000)) / 1000];

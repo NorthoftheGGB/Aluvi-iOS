@@ -14,10 +14,11 @@
 @property (nonatomic, retain) NSNumber * meetingPointLatitude;
 @property (nonatomic, retain) NSNumber * meetingPointLongitude;
 @property (nonatomic, retain) NSString * meetingPointPlaceName;
-@property (nonatomic, retain) NSNumber * destinationLongitude;
-@property (nonatomic, retain) NSNumber * destinationLatitude;
-@property (nonatomic, retain) NSString * destinationPlaceName;
+@property (nonatomic, retain) NSNumber * dropOffPointLongitude;
+@property (nonatomic, retain) NSNumber * dropOffPointLatitude;
+@property (nonatomic, retain) NSString * dropOffPointPlaceName;
 @property (nonatomic, retain) NSDate * desiredArrival;
+@property (nonatomic, retain) NSDate * pickupTime;
 
 - (NSString *) routeDescription;
 

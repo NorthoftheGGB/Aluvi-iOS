@@ -10,21 +10,23 @@
 #import <MapKit/MapKit.h>
 #import "Request.h"
 
-@interface VCRideViewController : UIViewController
+@interface VCTripBaseViewController : UIViewController
 
 @property (strong, nonatomic) Trip * transport;
 
 // Map
 @property (strong, nonatomic) MKMapView * map;
 @property (strong, nonatomic) MKPolyline * routeOverlay;
-@property (strong, nonatomic) MKPolyline * routeToMeetingPointOverlay;
 @property (strong, nonatomic) CLGeocoder * geocoder;
 @property (strong, nonatomic) MKPointAnnotation * dropOffAnnotation;
-@property (strong, nonatomic) MKPointAnnotation * pickupAnnotation;
+@property (strong, nonatomic) MKPointAnnotation * meetingPointAnnotation;
 @property (nonatomic) MKCoordinateRegion rideRegion;
 
 - (void) showSuggestedRoute;
-- (void) showRideLocations;
+- (void) showSuggestedRoute: (CLLocation *) from to: (CLLocation *) to;
+- (void) annotateMeetingPoint: (CLLocation *) meetingPoint andDropOffPoint: (CLLocation *) dropOffPoint;
 - (void) clearMap;
+
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay;
 
 @end

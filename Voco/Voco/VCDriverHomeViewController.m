@@ -47,6 +47,11 @@
 
 @implementation VCDriverHomeViewController
 
+- (void) setRide:(Ride *)ride {
+    _ride = ride;
+    self.transport = ride;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -119,7 +124,7 @@
     _cancelRideButton.hidden = NO;
     _rideCompletedButton.hidden = NO;
     self.locationTypeLabel.text = @"Drop Off Location";
-    self.addressLabel.text = self.transport.destinationPlaceName;
+    self.addressLabel.text = self.transport.dropOffPointPlaceName;
     [self addLocationHudIfNotDisplayed];
 
 }
@@ -136,7 +141,11 @@
 
 - (void) showRide{
     [self showSuggestedRoute];
-    [self showRideLocations];
+    
+    [self annotateMeetingPoint:[[CLLocation alloc] initWithLatitude:[self.ride.meetingPointLatitude doubleValue]
+                                                          longitude:[self.ride.meetingPointLongitude doubleValue]]
+               andDropOffPoint:[[CLLocation alloc] initWithLatitude:[self.ride.dropOffPointLatitude doubleValue]
+                                                          longitude:[self.ride.dropOffPointLongitude doubleValue]]];
     self.title = [self.transport routeDescription];
 }
 
@@ -179,7 +188,7 @@
         [VCUserState instance].driveProcessState = kUserStateRideAccepted;
         [VCUserState instance].underwayRideId = self.transport.ride_id;
         
-        [((Drive *) self.transport) markOfferAsAccepted];
+        [((Ride *) self.transport) markOfferAsAccepted];
         
         [hud hide:YES];
         [self showPickupInterface];
@@ -190,7 +199,7 @@
         
         if(operation.HTTPRequestOperation.response.statusCode == 403){
             // already accepted by another driver
-            [((Drive *) self.transport) markOfferAsClosed];
+            [((Ride *) self.transport) markOfferAsClosed];
 
             [UIAlertView showWithTitle:@"Ride no longer available!" message:@"Unfortunately another driver beat you to this ride!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
 
@@ -212,7 +221,7 @@
                         [self resetButtons];
                         [self clearMap];
                         [VCUserState instance].driveProcessState = @"Ride Declined";
-                        [((Drive *) self.transport) markOfferAsDeclined];
+                        [self.ride markOfferAsDeclined];
                         [VCCoreData saveContext];
                         [hud hide:YES];
                         [VCUserState instance].underwayRideId = nil;

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VCRiderRidesViewController : UIViewController
+@interface VCRequestsViewController : UIViewController
 
 @end

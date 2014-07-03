@@ -13,15 +13,14 @@
 @dynamic meetingPointLatitude;
 @dynamic meetingPointLongitude;
 @dynamic meetingPointPlaceName;
-@dynamic destinationLongitude;
-@dynamic destinationLatitude;
-@dynamic destinationPlaceName;
+@dynamic dropOffPointLongitude;
+@dynamic dropOffPointLatitude;
+@dynamic dropOffPointPlaceName;
 @dynamic desiredArrival;
-
-
+@dynamic pickupTime;
 
 - (NSString *) routeDescription {
-    return [NSString stringWithFormat:@"%@ to %@", self.meetingPointPlaceName, self.destinationPlaceName];
+    return [NSString stringWithFormat:@"%@ to %@", self.meetingPointPlaceName, self.dropOffPointPlaceName];
 }
 
 @end

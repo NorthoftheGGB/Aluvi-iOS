@@ -205,25 +205,30 @@
     [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         
         NSNumber * rideId = [payload objectForKey:VC_PUSH_RIDE_ID_KEY];
-        NSFetchRequest * request = [[NSFetchRequest alloc] initWithEntityName:@"Ride"];
+        NSFetchRequest * fetch = [[NSFetchRequest alloc] initWithEntityName:@"Request"];
         NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ride_id = %@", rideId];
-        [request setPredicate:predicate];
+        [fetch setPredicate:predicate];
         NSError * error;
-        NSArray * rides = [[VCCoreData managedObjectContext] executeFetchRequest:request error:&error];
+        NSArray * rides = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
         if(rides == nil){
             [WRUtilities criticalError:error];
             return;
         }
         if([rides count] > 0){
-            [[VCDialogs instance] rideFound: [payload objectForKey:VC_PUSH_REQUEST_ID_KEY]];
-            Request * ride = [rides objectAtIndex:0];
+            Request * request = [rides objectAtIndex:0];
             NSError * error;
-            [ride fireEvent:kEventRideFound userInfo:@{} error:&error];
+            [request fireEvent:kEventRideFound userInfo:@{} error:&error];
             if(error != nil) {
                 [WRUtilities criticalError:error];
             }
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"ride_found" object:payload userInfo:@{}];
-            [VCUserState instance].underwayRideId = rideId;
+            
+            if([request.requestType isEqualToString:kRideRequestTypeOnDemand]) {
+                [[VCDialogs instance] rideFound: [payload objectForKey:VC_PUSH_REQUEST_ID_KEY]];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"ride_found" object:payload userInfo:@{}];
+                [VCUserState instance].underwayRideId = rideId;
+            } else if ([request.requestType isEqualToString:kRideRequestTypeCommuter]){
+                [[VCDialogs instance] commuterRideFound: request];
+            }
             
         } else {
             [WRUtilities stateErrorWithString:@"Ride no longer exists"];

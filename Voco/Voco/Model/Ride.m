@@ -6,15 +6,15 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "Drive.h"
+#import "Ride.h"
 #import "Offer.h"
 #import "VCApi.h"
 
-@interface Drive ()
+@interface Ride ()
 
 @end
 
-@implementation Drive
+@implementation Ride
 
 @dynamic car_id;
 @dynamic offer;
@@ -29,7 +29,7 @@
 
 
 + (void)createMappings:(RKObjectManager *)objectManager{
-    RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Drive"
+    RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Ride"
                                                           inManagedObjectStore: [VCCoreData managedObjectStore]];
     
 #warning using savedState instead of forcedState to work around KVO compliancy error

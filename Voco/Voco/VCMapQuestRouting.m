@@ -24,7 +24,21 @@ static RKObjectManager * objectManager;
 
 + (void) route: (CLLocationCoordinate2D) start
             to: (CLLocationCoordinate2D) end
-        region: (MKCoordinateRegion) region
+       success: ( void ( ^ ) ( MKPolyline * polyline, MKCoordinateRegion region )) success
+       failure: ( void ( ^ ) ( )) failure {
+    [self route:start to:end options:@{} success:success failure:failure];
+}
+
++ (void) pedestrianRoute: (CLLocationCoordinate2D) start
+            to: (CLLocationCoordinate2D) end
+       success: ( void ( ^ ) ( MKPolyline * polyline, MKCoordinateRegion region )) success
+       failure: ( void ( ^ ) ( )) failure {
+    [self route:start to:end options:@{@"routeType" : @"pedestrian"} success:success failure:failure];
+}
+
++ (void) route: (CLLocationCoordinate2D) start
+            to: (CLLocationCoordinate2D) end
+        options: (NSDictionary *) options
        success: ( void ( ^ ) ( MKPolyline * polyline, MKCoordinateRegion region )) success
        failure: ( void ( ^ ) ( )) failure {
     
@@ -44,14 +58,14 @@ static RKObjectManager * objectManager;
                               // @"mapWidth": [NSNumber numberWithInt:width],
                              // @"mapHeight": [NSNumber numberWithInt:height]
                               };
-    [objectManager cancelAllObjectRequestOperationsWithMethod:RKRequestMethodGET matchingPathPattern:@"directions/v2/route"];
+    //[objectManager cancelAllObjectRequestOperationsWithMethod:RKRequestMethodGET matchingPathPattern:@"directions/v2/route"];
     [objectManager getObject:nil path:@"directions/v2/route" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
 
         MQRouteResponse * response = mappingResult.firstObject;
         if(response.route.shape == nil){
             failure();
         }
-        int polylinePointCount = [response.route.shape.shapePoints count] / 2;
+        long polylinePointCount = [response.route.shape.shapePoints count] / 2;
         CLLocationCoordinate2D *polylinePoints = (CLLocationCoordinate2D*)malloc(polylinePointCount * sizeof(CLLocationCoordinate2D) );
 
         for(int i=0; i < polylinePointCount; i++){

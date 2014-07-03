@@ -13,7 +13,7 @@
 #import "IIViewDeckController.h"
 #import "VCApi.h"
 #import "VCDriverHomeViewController.h"
-#import "VCRiderRidesViewController.h"
+#import "VCRequestsViewController.h"
 #import "VCUserState.h"
 #import "VCDebugViewController.h"
 
@@ -28,7 +28,7 @@ static int mode;
 + (VCInterfaceModes * ) instance {
     if(instance == nil){
         instance = [[VCInterfaceModes alloc] init];
-        mode =  [(NSNumber*) [[NSUserDefaults standardUserDefaults] objectForKey:kInterfaceModeKey] integerValue];
+        mode =  [(NSNumber*) [[NSUserDefaults standardUserDefaults] objectForKey:kInterfaceModeKey] intValue];
     }
     return instance;
 }
@@ -131,6 +131,7 @@ static int mode;
     self =  [super init];
     if (self != nil) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideOfferInvokedNotification:) name:@"ride_offer_invoked" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commuterRideInvokedNotification:) name:@"commuter_ride_invoked" object:nil];
     }
     return self;
 }
@@ -142,6 +143,21 @@ static int mode;
 - (void) rideOfferInvokedNotification:(NSNotification *)notification{
     if(mode == kDriverMode){
         [deckController closeLeftView];
+    } else {
+        [UIAlertView showWithTitle:@"Woops!"
+                           message:@"You must be in driver mode to view ride offers"
+                 cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+    }
+
+}
+
+- (void) commuterRideInvokedNotification:(NSNotification *)notification{
+    if(mode == kRiderMode){
+        [deckController closeLeftView];
+    } else {
+        [UIAlertView showWithTitle:@"Woops!"
+                           message:@"You must be in rider mode to view your commuter ride"
+                 cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
     }
 }
 

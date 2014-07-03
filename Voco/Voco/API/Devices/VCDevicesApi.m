@@ -39,8 +39,15 @@
              failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure  {
     
     // update device registration
-    NSUUID *uuidForVendor = [[UIDevice currentDevice] identifierForVendor];
-    NSString *uuid = [uuidForVendor UUIDString];
+    // NSUUID *uuidForVendor = [[UIDevice currentDevice] identifierForVendor];
+    // NSString *uuid = [uuidForVendor UUIDString];
+    
+    NSString * uuid = [[NSUserDefaults standardUserDefaults] objectForKey:@"UUID"];
+    if(uuid == nil){
+        uuid = [[NSUUID UUID] UUIDString];
+        [[NSUserDefaults standardUserDefaults] setObject:uuid forKey:@"UUID"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
     
     // TODO once user logs in, need to update this as well
     [[RKObjectManager sharedManager] patchObject:device

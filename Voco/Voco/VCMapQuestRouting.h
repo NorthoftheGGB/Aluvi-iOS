@@ -15,9 +15,20 @@
 
 + (void) setup;
 
+
 + (void) route: (CLLocationCoordinate2D) start
             to: (CLLocationCoordinate2D) end
-        region: (MKCoordinateRegion) region
+       success: ( void ( ^ ) ( MKPolyline * polyline, MKCoordinateRegion region )) success
+       failure: ( void ( ^ ) ( )) failure;
+
++ (void) pedestrianRoute: (CLLocationCoordinate2D) start
+                      to: (CLLocationCoordinate2D) end
+                 success: ( void ( ^ ) ( MKPolyline * polyline, MKCoordinateRegion region )) success
+                 failure: ( void ( ^ ) ( )) failure;
+
++ (void) route: (CLLocationCoordinate2D) start
+            to: (CLLocationCoordinate2D) end
+        options: (NSDictionary *) options
        success: ( void ( ^ ) ( MKPolyline * polyline, MKCoordinateRegion region )) success
        failure: ( void ( ^ ) ( )) failure;
 @end

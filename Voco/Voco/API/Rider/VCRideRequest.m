@@ -29,17 +29,17 @@
 
 }
 
-+ (VCRideRequest *) requestForRide:(Request *)ride {
-    VCRideRequest * request = [[VCRideRequest alloc] init];
-    request.type = ride.requestType;
-    request.departureLatitude = ride.originLatitude;
-    request.departureLongitude = ride.originLongitude;
-    request.departurePlaceName = ride.originPlaceName;
-    request.destinationLatitude = ride.destinationLatitude;
-    request.destinationLongitude = ride.destinationLongitude;
-    request.destinationPlaceName = ride.destinationPlaceName;
-    request.desiredArrival = ride.desiredArrival;
-    return request;
++ (VCRideRequest *) requestForRide:(Request *)request {
+    VCRideRequest * rideRequest = [[VCRideRequest alloc] init];
+    rideRequest.type = request.requestType;
+    rideRequest.departureLatitude = request.originLatitude;
+    rideRequest.departureLongitude = request.originLongitude;
+    rideRequest.departurePlaceName = request.originPlaceName;
+    rideRequest.destinationLatitude = request.destinationLatitude;
+    rideRequest.destinationLongitude = request.destinationLongitude;
+    rideRequest.destinationPlaceName = request.destinationPlaceName;
+    rideRequest.desiredArrival = request.desiredArrival;
+    return rideRequest;
 }
 
 

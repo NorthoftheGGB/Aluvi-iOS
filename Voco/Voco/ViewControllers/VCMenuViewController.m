@@ -12,7 +12,7 @@
 #import "VCDriverRequestViewController.h"
 #import "VCDriverRegistrationViewController.h"
 #import "VCDriverVideoTutorialController.h"
-#import "VCRiderRidesViewController.h"
+#import "VCRequestsViewController.h"
 #import "VCDriverApi.h"
 
 static void * XXContext = &XXContext;
@@ -214,7 +214,7 @@ static void * XXContext = &XXContext;
 }
 
 - (IBAction)didTapScheduledRides:(id)sender {
-    VCRiderRidesViewController * vc = [[VCRiderRidesViewController alloc] init];
+    VCRequestsViewController * vc = [[VCRequestsViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
