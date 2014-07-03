@@ -71,9 +71,9 @@
     destinationCoordinate.longitude = [_transport.destinationLongitude doubleValue];
     if([_transport.meetingPointLatitude isEqual:[NSNumber numberWithInt:0]] || [_transport.meetingPointLongitude isEqual:[NSNumber numberWithInt:0]]){
         // If we don't have a meeting point yet, show the route from the origin
-        if([_transport isKindOfClass:[Ride class]]){
-            departureCoordinate.latitude = [((Ride*) _transport).originLatitude doubleValue];
-            departureCoordinate.longitude = [((Ride*) _transport).originLongitude doubleValue];
+        if([_transport isKindOfClass:[Request class]]){
+            departureCoordinate.latitude = [((Request*) _transport).originLatitude doubleValue];
+            departureCoordinate.longitude = [((Request*) _transport).originLongitude doubleValue];
         } else {
             NSLog(@"%@", @"Inconsistent State");
             return;
@@ -99,8 +99,8 @@
     }];
     
     
-    if([_transport isKindOfClass:[Ride class]]){
-        Ride * ride = (Ride *) _transport;
+    if([_transport isKindOfClass:[Request class]]){
+        Request * ride = (Request *) _transport;
         if(![ride.originLatitude isEqual:[NSNumber numberWithInt:0]]
            && ![ride.originLongitude isEqual:[NSNumber numberWithInt:0]]
            && ![ride.meetingPointLatitude isEqual:[NSNumber numberWithInt:0]]

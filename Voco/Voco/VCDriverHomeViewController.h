@@ -7,7 +7,7 @@
 //
 
 #import "VCRideViewController.h"
-#import "Ride.h"
+#import "Request.h"
 
 @interface VCDriverHomeViewController : VCRideViewController
 

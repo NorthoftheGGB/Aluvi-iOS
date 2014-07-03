@@ -163,7 +163,7 @@
 		F4354D8A195D0D6A00C06CF7 /* VCLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B30193EE06400354886 /* VCLocation.m */; };
 		F4354D8B195D0D6A00C06CF7 /* VCLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904619468B69007C4671 /* VCLogin.m */; };
 		F4354D8C195D0D6A00C06CF7 /* VCDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AF01936BE0900354886 /* VCDevice.m */; };
-		F4354D8D195D0D6A00C06CF7 /* Ride.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C021935880500A94721 /* Ride.m */; };
+		F4354D8D195D0D6A00C06CF7 /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C021935880500A94721 /* Request.m */; };
 		F4354D8E195D0D6A00C06CF7 /* VCObjectRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D890551946A2D9007C4671 /* VCObjectRequestOperation.m */; };
 		F4354D8F195D0D6A00C06CF7 /* VCValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFDB19491C2B00D8C900 /* VCValidation.m */; };
 		F4354D90195D0D6A00C06CF7 /* MQRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F0151950358000D8C900 /* MQRoute.m */; };
@@ -225,7 +225,7 @@
 		F45F7BFC19357B8A00A94721 /* VCRideRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BFB19357B8A00A94721 /* VCRideRequest.m */; };
 		F45F7BFE19357C5C00A94721 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45F7BFD19357C5C00A94721 /* CoreLocation.framework */; };
 		F45F7C0019357C6100A94721 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45F7BFF19357C6100A94721 /* MapKit.framework */; };
-		F45F7C031935880500A94721 /* Ride.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C021935880500A94721 /* Ride.m */; };
+		F45F7C031935880500A94721 /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C021935880500A94721 /* Request.m */; };
 		F45F7C0A193589A600A94721 /* VCRideRequestCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C09193589A600A94721 /* VCRideRequestCreated.m */; };
 		F45F7C0F1935976E00A94721 /* WRUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C0E1935976E00A94721 /* WRUtilities.m */; };
 		F45F7C12193597F500A94721 /* NSDate+Pretty.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C10193597F500A94721 /* NSDate+Pretty.m */; };
@@ -267,8 +267,8 @@
 		F49EDD101946E2F90020B8BB /* VCInterfaceModes.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD0F1946E2F90020B8BB /* VCInterfaceModes.m */; };
 		F4A7C7FD19615B9D007E05AD /* VCRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C7FC19615B9D007E05AD /* VCRideViewController.m */; };
 		F4A7C7FE19615B9D007E05AD /* VCRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C7FC19615B9D007E05AD /* VCRideViewController.m */; };
-		F4A7C80519623C70007E05AD /* VCTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C80419623C70007E05AD /* VCTransport.m */; };
-		F4A7C80619623C70007E05AD /* VCTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C80419623C70007E05AD /* VCTransport.m */; };
+		F4A7C80519623C70007E05AD /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C80419623C70007E05AD /* Trip.m */; };
+		F4A7C80619623C70007E05AD /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C80419623C70007E05AD /* Trip.m */; };
 		F4A7C80A19625237007E05AD /* VCDebugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C80819625237007E05AD /* VCDebugViewController.m */; };
 		F4A7C80B19625237007E05AD /* VCDebugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C80819625237007E05AD /* VCDebugViewController.m */; };
 		F4A7C80C19625237007E05AD /* VCDebugViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A7C80919625237007E05AD /* VCDebugViewController.xib */; };
@@ -430,8 +430,8 @@
 		F45F7BFB19357B8A00A94721 /* VCRideRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRideRequest.m; path = API/Rider/VCRideRequest.m; sourceTree = "<group>"; };
 		F45F7BFD19357C5C00A94721 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		F45F7BFF19357C6100A94721 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		F45F7C011935880500A94721 /* Ride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ride.h; path = Model/Ride.h; sourceTree = "<group>"; };
-		F45F7C021935880500A94721 /* Ride.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Ride.m; path = Model/Ride.m; sourceTree = "<group>"; };
+		F45F7C011935880500A94721 /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Request.h; path = Model/Request.h; sourceTree = "<group>"; };
+		F45F7C021935880500A94721 /* Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Request.m; path = Model/Request.m; sourceTree = "<group>"; };
 		F45F7C08193589A600A94721 /* VCRideRequestCreated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRideRequestCreated.h; path = API/Rider/Responses/VCRideRequestCreated.h; sourceTree = "<group>"; };
 		F45F7C09193589A600A94721 /* VCRideRequestCreated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRideRequestCreated.m; path = API/Rider/Responses/VCRideRequestCreated.m; sourceTree = "<group>"; };
 		F45F7C0D1935976E00A94721 /* WRUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRUtilities.h; sourceTree = "<group>"; };
@@ -503,8 +503,8 @@
 		F49EDD0F1946E2F90020B8BB /* VCInterfaceModes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCInterfaceModes.m; path = ViewControllers/VCInterfaceModes.m; sourceTree = "<group>"; };
 		F4A7C7FB19615B9D007E05AD /* VCRideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRideViewController.h; path = ViewControllers/VCRideViewController.h; sourceTree = "<group>"; };
 		F4A7C7FC19615B9D007E05AD /* VCRideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRideViewController.m; path = ViewControllers/VCRideViewController.m; sourceTree = "<group>"; };
-		F4A7C80319623C70007E05AD /* VCTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCTransport.h; path = Model/VCTransport.h; sourceTree = "<group>"; };
-		F4A7C80419623C70007E05AD /* VCTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCTransport.m; path = Model/VCTransport.m; sourceTree = "<group>"; };
+		F4A7C80319623C70007E05AD /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Trip.h; path = Model/Trip.h; sourceTree = "<group>"; };
+		F4A7C80419623C70007E05AD /* Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Trip.m; path = Model/Trip.m; sourceTree = "<group>"; };
 		F4A7C80719625237007E05AD /* VCDebugViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCDebugViewController.h; path = ViewControllers/VCDebugViewController.h; sourceTree = "<group>"; };
 		F4A7C80819625237007E05AD /* VCDebugViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCDebugViewController.m; path = ViewControllers/VCDebugViewController.m; sourceTree = "<group>"; };
 		F4A7C80919625237007E05AD /* VCDebugViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCDebugViewController.xib; path = ViewControllers/VCDebugViewController.xib; sourceTree = "<group>"; };
@@ -519,6 +519,7 @@
 		F4A7C8221962E235007E05AD /* VCLocationSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCLocationSearchViewController.h; path = ViewControllers/VCLocationSearchViewController.h; sourceTree = "<group>"; };
 		F4A7C8231962E235007E05AD /* VCLocationSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCLocationSearchViewController.m; path = ViewControllers/VCLocationSearchViewController.m; sourceTree = "<group>"; };
 		F4A7C8241962E235007E05AD /* VCLocationSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCLocationSearchViewController.xib; path = ViewControllers/VCLocationSearchViewController.xib; sourceTree = "<group>"; };
+		F4A7C8291964E425007E05AD /* Voco 14.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 14.xcdatamodel"; sourceTree = "<group>"; };
 		F4D8904219468A84007C4671 /* VCUsersApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCUsersApi.h; path = Users/VCUsersApi.h; sourceTree = "<group>"; };
 		F4D8904319468A84007C4671 /* VCUsersApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCUsersApi.m; path = Users/VCUsersApi.m; sourceTree = "<group>"; };
 		F4D8904519468B69007C4671 /* VCLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCLogin.h; path = API/Users/VCLogin.h; sourceTree = "<group>"; };
@@ -808,8 +809,8 @@
 				F4FE1B17193D2F3F00354886 /* Offer.m */,
 				F4FE1AFC193839DF00354886 /* Drive.h */,
 				F4FE1AFD193839DF00354886 /* Drive.m */,
-				F45F7C011935880500A94721 /* Ride.h */,
-				F45F7C021935880500A94721 /* Ride.m */,
+				F45F7C011935880500A94721 /* Request.h */,
+				F45F7C021935880500A94721 /* Request.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -903,8 +904,8 @@
 			children = (
 				F473E291195E825500226203 /* VCStateMachineManagedObject.h */,
 				F473E292195E825500226203 /* VCStateMachineManagedObject.m */,
-				F4A7C80319623C70007E05AD /* VCTransport.h */,
-				F4A7C80419623C70007E05AD /* VCTransport.m */,
+				F4A7C80319623C70007E05AD /* Trip.h */,
+				F4A7C80419623C70007E05AD /* Trip.m */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -1629,7 +1630,7 @@
 				F4354D8A195D0D6A00C06CF7 /* VCLocation.m in Sources */,
 				F4354D8B195D0D6A00C06CF7 /* VCLogin.m in Sources */,
 				F4354D8C195D0D6A00C06CF7 /* VCDevice.m in Sources */,
-				F4354D8D195D0D6A00C06CF7 /* Ride.m in Sources */,
+				F4354D8D195D0D6A00C06CF7 /* Request.m in Sources */,
 				F4A7C81219626DDE007E05AD /* VCDriveIdentity.m in Sources */,
 				F4A7C80B19625237007E05AD /* VCDebugViewController.m in Sources */,
 				F4354D8E195D0D6A00C06CF7 /* VCObjectRequestOperation.m in Sources */,
@@ -1644,7 +1645,7 @@
 				F4354D97195D0D6A00C06CF7 /* NSDate+Pretty.m in Sources */,
 				F4354D99195D0D6A00C06CF7 /* VCAppDelegate.m in Sources */,
 				F4354D9A195D0D6A00C06CF7 /* VCUserState.m in Sources */,
-				F4A7C80619623C70007E05AD /* VCTransport.m in Sources */,
+				F4A7C80619623C70007E05AD /* Trip.m in Sources */,
 				F4354D9B195D0D6A00C06CF7 /* VCUsersApi.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1691,7 +1692,7 @@
 				4FFBA453195E976800A51B84 /* VCPhoneNumberTextField.m in Sources */,
 				F4FE1AFB1937DD6600354886 /* VCGeolocation.m in Sources */,
 				4FE641BF194157C60059BED1 /* VCDriverRequestViewController.m in Sources */,
-				F4A7C80519623C70007E05AD /* VCTransport.m in Sources */,
+				F4A7C80519623C70007E05AD /* Trip.m in Sources */,
 				F4FE1B18193D2F3F00354886 /* Offer.m in Sources */,
 				F473F005194A54AC00D8C900 /* VCMapQuestRouting.m in Sources */,
 				4FF142DA195D128700CC61B6 /* VCRiderViewController.m in Sources */,
@@ -1712,7 +1713,7 @@
 				F4FE1B31193EE06400354886 /* VCLocation.m in Sources */,
 				F4D8904719468B69007C4671 /* VCLogin.m in Sources */,
 				F4FE1AF11936BE0900354886 /* VCDevice.m in Sources */,
-				F45F7C031935880500A94721 /* Ride.m in Sources */,
+				F45F7C031935880500A94721 /* Request.m in Sources */,
 				F473F046195BA16D00D8C900 /* DTLazyImageView.m in Sources */,
 				F4D890561946A2D9007C4671 /* VCObjectRequestOperation.m in Sources */,
 				F473EFDC19491C2B00D8C900 /* VCValidation.m in Sources */,
@@ -2039,9 +2040,10 @@
 				F4A7C81319627C8A007E05AD /* Voco 11.xcdatamodel */,
 				F4A7C8181962A430007E05AD /* Voco 12.xcdatamodel */,
 				F4A7C8191962ACE0007E05AD /* Voco 13.xcdatamodel */,
+				F4A7C8291964E425007E05AD /* Voco 14.xcdatamodel */,
 				F4FA0BFC192BF6BF005D8645 /* Voco.xcdatamodel */,
 			);
-			currentVersion = F4A7C8191962ACE0007E05AD /* Voco 13.xcdatamodel */;
+			currentVersion = F4A7C8291964E425007E05AD /* Voco 14.xcdatamodel */;
 			path = Voco.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Ride.h"
+#import "Request.h"
 #import "VCRideViewController.h"
 
 @interface VCRiderHomeViewController : VCRideViewController
 
-@property (strong, nonatomic) Ride * ride;
+@property (strong, nonatomic) Request * ride;
 
 @end

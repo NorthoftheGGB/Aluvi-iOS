@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "VCRestKitMappableObject.h"
 #import <TransitionKit.h>
-#import "VCTransport.h"
+#import "Trip.h"
 
 #define RIDE_REQUEST_TYPE_ON_DEMAND @"on_demand"
 #define RIDE_REQUEST_TYPE_COMMUTER @"commuter"
@@ -36,7 +36,7 @@
 
 @class Car, Driver;
 
-@interface Ride : VCTransport <VCRestKitMappableObject>
+@interface Request : Trip <VCRestKitMappableObject>
 
 @property (nonatomic, retain) NSString * requestType;
 @property (nonatomic, retain) NSNumber * car_id;
@@ -55,6 +55,6 @@
 @property (nonatomic, retain) Car *car;
 
 
-+ (Ride *) rideWithId: (NSNumber *) rideId;
++ (Request *) rideWithId: (NSNumber *) rideId;
 
 @end

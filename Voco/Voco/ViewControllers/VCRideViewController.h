@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-#import "Ride.h"
+#import "Request.h"
 
 @interface VCRideViewController : UIViewController
 
-@property (strong, nonatomic) VCTransport * transport;
+@property (strong, nonatomic) Trip * transport;
 
 // Map
 @property (strong, nonatomic) MKMapView * map;

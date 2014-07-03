@@ -216,7 +216,7 @@
         }
         if([rides count] > 0){
             [[VCDialogs instance] rideFound: [payload objectForKey:VC_PUSH_REQUEST_ID_KEY]];
-            Ride * ride = [rides objectAtIndex:0];
+            Request * ride = [rides objectAtIndex:0];
             NSError * error;
             [ride fireEvent:kEventRideFound userInfo:@{} error:&error];
             if(error != nil) {

@@ -7,7 +7,7 @@
         <attribute name="model" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="rides" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Request" inverseName="car" inverseEntity="Request" syncable="YES"/>
+        <relationship name="rides" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ride" inverseName="car" inverseEntity="Ride" syncable="YES"/>
     </entity>
     <entity name="Drive" representedClassName="Drive" syncable="YES">
         <attribute name="destinationLatitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -26,7 +26,7 @@
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="rides" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Request" inverseName="driver" inverseEntity="Request" syncable="YES"/>
+        <relationship name="rides" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ride" inverseName="driver" inverseEntity="Ride" syncable="YES"/>
     </entity>
     <entity name="Offer" representedClassName="Offer" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
@@ -40,7 +40,7 @@
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="ride" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Drive" inverseName="offer" inverseEntity="Drive" syncable="YES"/>
     </entity>
-    <entity name="Request" representedClassName="Request" syncable="YES">
+    <entity name="Ride" representedClassName="Ride" syncable="YES">
         <attribute name="car_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="desiredArrival" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="destinationLatitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -71,11 +71,11 @@
         <attribute name="state" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Car" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Drive" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Driver" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Offer" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Request" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Rider" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Car" positionX="0" positionY="0" width="128" height="148"/>
+        <element name="Drive" positionX="-252" positionY="-69" width="128" height="178"/>
+        <element name="Driver" positionX="-261" positionY="-63" width="128" height="133"/>
+        <element name="Offer" positionX="-252" positionY="81" width="128" height="195"/>
+        <element name="Ride" positionX="-108" positionY="-243" width="128" height="345"/>
+        <element name="Rider" positionX="-497" positionY="18" width="128" height="135"/>
     </elements>
 </model>

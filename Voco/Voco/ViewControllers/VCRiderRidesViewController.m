@@ -8,7 +8,7 @@
 
 #import "VCRiderRidesViewController.h"
 #import "VCCoreData.h"
-#import "Ride.h"
+#import "Request.h"
 #import "VCRiderHomeViewController.h"
 #import "VCRiderApi.h"
 
@@ -98,7 +98,7 @@
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    Ride *ride = [_fetchedResultsController objectAtIndexPath:indexPath];
+    Request *ride = [_fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = [ride routeDescription];
     cell.detailTextLabel.text = ride.state;
     
@@ -122,7 +122,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    Ride *ride = [_fetchedResultsController objectAtIndexPath:indexPath];
+    Request *ride = [_fetchedResultsController objectAtIndexPath:indexPath];
     VCRiderHomeViewController * vc = [[VCRiderHomeViewController alloc] init];
     vc.ride = ride;
     [self.navigationController pushViewController:vc animated:YES];

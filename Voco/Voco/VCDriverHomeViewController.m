@@ -210,13 +210,14 @@
     [VCDriverApi cancelRide:self.transport.ride_id
                     success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                         [self resetButtons];
+                        [self clearMap];
                         [VCUserState instance].driveProcessState = @"Ride Declined";
                         [((Drive *) self.transport) markOfferAsDeclined];
                         [VCCoreData saveContext];
-                        [[VCDialogs instance] offerNextRideToDriver];
                         [hud hide:YES];
                         [VCUserState instance].underwayRideId = nil;
-
+                        [[VCDialogs instance] offerNextRideToDriver];
+                        
                     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                         [hud hide:YES];
                         [VCUserState instance].underwayRideId = nil;
@@ -252,6 +253,7 @@
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             [UIAlertView showWithTitle:@"Cancelled Ride" message:@"The ride was successfully cancelled" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
                                             [self resetButtons];
+                                            [self clearMap];
                                             [VCUserState instance].driveProcessState = kUserStateIdle;
                                             [hud hide:YES];
                                             [VCUserState instance].underwayRideId = nil;

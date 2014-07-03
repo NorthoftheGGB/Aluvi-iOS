@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCTransport.h"
+#import "Trip.h"
 
 @class Offer;
 
-@interface Drive : VCTransport
+@interface Drive : Trip
 
 @property (nonatomic, retain) NSNumber * car_id;
 @property (nonatomic, retain) Offer *offer; //TODO: Not used at the moment because of no good place to assign to graph

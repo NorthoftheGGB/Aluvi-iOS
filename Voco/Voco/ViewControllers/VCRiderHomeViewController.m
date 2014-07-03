@@ -80,7 +80,7 @@
 @implementation VCRiderHomeViewController
 
 
-- (void) setRide:(Ride *)ride {
+- (void) setRide:(Request *)ride {
     _ride = ride;
     self.transport = ride;
 }
@@ -181,7 +181,7 @@
 - (IBAction)didTapCommute:(id)sender {
     [self showRouteRequestInterface];
     
-    self.ride = (Ride *) [NSEntityDescription insertNewObjectForEntityForName:@"Ride" inManagedObjectContext:[VCCoreData managedObjectContext]];
+    self.ride = (Request *) [NSEntityDescription insertNewObjectForEntityForName:@"Ride" inManagedObjectContext:[VCCoreData managedObjectContext]];
     self.ride.requestType = RIDE_REQUEST_TYPE_COMMUTER;
     self.transport = self.ride;
     _morningOrEveningButton.hidden = NO;
@@ -191,7 +191,7 @@
     [self showRouteRequestInterface];
     [self reverseGeocodeMapCenterForHud];
     
-    self.ride = (Ride *) [NSEntityDescription insertNewObjectForEntityForName:@"Ride" inManagedObjectContext:[VCCoreData managedObjectContext]];
+    self.ride = (Request *) [NSEntityDescription insertNewObjectForEntityForName:@"Ride" inManagedObjectContext:[VCCoreData managedObjectContext]];
     self.ride.requestType = RIDE_REQUEST_TYPE_ON_DEMAND;
     self.transport = self.ride;
     
@@ -284,11 +284,6 @@
                                 self.ride.request_id = rideRequestCreatedResponse.rideRequestId;
                                 self.ride.requestedTimestamp = [NSDate date];
                                 [VCCoreData saveContext];
-                                //[hud hide:YES];
-                                // TODO: Don't show an alert, show a HUD
-                                //[UIAlertView showWithTitle:@"Requested!" message:@"We are finding your driver now!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                                
-                                //}];
                                 _progressHUD.labelText = @"We are finding your driver now!";
                                 UITapGestureRecognizer *HUDSingleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hudSingleTap:)];
                                 [_progressHUD addGestureRecognizer:HUDSingleTap];
