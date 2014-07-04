@@ -74,6 +74,8 @@
 		4F9ECEC2196630D700AD4229 /* VCRiderRecieptDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9ECEBE196630D700AD4229 /* VCRiderRecieptDetailViewController.xib */; };
 		4F9ECEC51966369700AD4229 /* VCReferralCodeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEC41966369700AD4229 /* VCReferralCodeTextField.m */; };
 		4F9ECEC61966369700AD4229 /* VCReferralCodeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEC41966369700AD4229 /* VCReferralCodeTextField.m */; };
+		4F9ECEC919663B1F00AD4229 /* VCLabelBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEC819663B1F00AD4229 /* VCLabelBold.m */; };
+		4F9ECECA19663B1F00AD4229 /* VCLabelBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEC819663B1F00AD4229 /* VCLabelBold.m */; };
 		4FB2682A1952207A0028D4ED /* VCDriverVideoTutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB268281952207A0028D4ED /* VCDriverVideoTutorialController.m */; };
 		4FB2682B1952207A0028D4ED /* VCDriverVideoTutorialController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FB268291952207A0028D4ED /* VCDriverVideoTutorialController.xib */; };
 		4FE286E91962B89700FD8AF6 /* current-location-arrow-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286E71962B89700FD8AF6 /* current-location-arrow-select@2x.png */; };
@@ -394,6 +396,8 @@
 		4F9ECEBE196630D700AD4229 /* VCRiderRecieptDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCRiderRecieptDetailViewController.xib; sourceTree = "<group>"; };
 		4F9ECEC31966369700AD4229 /* VCReferralCodeTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCReferralCodeTextField.h; sourceTree = "<group>"; };
 		4F9ECEC41966369700AD4229 /* VCReferralCodeTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCReferralCodeTextField.m; sourceTree = "<group>"; };
+		4F9ECEC719663B1F00AD4229 /* VCLabelBold.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCLabelBold.h; sourceTree = "<group>"; };
+		4F9ECEC819663B1F00AD4229 /* VCLabelBold.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCLabelBold.m; sourceTree = "<group>"; };
 		4FB268271952207A0028D4ED /* VCDriverVideoTutorialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCDriverVideoTutorialController.h; path = ViewControllers/VCDriverVideoTutorialController.h; sourceTree = "<group>"; };
 		4FB268281952207A0028D4ED /* VCDriverVideoTutorialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCDriverVideoTutorialController.m; path = ViewControllers/VCDriverVideoTutorialController.m; sourceTree = "<group>"; };
 		4FB268291952207A0028D4ED /* VCDriverVideoTutorialController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCDriverVideoTutorialController.xib; path = ViewControllers/VCDriverVideoTutorialController.xib; sourceTree = "<group>"; };
@@ -775,6 +779,8 @@
 				4FE641DF194162360059BED1 /* VCButtonFontBold.m */,
 				F473EFFF194A498E00D8C900 /* VCLabel.h */,
 				F473F000194A498E00D8C900 /* VCLabel.m */,
+				4F9ECEC719663B1F00AD4229 /* VCLabelBold.h */,
+				4F9ECEC819663B1F00AD4229 /* VCLabelBold.m */,
 			);
 			name = Controls;
 			sourceTree = "<group>";
@@ -1689,6 +1695,7 @@
 				F4354D84195D0D6A00C06CF7 /* VCRideDriverAssignment.m in Sources */,
 				F4354D85195D0D6A00C06CF7 /* VCPasswordRecoveryViewController.m in Sources */,
 				F4A7C8261962E235007E05AD /* VCLocationSearchViewController.m in Sources */,
+				4F9ECECA19663B1F00AD4229 /* VCLabelBold.m in Sources */,
 				F4354D86195D0D6A00C06CF7 /* VCDriverApi.m in Sources */,
 				F4354D87195D0D6A00C06CF7 /* IIViewDeckController.m in Sources */,
 				F4354D89195D0D6A00C06CF7 /* VCApi.m in Sources */,
@@ -1730,6 +1737,7 @@
 				F45F7C181935A3F900A94721 /* VCDriverViewController.m in Sources */,
 				F473F03519539F2A00D8C900 /* VCUserStateResponse.m in Sources */,
 				F473F011194A6D3C00D8C900 /* VCScrollableFormViewController.m in Sources */,
+				4F9ECEC919663B1F00AD4229 /* VCLabelBold.m in Sources */,
 				F4A7C80A19625237007E05AD /* VCDebugViewController.m in Sources */,
 				F4FA0BFD192BF6BF005D8645 /* Voco.xcdatamodeld in Sources */,
 				F4F157A2195E8DB1009A33C8 /* VCBaseValidatorTextField.m in Sources */,

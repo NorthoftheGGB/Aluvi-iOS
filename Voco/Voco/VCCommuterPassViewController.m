@@ -7,8 +7,22 @@
 //
 
 #import "VCCommuterPassViewController.h"
+#import "VCLabel.h"
+#import "VCTextField.h"
+#import "VCButtonFontBold.h"
+
 
 @interface VCCommuterPassViewController ()
+@property (weak, nonatomic) IBOutlet VCLabel *accountBalanceLabel;
+@property (weak, nonatomic) IBOutlet VCLabel *creditCardNumberLabel;
+@property (weak, nonatomic) IBOutlet VCLabel *expDateLabel;
+@property (weak, nonatomic) IBOutlet VCTextField *refillAmountField;
+- (IBAction)autoRefillSwitch:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *amountSegementedControl;
+@property (weak, nonatomic) IBOutlet VCButtonFontBold *didTapAddFundsButton;
+
+
 
 @end
 
@@ -34,4 +48,6 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)autoRefillSwitch:(id)sender {
+}
 @end

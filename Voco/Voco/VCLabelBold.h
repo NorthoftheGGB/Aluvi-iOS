@@ -8,6 +8,8 @@
 
 #import "VCTextField.h"
 
-@interface VCLabelBold : VCTextField
+@interface VCLabelBold : UILabel
+
+@property(nonatomic, strong) NSNumber * fontSize;
 
 @end
