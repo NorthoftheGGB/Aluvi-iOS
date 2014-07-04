@@ -1,35 +1,32 @@
 //
-//  VCPasswordTextField.m
+//  VCPhoneTextField.m
 //  Voco
 //
-//  Created by Elliott De Aratanha on 6/27/14.
+//  Created by Elliott De Aratanha on 7/3/14.
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCPasswordTextField.h"
-#import "US2ConditionPasswordStrength.h"
+#import "VCPhoneTextField.h"
 #import "US2Validator.h"
+#import "US2ConditionNumeric.h"
 
-
-@implementation VCPasswordTextField
+@implementation VCPhoneTextField
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.fieldName = @"Password";
+        self.fieldName = @"Phone Number";
         
-        US2ConditionPasswordStrength *passwordCondition =[[US2ConditionPasswordStrength alloc] init];
+        US2ConditionNumeric *phoneNumberCondition =[[US2ConditionNumeric alloc] init];
         US2Validator *validator = [[US2Validator alloc] init];
-        [validator addCondition:passwordCondition];
+        [validator addCondition:phoneNumberCondition];
         self.validator = validator;
         
         
     }
     return self;
 }
-
-
 
 /*
 // Only override drawRect: if you perform custom drawing.
