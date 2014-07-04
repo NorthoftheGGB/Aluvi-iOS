@@ -39,9 +39,10 @@
                                                         @"meeting_point_place_name" : @"meetingPointPlaceName",
                                                         @"meeting_point_latitude" : @"meetingPointLatitude",
                                                         @"meeting_point_longitude" : @"meetingPointLongitude",
-                                                        @"destination_place_name" : @"destinationPlaceName",
-                                                        @"destination_latitude" : @"destinationLatitude",
-                                                        @"destination_longitude" : @"destinationLongitude",
+                                                        @"drop_off_point_place_name" : @"dropOffPointPlaceName",
+                                                        @"drop_off_point_latitude" : @"dropOffPointLatitude",
+                                                        @"drop_off_point_longitude" : @"dropOffPointLongitude",
+                                                        @"pickup_time" : @"pickupTime"
                                                         }];
     
     
@@ -50,31 +51,42 @@
     
     
     /*
-    [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
-        RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:API_GET_SCHEDULED_RIDES];
-        
-        NSString * relativePath = [URL relativePath];
-        NSDictionary *argsDict = nil;
-        BOOL match = [pathMatcher matchesPath:relativePath tokenizeQueryStrings:NO parsedArguments:&argsDict];
-        if (match) {
-            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Ride"];
-            return fetchRequest;
-        }
-        
-        return nil;
-    }];
+     [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
+     RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:API_GET_SCHEDULED_RIDES];
+     
+     NSString * relativePath = [URL relativePath];
+     NSDictionary *argsDict = nil;
+     BOOL match = [pathMatcher matchesPath:relativePath tokenizeQueryStrings:NO parsedArguments:&argsDict];
+     if (match) {
+     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Ride"];
+     return fetchRequest;
+     }
+     
+     return nil;
+     }];
      */
-
     
-    RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping
-                                                                                             method:RKRequestMethodGET
-                                                                                        pathPattern:API_GET_DRIVER_RIDE_PATH_PATTERN
-                                                                                            keyPath:nil
-                                                                                        statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:responseDescriptor];
+    {
+        RKResponseDescriptor * responseDescriptor =
+        [RKResponseDescriptor responseDescriptorWithMapping:entityMapping
+                                                     method:RKRequestMethodGET
+                                                pathPattern:API_GET_DRIVER_RIDE_PATH_PATTERN
+                                                    keyPath:nil
+                                                statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor];
+    }
+    {
+        RKResponseDescriptor * responseDescriptor =
+        [RKResponseDescriptor responseDescriptorWithMapping:entityMapping
+                                                     method:RKRequestMethodGET
+                                                pathPattern:API_GET_ACTIVE_RIDES
+                                                    keyPath:nil
+                                                statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor];
+    }
     
     
-       
+    
     
 }
 
@@ -84,7 +96,7 @@
     if(rideOffer != nil) {
         [rideOffer markAsAccepted];
     }
-
+    
 }
 
 - (void) markOfferAsDeclined {
@@ -92,7 +104,7 @@
     if(rideOffer != nil) {
         [rideOffer markAsDeclined];
     }
-       }
+}
 
 - (void) markOfferAsClosed {
     Offer *  rideOffer = [self getOffer];
@@ -112,7 +124,7 @@
         return nil;
     }
     return results.firstObject;
-
+    
 }
 
 #pragma mark state machine methods

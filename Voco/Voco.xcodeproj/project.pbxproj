@@ -433,6 +433,9 @@
 		F4138C2A1965467D00C265CD /* VCRidesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRidesViewController.h; path = ViewControllers/VCRidesViewController.h; sourceTree = "<group>"; };
 		F4138C2B1965467D00C265CD /* VCRidesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRidesViewController.m; path = ViewControllers/VCRidesViewController.m; sourceTree = "<group>"; };
 		F4138C2C1965467D00C265CD /* VCRidesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCRidesViewController.xib; path = ViewControllers/VCRidesViewController.xib; sourceTree = "<group>"; };
+		F4138C3119662AF100C265CD /* Voco 17.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 17.xcdatamodel"; sourceTree = "<group>"; };
+		F4138C3219662D3100C265CD /* Voco 18.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 18.xcdatamodel"; sourceTree = "<group>"; };
+		F4138C331966628600C265CD /* Voco 19.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 19.xcdatamodel"; sourceTree = "<group>"; };
 		F4354DCF195D0D6A00C06CF7 /* Voco Testing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Voco Testing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4354DD0195D0D6A00C06CF7 /* Voco Testing-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Voco Testing-Info.plist"; path = "/Users/deepwinter1/software-development/Clients/Will OBrien/voco-ios/Voco/Voco Testing-Info.plist"; sourceTree = "<absolute>"; };
 		F45F7BF4193578DE00A94721 /* VCRiderApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderApi.h; path = API/Rider/VCRiderApi.h; sourceTree = "<group>"; };
@@ -2075,9 +2078,12 @@
 				F4A7C8291964E425007E05AD /* Voco 14.xcdatamodel */,
 				F4138C2819653C7300C265CD /* Voco 15.xcdatamodel */,
 				F4138C291965427900C265CD /* Voco 16.xcdatamodel */,
+				F4138C3119662AF100C265CD /* Voco 17.xcdatamodel */,
+				F4138C3219662D3100C265CD /* Voco 18.xcdatamodel */,
+				F4138C331966628600C265CD /* Voco 19.xcdatamodel */,
 				F4FA0BFC192BF6BF005D8645 /* Voco.xcdatamodel */,
 			);
-			currentVersion = F4138C291965427900C265CD /* Voco 16.xcdatamodel */;
+			currentVersion = F4138C331966628600C265CD /* Voco 19.xcdatamodel */;
 			path = Voco.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

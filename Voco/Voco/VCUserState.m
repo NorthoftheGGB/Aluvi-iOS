@@ -120,7 +120,7 @@ static VCUserState *sharedSingleton;
         [VCApi clearApiToken];
         [self clearUserState];
         [VCCoreData clearUserData];
-        [VCInterfaceModes showRiderSigninInterface];
+        [[VCInterfaceModes instance] showRiderSigninInterface];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [WRUtilities criticalError:error];
     }];

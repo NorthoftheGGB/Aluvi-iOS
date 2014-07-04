@@ -33,21 +33,21 @@ static int mode;
     return instance;
 }
 
-+ (void) showInterface {
+- (void) showInterface {
     
     if([VCApi loggedIn]){
         if(mode == kDriverMode) {
-            [VCInterfaceModes showDriverInterface];
+            [self showDriverInterface];
         } else {
-            [VCInterfaceModes showRiderInterface];
+            [self showRiderInterface];
         }
     } else {
-        [VCInterfaceModes showRiderSigninInterface];
+        [self showRiderSigninInterface];
         
     }
 }
 
-+ (void) showRiderSigninInterface {
+- (void) showRiderSigninInterface {
     VCSignInViewController * signInViewController = [[VCSignInViewController alloc] init];
     UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:signInViewController];
     /* [navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
@@ -59,7 +59,7 @@ static int mode;
     [self setMode:kNoMode];
 }
 
-+ (void) createDeckViewController {
+- (void) createDeckViewController {
     
     deckController =  [[IIViewDeckController alloc] init]; //initWithCenterViewController:riderHomeViewController leftViewController:riderMenuViewController rightViewController:nil];
     deckController.leftSize = 0;
@@ -81,7 +81,7 @@ static int mode;
 
 }
 
-+ (void) showRiderInterface {
+- (void) showRiderInterface {
     VCRiderHomeViewController * riderHomeViewController = [[VCRiderHomeViewController alloc] init];
     //VCRiderRidesViewController * riderHomeViewController = [[VCRiderRidesViewController alloc] init];
     
@@ -95,7 +95,7 @@ static int mode;
 
 }
 
-+ (void) showDriverInterface {
+- (void) showDriverInterface {
     
     if(deckController == nil){
         [self createDeckViewController];
@@ -110,19 +110,19 @@ static int mode;
     
 }
 
-+ (void) showDebugInterface{
+- (void) showDebugInterface{
     VCDebugViewController * vc = [[VCDebugViewController alloc] init];
     [[UIApplication sharedApplication] delegate].window.rootViewController = vc;
     deckController = nil;
 }
 
-+ (void) setMode: (int) newMode {
+- (void) setMode: (int) newMode {
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:newMode] forKey:kInterfaceModeKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
     mode = newMode;
 }
 
-+ (int) mode {
+- (int) mode {
     return mode;
 }
 
@@ -132,6 +132,7 @@ static int mode;
     if (self != nil) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideOfferInvokedNotification:) name:@"ride_offer_invoked" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commuterRideInvokedNotification:) name:@"commuter_ride_invoked" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideInvoked:) name:@"driver_ride_invoked" object:nil];
     }
     return self;
 }
@@ -140,6 +141,18 @@ static int mode;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+// For Rider
+- (void) commuterRideInvokedNotification:(NSNotification *)notification{
+    if(mode == kRiderMode){
+        [deckController closeLeftView];
+    } else {
+        [UIAlertView showWithTitle:@"Woops!"
+                           message:@"You must be in rider mode to view your commuter ride"
+                 cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+    }
+}
+
+// For Driver
 - (void) rideOfferInvokedNotification:(NSNotification *)notification{
     if(mode == kDriverMode){
         [deckController closeLeftView];
@@ -148,15 +161,14 @@ static int mode;
                            message:@"You must be in driver mode to view ride offers"
                  cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
     }
-
+    
 }
-
-- (void) commuterRideInvokedNotification:(NSNotification *)notification{
-    if(mode == kRiderMode){
+- (void) rideInvoked:(NSNotification *) notification {
+    if(mode == kDriverMode){
         [deckController closeLeftView];
     } else {
         [UIAlertView showWithTitle:@"Woops!"
-                           message:@"You must be in rider mode to view your commuter ride"
+                           message:@"You must be in driver mode to view rides"
                  cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
     }
 }

@@ -42,7 +42,7 @@
 
 - (IBAction)doIt:(id)sender {
     
-    [VCInterfaceModes showDriverInterface];
+    [[VCInterfaceModes instance] showDriverInterface];
     [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_RIDE_OFFERS
                                            parameters:nil
                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
@@ -83,7 +83,7 @@
 }
 
 - (IBAction)exitDebugHelper:(id)sender {
-    [VCInterfaceModes showInterface];
+    [[VCInterfaceModes instance] showInterface];
 }
 
 @end

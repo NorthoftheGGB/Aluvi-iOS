@@ -23,7 +23,7 @@
 
 
 + (RKEntityMapping *)createMappings:(RKObjectManager *)objectManager{
-    RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Driver" inManagedObjectStore:[VCCoreData managedObjectStore]];
+    RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Car" inManagedObjectStore:[VCCoreData managedObjectStore]];
     [entityMapping addAttributeMappingsFromDictionary:@{@"make": @"make",
                                                         @"model" :@"model",
                                                         @"license_plate" : @"licensePlate",

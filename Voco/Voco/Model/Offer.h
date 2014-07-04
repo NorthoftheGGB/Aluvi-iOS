@@ -21,7 +21,7 @@
 @property (nonatomic, retain) NSDate * createdAt;
 @property (nonatomic, retain) NSNumber * decided;
 @property (nonatomic, retain) NSString * meetingPointPlaceName;
-@property (nonatomic, retain) NSString * destinationPlaceName;
+@property (nonatomic, retain) NSString * dropOffPointPlaceName;
 @property (nonatomic, retain) Ride * ride;
 
 

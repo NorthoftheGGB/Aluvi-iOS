@@ -29,4 +29,5 @@
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay;
 
+- (void) resetInterface;
 @end

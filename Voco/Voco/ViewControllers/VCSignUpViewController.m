@@ -182,7 +182,7 @@
     [VCUsersApi login:[RKObjectManager sharedManager] phone:_phoneField.text password:_passwordField.text
               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                   
-                  [VCInterfaceModes showRiderInterface];
+                  [[VCInterfaceModes instance] showRiderInterface];
                   
               } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                   [UIAlertView showWithTitle:@"Login Failed!" message:@"Invalid" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];

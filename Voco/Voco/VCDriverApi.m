@@ -47,8 +47,7 @@
                                                 statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:responseDescriptor];
     }
-    
-    
+        
 }
 
 + (void) registerDriverWithLicenseNumber: (NSString *) driversLicenseNumber
@@ -150,5 +149,19 @@
                                         }];
 }
 
-    
++ (void) refreshActiveRidesWithSuccess: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                               failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+    // Update all rides for this user using RestKit entity
+    [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_ACTIVE_RIDES parameters:nil
+                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                  
+                                                  success(operation, mappingResult);
+                                                  
+                                              } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                  
+                                                  failure(operation, error);
+                                                  
+                                              }];
+}
+
 @end

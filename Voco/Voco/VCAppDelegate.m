@@ -46,9 +46,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
 #if DEBUG==12
-    [VCInterfaceModes showDebugInterface];
+    [[VCInterfaceModes instance] showDebugInterface];
 #else
-    [VCInterfaceModes showInterface];
+    [[VCInterfaceModes instance] showInterface];
 #endif
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

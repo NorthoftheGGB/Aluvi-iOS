@@ -11,6 +11,7 @@
 #import "VCRideDriverAssignment.h"
 #import "VCUserState.h"
 #import "VCDriverApi.h"
+#import "NSDate+Pretty.h"
 
 static VCDialogs *sharedSingleton;
 
@@ -62,7 +63,7 @@ static VCDialogs *sharedSingleton;
     _interfaceState = VC_INTERFACE_STATE_OFFER_DIALOG;
     _offer = rideOffer;
     
-    NSString * title = [NSString stringWithFormat:@"Ride requested from: %@, To: %@.", rideOffer.meetingPointPlaceName, rideOffer.destinationPlaceName ];
+    NSString * title = [NSString stringWithFormat:@"Ride requested from: %@, To: %@.", rideOffer.meetingPointPlaceName, rideOffer.dropOffPointPlaceName ];
     
     _currentAlertView = [UIAlertView showWithTitle:title
                                            message:@"Do you want view this ride?"
@@ -155,6 +156,18 @@ static VCDialogs *sharedSingleton;
                           if(buttonIndex == 1){
                               [[NSNotificationCenter defaultCenter] postNotificationName:@"commuter_ride_invoked" object:request userInfo:@{}];
 
+                          }
+                      }];
+}
+
+- (void) rideAssigned: (Ride *) ride {
+    [UIAlertView showWithTitle:@"New Ride Assigned!"
+                       message:[NSString stringWithFormat:@"A ride from %@ to %@ at %@ has been assigned to you.  View details now ?",
+                                ride.meetingPointPlaceName, ride.dropOffPointPlaceName, [ride.pickupTime pretty]]
+             cancelButtonTitle:@"Not Now" otherButtonTitles:@[@"Yes!"]
+                      tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                          if(buttonIndex == 1){
+                               [[NSNotificationCenter defaultCenter] postNotificationName:@"driver_ride_invoked" object:ride userInfo:@{}];
                           }
                       }];
 }

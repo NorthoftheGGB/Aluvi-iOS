@@ -14,6 +14,7 @@
 #import "VCDriverVideoTutorialController.h"
 #import "VCRequestsViewController.h"
 #import "VCDriverApi.h"
+#import "VCRidesViewController.h"
 
 static void * XXContext = &XXContext;
 
@@ -96,7 +97,7 @@ static void * XXContext = &XXContext;
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     // refresh the view in case it has changed
-    switch([VCInterfaceModes mode]){
+    switch([[VCInterfaceModes instance] mode]){
         case kDriverMode:
             [_modeSegementedControl setSelectedSegmentIndex:1];
             [self showDriverView];
@@ -127,7 +128,7 @@ static void * XXContext = &XXContext;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if([VCInterfaceModes mode] == kDriverMode && [keyPath isEqualToString:@"driverState"]){
+    if([[VCInterfaceModes instance] mode] == kDriverMode && [keyPath isEqualToString:@"driverState"]){
         [self showDriverView];
     }
 }
@@ -135,10 +136,10 @@ static void * XXContext = &XXContext;
 - (IBAction)didChangeMode:(id)sender {
     if(_modeSegementedControl.selectedSegmentIndex == 1){
         [self showDriverView];
-        [VCInterfaceModes showDriverInterface];
+        [[VCInterfaceModes instance] showDriverInterface];
     } else {
         [self showRiderMenu];
-        [VCInterfaceModes showRiderInterface];
+        [[VCInterfaceModes instance] showRiderInterface];
 
     }
 }
@@ -199,7 +200,7 @@ static void * XXContext = &XXContext;
 - (IBAction)didTapLogout:(id)sender {
     [self viewWillDisappear:YES];
     [[VCUserState instance] logout];
-    [VCInterfaceModes showRiderSigninInterface];
+    [[VCInterfaceModes instance] showRiderSigninInterface];
 }
 
 //rider actions
@@ -244,6 +245,8 @@ static void * XXContext = &XXContext;
 }
 
 - (IBAction)didTapDriverScheduledFares:(id)sender {
+    VCRidesViewController * vc = [[VCRidesViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)didTapDriverMyCar:(id)sender {
@@ -298,7 +301,7 @@ static void * XXContext = &XXContext;
 }
 
 - (void)handleSwipeUpFrom:(UIGestureRecognizer*)recognizer {
-    [VCInterfaceModes showDebugInterface];
+    [[VCInterfaceModes instance] showDebugInterface];
 }
 
 @end

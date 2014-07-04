@@ -214,6 +214,11 @@
     _commuteButton.hidden = YES;
 }
 
+- (void) resetInterface {
+    [self resetRequestInterface];
+}
+
+
 
 - (void)updateInterfaceForTrip
 {
@@ -312,7 +317,13 @@
         [self.view addSubview:_destinationEntryView];
         
     } else if (_step == kStepSetDestinationLocation) {
+        
         CLLocationCoordinate2D destinationLocation = [self.map centerCoordinate];
+        if(destinationLocation.latitude == [_request.originLatitude doubleValue] && destinationLocation.longitude == [_request.originLongitude doubleValue]){
+            [UIAlertView showWithTitle:@"Invalid Location" message:@"Your departure and destination locations cannot be identical!" cancelButtonTitle:@"Oh, ok" otherButtonTitles:nil tapBlock:nil];
+            return;
+        }
+        
         self.request.destinationLatitude = [NSNumber numberWithDouble: destinationLocation.latitude];
         self.request.destinationLongitude = [NSNumber numberWithDouble: destinationLocation.longitude];
         
@@ -541,6 +552,7 @@
                            message:@"Your commuter ride has been requested with our system.  We will notify you when a ride share has been found"
                  cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                      [self resetRequestInterface];
+                     [self updateInterfaceForTrip];
                  }];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [hud hide:YES];
@@ -568,7 +580,7 @@
 }
 
 - (void) resetRequestInterface {
-    [self.map removeAnnotations:self.map.annotations];
+    [self clearMap];
     [_locationConfirmationButtonLabel setTitle:@"Set Pick Up Location" forState:UIControlStateNormal];
     self.mapCenterPin.hidden = YES;
     _locationConfirmationAnnotation.hidden = YES;

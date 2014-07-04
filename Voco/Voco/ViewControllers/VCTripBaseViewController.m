@@ -9,6 +9,7 @@
 #import "VCTripBaseViewController.h"
 #import <MBProgressHUD.h>
 #import "VCMapQuestRouting.h"
+#import "IIViewDeckController.h"
 
 @interface VCTripBaseViewController () <MKMapViewDelegate>
 
@@ -22,6 +23,8 @@
     if (self) {
         if (!self.geocoder) {
             self.geocoder = [[CLGeocoder alloc] init];
+            
+
         }
     }
     return self;
@@ -33,10 +36,17 @@
     
     _map = [[MKMapView alloc] initWithFrame:self.view.frame];
     _map.delegate = self;
-    _map.showsUserLocation = YES;
-    _map.userTrackingMode = YES;
     [self.view insertSubview:_map atIndex:0];
+    _map.showsUserLocation = YES;
     
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Reset Map" style:UIBarButtonItemStylePlain
+                                                                     target:self action:@selector(resetInterface)];
+    self.viewDeckController.navigationItem.rightBarButtonItem = anotherButton;
+    _map.userTrackingMode = MKUserTrackingModeFollow;
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -105,6 +115,11 @@
     [_map removeAnnotation:_dropOffAnnotation];
     [_map removeOverlay:_routeOverlay];
 }
+
+- (void) resetInterface {
+    NSAssert(0, @"Must implement this method");
+}
+
 
 #pragma mark MKMapViewDelegate
 

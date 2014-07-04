@@ -28,4 +28,6 @@
 - (void) rideCancelledByDriver;
 - (void) showRideReceipt: (NSNumber *) rideId;
 - (void) commuterRideFound: (Request *) request;
+- (void) rideAssigned: (Ride *) ride;
+
 @end

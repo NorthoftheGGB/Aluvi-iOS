@@ -81,7 +81,7 @@
                                   password:_passwordField.text
                                    success:^{
                                        [hud hide:YES];
-                                       [VCInterfaceModes showRiderInterface];
+                                       [[VCInterfaceModes instance] showRiderInterface];
                                        
                                    } failure:^{
                                        [hud hide:YES];

@@ -29,6 +29,7 @@
 
 #define API_GET_RIDE_OFFERS @"rides/offers"
 #define API_GET_ACTIVE_REQUESTS @"rides/requests"
+#define API_GET_ACTIVE_RIDES @"rides/rides"
 
 // geo API
 #define API_GEO_CAR @"geo/car/"

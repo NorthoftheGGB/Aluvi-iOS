@@ -15,12 +15,12 @@
 
 @interface VCInterfaceModes : NSObject
 
-+ (void) showInterface;
-+ (void) showRiderSigninInterface;
-+ (void) showRiderInterface;
-+ (void) showDriverInterface;
-+ (void) showDebugInterface;
-
-+ (int) mode;
++ (VCInterfaceModes * ) instance;
+- (void) showInterface;
+- (void) showRiderSigninInterface;
+- (void) showRiderInterface;
+- (void) showDriverInterface;
+- (void) showDebugInterface;
+- (int) mode;
 
 @end

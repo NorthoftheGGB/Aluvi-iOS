@@ -19,7 +19,7 @@
 @dynamic createdAt;
 @dynamic decided;
 @dynamic meetingPointPlaceName;
-@dynamic destinationPlaceName;
+@dynamic dropOffPointPlaceName;
 @dynamic ride;
 
 + (void)createMappings:(RKObjectManager *)objectManager {
@@ -33,7 +33,7 @@
                                                         @"created_at" : @"createdAt",
                                                         @"updated_at" : @"updatedAt",
                                                         @"meeting_point_place_name" : @"meetingPointPlaceName",
-                                                        @"destination_place_name" : @"destinationPlaceName"}];
+                                                        @"drop_off_point_place_name" : @"dropOffPointPlaceName"}];
     entityMapping.identificationAttributes = @[ @"id" ];
 
     

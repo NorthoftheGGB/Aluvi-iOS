@@ -10,6 +10,7 @@
 #import "VCDevicesApi.h"
 #import "VCPushApi.h"
 #import "VCRiderApi.h"
+#import "VCDriverApi.h"
 
 #import "VCDevice.h"
 #import "WRUtilities.h"
@@ -172,6 +173,8 @@
     NSString * type = [payload objectForKey:VC_PUSH_TYPE_KEY];
     if ([type isEqualToString:@"ride_found"]){
         [self handleRideFoundNotification: payload];
+    } else if ([type isEqualToString:@"ride_assigned"]){
+        [self handleRideAssignedNotification: payload];
     } else if ([type isEqualToString:@"ride_cancelled_by_rider"]){
         NSNumber * rideId = [payload objectForKey:VC_PUSH_RIDE_ID_KEY];
         if([[VCUserState instance].underwayRideId isEqualToNumber:rideId]){
@@ -238,11 +241,32 @@
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [WRUtilities criticalError:error];
     }];
+}
+
++ (void) handleRideAssignedNotification:(NSDictionary *) payload {
+    [VCDriverApi refreshActiveRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSNumber * rideId = [payload objectForKey:VC_PUSH_RIDE_ID_KEY];
+        NSFetchRequest * fetch = [[NSFetchRequest alloc] initWithEntityName:@"Ride"];
+        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ride_id = %@", rideId];
+        [fetch setPredicate:predicate];
+        NSError * error;
+        NSArray * rides = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
+        if(rides == nil){
+            [WRUtilities criticalError:error];
+            return;
+        }
+        if([rides count] > 0) {
+            Ride * ride = rides.firstObject;
+            [[VCDialogs instance] rideAssigned: ride];
+            
+        } else {
+            [WRUtilities stateErrorWithString:@"Ride no longer exists"];
+        }
+        
+        
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
     
-    
-    
-    
-    
+    }];
 }
 
 

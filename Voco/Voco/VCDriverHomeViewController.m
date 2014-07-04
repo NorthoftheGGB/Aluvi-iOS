@@ -57,6 +57,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideOfferInvokedNotification:) name:@"ride_offer_invoked" object:[VCDialogs instance]];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideInvoked:) name:@"driver_ride_invoked" object:nil];
     }
     return self;
 }
@@ -80,7 +81,7 @@
     [self resetButtons];
     NSDictionary * info = [notification userInfo];
     NSNumber * rideId = [info objectForKey: @"ride_id"];
-    NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"Drive"];
+    NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"Ride"];
     NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ride_id = %@", rideId];
     [request setPredicate:predicate];
     NSError * error;
@@ -89,10 +90,18 @@
         [WRUtilities criticalError:error];
         return;
     }
-    self.transport = results.firstObject;
+    self.ride = results.firstObject;
     [self clearMap];
     [self showRide];
     [self showAcceptOrDeclineRideInterface];
+}
+
+- (void) rideInvoked:(NSNotification *) notification {
+    Ride * ride = notification.object;
+    self.ride = ride;
+    [self clearMap];
+    [self showRide];
+    [self showPickupInterface];
 }
 
 - (void) resetButtons {
@@ -107,6 +116,9 @@
     [self resetButtons];
     _acceptButton.hidden = NO;
     _declineButton.hidden = NO;
+    self.locationTypeLabel.text = @"Pickup Location";
+    self.addressLabel.text = self.transport.meetingPointPlaceName;
+    [self addLocationHudIfNotDisplayed];
 }
 
 - (void) showPickupInterface {
@@ -140,6 +152,9 @@
 }
 
 - (void) showRide{
+    
+    self.title = self.ride.routeDescription;
+    
     [self showSuggestedRoute];
     
     [self annotateMeetingPoint:[[CLLocation alloc] initWithLatitude:[self.ride.meetingPointLatitude doubleValue]
@@ -171,7 +186,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+- (void) resetInterface {
+    [self resetButtons];
+    [self clearMap];
+}
 
 - (IBAction)didTapAccept:(id)sender {
     VCRideDriverAssignment * assignment = [[VCRideDriverAssignment alloc] init];
@@ -226,16 +244,29 @@
                         [hud hide:YES];
                         [VCUserState instance].underwayRideId = nil;
                         [[VCDialogs instance] offerNextRideToDriver];
+                        self.map.userTrackingMode = MKUserTrackingModeFollow;
+                        self.map.showsUserLocation = YES;
+                        [_driverLocationHud removeFromSuperview];
                         
                     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                         [hud hide:YES];
                         [VCUserState instance].underwayRideId = nil;
-
+                        self.map.userTrackingMode = MKUserTrackingModeFollow;
+                        self.map.showsUserLocation = YES;
+                        [_driverLocationHud removeFromSuperview];
+                        
                     }];
     
 }
 
 - (IBAction)didTapRiderPickedUp:(id)sender {
+    if( [VCUserState instance].underwayRideId != self.ride.ride_id){
+        if( [VCUserState instance].underwayRideId != nil){
+            [WRUtilities criticalErrorWithString:@"State shows another ride is still underway"];
+        }
+        [VCUserState instance].underwayRideId = self.ride.ride_id;
+    }
+    
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Notifying Server";
     VCRideDriverAssignment * rideIdentity = [[VCRideDriverAssignment alloc] init];
@@ -276,6 +307,7 @@
                                         }];
     
 }
+
 
 - (IBAction)didTapRideCompleted:(id)sender {
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
