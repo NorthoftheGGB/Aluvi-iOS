@@ -1,34 +1,33 @@
 //
-//  VCPasswordTextField.m
+//  VCNameTextField.m
 //  Voco
 //
-//  Created by Elliott De Aratanha on 6/27/14.
+//  Created by Elliott De Aratanha on 7/3/14.
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCPasswordTextField.h"
-#import "US2ConditionPasswordStrength.h"
+#import "VCNameTextField.h"
 #import "US2Validator.h"
+#import "US2ConditionAlphabetic.h"
 
 
-@implementation VCPasswordTextField
+@implementation VCNameTextField
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.fieldName = @"Password";
+        self.fieldName = @"First Name";
         
-        US2ConditionPasswordStrength *passwordCondition =[[US2ConditionPasswordStrength alloc] init];
+        US2ConditionAlphabetic *firstNameCondition =[[US2ConditionAlphabetic alloc] init];
         US2Validator *validator = [[US2Validator alloc] init];
-        [validator addCondition:passwordCondition];
+        [validator addCondition:firstNameCondition];
         self.validator = validator;
         
         
     }
     return self;
 }
-
 
 
 /*
