@@ -210,7 +210,6 @@
         
         [hud hide:YES];
         [self showPickupInterface];
-        [VCUserState instance].underwayRideId = self.transport.ride_id;
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         // network error..
@@ -303,6 +302,9 @@
                                             // how else will the server be notified ? could be a bad edge case
                                             [hud hide:YES];
                                             [VCUserState instance].underwayRideId = nil;
+                                            [self resetButtons];
+                                            [self clearMap];
+                                            [VCUserState instance].driveProcessState = kUserStateIdle;
 
                                         }];
     

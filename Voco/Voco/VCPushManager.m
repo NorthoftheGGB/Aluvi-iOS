@@ -233,6 +233,21 @@
                 [[VCDialogs instance] commuterRideFound: request];
             }
             
+            // TODO Any commuter ride that has not had an alarm set needs to have an alarm set here
+            //      And additionally, any commuter ride that has not been delivered needs to be popped up as well
+            if ([request.requestType isEqualToString:kRideRequestTypeCommuter]) {
+                UILocalNotification * localNotif = [[UILocalNotification alloc] init];
+                
+                //[localNotif setFireDate:[request.pickupTime dateByAddingTimeInterval:-60*60]]; // 1 hour notification
+                
+                [localNotif setFireDate:[[NSDate date] dateByAddingTimeInterval:30]]; // demo/debug mode
+
+                [localNotif setAlertBody:@"Commuter Pickup in 1 hour!"];
+                [localNotif setAlertAction:@"View Map"];
+                [localNotif setSoundName:UILocalNotificationDefaultSoundName];
+                [localNotif setUserInfo:@{@"notification_type" : @"commuter_ride", @"request_id" : request.request_id}];
+                [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+            }
         } else {
             [WRUtilities stateErrorWithString:@"Ride no longer exists"];
             

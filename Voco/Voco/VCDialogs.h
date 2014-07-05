@@ -29,5 +29,6 @@
 - (void) showRideReceipt: (NSNumber *) rideId;
 - (void) commuterRideFound: (Request *) request;
 - (void) rideAssigned: (Ride *) ride;
+- (void) commuterRideAlarm: (NSNumber *) requestId;
 
 @end

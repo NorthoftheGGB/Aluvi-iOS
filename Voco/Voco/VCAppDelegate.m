@@ -61,6 +61,10 @@
     
     if([launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey] != nil){
         [VCPushManager handleTappedRemoteNotification:[launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey]];
+    } else if( [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey] != nil ) {
+        UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+        NSNumber * requestId = [localNotif.userInfo objectForKey:@"request_id"];
+        [[VCDialogs instance] commuterRideAlarm:requestId];
     }
     
     return YES;
@@ -130,6 +134,12 @@
     }
     
 }
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    NSNumber * requestId = [notification.userInfo objectForKey:@"request_id"];
+    [[VCDialogs instance] commuterRideAlarm:requestId];
+}
+
 
 
 @end

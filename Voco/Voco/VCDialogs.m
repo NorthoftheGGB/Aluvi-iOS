@@ -172,5 +172,24 @@ static VCDialogs *sharedSingleton;
                       }];
 }
 
+- (void) commuterRideAlarm: (NSNumber *) requestId {
+    NSFetchRequest * fetch = [[NSFetchRequest alloc] initWithEntityName:@"Request"];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"request_id = %@", requestId];
+    [fetch setPredicate:predicate];
+    NSError * error;
+    NSArray * requests = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
+    if(error != nil) {
+        [WRUtilities criticalError:error];
+        return;
+    }
+    Request * request = [requests objectAtIndex:0];
+    [UIAlertView showWithTitle:@"Commuter driver is on the way!" message:@"Your driver is on the way.  Would you like to view your pickup meeting point?" cancelButtonTitle:@"Not now" otherButtonTitles:@[@"Yes!"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        if(buttonIndex == 1){
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"commuter_ride_invoked" object:request userInfo:@{}];
+
+        }
+    }];
+}
+
 
 @end

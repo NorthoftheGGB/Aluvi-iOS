@@ -295,8 +295,10 @@
 }
 
 - (void) stopTrackingDriverLocation {
-    [_driverLocationTimer invalidate];
-    _driverLocationTimer = nil;
+    if(_driverLocationTimer != nil) {
+        [_driverLocationTimer invalidate];
+        _driverLocationTimer = nil;
+    }
 }
 
 - (void) getDriverLocation {
@@ -324,6 +326,11 @@
     self.commuterHUD.meetingTimeLabel.text = [self.request.pickupTime pretty];
     [self.view addSubview:self.commuterHUD];
     [self updateInterfaceForTrip];
+    
+    // TODO: depending on how the commuter interface final design works
+    // Perhaps the overlay cannot be dismissed until 1 hour before the ride,
+    // and we should start showing the driver location at that point.
+    [self startTrackingDriverLocation];
 }
 
 - (IBAction)didTapConfirmLocation:(id)sender {
@@ -458,11 +465,12 @@
         
         [UIAlertView showWithTitle:@"Ride Cancelled" message:@"Your ride has been cancelled" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
         [self resetRequestInterface];
-        
+        [self stopTrackingDriverLocation];
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [self resetRequestInterface];
         [hud hide:YES];
+        [self stopTrackingDriverLocation];
         [WRUtilities criticalError:error];
         
     }];
