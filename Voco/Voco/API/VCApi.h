@@ -32,10 +32,10 @@
 #define API_GET_ACTIVE_RIDES @"rides/rides"
 
 // geo API
-#define API_GEO_CAR @"geo/car/"
-#define API_GEO_CAR_PATH_PATTERN @"geo/car/:id"
-#define API_GEO_RIDER @"geo/rider"
-#define API_GEO_CARS @"geo/cars"
+#define API_GEO_DRIVER_PATH @"geo/drivers/:objectId"
+#define API_GEO_DRIVERS @"geo/drivers"
+#define API_GEO_RIDER_PATH @"geo/rider"
+#define API_GEO_RIDERS @"geo/riders"
 
 // devices API - RESTful
 #define API_DEVICES @"devices/"
@@ -70,6 +70,5 @@
 // path helpers
 + (NSString *) devicesObjectPathPattern;
 + (NSString *) getRideOffersPath:(NSNumber*) driverId;
-+ (NSString *) getPutGeoCarPath:(NSNumber *) carId;
 
 @end

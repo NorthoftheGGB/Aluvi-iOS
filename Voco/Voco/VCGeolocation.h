@@ -17,6 +17,6 @@
 
 - (id) init;
 - (CLLocation *) location;
-- (void) startTrackingDriverLocation;
+- (void) startSendingDriverLocation;
 
 @end

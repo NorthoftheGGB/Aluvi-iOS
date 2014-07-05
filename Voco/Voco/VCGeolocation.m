@@ -9,11 +9,13 @@
 #import "VCGeolocation.h"
 #import <RestKit/RestKit.h>
 #import "VCApi.h"
-#import "VCLocation.h"
+#import "VCGeoObject.h"
 #import "VCUserState.h"
 #import "WRUtilities.h"
+#import "VCGeoApi.h"
 
 static VCGeolocation * sharedGeolocation;
+static void * XXContext = &XXContext;
 
 @interface VCGeolocation() <CLLocationManagerDelegate>
 
@@ -47,9 +49,22 @@ static VCGeolocation * sharedGeolocation;
         _locationManager.activityType = CLActivityTypeAutomotiveNavigation;
         _locationManager.delegate = self;
         [_locationManager startUpdatingLocation];
+        
+        [[VCUserState instance] addObserver:self forKeyPath:VCUserStateDriverStateKeyPath options:NSKeyValueObservingOptionNew context:XXContext];
     }
     sharedGeolocation = self;
     return self;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if([keyPath isEqualToString: VCUserStateDriverStateKeyPath]){
+        NSString * state = [change objectForKey:NSKeyValueChangeNewKey];
+        if(![state isKindOfClass:[NSNull class]] && [state isEqualToString:kDriverStateOnDuty]){
+            [self startSendingDriverLocation];
+        } else {
+            [self stopSendingDriverLocation];
+        }
+    }
 }
 
 #pragma mark - CLLocationManagerDelegate Methods
@@ -59,16 +74,16 @@ static VCGeolocation * sharedGeolocation;
         //This block gets called both if they decline and the first time Location Services asks for access when it doesn't already have access
         //So it gets called twice, which is confusing.
         /*
-        UIAlertView *alert = [[UIAlertView alloc]
-                              initWithTitle:[NSString stringWithFormat:@"Location Services Declined"]
-                              message:
-                              [NSString stringWithFormat:@"Please enable location services for this application"]
-                              delegate: self
-                              cancelButtonTitle:@"Please Enable Location Services"
-                              otherButtonTitles:nil
-                              ];
-        [alert show];
-        */
+         UIAlertView *alert = [[UIAlertView alloc]
+         initWithTitle:[NSString stringWithFormat:@"Location Services Declined"]
+         message:
+         [NSString stringWithFormat:@"Please enable location services for this application"]
+         delegate: self
+         cancelButtonTitle:@"Please Enable Location Services"
+         otherButtonTitles:nil
+         ];
+         [alert show];
+         */
 	}
 }
 
@@ -85,16 +100,16 @@ static VCGeolocation * sharedGeolocation;
     
     NSString *errorType = (error.code == kCLErrorDenied) ?
     @"Access Denied" : @"Unknown Error";
-
+    
     /*
-    UIAlertView *alert = [[UIAlertView alloc]
-                          initWithTitle:@"Error getting Location"
-                          message:errorType
-                          delegate:nil
-                          cancelButtonTitle:@"Okay"
-                          otherButtonTitles:nil];
-    [alert show];
-    */
+     UIAlertView *alert = [[UIAlertView alloc]
+     initWithTitle:@"Error getting Location"
+     message:errorType
+     delegate:nil
+     cancelButtonTitle:@"Okay"
+     otherButtonTitles:nil];
+     [alert show];
+     */
     NSLog(@"Error Getting Location: %@", errorType);
 }
 
@@ -102,25 +117,27 @@ static VCGeolocation * sharedGeolocation;
     return _currentLocation;
 }
 
-- (void) startTrackingDriverLocation {
+- (void) startSendingDriverLocation {
     [self sendDriverLocation:nil];
-    _driverLocationTimer = [NSTimer scheduledTimerWithTimeInterval:30.0 target:self selector:@selector(sendDriverLocation:) userInfo:nil repeats:YES];
+    _driverLocationTimer = [NSTimer scheduledTimerWithTimeInterval:20.0 target:self selector:@selector(sendDriverLocation:) userInfo:nil repeats:YES];
     
 }
 
+- (void) stopSendingDriverLocation {
+    [_driverLocationTimer invalidate];
+    _driverLocationTimer = nil;
+}
+
 - (void) sendDriverLocation:(NSTimer *)timer {
-    VCLocation * objectLocation = [[VCLocation alloc] init];
-    objectLocation.latitude = [NSNumber numberWithDouble: _currentLocation.coordinate.latitude];
-    objectLocation.longitude = [NSNumber numberWithDouble: _currentLocation.coordinate.longitude];
-    [[RKObjectManager sharedManager] putObject:objectLocation
-                                           path:[VCApi getPutGeoCarPath:[VCUserState instance].carId]
-                                     parameters:nil
-                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                            // nothing to do!
-                                        }
-                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                            [WRUtilities criticalError:error];
-                                        }];
+    CLLocation * location = [[CLLocation alloc] initWithLatitude:_currentLocation.coordinate.latitude
+                                                       longitude:_currentLocation.coordinate.longitude];
+    [VCGeoApi sendDriverLocation:location
+                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                             // nothing to do!
+                         }
+                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                             // [WRUtilities criticalError:error];
+                         }];
 }
 
 

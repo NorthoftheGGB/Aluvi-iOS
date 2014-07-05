@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NSString *const VCUserStateDriverStateKeyPath;
+
 #define kRiderStateRegistered @"registered"
 #define kRiderStateActiove @"active"
 #define kRiderStatePaymentProblem @"payment_problem"

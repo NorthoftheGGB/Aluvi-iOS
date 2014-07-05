@@ -144,6 +144,10 @@
 		F4138C2E1965467D00C265CD /* VCRidesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4138C2B1965467D00C265CD /* VCRidesViewController.m */; };
 		F4138C2F1965467D00C265CD /* VCRidesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4138C2C1965467D00C265CD /* VCRidesViewController.xib */; };
 		F4138C301965467D00C265CD /* VCRidesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4138C2C1965467D00C265CD /* VCRidesViewController.xib */; };
+		F4138C38196784C700C265CD /* VCGeoApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4138C37196784C700C265CD /* VCGeoApi.m */; };
+		F4138C39196784C700C265CD /* VCGeoApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4138C37196784C700C265CD /* VCGeoApi.m */; };
+		F4138C3B19678BE000C265CD /* car@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4138C3A19678BE000C265CD /* car@2x.png */; };
+		F4138C3C19678BE000C265CD /* car@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4138C3A19678BE000C265CD /* car@2x.png */; };
 		F4354D5E195D0D6A00C06CF7 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE519492C2A00D8C900 /* IIWrapController.m */; };
 		F4354D5F195D0D6A00C06CF7 /* VCDriverRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F02D1952DA8F00D8C900 /* VCDriverRegistration.m */; };
 		F4354D60195D0D6A00C06CF7 /* VCForgotPasswordRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904C19468F87007C4671 /* VCForgotPasswordRequest.m */; };
@@ -186,7 +190,7 @@
 		F4354D86195D0D6A00C06CF7 /* VCDriverApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B0A19384F9000354886 /* VCDriverApi.m */; };
 		F4354D87195D0D6A00C06CF7 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE319492C2A00D8C900 /* IIViewDeckController.m */; };
 		F4354D89195D0D6A00C06CF7 /* VCApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BF81935798B00A94721 /* VCApi.m */; };
-		F4354D8A195D0D6A00C06CF7 /* VCLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B30193EE06400354886 /* VCLocation.m */; };
+		F4354D8A195D0D6A00C06CF7 /* VCGeoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B30193EE06400354886 /* VCGeoObject.m */; };
 		F4354D8B195D0D6A00C06CF7 /* VCLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904619468B69007C4671 /* VCLogin.m */; };
 		F4354D8C195D0D6A00C06CF7 /* VCDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AF01936BE0900354886 /* VCDevice.m */; };
 		F4354D8D195D0D6A00C06CF7 /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C021935880500A94721 /* Request.m */; };
@@ -344,7 +348,7 @@
 		F4FE1B20193D8FE500354886 /* VCPushApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B1F193D8FE500354886 /* VCPushApi.m */; };
 		F4FE1B24193E722B00354886 /* VCRideIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B23193E722B00354886 /* VCRideIdentity.m */; };
 		F4FE1B2D193EA18E00354886 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FE1B2C193EA18E00354886 /* Crashlytics.framework */; };
-		F4FE1B31193EE06400354886 /* VCLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B30193EE06400354886 /* VCLocation.m */; };
+		F4FE1B31193EE06400354886 /* VCGeoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B30193EE06400354886 /* VCGeoObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -473,6 +477,9 @@
 		F4138C3119662AF100C265CD /* Voco 17.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 17.xcdatamodel"; sourceTree = "<group>"; };
 		F4138C3219662D3100C265CD /* Voco 18.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 18.xcdatamodel"; sourceTree = "<group>"; };
 		F4138C331966628600C265CD /* Voco 19.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 19.xcdatamodel"; sourceTree = "<group>"; };
+		F4138C36196784C700C265CD /* VCGeoApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCGeoApi.h; path = Geo/VCGeoApi.h; sourceTree = "<group>"; };
+		F4138C37196784C700C265CD /* VCGeoApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCGeoApi.m; path = Geo/VCGeoApi.m; sourceTree = "<group>"; };
+		F4138C3A19678BE000C265CD /* car@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "car@2x.png"; sourceTree = "<group>"; };
 		F4354DCF195D0D6A00C06CF7 /* Voco Testing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Voco Testing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4354DD0195D0D6A00C06CF7 /* Voco Testing-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Voco Testing-Info.plist"; path = "/Users/deepwinter1/software-development/Clients/Will OBrien/voco-ios/Voco/Voco Testing-Info.plist"; sourceTree = "<absolute>"; };
 		F45F7BF4193578DE00A94721 /* VCRiderApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderApi.h; path = API/Rider/VCRiderApi.h; sourceTree = "<group>"; };
@@ -638,8 +645,8 @@
 		F4FE1B22193E722B00354886 /* VCRideIdentity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRideIdentity.h; path = API/Rider/VCRideIdentity.h; sourceTree = "<group>"; };
 		F4FE1B23193E722B00354886 /* VCRideIdentity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRideIdentity.m; path = API/Rider/VCRideIdentity.m; sourceTree = "<group>"; };
 		F4FE1B2C193EA18E00354886 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		F4FE1B2F193EE06400354886 /* VCLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCLocation.h; path = Common/VCLocation.h; sourceTree = "<group>"; };
-		F4FE1B30193EE06400354886 /* VCLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCLocation.m; path = Common/VCLocation.m; sourceTree = "<group>"; };
+		F4FE1B2F193EE06400354886 /* VCGeoObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCGeoObject.h; path = Common/VCGeoObject.h; sourceTree = "<group>"; };
+		F4FE1B30193EE06400354886 /* VCGeoObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCGeoObject.m; path = Common/VCGeoObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -808,6 +815,7 @@
 		4FE641E1194168E80059BED1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				F4138C3A19678BE000C265CD /* car@2x.png */,
 				4FE286FF1962C52700FD8AF6 /* confirm-location-select.png */,
 				4FE287001962C52700FD8AF6 /* confirm-location@2x.png */,
 				4FE286FC1962C25400FD8AF6 /* pin@2x.png */,
@@ -915,7 +923,7 @@
 				F4D890551946A2D9007C4671 /* VCObjectRequestOperation.m */,
 				F4D8904119468A66007C4671 /* Users */,
 				F4FE1AF31936BE6800354886 /* Base */,
-				F4FE1B2E193EDFEE00354886 /* Common */,
+				F4FE1B2E193EDFEE00354886 /* Geo */,
 				F4FE1AEE1936BDE500354886 /* Devices */,
 				F45F7BF3193578B500A94721 /* Rider */,
 				F4FE1B0419384D9500354886 /* Driver */,
@@ -1301,13 +1309,15 @@
 			name = Driver;
 			sourceTree = "<group>";
 		};
-		F4FE1B2E193EDFEE00354886 /* Common */ = {
+		F4FE1B2E193EDFEE00354886 /* Geo */ = {
 			isa = PBXGroup;
 			children = (
-				F4FE1B2F193EE06400354886 /* VCLocation.h */,
-				F4FE1B30193EE06400354886 /* VCLocation.m */,
+				F4FE1B2F193EE06400354886 /* VCGeoObject.h */,
+				F4FE1B30193EE06400354886 /* VCGeoObject.m */,
+				F4138C36196784C700C265CD /* VCGeoApi.h */,
+				F4138C37196784C700C265CD /* VCGeoApi.m */,
 			);
-			name = Common;
+			name = Geo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1475,6 +1485,7 @@
 				4FE286FE1962C25400FD8AF6 /* pin@2x.png in Resources */,
 				F4354DC4195D0D6A00C06CF7 /* VCSignUpViewController.xib in Resources */,
 				4F2EF9A51960EC8C006A1962 /* profile-menu-button@2x.png in Resources */,
+				F4138C3C19678BE000C265CD /* car@2x.png in Resources */,
 				4F2EF9CF19613B41006A1962 /* support-menu-button-selected@2x.png in Resources */,
 				4FE286F21962BB3F00FD8AF6 /* search-location@2x.png in Resources */,
 				4FE287041962C52800FD8AF6 /* confirm-location@2x.png in Resources */,
@@ -1562,6 +1573,7 @@
 				4F9909C5195CCE6500E83164 /* log-in-box@2x.png in Resources */,
 				4F2EF9D619614115006A1962 /* mycar-menu-button@2x.png in Resources */,
 				4F2EF9D419614115006A1962 /* mycar-menu-button-selected@2x.png in Resources */,
+				F4138C3B19678BE000C265CD /* car@2x.png in Resources */,
 				4FE641F3194168E80059BED1 /* login_btn@2x.png in Resources */,
 				4F2EF9A41960EC8C006A1962 /* profile-menu-button@2x.png in Resources */,
 			);
@@ -1706,6 +1718,7 @@
 				F4354D74195D0D6A00C06CF7 /* VCRiderHomeViewController.m in Sources */,
 				4F9ECEA8196618C300AD4229 /* VCNameTextField.m in Sources */,
 				F4354D75195D0D6A00C06CF7 /* VCButtonFont.m in Sources */,
+				F4138C39196784C700C265CD /* VCGeoApi.m in Sources */,
 				F4354D76195D0D6A00C06CF7 /* MQShape.m in Sources */,
 				4F9ECEB919661C4A00AD4229 /* VCRiderPaymentsViewController.m in Sources */,
 				F4354D77195D0D6A00C06CF7 /* VCRideRequest.m in Sources */,
@@ -1733,7 +1746,7 @@
 				F4354D89195D0D6A00C06CF7 /* VCApi.m in Sources */,
 				4F9ECEC61966369700AD4229 /* VCReferralCodeTextField.m in Sources */,
 				4FFBA44F195E7BCD00A51B84 /* VCPasswordTextField.m in Sources */,
-				F4354D8A195D0D6A00C06CF7 /* VCLocation.m in Sources */,
+				F4354D8A195D0D6A00C06CF7 /* VCGeoObject.m in Sources */,
 				F4354D8B195D0D6A00C06CF7 /* VCLogin.m in Sources */,
 				F4138C2E1965467D00C265CD /* VCRidesViewController.m in Sources */,
 				F4354D8C195D0D6A00C06CF7 /* VCDevice.m in Sources */,
@@ -1823,9 +1836,10 @@
 				4FE641C4194157EB0059BED1 /* VCPasswordRecoveryViewController.m in Sources */,
 				F4A7C8251962E235007E05AD /* VCLocationSearchViewController.m in Sources */,
 				F4FE1B0B19384F9000354886 /* VCDriverApi.m in Sources */,
+				F4138C38196784C700C265CD /* VCGeoApi.m in Sources */,
 				F473EFE719492C2A00D8C900 /* IIViewDeckController.m in Sources */,
 				F45F7BF91935798B00A94721 /* VCApi.m in Sources */,
-				F4FE1B31193EE06400354886 /* VCLocation.m in Sources */,
+				F4FE1B31193EE06400354886 /* VCGeoObject.m in Sources */,
 				F4D8904719468B69007C4671 /* VCLogin.m in Sources */,
 				F4FE1AF11936BE0900354886 /* VCDevice.m in Sources */,
 				F45F7C031935880500A94721 /* Request.m in Sources */,

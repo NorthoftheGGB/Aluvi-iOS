@@ -15,6 +15,8 @@
 #import "VCInterfaceModes.h"
 #import "VCDriverApi.h"
 
+NSString *const VCUserStateDriverStateKeyPath = @"driverState";
+
 #define kRideProcessStateKey @"kRideProcessStateKey"
 #define kDriveProcessStateKey @"kDriveProcessStateKey"
 #define kRiderStateKey @"kRiderStateKey"
@@ -53,6 +55,9 @@ static VCUserState *sharedSingleton;
         _driveProcessState = [userDefaults objectForKey:kDriveProcessStateKey];
         riderState = [userDefaults objectForKey:kRiderStateKey];
         driverState = [userDefaults objectForKey:kDriverStateKey];
+        
+        
+
     }
     return self;
 }

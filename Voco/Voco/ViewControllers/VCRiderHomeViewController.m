@@ -23,6 +23,8 @@
 #import "VCLocationSearchViewController.h"
 #import "VCCommuterHud.h"
 #import "NSDate+Pretty.h"
+#import "VCGeoApi.h"
+#import "VCGeoObject.h"
 #define kStepSetDepartureLocation 1
 #define kStepSetDestinationLocation 2
 #define kStepConfirmRequest 3
@@ -59,6 +61,10 @@
 @property (nonatomic) NSInteger step;
 @property (strong, nonatomic) NSDate * desiredArrivalDateTime;
 @property (strong, nonatomic) NSTimer * timer;
+
+// Geo
+@property (strong, nonatomic) NSTimer * driverLocationTimer;
+@property (strong, nonatomic) MKPointAnnotation * driverAnnotation;
 
 //Location HUD
 @property (strong, nonatomic) IBOutlet UIView *locationHud;
@@ -142,6 +148,7 @@
     if(_progressHUD != nil) {
         [_progressHUD hide:YES];
     }
+    [self startTrackingDriverLocation];
     
 }
 
@@ -199,6 +206,17 @@
 
 
 - (void) showLocationHudIfNotDisplayed {
+    
+    // TODO
+    // Add button to show driver
+    // And swap button to show route region
+    // This logic should be added to the location HUD class itself
+    // and the hud class should have a 'set state' method
+    if([@[kCreatedState] containsObject: self.request.state]) {
+        
+    } else {
+        
+    }
     if(_locationHud.superview == nil){
         CGRect frame = _locationHud.frame;
         frame.origin.x = 0;
@@ -240,6 +258,7 @@
                                                               longitude:[self.request.dropOffPointLongitude doubleValue]]];
         [self placeRideDetailsDrawerInPickupMode];
         [self showRideDetailsDrawer];
+        [self startTrackingDriverLocation];
         
     } else if ([self.request.requestType isEqualToString:kRideRequestTypeCommuter]){
         
@@ -267,7 +286,37 @@
 }
 
 
+- (void) startTrackingDriverLocation {
+    [self getDriverLocation];
+    if(_driverLocationTimer == nil) {
+        _driverLocationTimer = [NSTimer scheduledTimerWithTimeInterval:20.0 target:self selector:@selector(getDriverLocation) userInfo:nil  repeats:YES];
+    }
+    
+}
 
+- (void) stopTrackingDriverLocation {
+    [_driverLocationTimer invalidate];
+    _driverLocationTimer = nil;
+}
+
+- (void) getDriverLocation {
+    [VCGeoApi getDriverLocation:self.request.driver.id
+                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                            VCGeoObject * geoObject = mappingResult.firstObject;
+                            if(_driverAnnotation == nil){
+                                _driverAnnotation = [[MKPointAnnotation alloc] init];
+                                [self.map addAnnotation:_driverAnnotation];
+                            }
+                            CLLocationCoordinate2D coordinate;
+                            coordinate.latitude = [geoObject.latitude doubleValue];
+                            coordinate.longitude = [geoObject.longitude doubleValue];
+                            [_driverAnnotation setCoordinate:coordinate];
+                            
+                        }
+                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        
+    }];
+}
 
 - (void) showCommuterRideDetailsOverlay {
     self.commuterHUD.meetingPointLabel.text = self.request.meetingPointPlaceName;
@@ -617,6 +666,9 @@
 }
 
 - (void) showRideDetailsDrawer {
+
+    
+    
     [UIView transitionWithView:self.view
                       duration:.45f
                        options:UIViewAnimationOptionTransitionCrossDissolve
@@ -626,15 +678,6 @@
                     } completion:nil];
     
     
-    /*
-     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.rideDetailsDrawer
-     attribute:NSLayoutAttributeBottom
-     relatedBy:NSLayoutRelationEqual
-     toItem:self.view
-     attribute:NSLayoutAttributeBottom
-     multiplier:1
-     constant:0]];
-     */
 }
 
 - (void) hideRideDetailsDrawer {
@@ -753,7 +796,7 @@
     [super clearMap];
     [self.map removeOverlay:_walkingRouteToMeetingPointOverlay];
     [self.map removeOverlay:_walkingRouteToDestinationOverlay];
-    
+    [self.map removeAnnotation:_driverAnnotation];
 }
 
 
@@ -784,6 +827,18 @@
     return nil;
 }
 
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    
+    if(annotation == _driverAnnotation){
+        MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
+                                                                         reuseIdentifier:@"CarAnnotationView"];
+        UIImage *image = [UIImage imageNamed:@"car"];
+        // You may need to resize the image here.
+        annotationView.image = image;
+        return annotationView;
+    }
+    return nil;
+}
 
 
 @end

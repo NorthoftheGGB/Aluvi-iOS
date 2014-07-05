@@ -1,1 +1,19 @@
-<?xml version='1.0' encoding='UTF-8'?><Workspace version='1.0'><FileRef location='group:Voco/Voco.xcodeproj'/><FileRef location='group:Pods/Pods.xcodeproj'/></Workspace>
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:test-route-1.gpx">
+   </FileRef>
+   <FileRef
+      location = "group:ElliottTestRoute1.gpx">
+   </FileRef>
+   <FileRef
+      location = "group:ElliottRouteToBerkeley.gpx">
+   </FileRef>
+   <FileRef
+      location = "group:Voco/Voco.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+</Workspace>

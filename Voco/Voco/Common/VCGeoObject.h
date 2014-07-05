@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "VCRestKitMappableObject.h"
 
-@interface VCLocation : NSObject <VCRestKitMappableObject>
+@interface VCGeoObject : NSObject <VCRestKitMappableObject>
 
+@property (nonatomic, strong) NSNumber * objectId;
 @property (nonatomic, strong) NSNumber * latitude;
 @property (nonatomic, strong) NSNumber * longitude;
 
