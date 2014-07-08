@@ -172,6 +172,7 @@
 
 - (void) rideComplete:(id) sender{
     [self resetRequestInterface];
+    [self stopTrackingDriverLocation];
     self.request = nil;
 }
 
@@ -407,7 +408,6 @@
         _step = kStepConfirmRequest;
         
     } else if (_step == kStepConfirmRequest) {
-        _locationConfirmationAnnotation.hidden = YES;
         
         if([ self.request.requestType isEqualToString:kRideRequestTypeOnDemand]) {
             
@@ -425,8 +425,12 @@
                                 _progressHUD.labelText = @"We are finding your driver now!";
                                 UITapGestureRecognizer *HUDSingleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hudSingleTap:)];
                                 [_progressHUD addGestureRecognizer:HUDSingleTap];
+                                _locationConfirmationAnnotation.hidden = YES;
+
                             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                 [_progressHUD hide:YES];
+                                _locationConfirmationAnnotation.hidden = YES;
+
                             }];
         } else if ( [ self.request.requestType isEqualToString:kRideRequestTypeCommuter]) {
             // Commuter Confirmation
@@ -838,7 +842,7 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     
-    if(annotation == _driverAnnotation){
+    if([annotation isEqual: _driverAnnotation]){
         MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
                                                                          reuseIdentifier:@"CarAnnotationView"];
         UIImage *image = [UIImage imageNamed:@"car"];

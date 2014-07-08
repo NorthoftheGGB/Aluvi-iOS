@@ -261,8 +261,8 @@
 }
 
 - (IBAction)didTapRiderPickedUp:(id)sender {
-    if( [VCUserState instance].underwayRideId != self.ride.ride_id){
-        if( [VCUserState instance].underwayRideId != nil){
+    if( [VCUserState instance].underwayRideId != nil){
+        if(! [[VCUserState instance].underwayRideId isEqualToNumber: self.ride.ride_id]){
             [WRUtilities criticalErrorWithString:@"State shows another ride is still underway"];
         }
         [VCUserState instance].underwayRideId = self.ride.ride_id;
