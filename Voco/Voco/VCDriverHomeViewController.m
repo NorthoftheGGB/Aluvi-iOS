@@ -167,6 +167,8 @@
 - (void) showRideCompletedInterface {
     [_driverLocationHud removeFromSuperview];
     [self showReceipt];
+    [self resetButtons];
+    [self clearMap];
 }
 
 - (void) showReceipt {
