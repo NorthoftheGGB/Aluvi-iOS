@@ -104,7 +104,7 @@
         [_map setRegion:region];
         [hud hide:YES];
     } failure:^{
-        [UIAlertView showWithTitle:@"Network Error" message:@"Woops, we couldn't contact the routing server.  You can still schedule your ride though!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        [UIAlertView showWithTitle:@"Network Error" message:@"Woops, we couldn't contact the routing server.  You can still manage your ride though!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
         NSLog(@"%@", @"Error talking with MapQuest routing API");
         [hud hide:YES];
     }];

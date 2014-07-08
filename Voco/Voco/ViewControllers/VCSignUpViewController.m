@@ -17,6 +17,7 @@
 #import <MBProgressHUD.h>
 #import "US2ConditionCollection.h"
 #import "US2Condition.h"
+#import "VCUserState.h"
 
 #define kFirstNameFieldTag 1
 #define kLastNameFieldTag 2
@@ -184,7 +185,7 @@
 }
 
 - (void) login {
-    [VCUsersApi login:[RKObjectManager sharedManager] phone:_phoneField.text password:_passwordField.text
+    [[VCUserState instance] loginWithPhone:_phoneField.text password:_passwordField.text
               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                   
                   [[VCInterfaceModes instance] showRiderInterface];

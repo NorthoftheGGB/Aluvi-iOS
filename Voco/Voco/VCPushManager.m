@@ -240,7 +240,7 @@
                 
                 //[localNotif setFireDate:[request.pickupTime dateByAddingTimeInterval:-60*60]]; // 1 hour notification
                 
-                [localNotif setFireDate:[[NSDate date] dateByAddingTimeInterval:30]]; // demo/debug mode
+                [localNotif setFireDate:[[NSDate date] dateByAddingTimeInterval:60]]; // demo/debug mode
 
                 [localNotif setAlertBody:@"Commuter Pickup in 1 hour!"];
                 [localNotif setAlertAction:@"View Map"];

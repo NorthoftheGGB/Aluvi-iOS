@@ -403,7 +403,13 @@
         self.dropOffAnnotation.subtitle = @"Click to change";
         [self.map addAnnotation:self.dropOffAnnotation];
         
-        [_locationConfirmationButtonLabel setTitle:@"Send Ride Request?" forState:UIControlStateNormal];
+        
+        if([ self.request.requestType isEqualToString:kRideRequestTypeOnDemand]) {
+            [_locationConfirmationButtonLabel setTitle:@"Send Ride Request?" forState:UIControlStateNormal];
+        } else if ( [ self.request.requestType isEqualToString:kRideRequestTypeCommuter]) {
+            _locationConfirmationAnnotation.hidden = YES;
+            
+        }
         self.mapCenterPin.hidden = YES;
         _step = kStepConfirmRequest;
         
@@ -823,11 +829,11 @@
     {
         MKPolylineRenderer*   aRenderer = [[MKPolylineRenderer alloc] initWithPolyline:(MKPolyline*)overlay];
         if ([overlay isEqual:_walkingRouteToMeetingPointOverlay]){
-            aRenderer.strokeColor = [[UIColor orangeColor] colorWithAlphaComponent:0.7];
+            aRenderer.strokeColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
             aRenderer.lineWidth = 4;
             aRenderer.lineDashPattern = @[[NSNumber numberWithInt:10], [NSNumber numberWithInt:6]];
         } else if ([overlay isEqual:_walkingRouteToDestinationOverlay]){
-            aRenderer.strokeColor = [[UIColor orangeColor] colorWithAlphaComponent:0.7];
+            aRenderer.strokeColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
             aRenderer.lineWidth = 4;
             aRenderer.lineDashPattern = @[[NSNumber numberWithInt:10], [NSNumber numberWithInt:6]];
         } else {
