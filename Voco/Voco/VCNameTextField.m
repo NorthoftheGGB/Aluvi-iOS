@@ -17,7 +17,6 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.fieldName = @"First Name";
         
         US2ConditionAlphabetic *firstNameCondition =[[US2ConditionAlphabetic alloc] init];
         US2Validator *validator = [[US2Validator alloc] init];

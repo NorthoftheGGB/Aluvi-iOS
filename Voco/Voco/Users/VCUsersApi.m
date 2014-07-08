@@ -102,7 +102,8 @@
 }
 
 + (void) createUser:( RKObjectManager *) objectManager
-               name:(NSString*) name
+          firstName:(NSString*) firstName
+          lastName:(NSString*) lastName
               email:(NSString*) email
            password:(NSString*) password
               phone:(NSString*) phone
@@ -112,7 +113,8 @@
     
     
     VCNewUser * newUser = [[VCNewUser alloc] init];
-    newUser.name = name;
+    newUser.firstName = firstName;
+    newUser.lastName = lastName;
     newUser.email = email;
     newUser.password = password;
     newUser.phone = phone;

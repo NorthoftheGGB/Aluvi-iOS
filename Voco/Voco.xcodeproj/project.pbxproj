@@ -292,6 +292,7 @@
 		F473F046195BA16D00D8C900 /* DTLazyImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F045195BA16D00D8C900 /* DTLazyImageView.m */; };
 		F473F050195BA54F00D8C900 /* VCRequestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F04E195BA54F00D8C900 /* VCRequestsViewController.m */; };
 		F473F051195BA54F00D8C900 /* VCRequestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F473F04F195BA54F00D8C900 /* VCRequestsViewController.xib */; };
+		F4792AD3196C59B2005AB652 /* log-in-box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9909C4195CCE6500E83164 /* log-in-box@2x.png */; };
 		F49EDD0B1946D27F0020B8BB /* VCRiderHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */; };
 		F49EDD0C1946D27F0020B8BB /* VCRiderHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */; };
 		F49EDD101946E2F90020B8BB /* VCInterfaceModes.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD0F1946E2F90020B8BB /* VCInterfaceModes.m */; };
@@ -1391,6 +1392,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Voco;
 				TargetAttributes = {
+					F4354D5B195D0D6A00C06CF7 = {
+						DevelopmentTeam = 6JQGNMU28F;
+					};
 					F4FA0BE3192BF6BF005D8645 = {
 						DevelopmentTeam = 6JQGNMU28F;
 						SystemCapabilities = {
@@ -1488,6 +1492,7 @@
 				F4138C3C19678BE000C265CD /* car@2x.png in Resources */,
 				4F2EF9CF19613B41006A1962 /* support-menu-button-selected@2x.png in Resources */,
 				4FE286F21962BB3F00FD8AF6 /* search-location@2x.png in Resources */,
+				F4792AD3196C59B2005AB652 /* log-in-box@2x.png in Resources */,
 				4FE287041962C52800FD8AF6 /* confirm-location@2x.png in Resources */,
 				F4354DC5195D0D6A00C06CF7 /* voco_logo@2x.png in Resources */,
 				F4354DC6195D0D6A00C06CF7 /* commute_logo@2x.png in Resources */,
@@ -1924,7 +1929,7 @@
 				INFOPLIST_FILE = "Voco Testing-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "Voco Testing";
-				PROVISIONING_PROFILE = "418972A1-44A9-45F6-89B8-DFD7529D357B";
+				PROVISIONING_PROFILE = "14575585-6F53-49D1-8A0B-872F10AB1C55";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1951,7 +1956,7 @@
 				INFOPLIST_FILE = "Voco Testing-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "Voco Testing";
-				PROVISIONING_PROFILE = "418972A1-44A9-45F6-89B8-DFD7529D357B";
+				PROVISIONING_PROFILE = "14575585-6F53-49D1-8A0B-872F10AB1C55";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

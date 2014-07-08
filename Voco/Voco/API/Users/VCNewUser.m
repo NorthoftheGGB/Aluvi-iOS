@@ -14,7 +14,8 @@
     
     RKObjectMapping * mapping = [RKObjectMapping mappingForClass:[VCNewUser class]];
     [mapping addAttributeMappingsFromDictionary:@{
-                                                  @"name" : @"name",
+                                                  @"first_name" : @"firstName",
+                                                  @"last_name" : @"lastName",
                                                   @"email" : @"email",
                                                   @"password" : @"password",
                                                   @"phone" : @"phone",
