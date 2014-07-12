@@ -26,6 +26,7 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>HelveticaNeueLight</string>
 		<string>KlinicSlabLight.ttf</string>
 		<string>KlinicSlabLightIt.ttf</string>
 		<string>KlinicSlabMediumIt.ttf</string>
