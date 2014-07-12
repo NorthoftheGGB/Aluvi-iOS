@@ -89,7 +89,9 @@
             [_phoneField becomeFirstResponder];
             break;
         case kPhoneFieldTag:
-            [_passwordField becomeFirstResponder];
+            if([_phoneField validate]){
+                [_passwordField becomeFirstResponder];
+            }
             break;
         case kPasswordFieldTag:
             [_emailField becomeFirstResponder];
@@ -147,7 +149,9 @@
         return;
     }
     
-    
+    if(![_phoneField validate]){
+        return;
+    }
     
     // Validations Pass
     //[_emailField setTextColor:[UIColor blackColor]];
@@ -157,7 +161,8 @@
     // _hud.labelText = @"Signing Up";
     
     [VCUsersApi createUser:[RKObjectManager sharedManager]
-                      name:_firstNameField.text
+                 firstName:_firstNameField.text
+                  lastName:_lastNameField.text
                      email:_emailField.text
                   password:_passwordField.text
                      phone:_phoneField.text

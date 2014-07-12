@@ -145,6 +145,7 @@
 - (void) onDemandRideFoundNotification:(id) sender{
     [[VCCoreData managedObjectContext] refreshObject:self.request mergeChanges:YES];
     [self showRideDetailsDrawer];
+    _cancelRideButton.hidden = YES;
     if(_progressHUD != nil) {
         [_progressHUD hide:YES];
     }
@@ -171,6 +172,7 @@
 
 - (void) rideComplete:(id) sender{
     [self resetRequestInterface];
+    [self stopTrackingDriverLocation];
     self.request = nil;
 }
 
@@ -349,21 +351,21 @@
         
         
         
-        MKPointAnnotation *myAnnotation = [[MKPointAnnotation alloc] init];
-        myAnnotation.coordinate = CLLocationCoordinate2DMake(departureLocation.latitude, departureLocation.longitude);
-        myAnnotation.subtitle = @"Click to change";
+        self.meetingPointAnnotation = [[MKPointAnnotation alloc] init];
+         self.meetingPointAnnotation.coordinate = CLLocationCoordinate2DMake(departureLocation.latitude, departureLocation.longitude);
+         self.meetingPointAnnotation.subtitle = @"Click to change";
         
         [_locationConfirmationButtonLabel setTitle:@"Set Drop-off Location" forState:UIControlStateNormal];
         if( [self.request.requestType isEqualToString:kRideRequestTypeOnDemand]){
             _locationTypeLabel.text = @"Drop-off Location";
-            myAnnotation.title = @"Pickup Location";
+             self.meetingPointAnnotation.title = @"Pickup Location";
             
         } else if ([self.request.requestType isEqualToString:kRideRequestTypeCommuter]){
             _locationTypeLabel.text = @"Destination Location";
-            myAnnotation.title = @"Departure Location";
+             self.meetingPointAnnotation.title = @"Departure Location";
         }
         
-        [self.map addAnnotation:myAnnotation];
+        [self.map addAnnotation: self.meetingPointAnnotation];
         
         
         [_departureEntryView removeFromSuperview];
@@ -395,18 +397,17 @@
         
         [self showSuggestedRoute];
         
-        MKPointAnnotation *myAnnotation = [[MKPointAnnotation alloc] init];
-        myAnnotation.coordinate = CLLocationCoordinate2DMake(destinationLocation.latitude, destinationLocation.longitude);
-        myAnnotation.title = @"Drop-off Location";
-        myAnnotation.subtitle = @"Click to change";
-        [self.map addAnnotation:myAnnotation];
+        self.dropOffAnnotation = [[MKPointAnnotation alloc] init];
+        self.dropOffAnnotation.coordinate = CLLocationCoordinate2DMake(destinationLocation.latitude, destinationLocation.longitude);
+        self.dropOffAnnotation.title = @"Drop-off Location";
+        self.dropOffAnnotation.subtitle = @"Click to change";
+        [self.map addAnnotation:self.dropOffAnnotation];
         
         [_locationConfirmationButtonLabel setTitle:@"Send Ride Request?" forState:UIControlStateNormal];
         self.mapCenterPin.hidden = YES;
         _step = kStepConfirmRequest;
         
     } else if (_step == kStepConfirmRequest) {
-        _locationConfirmationAnnotation.hidden = YES;
         
         if([ self.request.requestType isEqualToString:kRideRequestTypeOnDemand]) {
             
@@ -424,8 +425,12 @@
                                 _progressHUD.labelText = @"We are finding your driver now!";
                                 UITapGestureRecognizer *HUDSingleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hudSingleTap:)];
                                 [_progressHUD addGestureRecognizer:HUDSingleTap];
+                                _locationConfirmationAnnotation.hidden = YES;
+
                             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                 [_progressHUD hide:YES];
+                                _locationConfirmationAnnotation.hidden = YES;
+
                             }];
         } else if ( [ self.request.requestType isEqualToString:kRideRequestTypeCommuter]) {
             // Commuter Confirmation
@@ -837,7 +842,7 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     
-    if(annotation == _driverAnnotation){
+    if([annotation isEqual: _driverAnnotation]){
         MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
                                                                          reuseIdentifier:@"CarAnnotationView"];
         UIImage *image = [UIImage imageNamed:@"car"];

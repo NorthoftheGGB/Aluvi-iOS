@@ -120,14 +120,16 @@ static VCUserState *sharedSingleton;
 }
 
 - (void) logout {
-    
-    [VCDevicesApi updateUserWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        
+    VCDevice * device = [[VCDevice alloc] init];
+    device.userId = [NSNumber numberWithInt:0]; // unassign the push token
+    [VCDevicesApi patchDevice:device success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [VCApi clearApiToken];
         [self clearUserState];
         [VCCoreData clearUserData];
         [[VCInterfaceModes instance] showRiderSigninInterface];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [WRUtilities criticalError:error];
+        
     }];
 }
 

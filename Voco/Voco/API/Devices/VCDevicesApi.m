@@ -59,7 +59,6 @@
                                      }
                                      failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                          NSLog(@"Failed send request %@", error);
-                                         [WRUtilities criticalError:error];
                                          failure(operation, error);
                                          // TODO Re-transmit push token later
                                      }];

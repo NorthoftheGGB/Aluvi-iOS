@@ -122,7 +122,7 @@
                                         <action selector="didTapSignUp:" destination="-1" eventType="touchUpInside" id="ny6-9o-SkB"/>
                                     </connections>
                                 </button>
-                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="22v-LN-4YI" customClass="VCTextField">
+                                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="22v-LN-4YI" customClass="VCNameTextField">
                                     <rect key="frame" x="95" y="159" width="90" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <constraints>
@@ -137,6 +137,7 @@
                                         <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
                                             <integer key="value" value="18"/>
                                         </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="fieldName" value="First Name"/>
                                     </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="c5n-RC-WVA"/>

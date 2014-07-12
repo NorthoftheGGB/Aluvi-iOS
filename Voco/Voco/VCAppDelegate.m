@@ -37,6 +37,10 @@
     [Crashlytics startWithAPIKey:@"f7d1a0eeca165a46710d606ff21a38fea3c9ec43"];
 #endif
     
+#if TESTING==1
+    [Crashlytics startWithAPIKey:@"f7d1a0eeca165a46710d606ff21a38fea3c9ec43"];
+#endif
+    
     [VCDialogs instance];
     
     // GIS

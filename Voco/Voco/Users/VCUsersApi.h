@@ -18,7 +18,8 @@
        failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
 + (void) createUser:( RKObjectManager *) objectManager
-               name:(NSString*) name
+          firstName:(NSString*) firstName
+           lastName:(NSString*) lastName
               email:(NSString*) email
            password:(NSString*) password
               phone:(NSString*) phone
