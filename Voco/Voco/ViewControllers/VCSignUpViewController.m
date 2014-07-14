@@ -13,10 +13,15 @@
 #import "WRUtilities.h"
 #import "VCRiderHomeViewController.h"
 #import "VCInterfaceModes.h"
-#import "VCEmailTextField.h"
 #import <MBProgressHUD.h>
 #import "US2ConditionCollection.h"
 #import "US2Condition.h"
+
+#import "VCNameTextField.h"
+#import "VCPhoneTextField.h"
+#import "VCPasswordTextField.h"
+#import "VCEmailTextField.h"
+#import "VCReferralCodeTextField.h"
 
 #define kFirstNameFieldTag 1
 #define kLastNameFieldTag 2
@@ -27,12 +32,12 @@
 
 @interface VCSignUpViewController ()
 
-@property (weak, nonatomic) IBOutlet VCTextField *firstNameField;
-@property (weak, nonatomic) IBOutlet VCTextField *lastNameField;
-@property (weak, nonatomic) IBOutlet VCTextField *phoneField;
-@property (weak, nonatomic) IBOutlet VCTextField *passwordField;
+@property (weak, nonatomic) IBOutlet VCNameTextField *firstNameField;
+@property (weak, nonatomic) IBOutlet VCNameTextField *lastNameField;
+@property (weak, nonatomic) IBOutlet VCPhoneTextField *phoneField;
+@property (weak, nonatomic) IBOutlet VCPasswordTextField *passwordField;
 @property (weak, nonatomic) IBOutlet VCEmailTextField *emailField;
-@property (weak, nonatomic) IBOutlet VCTextField *referralCodeField;
+@property (weak, nonatomic) IBOutlet VCReferralCodeTextField *referralCodeField;
 @property (strong, nonatomic) MBProgressHUD *hud;
 
 
@@ -83,10 +88,14 @@
     
     switch(textField.tag){
         case kFirstNameFieldTag:
+            if([_firstNameField validate]){
             [_lastNameField becomeFirstResponder];
+            }
             break;
         case kLastNameFieldTag:
+            if([_lastNameField validate]){
             [_phoneField becomeFirstResponder];
+            }
             break;
         case kPhoneFieldTag:
             if([_phoneField validate]){
@@ -94,7 +103,9 @@
             }
             break;
         case kPasswordFieldTag:
+            if([_passwordField validate]){
             [_emailField becomeFirstResponder];
+            }
             break;
         case kEmailFieldTag:
             if([_emailField validate]){
@@ -102,7 +113,9 @@
             }
             break;
         case kReferralCodeFieldTag:
+            if([_referralCodeField validate]){
             [self signUp];
+            }
             break;
     }
 }
@@ -145,11 +158,27 @@
      }
      */
     
-    if(![_emailField validate]){
+    if(![_firstNameField validate]){
+        return;
+    }
+    
+    if(![_lastNameField validate]){
         return;
     }
     
     if(![_phoneField validate]){
+        return;
+    }
+    
+    if(![_passwordField validate]){
+        return;
+    }
+    
+    if(![_emailField validate]){
+        return;
+    }
+    
+    if(![_referralCodeField validate]){
         return;
     }
     
