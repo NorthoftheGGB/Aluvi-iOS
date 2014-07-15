@@ -1,36 +1,34 @@
 //
-//  VCNameTextField.m
+//  VCCarModelTextField.m
 //  Voco
 //
-//  Created by Elliott De Aratanha on 7/3/14.
+//  Created by Elliott De Aratanha on 7/13/14.
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCNameTextField.h"
+#import "VCCarModelTextField.h"
 #import "US2Validator.h"
-#import "US2ConditionAlphabetic.h"
+#import "US2ConditionAlphanumeric.h"
+#import "US2ConditionRange.h"
 
 
-@implementation VCNameTextField
+@implementation VCCarModelTextField
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
+      self.fieldName = @"Car Model";
         
-        US2ConditionAlphabetic *firstNameCondition =[[US2ConditionAlphabetic alloc] init];
-        US2ConditionAlphabetic *lastNameCondition =[[US2ConditionAlphabetic alloc] init];
         US2Validator *validator = [[US2Validator alloc] init];
-        [validator addCondition:firstNameCondition];
-        [validator addCondition:lastNameCondition];
+        US2ConditionAlphanumeric *carModelCondition =[[US2ConditionAlphanumeric alloc] init];
         
-        self.validator = validator;
-        
+        [validator addCondition:carModelCondition];
+
         
     }
     return self;
 }
-
 
 /*
 // Only override drawRect: if you perform custom drawing.

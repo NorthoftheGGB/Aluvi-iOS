@@ -12,6 +12,11 @@
 #import "VCUsersApi.h"
 #import <MBProgressHUD.h>
 
+#import "US2ConditionCollection.h"
+#import "US2Condition.h"
+#import "VCPhoneTextField.h"
+#import "VCEmailTextField.h"
+
 #define kPhoneFieldTag 1
 #define kEmailFieldTag 2
 
@@ -65,17 +70,21 @@
     UITextField * textField = (UITextField *) sender;
     switch(textField.tag){
         case kPhoneFieldTag:
-            [_emailField becomeFirstResponder];
+            if([_phoneField validate]){
+                [_emailField becomeFirstResponder];
+            }
             break;
         case kEmailFieldTag:
+            if([_emailField validate]){
             [self recoverEmail];
+            }
             break;
     }
 }
 
 - (void) recoverEmail{
     
-    BOOL error = false;
+    /*BOOL error = false;
     if (![VCValidation NSStringIsValidEmail:_emailField.text]){
         error = true;
         [_emailField setBackgroundColor:[UIColor redColor]];
@@ -84,6 +93,15 @@
     
     if(error == true){
         [UIAlertView showWithTitle:@"Error" message:@"Some Fields Are Incorrect" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        return;
+    }*/
+    
+    
+    if(![_phoneField validate]){
+        return;
+    }
+    
+    if(![_emailField validate]){
         return;
     }
     

@@ -2,15 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:test-route-1.gpx">
-   </FileRef>
-   <FileRef
-      location = "group:ElliottTestRoute1.gpx">
-   </FileRef>
-   <FileRef
-      location = "group:ElliottRouteToBerkeley.gpx">
-   </FileRef>
-   <FileRef
       location = "group:Voco/Voco.xcodeproj">
    </FileRef>
    <FileRef
