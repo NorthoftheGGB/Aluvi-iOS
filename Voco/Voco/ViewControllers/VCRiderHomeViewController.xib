@@ -18,8 +18,8 @@
                 <outlet property="driverNameLabel" destination="fig-ZR-hzv" id="awT-CR-L7x"/>
                 <outlet property="driverPhotoImageView" destination="8hM-bf-rTY" id="4qU-gQ-emL"/>
                 <outlet property="geocodingActivityIndicator" destination="P8x-0k-SwL" id="1nw-EO-ERk"/>
-                <outlet property="licensePlatNumberLabel" destination="QEP-gz-7jD" id="cVr-BH-YXS"/>
                 <outlet property="licensePlateImageView" destination="hpo-vb-UfW" id="3hd-fI-okn"/>
+                <outlet property="licensePlateNumberLabel" destination="QEP-gz-7jD" id="tPO-Fy-CP7"/>
                 <outlet property="locationConfirmationAnnotation" destination="Zfe-VM-bsO" id="KNz-6d-aE8"/>
                 <outlet property="locationConfirmationButtonLabel" destination="sf3-yf-yAH" id="jfT-AI-UyL"/>
                 <outlet property="locationHud" destination="7MI-Vw-p2G" id="cr1-ZQ-f4g"/>
