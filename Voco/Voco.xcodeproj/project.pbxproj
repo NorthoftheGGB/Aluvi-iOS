@@ -78,6 +78,10 @@
 		4F9ECECA19663B1F00AD4229 /* VCLabelBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEC819663B1F00AD4229 /* VCLabelBold.m */; };
 		4FB2682A1952207A0028D4ED /* VCDriverVideoTutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB268281952207A0028D4ED /* VCDriverVideoTutorialController.m */; };
 		4FB2682B1952207A0028D4ED /* VCDriverVideoTutorialController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FB268291952207A0028D4ED /* VCDriverVideoTutorialController.xib */; };
+		4FCD7C6219761C21007609E8 /* call-button-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C6019761C20007609E8 /* call-button-select@2x.png */; };
+		4FCD7C6319761C21007609E8 /* call-button-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C6019761C20007609E8 /* call-button-select@2x.png */; };
+		4FCD7C6419761C21007609E8 /* call-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C6119761C21007609E8 /* call-button@2x.png */; };
+		4FCD7C6519761C21007609E8 /* call-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C6119761C21007609E8 /* call-button@2x.png */; };
 		4FDB0EC51970A5AC00A8CEC2 /* VCRiderHomeViewControllerV2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FDB0EC41970A5AC00A8CEC2 /* VCRiderHomeViewControllerV2.xib */; };
 		4FDB0EC61970A5AC00A8CEC2 /* VCRiderHomeViewControllerV2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FDB0EC41970A5AC00A8CEC2 /* VCRiderHomeViewControllerV2.xib */; };
 		4FDB0EC81970AC8200A8CEC2 /* colors_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FDB0EC71970AC8200A8CEC2 /* colors_03.png */; };
@@ -436,6 +440,8 @@
 		4FB268271952207A0028D4ED /* VCDriverVideoTutorialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCDriverVideoTutorialController.h; path = ViewControllers/VCDriverVideoTutorialController.h; sourceTree = "<group>"; };
 		4FB268281952207A0028D4ED /* VCDriverVideoTutorialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCDriverVideoTutorialController.m; path = ViewControllers/VCDriverVideoTutorialController.m; sourceTree = "<group>"; };
 		4FB268291952207A0028D4ED /* VCDriverVideoTutorialController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCDriverVideoTutorialController.xib; path = ViewControllers/VCDriverVideoTutorialController.xib; sourceTree = "<group>"; };
+		4FCD7C6019761C20007609E8 /* call-button-select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "call-button-select@2x.png"; sourceTree = "<group>"; };
+		4FCD7C6119761C21007609E8 /* call-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "call-button@2x.png"; sourceTree = "<group>"; };
 		4FDB0EC41970A5AC00A8CEC2 /* VCRiderHomeViewControllerV2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCRiderHomeViewControllerV2.xib; path = ViewControllers/VCRiderHomeViewControllerV2.xib; sourceTree = "<group>"; };
 		4FDB0EC71970AC8200A8CEC2 /* colors_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colors_03.png; sourceTree = "<group>"; };
 		4FDB0ECB1970B10600A8CEC2 /* button-default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-default@2x.png"; sourceTree = "<group>"; };
@@ -869,6 +875,8 @@
 		4FE641E1194168E80059BED1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				4FCD7C6019761C20007609E8 /* call-button-select@2x.png */,
+				4FCD7C6119761C21007609E8 /* call-button@2x.png */,
 				4FDB0ECA1970B0F000A8CEC2 /* Revision 2.0 */,
 				4FDB0EC71970AC8200A8CEC2 /* colors_03.png */,
 				F4138C3A19678BE000C265CD /* car@2x.png */,
@@ -1500,6 +1508,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FCD7C6319761C21007609E8 /* call-button-select@2x.png in Resources */,
 				4FE286EA1962B89700FD8AF6 /* current-location-arrow-select@2x.png in Resources */,
 				4F2EF9BA1961391B006A1962 /* scheduledrides-menu-button-selected@2x.png in Resources */,
 				F4354DAA195D0D6A00C06CF7 /* signup_box@2x.png in Resources */,
@@ -1561,6 +1570,7 @@
 				4FDB0ECE1970B10600A8CEC2 /* button-default@2x.png in Resources */,
 				F4354DC4195D0D6A00C06CF7 /* VCSignUpViewController.xib in Resources */,
 				4F2EF9A51960EC8C006A1962 /* profile-menu-button@2x.png in Resources */,
+				4FCD7C6519761C21007609E8 /* call-button@2x.png in Resources */,
 				F4138C3C19678BE000C265CD /* car@2x.png in Resources */,
 				4F2EF9CF19613B41006A1962 /* support-menu-button-selected@2x.png in Resources */,
 				4FE286F21962BB3F00FD8AF6 /* search-location@2x.png in Resources */,
@@ -1586,6 +1596,8 @@
 				4F9ECEB319661C3400AD4229 /* VCCommuterPassViewController.xib in Resources */,
 				4FE641F7194168E80059BED1 /* signup_box@2x.png in Resources */,
 				F4138C2F1965467D00C265CD /* VCRidesViewController.xib in Resources */,
+				4FCD7C6219761C21007609E8 /* call-button-select@2x.png in Resources */,
+				4FCD7C6419761C21007609E8 /* call-button@2x.png in Resources */,
 				4F2EF9DA19614115006A1962 /* scheduledfares-menu-button@2x.png in Resources */,
 				F49EDD0C1946D27F0020B8BB /* VCRiderHomeViewController.xib in Resources */,
 				4F2EF9CE19613B41006A1962 /* support-menu-button-selected@2x.png in Resources */,
