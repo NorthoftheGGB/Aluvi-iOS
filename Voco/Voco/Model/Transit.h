@@ -8,7 +8,7 @@
 
 #import "VCStateMachineManagedObject.h"
 
-@interface Trip : VCStateMachineManagedObject
+@interface Transit : VCStateMachineManagedObject
 
 @property (nonatomic, retain) NSNumber * ride_id;
 @property (nonatomic, retain) NSNumber * meetingPointLatitude;

@@ -19,7 +19,6 @@
 @dynamic year;
 @dynamic id;
 @dynamic rides;
-@synthesize description;
 
 
 + (RKEntityMapping *)createMappings:(RKObjectManager *)objectManager{
@@ -34,7 +33,7 @@
     return entityMapping;
 }
 
-- (NSString *) getDescription {
+- (NSString *) summary {
     return [NSString stringWithFormat:@"%@ %@ %@", self.year, self.make, self.model];
 }
 

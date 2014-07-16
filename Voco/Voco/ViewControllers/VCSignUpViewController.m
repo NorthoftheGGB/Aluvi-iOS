@@ -16,6 +16,7 @@
 #import <MBProgressHUD.h>
 #import "US2ConditionCollection.h"
 #import "US2Condition.h"
+#import "VCUserState.h"
 
 #import "VCNameTextField.h"
 #import "VCPhoneTextField.h"
@@ -104,7 +105,7 @@
             break;
         case kPasswordFieldTag:
             if([_passwordField validate]){
-            [_emailField becomeFirstResponder];
+                [_emailField becomeFirstResponder];
             }
             break;
         case kEmailFieldTag:
@@ -213,7 +214,7 @@
 }
 
 - (void) login {
-    [VCUsersApi login:[RKObjectManager sharedManager] phone:_phoneField.text password:_passwordField.text
+    [[VCUserState instance] loginWithPhone:_phoneField.text password:_passwordField.text
               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                   
                   [[VCInterfaceModes instance] showRiderInterface];

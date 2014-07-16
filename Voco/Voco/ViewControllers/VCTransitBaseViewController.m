@@ -6,16 +6,16 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCTripBaseViewController.h"
+#import "VCTransitBaseViewController.h"
 #import <MBProgressHUD.h>
 #import "VCMapQuestRouting.h"
 #import "IIViewDeckController.h"
 
-@interface VCTripBaseViewController () <MKMapViewDelegate>
+@interface VCTransitBaseViewController () <MKMapViewDelegate>
 
 @end
 
-@implementation VCTripBaseViewController
+@implementation VCTransitBaseViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -60,14 +60,14 @@
     _meetingPointAnnotation = [[MKPointAnnotation alloc] init];
     _meetingPointAnnotation.coordinate = CLLocationCoordinate2DMake(meetingPoint.coordinate.latitude, meetingPoint.coordinate.longitude);
     _meetingPointAnnotation.title = @"Pickup Location";
-    _meetingPointAnnotation.subtitle = self.transport.meetingPointPlaceName;
+    _meetingPointAnnotation.subtitle = self.transit.meetingPointPlaceName;
     [_map addAnnotation:_meetingPointAnnotation];
     
     
     _dropOffAnnotation = [[MKPointAnnotation alloc] init];
     _dropOffAnnotation.coordinate = CLLocationCoordinate2DMake(dropOffPoint.coordinate.latitude, dropOffPoint.coordinate.longitude);
     _dropOffAnnotation.title = @"Drop Off Location";
-    _dropOffAnnotation.subtitle = self.transport.dropOffPointPlaceName;
+    _dropOffAnnotation.subtitle = self.transit.dropOffPointPlaceName;
     [_map addAnnotation:_dropOffAnnotation];
     
 }
@@ -82,10 +82,10 @@
     CLLocationCoordinate2D dropOffPointCoordinate;
     CLLocationCoordinate2D meetingPointCoordinate;
     if(from == nil) {
-        dropOffPointCoordinate.latitude = [_transport.dropOffPointLatitude doubleValue];
-        dropOffPointCoordinate.longitude = [_transport.dropOffPointLongitude doubleValue];
-        meetingPointCoordinate.latitude = [_transport.meetingPointLatitude doubleValue];
-        meetingPointCoordinate.longitude = [_transport.meetingPointLongitude doubleValue];
+        dropOffPointCoordinate.latitude = [_transit.dropOffPointLatitude doubleValue];
+        dropOffPointCoordinate.longitude = [_transit.dropOffPointLongitude doubleValue];
+        meetingPointCoordinate.latitude = [_transit.meetingPointLatitude doubleValue];
+        meetingPointCoordinate.longitude = [_transit.meetingPointLongitude doubleValue];
     } else {
         dropOffPointCoordinate.latitude = from.coordinate.latitude;
         dropOffPointCoordinate.longitude = from.coordinate.longitude;
@@ -104,7 +104,7 @@
         [_map setRegion:region];
         [hud hide:YES];
     } failure:^{
-        [UIAlertView showWithTitle:@"Network Error" message:@"Woops, we couldn't contact the routing server.  You can still schedule your ride though!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        [UIAlertView showWithTitle:@"Network Error" message:@"Woops, we couldn't contact the routing server.  You can still manage your ride though!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
         NSLog(@"%@", @"Error talking with MapQuest routing API");
         [hud hide:YES];
     }];

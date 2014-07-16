@@ -27,8 +27,6 @@ static VCUserState *sharedSingleton;
 
 @implementation VCUserState
 
-@synthesize riderState, driverState;
-
 + (VCUserState *) instance {
     if(sharedSingleton == nil){
         sharedSingleton = [[VCUserState alloc] init];
@@ -53,8 +51,8 @@ static VCUserState *sharedSingleton;
         NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
         _rideProcessState = [userDefaults objectForKey:kRideProcessStateKey];
         _driveProcessState = [userDefaults objectForKey:kDriveProcessStateKey];
-        riderState = [userDefaults objectForKey:kRiderStateKey];
-        driverState = [userDefaults objectForKey:kDriverStateKey];
+        _riderState = [userDefaults objectForKey:kRiderStateKey];
+        _driverState = [userDefaults objectForKey:kDriverStateKey];
         
         
 
@@ -83,13 +81,13 @@ static VCUserState *sharedSingleton;
     [userDefaults synchronize];
 }
 - (void) setRiderState:(NSString *) __riderState {
-    riderState = __riderState;
+    _riderState = __riderState;
     NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:self.riderState forKey:kRiderStateKey];
     [userDefaults synchronize];
 }
 - (void) setDriverState:(NSString *) __driverState {
-    driverState = __driverState;
+    _driverState = __driverState;
     NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:self.driverState forKey:kDriverStateKey];
     [userDefaults synchronize];
@@ -157,8 +155,8 @@ static VCUserState *sharedSingleton;
     _underwayRideId = nil;
     _rideProcessState = nil;
     _driveProcessState = nil;
-    self.riderState = nil;
-    self.driverState = nil;
+    _riderState = nil;
+    _driverState = nil;
 }
 
 - (BOOL) isLoggedIn {
