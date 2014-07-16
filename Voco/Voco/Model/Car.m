@@ -19,7 +19,7 @@
 @dynamic year;
 @dynamic id;
 @dynamic rides;
-
+@dynamic carPhotoUrl;
 
 + (RKEntityMapping *)createMappings:(RKObjectManager *)objectManager{
     RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Car" inManagedObjectStore:[VCCoreData managedObjectStore]];
@@ -28,7 +28,8 @@
                                                         @"license_plate" : @"licensePlate",
                                                         @"state" : @"state",
                                                         @"year" : @"year",
-                                                        @"id" : @"id"
+                                                        @"id" : @"id",
+                                                        @"car_photo" : @"carPhotoUrl"
                                                         }];
     return entityMapping;
 }

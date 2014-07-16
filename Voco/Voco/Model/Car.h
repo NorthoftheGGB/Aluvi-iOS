@@ -19,6 +19,7 @@
 @property (nonatomic, retain) NSString * state;
 @property (nonatomic, retain) NSString * year;
 @property (nonatomic, retain) NSNumber * id;
+@property (nonatomic, retain) NSString * carPhotoUrl;
 @property (nonatomic, retain) NSSet *rides;
 
 @end

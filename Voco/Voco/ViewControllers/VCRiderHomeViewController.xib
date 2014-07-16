@@ -12,7 +12,7 @@
                 <outlet property="commuteButton" destination="er7-jE-Wpi" id="kdU-sQ-p8R"/>
                 <outlet property="commuterHUD" destination="ddz-ci-yfn" id="mrB-8c-Ike"/>
                 <outlet property="currentAddressLabel" destination="Sme-XE-lJh" id="5JT-09-Xgf"/>
-                <outlet property="currentFareLabel" destination="qJX-e7-JNt" id="boX-Tk-JZ6"/>
+                <outlet property="currentFareLabel" destination="Qgp-eK-jM7" id="0ST-oX-4om"/>
                 <outlet property="departureEntryView" destination="kkl-v7-H5h" id="8Vg-1p-STe"/>
                 <outlet property="destinationEntryView" destination="RCN-Xj-T7f" id="OFZ-aH-3xs"/>
                 <outlet property="driverNameLabel" destination="fig-ZR-hzv" id="awT-CR-L7x"/>
@@ -328,11 +328,22 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zJs-jj-pRs">
-                    <rect key="frame" x="0.0" y="0.0" width="126" height="34"/>
+                    <rect key="frame" x="0.0" y="0.0" width="160" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fare:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJX-e7-JNt" customClass="VCLabelBold">
-                            <rect key="frame" x="5" y="6" width="141" height="21"/>
+                            <rect key="frame" x="10" y="6" width="88" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                    <integer key="value" value="16"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qgp-eK-jM7" userLabel="Fare Cost" customClass="VCLabelBold">
+                            <rect key="frame" x="59" y="6" width="95" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="highlightedColor"/>
