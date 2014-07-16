@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../voco-shapes/test-route-1.gpx">
-   </FileRef>
-   <FileRef
       location = "group:Voco/Voco.xcodeproj">
    </FileRef>
    <FileRef
