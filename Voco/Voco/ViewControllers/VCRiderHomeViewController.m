@@ -49,7 +49,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *currentFareLabel;
 @property (strong, nonatomic) IBOutlet DTLazyImageView *driverPhotoImageView;
 @property (strong, nonatomic) IBOutlet DTLazyImageView *licensePlateImageView;
-@property (weak, nonatomic) IBOutlet UILabel *licensePlatNumberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *licensePlateNumberLabel;
 
 // Commuter Mode
 @property (weak, nonatomic) IBOutlet UIButton *morningOrEveningButton;
@@ -679,8 +679,8 @@
     _currentFareLabel.text = @"Ride not started";
     _driverNameLabel.text= self.request.driver.fullName;
     _carTypeLabel.text = self.request.car.description;
-    _licensePlatNumberLabel.text = self.request.car.licensePlate;
-    [_driverPhotoImageView loadImageAtURL:[NSURL URLWithString:self.request.driver.driversLicenseUrl]];
+    _licensePlateNumberLabel.text = self.request.car.licensePlate;
+    [_licensePlateImageView loadImageAtURL:[NSURL URLWithString:self.request.driver.carPhotoUrl]];
     
 }
 
@@ -692,7 +692,7 @@
 
     _driverNameLabel.text = self.request.driver.fullName;
     _carTypeLabel.text = self.request.car.summary;
-    _licensePlatNumberLabel.text = self.request.car.licensePlate;
+    _licensePlateNumberLabel.text = self.request.car.licensePlate;
     
     [UIView transitionWithView:self.view
                       duration:.45f
@@ -735,6 +735,8 @@
 }
 
 - (IBAction)didTapCallDriverButton:(id)sender {
+    NSString *phoneNumber = [@"telprompt://" stringByAppendingString:_request.driver.phone];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {

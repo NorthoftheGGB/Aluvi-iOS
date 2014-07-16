@@ -32,7 +32,6 @@
     RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Ride"
                                                           inManagedObjectStore: [VCCoreData managedObjectStore]];
     
-#warning using savedState instead of forcedState to work around KVO compliancy error
     [entityMapping addAttributeMappingsFromDictionary:@{
                                                         @"id" : @"ride_id",
                                                         @"state" : @"savedState",

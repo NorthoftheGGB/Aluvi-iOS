@@ -16,9 +16,9 @@
 @dynamic lastName;
 @dynamic id;
 @dynamic driversLicenseNumber;
-@dynamic driversLicenseUrl;
+@dynamic carPhotoUrl;
+@dynamic phone;
 @dynamic rides;
-@synthesize fullName;
 
 + (RKEntityMapping *)createMappings:(RKObjectManager *)objectManager{
     RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Driver" inManagedObjectStore:[VCCoreData managedObjectStore]];
@@ -27,13 +27,14 @@
                                                         @"last_name" :@"lastName",
                                                         @"id" : @"id",
                                                         @"drivers_license_number" : @"driversLicenseNumber",
-                                                        @"drivers_license_url" : @"driversLicenseUrl"
+                                                        @"car_photo_url" : @"carPhotoUrl",
+                                                        @"phone" : @"phone"
                                                        }];
     return entityMapping;
 }
 
 
-- (NSString *)getFullName {
+- (NSString *)fullName {
     return [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
 }
 
