@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -23,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H8D-Wr-6Ns" customClass="VCButtonFontBold">
-                    <rect key="frame" x="26" y="375" width="130" height="30"/>
+                    <rect key="frame" x="26" y="386" width="130" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.87843143940000001" green="0.094117656349999995" blue="0.09803922474" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>
@@ -48,7 +48,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qkB-Bk-332" customClass="VCButtonFontBold">
-                    <rect key="frame" x="164" y="375" width="130" height="30"/>
+                    <rect key="frame" x="164" y="386" width="130" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.87843143940000001" green="0.094117656349999995" blue="0.09803922474" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>
@@ -73,7 +73,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXT-Uz-lV6" customClass="VCButtonFontBold">
-                    <rect key="frame" x="164" y="406" width="130" height="30"/>
+                    <rect key="frame" x="164" y="417" width="130" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.87843143940000001" green="0.094117656349999995" blue="0.09803922474" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>
@@ -98,7 +98,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Awz-9j-gv0" customClass="VCButtonFontBold">
-                    <rect key="frame" x="26" y="406" width="130" height="30"/>
+                    <rect key="frame" x="26" y="417" width="130" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.87843143940000001" green="0.094117656349999995" blue="0.09803922474" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>
@@ -123,7 +123,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ckd-PV-Lho" customClass="VCButtonFontBold">
-                    <rect key="frame" x="95" y="437" width="130" height="30"/>
+                    <rect key="frame" x="95" y="448" width="130" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.87843143940000001" green="0.094117656349999995" blue="0.09803922474" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>
@@ -159,20 +159,20 @@
                 <constraint firstItem="qkB-Bk-332" firstAttribute="leading" secondItem="H8D-Wr-6Ns" secondAttribute="trailing" constant="8" id="dsg-si-u6w"/>
                 <constraint firstItem="mXT-Uz-lV6" firstAttribute="leading" secondItem="Awz-9j-gv0" secondAttribute="trailing" constant="8" id="gXB-fL-C59"/>
                 <constraint firstItem="Awz-9j-gv0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="26" id="h0O-Um-14P"/>
-                <constraint firstAttribute="bottom" secondItem="mXT-Uz-lV6" secondAttribute="bottom" constant="44" id="hI5-pG-zWv"/>
+                <constraint firstAttribute="bottom" secondItem="mXT-Uz-lV6" secondAttribute="bottom" constant="33" id="hI5-pG-zWv"/>
                 <constraint firstItem="Ckd-PV-Lho" firstAttribute="top" secondItem="Awz-9j-gv0" secondAttribute="bottom" constant="1" id="haI-BS-rVb"/>
-                <constraint firstAttribute="bottom" secondItem="Ckd-PV-Lho" secondAttribute="bottom" constant="13" id="i1h-R3-OHJ"/>
-                <constraint firstAttribute="bottom" secondItem="Awz-9j-gv0" secondAttribute="bottom" constant="44" id="swg-5q-ftf"/>
+                <constraint firstAttribute="bottom" secondItem="Ckd-PV-Lho" secondAttribute="bottom" constant="2" id="i1h-R3-OHJ"/>
+                <constraint firstAttribute="bottom" secondItem="Awz-9j-gv0" secondAttribute="bottom" constant="33" id="swg-5q-ftf"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
         <view contentMode="scaleToFill" id="mDj-An-QgP" userLabel="Location HUD">
-            <rect key="frame" x="0.0" y="0.0" width="307" height="42"/>
+            <rect key="frame" x="0.0" y="0.0" width="307" height="40"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afx-O4-19K" userLabel="Current Location">
-                    <rect key="frame" x="9" y="6" width="30" height="30"/>
+                    <rect key="frame" x="9" y="4" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="3sV-Fw-ryr"/>
@@ -188,7 +188,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7XZ-mg-COX" userLabel="Zoom To Bounds">
-                    <rect key="frame" x="268" y="6" width="30" height="30"/>
+                    <rect key="frame" x="268" y="4" width="30" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="zoom-ride-bounds.png">
                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -211,7 +211,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kap-iR-Fyb" customClass="VCLabel">
-                    <rect key="frame" x="99" y="0.0" width="108" height="21"/>
+                    <rect key="frame" x="99" y="0.0" width="108" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="0.87843143940000001" green="0.094117656349999995" blue="0.09803922474" alpha="1" colorSpace="deviceRGB"/>
@@ -239,8 +239,44 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
+        <view contentMode="scaleToFill" id="Su5-Mn-iWe">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <view contentMode="scaleToFill" id="uhI-nF-vZt">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="45"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tzG-80-FUQ">
+                    <rect key="frame" x="283" y="8" width="30" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="call-button.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" image="call-button-select.png"/>
+                    <state key="highlighted" image="call-button-select.png"/>
+                </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="First Last" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sxL-we-2qT" customClass="VCLabel">
+                    <rect key="frame" x="0.0" y="0.0" width="246" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
     </objects>
     <resources>
+        <image name="call-button-select.png" width="30" height="30"/>
+        <image name="call-button.png" width="30" height="30"/>
         <image name="current-location-arrow-select.png" width="30" height="30"/>
         <image name="current-location-arrow.png" width="30" height="30"/>
         <image name="zoom-ride-bounds-select.png" width="30" height="30"/>
