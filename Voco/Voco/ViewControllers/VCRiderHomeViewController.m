@@ -90,7 +90,7 @@
 
 - (void) setRequest:(Request *)ride {
     _request = ride;
-    self.transport = ride;
+    self.transit = ride;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -145,7 +145,7 @@
 - (void) onDemandRideFoundNotification:(id) sender{
     [[VCCoreData managedObjectContext] refreshObject:self.request mergeChanges:YES];
     [self showRideDetailsDrawer];
-    _cancelRideButton.hidden = YES;
+    _cancelRideButton.hidden = NO;
     if(_progressHUD != nil) {
         [_progressHUD hide:YES];
     }
@@ -178,9 +178,11 @@
 
 
 - (IBAction)didTapCommute:(id)sender {
+    
+    //[[LELog sharedInstance] log:@"%@ Did Tap Commute", [VCUserState us]];
     self.request = (Request *) [NSEntityDescription insertNewObjectForEntityForName:@"Request" inManagedObjectContext:[VCCoreData managedObjectContext]];
     self.request.requestType = kRideRequestTypeCommuter;
-    self.transport = self.request;
+    self.transit = self.request;
     
     [self showRouteRequestInterface];
     [self reverseGeocodeMapCenterForHud];
@@ -193,9 +195,11 @@
 }
 
 - (IBAction)didTapOnDemand:(id)sender {
+
+    [[LELog sharedInstance] log:@"Did Tap On Demand"];
     self.request = (Request *) [NSEntityDescription insertNewObjectForEntityForName:@"Request" inManagedObjectContext:[VCCoreData managedObjectContext]];
     self.request.requestType = kRideRequestTypeOnDemand;
-    self.transport = self.request;
+    self.transit = self.request;
     
     [self showRouteRequestInterface];
     [self reverseGeocodeMapCenterForHud];
@@ -686,7 +690,9 @@
 
 - (void) showRideDetailsDrawer {
 
-    
+    _driverNameLabel.text = self.request.driver.fullName;
+    _carTypeLabel.text = self.request.car.summary;
+    _licensePlatNumberLabel.text = self.request.car.licensePlate;
     
     [UIView transitionWithView:self.view
                       duration:.45f

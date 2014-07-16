@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "Trip.h"
+#import "Transit.h"
 
-@implementation Trip
+@implementation Transit
 @dynamic ride_id;
 @dynamic meetingPointLatitude;
 @dynamic meetingPointLongitude;

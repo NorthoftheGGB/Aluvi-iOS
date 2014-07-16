@@ -37,7 +37,7 @@
                                     <rect key="frame" x="39" y="153" width="246" height="200"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
-                                <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HWX-Nc-rV4" customClass="VCTextField">
+                                <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HWX-Nc-rV4" customClass="VCPhoneTextField">
                                     <rect key="frame" x="95" y="199" width="182" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -53,7 +53,7 @@
                                         <action selector="editDidBegin:" destination="-1" eventType="editingDidBegin" id="8Zt-zz-dmQ"/>
                                     </connections>
                                 </textField>
-                                <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oUS-7v-08g" customClass="VCTextField">
+                                <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oUS-7v-08g" customClass="VCPasswordTextField">
                                     <rect key="frame" x="95" y="239" width="182" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -144,7 +144,7 @@
                                         <action selector="editDidBegin:" destination="-1" eventType="editingDidBegin" id="vM2-Fm-6bF"/>
                                     </connections>
                                 </textField>
-                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yqR-wC-tPa" customClass="VCTextField">
+                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yqR-wC-tPa" customClass="VCNameTextField">
                                     <rect key="frame" x="187" y="159" width="90" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <constraints>

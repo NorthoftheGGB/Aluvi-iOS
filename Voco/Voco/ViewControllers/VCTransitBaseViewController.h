@@ -10,9 +10,9 @@
 #import <MapKit/MapKit.h>
 #import "Request.h"
 
-@interface VCTripBaseViewController : UIViewController
+@interface VCTransitBaseViewController : UIViewController
 
-@property (strong, nonatomic) Trip * transport;
+@property (strong, nonatomic) Transit * transit;
 
 // Map
 @property (strong, nonatomic) MKMapView * map;

@@ -21,7 +21,6 @@
 @property (nonatomic, retain) NSNumber * id;
 @property (nonatomic, retain) NSSet *rides;
 
-@property (nonatomic, readonly) NSString * description;
 @end
 
 @interface Car (CoreDataGeneratedAccessors)
@@ -33,5 +32,7 @@
 - (void)removeRidesObject:(Request *)value;
 - (void)addRides:(NSSet *)values;
 - (void)removeRides:(NSSet *)values;
+
+- (NSString *) summary;
 
 @end

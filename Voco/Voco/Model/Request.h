@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "VCRestKitMappableObject.h"
 #import <TransitionKit.h>
-#import "Trip.h"
+#import "Transit.h"
 
 #define kRideRequestTypeOnDemand @"on_demand"
 #define kRideRequestTypeCommuter @"commuter"
@@ -36,7 +36,7 @@
 
 @class Car, Driver;
 
-@interface Request : Trip <VCRestKitMappableObject>
+@interface Request : Transit <VCRestKitMappableObject>
 
 @property (nonatomic, retain) NSNumber * request_id;
 @property (nonatomic, retain) NSString * requestType;
@@ -59,5 +59,6 @@
 
 
 + (Request *) requestWithRideId: (NSNumber *) rideId;
+
 
 @end

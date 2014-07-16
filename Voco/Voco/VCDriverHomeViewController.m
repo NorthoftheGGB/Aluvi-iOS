@@ -49,7 +49,7 @@
 
 - (void) setRide:(Ride *)ride {
     _ride = ride;
-    self.transport = ride;
+    self.transit = ride;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -71,7 +71,7 @@
     [super viewDidLoad];
     
     [self resetButtons];
-    if(self.transport != nil){
+    if(self.transit != nil){
         [self showRide];
     }
     
@@ -117,7 +117,7 @@
     _acceptButton.hidden = NO;
     _declineButton.hidden = NO;
     self.locationTypeLabel.text = @"Pickup Location";
-    self.addressLabel.text = self.transport.meetingPointPlaceName;
+    self.addressLabel.text = self.transit.meetingPointPlaceName;
     [self addLocationHudIfNotDisplayed];
 }
 
@@ -126,7 +126,7 @@
     _riderPickedUpButton.hidden = NO;
     _cancelRideButton.hidden = NO;
     self.locationTypeLabel.text = @"Pickup Location";
-    self.addressLabel.text = self.transport.meetingPointPlaceName;
+    self.addressLabel.text = self.transit.meetingPointPlaceName;
     [self addLocationHudIfNotDisplayed];
 
 }
@@ -136,7 +136,7 @@
     _cancelRideButton.hidden = NO;
     _rideCompletedButton.hidden = NO;
     self.locationTypeLabel.text = @"Drop Off Location";
-    self.addressLabel.text = self.transport.dropOffPointPlaceName;
+    self.addressLabel.text = self.transit.dropOffPointPlaceName;
     [self addLocationHudIfNotDisplayed];
 
 }
@@ -161,7 +161,7 @@
                                                           longitude:[self.ride.meetingPointLongitude doubleValue]]
                andDropOffPoint:[[CLLocation alloc] initWithLatitude:[self.ride.dropOffPointLatitude doubleValue]
                                                           longitude:[self.ride.dropOffPointLongitude doubleValue]]];
-    self.title = [self.transport routeDescription];
+    self.title = [self.transit routeDescription];
 }
 
 - (void) showRideCompletedInterface {
@@ -195,7 +195,7 @@
 
 - (IBAction)didTapAccept:(id)sender {
     VCRideDriverAssignment * assignment = [[VCRideDriverAssignment alloc] init];
-    assignment.rideId = self.transport.ride_id;
+    assignment.rideId = self.transit.ride_id;
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Accepting Ride";
@@ -206,9 +206,9 @@
         // but at a later date we may add a step that waits for the rider to confirm that
         // they know about the ride being scheduled (handshake)
         [VCUserState instance].driveProcessState = kUserStateRideAccepted;
-        [VCUserState instance].underwayRideId = self.transport.ride_id;
+        [VCUserState instance].underwayRideId = self.transit.ride_id;
         
-        [((Ride *) self.transport) markOfferAsAccepted];
+        [((Ride *) self.transit) markOfferAsAccepted];
         
         [hud hide:YES];
         [self showPickupInterface];
@@ -218,10 +218,11 @@
         
         if(operation.HTTPRequestOperation.response.statusCode == 403){
             // already accepted by another driver
-            [((Ride *) self.transport) markOfferAsClosed];
+            [((Ride *) self.transit) markOfferAsClosed];
 
             [UIAlertView showWithTitle:@"Ride no longer available!" message:@"Unfortunately another driver beat you to this ride!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
 
+                [self resetInterface];
                 [[VCDialogs instance] offerNextRideToDriver];
             }];
         }
@@ -235,7 +236,7 @@
 - (IBAction)didTapDecline:(id)sender {
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Declining";
-    [VCDriverApi cancelRide:self.transport.ride_id
+    [VCDriverApi cancelRide:self.transit.ride_id
                     success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                         [self resetButtons];
                         [self clearMap];
@@ -251,11 +252,6 @@
                         
                     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                         [hud hide:YES];
-                        [VCUserState instance].underwayRideId = nil;
-                        self.map.userTrackingMode = MKUserTrackingModeFollow;
-                        self.map.showsUserLocation = YES;
-                        [_driverLocationHud removeFromSuperview];
-                        
                     }];
     
 }
@@ -303,11 +299,6 @@
                                             // TODO: need to cache this action and try again later
                                             // how else will the server be notified ? could be a bad edge case
                                             [hud hide:YES];
-                                            [VCUserState instance].underwayRideId = nil;
-                                            [self resetButtons];
-                                            [self clearMap];
-                                            [VCUserState instance].driveProcessState = kUserStateIdle;
-
                                         }];
     
 }
@@ -328,7 +319,6 @@
 
                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                             [hud hide:YES];
-                                            [VCUserState instance].underwayRideId = nil;
 
                                         }];
 }

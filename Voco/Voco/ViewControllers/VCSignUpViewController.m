@@ -105,7 +105,7 @@
             break;
         case kPasswordFieldTag:
             if([_passwordField validate]){
-            [_emailField becomeFirstResponder];
+                [_emailField becomeFirstResponder];
             }
             break;
         case kEmailFieldTag:
