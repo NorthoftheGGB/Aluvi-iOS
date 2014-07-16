@@ -735,6 +735,8 @@
 }
 
 - (IBAction)didTapCallDriverButton:(id)sender {
+    NSString *phoneNumber = [@"telprompt://" stringByAppendingString:_request.driver.phone];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {

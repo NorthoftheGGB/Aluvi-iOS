@@ -17,10 +17,9 @@
 @property (nonatomic, retain) NSString * lastName;
 @property (nonatomic, retain) NSNumber * id;
 @property (nonatomic, retain) NSString * driversLicenseNumber;
-@property (nonatomic, retain) NSString * driversLicenseUrl;
+@property (nonatomic, retain) NSString * carPhotoUrl;
+@property (nonatomic, retain) NSString * phone;
 @property (nonatomic, retain) NSSet *rides;
-
-@property (nonatomic, readonly) NSString * fullName;
 @end
 
 @interface Driver (CoreDataGeneratedAccessors)
@@ -31,5 +30,7 @@
 - (void)removeRidesObject:(Request *)value;
 - (void)addRides:(NSSet *)values;
 - (void)removeRides:(NSSet *)values;
+
+- (NSString *)fullName;
 
 @end
