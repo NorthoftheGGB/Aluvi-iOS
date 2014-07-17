@@ -14,7 +14,7 @@
 #import "VCDriverVideoTutorialController.h"
 #import "VCRequestsViewController.h"
 #import "VCDriverApi.h"
-#import "VCRidesViewController.h"
+#import "VCFaresViewController.h"
 #import "VCCommuterPassViewController.h"
 #import "VCRiderPaymentsViewController.h"
 
@@ -253,7 +253,7 @@ static void * XXContext = &XXContext;
 }
 
 - (IBAction)didTapDriverScheduledFares:(id)sender {
-    VCRidesViewController * vc = [[VCRidesViewController alloc] init];
+    VCFaresViewController * vc = [[VCFaresViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

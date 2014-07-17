@@ -107,7 +107,7 @@
     [self resetButtons];
     NSDictionary * info = [notification userInfo];
     NSNumber * rideId = [info objectForKey: @"ride_id"];
-    NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"Ride"];
+    NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"Fare"];
     NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ride_id = %@", rideId];
     [request setPredicate:predicate];
     NSError * error;

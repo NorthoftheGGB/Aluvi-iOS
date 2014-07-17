@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VCRidesViewController : UIViewController
+@interface VCFaresViewController : UIViewController
 
 @end

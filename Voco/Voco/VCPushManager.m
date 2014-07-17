@@ -227,11 +227,6 @@
         }
         if([rides count] > 0){
             Request * request = [rides objectAtIndex:0];
-            NSError * error;
-            [request fireEvent:kEventRideFound userInfo:@{} error:&error];
-            if(error != nil) {
-                [WRUtilities criticalError:error];
-            }
             
             if([request.requestType isEqualToString:kRideRequestTypeOnDemand]) {
                 [[VCDialogs instance] rideFound: [payload objectForKey:VC_PUSH_REQUEST_ID_KEY]];
@@ -269,7 +264,7 @@
 + (void) handleRideAssignedNotification:(NSDictionary *) payload {
     [VCDriverApi refreshActiveRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSNumber * rideId = [payload objectForKey:VC_PUSH_RIDE_ID_KEY];
-        NSFetchRequest * fetch = [[NSFetchRequest alloc] initWithEntityName:@"Ride"];
+        NSFetchRequest * fetch = [[NSFetchRequest alloc] initWithEntityName:@"Fare"];
         NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ride_id = %@", rideId];
         [fetch setPredicate:predicate];
         NSError * error;

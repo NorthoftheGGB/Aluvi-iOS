@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Payment.h"
 
 @interface VCRiderRecieptDetailViewController : UIViewController
+
+@property (nonatomic, strong) Payment * payment;
 
 @end

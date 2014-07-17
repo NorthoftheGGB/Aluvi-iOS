@@ -57,7 +57,7 @@
      NSDictionary *argsDict = nil;
      BOOL match = [pathMatcher matchesPath:relativePath tokenizeQueryStrings:NO parsedArguments:&argsDict];
      if (match) {
-     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Ride"];
+     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Fare"];
      return fetchRequest;
      }
      

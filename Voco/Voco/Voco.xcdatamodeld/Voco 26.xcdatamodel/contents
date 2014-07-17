@@ -46,11 +46,12 @@
     </entity>
     <entity name="Payment" representedClassName="Payment" syncable="YES">
         <attribute name="amountCents" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="attribute" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="capturedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="driver_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="fare_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="motive" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ride_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="stripeChargeStatus" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="driver" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Driver" inverseName="payments" inverseEntity="Driver" syncable="YES"/>
@@ -97,7 +98,7 @@
         <element name="Driver" positionX="0" positionY="0" width="128" height="150"/>
         <element name="Fare" positionX="0" positionY="0" width="128" height="208"/>
         <element name="Offer" positionX="0" positionY="0" width="128" height="195"/>
-        <element name="Payment" positionX="9" positionY="153" width="128" height="210"/>
+        <element name="Payment" positionX="9" positionY="153" width="128" height="225"/>
         <element name="Request" positionX="0" positionY="0" width="128" height="420"/>
         <element name="Rider" positionX="0" positionY="0" width="128" height="135"/>
     </elements>

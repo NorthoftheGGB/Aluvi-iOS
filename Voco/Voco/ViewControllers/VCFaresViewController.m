@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCRidesViewController.h"
+#import "VCFaresViewController.h"
 #import "VCDriverHomeViewController.h"
 #import "Fare.h"
 #import "VCDriverApi.h"
 #import "NSDate+Pretty.h"
 
-@interface VCRidesViewController () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
+@interface VCFaresViewController () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -20,7 +20,7 @@
 
 @end
 
-@implementation VCRidesViewController
+@implementation VCFaresViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,7 +37,7 @@
         return _fetchedResultsController;
     }
     
-    NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Ride"];
+    NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Fare"];
     
     NSSortDescriptor *sort = [[NSSortDescriptor alloc]
                               initWithKey:@"pickupTime" ascending:YES];

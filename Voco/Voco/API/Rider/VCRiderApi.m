@@ -15,6 +15,7 @@
 #import "VCRideIdentity.h"
 #import "VCUserState.h"
 #import "VCRequestUpdate.h"
+#import "Payment.h"
 
 @implementation VCRiderApi
 
@@ -24,6 +25,7 @@
     [VCDevice createMappings:objectManager];
     [Request createMappings:objectManager];
     [VCRequestUpdate createMappings:objectManager];
+    [Payment createMappings:objectManager];
     
     // Responses (some have not been moved here yet)
     {
@@ -51,15 +53,10 @@
                                             
                                             NSLog(@"Ride request accepted by server!");
                                             
-                                            NSError * error = nil;
-                                            [ride fireEvent:kEventRideRequested userInfo:@{} error:&error];
-                                            if(error != nil){
-                                                [WRUtilities criticalError:error];
-                                            }
-                                            
                                             VCRideRequestCreated * response = mappingResult.firstObject;
                                             ride.request_id = response.rideRequestId;
                                             
+                                            NSError * error;
                                             [[VCCoreData managedObjectContext] save:&error];
                                             if(error != nil){
                                                 [WRUtilities criticalError:error];
@@ -94,10 +91,6 @@
                                                 [[LELog sharedInstance] log:@"API: cancel ride success"];
                                                 
                                                 NSError * error;
-                                                [ride fireEvent:kEventRideCancelledByRider userInfo:@{} error:&error];
-                                                if(error != nil){
-                                                    [WRUtilities criticalError:error];
-                                                }
                                                 [[VCCoreData managedObjectContext] save:&error];
                                                 
                                                 success(operation, mappingResult);
@@ -120,10 +113,6 @@
                                                 [[LELog sharedInstance] log:@"API: cancel request success"];
                                                 
                                                 NSError * error = nil;
-                                                [ride fireEvent:kEventRideCancelledByRider userInfo:@{} error:&error];
-                                                if(error != nil){
-                                                    [WRUtilities criticalError:error];
-                                                }
                                                 
                                                 [[VCCoreData managedObjectContext] deleteObject:ride];
                                                 [[VCCoreData managedObjectContext] save:&error];

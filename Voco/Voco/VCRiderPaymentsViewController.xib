@@ -9,6 +9,7 @@
                 <outlet property="STPViewContainer" destination="ow9-e5-77P" id="gaI-ys-enk"/>
                 <outlet property="cardInfoLabel" destination="Rr2-NZ-LtM" id="8b5-gJ-UsH"/>
                 <outlet property="recieptListTableView" destination="z10-B9-CJ4" id="yR4-ig-Blj"/>
+                <outlet property="tableView" destination="z10-B9-CJ4" id="Hfl-m3-Haf"/>
                 <outlet property="updateCardButton" destination="ETd-Ez-9HB" id="PML-Gb-BFy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -80,6 +81,10 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="201" id="vO1-cA-gQG"/>
                     </constraints>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="fWr-Qt-AFw"/>
+                        <outlet property="delegate" destination="-1" id="Vuq-Uc-nre"/>
+                    </connections>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ow9-e5-77P">
                     <rect key="frame" x="0.0" y="102" width="320" height="69"/>

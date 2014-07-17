@@ -91,7 +91,7 @@
 @implementation VCRiderHomeViewController
 
 
-- (void) setRequest:(Ride *)ride {
+- (void) setRequest:(Request *)ride {
     _request = ride;
     self.transit = ride;
 }
@@ -157,7 +157,7 @@
 }
 
 - (void) commuterRideInvokedNotification:(id) sender{
-    Ride * request = ((NSNotification *) sender).object;
+    Request * request = ((NSNotification *) sender).object;
     self.request = request;
     [self showCommuterRideDetailsOverlay];
     [self showLocationHudIfNotDisplayed];
@@ -183,7 +183,7 @@
 - (IBAction)didTapCommute:(id)sender {
     
     [[LELog sharedInstance] log:@"%@ Did Tap Commute"];
-    self.request = (Ride *) [NSEntityDescription insertNewObjectForEntityForName:@"Request" inManagedObjectContext:[VCCoreData managedObjectContext]];
+    self.request = (Request *) [NSEntityDescription insertNewObjectForEntityForName:@"Request" inManagedObjectContext:[VCCoreData managedObjectContext]];
     self.request.requestType = kRideRequestTypeCommuter;
     self.transit = self.request;
     
@@ -200,7 +200,7 @@
 - (IBAction)didTapOnDemand:(id)sender {
 
     [[LELog sharedInstance] log:@"Did Tap On Demand"];
-    self.request = (Ride *) [NSEntityDescription insertNewObjectForEntityForName:@"Request" inManagedObjectContext:[VCCoreData managedObjectContext]];
+    self.request = (Request *) [NSEntityDescription insertNewObjectForEntityForName:@"Request" inManagedObjectContext:[VCCoreData managedObjectContext]];
     self.request.requestType = kRideRequestTypeOnDemand;
     self.transit = self.request;
     

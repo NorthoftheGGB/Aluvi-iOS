@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-#import "Ride.h"
+#import "Fare.h"
 
 @interface VCTransitBaseViewController : UIViewController
 

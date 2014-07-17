@@ -18,9 +18,25 @@
 @dynamic dropOffPointPlaceName;
 @dynamic desiredArrival;
 @dynamic pickupTime;
+@dynamic state;
+
+@dynamic savedState;
+@synthesize forcedState;
 
 - (NSString *) routeDescription {
     return [NSString stringWithFormat:@"%@ to %@", self.meetingPointPlaceName, self.dropOffPointPlaceName];
 }
+
+
+// Manually set the state, for restkit object mapping
+- (void) setForcedState: (NSString*) state__ {
+    self.savedState = state__;
+}
+
+// forced state never has a value
+- (NSString *) forcedState {
+    return @"";
+}
+
 
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "VCRiderRecieptDetailViewController.h"
+#import "VCUtilities.h"
+#import "NSDate+Pretty.h"
 
 @interface VCRiderRecieptDetailViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *recieptTextView;
@@ -27,7 +29,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    NSString * receipt = [[NSString alloc] init];
+    receipt = [receipt stringByAppendingString:[NSString stringWithFormat:@"Ride Id: %@", _payment.ride_id]];
+    receipt = [receipt stringByAppendingString:[NSString stringWithFormat:@"\n\nDate: %@", [_payment.createdAt formatted]]];
+    receipt = [receipt stringByAppendingString:[NSString stringWithFormat:@"\n\nPayment: %@", [VCUtilities formatCurrencyFromCents: _payment.amountCents]]];
+    receipt = [receipt stringByAppendingString:[NSString stringWithFormat:@"\n\nStatus: %@", _payment.stripeChargeStatus]];
+    receipt = [receipt stringByAppendingString:[NSString stringWithFormat:@"\n\nDate Charged: %@", [_payment.capturedAt formatted]]];
+    receipt = [receipt stringByAppendingString:[NSString stringWithFormat:@"\n\nPayment Type: %@", _payment.motive]];
+    [_recieptTextView setText:receipt];
 }
 
 - (void)didReceiveMemoryWarning
