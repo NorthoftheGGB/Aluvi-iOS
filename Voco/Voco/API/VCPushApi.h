@@ -12,6 +12,7 @@
 #define VC_PUSH_OFFER_ID_KEY @"offer_id"
 #define VC_PUSH_REQUEST_ID_KEY @"request_id"
 #define VC_PUSH_RIDE_ID_KEY @"ride_id"
+#define VC_PUSH_AMOUNT_KEY @"amount"
 
 @interface VCPushApi : NSObject
 

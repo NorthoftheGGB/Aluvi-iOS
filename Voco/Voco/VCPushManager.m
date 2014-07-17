@@ -14,7 +14,6 @@
 
 #import "VCDevice.h"
 #import "WRUtilities.h"
-#import "VCRideOffer.h"
 #import "VCDialogs.h"
 #import "VCUserState.h"
 #import "VCCoreData.h"
@@ -192,10 +191,19 @@
         }
     } else if([type isEqualToString:@"ride_receipt"]){
         NSNumber * rideId = [payload objectForKey:VC_PUSH_RIDE_ID_KEY];
+        NSNumber * amount = [payload objectForKey:VC_PUSH_AMOUNT_KEY];
         if([[VCUserState instance].underwayRideId isEqualToNumber:rideId]){
             [VCUserState instance].underwayRideId = nil;
             [VCUserState instance].rideProcessState = kUserStateIdle;
-            [[VCDialogs instance] showRideReceipt:rideId];
+            [[VCDialogs instance] showRideReceipt:rideId amount:amount];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"ride_complete" object:payload userInfo:@{}];
+        }
+    } else if([type isEqualToString:@"ride_payment_problem"]){
+        NSNumber * rideId = [payload objectForKey:VC_PUSH_RIDE_ID_KEY];
+        if([[VCUserState instance].underwayRideId isEqualToNumber:rideId]){
+            [VCUserState instance].underwayRideId = nil;
+            [VCUserState instance].rideProcessState = kUserStateIdle;
+            [[VCDialogs instance] showRidePaymentProblem:rideId];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"ride_complete" object:payload userInfo:@{}];
         }
     } else if([type isEqualToString:@"user_state_change"]){

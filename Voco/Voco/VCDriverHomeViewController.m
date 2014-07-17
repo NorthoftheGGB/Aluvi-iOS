@@ -14,8 +14,10 @@
 #import "VCDialogs.h"
 #import "VCButtonFontBold.h"
 #import "VCUserState.h"
-#import "VCRideDriverAssignment.h"
+#import "VCFareDriverAssignment.h"
 #import "VCDriverApi.h"
+#import "VCFare.h"
+#import "VCUtilities.h"
 #import "VCLabelBold.h"
 
 
@@ -190,18 +192,23 @@
 
 - (void) showRideCompletedInterface {
     [_driverLocationHud removeFromSuperview];
-    [self showReceipt];
     [self resetButtons];
     [self clearMap];
 }
 
-- (void) showReceipt {
+- (void) showReceipt: (NSNumber *) earnings {
+
+
     [UIAlertView showWithTitle:@"Receipt"
-                       message:@"This is a placeholder for the receipt view.  Thanks for driving!"
+                       message:[NSString stringWithFormat:@"Thanks for driving.  You earned %@ on this ride.",
+                                [VCUtilities formatCurrencyFromCents:earnings]]
              cancelButtonTitle:@"OK"
-             otherButtonTitles:nil
+             otherButtonTitles:@[@"Detailed Receipt"]
                       tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                           [VCUserState instance].driveProcessState = kUserStateIdle;
+                          if (buttonIndex != 0){
+                              // Launch the payments page for this ride
+                          }
                           
                       }];
 }
@@ -218,7 +225,7 @@
 }
 
 - (IBAction)didTapAccept:(id)sender {
-    VCRideDriverAssignment * assignment = [[VCRideDriverAssignment alloc] init];
+    VCFareDriverAssignment * assignment = [[VCFareDriverAssignment alloc] init];
     assignment.rideId = self.transit.ride_id;
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -290,7 +297,7 @@
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Notifying Server";
-    VCRideDriverAssignment * rideIdentity = [[VCRideDriverAssignment alloc] init];
+    VCFareDriverAssignment * rideIdentity = [[VCFareDriverAssignment alloc] init];
     rideIdentity.rideId = [VCUserState instance].underwayRideId;
     [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_RIDE_PICKUP parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
@@ -308,7 +315,7 @@
     // Send cancel request to server
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Cancelling";
-    VCRideDriverAssignment * rideIdentity = [[VCRideDriverAssignment alloc] init];
+    VCFareDriverAssignment * rideIdentity = [[VCFareDriverAssignment alloc] init];
     rideIdentity.rideId = [VCUserState instance].underwayRideId;
     [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_DRIVER_CANCELLED parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
@@ -331,13 +338,15 @@
 - (IBAction)didTapRideCompleted:(id)sender {
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Notifying Server";
-    VCRideDriverAssignment * rideIdentity = [[VCRideDriverAssignment alloc] init];  // TODO objects like this can be generated from
+    VCFareDriverAssignment * rideIdentity = [[VCFareDriverAssignment alloc] init];  // TODO objects like this can be generated from
     // global state of the app, i.e. in another method
     rideIdentity.rideId = [VCUserState instance].underwayRideId;
     [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_RIDE_ARRIVED parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             [VCUserState instance].driveProcessState = kUserStateRideCompleted;
                                             [self showRideCompletedInterface];
+                                            VCFare * fare = mappingResult.firstObject;
+                                            [self showReceipt:fare.driverEarnings];
                                             [hud hide:YES];
                                             [VCUserState instance].underwayRideId = nil;
 

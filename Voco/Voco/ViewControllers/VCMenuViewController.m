@@ -15,6 +15,8 @@
 #import "VCRequestsViewController.h"
 #import "VCDriverApi.h"
 #import "VCRidesViewController.h"
+#import "VCCommuterPassViewController.h"
+#import "VCRiderPaymentsViewController.h"
 
 static void * XXContext = &XXContext;
 
@@ -32,12 +34,14 @@ static void * XXContext = &XXContext;
 @property (weak, nonatomic) IBOutlet UISwitch *onDutySwitch;
 @property (nonatomic) BOOL appeared;
 
+@property (nonatomic) NSInteger driverReset;
+
 // Rider Menu
 - (IBAction)didTapUserMode:(id)sender;
 - (IBAction)didTapProfile:(id)sender;
 - (IBAction)didTapPaymentInfo:(id)sender;
 - (IBAction)didTapScheduledRides:(id)sender;
-- (IBAction)didTapCummuterPass:(id)sender;
+- (IBAction)didTapCommuterPass:(id)sender;
 - (IBAction)didTapAboutUs:(id)sender;
 - (IBAction)didTapTermsAndConditions:(id)sender;
 - (IBAction)didTapSupport:(id)sender;
@@ -212,6 +216,8 @@ static void * XXContext = &XXContext;
 }
 
 - (IBAction)didTapPaymentInfo:(id)sender {
+    VCRiderPaymentsViewController * vc = [[VCRiderPaymentsViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)didTapScheduledRides:(id)sender {
@@ -219,7 +225,9 @@ static void * XXContext = &XXContext;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (IBAction)didTapCummuterPass:(id)sender {
+- (IBAction)didTapCommuterPass:(id)sender {
+    VCCommuterPassViewController * vc = [[VCCommuterPassViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)didTapAboutUs:(id)sender {
@@ -298,6 +306,14 @@ static void * XXContext = &XXContext;
     }
     
     
+}
+
+- (IBAction)driverResetDown:(id)sender {
+    _driverReset++;
+}
+
+- (IBAction)driverResetUp:(id)sender {
+    _driverReset--;
 }
 
 - (void)handleSwipeUpFrom:(UIGestureRecognizer*)recognizer {

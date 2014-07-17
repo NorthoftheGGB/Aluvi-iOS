@@ -8,10 +8,12 @@
 
 #import "VCDialogs.h"
 #import <RestKit.h>
-#import "VCRideDriverAssignment.h"
+#import "VCFareDriverAssignment.h"
 #import "VCUserState.h"
 #import "VCDriverApi.h"
 #import "NSDate+Pretty.h"
+#import "VCUtilities.h"
+
 
 static VCDialogs *sharedSingleton;
 
@@ -137,15 +139,33 @@ static VCDialogs *sharedSingleton;
     
 }
 
-- (void) showRideReceipt: (NSNumber *) rideId {
+- (void) showRideReceipt: (NSNumber *) rideId amount:(NSNumber *) amount {
+  
+    
     [UIAlertView showWithTitle:@"Receipt"
-                       message:@"This is a placeholder for the ride receipt.  Thanks for riding!"
+                       message:[NSString stringWithFormat:
+                                @"Thanks for riding.  We have charged your card for a total of %@",
+                                 [VCUtilities formatCurrencyFromCents:amount]]
+             cancelButtonTitle:@"OK"
+             otherButtonTitles:@[@"Detailed Receipt"]
+                      tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                          [VCUserState instance].rideProcessState = kUserStateIdle;
+                          if (buttonIndex != 0){
+                              // Launch the payments page for this ride
+                          }
+                      }];
+}
+
+- (void) showRidePaymentProblem: (NSNumber *) rideId {
+    [UIAlertView showWithTitle:@"Payment Problem"
+                       message:@"There was a problem processing the payment for your ride.  Voco will contact you to resolve this matter"
              cancelButtonTitle:@"OK"
              otherButtonTitles:nil
                       tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                           [VCUserState instance].rideProcessState = kUserStateIdle;
                       }];
 }
+
 
 - (void) commuterRideFound: (Request *) request {
     [UIAlertView showWithTitle:@"Commuter Ride Found!"

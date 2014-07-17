@@ -11,7 +11,7 @@
 #import "WRUtilities.h"
 #import "VCRiderViewController.h"
 #import "VCUserState.h"
-#import "VCRideDriverAssignment.h"
+#import "VCFareDriverAssignment.h"
 #import "VCRideIdentity.h"
 #import "VCGeolocation.h"
 
@@ -111,7 +111,7 @@ static void * XXContext = &XXContext;
 
 - (IBAction)didTapCancelRide:(id)sender {
     // Send cancel request to server
-    VCRideDriverAssignment * rideIdentity = [[VCRideDriverAssignment alloc] init];
+    VCFareDriverAssignment * rideIdentity = [[VCFareDriverAssignment alloc] init];
     rideIdentity.rideId = [VCUserState instance].underwayRideId;
     [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_DRIVER_CANCELLED parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
@@ -132,7 +132,7 @@ static void * XXContext = &XXContext;
 }
 
 - (IBAction)didTapPickedUpRider:(id)sender {
-    VCRideDriverAssignment * rideIdentity = [[VCRideDriverAssignment alloc] init];
+    VCFareDriverAssignment * rideIdentity = [[VCFareDriverAssignment alloc] init];
     rideIdentity.rideId = [VCUserState instance].underwayRideId;
     [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_RIDE_PICKUP parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
@@ -143,7 +143,7 @@ static void * XXContext = &XXContext;
 }
 
 - (IBAction)didTapRideCompleted:(id)sender {
-    VCRideDriverAssignment * rideIdentity = [[VCRideDriverAssignment alloc] init];  // TODO objects like this can be generated from
+    VCFareDriverAssignment * rideIdentity = [[VCFareDriverAssignment alloc] init];  // TODO objects like this can be generated from
                                                                     // global state of the app, i.e. in another method
     rideIdentity.rideId = [VCUserState instance].underwayRideId;
     [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_RIDE_ARRIVED parameters:nil
