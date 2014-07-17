@@ -7,8 +7,26 @@
 //
 
 #import "VCDriverPaymentsViewController.h"
+#import "VCBankAccountTextField.h"
+#import "VCRoutingNumberTextField.h"
+#import "VCTextField.h"
+#import "VCTextField.h"
+#import "VCLabel.h"
+#import "VCLabelBold.h"
+#import "VCButtonFontBold.h"
+
 
 @interface VCDriverPaymentsViewController ()
+
+@property (weak, nonatomic) IBOutlet VCTextField *accountNameTextField;
+@property (weak, nonatomic) IBOutlet VCBankAccountTextField *accountNumberTextField;
+@property (weak, nonatomic) IBOutlet VCRoutingNumberTextField *routingNumberTextField;
+@property (weak, nonatomic) IBOutlet VCButtonFontBold *changeBankInfoButton;
+@property (weak, nonatomic) IBOutlet UITableView *receiptsTableViewCell;
+
+
+- (IBAction)didTapChangeBankInfo:(id)sender;
+
 
 @end
 
@@ -18,6 +36,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        
+    
         // Custom initialization
     }
     return self;
@@ -26,7 +46,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.title = @"Payments";
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,4 +55,6 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)didTapChangeBankInfo:(id)sender {
+}
 @end
