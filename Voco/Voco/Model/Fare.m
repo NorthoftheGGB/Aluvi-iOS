@@ -6,15 +6,15 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "Ride.h"
+#import "Fare.h"
 #import "Offer.h"
 #import "VCApi.h"
 
-@interface Ride ()
+@interface Fare ()
 
 @end
 
-@implementation Ride
+@implementation Fare
 
 @dynamic car_id;
 @dynamic offer;
@@ -29,7 +29,7 @@
 
 
 + (void)createMappings:(RKObjectManager *)objectManager{
-    RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Ride"
+    RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Fare"
                                                           inManagedObjectStore: [VCCoreData managedObjectStore]];
     
     [entityMapping addAttributeMappingsFromDictionary:@{

@@ -220,7 +220,7 @@
 		F4354D6E195D0D6A00C06CF7 /* MQRouteResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F008194A5A0200D8C900 /* MQRouteResponse.m */; };
 		F4354D6F195D0D6A00C06CF7 /* VCSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641B8194157510059BED1 /* VCSignInViewController.m */; };
 		F4354D70195D0D6A00C06CF7 /* VCDevicesApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F01F19511D7700D8C900 /* VCDevicesApi.m */; };
-		F4354D71195D0D6A00C06CF7 /* Ride.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AFD193839DF00354886 /* Ride.m */; };
+		F4354D71195D0D6A00C06CF7 /* Fare.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AFD193839DF00354886 /* Fare.m */; };
 		F4354D72195D0D6A00C06CF7 /* VCNewUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904919468E44007C4671 /* VCNewUser.m */; };
 		F4354D73195D0D6A00C06CF7 /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE119492C2A00D8C900 /* IISideController.m */; };
 		F4354D74195D0D6A00C06CF7 /* VCRiderHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */; };
@@ -415,7 +415,7 @@
 		F4FE1AF11936BE0900354886 /* VCDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AF01936BE0900354886 /* VCDevice.m */; };
 		F4FE1AF81937DD5600354886 /* VCPushManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AF71937DD5600354886 /* VCPushManager.m */; };
 		F4FE1AFB1937DD6600354886 /* VCGeolocation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AFA1937DD6600354886 /* VCGeolocation.m */; };
-		F4FE1AFE193839DF00354886 /* Ride.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AFD193839DF00354886 /* Ride.m */; };
+		F4FE1AFE193839DF00354886 /* Fare.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AFD193839DF00354886 /* Fare.m */; };
 		F4FE1B0B19384F9000354886 /* VCDriverApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B0A19384F9000354886 /* VCDriverApi.m */; };
 		F4FE1B0F1938571E00354886 /* VCFareDriverAssignment.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B0E1938571E00354886 /* VCFareDriverAssignment.m */; };
 		F4FE1B121938581C00354886 /* VCDialogs.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B111938581C00354886 /* VCDialogs.m */; };
@@ -767,8 +767,8 @@
 		F4FE1AF71937DD5600354886 /* VCPushManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPushManager.m; sourceTree = "<group>"; };
 		F4FE1AF91937DD6600354886 /* VCGeolocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCGeolocation.h; sourceTree = "<group>"; };
 		F4FE1AFA1937DD6600354886 /* VCGeolocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCGeolocation.m; sourceTree = "<group>"; };
-		F4FE1AFC193839DF00354886 /* Ride.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ride.h; path = Model/Ride.h; sourceTree = "<group>"; };
-		F4FE1AFD193839DF00354886 /* Ride.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Ride.m; path = Model/Ride.m; sourceTree = "<group>"; };
+		F4FE1AFC193839DF00354886 /* Fare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Fare.h; path = Model/Fare.h; sourceTree = "<group>"; };
+		F4FE1AFD193839DF00354886 /* Fare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Fare.m; path = Model/Fare.m; sourceTree = "<group>"; };
 		F4FE1B0919384F9000354886 /* VCDriverApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCDriverApi.h; sourceTree = "<group>"; };
 		F4FE1B0A19384F9000354886 /* VCDriverApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCDriverApi.m; sourceTree = "<group>"; };
 		F4FE1B0D1938571E00354886 /* VCFareDriverAssignment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCFareDriverAssignment.h; sourceTree = "<group>"; };
@@ -1100,8 +1100,8 @@
 				F473F03B195B971B00D8C900 /* Car.m */,
 				F4FE1B16193D2F3F00354886 /* Offer.h */,
 				F4FE1B17193D2F3F00354886 /* Offer.m */,
-				F4FE1AFC193839DF00354886 /* Ride.h */,
-				F4FE1AFD193839DF00354886 /* Ride.m */,
+				F4FE1AFC193839DF00354886 /* Fare.h */,
+				F4FE1AFD193839DF00354886 /* Fare.m */,
 				F45F7C011935880500A94721 /* Request.h */,
 				F45F7C021935880500A94721 /* Request.m */,
 			);
@@ -1991,7 +1991,7 @@
 				F4354D6F195D0D6A00C06CF7 /* VCSignInViewController.m in Sources */,
 				F473E294195E825500226203 /* VCStateMachineManagedObject.m in Sources */,
 				F4354D70195D0D6A00C06CF7 /* VCDevicesApi.m in Sources */,
-				F4354D71195D0D6A00C06CF7 /* Ride.m in Sources */,
+				F4354D71195D0D6A00C06CF7 /* Fare.m in Sources */,
 				F4354D72195D0D6A00C06CF7 /* VCNewUser.m in Sources */,
 				F4354D73195D0D6A00C06CF7 /* IISideController.m in Sources */,
 				F4A7C81719628F10007E05AD /* MQBoundingBox.m in Sources */,
@@ -2103,7 +2103,7 @@
 				F473F03C195B971B00D8C900 /* Car.m in Sources */,
 				4FE712D5197369060071020C /* VCCarLicensePlateTextField.m in Sources */,
 				F473F02019511D7700D8C900 /* VCDevicesApi.m in Sources */,
-				F4FE1AFE193839DF00354886 /* Ride.m in Sources */,
+				F4FE1AFE193839DF00354886 /* Fare.m in Sources */,
 				F4D8904A19468E44007C4671 /* VCNewUser.m in Sources */,
 				F473EFE619492C2A00D8C900 /* IISideController.m in Sources */,
 				F49EDD0B1946D27F0020B8BB /* VCRiderHomeViewController.m in Sources */,
@@ -2498,7 +2498,7 @@
 				F4792AF319764523005AB652 /* Voco 24.xcdatamodel */,
 				F4FA0BFC192BF6BF005D8645 /* Voco.xcdatamodel */,
 			);
-			currentVersion = F4792AF2197642B3005AB652 /* Voco 23.xcdatamodel */;
+			currentVersion = F4792AF319764523005AB652 /* Voco 24.xcdatamodel */;
 			path = Voco.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

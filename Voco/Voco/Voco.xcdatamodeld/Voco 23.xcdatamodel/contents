@@ -79,9 +79,9 @@
     <elements>
         <element name="Car" positionX="0" positionY="0" width="128" height="165"/>
         <element name="Driver" positionX="0" positionY="0" width="128" height="135"/>
+        <element name="Ride" positionX="0" positionY="0" width="128" height="195"/>
         <element name="Offer" positionX="0" positionY="0" width="128" height="195"/>
         <element name="Request" positionX="0" positionY="0" width="128" height="405"/>
-        <element name="Ride" positionX="0" positionY="0" width="128" height="195"/>
         <element name="Rider" positionX="0" positionY="0" width="128" height="135"/>
     </elements>
 </model>

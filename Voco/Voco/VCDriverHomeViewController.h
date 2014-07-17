@@ -7,10 +7,10 @@
 //
 
 #import "VCTransitBaseViewController.h"
-#import "Ride.h"
+#import "Fare.h"
 
 @interface VCDriverHomeViewController : VCTransitBaseViewController
 
-@property (nonatomic, strong) Ride * ride;
+@property (nonatomic, strong) Fare * ride;
 
 @end

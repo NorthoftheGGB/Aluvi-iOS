@@ -279,7 +279,7 @@
             return;
         }
         if([rides count] > 0) {
-            Ride * ride = rides.firstObject;
+            Fare * ride = rides.firstObject;
             [[VCDialogs instance] rideAssigned: ride];
             
         } else {

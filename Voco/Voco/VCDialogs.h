@@ -28,7 +28,7 @@
 - (void) rideCancelledByDriver;
 - (void) showRideReceipt: (NSNumber *) rideId amount: (NSNumber *) amount;
 - (void) commuterRideFound: (Request *) request;
-- (void) rideAssigned: (Ride *) ride;
+- (void) rideAssigned: (Fare *) ride;
 - (void) commuterRideAlarm: (NSNumber *) requestId;
 - (void) showRidePaymentProblem: (NSNumber *) rideId;
 

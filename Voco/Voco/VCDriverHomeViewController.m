@@ -73,7 +73,7 @@
 
 @implementation VCDriverHomeViewController
 
-- (void) setRide:(Ride *)ride {
+- (void) setRide:(Fare *)ride {
     _ride = ride;
     self.transit = ride;
 }
@@ -123,7 +123,7 @@
 }
 
 - (void) rideInvoked:(NSNotification *) notification {
-    Ride * ride = notification.object;
+    Fare * ride = notification.object;
     self.ride = ride;
     [self clearMap];
     [self showRide];
@@ -239,7 +239,7 @@
         [VCUserState instance].driveProcessState = kUserStateRideAccepted;
         [VCUserState instance].underwayRideId = self.transit.ride_id;
         
-        [((Ride *) self.transit) markOfferAsAccepted];
+        [((Fare *) self.transit) markOfferAsAccepted];
         
         [hud hide:YES];
         [self showPickupInterface];
@@ -249,7 +249,7 @@
         
         if(operation.HTTPRequestOperation.response.statusCode == 403){
             // already accepted by another driver
-            [((Ride *) self.transit) markOfferAsClosed];
+            [((Fare *) self.transit) markOfferAsClosed];
 
             [UIAlertView showWithTitle:@"Ride no longer available!" message:@"Unfortunately another driver beat you to this ride!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
 

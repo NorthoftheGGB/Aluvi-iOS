@@ -8,7 +8,7 @@
 
 #import "VCRidesViewController.h"
 #import "VCDriverHomeViewController.h"
-#import "Ride.h"
+#import "Fare.h"
 #import "VCDriverApi.h"
 #import "NSDate+Pretty.h"
 
@@ -98,7 +98,7 @@
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    Ride *ride = [_fetchedResultsController objectAtIndexPath:indexPath];
+    Fare *ride = [_fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = [ride routeDescription];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@", ride.state, [ride.pickupTime pretty] ];
     
@@ -122,7 +122,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    Ride *ride = [_fetchedResultsController objectAtIndexPath:indexPath];
+    Fare *ride = [_fetchedResultsController objectAtIndexPath:indexPath];
     VCDriverHomeViewController * vc = [[VCDriverHomeViewController alloc] init];
     vc.ride = ride;
     [self.navigationController pushViewController:vc animated:YES];

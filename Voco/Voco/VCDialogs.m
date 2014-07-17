@@ -180,7 +180,7 @@ static VCDialogs *sharedSingleton;
                       }];
 }
 
-- (void) rideAssigned: (Ride *) ride {
+- (void) rideAssigned: (Fare *) ride {
     [UIAlertView showWithTitle:@"New Ride Assigned!"
                        message:[NSString stringWithFormat:@"A ride from %@ to %@ at %@ has been assigned to you.  View details now ?",
                                 ride.meetingPointPlaceName, ride.dropOffPointPlaceName, [ride.pickupTime pretty]]

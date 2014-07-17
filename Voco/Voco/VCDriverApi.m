@@ -13,7 +13,7 @@
 #import "Offer.h"
 #import "VCGeoObject.h"
 #import "VCDriverRegistration.h"
-#import "Ride.h"
+#import "Fare.h"
 #import "VCFareIdentity.h"
 #import "VCDriverGeoObject.h"
 #import "VCFare.h"
@@ -24,7 +24,7 @@
     [VCFareDriverAssignment createMappings:objectManager];
     [VCRideIdentity createMappings:objectManager];
     [Offer createMappings:objectManager];
-    [Ride createMappings:objectManager];
+    [Fare createMappings:objectManager];
     [VCGeoObject createMappings:objectManager];
     [VCDriverGeoObject createMappings:objectManager];
     [VCDriverRegistration createMappings:objectManager];
