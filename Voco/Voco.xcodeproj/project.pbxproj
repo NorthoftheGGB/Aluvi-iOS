@@ -84,8 +84,6 @@
 		4FCD7C6519761C21007609E8 /* call-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C6119761C21007609E8 /* call-button@2x.png */; };
 		4FCD7C691976241D007609E8 /* VCRiderProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCD7C671976241D007609E8 /* VCRiderProfileViewController.m */; };
 		4FCD7C6A1976241D007609E8 /* VCRiderProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCD7C671976241D007609E8 /* VCRiderProfileViewController.m */; };
-		4FCD7C6B1976241D007609E8 /* VCRiderProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C681976241D007609E8 /* VCRiderProfileViewController.xib */; };
-		4FCD7C6C1976241D007609E8 /* VCRiderProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C681976241D007609E8 /* VCRiderProfileViewController.xib */; };
 		4FCD7C711976244F007609E8 /* VCDriverPaymentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCD7C6F1976244F007609E8 /* VCDriverPaymentsViewController.m */; };
 		4FCD7C721976244F007609E8 /* VCDriverPaymentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCD7C6F1976244F007609E8 /* VCDriverPaymentsViewController.m */; };
 		4FCD7C731976244F007609E8 /* VCDriverPaymentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C701976244F007609E8 /* VCDriverPaymentsViewController.xib */; };
@@ -108,6 +106,8 @@
 		4FCD7C9019776CD6007609E8 /* VCDriverChangeBankAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCD7C8D19776CD6007609E8 /* VCDriverChangeBankAccountViewController.m */; };
 		4FCD7C9119776CD6007609E8 /* VCDriverChangeBankAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C8E19776CD6007609E8 /* VCDriverChangeBankAccountViewController.xib */; };
 		4FCD7C9219776CD6007609E8 /* VCDriverChangeBankAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C8E19776CD6007609E8 /* VCDriverChangeBankAccountViewController.xib */; };
+		4FCD7C94197775E1007609E8 /* VCRiderProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C93197775E1007609E8 /* VCRiderProfileViewController.xib */; };
+		4FCD7C95197775E1007609E8 /* VCRiderProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C93197775E1007609E8 /* VCRiderProfileViewController.xib */; };
 		4FDB0EC51970A5AC00A8CEC2 /* VCRiderHomeViewControllerV2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FDB0EC41970A5AC00A8CEC2 /* VCRiderHomeViewControllerV2.xib */; };
 		4FDB0EC61970A5AC00A8CEC2 /* VCRiderHomeViewControllerV2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FDB0EC41970A5AC00A8CEC2 /* VCRiderHomeViewControllerV2.xib */; };
 		4FDB0EC81970AC8200A8CEC2 /* colors_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FDB0EC71970AC8200A8CEC2 /* colors_03.png */; };
@@ -484,7 +484,6 @@
 		4FCD7C6119761C21007609E8 /* call-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "call-button@2x.png"; sourceTree = "<group>"; };
 		4FCD7C661976241D007609E8 /* VCRiderProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRiderProfileViewController.h; sourceTree = "<group>"; };
 		4FCD7C671976241D007609E8 /* VCRiderProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRiderProfileViewController.m; sourceTree = "<group>"; };
-		4FCD7C681976241D007609E8 /* VCRiderProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCRiderProfileViewController.xib; sourceTree = "<group>"; };
 		4FCD7C6E1976244F007609E8 /* VCDriverPaymentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCDriverPaymentsViewController.h; sourceTree = "<group>"; };
 		4FCD7C6F1976244F007609E8 /* VCDriverPaymentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCDriverPaymentsViewController.m; sourceTree = "<group>"; };
 		4FCD7C701976244F007609E8 /* VCDriverPaymentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCDriverPaymentsViewController.xib; sourceTree = "<group>"; };
@@ -500,6 +499,7 @@
 		4FCD7C8C19776CD6007609E8 /* VCDriverChangeBankAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCDriverChangeBankAccountViewController.h; sourceTree = "<group>"; };
 		4FCD7C8D19776CD6007609E8 /* VCDriverChangeBankAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCDriverChangeBankAccountViewController.m; sourceTree = "<group>"; };
 		4FCD7C8E19776CD6007609E8 /* VCDriverChangeBankAccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCDriverChangeBankAccountViewController.xib; sourceTree = "<group>"; };
+		4FCD7C93197775E1007609E8 /* VCRiderProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCRiderProfileViewController.xib; sourceTree = "<group>"; };
 		4FDB0EC41970A5AC00A8CEC2 /* VCRiderHomeViewControllerV2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCRiderHomeViewControllerV2.xib; path = ViewControllers/VCRiderHomeViewControllerV2.xib; sourceTree = "<group>"; };
 		4FDB0EC71970AC8200A8CEC2 /* colors_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colors_03.png; sourceTree = "<group>"; };
 		4FDB0ECB1970B10600A8CEC2 /* button-default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-default@2x.png"; sourceTree = "<group>"; };
@@ -884,7 +884,7 @@
 				4F9ECEBE196630D700AD4229 /* VCRiderRecieptDetailViewController.xib */,
 				4FCD7C661976241D007609E8 /* VCRiderProfileViewController.h */,
 				4FCD7C671976241D007609E8 /* VCRiderProfileViewController.m */,
-				4FCD7C681976241D007609E8 /* VCRiderProfileViewController.xib */,
+				4FCD7C93197775E1007609E8 /* VCRiderProfileViewController.xib */,
 			);
 			name = "Rider Menu";
 			sourceTree = "<group>";
@@ -1655,6 +1655,7 @@
 				4F2EF9B41961391B006A1962 /* about-menu-button@2x.png in Resources */,
 				4FE286F01962BB3F00FD8AF6 /* search-location-select@2x.png in Resources */,
 				4FCD7C9219776CD6007609E8 /* VCDriverChangeBankAccountViewController.xib in Resources */,
+				4FCD7C95197775E1007609E8 /* VCRiderProfileViewController.xib in Resources */,
 				4F2EF9BE1961391B006A1962 /* support-menu-button@2x.png in Resources */,
 				F4354DB0195D0D6A00C06CF7 /* VOCOfinal@2x.png in Resources */,
 				F4354DB1195D0D6A00C06CF7 /* driver_must_box@2x.png in Resources */,
@@ -1698,7 +1699,6 @@
 				4FF142DD195D128700CC61B6 /* VCRiderViewController.xib in Resources */,
 				4FCD7C7B19762465007609E8 /* VCDriverProfileViewController.xib in Resources */,
 				F4354DC3195D0D6A00C06CF7 /* signUp_btn@2x.png in Resources */,
-				4FCD7C6C1976241D007609E8 /* VCRiderProfileViewController.xib in Resources */,
 				F4A7C80D19625237007E05AD /* VCDebugViewController.xib in Resources */,
 				4FE286FE1962C25400FD8AF6 /* pin@2x.png in Resources */,
 				4FDB0ED01970B10600A8CEC2 /* button-select@2x.png in Resources */,
@@ -1749,7 +1749,6 @@
 				4F37E2DE1949574000753172 /* KlinicSlabLightIt.ttf in Resources */,
 				F473F01A195044AA00D8C900 /* menu-list@2x.png in Resources */,
 				4FCD7C7A19762465007609E8 /* VCDriverProfileViewController.xib in Resources */,
-				4FCD7C6B1976241D007609E8 /* VCRiderProfileViewController.xib in Resources */,
 				4F2EF9BB1961391B006A1962 /* scheduledrides-menu-button@2x.png in Resources */,
 				4FDB0ED51970C3AD00A8CEC2 /* button-full-select@2x.png in Resources */,
 				4F9ECEC1196630D700AD4229 /* VCRiderRecieptDetailViewController.xib in Resources */,
@@ -1803,6 +1802,7 @@
 				4FE641CA1941584D0059BED1 /* VCSignUpViewController.xib in Resources */,
 				4FE641FA194168E80059BED1 /* voco_logo@2x.png in Resources */,
 				4F2EF9C31961391B006A1962 /* tutorial-menu-button-selected@2x.png in Resources */,
+				4FCD7C94197775E1007609E8 /* VCRiderProfileViewController.xib in Resources */,
 				4F2EF9B11961391B006A1962 /* about-menu-button-selected@2x.png in Resources */,
 				4FE641F0194168E80059BED1 /* commute_logo@2x.png in Resources */,
 				4F2EF9CB196139C6006A1962 /* payment-menu-button@2x.png in Resources */,
