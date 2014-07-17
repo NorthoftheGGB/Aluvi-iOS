@@ -9,7 +9,6 @@
 #import "VCGeoApi.h"
 #import <RestKit.h>
 #import "VCApi.h"
-#import "VCGeoObject.h"
 
 @implementation VCGeoApi
 

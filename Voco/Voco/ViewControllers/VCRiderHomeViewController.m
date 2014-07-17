@@ -24,7 +24,7 @@
 #import "VCCommuterHud.h"
 #import "NSDate+Pretty.h"
 #import "VCGeoApi.h"
-#import "VCGeoObject.h"
+
 #define kStepSetDepartureLocation 1
 #define kStepSetDestinationLocation 2
 #define kStepConfirmRequest 3
@@ -179,7 +179,7 @@
 
 - (IBAction)didTapCommute:(id)sender {
     
-    //[[LELog sharedInstance] log:@"%@ Did Tap Commute", [VCUserState us]];
+    [[LELog sharedInstance] log:@"%@ Did Tap Commute"];
     self.request = (Request *) [NSEntityDescription insertNewObjectForEntityForName:@"Request" inManagedObjectContext:[VCCoreData managedObjectContext]];
     self.request.requestType = kRideRequestTypeCommuter;
     self.transit = self.request;
@@ -310,7 +310,12 @@
 - (void) getDriverLocation {
     [VCGeoApi getDriverLocation:self.request.driver.id
                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                            VCGeoObject * geoObject = mappingResult.firstObject;
+                            VCDriverGeoObject * geoObject = mappingResult.firstObject;
+                            
+                            if( ![geoObject.currentFareId isEqualToNumber:[VCUserState instance].underwayRideId]){
+                                // don't show annotation yet
+                                return;
+                            }
                             if(_driverAnnotation == nil){
                                 _driverAnnotation = [[MKPointAnnotation alloc] init];
                                 [self.map addAnnotation:_driverAnnotation];
@@ -319,6 +324,15 @@
                             coordinate.latitude = [geoObject.latitude doubleValue];
                             coordinate.longitude = [geoObject.longitude doubleValue];
                             [_driverAnnotation setCoordinate:coordinate];
+                            
+                            if( geoObject.currentFareCost == nil){
+                                _currentFareLabel.text = @"Not Started";
+                            } else {
+                                NSNumberFormatter * formatter = [[NSNumberFormatter alloc] init];
+                                [formatter setNumberStyle: NSNumberFormatterCurrencyStyle];
+                                NSString * cost = [formatter stringFromNumber:geoObject.currentFareCost];
+                                _currentFareLabel.text = cost;
+                            }
                             
                         }
                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -680,7 +694,7 @@
     _driverNameLabel.text= self.request.driver.fullName;
     _carTypeLabel.text = self.request.car.description;
     _licensePlateNumberLabel.text = self.request.car.licensePlate;
-    [_licensePlateImageView loadImageAtURL:[NSURL URLWithString:self.request.driver.carPhotoUrl]];
+    [_licensePlateImageView loadImageAtURL:[NSURL URLWithString:self.request.car.carPhotoUrl]];
     
 }
 
@@ -693,6 +707,7 @@
     _driverNameLabel.text = self.request.driver.fullName;
     _carTypeLabel.text = self.request.car.summary;
     _licensePlateNumberLabel.text = self.request.car.licensePlate;
+    [_licensePlateImageView loadImageAtURL:[NSURL URLWithString:self.request.car.carPhotoUrl]];
     
     [UIView transitionWithView:self.view
                       duration:.45f

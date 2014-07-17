@@ -39,8 +39,6 @@ NSString *const VCUserStateDriverStateKeyPath;
 @property(nonatomic, strong) NSString * rideProcessState;
 @property(nonatomic, strong) NSString * driveProcessState;
 
-@property(nonatomic, strong) NSNumber * carId;
-
 @property(nonatomic, strong) NSString * apiToken;
 
 

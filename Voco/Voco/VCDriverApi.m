@@ -16,6 +16,7 @@
 #import "VCDriverRegistration.h"
 #import "Ride.h"
 #import "VCDriveIdentity.h"
+#import "VCDriverGeoObject.h"
 
 @implementation VCDriverApi
 
@@ -25,6 +26,7 @@
     [Offer createMappings:objectManager];
     [Ride createMappings:objectManager];
     [VCGeoObject createMappings:objectManager];
+    [VCDriverGeoObject createMappings:objectManager];
     [VCDriverRegistration createMappings:objectManager];
     [VCDriveIdentity createMappings:objectManager];
     

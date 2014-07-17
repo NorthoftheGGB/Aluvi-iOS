@@ -41,10 +41,14 @@
              success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
              failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     
+    [[LELog sharedInstance] log:@"API: request ride"];
+
     [[RKObjectManager sharedManager] postObject:[VCRideRequest requestForRide:ride]
                                            path: API_POST_RIDE_REQUEST
                                      parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            [[LELog sharedInstance] log:@"API: request ride success"];
+
                                             NSLog(@"Ride request accepted by server!");
                                             
                                             NSError * error = nil;
@@ -65,7 +69,8 @@
                                             success(operation, mappingResult);
                                         }
                                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                            
+                                            [[LELog sharedInstance] log:@"API: request ride failure"];
+
                                             NSLog(@"Failed send request %@", error);
                                             failure(operation, error);
                                         }];
@@ -76,12 +81,18 @@
             success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
             failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     
+
         if(ride.ride_id != nil){
+            [[LELog sharedInstance] log:@"API: cancel ride"];
+
             // Alread have a ride id, so this is a ride cancellation
             VCRideIdentity * rideIdentity = [[VCRideIdentity alloc] init];
             rideIdentity.rideId = ride.ride_id;
             [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_RIDER_CANCELLED parameters:nil
                                                 success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                    
+                                                    [[LELog sharedInstance] log:@"API: cancel ride success"];
+
                                                     NSError * error;
                                                     [ride fireEvent:kEventRideCancelledByRider userInfo:@{} error:&error];
                                                     if(error != nil){
@@ -91,10 +102,14 @@
 
                                                     success(operation, mappingResult);
                                                 } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                    [[LELog sharedInstance] log:@"API: cancel ride failure"];
+
                                                     NSLog(@"Failed cancel ride %@", error);
                                                     failure(operation, error);
                                                 }];
         } else {
+            [[LELog sharedInstance] log:@"API: cancel request"];
+
             // No ride id yet, so this could be a request cancellation
             // OR a ride cancellation if the ride found message has not arrived
             // This control fork gets handled on the server side
@@ -102,7 +117,8 @@
             requestIdentity.requestId = ride.request_id;
             [[RKObjectManager sharedManager] postObject:requestIdentity path:API_POST_REQUEST_CANCELLED parameters:nil
                                                 success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                    
+                                                    [[LELog sharedInstance] log:@"API: cancel request success"];
+
                                                     NSError * error = nil;
                                                     [ride fireEvent:kEventRideCancelledByRider userInfo:@{} error:&error];
                                                     if(error != nil){
@@ -118,6 +134,8 @@
                                                     success(operation, mappingResult);
                                                     
                                                 } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                    [[LELog sharedInstance] log:@"API: cancel request success"];
+
                                                     NSLog(@"Failed cancel ride %@", error);
                                                     failure(operation, error);
                                                 }];

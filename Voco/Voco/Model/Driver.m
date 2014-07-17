@@ -16,7 +16,6 @@
 @dynamic lastName;
 @dynamic id;
 @dynamic driversLicenseNumber;
-@dynamic carPhotoUrl;
 @dynamic phone;
 @dynamic rides;
 
@@ -27,7 +26,6 @@
                                                         @"last_name" :@"lastName",
                                                         @"id" : @"id",
                                                         @"drivers_license_number" : @"driversLicenseNumber",
-                                                        @"car_photo_url" : @"carPhotoUrl",
                                                         @"phone" : @"phone"
                                                        }];
     return entityMapping;

@@ -30,8 +30,6 @@ static VCUserState *sharedSingleton;
 + (VCUserState *) instance {
     if(sharedSingleton == nil){
         sharedSingleton = [[VCUserState alloc] init];
-        NSLog(@"%@", @"Warning: hard coded car id");
-        sharedSingleton.carId = [NSNumber numberWithInt:1];
     }
     return sharedSingleton;
 }

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+#import "VCGeoObject.h"
+#import "VCDriverGeoObject.h"
 
 @interface VCGeoApi : NSObject
 
