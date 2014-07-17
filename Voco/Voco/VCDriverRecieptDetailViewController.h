@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VCDriverRecieptsDetailViewController : UIViewController
+@interface VCDriverRecieptDetailViewController : UIViewController
 
 @end

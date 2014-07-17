@@ -104,6 +104,10 @@
 		4FCD7C8919775C5C007609E8 /* VCDriverRecieptDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCD7C8619775C5C007609E8 /* VCDriverRecieptDetailViewController.m */; };
 		4FCD7C8A19775C5C007609E8 /* VCDriverRecieptDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C8719775C5C007609E8 /* VCDriverRecieptDetailViewController.xib */; };
 		4FCD7C8B19775C5C007609E8 /* VCDriverRecieptDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C8719775C5C007609E8 /* VCDriverRecieptDetailViewController.xib */; };
+		4FCD7C8F19776CD6007609E8 /* VCDriverChangeBankAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCD7C8D19776CD6007609E8 /* VCDriverChangeBankAccountViewController.m */; };
+		4FCD7C9019776CD6007609E8 /* VCDriverChangeBankAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCD7C8D19776CD6007609E8 /* VCDriverChangeBankAccountViewController.m */; };
+		4FCD7C9119776CD6007609E8 /* VCDriverChangeBankAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C8E19776CD6007609E8 /* VCDriverChangeBankAccountViewController.xib */; };
+		4FCD7C9219776CD6007609E8 /* VCDriverChangeBankAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C8E19776CD6007609E8 /* VCDriverChangeBankAccountViewController.xib */; };
 		4FDB0EC51970A5AC00A8CEC2 /* VCRiderHomeViewControllerV2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FDB0EC41970A5AC00A8CEC2 /* VCRiderHomeViewControllerV2.xib */; };
 		4FDB0EC61970A5AC00A8CEC2 /* VCRiderHomeViewControllerV2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FDB0EC41970A5AC00A8CEC2 /* VCRiderHomeViewControllerV2.xib */; };
 		4FDB0EC81970AC8200A8CEC2 /* colors_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FDB0EC71970AC8200A8CEC2 /* colors_03.png */; };
@@ -493,6 +497,9 @@
 		4FCD7C8519775C5C007609E8 /* VCDriverRecieptDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCDriverRecieptDetailViewController.h; sourceTree = "<group>"; };
 		4FCD7C8619775C5C007609E8 /* VCDriverRecieptDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCDriverRecieptDetailViewController.m; sourceTree = "<group>"; };
 		4FCD7C8719775C5C007609E8 /* VCDriverRecieptDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCDriverRecieptDetailViewController.xib; sourceTree = "<group>"; };
+		4FCD7C8C19776CD6007609E8 /* VCDriverChangeBankAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCDriverChangeBankAccountViewController.h; sourceTree = "<group>"; };
+		4FCD7C8D19776CD6007609E8 /* VCDriverChangeBankAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCDriverChangeBankAccountViewController.m; sourceTree = "<group>"; };
+		4FCD7C8E19776CD6007609E8 /* VCDriverChangeBankAccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCDriverChangeBankAccountViewController.xib; sourceTree = "<group>"; };
 		4FDB0EC41970A5AC00A8CEC2 /* VCRiderHomeViewControllerV2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCRiderHomeViewControllerV2.xib; path = ViewControllers/VCRiderHomeViewControllerV2.xib; sourceTree = "<group>"; };
 		4FDB0EC71970AC8200A8CEC2 /* colors_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colors_03.png; sourceTree = "<group>"; };
 		4FDB0ECB1970B10600A8CEC2 /* button-default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-default@2x.png"; sourceTree = "<group>"; };
@@ -885,15 +892,18 @@
 		4FCD7C6D19762437007609E8 /* Driver Menu */ = {
 			isa = PBXGroup;
 			children = (
-				4FCD7C6E1976244F007609E8 /* VCDriverPaymentsViewController.h */,
-				4FCD7C6F1976244F007609E8 /* VCDriverPaymentsViewController.m */,
-				4FCD7C701976244F007609E8 /* VCDriverPaymentsViewController.xib */,
 				4FCD7C7519762465007609E8 /* VCDriverProfileViewController.h */,
 				4FCD7C7619762465007609E8 /* VCDriverProfileViewController.m */,
 				4FCD7C7719762465007609E8 /* VCDriverProfileViewController.xib */,
+				4FCD7C6E1976244F007609E8 /* VCDriverPaymentsViewController.h */,
+				4FCD7C6F1976244F007609E8 /* VCDriverPaymentsViewController.m */,
+				4FCD7C701976244F007609E8 /* VCDriverPaymentsViewController.xib */,
 				4FCD7C8519775C5C007609E8 /* VCDriverRecieptDetailViewController.h */,
 				4FCD7C8619775C5C007609E8 /* VCDriverRecieptDetailViewController.m */,
 				4FCD7C8719775C5C007609E8 /* VCDriverRecieptDetailViewController.xib */,
+				4FCD7C8C19776CD6007609E8 /* VCDriverChangeBankAccountViewController.h */,
+				4FCD7C8D19776CD6007609E8 /* VCDriverChangeBankAccountViewController.m */,
+				4FCD7C8E19776CD6007609E8 /* VCDriverChangeBankAccountViewController.xib */,
 			);
 			name = "Driver Menu";
 			sourceTree = "<group>";
@@ -1644,6 +1654,7 @@
 				4F2EF9C61961391B006A1962 /* tutorial-menu-button@2x.png in Resources */,
 				4F2EF9B41961391B006A1962 /* about-menu-button@2x.png in Resources */,
 				4FE286F01962BB3F00FD8AF6 /* search-location-select@2x.png in Resources */,
+				4FCD7C9219776CD6007609E8 /* VCDriverChangeBankAccountViewController.xib in Resources */,
 				4F2EF9BE1961391B006A1962 /* support-menu-button@2x.png in Resources */,
 				F4354DB0195D0D6A00C06CF7 /* VOCOfinal@2x.png in Resources */,
 				F4354DB1195D0D6A00C06CF7 /* driver_must_box@2x.png in Resources */,
@@ -1726,6 +1737,7 @@
 				4FCD7C6219761C21007609E8 /* call-button-select@2x.png in Resources */,
 				4FCD7C6419761C21007609E8 /* call-button@2x.png in Resources */,
 				4F2EF9DA19614115006A1962 /* scheduledfares-menu-button@2x.png in Resources */,
+				4FCD7C9119776CD6007609E8 /* VCDriverChangeBankAccountViewController.xib in Resources */,
 				F49EDD0C1946D27F0020B8BB /* VCRiderHomeViewController.xib in Resources */,
 				4F2EF9CE19613B41006A1962 /* support-menu-button-selected@2x.png in Resources */,
 				4FE286EB1962B89700FD8AF6 /* current-location-arrow@2x.png in Resources */,
@@ -1935,6 +1947,7 @@
 				F4354D67195D0D6A00C06CF7 /* VCLoginResponse.m in Sources */,
 				F4354D68195D0D6A00C06CF7 /* VCRideIdentity.m in Sources */,
 				F4A7C7FE19615B9D007E05AD /* VCTransitBaseViewController.m in Sources */,
+				4FCD7C9019776CD6007609E8 /* VCDriverChangeBankAccountViewController.m in Sources */,
 				4F9ECEB219661C3400AD4229 /* VCCommuterPassViewController.m in Sources */,
 				F4354D69195D0D6A00C06CF7 /* VCRiderApi.m in Sources */,
 				F4354D6A195D0D6A00C06CF7 /* VCDriverRegistrationViewController.m in Sources */,
@@ -2109,6 +2122,7 @@
 				F4D890561946A2D9007C4671 /* VCObjectRequestOperation.m in Sources */,
 				F4792AED19750975005AB652 /* LogFiles.m in Sources */,
 				F473EFDC19491C2B00D8C900 /* VCValidation.m in Sources */,
+				4FCD7C8F19776CD6007609E8 /* VCDriverChangeBankAccountViewController.m in Sources */,
 				F473F0161950358000D8C900 /* MQRoute.m in Sources */,
 				4F2EF99B1960D280006A1962 /* VCDriverHomeViewController.m in Sources */,
 				F4FA0BF6192BF6BF005D8645 /* main.m in Sources */,

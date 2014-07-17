@@ -16,6 +16,7 @@
 #import "VCUserState.h"
 #import "VCRideDriverAssignment.h"
 #import "VCDriverApi.h"
+#import "VCLabelBold.h"
 
 
 @interface VCDriverHomeViewController ()
@@ -41,6 +42,29 @@
 @property (strong, nonatomic) IBOutlet VCLabel *locationTypeLabel;
 @property (strong, nonatomic) IBOutlet VCLabel *addressLabel;
 
+//Commuter Call HUD
+
+@property (weak, nonatomic) IBOutlet UIView *commuterCallHud;
+@property (weak, nonatomic) IBOutlet VCButtonFontBold *riderSelectButtonOne;
+@property (weak, nonatomic) IBOutlet VCButtonFontBold *riderSelectButtonTwo;
+@property (weak, nonatomic) IBOutlet VCButtonFontBold *riderSelectButtonThree;
+@property (weak, nonatomic) IBOutlet UIButton *callButtonCommuter;
+
+- (IBAction)didTapRiderSelectOne:(id)sender;
+- (IBAction)didTapRiderSelectTwo:(id)sender;
+- (IBAction)didTapRiderSelectThree:(id)sender;
+- (IBAction)didTapCommuterCallButton:(id)sender;
+
+
+
+
+//On Demand Call HUD
+
+@property (strong, nonatomic) IBOutlet UIView *onDemandCallHud;
+@property (weak, nonatomic) IBOutlet UIButton *callButtonOnDemand;
+@property (weak, nonatomic) IBOutlet VCLabelBold *riderNameLabel;
+
+- (IBAction)didTapOnDemandCallButton:(id)sender;
 
 
 @end
@@ -329,5 +353,18 @@
 
 - (IBAction)didTapCurrentLocation:(id)sender {
     [self.map setCenterCoordinate:self.map.userLocation.coordinate animated:YES];
+}
+- (IBAction)didTapRiderSelectOne:(id)sender {
+}
+
+- (IBAction)didTapRiderSelectTwo:(id)sender {
+}
+
+- (IBAction)didTapRiderSelectThree:(id)sender {
+}
+
+- (IBAction)didTapCommuterCallButton:(id)sender {
+}
+- (IBAction)didTapOnDemandCallButton:(id)sender {
 }
 @end

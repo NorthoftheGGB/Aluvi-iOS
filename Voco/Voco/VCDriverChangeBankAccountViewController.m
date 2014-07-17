@@ -1,19 +1,18 @@
 //
-//  VCDriverRecieptsDetailViewController.m
+//  VCDriverChangeBankAccountViewController.m
 //  Voco
 //
 //  Created by Elliott De Aratanha on 7/16/14.
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCDriverRecieptDetailViewController.h"
+#import "VCDriverChangeBankAccountViewController.h"
 
-@interface VCDriverRecieptDetailViewController ()
-@property (weak, nonatomic) IBOutlet UITextView *recieptDetailTextView;
+@interface VCDriverChangeBankAccountViewController ()
 
 @end
 
-@implementation VCDriverRecieptDetailViewController
+@implementation VCDriverChangeBankAccountViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,8 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-}
+    self.title = @"Change Bank Account";}
 
 - (void)didReceiveMemoryWarning
 {
@@ -36,4 +34,6 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)didTapSubmit:(id)sender {
+}
 @end

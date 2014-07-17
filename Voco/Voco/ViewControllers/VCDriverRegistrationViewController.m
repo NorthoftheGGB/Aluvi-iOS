@@ -12,6 +12,14 @@
 #import "VCDriverApi.h"
 #import "VCDriverVideoTutorialController.h"
 #import <MBProgressHUD.h>
+#import "VCBankAccountTextField.h"
+#import "VCRoutingNumberTextField.h"
+#import "VCCarBrandTextField.h"
+#import "VCCarModelTextField.h"
+#import "VCCarYearTextField.h"
+#import "VCCarLicensePlateTextField.h"
+#import "VCDriversLicenseTextField.h"
+#import "VCReferralCodeTextField.h"
 
 #define kDriversLicenseFieldTag 1
 #define kReferralCodeFieldTag 2
