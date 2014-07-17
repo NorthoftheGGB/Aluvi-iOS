@@ -19,6 +19,8 @@
         <relationship name="rides" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Request" inverseName="driver" inverseEntity="Request" syncable="YES"/>
     </entity>
     <entity name="Offer" representedClassName="Offer" syncable="YES">
+        <attribute name="attribute" optional="YES" syncable="YES"/>
+        <attribute name="attribute1" optional="YES" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="decided" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="driver_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -29,6 +31,17 @@
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="ride" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Ride" inverseName="offer" inverseEntity="Ride" syncable="YES"/>
+    </entity>
+    <entity name="Payment" representedClassName="Payment" syncable="YES">
+        <attribute name="amountCents" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="capturedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="driver_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="fare_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="stripeChargeStatus" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="driver" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Driver" syncable="YES"/>
+        <relationship name="fare" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Ride" syncable="YES"/>
+        <relationship name="ride" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Request" syncable="YES"/>
     </entity>
     <entity name="Request" representedClassName="Request" syncable="YES">
         <attribute name="car_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -79,9 +92,10 @@
     <elements>
         <element name="Car" positionX="0" positionY="0" width="128" height="165"/>
         <element name="Driver" positionX="0" positionY="0" width="128" height="135"/>
-        <element name="Offer" positionX="0" positionY="0" width="128" height="195"/>
+        <element name="Offer" positionX="0" positionY="0" width="128" height="225"/>
         <element name="Request" positionX="0" positionY="0" width="128" height="405"/>
         <element name="Ride" positionX="0" positionY="0" width="128" height="195"/>
         <element name="Rider" positionX="0" positionY="0" width="128" height="135"/>
+        <element name="Payment" positionX="9" positionY="153" width="128" height="178"/>
     </elements>
 </model>

@@ -32,6 +32,8 @@
 #define API_GET_ACTIVE_REQUESTS @"rides/requests"
 #define API_GET_ACTIVE_RIDES @"rides/rides"
 
+#define API_GET_PAYMENTS @"rides/payments"
+
 // geo API
 #define API_GEO_DRIVER_PATH @"geo/drivers/:objectId"
 #define API_GEO_DRIVERS @"geo/drivers"
