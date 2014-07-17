@@ -681,7 +681,7 @@
                             </state>
                             <state key="highlighted" image="commuter-menu-button-selected.png"/>
                             <connections>
-                                <action selector="didTapCummuterPass:" destination="-1" eventType="touchUpInside" id="jaE-qX-L2Q"/>
+                                <action selector="didTapCommuterPass:" destination="-1" eventType="touchUpInside" id="8zt-Io-eLt"/>
                             </connections>
                         </button>
                     </subviews>

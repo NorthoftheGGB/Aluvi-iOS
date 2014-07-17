@@ -15,6 +15,7 @@
 #import "VCDriverInterestedRequest.h"
 #import "VCDriverStateResponse.h"
 #import "VCUserStateResponse.h"
+#import "VCProfile.h"
 
 @implementation VCUsersApi
 + (void) setup: (RKObjectManager *) objectManager {
@@ -30,6 +31,20 @@
                                                                                             keyPath:nil
                                                                                         statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
+    
+    RKObjectMapping * profileMapping = [VCProfile getMapping];
+    RKObjectMapping * profileUpdateMapping = [profileMapping inverseMapping];
+    RKRequestDescriptor * profileRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:profileUpdateMapping objectClass:[VCProfile class] rootKeyPath:nil method:RKRequestMethodPOST];
+    [objectManager addRequestDescriptor:profileRequestDescriptor];
+    {
+        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
+                                                                                                        method:RKRequestMethodPOST
+                                                                                                   pathPattern:API_USER_PROFILE
+                                                                                                       keyPath:nil
+                                                                                                   statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor];
+    }
+    
     
     RKObjectMapping * newUserMapping = [VCNewUser getMapping];
     RKObjectMapping * newUserRequestMapping = [newUserMapping inverseMapping];
@@ -163,6 +178,20 @@
         success(operation, mappingResult);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         failure(operation, error);
+    }];
+}
+
++ (void) updateDefaultCard: ( RKObjectManager *) objectManager
+                 cardToken: (NSString *) token
+                   success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                   failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+    VCProfile * profile = [[VCProfile alloc] init];
+    profile.defaultCardToken = token;
+    [objectManager postObject:profile path:API_USER_PROFILE parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        success(operation, mappingResult);
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        failure(operation, error);
+
     }];
 }
 @end

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="arrivalTimeButton" destination="AOV-ym-gxz" id="qZY-Xw-GDZ"/>
                 <outlet property="cancelRideButton" destination="ViH-R7-hkr" id="Z5O-1c-wN6"/>
+                <outlet property="carPhotoImageView" destination="hpo-vb-UfW" id="TlD-AE-dqG"/>
                 <outlet property="carTypeLabel" destination="QDG-ga-bae" id="bhS-fg-u49"/>
                 <outlet property="commuteButton" destination="er7-jE-Wpi" id="kdU-sQ-p8R"/>
                 <outlet property="commuterHUD" destination="ddz-ci-yfn" id="mrB-8c-Ike"/>
@@ -17,7 +18,6 @@
                 <outlet property="destinationEntryView" destination="RCN-Xj-T7f" id="OFZ-aH-3xs"/>
                 <outlet property="driverNameLabel" destination="fig-ZR-hzv" id="awT-CR-L7x"/>
                 <outlet property="geocodingActivityIndicator" destination="P8x-0k-SwL" id="1nw-EO-ERk"/>
-                <outlet property="licensePlateImageView" destination="hpo-vb-UfW" id="3hd-fI-okn"/>
                 <outlet property="licensePlateNumberLabel" destination="QEP-gz-7jD" id="tPO-Fy-CP7"/>
                 <outlet property="locationConfirmationAnnotation" destination="Zfe-VM-bsO" id="KNz-6d-aE8"/>
                 <outlet property="locationConfirmationButtonLabel" destination="sf3-yf-yAH" id="jfT-AI-UyL"/>
@@ -311,11 +311,11 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                 </view>
                 <view alpha="0.70000000000000018" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bvn-uZ-DUm" userLabel="Driver Name + Call View">
-                    <rect key="frame" x="102" y="0.0" width="218" height="34"/>
+                    <rect key="frame" x="112" y="0.0" width="208" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v1c-pJ-xba">
-                            <rect key="frame" x="183" y="2" width="30" height="30"/>
+                            <rect key="frame" x="173" y="2" width="30" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="call-button.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -327,7 +327,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="John D'oh" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fig-ZR-hzv" customClass="VCLabelBold">
-                            <rect key="frame" x="0.0" y="9" width="175" height="16"/>
+                            <rect key="frame" x="10" y="9" width="155" height="16"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <color key="textColor" red="0.87843143940000001" green="0.094117656349999995" blue="0.09803922474" alpha="1" colorSpace="deviceRGB"/>
@@ -343,11 +343,22 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zJs-jj-pRs" userLabel="Fare">
-                    <rect key="frame" x="0.0" y="0.0" width="101" height="34"/>
+                    <rect key="frame" x="0.0" y="0.0" width="112" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fare:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJX-e7-JNt" customClass="VCLabelBold">
-                            <rect key="frame" x="2" y="6" width="94" height="21"/>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Waiting" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qJX-e7-JNt" customClass="VCLabelBold">
+                            <rect key="frame" x="49" y="6" width="57" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                    <integer key="value" value="16"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fare:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDq-JQ-XuM" customClass="VCLabelBold">
+                            <rect key="frame" x="3" y="6" width="43" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="highlightedColor"/>

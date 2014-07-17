@@ -8,27 +8,28 @@
 
 #import "VCDriverApi.h"
 #import "VCApi.h"
-#import "VCRideOffer.h"
-#import "VCRideDriverAssignment.h"
+#import "VCFareDriverAssignment.h"
 #import "VCRideIdentity.h"
 #import "Offer.h"
 #import "VCGeoObject.h"
 #import "VCDriverRegistration.h"
 #import "Ride.h"
-#import "VCDriveIdentity.h"
+#import "VCFareIdentity.h"
 #import "VCDriverGeoObject.h"
+#import "VCFare.h"
 
 @implementation VCDriverApi
 
 + (void) setup: (RKObjectManager *) objectManager {
-    [VCRideDriverAssignment createMappings:objectManager];
+    [VCFareDriverAssignment createMappings:objectManager];
     [VCRideIdentity createMappings:objectManager];
     [Offer createMappings:objectManager];
     [Ride createMappings:objectManager];
     [VCGeoObject createMappings:objectManager];
     [VCDriverGeoObject createMappings:objectManager];
     [VCDriverRegistration createMappings:objectManager];
-    [VCDriveIdentity createMappings:objectManager];
+    [VCFareIdentity createMappings:objectManager];
+    [VCFare createMappings:objectManager];
     
     // Responses (some have not been moved here yet)
     {
@@ -49,7 +50,15 @@
                                                 statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:responseDescriptor];
     }
-        
+    {
+        RKResponseDescriptor * responseDescriptor2 = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
+                                                                                              method:RKRequestMethodPOST
+                                                                                         pathPattern:API_POST_RIDE_PICKUP
+                                                                                             keyPath:nil
+                                                                                         statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor2];
+    }
+
 }
 
 + (void) registerDriverWithLicenseNumber: (NSString *) driversLicenseNumber
@@ -106,7 +115,7 @@
 
 + (void) loadDriveDetails: (NSNumber *) rideId success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                   failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
-    VCDriveIdentity * rideIdentity = [[VCDriveIdentity alloc] init];
+    VCFareIdentity * rideIdentity = [[VCFareIdentity alloc] init];
     rideIdentity.id = rideId;
     //Drive * drive = [[Drive alloc] init];
     //drive.ride_id = rideId;
@@ -127,7 +136,7 @@
             success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
             failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     
-    VCRideDriverAssignment * assignment = [[VCRideDriverAssignment alloc] init];
+    VCFareDriverAssignment * assignment = [[VCFareDriverAssignment alloc] init];
     assignment.rideId = rideId;
     
     [[RKObjectManager sharedManager] postObject:assignment

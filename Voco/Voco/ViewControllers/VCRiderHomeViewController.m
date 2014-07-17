@@ -24,11 +24,14 @@
 #import "VCCommuterHud.h"
 #import "NSDate+Pretty.h"
 #import "VCGeoApi.h"
+#import "VCUtilities.h"
 
 #define kStepSetDepartureLocation 1
 #define kStepSetDestinationLocation 2
 #define kStepConfirmRequest 3
 #define kStepDone 4
+
+#define kFareNotStartedLabelText @"Waiting"
 
 @interface VCRiderHomeViewController () <MKMapViewDelegate, VCLocationSearchViewControllerDelegate>
 
@@ -48,7 +51,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *carTypeLabel;
 @property (strong, nonatomic) IBOutlet UILabel *currentFareLabel;
 @property (strong, nonatomic) IBOutlet DTLazyImageView *driverPhotoImageView;
-@property (strong, nonatomic) IBOutlet DTLazyImageView *licensePlateImageView;
+@property (strong, nonatomic) IBOutlet DTLazyImageView *carPhotoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *licensePlateNumberLabel;
 
 // Commuter Mode
@@ -326,12 +329,12 @@
                             [_driverAnnotation setCoordinate:coordinate];
                             
                             if( geoObject.currentFareCost == nil){
-                                _currentFareLabel.text = @"Not Started";
+                                _currentFareLabel.text = kFareNotStartedLabelText;
                             } else {
-                                NSNumberFormatter * formatter = [[NSNumberFormatter alloc] init];
-                                [formatter setNumberStyle: NSNumberFormatterCurrencyStyle];
-                                NSString * cost = [formatter stringFromNumber:geoObject.currentFareCost];
-                                _currentFareLabel.text = cost;
+ 
+  
+                                _currentFareLabel.text = [VCUtilities formatCurrencyFromCents:geoObject.currentFareCost];
+                                
                             }
                             
                         }
@@ -690,11 +693,11 @@
 }
 
 - (void) placeRideDetailsDrawerInPickupMode {
-    _currentFareLabel.text = @"Ride not started";
+    _currentFareLabel.text = kFareNotStartedLabelText;
     _driverNameLabel.text= self.request.driver.fullName;
     _carTypeLabel.text = self.request.car.description;
     _licensePlateNumberLabel.text = self.request.car.licensePlate;
-    [_licensePlateImageView loadImageAtURL:[NSURL URLWithString:self.request.car.carPhotoUrl]];
+    [_carPhotoImageView loadImageAtURL:[NSURL URLWithString:self.request.car.carPhotoUrl]];
     
 }
 
@@ -707,7 +710,7 @@
     _driverNameLabel.text = self.request.driver.fullName;
     _carTypeLabel.text = self.request.car.summary;
     _licensePlateNumberLabel.text = self.request.car.licensePlate;
-    [_licensePlateImageView loadImageAtURL:[NSURL URLWithString:self.request.car.carPhotoUrl]];
+    [_carPhotoImageView loadImageAtURL:[NSURL URLWithString:self.request.car.carPhotoUrl]];
     
     [UIView transitionWithView:self.view
                       duration:.45f

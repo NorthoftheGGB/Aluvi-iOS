@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "VCRestKitMappableObject.h"
 
-@interface VCRideDriverAssignment : NSObject <VCRestKitMappableObject>
+@interface VCFareDriverAssignment : NSObject <VCRestKitMappableObject>
 
 @property (nonatomic, strong) NSNumber * rideId;
 

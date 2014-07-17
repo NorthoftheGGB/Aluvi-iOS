@@ -43,4 +43,9 @@
 + (void) getUserState:( RKObjectManager *) objectManager
                 success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                 failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
+
++ (void) updateDefaultCard: ( RKObjectManager *) objectManager
+                 cardToken: (NSString *) token
+                   success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                   failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 @end

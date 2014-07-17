@@ -6,17 +6,17 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCRideDriverAssignment.h"
+#import "VCFareDriverAssignment.h"
 
-@implementation VCRideDriverAssignment
+@implementation VCFareDriverAssignment
 
 + (void) createMappings: (RKObjectManager *) objectManager{
-    RKObjectMapping * mapping = [RKObjectMapping mappingForClass:[VCRideDriverAssignment class]];
+    RKObjectMapping * mapping = [RKObjectMapping mappingForClass:[VCFareDriverAssignment class]];
     [mapping addAttributeMappingsFromDictionary:@{
                                                   @"ride_id" : @"rideId"
                                                   }];
     RKObjectMapping * requestMapping = [mapping inverseMapping];
-    RKRequestDescriptor *requestDescriptorPostData = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[VCRideDriverAssignment class] rootKeyPath:nil method:RKRequestMethodPOST];
+    RKRequestDescriptor *requestDescriptorPostData = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[VCFareDriverAssignment class] rootKeyPath:nil method:RKRequestMethodPOST];
     [objectManager addRequestDescriptor:requestDescriptorPostData];
     
     
