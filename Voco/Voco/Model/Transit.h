@@ -22,7 +22,6 @@
 @property (nonatomic, retain) NSString * dropOffPointPlaceName;
 @property (nonatomic, retain) NSDate * desiredArrival;
 @property (nonatomic, retain) NSDate * pickupTime;
-@property (nonatomic, retain) NSString * state;
 
 - (NSString *) routeDescription;
 
@@ -31,4 +30,6 @@
 @property (nonatomic, retain) NSString * savedState;
 - (void) setForcedState: (NSString*) state__;
 - (NSString *) forcedState;
+- (NSString *) state;
+
 @end

@@ -12,7 +12,7 @@
 #if RELEASE==1
 #define API_BASE_URL @"http://54.187.62.13:3000/api/"
 #elif TESTING==1
-#define API_BASE_URL @"http://voco-test-server.herokuapp.com/api/"
+#define API_BASE_URL @"http://voco-test.herokuapp.com/api/"
 #else
 #define API_BASE_URL @"http://192.168.1.117:3000/api/"
 //#define API_BASE_URL @"http://voco-alpha.herokuapp.com/api/"
@@ -50,6 +50,7 @@
 #define API_DRIVER_INTERESTED @"users/driver_interested"
 #define API_USER_STATE @"users/state"
 #define API_USER_PROFILE @"users/profile"
+#define API_FILL_COMMUTER_PASS @"users/fill_commuter_pass"
 
 // drivers
 #define API_DRIVER_REGISTRATION @"drivers/driver_registration"

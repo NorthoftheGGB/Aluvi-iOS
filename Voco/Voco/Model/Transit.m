@@ -18,7 +18,6 @@
 @dynamic dropOffPointPlaceName;
 @dynamic desiredArrival;
 @dynamic pickupTime;
-@dynamic state;
 
 @dynamic savedState;
 @synthesize forcedState;
@@ -36,6 +35,10 @@
 // forced state never has a value
 - (NSString *) forcedState {
     return @"";
+}
+
+- (NSString *) state {
+    return self.savedState;
 }
 
 

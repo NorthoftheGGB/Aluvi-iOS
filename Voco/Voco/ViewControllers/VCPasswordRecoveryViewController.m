@@ -64,10 +64,18 @@
     [self recoverEmail];
     
 }
+- (IBAction)editDidBegin:(id)sender {
+    UITextField * textField = (UITextField *) sender;
+    textField.backgroundColor = [UIColor whiteColor];
+}
 
 - (IBAction)didEndOnExit:(id)sender {
     
     UITextField * textField = (UITextField *) sender;
+    if([textField.text length] > 0){
+        textField.backgroundColor = [UIColor whiteColor];
+    }
+    
     switch(textField.tag){
         case kPhoneFieldTag:
             if([_phoneField validate]){

@@ -164,6 +164,7 @@
     self.locationTypeLabel.text = @"Drop Off Location";
     self.addressLabel.text = self.transit.dropOffPointPlaceName;
     [self addLocationHudIfNotDisplayed];
+    
 
 }
 
@@ -298,7 +299,8 @@
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Notifying Server";
     VCFareDriverAssignment * rideIdentity = [[VCFareDriverAssignment alloc] init];
-    rideIdentity.rideId = [VCUserState instance].underwayRideId;
+    rideIdentity.rideId = _ride.ride_id;
+    [VCUserState instance].underwayRideId = _ride.ride_id;
     [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_RIDE_PICKUP parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             [self showRideInProgressInterface];
@@ -316,7 +318,7 @@
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Cancelling";
     VCFareDriverAssignment * rideIdentity = [[VCFareDriverAssignment alloc] init];
-    rideIdentity.rideId = [VCUserState instance].underwayRideId;
+    rideIdentity.rideId = _ride.ride_id;
     [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_DRIVER_CANCELLED parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             [UIAlertView showWithTitle:@"Cancelled Ride" message:@"The ride was successfully cancelled" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];

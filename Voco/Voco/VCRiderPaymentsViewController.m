@@ -185,7 +185,7 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     Payment *payment = [_fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = [VCUtilities formatCurrencyFromCents:payment.amountCents];
-    cell.detailTextLabel.text = payment.stripeChargeStatus;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ / %@", payment.stripeChargeStatus, payment.motive];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView

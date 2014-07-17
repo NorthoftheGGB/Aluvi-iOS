@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCPushManager.h"
+#import "VCPushReceiver.h"
 #import "VCDevicesApi.h"
 #import "VCPushApi.h"
 #import "VCRiderApi.h"
@@ -19,7 +19,7 @@
 #import "VCCoreData.h"
 #import "Offer.h"
 
-@implementation VCPushManager
+@implementation VCPushReceiver
 
 + (void) registerForRemoteNotifications {
     [[UIApplication sharedApplication]
@@ -64,7 +64,7 @@
     
     // try again
     [self performSelector:@selector(registerForRemoteNotifications) withObject:nil afterDelay:10 * NSEC_PER_SEC];
-    [VCPushManager registerForRemoteNotifications];
+    [VCPushReceiver registerForRemoteNotifications];
 }
 
 

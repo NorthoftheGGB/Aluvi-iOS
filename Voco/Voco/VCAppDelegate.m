@@ -11,7 +11,7 @@
 #import <Crashlytics/Crashlytics.h>
 #import "VCRiderApi.h"
 #import "VCDriverApi.h"
-#import "VCPushManager.h"
+#import "VCPushReceiver.h"
 #import "WRUtilities.h"
 #import "VCApi.h"
 #import "VCUserState.h"
@@ -21,6 +21,7 @@
 #import "VCInterfaceModes.h"
 #import "VCMapQuestRouting.h"
 #import "VCUsersApi.h"
+#import "VCLocalNotificationReceiver.h"
 
 @interface VCAppDelegate ()
 
@@ -60,15 +61,14 @@
     NSLog(@"Registering for push notifications...");
 
 #if !(TARGET_IPHONE_SIMULATOR)
-    [VCPushManager registerForRemoteNotifications];
+    [VCPushReceiver registerForRemoteNotifications];
 #endif
     
     if([launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey] != nil){
-        [VCPushManager handleTappedRemoteNotification:[launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey]];
+        [VCPushReceiver handleTappedRemoteNotification:[launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey]];
     } else if( [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey] != nil ) {
         UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
-        NSNumber * requestId = [localNotif.userInfo objectForKey:@"request_id"];
-        [[VCDialogs instance] commuterRideAlarm:requestId];
+        [VCLocalNotificationReceiver handleLocalNotification:localNotif];
     }
     
     return YES;
@@ -118,12 +118,12 @@
 
 #pragma mark - Push Notifications
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    [VCPushManager application:app didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+    [VCPushReceiver application:app didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }
 
 - (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
     
-    [VCPushManager application:app didFailToRegisterForRemoteNotificationsWithError:err];
+    [VCPushReceiver application:app didFailToRegisterForRemoteNotificationsWithError:err];
     
     
 }
@@ -132,16 +132,15 @@
     // app is in foreground
     
     if ( application.applicationState == UIApplicationStateActive ) {
-        [VCPushManager application:application didReceiveRemoteNotification:userInfo];
+        [VCPushReceiver application:application didReceiveRemoteNotification:userInfo];
     } else {
-        [VCPushManager handleTappedRemoteNotification:userInfo];
+        [VCPushReceiver handleTappedRemoteNotification:userInfo];
     }
     
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
-    NSNumber * requestId = [notification.userInfo objectForKey:@"request_id"];
-    [[VCDialogs instance] commuterRideAlarm:requestId];
+    [VCLocalNotificationReceiver handleLocalNotification:notification];
 }
 
 

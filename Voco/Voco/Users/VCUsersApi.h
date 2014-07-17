@@ -48,4 +48,9 @@
                  cardToken: (NSString *) token
                    success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                    failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
+
++ (void) fillCommuterPass: (NSNumber *) amountToAdd
+                  success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                  failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
+
 @end

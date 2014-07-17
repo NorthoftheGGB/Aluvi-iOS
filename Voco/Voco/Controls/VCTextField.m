@@ -16,6 +16,7 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         fontSize = [NSNumber numberWithInt:13];
+        self.validateOnFocusLossOnly = TRUE;
     }
     return self;
 }

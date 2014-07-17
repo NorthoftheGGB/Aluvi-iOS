@@ -16,6 +16,7 @@
 #import "VCDriverStateResponse.h"
 #import "VCUserStateResponse.h"
 #import "VCProfile.h"
+#import "VCFillCommuterPass.h"
 
 @implementation VCUsersApi
 + (void) setup: (RKObjectManager *) objectManager {
@@ -34,6 +35,7 @@
     
     RKObjectMapping * profileMapping = [VCProfile getMapping];
     RKObjectMapping * profileUpdateMapping = [profileMapping inverseMapping];
+    profileUpdateMapping.assignsDefaultValueForMissingAttributes = NO;
     RKRequestDescriptor * profileRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:profileUpdateMapping objectClass:[VCProfile class] rootKeyPath:nil method:RKRequestMethodPOST];
     [objectManager addRequestDescriptor:profileRequestDescriptor];
     {
@@ -95,6 +97,12 @@
         [objectManager addResponseDescriptor:responseDescriptor];
     }
     
+    {
+        RKObjectMapping * fillCommuterPassMapping = [VCFillCommuterPass getMapping];
+        RKObjectMapping * fillCommuterPassRequestMapping =  [fillCommuterPassMapping inverseMapping];
+        RKRequestDescriptor * requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:fillCommuterPassRequestMapping objectClass:[VCFillCommuterPass class] rootKeyPath:nil method:RKRequestMethodPOST];
+        [objectManager addRequestDescriptor:requestDescriptor];
+    }
     
 }
 
@@ -194,4 +202,34 @@
 
     }];
 }
+
++ (void) updateProfile: ( RKObjectManager *) objectManager
+                 profileData: (VCProfile *) profile
+                success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+    [objectManager postObject:profile path:API_USER_PROFILE parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult){
+        success(operation, mappingResult);
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        failure(operation, error);
+        
+    }];
+}
+
++ (void) fillCommuterPass: ( RKObjectManager *) objectManager
+               centsToAdd:(NSNumber *) centsToAdd
+                  success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                  failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+    VCFillCommuterPass * fillCommuterPassObject = [[VCFillCommuterPass alloc] init];
+    fillCommuterPassObject.amountCents = centsToAdd;
+    [objectManager postObject:fillCommuterPassObject
+                         path:API_FILL_COMMUTER_PASS
+                   parameters:nil
+                      success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                          success(operation, mappingResult);
+                      }
+                      failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                          failure(operation, error);
+                      }];
+}
+
 @end

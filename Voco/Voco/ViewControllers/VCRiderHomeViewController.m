@@ -315,7 +315,8 @@
                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                             VCDriverGeoObject * geoObject = mappingResult.firstObject;
                             
-                            if( ![geoObject.currentFareId isEqualToNumber:[VCUserState instance].underwayRideId]){
+                            if( [VCUserState instance].underwayRideId == nil
+                               || ![geoObject.currentFareId isEqualToNumber:[VCUserState instance].underwayRideId]){
                                 // don't show annotation yet
                                 return;
                             }
@@ -339,6 +340,10 @@
                             
                         }
                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                            NSInteger statusCode = operation.HTTPRequestOperation.response.statusCode;
+                            if(statusCode == 401){
+                                [self stopTrackingDriverLocation];
+                            }
         
     }];
 }

@@ -192,6 +192,8 @@
 		4FFBA44F195E7BCD00A51B84 /* VCPasswordTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFBA440195E608600A51B84 /* VCPasswordTextField.m */; };
 		4FFBA450195E7BCF00A51B84 /* VCEmailTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFBA44D195E7BC600A51B84 /* VCEmailTextField.m */; };
 		CC26291E90FA484191AB6374 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 351E93948BFC43989C411DB5 /* libPods.a */; };
+		F401446F1978728100769802 /* VCFillCommuterPass.m in Sources */ = {isa = PBXBuildFile; fileRef = F401446E1978728100769802 /* VCFillCommuterPass.m */; };
+		F40144701978728100769802 /* VCFillCommuterPass.m in Sources */ = {isa = PBXBuildFile; fileRef = F401446E1978728100769802 /* VCFillCommuterPass.m */; };
 		F4138C2619650C5600C265CD /* VCCommuterHud.m in Sources */ = {isa = PBXBuildFile; fileRef = F4138C2519650C5600C265CD /* VCCommuterHud.m */; };
 		F4138C2719650C5600C265CD /* VCCommuterHud.m in Sources */ = {isa = PBXBuildFile; fileRef = F4138C2519650C5600C265CD /* VCCommuterHud.m */; };
 		F4138C2D1965467D00C265CD /* VCFaresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4138C2B1965467D00C265CD /* VCFaresViewController.m */; };
@@ -227,7 +229,7 @@
 		F4354D75195D0D6A00C06CF7 /* VCButtonFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641FD194170F50059BED1 /* VCButtonFont.m */; };
 		F4354D76195D0D6A00C06CF7 /* MQShape.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F00B194A5A6100D8C900 /* MQShape.m */; };
 		F4354D77195D0D6A00C06CF7 /* VCRideRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BFB19357B8A00A94721 /* VCRideRequest.m */; };
-		F4354D78195D0D6A00C06CF7 /* VCPushManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AF71937DD5600354886 /* VCPushManager.m */; };
+		F4354D78195D0D6A00C06CF7 /* VCPushReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AF71937DD5600354886 /* VCPushReceiver.m */; };
 		F4354D79195D0D6A00C06CF7 /* VCDriverStateResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F0311952F68D00D8C900 /* VCDriverStateResponse.m */; };
 		F4354D7A195D0D6A00C06CF7 /* VCGeolocation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AFA1937DD6600354886 /* VCGeolocation.m */; };
 		F4354D7B195D0D6A00C06CF7 /* VCDriverRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641BD194157C60059BED1 /* VCDriverRequestViewController.m */; };
@@ -410,8 +412,10 @@
 		F4FA0C09192BF6BF005D8645 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BED192BF6BF005D8645 /* CoreData.framework */; };
 		F4FA0C11192BF6BF005D8645 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4FA0C0F192BF6BF005D8645 /* InfoPlist.strings */; };
 		F4FA0C13192BF6BF005D8645 /* VocoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FA0C12192BF6BF005D8645 /* VocoTests.m */; };
+		F4FB55761977CD690043557A /* VCLocalNotificationReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FB55751977CD690043557A /* VCLocalNotificationReceiver.m */; };
+		F4FB55771977CD690043557A /* VCLocalNotificationReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FB55751977CD690043557A /* VCLocalNotificationReceiver.m */; };
 		F4FE1AF11936BE0900354886 /* VCDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AF01936BE0900354886 /* VCDevice.m */; };
-		F4FE1AF81937DD5600354886 /* VCPushManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AF71937DD5600354886 /* VCPushManager.m */; };
+		F4FE1AF81937DD5600354886 /* VCPushReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AF71937DD5600354886 /* VCPushReceiver.m */; };
 		F4FE1AFB1937DD6600354886 /* VCGeolocation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AFA1937DD6600354886 /* VCGeolocation.m */; };
 		F4FE1AFE193839DF00354886 /* Fare.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AFD193839DF00354886 /* Fare.m */; };
 		F4FE1B0B19384F9000354886 /* VCDriverApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B0A19384F9000354886 /* VCDriverApi.m */; };
@@ -580,6 +584,8 @@
 		4FFBA44C195E7BC600A51B84 /* VCEmailTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCEmailTextField.h; path = Controls/VCEmailTextField.h; sourceTree = "<group>"; };
 		4FFBA44D195E7BC600A51B84 /* VCEmailTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCEmailTextField.m; path = Controls/VCEmailTextField.m; sourceTree = "<group>"; };
 		CD677E046A804589A26C0608 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		F401446D1978728100769802 /* VCFillCommuterPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCFillCommuterPass.h; path = API/Users/VCFillCommuterPass.h; sourceTree = "<group>"; };
+		F401446E1978728100769802 /* VCFillCommuterPass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCFillCommuterPass.m; path = API/Users/VCFillCommuterPass.m; sourceTree = "<group>"; };
 		F4138C2419650C5600C265CD /* VCCommuterHud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCCommuterHud.h; path = ViewControllers/Views/VCCommuterHud.h; sourceTree = "<group>"; };
 		F4138C2519650C5600C265CD /* VCCommuterHud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCCommuterHud.m; path = ViewControllers/Views/VCCommuterHud.m; sourceTree = "<group>"; };
 		F4138C2819653C7300C265CD /* Voco 15.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 15.xcdatamodel"; sourceTree = "<group>"; };
@@ -760,11 +766,13 @@
 		F4FA0C0E192BF6BF005D8645 /* VocoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VocoTests-Info.plist"; sourceTree = "<group>"; };
 		F4FA0C10192BF6BF005D8645 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F4FA0C12192BF6BF005D8645 /* VocoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VocoTests.m; sourceTree = "<group>"; };
+		F4FB55741977CD690043557A /* VCLocalNotificationReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCLocalNotificationReceiver.h; sourceTree = "<group>"; };
+		F4FB55751977CD690043557A /* VCLocalNotificationReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCLocalNotificationReceiver.m; sourceTree = "<group>"; };
 		F4FE1AEF1936BE0900354886 /* VCDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCDevice.h; path = API/Devices/VCDevice.h; sourceTree = "<group>"; };
 		F4FE1AF01936BE0900354886 /* VCDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCDevice.m; path = API/Devices/VCDevice.m; sourceTree = "<group>"; };
 		F4FE1AF41936BE8D00354886 /* VCRestKitMappableObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VCRestKitMappableObject.h; path = API/Base/VCRestKitMappableObject.h; sourceTree = "<group>"; };
-		F4FE1AF61937DD5600354886 /* VCPushManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPushManager.h; sourceTree = "<group>"; };
-		F4FE1AF71937DD5600354886 /* VCPushManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPushManager.m; sourceTree = "<group>"; };
+		F4FE1AF61937DD5600354886 /* VCPushReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPushReceiver.h; sourceTree = "<group>"; };
+		F4FE1AF71937DD5600354886 /* VCPushReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPushReceiver.m; sourceTree = "<group>"; };
 		F4FE1AF91937DD6600354886 /* VCGeolocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCGeolocation.h; sourceTree = "<group>"; };
 		F4FE1AFA1937DD6600354886 /* VCGeolocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCGeolocation.m; sourceTree = "<group>"; };
 		F4FE1AFC193839DF00354886 /* Fare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Fare.h; path = Model/Fare.h; sourceTree = "<group>"; };
@@ -965,7 +973,7 @@
 			name = "Sign-In and Registration";
 			sourceTree = "<group>";
 		};
-		4FE641D7194160450059BED1 /* Controls */ = {
+		4FE641D7194160450059BED1 /* UI Elements */ = {
 			isa = PBXGroup;
 			children = (
 				4FFBA43E195E5FE900A51B84 /* Validation */,
@@ -984,7 +992,7 @@
 				4F9ECEC719663B1F00AD4229 /* VCLabelBold.h */,
 				4F9ECEC819663B1F00AD4229 /* VCLabelBold.m */,
 			);
-			name = Controls;
+			name = "UI Elements";
 			sourceTree = "<group>";
 		};
 		4FE641E1194168E80059BED1 /* Assets */ = {
@@ -1394,6 +1402,8 @@
 				F4D8905219469F0F007C4671 /* VCDriverInterestedRequest.m */,
 				F4D877641976721D00870945 /* VCProfile.h */,
 				F4D877651976721D00870945 /* VCProfile.m */,
+				F401446D1978728100769802 /* VCFillCommuterPass.h */,
+				F401446E1978728100769802 /* VCFillCommuterPass.m */,
 			);
 			name = Users;
 			sourceTree = "<group>";
@@ -1449,7 +1459,7 @@
 				F45F7C0B1935975D00A94721 /* Libraries */,
 				F45F7BF2193578AA00A94721 /* Api */,
 				F45F7BED193575C100A94721 /* Model */,
-				4FE641D7194160450059BED1 /* Controls */,
+				4FE641D7194160450059BED1 /* UI Elements */,
 				F45F7BE71935756000A94721 /* ViewControllers */,
 				F4FA0BFE192BF6BF005D8645 /* Images.xcassets */,
 				F4FA0BF0192BF6BF005D8645 /* Supporting Files */,
@@ -1511,14 +1521,16 @@
 			children = (
 				F4FA0BF8192BF6BF005D8645 /* VCAppDelegate.h */,
 				F4FA0BF9192BF6BF005D8645 /* VCAppDelegate.m */,
-				F4FE1AF61937DD5600354886 /* VCPushManager.h */,
-				F4FE1AF71937DD5600354886 /* VCPushManager.m */,
+				F4FE1AF61937DD5600354886 /* VCPushReceiver.h */,
+				F4FE1AF71937DD5600354886 /* VCPushReceiver.m */,
 				F4FE1B101938581C00354886 /* VCDialogs.h */,
 				F4FE1B111938581C00354886 /* VCDialogs.m */,
 				F4FE1B1319385CAA00354886 /* VCUserState.h */,
 				F4FE1B1419385CAA00354886 /* VCUserState.m */,
 				F4FE1B19193D301F00354886 /* VCCoreData.h */,
 				F4FE1B1A193D301F00354886 /* VCCoreData.m */,
+				F4FB55741977CD690043557A /* VCLocalNotificationReceiver.h */,
+				F4FB55751977CD690043557A /* VCLocalNotificationReceiver.m */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -1960,6 +1972,7 @@
 				F4354D60195D0D6A00C06CF7 /* VCForgotPasswordRequest.m in Sources */,
 				F4792AE419750975005AB652 /* LEBackgroundThread.m in Sources */,
 				F4354D62195D0D6A00C06CF7 /* VCPushApi.m in Sources */,
+				F40144701978728100769802 /* VCFillCommuterPass.m in Sources */,
 				4F9ECEAC196619D800AD4229 /* VCPhoneTextField.m in Sources */,
 				F4354D63195D0D6A00C06CF7 /* VCDriverViewController.m in Sources */,
 				4FE712CA197368B90071020C /* VCCarBrandTextField.m in Sources */,
@@ -1975,6 +1988,7 @@
 				4FE712BE1973686B0071020C /* VCDriversLicenseTextField.m in Sources */,
 				F4354D67195D0D6A00C06CF7 /* VCLoginResponse.m in Sources */,
 				F4354D68195D0D6A00C06CF7 /* VCRideIdentity.m in Sources */,
+				F4FB55771977CD690043557A /* VCLocalNotificationReceiver.m in Sources */,
 				F4A7C7FE19615B9D007E05AD /* VCTransitBaseViewController.m in Sources */,
 				4FCD7C9019776CD6007609E8 /* VCDriverChangeBankAccountViewController.m in Sources */,
 				4F9ECEB219661C3400AD4229 /* VCCommuterPassViewController.m in Sources */,
@@ -2005,7 +2019,7 @@
 				4F9ECEB919661C4A00AD4229 /* VCRiderPaymentsViewController.m in Sources */,
 				F4792AE619750975005AB652 /* lecore.m in Sources */,
 				F4354D77195D0D6A00C06CF7 /* VCRideRequest.m in Sources */,
-				F4354D78195D0D6A00C06CF7 /* VCPushManager.m in Sources */,
+				F4354D78195D0D6A00C06CF7 /* VCPushReceiver.m in Sources */,
 				F4354D79195D0D6A00C06CF7 /* VCDriverStateResponse.m in Sources */,
 				F4D877671976721D00870945 /* VCProfile.m in Sources */,
 				F4792AEA19750975005AB652 /* LeNetworkStatus.m in Sources */,
@@ -2090,6 +2104,7 @@
 				F4D8777319775D7E00870945 /* VCUtilities.m in Sources */,
 				F4792AEB19750975005AB652 /* LogFile.m in Sources */,
 				F4138C2D1965467D00C265CD /* VCFaresViewController.m in Sources */,
+				F4FB55761977CD690043557A /* VCLocalNotificationReceiver.m in Sources */,
 				4FE641DD1941621E0059BED1 /* VCLabelItalic.m in Sources */,
 				F473F03F195B971C00D8C900 /* Driver.m in Sources */,
 				F4FE1B121938581C00354886 /* VCDialogs.m in Sources */,
@@ -2108,7 +2123,7 @@
 				4FE641FE194170F50059BED1 /* VCButtonFont.m in Sources */,
 				F473F00C194A5A6100D8C900 /* MQShape.m in Sources */,
 				F45F7BFC19357B8A00A94721 /* VCRideRequest.m in Sources */,
-				F4FE1AF81937DD5600354886 /* VCPushManager.m in Sources */,
+				F4FE1AF81937DD5600354886 /* VCPushReceiver.m in Sources */,
 				F473F0321952F68D00D8C900 /* VCDriverStateResponse.m in Sources */,
 				F4A7C81619628F10007E05AD /* MQBoundingBox.m in Sources */,
 				F4FE1AFB1937DD6600354886 /* VCGeolocation.m in Sources */,
@@ -2117,6 +2132,7 @@
 				F4792AE519750975005AB652 /* lecore.m in Sources */,
 				F4A7C80519623C70007E05AD /* Transit.m in Sources */,
 				4FE712BD1973686B0071020C /* VCDriversLicenseTextField.m in Sources */,
+				F401446F1978728100769802 /* VCFillCommuterPass.m in Sources */,
 				F4FE1B18193D2F3F00354886 /* Offer.m in Sources */,
 				4F9ECEA7196618C300AD4229 /* VCNameTextField.m in Sources */,
 				4F9ECEB119661C3400AD4229 /* VCCommuterPassViewController.m in Sources */,

@@ -101,17 +101,29 @@
     [self.navigationController pushViewController:driverRequestViewController animated:YES];
 }
 
+- (IBAction)editDidBegin:(id)sender {
+    UITextField * textField = (UITextField *) sender;
+    textField.backgroundColor = [UIColor whiteColor];
+}
 
 - (IBAction)didEndOnExit:(id)sender {
     
     UITextField * textField = (UITextField *) sender;
+    if([textField.text length] > 0){
+        textField.backgroundColor = [UIColor whiteColor];
+    }
+    
     switch(textField.tag){
         case kPhoneFieldTag:
-            [_passwordField becomeFirstResponder];
+            if ([_phoneNumberField validate]){
+                [_passwordField becomeFirstResponder];
+            }
             break;
         case kPasswordFieldTag:
-            [self.view endEditing:YES];
-            [self login];
+            if([_passwordField validate]) {
+                [self.view endEditing:YES];
+                [self login];
+            }
             break;
         }
 }

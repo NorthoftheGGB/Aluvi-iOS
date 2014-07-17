@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface VCPushManager : NSObject
+@interface VCPushReceiver : NSObject
 
 + (void)registerForRemoteNotifications;
 + (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;

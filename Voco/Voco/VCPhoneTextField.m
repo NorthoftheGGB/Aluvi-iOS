@@ -43,7 +43,7 @@
 }
 */
 
-- (NSString *) text {
+- (NSString *) phoneNumberDigits {
     NSString * text = [super text];
     NSString * newString = [[text componentsSeparatedByCharactersInSet:
                             [[NSCharacterSet decimalDigitCharacterSet] invertedSet]]

@@ -136,7 +136,10 @@ static void * XXContext = &XXContext;
                              // nothing to do!
                          }
                          failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                             // [WRUtilities criticalError:error];
+                             NSInteger statusCode = operation.HTTPRequestOperation.response.statusCode;
+                             if(statusCode == 401){
+                                 [self stopSendingDriverLocation];
+                             }
                          }];
 }
 

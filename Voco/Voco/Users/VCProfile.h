@@ -12,6 +12,6 @@
 
 @property(nonatomic, strong) NSString * defaultCardToken;
 
-
 + (RKObjectMapping *) getMapping;
+
 @end
