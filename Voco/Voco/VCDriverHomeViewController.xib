@@ -8,7 +8,6 @@
             <connections>
                 <outlet property="acceptButton" destination="H8D-Wr-6Ns" id="WfI-zk-BI9"/>
                 <outlet property="addressLabel" destination="sAr-VL-Uem" id="nYo-Jc-muf"/>
-                <outlet property="callButtonCommuter" destination="Pkb-jJ-TNW" id="gKK-Fq-hg6"/>
                 <outlet property="callButtonOnDemand" destination="tzG-80-FUQ" id="88z-NO-F3S"/>
                 <outlet property="cancelRideButton" destination="mXT-Uz-lV6" id="dy8-cs-mch"/>
                 <outlet property="commuterCallHud" destination="fHd-Yy-doE" id="Pf6-EU-khK"/>
@@ -19,9 +18,6 @@
                 <outlet property="rideCompletedButton" destination="Ckd-PV-Lho" id="pjL-In-eA7"/>
                 <outlet property="riderNameLabel" destination="sxL-we-2qT" id="i9F-ww-Xtj"/>
                 <outlet property="riderPickedUpButton" destination="Awz-9j-gv0" id="g96-WX-jxp"/>
-                <outlet property="riderSelectButtonOne" destination="lxd-Ov-3KI" id="Oty-PT-ErY"/>
-                <outlet property="riderSelectButtonThree" destination="VwL-FN-zPm" id="aKv-7H-wFw"/>
-                <outlet property="riderSelectButtonTwo" destination="E9R-NB-UuU" id="2Zm-y7-Pzb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -286,7 +282,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
-        <view alpha="0.79999999999999982" contentMode="scaleToFill" id="fHd-Yy-doE" userLabel="Commuter Cal HUD">
+        <view alpha="0.79999999999999982" contentMode="scaleToFill" id="fHd-Yy-doE" userLabel="Driver HUD" customClass="VCDriverHUD">
             <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -313,7 +309,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <action selector="didTapRiderSelect:" destination="-1" eventType="touchUpInside" id="h0U-ea-59L"/>
+                        <action selector="didTapRiderButton:" destination="fHd-Yy-doE" eventType="touchDown" id="qSg-Ek-LBt"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E9R-NB-UuU" userLabel="two" customClass="VCButtonFontBold">
@@ -337,8 +333,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <action selector="didTapCommuterCallButton:" destination="-1" eventType="touchUpInside" id="eIl-xE-Edm"/>
-                        <action selector="didTapRiderSelect:" destination="-1" eventType="touchUpInside" id="iKZ-jb-ajJ"/>
+                        <action selector="didTapRiderButton:" destination="fHd-Yy-doE" eventType="touchUpInside" id="9n6-C6-50R"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VwL-FN-zPm" userLabel="three" customClass="VCButtonFontBold">
@@ -362,8 +357,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <action selector="didTapCommuterCallButton:" destination="-1" eventType="touchUpInside" id="xtM-5x-Sk3"/>
-                        <action selector="didTapRiderSelect:" destination="-1" eventType="touchUpInside" id="IKS-p5-zLu"/>
+                        <action selector="didTapRiderButton:" destination="fHd-Yy-doE" eventType="touchUpInside" id="rjo-I5-wOR"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pkb-jJ-TNW">
@@ -378,6 +372,9 @@
                     </state>
                     <state key="selected" image="call-button-select.png"/>
                     <state key="highlighted" image="call-button-select.png"/>
+                    <connections>
+                        <action selector="didTapCallButton:" destination="fHd-Yy-doE" eventType="touchDown" id="RjT-pY-ZpH"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -392,6 +389,12 @@
                 <constraint firstItem="lxd-Ov-3KI" firstAttribute="leading" secondItem="fHd-Yy-doE" secondAttribute="leading" constant="1" id="xoh-tN-Ecm"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="callButton" destination="Pkb-jJ-TNW" id="X9p-xX-OfQ"/>
+                <outlet property="riderButton1" destination="lxd-Ov-3KI" id="NK8-x9-1H6"/>
+                <outlet property="riderButton2" destination="E9R-NB-UuU" id="RQA-z6-iLY"/>
+                <outlet property="riderButton3" destination="VwL-FN-zPm" id="vfz-LL-gyo"/>
+            </connections>
         </view>
     </objects>
     <resources>

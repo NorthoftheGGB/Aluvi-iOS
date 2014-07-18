@@ -19,9 +19,11 @@
 #import "VCFare.h"
 #import "VCUtilities.h"
 #import "VCLabelBold.h"
+#import "VCDriverHUD.h"
 
 
-@interface VCDriverHomeViewController ()
+@interface VCDriverHomeViewController () <VCDriverHUDDelegate>
+
 @property (weak, nonatomic) IBOutlet VCButtonFontBold *acceptButton;
 @property (weak, nonatomic) IBOutlet VCButtonFontBold *declineButton;
 @property (weak, nonatomic) IBOutlet VCButtonFontBold *riderPickedUpButton;
@@ -45,19 +47,7 @@
 @property (strong, nonatomic) IBOutlet VCLabel *addressLabel;
 
 //Commuter Call HUD
-
-@property (strong, nonatomic) IBOutlet UIView *commuterCallHud;
-@property (strong, nonatomic) IBOutlet VCButtonFontBold *riderSelectButtonOne;
-@property (strong, nonatomic) IBOutlet VCButtonFontBold *riderSelectButtonTwo;
-@property (strong, nonatomic) IBOutlet VCButtonFontBold *riderSelectButtonThree;
-@property (strong, nonatomic) IBOutlet UIButton *callButtonCommuter;
-
-- (IBAction)didTapRiderSelect:(id)sender;
-
-- (IBAction)didTapCommuterCallButton:(id)sender;
-
-
-
+@property (strong, nonatomic) IBOutlet VCDriverHUD *commuterCallHud;
 
 //On Demand Call HUD
 
@@ -99,6 +89,9 @@
         [self showRide];
     }
 
+    _commuterCallHud.delegate = self;
+    [_commuterCallHud setRiderNames:@[@"Ricky Horsepow", @"Klandish Filnao"]];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -403,21 +396,14 @@
     [self.map setCenterCoordinate:self.map.userLocation.coordinate animated:YES];
 }
 
-- (IBAction)didTapRiderSelect:(id)sender {
-    UIButton * button = (UIButton*)sender;
-    if (button.selected){
-        return;
-    }
-    _riderSelectButtonOne.selected = NO;
-    _riderSelectButtonTwo.selected = NO;
-    _riderSelectButtonThree.selected = NO;
-    button.selected = YES;
 
-}
-
-
-- (IBAction)didTapCommuterCallButton:(id)sender {
-}
 - (IBAction)didTapOnDemandCallButton:(id)sender {
 }
+
+#pragma mark -- VCDriverHUDDelegate
+
+- (void)didRequestCallForIndex:(NSInteger)index {
+    // Make the call!!
+}
+
 @end

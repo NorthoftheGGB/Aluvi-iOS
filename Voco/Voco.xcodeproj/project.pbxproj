@@ -383,6 +383,8 @@
 		F4A7C8281962E235007E05AD /* VCLocationSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A7C8241962E235007E05AD /* VCLocationSearchViewController.xib */; };
 		F4C6B1AB1978DF2A00F6C10B /* Earning.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6B1AA1978DF2A00F6C10B /* Earning.m */; };
 		F4C6B1AC1978DF2A00F6C10B /* Earning.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6B1AA1978DF2A00F6C10B /* Earning.m */; };
+		F4C6B1B31979157800F6C10B /* VCDriverHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6B1B21979157800F6C10B /* VCDriverHUD.m */; };
+		F4C6B1B41979157800F6C10B /* VCDriverHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6B1B21979157800F6C10B /* VCDriverHUD.m */; };
 		F4D877661976721D00870945 /* VCProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D877651976721D00870945 /* VCProfile.m */; };
 		F4D877671976721D00870945 /* VCProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D877651976721D00870945 /* VCProfile.m */; };
 		F4D8776C19774CAB00870945 /* VCFare.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8776B19774CAB00870945 /* VCFare.m */; };
@@ -728,6 +730,8 @@
 		F4C6B1AD1978E4D400F6C10B /* Voco 27.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 27.xcdatamodel"; sourceTree = "<group>"; };
 		F4C6B1AE1978F33900F6C10B /* Voco 28.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 28.xcdatamodel"; sourceTree = "<group>"; };
 		F4C6B1AF1979147000F6C10B /* Voco 29.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 29.xcdatamodel"; sourceTree = "<group>"; };
+		F4C6B1B11979157800F6C10B /* VCDriverHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCDriverHUD.h; sourceTree = "<group>"; };
+		F4C6B1B21979157800F6C10B /* VCDriverHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCDriverHUD.m; sourceTree = "<group>"; };
 		F4D877641976721D00870945 /* VCProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCProfile.h; path = Users/VCProfile.h; sourceTree = "<group>"; };
 		F4D877651976721D00870945 /* VCProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCProfile.m; path = Users/VCProfile.m; sourceTree = "<group>"; };
 		F4D8776A19774CAB00870945 /* VCFare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCFare.h; path = API/Driver/VCFare.h; sourceTree = "<group>"; };
@@ -863,6 +867,7 @@
 		4F2EF9941960D1CA006A1962 /* Fare System */ = {
 			isa = PBXGroup;
 			children = (
+				F4C6B1B01979154900F6C10B /* Views */,
 				4F2EF9981960D280006A1962 /* VCDriverHomeViewController.h */,
 				4F2EF9991960D280006A1962 /* VCDriverHomeViewController.m */,
 				4F2EF99A1960D280006A1962 /* VCDriverHomeViewController.xib */,
@@ -1385,6 +1390,15 @@
 				F49EDD0F1946E2F90020B8BB /* VCInterfaceModes.m */,
 			);
 			name = Modes;
+			sourceTree = "<group>";
+		};
+		F4C6B1B01979154900F6C10B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F4C6B1B11979157800F6C10B /* VCDriverHUD.h */,
+				F4C6B1B21979157800F6C10B /* VCDriverHUD.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		F4D8777019775D6D00870945 /* Helpers */ = {
@@ -2066,6 +2080,7 @@
 				F4A7C81219626DDE007E05AD /* VCFareIdentity.m in Sources */,
 				4FCD7C7919762465007609E8 /* VCDriverProfileViewController.m in Sources */,
 				F4138C2719650C5600C265CD /* VCCommuterHud.m in Sources */,
+				F4C6B1B41979157800F6C10B /* VCDriverHUD.m in Sources */,
 				F4A7C80B19625237007E05AD /* VCDebugViewController.m in Sources */,
 				F4354D8E195D0D6A00C06CF7 /* VCObjectRequestOperation.m in Sources */,
 				F4354D8F195D0D6A00C06CF7 /* VCValidation.m in Sources */,
@@ -2142,6 +2157,7 @@
 				F4792AF61976492D005AB652 /* VCDriverGeoObject.m in Sources */,
 				4FE641BF194157C60059BED1 /* VCDriverRequestViewController.m in Sources */,
 				F4792AE519750975005AB652 /* lecore.m in Sources */,
+				F4C6B1B31979157800F6C10B /* VCDriverHUD.m in Sources */,
 				F4A7C80519623C70007E05AD /* Transit.m in Sources */,
 				4FE712BD1973686B0071020C /* VCDriversLicenseTextField.m in Sources */,
 				F401446F1978728100769802 /* VCFillCommuterPass.m in Sources */,
