@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCDriverPaymentsViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCDriverEarningsViewController">
             <connections>
                 <outlet property="accountNameTextField" destination="eTW-bU-2yc" id="hSG-65-HKw"/>
                 <outlet property="accountNumberTextField" destination="6dt-r2-2S2" id="ijp-fe-3UV"/>
                 <outlet property="changeBankInfoButton" destination="X6S-nc-k2Z" id="Jse-Ve-53K"/>
-                <outlet property="didTapChangeBankInfo" destination="X6S-nc-k2Z" id="ELx-za-NDK"/>
-                <outlet property="receiptsTableViewCell" destination="zSg-5G-OCj" id="gW3-b6-i0P"/>
                 <outlet property="routingNumberTextField" destination="0Wt-m2-fnO" id="Z7U-Qm-jRA"/>
+                <outlet property="tableView" destination="zSg-5G-OCj" id="pvn-ai-vbu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,7 +19,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name on Account" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eTW-bU-2yc" customClass="VCTextField">
+                <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name on Account" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eTW-bU-2yc" customClass="VCTextField">
                     <rect key="frame" x="58" y="101" width="205" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
@@ -36,7 +35,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Account Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6dt-r2-2S2" customClass="VCBankAccountTextField">
+                <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Account Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6dt-r2-2S2" customClass="VCBankAccountTextField">
                     <rect key="frame" x="58" y="139" width="205" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
@@ -52,7 +51,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Routing Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Wt-m2-fnO" customClass="VCRoutingNumberTextField">
+                <textField opaque="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Routing Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Wt-m2-fnO" customClass="VCRoutingNumberTextField">
                     <rect key="frame" x="58" y="177" width="205" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
@@ -109,6 +108,10 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="300" id="qJB-un-qUV"/>
                     </constraints>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="tYX-RK-2IW"/>
+                        <outlet property="delegate" destination="-1" id="Lp3-fE-LAv"/>
+                    </connections>
                 </tableView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Receipts:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZq-KJ-pmC" customClass="VCLabelBold">
                     <rect key="frame" x="10" y="265" width="73" height="21"/>

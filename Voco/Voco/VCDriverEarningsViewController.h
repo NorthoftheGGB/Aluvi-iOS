@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VCDriverPaymentsViewController : UIViewController
+@interface VCDriverEarningsViewController : UIViewController
 
 @end

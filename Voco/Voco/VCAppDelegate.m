@@ -72,7 +72,7 @@
     }
     
     RKLogConfigureByName("RestKit/Network", RKLogLevelInfo);
-    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelDebug);
+    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
     
     return YES;
 }

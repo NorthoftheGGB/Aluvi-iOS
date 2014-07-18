@@ -7,6 +7,9 @@
 //
 
 #import "VCDriverRecieptDetailViewController.h"
+#import "NSDate+Pretty.h"
+#import "VCUtilities.h"
+#import "Fare.h"
 
 @interface VCDriverRecieptDetailViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *recieptDetailTextView;
@@ -27,7 +30,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    NSString * receipt = [[NSString alloc] init];
+    receipt = [receipt stringByAppendingString:[NSString stringWithFormat:@"Fare Id: %@", _earning.fare_id]];
+    receipt = [receipt stringByAppendingString:[NSString stringWithFormat:@"\n\nDate: %@", [_earning.createdAt formatted]]];
+    receipt = [receipt stringByAppendingString:[NSString stringWithFormat:@"\n\nPayment: %@", [VCUtilities formatCurrencyFromCents: _earning.amountCents]]];
+    receipt = [receipt stringByAppendingString:[NSString stringWithFormat:@"\n\Route: %@", [_earning.fare routeDescription]]];
+    [_recieptDetailTextView setText:receipt];
+
 }
 
 - (void)didReceiveMemoryWarning

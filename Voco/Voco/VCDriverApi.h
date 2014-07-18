@@ -36,5 +36,7 @@
             failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 + (void) refreshActiveRidesWithSuccess: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                                failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
++ (void) earnings:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+          failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
 @end

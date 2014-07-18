@@ -50,7 +50,7 @@
         hud.hidden = YES;
         VCProfile * profile = mappingResult.firstObject;
         if(profile.cardLastFour != nil && profile.cardBrand != nil){
-            _creditCardNumberLabel.text = [NSString stringWithFormat:@"%@ X%@", profile.cardBrand, profile.cardLastFour];
+            _creditCardNumberLabel.text = [NSString stringWithFormat:@"%@ XXXX-XXXX-XXXX-%@", profile.cardBrand, profile.cardLastFour];
         } else {
             _creditCardNumberLabel.text = @"No Credit Card Assigned";
         }
@@ -144,7 +144,7 @@
 
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if(alertView.tag == 4){
+    if(alertView.tag == 4 && buttonIndex == 1) {
         VCProfile * profile = [[VCProfile alloc] init];
         NSString * amountString = [alertView textFieldAtIndex:0].text;
         profile.commuterRefillAmountCents = [NSNumber numberWithFloat: [amountString doubleValue] * 100 ];

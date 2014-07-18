@@ -1,49 +1,50 @@
 //
-//  VCRiderPaymentsViewController.m
+//  VCDriverEarningsViewController.m
 //  Voco
 //
-//  Created by Elliott De Aratanha on 7/3/14.
+//  Created by Elliott De Aratanha on 7/15/14.
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCRiderPaymentsViewController.h"
-#import <Stripe.h>
-#import <STPView.h>
+#import "VCDriverEarningsViewController.h"
 #import <MBProgressHUD.h>
-#import <UIAlertView+Blocks.h>
+#import "VCBankAccountTextField.h"
+#import "VCRoutingNumberTextField.h"
 #import "VCTextField.h"
+#import "VCTextField.h"
+#import "VCLabel.h"
+#import "VCLabelBold.h"
 #import "VCButtonFontBold.h"
+#import "VCDriverApi.h"
 #import "VCUsersApi.h"
-#import "VCRiderApi.h"
-#import "Payment.h"
+#import "VCDriverRecieptDetailViewController.h"
+#import "Earning.h"
 #import "VCUtilities.h"
-#import "VCRiderRecieptDetailViewController.h"
+#import "NSDate+Pretty.h"
+#import "Fare.h"
 
-#define kChangeCardText @"Change Card"
-#define kUpdateCardText @"Update Card"
-#define kInterfaceStateDisplayCard 1
-#define kInterfaceStateUpdateCard 2
+@interface VCDriverEarningsViewController () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
 
-@interface VCRiderPaymentsViewController () <STPViewDelegate, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
-@property (weak, nonatomic) IBOutlet UIView *STPViewContainer;
-@property (weak, nonatomic) IBOutlet UITableView *recieptListTableView;
-@property (weak, nonatomic) IBOutlet VCButtonFontBold *updateCardButton;
-@property (weak, nonatomic) IBOutlet UILabel *cardInfoLabel;
-@property (weak, nonatomic) IBOutlet UITableView * tableView;
-@property (strong, nonatomic) STPView * cardView;
-@property (nonatomic) NSInteger state;
+@property (weak, nonatomic) IBOutlet VCTextField *accountNameTextField;
+@property (weak, nonatomic) IBOutlet VCBankAccountTextField *accountNumberTextField;
+@property (weak, nonatomic) IBOutlet VCRoutingNumberTextField *routingNumberTextField;
+@property (weak, nonatomic) IBOutlet VCButtonFontBold *changeBankInfoButton;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
-- (IBAction)didTapUpdate:(id)sender;
+- (IBAction)didTapChangeBankInfo:(id)sender;
+
 
 @end
 
-@implementation VCRiderPaymentsViewController
+@implementation VCDriverEarningsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        
+    
         // Custom initialization
     }
     return self;
@@ -55,7 +56,7 @@
         return _fetchedResultsController;
     }
     
-    NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Payment"];
+    NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Earning"];
     
     NSSortDescriptor *sort = [[NSSortDescriptor alloc]
                               initWithKey:@"createdAt" ascending:YES];
@@ -74,37 +75,37 @@
     
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Payments";
-    _updateCardButton.enabled = YES;
-    _updateCardButton.titleLabel.text = kChangeCardText;
-    _state = kInterfaceStateDisplayCard;
+    self.title = @"Earnings";
     
-    // Fire off the payments reload
-    [VCRiderApi payments:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    // Fire off the earnings reload
+    [VCDriverApi earnings:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         // no need to do anything
+        NSArray * earnings = mappingResult.array;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         // nothing to do
     }];
     
+    
+    /*
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [VCUsersApi getProfile:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         hud.hidden = YES;
+     
         VCProfile * profile = mappingResult.firstObject;
-        if(profile.cardLastFour != nil && profile.cardBrand != nil){
-            _cardInfoLabel.text = [NSString stringWithFormat:@"%@ XXXX-XXXX-XXXX-%@", profile.cardBrand, profile.cardLastFour];
-        } else {
-            _cardInfoLabel.text = @"No Credit Card Assigned";
+        if(profile.bankAccountName != nil){
+            _accountNameTextField.text = profile.bankAccountName;
         }
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         hud.hidden = YES;
         
     }];
+    */
 
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -123,61 +124,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)didTapUpdate:(id)sender {
-    
-    if( _state == kInterfaceStateDisplayCard) {
-        
-        _state = kInterfaceStateUpdateCard;
-        [_updateCardButton setTitle:kUpdateCardText forState:UIControlStateNormal];
-        _updateCardButton.enabled = FALSE;
-        _cardView = [[STPView alloc] initWithFrame:CGRectMake(15,20,290,55) andKey:@"pk_test_4Gt6M02YRqmpk7yoBud7y5Ah"];
-        _cardView.delegate = self;
-        [_STPViewContainer addSubview:_cardView];
-        _cardInfoLabel.hidden = YES;
-        
-        
-    } else {
-        
-        MBProgressHUD * progressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        progressHUD.labelText = @"Saving Card";
-        [_cardView createToken:^(STPToken *token, NSError *error) {
-            if (error == nil) {
-                [VCUsersApi updateDefaultCard:[RKObjectManager sharedManager]
-                                    cardToken:token.tokenId
-                                      success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                          progressHUD.hidden = YES;
-                                          [UIAlertView showWithTitle:@"Card Updated" message:@"Your card has been saved" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
-                                          _updateCardButton.titleLabel.text = @"Change Card";
-                                          [_cardView removeFromSuperview];
-                                          _cardView = nil;
-                                          _updateCardButton.titleLabel.text = kChangeCardText;
-                                          _cardInfoLabel.hidden = NO;
-                                          _state = kInterfaceStateDisplayCard;
-
-                                      }
-                                      failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                          progressHUD.hidden = YES;
-                                          [UIAlertView showWithTitle:@"Error" message:@"There was a problem saving your card.  Please try again." cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
-                                      }];
-            } else {
-                progressHUD.hidden = YES;
-                [WRUtilities criticalError:error];
-            }
-        }];
-        
-    }
-    
-}
-
-- (void)stripeView:(STPView *)view withCard:(PKCard *)card isValid:(BOOL)valid
-{
-    // Enable the "save" button only if the card form is complete.
-    if(valid){
-        _updateCardButton.enabled = YES;
-    } else {
-        _updateCardButton.enabled = NO;
-        
-    }
+- (IBAction)didTapChangeBankInfo:(id)sender {
+    [UIAlertView showWithTitle:@"Contact Us" message:@"Updating Bank Account Information is not currently supported through the mobile app.  Please contact us to update your information" cancelButtonTitle:@"Ok, will do" otherButtonTitles:nil tapBlock:nil];
 }
 
 #pragma mark UITableViewDataSource
@@ -196,9 +144,9 @@
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    Payment *payment = [_fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [VCUtilities formatCurrencyFromCents:payment.amountCents];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ / %@", payment.stripeChargeStatus, payment.motive];
+    Earning *earning = [_fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = [VCUtilities formatCurrencyFromCents:earning.amountCents];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ / %@", [earning.createdAt formatted], [earning.fare routeDescription]  ];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -219,9 +167,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    Payment *payment = [_fetchedResultsController objectAtIndexPath:indexPath];
-    VCRiderRecieptDetailViewController * vc = [[VCRiderRecieptDetailViewController alloc] init];
-    vc.payment = payment;
+    Earning *earning = [_fetchedResultsController objectAtIndexPath:indexPath];
+    VCDriverRecieptDetailViewController * vc = [[VCDriverRecieptDetailViewController alloc] init];
+    vc.earning = earning;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

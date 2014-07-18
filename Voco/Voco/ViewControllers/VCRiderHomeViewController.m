@@ -184,6 +184,7 @@
     
     [[LELog sharedInstance] log:@"%@ Did Tap Commute"];
     self.request = (Request *) [NSEntityDescription insertNewObjectForEntityForName:@"Request" inManagedObjectContext:[VCCoreData managedObjectContext]];
+    self.request.forcedState = kCreatedState;
     self.request.requestType = kRideRequestTypeCommuter;
     self.transit = self.request;
     
@@ -201,6 +202,7 @@
 
     [[LELog sharedInstance] log:@"Did Tap On Demand"];
     self.request = (Request *) [NSEntityDescription insertNewObjectForEntityForName:@"Request" inManagedObjectContext:[VCCoreData managedObjectContext]];
+    self.request.forcedState = kCreatedState;
     self.request.requestType = kRideRequestTypeOnDemand;
     self.transit = self.request;
     
@@ -451,13 +453,15 @@
             [VCRiderApi requestRide:self.request
                             success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                 VCRideRequestCreated * rideRequestCreatedResponse = mappingResult.firstObject;
-                                self.request.request_id = rideRequestCreatedResponse.rideRequestId;
-                                self.request.requestedTimestamp = [NSDate date];
+                                _request.request_id = rideRequestCreatedResponse.rideRequestId;
+                                _request.requestedTimestamp = [NSDate date];
                                 [VCCoreData saveContext];
                                 _progressHUD.labelText = @"We are finding your driver now!";
                                 UITapGestureRecognizer *HUDSingleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hudSingleTap:)];
                                 [_progressHUD addGestureRecognizer:HUDSingleTap];
                                 _locationConfirmationAnnotation.hidden = YES;
+                                _request.forcedState = kRequestedState;
+
 
                             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                 [_progressHUD hide:YES];
@@ -503,6 +507,8 @@
         [UIAlertView showWithTitle:@"Ride Cancelled" message:@"Your ride has been cancelled" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
         [self resetRequestInterface];
         [self stopTrackingDriverLocation];
+        _request.forcedState = kDriverCancelledState;
+
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [self resetRequestInterface];
@@ -638,6 +644,7 @@
     
     // VC RidesAPI
     [VCRiderApi requestRide:self.request success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        _request.forcedState = kRequestedState;
         VCRideRequestCreated * rideRequestCreatedResponse = mappingResult.firstObject;
         self.request.request_id = rideRequestCreatedResponse.rideRequestId;
         [VCCoreData saveContext];

@@ -17,6 +17,7 @@
 #import "VCFareIdentity.h"
 #import "VCDriverGeoObject.h"
 #import "VCFare.h"
+#import "Earning.h"
 
 @implementation VCDriverApi
 
@@ -30,6 +31,7 @@
     [VCDriverRegistration createMappings:objectManager];
     [VCFareIdentity createMappings:objectManager];
     [VCFare createMappings:objectManager];
+    [Earning createMappings:objectManager];
     
     // Responses (some have not been moved here yet)
     {
@@ -58,6 +60,7 @@
                                                                                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:responseDescriptor2];
     }
+    
 
 }
 
@@ -173,6 +176,18 @@
                                                   failure(operation, error);
                                                   
                                               }];
+}
+
++ (void) earnings:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+          failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+    [[RKObjectManager sharedManager]  getObjectsAtPath:API_GET_EARNINGS
+                                            parameters:nil
+                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                   success(operation, mappingResult);
+                                               }
+                                               failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                   failure(operation, error);
+                                               }];
 }
 
 @end

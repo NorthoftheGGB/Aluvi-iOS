@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Earning.h"
 
 @interface VCDriverRecieptDetailViewController : UIViewController
+
+@property (nonatomic, strong) Earning * earning;
 
 @end

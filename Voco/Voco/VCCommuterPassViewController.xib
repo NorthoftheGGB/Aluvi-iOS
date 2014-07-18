@@ -35,11 +35,11 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$999" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5k-c3-Fi3" customClass="VCLabel">
-                    <rect key="frame" x="146" y="77" width="43" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5k-c3-Fi3" customClass="VCLabel">
+                    <rect key="frame" x="146" y="77" width="79" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="43" id="VaE-Ow-q1g"/>
+                        <constraint firstAttribute="width" constant="79" id="VaE-Ow-q1g"/>
                         <constraint firstAttribute="height" constant="21" id="eDu-nH-ZyO"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -65,7 +65,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXXX-XXXX-XXXX-XXXX" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DL4-7I-NBc" customClass="VCLabel">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DL4-7I-NBc" customClass="VCLabel">
                     <rect key="frame" x="20" y="127" width="169" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
@@ -147,7 +147,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <textField opaque="NO" clipsSubviews="YES" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="999" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S2l-OH-gwg" customClass="VCTextField">
+                <textField opaque="NO" clipsSubviews="YES" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S2l-OH-gwg" customClass="VCTextField">
                     <rect key="frame" x="55" y="271" width="71" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
@@ -262,7 +262,7 @@
                 <constraint firstItem="efT-wr-iT9" firstAttribute="leading" secondItem="DL4-7I-NBc" secondAttribute="trailing" constant="2" id="eR5-M7-Bvn"/>
                 <constraint firstItem="Jc7-ga-ooQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="eis-2e-cry"/>
                 <constraint firstItem="3Hh-xm-Udb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="fsR-VY-a1G"/>
-                <constraint firstAttribute="trailing" secondItem="v5k-c3-Fi3" secondAttribute="trailing" constant="131" id="v14-FR-CmI"/>
+                <constraint firstAttribute="trailing" secondItem="v5k-c3-Fi3" secondAttribute="trailing" constant="95" id="v14-FR-CmI"/>
                 <constraint firstItem="v5k-c3-Fi3" firstAttribute="leading" secondItem="5LW-Ix-DI7" secondAttribute="trailing" constant="8" id="v6P-5o-Wjv"/>
                 <constraint firstItem="REp-IS-6vE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="vcq-3o-ls9"/>
                 <constraint firstAttribute="bottom" secondItem="30W-yy-sRI" secondAttribute="bottom" constant="30" id="wQW-ga-rsV"/>
