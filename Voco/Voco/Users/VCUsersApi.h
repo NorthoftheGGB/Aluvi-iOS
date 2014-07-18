@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "RestKit.h"
+#import "VCProfile.h"
 
 @interface VCUsersApi : NSObject
 
@@ -49,8 +50,15 @@
                    success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                    failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
-+ (void) fillCommuterPass: (NSNumber *) amountToAdd
++ (void) fillCommuterPass: (NSNumber *) centsToAdd
                   success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                   failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
+
++ (void) updateProfile: (VCProfile *) profile
+               success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+               failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
+
++ (void) getProfile: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+            failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
 @end

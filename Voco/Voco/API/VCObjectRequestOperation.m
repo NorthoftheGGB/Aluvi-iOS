@@ -51,6 +51,13 @@
                                   }];
             }
                 break;
+            case 406:
+            {
+                [UIAlertView showWithTitle:@"Bad Request"
+                                   message:[error debugDescription]
+                         cancelButtonTitle:@"OK"
+                         otherButtonTitles:nil tapBlock:nil];
+            }
                 
             default:
             {

@@ -10,7 +10,18 @@
 
 @interface VCProfile : NSObject
 
+@property(nonatomic, strong) NSString * firstName;
+@property(nonatomic, strong) NSString * lastName;
+@property(nonatomic, strong) NSString * phone;
+@property(nonatomic, strong) NSString * email;
+
+@property(nonatomic, strong) NSNumber * commuterRefillAmountCents;
+@property(nonatomic, strong) NSNumber * commuterBalanceCents;
+@property(nonatomic, strong) NSNumber * commuterRefillEnabled;
+
 @property(nonatomic, strong) NSString * defaultCardToken;
+@property(nonatomic, strong) NSString * cardLastFour;
+@property(nonatomic, strong) NSString * cardBrand;
 
 + (RKObjectMapping *) getMapping;
 

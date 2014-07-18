@@ -164,7 +164,6 @@
     self.locationTypeLabel.text = @"Drop Off Location";
     self.addressLabel.text = self.transit.dropOffPointPlaceName;
     [self addLocationHudIfNotDisplayed];
-    
 
 }
 

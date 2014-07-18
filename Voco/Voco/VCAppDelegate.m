@@ -71,6 +71,9 @@
         [VCLocalNotificationReceiver handleLocalNotification:localNotif];
     }
     
+    RKLogConfigureByName("RestKit/Network", RKLogLevelInfo);
+    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelDebug);
+    
     return YES;
 }
 

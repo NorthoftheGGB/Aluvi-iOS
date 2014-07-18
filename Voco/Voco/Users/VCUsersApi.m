@@ -15,7 +15,6 @@
 #import "VCDriverInterestedRequest.h"
 #import "VCDriverStateResponse.h"
 #import "VCUserStateResponse.h"
-#import "VCProfile.h"
 #import "VCFillCommuterPass.h"
 
 @implementation VCUsersApi
@@ -102,6 +101,27 @@
         RKObjectMapping * fillCommuterPassRequestMapping =  [fillCommuterPassMapping inverseMapping];
         RKRequestDescriptor * requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:fillCommuterPassRequestMapping objectClass:[VCFillCommuterPass class] rootKeyPath:nil method:RKRequestMethodPOST];
         [objectManager addRequestDescriptor:requestDescriptor];
+    }
+    
+    {
+        RKObjectMapping * mapping = [VCProfile getMapping];
+        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping method:RKRequestMethodGET pathPattern:API_USER_PROFILE keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor];
+  
+    }
+    
+    {
+        RKObjectMapping * mapping = [VCProfile getMapping];
+        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping method:RKRequestMethodPOST pathPattern:API_USER_PROFILE keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor];
+        
+    }
+    
+    {
+        RKObjectMapping * mapping = [VCProfile getMapping];
+        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping method:RKRequestMethodPOST pathPattern:API_FILL_COMMUTER_PASS keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor];
+        
     }
     
 }
@@ -203,11 +223,10 @@
     }];
 }
 
-+ (void) updateProfile: ( RKObjectManager *) objectManager
-                 profileData: (VCProfile *) profile
++ (void) updateProfile: (VCProfile *) profile
                 success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                 failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
-    [objectManager postObject:profile path:API_USER_PROFILE parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult){
+    [[RKObjectManager sharedManager] postObject:profile path:API_USER_PROFILE parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult){
         success(operation, mappingResult);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         failure(operation, error);
@@ -215,13 +234,23 @@
     }];
 }
 
-+ (void) fillCommuterPass: ( RKObjectManager *) objectManager
-               centsToAdd:(NSNumber *) centsToAdd
++ (void) getProfile: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+            failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+    
+    [[RKObjectManager sharedManager] getObject:nil path:API_USER_PROFILE parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        success(operation, mappingResult);
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        failure(operation, error);
+    }];
+}
+
+
++ (void) fillCommuterPass:(NSNumber *) centsToAdd
                   success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                   failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     VCFillCommuterPass * fillCommuterPassObject = [[VCFillCommuterPass alloc] init];
     fillCommuterPassObject.amountCents = centsToAdd;
-    [objectManager postObject:fillCommuterPassObject
+    [[RKObjectManager sharedManager] postObject:fillCommuterPassObject
                          path:API_FILL_COMMUTER_PASS
                    parameters:nil
                       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {

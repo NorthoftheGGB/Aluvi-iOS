@@ -8,8 +8,8 @@
             <connections>
                 <outlet property="accountBalanceLabel" destination="v5k-c3-Fi3" id="Jfn-M1-KUV"/>
                 <outlet property="amountSegementedControl" destination="3Hh-xm-Udb" id="6wI-uL-4Lp"/>
+                <outlet property="autoRefillSwitch" destination="leM-lE-0CC" id="Qsa-5T-lNH"/>
                 <outlet property="creditCardNumberLabel" destination="DL4-7I-NBc" id="6MB-uw-GaW"/>
-                <outlet property="didTapAddFundsButton" destination="30W-yy-sRI" id="ARc-q9-wEt"/>
                 <outlet property="expDateLabel" destination="sCQ-P2-gfU" id="DuV-bh-ojO"/>
                 <outlet property="refillAmountField" destination="S2l-OH-gwg" id="3dd-Gk-vTg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -80,7 +80,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MM/YYYY" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCQ-P2-gfU" customClass="VCLabel">
+                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MM/YYYY" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCQ-P2-gfU" customClass="VCLabel">
                     <rect key="frame" x="228" y="127" width="67" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
@@ -95,7 +95,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exp:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efT-wr-iT9" customClass="VCLabelBold">
+                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exp:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efT-wr-iT9" customClass="VCLabelBold">
                     <rect key="frame" x="191" y="127" width="34" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
@@ -125,7 +125,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="leM-lE-0CC">
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="leM-lE-0CC">
                     <rect key="frame" x="251" y="242" width="51" height="31"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <connections>
@@ -133,7 +133,7 @@
                     </connections>
                 </switch>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="when account is below $10." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JkT-p2-0Iq" customClass="VCLabel">
-                    <rect key="frame" x="114" y="276" width="186" height="21"/>
+                    <rect key="frame" x="130" y="276" width="186" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="186" id="AmT-af-wbo"/>
@@ -148,10 +148,10 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="999" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S2l-OH-gwg" customClass="VCTextField">
-                    <rect key="frame" x="67" y="267" width="38" height="30"/>
+                    <rect key="frame" x="55" y="271" width="71" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="38" id="VXa-AQ-NhA"/>
+                        <constraint firstAttribute="width" constant="71" id="VXa-AQ-NhA"/>
                         <constraint firstAttribute="height" constant="30" id="w15-1t-HrT"/>
                     </constraints>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -159,9 +159,12 @@
                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="18"/>
+                            <integer key="value" value="16"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didTouchRefillAmountField:" destination="-1" eventType="touchDown" id="ry4-EW-SJA"/>
+                    </connections>
                 </textField>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3Hh-xm-Udb">
                     <rect key="frame" x="20" y="420" width="181" height="29"/>
@@ -214,13 +217,16 @@
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didTapAddFundsButton:" destination="-1" eventType="touchUpInside" id="4Bl-R3-V32"/>
+                    </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add $" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyH-xe-uHm" customClass="VCLabel">
-                    <rect key="frame" x="20" y="276" width="43" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyH-xe-uHm" customClass="VCLabel">
+                    <rect key="frame" x="20" y="276" width="29" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="ulp-xe-08I"/>
-                        <constraint firstAttribute="width" constant="43" id="zVc-oI-ML5"/>
+                        <constraint firstAttribute="width" constant="29" id="zVc-oI-ML5"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <nil key="highlightedColor"/>
@@ -238,7 +244,7 @@
                 <constraint firstItem="6ff-5F-pTa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="75g-t8-jrc"/>
                 <constraint firstItem="3Hh-xm-Udb" firstAttribute="top" secondItem="REp-IS-6vE" secondAttribute="bottom" constant="8" id="7Re-9y-ex2"/>
                 <constraint firstAttribute="trailing" secondItem="leM-lE-0CC" secondAttribute="trailing" constant="20" id="7vb-55-ikg"/>
-                <constraint firstItem="S2l-OH-gwg" firstAttribute="top" secondItem="6ff-5F-pTa" secondAttribute="bottom" constant="4" id="BBY-Dl-xxW"/>
+                <constraint firstItem="S2l-OH-gwg" firstAttribute="top" secondItem="6ff-5F-pTa" secondAttribute="bottom" constant="8" id="BBY-Dl-xxW"/>
                 <constraint firstItem="yyH-xe-uHm" firstAttribute="top" secondItem="6ff-5F-pTa" secondAttribute="bottom" constant="13" id="Hi0-xu-cqU"/>
                 <constraint firstItem="5LW-Ix-DI7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="IvB-Mr-kmy"/>
                 <constraint firstItem="DL4-7I-NBc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="KBY-Qb-3Fk"/>
@@ -250,7 +256,7 @@
                 <constraint firstItem="yyH-xe-uHm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="TwP-kl-vXP"/>
                 <constraint firstItem="5LW-Ix-DI7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="77" id="VMn-un-QjV"/>
                 <constraint firstItem="sCQ-P2-gfU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="127" id="VmU-sc-KsD"/>
-                <constraint firstItem="JkT-p2-0Iq" firstAttribute="leading" secondItem="S2l-OH-gwg" secondAttribute="trailing" constant="9" id="a3z-Mz-MkD"/>
+                <constraint firstItem="JkT-p2-0Iq" firstAttribute="leading" secondItem="S2l-OH-gwg" secondAttribute="trailing" constant="4" id="a3z-Mz-MkD"/>
                 <constraint firstItem="sCQ-P2-gfU" firstAttribute="leading" secondItem="efT-wr-iT9" secondAttribute="trailing" constant="3" id="buc-jQ-Fhv"/>
                 <constraint firstItem="JkT-p2-0Iq" firstAttribute="top" secondItem="leM-lE-0CC" secondAttribute="bottom" constant="3" id="d4D-b3-wgn"/>
                 <constraint firstItem="efT-wr-iT9" firstAttribute="leading" secondItem="DL4-7I-NBc" secondAttribute="trailing" constant="2" id="eR5-M7-Bvn"/>
@@ -260,7 +266,7 @@
                 <constraint firstItem="v5k-c3-Fi3" firstAttribute="leading" secondItem="5LW-Ix-DI7" secondAttribute="trailing" constant="8" id="v6P-5o-Wjv"/>
                 <constraint firstItem="REp-IS-6vE" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="vcq-3o-ls9"/>
                 <constraint firstAttribute="bottom" secondItem="30W-yy-sRI" secondAttribute="bottom" constant="30" id="wQW-ga-rsV"/>
-                <constraint firstItem="S2l-OH-gwg" firstAttribute="leading" secondItem="yyH-xe-uHm" secondAttribute="trailing" constant="4" id="xMe-Ph-dwb"/>
+                <constraint firstItem="S2l-OH-gwg" firstAttribute="leading" secondItem="yyH-xe-uHm" secondAttribute="trailing" constant="6" id="xMe-Ph-dwb"/>
                 <constraint firstItem="6ff-5F-pTa" firstAttribute="top" secondItem="DL4-7I-NBc" secondAttribute="bottom" constant="94" id="zU8-Iw-UTB"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
