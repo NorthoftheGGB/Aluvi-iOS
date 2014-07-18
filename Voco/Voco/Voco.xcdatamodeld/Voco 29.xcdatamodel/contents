@@ -17,6 +17,7 @@
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="payments" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Payment" inverseName="driver" inverseEntity="Payment" syncable="YES"/>
+        <relationship name="rides" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Fare" inverseName="driver" inverseEntity="Fare" syncable="YES"/>
     </entity>
     <entity name="Earning" representedClassName="Earning" syncable="YES">
         <attribute name="amountCents" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -40,6 +41,7 @@
         <attribute name="pickupTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="ride_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="savedState" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="driver" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Driver" inverseName="rides" inverseEntity="Driver" syncable="YES"/>
         <relationship name="earning" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Earning" inverseName="fare" inverseEntity="Earning" syncable="YES"/>
         <relationship name="offer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Offer" inverseName="ride" inverseEntity="Offer" syncable="YES"/>
         <relationship name="payment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Payment" inverseName="fare" inverseEntity="Payment" syncable="YES"/>
@@ -107,9 +109,9 @@
     </entity>
     <elements>
         <element name="Car" positionX="0" positionY="0" width="128" height="165"/>
-        <element name="Driver" positionX="0" positionY="0" width="128" height="133"/>
+        <element name="Driver" positionX="0" positionY="0" width="128" height="148"/>
         <element name="Earning" positionX="9" positionY="153" width="128" height="195"/>
-        <element name="Fare" positionX="0" positionY="0" width="128" height="223"/>
+        <element name="Fare" positionX="0" positionY="0" width="128" height="240"/>
         <element name="Offer" positionX="0" positionY="0" width="128" height="195"/>
         <element name="Payment" positionX="9" positionY="153" width="128" height="225"/>
         <element name="Request" positionX="0" positionY="0" width="128" height="420"/>
