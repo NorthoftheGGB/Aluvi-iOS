@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F2A71091978C220009A5E37 /* driver-request-form@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FF142D5195CE4BD00CC61B6 /* driver-request-form@2x.png */; };
 		4F2EF99B1960D280006A1962 /* VCDriverHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2EF9991960D280006A1962 /* VCDriverHomeViewController.m */; };
 		4F2EF99C1960D280006A1962 /* VCDriverHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2EF9991960D280006A1962 /* VCDriverHomeViewController.m */; };
 		4F2EF99D1960D280006A1962 /* VCDriverHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF99A1960D280006A1962 /* VCDriverHomeViewController.xib */; };
@@ -1743,6 +1744,7 @@
 				F4138C301965467D00C265CD /* VCFaresViewController.xib in Resources */,
 				F4354DC1195D0D6A00C06CF7 /* red_box@2x.png in Resources */,
 				F4354DC2195D0D6A00C06CF7 /* InfoPlist.strings in Resources */,
+				4F2A71091978C220009A5E37 /* driver-request-form@2x.png in Resources */,
 				4FE286F61962BDB300FD8AF6 /* zoom-ride-bounds-select@2x.png in Resources */,
 				4FF142DD195D128700CC61B6 /* VCRiderViewController.xib in Resources */,
 				4FCD7C7B19762465007609E8 /* VCDriverProfileViewController.xib in Resources */,
