@@ -96,7 +96,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v47-2P-Sy5" customClass="VCButtonFontBold">
-                    <rect key="frame" x="0.0" y="328" width="320" height="46"/>
+                    <rect key="frame" x="0.0" y="430" width="320" height="46"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" title="SCHEDULE RIDE?" backgroundImage="button-full-default.png">

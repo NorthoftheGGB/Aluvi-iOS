@@ -46,15 +46,14 @@
 
 //Commuter Call HUD
 
-@property (weak, nonatomic) IBOutlet UIView *commuterCallHud;
-@property (weak, nonatomic) IBOutlet VCButtonFontBold *riderSelectButtonOne;
-@property (weak, nonatomic) IBOutlet VCButtonFontBold *riderSelectButtonTwo;
-@property (weak, nonatomic) IBOutlet VCButtonFontBold *riderSelectButtonThree;
-@property (weak, nonatomic) IBOutlet UIButton *callButtonCommuter;
+@property (strong, nonatomic) IBOutlet UIView *commuterCallHud;
+@property (strong, nonatomic) IBOutlet VCButtonFontBold *riderSelectButtonOne;
+@property (strong, nonatomic) IBOutlet VCButtonFontBold *riderSelectButtonTwo;
+@property (strong, nonatomic) IBOutlet VCButtonFontBold *riderSelectButtonThree;
+@property (strong, nonatomic) IBOutlet UIButton *callButtonCommuter;
 
-- (IBAction)didTapRiderSelectOne:(id)sender;
-- (IBAction)didTapRiderSelectTwo:(id)sender;
-- (IBAction)didTapRiderSelectThree:(id)sender;
+- (IBAction)didTapRiderSelect:(id)sender;
+
 - (IBAction)didTapCommuterCallButton:(id)sender;
 
 
@@ -100,8 +99,9 @@
     if(self.transit != nil){
         [self showRide];
     }
-    
+
 }
+
 
 - (void) rideOfferInvokedNotification:(NSNotification *)notification{
     [self resetButtons];
@@ -154,6 +154,16 @@
     self.locationTypeLabel.text = @"Pickup Location";
     self.addressLabel.text = self.transit.meetingPointPlaceName;
     [self addLocationHudIfNotDisplayed];
+    
+    if(_commuterCallHud.superview == nil) {
+        CGRect frame = _commuterCallHud.frame;
+        frame.origin.x = 0;
+        frame.origin.y = self.view.frame.size.height - 164;
+        _commuterCallHud.frame = frame;
+        [self.view addSubview:self.commuterCallHud];
+    }
+    
+   
 
 }
 
@@ -365,14 +375,18 @@
 - (IBAction)didTapCurrentLocation:(id)sender {
     [self.map setCenterCoordinate:self.map.userLocation.coordinate animated:YES];
 }
-- (IBAction)didTapRiderSelectOne:(id)sender {
+- (IBAction)didTapRiderSelect:(id)sender {
+    UIButton * button = (UIButton*)sender;
+    if (button.selected){
+        return;
+    }
+    _riderSelectButtonOne.selected = NO;
+    _riderSelectButtonTwo.selected = NO;
+    _riderSelectButtonThree.selected = NO;
+    button.selected = YES;
+
 }
 
-- (IBAction)didTapRiderSelectTwo:(id)sender {
-}
-
-- (IBAction)didTapRiderSelectThree:(id)sender {
-}
 
 - (IBAction)didTapCommuterCallButton:(id)sender {
 }

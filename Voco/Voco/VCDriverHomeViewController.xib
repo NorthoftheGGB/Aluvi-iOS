@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -11,7 +11,7 @@
                 <outlet property="callButtonCommuter" destination="Pkb-jJ-TNW" id="gKK-Fq-hg6"/>
                 <outlet property="callButtonOnDemand" destination="tzG-80-FUQ" id="88z-NO-F3S"/>
                 <outlet property="cancelRideButton" destination="mXT-Uz-lV6" id="dy8-cs-mch"/>
-                <outlet property="commuterCallHud" destination="Lx0-n2-xA1" id="C9t-xq-naC"/>
+                <outlet property="commuterCallHud" destination="fHd-Yy-doE" id="Pf6-EU-khK"/>
                 <outlet property="declineButton" destination="qkB-Bk-332" id="Uz7-KE-VWE"/>
                 <outlet property="driverLocationHud" destination="mDj-An-QgP" id="eJH-J9-JeV"/>
                 <outlet property="locationTypeLabel" destination="Kap-iR-Fyb" id="b6B-lO-VAV"/>
@@ -19,7 +19,7 @@
                 <outlet property="rideCompletedButton" destination="Ckd-PV-Lho" id="pjL-In-eA7"/>
                 <outlet property="riderNameLabel" destination="sxL-we-2qT" id="i9F-ww-Xtj"/>
                 <outlet property="riderPickedUpButton" destination="Awz-9j-gv0" id="g96-WX-jxp"/>
-                <outlet property="riderSelectButtonOne" destination="rDY-hf-JUf" id="Mzg-Ww-Ce3"/>
+                <outlet property="riderSelectButtonOne" destination="lxd-Ov-3KI" id="Oty-PT-ErY"/>
                 <outlet property="riderSelectButtonThree" destination="VwL-FN-zPm" id="aKv-7H-wFw"/>
                 <outlet property="riderSelectButtonTwo" destination="E9R-NB-UuU" id="2Zm-y7-Pzb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -251,127 +251,6 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
-        <view contentMode="scaleToFill" id="Su5-Mn-iWe" userLabel="Commuter Call">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <subviews>
-                <view alpha="0.69999999999999973" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lx0-n2-xA1">
-                    <rect key="frame" x="0.0" y="0.0" width="321" height="79"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rDY-hf-JUf" customClass="VCButtonFontBold">
-                            <rect key="frame" x="1" y="1" width="158" height="38"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="38" id="AV9-SX-JRX"/>
-                                <constraint firstAttribute="width" constant="158" id="kxM-Ym-iBc"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="NameName" backgroundImage="rider-call-button.png">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <state key="selected" backgroundImage="rider-call-button-select.png">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <state key="highlighted" backgroundImage="rider-call-button-select.png"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                                    <integer key="value" value="15"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="didTapRiderSelectOne:" destination="-1" eventType="touchUpInside" id="prN-O6-sQ1"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E9R-NB-UuU" customClass="VCButtonFontBold">
-                            <rect key="frame" x="1" y="40" width="158" height="38"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="38" id="Kp5-iL-cJN"/>
-                                <constraint firstAttribute="width" constant="158" id="h74-qR-r2P"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="NameName" backgroundImage="rider-call-button.png">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <state key="selected" backgroundImage="rider-call-button-select.png"/>
-                            <state key="highlighted" backgroundImage="rider-call-button-select.png"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                                    <integer key="value" value="15"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="didTapRiderSelectTwo:" destination="-1" eventType="touchUpInside" id="Gvh-bO-N6d"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VwL-FN-zPm" customClass="VCButtonFontBold">
-                            <rect key="frame" x="160" y="40" width="159" height="38"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="38" id="Di7-C2-4OG"/>
-                                <constraint firstAttribute="width" constant="159" id="Pkh-fc-O2g"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="NameName" backgroundImage="rider-call-button.png">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <state key="selected" backgroundImage="rider-call-button-select.png"/>
-                            <state key="highlighted" backgroundImage="rider-call-button-select.png"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                                    <integer key="value" value="15"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="didTapRiderSelectThree:" destination="-1" eventType="touchUpInside" id="l4S-uf-M3G"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pkb-jJ-TNW">
-                            <rect key="frame" x="281" y="-1" width="40" height="40"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="40" id="bJz-As-iMF"/>
-                                <constraint firstAttribute="width" constant="40" id="p7T-qc-wIF"/>
-                            </constraints>
-                            <state key="normal" image="call-button.png">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <state key="selected" image="call-button-select.png"/>
-                            <state key="highlighted" image="call-button-select.png"/>
-                            <connections>
-                                <action selector="didTapCommuterCallButton:" destination="-1" eventType="touchUpInside" id="cGt-ti-e5g"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstItem="E9R-NB-UuU" firstAttribute="leading" secondItem="Lx0-n2-xA1" secondAttribute="leading" constant="1" id="JCv-LN-uv2"/>
-                        <constraint firstAttribute="trailing" secondItem="Pkb-jJ-TNW" secondAttribute="trailing" id="KZr-Ox-2yc"/>
-                        <constraint firstItem="rDY-hf-JUf" firstAttribute="top" secondItem="Lx0-n2-xA1" secondAttribute="top" constant="1" id="OMo-kn-InG"/>
-                        <constraint firstItem="rDY-hf-JUf" firstAttribute="leading" secondItem="Lx0-n2-xA1" secondAttribute="leading" constant="1" id="a87-RG-tvJ"/>
-                        <constraint firstAttribute="trailing" secondItem="VwL-FN-zPm" secondAttribute="trailing" constant="2" id="cVR-UT-CEw"/>
-                        <constraint firstAttribute="bottom" secondItem="VwL-FN-zPm" secondAttribute="bottom" constant="1" id="dZA-sQ-oi1"/>
-                        <constraint firstItem="Pkb-jJ-TNW" firstAttribute="top" secondItem="Lx0-n2-xA1" secondAttribute="top" constant="-1" id="ebv-qz-TRM"/>
-                        <constraint firstAttribute="bottom" secondItem="E9R-NB-UuU" secondAttribute="bottom" constant="1" id="jzu-qY-lRf"/>
-                    </constraints>
-                </view>
-            </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstItem="Lx0-n2-xA1" firstAttribute="top" secondItem="Su5-Mn-iWe" secondAttribute="top" id="KE1-WK-XfS"/>
-                <constraint firstItem="Lx0-n2-xA1" firstAttribute="leading" secondItem="Su5-Mn-iWe" secondAttribute="leading" id="OdK-Mr-p4x"/>
-                <constraint firstItem="Lx0-n2-xA1" firstAttribute="centerX" secondItem="Su5-Mn-iWe" secondAttribute="centerX" id="aRU-P1-83c"/>
-                <constraint firstAttribute="bottom" secondItem="Lx0-n2-xA1" secondAttribute="bottom" id="qgf-Ax-aVu"/>
-            </constraints>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-        </view>
         <view contentMode="scaleToFill" id="uhI-nF-vZt" userLabel="On Demand Call">
             <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -405,6 +284,113 @@
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <view alpha="0.79999999999999982" contentMode="scaleToFill" id="fHd-Yy-doE">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxd-Ov-3KI" userLabel="one" customClass="VCButtonFontBold">
+                    <rect key="frame" x="1" y="1" width="158" height="38"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="158" id="7pn-Wk-Lv5"/>
+                        <constraint firstAttribute="height" constant="38" id="N4h-12-fdc"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="NameName" backgroundImage="rider-call-button.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" backgroundImage="rider-call-button-select.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" backgroundImage="rider-call-button-select.png"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didTapRiderSelect:" destination="-1" eventType="touchUpInside" id="h0U-ea-59L"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E9R-NB-UuU" userLabel="two" customClass="VCButtonFontBold">
+                    <rect key="frame" x="1" y="41" width="158" height="38"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="38" id="Kp5-iL-cJN"/>
+                        <constraint firstAttribute="width" constant="158" id="h74-qR-r2P"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="NameName" backgroundImage="rider-call-button.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" backgroundImage="rider-call-button-select.png"/>
+                    <state key="highlighted" backgroundImage="rider-call-button-select.png"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didTapCommuterCallButton:" destination="-1" eventType="touchUpInside" id="eIl-xE-Edm"/>
+                        <action selector="didTapRiderSelect:" destination="-1" eventType="touchUpInside" id="iKZ-jb-ajJ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VwL-FN-zPm" userLabel="three" customClass="VCButtonFontBold">
+                    <rect key="frame" x="161" y="41" width="158" height="38"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="38" id="Di7-C2-4OG"/>
+                        <constraint firstAttribute="width" constant="158" id="Pkh-fc-O2g"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="NameName" backgroundImage="rider-call-button.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" backgroundImage="rider-call-button-select.png"/>
+                    <state key="highlighted" backgroundImage="rider-call-button-select.png"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didTapCommuterCallButton:" destination="-1" eventType="touchUpInside" id="xtM-5x-Sk3"/>
+                        <action selector="didTapRiderSelect:" destination="-1" eventType="touchUpInside" id="IKS-p5-zLu"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pkb-jJ-TNW">
+                    <rect key="frame" x="284" y="2" width="35" height="35"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="bJz-As-iMF"/>
+                        <constraint firstAttribute="width" constant="35" id="p7T-qc-wIF"/>
+                    </constraints>
+                    <state key="normal" image="call-button.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" image="call-button-select.png"/>
+                    <state key="highlighted" image="call-button-select.png"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="VwL-FN-zPm" secondAttribute="trailing" constant="1" id="9Fn-44-2qA"/>
+                <constraint firstItem="E9R-NB-UuU" firstAttribute="top" secondItem="lxd-Ov-3KI" secondAttribute="bottom" constant="2" id="GwG-dx-fhq"/>
+                <constraint firstAttribute="trailing" secondItem="Pkb-jJ-TNW" secondAttribute="trailing" constant="1" id="QsY-Mt-QCD"/>
+                <constraint firstItem="E9R-NB-UuU" firstAttribute="leading" secondItem="fHd-Yy-doE" secondAttribute="leading" constant="1" id="aL7-Gs-VbV"/>
+                <constraint firstAttribute="bottom" secondItem="VwL-FN-zPm" secondAttribute="bottom" constant="1" id="d1k-r7-Gvb"/>
+                <constraint firstItem="lxd-Ov-3KI" firstAttribute="top" secondItem="fHd-Yy-doE" secondAttribute="top" constant="1" id="han-C5-NJz"/>
+                <constraint firstItem="Pkb-jJ-TNW" firstAttribute="top" secondItem="fHd-Yy-doE" secondAttribute="top" constant="2" id="kRt-Bw-S64"/>
+                <constraint firstItem="lxd-Ov-3KI" firstAttribute="leading" secondItem="fHd-Yy-doE" secondAttribute="leading" constant="1" id="xoh-tN-Ecm"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
