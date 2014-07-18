@@ -10,7 +10,7 @@
 
 // rides API
 #if RELEASE==1
-#define API_BASE_URL @"http://54.187.62.13:3000/api/"
+#define API_BASE_URL @"http://voco-alpha.herokuapp.com/api/"
 #elif TESTING==1
 #define API_BASE_URL @"http://voco-test.herokuapp.com/api/"
 #else
