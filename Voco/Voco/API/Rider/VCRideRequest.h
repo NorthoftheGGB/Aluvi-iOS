@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import <RestKit.h>
-#import "Request.h"
+#import "Ride.h"
 
 
 
@@ -26,6 +26,6 @@
 @property (nonatomic, strong) NSDate * desiredArrival;
 
 + (void) createMappings: (RKObjectManager *) objectManager;
-+ (VCRideRequest *) requestForRide:(Request *)ride;
++ (VCRideRequest *) requestForRide:(Ride *)ride;
 
 @end

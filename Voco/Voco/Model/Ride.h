@@ -36,7 +36,7 @@
 
 @class Car, Driver;
 
-@interface Request : Transit <VCRestKitMappableObject>
+@interface Ride : Transit <VCRestKitMappableObject>
 
 @property (nonatomic, retain) NSNumber * request_id;
 @property (nonatomic, retain) NSString * requestType;
@@ -58,7 +58,7 @@
 @property (nonatomic, retain) Car *car;
 
 
-+ (Request *) requestWithRideId: (NSNumber *) rideId;
++ (Ride *) requestWithRideId: (NSNumber *) rideId;
 
 
 @end

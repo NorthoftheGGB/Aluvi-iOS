@@ -227,7 +227,7 @@
             return;
         }
         if([rides count] > 0){
-            Request * request = [rides objectAtIndex:0];
+            Ride * request = [rides objectAtIndex:0];
             
             if([request.requestType isEqualToString:kRideRequestTypeOnDemand]) {
                 [[VCDialogs instance] rideFound: [payload objectForKey:VC_PUSH_REQUEST_ID_KEY]];

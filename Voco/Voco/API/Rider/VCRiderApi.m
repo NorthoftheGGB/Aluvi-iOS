@@ -11,7 +11,7 @@
 #import "VCRideRequest.h"
 #import "VCRideRequestCreated.h"
 #import "VCDevice.h"
-#import "Request.h"
+#import "Ride.h"
 #import "VCRideIdentity.h"
 #import "VCUserState.h"
 #import "VCRequestUpdate.h"
@@ -23,7 +23,7 @@
     [VCRideRequest createMappings:objectManager];
     [VCRideRequestCreated createMappings:objectManager];
     [VCDevice createMappings:objectManager];
-    [Request createMappings:objectManager];
+    [Ride createMappings:objectManager];
     [VCRequestUpdate createMappings:objectManager];
     [Payment createMappings:objectManager];
     
@@ -39,7 +39,7 @@
     }
 }
 
-+ (void) requestRide:(Request *) ride
++ (void) requestRide:(Ride *) ride
              success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
              failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     
@@ -74,7 +74,7 @@
 }
 
 
-+ (void) cancelRide:(Request *) ride
++ (void) cancelRide:(Ride *) ride
             success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
             failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     

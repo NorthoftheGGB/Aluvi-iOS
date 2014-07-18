@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Request;
+@class Ride;
 
 @interface Car : NSManagedObject
 
@@ -29,8 +29,8 @@
 + (RKEntityMapping *)createMappings:(RKObjectManager *)objectManager;
 
 
-- (void)addRidesObject:(Request *)value;
-- (void)removeRidesObject:(Request *)value;
+- (void)addRidesObject:(Ride *)value;
+- (void)removeRidesObject:(Ride *)value;
 - (void)addRides:(NSSet *)values;
 - (void)removeRides:(NSSet *)values;
 

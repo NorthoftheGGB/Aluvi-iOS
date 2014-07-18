@@ -7,7 +7,7 @@
 //
 
 #import "Driver.h"
-#import "Request.h"
+#import "Ride.h"
 
 
 @implementation Driver

@@ -6,17 +6,17 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "Request.h"
+#import "Ride.h"
 #import "Car.h"
 #import "Driver.h"
 #import <RKPathMatcher.h>
 
-@interface Request ()
+@interface Ride ()
 
 
 @end
 
-@implementation Request
+@implementation Ride
 
 @dynamic requestType;
 @dynamic car_id;
@@ -35,7 +35,7 @@
 
 
 + (void)createMappings:(RKObjectManager *)objectManager{
-    RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Request"
+    RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Ride"
                                                           inManagedObjectStore: [VCCoreData managedObjectStore]];
     
     [entityMapping addAttributeMappingsFromDictionary:@{
@@ -67,7 +67,7 @@
         NSDictionary *argsDict = nil;
         BOOL match = [pathMatcher matchesPath:relativePath tokenizeQueryStrings:NO parsedArguments:&argsDict];
         if (match) {
-            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Request"];
+            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Ride"];
             return fetchRequest;
         }
         
@@ -87,8 +87,8 @@
 }
 
 
-+ (Request *) requestWithRideId: (NSNumber *) rideId{
-    NSFetchRequest * request = [[NSFetchRequest alloc] initWithEntityName:@"Request"];
++ (Ride *) requestWithRideId: (NSNumber *) rideId{
+    NSFetchRequest * request = [[NSFetchRequest alloc] initWithEntityName:@"Ride"];
     NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ride_id = %@", rideId];
     [request setPredicate:predicate];
     NSError * error;

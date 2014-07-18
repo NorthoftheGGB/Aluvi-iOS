@@ -7,7 +7,7 @@
 //
 
 #import "Car.h"
-#import "Request.h"
+#import "Ride.h"
 
 
 @implementation Car
