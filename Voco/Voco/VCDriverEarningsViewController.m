@@ -90,7 +90,7 @@
     }];
     
     
-    /*
+    
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [VCUsersApi getProfile:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         hud.hidden = YES;
@@ -104,8 +104,7 @@
         hud.hidden = YES;
         
     }];
-    */
-
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {

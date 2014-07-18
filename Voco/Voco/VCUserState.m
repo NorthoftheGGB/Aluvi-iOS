@@ -51,9 +51,6 @@ static VCUserState *sharedSingleton;
         _driveProcessState = [userDefaults objectForKey:kDriveProcessStateKey];
         _riderState = [userDefaults objectForKey:kRiderStateKey];
         _driverState = [userDefaults objectForKey:kDriverStateKey];
-        
-        
-
     }
     return self;
 }
@@ -116,7 +113,20 @@ static VCUserState *sharedSingleton;
 }
 
 - (void) logout {
-        
+    
+    if(self.driverState != nil && [self.driverState isEqualToString:kDriverStateOnDuty] ){
+        [VCDriverApi clockOffWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            [self finalizeLogout];
+        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            
+        }];
+    } else {
+        [self finalizeLogout];
+    }
+}
+
+- (void) finalizeLogout {
+    
     VCDevice * device = [[VCDevice alloc] init];
     device.userId = [NSNumber numberWithInt:0]; // unassign the push token
     [VCDevicesApi patchDevice:device success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
@@ -127,6 +137,7 @@ static VCUserState *sharedSingleton;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         
     }];
+
 }
 
 - (void) synchronizeUserState {
