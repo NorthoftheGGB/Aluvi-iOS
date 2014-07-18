@@ -134,6 +134,7 @@ static VCUserState *sharedSingleton;
         [self clearUserState];
         [VCCoreData clearUserData];
         [[VCInterfaceModes instance] showRiderSigninInterface];
+        [[VCDebug sharedInstance] clearLoggedInUserIdentifier];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         
     }];

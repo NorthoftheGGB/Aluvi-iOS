@@ -76,6 +76,9 @@
         NSLog(@"recieved remote notification foreground key: %@, value: %@", key, [userInfo objectForKey:key]);
     }
     NSString * type = [userInfo objectForKey:VC_PUSH_TYPE_KEY];
+    
+    [[VCDebug sharedInstance] remoteNotificationLog: type];
+    
     if([type isEqualToString:@"ride_offer"]) {
         
         [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_RIDE_OFFERS

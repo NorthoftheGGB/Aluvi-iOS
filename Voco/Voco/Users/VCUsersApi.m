@@ -130,18 +130,26 @@
        success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
        failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     
+    [[VCDebug sharedInstance] apiLog:@"API: Login"];
+
     VCLogin * login = [[VCLogin alloc] init];
     login.phone = phone;
     login.password = password;
     [objectManager postObject:login path:API_LOGIN parameters:nil
                       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                          [[VCDebug sharedInstance] apiLog:@"API: Login success"];
                           
+                          [VCDebug setLoggedInUserIdentifier: phone];
+
                           VCLoginResponse * tokenResponse = mappingResult.firstObject;
                           [VCApi setApiToken: tokenResponse.token];
                           
                           success(operation, mappingResult);
                       }
-                      failure:failure];
+                      failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+                          [[VCDebug sharedInstance] apiLog:@"API: Login failure"];
+                          failure(operation, error);
+                      }];
 }
 
 + (void) createUser:( RKObjectManager *) objectManager
@@ -250,6 +258,7 @@
                   failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     VCFillCommuterPass * fillCommuterPassObject = [[VCFillCommuterPass alloc] init];
     fillCommuterPassObject.amountCents = centsToAdd;
+    
     [[RKObjectManager sharedManager] postObject:fillCommuterPassObject
                          path:API_FILL_COMMUTER_PASS
                    parameters:nil

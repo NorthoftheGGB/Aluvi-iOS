@@ -385,6 +385,8 @@
 		F4C6B1AC1978DF2A00F6C10B /* Earning.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6B1AA1978DF2A00F6C10B /* Earning.m */; };
 		F4C6B1B31979157800F6C10B /* VCDriverHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6B1B21979157800F6C10B /* VCDriverHUD.m */; };
 		F4C6B1B41979157800F6C10B /* VCDriverHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6B1B21979157800F6C10B /* VCDriverHUD.m */; };
+		F4C6B1B71979229900F6C10B /* VCDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6B1B61979229900F6C10B /* VCDebug.m */; };
+		F4C6B1B81979229900F6C10B /* VCDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6B1B61979229900F6C10B /* VCDebug.m */; };
 		F4D877661976721D00870945 /* VCProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D877651976721D00870945 /* VCProfile.m */; };
 		F4D877671976721D00870945 /* VCProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D877651976721D00870945 /* VCProfile.m */; };
 		F4D8776C19774CAB00870945 /* VCFare.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8776B19774CAB00870945 /* VCFare.m */; };
@@ -732,6 +734,8 @@
 		F4C6B1AF1979147000F6C10B /* Voco 29.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 29.xcdatamodel"; sourceTree = "<group>"; };
 		F4C6B1B11979157800F6C10B /* VCDriverHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCDriverHUD.h; sourceTree = "<group>"; };
 		F4C6B1B21979157800F6C10B /* VCDriverHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCDriverHUD.m; sourceTree = "<group>"; };
+		F4C6B1B51979229900F6C10B /* VCDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCDebug.h; sourceTree = "<group>"; };
+		F4C6B1B61979229900F6C10B /* VCDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCDebug.m; sourceTree = "<group>"; };
 		F4D877641976721D00870945 /* VCProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCProfile.h; path = Users/VCProfile.h; sourceTree = "<group>"; };
 		F4D877651976721D00870945 /* VCProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCProfile.m; path = Users/VCProfile.m; sourceTree = "<group>"; };
 		F4D8776A19774CAB00870945 /* VCFare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCFare.h; path = API/Driver/VCFare.h; sourceTree = "<group>"; };
@@ -1406,6 +1410,8 @@
 			children = (
 				F4D8777119775D7E00870945 /* VCUtilities.h */,
 				F4D8777219775D7E00870945 /* VCUtilities.m */,
+				F4C6B1B51979229900F6C10B /* VCDebug.h */,
+				F4C6B1B61979229900F6C10B /* VCDebug.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -1477,10 +1483,10 @@
 		F4FA0BEF192BF6BF005D8645 /* Voco */ = {
 			isa = PBXGroup;
 			children = (
-				F4D8777019775D6D00870945 /* Helpers */,
 				F4FE1AF51937DD1A00354886 /* Application */,
 				F473F002194A549A00D8C900 /* GIS */,
 				F45F7C0B1935975D00A94721 /* Libraries */,
+				F4D8777019775D6D00870945 /* Helpers */,
 				F45F7BF2193578AA00A94721 /* Api */,
 				F45F7BED193575C100A94721 /* Model */,
 				4FE641D7194160450059BED1 /* UI Elements */,
@@ -2023,6 +2029,7 @@
 				F4354D6B195D0D6A00C06CF7 /* VCButtonFontBold.m in Sources */,
 				4FF142DF195D12AC00CC61B6 /* Driver.m in Sources */,
 				F4354D6C195D0D6A00C06CF7 /* VCLabelItalic.m in Sources */,
+				F4C6B1B81979229900F6C10B /* VCDebug.m in Sources */,
 				F4792AE819750975005AB652 /* LELog.m in Sources */,
 				F4354D6D195D0D6A00C06CF7 /* VCDialogs.m in Sources */,
 				F4354D6E195D0D6A00C06CF7 /* MQRouteResponse.m in Sources */,
@@ -2143,6 +2150,7 @@
 				F473F03C195B971B00D8C900 /* Car.m in Sources */,
 				4FE712D5197369060071020C /* VCCarLicensePlateTextField.m in Sources */,
 				F473F02019511D7700D8C900 /* VCDevicesApi.m in Sources */,
+				F4C6B1B71979229900F6C10B /* VCDebug.m in Sources */,
 				F4FE1AFE193839DF00354886 /* Fare.m in Sources */,
 				F4D8904A19468E44007C4671 /* VCNewUser.m in Sources */,
 				F473EFE619492C2A00D8C900 /* IISideController.m in Sources */,

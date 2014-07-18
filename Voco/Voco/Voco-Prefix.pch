@@ -18,5 +18,5 @@
     #import "WRUtilities.h"
     #import "VCCoreData.h"
     #import <Crashlytics/Crashlytics.h>
-    #import "lelib.h"
+    #import "VCDebug.h"
 #endif

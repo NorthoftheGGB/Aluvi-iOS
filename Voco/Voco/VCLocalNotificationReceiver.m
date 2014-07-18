@@ -15,6 +15,9 @@
 
 + (void) handleLocalNotification: (UILocalNotification *) notification {
     
+    [[VCDebug sharedInstance] localNotificationLog: @"alarm"];
+
+    
     if([VCUserState instance].underwayRideId != nil){
         [UIAlertView showWithTitle:@"Warning!" message:@"A ride is already underway! Tell a programmer you are experiencing a state problem!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
     }

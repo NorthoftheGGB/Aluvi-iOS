@@ -142,19 +142,25 @@
     VCFareDriverAssignment * assignment = [[VCFareDriverAssignment alloc] init];
     assignment.rideId = rideId;
     
+    [[VCDebug sharedInstance] apiLog:@"API: Driver cancel ride"];
     [[RKObjectManager sharedManager] postObject:assignment
                                            path:API_POST_RIDE_DECLINED parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            [[VCDebug sharedInstance] apiLog:@"API: Driver cancel ride success"];
                                             success(operation, mappingResult);
                                             
                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                            
+                                            [[VCDebug sharedInstance] apiLog:@"API: Driver cancel ride failure"];
+
                                             if(operation.HTTPRequestOperation.response.statusCode == 404){
                                                 // ride is actually assigned to this driver already, can't be decline
+                                                [[VCDebug sharedInstance] apiLog:@"API: Driver cancel ride failure - already assigned to the logged in driver"];
+
                                                 [WRUtilities criticalErrorWithString:@"This ride is already assigned to the logged in driver.  It cannot be declined and must be cancelled instead"];
                                                 failure(operation, error);
                                                 
                                             } else if(operation.HTTPRequestOperation.response.statusCode == 403){
+                                                [[VCDebug sharedInstance] apiLog:@"API: Driver cancel ride failure - ride isn't available anymore anyway, just continue"];
                                                 // ride isn't available anymore anyway, just continue
                                                 success(operation, nil); // It's actually a success from the viewpoint of the caller
                                             } else {
