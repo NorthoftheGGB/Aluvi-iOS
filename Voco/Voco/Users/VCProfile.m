@@ -15,7 +15,14 @@
     
     RKObjectMapping * mapping = [RKObjectMapping mappingForClass:[self class]];
     [mapping addAttributeMappingsFromDictionary:@{
-                                                  @"default_card_token" : @"defaultCardToken"
+                                                  @"first_name" : @"firstName",
+                                                  @"last_name" : @"lastName",
+                                                  @"phone" : @"phone",
+                                                  @"email" : @"email",
+                                                  @"default_card_token" : @"defaultCardToken",
+                                                  @"commuter_refill_amount_cents" : @"commuterRefillAmountCents",
+                                                  @"commuter_balance_cents" : @"commuterBalanceCents",
+                                                  @"commuter_refill_enabled" : @"commuterRefillEnabled"
                                                   }];
     
     return mapping;
