@@ -42,6 +42,11 @@ static RKObjectManager * objectManager;
        success: ( void ( ^ ) ( MKPolyline * polyline, MKCoordinateRegion region )) success
        failure: ( void ( ^ ) ( )) failure {
     
+    if( start.latitude == 0 || start.longitude == 0 || end.latitude == 0 || end.longitude == 0){
+        NSLog(@"%@", @"Coorindate are zero.  Aborting route api request");
+        failure();
+    }
+    
     //int height = region.span.latitudeDelta;
     //int width = region.span.longitudeDelta;
    // NSString * url = [NSString stringWithFormat:@?key=%@&from=%f,%f&to=%f,%f&shapeFormat=raw&mapWidth=%d&mapHeight=%d",
@@ -86,6 +91,12 @@ static RKObjectManager * objectManager;
         region.center.longitude = (minLongitude + maxLongitude) / 2;
         region.span.latitudeDelta = (maxLatitude - minLatitude);
         region.span.longitudeDelta = (maxLongitude - minLongitude);
+        
+        if(region.span.latitudeDelta == 0 || region.span.latitudeDelta == 0 ){
+            NSLog(@"%@", @"Return spans are zero.  Aborting route api request");
+            failure();
+        }
+        
         success(polyline, region);
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {

@@ -124,7 +124,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     Fare *ride = [_fetchedResultsController objectAtIndexPath:indexPath];
     VCDriverHomeViewController * vc = [[VCDriverHomeViewController alloc] init];
-    vc.ride = ride;
+    vc.fare = ride;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

@@ -40,7 +40,7 @@
     
     [entityMapping addAttributeMappingsFromDictionary:@{
                                                         @"request_id" : @"request_id",
-                                                        @"ride_id" : @"ride_id",
+                                                        @"fare_id" : @"fare_id",
                                                         @"state" : @"forcedState",
                                                         @"meeting_point_place_name" : @"meetingPointPlaceName",
                                                         @"meeting_point_latitude" : @"meetingPointLatitude",

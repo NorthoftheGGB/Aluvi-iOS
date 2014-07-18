@@ -139,14 +139,14 @@
                       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                           [[VCDebug sharedInstance] apiLog:@"API: Login success"];
                           
-                          [VCDebug setLoggedInUserIdentifier: phone];
+                          [[VCDebug sharedInstance] setLoggedInUserIdentifier: phone];
 
                           VCLoginResponse * tokenResponse = mappingResult.firstObject;
                           [VCApi setApiToken: tokenResponse.token];
                           
                           success(operation, mappingResult);
                       }
-                      failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+                      failure:^( RKObjectRequestOperation *operation , NSError *error ) {
                           [[VCDebug sharedInstance] apiLog:@"API: Login failure"];
                           failure(operation, error);
                       }];

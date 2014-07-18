@@ -11,6 +11,6 @@
 
 @interface VCDriverHomeViewController : VCTransitBaseViewController
 
-@property (nonatomic, strong) Fare * ride;
+@property (nonatomic, strong) Fare * fare;
 
 @end

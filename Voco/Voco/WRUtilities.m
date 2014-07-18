@@ -36,7 +36,7 @@ static UIAlertView * networkUnavailableErrorView = nil;
     
     NSString * errorString = [NSString stringWithFormat:@"%@ Critical Error: %@", [[NSDate date] pretty], [error debugDescription]];
     NSLog(@"%@", errorString);
-    [[LELog sharedInstance] log:errorString];
+    [[VCDebug sharedInstance] apiLog:errorString];
 
 #if DEBUG==1
     if(criticalErrorView != nil){
@@ -60,7 +60,7 @@ static UIAlertView * networkUnavailableErrorView = nil;
     
     NSString * errorString = [NSString stringWithFormat:@"%@ Critical Error: %@", [[NSDate date] pretty] , error];
     NSLog(@"%@", errorString);
-    [[LELog sharedInstance] log:errorString];
+    [[VCDebug sharedInstance] apiLog:errorString];
 
 #if DEBUG==1
   

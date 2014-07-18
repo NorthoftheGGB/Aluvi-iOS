@@ -148,10 +148,22 @@ static void * XXContext = &XXContext;
         [self showDriverView];
         [[VCInterfaceModes instance] showDriverInterface];
     } else {
-        [self showRiderMenu];
-        [[VCInterfaceModes instance] showRiderInterface];
-
+        
+        if([[VCUserState instance].driverState isEqualToString: kDriverStateOnDuty]){
+            [VCDriverApi clockOffWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                [self displayRiderMode];
+            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                
+            }];
+        } else {
+            [self displayRiderMode];
+        }
     }
+}
+
+- (void) displayRiderMode {
+    [self showRiderMenu];
+    [[VCInterfaceModes instance] showRiderInterface];
 }
 
 - (void) showDriverView {

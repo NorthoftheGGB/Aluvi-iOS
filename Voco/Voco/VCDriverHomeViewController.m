@@ -62,8 +62,8 @@
 
 @implementation VCDriverHomeViewController
 
-- (void) setRide:(Fare *)ride {
-    _ride = ride;
+- (void) setFare:(Fare *)ride {
+    _fare = ride;
     self.transit = ride;
 }
 
@@ -119,7 +119,7 @@
         [WRUtilities criticalError:error];
         return;
     }
-    self.ride = results.firstObject;
+    self.fare = results.firstObject;
     [self clearMap];
     [self showRide];
     [self showAcceptOrDeclineRideInterface];
@@ -127,7 +127,7 @@
 
 - (void) rideInvoked:(NSNotification *) notification {
     Fare * ride = notification.object;
-    self.ride = ride;
+    self.fare = ride;
     [self clearMap];
     [self showRide];
     [self showPickupInterface];
@@ -135,7 +135,7 @@
 
 - (void) rideCancelledByRider: (NSNotification *) notification {
     NSNumber * rideId = notification.object;
-    if(_ride != nil && [rideId isEqualToNumber:_ride.ride_id]){
+    if(_fare != nil && [rideId isEqualToNumber:_fare.ride_id]){
         [self resetInterface];
     }
 }
@@ -208,14 +208,14 @@
 
 - (void) showRide{
     
-    self.title = self.ride.routeDescription;
+    self.title = self.fare.routeDescription;
     
     [self showSuggestedRoute];
     
-    [self annotateMeetingPoint:[[CLLocation alloc] initWithLatitude:[self.ride.meetingPointLatitude doubleValue]
-                                                          longitude:[self.ride.meetingPointLongitude doubleValue]]
-               andDropOffPoint:[[CLLocation alloc] initWithLatitude:[self.ride.dropOffPointLatitude doubleValue]
-                                                          longitude:[self.ride.dropOffPointLongitude doubleValue]]];
+    [self annotateMeetingPoint:[[CLLocation alloc] initWithLatitude:[self.fare.meetingPointLatitude doubleValue]
+                                                          longitude:[self.fare.meetingPointLongitude doubleValue]]
+               andDropOffPoint:[[CLLocation alloc] initWithLatitude:[self.fare.dropOffPointLatitude doubleValue]
+                                                          longitude:[self.fare.dropOffPointLongitude doubleValue]]];
     self.title = [self.transit routeDescription];
 }
 
@@ -290,12 +290,12 @@
 - (IBAction)didTapDecline:(id)sender {
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Declining";
-    [VCDriverApi cancelRide:self.transit.ride_id
+    [VCDriverApi declineFare:self.transit.ride_id
                     success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                         [self resetButtons];
                         [self clearMap];
                         [VCUserState instance].driveProcessState = @"Ride Declined";
-                        [self.ride markOfferAsDeclined];
+                        [self.fare markOfferAsDeclined];
                         [VCCoreData saveContext];
                         
                         self.map.userTrackingMode = MKUserTrackingModeFollow;
@@ -315,17 +315,17 @@
 
 - (IBAction)didTapRiderPickedUp:(id)sender {
     if( [VCUserState instance].underwayRideId != nil){
-        if(! [[VCUserState instance].underwayRideId isEqualToNumber: self.ride.ride_id]){
+        if(! [[VCUserState instance].underwayRideId isEqualToNumber: self.fare.ride_id]){
             [WRUtilities criticalErrorWithString:@"State shows another ride is still underway"];
         }
-        [VCUserState instance].underwayRideId = self.ride.ride_id;
+        [VCUserState instance].underwayRideId = self.fare.ride_id;
     }
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Notifying Server";
     VCFareDriverAssignment * rideIdentity = [[VCFareDriverAssignment alloc] init];
-    rideIdentity.rideId = _ride.ride_id;
-    [VCUserState instance].underwayRideId = _ride.ride_id;
+    rideIdentity.rideId = _fare.ride_id;
+    [VCUserState instance].underwayRideId = _fare.ride_id;
     [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_RIDE_PICKUP parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             [self showRideInProgressInterface];
@@ -343,12 +343,13 @@
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Cancelling";
     VCFareDriverAssignment * rideIdentity = [[VCFareDriverAssignment alloc] init];
-    rideIdentity.rideId = _ride.ride_id;
+    rideIdentity.rideId = _fare.ride_id;
     [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_DRIVER_CANCELLED parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             [UIAlertView showWithTitle:@"Cancelled Ride" message:@"The ride was successfully cancelled" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
                                             [self resetButtons];
                                             [self clearMap];
+                                            self.fare = nil;
                                             [hud hide:YES];
                                             
                                             [VCUserState instance].driveProcessState = kUserStateIdle;
@@ -389,7 +390,9 @@
 }
 
 - (IBAction)didTapZoomToRideBounds:(id)sender {
-    [self.map setRegion:self.rideRegion animated:YES];
+    if (self.fare != nil) {
+        [self.map setRegion:self.rideRegion animated:YES];
+    }
 }
 
 - (IBAction)didTapCurrentLocation:(id)sender {

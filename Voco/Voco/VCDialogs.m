@@ -74,7 +74,7 @@ static VCDialogs *sharedSingleton;
                                           tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                                               if (buttonIndex == [alertView cancelButtonIndex]) {
                                                   
-                                                  [VCDriverApi cancelRide:rideOffer.ride_id
+                                                  [VCDriverApi declineFare:rideOffer.ride_id
                                                                   success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                                       [VCUserState instance].driveProcessState = @"Ride Declined";
                                                                       [rideOffer markAsDeclined];
@@ -103,7 +103,8 @@ static VCDialogs *sharedSingleton;
 }
 
 - (void) retractOfferDialog: (NSNumber *) offerId {
-    if([_interfaceState isEqualToString:VC_INTERFACE_STATE_OFFER_DIALOG] && [offerId isEqualToNumber: _offer.id]){
+    if([_interfaceState isEqualToString:VC_INTERFACE_STATE_OFFER_DIALOG]
+       && [offerId isEqualToNumber: _offer.id]){
         [_currentAlertView dismissWithClickedButtonIndex:-1 animated:YES];
         _offer.decided = [NSNumber numberWithBool:YES];
         NSError * error = nil;
@@ -193,7 +194,7 @@ static VCDialogs *sharedSingleton;
 }
 
 - (void) commuterRideAlarm: (NSNumber *) requestId {
-    NSFetchRequest * fetch = [[NSFetchRequest alloc] initWithEntityName:@"Request"];
+    NSFetchRequest * fetch = [[NSFetchRequest alloc] initWithEntityName:@"Ride"];
     NSPredicate * predicate = [NSPredicate predicateWithFormat:@"request_id = %@", requestId];
     [fetch setPredicate:predicate];
     NSError * error;

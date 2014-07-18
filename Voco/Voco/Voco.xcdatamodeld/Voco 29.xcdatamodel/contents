@@ -16,8 +16,9 @@
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="fares" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Fare" inverseName="driver" inverseEntity="Fare" syncable="YES"/>
         <relationship name="payments" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Payment" inverseName="driver" inverseEntity="Payment" syncable="YES"/>
-        <relationship name="rides" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Fare" inverseName="driver" inverseEntity="Fare" syncable="YES"/>
+        <relationship name="rides" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ride" inverseName="driver" inverseEntity="Ride" syncable="YES"/>
     </entity>
     <entity name="Earning" representedClassName="Earning" syncable="YES">
         <attribute name="amountCents" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -41,7 +42,7 @@
         <attribute name="pickupTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="ride_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="savedState" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="driver" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Driver" inverseName="rides" inverseEntity="Driver" syncable="YES"/>
+        <relationship name="driver" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Driver" inverseName="fares" inverseEntity="Driver" syncable="YES"/>
         <relationship name="earning" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Earning" inverseName="fare" inverseEntity="Earning" syncable="YES"/>
         <relationship name="offer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Offer" inverseName="ride" inverseEntity="Offer" syncable="YES"/>
         <relationship name="payment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Payment" inverseName="fare" inverseEntity="Payment" syncable="YES"/>
@@ -96,7 +97,7 @@
         <attribute name="ride_id" optional="YES" attributeType="Integer 64" syncable="YES"/>
         <attribute name="savedState" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="car" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Car" inverseName="rides" inverseEntity="Car" syncable="YES"/>
-        <relationship name="driver" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Driver" syncable="YES"/>
+        <relationship name="driver" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Driver" inverseName="rides" inverseEntity="Driver" syncable="YES"/>
         <relationship name="payment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Payment" inverseName="ride" inverseEntity="Payment" syncable="YES"/>
     </entity>
     <entity name="Rider" syncable="YES">
@@ -109,11 +110,11 @@
     </entity>
     <elements>
         <element name="Car" positionX="0" positionY="0" width="128" height="165"/>
-        <element name="Driver" positionX="0" positionY="0" width="128" height="148"/>
-        <element name="Earning" positionX="9" positionY="153" width="128" height="195"/>
+        <element name="Driver" positionX="0" positionY="0" width="128" height="165"/>
+        <element name="Earning" positionX="0" positionY="0" width="128" height="195"/>
         <element name="Fare" positionX="0" positionY="0" width="128" height="240"/>
         <element name="Offer" positionX="0" positionY="0" width="128" height="195"/>
-        <element name="Payment" positionX="9" positionY="153" width="128" height="225"/>
+        <element name="Payment" positionX="0" positionY="0" width="128" height="225"/>
         <element name="Ride" positionX="0" positionY="0" width="128" height="420"/>
         <element name="Rider" positionX="0" positionY="0" width="128" height="135"/>
     </elements>

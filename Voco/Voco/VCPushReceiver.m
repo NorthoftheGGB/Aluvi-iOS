@@ -220,7 +220,7 @@
     [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         
         NSNumber * rideId = [payload objectForKey:VC_PUSH_RIDE_ID_KEY];
-        NSFetchRequest * fetch = [[NSFetchRequest alloc] initWithEntityName:@"Request"];
+        NSFetchRequest * fetch = [[NSFetchRequest alloc] initWithEntityName:@"Ride"];
         NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ride_id = %@", rideId];
         [fetch setPredicate:predicate];
         NSError * error;

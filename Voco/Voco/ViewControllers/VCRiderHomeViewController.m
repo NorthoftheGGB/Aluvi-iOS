@@ -182,8 +182,7 @@
 
 - (IBAction)didTapCommute:(id)sender {
     
-    [[LELog sharedInstance] log:@"%@ Did Tap Commute"];
-    self.request = (Ride *) [NSEntityDescription insertNewObjectForEntityForName:@"Request" inManagedObjectContext:[VCCoreData managedObjectContext]];
+    self.request = (Ride *) [NSEntityDescription insertNewObjectForEntityForName:@"Ride" inManagedObjectContext:[VCCoreData managedObjectContext]];
     self.request.forcedState = kCreatedState;
     self.request.requestType = kRideRequestTypeCommuter;
     self.transit = self.request;
@@ -200,8 +199,7 @@
 
 - (IBAction)didTapOnDemand:(id)sender {
 
-    [[LELog sharedInstance] log:@"Did Tap On Demand"];
-    self.request = (Ride *) [NSEntityDescription insertNewObjectForEntityForName:@"Request" inManagedObjectContext:[VCCoreData managedObjectContext]];
+    self.request = (Ride *) [NSEntityDescription insertNewObjectForEntityForName:@"Ride" inManagedObjectContext:[VCCoreData managedObjectContext]];
     self.request.forcedState = kCreatedState;
     self.request.requestType = kRideRequestTypeOnDemand;
     self.transit = self.request;
@@ -440,6 +438,10 @@
         self.mapCenterPin.hidden = YES;
         _step = kStepConfirmRequest;
         
+        if(self.request.desiredArrival != nil){
+            _scheduleRideButton.hidden = NO;
+        }
+        
     } else if (_step == kStepConfirmRequest) {
         
         if([ self.request.requestType isEqualToString:kRideRequestTypeOnDemand]) {
@@ -602,7 +604,10 @@
                                        doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
                                            NSString * title = [NSString stringWithFormat:@"Arrive By: %@", [options objectAtIndex:selectedIndex] ];
                                            [_arrivalTimeButton setTitle:title forState:UIControlStateNormal];
-                                           _scheduleRideButton.hidden = NO;
+                                           
+                                           if( _step == kStepConfirmRequest){
+                                               _scheduleRideButton.hidden = NO;
+                                           }
                                            
                                            NSDateComponents* comps = [[NSCalendar currentCalendar] components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:_desiredArrivalDateTime];
                                            _desiredArrivalDateTime = [[NSCalendar currentCalendar] dateFromComponents:comps];
@@ -752,8 +757,8 @@
     MKCoordinateRegion mapRegion;
     mapRegion.center.latitude = self.map.userLocation.coordinate.latitude;
     mapRegion.center.longitude = self.map.userLocation.coordinate.longitude;
-    mapRegion.span.latitudeDelta = 0.2;
-    mapRegion.span.longitudeDelta = 0.2;
+    mapRegion.span.latitudeDelta = self.map.region.span.latitudeDelta;
+    mapRegion.span.longitudeDelta = self.map.region.span.longitudeDelta;
     [self.map setRegion:mapRegion animated: YES];
 }
 

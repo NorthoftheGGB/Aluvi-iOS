@@ -135,12 +135,12 @@
                                        }];
 }
 
-+ (void) cancelRide: (NSNumber *) rideId
++ (void) declineFare: (NSNumber *) fareId
             success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
             failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     
     VCFareDriverAssignment * assignment = [[VCFareDriverAssignment alloc] init];
-    assignment.rideId = rideId;
+    assignment.rideId = fareId;
     
     [[VCDebug sharedInstance] apiLog:@"API: Driver cancel ride"];
     [[RKObjectManager sharedManager] postObject:assignment
