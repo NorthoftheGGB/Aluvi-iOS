@@ -8,7 +8,7 @@
         <attribute name="model" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="rides" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Request" inverseName="car" inverseEntity="Request" syncable="YES"/>
+        <relationship name="rides" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ride" inverseName="car" inverseEntity="Ride" syncable="YES"/>
     </entity>
     <entity name="Driver" representedClassName="Driver" syncable="YES">
         <attribute name="driversLicenseNumber" optional="YES" attributeType="String" syncable="YES"/>
@@ -70,9 +70,9 @@
         <attribute name="stripeChargeStatus" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="driver" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Driver" inverseName="payments" inverseEntity="Driver" syncable="YES"/>
         <relationship name="fare" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Fare" inverseName="payment" inverseEntity="Fare" syncable="YES"/>
-        <relationship name="ride" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Request" inverseName="payment" inverseEntity="Request" syncable="YES"/>
+        <relationship name="ride" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Ride" inverseName="payment" inverseEntity="Ride" syncable="YES"/>
     </entity>
-    <entity name="Request" representedClassName="Request" syncable="YES">
+    <entity name="Ride" representedClassName="Ride" syncable="YES">
         <attribute name="car_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="desiredArrival" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="destinationLatitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -114,7 +114,7 @@
         <element name="Fare" positionX="0" positionY="0" width="128" height="240"/>
         <element name="Offer" positionX="0" positionY="0" width="128" height="195"/>
         <element name="Payment" positionX="9" positionY="153" width="128" height="225"/>
-        <element name="Request" positionX="0" positionY="0" width="128" height="420"/>
+        <element name="Ride" positionX="0" positionY="0" width="128" height="420"/>
         <element name="Rider" positionX="0" positionY="0" width="128" height="135"/>
     </elements>
 </model>
