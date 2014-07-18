@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet VCTextField *phoneField;
 @property (weak, nonatomic) IBOutlet VCTextField *emailField;
 @property (weak, nonatomic) IBOutlet VCTextField *referralCodeField;
+@property (strong, nonatomic) IBOutlet UIView *contentView;
 
 - (IBAction)didTapSubmit:(id)sender;
 
@@ -45,7 +46,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Driver Request";    
+    self.title = @"Driver Request";
+    [self.scrollView setContentSize:_contentView.frame.size];
+    [self.scrollView addSubview:_contentView];
 }
 
 
