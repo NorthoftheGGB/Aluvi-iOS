@@ -84,7 +84,6 @@
     // Fire off the earnings reload
     [VCDriverApi earnings:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         // no need to do anything
-        NSArray * earnings = mappingResult.array;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         // nothing to do
     }];

@@ -334,8 +334,7 @@
                             if( geoObject.currentFareCost == nil){
                                 _currentFareLabel.text = kFareNotStartedLabelText;
                             } else {
- 
-  
+                                _cancelRideButton.hidden = YES;
                                 _currentFareLabel.text = [VCUtilities formatCurrencyFromCents:geoObject.currentFareCost];
                                 
                             }

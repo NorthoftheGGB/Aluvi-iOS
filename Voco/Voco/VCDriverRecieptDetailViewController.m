@@ -35,7 +35,7 @@
     receipt = [receipt stringByAppendingString:[NSString stringWithFormat:@"Fare Id: %@", _earning.fare_id]];
     receipt = [receipt stringByAppendingString:[NSString stringWithFormat:@"\n\nDate: %@", [_earning.createdAt formatted]]];
     receipt = [receipt stringByAppendingString:[NSString stringWithFormat:@"\n\nPayment: %@", [VCUtilities formatCurrencyFromCents: _earning.amountCents]]];
-    receipt = [receipt stringByAppendingString:[NSString stringWithFormat:@"\n\Route: %@", [_earning.fare routeDescription]]];
+    receipt = [receipt stringByAppendingString:[NSString stringWithFormat:@"\n\nRoute: %@", [_earning.fare routeDescription]]];
     [_recieptDetailTextView setText:receipt];
 
 }

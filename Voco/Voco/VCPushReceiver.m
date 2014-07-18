@@ -180,6 +180,7 @@
             [[VCDialogs instance] rideCancelledByRider];
             [VCUserState instance].underwayRideId = nil;
             [VCUserState instance].driveProcessState = kUserStateIdle;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"ride_cancelled_by_rider" object:rideId userInfo:@{}];
         }
     } else if([type isEqualToString:@"ride_cancelled_by_driver"]){
         NSNumber * rideId = [payload objectForKey:VC_PUSH_RIDE_ID_KEY];
