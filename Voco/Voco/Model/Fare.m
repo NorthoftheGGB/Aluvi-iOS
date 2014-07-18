@@ -135,5 +135,7 @@
     return @"exists"; // Placeholder
 }
 
-
+- (NSString *) routeDescription {
+    return [NSString stringWithFormat:@"%@ to %@", self.meetingPointPlaceName, self.dropOffPointPlaceName];
+}
 @end

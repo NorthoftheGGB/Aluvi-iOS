@@ -22,4 +22,6 @@
 - (void) markOfferAsDeclined;
 - (void) markOfferAsClosed;
 
+- (NSString *) routeDescription;
+
 @end

@@ -17,6 +17,9 @@
 #import "VCFaresViewController.h"
 #import "VCCommuterPassViewController.h"
 #import "VCRiderPaymentsViewController.h"
+#import "VCDriverEarningsViewController.h"
+#import "VCDriverProfileViewController.h"
+#import "VCRiderProfileViewController.h"
 
 static void * XXContext = &XXContext;
 
@@ -89,12 +92,13 @@ static void * XXContext = &XXContext;
     swipeUpGestureRecognizer.numberOfTouchesRequired = 2;
     [self.view addGestureRecognizer:swipeUpGestureRecognizer];
 
+    [[VCUserState instance] addObserver:self forKeyPath:@"driverState" options:NSKeyValueObservingOptionNew context:XXContext];
+
 }
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(didTapLogout:)];
-    self.navigationItem.rightBarButtonItem = logoutButton;
+
 }
 
 
@@ -111,7 +115,6 @@ static void * XXContext = &XXContext;
             [self showRiderMenu];
             break;
     }
-    [[VCUserState instance] addObserver:self forKeyPath:@"driverState" options:NSKeyValueObservingOptionNew context:XXContext];
     _appeared = YES;
 
 }
@@ -120,9 +123,12 @@ static void * XXContext = &XXContext;
     [super viewWillDisappear:animated];
     self.navigationItem.rightBarButtonItem = nil;
     if(_appeared){
-        [[VCUserState instance] removeObserver:self forKeyPath:@"driverState"];
         _appeared = NO;
     }
+}
+
+- (void)dealloc {
+    [[VCUserState instance] removeObserver:self forKeyPath:@"driverState"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -213,6 +219,8 @@ static void * XXContext = &XXContext;
 }
 
 - (IBAction)didTapProfile:(id)sender {
+    VCRiderProfileViewController * vc = [[VCRiderProfileViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)didTapPaymentInfo:(id)sender {
@@ -247,9 +255,13 @@ static void * XXContext = &XXContext;
 //driver actions
 
 - (IBAction)didTapDriverProfile:(id)sender {
+    VCDriverProfileViewController * vc = [[VCDriverProfileViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)didTapDriverPaymentInfo:(id)sender {
+    VCDriverEarningsViewController * vc = [[VCDriverEarningsViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)didTapDriverScheduledFares:(id)sender {

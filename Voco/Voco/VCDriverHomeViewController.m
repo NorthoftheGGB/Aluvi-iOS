@@ -83,13 +83,12 @@
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideOfferInvokedNotification:) name:@"ride_offer_invoked" object:[VCDialogs instance]];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideInvoked:) name:@"driver_ride_invoked" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideCancelledByRider:) name:@"ride_cancelled_by_rider" object:nil];
+
     }
     return self;
 }
 
-- (void) dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
 
 - (void)viewDidLoad
 {
@@ -102,7 +101,18 @@
 
 }
 
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
+// Notification Handlers
 - (void) rideOfferInvokedNotification:(NSNotification *)notification{
     [self resetButtons];
     NSDictionary * info = [notification userInfo];
@@ -130,6 +140,15 @@
     [self showPickupInterface];
 }
 
+- (void) rideCancelledByRider: (NSNotification *) notification {
+    NSNumber * rideId = notification.object;
+    if(_ride != nil && [rideId isEqualToNumber:_ride.ride_id]){
+        [self resetInterface];
+    }
+}
+
+
+// Interface Modes
 - (void) resetButtons {
     _acceptButton.hidden = YES;
     _declineButton.hidden = YES;
@@ -155,16 +174,8 @@
     self.addressLabel.text = self.transit.meetingPointPlaceName;
     [self addLocationHudIfNotDisplayed];
     
-    if(_commuterCallHud.superview == nil) {
-        CGRect frame = _commuterCallHud.frame;
-        frame.origin.x = 0;
-        frame.origin.y = self.view.frame.size.height - 164;
-        _commuterCallHud.frame = frame;
-        [self.view addSubview:self.commuterCallHud];
-    }
+    [self showCommuterCallHudIfNotDisplayed];
     
-   
-
 }
 
 - (void) showRideInProgressInterface {
@@ -174,7 +185,22 @@
     self.locationTypeLabel.text = @"Drop Off Location";
     self.addressLabel.text = self.transit.dropOffPointPlaceName;
     [self addLocationHudIfNotDisplayed];
+}
 
+- (void) showCommuterCallHudIfNotDisplayed {
+    if(_commuterCallHud.superview == nil) {
+        CGRect frame = _commuterCallHud.frame;
+        frame.origin.x = 0;
+        frame.origin.y = self.view.frame.size.height - 164;
+        _commuterCallHud.frame = frame;
+        [self.view addSubview:self.commuterCallHud];
+        
+        // Populate with rider names
+    }
+}
+
+- (void) hideCommuterCallHud {
+    [_commuterCallHud removeFromSuperview];
 }
 
 - (void) addLocationHudIfNotDisplayed {
@@ -208,7 +234,6 @@
 
 - (void) showReceipt: (NSNumber *) earnings {
 
-
     [UIAlertView showWithTitle:@"Receipt"
                        message:[NSString stringWithFormat:@"Thanks for driving.  You earned %@ on this ride.",
                                 [VCUtilities formatCurrencyFromCents:earnings]]
@@ -223,15 +248,10 @@
                       }];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void) resetInterface {
     [self resetButtons];
     [self clearMap];
+    [self hideCommuterCallHud];
 }
 
 - (IBAction)didTapAccept:(id)sender {
@@ -284,12 +304,15 @@
                         [VCUserState instance].driveProcessState = @"Ride Declined";
                         [self.ride markOfferAsDeclined];
                         [VCCoreData saveContext];
-                        [hud hide:YES];
-                        [VCUserState instance].underwayRideId = nil;
-                        [[VCDialogs instance] offerNextRideToDriver];
+                        
                         self.map.userTrackingMode = MKUserTrackingModeFollow;
                         self.map.showsUserLocation = YES;
                         [_driverLocationHud removeFromSuperview];
+                        [hud hide:YES];
+                        
+                        
+                        [VCUserState instance].underwayRideId = nil;
+                        [[VCDialogs instance] offerNextRideToDriver];
                         
                     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                         [hud hide:YES];
@@ -333,9 +356,12 @@
                                             [UIAlertView showWithTitle:@"Cancelled Ride" message:@"The ride was successfully cancelled" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
                                             [self resetButtons];
                                             [self clearMap];
-                                            [VCUserState instance].driveProcessState = kUserStateIdle;
                                             [hud hide:YES];
+                                            
+                                            [VCUserState instance].driveProcessState = kUserStateIdle;
                                             [VCUserState instance].underwayRideId = nil;
+                                            
+                                            [self hideCommuterCallHud];
 
                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                             // TODO: need to cache this action and try again later
@@ -358,8 +384,10 @@
                                             [self showRideCompletedInterface];
                                             VCFare * fare = mappingResult.firstObject;
                                             [self showReceipt:fare.driverEarnings];
-                                            [hud hide:YES];
                                             [VCUserState instance].underwayRideId = nil;
+                                            [hud hide:YES];
+                                            
+                                            [self hideCommuterCallHud];
 
                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                             [hud hide:YES];
@@ -374,6 +402,7 @@
 - (IBAction)didTapCurrentLocation:(id)sender {
     [self.map setCenterCoordinate:self.map.userLocation.coordinate animated:YES];
 }
+
 - (IBAction)didTapRiderSelect:(id)sender {
     UIButton * button = (UIButton*)sender;
     if (button.selected){

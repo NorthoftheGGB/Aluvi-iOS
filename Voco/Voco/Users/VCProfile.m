@@ -22,7 +22,10 @@
                                                   @"default_card_token" : @"defaultCardToken",
                                                   @"commuter_refill_amount_cents" : @"commuterRefillAmountCents",
                                                   @"commuter_balance_cents" : @"commuterBalanceCents",
-                                                  @"commuter_refill_enabled" : @"commuterRefillEnabled"
+                                                  @"commuter_refill_enabled" : @"commuterRefillEnabled",
+                                                  @"card_last_four" : @"cardLastFour",
+                                                  @"card_brand" : @"cardBrand",
+                                                  @"bank_account_name" : @"bankAccountName"
                                                   }];
     
     return mapping;

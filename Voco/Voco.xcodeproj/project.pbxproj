@@ -85,10 +85,10 @@
 		4FCD7C6519761C21007609E8 /* call-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C6119761C21007609E8 /* call-button@2x.png */; };
 		4FCD7C691976241D007609E8 /* VCRiderProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCD7C671976241D007609E8 /* VCRiderProfileViewController.m */; };
 		4FCD7C6A1976241D007609E8 /* VCRiderProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCD7C671976241D007609E8 /* VCRiderProfileViewController.m */; };
-		4FCD7C711976244F007609E8 /* VCDriverPaymentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCD7C6F1976244F007609E8 /* VCDriverPaymentsViewController.m */; };
-		4FCD7C721976244F007609E8 /* VCDriverPaymentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCD7C6F1976244F007609E8 /* VCDriverPaymentsViewController.m */; };
-		4FCD7C731976244F007609E8 /* VCDriverPaymentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C701976244F007609E8 /* VCDriverPaymentsViewController.xib */; };
-		4FCD7C741976244F007609E8 /* VCDriverPaymentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C701976244F007609E8 /* VCDriverPaymentsViewController.xib */; };
+		4FCD7C711976244F007609E8 /* VCDriverEarningsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCD7C6F1976244F007609E8 /* VCDriverEarningsViewController.m */; };
+		4FCD7C721976244F007609E8 /* VCDriverEarningsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCD7C6F1976244F007609E8 /* VCDriverEarningsViewController.m */; };
+		4FCD7C731976244F007609E8 /* VCDriverEarningsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C701976244F007609E8 /* VCDriverEarningsViewController.xib */; };
+		4FCD7C741976244F007609E8 /* VCDriverEarningsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C701976244F007609E8 /* VCDriverEarningsViewController.xib */; };
 		4FCD7C7819762465007609E8 /* VCDriverProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCD7C7619762465007609E8 /* VCDriverProfileViewController.m */; };
 		4FCD7C7919762465007609E8 /* VCDriverProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCD7C7619762465007609E8 /* VCDriverProfileViewController.m */; };
 		4FCD7C7A19762465007609E8 /* VCDriverProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C7719762465007609E8 /* VCDriverProfileViewController.xib */; };
@@ -381,6 +381,8 @@
 		F4A7C8261962E235007E05AD /* VCLocationSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C8231962E235007E05AD /* VCLocationSearchViewController.m */; };
 		F4A7C8271962E235007E05AD /* VCLocationSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A7C8241962E235007E05AD /* VCLocationSearchViewController.xib */; };
 		F4A7C8281962E235007E05AD /* VCLocationSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A7C8241962E235007E05AD /* VCLocationSearchViewController.xib */; };
+		F4C6B1AB1978DF2A00F6C10B /* Earning.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6B1AA1978DF2A00F6C10B /* Earning.m */; };
+		F4C6B1AC1978DF2A00F6C10B /* Earning.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6B1AA1978DF2A00F6C10B /* Earning.m */; };
 		F4D877661976721D00870945 /* VCProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D877651976721D00870945 /* VCProfile.m */; };
 		F4D877671976721D00870945 /* VCProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D877651976721D00870945 /* VCProfile.m */; };
 		F4D8776C19774CAB00870945 /* VCFare.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8776B19774CAB00870945 /* VCFare.m */; };
@@ -495,9 +497,9 @@
 		4FCD7C6119761C21007609E8 /* call-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "call-button@2x.png"; sourceTree = "<group>"; };
 		4FCD7C661976241D007609E8 /* VCRiderProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRiderProfileViewController.h; sourceTree = "<group>"; };
 		4FCD7C671976241D007609E8 /* VCRiderProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRiderProfileViewController.m; sourceTree = "<group>"; };
-		4FCD7C6E1976244F007609E8 /* VCDriverPaymentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCDriverPaymentsViewController.h; sourceTree = "<group>"; };
-		4FCD7C6F1976244F007609E8 /* VCDriverPaymentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCDriverPaymentsViewController.m; sourceTree = "<group>"; };
-		4FCD7C701976244F007609E8 /* VCDriverPaymentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCDriverPaymentsViewController.xib; sourceTree = "<group>"; };
+		4FCD7C6E1976244F007609E8 /* VCDriverEarningsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCDriverEarningsViewController.h; sourceTree = "<group>"; };
+		4FCD7C6F1976244F007609E8 /* VCDriverEarningsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCDriverEarningsViewController.m; sourceTree = "<group>"; };
+		4FCD7C701976244F007609E8 /* VCDriverEarningsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCDriverEarningsViewController.xib; sourceTree = "<group>"; };
 		4FCD7C7519762465007609E8 /* VCDriverProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCDriverProfileViewController.h; sourceTree = "<group>"; };
 		4FCD7C7619762465007609E8 /* VCDriverProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCDriverProfileViewController.m; sourceTree = "<group>"; };
 		4FCD7C7719762465007609E8 /* VCDriverProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCDriverProfileViewController.xib; sourceTree = "<group>"; };
@@ -721,6 +723,11 @@
 		F4A7C8231962E235007E05AD /* VCLocationSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCLocationSearchViewController.m; path = ViewControllers/VCLocationSearchViewController.m; sourceTree = "<group>"; };
 		F4A7C8241962E235007E05AD /* VCLocationSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCLocationSearchViewController.xib; path = ViewControllers/VCLocationSearchViewController.xib; sourceTree = "<group>"; };
 		F4A7C8291964E425007E05AD /* Voco 14.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 14.xcdatamodel"; sourceTree = "<group>"; };
+		F4C6B1A91978DEFB00F6C10B /* Earning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Earning.h; path = Model/Earning.h; sourceTree = "<group>"; };
+		F4C6B1AA1978DF2A00F6C10B /* Earning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Earning.m; path = Model/Earning.m; sourceTree = "<group>"; };
+		F4C6B1AD1978E4D400F6C10B /* Voco 27.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 27.xcdatamodel"; sourceTree = "<group>"; };
+		F4C6B1AE1978F33900F6C10B /* Voco 28.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 28.xcdatamodel"; sourceTree = "<group>"; };
+		F4C6B1AF1979147000F6C10B /* Voco 29.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 29.xcdatamodel"; sourceTree = "<group>"; };
 		F4D877641976721D00870945 /* VCProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCProfile.h; path = Users/VCProfile.h; sourceTree = "<group>"; };
 		F4D877651976721D00870945 /* VCProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCProfile.m; path = Users/VCProfile.m; sourceTree = "<group>"; };
 		F4D8776A19774CAB00870945 /* VCFare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCFare.h; path = API/Driver/VCFare.h; sourceTree = "<group>"; };
@@ -918,9 +925,9 @@
 				4FCD7C7519762465007609E8 /* VCDriverProfileViewController.h */,
 				4FCD7C7619762465007609E8 /* VCDriverProfileViewController.m */,
 				4FCD7C7719762465007609E8 /* VCDriverProfileViewController.xib */,
-				4FCD7C6E1976244F007609E8 /* VCDriverPaymentsViewController.h */,
-				4FCD7C6F1976244F007609E8 /* VCDriverPaymentsViewController.m */,
-				4FCD7C701976244F007609E8 /* VCDriverPaymentsViewController.xib */,
+				4FCD7C6E1976244F007609E8 /* VCDriverEarningsViewController.h */,
+				4FCD7C6F1976244F007609E8 /* VCDriverEarningsViewController.m */,
+				4FCD7C701976244F007609E8 /* VCDriverEarningsViewController.xib */,
 				4FCD7C8519775C5C007609E8 /* VCDriverRecieptDetailViewController.h */,
 				4FCD7C8619775C5C007609E8 /* VCDriverRecieptDetailViewController.m */,
 				4FCD7C8719775C5C007609E8 /* VCDriverRecieptDetailViewController.xib */,
@@ -1113,6 +1120,8 @@
 				F45F7C021935880500A94721 /* Request.m */,
 				F4F5FFBC19779E23001A1C0E /* Payment.h */,
 				F4F5FFBD19779E23001A1C0E /* Payment.m */,
+				F4C6B1A91978DEFB00F6C10B /* Earning.h */,
+				F4C6B1AA1978DF2A00F6C10B /* Earning.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1757,7 +1766,7 @@
 				4FDB0EC61970A5AC00A8CEC2 /* VCRiderHomeViewControllerV2.xib in Resources */,
 				F4354DC5195D0D6A00C06CF7 /* voco_logo@2x.png in Resources */,
 				F4354DC6195D0D6A00C06CF7 /* commute_logo@2x.png in Resources */,
-				4FCD7C741976244F007609E8 /* VCDriverPaymentsViewController.xib in Resources */,
+				4FCD7C741976244F007609E8 /* VCDriverEarningsViewController.xib in Resources */,
 				F4354DC7195D0D6A00C06CF7 /* Images.xcassets in Resources */,
 				4FDB0ED61970C3AD00A8CEC2 /* button-full-select@2x.png in Resources */,
 				4FE286EC1962B89700FD8AF6 /* current-location-arrow@2x.png in Resources */,
@@ -1772,7 +1781,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4FCD7C731976244F007609E8 /* VCDriverPaymentsViewController.xib in Resources */,
+				4FCD7C731976244F007609E8 /* VCDriverEarningsViewController.xib in Resources */,
 				4F9ECEB319661C3400AD4229 /* VCCommuterPassViewController.xib in Resources */,
 				4FE641F7194168E80059BED1 /* signup_box@2x.png in Resources */,
 				F4138C2F1965467D00C265CD /* VCFaresViewController.xib in Resources */,
@@ -1981,7 +1990,7 @@
 				4F2EF99C1960D280006A1962 /* VCDriverHomeViewController.m in Sources */,
 				4FE712C21973688F0071020C /* VCBankAccountTextField.m in Sources */,
 				F4354D64195D0D6A00C06CF7 /* VCUserStateResponse.m in Sources */,
-				4FCD7C721976244F007609E8 /* VCDriverPaymentsViewController.m in Sources */,
+				4FCD7C721976244F007609E8 /* VCDriverEarningsViewController.m in Sources */,
 				F4354D65195D0D6A00C06CF7 /* VCScrollableFormViewController.m in Sources */,
 				F4F157A3195E8DB5009A33C8 /* VCBaseValidatorTextField.m in Sources */,
 				4FF142E0195D12BE00CC61B6 /* VCRequestsViewController.m in Sources */,
@@ -2003,6 +2012,7 @@
 				F4792AE819750975005AB652 /* LELog.m in Sources */,
 				F4354D6D195D0D6A00C06CF7 /* VCDialogs.m in Sources */,
 				F4354D6E195D0D6A00C06CF7 /* MQRouteResponse.m in Sources */,
+				F4C6B1AC1978DF2A00F6C10B /* Earning.m in Sources */,
 				4FF142DE195D129D00CC61B6 /* Car.m in Sources */,
 				F4354D6F195D0D6A00C06CF7 /* VCSignInViewController.m in Sources */,
 				F4354D70195D0D6A00C06CF7 /* VCDevicesApi.m in Sources */,
@@ -2113,7 +2123,7 @@
 				F473F009194A5A0200D8C900 /* MQRouteResponse.m in Sources */,
 				4FE641BA194157510059BED1 /* VCSignInViewController.m in Sources */,
 				4FE712C5197368A30071020C /* VCRoutingNumberTextField.m in Sources */,
-				4FCD7C711976244F007609E8 /* VCDriverPaymentsViewController.m in Sources */,
+				4FCD7C711976244F007609E8 /* VCDriverEarningsViewController.m in Sources */,
 				F4D877661976721D00870945 /* VCProfile.m in Sources */,
 				F473F03C195B971B00D8C900 /* Car.m in Sources */,
 				4FE712D5197369060071020C /* VCCarLicensePlateTextField.m in Sources */,
@@ -2150,6 +2160,7 @@
 				F473F001194A498E00D8C900 /* VCLabel.m in Sources */,
 				4FCD7C7819762465007609E8 /* VCDriverProfileViewController.m in Sources */,
 				F4F5FFBE19779E23001A1C0E /* Payment.m in Sources */,
+				F4C6B1AB1978DF2A00F6C10B /* Earning.m in Sources */,
 				F4A7C81119626DDE007E05AD /* VCFareIdentity.m in Sources */,
 				F473EFEE1949304300D8C900 /* VCMenuViewController.m in Sources */,
 				4FB2682A1952207A0028D4ED /* VCDriverVideoTutorialController.m in Sources */,
@@ -2514,9 +2525,12 @@
 				F4792AF319764523005AB652 /* Voco 24.xcdatamodel */,
 				F4F5FFC01977A599001A1C0E /* Voco 25.xcdatamodel */,
 				F4F5FFC11977AE4C001A1C0E /* Voco 26.xcdatamodel */,
+				F4C6B1AD1978E4D400F6C10B /* Voco 27.xcdatamodel */,
+				F4C6B1AE1978F33900F6C10B /* Voco 28.xcdatamodel */,
+				F4C6B1AF1979147000F6C10B /* Voco 29.xcdatamodel */,
 				F4FA0BFC192BF6BF005D8645 /* Voco.xcdatamodel */,
 			);
-			currentVersion = F4F5FFC11977AE4C001A1C0E /* Voco 26.xcdatamodel */;
+			currentVersion = F4C6B1AF1979147000F6C10B /* Voco 29.xcdatamodel */;
 			path = Voco.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
