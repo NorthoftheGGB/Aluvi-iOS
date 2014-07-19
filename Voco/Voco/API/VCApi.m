@@ -16,6 +16,8 @@
 #import "VCAppDelegate.h"
 #import "VCCoreData.h"
 
+#define kSecretApiKey @"asp03092jsdklfj023jsdf"
+
 static NSString * apiToken;
 
 @implementation VCApi

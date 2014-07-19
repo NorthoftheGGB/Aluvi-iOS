@@ -17,7 +17,7 @@ int main(int argc, char * argv[])
         
         // logentries initialization
         le_init();
-        le_set_token("ed3d80ed-6310-4d1c-85b0-784610b40119");
+        le_set_token("ed3d80ed-6310-4d1c-85b0-784610b4011");
         
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([VCAppDelegate class]));
     }

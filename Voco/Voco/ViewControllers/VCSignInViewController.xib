@@ -116,6 +116,7 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="oxU-Qw-Xv6"/>
+                        <action selector="editDidBegin:" destination="-1" eventType="editingDidBegin" id="mhY-os-h7z"/>
                     </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1GZ-ud-xG6" customClass="VCPasswordTextField">
@@ -131,6 +132,7 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="7jX-E4-wQR"/>
+                        <action selector="editDidBegin:" destination="-1" eventType="editingDidBegin" id="aQO-bO-OU8"/>
                     </connections>
                 </textField>
             </subviews>

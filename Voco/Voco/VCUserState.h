@@ -50,6 +50,7 @@ NSString *const VCUserStateDriverStateKeyPath;
                 success:(void ( ^ ) () )success
                 failure:(void ( ^ ) () )failure;
 - (void) logout;
+- (void) finalizeLogout;
 - (void) synchronizeUserState;
 - (BOOL) isLoggedIn;
 

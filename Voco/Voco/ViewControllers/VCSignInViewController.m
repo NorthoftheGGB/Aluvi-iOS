@@ -74,6 +74,16 @@
 
 - (void) login {
     
+    
+    if(![_phoneNumberField validate]){
+        return;
+    }
+    
+    if(![_passwordField validate]){
+        return;
+    }
+    
+    
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Logging In";
     

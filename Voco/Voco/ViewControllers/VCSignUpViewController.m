@@ -92,7 +92,7 @@
     switch(textField.tag){
         case kFirstNameFieldTag:
             if([_firstNameField validate]){
-            [_lastNameField becomeFirstResponder];
+                [_lastNameField becomeFirstResponder];
             }
             break;
         case kLastNameFieldTag:
@@ -127,39 +127,6 @@
 
 - (void) signUp {
     
-    /*
-     BOOL error = false;
-     if (![VCValidation NSStringIsValidEmail:_emailField.text] || _emailField.text == nil || [_emailField.text isEqualToString:@""]){
-     error = true;
-     [_emailField setBackgroundColor:[UIColor redColor]];
-     }
-     
-     if(_phoneField.text == nil || [_phoneField.text isEqualToString:@""] ){
-     error = true;
-     [_phoneField setBackgroundColor:[UIColor redColor]];
-     }
-     
-     if (_passwordField.text == nil || [_passwordField.text isEqualToString:@""]){
-     error = true;
-     [_passwordField setBackgroundColor:[UIColor redColor]];
-     }
-     
-     if (_firstNameField.text == nil || [_firstNameField.text isEqualToString:@""]){
-     error = true;
-     [_firstNameField setBackgroundColor:[UIColor redColor]];
-     }
-     
-     
-     if (_lastNameField.text == nil || [_lastNameField.text isEqualToString:@""]){
-     error = true;
-     [_lastNameField setBackgroundColor:[UIColor redColor]];
-     }
-     
-     if(error == true){
-     [UIAlertView showWithTitle:@"Error" message:@"" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
-     return;
-     }
-     */
     
     if(![_firstNameField validate]){
         return;

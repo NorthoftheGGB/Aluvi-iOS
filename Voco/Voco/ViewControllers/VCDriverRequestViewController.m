@@ -67,20 +67,28 @@
     UITextField * textField = (UITextField *) sender;
     switch(textField.tag){
         case kFirstNameFieldTag:
-            [_lastNameField
-             becomeFirstResponder];
+            if([_firstNameField validate]){
+                [_lastNameField becomeFirstResponder];
+            }
             break;
         case kLastNameFieldTag:
-            [_phoneField
-             becomeFirstResponder];
+            if([_lastNameField validate]){
+                
+                [_phoneField
+                 becomeFirstResponder];
+            }
             break;
         case kPhoneFieldTag:
-            [_emailField
-             becomeFirstResponder];
+            if([_phoneField validate]){
+                [_emailField
+                 becomeFirstResponder];
+            }
             break;
         case kEmailFieldTag:
-            [_referralCodeField
-             becomeFirstResponder];
+            if([_emailField validate]){
+                [_referralCodeField
+                 becomeFirstResponder];
+            }
             break;
         case kReferralCodeFieldTag:
             [self driverRequest];
@@ -90,6 +98,22 @@
 
 
 - (void) driverRequest {
+    
+    if(![_firstNameField validate]){
+        return;
+    }
+    
+    if(![_lastNameField validate]){
+        return;
+    }
+    
+    if(![_phoneField validate]){
+        return;
+    }
+    
+    if(![_emailField validate]){
+        return;
+    }
     
     BOOL error = false;
     if (![VCValidation NSStringIsValidEmail:_emailField.text]){
@@ -101,7 +125,7 @@
     if(error == true){
         return;
     }
-
+    
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Submitting Request";
     

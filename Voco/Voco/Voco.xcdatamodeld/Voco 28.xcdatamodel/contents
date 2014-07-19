@@ -94,7 +94,6 @@
         <attribute name="ride_id" optional="YES" attributeType="Integer 64" syncable="YES"/>
         <attribute name="savedState" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="car" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Car" inverseName="rides" inverseEntity="Car" syncable="YES"/>
-        <relationship name="driver" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Driver" syncable="YES"/>
         <relationship name="payment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Payment" inverseName="ride" inverseEntity="Payment" syncable="YES"/>
     </entity>
     <entity name="Rider" syncable="YES">
@@ -106,13 +105,13 @@
         <attribute name="state" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Car" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Driver" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Earning" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Fare" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Offer" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Payment" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Ride" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Rider" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Car" positionX="0" positionY="0" width="128" height="165"/>
+        <element name="Driver" positionX="0" positionY="0" width="128" height="135"/>
+        <element name="Earning" positionX="0" positionY="0" width="128" height="195"/>
+        <element name="Fare" positionX="0" positionY="0" width="128" height="225"/>
+        <element name="Offer" positionX="0" positionY="0" width="128" height="195"/>
+        <element name="Payment" positionX="0" positionY="0" width="128" height="225"/>
+        <element name="Ride" positionX="0" positionY="0" width="128" height="405"/>
+        <element name="Rider" positionX="0" positionY="0" width="128" height="135"/>
     </elements>
 </model>

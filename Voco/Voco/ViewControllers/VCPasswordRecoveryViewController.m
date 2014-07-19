@@ -91,20 +91,7 @@
 }
 
 - (void) recoverEmail{
-    
-    /*BOOL error = false;
-    if (![VCValidation NSStringIsValidEmail:_emailField.text]){
-        error = true;
-        [_emailField setBackgroundColor:[UIColor redColor]];
         
-    }
-    
-    if(error == true){
-        [UIAlertView showWithTitle:@"Error" message:@"Some Fields Are Incorrect" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
-        return;
-    }*/
-    
-    
     if(![_phoneField validate]){
         return;
     }

@@ -118,7 +118,7 @@ static VCUserState *sharedSingleton;
         [VCDriverApi clockOffWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             [self finalizeLogout];
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            
+
         }];
     } else {
         [self finalizeLogout];
