@@ -65,6 +65,7 @@
         VCProfile * profile = mappingResult.firstObject;
         _firstNameField.text = profile.firstName;
         _lastNameField.text = profile.lastName;
+        _emailField.text = profile.email;
         _passwordField.text = @"********";
         _currentCityField.text = @"San Francisco";
         

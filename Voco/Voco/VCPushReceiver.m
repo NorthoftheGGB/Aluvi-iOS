@@ -174,6 +174,9 @@
 }
 
 + (void) handleRemoteNotification:(NSDictionary *) payload {
+    
+    
+    
     NSString * type = [payload objectForKey:VC_PUSH_TYPE_KEY];
     if ([type isEqualToString:@"ride_found"]){
         [self handleRideFoundNotification: payload];

@@ -47,8 +47,6 @@
     
     entityMapping.identificationAttributes = @[ @"ride_id" ];
     
-    
-    
     /*
      [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
      RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:API_GET_SCHEDULED_RIDES];
