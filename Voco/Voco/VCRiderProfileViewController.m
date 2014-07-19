@@ -70,8 +70,17 @@
         
     }];
     
-
+    
+    UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
+    [tapBackground setNumberOfTapsRequired:1];
+    [self.view addGestureRecognizer:tapBackground];
 }
+
+
+- (void) dismissKeyboard:(id) sender{
+    [self.view endEditing:YES];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
