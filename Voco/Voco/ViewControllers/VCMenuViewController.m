@@ -151,6 +151,7 @@ static void * XXContext = &XXContext;
         
         if([[VCUserState instance].driverState isEqualToString: kDriverStateOnDuty]){
             [VCDriverApi clockOffWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                [_modeSegementedControl setSelectedSegmentIndex:0];
                 [self displayRiderMode];
             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                 

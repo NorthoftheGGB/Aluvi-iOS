@@ -74,6 +74,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideOfferInvokedNotification:) name:@"ride_offer_invoked" object:[VCDialogs instance]];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideInvoked:) name:@"driver_ride_invoked" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideCancelledByRider:) name:@"ride_cancelled_by_rider" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideOfferClosed:) name:@"ride_offer_closed" object:nil];
 
     }
     return self;
@@ -123,6 +124,17 @@
     [self clearMap];
     [self showRide];
     [self showAcceptOrDeclineRideInterface];
+}
+
+- (void) rideOfferClosed: (NSNotification *) notification {
+    NSNumber * rideId = notification.object;
+    if(_fare != nil && [rideId isEqualToNumber:_fare.ride_id]){  //TODO should be fare_id fareId
+        [self resetInterface];
+        [UIAlertView showWithTitle:@"Offer Closed" message:@"This ride offer has closed" cancelButtonTitle:@"Ok" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            [[VCDialogs instance] offerNextRideToDriver];
+        }];
+    }
+
 }
 
 - (void) rideInvoked:(NSNotification *) notification {

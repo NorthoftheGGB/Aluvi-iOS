@@ -90,8 +90,12 @@
                                                 
                                                 [[VCDebug sharedInstance] apiLog:@"API: Rider cancel ride success"];
                                                 
-                                                NSError * error;
+                                                NSError * error = nil;
+                                                [[VCCoreData managedObjectContext] deleteObject:ride];
                                                 [[VCCoreData managedObjectContext] save:&error];
+                                                if(error != nil){
+                                                    [WRUtilities criticalError:error];
+                                                }
                                                 
                                                 success(operation, mappingResult);
                                             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -113,7 +117,6 @@
                                                 [[VCDebug sharedInstance] apiLog:@"API: Rider cancel request success"];
                                                 
                                                 NSError * error = nil;
-                                                
                                                 [[VCCoreData managedObjectContext] deleteObject:ride];
                                                 [[VCCoreData managedObjectContext] save:&error];
                                                 if(error != nil){

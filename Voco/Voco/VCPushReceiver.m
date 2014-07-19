@@ -104,6 +104,8 @@
         
     } else if([type isEqualToString:@"ride_offer_closed"]){
         [[VCDialogs instance] retractOfferDialog: [userInfo objectForKey:VC_PUSH_OFFER_ID_KEY]];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ride_offer_closed" object:[userInfo objectForKey:VC_PUSH_RIDE_ID_KEY] userInfo:@{}];
+
     } else {
         [self handleRemoteNotification:userInfo];
     }

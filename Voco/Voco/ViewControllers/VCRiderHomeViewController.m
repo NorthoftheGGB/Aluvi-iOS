@@ -466,7 +466,6 @@
 
                             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                 [_progressHUD hide:YES];
-                                _locationConfirmationAnnotation.hidden = YES;
 
                             }];
         } else if ( [ self.request.requestType isEqualToString:kRideRequestTypeCommuter]) {
@@ -508,14 +507,17 @@
         [UIAlertView showWithTitle:@"Ride Cancelled" message:@"Your ride has been cancelled" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
         [self resetRequestInterface];
         [self stopTrackingDriverLocation];
-        _request.forcedState = kDriverCancelledState;
-
+        _request = nil;
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [UIAlertView showWithTitle:@"Error" message:@"We had trouble talking the server.  Your ride has NOT be cancelled.  PLease call the service desk to cancel the ride" cancelButtonTitle:@"Ok.." otherButtonTitles:nil tapBlock:nil];
+        [WRUtilities criticalError:error];
+
         [self resetRequestInterface];
         [hud hide:YES];
+
         [self stopTrackingDriverLocation];
-        [WRUtilities criticalError:error];
+        _request = nil;
         
     }];
 }
