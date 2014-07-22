@@ -150,8 +150,9 @@ static void * XXContext = &XXContext;
     } else {
         
         if([[VCUserState instance].driverState isEqualToString: kDriverStateOnDuty]){
-            [VCDriverApi clockOffWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                [_modeSegementedControl setSelectedSegmentIndex:0];
+            [[VCUserState instance] clockOffWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                [UIAlertView showWithTitle:@"Clocked off" message:@"You are now off duty" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                [_onDutySwitch setOn:NO];
                 [self displayRiderMode];
             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                 
@@ -174,6 +175,8 @@ static void * XXContext = &XXContext;
         view = _driverMenu;
         if([[VCUserState instance].driverState isEqualToString:kDriverStateOnDuty]){
             _onDutySwitch.on = YES;
+        } else {
+            _onDutySwitch.on = NO;
         }
     } else if ([[VCUserState instance].driverState isEqualToString:kDriverStateApproved]){
         view = _requestApproved;
@@ -318,13 +321,13 @@ static void * XXContext = &XXContext;
     UISwitch * onDutySwitch = (UISwitch *) sender;
     if(onDutySwitch.isOn){
         [[VCUserState instance] clockOnWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            [UIAlertView showWithTitle:@"Ready to Drive" message:@"You are on duty" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+            [UIAlertView showWithTitle:@"Ready to Drive" message:@"You are now on duty" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             onDutySwitch.on = NO;
         }];
     } else {
         [[VCUserState instance] clockOffWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            [UIAlertView showWithTitle:@"Clocked off" message:@"You are off duty" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+            [UIAlertView showWithTitle:@"Clocked off" message:@"You are now off duty" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             onDutySwitch.on = YES;
         }];
