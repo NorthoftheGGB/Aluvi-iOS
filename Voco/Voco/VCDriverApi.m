@@ -18,6 +18,7 @@
 #import "VCDriverGeoObject.h"
 #import "VCFare.h"
 #import "Earning.h"
+#import "VCApiError.h"
 
 @implementation VCDriverApi
 
@@ -60,7 +61,21 @@
                                                                                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:responseDescriptor2];
     }
-    
+    {
+        RKResponseDescriptor * responseDescriptor2 = [RKResponseDescriptor responseDescriptorWithMapping:[VCApiError getMapping]                                                                                             method:RKRequestMethodPOST
+                                                                                             pathPattern:API_DRIVER_REGISTRATION
+                                                                                                 keyPath:nil
+                                                                                             statusCodes:[NSIndexSet indexSetWithIndex:400]];
+        [objectManager addResponseDescriptor:responseDescriptor2];
+    }
+    {
+        RKResponseDescriptor * responseDescriptor2 = [RKResponseDescriptor responseDescriptorWithMapping:
+                                                      [RKObjectMapping mappingForClass:[NSObject class]]                                                                                           method:RKRequestMethodPOST
+                                                                                             pathPattern:API_DRIVER_REGISTRATION
+                                                                                                 keyPath:nil
+                                                                                             statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor2];
+    }
 
 }
 
