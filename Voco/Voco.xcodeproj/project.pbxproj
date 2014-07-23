@@ -56,6 +56,12 @@
 		4F37E2DE1949574000753172 /* KlinicSlabLightIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F37E2DA1949574000753172 /* KlinicSlabLightIt.ttf */; };
 		4F37E2DF1949574000753172 /* KlinicSlabMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F37E2DB1949574000753172 /* KlinicSlabMedium.ttf */; };
 		4F37E2E01949574000753172 /* KlinicSlabMediumIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F37E2DC1949574000753172 /* KlinicSlabMediumIt.ttf */; };
+		4F73CA04197F2AB0001B6663 /* VCRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F73CA02197F2AB0001B6663 /* VCRideViewController.m */; };
+		4F73CA05197F2AB0001B6663 /* VCRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F73CA02197F2AB0001B6663 /* VCRideViewController.m */; };
+		4F73CA06197F2AB0001B6663 /* VCRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F73CA02197F2AB0001B6663 /* VCRideViewController.m */; };
+		4F73CA07197F2AB0001B6663 /* VCRideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F73CA03197F2AB0001B6663 /* VCRideViewController.xib */; };
+		4F73CA08197F2AB0001B6663 /* VCRideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F73CA03197F2AB0001B6663 /* VCRideViewController.xib */; };
+		4F73CA09197F2AB0001B6663 /* VCRideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F73CA03197F2AB0001B6663 /* VCRideViewController.xib */; };
 		4F9909C5195CCE6500E83164 /* log-in-box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9909C4195CCE6500E83164 /* log-in-box@2x.png */; };
 		4F9ECEA7196618C300AD4229 /* VCNameTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEA6196618C300AD4229 /* VCNameTextField.m */; };
 		4F9ECEA8196618C300AD4229 /* VCNameTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEA6196618C300AD4229 /* VCNameTextField.m */; };
@@ -151,7 +157,7 @@
 		4FE641CA1941584D0059BED1 /* VCSignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641C81941584D0059BED1 /* VCSignUpViewController.xib */; };
 		4FE641DA1941607B0059BED1 /* VCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641D91941607B0059BED1 /* VCTextField.m */; };
 		4FE641DD1941621E0059BED1 /* VCLabelItalic.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DC1941621E0059BED1 /* VCLabelItalic.m */; };
-		4FE641E0194162360059BED1 /* VCButtonFontBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DF194162360059BED1 /* VCButtonFontBold.m */; };
+		4FE641E0194162360059BED1 /* VCButtonStandardStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DF194162360059BED1 /* VCButtonStandardStyle.m */; };
 		4FE641EF194168E80059BED1 /* bubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E2194168E80059BED1 /* bubble@2x.png */; };
 		4FE641F0194168E80059BED1 /* commute_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E3194168E80059BED1 /* commute_logo@2x.png */; };
 		4FE641F1194168E80059BED1 /* driver_must_box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E4194168E80059BED1 /* driver_must_box@2x.png */; };
@@ -217,7 +223,7 @@
 		F4354D68195D0D6A00C06CF7 /* VCRideIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B23193E722B00354886 /* VCRideIdentity.m */; };
 		F4354D69195D0D6A00C06CF7 /* VCRiderApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BF5193578DE00A94721 /* VCRiderApi.m */; };
 		F4354D6A195D0D6A00C06CF7 /* VCDriverRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE629D8194FC6BB0070F797 /* VCDriverRegistrationViewController.m */; };
-		F4354D6B195D0D6A00C06CF7 /* VCButtonFontBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DF194162360059BED1 /* VCButtonFontBold.m */; };
+		F4354D6B195D0D6A00C06CF7 /* VCButtonStandardStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DF194162360059BED1 /* VCButtonStandardStyle.m */; };
 		F4354D6C195D0D6A00C06CF7 /* VCLabelItalic.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DC1941621E0059BED1 /* VCLabelItalic.m */; };
 		F4354D6D195D0D6A00C06CF7 /* VCDialogs.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B111938581C00354886 /* VCDialogs.m */; };
 		F4354D6E195D0D6A00C06CF7 /* MQRouteResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F008194A5A0200D8C900 /* MQRouteResponse.m */; };
@@ -406,7 +412,7 @@
 		F4C6B1CF197F06B100F6C10B /* VCRideIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B23193E722B00354886 /* VCRideIdentity.m */; };
 		F4C6B1D0197F06B100F6C10B /* VCRiderApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BF5193578DE00A94721 /* VCRiderApi.m */; };
 		F4C6B1D1197F06B100F6C10B /* VCDriverRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE629D8194FC6BB0070F797 /* VCDriverRegistrationViewController.m */; };
-		F4C6B1D2197F06B100F6C10B /* VCButtonFontBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DF194162360059BED1 /* VCButtonFontBold.m */; };
+		F4C6B1D2197F06B100F6C10B /* VCButtonStandardStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DF194162360059BED1 /* VCButtonStandardStyle.m */; };
 		F4C6B1D3197F06B100F6C10B /* LEBackgroundThread.m in Sources */ = {isa = PBXBuildFile; fileRef = F4792AD619750975005AB652 /* LEBackgroundThread.m */; };
 		F4C6B1D4197F06B100F6C10B /* VCUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8777219775D7E00870945 /* VCUtilities.m */; };
 		F4C6B1D5197F06B100F6C10B /* LogFile.m in Sources */ = {isa = PBXBuildFile; fileRef = F4792AE019750975005AB652 /* LogFile.m */; };
@@ -688,6 +694,9 @@
 		4F37E2DA1949574000753172 /* KlinicSlabLightIt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KlinicSlabLightIt.ttf; path = Voco/Fonts/KlinicSlabLightIt.ttf; sourceTree = SOURCE_ROOT; };
 		4F37E2DB1949574000753172 /* KlinicSlabMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KlinicSlabMedium.ttf; path = Voco/Fonts/KlinicSlabMedium.ttf; sourceTree = SOURCE_ROOT; };
 		4F37E2DC1949574000753172 /* KlinicSlabMediumIt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KlinicSlabMediumIt.ttf; path = Voco/Fonts/KlinicSlabMediumIt.ttf; sourceTree = SOURCE_ROOT; };
+		4F73CA01197F2AB0001B6663 /* VCRideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRideViewController.h; sourceTree = "<group>"; };
+		4F73CA02197F2AB0001B6663 /* VCRideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRideViewController.m; sourceTree = "<group>"; };
+		4F73CA03197F2AB0001B6663 /* VCRideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCRideViewController.xib; sourceTree = "<group>"; };
 		4F9909C4195CCE6500E83164 /* log-in-box@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log-in-box@2x.png"; sourceTree = "<group>"; };
 		4F9ECEA5196618C300AD4229 /* VCNameTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCNameTextField.h; sourceTree = "<group>"; };
 		4F9ECEA6196618C300AD4229 /* VCNameTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCNameTextField.m; sourceTree = "<group>"; };
@@ -763,8 +772,8 @@
 		4FE641D91941607B0059BED1 /* VCTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCTextField.m; path = Controls/VCTextField.m; sourceTree = "<group>"; };
 		4FE641DB1941621E0059BED1 /* VCLabelItalic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCLabelItalic.h; path = Controls/VCLabelItalic.h; sourceTree = "<group>"; };
 		4FE641DC1941621E0059BED1 /* VCLabelItalic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCLabelItalic.m; path = Controls/VCLabelItalic.m; sourceTree = "<group>"; };
-		4FE641DE194162360059BED1 /* VCButtonFontBold.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCButtonFontBold.h; path = Controls/VCButtonFontBold.h; sourceTree = "<group>"; };
-		4FE641DF194162360059BED1 /* VCButtonFontBold.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCButtonFontBold.m; path = Controls/VCButtonFontBold.m; sourceTree = "<group>"; };
+		4FE641DE194162360059BED1 /* VCButtonStandardStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCButtonStandardStyle.h; path = Controls/VCButtonStandardStyle.h; sourceTree = "<group>"; };
+		4FE641DF194162360059BED1 /* VCButtonStandardStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCButtonStandardStyle.m; path = Controls/VCButtonStandardStyle.m; sourceTree = "<group>"; };
 		4FE641E2194168E80059BED1 /* bubble@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble@2x.png"; sourceTree = "<group>"; };
 		4FE641E3194168E80059BED1 /* commute_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commute_logo@2x.png"; sourceTree = "<group>"; };
 		4FE641E4194168E80059BED1 /* driver_must_box@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "driver_must_box@2x.png"; sourceTree = "<group>"; };
@@ -1142,6 +1151,16 @@
 			name = "Menu Assets";
 			sourceTree = "<group>";
 		};
+		4F73CA00197F2A6A001B6663 /* Revision 2.0 */ = {
+			isa = PBXGroup;
+			children = (
+				4F73CA01197F2AB0001B6663 /* VCRideViewController.h */,
+				4F73CA02197F2AB0001B6663 /* VCRideViewController.m */,
+				4F73CA03197F2AB0001B6663 /* VCRideViewController.xib */,
+			);
+			name = "Revision 2.0";
+			sourceTree = "<group>";
+		};
 		4F9ECEAD196619F500AD4229 /* Rider Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -1235,8 +1254,8 @@
 				4FE641DC1941621E0059BED1 /* VCLabelItalic.m */,
 				4FE641FC194170F50059BED1 /* VCButtonFont.h */,
 				4FE641FD194170F50059BED1 /* VCButtonFont.m */,
-				4FE641DE194162360059BED1 /* VCButtonFontBold.h */,
-				4FE641DF194162360059BED1 /* VCButtonFontBold.m */,
+				4FE641DE194162360059BED1 /* VCButtonStandardStyle.h */,
+				4FE641DF194162360059BED1 /* VCButtonStandardStyle.m */,
 				F473EFFF194A498E00D8C900 /* VCLabel.h */,
 				F473F000194A498E00D8C900 /* VCLabel.m */,
 				4F9ECEC719663B1F00AD4229 /* VCLabelBold.h */,
@@ -1482,6 +1501,7 @@
 		F473EFE919492CA400D8C900 /* Ride System */ = {
 			isa = PBXGroup;
 			children = (
+				4F73CA00197F2A6A001B6663 /* Revision 2.0 */,
 				F4138C2319650C2D00C265CD /* Views */,
 				F49EDD081946D27F0020B8BB /* VCRiderHomeViewController.h */,
 				F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */,
@@ -2000,6 +2020,7 @@
 				4F9ECEB419661C3400AD4229 /* VCCommuterPassViewController.xib in Resources */,
 				F4354DB8195D0D6A00C06CF7 /* menu-list.png in Resources */,
 				F4354DB9195D0D6A00C06CF7 /* VCSignInViewController.xib in Resources */,
+				4F73CA08197F2AB0001B6663 /* VCRideViewController.xib in Resources */,
 				4FCD7C8B19775C5C007609E8 /* VCDriverRecieptDetailViewController.xib in Resources */,
 				F4354DBA195D0D6A00C06CF7 /* map_pin_fill-512.png in Resources */,
 				4F2EF9C01961391B006A1962 /* terms-menu-button-selected@2x.png in Resources */,
@@ -2112,6 +2133,7 @@
 				F4C6B271197F06B100F6C10B /* VCDriverViewController.xib in Resources */,
 				F4C6B272197F06B100F6C10B /* scheduledfares-menu-button-selected@2x.png in Resources */,
 				F4C6B273197F06B100F6C10B /* rider-call-button@2x.png in Resources */,
+				4F73CA07197F2AB0001B6663 /* VCRideViewController.xib in Resources */,
 				F4C6B274197F06B100F6C10B /* VCRiderHomeViewControllerV2.xib in Resources */,
 				F4C6B275197F06B100F6C10B /* search-location@2x.png in Resources */,
 				F4C6B276197F06B100F6C10B /* VCDriverVideoTutorialController.xib in Resources */,
@@ -2207,6 +2229,7 @@
 				F45F7C191935A3F900A94721 /* VCDriverViewController.xib in Resources */,
 				4F2EF9D819614115006A1962 /* scheduledfares-menu-button-selected@2x.png in Resources */,
 				4FCD7C8319771931007609E8 /* rider-call-button@2x.png in Resources */,
+				4F73CA09197F2AB0001B6663 /* VCRideViewController.xib in Resources */,
 				4FDB0EC51970A5AC00A8CEC2 /* VCRiderHomeViewControllerV2.xib in Resources */,
 				4FE286F11962BB3F00FD8AF6 /* search-location@2x.png in Resources */,
 				4FB2682B1952207A0028D4ED /* VCDriverVideoTutorialController.xib in Resources */,
@@ -2420,7 +2443,7 @@
 				F4354D69195D0D6A00C06CF7 /* VCRiderApi.m in Sources */,
 				F4354D6A195D0D6A00C06CF7 /* VCDriverRegistrationViewController.m in Sources */,
 				4FE712CE197368C80071020C /* VCCarModelTextField.m in Sources */,
-				F4354D6B195D0D6A00C06CF7 /* VCButtonFontBold.m in Sources */,
+				F4354D6B195D0D6A00C06CF7 /* VCButtonStandardStyle.m in Sources */,
 				4FF142DF195D12AC00CC61B6 /* Driver.m in Sources */,
 				F4354D6C195D0D6A00C06CF7 /* VCLabelItalic.m in Sources */,
 				F4C6B1B81979229900F6C10B /* VCDebug.m in Sources */,
@@ -2483,6 +2506,7 @@
 				F4138C2719650C5600C265CD /* VCCommuterHud.m in Sources */,
 				F4C6B1B41979157800F6C10B /* VCDriverHUD.m in Sources */,
 				F4A7C80B19625237007E05AD /* VCDebugViewController.m in Sources */,
+				4F73CA05197F2AB0001B6663 /* VCRideViewController.m in Sources */,
 				F4354D8E195D0D6A00C06CF7 /* VCObjectRequestOperation.m in Sources */,
 				F4354D8F195D0D6A00C06CF7 /* VCValidation.m in Sources */,
 				F4354D90195D0D6A00C06CF7 /* MQRoute.m in Sources */,
@@ -2527,7 +2551,7 @@
 				F4C6B1CF197F06B100F6C10B /* VCRideIdentity.m in Sources */,
 				F4C6B1D0197F06B100F6C10B /* VCRiderApi.m in Sources */,
 				F4C6B1D1197F06B100F6C10B /* VCDriverRegistrationViewController.m in Sources */,
-				F4C6B1D2197F06B100F6C10B /* VCButtonFontBold.m in Sources */,
+				F4C6B1D2197F06B100F6C10B /* VCButtonStandardStyle.m in Sources */,
 				F4C6B1D3197F06B100F6C10B /* LEBackgroundThread.m in Sources */,
 				F4C6B1D4197F06B100F6C10B /* VCUtilities.m in Sources */,
 				F4C6B1D5197F06B100F6C10B /* LogFile.m in Sources */,
@@ -2570,6 +2594,7 @@
 				F4C6B1FA197F06B100F6C10B /* VCRiderViewController.m in Sources */,
 				F4C6B1FB197F06B100F6C10B /* VCCommuterHud.m in Sources */,
 				F4C6B1FC197F06B100F6C10B /* VCDriverRecieptDetailViewController.m in Sources */,
+				4F73CA04197F2AB0001B6663 /* VCRideViewController.m in Sources */,
 				F4C6B1FD197F06B100F6C10B /* VCInterfaceModes.m in Sources */,
 				F4C6B1FE197F06B100F6C10B /* VCRequestUpdate.m in Sources */,
 				F4C6B1FF197F06B100F6C10B /* VCCoreData.m in Sources */,
@@ -2646,7 +2671,7 @@
 				F4FE1B24193E722B00354886 /* VCRideIdentity.m in Sources */,
 				F45F7BF6193578DE00A94721 /* VCRiderApi.m in Sources */,
 				4FE629DA194FC6BB0070F797 /* VCDriverRegistrationViewController.m in Sources */,
-				4FE641E0194162360059BED1 /* VCButtonFontBold.m in Sources */,
+				4FE641E0194162360059BED1 /* VCButtonStandardStyle.m in Sources */,
 				F4792AE319750975005AB652 /* LEBackgroundThread.m in Sources */,
 				F4D8777319775D7E00870945 /* VCUtilities.m in Sources */,
 				F4792AEB19750975005AB652 /* LogFile.m in Sources */,
@@ -2689,6 +2714,7 @@
 				4FF142DA195D128700CC61B6 /* VCRiderViewController.m in Sources */,
 				F4138C2619650C5600C265CD /* VCCommuterHud.m in Sources */,
 				4FCD7C8819775C5C007609E8 /* VCDriverRecieptDetailViewController.m in Sources */,
+				4F73CA06197F2AB0001B6663 /* VCRideViewController.m in Sources */,
 				F49EDD101946E2F90020B8BB /* VCInterfaceModes.m in Sources */,
 				F473F01D195113D100D8C900 /* VCRequestUpdate.m in Sources */,
 				F4FE1B1B193D301F00354886 /* VCCoreData.m in Sources */,

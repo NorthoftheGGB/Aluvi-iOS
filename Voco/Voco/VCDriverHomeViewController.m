@@ -12,7 +12,7 @@
 #import <Crashlytics/Crashlytics.h>
 #import "VCLabel.h"
 #import "VCDialogs.h"
-#import "VCButtonFontBold.h"
+#import "VCButtonStandardStyle.h"
 #import "VCUserState.h"
 #import "VCFareDriverAssignment.h"
 #import "VCDriverApi.h"
@@ -24,11 +24,11 @@
 
 @interface VCDriverHomeViewController () <VCDriverHUDDelegate>
 
-@property (weak, nonatomic) IBOutlet VCButtonFontBold *acceptButton;
-@property (weak, nonatomic) IBOutlet VCButtonFontBold *declineButton;
-@property (weak, nonatomic) IBOutlet VCButtonFontBold *riderPickedUpButton;
-@property (weak, nonatomic) IBOutlet VCButtonFontBold *cancelRideButton;
-@property (weak, nonatomic) IBOutlet VCButtonFontBold *rideCompletedButton;
+@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *acceptButton;
+@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *declineButton;
+@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *riderPickedUpButton;
+@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *cancelRideButton;
+@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *rideCompletedButton;
 
 - (IBAction)didTapAccept:(id)sender;
 - (IBAction)didTapDecline:(id)sender;

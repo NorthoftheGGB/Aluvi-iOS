@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "VCButtonFontBold.h"
+#import "VCButtonStandardStyle.h"
 
 @protocol VCDriverHUDDelegate <NSObject>
 
@@ -19,9 +19,9 @@
 
 @property (weak, nonatomic) id<VCDriverHUDDelegate> delegate;
 
-@property (weak, nonatomic) IBOutlet VCButtonFontBold *riderButton1;
-@property (weak, nonatomic) IBOutlet VCButtonFontBold *riderButton2;
-@property (weak, nonatomic) IBOutlet VCButtonFontBold *riderButton3;
+@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *riderButton1;
+@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *riderButton2;
+@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *riderButton3;
 @property (weak, nonatomic) IBOutlet UIButton *callButton;
 
 - (void) setRiderNames: (NSArray *) names;

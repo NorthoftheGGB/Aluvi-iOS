@@ -14,7 +14,7 @@
 #import "VCTextField.h"
 #import "VCLabel.h"
 #import "VCLabelBold.h"
-#import "VCButtonFontBold.h"
+#import "VCButtonStandardStyle.h"
 #import "VCDriverApi.h"
 #import "VCUsersApi.h"
 #import "VCDriverRecieptDetailViewController.h"
@@ -28,7 +28,7 @@
 @property (weak, nonatomic) IBOutlet VCTextField *accountNameTextField;
 @property (weak, nonatomic) IBOutlet VCBankAccountTextField *accountNumberTextField;
 @property (weak, nonatomic) IBOutlet VCRoutingNumberTextField *routingNumberTextField;
-@property (weak, nonatomic) IBOutlet VCButtonFontBold *changeBankInfoButton;
+@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *changeBankInfoButton;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 

@@ -22,6 +22,7 @@
 #import "VCMapQuestRouting.h"
 #import "VCUsersApi.h"
 #import "VCLocalNotificationReceiver.h"
+#import "VCRideViewController.h"
 
 @interface VCAppDelegate ()
 
@@ -50,16 +51,19 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-#if DEBUG==12
+/*#if DEBUG==12
     [[VCInterfaceModes instance] showDebugInterface];
 #else
     [[VCInterfaceModes instance] showInterface];
-#endif
+#endif */
+    
+    VCRideViewController * vc = [[VCRideViewController alloc] init];
+    [self.window setRootViewController:vc];
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
     NSLog(@"Registering for push notifications...");
-
 #if !(TARGET_IPHONE_SIMULATOR)
     [VCPushReceiver registerForRemoteNotifications];
 #endif

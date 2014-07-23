@@ -12,7 +12,7 @@
 #import <MBProgressHUD.h>
 #import <UIAlertView+Blocks.h>
 #import "VCTextField.h"
-#import "VCButtonFontBold.h"
+#import "VCButtonStandardStyle.h"
 #import "VCUsersApi.h"
 #import "VCRiderApi.h"
 #import "Payment.h"
@@ -27,7 +27,7 @@
 @interface VCRiderPaymentsViewController () <STPViewDelegate, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIView *STPViewContainer;
 @property (weak, nonatomic) IBOutlet UITableView *recieptListTableView;
-@property (weak, nonatomic) IBOutlet VCButtonFontBold *updateCardButton;
+@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *updateCardButton;
 @property (weak, nonatomic) IBOutlet UILabel *cardInfoLabel;
 @property (weak, nonatomic) IBOutlet UITableView * tableView;
 @property (strong, nonatomic) STPView * cardView;

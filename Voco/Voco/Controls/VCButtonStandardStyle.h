@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VCButtonFontBold : UIButton
+@interface VCButtonStandardStyle : UIButton
 
 @property(nonatomic, strong) NSNumber * fontSize;
 
