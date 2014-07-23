@@ -68,6 +68,9 @@
 		4F73CA10197F82DA001B6663 /* VCEditLocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F73CA0F197F82DA001B6663 /* VCEditLocationView.xib */; };
 		4F73CA11197F82DA001B6663 /* VCEditLocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F73CA0F197F82DA001B6663 /* VCEditLocationView.xib */; };
 		4F73CA12197F82DA001B6663 /* VCEditLocationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F73CA0F197F82DA001B6663 /* VCEditLocationView.xib */; };
+		4F73CA14197F891F001B6663 /* confimation-details-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F73CA13197F891F001B6663 /* confimation-details-bg@2x.png */; };
+		4F73CA15197F891F001B6663 /* confimation-details-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F73CA13197F891F001B6663 /* confimation-details-bg@2x.png */; };
+		4F73CA16197F891F001B6663 /* confimation-details-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F73CA13197F891F001B6663 /* confimation-details-bg@2x.png */; };
 		4F9909C5195CCE6500E83164 /* log-in-box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9909C4195CCE6500E83164 /* log-in-box@2x.png */; };
 		4F9ECEA7196618C300AD4229 /* VCNameTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEA6196618C300AD4229 /* VCNameTextField.m */; };
 		4F9ECEA8196618C300AD4229 /* VCNameTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEA6196618C300AD4229 /* VCNameTextField.m */; };
@@ -706,6 +709,7 @@
 		4F73CA0A197F82C5001B6663 /* VCEditLocationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCEditLocationView.h; sourceTree = "<group>"; };
 		4F73CA0B197F82C5001B6663 /* VCEditLocationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCEditLocationView.m; sourceTree = "<group>"; };
 		4F73CA0F197F82DA001B6663 /* VCEditLocationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCEditLocationView.xib; sourceTree = "<group>"; };
+		4F73CA13197F891F001B6663 /* confimation-details-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "confimation-details-bg@2x.png"; sourceTree = "<group>"; };
 		4F9909C4195CCE6500E83164 /* log-in-box@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log-in-box@2x.png"; sourceTree = "<group>"; };
 		4F9ECEA5196618C300AD4229 /* VCNameTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCNameTextField.h; sourceTree = "<group>"; };
 		4F9ECEA6196618C300AD4229 /* VCNameTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCNameTextField.m; sourceTree = "<group>"; };
@@ -1214,6 +1218,7 @@
 		4FDB0ECA1970B0F000A8CEC2 /* Revision 2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				4F73CA13197F891F001B6663 /* confimation-details-bg@2x.png */,
 				4FDB0ED11970C3AC00A8CEC2 /* button-full-default@2x.png */,
 				4FDB0ED21970C3AC00A8CEC2 /* button-full-select@2x.png */,
 				4FDB0ECB1970B10600A8CEC2 /* button-default@2x.png */,
@@ -2003,6 +2008,7 @@
 				4F2EF9C41961391B006A1962 /* tutorial-menu-button-selected@2x.png in Resources */,
 				4FDB0EC91970AC8200A8CEC2 /* colors_03.png in Resources */,
 				4F2EF99E1960D280006A1962 /* VCDriverHomeViewController.xib in Resources */,
+				4F73CA15197F891F001B6663 /* confimation-details-bg@2x.png in Resources */,
 				F4354DAB195D0D6A00C06CF7 /* VCRiderHomeViewController.xib in Resources */,
 				F4354DAC195D0D6A00C06CF7 /* loginBox@2x.png in Resources */,
 				F4354DAD195D0D6A00C06CF7 /* KlinicSlabLight.ttf in Resources */,
@@ -2164,6 +2170,7 @@
 				F4C6B282197F06B100F6C10B /* VCSignUpViewController.xib in Resources */,
 				F4C6B283197F06B100F6C10B /* voco_logo@2x.png in Resources */,
 				F4C6B284197F06B100F6C10B /* tutorial-menu-button-selected@2x.png in Resources */,
+				4F73CA14197F891F001B6663 /* confimation-details-bg@2x.png in Resources */,
 				F4C6B285197F06B100F6C10B /* VCRiderProfileViewController.xib in Resources */,
 				F4C6B286197F06B100F6C10B /* about-menu-button-selected@2x.png in Resources */,
 				F4C6B287197F06B100F6C10B /* commute_logo@2x.png in Resources */,
@@ -2261,6 +2268,7 @@
 				4FE641CA1941584D0059BED1 /* VCSignUpViewController.xib in Resources */,
 				4FE641FA194168E80059BED1 /* voco_logo@2x.png in Resources */,
 				4F2EF9C31961391B006A1962 /* tutorial-menu-button-selected@2x.png in Resources */,
+				4F73CA16197F891F001B6663 /* confimation-details-bg@2x.png in Resources */,
 				4FCD7C94197775E1007609E8 /* VCRiderProfileViewController.xib in Resources */,
 				4F2EF9B11961391B006A1962 /* about-menu-button-selected@2x.png in Resources */,
 				4FE641F0194168E80059BED1 /* commute_logo@2x.png in Resources */,

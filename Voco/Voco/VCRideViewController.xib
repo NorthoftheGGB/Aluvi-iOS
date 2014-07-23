@@ -143,11 +143,24 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
+        <view contentMode="scaleToFill" id="RWM-tO-NBZ">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="206"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="confimation-details-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="oc4-Pp-acs">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="206"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="0.42754912760000002" green="1" blue="0.41485014920000002" alpha="1" colorSpace="calibratedRGB"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
     </objects>
     <resources>
         <image name="button-default.png" width="160" height="46"/>
         <image name="button-full-default.png" width="320" height="46"/>
         <image name="button-full-select.png" width="320" height="46"/>
         <image name="button-select.png" width="160" height="46"/>
+        <image name="confimation-details-bg.png" width="320" height="202"/>
     </resources>
 </document>
