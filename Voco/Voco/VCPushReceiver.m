@@ -215,6 +215,8 @@
             [[VCDialogs instance] showRidePaymentProblem:rideId];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"ride_complete" object:payload userInfo:@{}];
         }
+    } else if([type isEqualToString:@"no_drivers_available"]){
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"no_drivers_available" object:payload userInfo:@{}];
     } else if([type isEqualToString:@"user_state_change"]){
         [[VCUserState instance] synchronizeUserState];
     }

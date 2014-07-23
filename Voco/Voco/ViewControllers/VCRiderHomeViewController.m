@@ -9,7 +9,7 @@
 #import "VCRiderHomeViewController.h"
 #import <MapKit/MapKit.h>
 #import <MBProgressHUD.h>
-#import <ActionSheetPicker.h>
+#import <ActionSheetPicker-3.0/ActionSheetStringPicker.h>
 #import <BlocksKit.h>
 #import "VCUserState.h"
 #import "VCInterfaceModes.h"
@@ -133,7 +133,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideNotFoundNotification:) name:@"ride_not_found" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideCancelledByDriverNotification:) name:@"ride_cancelled_by_driver" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideComplete:) name:@"ride_complete" object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noDriversAvailable:) name:@"no_drivers_available" object:nil];
+
 }
 
 - (void) viewWillDisppear:(BOOL)animated{
@@ -175,6 +176,19 @@
     if([_request.ride_id isEqualToNumber:[payload objectForKey:VC_PUSH_RIDE_ID_KEY]]) {
         [[VCCoreData managedObjectContext] refreshObject:self.request mergeChanges:YES];
         [self resetRequestInterface];
+    }
+}
+
+- (void) noDriversAvailable:(id) sender{
+    NSDictionary * payload = ((NSNotification *) sender).object;
+    if([_request.request_id isEqualToNumber:[payload objectForKey:VC_PUSH_REQUEST_ID_KEY]]) {
+        [[VCCoreData managedObjectContext] refreshObject:self.request mergeChanges:YES];
+        [UIAlertView showWithTitle:@"No Drivers Available" message:@"No drivers are available at this time.  You may want to try again in a moment" cancelButtonTitle:@"Ok" otherButtonTitles:nil tapBlock:nil];
+        if(_progressHUD != nil) {
+            [_progressHUD hide:YES];
+        }
+        _locationConfirmationAnnotation.hidden = NO;
+
     }
 }
 
@@ -605,7 +619,7 @@
         options = evengingOptions;
     }
     
-    [ActionSheetStringPicker showPickerWithTitle:@"Select your arrival time"
+    ActionSheetStringPicker * actionSheetStringPicker = [ActionSheetStringPicker showPickerWithTitle:@"Select your arrival time"
                                             rows:options
                                 initialSelection:0
                                        doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
@@ -646,6 +660,8 @@
                                          NSLog(@"Block Picker Canceled");
                                      }
                                           origin:sender];
+    //actionSheetStringPicker.pickerView.delegate = self;
+    
 }
 
 - (IBAction)didTapScheduleRideButton:(id)sender {
