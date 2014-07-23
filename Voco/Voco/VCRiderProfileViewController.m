@@ -34,6 +34,7 @@
 @property (weak, nonatomic) IBOutlet UIView *promoCheckBoxView;
 @property (weak, nonatomic) IBOutlet UIView *receiptsCheckBoxView;
 @property (weak, nonatomic) IBOutlet VCButtonFontBold *signoutButton;
+@property (weak, nonatomic) IBOutlet UILabel *versionLabel;
 
 
 - (IBAction)didTapChangeButton:(id)sender;
@@ -75,6 +76,10 @@
     UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [tapBackground setNumberOfTapsRequired:1];
     [self.view addGestureRecognizer:tapBackground];
+    
+    NSString * version = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
+    NSString * build = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
+    _versionLabel.text = [NSString stringWithFormat:@"v%@b%@", version, build];
 }
 
 
