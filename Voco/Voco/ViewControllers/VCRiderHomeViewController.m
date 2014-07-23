@@ -619,7 +619,7 @@
         options = evengingOptions;
     }
     
-    ActionSheetStringPicker * actionSheetStringPicker = [ActionSheetStringPicker showPickerWithTitle:@"Select your arrival time"
+    [ActionSheetStringPicker showPickerWithTitle:@"Select your arrival time"
                                             rows:options
                                 initialSelection:0
                                        doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {

@@ -83,7 +83,15 @@ static int mode;
 
 - (void) showRiderInterface {
     VCRiderHomeViewController * riderHomeViewController = [[VCRiderHomeViewController alloc] init];
-    //VCRiderRidesViewController * riderHomeViewController = [[VCRiderRidesViewController alloc] init];
+
+    NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ride"];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ride_id = %@", [VCUserState instance].underwayRideId];
+    [fetch setPredicate:predicate];
+    NSError * error;
+    NSArray * items = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
+    if(items != nil && [items count] > 0){
+        riderHomeViewController.request = [items objectAtIndex:0];
+    }
     
     if(deckController == nil){
         [self createDeckViewController];
@@ -103,9 +111,19 @@ static int mode;
     
     if([[VCUserState instance].driverState isEqualToString:kDriverStateActive]
        || [[VCUserState instance].driverState isEqualToString:kDriverStateOnDuty] ) {
-           VCDriverHomeViewController * driverViewController = [[VCDriverHomeViewController alloc] init];
-           deckController.centerController = driverViewController;
-           [self setMode: kDriverMode];
+        VCDriverHomeViewController * driverViewController = [[VCDriverHomeViewController alloc] init];
+        
+        NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Fare"];
+        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ride_id = %@", [VCUserState instance].underwayRideId];
+        [fetch setPredicate:predicate];
+        NSError * error;
+        NSArray * items = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
+        if(items != nil && [items count] > 0){
+            driverViewController.fare = [items objectAtIndex:0];
+        }
+        
+        deckController.centerController = driverViewController;
+        [self setMode: kDriverMode];
     }
     
 }

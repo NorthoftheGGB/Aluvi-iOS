@@ -51,6 +51,7 @@ static VCUserState *sharedSingleton;
         _driveProcessState = [userDefaults objectForKey:kDriveProcessStateKey];
         _riderState = [userDefaults objectForKey:kRiderStateKey];
         _driverState = [userDefaults objectForKey:kDriverStateKey];
+        _underwayRideId = [userDefaults objectForKey:kRideIdKey];
     }
     return self;
 }
