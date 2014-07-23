@@ -1339,7 +1339,6 @@
 		F45F7BE71935756000A94721 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				F49EDD0D1946E2B30020B8BB /* Modes */,
 				F473EFEA19492CBE00D8C900 /* Platform V1 */,
 				F473F022195192D600D8C900 /* Dev */,
 				F473F00E194A6D3400D8C900 /* Common */,
@@ -1627,15 +1626,6 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
-		F49EDD0D1946E2B30020B8BB /* Modes */ = {
-			isa = PBXGroup;
-			children = (
-				F49EDD0E1946E2F90020B8BB /* VCInterfaceModes.h */,
-				F49EDD0F1946E2F90020B8BB /* VCInterfaceModes.m */,
-			);
-			name = Modes;
-			sourceTree = "<group>";
-		};
 		F4C6B1B01979154900F6C10B /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1803,6 +1793,8 @@
 				F4FE1B1A193D301F00354886 /* VCCoreData.m */,
 				F4FB55741977CD690043557A /* VCLocalNotificationReceiver.h */,
 				F4FB55751977CD690043557A /* VCLocalNotificationReceiver.m */,
+				F49EDD0E1946E2F90020B8BB /* VCInterfaceModes.h */,
+				F49EDD0F1946E2F90020B8BB /* VCInterfaceModes.m */,
 			);
 			name = Application;
 			sourceTree = "<group>";

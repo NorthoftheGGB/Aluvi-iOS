@@ -59,4 +59,6 @@ NSString *const VCUserStateDriverStateKeyPath;
 - (void) clockOffWithSuccess: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                      failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
+- (void) clearRideState;
+
 @end

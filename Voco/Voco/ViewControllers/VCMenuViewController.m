@@ -94,6 +94,11 @@ static void * XXContext = &XXContext;
 
     [[VCUserState instance] addObserver:self forKeyPath:@"driverState" options:NSKeyValueObservingOptionNew context:XXContext];
 
+    
+    UISwipeGestureRecognizer* swipeUpGestureRecognizer2 = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSoftResetGesture:)];
+    swipeUpGestureRecognizer2.direction = UISwipeGestureRecognizerDirectionUp;
+    swipeUpGestureRecognizer2.numberOfTouchesRequired = 3;
+    [self.view addGestureRecognizer:swipeUpGestureRecognizer2];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -135,6 +140,15 @@ static void * XXContext = &XXContext;
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) handleSoftResetGesture:(id)sender {
+    [UIAlertView showWithTitle:@"Soft Reset" message:@"Are you sure you want to reset ride state for this user?" cancelButtonTitle:@"No!" otherButtonTitles:@[@"Yep, do it"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        if(buttonIndex == 1){
+            [[VCUserState instance] clearRideState];
+            [[VCInterfaceModes instance] showInterface];
+        }
+    }];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {

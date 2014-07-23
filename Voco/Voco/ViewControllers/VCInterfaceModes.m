@@ -82,6 +82,7 @@ static int mode;
 }
 
 - (void) showRiderInterface {
+    
     VCRiderHomeViewController * riderHomeViewController = [[VCRiderHomeViewController alloc] init];
 
     NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ride"];

@@ -287,6 +287,7 @@
         [self placeRideDetailsDrawerInPickupMode];
         [self showRideDetailsDrawer];
         [self startTrackingDriverLocation];
+        _cancelRideButton.hidden = NO;
         
     } else if ([self.request.requestType isEqualToString:kRideRequestTypeCommuter]){
         

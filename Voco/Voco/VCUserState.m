@@ -170,6 +170,18 @@ static VCUserState *sharedSingleton;
     _driverState = nil;
 }
 
+- (void) clearRideState {
+    NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults removeObjectForKey:kRideIdKey];
+    [userDefaults removeObjectForKey:kRideProcessStateKey];
+    [userDefaults removeObjectForKey:kDriveProcessStateKey];
+    [userDefaults synchronize];
+    _underwayRideId = nil;
+    _rideProcessState = nil;
+    _driveProcessState = nil;
+}
+
+
 - (BOOL) isLoggedIn {
     if(self.riderState != nil || self.driverState != nil ){
         return YES;
