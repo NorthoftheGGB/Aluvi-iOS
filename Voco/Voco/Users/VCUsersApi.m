@@ -116,7 +116,7 @@
         [objectManager addResponseDescriptor:responseDescriptor];
         
     }
-    
+        
     {
         RKObjectMapping * mapping = [VCProfile getMapping];
         RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping method:RKRequestMethodPOST pathPattern:API_FILL_COMMUTER_PASS keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];

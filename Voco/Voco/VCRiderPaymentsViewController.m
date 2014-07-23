@@ -151,8 +151,11 @@
                                           [_cardView removeFromSuperview];
                                           _cardView = nil;
                                           _updateCardButton.titleLabel.text = kChangeCardText;
-                                          _cardInfoLabel.hidden = NO;
                                           _state = kInterfaceStateDisplayCard;
+
+                                          VCProfile * profile = mappingResult.firstObject;
+                                          _cardInfoLabel.text = [NSString stringWithFormat:@"%@ XXXX-XXXX-XXXX-%@", profile.cardBrand, profile.cardLastFour];
+                                          _cardInfoLabel.hidden = NO;
 
                                       }
                                       failure:^(RKObjectRequestOperation *operation, NSError *error) {

@@ -25,6 +25,7 @@
 #import "NSDate+Pretty.h"
 #import "VCGeoApi.h"
 #import "VCUtilities.h"
+#import "VCPushApi.h"
 
 #define kStepSetDepartureLocation 1
 #define kStepSetDestinationLocation 2
@@ -169,8 +170,11 @@
 }
 
 - (void) rideCancelledByDriverNotification:(id) sender{
-    [[VCCoreData managedObjectContext] refreshObject:self.request mergeChanges:YES];
-    [self resetRequestInterface];
+    NSDictionary * payload = ((NSNotification *) sender).object;
+    if([_request.ride_id isEqualToNumber:[payload objectForKey:VC_PUSH_RIDE_ID_KEY]]) {
+        [[VCCoreData managedObjectContext] refreshObject:self.request mergeChanges:YES];
+        [self resetRequestInterface];
+    }
 }
 
 - (void) rideComplete:(id) sender{
