@@ -29,7 +29,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2sw-Bp-ZXq" customClass="VCButtonStandardStyle">
+                <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2sw-Bp-ZXq" customClass="VCButtonStandardStyle">
                     <rect key="frame" x="160" y="0.0" width="160" height="46"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -52,7 +52,7 @@
                         <action selector="didTapRideNow:" destination="-1" eventType="touchUpInside" id="JkL-qs-TFG"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2Q-DX-cGh" customClass="VCButtonStandardStyle">
+                <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2Q-DX-cGh" customClass="VCButtonStandardStyle">
                     <rect key="frame" x="0.0" y="0.0" width="160" height="46"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -76,7 +76,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
-        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="fxh-D2-Mbg" customClass="VCButtonStandardStyle">
+        <button opaque="NO" alpha="0.94999999999999996" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="fxh-D2-Mbg" customClass="VCButtonStandardStyle">
             <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -97,49 +97,49 @@
                 <action selector="didTapScheduleRide:" destination="-1" eventType="touchUpInside" id="hk6-mb-Tsr"/>
             </connections>
         </button>
-        <view alpha="0.80000000000000004" contentMode="scaleToFill" id="h5q-78-s1j" userLabel="PickUp/Return HUD">
+        <view alpha="0.90000000000000013" contentMode="scaleToFill" id="h5q-78-s1j" userLabel="PickUp/Return HUD">
             <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PICKUP TIME:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMC-XN-Zej" userLabel="pickup time" customClass="VCLabel">
-                    <rect key="frame" x="59" y="13" width="117" height="21"/>
+                    <rect key="frame" x="68" y="13" width="110" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="117" id="Dyt-DI-EaI"/>
+                        <constraint firstAttribute="width" constant="110" id="Dyt-DI-EaI"/>
                         <constraint firstAttribute="height" constant="21" id="Hjd-Ts-36K"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="14"/>
+                            <integer key="value" value="16"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:10 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAQ-n3-AaS" userLabel="pickup time" customClass="VCLabel">
-                    <rect key="frame" x="177" y="13" width="85" height="21"/>
+                    <rect key="frame" x="177" y="13" width="76" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="85" id="ArC-BK-aiI"/>
+                        <constraint firstAttribute="width" constant="76" id="ArC-BK-aiI"/>
                         <constraint firstAttribute="height" constant="21" id="yJf-Fx-keV"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="14"/>
+                            <integer key="value" value="16"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
             </subviews>
             <color key="backgroundColor" red="0.63137257099999999" green="0.58039218189999997" blue="0.5647059083" alpha="1" colorSpace="deviceRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="KAQ-n3-AaS" secondAttribute="trailing" constant="58" id="Mj5-lO-0SA"/>
                 <constraint firstItem="KAQ-n3-AaS" firstAttribute="top" secondItem="h5q-78-s1j" secondAttribute="top" constant="13" id="UQp-4H-4sg"/>
                 <constraint firstItem="pMC-XN-Zej" firstAttribute="top" secondItem="h5q-78-s1j" secondAttribute="top" constant="13" id="XpO-Rf-KZE"/>
-                <constraint firstItem="pMC-XN-Zej" firstAttribute="leading" secondItem="h5q-78-s1j" secondAttribute="leading" constant="59" id="fdn-Fj-J9m"/>
+                <constraint firstItem="pMC-XN-Zej" firstAttribute="leading" secondItem="h5q-78-s1j" secondAttribute="leading" constant="68" id="fdn-Fj-J9m"/>
+                <constraint firstAttribute="trailing" secondItem="KAQ-n3-AaS" secondAttribute="trailing" constant="67" id="nn9-2G-1EY"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>

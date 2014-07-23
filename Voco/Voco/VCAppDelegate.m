@@ -58,7 +58,8 @@
 #endif */
     
     VCRideViewController * vc = [[VCRideViewController alloc] init];
-    [self.window setRootViewController:vc];
+    UINavigationController * nc = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self.window setRootViewController:nc];
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

@@ -8,6 +8,7 @@
 
 #import "VCRideViewController.h"
 #import <MapKit/MapKit.h>
+#import <ActionSheetPicker-3.0/ActionSheetStringPicker.h>
 #import "VCLabel.h"
 #import "VCButtonStandardStyle.h"
 
@@ -51,7 +52,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Home";
+    //self.title = @"Home";
+    //custom image
+    //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"appcoda-logo.png"]];
+    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(didTapCancel:)];
+    self.navigationItem.rightBarButtonItem = cancelItem;
+    
     
 }
 - (void) viewWillAppear:(BOOL)animated{
@@ -81,7 +87,58 @@
     
 }
 
+- (void) moveToEditCommute {
+    [_homeActionView removeFromSuperview];
+    
+    CGRect frame = _rideInfoItemView.frame;
+    frame.origin.x = 0;
+    frame.origin.y = 62;
+    frame.size.height = 0;
+    _rideInfoItemView.frame = frame;
+    [self.view addSubview:self.rideInfoItemView];
+    [UIView animateWithDuration:0.35 animations:^{
+        CGRect frame = _rideInfoItemView.frame;
+        frame.size.height = 47;
+        _rideInfoItemView.frame = frame;
+    }];
+    
+    NSArray *morningOptions = @[
+                                @"6:00", @"6:30", @"7:00", @"7:30",
+                                @"8:00", @"8:30", @"9:00", @"9:30",
+                                @"10:00", @"10:30", @"11:00", @"11:30",
+                                @"12:00"];
+    
+    [ActionSheetStringPicker showPickerWithTitle: @"coco"
+                                            rows: morningOptions
+                                initialSelection:0
+                                       doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+                                           [self editHome];
+                                       } cancelBlock:^(ActionSheetStringPicker *picker) {
+                                           [self resetInterface];
+                                       } origin:self.view];
+}
+
+- (void) resetInterface {
+    [UIView transitionWithView:self.view duration:.35 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+        [_rideInfoItemView removeFromSuperview];
+        [self showHome];
+    } completion:nil];
+
+}
+
+- (void) editHome {
+    
+}
+    
+
+
+- (void) didTapCancel: (id)sender {
+    [self resetInterface];
+}
+
 - (IBAction)didTapEditCommute:(id)sender {
+    [self moveToEditCommute];
+    
 }
 
 - (IBAction)didTapRideNow:(id)sender {
