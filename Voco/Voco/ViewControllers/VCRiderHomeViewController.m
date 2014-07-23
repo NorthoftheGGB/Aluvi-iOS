@@ -9,7 +9,7 @@
 #import "VCRiderHomeViewController.h"
 #import <MapKit/MapKit.h>
 #import <MBProgressHUD.h>
-#import <ActionSheetPicker.h>
+//#import <ActionSheetPicker.h>
 #import <BlocksKit.h>
 #import "VCUserState.h"
 #import "VCInterfaceModes.h"
@@ -563,6 +563,7 @@
                    [NSString stringWithFormat:@"Evening of %@", [dateFormatter stringFromDate:secondSlotDate]], nil];
     }
     
+    /*
     
     [ActionSheetStringPicker showPickerWithTitle:@"Select morning or evening"
                                             rows:options
@@ -580,6 +581,7 @@
                                          NSLog(@"Block Picker Canceled");
                                      }
                                           origin:sender];
+     */
 }
 
 - (IBAction)didTapArrivalTimeButton:(id)sender {
@@ -600,6 +602,7 @@
         options = evengingOptions;
     }
     
+    /*
     [ActionSheetStringPicker showPickerWithTitle:@"Select your arrival time"
                                             rows:options
                                 initialSelection:0
@@ -641,6 +644,7 @@
                                          NSLog(@"Block Picker Canceled");
                                      }
                                           origin:sender];
+     */
 }
 
 - (IBAction)didTapScheduleRideButton:(id)sender {

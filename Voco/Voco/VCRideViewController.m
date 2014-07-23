@@ -11,16 +11,15 @@
 #import <ActionSheetPicker-3.0/ActionSheetStringPicker.h>
 #import "VCLabel.h"
 #import "VCButtonStandardStyle.h"
-
+#import "VCEditLocationWidget.h"
 
 @interface VCRideViewController () <MKMapViewDelegate>
 
-//map
-
+// map
 @property (strong, nonatomic) MKMapView *map;
 
 
-//outlets
+// outlets
 @property (strong, nonatomic) IBOutlet UIView *homeActionView;
 @property (weak, nonatomic) IBOutlet VCButtonStandardStyle *editCommuteButton;
 @property (weak, nonatomic) IBOutlet VCButtonStandardStyle *rideNowButton;
@@ -29,6 +28,11 @@
 @property (strong, nonatomic) IBOutlet UIView *rideInfoItemView;
 @property (weak, nonatomic) IBOutlet VCLabel *itemNameLabel;
 @property (strong, nonatomic) IBOutlet UIView *itemValueLabel;
+
+@property (strong, nonatomic) VCEditLocationWidget * homeLocationWidget;
+@property (strong, nonatomic) VCEditLocationWidget * workLocationWidget;
+
+@property (nonatomic) BOOL appeared;
 
 - (IBAction)didTapEditCommute:(id)sender;
 - (IBAction)didTapRideNow:(id)sender;
@@ -44,7 +48,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        _appeared = NO;
     }
     return self;
 }
@@ -58,15 +62,25 @@
     UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(didTapCancel:)];
     self.navigationItem.rightBarButtonItem = cancelItem;
     
+    _homeLocationWidget = [[VCEditLocationWidget alloc] init];
+    _workLocationWidget = [[VCEditLocationWidget alloc] init];
+    [self addChildViewController:_homeLocationWidget];
+    [self addChildViewController:_workLocationWidget];
+
     
 }
 - (void) viewWillAppear:(BOOL)animated{
-    [self showHome];
     
-    _map = [[MKMapView alloc] initWithFrame:self.view.frame];
-    _map.delegate = self;
-    [self.view insertSubview:_map atIndex:0];
-    _map.showsUserLocation = YES;
+    if(!_appeared){
+        [self showHome];
+    
+        _map = [[MKMapView alloc] initWithFrame:self.view.frame];
+        _map.delegate = self;
+        [self.view insertSubview:_map atIndex:0];
+        _map.showsUserLocation = YES;
+        
+        _appeared = YES;
+    }
     
 }
 
@@ -121,15 +135,31 @@
 - (void) resetInterface {
     [UIView transitionWithView:self.view duration:.35 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
         [_rideInfoItemView removeFromSuperview];
+        [_homeLocationWidget.view removeFromSuperview];
+        [_workLocationWidget.view removeFromSuperview];
         [self showHome];
     } completion:nil];
 
 }
 
 - (void) editHome {
+    _homeLocationWidget.mode = kEditLocationWidgetEditMode;
+    CGRect frame = _homeLocationWidget.view.frame;
+    frame.origin.x = 0;
+    frame.origin.y = 109;
+    frame.size.height = 0;
+    _homeLocationWidget.view.frame = frame;
+    [self.view addSubview:_homeLocationWidget.view];
+
+    [UIView animateWithDuration:0.35 animations:^{
+        CGRect frame = _homeLocationWidget.view.frame;
+        frame.size.height = 47;
+        _homeLocationWidget.view.frame = frame;
+    }];
+
     
 }
-    
+
 
 
 - (void) didTapCancel: (id)sender {
