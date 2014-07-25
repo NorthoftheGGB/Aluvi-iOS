@@ -6,11 +6,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCRideViewController">
             <connections>
-                <outlet property="currentLocationButton" destination="XIm-sQ-LdY" id="Gec-FC-N8f"/>
+                <outlet property="currentLocationButton" destination="XIm-sQ-LdY" id="2n3-V0-Gec"/>
                 <outlet property="editCommuteButton" destination="N2Q-DX-cGh" id="s78-rO-yRn"/>
                 <outlet property="homeActionView" destination="XY9-N9-RDa" id="LQH-QX-Bja"/>
                 <outlet property="itemNameLabel" destination="pMC-XN-Zej" id="Zvh-NL-HPj"/>
                 <outlet property="itemValueLabel" destination="h5q-78-s1j" id="43K-bQ-Xnj"/>
+                <outlet property="nextButton" destination="4au-Tm-k8h" id="I8s-9S-4fi"/>
                 <outlet property="rideInfoItemView" destination="h5q-78-s1j" id="7zK-Vb-XrF"/>
                 <outlet property="rideNowButton" destination="2sw-Bp-ZXq" id="SSL-Jr-zwk"/>
                 <outlet property="scheduleRideButton" destination="fxh-D2-Mbg" id="8gG-Qn-R33"/>
@@ -175,7 +176,6 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="didTapConfirm:" destination="RWM-tO-NBZ" eventType="touchUpInside" id="HJg-r5-af1"/>
-                        <action selector="didTapScheduleRide:" destination="-1" eventType="touchUpInside" id="fNJ-ex-OrB"/>
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup Time :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smm-lU-ouO" customClass="VCLabel">
@@ -436,6 +436,27 @@
             </state>
             <state key="selected" image="directions-button-selected.png"/>
             <state key="highlighted" image="directions-button-selected.png"/>
+        </button>
+        <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="4au-Tm-k8h" customClass="VCButtonStandardStyle">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+            <state key="normal" title="NEXT" backgroundImage="button-full-default.png">
+                <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <state key="selected" backgroundImage="button-full-select.png"/>
+            <state key="highlighted" backgroundImage="button-full-select.png">
+                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                    <integer key="value" value="16"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <action selector="didTapNextButton:" destination="-1" eventType="touchUpInside" id="XAZ-QT-DcL"/>
+            </connections>
         </button>
     </objects>
     <resources>

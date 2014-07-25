@@ -14,6 +14,7 @@
 #import "VCButtonStandardStyle.h"
 #import "VCEditLocationWidget.h"
 
+
 @interface VCRideViewController () <MKMapViewDelegate, VCEditLocationWidgetDelegate>
 
 // map
@@ -26,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet VCButtonStandardStyle *editCommuteButton;
 @property (weak, nonatomic) IBOutlet VCButtonStandardStyle *rideNowButton;
 @property (strong, nonatomic) IBOutlet VCButtonStandardStyle *scheduleRideButton;
+@property (strong, nonatomic) IBOutlet VCButtonStandardStyle *nextButton;
 
 @property (strong, nonatomic) IBOutlet UIView *rideInfoItemView;
 @property (weak, nonatomic) IBOutlet VCLabel *itemNameLabel;
@@ -40,6 +42,7 @@
 - (IBAction)didTapRideNow:(id)sender;
 - (IBAction)didTapScheduleRide:(id)sender;
 - (IBAction)didTapCurrentLocation:(id)sender;
+- (IBAction)didTapNextButton:(id)sender;
 
 
 
@@ -106,6 +109,13 @@
      _homeActionView.frame = frame;
      [self.view addSubview:self.homeActionView];
     
+    CGRect currentLocationframe = _currentLocationButton.frame;
+    currentLocationframe.origin.x = 276;
+    currentLocationframe.origin.y = self.view.frame.size.height - 101;
+    _currentLocationButton.frame = currentLocationframe;
+    [self.view addSubview:self.currentLocationButton];
+
+    
 }
 
 - (void) moveToEditCommute {
@@ -166,6 +176,11 @@
         _homeLocationWidget.view.frame = frame;
     }];
 
+    CGRect buttonFrame = _nextButton.frame;
+    buttonFrame.origin.x = 0;
+    buttonFrame.origin.y = self.view.frame.size.height - 53;
+    _nextButton.frame = buttonFrame;
+    [self.view addSubview:_nextButton];
     
 }
 
@@ -187,6 +202,9 @@
 }
 
 - (IBAction)didTapCurrentLocation:(id)sender {
+}
+
+- (IBAction)didTapNextButton:(id)sender {
 }
 
 
