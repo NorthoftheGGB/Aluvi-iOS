@@ -15,6 +15,12 @@
 #import "VCButtonStandardStyle.h"
 #import "VCEditLocationWidget.h"
 
+
+#define kEditCommuteStatePickupTime 1000
+#define kEditCommuteStateEditHome 1001
+#define kEditCommuteStateEditWork 1002
+#define kEditCommuteStateReturnTime 1003
+
 @interface VCRideViewController () <MKMapViewDelegate, VCEditLocationWidgetDelegate, ActionSheetCustomPickerDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
 // map
@@ -40,6 +46,7 @@
 @property (strong, nonatomic) VCEditLocationWidget * workLocationWidget;
 
 @property (nonatomic) BOOL appeared;
+@property (nonatomic) NSInteger editCommuteState;
 
 - (IBAction)didTapEditCommute:(id)sender;
 - (IBAction)didTapRideNow:(id)sender;
@@ -131,8 +138,10 @@
     
 }
 
-- (void) moveToEditCommute {
+- (void) transitionToEditCommute {
     [_homeActionView removeFromSuperview];
+    
+    _editCommuteState = kEditCommuteStatePickupTime;
     
     CGRect frame = _rideInfoItemView.frame;
     frame.origin.x = 0;
@@ -152,7 +161,7 @@
                                             rows: _morningOptions
                                 initialSelection:0
                                        doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
-                                           [self editHome];
+                                           [self transitionFromEditPickupTimeToEditHome];
                                        } cancelBlock:^(ActionSheetStringPicker *picker) {
                                            [self resetInterface];
                                        } origin:self.view];
@@ -174,7 +183,10 @@
     
 }
 
-- (void) editHome {
+- (void) transitionFromEditPickupTimeToEditHome {
+    
+    _editCommuteState = kEditCommuteStateEditHome;
+    
     _homeLocationWidget.mode = kEditLocationWidgetEditMode;
     CGRect frame = _homeLocationWidget.view.frame;
     frame.origin.x = 0;
@@ -198,6 +210,9 @@
 }
 
 - (void) transitionFromEditHomeToEditWork {
+    
+    _editCommuteState = kEditCommuteStateEditWork;
+
     // TODO: [_nextButton removeFromSuperview];
     
     _workLocationWidget.mode = kEditLocationWidgetEditMode;
@@ -229,19 +244,40 @@
         return;
     }
     
-    if( _originAnnotation != nil ){
-        [self.map removeAnnotation:_originAnnotation];
+    MKPointAnnotation * annotation;
+    VCEditLocationWidget * widget;
+    
+    if(_editCommuteState == kEditCommuteStateEditHome) {
+        annotation = _originAnnotation;
+        widget = _homeLocationWidget;
+    } else if (_editCommuteState == kEditCommuteStateEditWork) {
+        annotation = _destinationAnnotation;
+        widget = _workLocationWidget;
+    } else {
+        return;
+    }
+    
+    if( annotation != nil ){
+        [self.map removeAnnotation:annotation];
     }
     
     CGPoint touchPoint = [gestureRecognizer locationInView:self.map];
     CLLocationCoordinate2D touchMapCoordinate = [self.map convertPoint:touchPoint toCoordinateFromView:self.map];
-    _originAnnotation = [[MKPointAnnotation alloc] init];
-    _originAnnotation.coordinate = touchMapCoordinate;
-    [self.map addAnnotation:_originAnnotation];
+    annotation = [[MKPointAnnotation alloc] init];
+    annotation.coordinate = touchMapCoordinate;
+    [self.map addAnnotation:annotation];
+    
+    if(_editCommuteState == kEditCommuteStateEditHome) {
+        _originAnnotation = annotation;
+    } else if (_editCommuteState == kEditCommuteStateEditWork) {
+        _destinationAnnotation = annotation;
+    } else {
+        return;
+    }
     
     
     CLLocation * location = [[CLLocation alloc] initWithLatitude:touchMapCoordinate.latitude  longitude:touchMapCoordinate.longitude];
-    [self updateEditLocationWidget:_homeLocationWidget withLocation:location];
+    [self updateEditLocationWidget:widget withLocation:location];
     
 }
 
@@ -257,7 +293,7 @@
 }
 
 - (IBAction)didTapEditCommute:(id)sender {
-    [self moveToEditCommute];
+    [self transitionToEditCommute];
     
 }
 
@@ -325,7 +361,7 @@
 
 #pragma mark - MapViewDelegate
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-    if(annotation == _originAnnotation) {
+    if([annotation isEqual: _originAnnotation] || [annotation isEqual:_destinationAnnotation]) {
         MKPinAnnotationView * pinAnnotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"PIN_ANNOTATION"];
         pinAnnotationView.animatesDrop = YES;
         pinAnnotationView.pinColor = MKPinAnnotationColorRed;
