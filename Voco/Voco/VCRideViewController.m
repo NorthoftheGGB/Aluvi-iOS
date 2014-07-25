@@ -76,6 +76,11 @@
                             @"8:00", @"8:30", @"9:00", @"9:30",
                             @"10:00", @"10:30", @"11:00", @"11:30",
                             @"12:00"];
+        _eveningOptions = @[
+                            @"6:00", @"6:30", @"7:00", @"7:30",
+                            @"8:00", @"8:30", @"9:00", @"9:30",
+                            @"10:00", @"10:30", @"11:00", @"11:30",
+                            @"12:00"];
     }
     return self;
 }
@@ -205,19 +210,25 @@
         _homeLocationWidget.view.frame = frame;
     }];
     
-    CGRect buttonFrame = _nextButton.frame;
-    buttonFrame.origin.x = 0;
-    buttonFrame.origin.y = self.view.frame.size.height - 53;
-    _nextButton.frame = buttonFrame;
-    [self.view addSubview:_nextButton];
+
+}
+
+- (void) showNextButton {
     
+    if(_nextButton.superview == nil) {
+        CGRect buttonFrame = _nextButton.frame;
+        buttonFrame.origin.x = 0;
+        buttonFrame.origin.y = self.view.frame.size.height - 53;
+        _nextButton.frame = buttonFrame;
+        [self.view addSubview:_nextButton];
+    }
 }
 
 - (void) transitionFromEditHomeToEditWork {
     
     _editCommuteState = kEditCommuteStateEditWork;
 
-    // TODO: [_nextButton removeFromSuperview];
+    [_nextButton removeFromSuperview];
     
     _workLocationWidget.mode = kEditLocationWidgetEditMode;
     CGRect frame = _homeLocationWidget.view.frame;
@@ -273,11 +284,7 @@
         [_returnHudView removeFromSuperview];
     } ];
     
-    CGRect buttonFrame = _nextButton.frame;
-    buttonFrame.origin.x = 0;
-    buttonFrame.origin.y = self.view.frame.size.height - 53;
-    _nextButton.frame = buttonFrame;
-    [self.view addSubview:_nextButton];
+    [self showNextButton];
 
 }
 
@@ -334,7 +341,8 @@
     
     CLLocation * location = [[CLLocation alloc] initWithLatitude:touchMapCoordinate.latitude  longitude:touchMapCoordinate.longitude];
     [self updateEditLocationWidget:widget withLocation:location];
-    
+    [self showNextButton];
+   
 }
 
 - (void) updateEditLocationWidget: (VCEditLocationWidget *) editLocationWidget withLocation: (CLLocation *) location {
@@ -362,11 +370,13 @@
 }
 
 - (IBAction)didTapNextButton:(id)sender {
-    [self transitionFromEditHomeToEditWork];
     
-}
-
-- (IBAction)didTapCurrentLocationButton:(id)sender {
+    if( _editCommuteState == kEditCommuteStateEditHome) {
+        [self transitionFromEditHomeToEditWork];
+    } else {
+        [self transitionFromEditWorkToSetReturnTime];
+    }
+    
 }
 
 
@@ -397,7 +407,8 @@
 
     }
     
-    
+    [self showNextButton];
+
     [self.map setCenterCoordinate:mapItem.placemark.coordinate animated:YES];
 }
 

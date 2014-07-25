@@ -91,7 +91,7 @@
         [_map addOverlay:_routeOverlay];
         region.span.latitudeDelta *= 1.5;
         region.span.longitudeDelta *= 1.5;
-        region.center.latitude *= 1.5;
+        region.center.latitude *= 1.05;
         
         // TODO: need to adjust region
         self.rideRegion = region;
