@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet VCButtonStandardStyle *editCommuteButton;
 @property (weak, nonatomic) IBOutlet VCButtonStandardStyle *rideNowButton;
 @property (strong, nonatomic) IBOutlet VCButtonStandardStyle *scheduleRideButton;
+@property (strong, nonatomic) IBOutlet VCButtonStandardStyle *nextButton;
 
 @property (strong, nonatomic) IBOutlet UIView *rideInfoItemView;
 @property (weak, nonatomic) IBOutlet VCLabel *itemNameLabel;
@@ -42,6 +43,7 @@
 - (IBAction)didTapRideNow:(id)sender;
 - (IBAction)didTapScheduleRide:(id)sender;
 - (IBAction)didTapCurrentLocation:(id)sender;
+- (IBAction)didTapNextButton:(id)sender;
 
 
 
@@ -77,6 +79,8 @@
     _homeLocationWidget.delegate = self;
     _workLocationWidget = [[VCEditLocationWidget alloc] init];
     _workLocationWidget.delegate = self;
+    _homeLocationWidget.type = kHomeType;
+    _workLocationWidget.type = kWorkType;
     [self addChildViewController:_homeLocationWidget];
     [self addChildViewController:_workLocationWidget];
     
@@ -115,6 +119,13 @@
     frame.origin.y = self.view.frame.size.height - 53;
     _homeActionView.frame = frame;
     [self.view addSubview:self.homeActionView];
+    
+    CGRect currentLocationframe = _currentLocationButton.frame;
+    currentLocationframe.origin.x = 276;
+    currentLocationframe.origin.y = self.view.frame.size.height - 101;
+    _currentLocationButton.frame = currentLocationframe;
+    [self.view addSubview:self.currentLocationButton];
+
     
 }
 
@@ -175,7 +186,12 @@
         frame.size.height = 47;
         _homeLocationWidget.view.frame = frame;
     }];
-    
+
+    CGRect buttonFrame = _nextButton.frame;
+    buttonFrame.origin.x = 0;
+    buttonFrame.origin.y = self.view.frame.size.height - 53;
+    _nextButton.frame = buttonFrame;
+    [self.view addSubview:_nextButton];
     
 }
 
@@ -224,6 +240,9 @@
 }
 
 - (IBAction)didTapCurrentLocation:(id)sender {
+}
+
+- (IBAction)didTapNextButton:(id)sender {
 }
 
 

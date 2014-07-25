@@ -7,8 +7,10 @@
 //
 
 #import "VCEditLocationWidget.h"
+@import AddressBookUI;
 #import "VCLabel.h"
 #import "VCTextField.h"
+
 
 @interface VCEditLocationWidget () <VCLocationSearchViewControllerDelegate>
 
@@ -43,6 +45,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if (_type == kHomeType) {
+        _locationTypeLabel.text = @"HOME";
+        _editTextField.text = @"Select Home Location";
+    } else if (_type == kWorkType){
+        _locationTypeLabel.text = @"WORK";
+        _editTextField.text = @"Select Work Location";
+    }
+    
+    
     [self showInterfaceForMode];
     
 }
@@ -104,6 +115,9 @@
 
 #pragma mark - VCLocationSearchViewControllerDelegate
 - (void)didSelectLocation:(MKMapItem *)mapItem {
+    _locationNameLabel.text = ABCreateStringWithAddressDictionary(mapItem.placemark.addressDictionary, NO);
+    [self showDisplayMode];
     [_delegate editLocationWidget:self didSelectMapItem:mapItem];
+    
 }
 @end
