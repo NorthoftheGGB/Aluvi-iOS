@@ -7,10 +7,16 @@
 //
 
 #import "VCLocationSearchViewController.h"
+#import <MapKit/MapKit.h>
+@import AddressBookUI;
 
 @interface VCLocationSearchViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *searchField;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) NSArray * searchItems;
+@property (strong, nonatomic) MKLocalSearch * localSearch;
+
 - (IBAction)didTapDone:(id)sender;
 - (IBAction)didTapCancel:(id)sender;
 
@@ -47,13 +53,40 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)didEditSearchText:(id)sender {
+    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
+    request.naturalLanguageQuery = _searchField.text;
+    // Marin
+    MKCoordinateRegion region = MKCoordinateRegionMake(
+                           CLLocationCoordinate2DMake(38.05513, -122.7488),
+                           MKCoordinateSpanMake(-122.403538650023 - -122.782637010672, 38.3101080899654 - 38.0596334734963)
+    );
+    request.region = region;
+    if(_localSearch != nil){
+        [_localSearch cancel];
+    }
+    _localSearch = [[MKLocalSearch alloc] initWithRequest:request];
+    [_localSearch startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
+        _searchItems = response.mapItems;
+        [_tableView reloadData];
+    }];
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    if(_searchItems != nil) {
+        return [_searchItems count];
+    } else {
+        return 0;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+    MKMapItem *mapItem = [_searchItems objectAtIndex:[indexPath row]];
+    UITableViewCell * cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"CELL"];
+    cell.textLabel.text = mapItem.name;
+    cell.detailTextLabel.text = ABCreateStringWithAddressDictionary(mapItem.placemark.addressDictionary, NO);
+    return cell;
 }
 
 @end
