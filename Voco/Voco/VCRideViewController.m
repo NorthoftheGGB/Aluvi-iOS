@@ -187,6 +187,9 @@
         [_pickupHudView removeFromSuperview];
         [_homeLocationWidget.view removeFromSuperview];
         [_workLocationWidget.view removeFromSuperview];
+        [_returnHudView removeFromSuperview];
+        [_scheduleRideButton removeFromSuperview];
+        
         [self showHome];
     } completion:nil];
     
@@ -285,6 +288,8 @@
     } ];
     
     [self showNextButton];
+    [_scheduleRideButton removeFromSuperview];
+    
 
 }
 
