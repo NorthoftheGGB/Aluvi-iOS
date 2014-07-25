@@ -57,7 +57,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.89999999999999991" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="9999 Default Ave" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iY8-J0-hLa" customClass="VCLabel">
-                    <rect key="frame" x="84" y="13" width="216" height="21"/>
+                    <rect key="frame" x="84" y="13" width="206" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -90,6 +90,10 @@
                         <action selector="didTapLocationText:" destination="-1" eventType="touchUpInside" id="4Qj-EQ-Omi"/>
                     </connections>
                 </button>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" placeholderIntrinsicWidth="30" placeholderIntrinsicHeight="30" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="g7a-85-mHD">
+                    <rect key="frame" x="277" y="5" width="37" height="37"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" red="0.63137257099999999" green="0.58039218189999997" blue="0.5647059083" alpha="1" colorSpace="deviceRGB"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
