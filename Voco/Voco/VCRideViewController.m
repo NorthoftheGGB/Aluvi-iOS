@@ -160,7 +160,7 @@
     [self.view addSubview:self.pickupHudView];
     [UIView animateWithDuration:0.35 animations:^{
         CGRect frame = _pickupHudView.frame;
-        frame.size.height = 47;
+        frame.size.height = 40; //changed height
         _pickupHudView.frame = frame;
     }];
     

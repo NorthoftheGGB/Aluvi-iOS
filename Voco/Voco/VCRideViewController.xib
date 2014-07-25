@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -101,11 +101,11 @@
             </connections>
         </button>
         <view clipsSubviews="YES" alpha="0.90000000000000013" contentMode="scaleToFill" id="h5q-78-s1j" userLabel="PickUp HUD">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PICKUP TIME:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMC-XN-Zej" userLabel="pickup time" customClass="VCLabel">
-                    <rect key="frame" x="68" y="13" width="110" height="21"/>
+                    <rect key="frame" x="68" y="9" width="110" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="110" id="Dyt-DI-EaI"/>
@@ -121,7 +121,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:10 AM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAQ-n3-AaS" userLabel="pickup time" customClass="VCLabel">
-                    <rect key="frame" x="177" y="13" width="76" height="21"/>
+                    <rect key="frame" x="177" y="9" width="76" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="76" id="ArC-BK-aiI"/>
@@ -139,8 +139,8 @@
             </subviews>
             <color key="backgroundColor" red="0.63137257099999999" green="0.58039218189999997" blue="0.5647059083" alpha="1" colorSpace="deviceRGB"/>
             <constraints>
-                <constraint firstItem="KAQ-n3-AaS" firstAttribute="top" secondItem="h5q-78-s1j" secondAttribute="top" constant="13" id="UQp-4H-4sg"/>
-                <constraint firstItem="pMC-XN-Zej" firstAttribute="top" secondItem="h5q-78-s1j" secondAttribute="top" constant="13" id="XpO-Rf-KZE"/>
+                <constraint firstItem="KAQ-n3-AaS" firstAttribute="top" secondItem="h5q-78-s1j" secondAttribute="top" constant="9" id="UQp-4H-4sg"/>
+                <constraint firstItem="pMC-XN-Zej" firstAttribute="top" secondItem="h5q-78-s1j" secondAttribute="top" constant="9" id="XpO-Rf-KZE"/>
                 <constraint firstItem="pMC-XN-Zej" firstAttribute="leading" secondItem="h5q-78-s1j" secondAttribute="leading" constant="68" id="fdn-Fj-J9m"/>
                 <constraint firstAttribute="trailing" secondItem="KAQ-n3-AaS" secondAttribute="trailing" constant="67" id="nn9-2G-1EY"/>
             </constraints>
@@ -460,11 +460,11 @@
             </connections>
         </button>
         <view clipsSubviews="YES" alpha="0.89999997615814209" contentMode="scaleToFill" id="TKX-pK-w8D" userLabel="Return HUD">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RETURN TIME:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQb-cI-tRN" userLabel="return" customClass="VCLabel">
-                    <rect key="frame" x="64" y="13" width="114" height="21"/>
+                    <rect key="frame" x="66" y="9" width="114" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="2HP-dv-Bbj"/>
@@ -480,7 +480,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:10 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pwl-0s-xmB" userLabel="time" customClass="VCLabel">
-                    <rect key="frame" x="177" y="13" width="76" height="21"/>
+                    <rect key="frame" x="179" y="9" width="76" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="76" id="2VG-0b-rdJ"/>
@@ -498,10 +498,10 @@
             </subviews>
             <color key="backgroundColor" red="0.63137257099999999" green="0.58039218189999997" blue="0.5647059083" alpha="1" colorSpace="deviceRGB"/>
             <constraints>
-                <constraint firstItem="eQb-cI-tRN" firstAttribute="top" secondItem="TKX-pK-w8D" secondAttribute="top" constant="13" id="0g1-6A-3rn"/>
-                <constraint firstItem="eQb-cI-tRN" firstAttribute="leading" secondItem="TKX-pK-w8D" secondAttribute="leading" constant="64" id="Csr-pc-s8Y"/>
-                <constraint firstItem="Pwl-0s-xmB" firstAttribute="top" secondItem="TKX-pK-w8D" secondAttribute="top" constant="13" id="dgr-op-CHz"/>
-                <constraint firstAttribute="trailing" secondItem="Pwl-0s-xmB" secondAttribute="trailing" constant="67" id="kI9-UI-3To"/>
+                <constraint firstItem="eQb-cI-tRN" firstAttribute="top" secondItem="TKX-pK-w8D" secondAttribute="top" constant="9" id="0g1-6A-3rn"/>
+                <constraint firstItem="eQb-cI-tRN" firstAttribute="leading" secondItem="TKX-pK-w8D" secondAttribute="leading" constant="66" id="Csr-pc-s8Y"/>
+                <constraint firstItem="Pwl-0s-xmB" firstAttribute="top" secondItem="TKX-pK-w8D" secondAttribute="top" constant="9" id="dgr-op-CHz"/>
+                <constraint firstAttribute="trailing" secondItem="Pwl-0s-xmB" secondAttribute="trailing" constant="65" id="kI9-UI-3To"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
