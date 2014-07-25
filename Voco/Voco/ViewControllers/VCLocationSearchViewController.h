@@ -11,7 +11,7 @@
 
 @protocol VCLocationSearchViewControllerDelegate <NSObject>
 
-- (void) didSelectLocation: (MKMapItem *) mapPoint;
+- (void) didSelectLocation: (MKMapItem *) mapItem;
 
 @end
 

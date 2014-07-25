@@ -13,7 +13,7 @@
 #import "VCButtonStandardStyle.h"
 #import "VCEditLocationWidget.h"
 
-@interface VCRideViewController () <MKMapViewDelegate, VCLocationSearchViewControllerDelegate>
+@interface VCRideViewController () <MKMapViewDelegate, VCEditLocationWidgetDelegate>
 
 // map
 @property (strong, nonatomic) MKMapView *map;
@@ -181,7 +181,7 @@
 
 
 #pragma mark - VCLocationSearchViewControllerDelegate
-- (void)didSelectLocation:(MKMapItem *) mapItem {
+- (void) editLocationWidget:(VCEditLocationWidget *)widget didSelectMapItem:(MKMapItem *)mapItem {
     if(_originAnnotation != nil){
         [_map removeAnnotation:_originAnnotation];
     }

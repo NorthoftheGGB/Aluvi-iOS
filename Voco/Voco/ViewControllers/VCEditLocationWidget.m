@@ -10,7 +10,7 @@
 #import "VCLabel.h"
 #import "VCTextField.h"
 
-@interface VCEditLocationWidget ()
+@interface VCEditLocationWidget () <VCLocationSearchViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *editView;
 @property (strong, nonatomic) IBOutlet UIView *displayView;
@@ -96,9 +96,13 @@
 
 - (IBAction)didTapLocationText:(id)sender {
     VCLocationSearchViewController * vc = [[VCLocationSearchViewController alloc] init];
-    if(_locationSearchViewControllerDelegate != nil){
-        vc.delegate = _locationSearchViewControllerDelegate;
-    }
+    vc.delegate = self;
     [self presentViewController:vc animated:YES completion:nil];
+}
+
+
+#pragma mark - VCLocationSearchViewControllerDelegate
+- (void)didSelectLocation:(MKMapItem *)mapItem {
+    [_delegate editLocationWidget:self didSelectMapItem:mapItem];
 }
 @end

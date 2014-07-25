@@ -29,7 +29,7 @@
                     <rect key="frame" x="14" y="68" width="299" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                     <connections>
                         <action selector="didEditSearchText:" destination="-1" eventType="editingChanged" id="pd8-sD-iK0"/>
                     </connections>
@@ -42,16 +42,6 @@
                     </state>
                     <connections>
                         <action selector="didTapCancel:" destination="-1" eventType="touchUpInside" id="uct-jN-zg3"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Twu-s6-0EN">
-                    <rect key="frame" x="270" y="36" width="37" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Done">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="didTapDone:" destination="-1" eventType="touchUpInside" id="3jE-Qp-ER4"/>
                     </connections>
                 </button>
             </subviews>
