@@ -19,6 +19,7 @@
 // map
 @property (strong, nonatomic) MKMapView *map;
 @property (strong, nonatomic) MKPointAnnotation * originAnnotation;
+@property (strong, nonatomic) IBOutlet UIButton *currentLocationButton;
 
 // outlets
 @property (strong, nonatomic) IBOutlet UIView *homeActionView;
@@ -38,6 +39,7 @@
 - (IBAction)didTapEditCommute:(id)sender;
 - (IBAction)didTapRideNow:(id)sender;
 - (IBAction)didTapScheduleRide:(id)sender;
+- (IBAction)didTapCurrentLocation:(id)sender;
 
 
 
@@ -180,6 +182,9 @@
 }
 
 - (IBAction)didTapScheduleRide:(id)sender {
+}
+
+- (IBAction)didTapCurrentLocation:(id)sender {
 }
 
 
