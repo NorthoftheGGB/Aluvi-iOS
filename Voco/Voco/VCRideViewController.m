@@ -197,6 +197,27 @@
     
 }
 
+- (void) transitionFromEditHomeToEditWork {
+    // TODO: [_nextButton removeFromSuperview];
+    
+    _workLocationWidget.mode = kEditLocationWidgetEditMode;
+    CGRect frame = _homeLocationWidget.view.frame;
+    frame.origin.x = 0;
+    frame.origin.y = 156;
+    frame.size.height = 0;
+    _workLocationWidget.view.frame = frame;
+    [self.view addSubview:_workLocationWidget.view];
+    
+    [UIView animateWithDuration:0.35 animations:^{
+        CGRect frame = _workLocationWidget.view.frame;
+        frame.size.height = 47;
+        _workLocationWidget.view.frame = frame;
+    }];
+
+    
+    
+}
+
 
 
 - (void) didTapCancel: (id)sender {
@@ -247,6 +268,8 @@
 }
 
 - (IBAction)didTapNextButton:(id)sender {
+    [self transitionFromEditHomeToEditWork];
+    
 }
 
 
