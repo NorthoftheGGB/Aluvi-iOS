@@ -71,12 +71,12 @@
     if (self) {
         _appeared = NO;
         
-        _morningOptions = @[
+        _morningOptions = @[ @"Select Pickup Time",
                             @"6:00", @"6:30", @"7:00", @"7:30",
                             @"8:00", @"8:30", @"9:00", @"9:30",
                             @"10:00", @"10:30", @"11:00", @"11:30",
                             @"12:00"];
-        _eveningOptions = @[
+        _eveningOptions = @[ @"Select Return Time",
                             @"6:00", @"6:30", @"7:00", @"7:30",
                             @"8:00", @"8:30", @"9:00", @"9:30",
                             @"10:00", @"10:30", @"11:00", @"11:30",
@@ -165,21 +165,11 @@
     }];
     
     
+    [ActionSheetCustomPicker showPickerWithTitle:@"Pickup Time"
+                                         delegate:self
+                                 showCancelButton:YES
+                                           origin:self.view ];
     
-    [ActionSheetStringPicker showPickerWithTitle: @"coco"
-                                            rows: _morningOptions
-                                initialSelection:0
-                                       doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
-                                           [self transitionFromEditPickupTimeToEditHome];
-                                       } cancelBlock:^(ActionSheetStringPicker *picker) {
-                                           [self resetInterface];
-                                       } origin:self.view];
-    /*
-     [ActionSheetCustomPicker showPickerWithTitle:@"Departure Time"
-     delegate:self
-     showCancelButton:YES
-     origin:self.view];
-     */
 }
 
 - (void) resetInterface {
@@ -250,6 +240,9 @@
 }
 
 - (void) transitionFromEditWorkToSetReturnTime {
+    
+    _editCommuteState = kEditCommuteStateReturnTime;
+
     [_nextButton removeFromSuperview];
     
     CGRect frame = _returnHudView.frame;
@@ -265,19 +258,18 @@
     }];
     
     
+ 
+    [ActionSheetCustomPicker showPickerWithTitle:@"Return Time"
+                                        delegate:self
+                                showCancelButton:YES
+                                          origin:self.view ];
     
-    [ActionSheetStringPicker showPickerWithTitle: @"vococo"
-                                            rows: _eveningOptions
-                                initialSelection:0
-                                       doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
-                                           [self transitionFromSetReturnTimeToScheduleRide];
-                                       } cancelBlock:^(ActionSheetStringPicker *picker) {
-                                           [self transitionFromSetReturnTimeToEditWork];
-                                       } origin:self.view];
     
 }
 
 - (void) transitionFromSetReturnTimeToEditWork {
+    
+    _editCommuteState = kEditCommuteStateEditWork;
     
     [UIView animateWithDuration:0.35 animations:^{
         CGRect frame = _returnHudView.frame;
@@ -423,18 +415,62 @@
 - (void)actionSheetPicker:(AbstractActionSheetPicker *)actionSheetPicker configurePickerView:(UIPickerView *)pickerView {
     pickerView.delegate = self;
     [pickerView setBackgroundColor:[UIColor clearColor]];
+    [pickerView setAlpha:.95];
+  
+    [actionSheetPicker.toolbar setAlpha:.95];
+    [actionSheetPicker.toolbar setBackgroundColor:[UIColor clearColor]];
 }
 
-/*
- -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+- (void) actionSheetPickerDidSucceed:(AbstractActionSheetPicker *)actionSheetPicker origin:(id)origin {
+    if( _editCommuteState == kEditCommuteStateReturnTime) {
+        [self transitionFromSetReturnTimeToScheduleRide];
+    } else if ( _editCommuteState == kEditCommuteStatePickupTime) {
+        [self transitionFromEditPickupTimeToEditHome];
+    }
+}
+
+- (void) actionSheetPickerDidCancel:(AbstractActionSheetPicker *)actionSheetPicker origin:(id)origin {
+    if( _editCommuteState == kEditCommuteStateReturnTime) {
+        [self transitionFromSetReturnTimeToEditWork];
+    } else if ( _editCommuteState == kEditCommuteStatePickupTime) {
+        [self resetInterface];
+    }
+}
+
+#pragma mark - UIPickerViewDataSource
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    if( _editCommuteState == kEditCommuteStateReturnTime) {
+        return [_eveningOptions count];
+    } else if ( _editCommuteState == kEditCommuteStatePickupTime) {
+        return [_morningOptions count];
+    }
+    return 0;
+}
  
- }
- 
- 
- - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
- 
- }
- */
+#pragma mark - UIPickerViewDelegate
+
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    if( _editCommuteState == kEditCommuteStateReturnTime) {
+        return [_eveningOptions objectAtIndex:row];
+    } else if ( _editCommuteState == kEditCommuteStatePickupTime) {
+        return [_morningOptions objectAtIndex:row];
+    }
+    return @"";
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    NSString * value = [_morningOptions objectAtIndex:row];
+    if( _editCommuteState == kEditCommuteStateReturnTime) {
+        _returnTimeLabel.text = value;
+    } else if ( _editCommuteState == kEditCommuteStatePickupTime) {
+        _pickupTimeLabel.text = value;
+    }
+}
+
 
 #pragma mark - MapViewDelegate
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
