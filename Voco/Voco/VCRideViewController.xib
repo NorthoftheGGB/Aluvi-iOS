@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -9,10 +9,11 @@
                 <outlet property="currentLocationButton" destination="XIm-sQ-LdY" id="2n3-V0-Gec"/>
                 <outlet property="editCommuteButton" destination="N2Q-DX-cGh" id="s78-rO-yRn"/>
                 <outlet property="homeActionView" destination="XY9-N9-RDa" id="LQH-QX-Bja"/>
-                <outlet property="itemNameLabel" destination="pMC-XN-Zej" id="Zvh-NL-HPj"/>
-                <outlet property="itemValueLabel" destination="h5q-78-s1j" id="43K-bQ-Xnj"/>
                 <outlet property="nextButton" destination="4au-Tm-k8h" id="I8s-9S-4fi"/>
-                <outlet property="rideInfoItemView" destination="h5q-78-s1j" id="7zK-Vb-XrF"/>
+                <outlet property="pickupHudView" destination="h5q-78-s1j" id="0Fq-c8-T1G"/>
+                <outlet property="pickupTimeLabel" destination="KAQ-n3-AaS" id="Ycz-jk-2IJ"/>
+                <outlet property="returnHudView" destination="TKX-pK-w8D" id="kQS-XC-4O0"/>
+                <outlet property="returnTimeLabel" destination="Pwl-0s-xmB" id="9yw-JX-Vq9"/>
                 <outlet property="rideNowButton" destination="2sw-Bp-ZXq" id="SSL-Jr-zwk"/>
                 <outlet property="scheduleRideButton" destination="fxh-D2-Mbg" id="8gG-Qn-R33"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -99,7 +100,7 @@
                 <action selector="didTapScheduleRide:" destination="-1" eventType="touchUpInside" id="hk6-mb-Tsr"/>
             </connections>
         </button>
-        <view clipsSubviews="YES" alpha="0.90000000000000013" contentMode="scaleToFill" id="h5q-78-s1j" userLabel="PickUp/Return HUD">
+        <view clipsSubviews="YES" alpha="0.90000000000000013" contentMode="scaleToFill" id="h5q-78-s1j" userLabel="PickUp HUD">
             <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -119,7 +120,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:10 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAQ-n3-AaS" userLabel="pickup time" customClass="VCLabel">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:10 AM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAQ-n3-AaS" userLabel="pickup time" customClass="VCLabel">
                     <rect key="frame" x="177" y="13" width="76" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
@@ -425,6 +426,7 @@
             <state key="selected" image="current-location-button-selected.png"/>
             <state key="highlighted" image="current-location-button-selected.png"/>
             <connections>
+                <action selector="didTapCurrentLocation:" destination="-1" eventType="touchUpInside" id="zDN-Sv-V0l"/>
                 <action selector="didTapCurrentLocationButton:" destination="-1" eventType="touchUpInside" id="ChP-KM-0zt"/>
             </connections>
         </button>
@@ -458,6 +460,52 @@
                 <action selector="didTapNextButton:" destination="-1" eventType="touchUpInside" id="XAZ-QT-DcL"/>
             </connections>
         </button>
+        <view clipsSubviews="YES" alpha="0.89999997615814209" contentMode="scaleToFill" id="TKX-pK-w8D" userLabel="Return HUD">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RETURN TIME:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQb-cI-tRN" userLabel="return" customClass="VCLabel">
+                    <rect key="frame" x="64" y="13" width="114" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="2HP-dv-Bbj"/>
+                        <constraint firstAttribute="width" constant="114" id="Skj-dG-54C"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:10 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pwl-0s-xmB" userLabel="time" customClass="VCLabel">
+                    <rect key="frame" x="177" y="13" width="76" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="76" id="2VG-0b-rdJ"/>
+                        <constraint firstAttribute="height" constant="21" id="Tkd-90-eq0"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.63137257099999999" green="0.58039218189999997" blue="0.5647059083" alpha="1" colorSpace="deviceRGB"/>
+            <constraints>
+                <constraint firstItem="eQb-cI-tRN" firstAttribute="top" secondItem="TKX-pK-w8D" secondAttribute="top" constant="13" id="0g1-6A-3rn"/>
+                <constraint firstItem="eQb-cI-tRN" firstAttribute="leading" secondItem="TKX-pK-w8D" secondAttribute="leading" constant="64" id="Csr-pc-s8Y"/>
+                <constraint firstItem="Pwl-0s-xmB" firstAttribute="top" secondItem="TKX-pK-w8D" secondAttribute="top" constant="13" id="dgr-op-CHz"/>
+                <constraint firstAttribute="trailing" secondItem="Pwl-0s-xmB" secondAttribute="trailing" constant="67" id="kI9-UI-3To"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
     </objects>
     <resources>
         <image name="button-default.png" width="160" height="46"/>
