@@ -58,7 +58,7 @@
     // Marin
     MKCoordinateRegion region = MKCoordinateRegionMake(
                            CLLocationCoordinate2DMake(38.05513, -122.7488),
-                           MKCoordinateSpanMake(-122.403538650023 - -122.782637010672, 38.3101080899654 - 38.0596334734963)
+                           MKCoordinateSpanMake(.379098360649, .2504746164691)
     );
     request.region = region;
     if(_localSearch != nil){

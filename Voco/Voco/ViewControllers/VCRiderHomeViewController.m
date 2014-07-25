@@ -33,7 +33,7 @@
 
 #define kFareNotStartedLabelText @"Waiting"
 
-@interface VCRiderHomeViewController () <MKMapViewDelegate, VCLocationSearchViewControllerDelegate>
+@interface VCRiderHomeViewController () <MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *mapCenterPin;
 @property (weak, nonatomic) IBOutlet UIView *departureEntryView;

@@ -1171,9 +1171,6 @@
 				4F73CA01197F2AB0001B6663 /* VCRideViewController.h */,
 				4F73CA02197F2AB0001B6663 /* VCRideViewController.m */,
 				4F73CA03197F2AB0001B6663 /* VCRideViewController.xib */,
-				F4A7C8221962E235007E05AD /* VCLocationSearchViewController.h */,
-				F4A7C8231962E235007E05AD /* VCLocationSearchViewController.m */,
-				F4A7C8241962E235007E05AD /* VCLocationSearchViewController.xib */,
 			);
 			name = "Revision 2.0";
 			sourceTree = "<group>";
@@ -1679,6 +1676,9 @@
 				F4C6B2A2197F8A9400F6C10B /* VCEditLocationWidget.h */,
 				F4C6B2A3197F8A9400F6C10B /* VCEditLocationWidget.m */,
 				4F73CA0F197F82DA001B6663 /* VCEditLocationWidget.xib */,
+				F4A7C8221962E235007E05AD /* VCLocationSearchViewController.h */,
+				F4A7C8231962E235007E05AD /* VCLocationSearchViewController.m */,
+				F4A7C8241962E235007E05AD /* VCLocationSearchViewController.xib */,
 			);
 			name = "Edit Location Widget";
 			sourceTree = "<group>";

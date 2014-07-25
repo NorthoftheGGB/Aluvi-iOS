@@ -9,6 +9,7 @@
 #import "VCRideViewController.h"
 #import <MapKit/MapKit.h>
 #import <ActionSheetPicker-3.0/ActionSheetStringPicker.h>
+#import <ActionSheetCustomPicker.h>
 #import "VCLabel.h"
 #import "VCButtonStandardStyle.h"
 #import "VCEditLocationWidget.h"
@@ -63,9 +64,9 @@
     self.navigationItem.rightBarButtonItem = cancelItem;
     
     _homeLocationWidget = [[VCEditLocationWidget alloc] init];
-    _homeLocationWidget.locationSearchViewControllerDelegate = self;
+    _homeLocationWidget.delegate = self;
     _workLocationWidget = [[VCEditLocationWidget alloc] init];
-    _workLocationWidget.locationSearchViewControllerDelegate = self;
+    _workLocationWidget.delegate = self;
     [self addChildViewController:_homeLocationWidget];
     [self addChildViewController:_workLocationWidget];
 
@@ -132,6 +133,8 @@
                                        } cancelBlock:^(ActionSheetStringPicker *picker) {
                                            [self resetInterface];
                                        } origin:self.view];
+    
+   // [ActionSheetCustomPicker showPickerWithTitle:@"Departure Time" delegate:self showCancelButton:YES origin:self.view];
 }
 
 - (void) resetInterface {
