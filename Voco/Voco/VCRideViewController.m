@@ -17,6 +17,7 @@
 
 // map
 @property (strong, nonatomic) MKMapView *map;
+@property (strong, nonatomic) IBOutlet UIButton *currentLocationButton;
 
 
 // outlets
@@ -37,6 +38,7 @@
 - (IBAction)didTapEditCommute:(id)sender;
 - (IBAction)didTapRideNow:(id)sender;
 - (IBAction)didTapScheduleRide:(id)sender;
+- (IBAction)didTapCurrentLocation:(id)sender;
 
 
 
@@ -175,5 +177,8 @@
 }
 
 - (IBAction)didTapScheduleRide:(id)sender {
+}
+
+- (IBAction)didTapCurrentLocation:(id)sender {
 }
 @end
