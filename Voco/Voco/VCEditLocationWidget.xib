@@ -90,8 +90,8 @@
                         <action selector="didTapLocationText:" destination="-1" eventType="touchUpInside" id="4Qj-EQ-Omi"/>
                     </connections>
                 </button>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" placeholderIntrinsicWidth="30" placeholderIntrinsicHeight="30" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="g7a-85-mHD">
-                    <rect key="frame" x="277" y="5" width="37" height="37"/>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="g7a-85-mHD">
+                    <rect key="frame" x="291" y="14" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </activityIndicatorView>
             </subviews>
