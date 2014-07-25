@@ -77,6 +77,9 @@
 		4F3DB5C91981F6F400DDD094 /* VCRideDetailsHudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3DB5C81981F6F400DDD094 /* VCRideDetailsHudView.m */; };
 		4F3DB5CA1981F6F400DDD094 /* VCRideDetailsHudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3DB5C81981F6F400DDD094 /* VCRideDetailsHudView.m */; };
 		4F3DB5CB1981F6F400DDD094 /* VCRideDetailsHudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3DB5C81981F6F400DDD094 /* VCRideDetailsHudView.m */; };
+		4F3DB5CD19825FF700DDD094 /* overlay-graphic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3DB5CC19825FF700DDD094 /* overlay-graphic@2x.png */; };
+		4F3DB5CE19825FF700DDD094 /* overlay-graphic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3DB5CC19825FF700DDD094 /* overlay-graphic@2x.png */; };
+		4F3DB5CF19825FF700DDD094 /* overlay-graphic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3DB5CC19825FF700DDD094 /* overlay-graphic@2x.png */; };
 		4F73CA04197F2AB0001B6663 /* VCRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F73CA02197F2AB0001B6663 /* VCRideViewController.m */; };
 		4F73CA05197F2AB0001B6663 /* VCRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F73CA02197F2AB0001B6663 /* VCRideViewController.m */; };
 		4F73CA06197F2AB0001B6663 /* VCRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F73CA02197F2AB0001B6663 /* VCRideViewController.m */; };
@@ -729,6 +732,7 @@
 		4F3DB5B81981ED4E00DDD094 /* directions-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "directions-button@2x.png"; sourceTree = "<group>"; };
 		4F3DB5C71981F6F400DDD094 /* VCRideDetailsHudView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRideDetailsHudView.h; path = ViewControllers/VCRideDetailsHudView.h; sourceTree = "<group>"; };
 		4F3DB5C81981F6F400DDD094 /* VCRideDetailsHudView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRideDetailsHudView.m; path = ViewControllers/VCRideDetailsHudView.m; sourceTree = "<group>"; };
+		4F3DB5CC19825FF700DDD094 /* overlay-graphic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overlay-graphic@2x.png"; sourceTree = "<group>"; };
 		4F73CA01197F2AB0001B6663 /* VCRideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRideViewController.h; sourceTree = "<group>"; };
 		4F73CA02197F2AB0001B6663 /* VCRideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRideViewController.m; sourceTree = "<group>"; };
 		4F73CA03197F2AB0001B6663 /* VCRideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCRideViewController.xib; sourceTree = "<group>"; };
@@ -1252,6 +1256,7 @@
 		4FDB0ECA1970B0F000A8CEC2 /* Revision 2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				4F3DB5CC19825FF700DDD094 /* overlay-graphic@2x.png */,
 				4F3DB5B51981ED4E00DDD094 /* current-location-button-selected@2x.png */,
 				4F3DB5B61981ED4E00DDD094 /* current-location-button@2x.png */,
 				4F3DB5B71981ED4E00DDD094 /* directions-button-selected@2x.png */,
@@ -2056,6 +2061,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F3DB5CE19825FF700DDD094 /* overlay-graphic@2x.png in Resources */,
 				4FCD7C6319761C21007609E8 /* call-button-select@2x.png in Resources */,
 				4FE286EA1962B89700FD8AF6 /* current-location-arrow-select@2x.png in Resources */,
 				4F2EF9BA1961391B006A1962 /* scheduledrides-menu-button-selected@2x.png in Resources */,
@@ -2231,6 +2237,7 @@
 				4F3DB5BC1981ED4E00DDD094 /* current-location-button@2x.png in Resources */,
 				F4C6B27F197F06B100F6C10B /* profile-menu-button-select@2x.png in Resources */,
 				F4C6B280197F06B100F6C10B /* button-default@2x.png in Resources */,
+				4F3DB5CD19825FF700DDD094 /* overlay-graphic@2x.png in Resources */,
 				F4C6B281197F06B100F6C10B /* signUp_btn@2x.png in Resources */,
 				F4C6B282197F06B100F6C10B /* VCSignUpViewController.xib in Resources */,
 				F4C6B283197F06B100F6C10B /* voco_logo@2x.png in Resources */,
@@ -2334,6 +2341,7 @@
 				4F3DB5BE1981ED4E00DDD094 /* current-location-button@2x.png in Resources */,
 				4F2EF9A21960EC8C006A1962 /* profile-menu-button-select@2x.png in Resources */,
 				4FDB0ECD1970B10600A8CEC2 /* button-default@2x.png in Resources */,
+				4F3DB5CF19825FF700DDD094 /* overlay-graphic@2x.png in Resources */,
 				4FE641F8194168E80059BED1 /* signUp_btn@2x.png in Resources */,
 				4FE641CA1941584D0059BED1 /* VCSignUpViewController.xib in Resources */,
 				4FE641FA194168E80059BED1 /* voco_logo@2x.png in Resources */,

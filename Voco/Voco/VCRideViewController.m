@@ -47,6 +47,10 @@
 @property (strong, nonatomic) IBOutlet UIView *returnHudView;
 @property (weak, nonatomic) IBOutlet VCLabel *returnTimeLabel;
 
+//overlay
+
+@property (strong, nonatomic) IBOutlet UIView *overlayView;
+
 
 @property (strong, nonatomic) VCEditLocationWidget * homeLocationWidget;
 @property (strong, nonatomic) VCEditLocationWidget * workLocationWidget;
