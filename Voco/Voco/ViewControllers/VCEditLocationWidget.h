@@ -11,6 +11,8 @@
 
 #define kEditLocationWidgetEditMode 2000
 #define kEditLocationWidgetDisplayMode 2001
+#define kHomeType 3000
+#define kWorkType 3001
 
 @class VCEditLocationWidget;
 
@@ -24,7 +26,7 @@
 
 @property(nonatomic) NSInteger mode;
 @property(nonatomic, weak)  id<VCEditLocationWidgetDelegate> delegate ;
-
+@property (nonatomic) NSInteger type;
 - (void) setLocationText: (NSString *) text;
 
 @end

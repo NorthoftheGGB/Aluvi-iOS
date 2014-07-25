@@ -69,6 +69,8 @@
     _homeLocationWidget.delegate = self;
     _workLocationWidget = [[VCEditLocationWidget alloc] init];
     _workLocationWidget.delegate = self;
+    _homeLocationWidget.type = kHomeType;
+    _workLocationWidget.type = kWorkType;
     [self addChildViewController:_homeLocationWidget];
     [self addChildViewController:_workLocationWidget];
 
