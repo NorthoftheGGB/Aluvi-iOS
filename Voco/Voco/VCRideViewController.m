@@ -24,6 +24,7 @@
 
 // data
 @property (strong, nonatomic) NSArray * morningOptions;
+@property (strong, nonatomic) NSArray * eveningOptions;
 
 // outlets
 @property (strong, nonatomic) IBOutlet UIView *homeActionView;
@@ -32,9 +33,14 @@
 @property (strong, nonatomic) IBOutlet VCButtonStandardStyle *scheduleRideButton;
 @property (strong, nonatomic) IBOutlet VCButtonStandardStyle *nextButton;
 
-@property (strong, nonatomic) IBOutlet UIView *rideInfoItemView;
-@property (weak, nonatomic) IBOutlet VCLabel *itemNameLabel;
-@property (strong, nonatomic) IBOutlet UIView *itemValueLabel;
+//pickup hud
+@property (strong, nonatomic) IBOutlet UIView *pickupHudView;
+@property (weak, nonatomic) IBOutlet VCLabel *pickupTimeLabel;
+
+//return hud
+@property (strong, nonatomic) IBOutlet UIView *returnHudView;
+@property (weak, nonatomic) IBOutlet VCLabel *returnTimeLabel;
+
 
 @property (strong, nonatomic) VCEditLocationWidget * homeLocationWidget;
 @property (strong, nonatomic) VCEditLocationWidget * workLocationWidget;
@@ -134,16 +140,16 @@
 - (void) moveToEditCommute {
     [_homeActionView removeFromSuperview];
     
-    CGRect frame = _rideInfoItemView.frame;
+    CGRect frame = _pickupHudView.frame;
     frame.origin.x = 0;
     frame.origin.y = 62;
     frame.size.height = 0;
-    _rideInfoItemView.frame = frame;
-    [self.view addSubview:self.rideInfoItemView];
+    _pickupHudView.frame = frame;
+    [self.view addSubview:self.pickupHudView];
     [UIView animateWithDuration:0.35 animations:^{
-        CGRect frame = _rideInfoItemView.frame;
+        CGRect frame = _pickupHudView.frame;
         frame.size.height = 47;
-        _rideInfoItemView.frame = frame;
+        _pickupHudView.frame = frame;
     }];
     
     
@@ -166,7 +172,7 @@
 
 - (void) resetInterface {
     [UIView transitionWithView:self.view duration:.35 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-        [_rideInfoItemView removeFromSuperview];
+        [_pickupHudView removeFromSuperview];
         [_homeLocationWidget.view removeFromSuperview];
         [_workLocationWidget.view removeFromSuperview];
         [self showHome];
@@ -213,11 +219,63 @@
         frame.size.height = 47;
         _workLocationWidget.view.frame = frame;
     }];
-
-    
     
 }
 
+- (void) transitionFromEditWorkToSetReturnTime {
+    [_nextButton removeFromSuperview];
+    
+    CGRect frame = _returnHudView.frame;
+    frame.origin.x = 0;
+    frame.origin.y = 203;
+    frame.size.height = 0;
+    _returnHudView.frame = frame;
+    [self.view addSubview:self.returnHudView];
+    [UIView animateWithDuration:0.35 animations:^{
+        CGRect frame = _returnHudView.frame;
+        frame.size.height = 47;
+        _returnHudView.frame = frame;
+    }];
+    
+    
+    
+    [ActionSheetStringPicker showPickerWithTitle: @"vococo"
+                                            rows: _eveningOptions
+                                initialSelection:0
+                                       doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+                                           [self transitionFromSetReturnTimeToScheduleRide];
+                                       } cancelBlock:^(ActionSheetStringPicker *picker) {
+                                           [self transitionFromSetReturnTimeToEditWork];
+                                       } origin:self.view];
+    
+}
+
+- (void) transitionFromSetReturnTimeToEditWork {
+    
+    [UIView animateWithDuration:0.35 animations:^{
+        CGRect frame = _returnHudView.frame;
+        frame.size.height = 0;
+        _returnHudView.frame = frame;
+    } completion:^(BOOL finished) {
+        [_returnHudView removeFromSuperview];
+    } ];
+    
+    CGRect buttonFrame = _nextButton.frame;
+    buttonFrame.origin.x = 0;
+    buttonFrame.origin.y = self.view.frame.size.height - 53;
+    _nextButton.frame = buttonFrame;
+    [self.view addSubview:_nextButton];
+
+}
+
+- (void) transitionFromSetReturnTimeToScheduleRide {
+    
+    CGRect frame = _scheduleRideButton.frame;
+    frame.origin.x = 0;
+    frame.origin.y = self.view.frame.size.height - 53;
+    _scheduleRideButton.frame = frame;
+    [self.view addSubview:_scheduleRideButton];
+}
 
 
 - (void) didTapCancel: (id)sender {
@@ -265,11 +323,16 @@
 }
 
 - (IBAction)didTapScheduleRide:(id)sender {
+    //TODO: API Call
+
 }
 
 - (IBAction)didTapNextButton:(id)sender {
     [self transitionFromEditHomeToEditWork];
     
+}
+
+- (IBAction)didTapCurrentLocationButton:(id)sender {
 }
 
 
