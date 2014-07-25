@@ -51,7 +51,6 @@
 - (IBAction)didTapEditCommute:(id)sender;
 - (IBAction)didTapRideNow:(id)sender;
 - (IBAction)didTapScheduleRide:(id)sender;
-- (IBAction)didTapCurrentLocation:(id)sender;
 - (IBAction)didTapNextButton:(id)sender;
 
 
@@ -271,10 +270,10 @@
         _originAnnotation = annotation;
     } else if (_editCommuteState == kEditCommuteStateEditWork) {
         _destinationAnnotation = annotation;
-    } else {
-        return;
+        CLLocation * origin = [[CLLocation alloc] initWithLatitude:_originAnnotation.coordinate.latitude longitude:_originAnnotation.coordinate.longitude];
+        CLLocation * destination = [[CLLocation alloc] initWithLatitude:_destinationAnnotation.coordinate.latitude longitude:_destinationAnnotation.coordinate.longitude];
+        [self showSuggestedRoute:origin to:destination];
     }
-    
     
     CLLocation * location = [[CLLocation alloc] initWithLatitude:touchMapCoordinate.latitude  longitude:touchMapCoordinate.longitude];
     [self updateEditLocationWidget:widget withLocation:location];

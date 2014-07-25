@@ -78,32 +78,29 @@
     
     CLLocationCoordinate2D dropOffPointCoordinate;
     CLLocationCoordinate2D meetingPointCoordinate;
-    if(from == nil) {
-        dropOffPointCoordinate.latitude = [_transit.dropOffPointLatitude doubleValue];
-        dropOffPointCoordinate.longitude = [_transit.dropOffPointLongitude doubleValue];
-        meetingPointCoordinate.latitude = [_transit.meetingPointLatitude doubleValue];
-        meetingPointCoordinate.longitude = [_transit.meetingPointLongitude doubleValue];
-    } else {
-        dropOffPointCoordinate.latitude = from.coordinate.latitude;
-        dropOffPointCoordinate.longitude = from.coordinate.longitude;
-        meetingPointCoordinate.latitude = to.coordinate.latitude;
-        meetingPointCoordinate.longitude = to.coordinate.longitude;
-    }
+    dropOffPointCoordinate.latitude = from.coordinate.latitude;
+    dropOffPointCoordinate.longitude = from.coordinate.longitude;
+    meetingPointCoordinate.latitude = to.coordinate.latitude;
+    meetingPointCoordinate.longitude = to.coordinate.longitude;
     
-    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText= @"Fetching Route";
+    //MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    //hud.labelText= @"Fetching Route";
     [VCMapQuestRouting route:meetingPointCoordinate to:dropOffPointCoordinate success:^(MKPolyline *polyline, MKCoordinateRegion region) {
+        [_map removeOverlay:_routeOverlay];
         _routeOverlay = polyline;
         [_map addOverlay:_routeOverlay];
-        region.span.latitudeDelta *= 1.10;
-        region.span.longitudeDelta *= 1.10;
+        region.span.latitudeDelta *= 1.5;
+        region.span.longitudeDelta *= 1.5;
+        region.center.latitude *= 1.5;
+        
+        // TODO: need to adjust region
         self.rideRegion = region;
         [_map setRegion:region];
-        [hud hide:YES];
+        //[hud hide:YES];
     } failure:^{
-        [UIAlertView showWithTitle:@"Network Error" message:@"Woops, we couldn't contact the routing server.  You can still manage your ride though!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        // [UIAlertView showWithTitle:@"Network Error" message:@"Woops, we couldn't contact the routing server.  You can still manage your ride though!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
         NSLog(@"%@", @"Error talking with MapQuest routing API");
-        [hud hide:YES];
+        //[hud hide:YES];
     }];
     
 }
