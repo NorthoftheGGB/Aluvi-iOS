@@ -13,12 +13,12 @@
 #import "VCButtonStandardStyle.h"
 #import "VCEditLocationWidget.h"
 
-@interface VCRideViewController () <MKMapViewDelegate>
+@interface VCRideViewController () <MKMapViewDelegate, VCEditLocationWidgetDelegate>
 
 // map
 @property (strong, nonatomic) MKMapView *map;
+@property (strong, nonatomic) MKPointAnnotation * originAnnotation;
 @property (strong, nonatomic) IBOutlet UIButton *currentLocationButton;
-
 
 // outlets
 @property (strong, nonatomic) IBOutlet UIView *homeActionView;
@@ -65,7 +65,9 @@
     self.navigationItem.rightBarButtonItem = cancelItem;
     
     _homeLocationWidget = [[VCEditLocationWidget alloc] init];
+    _homeLocationWidget.locationSearchViewControllerDelegate = self;
     _workLocationWidget = [[VCEditLocationWidget alloc] init];
+    _workLocationWidget.locationSearchViewControllerDelegate = self;
     [self addChildViewController:_homeLocationWidget];
     [self addChildViewController:_workLocationWidget];
 
@@ -181,4 +183,18 @@
 
 - (IBAction)didTapCurrentLocation:(id)sender {
 }
+
+
+#pragma mark - VCLocationSearchViewControllerDelegate
+- (void) editLocationWidget:(VCEditLocationWidget *)widget didSelectMapItem:(MKMapItem *)mapItem {
+    if(_originAnnotation != nil){
+        [_map removeAnnotation:_originAnnotation];
+    }
+    _originAnnotation = [[MKPointAnnotation alloc] init];
+    _originAnnotation.coordinate = CLLocationCoordinate2DMake(mapItem.placemark.coordinate.latitude, mapItem.placemark.coordinate.longitude);
+    _originAnnotation.title = @"Home";
+    [_map addAnnotation:_originAnnotation];
+    [_map setCenterCoordinate:mapItem.placemark.coordinate animated:YES];
+}
+
 @end

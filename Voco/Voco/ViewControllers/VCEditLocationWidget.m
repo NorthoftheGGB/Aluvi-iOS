@@ -9,7 +9,6 @@
 #import "VCEditLocationWidget.h"
 #import "VCLabel.h"
 #import "VCTextField.h"
-#import "VCLocationSearchViewController.h"
 
 @interface VCEditLocationWidget () <VCLocationSearchViewControllerDelegate>
 
@@ -94,17 +93,16 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)e:(id)sender {
-    VCLocationSearchViewController * vc = [[VCLocationSearchViewController alloc] init];
-    vc.delegate = self;
-    [self.navigationController presentViewController:vc animated:YES completion:nil];
-
-}
-
 
 - (IBAction)didTapLocationText:(id)sender {
     VCLocationSearchViewController * vc = [[VCLocationSearchViewController alloc] init];
     vc.delegate = self;
     [self presentViewController:vc animated:YES completion:nil];
+}
+
+
+#pragma mark - VCLocationSearchViewControllerDelegate
+- (void)didSelectLocation:(MKMapItem *)mapItem {
+    [_delegate editLocationWidget:self didSelectMapItem:mapItem];
 }
 @end
