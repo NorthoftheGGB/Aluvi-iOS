@@ -176,6 +176,8 @@
         [_homeLocationWidget.view removeFromSuperview];
         [_workLocationWidget.view removeFromSuperview];
         [_returnHudView removeFromSuperview];
+        [_scheduleRideButton removeFromSuperview];
+        
         [self showHome];
     } completion:nil];
     
@@ -260,6 +262,8 @@
     } completion:^(BOOL finished) {
         [_returnHudView removeFromSuperview];
     } ];
+    
+    [_scheduleRideButton removeFromSuperview];
     
     CGRect buttonFrame = _nextButton.frame;
     buttonFrame.origin.x = 0;
