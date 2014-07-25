@@ -19,6 +19,7 @@
 @property (strong, nonatomic) IBOutlet VCTextField *editTextField;
 @property (strong, nonatomic) IBOutlet VCLabel *locationTypeLabel;
 @property (strong, nonatomic) IBOutlet VCLabel *locationNameLabel;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
 - (IBAction)didTapLocationText:(id)sender;
 
@@ -96,7 +97,16 @@
 
 
 - (void) setLocationText: (NSString *) text {
-    _editTextField.text = text;
+    _locationNameLabel.text = text;
+}
+
+- (void) setWaiting:(BOOL)waiting {
+    _waiting = waiting;
+    if(waiting == TRUE) {
+        [_spinner startAnimating];
+    } else {
+        [_spinner stopAnimating];
+    }
 }
 
 - (void)didReceiveMemoryWarning

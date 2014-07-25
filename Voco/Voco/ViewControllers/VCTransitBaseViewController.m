@@ -119,6 +119,17 @@
 }
 
 
+// IBOutlets
+- (IBAction)didTapCurrentLocationButton:(id)sender {
+    MKCoordinateRegion mapRegion;
+    mapRegion.center.latitude = self.map.userLocation.coordinate.latitude;
+    mapRegion.center.longitude = self.map.userLocation.coordinate.longitude;
+    mapRegion.span.latitudeDelta = self.map.region.span.latitudeDelta;
+    mapRegion.span.longitudeDelta = self.map.region.span.longitudeDelta;
+    [self.map setRegion:mapRegion animated: YES];
+}
+
+
 #pragma mark MKMapViewDelegate
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay

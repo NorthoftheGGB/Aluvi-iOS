@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import <ActionSheetPicker-3.0/ActionSheetStringPicker.h>
 #import <ActionSheetCustomPicker.h>
+@import AddressBookUI;
 #import "VCLabel.h"
 #import "VCButtonStandardStyle.h"
 #import "VCEditLocationWidget.h"
@@ -18,6 +19,7 @@
 
 // map
 @property (strong, nonatomic) MKPointAnnotation * originAnnotation;
+@property (strong, nonatomic) MKPointAnnotation * destinationAnnotation;
 @property (strong, nonatomic) IBOutlet UIButton *currentLocationButton;
 
 // data
@@ -125,7 +127,7 @@
     currentLocationframe.origin.y = self.view.frame.size.height - 101;
     _currentLocationButton.frame = currentLocationframe;
     [self.view addSubview:self.currentLocationButton];
-
+    
     
 }
 
@@ -186,7 +188,7 @@
         frame.size.height = 47;
         _homeLocationWidget.view.frame = frame;
     }];
-
+    
     CGRect buttonFrame = _nextButton.frame;
     buttonFrame.origin.x = 0;
     buttonFrame.origin.y = self.view.frame.size.height - 53;
@@ -215,17 +217,22 @@
     _originAnnotation = [[MKPointAnnotation alloc] init];
     _originAnnotation.coordinate = touchMapCoordinate;
     [self.map addAnnotation:_originAnnotation];
- 
-
-    CLLocation * location = [[CLLocation alloc] initWithLatitude:touchMapCoordinate.latitude  longitude:touchMapCoordinate.longitude];
-    [self.geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
-        MKPlacemark * placemark = [placemarks objectAtIndex:0];
-        //self.request.originPlaceName = [placemark name];
-        [_homeLocationWidget setLocationText: [placemark name]];
-        _homeLocationWidget.mode = kEditLocationWidgetDisplayMode;
-    }];
     
+    
+    CLLocation * location = [[CLLocation alloc] initWithLatitude:touchMapCoordinate.latitude  longitude:touchMapCoordinate.longitude];
+    [self updateEditLocationWidget:_homeLocationWidget withLocation:location];
+    
+}
 
+- (void) updateEditLocationWidget: (VCEditLocationWidget *) editLocationWidget withLocation: (CLLocation *) location {
+    editLocationWidget.waiting = YES;
+    [self.geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+        MKPlacemark * placemark = placemarks[0];
+        [editLocationWidget setLocationText:  ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO)];
+        editLocationWidget.mode = kEditLocationWidgetDisplayMode;
+        editLocationWidget.waiting = NO;
+        
+    }];
 }
 
 - (IBAction)didTapEditCommute:(id)sender {
@@ -239,24 +246,42 @@
 - (IBAction)didTapScheduleRide:(id)sender {
 }
 
-- (IBAction)didTapCurrentLocation:(id)sender {
-}
-
 - (IBAction)didTapNextButton:(id)sender {
 }
 
 
 #pragma mark - VCLocationSearchViewControllerDelegate
 - (void) editLocationWidget:(VCEditLocationWidget *)widget didSelectMapItem:(MKMapItem *)mapItem {
-    if(_originAnnotation != nil){
-        [self.map removeAnnotation:_originAnnotation];
+    
+    if(widget.type == kHomeType) {
+    
+        if(_originAnnotation != nil){
+            [self.map removeAnnotation:_originAnnotation];
+        }
+        _originAnnotation = [[MKPointAnnotation alloc] init];
+        _originAnnotation.coordinate = CLLocationCoordinate2DMake(mapItem.placemark.coordinate.latitude, mapItem.placemark.coordinate.longitude);
+        _originAnnotation.title = @"Home";
+        [self.map addAnnotation:_originAnnotation];
+        widget.waiting = NO;
+        
+    } else if (widget.type == kWorkType) {
+        
+        if(_destinationAnnotation != nil){
+            [self.map removeAnnotation:_destinationAnnotation];
+        }
+        _destinationAnnotation = [[MKPointAnnotation alloc] init];
+        _destinationAnnotation.coordinate = CLLocationCoordinate2DMake(mapItem.placemark.coordinate.latitude, mapItem.placemark.coordinate.longitude);
+        _destinationAnnotation.title = @"Work";
+        [self.map addAnnotation:_destinationAnnotation];
+        widget.waiting = NO;
+
     }
-    _originAnnotation = [[MKPointAnnotation alloc] init];
-    _originAnnotation.coordinate = CLLocationCoordinate2DMake(mapItem.placemark.coordinate.latitude, mapItem.placemark.coordinate.longitude);
-    _originAnnotation.title = @"Home";
-    [self.map addAnnotation:_originAnnotation];
+    
+    
     [self.map setCenterCoordinate:mapItem.placemark.coordinate animated:YES];
 }
+
+// TODO: do something
 
 #pragma mark - ActionSheetCustomPickerDelegate
 - (void)actionSheetPicker:(AbstractActionSheetPicker *)actionSheetPicker configurePickerView:(UIPickerView *)pickerView {
@@ -275,8 +300,6 @@
  }
  */
 
-
-
 #pragma mark - MapViewDelegate
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     if(annotation == _originAnnotation) {
@@ -288,5 +311,22 @@
     }
     return nil;
 }
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)annotationView didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState {
+    
+    if( oldState == MKAnnotationViewDragStateDragging && newState == MKAnnotationViewDragStateEnding) {
+        
+        CLLocation * location = [[CLLocation alloc] initWithLatitude:annotationView.annotation.coordinate.latitude
+                                                           longitude:annotationView.annotation.coordinate.longitude];
+        
+        if([annotationView.annotation isEqual: _originAnnotation]) {
+            [self updateEditLocationWidget:_homeLocationWidget withLocation:location];
+        } else if ( [annotationView.annotation isEqual: _destinationAnnotation]) {
+            [self updateEditLocationWidget:_workLocationWidget withLocation:location];
+        }
+        
+    }
+}
+
 
 @end

@@ -27,6 +27,8 @@
 @property(nonatomic) NSInteger mode;
 @property(nonatomic, weak)  id<VCEditLocationWidgetDelegate> delegate ;
 @property (nonatomic) NSInteger type;
+@property (nonatomic) BOOL waiting;
+
 - (void) setLocationText: (NSString *) text;
 
 @end
