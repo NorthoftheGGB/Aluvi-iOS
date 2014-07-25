@@ -86,9 +86,6 @@
 		4F73CA10197F82DA001B6663 /* VCEditLocationWidget.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F73CA0F197F82DA001B6663 /* VCEditLocationWidget.xib */; };
 		4F73CA11197F82DA001B6663 /* VCEditLocationWidget.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F73CA0F197F82DA001B6663 /* VCEditLocationWidget.xib */; };
 		4F73CA12197F82DA001B6663 /* VCEditLocationWidget.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F73CA0F197F82DA001B6663 /* VCEditLocationWidget.xib */; };
-		4F73CA14197F891F001B6663 /* confimation-details-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F73CA13197F891F001B6663 /* confimation-details-bg@2x.png */; };
-		4F73CA15197F891F001B6663 /* confimation-details-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F73CA13197F891F001B6663 /* confimation-details-bg@2x.png */; };
-		4F73CA16197F891F001B6663 /* confimation-details-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F73CA13197F891F001B6663 /* confimation-details-bg@2x.png */; };
 		4F9909C5195CCE6500E83164 /* log-in-box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9909C4195CCE6500E83164 /* log-in-box@2x.png */; };
 		4F9ECEA7196618C300AD4229 /* VCNameTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEA6196618C300AD4229 /* VCNameTextField.m */; };
 		4F9ECEA8196618C300AD4229 /* VCNameTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEA6196618C300AD4229 /* VCNameTextField.m */; };
@@ -736,7 +733,6 @@
 		4F73CA02197F2AB0001B6663 /* VCRideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRideViewController.m; sourceTree = "<group>"; };
 		4F73CA03197F2AB0001B6663 /* VCRideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCRideViewController.xib; sourceTree = "<group>"; };
 		4F73CA0F197F82DA001B6663 /* VCEditLocationWidget.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCEditLocationWidget.xib; sourceTree = "<group>"; };
-		4F73CA13197F891F001B6663 /* confimation-details-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "confimation-details-bg@2x.png"; sourceTree = "<group>"; };
 		4F9909C4195CCE6500E83164 /* log-in-box@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log-in-box@2x.png"; sourceTree = "<group>"; };
 		4F9ECEA5196618C300AD4229 /* VCNameTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCNameTextField.h; sourceTree = "<group>"; };
 		4F9ECEA6196618C300AD4229 /* VCNameTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCNameTextField.m; sourceTree = "<group>"; };
@@ -1205,6 +1201,7 @@
 		4F73CA00197F2A6A001B6663 /* Revision 2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				F49B6FBA19821F47003D9386 /* Common */,
 				4F3DB5C61981F6AB00DDD094 /* Views */,
 				F4C6B2A1197F8A6200F6C10B /* Edit Location Widget */,
 				4F73CA01197F2AB0001B6663 /* VCRideViewController.h */,
@@ -1683,6 +1680,13 @@
 				F4792AE219750975005AB652 /* LogFiles.m */,
 			);
 			path = lelib;
+			sourceTree = "<group>";
+		};
+		F49B6FBA19821F47003D9386 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 		F49EDD071946A63F0020B8BB /* Fonts */ = {

@@ -23,8 +23,6 @@
     if (self) {
         if (!self.geocoder) {
             self.geocoder = [[CLGeocoder alloc] init];
-            
-
         }
     }
     return self;
@@ -34,12 +32,11 @@
 {
     [super viewDidLoad];
     
-    _map = [[MKMapView alloc] initWithFrame:self.view.frame];
-    _map.delegate = self;
-    [self.view insertSubview:_map atIndex:0];
-    _map.showsUserLocation = YES;
+ 
     
 }
+
+
 
 - (void) viewDidAppear:(BOOL)animated {
     UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Reset Map" style:UIBarButtonItemStylePlain

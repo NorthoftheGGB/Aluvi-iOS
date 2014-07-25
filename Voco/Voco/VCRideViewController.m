@@ -14,12 +14,14 @@
 #import "VCButtonStandardStyle.h"
 #import "VCEditLocationWidget.h"
 
-@interface VCRideViewController () <MKMapViewDelegate, VCEditLocationWidgetDelegate>
+@interface VCRideViewController () <MKMapViewDelegate, VCEditLocationWidgetDelegate, ActionSheetCustomPickerDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
 // map
-@property (strong, nonatomic) MKMapView *map;
 @property (strong, nonatomic) MKPointAnnotation * originAnnotation;
 @property (strong, nonatomic) IBOutlet UIButton *currentLocationButton;
+
+// data
+@property (strong, nonatomic) NSArray * morningOptions;
 
 // outlets
 @property (strong, nonatomic) IBOutlet UIView *homeActionView;
@@ -52,6 +54,12 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         _appeared = NO;
+        
+        _morningOptions = @[
+                            @"6:00", @"6:30", @"7:00", @"7:30",
+                            @"8:00", @"8:30", @"9:00", @"9:30",
+                            @"10:00", @"10:30", @"11:00", @"11:30",
+                            @"12:00"];
     }
     return self;
 }
@@ -71,20 +79,24 @@
     _workLocationWidget.delegate = self;
     [self addChildViewController:_homeLocationWidget];
     [self addChildViewController:_workLocationWidget];
-
     
 }
 - (void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
     
     if(!_appeared){
         [self showHome];
-    
-        _map = [[MKMapView alloc] initWithFrame:self.view.frame];
-        _map.delegate = self;
-        [self.view insertSubview:_map atIndex:0];
-        _map.showsUserLocation = YES;
+        
+        self.map = [[MKMapView alloc] initWithFrame:self.view.frame];
+        self.map.delegate = self;
+        [self.view insertSubview:self.map atIndex:0];
+        self.map.showsUserLocation = YES;
         
         _appeared = YES;
+        
+        UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+        lpgr.minimumPressDuration = 0.5; //user needs to press for half a second.
+        [self.map addGestureRecognizer:lpgr];
     }
     
 }
@@ -99,10 +111,10 @@
 - (void) showHome{
     
     CGRect frame = _homeActionView.frame;
-     frame.origin.x = 0;
-     frame.origin.y = self.view.frame.size.height - 53;
-     _homeActionView.frame = frame;
-     [self.view addSubview:self.homeActionView];
+    frame.origin.x = 0;
+    frame.origin.y = self.view.frame.size.height - 53;
+    _homeActionView.frame = frame;
+    [self.view addSubview:self.homeActionView];
     
 }
 
@@ -121,22 +133,22 @@
         _rideInfoItemView.frame = frame;
     }];
     
-    NSArray *morningOptions = @[
-                                @"6:00", @"6:30", @"7:00", @"7:30",
-                                @"8:00", @"8:30", @"9:00", @"9:30",
-                                @"10:00", @"10:30", @"11:00", @"11:30",
-                                @"12:00"];
+    
     
     [ActionSheetStringPicker showPickerWithTitle: @"coco"
-                                            rows: morningOptions
+                                            rows: _morningOptions
                                 initialSelection:0
                                        doneBlock:^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
                                            [self editHome];
                                        } cancelBlock:^(ActionSheetStringPicker *picker) {
                                            [self resetInterface];
                                        } origin:self.view];
-    
-   // [ActionSheetCustomPicker showPickerWithTitle:@"Departure Time" delegate:self showCancelButton:YES origin:self.view];
+    /*
+     [ActionSheetCustomPicker showPickerWithTitle:@"Departure Time"
+     delegate:self
+     showCancelButton:YES
+     origin:self.view];
+     */
 }
 
 - (void) resetInterface {
@@ -146,7 +158,7 @@
         [_workLocationWidget.view removeFromSuperview];
         [self showHome];
     } completion:nil];
-
+    
 }
 
 - (void) editHome {
@@ -157,13 +169,13 @@
     frame.size.height = 0;
     _homeLocationWidget.view.frame = frame;
     [self.view addSubview:_homeLocationWidget.view];
-
+    
     [UIView animateWithDuration:0.35 animations:^{
         CGRect frame = _homeLocationWidget.view.frame;
         frame.size.height = 47;
         _homeLocationWidget.view.frame = frame;
     }];
-
+    
     
 }
 
@@ -171,6 +183,33 @@
 
 - (void) didTapCancel: (id)sender {
     [self resetInterface];
+}
+
+- (void)handleLongPress:(UIGestureRecognizer *)gestureRecognizer {
+    if (gestureRecognizer.state != UIGestureRecognizerStateBegan) {
+        return;
+    }
+    
+    if( _originAnnotation != nil ){
+        [self.map removeAnnotation:_originAnnotation];
+    }
+    
+    CGPoint touchPoint = [gestureRecognizer locationInView:self.map];
+    CLLocationCoordinate2D touchMapCoordinate = [self.map convertPoint:touchPoint toCoordinateFromView:self.map];
+    _originAnnotation = [[MKPointAnnotation alloc] init];
+    _originAnnotation.coordinate = touchMapCoordinate;
+    [self.map addAnnotation:_originAnnotation];
+ 
+
+    CLLocation * location = [[CLLocation alloc] initWithLatitude:touchMapCoordinate.latitude  longitude:touchMapCoordinate.longitude];
+    [self.geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+        MKPlacemark * placemark = [placemarks objectAtIndex:0];
+        //self.request.originPlaceName = [placemark name];
+        [_homeLocationWidget setLocationText: [placemark name]];
+        _homeLocationWidget.mode = kEditLocationWidgetDisplayMode;
+    }];
+    
+
 }
 
 - (IBAction)didTapEditCommute:(id)sender {
@@ -191,13 +230,44 @@
 #pragma mark - VCLocationSearchViewControllerDelegate
 - (void) editLocationWidget:(VCEditLocationWidget *)widget didSelectMapItem:(MKMapItem *)mapItem {
     if(_originAnnotation != nil){
-        [_map removeAnnotation:_originAnnotation];
+        [self.map removeAnnotation:_originAnnotation];
     }
     _originAnnotation = [[MKPointAnnotation alloc] init];
     _originAnnotation.coordinate = CLLocationCoordinate2DMake(mapItem.placemark.coordinate.latitude, mapItem.placemark.coordinate.longitude);
     _originAnnotation.title = @"Home";
-    [_map addAnnotation:_originAnnotation];
-    [_map setCenterCoordinate:mapItem.placemark.coordinate animated:YES];
+    [self.map addAnnotation:_originAnnotation];
+    [self.map setCenterCoordinate:mapItem.placemark.coordinate animated:YES];
+}
+
+#pragma mark - ActionSheetCustomPickerDelegate
+- (void)actionSheetPicker:(AbstractActionSheetPicker *)actionSheetPicker configurePickerView:(UIPickerView *)pickerView {
+    pickerView.delegate = self;
+    [pickerView setBackgroundColor:[UIColor clearColor]];
+}
+
+/*
+ -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+ 
+ }
+ 
+ 
+ - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+ 
+ }
+ */
+
+
+
+#pragma mark - MapViewDelegate
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    if(annotation == _originAnnotation) {
+        MKPinAnnotationView * pinAnnotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"PIN_ANNOTATION"];
+        pinAnnotationView.animatesDrop = YES;
+        pinAnnotationView.pinColor = MKPinAnnotationColorRed;
+        pinAnnotationView.draggable = YES;
+        return pinAnnotationView;
+    }
+    return nil;
 }
 
 @end

@@ -22,6 +22,7 @@
 @property (strong, nonatomic) MKPointAnnotation * meetingPointAnnotation;
 @property (nonatomic) MKCoordinateRegion rideRegion;
 
+
 - (void) showSuggestedRoute;
 - (void) showSuggestedRoute: (CLLocation *) from to: (CLLocation *) to;
 - (void) annotateMeetingPoint: (CLLocation *) meetingPoint andDropOffPoint: (CLLocation *) dropOffPoint;
