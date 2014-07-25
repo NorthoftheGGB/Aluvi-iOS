@@ -7,7 +7,6 @@
 //
 
 #import "VCLocationSearchViewController.h"
-#import <MapKit/MapKit.h>
 @import AddressBookUI;
 
 @interface VCLocationSearchViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -87,6 +86,14 @@
     cell.textLabel.text = mapItem.name;
     cell.detailTextLabel.text = ABCreateStringWithAddressDictionary(mapItem.placemark.addressDictionary, NO);
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(_delegate != nil){
+        MKMapItem * mapItem = [_searchItems objectAtIndex:[indexPath row]];
+        [_delegate didSelectLocation: mapItem ];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 @end

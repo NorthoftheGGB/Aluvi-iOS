@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 @protocol VCLocationSearchViewControllerDelegate <NSObject>
 
-//- (void) didSelectLocation
+- (void) didSelectLocation: (MKMapItem *) mapPoint;
 
 @end
 
