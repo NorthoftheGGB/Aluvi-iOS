@@ -175,6 +175,7 @@
         [_pickupHudView removeFromSuperview];
         [_homeLocationWidget.view removeFromSuperview];
         [_workLocationWidget.view removeFromSuperview];
+        [_returnHudView removeFromSuperview];
         [self showHome];
     } completion:nil];
     
