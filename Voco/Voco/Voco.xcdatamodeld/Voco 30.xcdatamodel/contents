@@ -36,11 +36,11 @@
         <attribute name="dropOffPointLatitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="dropOffPointLongitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="dropOffPointPlaceName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fare_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="meetingPointLatitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="meetingPointLongitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="meetingPointPlaceName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pickupTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="ride_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="savedState" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="driver" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Driver" inverseName="fares" inverseEntity="Driver" syncable="YES"/>
         <relationship name="earning" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Earning" inverseName="fare" inverseEntity="Earning" syncable="YES"/>
@@ -84,6 +84,7 @@
         <attribute name="dropOffPointLongitude" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
         <attribute name="dropOffPointPlaceName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="estimated_arrival_time" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="fare_id" optional="YES" attributeType="Integer 64" syncable="YES"/>
         <attribute name="meetingPointLatitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="meetingPointLongitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="meetingPointPlaceName" optional="YES" attributeType="String" syncable="YES"/>
@@ -91,7 +92,6 @@
         <attribute name="originLongitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="originPlaceName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pickupTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="request_id" optional="YES" attributeType="Integer 64" syncable="YES"/>
         <attribute name="requestedTimestamp" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="requestType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ride_id" optional="YES" attributeType="Integer 64" syncable="YES"/>

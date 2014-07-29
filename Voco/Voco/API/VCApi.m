@@ -12,6 +12,7 @@
 #import "VCRiderApi.h"
 #import "VCDriverApi.h"
 #import "VCUsersApi.h"
+#import "VCDevicesApi.h"
 #import "VCObjectRequestOperation.h"
 #import "VCAppDelegate.h"
 #import "VCCoreData.h"
@@ -30,6 +31,7 @@ static NSString * apiToken;
     [VCRiderApi setup: objectManager];
     [VCDriverApi setup: objectManager];
     [VCUsersApi setup: objectManager];
+    [VCDevicesApi setup:objectManager];
         
     [self setApiToken: [[NSUserDefaults standardUserDefaults] stringForKey:API_TOKEN_KEY]];
     

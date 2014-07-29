@@ -10,14 +10,14 @@
 
 @implementation VCRequestUpdate
 
-+  (void)createMappings:(RKObjectManager *)objectManager {
++  (RKObjectMapping *) getMapping {
     RKObjectMapping * mapping = [RKObjectMapping mappingForClass:[VCRequestUpdate class]];
     [mapping addAttributeMappingsFromDictionary:@{
                                                   @"request_id" : @"requestId"
                                                   }];
-    RKObjectMapping * requestMapping = [mapping inverseMapping];
-    RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[VCRequestUpdate class] rootKeyPath:nil method:RKRequestMethodPOST];
-    [objectManager addRequestDescriptor:requestDescriptor];
+    return mapping;
+
+
 
     
 }

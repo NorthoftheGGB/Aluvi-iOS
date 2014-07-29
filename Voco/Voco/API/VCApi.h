@@ -25,7 +25,7 @@
 #define API_POST_DRIVER_CANCELLED @"rides/driver_cancelled"
 #define API_POST_RIDER_CANCELLED @"rides/rider_cancelled"
 #define API_POST_RIDE_PICKUP @"rides/pickup"
-#define API_POST_RIDE_ARRIVED @"rides/arrived"
+#define API_POST_FARE_COMPLETED @"rides/arrived"
 
 #define API_GET_RIDE_OFFERS @"rides/offers"
 #define API_GET_ACTIVE_REQUESTS @"rides/requests"

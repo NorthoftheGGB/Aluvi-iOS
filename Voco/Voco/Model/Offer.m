@@ -28,7 +28,7 @@
                                                         inManagedObjectStore: [VCCoreData managedObjectStore]];
     
     [entityMapping addAttributeMappingsFromDictionary:@{@"id": @"id",
-                                                        @"ride_id" : @"ride_id",
+                                                        @"fare_id" : @"fare_id",
                                                         @"state" : @"state",
                                                         @"created_at" : @"createdAt",
                                                         @"updated_at" : @"updatedAt",

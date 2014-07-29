@@ -11,8 +11,8 @@
 
 @interface VCRideRequestCreated : NSObject
 
-@property (nonatomic, strong) NSNumber * rideRequestId;
+@property (nonatomic, strong) NSNumber * rideId;
 
-+ (void) createMappings: (RKObjectManager *) objectManager;
++ (RKObjectMapping *) getMapping;
 
 @end

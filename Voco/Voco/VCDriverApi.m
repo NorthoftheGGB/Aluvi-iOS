@@ -23,16 +23,16 @@
 @implementation VCDriverApi
 
 + (void) setup: (RKObjectManager *) objectManager {
-    [VCFareDriverAssignment createMappings:objectManager];
-    [VCRideIdentity createMappings:objectManager];
     [Offer createMappings:objectManager];
     [Fare createMappings:objectManager];
+    [Earning createMappings:objectManager];
+    
+    [VCFareDriverAssignment createMappings:objectManager];
     [VCGeoObject createMappings:objectManager];
     [VCDriverGeoObject createMappings:objectManager];
     [VCDriverRegistration createMappings:objectManager];
     [VCFareIdentity createMappings:objectManager];
     [VCFare createMappings:objectManager];
-    [Earning createMappings:objectManager];
     
     // Responses (some have not been moved here yet)
     {
@@ -55,10 +55,10 @@
     }
     {
         RKResponseDescriptor * responseDescriptor2 = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
-                                                                                              method:RKRequestMethodPOST
-                                                                                         pathPattern:API_POST_RIDE_PICKUP
-                                                                                             keyPath:nil
-                                                                                         statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+                                                                                                  method:RKRequestMethodPOST
+                                                                                             pathPattern:API_POST_RIDE_PICKUP
+                                                                                                 keyPath:nil
+                                                                                             statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:responseDescriptor2];
     }
     {
@@ -76,7 +76,7 @@
                                                                                              statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:responseDescriptor2];
     }
-
+    
 }
 
 + (void) registerDriverWithLicenseNumber: (NSString *) driversLicenseNumber
@@ -150,12 +150,28 @@
                                        }];
 }
 
-+ (void) declineFare: (NSNumber *) fareId
++ (void) acceptFare: (NSNumber *) fareId
             success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
             failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     
     VCFareDriverAssignment * assignment = [[VCFareDriverAssignment alloc] init];
-    assignment.rideId = fareId;
+    assignment.fareId = fareId;
+    [[RKObjectManager sharedManager] postObject:assignment
+                                           path:API_POST_RIDE_ACCEPTED
+                                     parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            success(operation, mappingResult);
+                                        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            failure(operation, error);
+                                        }];
+}
+
++ (void) declineFare: (NSNumber *) fareId
+             success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+             failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+    
+    VCFareDriverAssignment * assignment = [[VCFareDriverAssignment alloc] init];
+    assignment.fareId = fareId;
     
     [[VCDebug sharedInstance] apiLog:@"API: Driver cancel ride"];
     [[RKObjectManager sharedManager] postObject:assignment
@@ -166,11 +182,11 @@
                                             
                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                             [[VCDebug sharedInstance] apiLog:@"API: Driver cancel ride failure"];
-
+                                            
                                             if(operation.HTTPRequestOperation.response.statusCode == 404){
                                                 // ride is actually assigned to this driver already, can't be decline
                                                 [[VCDebug sharedInstance] apiLog:@"API: Driver cancel ride failure - already assigned to the logged in driver"];
-
+                                                
                                                 [WRUtilities criticalErrorWithString:@"This ride is already assigned to the logged in driver.  It cannot be declined and must be cancelled instead"];
                                                 failure(operation, error);
                                                 
@@ -183,6 +199,52 @@
                                             }
                                         }];
 }
+
++ (void) ridersPickedUp: (NSNumber *) fareId
+                success: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure
+
+{
+    VCFareDriverAssignment * rideIdentity = [[VCFareDriverAssignment alloc] init];
+    rideIdentity.fareId = fareId;
+      [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_RIDE_PICKUP parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+          success(operation, mappingResult);
+      } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+          failure(operation, error);
+      }];
+}
+
++ (void) fareCancelledByDriver: (NSNumber *) fareId
+                       success: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                       failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+    
+    VCFareDriverAssignment * rideIdentity = [[VCFareDriverAssignment alloc] init];
+    rideIdentity.fareId = fareId;
+    
+     [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_DRIVER_CANCELLED parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+         success(operation, mappingResult);
+     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+         failure(operation, error);
+     }];
+}
+
++ (void) fareCompleted: (NSNumber *) fareId
+                       success: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                       failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+    
+    VCFareDriverAssignment * rideIdentity = [[VCFareDriverAssignment alloc] init];
+    rideIdentity.fareId = fareId;
+    
+    [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_FARE_COMPLETED parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        success(operation, mappingResult);
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        failure(operation, error);
+    }];
+    
+}
+
+
+
 
 + (void) refreshActiveRidesWithSuccess: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                                failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {

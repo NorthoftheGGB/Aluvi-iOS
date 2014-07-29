@@ -335,8 +335,8 @@
                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                             VCDriverGeoObject * geoObject = mappingResult.firstObject;
                             
-                            if( [VCUserState instance].underwayRideId == nil
-                               || ![geoObject.currentFareId isEqualToNumber:[VCUserState instance].underwayRideId]){
+                            if( [VCUserState instance].underwayFareId == nil
+                               || ![geoObject.currentFareId isEqualToNumber:[VCUserState instance].underwayFareId]){
                                 // don't show annotation yet
                                 return;
                             }
@@ -674,7 +674,7 @@
     [VCRiderApi requestRide:self.request success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         _request.forcedState = kRequestedState;
         VCRideRequestCreated * rideRequestCreatedResponse = mappingResult.firstObject;
-        self.request.ride_id = rideRequestCreatedResponse.rideid;
+        self.request.ride_id = rideRequestCreatedResponse.rideId;
         [VCCoreData saveContext];
         [hud hide:YES];
         [UIAlertView showWithTitle:@"Ride Requested"

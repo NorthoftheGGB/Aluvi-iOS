@@ -9,7 +9,9 @@
 #import "VCDevicesApi.h"
 
 @implementation VCDevicesApi
-
++ (void) setup: (RKObjectManager *) objectManager {
+    [VCDevice createMappings:objectManager];
+}
 
 + (void) updatePushToken: (NSString *) pushToken
                  success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success

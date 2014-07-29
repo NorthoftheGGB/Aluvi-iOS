@@ -33,7 +33,7 @@
                                                           inManagedObjectStore: [VCCoreData managedObjectStore]];
     
     [entityMapping addAttributeMappingsFromDictionary:@{
-                                                        @"id" : @"ride_id",
+                                                        @"id" : @"fare_id",
                                                         @"state" : @"savedState",
                                                         @"meeting_point_place_name" : @"meetingPointPlaceName",
                                                         @"meeting_point_latitude" : @"meetingPointLatitude",

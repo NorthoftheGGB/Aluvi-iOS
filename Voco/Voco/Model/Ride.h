@@ -58,7 +58,7 @@
 @property (nonatomic, retain) Car *car;
 
 
-+ (Ride *) requestWithRideId: (NSNumber *) rideId;
++ (Ride *) rideWithFareId: (NSNumber *) fareId;
 
 
 @end

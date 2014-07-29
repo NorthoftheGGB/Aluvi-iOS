@@ -33,7 +33,7 @@ NSString *const VCUserStateDriverStateKeyPath;
 
 @interface VCUserState : NSObject
 
-@property(nonatomic, strong) NSNumber * underwayRideId;
+@property(nonatomic, strong) NSNumber * underwayFareId;
 @property(nonatomic, strong) NSString * riderState;
 @property(nonatomic, strong) NSString * driverState;
 @property(nonatomic, strong) NSString * rideProcessState;

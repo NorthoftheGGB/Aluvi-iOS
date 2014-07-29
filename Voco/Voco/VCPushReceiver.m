@@ -184,33 +184,33 @@
         [self handleRideAssignedNotification: payload];
     } else if ([type isEqualToString:@"ride_cancelled_by_rider"]){
         NSNumber * rideId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
-        if([[VCUserState instance].underwayRideId isEqualToNumber:rideId]){
+        if([[VCUserState instance].underwayFareId isEqualToNumber:rideId]){
             [[VCDialogs instance] rideCancelledByRider];
-            [VCUserState instance].underwayRideId = nil;
+            [VCUserState instance].underwayFareId = nil;
             [VCUserState instance].driveProcessState = kUserStateIdle;
             [[NSNotificationCenter defaultCenter] postNotificationName:@"ride_cancelled_by_rider" object:rideId userInfo:@{}];
         }
     } else if([type isEqualToString:@"ride_cancelled_by_driver"]){
         NSNumber * rideId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
-        if([[VCUserState instance].underwayRideId isEqualToNumber:rideId]){
+        if([[VCUserState instance].underwayFareId isEqualToNumber:rideId]){
             [[VCDialogs instance] rideCancelledByDriver];
-            [VCUserState instance].underwayRideId = nil;
+            [VCUserState instance].underwayFareId = nil;
             [VCUserState instance].rideProcessState = kUserStateIdle;
             [[NSNotificationCenter defaultCenter] postNotificationName:@"ride_cancelled_by_driver" object:payload userInfo:@{}];
         }
     } else if([type isEqualToString:@"ride_receipt"]){
         NSNumber * rideId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
         NSNumber * amount = [payload objectForKey:VC_PUSH_AMOUNT_KEY];
-        if([[VCUserState instance].underwayRideId isEqualToNumber:rideId]){
-            [VCUserState instance].underwayRideId = nil;
+        if([[VCUserState instance].underwayFareId isEqualToNumber:rideId]){
+            [VCUserState instance].underwayFareId = nil;
             [VCUserState instance].rideProcessState = kUserStateIdle;
             [[VCDialogs instance] showRideReceipt:rideId amount:amount];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"ride_complete" object:payload userInfo:@{}];
         }
     } else if([type isEqualToString:@"ride_payment_problem"]){
         NSNumber * rideId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
-        if([[VCUserState instance].underwayRideId isEqualToNumber:rideId]){
-            [VCUserState instance].underwayRideId = nil;
+        if([[VCUserState instance].underwayFareId isEqualToNumber:rideId]){
+            [VCUserState instance].underwayFareId = nil;
             [VCUserState instance].rideProcessState = kUserStateIdle;
             [[VCDialogs instance] showRidePaymentProblem:rideId];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"ride_complete" object:payload userInfo:@{}];
@@ -242,7 +242,7 @@
             if([request.requestType isEqualToString:kRideRequestTypeOnDemand]) {
                 [[VCDialogs instance] rideFound: [payload objectForKey:VC_PUSH_RIDE_ID_KEY]];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"ride_found" object:payload userInfo:@{}];
-                [VCUserState instance].underwayRideId = rideId;
+                [VCUserState instance].underwayFareId = rideId;
             } else if ([request.requestType isEqualToString:kRideRequestTypeCommuter]){
                 [[VCDialogs instance] commuterRideFound: request];
             }

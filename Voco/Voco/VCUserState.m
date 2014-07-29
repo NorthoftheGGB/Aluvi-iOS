@@ -36,7 +36,7 @@ static VCUserState *sharedSingleton;
 
 + (BOOL) driverIsAvailable {
     // Will need a better way to swith on this
-    if([self instance].underwayRideId == nil){
+    if([self instance].underwayFareId == nil){
         return YES;
     } else {
         return NO;
@@ -51,16 +51,16 @@ static VCUserState *sharedSingleton;
         _driveProcessState = [userDefaults objectForKey:kDriveProcessStateKey];
         _riderState = [userDefaults objectForKey:kRiderStateKey];
         _driverState = [userDefaults objectForKey:kDriverStateKey];
-        _underwayRideId = [userDefaults objectForKey:kRideIdKey];
+        _underwayFareId = [userDefaults objectForKey:kRideIdKey];
     }
     return self;
 }
 
 
-- (void) setUnderwayRideId:(NSNumber *)rideId {
-    _underwayRideId = rideId;
+- (void) setUnderwayFareId:(NSNumber *)rideId {
+    _underwayFareId = rideId;
     NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:_underwayRideId forKey:kRideIdKey];
+    [userDefaults setObject:_underwayFareId forKey:kRideIdKey];
     [userDefaults synchronize];
     
 }
@@ -163,7 +163,7 @@ static VCUserState *sharedSingleton;
     [userDefaults removeObjectForKey:kDriverStateKey];
     [userDefaults removeObjectForKey:kRiderStateKey];
     [userDefaults synchronize];
-    _underwayRideId = nil;
+    _underwayFareId = nil;
     _rideProcessState = nil;
     _driveProcessState = nil;
     _riderState = nil;
@@ -176,7 +176,7 @@ static VCUserState *sharedSingleton;
     [userDefaults removeObjectForKey:kRideProcessStateKey];
     [userDefaults removeObjectForKey:kDriveProcessStateKey];
     [userDefaults synchronize];
-    _underwayRideId = nil;
+    _underwayFareId = nil;
     _rideProcessState = nil;
     _driveProcessState = nil;
 }

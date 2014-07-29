@@ -36,9 +36,26 @@
                   success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                   failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
++ (void) acceptFare: (NSNumber *) fareId
+            success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+            failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure ;
+
 + (void) declineFare: (NSNumber *) fareId
             success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
             failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
+
++ (void) ridersPickedUp: (NSNumber *) fareId
+                success: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
+
+
++ (void) fareCancelledByDriver: (NSNumber *) fareId
+                success: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
+
++ (void) fareCompleted: (NSNumber *) fareId
+               success: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+               failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
 + (void) refreshActiveRidesWithSuccess: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                                failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;

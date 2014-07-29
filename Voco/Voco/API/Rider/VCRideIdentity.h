@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "VCRestKitMappableObject.h"
 
-@interface VCRideIdentity : NSObject <VCRestKitMappableObject>
+@interface VCRideIdentity : NSObject
 
 @property(nonatomic, strong) NSNumber * rideId;
+
++ (RKObjectMapping *) getMapping;
 
 @end

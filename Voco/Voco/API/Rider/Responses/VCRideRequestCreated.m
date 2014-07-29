@@ -11,16 +11,11 @@
 
 @implementation VCRideRequestCreated
 
-+ (void) createMappings: (RKObjectManager *) objectManager {
++ (RKObjectMapping *) getMapping {
 
     RKObjectMapping * mapping = [RKObjectMapping mappingForClass:[VCRideRequestCreated class] ];
-    [mapping addAttributeMappingsFromDictionary:@{@"request_id": @"rideRequestId"}];
-    RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping
-                                                                                             method:RKRequestMethodPOST
-                                                                                        pathPattern:API_POST_RIDE_REQUEST keyPath:nil
-                                                                                        statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:responseDescriptor];
-
+    [mapping addAttributeMappingsFromDictionary:@{@"ride_id": @"rideId"}];
+    return mapping;
 }
 
 @end

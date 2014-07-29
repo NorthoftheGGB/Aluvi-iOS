@@ -20,14 +20,48 @@
 @implementation VCRiderApi
 
 + (void) setup: (RKObjectManager *) objectManager {
-    [VCRideRequest createMappings:objectManager];
-    [VCRideRequestCreated createMappings:objectManager];
-    [VCDevice createMappings:objectManager];
+
     [Ride createMappings:objectManager];
-    [VCRequestUpdate createMappings:objectManager];
     [Payment createMappings:objectManager];
+
+    {
+        RKObjectMapping * objectMapping = [VCRideRequest getMapping];
+        RKObjectMapping * postRideRequestMapping = [objectMapping inverseMapping];
+        RKRequestDescriptor *requestDescriptorPostData = [RKRequestDescriptor requestDescriptorWithMapping:postRideRequestMapping objectClass:[VCRideRequest class] rootKeyPath:nil method:RKRequestMethodPOST];
+        [objectManager addRequestDescriptor:requestDescriptorPostData];
+    }
     
-    // Responses (some have not been moved here yet)
+    {
+        RKObjectMapping * objectMapping = [VCRideIdentity getMapping];
+        RKObjectMapping * requestMapping = [objectMapping inverseMapping];
+        
+        RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[VCRideIdentity class] rootKeyPath:nil method:RKRequestMethodPOST];
+        [objectManager addRequestDescriptor:requestDescriptor];
+        
+        
+        
+        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
+                                                                                                 method:RKRequestMethodPOST
+                                                                                            pathPattern:API_POST_RIDER_CANCELLED
+                                                                                                keyPath:nil
+                                                                                            statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor];
+    }
+    {
+        RKObjectMapping * mapping = [VCRideRequestCreated getMapping];
+        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping
+                                                                                                 method:RKRequestMethodPOST
+                                                                                            pathPattern:API_POST_RIDE_REQUEST keyPath:nil
+                                                                                            statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor];
+
+    }
+    {
+        RKObjectMapping * mapping = [VCRequestUpdate getMapping];
+        RKObjectMapping * requestMapping = [mapping inverseMapping];
+        RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[VCRequestUpdate class] rootKeyPath:nil method:RKRequestMethodPOST];
+        [objectManager addRequestDescriptor:requestDescriptor];
+    }    
     {
         RKResponseDescriptor * responseDescriptor =
         [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]

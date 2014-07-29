@@ -24,7 +24,7 @@
      {
          RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping
                                                                                                    method:RKRequestMethodPOST
-                                                                                              pathPattern:API_POST_RIDE_ARRIVED
+                                                                                              pathPattern:API_POST_FARE_COMPLETED
                                                                                                   keyPath:nil
                                                                                               statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
          [objectManager addResponseDescriptor:responseDescriptor];

@@ -11,6 +11,6 @@
 
 @interface VCFareDriverAssignment : NSObject <VCRestKitMappableObject>
 
-@property (nonatomic, strong) NSNumber * rideId;
+@property (nonatomic, strong) NSNumber * fareId;
 
 @end

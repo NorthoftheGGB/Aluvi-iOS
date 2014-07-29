@@ -10,9 +10,9 @@
 
 @interface VCRequestUpdate : NSObject
 
-@property(nonatomic, strong) NSNumber * requestId;
+@property(nonatomic, strong) NSNumber * rideId;
 @property(nonatomic, strong) NSString * event; // Currently unused
 
-+  (void)createMappings:(RKObjectManager *)objectManager;
++  (RKObjectMapping *) getMapping;
 
 @end
