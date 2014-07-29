@@ -12,6 +12,4 @@
 
 @property(nonatomic, strong) NSNumber * id;
 
-+ (void)createMappings:(RKObjectManager *)objectManager;
-
 @end

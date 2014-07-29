@@ -14,6 +14,6 @@
 @property (nonatomic, strong) NSNumber * amount;
 @property (nonatomic, strong) NSNumber * driverEarnings;
 
-+ (void)createMappings:(RKObjectManager *)objectManager;
++ (RKObjectMapping*) getMapping;
 
 @end

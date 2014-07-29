@@ -988,7 +988,6 @@
 		F4FB55751977CD690043557A /* VCLocalNotificationReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCLocalNotificationReceiver.m; sourceTree = "<group>"; };
 		F4FE1AEF1936BE0900354886 /* VCDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCDevice.h; path = API/Devices/VCDevice.h; sourceTree = "<group>"; };
 		F4FE1AF01936BE0900354886 /* VCDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCDevice.m; path = API/Devices/VCDevice.m; sourceTree = "<group>"; };
-		F4FE1AF41936BE8D00354886 /* VCRestKitMappableObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VCRestKitMappableObject.h; path = API/Base/VCRestKitMappableObject.h; sourceTree = "<group>"; };
 		F4FE1AF61937DD5600354886 /* VCPushReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPushReceiver.h; sourceTree = "<group>"; };
 		F4FE1AF71937DD5600354886 /* VCPushReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPushReceiver.m; sourceTree = "<group>"; };
 		F4FE1AF91937DD6600354886 /* VCGeolocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCGeolocation.h; sourceTree = "<group>"; };
@@ -1334,6 +1333,7 @@
 		F45F7BED193575C100A94721 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F463BB02198751EC00B70DC1 /* Unused */,
 				F473E290195E824400226203 /* Base */,
 				F4FA0BFB192BF6BF005D8645 /* Voco.xcdatamodeld */,
 				F473F03D195B971C00D8C900 /* Driver.h */,
@@ -1366,7 +1366,6 @@
 				F4C6B29C197F437800F6C10B /* VCApiError.h */,
 				F4C6B29D197F437800F6C10B /* VCApiError.m */,
 				F4D8904119468A66007C4671 /* Users */,
-				F4FE1AF31936BE6800354886 /* Base */,
 				F4FE1B2E193EDFEE00354886 /* Geo */,
 				F4FE1AEE1936BDE500354886 /* Devices */,
 				F45F7BF3193578B500A94721 /* Rider */,
@@ -1435,11 +1434,18 @@
 			name = Driver;
 			sourceTree = "<group>";
 		};
-		F473E290195E824400226203 /* Base */ = {
+		F463BB02198751EC00B70DC1 /* Unused */ = {
 			isa = PBXGroup;
 			children = (
 				F473E291195E825500226203 /* VCStateMachineManagedObject.h */,
 				F473E292195E825500226203 /* VCStateMachineManagedObject.m */,
+			);
+			name = Unused;
+			sourceTree = "<group>";
+		};
+		F473E290195E824400226203 /* Base */ = {
+			isa = PBXGroup;
+			children = (
 				F4A7C80319623C70007E05AD /* Transit.h */,
 				F4A7C80419623C70007E05AD /* Transit.m */,
 			);
@@ -1729,14 +1735,6 @@
 				F473F01F19511D7700D8C900 /* VCDevicesApi.m */,
 			);
 			name = Devices;
-			sourceTree = "<group>";
-		};
-		F4FE1AF31936BE6800354886 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				F4FE1AF41936BE8D00354886 /* VCRestKitMappableObject.h */,
-			);
-			name = Base;
 			sourceTree = "<group>";
 		};
 		F4FE1AF51937DD1A00354886 /* Application */ = {

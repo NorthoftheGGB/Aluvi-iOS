@@ -23,18 +23,64 @@
 @implementation VCDriverApi
 
 + (void) setup: (RKObjectManager *) objectManager {
+    
     [Offer createMappings:objectManager];
     [Fare createMappings:objectManager];
     [Earning createMappings:objectManager];
     
-    [VCFareDriverAssignment createMappings:objectManager];
-    [VCGeoObject createMappings:objectManager];
-    [VCDriverGeoObject createMappings:objectManager];
-    [VCDriverRegistration createMappings:objectManager];
-    [VCFareIdentity createMappings:objectManager];
-    [VCFare createMappings:objectManager];
+    {
+        RKObjectMapping * mapping = [VCFareDriverAssignment getMapping];
+        RKObjectMapping * requestMapping = [mapping inverseMapping];
+        RKRequestDescriptor *requestDescriptorPostData = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[VCFareDriverAssignment class] rootKeyPath:nil method:RKRequestMethodPOST];
+        [objectManager addRequestDescriptor:requestDescriptorPostData];
+        
+        
+        
+        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
+                                                                                                 method:RKRequestMethodPOST
+                                                                                            pathPattern:API_POST_RIDE_DECLINED
+                                                                                                keyPath:nil
+                                                                                            statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor];
+        
+        RKResponseDescriptor * responseDescriptor2 = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
+                                                                                                  method:RKRequestMethodPOST
+                                                                                             pathPattern:API_POST_RIDE_ACCEPTED
+                                                                                                 keyPath:nil
+                                                                                             statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor2];
+        
+        RKResponseDescriptor * responseDescriptor3 = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
+                                                                                                  method:RKRequestMethodPOST
+                                                                                             pathPattern:API_POST_DRIVER_CANCELLED
+                                                                                                 keyPath:nil
+                                                                                             statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor3];
+    }
     
-    // Responses (some have not been moved here yet)
+
+    
+    {
+        RKObjectMapping * mapping = [VCDriverRegistration getMapping];
+        RKObjectMapping * requestMapping = [mapping inverseMapping];
+        RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[self class] rootKeyPath:nil method:RKRequestMethodPOST];
+        [objectManager addRequestDescriptor:requestDescriptor];
+
+    }
+    
+    [objectManager.router.routeSet addRoute:[RKRoute routeWithClass:[VCFareIdentity class] pathPattern:API_GET_DRIVER_RIDE_PATH_PATTERN method:RKRequestMethodGET]];
+
+    
+    {
+        RKObjectMapping * mapping = [VCFare getMapping];
+        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping
+                                                                                                     method:RKRequestMethodPOST
+                                                                                                pathPattern:API_POST_FARE_COMPLETED
+                                                                                                    keyPath:nil
+                                                                                                statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor];
+    }
+
     {
         RKResponseDescriptor * responseDescriptor =
         [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSNull class]]

@@ -11,8 +11,8 @@
 #import "VCApi.h"
 
 @implementation VCDriverGeoObject
-+ (void)createMappings:(RKObjectManager *)objectManager {
-    
++ (RKObjectMapping*)getMapping {
+
     RKObjectMapping * mapping = [RKObjectMapping mappingForClass:[self class]];
     [mapping addAttributeMappingsFromDictionary:@{
                                                   @"latitude" : @"latitude",
@@ -21,16 +21,7 @@
                                                   @"current_fare_id" : @"currentFareId"
                                                   }];
     
-
-    {
-        RKResponseDescriptor * responseDescriptor2 = [RKResponseDescriptor responseDescriptorWithMapping:mapping
-                                                                                                  method:RKRequestMethodGET
-                                                                                             pathPattern:API_GEO_DRIVER_PATH
-                                                                                                 keyPath:nil
-                                                                                             statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-        [objectManager addResponseDescriptor:responseDescriptor2];
-    }
-    
+    return mapping;
     
 }
 @end

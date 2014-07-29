@@ -13,6 +13,8 @@
 
 @interface VCGeoApi : NSObject
 
++ (void) setup: (RKObjectManager *) objectManager;
+
 + (void) sendDriverLocation: (CLLocation *) location
                     success: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                     failure: (void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
