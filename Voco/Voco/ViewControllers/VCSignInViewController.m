@@ -95,7 +95,7 @@
                                        
                                    } failure:^{
                                        [hud hide:YES];
-                                       [UIAlertView showWithTitle:@"Login Failed!" message:@"Invalid" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                                       [UIAlertView showWithTitle:@"Login Failed!" message:@"Invalid Phone Number or Password" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
                                    }];
     
     

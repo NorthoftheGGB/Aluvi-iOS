@@ -20,7 +20,7 @@
         self.fieldName = @"Password";
         
         US2ConditionPasswordStrength *passwordCondition =[[US2ConditionPasswordStrength alloc] init];
-        [passwordCondition setRequiredStrength:US2PasswordStrengthMedium];
+        [passwordCondition setRequiredStrength:US2PasswordStrengthWeak];
         US2Validator *validator = [[US2Validator alloc] init];
         [validator addCondition:passwordCondition];
         self.validator = validator;

@@ -16,6 +16,7 @@
 #import "VCDriverStateResponse.h"
 #import "VCUserStateResponse.h"
 #import "VCFillCommuterPass.h"
+#import "VCApiError.h"
 
 @implementation VCUsersApi
 + (void) setup: (RKObjectManager *) objectManager {
@@ -52,13 +53,22 @@
     RKRequestDescriptor *newUserRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:newUserRequestMapping objectClass:[VCNewUser class] rootKeyPath:nil method:RKRequestMethodPOST];
     [objectManager addRequestDescriptor:newUserRequestDescriptor];
     
-    
-    RKResponseDescriptor * newUserResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
+    {
+        RKResponseDescriptor * newUserResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping
+                                                                                                                mappingForClass:[NSObject class]]
                                                                                                     method:RKRequestMethodPOST
                                                                                                pathPattern:API_USERS
                                                                                                    keyPath:nil
                                                                                                statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:newUserResponseDescriptor];
+        [objectManager addResponseDescriptor:newUserResponseDescriptor];
+    }
+    {
+        RKResponseDescriptor * responseDescriptor2 = [RKResponseDescriptor responseDescriptorWithMapping:[VCApiError getMapping]                                                                                             method:RKRequestMethodPOST
+                                                                                             pathPattern:API_USERS
+                                                                                                 keyPath:nil
+                                                                                             statusCodes:[NSIndexSet indexSetWithIndex:400]];
+        [objectManager addResponseDescriptor:responseDescriptor2];
+    }
     
     RKRequestDescriptor *forgotPasswordRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:[[VCForgotPasswordRequest getMapping] inverseMapping] objectClass:[VCForgotPasswordRequest class] rootKeyPath:nil method:RKRequestMethodPOST];
     [objectManager addRequestDescriptor:forgotPasswordRequestDescriptor];
