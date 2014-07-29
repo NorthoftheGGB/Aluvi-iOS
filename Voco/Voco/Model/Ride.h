@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "VCRestKitMappableObject.h"
 #import <TransitionKit.h>
 #import "Transit.h"
 
@@ -27,17 +26,16 @@
 
 #define kEventRideCancelledByRider @"ride_canceled_by_rider"
 #define kEventRideRequested @"ride_requested"
-#define kEventRideFound @"ride_found"
+#define kEventRideFound kPushTypeRideFound
 #define kEventRideScheduled @"ride_scheduled"
 #define kEventRideDeclined @"ride_declined"
-#define kEventRideCancelledByDriver @"ride_cancelled_by_driver"
+#define kEventRideCancelledByDriver kPushTypeFareCancelledByDriver
 #define kEventPaymentProcessedSuccessfully @"payment_processed_successfully"
 #define kEventPaymentFailed @"payment_failed"
 
 @class Car, Driver;
 
-@interface Ride : Transit <VCRestKitMappableObject>
-
+@interface Ride : Transit 
 @property (nonatomic, retain) NSNumber * ride_id;
 @property (nonatomic, retain) NSString * requestType;
 @property (nonatomic, retain) NSNumber * car_id;
@@ -59,6 +57,8 @@
 
 
 + (Ride *) rideWithFareId: (NSNumber *) fareId;
+
++ (void)createMappings:(RKObjectManager *)objectManager;
 
 
 @end

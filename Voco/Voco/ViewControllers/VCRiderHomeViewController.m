@@ -128,12 +128,12 @@
 
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onDemandRideFoundNotification:) name:@"ride_found" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onDemandRideFoundNotification:) name:kPushTypeRideFound object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commuterRideInvokedNotification:) name:@"commuter_ride_invoked" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideNotFoundNotification:) name:@"ride_not_found" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideCancelledByDriverNotification:) name:@"ride_cancelled_by_driver" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideComplete:) name:@"ride_complete" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noDriversAvailable:) name:@"no_drivers_available" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideCancelledByDriverNotification:) name:kPushTypeFareCancelledByDriver object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideComplete:) name:kNotificationTypeFareComplete object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noDriversAvailable:) name:kPushTypeNoDriversAvailable object:nil];
 
 }
 

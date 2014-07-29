@@ -8,11 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "VCRestKitMappableObject.h"
 #import "Fare.h"
 
 
-@interface Offer : NSManagedObject <VCRestKitMappableObject>
+@interface Offer : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * ride_id;
 @property (nonatomic, retain) NSNumber * id;
@@ -24,6 +23,8 @@
 @property (nonatomic, retain) NSString * dropOffPointPlaceName;
 @property (nonatomic, retain) Fare * ride;
 
+
++ (void)createMappings:(RKObjectManager *)objectManager;
 
 - (void) markAsAccepted;
 - (void) markAsDeclined;

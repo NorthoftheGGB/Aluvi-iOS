@@ -27,9 +27,9 @@
 #define API_POST_RIDE_PICKUP @"rides/pickup"
 #define API_POST_FARE_COMPLETED @"rides/arrived"
 
-#define API_GET_RIDE_OFFERS @"rides/offers"
-#define API_GET_ACTIVE_REQUESTS @"rides/requests"
+#define API_GET_FARE_OFFERS @"rides/offers"
 #define API_GET_ACTIVE_RIDES @"rides/rides"
+#define API_GET_ACTIVE_FARES @"rides/fares"
 
 #define API_GET_PAYMENTS @"rides/payments"
 #define API_GET_EARNINGS @"rides/earnings"

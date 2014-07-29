@@ -10,6 +10,8 @@
 #import "Car.h"
 #import "Driver.h"
 #import <RKPathMatcher.h>
+#import "VCApi.h"
+#import "VCPushApi.h"
 
 @interface Ride ()
 
@@ -61,7 +63,7 @@
 
     
     [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
-        RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:API_GET_ACTIVE_REQUESTS];
+        RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:API_GET_ACTIVE_RIDES];
         
         NSString * relativePath = [URL relativePath];
         NSDictionary *argsDict = nil;
@@ -80,7 +82,7 @@
     
     RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping
                                                                                              method:RKRequestMethodGET
-                                                                                        pathPattern:API_GET_ACTIVE_REQUESTS
+                                                                                        pathPattern:API_GET_ACTIVE_RIDES
                                                                                             keyPath:nil
                                                                                         statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];

@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "VCRestKitMappableObject.h"
 
 @interface VCLogin : NSObject
 

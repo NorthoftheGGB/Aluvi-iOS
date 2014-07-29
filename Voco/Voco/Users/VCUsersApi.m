@@ -17,6 +17,7 @@
 #import "VCUserStateResponse.h"
 #import "VCFillCommuterPass.h"
 #import "VCApiError.h"
+#import "VCApi.h"
 
 @implementation VCUsersApi
 + (void) setup: (RKObjectManager *) objectManager {

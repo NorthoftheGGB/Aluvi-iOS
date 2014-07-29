@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "VCRestKitMappableObject.h"
 
-@interface VCDevice : NSObject<VCRestKitMappableObject>
+@interface VCDevice : NSObject
 
 @property (nonatomic, strong) NSNumber * userId;
 @property (nonatomic, strong) NSString * pushToken;
+
++ (RKObjectMapping*) getMapping;
 
 @end

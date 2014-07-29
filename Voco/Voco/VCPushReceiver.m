@@ -7,6 +7,7 @@
 //
 
 #import "VCPushReceiver.h"
+#import "VCApi.h"
 #import "VCDevicesApi.h"
 #import "VCPushApi.h"
 #import "VCRiderApi.h"
@@ -79,9 +80,9 @@
     
     [[VCDebug sharedInstance] remoteNotificationLog: type];
     
-    if([type isEqualToString:@"ride_offer"]) {
+    if([type isEqualToString:kPushTypeRideOffer]) {
         
-        [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_RIDE_OFFERS
+        [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_FARE_OFFERS
                                                parameters:nil
                                                   success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                       // save in database - done automatically by Entity Mapping
@@ -102,9 +103,9 @@
                                                       // TODO Re-transmit push token later
                                                   }];
         
-    } else if([type isEqualToString:@"ride_offer_closed"]){
+    } else if([type isEqualToString:kPushTypeRideOfferClosed]){
         [[VCDialogs instance] retractOfferDialog: [userInfo objectForKey:VC_PUSH_OFFER_ID_KEY]];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"ride_offer_closed" object:[userInfo objectForKey:VC_PUSH_FARE_ID_KEY] userInfo:@{}];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kPushTypeRideOfferClosed object:[userInfo objectForKey:VC_PUSH_FARE_ID_KEY] userInfo:@{}];
 
     } else {
         [self handleRemoteNotification:userInfo];
@@ -131,9 +132,9 @@
 // Called when the user selected a remote notification from outside the application
 + (void)handleTappedRemoteNotification:(NSDictionary *)payload {
     NSString * type = [payload objectForKey:VC_PUSH_TYPE_KEY];
-    if([type isEqualToString:@"ride_offer"]){
+    if([type isEqualToString:kPushTypeRideOffer]){
         NSNumber * offer_id = [payload objectForKey:VC_PUSH_OFFER_ID_KEY];
-        [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_RIDE_OFFERS
+        [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_FARE_OFFERS
                                                parameters:nil
                                                   success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                       
@@ -166,7 +167,7 @@
                                                       
                                                       // TODO Re-transmit push token later
                                                   }];
-    } else if ([type isEqualToString:@"ride_found"]){
+    } else if ([type isEqualToString:kPushTypeRideFound]){
         [self handleRideFoundNotification:payload];
     } else {
         [self handleRemoteNotification:payload];
@@ -178,46 +179,46 @@
     
     
     NSString * type = [payload objectForKey:VC_PUSH_TYPE_KEY];
-    if ([type isEqualToString:@"ride_found"]){
+    if ([type isEqualToString:kPushTypeRideFound]){
         [self handleRideFoundNotification: payload];
-    } else if ([type isEqualToString:@"ride_assigned"]){
+    } else if ([type isEqualToString:kPushTypeFareAssigned]){
         [self handleRideAssignedNotification: payload];
-    } else if ([type isEqualToString:@"ride_cancelled_by_rider"]){
+    } else if ([type isEqualToString:kPushTypeFareCancelledByRider]){
         NSNumber * rideId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
         if([[VCUserState instance].underwayFareId isEqualToNumber:rideId]){
             [[VCDialogs instance] rideCancelledByRider];
             [VCUserState instance].underwayFareId = nil;
             [VCUserState instance].driveProcessState = kUserStateIdle;
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"ride_cancelled_by_rider" object:rideId userInfo:@{}];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kPushTypeFareCancelledByRider object:rideId userInfo:@{}];
         }
-    } else if([type isEqualToString:@"ride_cancelled_by_driver"]){
+    } else if([type isEqualToString:kPushTypeFareCancelledByDriver]){
         NSNumber * rideId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
         if([[VCUserState instance].underwayFareId isEqualToNumber:rideId]){
             [[VCDialogs instance] rideCancelledByDriver];
             [VCUserState instance].underwayFareId = nil;
             [VCUserState instance].rideProcessState = kUserStateIdle;
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"ride_cancelled_by_driver" object:payload userInfo:@{}];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kPushTypeFareCancelledByDriver object:payload userInfo:@{}];
         }
-    } else if([type isEqualToString:@"ride_receipt"]){
+    } else if([type isEqualToString:kPushTypeRideReceipt]){
         NSNumber * rideId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
         NSNumber * amount = [payload objectForKey:VC_PUSH_AMOUNT_KEY];
         if([[VCUserState instance].underwayFareId isEqualToNumber:rideId]){
             [VCUserState instance].underwayFareId = nil;
             [VCUserState instance].rideProcessState = kUserStateIdle;
             [[VCDialogs instance] showRideReceipt:rideId amount:amount];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"ride_complete" object:payload userInfo:@{}];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationTypeFareComplete object:payload userInfo:@{}];
         }
-    } else if([type isEqualToString:@"ride_payment_problem"]){
+    } else if([type isEqualToString:kPushTypeRidePaymentProblems]){
         NSNumber * rideId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
         if([[VCUserState instance].underwayFareId isEqualToNumber:rideId]){
             [VCUserState instance].underwayFareId = nil;
             [VCUserState instance].rideProcessState = kUserStateIdle;
             [[VCDialogs instance] showRidePaymentProblem:rideId];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"ride_complete" object:payload userInfo:@{}];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationTypeFareComplete object:payload userInfo:@{}];
         }
-    } else if([type isEqualToString:@"no_drivers_available"]){
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"no_drivers_available" object:payload userInfo:@{}];
-    } else if([type isEqualToString:@"user_state_change"]){
+    } else if([type isEqualToString:kPushTypeNoDriversAvailable]){
+        [[NSNotificationCenter defaultCenter] postNotificationName:kPushTypeNoDriversAvailable object:payload userInfo:@{}];
+    } else if([type isEqualToString:kPushTypeUserStateChanged]){
         [[VCUserState instance] synchronizeUserState];
     }
 }
@@ -241,7 +242,7 @@
             
             if([request.requestType isEqualToString:kRideRequestTypeOnDemand]) {
                 [[VCDialogs instance] rideFound: [payload objectForKey:VC_PUSH_RIDE_ID_KEY]];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"ride_found" object:payload userInfo:@{}];
+                [[NSNotificationCenter defaultCenter] postNotificationName:kPushTypeRideFound object:payload userInfo:@{}];
                 [VCUserState instance].underwayFareId = rideId;
             } else if ([request.requestType isEqualToString:kRideRequestTypeCommuter]){
                 [[VCDialogs instance] commuterRideFound: request];
@@ -272,9 +273,9 @@
 
 + (void) handleRideAssignedNotification:(NSDictionary *) payload {
     [VCDriverApi refreshActiveRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        NSNumber * rideId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
+        NSNumber * fareId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
         NSFetchRequest * fetch = [[NSFetchRequest alloc] initWithEntityName:@"Fare"];
-        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ride_id = %@", rideId];
+        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"fare_id = %@", fareId];
         [fetch setPredicate:predicate];
         NSError * error;
         NSArray * rides = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];

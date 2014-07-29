@@ -9,6 +9,7 @@
 #import "Offer.h"
 #import <RestKit/RestKit.h>
 #import <RestKit/Network/RKPathMatcher.h>
+#import "VCApi.h"
 
 @implementation Offer
 
@@ -39,7 +40,7 @@
     
     [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
         RKPathMatcher * pathMatcher;
-        pathMatcher = [RKPathMatcher pathMatcherWithPattern:API_GET_RIDE_OFFERS];
+        pathMatcher = [RKPathMatcher pathMatcherWithPattern:API_GET_FARE_OFFERS];
         
         NSDictionary *argsDict = nil;
         BOOL match = [pathMatcher matchesPath:[URL relativePath] tokenizeQueryStrings:NO parsedArguments:&argsDict];
@@ -55,7 +56,7 @@
     
     RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping
                                                                                              method:RKRequestMethodGET
-                                                                                        pathPattern:API_GET_RIDE_OFFERS
+                                                                                        pathPattern:API_GET_FARE_OFFERS
                                                                                             keyPath:nil
                                                                                         statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];

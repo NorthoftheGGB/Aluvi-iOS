@@ -20,6 +20,7 @@
 #import "VCUtilities.h"
 #import "VCLabelBold.h"
 #import "VCDriverHUD.h"
+#import "VCPushApi.h"
 
 
 @interface VCDriverHomeViewController () <VCDriverHUDDelegate>
@@ -73,8 +74,8 @@
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideOfferInvokedNotification:) name:@"ride_offer_invoked" object:[VCDialogs instance]];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideInvoked:) name:@"driver_ride_invoked" object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideCancelledByRider:) name:@"ride_cancelled_by_rider" object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideOfferClosed:) name:@"ride_offer_closed" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideCancelledByRider:) name:kPushTypeFareCancelledByRider object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideOfferClosed:) name:kPushTypeRideOfferClosed object:nil];
 
     }
     return self;

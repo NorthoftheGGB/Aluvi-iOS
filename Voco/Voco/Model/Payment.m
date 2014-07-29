@@ -11,7 +11,7 @@
 #import "Ride.h"
 #import "Fare.h"
 #import <RKPathMatcher.h>
-
+#import "VCApi.h"
 
 @implementation Payment
 
