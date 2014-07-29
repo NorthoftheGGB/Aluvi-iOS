@@ -54,7 +54,7 @@
                                             NSLog(@"Ride request accepted by server!");
                                             
                                             VCRideRequestCreated * response = mappingResult.firstObject;
-                                            ride.request_id = response.rideRequestId;
+                                            ride.ride_id = response.rideId;
                                             
                                             NSError * error;
                                             [[VCCoreData managedObjectContext] save:&error];
@@ -79,12 +79,12 @@
             failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     
     
-    if(ride.ride_id != nil){
+    if(ride.fare_id != nil){
         [[VCDebug sharedInstance] apiLog:@"API: Rider cancel ride"];
         
         // Alread have a ride id, so this is a ride cancellation
         VCRideIdentity * rideIdentity = [[VCRideIdentity alloc] init];
-        rideIdentity.rideId = ride.ride_id;
+        rideIdentity.rideId = ride.fare_id;
         [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_RIDER_CANCELLED parameters:nil
                                             success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                 
@@ -111,7 +111,7 @@
         // OR a ride cancellation if the ride found message has not arrived
         // This control fork gets handled on the server side
         VCRequestUpdate * requestIdentity = [[VCRequestUpdate alloc] init];
-        requestIdentity.requestId = ride.request_id;
+        requestIdentity.rideId = ride.ride_id;
         [[RKObjectManager sharedManager] postObject:requestIdentity path:API_POST_REQUEST_CANCELLED parameters:nil
                                             success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                 [[VCDebug sharedInstance] apiLog:@"API: Rider cancel request success"];

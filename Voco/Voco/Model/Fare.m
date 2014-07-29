@@ -112,7 +112,7 @@
 
 - (Offer *) getOffer {
     NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"Offer"];
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ride_id = %@", self.ride_id];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"fare_id = %@", self.fare_id];
     [request setPredicate:predicate];
     NSError * error;
     NSArray * results = [[VCCoreData managedObjectContext] executeFetchRequest:request error:&error];

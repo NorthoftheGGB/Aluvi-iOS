@@ -13,7 +13,7 @@
 // as well as on the server has been problematic.  For the moment the mobile app state is slaved to the server
 
 
-@property (nonatomic, retain) NSNumber * ride_id;
+@property (nonatomic, retain) NSNumber * fare_id;
 @property (nonatomic, retain) NSNumber * meetingPointLatitude;
 @property (nonatomic, retain) NSNumber * meetingPointLongitude;
 @property (nonatomic, retain) NSString * meetingPointPlaceName;

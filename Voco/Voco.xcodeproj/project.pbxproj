@@ -842,6 +842,7 @@
 		F45F7C151935A3F900A94721 /* VCDriverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCDriverViewController.h; path = ViewControllers/VCDriverViewController.h; sourceTree = "<group>"; };
 		F45F7C161935A3F900A94721 /* VCDriverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCDriverViewController.m; path = ViewControllers/VCDriverViewController.m; sourceTree = "<group>"; };
 		F45F7C171935A3F900A94721 /* VCDriverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCDriverViewController.xib; path = ViewControllers/VCDriverViewController.xib; sourceTree = "<group>"; };
+		F463BB011987294700B70DC1 /* Voco 30.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 30.xcdatamodel"; sourceTree = "<group>"; };
 		F473E291195E825500226203 /* VCStateMachineManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCStateMachineManagedObject.h; path = Model/VCStateMachineManagedObject.h; sourceTree = "<group>"; };
 		F473E292195E825500226203 /* VCStateMachineManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCStateMachineManagedObject.m; path = Model/VCStateMachineManagedObject.m; sourceTree = "<group>"; };
 		F473EFDA19491C2B00D8C900 /* VCValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCValidation.h; sourceTree = "<group>"; };
@@ -3125,9 +3126,10 @@
 				F4C6B1AD1978E4D400F6C10B /* Voco 27.xcdatamodel */,
 				F4C6B1AE1978F33900F6C10B /* Voco 28.xcdatamodel */,
 				F4C6B1AF1979147000F6C10B /* Voco 29.xcdatamodel */,
+				F463BB011987294700B70DC1 /* Voco 30.xcdatamodel */,
 				F4FA0BFC192BF6BF005D8645 /* Voco.xcdatamodel */,
 			);
-			currentVersion = F4C6B1AF1979147000F6C10B /* Voco 29.xcdatamodel */;
+			currentVersion = F463BB011987294700B70DC1 /* Voco 30.xcdatamodel */;
 			path = Voco.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

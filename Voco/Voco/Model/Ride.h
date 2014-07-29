@@ -38,7 +38,7 @@
 
 @interface Ride : Transit <VCRestKitMappableObject>
 
-@property (nonatomic, retain) NSNumber * request_id;
+@property (nonatomic, retain) NSNumber * ride_id;
 @property (nonatomic, retain) NSString * requestType;
 @property (nonatomic, retain) NSNumber * car_id;
 @property (nonatomic, retain) NSNumber * driver_id;

@@ -21,7 +21,7 @@
 @dynamic requestType;
 @dynamic car_id;
 @dynamic driver_id;
-@dynamic request_id;
+@dynamic ride_id;
 @dynamic requestedTimestamp;
 @dynamic estimatedArrivalTime;
 @dynamic originLatitude;
@@ -39,8 +39,8 @@
                                                           inManagedObjectStore: [VCCoreData managedObjectStore]];
     
     [entityMapping addAttributeMappingsFromDictionary:@{
-                                                        @"request_id" : @"request_id",
                                                         @"ride_id" : @"ride_id",
+                                                        @"fare_id" : @"fare_id",
                                                         @"state" : @"forcedState",
                                                         @"meeting_point_place_name" : @"meetingPointPlaceName",
                                                         @"meeting_point_latitude" : @"meetingPointLatitude",
@@ -57,7 +57,7 @@
                                                         @"pickup_time" : @"pickupTime"
                                                         }];
     
-    entityMapping.identificationAttributes = @[ @"request_id" ]; // for riders request_id is the primary key
+    entityMapping.identificationAttributes = @[ @"ride_id" ]; // for riders ride_id is the primary key
 
     
     [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
@@ -87,9 +87,9 @@
 }
 
 
-+ (Ride *) requestWithRideId: (NSNumber *) rideId{
++ (Ride *) rideWithFareId: (NSNumber *) fareId{
     NSFetchRequest * request = [[NSFetchRequest alloc] initWithEntityName:@"Ride"];
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ride_id = %@", rideId];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"fare_id = %@", fareId];
     [request setPredicate:predicate];
     NSError * error;
     NSArray * rides = [[VCCoreData managedObjectContext] executeFetchRequest:request error:&error];

@@ -173,7 +173,7 @@
 
 - (void) rideCancelledByDriverNotification:(id) sender{
     NSDictionary * payload = ((NSNotification *) sender).object;
-    if([_request.ride_id isEqualToNumber:[payload objectForKey:VC_PUSH_RIDE_ID_KEY]]) {
+    if([_request.fare_id isEqualToNumber:[payload objectForKey:VC_PUSH_FARE_ID_KEY]]) {
         [[VCCoreData managedObjectContext] refreshObject:self.request mergeChanges:YES];
         [self resetRequestInterface];
     }
@@ -181,7 +181,7 @@
 
 - (void) noDriversAvailable:(id) sender{
     NSDictionary * payload = ((NSNotification *) sender).object;
-    if([_request.request_id isEqualToNumber:[payload objectForKey:VC_PUSH_REQUEST_ID_KEY]]) {
+    if([_request.ride_id isEqualToNumber:[payload objectForKey:VC_PUSH_RIDE_ID_KEY]]) {
         [[VCCoreData managedObjectContext] refreshObject:self.request mergeChanges:YES];
         [UIAlertView showWithTitle:@"No Drivers Available" message:@"No drivers are available at this time.  You may want to try again in a moment" cancelButtonTitle:@"Ok" otherButtonTitles:nil tapBlock:nil];
         if(_progressHUD != nil) {
@@ -474,7 +474,7 @@
             [VCRiderApi requestRide:self.request
                             success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                 VCRideRequestCreated * rideRequestCreatedResponse = mappingResult.firstObject;
-                                _request.request_id = rideRequestCreatedResponse.rideRequestId;
+                                _request.ride_id = rideRequestCreatedResponse.rideId;
                                 _request.requestedTimestamp = [NSDate date];
                                 [VCCoreData saveContext];
                                 _progressHUD.labelText = @"We are finding your driver now!";
@@ -509,7 +509,7 @@
 
 - (void) cancelRide {
     
-    if(!self.request.request_id || self.request.request_id == nil){
+    if(!self.request.ride_id || self.request.ride_id == nil){
         [self resetRequestInterface];
         return;
     }
@@ -674,7 +674,7 @@
     [VCRiderApi requestRide:self.request success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         _request.forcedState = kRequestedState;
         VCRideRequestCreated * rideRequestCreatedResponse = mappingResult.firstObject;
-        self.request.request_id = rideRequestCreatedResponse.rideRequestId;
+        self.request.ride_id = rideRequestCreatedResponse.rideid;
         [VCCoreData saveContext];
         [hud hide:YES];
         [UIAlertView showWithTitle:@"Ride Requested"

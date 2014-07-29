@@ -127,8 +127,8 @@
 }
 
 - (void) rideOfferClosed: (NSNotification *) notification {
-    NSNumber * rideId = notification.object;
-    if(_fare != nil && [rideId isEqualToNumber:_fare.ride_id]){  //TODO should be fare_id fareId
+    NSNumber * fareId = notification.object;
+    if(_fare != nil && [fareId isEqualToNumber:_fare.fare_id]){  //TODO should be fare_id fareId
         [self resetInterface];
         [UIAlertView showWithTitle:@"Offer Closed" message:@"This ride offer has closed" cancelButtonTitle:@"Ok" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
             [[VCDialogs instance] offerNextRideToDriver];
@@ -146,8 +146,8 @@
 }
 
 - (void) rideCancelledByRider: (NSNotification *) notification {
-    NSNumber * rideId = notification.object;
-    if(_fare != nil && [rideId isEqualToNumber:_fare.ride_id]){
+    NSNumber * fareId = notification.object;
+    if(_fare != nil && [fareId isEqualToNumber:_fare.fare_id]){
         [self resetInterface];
     }
 }
@@ -261,7 +261,7 @@
 
 - (IBAction)didTapAccept:(id)sender {
     VCFareDriverAssignment * assignment = [[VCFareDriverAssignment alloc] init];
-    assignment.rideId = self.transit.ride_id;
+    assignment.fareId = self.transit.fare_id;
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Accepting Ride";
@@ -272,7 +272,7 @@
         // but at a later date we may add a step that waits for the rider to confirm that
         // they know about the ride being scheduled (handshake)
         [VCUserState instance].driveProcessState = kUserStateRideAccepted;
-        [VCUserState instance].underwayRideId = self.transit.ride_id;
+        [VCUserState instance].underwayFareId = self.transit.fare_id;
         
         [((Fare *) self.transit) markOfferAsAccepted];
         
@@ -302,7 +302,7 @@
 - (IBAction)didTapDecline:(id)sender {
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Declining";
-    [VCDriverApi declineFare:self.transit.ride_id
+    [VCDriverApi declineFare:self.transit.fare_id
                     success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                         [self resetButtons];
                         [self clearMap];
@@ -327,17 +327,17 @@
 
 - (IBAction)didTapRiderPickedUp:(id)sender {
     if( [VCUserState instance].underwayRideId != nil){
-        if(! [[VCUserState instance].underwayRideId isEqualToNumber: self.fare.ride_id]){
+        if(! [[VCUserState instance].underwayRideId isEqualToNumber: self.fare.fare_id]){
             [WRUtilities criticalErrorWithString:@"State shows another ride is still underway"];
         }
-        [VCUserState instance].underwayRideId = self.fare.ride_id;
+        [VCUserState instance].underwayRideId = self.fare.fare_id;
     }
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Notifying Server";
     VCFareDriverAssignment * rideIdentity = [[VCFareDriverAssignment alloc] init];
-    rideIdentity.rideId = _fare.ride_id;
-    [VCUserState instance].underwayRideId = _fare.ride_id;
+    rideIdentity.rideId = _fare.fare_id;
+    [VCUserState instance].underwayFareId = _fare.fare_id;
     [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_RIDE_PICKUP parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             [self showRideInProgressInterface];
@@ -355,7 +355,7 @@
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Cancelling";
     VCFareDriverAssignment * rideIdentity = [[VCFareDriverAssignment alloc] init];
-    rideIdentity.rideId = _fare.ride_id;
+    rideIdentity.fareId = _fare.fare_id;
     [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_DRIVER_CANCELLED parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             [UIAlertView showWithTitle:@"Cancelled Ride" message:@"The ride was successfully cancelled" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
