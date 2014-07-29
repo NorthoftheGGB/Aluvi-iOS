@@ -45,7 +45,7 @@
                                                         }];
     
     
-    entityMapping.identificationAttributes = @[ @"ride_id" ];
+    entityMapping.identificationAttributes = @[ @"fare_id" ];
     
     /*
      [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {

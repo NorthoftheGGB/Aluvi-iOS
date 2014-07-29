@@ -20,8 +20,8 @@
     RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[VCGeoObject class] rootKeyPath:nil method:RKRequestMethodPUT];
     [objectManager addRequestDescriptor:requestDescriptor];
     
-    [objectManager.router.routeSet addRoute:[RKRoute routeWithClass:[self class] pathPattern:API_GEO_DRIVER_PATH method:RKRequestMethodPUT]];
-    [objectManager.router.routeSet addRoute:[RKRoute routeWithClass:[self class] pathPattern:API_GEO_DRIVER_PATH method:RKRequestMethodGET]];
+    [objectManager.router.routeSet addRoute:[RKRoute routeWithClass:[VCGeoObject class] pathPattern:API_GEO_DRIVER_PATH method:RKRequestMethodPUT]];
+    [objectManager.router.routeSet addRoute:[RKRoute routeWithClass:[VCGeoObject class] pathPattern:API_GEO_DRIVER_PATH method:RKRequestMethodGET]];
     
     
         RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]

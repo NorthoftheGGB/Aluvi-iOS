@@ -63,7 +63,7 @@
     {
         RKObjectMapping * mapping = [VCDriverRegistration getMapping];
         RKObjectMapping * requestMapping = [mapping inverseMapping];
-        RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[self class] rootKeyPath:nil method:RKRequestMethodPOST];
+        RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[VCDriverRegistration class] rootKeyPath:nil method:RKRequestMethodPOST];
         [objectManager addRequestDescriptor:requestDescriptor];
 
     }
