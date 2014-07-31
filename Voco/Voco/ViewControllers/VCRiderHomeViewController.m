@@ -122,6 +122,7 @@
     mapRegion.span.latitudeDelta = 0.02;
     mapRegion.span.longitudeDelta = 0.02;
     [self.map setRegion:mapRegion animated: YES];
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated{

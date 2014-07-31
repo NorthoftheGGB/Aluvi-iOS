@@ -8,8 +8,8 @@
 
 #import "VCInterfaceModes.h"
 #import "VCSignInViewController.h"
-#import "VCRiderHomeViewController.h"
-#import "VCMenuViewController.h"
+#import "VCRideViewController.h"
+#import "VCLeftMenuViewController.h"
 #import "IIViewDeckController.h"
 #import "VCApi.h"
 #import "VCDriverHomeViewController.h"
@@ -23,6 +23,12 @@ static VCInterfaceModes * instance;
 static IIViewDeckController* deckController;
 static int mode;
 
+@interface VCInterfaceModes ()
+
+@property (nonatomic, strong) UINavigationController * centerNavigationController;
+
+@end
+
 @implementation VCInterfaceModes
 
 + (VCInterfaceModes * ) instance {
@@ -35,7 +41,10 @@ static int mode;
 
 - (void) showInterface {
     
-    if([VCApi loggedIn]){
+#warning skipping interface selection for rider interface development
+    [self showRiderInterface];
+    
+    /*if([VCApi loggedIn]){
         if(mode == kDriverMode) {
             [self showDriverInterface];
         } else {
@@ -44,7 +53,7 @@ static int mode;
     } else {
         [self showRiderSigninInterface];
         
-    }
+    }*/
 }
 
 - (void) showRiderSigninInterface {
@@ -61,35 +70,34 @@ static int mode;
 
 - (void) createDeckViewController {
     
-    deckController =  [[IIViewDeckController alloc] init]; //initWithCenterViewController:riderHomeViewController leftViewController:riderMenuViewController rightViewController:nil];
-    deckController.leftSize = 0;
+    deckController =  [[IIViewDeckController alloc] init];
+    deckController.leftSize = 48;
     deckController.openSlideAnimationDuration = 0.20f;
     deckController.closeSlideAnimationDuration = 0.20f;
-    deckController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu-list"]
+    _centerNavigationController = [[UINavigationController alloc] init];
+    _centerNavigationController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu-list"]
                                                                                        style:UIBarButtonItemStyleBordered
                                                                                       target:deckController
                                                                                       action:@selector(toggleLeftView)];
-    VCMenuViewController * riderMenuViewController = [[VCMenuViewController alloc] init];
+    [_centerNavigationController.navigationBar setTranslucent:YES];
+    deckController.centerController = _centerNavigationController;
+    
+    VCLeftMenuViewController * riderMenuViewController = [[VCLeftMenuViewController alloc] init];
     deckController.leftController = riderMenuViewController;
     
-    [deckController.navigationController.navigationBar setTranslucent:YES];
-
-    
-    UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:deckController];
-    [[UIApplication sharedApplication] delegate].window.rootViewController = navigationController;
-
+    [[UIApplication sharedApplication] delegate].window.rootViewController = deckController;
 
 }
 
 - (void) showRiderInterface {
-    VCRiderHomeViewController * riderHomeViewController = [[VCRiderHomeViewController alloc] init];
-    //VCRiderRidesViewController * riderHomeViewController = [[VCRiderRidesViewController alloc] init];
+    VCRideViewController * riderViewController = [[VCRideViewController alloc] init];
     
     if(deckController == nil){
         [self createDeckViewController];
     }
     
-    deckController.centerController = riderHomeViewController;
+    
+    [_centerNavigationController setViewControllers:@[riderViewController]];
     
     [self setMode: kRiderMode];
 
@@ -124,6 +132,10 @@ static int mode;
 
 - (int) mode {
     return mode;
+}
+
+- (void) setCenterViewControllers:(NSArray *) viewControllers{
+    [_centerNavigationController setViewControllers:viewControllers];
 }
 
 

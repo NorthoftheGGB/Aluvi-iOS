@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCRideViewController">
             <connections>
-                <outlet property="currentLocationButton" destination="XIm-sQ-LdY" id="2n3-V0-Gec"/>
+                <outlet property="currentLocationButton" destination="XIm-sQ-LdY" id="ihB-70-3YB"/>
                 <outlet property="editCommuteButton" destination="N2Q-DX-cGh" id="s78-rO-yRn"/>
                 <outlet property="homeActionView" destination="XY9-N9-RDa" id="LQH-QX-Bja"/>
                 <outlet property="nextButton" destination="4au-Tm-k8h" id="I8s-9S-4fi"/>
@@ -147,7 +147,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
-        <view contentMode="scaleToFill" id="RWM-tO-NBZ" userLabel="Ride Details HUD" customClass="VCRideDetailsHudView">
+        <view contentMode="scaleToFill" id="RWM-tO-NBZ" userLabel="Ride Details" customClass="VCRideDetailsConfirmationView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="260"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -397,15 +397,16 @@
                 <outlet property="carTypeLabel" destination="R4l-5d-Vc0" id="AfN-nc-QfH"/>
                 <outlet property="cardNicknamelabel" destination="fLf-hD-OJd" id="4yz-9d-26f"/>
                 <outlet property="cardNumberLabel" destination="aeQ-Xu-ULg" id="ynr-xF-jUo"/>
-                <outlet property="confirmButton" destination="nx0-ot-14p" id="SP4-lb-J4y"/>
+                <outlet property="confirmButton" destination="nx0-ot-14p" id="gvT-mm-qap"/>
                 <outlet property="creditCardImageView" destination="i6s-VW-kkM" id="lyQ-Cl-N1H"/>
-                <outlet property="driverNameLabel" destination="CIS-vw-GPg" id="diu-f7-XWW"/>
+                <outlet property="didTapConfirmButton" destination="nx0-ot-14p" id="YE7-a4-pKT"/>
+                <outlet property="driverNameLabel" destination="CIS-vw-GPg" id="oB8-bg-7gD"/>
                 <outlet property="fareLabel" destination="UXb-UY-V0U" id="kJM-9s-2VA"/>
-                <outlet property="liscenceLabel" destination="LMV-AV-c4O" id="OcJ-sh-chQ"/>
-                <outlet property="pickupTimeLabel" destination="Zgy-fF-cwL" id="CZq-BU-NUs"/>
+                <outlet property="lisenceLabel" destination="LMV-AV-c4O" id="rlX-Wt-ITf"/>
+                <outlet property="pickupTimeLabel" destination="Zgy-fF-cwL" id="3qI-YI-2FF"/>
             </connections>
         </view>
-        <view contentMode="scaleToFill" id="Lv9-d9-EJH">
+        <view contentMode="scaleToFill" id="Lv9-d9-EJH" userLabel="Ride Details HUD" customClass="VCRideDetailsHudView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="154"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -555,7 +556,7 @@
                     <state key="selected" image="current-location-button-selected.png"/>
                     <state key="highlighted" image="current-location-button-selected.png"/>
                     <connections>
-                        <action selector="didTapCurrentLocationButton:" destination="-1" eventType="touchUpInside" id="82W-6B-Ng1"/>
+                        <action selector="didTapCurrentLocationButton:" destination="-1" eventType="touchUpInside" id="ZIk-Ue-6xT"/>
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999999" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Wx-Fa-RsE" customClass="VCLabel">
@@ -601,6 +602,17 @@
                 <constraint firstItem="LKt-Aa-kUP" firstAttribute="leading" secondItem="IHO-f4-kdP" secondAttribute="trailing" constant="5" id="zdq-4s-Yse"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="carTypeLabel" destination="ufz-sD-hCs" id="dRQ-BE-2LL"/>
+                <outlet property="cardNicknamelabel" destination="ocb-Au-ZiP" id="7SR-xi-Efc"/>
+                <outlet property="cardNumberLabel" destination="TaG-Um-H3F" id="uBr-41-AEE"/>
+                <outlet property="creditCardImageView" destination="Zyt-ju-gX4" id="K64-Hi-4ro"/>
+                <outlet property="driverFirstNameLabel" destination="Nxs-JX-K3G" id="ga6-Am-7sd"/>
+                <outlet property="driverImageView" destination="LKt-Aa-kUP" id="pQJ-jv-YNl"/>
+                <outlet property="driverLastNameLabel" destination="IHO-f4-kdP" id="Jny-Wc-6oK"/>
+                <outlet property="fareLabel" destination="YHX-V0-gsv" id="o8P-kU-ayI"/>
+                <outlet property="lisenceLabel" destination="2Wx-Fa-RsE" id="ZBE-L9-IVR"/>
+            </connections>
         </view>
         <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XIm-sQ-LdY" userLabel="Current Location Button">
             <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
@@ -720,6 +732,15 @@
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
+        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xhP-jJ-BLS">
+            <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <state key="normal" image="directions-button.png">
+                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <state key="selected" image="directions-button-selected.png"/>
+            <state key="highlighted" image="directions-button-selected.png"/>
+        </button>
     </objects>
     <resources>
         <image name="button-default.png" width="160" height="46"/>
