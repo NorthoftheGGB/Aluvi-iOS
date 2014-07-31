@@ -267,6 +267,9 @@
 		4FFE171E198A1890004D4413 /* menu-map-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE171D198A1890004D4413 /* menu-map-icon@2x.png */; };
 		4FFE171F198A1890004D4413 /* menu-map-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE171D198A1890004D4413 /* menu-map-icon@2x.png */; };
 		4FFE1720198A1890004D4413 /* menu-map-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE171D198A1890004D4413 /* menu-map-icon@2x.png */; };
+		4FFE1722198B0475004D4413 /* driver-cancel-hud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE1721198B0475004D4413 /* driver-cancel-hud@2x.png */; };
+		4FFE1723198B0475004D4413 /* driver-cancel-hud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE1721198B0475004D4413 /* driver-cancel-hud@2x.png */; };
+		4FFE1724198B0475004D4413 /* driver-cancel-hud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE1721198B0475004D4413 /* driver-cancel-hud@2x.png */; };
 		CC26291E90FA484191AB6374 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 351E93948BFC43989C411DB5 /* libPods.a */; };
 		F401446F1978728100769802 /* VCFillCommuterPass.m in Sources */ = {isa = PBXBuildFile; fileRef = F401446E1978728100769802 /* VCFillCommuterPass.m */; };
 		F40144701978728100769802 /* VCFillCommuterPass.m in Sources */ = {isa = PBXBuildFile; fileRef = F401446E1978728100769802 /* VCFillCommuterPass.m */; };
@@ -913,6 +916,7 @@
 		4FFE17121989EFC0004D4413 /* menu-item-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-item-bg@2x.png"; sourceTree = "<group>"; };
 		4FFE17191989F93F004D4413 /* menu-item-badge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-item-badge@2x.png"; sourceTree = "<group>"; };
 		4FFE171D198A1890004D4413 /* menu-map-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-map-icon@2x.png"; sourceTree = "<group>"; };
+		4FFE1721198B0475004D4413 /* driver-cancel-hud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "driver-cancel-hud@2x.png"; sourceTree = "<group>"; };
 		CD677E046A804589A26C0608 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		F401446D1978728100769802 /* VCFillCommuterPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCFillCommuterPass.h; path = API/Users/VCFillCommuterPass.h; sourceTree = "<group>"; };
 		F401446E1978728100769802 /* VCFillCommuterPass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCFillCommuterPass.m; path = API/Users/VCFillCommuterPass.m; sourceTree = "<group>"; };
@@ -1343,6 +1347,7 @@
 		4FDB0ECA1970B0F000A8CEC2 /* Revision 2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				4FFE1721198B0475004D4413 /* driver-cancel-hud@2x.png */,
 				4FFE171D198A1890004D4413 /* menu-map-icon@2x.png */,
 				4FFE17191989F93F004D4413 /* menu-item-badge@2x.png */,
 				4FFE17111989EFC0004D4413 /* menu-item-bg-select@2x.png */,
@@ -2191,6 +2196,7 @@
 				F4354DAF195D0D6A00C06CF7 /* menu-list@2x.png in Resources */,
 				4FCD7C8219771931007609E8 /* rider-call-button-select@2x.png in Resources */,
 				4F2EF9C61961391B006A1962 /* tutorial-menu-button@2x.png in Resources */,
+				4FFE1723198B0475004D4413 /* driver-cancel-hud@2x.png in Resources */,
 				4F73CA11197F82DA001B6663 /* VCEditLocationWidget.xib in Resources */,
 				4F2EF9B41961391B006A1962 /* about-menu-button@2x.png in Resources */,
 				4FE286F01962BB3F00FD8AF6 /* search-location-select@2x.png in Resources */,
@@ -2350,6 +2356,7 @@
 				4F73CA07197F2AB0001B6663 /* VCRideViewController.xib in Resources */,
 				F4C6B274197F06B100F6C10B /* VCRiderHomeViewControllerV2.xib in Resources */,
 				F4C6B275197F06B100F6C10B /* search-location@2x.png in Resources */,
+				4FFE1722198B0475004D4413 /* driver-cancel-hud@2x.png in Resources */,
 				F4C6B276197F06B100F6C10B /* VCDriverVideoTutorialController.xib in Resources */,
 				F4C6B277197F06B100F6C10B /* button-full-default@2x.png in Resources */,
 				F4C6B278197F06B100F6C10B /* search-location-select@2x.png in Resources */,
@@ -2462,6 +2469,7 @@
 				4F73CA09197F2AB0001B6663 /* VCRideViewController.xib in Resources */,
 				4FDB0EC51970A5AC00A8CEC2 /* VCRiderHomeViewControllerV2.xib in Resources */,
 				4FE286F11962BB3F00FD8AF6 /* search-location@2x.png in Resources */,
+				4FFE1724198B0475004D4413 /* driver-cancel-hud@2x.png in Resources */,
 				4FB2682B1952207A0028D4ED /* VCDriverVideoTutorialController.xib in Resources */,
 				4FDB0ED31970C3AC00A8CEC2 /* button-full-default@2x.png in Resources */,
 				4FE286EF1962BB3F00FD8AF6 /* search-location-select@2x.png in Resources */,
