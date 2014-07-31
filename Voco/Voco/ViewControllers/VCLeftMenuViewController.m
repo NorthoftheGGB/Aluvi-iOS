@@ -31,8 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-}
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];}
 
 - (void)didReceiveMemoryWarning
 {
@@ -54,10 +53,12 @@
         cell.textLabel.text = @"Profile";
     }
     else if (row == 1){
-        VCMenuItemTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemTableViewCell" class:[VCMenuItemTableViewCell class]];
-        //cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CELL"];
+//This is how to add a cusom TableViewCell
         
-        //cell.textLabel.text = @"Map";
+        VCMenuItemTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemTableViewCell" class:[VCMenuItemTableViewCell class]];
+        
+        menuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-map-icon"];
+        menuItemTableViewCell.menuItemLabel.text = @"Map";
         cell = menuItemTableViewCell;
     }
     return cell;
@@ -75,10 +76,15 @@
         
     }
     else if (row == 1) {
+        
         VCRideViewController * rideViewController = [[VCRideViewController alloc] init];
         [[VCInterfaceModes instance] setCenterViewControllers: @[rideViewController]];
-        
+    
+        VCMenuItemTableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+        [cell select];
     }
+    
+
     
     
 }

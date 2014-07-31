@@ -9,11 +9,7 @@
 #import "VCMenuItemTableViewCell.h"
 
 @interface VCMenuItemTableViewCell ()
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
-@property (weak, nonatomic) IBOutlet UIView *menuItemLabel;
-@property (weak, nonatomic) IBOutlet UIView *badgeView;
-@property (weak, nonatomic) IBOutlet UILabel *badgeNumberLabel;
+
 
 
 @end
@@ -31,5 +27,10 @@
 
     // Configure the view for the selected state
 }
+
+- (void) select {
+    [self.backgroundImageView.image = [UIImage imageNamed:@"menu-item-bg-select"]];
+}
+
 
 @end

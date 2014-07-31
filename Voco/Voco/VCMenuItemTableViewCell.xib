@@ -18,11 +18,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iHY-2v-9Ck">
-                        <rect key="frame" x="43" y="7" width="30" height="30"/>
+                        <rect key="frame" x="47" y="11" width="22" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nmx-dJ-Njz">
-                        <rect key="frame" x="93" y="11" width="133" height="21"/>
+                        <rect key="frame" x="83" y="11" width="143" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -53,7 +53,7 @@
                 <outlet property="badgeNumberLabel" destination="KfN-bt-899" id="rdg-x7-Yys"/>
                 <outlet property="badgeView" destination="VfQ-SH-r9T" id="Ddt-gr-Ybj"/>
                 <outlet property="iconImageView" destination="iHY-2v-9Ck" id="cQc-DP-bc2"/>
-                <outlet property="menuItemLabel" destination="VfQ-SH-r9T" id="icA-wF-pjZ"/>
+                <outlet property="menuItemLabel" destination="nmx-dJ-Njz" id="BTG-m7-2Yb"/>
             </connections>
         </tableViewCell>
     </objects>

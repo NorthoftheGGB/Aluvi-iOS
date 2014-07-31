@@ -264,6 +264,9 @@
 		4FFE171A1989F93F004D4413 /* menu-item-badge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE17191989F93F004D4413 /* menu-item-badge@2x.png */; };
 		4FFE171B1989F93F004D4413 /* menu-item-badge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE17191989F93F004D4413 /* menu-item-badge@2x.png */; };
 		4FFE171C1989F93F004D4413 /* menu-item-badge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE17191989F93F004D4413 /* menu-item-badge@2x.png */; };
+		4FFE171E198A1890004D4413 /* menu-map-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE171D198A1890004D4413 /* menu-map-icon@2x.png */; };
+		4FFE171F198A1890004D4413 /* menu-map-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE171D198A1890004D4413 /* menu-map-icon@2x.png */; };
+		4FFE1720198A1890004D4413 /* menu-map-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE171D198A1890004D4413 /* menu-map-icon@2x.png */; };
 		CC26291E90FA484191AB6374 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 351E93948BFC43989C411DB5 /* libPods.a */; };
 		F401446F1978728100769802 /* VCFillCommuterPass.m in Sources */ = {isa = PBXBuildFile; fileRef = F401446E1978728100769802 /* VCFillCommuterPass.m */; };
 		F40144701978728100769802 /* VCFillCommuterPass.m in Sources */ = {isa = PBXBuildFile; fileRef = F401446E1978728100769802 /* VCFillCommuterPass.m */; };
@@ -909,6 +912,7 @@
 		4FFE17111989EFC0004D4413 /* menu-item-bg-select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-item-bg-select@2x.png"; sourceTree = "<group>"; };
 		4FFE17121989EFC0004D4413 /* menu-item-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-item-bg@2x.png"; sourceTree = "<group>"; };
 		4FFE17191989F93F004D4413 /* menu-item-badge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-item-badge@2x.png"; sourceTree = "<group>"; };
+		4FFE171D198A1890004D4413 /* menu-map-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-map-icon@2x.png"; sourceTree = "<group>"; };
 		CD677E046A804589A26C0608 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		F401446D1978728100769802 /* VCFillCommuterPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCFillCommuterPass.h; path = API/Users/VCFillCommuterPass.h; sourceTree = "<group>"; };
 		F401446E1978728100769802 /* VCFillCommuterPass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCFillCommuterPass.m; path = API/Users/VCFillCommuterPass.m; sourceTree = "<group>"; };
@@ -1339,6 +1343,7 @@
 		4FDB0ECA1970B0F000A8CEC2 /* Revision 2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				4FFE171D198A1890004D4413 /* menu-map-icon@2x.png */,
 				4FFE17191989F93F004D4413 /* menu-item-badge@2x.png */,
 				4FFE17111989EFC0004D4413 /* menu-item-bg-select@2x.png */,
 				4FFE17121989EFC0004D4413 /* menu-item-bg@2x.png */,
@@ -2265,6 +2270,7 @@
 				F4354DC6195D0D6A00C06CF7 /* commute_logo@2x.png in Resources */,
 				4FCD7C741976244F007609E8 /* VCDriverEarningsViewController.xib in Resources */,
 				F4354DC7195D0D6A00C06CF7 /* Images.xcassets in Resources */,
+				4FFE171F198A1890004D4413 /* menu-map-icon@2x.png in Resources */,
 				4FDB0ED61970C3AD00A8CEC2 /* button-full-select@2x.png in Resources */,
 				4FE286EC1962B89700FD8AF6 /* current-location-arrow@2x.png in Resources */,
 				F4354DC8195D0D6A00C06CF7 /* VCMenuViewController.xib in Resources */,
@@ -2354,6 +2360,7 @@
 				F4C6B27C197F06B100F6C10B /* InfoPlist.strings in Resources */,
 				F4C6B27D197F06B100F6C10B /* terms-menu-button-selected@2x.png in Resources */,
 				F4C6B27E197F06B100F6C10B /* pin@2x.png in Resources */,
+				4FFE171E198A1890004D4413 /* menu-map-icon@2x.png in Resources */,
 				4F3DB5BC1981ED4E00DDD094 /* current-location-button@2x.png in Resources */,
 				F4C6B27F197F06B100F6C10B /* profile-menu-button-select@2x.png in Resources */,
 				F4C6B280197F06B100F6C10B /* button-default@2x.png in Resources */,
@@ -2465,6 +2472,7 @@
 				F4FA0BF4192BF6BF005D8645 /* InfoPlist.strings in Resources */,
 				4F2EF9BF1961391B006A1962 /* terms-menu-button-selected@2x.png in Resources */,
 				4FE286FD1962C25400FD8AF6 /* pin@2x.png in Resources */,
+				4FFE1720198A1890004D4413 /* menu-map-icon@2x.png in Resources */,
 				4F3DB5BE1981ED4E00DDD094 /* current-location-button@2x.png in Resources */,
 				4F2EF9A21960EC8C006A1962 /* profile-menu-button-select@2x.png in Resources */,
 				4FDB0ECD1970B10600A8CEC2 /* button-default@2x.png in Resources */,
