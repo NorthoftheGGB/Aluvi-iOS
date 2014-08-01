@@ -9,16 +9,27 @@
 #import "VCDriveViewController.h"
 
 #define kDriverCallHudOriginX 271
-#define kDriverCallHudOriginY 353
+#define kDriverCallHudOriginY 227
 #define kDriverCallHudOpenX 31
-#define kDriverCallHudOpenY 353
+#define kDriverCallHudOpenY 227
+
+#define kDriverCancelHudOriginX 271
+#define kDriverCancelHudOriginY 303
+#define kDriverCancelHudOpenX 165
+#define kDriverCancelHudOpenY 303
 
 @interface VCDriveViewController ()
 @property (strong, nonatomic) IBOutlet UIView *driverCallHUD;
+@property (strong, nonatomic) IBOutlet UIView *driverCancelHUD;
 
 @property (nonatomic) BOOL callHudPanLocked;
 @property (strong, nonatomic) NSTimer * timer;
 @property (nonatomic) BOOL callHudOpen;
+
+@property (nonatomic) BOOL cancelHudPanLocked;
+@property (strong, nonatomic) NSTimer * cancelTimer;
+@property (nonatomic) BOOL cancelHudOpen;
+
 @end
 
 @implementation VCDriveViewController
@@ -33,21 +44,43 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+- (void) viewWillAppear:(BOOL)animated {
     
     CGRect frame = _driverCallHUD.frame;
-    frame.origin.x = kDriverCallHudOriginX;
-    frame.origin.y = kDriverCallHudOriginY;
+    frame.origin.x = self.view.frame.size.height - kDriverCallHudOriginX;
+    frame.origin.y = self.view.frame.size.height - kDriverCallHudOriginY;
     _driverCallHUD.frame = frame;
     
     [self.view addSubview:_driverCallHUD];
+    
+    {CGRect frame = _driverCancelHUD.frame;
+        frame.origin.x =  self.view.frame.size.height - kDriverCancelHudOriginX;
+        frame.origin.y = self.view.frame.size.height - kDriverCancelHudOriginY;
+        _driverCancelHUD.frame = frame;
+        
+        [self.view addSubview:_driverCancelHUD];}
+    
+    
+    
+}
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+   
     
     UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(move:)];
     [panRecognizer setMinimumNumberOfTouches:1];
     [panRecognizer setMaximumNumberOfTouches:1];
     [_driverCallHUD addGestureRecognizer:panRecognizer];
+
+    
+        
+    {
+        UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(move2:)];
+        [panRecognizer setMinimumNumberOfTouches:1];
+        [panRecognizer setMaximumNumberOfTouches:1];
+        [_driverCancelHUD addGestureRecognizer:panRecognizer];
+    }
     
 }
 
@@ -108,6 +141,58 @@
     }
 }
 
+-(void)move2:(id)sender {
+    NSLog(@"%@", @"YO!");
+    
+    if( _cancelHudPanLocked ) {
+        return;
+    }
+    
+    CGPoint translatedPoint = [(UIPanGestureRecognizer*)sender translationInView:self.view];
+    
+    if(_cancelHudOpen == NO) {
+        
+        if(translatedPoint.x > 0){
+            return;
+        }
+        
+        if(translatedPoint.x < kDriverCallHudOpenX - kDriverCallHudOriginX ){
+            return;
+        }
+        
+        if ([(UIPanGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
+            CGPoint velocity = [(UIPanGestureRecognizer*)sender velocityInView:self.view];
+            
+            if(velocity.x < -2000) {
+                [self animateCancelHudToOpen];
+            } else if(translatedPoint.x < -100){
+                [self animateCancelHudToOpen];
+            } else {
+                [self animateCancelHudToClosed];
+            }
+            
+            return;
+        }
+        
+        CGRect frame = _driverCancelHUD.frame;
+        frame.origin.x = kDriverCancelHudOriginX + translatedPoint.x;
+        _driverCancelHUD.frame = frame;
+        if ( kDriverCancelHudOriginX + translatedPoint.x <= kDriverCancelHudOpenX ){
+            [self animateCancelHudToOpen];
+        }
+        
+    } else {
+        if(translatedPoint.x < 0){
+            return;
+        }
+        
+        if ([(UIPanGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
+            [self animateCancelHudToClosed];
+        }
+    }
+}
+
+
 - (void) animateCallHudToOpen {
     _callHudPanLocked = YES;
     
@@ -118,6 +203,20 @@
         frame.origin.x = kDriverCallHudOpenX;
         _driverCallHUD.frame = frame;
         _callHudOpen = YES;
+    }];
+    
+}
+//TODO: add cancel
+- (void) animateCancelHudToOpen {
+    _cancelHudPanLocked = YES;
+    
+    _cancelTimer = [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(unlockCancelHudPan:) userInfo:nil repeats:NO];
+    
+    [UIView animateWithDuration:0.15 animations:^{
+        CGRect frame = _driverCancelHUD.frame;
+        frame.origin.x = kDriverCancelHudOpenX;
+        _driverCancelHUD.frame = frame;
+        _cancelHudOpen = YES;
     }];
     
 }
@@ -135,11 +234,30 @@
     }];
     
 }
+//TODO: add cancel
+
+- (void) animateCancelHudToClosed{
+    _cancelHudPanLocked = YES;
+    
+    _cancelTimer = [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(unlockCancelHudPan:) userInfo:nil repeats:NO];
+    
+    [UIView animateWithDuration:0.15 animations:^{
+        CGRect frame = _driverCancelHUD.frame;
+        frame.origin.x = kDriverCancelHudOriginX;
+        _driverCancelHUD.frame = frame;
+        _cancelHudOpen = NO;
+    }];
+    
+}
+
 
 - (void) unlockCallHudPan:(id)sender {
     _callHudPanLocked = NO;
 }
 
 
+- (void) unlockCancelHudPan:(id)sender {
+    _cancelHudPanLocked = NO;
+}
 
 @end

@@ -32,5 +32,9 @@
     self.backgroundImageView.image = [UIImage imageNamed:@"menu-item-bg-select"];
 }
 
+- (void) deselect {
+    self.backgroundImageView.image = [UIImage imageNamed:@"menu-item-bg"];
+}
+
 
 @end

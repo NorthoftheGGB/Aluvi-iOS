@@ -12,6 +12,7 @@
 #import "VCRiderProfileViewController.h"
 #import "VCMenuItemTableViewCell.h"
 
+// These ones go in the array
 #define kUserInfoCell @1000
 #define kProfileCell @1001
 #define kScheduleCell @1002
@@ -22,6 +23,7 @@
 #define kSupportCell @1007
 #define kModeCell @1008
 
+// These are used in the switch statement
 #define kUserInfoCellInteger 1000
 #define kProfileCellInteger 1001
 #define kScheduleCellInteger 1002
@@ -82,7 +84,6 @@
         case kMapCellInteger:
         {
             VCMenuItemTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemTableViewCell" class:[VCMenuItemTableViewCell class]];
-            
             menuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-map-icon"];
             menuItemTableViewCell.menuItemLabel.text = @"Map";
             cell = menuItemTableViewCell;
