@@ -9,14 +9,14 @@
 #import "VCDriveViewController.h"
 
 #define kDriverCallHudOriginX 271
-#define kDriverCallHudOriginY 353
+#define kDriverCallHudOriginY 227
 #define kDriverCallHudOpenX 31
-#define kDriverCallHudOpenY 353
+#define kDriverCallHudOpenY 227
 
 #define kDriverCancelHudOriginX 271
-#define kDriverCancelHudOriginY 278
+#define kDriverCancelHudOriginY 303
 #define kDriverCancelHudOpenX 165
-#define kDriverCancelHudOpenY 278
+#define kDriverCancelHudOpenY 303
 
 @interface VCDriveViewController ()
 @property (strong, nonatomic) IBOutlet UIView *driverCallHUD;
@@ -44,34 +44,42 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+- (void) viewWillAppear:(BOOL)animated {
     
     CGRect frame = _driverCallHUD.frame;
-    frame.origin.x = kDriverCallHudOriginX;
-    frame.origin.y = kDriverCallHudOriginY;
+    frame.origin.x = self.view.frame.size.height - kDriverCallHudOriginX;
+    frame.origin.y = self.view.frame.size.height - kDriverCallHudOriginY;
     _driverCallHUD.frame = frame;
     
     [self.view addSubview:_driverCallHUD];
+    
+    {CGRect frame = _driverCancelHUD.frame;
+        frame.origin.x =  self.view.frame.size.height - kDriverCancelHudOriginX;
+        frame.origin.y = self.view.frame.size.height - kDriverCancelHudOriginY;
+        _driverCancelHUD.frame = frame;
+        
+        [self.view addSubview:_driverCancelHUD];}
+    
+    
+    
+}
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+   
     
     UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(move:)];
     [panRecognizer setMinimumNumberOfTouches:1];
     [panRecognizer setMaximumNumberOfTouches:1];
     [_driverCallHUD addGestureRecognizer:panRecognizer];
     
-    {CGRect frame = _driverCallHUD.frame;
-        frame.origin.x = kDriverCancelHudOriginX;
-    frame.origin.y = kDriverCancelHudOriginY;
-    _driverCancelHUD.frame = frame;
     
-    [self.view addSubview:_driverCancelHUD];
         
-        UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(move:)];
+    {UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(move2:)];
         [panRecognizer setMinimumNumberOfTouches:1];
         [panRecognizer setMaximumNumberOfTouches:1];
-        [_driverCancelHUD addGestureRecognizer:panRecognizer];
-    }
+        [_driverCancelHUD addGestureRecognizer:panRecognizer];}
+    
     
 }
 
