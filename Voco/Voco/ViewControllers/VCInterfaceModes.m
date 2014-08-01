@@ -197,7 +197,8 @@ static int mode;
 
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
-    return NO;
+    return YES; // until we have hamburger everywhere
+    //return NO;
 }
 
 @end

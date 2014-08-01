@@ -48,6 +48,7 @@
     [panRecognizer setMinimumNumberOfTouches:1];
     [panRecognizer setMaximumNumberOfTouches:1];
     [_driverCallHUD addGestureRecognizer:panRecognizer];
+    
 }
 
 - (void)didReceiveMemoryWarning
