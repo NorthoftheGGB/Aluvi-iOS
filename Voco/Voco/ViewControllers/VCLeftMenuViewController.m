@@ -114,7 +114,11 @@
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-    long row = [indexPath row];
+    
+    UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+    if([cell isKindOfClass:[VCMenuItemTableViewCell class]]) {
+        [(VCMenuItemTableViewCell*) cell deselect];
+    }
 
 }
 

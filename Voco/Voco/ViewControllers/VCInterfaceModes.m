@@ -145,6 +145,7 @@ static int mode;
 }
 
 - (void) setCenterViewControllers:(NSArray *) viewControllers{
+    [deckController closeLeftViewAnimated:YES];
     [_centerNavigationController setViewControllers:viewControllers];
 }
 

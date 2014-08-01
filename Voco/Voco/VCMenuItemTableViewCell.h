@@ -17,5 +17,6 @@
 
 
 - (void) select;
+- (void) deselect;
 
 @end
