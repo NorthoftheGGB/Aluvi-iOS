@@ -29,7 +29,7 @@
 }
 
 - (void) select {
-    [self.backgroundImageView.image = [UIImage imageNamed:@"menu-item-bg-select"]];
+    self.backgroundImageView.image = [UIImage imageNamed:@"menu-item-bg-select"];
 }
 
 

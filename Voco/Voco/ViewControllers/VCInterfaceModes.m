@@ -9,6 +9,7 @@
 #import "VCInterfaceModes.h"
 #import "VCSignInViewController.h"
 #import "VCRideViewController.h"
+#import "VCDriveViewController.h"
 #import "VCLeftMenuViewController.h"
 #import "IIViewDeckController.h"
 #import "VCApi.h"
@@ -23,7 +24,7 @@ static VCInterfaceModes * instance;
 static IIViewDeckController* deckController;
 static int mode;
 
-@interface VCInterfaceModes ()
+@interface VCInterfaceModes () <UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UINavigationController * centerNavigationController;
 
@@ -42,7 +43,9 @@ static int mode;
 - (void) showInterface {
     
 #warning skipping interface selection for rider interface development
-    [self showRiderInterface];
+    //[self showRiderInterface];
+    [self showDriverInterface];
+    
     
     /*if([VCApi loggedIn]){
         if(mode == kDriverMode) {
@@ -74,6 +77,7 @@ static int mode;
     deckController.leftSize = 48;
     deckController.openSlideAnimationDuration = 0.20f;
     deckController.closeSlideAnimationDuration = 0.20f;
+    deckController.panningGestureDelegate = self;
     _centerNavigationController = [[UINavigationController alloc] init];
     _centerNavigationController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu-list"]
                                                                                        style:UIBarButtonItemStyleBordered
@@ -109,12 +113,18 @@ static int mode;
         [self createDeckViewController];
     }
     
+    VCDriveViewController * driveViewController = [[VCDriveViewController alloc] init];
+    deckController.centerController = driveViewController;
+
+    
+    /*
     if([[VCUserState instance].driverState isEqualToString:kDriverStateActive]
        || [[VCUserState instance].driverState isEqualToString:kDriverStateOnDuty] ) {
            VCDriverHomeViewController * driverViewController = [[VCDriverHomeViewController alloc] init];
            deckController.centerController = driverViewController;
            [self setMode: kDriverMode];
     }
+     */
     
 }
 
@@ -185,5 +195,9 @@ static int mode;
     }
 }
 
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    return NO;
+}
 
 @end
