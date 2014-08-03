@@ -233,7 +233,7 @@
     _workLocationWidget.mode = kEditLocationWidgetEditMode;
     CGRect frame = _homeLocationWidget.view.frame;
     frame.origin.x = 0;
-    frame.origin.y = 149;
+    frame.origin.y = 142;
     frame.size.height = 0;
     _workLocationWidget.view.frame = frame;
     [self.view addSubview:_workLocationWidget.view];
@@ -254,7 +254,7 @@
     
     CGRect frame = _returnHudView.frame;
     frame.origin.x = 0;
-    frame.origin.y = 296;
+    frame.origin.y = 182;
     frame.size.height = 0;
     _returnHudView.frame = frame;
     [self.view addSubview:self.returnHudView];
