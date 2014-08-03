@@ -13,6 +13,7 @@
 #define VC_PUSH_RIDE_ID_KEY @"ride_id"
 #define VC_PUSH_FARE_ID_KEY @"fare_id"
 #define VC_PUSH_AMOUNT_KEY @"amount"
+#define VC_PUSH_FARE_ID_KEY @"fare_id"
 
 #define kPushTypeRideFound @"fare_found"
 #define kPushTypeFareAssigned @"fare_assigned"

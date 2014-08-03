@@ -13,7 +13,7 @@
 
 @implementation Offer
 
-@dynamic ride_id;
+@dynamic fare_id;
 @dynamic id;
 @dynamic state;
 @dynamic updatedAt;

@@ -72,7 +72,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideOfferInvokedNotification:) name:@"ride_offer_invoked" object:[VCDialogs instance]];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fareOfferInvokedNotification:) name:@"fare_offer_invoked" object:[VCDialogs instance]];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideInvoked:) name:@"driver_ride_invoked" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideCancelledByRider:) name:kPushTypeFareCancelledByRider object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideOfferClosed:) name:kPushTypeRideOfferClosed object:nil];
@@ -108,7 +108,7 @@
 
 
 // Notification Handlers
-- (void) rideOfferInvokedNotification:(NSNotification *)notification{
+- (void) fareOfferInvokedNotification:(NSNotification *)notification{
     [self resetButtons];
     NSDictionary * info = [notification userInfo];
     NSNumber * rideId = [info objectForKey: @"ride_id"];
@@ -127,12 +127,18 @@
     [self showAcceptOrDeclineRideInterface];
 }
 
+<<<<<<< Updated upstream
 - (void) rideOfferClosed: (NSNotification *) notification {
     NSNumber * fareId = notification.object;
     if(_fare != nil && [fareId isEqualToNumber:_fare.fare_id]){  //TODO should be fare_id fareId
+=======
+- (void) fareOfferClosed: (NSNotification *) notification {
+    NSNumber * rideId = notification.object;
+    if(_fare != nil && [rideId isEqualToNumber:_fare.ride_id]){  //TODO should be fare_id fareId
+>>>>>>> Stashed changes
         [self resetInterface];
         [UIAlertView showWithTitle:@"Offer Closed" message:@"This ride offer has closed" cancelButtonTitle:@"Ok" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-            [[VCDialogs instance] offerNextRideToDriver];
+            [[VCDialogs instance] offerNextFareToDriver];
         }];
     }
 
@@ -288,7 +294,7 @@
             [UIAlertView showWithTitle:@"Ride no longer available!" message:@"Unfortunately another driver beat you to this ride!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                 
                 [self resetInterface];
-                [[VCDialogs instance] offerNextRideToDriver];
+                [[VCDialogs instance] offerNextFareToDriver];
             }];
         }
         
@@ -315,8 +321,13 @@
                         [hud hide:YES];
                         
                         
+<<<<<<< Updated upstream
                         [VCUserState instance].underwayFareId = nil;
                         [[VCDialogs instance] offerNextRideToDriver];
+=======
+                        [VCUserState instance].underwayRideId = nil;
+                        [[VCDialogs instance] offerNextFareToDriver];
+>>>>>>> Stashed changes
                         
                     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                         [hud hide:YES];

@@ -67,7 +67,7 @@
         RKResponseDescriptor * responseDescriptor =
         [RKResponseDescriptor responseDescriptorWithMapping:entityMapping
                                                      method:RKRequestMethodGET
-                                                pathPattern:API_GET_DRIVER_RIDE_PATH_PATTERN
+                                                pathPattern:API_GET_DRIVER_FARE_PATH_PATTERN
                                                     keyPath:nil
                                                 statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:responseDescriptor];

@@ -59,7 +59,7 @@
                                                           }];
                                                       } else {
                                                           Offer * offer = [offers objectAtIndex:0];
-                                                          [[VCDialogs instance] offerRideToDriver:offer];
+                                                          [[VCDialogs instance] offerFareToDriver:offer];
                                                       }
                                                       
                                                   

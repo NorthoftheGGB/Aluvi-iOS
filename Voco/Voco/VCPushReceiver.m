@@ -92,7 +92,7 @@
                                                       if([VCUserState driverIsAvailable]
                                                          && [[VCDialogs instance].interfaceState isEqualToString:VC_INTERFACE_STATE_IDLE]){  // guard against invalid state
                                                           
-                                                          [[VCDialogs instance] offerNextRideToDriver];
+                                                          [[VCDialogs instance] offerNextFareToDriver];
                                                       }
                                                       
                                                   }
@@ -106,7 +106,6 @@
     } else if([type isEqualToString:kPushTypeRideOfferClosed]){
         [[VCDialogs instance] retractOfferDialog: [userInfo objectForKey:VC_PUSH_OFFER_ID_KEY]];
         [[NSNotificationCenter defaultCenter] postNotificationName:kPushTypeRideOfferClosed object:[userInfo objectForKey:VC_PUSH_FARE_ID_KEY] userInfo:@{}];
-
     } else {
         [self handleRemoteNotification:userInfo];
     }
@@ -155,7 +154,7 @@
                                                               }];
                                                           } else {
                                                               Offer * offer = [offers objectAtIndex:0];
-                                                              [[VCDialogs instance] offerRideToDriver:offer];
+                                                              [[VCDialogs instance] offerFareToDriver:offer];
                                                           }
                                                           
                                                       }

@@ -177,13 +177,11 @@
                                         }];
 }
 
-+ (void) loadDriveDetails: (NSNumber *) rideId success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
++ (void) loadFareDetails: (NSNumber *) fareId success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                   failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
-    VCFareIdentity * rideIdentity = [[VCFareIdentity alloc] init];
-    rideIdentity.id = rideId;
-    //Drive * drive = [[Drive alloc] init];
-    //drive.ride_id = rideId;
-    [[RKObjectManager sharedManager] getObject:rideIdentity
+    VCFareIdentity * fareIdentity = [[VCFareIdentity alloc] init];
+    fareIdentity.id = fareId;
+    [[RKObjectManager sharedManager] getObject:fareIdentity
                                           path:nil
                                     parameters:nil
                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {

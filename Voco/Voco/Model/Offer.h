@@ -13,7 +13,7 @@
 
 @interface Offer : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * ride_id;
+@property (nonatomic, retain) NSNumber * fare_id;
 @property (nonatomic, retain) NSNumber * id;
 @property (nonatomic, retain) NSString * state;
 @property (nonatomic, retain) NSDate * updatedAt;

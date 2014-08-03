@@ -14,7 +14,7 @@
 #elif TESTING==1
 #define API_BASE_URL @"http://voco-test.herokuapp.com/api/"
 #else
-#define API_BASE_URL @"http://192.168.1.117:3000/api/"
+#define API_BASE_URL @"http://192.168.1.25:3000/api/"
 #endif
 
 #define API_POST_RIDE_REQUEST @"rides/request"
@@ -56,7 +56,7 @@
 #define API_DRIVER_REGISTRATION @"drivers/driver_registration"
 #define API_DRIVER_CLOCK_ON @"drivers/clock_on"
 #define API_DRIVER_CLOCK_OFF @"drivers/clock_off"
-#define API_GET_DRIVER_RIDE_PATH_PATTERN @"drivers/rides/:id"
+#define API_GET_DRIVER_FARE_PATH_PATTERN @"drivers/fares/:id"
 
 // state
 #define API_TOKEN_KEY @"API_TOKEN"
