@@ -16,6 +16,7 @@
 #import "VCObjectRequestOperation.h"
 #import "VCAppDelegate.h"
 #import "VCCoreData.h"
+#import "VCGeoApi.h"
 
 #define kSecretApiKey @"asp03092jsdklfj023jsdf"
 
@@ -32,6 +33,7 @@ static NSString * apiToken;
     [VCDriverApi setup: objectManager];
     [VCUsersApi setup: objectManager];
     [VCDevicesApi setup:objectManager];
+    [VCGeoApi setup:objectManager];
         
     [self setApiToken: [[NSUserDefaults standardUserDefaults] stringForKey:API_TOKEN_KEY]];
     

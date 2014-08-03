@@ -219,6 +219,10 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:kPushTypeNoDriversAvailable object:payload userInfo:@{}];
     } else if([type isEqualToString:kPushTypeUserStateChanged]){
         [[VCUserState instance] synchronizeUserState];
+    } else {
+#ifdef DEBUG
+        [UIAlertView showWithTitle:@"Error" message:[NSString stringWithFormat:@"Invalid push type: %@", type] cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+#endif
     }
 }
 

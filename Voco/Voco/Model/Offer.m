@@ -21,7 +21,7 @@
 @dynamic decided;
 @dynamic meetingPointPlaceName;
 @dynamic dropOffPointPlaceName;
-@dynamic ride;
+@dynamic fare;
 
 + (void)createMappings:(RKObjectManager *)objectManager {
     

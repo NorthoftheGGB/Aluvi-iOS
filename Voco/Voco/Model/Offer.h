@@ -21,7 +21,7 @@
 @property (nonatomic, retain) NSNumber * decided;
 @property (nonatomic, retain) NSString * meetingPointPlaceName;
 @property (nonatomic, retain) NSString * dropOffPointPlaceName;
-@property (nonatomic, retain) Fare * ride;
+@property (nonatomic, retain) Fare * fare;
 
 
 + (void)createMappings:(RKObjectManager *)objectManager;

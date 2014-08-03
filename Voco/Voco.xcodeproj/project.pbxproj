@@ -806,6 +806,7 @@
 		F4138C36196784C700C265CD /* VCGeoApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCGeoApi.h; path = Geo/VCGeoApi.h; sourceTree = "<group>"; };
 		F4138C37196784C700C265CD /* VCGeoApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCGeoApi.m; path = Geo/VCGeoApi.m; sourceTree = "<group>"; };
 		F4138C3A19678BE000C265CD /* car@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "car@2x.png"; sourceTree = "<group>"; };
+		F4259066198DE4C400FA928E /* Voco 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 2.xcdatamodel"; sourceTree = "<group>"; };
 		F4354DCF195D0D6A00C06CF7 /* Voco Testing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Voco Testing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4354DD0195D0D6A00C06CF7 /* Voco Testing-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Voco Testing-Info.plist"; path = "/Users/deepwinter1/software-development/Clients/Will OBrien/voco-ios/Voco/Voco Testing-Info.plist"; sourceTree = "<absolute>"; };
 		F45F7BF4193578DE00A94721 /* VCRiderApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderApi.h; path = API/Rider/VCRiderApi.h; sourceTree = "<group>"; };
@@ -938,8 +939,6 @@
 		F4C6B29B197F06B200F6C10B /* Voco Dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Voco Dev-Info.plist"; path = "/Users/deepwinter1/software-development/Clients/Will OBrien/voco-ios/Voco/Voco Dev-Info.plist"; sourceTree = "<absolute>"; };
 		F4C6B29C197F437800F6C10B /* VCApiError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCApiError.h; path = API/VCApiError.h; sourceTree = "<group>"; };
 		F4C6B29D197F437800F6C10B /* VCApiError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCApiError.m; path = API/VCApiError.m; sourceTree = "<group>"; };
-		F4CCFF10198DD9A1003B73C1 /* Voco 30.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 30.xcdatamodel"; sourceTree = "<group>"; };
-		F4CCFF11198DDC38003B73C1 /* Voco 31.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 31.xcdatamodel"; sourceTree = "<group>"; };
 		F4D877641976721D00870945 /* VCProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCProfile.h; path = Users/VCProfile.h; sourceTree = "<group>"; };
 		F4D877651976721D00870945 /* VCProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCProfile.m; path = Users/VCProfile.m; sourceTree = "<group>"; };
 		F4D8776A19774CAB00870945 /* VCFare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCFare.h; path = API/Driver/VCFare.h; sourceTree = "<group>"; };
@@ -3075,9 +3074,10 @@
 				F4C6B1AE1978F33900F6C10B /* Voco 28.xcdatamodel */,
 				F4C6B1AF1979147000F6C10B /* Voco 29.xcdatamodel */,
 				F463BB011987294700B70DC1 /* Voco 30.xcdatamodel */,
+				F4259066198DE4C400FA928E /* Voco 2.xcdatamodel */,
 				F4FA0BFC192BF6BF005D8645 /* Voco.xcdatamodel */,
 			);
-			currentVersion = F463BB011987294700B70DC1 /* Voco 30.xcdatamodel */;
+			currentVersion = F4259066198DE4C400FA928E /* Voco 2.xcdatamodel */;
 			path = Voco.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

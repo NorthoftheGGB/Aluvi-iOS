@@ -115,7 +115,7 @@ static int mode;
         VCDriverHomeViewController * driverViewController = [[VCDriverHomeViewController alloc] init];
         
         NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Fare"];
-        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ride_id = %@", [VCUserState instance].underwayFareId];
+        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"fare_id    = %@", [VCUserState instance].underwayFareId];
         [fetch setPredicate:predicate];
         NSError * error;
         NSArray * items = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];

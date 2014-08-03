@@ -23,8 +23,8 @@
 #define kPushTypeRidePaymentProblems @"ride_payment_problem"
 #define kPushTypeNoDriversAvailable @"no_drivers_available"
 #define kPushTypeUserStateChanged @"user_state_change"
-#define kPushTypeRideOffer @"ride_offer"
-#define kPushTypeRideOfferClosed @"ride_offer_closed"
+#define kPushTypeRideOffer @"offer"
+#define kPushTypeRideOfferClosed @"offer_closed"
 
 // Internal Notifications
 #define kNotificationTypeFareComplete @"fare_complete"

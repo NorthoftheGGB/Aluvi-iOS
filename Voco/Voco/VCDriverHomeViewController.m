@@ -75,7 +75,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fareOfferInvokedNotification:) name:@"fare_offer_invoked" object:[VCDialogs instance]];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideInvoked:) name:@"driver_ride_invoked" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideCancelledByRider:) name:kPushTypeFareCancelledByRider object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideOfferClosed:) name:kPushTypeRideOfferClosed object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fareOfferClosed:) name:kPushTypeRideOfferClosed object:nil];
 
     }
     return self;
@@ -127,15 +127,9 @@
     [self showAcceptOrDeclineRideInterface];
 }
 
-<<<<<<< Updated upstream
-- (void) rideOfferClosed: (NSNotification *) notification {
+- (void) fareOfferClosed: (NSNotification *) notification {
     NSNumber * fareId = notification.object;
     if(_fare != nil && [fareId isEqualToNumber:_fare.fare_id]){  //TODO should be fare_id fareId
-=======
-- (void) fareOfferClosed: (NSNotification *) notification {
-    NSNumber * rideId = notification.object;
-    if(_fare != nil && [rideId isEqualToNumber:_fare.ride_id]){  //TODO should be fare_id fareId
->>>>>>> Stashed changes
         [self resetInterface];
         [UIAlertView showWithTitle:@"Offer Closed" message:@"This ride offer has closed" cancelButtonTitle:@"Ok" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
             [[VCDialogs instance] offerNextFareToDriver];
@@ -320,15 +314,9 @@
                         [_driverLocationHud removeFromSuperview];
                         [hud hide:YES];
                         
-                        
-<<<<<<< Updated upstream
                         [VCUserState instance].underwayFareId = nil;
-                        [[VCDialogs instance] offerNextRideToDriver];
-=======
-                        [VCUserState instance].underwayRideId = nil;
                         [[VCDialogs instance] offerNextFareToDriver];
->>>>>>> Stashed changes
-                        
+
                     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                         [hud hide:YES];
                     }];
