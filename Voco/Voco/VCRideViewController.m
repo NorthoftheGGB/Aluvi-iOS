@@ -199,14 +199,14 @@
     _homeLocationWidget.mode = kEditLocationWidgetEditMode;
     CGRect frame = _homeLocationWidget.view.frame;
     frame.origin.x = 0;
-    frame.origin.y = 109;
+    frame.origin.y = 102;
     frame.size.height = 0;
     _homeLocationWidget.view.frame = frame;
     [self.view addSubview:_homeLocationWidget.view];
     
     [UIView animateWithDuration:0.35 animations:^{
         CGRect frame = _homeLocationWidget.view.frame;
-        frame.size.height = 47;
+        frame.size.height = 40;
         _homeLocationWidget.view.frame = frame;
     }];
     
@@ -233,14 +233,14 @@
     _workLocationWidget.mode = kEditLocationWidgetEditMode;
     CGRect frame = _homeLocationWidget.view.frame;
     frame.origin.x = 0;
-    frame.origin.y = 156;
+    frame.origin.y = 149;
     frame.size.height = 0;
     _workLocationWidget.view.frame = frame;
     [self.view addSubview:_workLocationWidget.view];
     
     [UIView animateWithDuration:0.35 animations:^{
         CGRect frame = _workLocationWidget.view.frame;
-        frame.size.height = 47;
+        frame.size.height = 40;
         _workLocationWidget.view.frame = frame;
     }];
     
@@ -254,13 +254,13 @@
     
     CGRect frame = _returnHudView.frame;
     frame.origin.x = 0;
-    frame.origin.y = 203;
+    frame.origin.y = 296;
     frame.size.height = 0;
     _returnHudView.frame = frame;
     [self.view addSubview:self.returnHudView];
     [UIView animateWithDuration:0.35 animations:^{
         CGRect frame = _returnHudView.frame;
-        frame.size.height = 47;
+        frame.size.height = 40;
         _returnHudView.frame = frame;
     }];
     
