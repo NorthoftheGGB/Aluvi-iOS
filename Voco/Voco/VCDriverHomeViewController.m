@@ -111,9 +111,9 @@
 - (void) fareOfferInvokedNotification:(NSNotification *)notification{
     [self resetButtons];
     NSDictionary * info = [notification userInfo];
-    NSNumber * rideId = [info objectForKey: @"ride_id"];
+    NSNumber * fareId = [info objectForKey: @"fare_id"];
     NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"Fare"];
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ride_id = %@", rideId];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"fare_id = %@", fareId];
     [request setPredicate:predicate];
     NSError * error;
     NSArray * results = [[VCCoreData managedObjectContext] executeFetchRequest:request error:&error];

@@ -13,7 +13,7 @@
 +  (RKObjectMapping *) getMapping {
     RKObjectMapping * mapping = [RKObjectMapping mappingForClass:[VCRequestUpdate class]];
     [mapping addAttributeMappingsFromDictionary:@{
-                                                  @"request_id" : @"requestId"
+                                                  @"ride_id" : @"rideId"
                                                   }];
     return mapping;
 
