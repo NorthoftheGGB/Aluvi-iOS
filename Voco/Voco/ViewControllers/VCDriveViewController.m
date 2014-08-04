@@ -21,7 +21,7 @@
 #define kDriverCancelHudOpenX 165
 #define kDriverCancelHudOpenY 303
 
-@interface VCDriveViewController () <MKMapViewDelegate>
+@interface VCDriveViewController () //<MKMapViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *driverCallHUD;
 @property (strong, nonatomic) IBOutlet UIView *driverCancelHUD;
@@ -79,8 +79,9 @@
     return self;
 }
 
-- (void) viewWillAppear{
+- (void) viewWillAppear:(BOOL)animated{
    
+    
     CGRect frame = _driverCallHUD.frame;
     frame.origin.x = self.view.frame.size.height - kDriverCallHudOriginX;
     frame.origin.y = self.view.frame.size.height - kDriverCallHudOriginY;

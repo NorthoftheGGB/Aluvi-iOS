@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "VCTransitBaseViewController.h"
 
-@interface VCDriveViewController : VCTransitBaseViewController
+@interface VCDriveViewController : UIViewController //VCTransitBaseViewController
 
 @end
