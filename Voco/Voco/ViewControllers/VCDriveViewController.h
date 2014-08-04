@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VCTransitBaseViewController.h"
 
-@interface VCDriveViewController : UIViewController
+@interface VCDriveViewController : VCTransitBaseViewController
 
 @end
