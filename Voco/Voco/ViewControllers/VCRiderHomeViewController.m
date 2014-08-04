@@ -11,8 +11,8 @@
 #import <MBProgressHUD.h>
 #import <ActionSheetPicker-3.0/ActionSheetStringPicker.h>
 #import <BlocksKit.h>
-#import "VCUserState.h"
-#import "VCInterfaceModes.h"
+#import "VCUserStateManager.h"
+#import "VCInterfaceManager.h"
 #import "VCRiderApi.h"
 #import "VCMapQuestRouting.h"
 #import "VCRideRequestCreated.h"
@@ -335,8 +335,8 @@
                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                             VCDriverGeoObject * geoObject = mappingResult.firstObject;
                             
-                            if( [VCUserState instance].underwayFareId == nil
-                               || ![geoObject.currentFareId isEqualToNumber:[VCUserState instance].underwayFareId]){
+                            if( [VCUserStateManager instance].underwayFareId == nil
+                               || ![geoObject.currentFareId isEqualToNumber:[VCUserStateManager instance].underwayFareId]){
                                 // don't show annotation yet
                                 return;
                             }

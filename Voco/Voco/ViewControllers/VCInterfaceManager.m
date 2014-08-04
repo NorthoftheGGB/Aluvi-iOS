@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCInterfaceModes.h"
+#import "VCInterfaceManager.h"
 #import "VCSignInViewController.h"
 #import "VCRiderHomeViewController.h"
 #import "VCMenuViewController.h"
@@ -14,20 +14,20 @@
 #import "VCApi.h"
 #import "VCDriverHomeViewController.h"
 #import "VCRequestsViewController.h"
-#import "VCUserState.h"
+#import "VCUserStateManager.h"
 #import "VCDebugViewController.h"
 
 #define kInterfaceModeKey @"INTERFACE_MODE_KEY"
 
-static VCInterfaceModes * instance;
+static VCInterfaceManager * instance;
 static IIViewDeckController* deckController;
 static int mode;
 
-@implementation VCInterfaceModes
+@implementation VCInterfaceManager
 
-+ (VCInterfaceModes * ) instance {
++ (VCInterfaceManager * ) instance {
     if(instance == nil){
-        instance = [[VCInterfaceModes alloc] init];
+        instance = [[VCInterfaceManager alloc] init];
         mode =  [(NSNumber*) [[NSUserDefaults standardUserDefaults] objectForKey:kInterfaceModeKey] intValue];
     }
     return instance;
@@ -85,13 +85,15 @@ static int mode;
     
     VCRiderHomeViewController * riderHomeViewController = [[VCRiderHomeViewController alloc] init];
 
-    NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ride"];
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ride_id = %@", [VCUserState instance].underwayFareId];
-    [fetch setPredicate:predicate];
-    NSError * error;
-    NSArray * items = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
-    if(items != nil && [items count] > 0){
-        riderHomeViewController.request = [items objectAtIndex:0];
+    if( [VCUserStateManager instance].underwayFareId != nil ) {
+        NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Fare"];
+        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ride_id = %@", [VCUserStateManager instance].underwayFareId];
+        [fetch setPredicate:predicate];
+        NSError * error;
+        NSArray * items = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
+        if(items != nil && [items count] > 0){
+            riderHomeViewController.request = [items objectAtIndex:0];
+        }
     }
     
     if(deckController == nil){
@@ -110,12 +112,12 @@ static int mode;
         [self createDeckViewController];
     }
     
-    if([[VCUserState instance].driverState isEqualToString:kDriverStateActive]
-       || [[VCUserState instance].driverState isEqualToString:kDriverStateOnDuty] ) {
+    if([[VCUserStateManager instance].driverState isEqualToString:kDriverStateActive]
+       || [[VCUserStateManager instance].driverState isEqualToString:kDriverStateOnDuty] ) {
         VCDriverHomeViewController * driverViewController = [[VCDriverHomeViewController alloc] init];
         
         NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Fare"];
-        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"fare_id    = %@", [VCUserState instance].underwayFareId];
+        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"fare_id    = %@", [VCUserStateManager instance].underwayFareId];
         [fetch setPredicate:predicate];
         NSError * error;
         NSArray * items = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];

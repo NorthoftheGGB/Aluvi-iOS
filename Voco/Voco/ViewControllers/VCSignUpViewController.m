@@ -12,11 +12,11 @@
 #import "VCValidation.h"
 #import "WRUtilities.h"
 #import "VCRiderHomeViewController.h"
-#import "VCInterfaceModes.h"
+#import "VCInterfaceManager.h"
 #import <MBProgressHUD.h>
 #import "US2ConditionCollection.h"
 #import "US2Condition.h"
-#import "VCUserState.h"
+#import "VCUserStateManager.h"
 
 #import "VCNameTextField.h"
 #import "VCPhoneTextField.h"
@@ -184,10 +184,10 @@
 }
 
 - (void) login {
-    [[VCUserState instance] loginWithPhone:_phoneField.text password:_passwordField.text
+    [[VCUserStateManager instance] loginWithPhone:_phoneField.text password:_passwordField.text
               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                   _hud.hidden = YES;
-                  [[VCInterfaceModes instance] showRiderInterface];
+                  [[VCInterfaceManager instance] showRiderInterface];
                   
               } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                   _hud.hidden = YES;

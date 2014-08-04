@@ -14,11 +14,11 @@
 #import "VCPushReceiver.h"
 #import "WRUtilities.h"
 #import "VCApi.h"
-#import "VCUserState.h"
+#import "VCUserStateManager.h"
 #import "VCDialogs.h"
 #import "VCGeolocation.h"
 #import "VCApi.h"
-#import "VCInterfaceModes.h"
+#import "VCInterfaceManager.h"
 #import "VCMapQuestRouting.h"
 #import "VCUsersApi.h"
 #import "VCLocalNotificationReceiver.h"
@@ -53,7 +53,7 @@
 #if DEBUG==12
     [[VCInterfaceModes instance] showDebugInterface];
 #else
-    [[VCInterfaceModes instance] showInterface];
+    [[VCInterfaceManager instance] showInterface];
 #endif
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -98,8 +98,8 @@
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     
-    if([[VCUserState instance] isLoggedIn]){
-        [[VCUserState instance] synchronizeUserState];
+    if([[VCUserStateManager instance] isLoggedIn]){
+        [[VCUserStateManager instance] synchronizeUserState];
     
         [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             NSLog(@"%@", @"Refreshed Scheduled Rides");

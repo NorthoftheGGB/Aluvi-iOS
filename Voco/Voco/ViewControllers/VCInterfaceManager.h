@@ -13,9 +13,9 @@
 #define kNoMode 4
 
 
-@interface VCInterfaceModes : NSObject
+@interface VCInterfaceManager : NSObject
 
-+ (VCInterfaceModes * ) instance;
++ (VCInterfaceManager * ) instance;
 - (void) showInterface;
 - (void) showRiderSigninInterface;
 - (void) showRiderInterface;

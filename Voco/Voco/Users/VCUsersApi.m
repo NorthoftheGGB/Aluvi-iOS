@@ -7,7 +7,7 @@
 //
 
 #import "VCUsersApi.h"
-#import "VCUserState.h"
+#import "VCUserStateManager.h"
 #import "VCLogin.h"
 #import "VCNewUser.h"
 #import "VCForgotPasswordRequest.h"
@@ -212,7 +212,7 @@
     [objectManager postObject:driverInterestedRequest path:API_DRIVER_INTERESTED parameters:nil
                       success:^( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ) {
                           VCDriverStateResponse * response = mappingResult.firstObject;
-                          [VCUserState instance].driverState = response.state;
+                          [VCUserStateManager instance].driverState = response.state;
                           success(operation, mappingResult);
                       }failure:failure];
 }

@@ -9,7 +9,7 @@
 #import "VCDebugViewController.h"
 #import "VCApi.h"
 #import "VCDriverApi.h"
-#import "VCInterfaceModes.h"
+#import "VCInterfaceManager.h"
 #import "Offer.h"
 #import "VCDialogs.h"
 
@@ -42,7 +42,7 @@
 
 - (IBAction)doIt:(id)sender {
     
-    [[VCInterfaceModes instance] showDriverInterface];
+    [[VCInterfaceManager instance] showDriverInterface];
     [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_FARE_OFFERS
                                            parameters:nil
                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
@@ -83,7 +83,7 @@
 }
 
 - (IBAction)exitDebugHelper:(id)sender {
-    [[VCInterfaceModes instance] showInterface];
+    [[VCInterfaceManager instance] showInterface];
 }
 
 @end

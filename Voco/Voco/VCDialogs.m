@@ -9,7 +9,7 @@
 #import "VCDialogs.h"
 #import <RestKit.h>
 #import "VCFareDriverAssignment.h"
-#import "VCUserState.h"
+#import "VCUserStateManager.h"
 #import "VCDriverApi.h"
 #import "NSDate+Pretty.h"
 #import "VCUtilities.h"
@@ -57,7 +57,7 @@ static VCDialogs *sharedSingleton;
         return;
     }
     
-    [VCUserState instance].driveProcessState = @"ride offered";
+    [VCUserStateManager instance].driveProcessState = @"ride offered";
     [self offerFareToDriver:[offers objectAtIndex:0]];
 }
 
@@ -76,7 +76,7 @@ static VCDialogs *sharedSingleton;
                                                   
                                                   [VCDriverApi declineFare:offer.fare_id
                                                                   success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                                      [VCUserState instance].driveProcessState = @"Ride Declined";
+                                                                      [VCUserStateManager instance].driveProcessState = @"Ride Declined";
                                                                       [offer markAsDeclined];
                                                                       [VCCoreData saveContext];
                                                                       [self offerNextFareToDriver];
@@ -113,7 +113,7 @@ static VCDialogs *sharedSingleton;
             [WRUtilities criticalError:error];
         }
         _offer = nil;
-        [VCUserState instance].driveProcessState = kUserStateIdle;
+        [VCUserStateManager instance].driveProcessState = kUserStateIdle;
         _interfaceState = VC_INTERFACE_STATE_IDLE;
         [self offerNextFareToDriver];
     }
@@ -121,7 +121,7 @@ static VCDialogs *sharedSingleton;
 
 - (void) rideFound: (NSNumber *) requestId {
     [UIAlertView showWithTitle:@"Ride Found!" message:@"Your ride has been scheduled" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
-    [VCUserState instance].driveProcessState = kUserStateRideScheduled;
+    [VCUserStateManager instance].driveProcessState = kUserStateRideScheduled;
 }
 
 - (void) rideCancelledByRider {
@@ -150,7 +150,7 @@ static VCDialogs *sharedSingleton;
              cancelButtonTitle:@"OK"
              otherButtonTitles:@[@"Detailed Receipt"]
                       tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                          [VCUserState instance].rideProcessState = kUserStateIdle;
+                          [VCUserStateManager instance].rideProcessState = kUserStateIdle;
                           if (buttonIndex != 0){
                               // Launch the payments page for this ride
                           }
@@ -163,7 +163,7 @@ static VCDialogs *sharedSingleton;
              cancelButtonTitle:@"OK"
              otherButtonTitles:nil
                       tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                          [VCUserState instance].rideProcessState = kUserStateIdle;
+                          [VCUserStateManager instance].rideProcessState = kUserStateIdle;
                       }];
 }
 

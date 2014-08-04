@@ -15,8 +15,8 @@
 #import "VCButtonFontBold.h"
 #import "VCLabelBold.h"
 #import "VCLabel.h"
-#import "VCUserState.h"
-#import "VCInterfaceModes.h"
+#import "VCUserStateManager.h"
+#import "VCInterfaceManager.h"
 #import "VCUsersApi.h"
 
 @interface VCDriverProfileViewController ()
@@ -104,8 +104,8 @@
 }
 
 - (IBAction)didTapSignoutButton:(id)sender {
-    [[VCUserState instance] logout];
-    [[VCInterfaceModes instance] showRiderSigninInterface];
+    [[VCUserStateManager instance] logout];
+    [[VCInterfaceManager instance] showRiderSigninInterface];
     
 }
 @end

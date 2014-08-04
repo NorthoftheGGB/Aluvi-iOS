@@ -31,7 +31,7 @@ NSString *const VCUserStateDriverStateKeyPath;
 #define kUserStateRideStarted @"Ride Started"
 #define kUserStateRideCompleted @"Ride Completed"
 
-@interface VCUserState : NSObject
+@interface VCUserStateManager : NSObject
 
 @property(nonatomic, strong) NSNumber * underwayFareId;
 @property(nonatomic, strong) NSString * riderState;
@@ -42,7 +42,7 @@ NSString *const VCUserStateDriverStateKeyPath;
 @property(nonatomic, strong) NSString * apiToken;
 
 
-+ (VCUserState *) instance;
++ (VCUserStateManager *) instance;
 + (BOOL) driverIsAvailable;
 
 - (void) loginWithPhone:(NSString*) phone

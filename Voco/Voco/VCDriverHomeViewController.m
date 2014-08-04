@@ -13,7 +13,7 @@
 #import "VCLabel.h"
 #import "VCDialogs.h"
 #import "VCButtonFontBold.h"
-#import "VCUserState.h"
+#import "VCUserStateManager.h"
 #import "VCFareDriverAssignment.h"
 #import "VCDriverApi.h"
 #import "VCFare.h"
@@ -246,7 +246,7 @@
              cancelButtonTitle:@"OK"
              otherButtonTitles:@[@"Detailed Receipt"]
                       tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                          [VCUserState instance].driveProcessState = kUserStateIdle;
+                          [VCUserStateManager instance].driveProcessState = kUserStateIdle;
                           if (buttonIndex != 0){
                               // Launch the payments page for this ride
                           }
@@ -271,8 +271,8 @@
         // TODO at this point we assume ride is confirmed
         // but at a later date we may add a step that waits for the rider to confirm that
         // they know about the ride being scheduled (handshake)
-        [VCUserState instance].driveProcessState = kUserStateRideAccepted;
-        [VCUserState instance].underwayFareId = self.transit.fare_id;
+        [VCUserStateManager instance].driveProcessState = kUserStateRideAccepted;
+        [VCUserStateManager instance].underwayFareId = self.transit.fare_id;
         
         [((Fare *) self.transit) markOfferAsAccepted];
         
@@ -305,7 +305,7 @@
                     success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                         [self resetButtons];
                         [self clearMap];
-                        [VCUserState instance].driveProcessState = @"Ride Declined";
+                        [VCUserStateManager instance].driveProcessState = @"Ride Declined";
                         [self.fare markOfferAsDeclined];
                         [VCCoreData saveContext];
                         
@@ -314,7 +314,7 @@
                         [_driverLocationHud removeFromSuperview];
                         [hud hide:YES];
                         
-                        [VCUserState instance].underwayFareId = nil;
+                        [VCUserStateManager instance].underwayFareId = nil;
                         [[VCDialogs instance] offerNextFareToDriver];
 
                     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -324,21 +324,21 @@
 }
 
 - (IBAction)didTapRiderPickedUp:(id)sender {
-    if( [VCUserState instance].underwayFareId != nil){
-        if(! [[VCUserState instance].underwayFareId isEqualToNumber: self.fare.fare_id]){
+    if( [VCUserStateManager instance].underwayFareId != nil){
+        if(! [[VCUserStateManager instance].underwayFareId isEqualToNumber: self.fare.fare_id]){
             [WRUtilities criticalErrorWithString:@"State shows another ride is still underway"];
         }
-        [VCUserState instance].underwayFareId = self.fare.fare_id;
+        [VCUserStateManager instance].underwayFareId = self.fare.fare_id;
     }
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Notifying Server";
     
-    [VCUserState instance].underwayFareId = _fare.fare_id;
+    [VCUserStateManager instance].underwayFareId = _fare.fare_id;
     [VCDriverApi ridersPickedUp:_fare.fare_id
                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             [self showRideInProgressInterface];
-                                            [VCUserState instance].driveProcessState = kUserStateRideStarted;
+                                            [VCUserStateManager instance].driveProcessState = kUserStateRideStarted;
                                             [hud hide:YES];
                                             
                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -359,8 +359,8 @@
                                             self.fare = nil;
                                             [hud hide:YES];
                                             
-                                            [VCUserState instance].driveProcessState = kUserStateIdle;
-                                            [VCUserState instance].underwayFareId = nil;
+                                            [VCUserStateManager instance].driveProcessState = kUserStateIdle;
+                                            [VCUserStateManager instance].underwayFareId = nil;
                                             
                                             [self hideCommuterCallHud];
 
@@ -379,11 +379,11 @@
    
     [VCDriverApi fareCompleted:self.transit.fare_id
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                            [VCUserState instance].driveProcessState = kUserStateRideCompleted;
+                                            [VCUserStateManager instance].driveProcessState = kUserStateRideCompleted;
                                             [self showRideCompletedInterface];
                                             VCFare * fare = mappingResult.firstObject;
                                             [self showReceipt:fare.driverEarnings];
-                                            [VCUserState instance].underwayFareId = nil;
+                                            [VCUserStateManager instance].underwayFareId = nil;
                                             [hud hide:YES];
                                             
                                             [self hideCommuterCallHud];

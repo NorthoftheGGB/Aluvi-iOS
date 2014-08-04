@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCUserState.h"
+#import "VCUserStateManager.h"
 #import "VCUsersApi.h"
 #import "VCApi.h"
 #import "VCDevicesApi.h"
 #import "VCLoginResponse.h"
 #import "VCUserStateResponse.h"
-#import "VCInterfaceModes.h"
+#import "VCInterfaceManager.h"
 #import "VCDriverApi.h"
 
 NSString *const VCUserStateDriverStateKeyPath = @"driverState";
@@ -23,13 +23,13 @@ NSString *const VCUserStateDriverStateKeyPath = @"driverState";
 #define kDriverStateKey @"kDriverStateKey"
 #define kRideIdKey @"kRideIdKey"
 
-static VCUserState *sharedSingleton;
+static VCUserStateManager *sharedSingleton;
 
-@implementation VCUserState
+@implementation VCUserStateManager
 
-+ (VCUserState *) instance {
++ (VCUserStateManager *) instance {
     if(sharedSingleton == nil){
-        sharedSingleton = [[VCUserState alloc] init];
+        sharedSingleton = [[VCUserStateManager alloc] init];
     }
     return sharedSingleton;
 }
@@ -134,7 +134,7 @@ static VCUserState *sharedSingleton;
         [VCApi clearApiToken];
         [self clearUserState];
         [VCCoreData clearUserData];
-        [[VCInterfaceModes instance] showRiderSigninInterface];
+        [[VCInterfaceManager instance] showRiderSigninInterface];
         [[VCDebug sharedInstance] clearLoggedInUserIdentifier];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         

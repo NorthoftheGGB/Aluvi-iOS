@@ -13,7 +13,7 @@
 #import "VCDevice.h"
 #import "Ride.h"
 #import "VCRideIdentity.h"
-#import "VCUserState.h"
+#import "VCUserStateManager.h"
 #import "VCRequestUpdate.h"
 #import "Payment.h"
 

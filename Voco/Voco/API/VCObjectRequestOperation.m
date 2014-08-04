@@ -7,7 +7,7 @@
 //
 
 #import "VCObjectRequestOperation.h"
-#import "VCUserState.h"
+#import "VCUserStateManager.h"
 #import "VCApiError.h"
 
 @implementation VCObjectRequestOperation
@@ -60,7 +60,7 @@
                          otherButtonTitles:nil
                                   tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                                       // Call logout and Bump the user back out to the login screen
-                                      [[VCUserState instance] finalizeLogout];
+                                      [[VCUserStateManager instance] finalizeLogout];
                                   }];
             }
                 break;
