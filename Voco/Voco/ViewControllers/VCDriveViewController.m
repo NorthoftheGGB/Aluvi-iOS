@@ -170,7 +170,7 @@
                 
                 if(velocity.x < -2000) {
                     [self animateCallHudToOpen];
-                } else if(translatedPoint.x < -100){
+                } else if(translatedPoint.x < -75){
                     [self animateCallHudToOpen];
                 } else {
                     [self animateCallHudToClosed];
