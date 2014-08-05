@@ -12,14 +12,14 @@
 
 
 #define kDriverCallHudOriginX 271
-#define kDriverCallHudOriginY 227
+#define kDriverCallHudOriginY 226
 #define kDriverCallHudOpenX 31
-#define kDriverCallHudOpenY 227
+#define kDriverCallHudOpenY 226
 
 #define kDriverCancelHudOriginX 271
-#define kDriverCancelHudOriginY 303
+#define kDriverCancelHudOriginY 302
 #define kDriverCancelHudOpenX 165
-#define kDriverCancelHudOpenY 303
+#define kDriverCancelHudOpenY 302
 
 @interface VCDriveViewController () //<MKMapViewDelegate>
 
@@ -80,23 +80,9 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated{
-   
+    [self showHome];
     
-    CGRect frame = _driverCallHUD.frame;
-    frame.origin.x = self.view.frame.size.height - kDriverCallHudOriginX;
-    frame.origin.y = self.view.frame.size.height - kDriverCallHudOriginY;
-    _driverCallHUD.frame = frame;
-    
-    [self.view addSubview:_driverCallHUD];
-    
-    {CGRect frame = _driverCancelHUD.frame;
-        frame.origin.x =  self.view.frame.size.height - kDriverCancelHudOriginX;
-        frame.origin.y = self.view.frame.size.height - kDriverCancelHudOriginY;
-        _driverCancelHUD.frame = frame;
-        
-        [self.view addSubview:_driverCancelHUD];}
-    
-    }
+}
 
 - (void)viewDidLoad{
     
@@ -123,8 +109,43 @@
         // Dispose of any resources that can be recreated.
     }
     
+
+- (void) showHome{
     
+    CGRect currentLocationframe = _currentLocationButton.frame;
+    currentLocationframe.origin.x = 271;
+    currentLocationframe.origin.y = self.view.frame.size.height - 46;
+    _currentLocationButton.frame = currentLocationframe;
+    [self.view addSubview:self.currentLocationButton];
     
+    CGRect directionsListFrame = _directionsListButton.frame;
+    directionsListFrame.origin.x = 224;
+    directionsListFrame.origin.y = self.view.frame.size.height - 46;
+    _directionsListButton.frame = directionsListFrame;
+    [self.view addSubview:self.directionsListButton];
+    
+    CGRect ridersPickedUpFrame = _ridersPickedUpButton.frame;
+    ridersPickedUpFrame.origin.x = 18;
+    ridersPickedUpFrame.origin.y = self.view.frame.size.height - 46;
+    _ridersPickedUpButton.frame = ridersPickedUpFrame;
+    [self.view addSubview:self.ridersPickedUpButton];
+    
+    CGRect frame = _driverCallHUD.frame;
+    frame.origin.x = kDriverCallHudOriginX;
+    frame.origin.y = self.view.frame.size.height - kDriverCallHudOriginY;
+    _driverCallHUD.frame = frame;
+    
+    [self.view addSubview:_driverCallHUD];
+    
+    {CGRect frame = _driverCancelHUD.frame;
+        frame.origin.x = kDriverCancelHudOriginX;
+        frame.origin.y = self.view.frame.size.height - kDriverCancelHudOriginY;
+        _driverCancelHUD.frame = frame;
+        
+        [self.view addSubview:_driverCancelHUD];}
+    
+}
+
 -(void)move:(id)sender {
         NSLog(@"%@", @"YO!");
         
