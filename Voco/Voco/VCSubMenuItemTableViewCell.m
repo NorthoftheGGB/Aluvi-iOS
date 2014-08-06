@@ -1,14 +1,14 @@
 //
-//  VCMenuDriverClockOnTableViewCell.m
+//  VCSubMenuItemTableViewCell.m
 //  Voco
 //
 //  Created by Elliott De Aratanha on 8/5/14.
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCMenuDriverClockOnTableViewCell.h"
+#import "VCSubMenuItemTableViewCell.h"
 
-@implementation VCMenuDriverClockOnTableViewCell
+@implementation VCSubMenuItemTableViewCell
 
 - (void)awakeFromNib
 {
@@ -22,5 +22,12 @@
     // Configure the view for the selected state
 }
 
+- (void) select {
+    self.backgroundImageView.image = [UIImage imageNamed:@"menu-item-bg-select"];
+}
+
+- (void) deselect {
+    self.backgroundImageView.image = [UIImage imageNamed:@"menu-item-bg"];
+}
 
 @end

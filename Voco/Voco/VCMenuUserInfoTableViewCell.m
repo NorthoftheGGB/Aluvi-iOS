@@ -22,4 +22,7 @@
     // Configure the view for the selected state
 }
 
+
+- (IBAction)didTapLogout:(id)sender {
+}
 @end
