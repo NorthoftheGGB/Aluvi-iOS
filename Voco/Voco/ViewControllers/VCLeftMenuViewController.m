@@ -11,6 +11,10 @@
 #import "VCInterfaceModes.h"
 #import "VCRiderProfileViewController.h"
 #import "VCMenuItemTableViewCell.h"
+#import "VCMenuUserInfoTableViewCell.h"
+#import "VCMenuDriverClockOnTableViewCell.h"
+#import "VCSubMenuItemTableViewCell.h"
+
 
 // These ones go in the array
 #define kUserInfoCell @1000
@@ -46,7 +50,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        _tableCellList = [NSMutableArray arrayWithArray: @[kUserInfoCell, kProfileCell, kScheduleCell, kMapCell ]];
+        _tableCellList = [NSMutableArray arrayWithArray: @[kUserInfoCell, kProfileCell, kScheduleCell, kMapCell, kPaymentCell, kReceiptsCell, kSupportCell, kModeCell ]];
     }
     return self;
 }
@@ -74,10 +78,27 @@
     UITableViewCell * cell;
     
     switch([[_tableCellList objectAtIndex:row] integerValue]){
+        
+        case kUserInfoCellInteger:
+        { VCMenuUserInfoTableViewCell * menuUserInfoCell = [WRUtilities getViewFromNib:@"VCMenuUserInfoTableViewCell" class:[VCMenuUserInfoTableViewCell class]];
+            
+            //TODO: This is a placeholder image, replace it with relevant string!
+            
+            menuUserInfoCell.userImageView.image = [UIImage imageNamed: @"user-image-small"];
+            
+            //TODO: This is a placeholder name, replace it with relevant string!
+            
+            menuUserInfoCell.userFullName.text = @"Devon Drakesbad";
+            cell = menuUserInfoCell;
+        }
+            break;
+            
         case kProfileCellInteger:
         {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CELL"];
-            cell.textLabel.text = @"Profile";
+            VCMenuItemTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemTableViewCell" class:[VCMenuItemTableViewCell class]];
+            menuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-profile-icon"];
+            menuItemTableViewCell.menuItemLabel.text = @"Profile";
+            cell = menuItemTableViewCell;
         }
             break;
             
@@ -119,7 +140,9 @@
     if([cell isKindOfClass:[VCMenuItemTableViewCell class]]) {
         [(VCMenuItemTableViewCell*) cell deselect];
     }
-
+    else if([cell isKindOfClass:[VCSubMenuItemTableViewCell class]]){
+        [(VCSubMenuItemTableViewCell*) cell deselect];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

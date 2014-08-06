@@ -13,7 +13,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menu-item-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="Rjl-fo-jIh">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menu-item-bg-select.png" translatesAutoresizingMaskIntoConstraints="NO" id="Rjl-fo-jIh">
                         <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </imageView>
@@ -25,6 +25,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="menu-item-bg.png" width="280" height="44"/>
+        <image name="menu-item-bg-select.png" width="280" height="44"/>
     </resources>
 </document>
