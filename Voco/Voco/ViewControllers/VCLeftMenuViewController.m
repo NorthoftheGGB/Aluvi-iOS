@@ -102,6 +102,29 @@
         }
             break;
             
+        case kScheduleCellInteger:
+        {
+            VCMenuItemTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemTableViewCell" class:[VCMenuItemTableViewCell class]];
+            menuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-schedule-icon"];
+            menuItemTableViewCell.menuItemLabel.text = @"Schedule";
+            cell = menuItemTableViewCell;
+        }
+            break;
+            
+        case kScheduleItemCellInteger:
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CELL"];
+            cell.textLabel.text = @"Schedule Item";
+        }
+            break;
+            
+        default:
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CELL"];
+            cell.textLabel.text = @"Not Configured";
+        }
+            break;
+            
         case kMapCellInteger:
         {
             VCMenuItemTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemTableViewCell" class:[VCMenuItemTableViewCell class]];
@@ -110,26 +133,42 @@
             cell = menuItemTableViewCell;
         }
             break;
-        case kScheduleCellInteger:
+            
+        case kPaymentCellInteger:
         {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CELL"];
-            cell.textLabel.text = @"Schedule";
+            VCMenuItemTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemTableViewCell" class:[VCMenuItemTableViewCell class]];
+            menuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-payments-icon"];
+            menuItemTableViewCell.menuItemLabel.text = @"Payment Settings";
+            cell = menuItemTableViewCell;
         }
             break;
-        case kScheduleItemCellInteger:
-        {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CELL"];
-            cell.textLabel.text = @"Schedule Item";
+            
+        case kReceiptsCellInteger:
+        {VCMenuItemTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemTableViewCell" class:[VCMenuItemTableViewCell class]];
+            menuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-receipts-icon"];
+            menuItemTableViewCell.menuItemLabel.text = @"Receipts";
+            cell = menuItemTableViewCell;
         }
             break;
-
-        default:
-        {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CELL"];
-            cell.textLabel.text = @"Not Configured";
+            
+        case kSupportCellInteger:
+        {VCMenuItemTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemTableViewCell" class:[VCMenuItemTableViewCell class]];
+            menuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-support-icon"];
+            menuItemTableViewCell.menuItemLabel.text = @"Support";
+            cell = menuItemTableViewCell;
         }
             break;
-    }
+            
+       /* case kModeCellInteger:
+        {VCMenuItemTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemTableViewCell" class:[VCMenuItemTableViewCell class]];
+            menuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-map-icon"];
+            menuItemTableViewCell.menuItemLabel.text = @"Map";
+            cell = menuItemTableViewCell;
+        }
+            break;*/
+            
+            
+           }
     return cell;
     
 }

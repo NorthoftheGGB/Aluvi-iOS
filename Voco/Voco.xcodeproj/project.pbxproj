@@ -64,9 +64,21 @@
 		4F184A271991E156006EA959 /* VCSubMenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A231991E156006EA959 /* VCSubMenuItemTableViewCell.xib */; };
 		4F184A281991E156006EA959 /* VCSubMenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A231991E156006EA959 /* VCSubMenuItemTableViewCell.xib */; };
 		4F184A291991E156006EA959 /* VCSubMenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A231991E156006EA959 /* VCSubMenuItemTableViewCell.xib */; };
-		4F184A2B1991EA74006EA959 /* user-image-small@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A2A1991EA74006EA959 /* user-image-small@2x.jpg */; };
-		4F184A2C1991EA74006EA959 /* user-image-small@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A2A1991EA74006EA959 /* user-image-small@2x.jpg */; };
-		4F184A2D1991EA74006EA959 /* user-image-small@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A2A1991EA74006EA959 /* user-image-small@2x.jpg */; };
+		4F184A2F1992E198006EA959 /* user-image-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A2E1992E198006EA959 /* user-image-small@2x.png */; };
+		4F184A301992E198006EA959 /* user-image-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A2E1992E198006EA959 /* user-image-small@2x.png */; };
+		4F184A311992E198006EA959 /* user-image-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A2E1992E198006EA959 /* user-image-small@2x.png */; };
+		4F184A351992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F184A331992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.m */; };
+		4F184A361992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F184A331992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.m */; };
+		4F184A371992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F184A331992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.m */; };
+		4F184A381992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A341992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.xib */; };
+		4F184A391992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A341992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.xib */; };
+		4F184A3A1992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A341992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.xib */; };
+		4F184A3E1992E41F006EA959 /* VCMenuItemModeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F184A3C1992E41F006EA959 /* VCMenuItemModeTableViewCell.m */; };
+		4F184A3F1992E41F006EA959 /* VCMenuItemModeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F184A3C1992E41F006EA959 /* VCMenuItemModeTableViewCell.m */; };
+		4F184A401992E41F006EA959 /* VCMenuItemModeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F184A3C1992E41F006EA959 /* VCMenuItemModeTableViewCell.m */; };
+		4F184A411992E41F006EA959 /* VCMenuItemModeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A3D1992E41F006EA959 /* VCMenuItemModeTableViewCell.xib */; };
+		4F184A421992E41F006EA959 /* VCMenuItemModeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A3D1992E41F006EA959 /* VCMenuItemModeTableViewCell.xib */; };
+		4F184A431992E41F006EA959 /* VCMenuItemModeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A3D1992E41F006EA959 /* VCMenuItemModeTableViewCell.xib */; };
 		4F2A71091978C220009A5E37 /* driver-request-form@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FF142D5195CE4BD00CC61B6 /* driver-request-form@2x.png */; };
 		4F2EF99B1960D280006A1962 /* VCDriverHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2EF9991960D280006A1962 /* VCDriverHomeViewController.m */; };
 		4F2EF99C1960D280006A1962 /* VCDriverHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2EF9991960D280006A1962 /* VCDriverHomeViewController.m */; };
@@ -812,7 +824,13 @@
 		4F184A211991E156006EA959 /* VCSubMenuItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCSubMenuItemTableViewCell.h; sourceTree = "<group>"; };
 		4F184A221991E156006EA959 /* VCSubMenuItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCSubMenuItemTableViewCell.m; sourceTree = "<group>"; };
 		4F184A231991E156006EA959 /* VCSubMenuItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCSubMenuItemTableViewCell.xib; sourceTree = "<group>"; };
-		4F184A2A1991EA74006EA959 /* user-image-small@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "user-image-small@2x.jpg"; sourceTree = "<group>"; };
+		4F184A2E1992E198006EA959 /* user-image-small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user-image-small@2x.png"; sourceTree = "<group>"; };
+		4F184A321992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCMenuItemNotConfiguredTableViewCell.h; sourceTree = "<group>"; };
+		4F184A331992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCMenuItemNotConfiguredTableViewCell.m; sourceTree = "<group>"; };
+		4F184A341992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCMenuItemNotConfiguredTableViewCell.xib; sourceTree = "<group>"; };
+		4F184A3B1992E41F006EA959 /* VCMenuItemModeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCMenuItemModeTableViewCell.h; sourceTree = "<group>"; };
+		4F184A3C1992E41F006EA959 /* VCMenuItemModeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCMenuItemModeTableViewCell.m; sourceTree = "<group>"; };
+		4F184A3D1992E41F006EA959 /* VCMenuItemModeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCMenuItemModeTableViewCell.xib; sourceTree = "<group>"; };
 		4F2EF9981960D280006A1962 /* VCDriverHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCDriverHomeViewController.h; sourceTree = "<group>"; };
 		4F2EF9991960D280006A1962 /* VCDriverHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCDriverHomeViewController.m; sourceTree = "<group>"; };
 		4F2EF99A1960D280006A1962 /* VCDriverHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCDriverHomeViewController.xib; sourceTree = "<group>"; };
@@ -1412,7 +1430,7 @@
 		4FDB0ECA1970B0F000A8CEC2 /* Revision 2.0 */ = {
 			isa = PBXGroup;
 			children = (
-				4F184A2A1991EA74006EA959 /* user-image-small@2x.jpg */,
+				4F184A2E1992E198006EA959 /* user-image-small@2x.png */,
 				4F184A0B19918609006EA959 /* menu-item-user-info-bg@2x.png */,
 				4F1849F31991753F006EA959 /* menu-mycar-icon@2x.png */,
 				4F1849F41991753F006EA959 /* menu-payments-icon@2x.png */,
@@ -1604,6 +1622,12 @@
 				4F184A211991E156006EA959 /* VCSubMenuItemTableViewCell.h */,
 				4F184A221991E156006EA959 /* VCSubMenuItemTableViewCell.m */,
 				4F184A231991E156006EA959 /* VCSubMenuItemTableViewCell.xib */,
+				4F184A321992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.h */,
+				4F184A331992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.m */,
+				4F184A341992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.xib */,
+				4F184A3B1992E41F006EA959 /* VCMenuItemModeTableViewCell.h */,
+				4F184A3C1992E41F006EA959 /* VCMenuItemModeTableViewCell.m */,
+				4F184A3D1992E41F006EA959 /* VCMenuItemModeTableViewCell.xib */,
 			);
 			name = "Table View Cells";
 			sourceTree = "<group>";
@@ -2258,6 +2282,7 @@
 				4FCD7C6319761C21007609E8 /* call-button-select@2x.png in Resources */,
 				4FE286EA1962B89700FD8AF6 /* current-location-arrow-select@2x.png in Resources */,
 				4F2EF9BA1961391B006A1962 /* scheduledrides-menu-button-selected@2x.png in Resources */,
+				4F184A391992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.xib in Resources */,
 				F4354DAA195D0D6A00C06CF7 /* signup_box@2x.png in Resources */,
 				4F184A281991E156006EA959 /* VCSubMenuItemTableViewCell.xib in Resources */,
 				4F1849ED198F67A4006EA959 /* driver-call-hud-icon-select@2x.png in Resources */,
@@ -2268,6 +2293,7 @@
 				4F184A0D19918609006EA959 /* menu-item-user-info-bg@2x.png in Resources */,
 				4F1849FD1991753F006EA959 /* menu-payments-icon@2x.png in Resources */,
 				F4354DAB195D0D6A00C06CF7 /* VCRiderHomeViewController.xib in Resources */,
+				4F184A421992E41F006EA959 /* VCMenuItemModeTableViewCell.xib in Resources */,
 				F4354DAC195D0D6A00C06CF7 /* loginBox@2x.png in Resources */,
 				F4354DAD195D0D6A00C06CF7 /* KlinicSlabLight.ttf in Resources */,
 				F4354DAE195D0D6A00C06CF7 /* KlinicSlabLightIt.ttf in Resources */,
@@ -2295,6 +2321,7 @@
 				4F1849E9198F625A006EA959 /* driver-cancel-hud-icon@2x.png in Resources */,
 				4FCD7C8419771931007609E8 /* rider-call-button@2x.png in Resources */,
 				4FDB0ED41970C3AD00A8CEC2 /* button-full-default@2x.png in Resources */,
+				4F184A301992E198006EA959 /* user-image-small@2x.png in Resources */,
 				4FE287021962C52800FD8AF6 /* confirm-location-select.png in Resources */,
 				4F184A1619918750006EA959 /* VCMenuUserInfoTableViewCell.xib in Resources */,
 				F4354DB2195D0D6A00C06CF7 /* signupBox@2x.png in Resources */,
@@ -2355,7 +2382,6 @@
 				4FE286F21962BB3F00FD8AF6 /* search-location@2x.png in Resources */,
 				F4792AD3196C59B2005AB652 /* log-in-box@2x.png in Resources */,
 				4FE287041962C52800FD8AF6 /* confirm-location@2x.png in Resources */,
-				4F184A2C1991EA74006EA959 /* user-image-small@2x.jpg in Resources */,
 				4FCD7C7E19766B77007609E8 /* rider-icon@2x.png in Resources */,
 				4FDB0EC61970A5AC00A8CEC2 /* VCRiderHomeViewControllerV2.xib in Resources */,
 				4F3DB5B01981C01D00DDD094 /* confirmation-hud@2x.png in Resources */,
@@ -2435,6 +2461,8 @@
 				4F1849EC198F67A4006EA959 /* driver-call-hud-icon-select@2x.png in Resources */,
 				F4C6B269197F06B100F6C10B /* commuter-menu-button@2x.png in Resources */,
 				F4C6B26A197F06B100F6C10B /* about-menu-button@2x.png in Resources */,
+				4F184A411992E41F006EA959 /* VCMenuItemModeTableViewCell.xib in Resources */,
+				4F184A381992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.xib in Resources */,
 				4FFE17161989EFC0004D4413 /* menu-item-bg@2x.png in Resources */,
 				F4C6B26B197F06B100F6C10B /* rider-call-button-select@2x.png in Resources */,
 				F4C6B26C197F06B100F6C10B /* VCDriverRecieptDetailViewController.xib in Resources */,
@@ -2448,7 +2476,6 @@
 				F4C6B272197F06B100F6C10B /* scheduledfares-menu-button-selected@2x.png in Resources */,
 				4F1849FC1991753F006EA959 /* menu-payments-icon@2x.png in Resources */,
 				F4C6B273197F06B100F6C10B /* rider-call-button@2x.png in Resources */,
-				4F184A2B1991EA74006EA959 /* user-image-small@2x.jpg in Resources */,
 				4F73CA07197F2AB0001B6663 /* VCRideViewController.xib in Resources */,
 				F4C6B274197F06B100F6C10B /* VCRiderHomeViewControllerV2.xib in Resources */,
 				F4C6B275197F06B100F6C10B /* search-location@2x.png in Resources */,
@@ -2471,6 +2498,7 @@
 				F4C6B280197F06B100F6C10B /* button-default@2x.png in Resources */,
 				4F3DB5CD19825FF700DDD094 /* overlay-graphic@2x.png in Resources */,
 				F4C6B281197F06B100F6C10B /* signUp_btn@2x.png in Resources */,
+				4F184A2F1992E198006EA959 /* user-image-small@2x.png in Resources */,
 				4F184A051991753F006EA959 /* menu-schedule-icon@2x.png in Resources */,
 				F4C6B282197F06B100F6C10B /* VCSignUpViewController.xib in Resources */,
 				F4C6B283197F06B100F6C10B /* voco_logo@2x.png in Resources */,
@@ -2563,6 +2591,8 @@
 				4F1849EE198F67A4006EA959 /* driver-call-hud-icon-select@2x.png in Resources */,
 				4F2EF9B71961391B006A1962 /* commuter-menu-button@2x.png in Resources */,
 				4F2EF9B31961391B006A1962 /* about-menu-button@2x.png in Resources */,
+				4F184A431992E41F006EA959 /* VCMenuItemModeTableViewCell.xib in Resources */,
+				4F184A3A1992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.xib in Resources */,
 				4FFE17181989EFC0004D4413 /* menu-item-bg@2x.png in Resources */,
 				4FCD7C8119771931007609E8 /* rider-call-button-select@2x.png in Resources */,
 				4FCD7C8A19775C5C007609E8 /* VCDriverRecieptDetailViewController.xib in Resources */,
@@ -2576,7 +2606,6 @@
 				4F2EF9D819614115006A1962 /* scheduledfares-menu-button-selected@2x.png in Resources */,
 				4F1849FE1991753F006EA959 /* menu-payments-icon@2x.png in Resources */,
 				4FCD7C8319771931007609E8 /* rider-call-button@2x.png in Resources */,
-				4F184A2D1991EA74006EA959 /* user-image-small@2x.jpg in Resources */,
 				4F73CA09197F2AB0001B6663 /* VCRideViewController.xib in Resources */,
 				4FDB0EC51970A5AC00A8CEC2 /* VCRiderHomeViewControllerV2.xib in Resources */,
 				4FE286F11962BB3F00FD8AF6 /* search-location@2x.png in Resources */,
@@ -2599,6 +2628,7 @@
 				4FDB0ECD1970B10600A8CEC2 /* button-default@2x.png in Resources */,
 				4F3DB5CF19825FF700DDD094 /* overlay-graphic@2x.png in Resources */,
 				4FE641F8194168E80059BED1 /* signUp_btn@2x.png in Resources */,
+				4F184A311992E198006EA959 /* user-image-small@2x.png in Resources */,
 				4F184A071991753F006EA959 /* menu-schedule-icon@2x.png in Resources */,
 				4FE641CA1941584D0059BED1 /* VCSignUpViewController.xib in Resources */,
 				4FE641FA194168E80059BED1 /* voco_logo@2x.png in Resources */,
@@ -2832,6 +2862,7 @@
 				F4F5FFBF19779E23001A1C0E /* Payment.m in Sources */,
 				4F184A251991E156006EA959 /* VCSubMenuItemTableViewCell.m in Sources */,
 				F4354D75195D0D6A00C06CF7 /* VCButtonFont.m in Sources */,
+				4F184A3F1992E41F006EA959 /* VCMenuItemModeTableViewCell.m in Sources */,
 				F4138C39196784C700C265CD /* VCGeoApi.m in Sources */,
 				F4354D76195D0D6A00C06CF7 /* MQShape.m in Sources */,
 				4FE712D6197369060071020C /* VCCarLicensePlateTextField.m in Sources */,
@@ -2886,6 +2917,7 @@
 				F4354D8F195D0D6A00C06CF7 /* VCValidation.m in Sources */,
 				F4354D90195D0D6A00C06CF7 /* MQRoute.m in Sources */,
 				F4354D91195D0D6A00C06CF7 /* main.m in Sources */,
+				4F184A361992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.m in Sources */,
 				F4354D92195D0D6A00C06CF7 /* WRUtilities.m in Sources */,
 				F4354D93195D0D6A00C06CF7 /* VCTextField.m in Sources */,
 				F4354D94195D0D6A00C06CF7 /* VCRideRequestCreated.m in Sources */,
@@ -2941,6 +2973,7 @@
 				4FFE13901989AE09004D4413 /* VCLeftMenuViewController.m in Sources */,
 				F4C6B1DC197F06B100F6C10B /* VCSignInViewController.m in Sources */,
 				F4C6B1DD197F06B100F6C10B /* VCRoutingNumberTextField.m in Sources */,
+				4F184A3E1992E41F006EA959 /* VCMenuItemModeTableViewCell.m in Sources */,
 				F4C6B1DE197F06B100F6C10B /* VCDriverEarningsViewController.m in Sources */,
 				F4C6B1DF197F06B100F6C10B /* VCProfile.m in Sources */,
 				4F184A1B1991893D006EA959 /* VCMenuDriverClockOnTableViewCell.m in Sources */,
@@ -2982,6 +3015,7 @@
 				F4C6B1FE197F06B100F6C10B /* VCRequestUpdate.m in Sources */,
 				F4C6B1FF197F06B100F6C10B /* VCCoreData.m in Sources */,
 				F4C6B200197F06B100F6C10B /* VCRiderProfileViewController.m in Sources */,
+				4F184A351992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.m in Sources */,
 				F4C6B201197F06B100F6C10B /* VCRiderRecieptDetailViewController.m in Sources */,
 				F4C6B202197F06B100F6C10B /* VCLabel.m in Sources */,
 				F4C6B203197F06B100F6C10B /* VCDriverProfileViewController.m in Sources */,
@@ -3070,6 +3104,7 @@
 				4FFE13921989AE09004D4413 /* VCLeftMenuViewController.m in Sources */,
 				4FE641BA194157510059BED1 /* VCSignInViewController.m in Sources */,
 				4FE712C5197368A30071020C /* VCRoutingNumberTextField.m in Sources */,
+				4F184A401992E41F006EA959 /* VCMenuItemModeTableViewCell.m in Sources */,
 				4FCD7C711976244F007609E8 /* VCDriverEarningsViewController.m in Sources */,
 				F4D877661976721D00870945 /* VCProfile.m in Sources */,
 				4F184A1D1991893D006EA959 /* VCMenuDriverClockOnTableViewCell.m in Sources */,
@@ -3111,6 +3146,7 @@
 				F473F01D195113D100D8C900 /* VCRequestUpdate.m in Sources */,
 				F4FE1B1B193D301F00354886 /* VCCoreData.m in Sources */,
 				4FCD7C691976241D007609E8 /* VCRiderProfileViewController.m in Sources */,
+				4F184A371992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.m in Sources */,
 				4F9ECEBF196630D700AD4229 /* VCRiderRecieptDetailViewController.m in Sources */,
 				F473F001194A498E00D8C900 /* VCLabel.m in Sources */,
 				4FCD7C7819762465007609E8 /* VCDriverProfileViewController.m in Sources */,
