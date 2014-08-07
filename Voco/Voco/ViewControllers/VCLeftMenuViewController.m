@@ -27,6 +27,10 @@
 #define kSupportCell @1007
 #define kModeCell @1008
 
+//Drive
+
+
+
 // These are used in the switch statement
 #define kUserInfoCellInteger 1000
 #define kProfileCellInteger 1001
@@ -62,6 +66,7 @@
 {
     [super viewDidLoad];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
 
 }
 
@@ -83,11 +88,7 @@
     switch([[_tableCellList objectAtIndex:row] integerValue]){
             
         case kUserInfoCellInteger:
-            height = 200;
-            break;
-            
-        case kProfileCellInteger:
-            height = 100;
+            height = 280;
             break;
 
     }
@@ -113,6 +114,7 @@
             //TODO: This is a placeholder name, replace it with relevant string!
             
             menuUserInfoCell.userFullName.text = @"Devon Drakesbad";
+            menuUserInfoCell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell = menuUserInfoCell;
         }
             break;
