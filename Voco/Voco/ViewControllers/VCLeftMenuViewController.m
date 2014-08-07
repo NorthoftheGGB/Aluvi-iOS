@@ -42,6 +42,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSMutableArray * tableCellList;
+
+@property (nonatomic) NSUInteger selectedCellTag;
 @end
 
 @implementation VCLeftMenuViewController
@@ -51,6 +53,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         _tableCellList = [NSMutableArray arrayWithArray: @[kUserInfoCell, kProfileCell, kScheduleCell, kMapCell, kPaymentCell, kReceiptsCell, kSupportCell, kModeCell ]];
+        _selectedCellTag = -1;
     }
     return self;
 }
@@ -97,7 +100,8 @@
     long row = [indexPath row];
     UITableViewCell * cell;
     
-    switch([[_tableCellList objectAtIndex:row] integerValue]){
+    long tag = [[_tableCellList objectAtIndex:row] integerValue];
+    switch(tag){
         
         case kUserInfoCellInteger:
         { VCMenuUserInfoTableViewCell * menuUserInfoCell = [WRUtilities getViewFromNib:@"VCMenuUserInfoTableViewCell" class:[VCMenuUserInfoTableViewCell class]];
@@ -189,6 +193,16 @@
             
             
            }
+    
+    if( tag == _selectedCellTag ){
+        if([cell isKindOfClass:[VCMenuItemTableViewCell class]]) {
+            [(VCMenuItemTableViewCell*) cell deselect];
+        }
+        else if([cell isKindOfClass:[VCSubMenuItemTableViewCell class]]){
+            [(VCSubMenuItemTableViewCell*) cell deselect];
+        }
+    }
+    
     return cell;
     
 }
@@ -209,7 +223,8 @@
     long row = [indexPath row];
     
  
-    switch([[_tableCellList objectAtIndex:row] integerValue]){
+    long tag = [[_tableCellList objectAtIndex:row] integerValue];
+    switch(tag){
         case kProfileCellInteger:
         {
             //TODO: Put Actual Profile In Here
@@ -247,6 +262,7 @@
         [self hideScheduleItems];
     }
     
+    _selectedCellTag = tag;
     
     
 }
