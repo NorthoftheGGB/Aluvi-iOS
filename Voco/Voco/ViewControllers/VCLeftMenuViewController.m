@@ -72,6 +72,26 @@
     return [_tableCellList count];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    long row = [indexPath row];
+    
+    int height = 45; // default
+    switch([[_tableCellList objectAtIndex:row] integerValue]){
+            
+        case kUserInfoCellInteger:
+            height = 200;
+            break;
+            
+        case kProfileCellInteger:
+            height = 100;
+            break;
+
+    }
+    return height;
+    
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     long row = [indexPath row];
