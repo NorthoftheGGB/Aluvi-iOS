@@ -31,9 +31,9 @@ NSString *const VCUserStateDriverStateKeyPath;
 #define kUserStateRideStarted @"Ride Started"
 #define kUserStateRideCompleted @"Ride Completed"
 
-@interface VCUserState : NSObject
+@interface VCUserStateManager : NSObject
 
-@property(nonatomic, strong) NSNumber * underwayRideId;
+@property(nonatomic, strong) NSNumber * underwayFareId;
 @property(nonatomic, strong) NSString * riderState;
 @property(nonatomic, strong) NSString * driverState;
 @property(nonatomic, strong) NSString * rideProcessState;
@@ -42,7 +42,7 @@ NSString *const VCUserStateDriverStateKeyPath;
 @property(nonatomic, strong) NSString * apiToken;
 
 
-+ (VCUserState *) instance;
++ (VCUserStateManager *) instance;
 + (BOOL) driverIsAvailable;
 
 - (void) loginWithPhone:(NSString*) phone
@@ -58,5 +58,7 @@ NSString *const VCUserStateDriverStateKeyPath;
                     failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 - (void) clockOffWithSuccess: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                      failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
+
+- (void) clearRideState;
 
 @end

@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "VCTransitBaseViewController.h"
+#import "Ride.h"
 
 @interface VCRideViewController : VCTransitBaseViewController
+
+@property (strong, nonatomic) Ride * ride;
+@property (strong, nonatomic) MKPolyline * walkingRouteToMeetingPointOverlay;
+@property (strong, nonatomic) MKPolyline * walkingRouteToDestinationOverlay;
 
 @end

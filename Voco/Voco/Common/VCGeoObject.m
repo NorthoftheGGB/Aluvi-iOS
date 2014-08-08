@@ -10,29 +10,16 @@
 
 @implementation VCGeoObject
 
-+ (void)createMappings:(RKObjectManager *)objectManager {
++ (RKObjectMapping*) getMapping {
     
     RKObjectMapping * mapping = [RKObjectMapping mappingForClass:[VCGeoObject class]];
     [mapping addAttributeMappingsFromDictionary:@{
                                                   @"latitude" : @"latitude",
                                                   @"longitude" : @"longitude"
                                                   }];
-    RKObjectMapping * requestMapping = [mapping inverseMapping];
-    RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[VCGeoObject class] rootKeyPath:nil method:RKRequestMethodPUT];
-    [objectManager addRequestDescriptor:requestDescriptor];
+    return  mapping;
     
-    [objectManager.router.routeSet addRoute:[RKRoute routeWithClass:[self class] pathPattern:API_GEO_DRIVER_PATH method:RKRequestMethodPUT]];
-    [objectManager.router.routeSet addRoute:[RKRoute routeWithClass:[self class] pathPattern:API_GEO_DRIVER_PATH method:RKRequestMethodGET]];
-
-    {
-        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
-                                                                                             method:RKRequestMethodPUT
-                                                                                        pathPattern:API_GEO_DRIVER_PATH
-                                                                                            keyPath:nil
-                                                                                        statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-        [objectManager addResponseDescriptor:responseDescriptor];
-    }
-  
+    
     
     
 }

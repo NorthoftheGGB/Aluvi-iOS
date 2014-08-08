@@ -31,16 +31,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
- 
-    
 }
 
 
 
 - (void) viewDidAppear:(BOOL)animated {
-    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Reset Map" style:UIBarButtonItemStylePlain
-                                                                     target:self action:@selector(resetInterface)];
+    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Reset Map"
+                                                                      style:UIBarButtonItemStylePlain
+                                                                     target:self
+                                                                     action:@selector(resetInterface)];
     self.viewDeckController.navigationItem.rightBarButtonItem = anotherButton;
     _map.userTrackingMode = MKUserTrackingModeFollow;
 

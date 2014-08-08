@@ -8,12 +8,12 @@
 
 #import "VCSignInViewController.h"
 #import "VCTextField.h"
-#import "VCUserState.h"
+#import "VCUserStateManager.h"
 #import "VCRiderHomeViewController.h"
 #import "VCSignUpViewController.h"
 #import "VCPasswordRecoveryViewController.h"
 #import "VCDriverRequestViewController.h"
-#import "VCInterfaceModes.h"
+#import "VCInterfaceManager.h"
 #import <MBProgressHUD.h>
 
 #define kPhoneFieldTag 1
@@ -87,15 +87,15 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Logging In";
     
-    [[VCUserState instance] loginWithPhone:_phoneNumberField.text
+    [[VCUserStateManager instance] loginWithPhone:_phoneNumberField.text
                                   password:_passwordField.text
                                    success:^{
                                        [hud hide:YES];
-                                       [[VCInterfaceModes instance] showRiderInterface];
+                                       [[VCInterfaceManager instance] showRiderInterface];
                                        
                                    } failure:^{
                                        [hud hide:YES];
-                                       [UIAlertView showWithTitle:@"Login Failed!" message:@"Invalid" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                                       [UIAlertView showWithTitle:@"Login Failed!" message:@"Invalid Phone Number or Password" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
                                    }];
     
     

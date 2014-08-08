@@ -11,6 +11,8 @@
 
 @interface VCDevicesApi : NSObject
 
++ (void) setup: (RKObjectManager *) objectManager;
+
 + (void) updatePushToken: (NSString *) pushToken
                  success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                  failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;

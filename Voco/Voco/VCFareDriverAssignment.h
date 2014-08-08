@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "VCRestKitMappableObject.h"
 
-@interface VCFareDriverAssignment : NSObject <VCRestKitMappableObject>
+@interface VCFareDriverAssignment : NSObject
 
-@property (nonatomic, strong) NSNumber * rideId;
+@property (nonatomic, strong) NSNumber * fareId;
+
++ (RKObjectMapping*) getMapping;
 
 @end

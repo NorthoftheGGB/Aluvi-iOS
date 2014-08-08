@@ -7,8 +7,8 @@
 //
 
 #import "VCMenuViewController.h"
-#import "VCInterfaceModes.h"
-#import "VCUserState.h"
+#import "VCInterfaceManager.h"
+#import "VCUserStateManager.h"
 #import "VCDriverRequestViewController.h"
 #import "VCDriverRegistrationViewController.h"
 #import "VCDriverVideoTutorialController.h"
@@ -94,8 +94,13 @@ static void * XXContext = &XXContext;
     swipeUpGestureRecognizer.numberOfTouchesRequired = 2;
     [self.view addGestureRecognizer:swipeUpGestureRecognizer];
 
-    [[VCUserState instance] addObserver:self forKeyPath:@"driverState" options:NSKeyValueObservingOptionNew context:XXContext];
+    [[VCUserStateManager instance] addObserver:self forKeyPath:@"driverState" options:NSKeyValueObservingOptionNew context:XXContext];
 
+    
+    UISwipeGestureRecognizer* swipeUpGestureRecognizer2 = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSoftResetGesture:)];
+    swipeUpGestureRecognizer2.direction = UISwipeGestureRecognizerDirectionUp;
+    swipeUpGestureRecognizer2.numberOfTouchesRequired = 3;
+    [self.view addGestureRecognizer:swipeUpGestureRecognizer2];
 }
 
 - (void) viewDidAppear:(BOOL)animated {
@@ -107,7 +112,7 @@ static void * XXContext = &XXContext;
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     // refresh the view in case it has changed
-    switch([[VCInterfaceModes instance] mode]){
+    switch([[VCInterfaceManager instance] mode]){
         case kDriverMode:
             [_modeSegementedControl setSelectedSegmentIndex:1];
             [self showDriverView];
@@ -130,7 +135,7 @@ static void * XXContext = &XXContext;
 }
 
 - (void)dealloc {
-    [[VCUserState instance] removeObserver:self forKeyPath:@"driverState"];
+    [[VCUserStateManager instance] removeObserver:self forKeyPath:@"driverState"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -139,8 +144,17 @@ static void * XXContext = &XXContext;
     // Dispose of any resources that can be recreated.
 }
 
+- (void) handleSoftResetGesture:(id)sender {
+    [UIAlertView showWithTitle:@"Soft Reset" message:@"Are you sure you want to reset ride state for this user?" cancelButtonTitle:@"No!" otherButtonTitles:@[@"Yep, do it"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        if(buttonIndex == 1){
+            [[VCUserStateManager instance] clearRideState];
+            [[VCInterfaceManager instance] showInterface];
+        }
+    }];
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if([[VCInterfaceModes instance] mode] == kDriverMode && [keyPath isEqualToString:@"driverState"]){
+    if([[VCInterfaceManager instance] mode] == kDriverMode && [keyPath isEqualToString:@"driverState"]){
         [self showDriverView];
     }
 }
@@ -148,12 +162,13 @@ static void * XXContext = &XXContext;
 - (IBAction)didChangeMode:(id)sender {
     if(_modeSegementedControl.selectedSegmentIndex == 1){
         [self showDriverView];
-        [[VCInterfaceModes instance] showDriverInterface];
+        [[VCInterfaceManager instance] showDriverInterface];
     } else {
         
-        if([[VCUserState instance].driverState isEqualToString: kDriverStateOnDuty]){
-            [VCDriverApi clockOffWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                [_modeSegementedControl setSelectedSegmentIndex:0];
+        if([[VCUserStateManager instance].driverState isEqualToString: kDriverStateOnDuty]){
+            [[VCUserStateManager instance] clockOffWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                [UIAlertView showWithTitle:@"Clocked off" message:@"You are now off duty" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                [_onDutySwitch setOn:NO];
                 [self displayRiderMode];
             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                 
@@ -166,22 +181,24 @@ static void * XXContext = &XXContext;
 
 - (void) displayRiderMode {
     [self showRiderMenu];
-    [[VCInterfaceModes instance] showRiderInterface];
+    [[VCInterfaceManager instance] showRiderInterface];
 }
 
 - (void) showDriverView {
     UIView * view;
-    if([[VCUserState instance].driverState isEqualToString:kDriverStateActive]
-       || [[VCUserState instance].driverState isEqualToString:kDriverStateOnDuty]){
+    if([[VCUserStateManager instance].driverState isEqualToString:kDriverStateActive]
+       || [[VCUserStateManager instance].driverState isEqualToString:kDriverStateOnDuty]){
         view = _driverMenu;
-        if([[VCUserState instance].driverState isEqualToString:kDriverStateOnDuty]){
+        if([[VCUserStateManager instance].driverState isEqualToString:kDriverStateOnDuty]){
             _onDutySwitch.on = YES;
+        } else {
+            _onDutySwitch.on = NO;
         }
-    } else if ([[VCUserState instance].driverState isEqualToString:kDriverStateApproved]){
+    } else if ([[VCUserStateManager instance].driverState isEqualToString:kDriverStateApproved]){
         view = _requestApproved;
-    } else if ([[VCUserState instance].driverState isEqualToString:kDriverStateInterested]){
+    } else if ([[VCUserStateManager instance].driverState isEqualToString:kDriverStateInterested]){
         view = _requestPending;
-    } else if ([[VCUserState instance].driverState isEqualToString:kDriverStateRegistered]){
+    } else if ([[VCUserStateManager instance].driverState isEqualToString:kDriverStateRegistered]){
         view = _registeredNotActivated;
     } else {
         view = _notYetRegistered;
@@ -224,8 +241,8 @@ static void * XXContext = &XXContext;
 
 - (IBAction)didTapLogout:(id)sender {
     [self viewWillDisappear:YES];
-    [[VCUserState instance] logout];
-    [[VCInterfaceModes instance] showRiderSigninInterface];
+    [[VCUserStateManager instance] logout];
+    [[VCInterfaceManager instance] showRiderSigninInterface];
 }
 
 //rider actions
@@ -307,10 +324,10 @@ static void * XXContext = &XXContext;
 
 - (IBAction)didTapRegister:(id)sender {
     [self viewWillDisappear:YES];
-    if([[VCUserState instance].driverState isEqualToString:@"approved" ]){
+    if([[VCUserStateManager instance].driverState isEqualToString:@"approved" ]){
         VCDriverRegistrationViewController * vc = [[VCDriverRegistrationViewController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
-    } else if([[VCUserState instance].driverState isEqualToString:@"registered" ]){
+    } else if([[VCUserStateManager instance].driverState isEqualToString:@"registered" ]){
         VCDriverVideoTutorialController * vc = [[VCDriverVideoTutorialController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }
@@ -319,14 +336,14 @@ static void * XXContext = &XXContext;
 - (IBAction)didChangeOnDutySwitch:(id)sender {
     UISwitch * onDutySwitch = (UISwitch *) sender;
     if(onDutySwitch.isOn){
-        [[VCUserState instance] clockOnWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            [UIAlertView showWithTitle:@"Ready to Drive" message:@"You are on duty" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        [[VCUserStateManager instance] clockOnWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            [UIAlertView showWithTitle:@"Ready to Drive" message:@"You are now on duty" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             onDutySwitch.on = NO;
         }];
     } else {
-        [[VCUserState instance] clockOffWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            [UIAlertView showWithTitle:@"Clocked off" message:@"You are off duty" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        [[VCUserStateManager instance] clockOffWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            [UIAlertView showWithTitle:@"Clocked off" message:@"You are now off duty" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             onDutySwitch.on = YES;
         }];
@@ -344,7 +361,7 @@ static void * XXContext = &XXContext;
 }
 
 - (void)handleSwipeUpFrom:(UIGestureRecognizer*)recognizer {
-    [[VCInterfaceModes instance] showDebugInterface];
+    [[VCInterfaceManager instance] showDebugInterface];
 }
 
 @end

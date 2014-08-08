@@ -32,13 +32,30 @@
 + (void) clockOffWithSuccess: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                     failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
-+ (void) loadDriveDetails: (NSNumber *) rideId
++ (void) loadFareDetails: (NSNumber *) rideId
                   success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                   failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
+
++ (void) acceptFare: (NSNumber *) fareId
+            success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+            failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure ;
 
 + (void) declineFare: (NSNumber *) fareId
             success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
             failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
+
++ (void) ridersPickedUp: (NSNumber *) fareId
+                success: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
+
+
++ (void) fareCancelledByDriver: (NSNumber *) fareId
+                success: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
+
++ (void) fareCompleted: (NSNumber *) fareId
+               success: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+               failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
 + (void) refreshActiveRidesWithSuccess: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                                failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;

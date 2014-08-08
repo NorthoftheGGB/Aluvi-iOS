@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "VCRestKitMappableObject.h"
 
-@interface VCGeoObject : NSObject <VCRestKitMappableObject>
+@interface VCGeoObject : NSObject
 
 @property (nonatomic, strong) NSNumber * objectId;
 @property (nonatomic, strong) NSNumber * latitude;
 @property (nonatomic, strong) NSNumber * longitude;
+
++ (RKObjectMapping*) getMapping;
 
 @end

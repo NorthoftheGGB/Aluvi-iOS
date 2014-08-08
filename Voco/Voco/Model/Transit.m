@@ -9,7 +9,7 @@
 #import "Transit.h"
 
 @implementation Transit
-@dynamic ride_id;
+@dynamic fare_id;
 @dynamic meetingPointLatitude;
 @dynamic meetingPointLongitude;
 @dynamic meetingPointPlaceName;

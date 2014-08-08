@@ -60,7 +60,7 @@
     }];
      */
     
-    [entityMapping addConnectionForRelationship:@"fare" connectedBy:@{@"fare_id" : @"ride_id"}];
+    [entityMapping addConnectionForRelationship:@"fare" connectedBy:@{@"fare_id" : @"fare_id"}];
    
     
     RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping

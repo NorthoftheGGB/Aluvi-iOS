@@ -9,7 +9,7 @@
 #import "VCDialogs.h"
 #import <RestKit.h>
 #import "VCFareDriverAssignment.h"
-#import "VCUserState.h"
+#import "VCUserStateManager.h"
 #import "VCDriverApi.h"
 #import "NSDate+Pretty.h"
 #import "VCUtilities.h"
@@ -43,7 +43,7 @@ static VCDialogs *sharedSingleton;
     return self;
 }
 
-- (void)offerNextRideToDriver
+- (void)offerNextFareToDriver
 {
     NSFetchRequest * request = [[NSFetchRequest alloc] initWithEntityName:@"Offer"];
     NSPredicate * predicate = [NSPredicate predicateWithFormat:@"decided = %@", [NSNumber numberWithBool:NO]];
@@ -57,29 +57,29 @@ static VCDialogs *sharedSingleton;
         return;
     }
     
-    [VCUserState instance].driveProcessState = @"ride offered";
-    [self offerRideToDriver:[offers objectAtIndex:0]];
+    [VCUserStateManager instance].driveProcessState = @"ride offered";
+    [self offerFareToDriver:[offers objectAtIndex:0]];
 }
 
-- (void) offerRideToDriver: (Offer *) rideOffer {
+- (void) offerFareToDriver: (Offer *) offer {
     _interfaceState = VC_INTERFACE_STATE_OFFER_DIALOG;
-    _offer = rideOffer;
+    _offer = offer;
     
-    NSString * title = [NSString stringWithFormat:@"Ride requested from: %@, To: %@.", rideOffer.meetingPointPlaceName, rideOffer.dropOffPointPlaceName ];
+    NSString * title = [NSString stringWithFormat:@"Fare availabled from: %@, To: %@.", offer.meetingPointPlaceName, offer.dropOffPointPlaceName ];
     
     _currentAlertView = [UIAlertView showWithTitle:title
-                                           message:@"Do you want view this ride?"
+                                           message:@"Do you want view this fare?"
                                  cancelButtonTitle:@"No"
                                  otherButtonTitles:@[@"Yes"]
                                           tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                                               if (buttonIndex == [alertView cancelButtonIndex]) {
                                                   
-                                                  [VCDriverApi declineFare:rideOffer.ride_id
+                                                  [VCDriverApi declineFare:offer.fare_id
                                                                   success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                                      [VCUserState instance].driveProcessState = @"Ride Declined";
-                                                                      [rideOffer markAsDeclined];
+                                                                      [VCUserStateManager instance].driveProcessState = @"Ride Declined";
+                                                                      [offer markAsDeclined];
                                                                       [VCCoreData saveContext];
-                                                                      [self offerNextRideToDriver];
+                                                                      [self offerNextFareToDriver];
                                                                       _interfaceState = VC_INTERFACE_STATE_IDLE;
                                                                   } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                                                       _interfaceState = VC_INTERFACE_STATE_IDLE;
@@ -87,9 +87,9 @@ static VCDialogs *sharedSingleton;
                                                   
                                               } else if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Yes"]) {
                                                   
-                                                  [VCDriverApi loadDriveDetails:rideOffer.ride_id
+                                                  [VCDriverApi loadFareDetails:offer.fare_id
                                                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                                            [[NSNotificationCenter defaultCenter] postNotificationName:@"ride_offer_invoked" object:[VCDialogs instance] userInfo:@{@"ride_id" : rideOffer.ride_id }];
+                                                                            [[NSNotificationCenter defaultCenter] postNotificationName:@"fare_offer_invoked" object:[VCDialogs instance] userInfo:@{@"fare_id" : offer.fare_id }];
                                                                             _interfaceState = VC_INTERFACE_STATE_IDLE;
                                                                         }
                                                                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -113,21 +113,21 @@ static VCDialogs *sharedSingleton;
             [WRUtilities criticalError:error];
         }
         _offer = nil;
-        [VCUserState instance].driveProcessState = kUserStateIdle;
+        [VCUserStateManager instance].driveProcessState = kUserStateIdle;
         _interfaceState = VC_INTERFACE_STATE_IDLE;
-        [self offerNextRideToDriver];
+        [self offerNextFareToDriver];
     }
 }
 
 - (void) rideFound: (NSNumber *) requestId {
     [UIAlertView showWithTitle:@"Ride Found!" message:@"Your ride has been scheduled" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
-    [VCUserState instance].driveProcessState = kUserStateRideScheduled;
+    [VCUserStateManager instance].driveProcessState = kUserStateRideScheduled;
 }
 
 - (void) rideCancelledByRider {
     [UIAlertView showWithTitle:@"Ride Cancelled!" message:@"The rider cancelled the ride" cancelButtonTitle:@"OK" otherButtonTitles:nil
                       tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                          [[VCDialogs instance] offerNextRideToDriver];
+                          [[VCDialogs instance] offerNextFareToDriver];
                       }];
     
 }
@@ -150,7 +150,7 @@ static VCDialogs *sharedSingleton;
              cancelButtonTitle:@"OK"
              otherButtonTitles:@[@"Detailed Receipt"]
                       tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                          [VCUserState instance].rideProcessState = kUserStateIdle;
+                          [VCUserStateManager instance].rideProcessState = kUserStateIdle;
                           if (buttonIndex != 0){
                               // Launch the payments page for this ride
                           }
@@ -163,7 +163,7 @@ static VCDialogs *sharedSingleton;
              cancelButtonTitle:@"OK"
              otherButtonTitles:nil
                       tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                          [VCUserState instance].rideProcessState = kUserStateIdle;
+                          [VCUserStateManager instance].rideProcessState = kUserStateIdle;
                       }];
 }
 

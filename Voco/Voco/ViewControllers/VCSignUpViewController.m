@@ -12,11 +12,11 @@
 #import "VCValidation.h"
 #import "WRUtilities.h"
 #import "VCRiderHomeViewController.h"
-#import "VCInterfaceModes.h"
+#import "VCInterfaceManager.h"
 #import <MBProgressHUD.h>
 #import "US2ConditionCollection.h"
 #import "US2Condition.h"
-#import "VCUserState.h"
+#import "VCUserStateManager.h"
 
 #import "VCNameTextField.h"
 #import "VCPhoneTextField.h"
@@ -157,7 +157,7 @@
     
     
     _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    // _hud.labelText = @"Signing Up";
+    _hud.labelText = @"Signing Up";
     
     [VCUsersApi createUser:[RKObjectManager sharedManager]
                  firstName:_firstNameField.text
@@ -178,17 +178,19 @@
                        
                        
                    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                       [WRUtilities criticalError:error];
+                       _hud.hidden = YES;
+                       
                    }];
 }
 
 - (void) login {
-    [[VCUserState instance] loginWithPhone:_phoneField.text password:_passwordField.text
+    [[VCUserStateManager instance] loginWithPhone:_phoneField.text password:_passwordField.text
               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                  
-                  [[VCInterfaceModes instance] showRiderInterface];
+                  _hud.hidden = YES;
+                  [[VCInterfaceManager instance] showRiderInterface];
                   
               } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                  _hud.hidden = YES;
                   [UIAlertView showWithTitle:@"Login Failed!" message:@"Invalid" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
               }];
 }

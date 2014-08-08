@@ -12,9 +12,11 @@
 #import "VCRiderApi.h"
 #import "VCDriverApi.h"
 #import "VCUsersApi.h"
+#import "VCDevicesApi.h"
 #import "VCObjectRequestOperation.h"
 #import "VCAppDelegate.h"
 #import "VCCoreData.h"
+#import "VCGeoApi.h"
 
 #define kSecretApiKey @"asp03092jsdklfj023jsdf"
 
@@ -30,6 +32,8 @@ static NSString * apiToken;
     [VCRiderApi setup: objectManager];
     [VCDriverApi setup: objectManager];
     [VCUsersApi setup: objectManager];
+    [VCDevicesApi setup:objectManager];
+    [VCGeoApi setup:objectManager];
         
     [self setApiToken: [[NSUserDefaults standardUserDefaults] stringForKey:API_TOKEN_KEY]];
     
@@ -71,7 +75,7 @@ static NSString * apiToken;
 }
 
 + (NSString *) getRideOffersPath:(NSNumber*) driverId {
-    return [NSString stringWithFormat:@"%@%@", API_GET_RIDE_OFFERS, driverId];
+    return [NSString stringWithFormat:@"%@%@", API_GET_FARE_OFFERS, driverId];
 }
 
 

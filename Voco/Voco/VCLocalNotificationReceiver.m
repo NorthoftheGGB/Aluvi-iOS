@@ -9,7 +9,7 @@
 #import "VCLocalNotificationReceiver.h"
 #import <UIAlertView+Blocks.h>
 #import "VCDialogs.h"
-#import "VCUserState.h"
+#import "VCUserStateManager.h"
 
 @implementation VCLocalNotificationReceiver
 
@@ -18,12 +18,12 @@
     [[VCDebug sharedInstance] localNotificationLog: @"alarm"];
 
     
-    if([VCUserState instance].underwayRideId != nil){
+    if([VCUserStateManager instance].underwayFareId != nil){
         [UIAlertView showWithTitle:@"Warning!" message:@"A ride is already underway! Tell a programmer you are experiencing a state problem!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
     }
     //else {
         NSNumber * requestId = [notification.userInfo objectForKey:@"request_id"];
-        [VCUserState instance].underwayRideId = requestId;
+        [VCUserStateManager instance].underwayFareId = requestId;
         [[VCDialogs instance] commuterRideAlarm:requestId];
     //}
 }

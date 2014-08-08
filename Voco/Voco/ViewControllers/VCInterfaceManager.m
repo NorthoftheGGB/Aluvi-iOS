@@ -1,12 +1,12 @@
 //
-//  VCInterfaceModes.m
+//  VCInterfaceManager.m
 //  Voco
 //
 //  Created by Matthew Shultz on 6/9/14.
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCInterfaceModes.h"
+#import "VCInterfaceManager.h"
 #import "VCSignInViewController.h"
 #import "VCRideViewController.h"
 #import "VCDriveViewController.h"
@@ -15,26 +15,26 @@
 #import "VCApi.h"
 #import "VCDriverHomeViewController.h"
 #import "VCRequestsViewController.h"
-#import "VCUserState.h"
+#import "VCUserStateManager.h"
 #import "VCDebugViewController.h"
 
 #define kInterfaceModeKey @"INTERFACE_MODE_KEY"
 
-static VCInterfaceModes * instance;
+static VCInterfaceManager * instance;
 static IIViewDeckController* deckController;
 static int mode;
 
-@interface VCInterfaceModes () <UIGestureRecognizerDelegate>
+@interface VCInterfaceManager () <UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UINavigationController * centerNavigationController;
 
 @end
 
-@implementation VCInterfaceModes
+@implementation VCInterfaceManager
 
-+ (VCInterfaceModes * ) instance {
++ (VCInterfaceManager * ) instance {
     if(instance == nil){
-        instance = [[VCInterfaceModes alloc] init];
+        instance = [[VCInterfaceManager alloc] init];
         mode =  [(NSNumber*) [[NSUserDefaults standardUserDefaults] objectForKey:kInterfaceModeKey] intValue];
     }
     return instance;
@@ -94,7 +94,18 @@ static int mode;
 }
 
 - (void) showRiderInterface {
-    VCRideViewController * riderViewController = [[VCRideViewController alloc] init];
+    VCRideViewController * rideViewController = [[VCRideViewController alloc] init];
+
+    if( [VCUserStateManager instance].underwayFareId != nil ) {
+        NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Fare"];
+        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"fare_id = %@", [VCUserStateManager instance].underwayFareId];
+        [fetch setPredicate:predicate];
+        NSError * error;
+        NSArray * items = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
+        if(items != nil && [items count] > 0){
+            rideViewController.ride = [items objectAtIndex:0];
+        }
+    }
     
     if(deckController == nil){
         [self createDeckViewController];
@@ -113,16 +124,34 @@ static int mode;
         [self createDeckViewController];
     }
     
+    /*
+<<<<<<< HEAD:Voco/Voco/ViewControllers/VCInterfaceModes.m
     VCDriveViewController * driveViewController = [[VCDriveViewController alloc] init];
     deckController.centerController = driveViewController;
 
     
-    /*
     if([[VCUserState instance].driverState isEqualToString:kDriverStateActive]
        || [[VCUserState instance].driverState isEqualToString:kDriverStateOnDuty] ) {
            VCDriverHomeViewController * driverViewController = [[VCDriverHomeViewController alloc] init];
            deckController.centerController = driverViewController;
            [self setMode: kDriverMode];
+					 =======
+					 if([[VCUserStateManager instance].driverState isEqualToString:kDriverStateActive]
+       || [[VCUserStateManager instance].driverState isEqualToString:kDriverStateOnDuty] ) {
+        VCDriverHomeViewController * driverViewController = [[VCDriverHomeViewController alloc] init];
+        
+        NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Fare"];
+        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"fare_id    = %@", [VCUserStateManager instance].underwayFareId];
+        [fetch setPredicate:predicate];
+        NSError * error;
+        NSArray * items = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
+        if(items != nil && [items count] > 0){
+            driverViewController.fare = [items objectAtIndex:0];
+        }
+        
+        deckController.centerController = driverViewController;
+        [self setMode: kDriverMode];
+>>>>>>> master:Voco/Voco/ViewControllers/VCInterfaceManager.m
     }
      */
     
@@ -153,7 +182,7 @@ static int mode;
 - (id) init {
     self =  [super init];
     if (self != nil) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideOfferInvokedNotification:) name:@"ride_offer_invoked" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fareOfferInvokedNotification:) name:@"fare_offer_invoked" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commuterRideInvokedNotification:) name:@"commuter_ride_invoked" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideInvoked:) name:@"driver_ride_invoked" object:nil];
     }
@@ -176,7 +205,7 @@ static int mode;
 }
 
 // For Driver
-- (void) rideOfferInvokedNotification:(NSNotification *)notification{
+- (void) fareOfferInvokedNotification:(NSNotification *)notification{
     if(mode == kDriverMode){
         [deckController closeLeftView];
     } else {

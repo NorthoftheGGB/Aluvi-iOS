@@ -20,7 +20,6 @@
 @property (nonatomic, strong) NSString * carLicensePlate;
 @property (nonatomic, strong) NSString * referralCode;
 
-+  (void)createMappings:(RKObjectManager *)objectManager;
-
++  (RKObjectMapping*) getMapping;
 
 @end

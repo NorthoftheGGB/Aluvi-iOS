@@ -9,10 +9,10 @@
 #import "VCRiderHomeViewController.h"
 #import <MapKit/MapKit.h>
 #import <MBProgressHUD.h>
-//#import <ActionSheetPicker.h>
+#import <ActionSheetPicker-3.0/ActionSheetStringPicker.h>
 #import <BlocksKit.h>
-#import "VCUserState.h"
-#import "VCInterfaceModes.h"
+#import "VCUserStateManager.h"
+#import "VCInterfaceManager.h"
 #import "VCRiderApi.h"
 #import "VCMapQuestRouting.h"
 #import "VCRideRequestCreated.h"
@@ -25,6 +25,7 @@
 #import "NSDate+Pretty.h"
 #import "VCGeoApi.h"
 #import "VCUtilities.h"
+#import "VCPushApi.h"
 
 #define kStepSetDepartureLocation 1
 #define kStepSetDestinationLocation 2
@@ -127,12 +128,13 @@
 
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onDemandRideFoundNotification:) name:@"ride_found" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onDemandRideFoundNotification:) name:kPushTypeRideFound object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commuterRideInvokedNotification:) name:@"commuter_ride_invoked" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideNotFoundNotification:) name:@"ride_not_found" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideCancelledByDriverNotification:) name:@"ride_cancelled_by_driver" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideComplete:) name:@"ride_complete" object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideCancelledByDriverNotification:) name:kPushTypeFareCancelledByDriver object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideComplete:) name:kNotificationTypeFareComplete object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noDriversAvailable:) name:kPushTypeNoDriversAvailable object:nil];
+
 }
 
 - (void) viewWillDisppear:(BOOL)animated{
@@ -170,8 +172,24 @@
 }
 
 - (void) rideCancelledByDriverNotification:(id) sender{
-    [[VCCoreData managedObjectContext] refreshObject:self.request mergeChanges:YES];
-    [self resetRequestInterface];
+    NSDictionary * payload = ((NSNotification *) sender).object;
+    if([_request.fare_id isEqualToNumber:[payload objectForKey:VC_PUSH_FARE_ID_KEY]]) {
+        [[VCCoreData managedObjectContext] refreshObject:self.request mergeChanges:YES];
+        [self resetRequestInterface];
+    }
+}
+
+- (void) noDriversAvailable:(id) sender{
+    NSDictionary * payload = ((NSNotification *) sender).object;
+    if([_request.ride_id isEqualToNumber:[payload objectForKey:VC_PUSH_RIDE_ID_KEY]]) {
+        [[VCCoreData managedObjectContext] refreshObject:self.request mergeChanges:YES];
+        [UIAlertView showWithTitle:@"No Drivers Available" message:@"No drivers are available at this time.  You may want to try again in a moment" cancelButtonTitle:@"Ok" otherButtonTitles:nil tapBlock:nil];
+        if(_progressHUD != nil) {
+            [_progressHUD hide:YES];
+        }
+        _locationConfirmationAnnotation.hidden = NO;
+
+    }
 }
 
 - (void) rideComplete:(id) sender{
@@ -269,6 +287,7 @@
         [self placeRideDetailsDrawerInPickupMode];
         [self showRideDetailsDrawer];
         [self startTrackingDriverLocation];
+        _cancelRideButton.hidden = NO;
         
     } else if ([self.request.requestType isEqualToString:kRideRequestTypeCommuter]){
         
@@ -316,8 +335,8 @@
                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                             VCDriverGeoObject * geoObject = mappingResult.firstObject;
                             
-                            if( [VCUserState instance].underwayRideId == nil
-                               || ![geoObject.currentFareId isEqualToNumber:[VCUserState instance].underwayRideId]){
+                            if( [VCUserStateManager instance].underwayFareId == nil
+                               || ![geoObject.currentFareId isEqualToNumber:[VCUserStateManager instance].underwayFareId]){
                                 // don't show annotation yet
                                 return;
                             }
@@ -455,7 +474,7 @@
             [VCRiderApi requestRide:self.request
                             success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                 VCRideRequestCreated * rideRequestCreatedResponse = mappingResult.firstObject;
-                                _request.request_id = rideRequestCreatedResponse.rideRequestId;
+                                _request.ride_id = rideRequestCreatedResponse.rideId;
                                 _request.requestedTimestamp = [NSDate date];
                                 [VCCoreData saveContext];
                                 _progressHUD.labelText = @"We are finding your driver now!";
@@ -490,7 +509,7 @@
 
 - (void) cancelRide {
     
-    if(!self.request.request_id || self.request.request_id == nil){
+    if(!self.request.ride_id || self.request.ride_id == nil){
         [self resetRequestInterface];
         return;
     }
@@ -646,6 +665,7 @@
                                      }
                                           origin:sender];
      */
+
 }
 
 - (IBAction)didTapScheduleRideButton:(id)sender {
@@ -657,7 +677,7 @@
     [VCRiderApi requestRide:self.request success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         _request.forcedState = kRequestedState;
         VCRideRequestCreated * rideRequestCreatedResponse = mappingResult.firstObject;
-        self.request.request_id = rideRequestCreatedResponse.rideRequestId;
+        self.request.ride_id = rideRequestCreatedResponse.rideId;
         [VCCoreData saveContext];
         [hud hide:YES];
         [UIAlertView showWithTitle:@"Ride Requested"

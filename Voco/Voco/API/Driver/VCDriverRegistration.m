@@ -10,7 +10,7 @@
 
 @implementation VCDriverRegistration
 
-+  (void)createMappings:(RKObjectManager *)objectManager {
++  (RKObjectMapping*) getMapping {
     
     RKObjectMapping * mapping = [RKObjectMapping mappingForClass:[self class]];
     [mapping addAttributeMappingsFromDictionary:@{
@@ -24,9 +24,7 @@
                                                  @"car_license_plate" : @"carLicensePlate",
                                                  @"referral_code" : @"referralCode"
                                                  }];
-    RKObjectMapping * requestMapping = [mapping inverseMapping];
-    RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[self class] rootKeyPath:nil method:RKRequestMethodPOST];
-    [objectManager addRequestDescriptor:requestDescriptor];
+    return mapping;
 }
 
 @end

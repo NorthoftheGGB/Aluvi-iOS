@@ -8,13 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "VCRestKitMappableObject.h"
 #import "Fare.h"
 
 
-@interface Offer : NSManagedObject <VCRestKitMappableObject>
+@interface Offer : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * ride_id;
+@property (nonatomic, retain) NSNumber * fare_id;
 @property (nonatomic, retain) NSNumber * id;
 @property (nonatomic, retain) NSString * state;
 @property (nonatomic, retain) NSDate * updatedAt;
@@ -22,8 +21,10 @@
 @property (nonatomic, retain) NSNumber * decided;
 @property (nonatomic, retain) NSString * meetingPointPlaceName;
 @property (nonatomic, retain) NSString * dropOffPointPlaceName;
-@property (nonatomic, retain) Fare * ride;
+@property (nonatomic, retain) Fare * fare;
 
+
++ (void)createMappings:(RKObjectManager *)objectManager;
 
 - (void) markAsAccepted;
 - (void) markAsDeclined;

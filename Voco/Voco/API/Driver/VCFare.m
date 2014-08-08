@@ -11,7 +11,7 @@
 
 @implementation VCFare
 
-+ (void)createMappings:(RKObjectManager *)objectManager {
++ (RKObjectMapping*) getMapping {
     
     
     RKObjectMapping * mapping = [RKObjectMapping mappingForClass:[self class]];
@@ -20,14 +20,7 @@
                                                   @"amount" : @"amount",
                                                   @"driver_earnings" : @"driverEarnings"
                                                   }];
+    return mapping;
 
-     {
-         RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping
-                                                                                                   method:RKRequestMethodPOST
-                                                                                              pathPattern:API_POST_RIDE_ARRIVED
-                                                                                                  keyPath:nil
-                                                                                              statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-         [objectManager addResponseDescriptor:responseDescriptor];
-     }
 }
 @end

@@ -10,7 +10,7 @@
 #import <RestKit/RestKit.h>
 #import "VCApi.h"
 #import "VCGeoObject.h"
-#import "VCUserState.h"
+#import "VCUserStateManager.h"
 #import "WRUtilities.h"
 #import "VCGeoApi.h"
 
@@ -50,7 +50,7 @@ static void * XXContext = &XXContext;
         _locationManager.delegate = self;
         [_locationManager startUpdatingLocation];
         
-        [[VCUserState instance] addObserver:self forKeyPath:VCUserStateDriverStateKeyPath options:NSKeyValueObservingOptionNew context:XXContext];
+        [[VCUserStateManager instance] addObserver:self forKeyPath:VCUserStateDriverStateKeyPath options:NSKeyValueObservingOptionNew context:XXContext];
     }
     sharedGeolocation = self;
     return self;

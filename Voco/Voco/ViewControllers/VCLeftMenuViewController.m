@@ -8,7 +8,7 @@
 
 #import "VCLeftMenuViewController.h"
 #import "VCRideViewController.h"
-#import "VCInterfaceModes.h"
+#import "VCInterfaceManager.h"
 #import "VCRiderProfileViewController.h"
 #import "VCMenuItemTableViewCell.h"
 #import "VCMenuUserInfoTableViewCell.h"
@@ -231,14 +231,14 @@
         {
             //TODO: Put Actual Profile In Here
             VCRiderProfileViewController * profileViewController = [[VCRiderProfileViewController alloc] init];
-            [[VCInterfaceModes instance] setCenterViewControllers: @[profileViewController]];
+            [[VCInterfaceManager instance] setCenterViewControllers: @[profileViewController]];
         }
             break;
             
         case kMapCellInteger:
         {
             VCRideViewController * rideViewController = [[VCRideViewController alloc] init];
-            [[VCInterfaceModes instance] setCenterViewControllers: @[rideViewController]];
+            [[VCInterfaceManager instance] setCenterViewControllers: @[rideViewController]];
             
             VCMenuItemTableViewCell * cell = (VCMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
             [cell select];

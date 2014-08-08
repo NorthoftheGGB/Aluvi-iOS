@@ -10,6 +10,8 @@
 #import "Car.h"
 #import "Driver.h"
 #import <RKPathMatcher.h>
+#import "VCApi.h"
+#import "VCPushApi.h"
 
 @interface Ride ()
 
@@ -21,7 +23,7 @@
 @dynamic requestType;
 @dynamic car_id;
 @dynamic driver_id;
-@dynamic request_id;
+@dynamic ride_id;
 @dynamic requestedTimestamp;
 @dynamic estimatedArrivalTime;
 @dynamic originLatitude;
@@ -39,8 +41,8 @@
                                                           inManagedObjectStore: [VCCoreData managedObjectStore]];
     
     [entityMapping addAttributeMappingsFromDictionary:@{
-                                                        @"request_id" : @"request_id",
                                                         @"ride_id" : @"ride_id",
+                                                        @"fare_id" : @"fare_id",
                                                         @"state" : @"forcedState",
                                                         @"meeting_point_place_name" : @"meetingPointPlaceName",
                                                         @"meeting_point_latitude" : @"meetingPointLatitude",
@@ -57,11 +59,11 @@
                                                         @"pickup_time" : @"pickupTime"
                                                         }];
     
-    entityMapping.identificationAttributes = @[ @"request_id" ]; // for riders request_id is the primary key
+    entityMapping.identificationAttributes = @[ @"ride_id" ]; // for riders ride_id is the primary key
 
     
     [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
-        RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:API_GET_ACTIVE_REQUESTS];
+        RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:API_GET_ACTIVE_RIDES];
         
         NSString * relativePath = [URL relativePath];
         NSDictionary *argsDict = nil;
@@ -80,16 +82,16 @@
     
     RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping
                                                                                              method:RKRequestMethodGET
-                                                                                        pathPattern:API_GET_ACTIVE_REQUESTS
+                                                                                        pathPattern:API_GET_ACTIVE_RIDES
                                                                                             keyPath:nil
                                                                                         statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 }
 
 
-+ (Ride *) requestWithRideId: (NSNumber *) rideId{
++ (Ride *) rideWithFareId: (NSNumber *) fareId{
     NSFetchRequest * request = [[NSFetchRequest alloc] initWithEntityName:@"Ride"];
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ride_id = %@", rideId];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"fare_id = %@", fareId];
     [request setPredicate:predicate];
     NSError * error;
     NSArray * rides = [[VCCoreData managedObjectContext] executeFetchRequest:request error:&error];

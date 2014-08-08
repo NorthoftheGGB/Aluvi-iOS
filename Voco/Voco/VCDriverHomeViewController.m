@@ -13,13 +13,15 @@
 #import "VCLabel.h"
 #import "VCDialogs.h"
 #import "VCButtonStandardStyle.h"
-#import "VCUserState.h"
+#import "VCButtonFontBold.h"
+#import "VCUserStateManager.h"
 #import "VCFareDriverAssignment.h"
 #import "VCDriverApi.h"
 #import "VCFare.h"
 #import "VCUtilities.h"
 #import "VCLabelBold.h"
 #import "VCDriverHUD.h"
+#import "VCPushApi.h"
 
 
 @interface VCDriverHomeViewController () <VCDriverHUDDelegate>
@@ -71,10 +73,10 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideOfferInvokedNotification:) name:@"ride_offer_invoked" object:[VCDialogs instance]];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fareOfferInvokedNotification:) name:@"fare_offer_invoked" object:[VCDialogs instance]];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideInvoked:) name:@"driver_ride_invoked" object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideCancelledByRider:) name:@"ride_cancelled_by_rider" object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideOfferClosed:) name:@"ride_offer_closed" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideCancelledByRider:) name:kPushTypeFareCancelledByRider object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fareOfferClosed:) name:kPushTypeRideOfferClosed object:nil];
 
     }
     return self;
@@ -107,12 +109,12 @@
 
 
 // Notification Handlers
-- (void) rideOfferInvokedNotification:(NSNotification *)notification{
+- (void) fareOfferInvokedNotification:(NSNotification *)notification{
     [self resetButtons];
     NSDictionary * info = [notification userInfo];
-    NSNumber * rideId = [info objectForKey: @"ride_id"];
+    NSNumber * fareId = [info objectForKey: @"fare_id"];
     NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"Fare"];
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ride_id = %@", rideId];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"fare_id = %@", fareId];
     [request setPredicate:predicate];
     NSError * error;
     NSArray * results = [[VCCoreData managedObjectContext] executeFetchRequest:request error:&error];
@@ -126,12 +128,12 @@
     [self showAcceptOrDeclineRideInterface];
 }
 
-- (void) rideOfferClosed: (NSNotification *) notification {
-    NSNumber * rideId = notification.object;
-    if(_fare != nil && [rideId isEqualToNumber:_fare.ride_id]){  //TODO should be fare_id fareId
+- (void) fareOfferClosed: (NSNotification *) notification {
+    NSNumber * fareId = notification.object;
+    if(_fare != nil && [fareId isEqualToNumber:_fare.fare_id]){  //TODO should be fare_id fareId
         [self resetInterface];
         [UIAlertView showWithTitle:@"Offer Closed" message:@"This ride offer has closed" cancelButtonTitle:@"Ok" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-            [[VCDialogs instance] offerNextRideToDriver];
+            [[VCDialogs instance] offerNextFareToDriver];
         }];
     }
 
@@ -146,8 +148,8 @@
 }
 
 - (void) rideCancelledByRider: (NSNotification *) notification {
-    NSNumber * rideId = notification.object;
-    if(_fare != nil && [rideId isEqualToNumber:_fare.ride_id]){
+    NSNumber * fareId = notification.object;
+    if(_fare != nil && [fareId isEqualToNumber:_fare.fare_id]){
         [self resetInterface];
     }
 }
@@ -245,7 +247,7 @@
              cancelButtonTitle:@"OK"
              otherButtonTitles:@[@"Detailed Receipt"]
                       tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                          [VCUserState instance].driveProcessState = kUserStateIdle;
+                          [VCUserStateManager instance].driveProcessState = kUserStateIdle;
                           if (buttonIndex != 0){
                               // Launch the payments page for this ride
                           }
@@ -260,53 +262,51 @@
 }
 
 - (IBAction)didTapAccept:(id)sender {
-    VCFareDriverAssignment * assignment = [[VCFareDriverAssignment alloc] init];
-    assignment.rideId = self.transit.ride_id;
+    
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Accepting Ride";
     CLS_LOG(@"%@", @"API_POST_RIDE_ACCEPTED");
-    [[RKObjectManager sharedManager] postObject:assignment path:API_POST_RIDE_ACCEPTED parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [VCDriverApi acceptFare:self.transit.fare_id success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         
         // TODO at this point we assume ride is confirmed
         // but at a later date we may add a step that waits for the rider to confirm that
         // they know about the ride being scheduled (handshake)
-        [VCUserState instance].driveProcessState = kUserStateRideAccepted;
-        [VCUserState instance].underwayRideId = self.transit.ride_id;
+        [VCUserStateManager instance].driveProcessState = kUserStateRideAccepted;
+        [VCUserStateManager instance].underwayFareId = self.transit.fare_id;
         
         [((Fare *) self.transit) markOfferAsAccepted];
         
         [hud hide:YES];
         [self showPickupInterface];
-        
+
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        // network error..
         
         if(operation.HTTPRequestOperation.response.statusCode == 403){
             // already accepted by another driver
             [((Fare *) self.transit) markOfferAsClosed];
-
+            
             [UIAlertView showWithTitle:@"Ride no longer available!" message:@"Unfortunately another driver beat you to this ride!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-
+                
                 [self resetInterface];
-                [[VCDialogs instance] offerNextRideToDriver];
+                [[VCDialogs instance] offerNextFareToDriver];
             }];
         }
         
         [hud hide:YES];
 
     }];
-
+    
 }
 
 - (IBAction)didTapDecline:(id)sender {
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Declining";
-    [VCDriverApi declineFare:self.transit.ride_id
+    [VCDriverApi declineFare:self.transit.fare_id
                     success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                         [self resetButtons];
                         [self clearMap];
-                        [VCUserState instance].driveProcessState = @"Ride Declined";
+                        [VCUserStateManager instance].driveProcessState = @"Ride Declined";
                         [self.fare markOfferAsDeclined];
                         [VCCoreData saveContext];
                         
@@ -315,10 +315,9 @@
                         [_driverLocationHud removeFromSuperview];
                         [hud hide:YES];
                         
-                        
-                        [VCUserState instance].underwayRideId = nil;
-                        [[VCDialogs instance] offerNextRideToDriver];
-                        
+                        [VCUserStateManager instance].underwayFareId = nil;
+                        [[VCDialogs instance] offerNextFareToDriver];
+
                     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                         [hud hide:YES];
                     }];
@@ -326,22 +325,21 @@
 }
 
 - (IBAction)didTapRiderPickedUp:(id)sender {
-    if( [VCUserState instance].underwayRideId != nil){
-        if(! [[VCUserState instance].underwayRideId isEqualToNumber: self.fare.ride_id]){
+    if( [VCUserStateManager instance].underwayFareId != nil){
+        if(! [[VCUserStateManager instance].underwayFareId isEqualToNumber: self.fare.fare_id]){
             [WRUtilities criticalErrorWithString:@"State shows another ride is still underway"];
         }
-        [VCUserState instance].underwayRideId = self.fare.ride_id;
+        [VCUserStateManager instance].underwayFareId = self.fare.fare_id;
     }
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Notifying Server";
-    VCFareDriverAssignment * rideIdentity = [[VCFareDriverAssignment alloc] init];
-    rideIdentity.rideId = _fare.ride_id;
-    [VCUserState instance].underwayRideId = _fare.ride_id;
-    [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_RIDE_PICKUP parameters:nil
-                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    
+    [VCUserStateManager instance].underwayFareId = _fare.fare_id;
+    [VCDriverApi ridersPickedUp:_fare.fare_id
+                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             [self showRideInProgressInterface];
-                                            [VCUserState instance].driveProcessState = kUserStateRideStarted;
+                                            [VCUserStateManager instance].driveProcessState = kUserStateRideStarted;
                                             [hud hide:YES];
                                             
                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -354,18 +352,16 @@
     // Send cancel request to server
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Cancelling";
-    VCFareDriverAssignment * rideIdentity = [[VCFareDriverAssignment alloc] init];
-    rideIdentity.rideId = _fare.ride_id;
-    [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_DRIVER_CANCELLED parameters:nil
-                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [VCDriverApi fareCancelledByDriver:self.transit.fare_id
+                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             [UIAlertView showWithTitle:@"Cancelled Ride" message:@"The ride was successfully cancelled" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
                                             [self resetButtons];
                                             [self clearMap];
                                             self.fare = nil;
                                             [hud hide:YES];
                                             
-                                            [VCUserState instance].driveProcessState = kUserStateIdle;
-                                            [VCUserState instance].underwayRideId = nil;
+                                            [VCUserStateManager instance].driveProcessState = kUserStateIdle;
+                                            [VCUserStateManager instance].underwayFareId = nil;
                                             
                                             [self hideCommuterCallHud];
 
@@ -381,16 +377,14 @@
 - (IBAction)didTapRideCompleted:(id)sender {
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Notifying Server";
-    VCFareDriverAssignment * rideIdentity = [[VCFareDriverAssignment alloc] init];  // TODO objects like this can be generated from
-    // global state of the app, i.e. in another method
-    rideIdentity.rideId = [VCUserState instance].underwayRideId;
-    [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_RIDE_ARRIVED parameters:nil
+   
+    [VCDriverApi fareCompleted:self.transit.fare_id
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                            [VCUserState instance].driveProcessState = kUserStateRideCompleted;
+                                            [VCUserStateManager instance].driveProcessState = kUserStateRideCompleted;
                                             [self showRideCompletedInterface];
                                             VCFare * fare = mappingResult.firstObject;
                                             [self showReceipt:fare.driverEarnings];
-                                            [VCUserState instance].underwayRideId = nil;
+                                            [VCUserStateManager instance].underwayFareId = nil;
                                             [hud hide:YES];
                                             
                                             [self hideCommuterCallHud];

@@ -20,8 +20,8 @@
 
 + (VCDialogs *) instance;
 
-- (void) offerNextRideToDriver;
-- (void) offerRideToDriver: (Offer *) offer;
+- (void) offerNextFareToDriver;
+- (void) offerFareToDriver: (Offer *) offer;
 - (void) retractOfferDialog: (Offer *) offer;
 - (void) rideFound: (NSNumber *) requestId;
 - (void) rideCancelledByRider;

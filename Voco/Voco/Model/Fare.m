@@ -33,7 +33,7 @@
                                                           inManagedObjectStore: [VCCoreData managedObjectStore]];
     
     [entityMapping addAttributeMappingsFromDictionary:@{
-                                                        @"id" : @"ride_id",
+                                                        @"id" : @"fare_id",
                                                         @"state" : @"savedState",
                                                         @"meeting_point_place_name" : @"meetingPointPlaceName",
                                                         @"meeting_point_latitude" : @"meetingPointLatitude",
@@ -45,7 +45,7 @@
                                                         }];
     
     
-    entityMapping.identificationAttributes = @[ @"ride_id" ];
+    entityMapping.identificationAttributes = @[ @"fare_id" ];
     
     /*
      [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
@@ -67,7 +67,7 @@
         RKResponseDescriptor * responseDescriptor =
         [RKResponseDescriptor responseDescriptorWithMapping:entityMapping
                                                      method:RKRequestMethodGET
-                                                pathPattern:API_GET_DRIVER_RIDE_PATH_PATTERN
+                                                pathPattern:API_GET_DRIVER_FARE_PATH_PATTERN
                                                     keyPath:nil
                                                 statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:responseDescriptor];
@@ -76,7 +76,7 @@
         RKResponseDescriptor * responseDescriptor =
         [RKResponseDescriptor responseDescriptorWithMapping:entityMapping
                                                      method:RKRequestMethodGET
-                                                pathPattern:API_GET_ACTIVE_RIDES
+                                                pathPattern:API_GET_ACTIVE_FARES
                                                     keyPath:nil
                                                 statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:responseDescriptor];
@@ -112,7 +112,7 @@
 
 - (Offer *) getOffer {
     NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"Offer"];
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ride_id = %@", self.ride_id];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"fare_id = %@", self.fare_id];
     [request setPredicate:predicate];
     NSError * error;
     NSArray * results = [[VCCoreData managedObjectContext] executeFetchRequest:request error:&error];

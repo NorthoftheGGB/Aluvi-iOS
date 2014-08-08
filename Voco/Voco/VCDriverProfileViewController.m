@@ -15,8 +15,8 @@
 #import "VCButtonStandardStyle.h"
 #import "VCLabelBold.h"
 #import "VCLabel.h"
-#import "VCUserState.h"
-#import "VCInterfaceModes.h"
+#import "VCUserStateManager.h"
+#import "VCInterfaceManager.h"
 #import "VCUsersApi.h"
 
 @interface VCDriverProfileViewController ()
@@ -35,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet UIView *promoCheckBoxView;
 @property (weak, nonatomic) IBOutlet UIView *receiptsCheckBoxView;
 @property (weak, nonatomic) IBOutlet VCButtonStandardStyle *signoutButton;
+@property (weak, nonatomic) IBOutlet UILabel *versionLabel;
 
 - (IBAction)didTapChangeButton:(id)sender;
 - (IBAction)didTapSocialSegmentedControl:(id)sender;
@@ -77,7 +78,12 @@
     UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [tapBackground setNumberOfTapsRequired:1];
     [self.view addGestureRecognizer:tapBackground];
+ 
     
+    NSString * version = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
+    NSString * build = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
+
+    _versionLabel.text = [NSString stringWithFormat:@"v%@b%@", version, build];
 }
 
 
@@ -98,8 +104,8 @@
 }
 
 - (IBAction)didTapSignoutButton:(id)sender {
-    [[VCUserState instance] logout];
-    [[VCInterfaceModes instance] showRiderSigninInterface];
+    [[VCUserStateManager instance] logout];
+    [[VCInterfaceManager instance] showRiderSigninInterface];
     
 }
 @end

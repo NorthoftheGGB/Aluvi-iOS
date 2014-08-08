@@ -10,7 +10,7 @@
 
 @implementation VCRideRequest
 
-+ (void) createMappings: (RKObjectManager *) objectManager {
++ (RKObjectMapping *) getMapping {
 
     RKObjectMapping * rideRequestMapping = [RKObjectMapping mappingForClass:[VCRideRequest class]];
     [rideRequestMapping addAttributeMappingsFromDictionary:@{
@@ -23,9 +23,7 @@
                                                                  @"destination_place_name" : @"destinationPlaceName",
                                                                  @"desired_arrival" : @"desiredArrival"
                                                                 }];
-    RKObjectMapping * postRideRequestMapping = [rideRequestMapping inverseMapping];
-    RKRequestDescriptor *requestDescriptorPostData = [RKRequestDescriptor requestDescriptorWithMapping:postRideRequestMapping objectClass:[VCRideRequest class] rootKeyPath:nil method:RKRequestMethodPOST];
-    [objectManager addRequestDescriptor:requestDescriptorPostData];
+    return rideRequestMapping;
 
 }
 

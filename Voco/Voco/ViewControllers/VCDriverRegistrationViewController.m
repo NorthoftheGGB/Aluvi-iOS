@@ -89,6 +89,9 @@
 
 - (void) registerDriver{
     
+    
+    
+    
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Registering...";
 
@@ -112,7 +115,6 @@
                                           
                                       } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                           [hud hide:YES];
-                                          [WRUtilities criticalError:error];
                                       }];
     
 }

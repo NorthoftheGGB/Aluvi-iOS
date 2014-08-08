@@ -7,7 +7,8 @@
 //
 
 #import "VCObjectRequestOperation.h"
-#import "VCUserState.h"
+#import "VCUserStateManager.h"
+#import "VCApiError.h"
 
 @implementation VCObjectRequestOperation
 
@@ -40,14 +41,26 @@
               
             }
                 break;
-            case  401: // not authenticated
+                
+            case 400:
+            {
+                VCApiError * apiError =  [[error userInfo] objectForKey:RKObjectMapperErrorObjectsKey][0];
+                if(apiError != nil){
+                    [UIAlertView showWithTitle:@"Error" message:apiError.error cancelButtonTitle:@"Oh, ok" otherButtonTitles:nil tapBlock:nil];
+                } else {
+                    [UIAlertView showWithTitle:@"Error" message:@"Unspecified Error" cancelButtonTitle:@"Ok, I'll try that again I guess" otherButtonTitles:nil tapBlock:nil];
+                }
+            }
+                break;
+
+            case 401: // not authenticated
             {
                 [UIAlertView showWithTitle:@"Invalid Login" message:@"You are no longer logged into Voco.  Please log back in"
                          cancelButtonTitle:@"OK"
                          otherButtonTitles:nil
                                   tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                                       // Call logout and Bump the user back out to the login screen
-                                      [[VCUserState instance] finalizeLogout];
+                                      [[VCUserStateManager instance] finalizeLogout];
                                   }];
             }
                 break;

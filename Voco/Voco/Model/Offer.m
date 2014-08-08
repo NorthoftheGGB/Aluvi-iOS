@@ -9,10 +9,11 @@
 #import "Offer.h"
 #import <RestKit/RestKit.h>
 #import <RestKit/Network/RKPathMatcher.h>
+#import "VCApi.h"
 
 @implementation Offer
 
-@dynamic ride_id;
+@dynamic fare_id;
 @dynamic id;
 @dynamic state;
 @dynamic updatedAt;
@@ -20,7 +21,7 @@
 @dynamic decided;
 @dynamic meetingPointPlaceName;
 @dynamic dropOffPointPlaceName;
-@dynamic ride;
+@dynamic fare;
 
 + (void)createMappings:(RKObjectManager *)objectManager {
     
@@ -28,7 +29,7 @@
                                                         inManagedObjectStore: [VCCoreData managedObjectStore]];
     
     [entityMapping addAttributeMappingsFromDictionary:@{@"id": @"id",
-                                                        @"ride_id" : @"ride_id",
+                                                        @"fare_id" : @"fare_id",
                                                         @"state" : @"state",
                                                         @"created_at" : @"createdAt",
                                                         @"updated_at" : @"updatedAt",
@@ -39,7 +40,7 @@
     
     [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
         RKPathMatcher * pathMatcher;
-        pathMatcher = [RKPathMatcher pathMatcherWithPattern:API_GET_RIDE_OFFERS];
+        pathMatcher = [RKPathMatcher pathMatcherWithPattern:API_GET_FARE_OFFERS];
         
         NSDictionary *argsDict = nil;
         BOOL match = [pathMatcher matchesPath:[URL relativePath] tokenizeQueryStrings:NO parsedArguments:&argsDict];
@@ -55,7 +56,7 @@
     
     RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping
                                                                                              method:RKRequestMethodGET
-                                                                                        pathPattern:API_GET_RIDE_OFFERS
+                                                                                        pathPattern:API_GET_FARE_OFFERS
                                                                                             keyPath:nil
                                                                                         statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];

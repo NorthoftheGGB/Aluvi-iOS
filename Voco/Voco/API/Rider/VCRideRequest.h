@@ -25,7 +25,7 @@
 @property (nonatomic, strong) NSString * destinationPlaceName;
 @property (nonatomic, strong) NSDate * desiredArrival;
 
-+ (void) createMappings: (RKObjectManager *) objectManager;
++ (RKObjectMapping *) getMapping;
 + (VCRideRequest *) requestForRide:(Ride *)ride;
 
 @end

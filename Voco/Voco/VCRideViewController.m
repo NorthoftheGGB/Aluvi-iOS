@@ -21,6 +21,13 @@
 #define kEditCommuteStateEditWork 1002
 #define kEditCommuteStateReturnTime 1003
 
+#define kStepSetDepartureLocation 1
+#define kStepSetDestinationLocation 2
+#define kStepConfirmRequest 3
+#define kStepDone 4
+
+#define kFareNotStartedLabelText @"Waiting"
+
 @interface VCRideViewController () <MKMapViewDelegate, VCEditLocationWidgetDelegate, ActionSheetCustomPickerDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
 // map
@@ -48,8 +55,10 @@
 @property (weak, nonatomic) IBOutlet VCLabel *returnTimeLabel;
 
 //overlay
-
 @property (strong, nonatomic) IBOutlet UIView *overlayView;
+
+// Data Entry
+@property (nonatomic) NSInteger step;
 
 
 @property (strong, nonatomic) VCEditLocationWidget * homeLocationWidget;
@@ -85,6 +94,9 @@
                             @"8:00", @"8:30", @"9:00", @"9:30",
                             @"10:00", @"10:30", @"11:00", @"11:30",
                             @"12:00"];
+        
+        _step = kStepSetDepartureLocation;
+
     }
     return self;
 }
@@ -137,6 +149,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) setRequest:(Ride *)ride {
+    _ride = ride;
+    self.transit = ride;
+}
 
 - (void) showHome{
     

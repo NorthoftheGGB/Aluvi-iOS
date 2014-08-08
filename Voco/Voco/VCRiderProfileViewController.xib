@@ -17,6 +17,7 @@
                 <outlet property="referralCodeLabel" destination="UxG-ZV-NPI" id="8yx-aC-iRF"/>
                 <outlet property="signoutButton" destination="Q4i-Cl-T2g" id="j74-9b-Qjg"/>
                 <outlet property="socialSegmentedControl" destination="8CD-yb-aoQ" id="my4-Qk-54W"/>
+                <outlet property="versionLabel" destination="xpo-TN-YGK" id="AtK-oG-YlX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -284,6 +285,12 @@
                         <action selector="didTapChangeButton:" destination="-1" eventType="touchUpInside" id="keG-OX-xSv"/>
                     </connections>
                 </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="v0.0b0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xpo-TN-YGK">
+                    <rect key="frame" x="265" y="443" width="45" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>

@@ -16,6 +16,6 @@
 @property (nonatomic, strong) NSNumber * currentFareCost;
 @property (nonatomic, strong) NSNumber * currentFareId;
 
-+ (void)createMappings:(RKObjectManager *)objectManager;
++ (RKObjectMapping*)getMapping;
 
 @end

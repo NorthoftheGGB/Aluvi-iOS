@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCUserState.h"
+#import "VCUserStateManager.h"
 #import "VCUsersApi.h"
 #import "VCApi.h"
 #import "VCDevicesApi.h"
 #import "VCLoginResponse.h"
 #import "VCUserStateResponse.h"
-#import "VCInterfaceModes.h"
+#import "VCInterfaceManager.h"
 #import "VCDriverApi.h"
 
 NSString *const VCUserStateDriverStateKeyPath = @"driverState";
@@ -23,20 +23,20 @@ NSString *const VCUserStateDriverStateKeyPath = @"driverState";
 #define kDriverStateKey @"kDriverStateKey"
 #define kRideIdKey @"kRideIdKey"
 
-static VCUserState *sharedSingleton;
+static VCUserStateManager *sharedSingleton;
 
-@implementation VCUserState
+@implementation VCUserStateManager
 
-+ (VCUserState *) instance {
++ (VCUserStateManager *) instance {
     if(sharedSingleton == nil){
-        sharedSingleton = [[VCUserState alloc] init];
+        sharedSingleton = [[VCUserStateManager alloc] init];
     }
     return sharedSingleton;
 }
 
 + (BOOL) driverIsAvailable {
     // Will need a better way to swith on this
-    if([self instance].underwayRideId == nil){
+    if([self instance].underwayFareId == nil){
         return YES;
     } else {
         return NO;
@@ -51,15 +51,16 @@ static VCUserState *sharedSingleton;
         _driveProcessState = [userDefaults objectForKey:kDriveProcessStateKey];
         _riderState = [userDefaults objectForKey:kRiderStateKey];
         _driverState = [userDefaults objectForKey:kDriverStateKey];
+        _underwayFareId = [userDefaults objectForKey:kRideIdKey];
     }
     return self;
 }
 
 
-- (void) setUnderwayRideId:(NSNumber *)rideId {
-    _underwayRideId = rideId;
+- (void) setUnderwayFareId:(NSNumber *)rideId {
+    _underwayFareId = rideId;
     NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:_underwayRideId forKey:kRideIdKey];
+    [userDefaults setObject:_underwayFareId forKey:kRideIdKey];
     [userDefaults synchronize];
     
 }
@@ -133,7 +134,7 @@ static VCUserState *sharedSingleton;
         [VCApi clearApiToken];
         [self clearUserState];
         [VCCoreData clearUserData];
-        [[VCInterfaceModes instance] showRiderSigninInterface];
+        [[VCInterfaceManager instance] showRiderSigninInterface];
         [[VCDebug sharedInstance] clearLoggedInUserIdentifier];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         
@@ -162,12 +163,24 @@ static VCUserState *sharedSingleton;
     [userDefaults removeObjectForKey:kDriverStateKey];
     [userDefaults removeObjectForKey:kRiderStateKey];
     [userDefaults synchronize];
-    _underwayRideId = nil;
+    _underwayFareId = nil;
     _rideProcessState = nil;
     _driveProcessState = nil;
     _riderState = nil;
     _driverState = nil;
 }
+
+- (void) clearRideState {
+    NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults removeObjectForKey:kRideIdKey];
+    [userDefaults removeObjectForKey:kRideProcessStateKey];
+    [userDefaults removeObjectForKey:kDriveProcessStateKey];
+    [userDefaults synchronize];
+    _underwayFareId = nil;
+    _rideProcessState = nil;
+    _driveProcessState = nil;
+}
+
 
 - (BOOL) isLoggedIn {
     if(self.riderState != nil || self.driverState != nil ){
