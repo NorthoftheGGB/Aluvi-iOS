@@ -14,6 +14,8 @@
 #import "VCMenuUserInfoTableViewCell.h"
 #import "VCMenuDriverClockOnTableViewCell.h"
 #import "VCSubMenuItemTableViewCell.h"
+#import "VCMenuItemNotConfiguredTableViewCell.h"
+#import "VCMenuItemModeTableViewCell.h"
 
 
 // These ones go in the array
@@ -81,14 +83,15 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+
     long row = [indexPath row];
     
     int height = 45; // default
     switch([[_tableCellList objectAtIndex:row] integerValue]){
             
         case kUserInfoCellInteger:
-            height = 280;
+            height = 117;
             break;
 
     }
@@ -139,15 +142,19 @@
             
         case kScheduleItemCellInteger:
         {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CELL"];
-            cell.textLabel.text = @"Schedule Item";
+            VCSubMenuItemTableViewCell * subMenuItemTableViewCell = [WRUtilities getViewFromNib:@"VCSubMenuItemTableViewCell" class:[VCSubMenuItemTableViewCell class]];
+        //TODO: This is a placeholder name, replace it with relevant string!
+            subMenuItemTableViewCell.itemTitleLabel.text = @"Home to Work";
+            subMenuItemTableViewCell.itemDateLabel.text = @"10/23";
+            subMenuItemTableViewCell.itemTimeLabel.text = @"10:10 PM";
+            cell = subMenuItemTableViewCell;
         }
             break;
             
         default:
         {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CELL"];
-            cell.textLabel.text = @"Not Configured";
+            VCMenuItemNotConfiguredTableViewCell * menuItemNotConfiguredTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemNotConfiguredTableViewCell" class:[VCMenuItemNotConfiguredTableViewCell class]];
+            cell = menuItemNotConfiguredTableViewCell;
         }
             break;
             
@@ -186,7 +193,7 @@
             break;
             
        /* case kModeCellInteger:
-        {VCMenuItemTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemTableViewCell" class:[VCMenuItemTableViewCell class]];
+        {VCMenuItemModeTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemModeTableViewCell" class:[VCMenuItemModeTableViewCell class]];
             menuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-map-icon"];
             menuItemTableViewCell.menuItemLabel.text = @"Map";
             cell = menuItemTableViewCell;
@@ -215,9 +222,9 @@
     if([cell isKindOfClass:[VCMenuItemTableViewCell class]]) {
         [(VCMenuItemTableViewCell*) cell deselect];
     }
-    else if([cell isKindOfClass:[VCSubMenuItemTableViewCell class]]){
+   /* else if([cell isKindOfClass:[VCSubMenuItemTableViewCell class]]){
         [(VCSubMenuItemTableViewCell*) cell deselect];
-    }
+    }*/
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

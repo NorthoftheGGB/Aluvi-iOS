@@ -15,6 +15,9 @@
 #import "VCButtonStandardStyle.h"
 #import "VCEditLocationWidget.h"
 #import "VCCommuterSettingsManager.h"
+#import "VCRideDetailsView.h"
+#import "VCRideDetailsConfirmationView.h"
+#import "VCRideDetailsHudView.h"
 
 
 #define kEditCommuteStatePickupTime 1000
@@ -40,12 +43,16 @@
 @property (strong, nonatomic) NSArray * morningOptions;
 @property (strong, nonatomic) NSArray * eveningOptions;
 
-// outlets
+
 @property (strong, nonatomic) IBOutlet UIView *homeActionView;
 @property (weak, nonatomic) IBOutlet VCButtonStandardStyle *editCommuteButton;
 @property (weak, nonatomic) IBOutlet VCButtonStandardStyle *rideNowButton;
-@property (strong, nonatomic) IBOutlet VCButtonStandardStyle *scheduleRideButton;
 @property (strong, nonatomic) IBOutlet VCButtonStandardStyle *nextButton;
+
+//confirmation
+@property (strong, nonatomic) IBOutlet UIView *hovDriverOptionView;
+@property (weak, nonatomic) IBOutlet UIButton *hovDriveYesButton;
+@property (strong, nonatomic) IBOutlet VCButtonStandardStyle *scheduleRideButton;
 
 //pickup hud
 @property (strong, nonatomic) IBOutlet UIView *pickupHudView;
@@ -65,6 +72,10 @@
 @property (strong, nonatomic) VCEditLocationWidget * homeLocationWidget;
 @property (strong, nonatomic) VCEditLocationWidget * workLocationWidget;
 
+//RIDE DETAILS CONFIRMATION SCREEN
+
+
+
 @property (nonatomic) BOOL appeared;
 @property (nonatomic) NSInteger editCommuteState;
 
@@ -72,6 +83,7 @@
 - (IBAction)didTapRideNow:(id)sender;
 - (IBAction)didTapScheduleRide:(id)sender;
 - (IBAction)didTapNextButton:(id)sender;
+- (IBAction)didTapHovDriveYesButton:(id)sender;
 
 
 
@@ -205,6 +217,7 @@
         [_workLocationWidget.view removeFromSuperview];
         [_returnHudView removeFromSuperview];
         [_scheduleRideButton removeFromSuperview];
+        [_hovDriverOptionView removeFromSuperview];
         
         [self showHome];
     } completion:nil];
@@ -313,11 +326,20 @@
 
 - (void) transitionFromSetReturnTimeToScheduleRide {
     
-    CGRect frame = _scheduleRideButton.frame;
+    [_currentLocationButton removeFromSuperview];
+    
+    CGRect frame = _hovDriverOptionView.frame;
+    frame.origin.x = 0;
+    frame.origin.y = self.view.frame.size.height - 91;
+    _hovDriverOptionView.frame = frame;
+    [self.view addSubview:_hovDriverOptionView];
+    
+    
+    {CGRect frame = _scheduleRideButton.frame;
     frame.origin.x = 0;
     frame.origin.y = self.view.frame.size.height - 53;
     _scheduleRideButton.frame = frame;
-    [self.view addSubview:_scheduleRideButton];
+        [self.view addSubview:_scheduleRideButton];}
 }
 
 
@@ -410,6 +432,17 @@
         [self transitionFromEditWorkToSetReturnTime];
     }
     
+}
+
+- (IBAction)didTapHovDriveYesButton:(id)sender {
+    
+    if (_hovDriveYesButton.selected == YES){
+        _hovDriveYesButton.selected = NO;
+    }
+    
+    else {
+        _hovDriveYesButton.selected = YES;
+    }
 }
 
 
