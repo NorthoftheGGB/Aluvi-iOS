@@ -214,6 +214,9 @@
 		4FCBFBEE1995F50700CBF0C8 /* gradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBFBED1995F50700CBF0C8 /* gradient@2x.png */; };
 		4FCBFBEF1995F50700CBF0C8 /* gradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBFBED1995F50700CBF0C8 /* gradient@2x.png */; };
 		4FCBFBF01995F50700CBF0C8 /* gradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBFBED1995F50700CBF0C8 /* gradient@2x.png */; };
+		4FCBFBF31996264B00CBF0C8 /* VCDriveDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCBFBF21996264B00CBF0C8 /* VCDriveDetailsView.m */; };
+		4FCBFBF41996264B00CBF0C8 /* VCDriveDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCBFBF21996264B00CBF0C8 /* VCDriveDetailsView.m */; };
+		4FCBFBF51996264B00CBF0C8 /* VCDriveDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCBFBF21996264B00CBF0C8 /* VCDriveDetailsView.m */; };
 		4FCD7C6219761C21007609E8 /* call-button-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C6019761C20007609E8 /* call-button-select@2x.png */; };
 		4FCD7C6319761C21007609E8 /* call-button-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C6019761C20007609E8 /* call-button-select@2x.png */; };
 		4FCD7C6419761C21007609E8 /* call-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C6119761C21007609E8 /* call-button@2x.png */; };
@@ -923,6 +926,8 @@
 		4FCBFBD81995847300CBF0C8 /* menu-submenu-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-submenu-arrow@2x.png"; sourceTree = "<group>"; };
 		4FCBFBE91995F21300CBF0C8 /* devon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "devon@2x.png"; sourceTree = "<group>"; };
 		4FCBFBED1995F50700CBF0C8 /* gradient@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gradient@2x.png"; sourceTree = "<group>"; };
+		4FCBFBF11996264B00CBF0C8 /* VCDriveDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCDriveDetailsView.h; sourceTree = "<group>"; };
+		4FCBFBF21996264B00CBF0C8 /* VCDriveDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCDriveDetailsView.m; sourceTree = "<group>"; };
 		4FCD7C6019761C20007609E8 /* call-button-select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "call-button-select@2x.png"; sourceTree = "<group>"; };
 		4FCD7C6119761C21007609E8 /* call-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "call-button@2x.png"; sourceTree = "<group>"; };
 		4FCD7C661976241D007609E8 /* VCRiderProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRiderProfileViewController.h; sourceTree = "<group>"; };
@@ -1396,6 +1401,8 @@
 			children = (
 				4FFE13961989DDF4004D4413 /* VCDriverCallHudView.h */,
 				4FFE13971989DDF4004D4413 /* VCDriverCallHudView.m */,
+				4FCBFBF11996264B00CBF0C8 /* VCDriveDetailsView.h */,
+				4FCBFBF21996264B00CBF0C8 /* VCDriveDetailsView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1640,24 +1647,24 @@
 		4FFE16F61989E65B004D4413 /* Table View Cells */ = {
 			isa = PBXGroup;
 			children = (
-				4FFE17001989E801004D4413 /* VCMenuItemTableViewCell.h */,
-				4FFE17011989E801004D4413 /* VCMenuItemTableViewCell.m */,
-				4FFE17021989E801004D4413 /* VCMenuItemTableViewCell.xib */,
 				4F184A0F19918750006EA959 /* VCMenuUserInfoTableViewCell.h */,
 				4F184A1019918750006EA959 /* VCMenuUserInfoTableViewCell.m */,
 				4F184A1119918750006EA959 /* VCMenuUserInfoTableViewCell.xib */,
-				4F184A181991893D006EA959 /* VCMenuDriverClockOnTableViewCell.h */,
-				4F184A191991893D006EA959 /* VCMenuDriverClockOnTableViewCell.m */,
-				4F184A1A1991893D006EA959 /* VCMenuDriverClockOnTableViewCell.xib */,
+				4FFE17001989E801004D4413 /* VCMenuItemTableViewCell.h */,
+				4FFE17011989E801004D4413 /* VCMenuItemTableViewCell.m */,
+				4FFE17021989E801004D4413 /* VCMenuItemTableViewCell.xib */,
 				4F184A211991E156006EA959 /* VCSubMenuItemTableViewCell.h */,
 				4F184A221991E156006EA959 /* VCSubMenuItemTableViewCell.m */,
 				4F184A231991E156006EA959 /* VCSubMenuItemTableViewCell.xib */,
-				4F184A321992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.h */,
-				4F184A331992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.m */,
-				4F184A341992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.xib */,
+				4F184A181991893D006EA959 /* VCMenuDriverClockOnTableViewCell.h */,
+				4F184A191991893D006EA959 /* VCMenuDriverClockOnTableViewCell.m */,
+				4F184A1A1991893D006EA959 /* VCMenuDriverClockOnTableViewCell.xib */,
 				4F184A3B1992E41F006EA959 /* VCMenuItemModeTableViewCell.h */,
 				4F184A3C1992E41F006EA959 /* VCMenuItemModeTableViewCell.m */,
 				4F184A3D1992E41F006EA959 /* VCMenuItemModeTableViewCell.xib */,
+				4F184A321992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.h */,
+				4F184A331992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.m */,
+				4F184A341992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.xib */,
 			);
 			name = "Table View Cells";
 			sourceTree = "<group>";
@@ -2897,6 +2904,7 @@
 				F4354D6E195D0D6A00C06CF7 /* MQRouteResponse.m in Sources */,
 				F4C6B1AC1978DF2A00F6C10B /* Earning.m in Sources */,
 				4FF142DE195D129D00CC61B6 /* Car.m in Sources */,
+				4FCBFBF41996264B00CBF0C8 /* VCDriveDetailsView.m in Sources */,
 				F4354D6F195D0D6A00C06CF7 /* VCSignInViewController.m in Sources */,
 				F4354D70195D0D6A00C06CF7 /* VCDevicesApi.m in Sources */,
 				F4354D71195D0D6A00C06CF7 /* Fare.m in Sources */,
@@ -3085,6 +3093,7 @@
 				F4C6B212197F06B100F6C10B /* VCCarYearTextField.m in Sources */,
 				F4C6B213197F06B100F6C10B /* VCApi.m in Sources */,
 				F4C6B214197F06B100F6C10B /* VCBankAccountTextField.m in Sources */,
+				4FCBFBF31996264B00CBF0C8 /* VCDriveDetailsView.m in Sources */,
 				F4C6B215197F06B100F6C10B /* VCGeoObject.m in Sources */,
 				F4C6B216197F06B100F6C10B /* VCLogin.m in Sources */,
 				F4C6B217197F06B100F6C10B /* VCDevice.m in Sources */,
@@ -3216,6 +3225,7 @@
 				4FE712D1197368DA0071020C /* VCCarYearTextField.m in Sources */,
 				F45F7BF91935798B00A94721 /* VCApi.m in Sources */,
 				4FE712C11973688F0071020C /* VCBankAccountTextField.m in Sources */,
+				4FCBFBF51996264B00CBF0C8 /* VCDriveDetailsView.m in Sources */,
 				F4FE1B31193EE06400354886 /* VCGeoObject.m in Sources */,
 				F4D8904719468B69007C4671 /* VCLogin.m in Sources */,
 				F4FE1AF11936BE0900354886 /* VCDevice.m in Sources */,
