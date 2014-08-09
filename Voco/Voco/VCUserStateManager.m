@@ -211,5 +211,12 @@ static VCUserStateManager *sharedSingleton;
     }];
 }
 
+- (void) updateCommuterPreferences {
+    
+}
+
+
+
+
 
 @end

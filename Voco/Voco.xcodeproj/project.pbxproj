@@ -350,6 +350,11 @@
 		F4138C3C19678BE000C265CD /* car@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4138C3A19678BE000C265CD /* car@2x.png */; };
 		F425906719958E9600FA928E /* VCRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F73CA02197F2AB0001B6663 /* VCRideViewController.m */; };
 		F425906819958E9700FA928E /* VCRideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F73CA02197F2AB0001B6663 /* VCRideViewController.m */; };
+		F4259069199592C100FA928E /* VCEditLocationWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6B2A3197F8A9400F6C10B /* VCEditLocationWidget.m */; };
+		F425906A199592C100FA928E /* VCEditLocationWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6B2A3197F8A9400F6C10B /* VCEditLocationWidget.m */; };
+		F425906D1995E30000FA928E /* VCCommuterSettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F425906C1995E30000FA928E /* VCCommuterSettingsManager.m */; };
+		F425906E1995E30000FA928E /* VCCommuterSettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F425906C1995E30000FA928E /* VCCommuterSettingsManager.m */; };
+		F425906F1995E30000FA928E /* VCCommuterSettingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F425906C1995E30000FA928E /* VCCommuterSettingsManager.m */; };
 		F4354D5E195D0D6A00C06CF7 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE519492C2A00D8C900 /* IIWrapController.m */; };
 		F4354D5F195D0D6A00C06CF7 /* VCDriverRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F02D1952DA8F00D8C900 /* VCDriverRegistration.m */; };
 		F4354D60195D0D6A00C06CF7 /* VCForgotPasswordRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904C19468F87007C4671 /* VCForgotPasswordRequest.m */; };
@@ -1020,6 +1025,8 @@
 		F4138C37196784C700C265CD /* VCGeoApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCGeoApi.m; path = Geo/VCGeoApi.m; sourceTree = "<group>"; };
 		F4138C3A19678BE000C265CD /* car@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "car@2x.png"; sourceTree = "<group>"; };
 		F4259066198DE4C400FA928E /* Voco 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 2.xcdatamodel"; sourceTree = "<group>"; };
+		F425906B1995E30000FA928E /* VCCommuterSettingsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCCommuterSettingsManager.h; sourceTree = "<group>"; };
+		F425906C1995E30000FA928E /* VCCommuterSettingsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCommuterSettingsManager.m; sourceTree = "<group>"; };
 		F4354DCF195D0D6A00C06CF7 /* Voco Testing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Voco Testing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4354DD0195D0D6A00C06CF7 /* Voco Testing-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Voco Testing-Info.plist"; path = "/Users/deepwinter1/software-development/Clients/Will OBrien/voco-ios/Voco/Voco Testing-Info.plist"; sourceTree = "<absolute>"; };
 		F45F7BF4193578DE00A94721 /* VCRiderApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderApi.h; path = API/Rider/VCRiderApi.h; sourceTree = "<group>"; };
@@ -1349,10 +1356,10 @@
 		4F3DB5C61981F6AB00DDD094 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4F3DB5C71981F6F400DDD094 /* VCRideDetailsView.h */,
 				4F3DB5C81981F6F400DDD094 /* VCRideDetailsView.m */,
 				4F4D8BE51987644F0027A2AF /* VCRideDetailsHudView.h */,
 				4F4D8BE61987644F0027A2AF /* VCRideDetailsHudView.m */,
-				4F3DB5C71981F6F400DDD094 /* VCRideDetailsView.h */,
 				4F4D8BEA1987650A0027A2AF /* VCRideDetailsConfirmationView.h */,
 				4F4D8BEB1987650A0027A2AF /* VCRideDetailsConfirmationView.m */,
 			);
@@ -2099,6 +2106,8 @@
 				F4FE1B1419385CAA00354886 /* VCUserStateManager.m */,
 				F49EDD0E1946E2F90020B8BB /* VCInterfaceManager.h */,
 				F49EDD0F1946E2F90020B8BB /* VCInterfaceManager.m */,
+				F425906B1995E30000FA928E /* VCCommuterSettingsManager.h */,
+				F425906C1995E30000FA928E /* VCCommuterSettingsManager.m */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -2880,6 +2889,7 @@
 				F4354D84195D0D6A00C06CF7 /* VCFareDriverAssignment.m in Sources */,
 				F4354D85195D0D6A00C06CF7 /* VCPasswordRecoveryViewController.m in Sources */,
 				4F4D8BED1987650A0027A2AF /* VCRideDetailsConfirmationView.m in Sources */,
+				F425906E1995E30000FA928E /* VCCommuterSettingsManager.m in Sources */,
 				4FCD7C8919775C5C007609E8 /* VCDriverRecieptDetailViewController.m in Sources */,
 				4FFE13991989DDF4004D4413 /* VCDriverCallHudView.m in Sources */,
 				F4A7C8261962E235007E05AD /* VCLocationSearchViewController.m in Sources */,
@@ -2964,6 +2974,7 @@
 				F4C6B1DD197F06B100F6C10B /* VCRoutingNumberTextField.m in Sources */,
 				4F184A3E1992E41F006EA959 /* VCMenuItemModeTableViewCell.m in Sources */,
 				F4C6B1DE197F06B100F6C10B /* VCDriverEarningsViewController.m in Sources */,
+				F425906A199592C100FA928E /* VCEditLocationWidget.m in Sources */,
 				F4C6B1DF197F06B100F6C10B /* VCProfile.m in Sources */,
 				4F184A1B1991893D006EA959 /* VCMenuDriverClockOnTableViewCell.m in Sources */,
 				F4C6B1E0197F06B100F6C10B /* Car.m in Sources */,
@@ -3003,6 +3014,7 @@
 				F4C6B1FE197F06B100F6C10B /* VCRequestUpdate.m in Sources */,
 				F4C6B1FF197F06B100F6C10B /* VCCoreData.m in Sources */,
 				F4C6B200197F06B100F6C10B /* VCRiderProfileViewController.m in Sources */,
+				F425906D1995E30000FA928E /* VCCommuterSettingsManager.m in Sources */,
 				F4C6B29E197F437800F6C10B /* VCApiError.m in Sources */,
 				F4C6B201197F06B100F6C10B /* VCRiderRecieptDetailViewController.m in Sources */,
 				F4C6B202197F06B100F6C10B /* VCLabel.m in Sources */,
@@ -3142,6 +3154,7 @@
 				F4A7C81119626DDE007E05AD /* VCFareIdentity.m in Sources */,
 				F473EFEE1949304300D8C900 /* VCMenuViewController.m in Sources */,
 				4FB2682A1952207A0028D4ED /* VCDriverVideoTutorialController.m in Sources */,
+				F425906F1995E30000FA928E /* VCCommuterSettingsManager.m in Sources */,
 				4F4D8BE91987644F0027A2AF /* VCRideDetailsHudView.m in Sources */,
 				4FE712C9197368B90071020C /* VCCarBrandTextField.m in Sources */,
 				F4FE1B0F1938571E00354886 /* VCFareDriverAssignment.m in Sources */,
@@ -3177,6 +3190,7 @@
 				4F9ECEB819661C4A00AD4229 /* VCRiderPaymentsViewController.m in Sources */,
 				F4D8905319469F0F007C4671 /* VCDriverInterestedRequest.m in Sources */,
 				4F3DB5CB1981F6F400DDD094 /* VCRideDetailsView.m in Sources */,
+				F4259069199592C100FA928E /* VCEditLocationWidget.m in Sources */,
 				4FE641C91941584D0059BED1 /* VCSignUpViewController.m in Sources */,
 				F45F7C12193597F500A94721 /* NSDate+Pretty.m in Sources */,
 				F4792AE719750975005AB652 /* LELog.m in Sources */,

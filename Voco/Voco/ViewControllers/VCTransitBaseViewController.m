@@ -104,10 +104,14 @@
     
 }
 
+- (void) clearRoute {
+    [_map removeOverlay:_routeOverlay];
+}
+
 - (void) clearMap {
     [_map removeAnnotation:_meetingPointAnnotation];
     [_map removeAnnotation:_dropOffAnnotation];
-    [_map removeOverlay:_routeOverlay];
+    [self clearRoute];
 }
 
 - (void) resetInterface {

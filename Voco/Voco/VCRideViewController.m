@@ -14,6 +14,7 @@
 #import "VCLabel.h"
 #import "VCButtonStandardStyle.h"
 #import "VCEditLocationWidget.h"
+#import "VCCommuterSettingsManager.h"
 
 
 #define kEditCommuteStatePickupTime 1000
@@ -174,6 +175,8 @@
 - (void) transitionToEditCommute {
     [_homeActionView removeFromSuperview];
     
+    _pickupTimeLabel.text = [VCCommuterSettingsManager instance].pickupTime;
+    
     _editCommuteState = kEditCommuteStatePickupTime;
     CGRect frame = _pickupHudView.frame;
     frame.origin.x = 0;
@@ -319,6 +322,7 @@
 
 
 - (void) didTapCancel: (id)sender {
+    [[VCCommuterSettingsManager instance] reset];
     [self resetInterface];
 }
 
@@ -354,10 +358,8 @@
         _originAnnotation = annotation;
     } else if (_editCommuteState == kEditCommuteStateEditWork) {
         _destinationAnnotation = annotation;
-        CLLocation * origin = [[CLLocation alloc] initWithLatitude:_originAnnotation.coordinate.latitude longitude:_originAnnotation.coordinate.longitude];
-        CLLocation * destination = [[CLLocation alloc] initWithLatitude:_destinationAnnotation.coordinate.latitude longitude:_destinationAnnotation.coordinate.longitude];
-        [self showSuggestedRoute:origin to:destination];
     }
+    [self updateRouteOverlay];
     
     CLLocation * location = [[CLLocation alloc] initWithLatitude:touchMapCoordinate.latitude  longitude:touchMapCoordinate.longitude];
     [self updateEditLocationWidget:widget withLocation:location];
@@ -365,7 +367,8 @@
    
 }
 
-- (void) updateEditLocationWidget: (VCEditLocationWidget *) editLocationWidget withLocation: (CLLocation *) location {
+- (void) updateEditLocationWidget: (VCEditLocationWidget *) editLocationWidget
+                     withLocation: (CLLocation *) location {
     editLocationWidget.waiting = YES;
     [self.geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
         MKPlacemark * placemark = placemarks[0];
@@ -374,6 +377,16 @@
         editLocationWidget.waiting = NO;
         
     }];
+}
+
+- (void) storeCommuterSettings {
+    [VCCommuterSettingsManager instance].origin = [[CLLocation alloc] initWithLatitude:_originAnnotation.coordinate.latitude
+                                                                             longitude:_originAnnotation.coordinate.longitude];
+    [VCCommuterSettingsManager instance].destination = [[CLLocation alloc] initWithLatitude:_destinationAnnotation.coordinate.latitude
+                                                                             longitude:_destinationAnnotation.coordinate.longitude];
+
+    
+    [[VCCommuterSettingsManager instance] save];
 }
 
 - (IBAction)didTapEditCommute:(id)sender {
@@ -385,7 +398,7 @@
 }
 
 - (IBAction)didTapScheduleRide:(id)sender {
-    //TODO: API Call
+    [self storeCommuterSettings];
 
 }
 
@@ -414,6 +427,7 @@
         [self.map addAnnotation:_originAnnotation];
         widget.waiting = NO;
         
+        
     } else if (widget.type == kWorkType) {
         
         if(_destinationAnnotation != nil){
@@ -424,12 +438,28 @@
         _destinationAnnotation.title = @"Work";
         [self.map addAnnotation:_destinationAnnotation];
         widget.waiting = NO;
-
+        
     }
+    
+    [self updateRouteOverlay];
     
     [self showNextButton];
 
     [self.map setCenterCoordinate:mapItem.placemark.coordinate animated:YES];
+}
+
+- (void) updateRouteOverlay {
+    
+    if(_originAnnotation != nil && _destinationAnnotation != nil){
+        [self clearRoute];
+        // if locations change
+        CLLocation * origin = [[CLLocation alloc] initWithLatitude:_originAnnotation.coordinate.latitude
+                                                         longitude:_originAnnotation.coordinate.longitude];
+        CLLocation * destination = [[CLLocation alloc] initWithLatitude:_destinationAnnotation.coordinate.latitude
+                                                              longitude:_destinationAnnotation.coordinate.longitude];
+        [self showSuggestedRoute:origin to:destination];
+    }
+    
 }
 
 // TODO: do something
@@ -488,8 +518,10 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     NSString * value = [_morningOptions objectAtIndex:row];
     if( _editCommuteState == kEditCommuteStateReturnTime) {
+        [VCCommuterSettingsManager instance].returnTime = value;
         _returnTimeLabel.text = value;
     } else if ( _editCommuteState == kEditCommuteStatePickupTime) {
+        [VCCommuterSettingsManager instance].pickupTime = value;
         _pickupTimeLabel.text = value;
     }
 }

@@ -43,8 +43,8 @@ static int mode;
 - (void) showInterface {
     
 #warning skipping interface selection for rider interface development
-    //[self showRiderInterface];
-    [self showDriverInterface];
+    [self showRiderInterface];
+    //[self showDriverInterface];
     
     
     /*if([VCApi loggedIn]){
@@ -111,8 +111,7 @@ static int mode;
         [self createDeckViewController];
     }
     
-    
-    [_centerNavigationController setViewControllers:@[riderViewController]];
+    [_centerNavigationController setViewControllers:@[rideViewController]];
     
     [self setMode: kRiderMode];
 

@@ -27,6 +27,7 @@
 - (void) showSuggestedRoute: (CLLocation *) from to: (CLLocation *) to;
 - (void) annotateMeetingPoint: (CLLocation *) meetingPoint andDropOffPoint: (CLLocation *) dropOffPoint;
 - (void) clearMap;
+- (void) clearRoute;
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay;
 

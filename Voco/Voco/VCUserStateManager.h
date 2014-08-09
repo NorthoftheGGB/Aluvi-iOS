@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@import MapKit;
 
 NSString *const VCUserStateDriverStateKeyPath;
 
@@ -41,6 +42,11 @@ NSString *const VCUserStateDriverStateKeyPath;
 
 @property(nonatomic, strong) NSString * apiToken;
 
+// commuter preferences
+@property(nonatomic, strong) CLLocation * commuteOrigin;
+@property(nonatomic, strong) CLLocation * commuteDestination;
+@property(nonatomic, strong) NSString * commuteDepartureTime;
+@property(nonatomic, strong) NSString * commuteReturnTime;
 
 + (VCUserStateManager *) instance;
 + (BOOL) driverIsAvailable;

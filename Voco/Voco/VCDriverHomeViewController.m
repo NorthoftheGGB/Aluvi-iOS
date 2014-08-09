@@ -13,7 +13,6 @@
 #import "VCLabel.h"
 #import "VCDialogs.h"
 #import "VCButtonStandardStyle.h"
-#import "VCButtonFontBold.h"
 #import "VCUserStateManager.h"
 #import "VCFareDriverAssignment.h"
 #import "VCDriverApi.h"

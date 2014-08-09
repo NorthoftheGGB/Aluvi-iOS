@@ -84,7 +84,12 @@
     MKMapItem *mapItem = [_searchItems objectAtIndex:[indexPath row]];
     UITableViewCell * cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"CELL"];
     cell.textLabel.text = mapItem.name;
-    cell.detailTextLabel.text = ABCreateStringWithAddressDictionary(mapItem.placemark.addressDictionary, NO);
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@",
+                                 [mapItem.placemark.addressDictionary objectForKey:@"City"],
+                                 [mapItem.placemark.addressDictionary objectForKey:@"State"]
+                                 ];
+    
+    ABCreateStringWithAddressDictionary(mapItem.placemark.addressDictionary, NO);
     return cell;
 }
 
