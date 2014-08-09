@@ -22,10 +22,11 @@ static VCCommuterSettingsManager * instance;
     if(instance == nil) {
         instance = [[VCCommuterSettingsManager alloc] init];
         NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-        instance.origin = [defaults objectForKey:kCommuteOriginSettingKey];
-        instance.destination = [defaults objectForKey:kCommuteDestinationSettingKey];
+        instance.origin = [NSKeyedUnarchiver unarchiveObjectWithData: [defaults objectForKey:kCommuteOriginSettingKey]];
+        instance.destination = [NSKeyedUnarchiver unarchiveObjectWithData: [defaults objectForKey:kCommuteDestinationSettingKey]];
         instance.pickupTime = [defaults objectForKey:kCommuteDepartureTimeSettingKey];
         instance.returnTime = [defaults objectForKey:kCommuteReturnTimeSettingKey];
+        instance.driving = [defaults boolForKey:kCommuterDrivingSettingKey];
     }
     return instance;
 }
@@ -44,17 +45,17 @@ static VCCommuterSettingsManager * instance;
 
 - (void) setReturnTime:(NSString *)returnTime {
     _returnTime = returnTime;
-    [[NSUserDefaults standardUserDefaults] setObject:returnTime forKey:kCommuteReturnTimeSettingKey];
 }
 
 - (void) setDriving:(BOOL)driving {
     _driving = driving;
-    [[NSUserDefaults standardUserDefaults] setBool:driving forKey:kCommuterDrivingSettingKey];
 }
 
 - (void) save {
-    [[NSUserDefaults standardUserDefaults] setObject:_origin forKey:kCommuteOriginSettingKey];
-    [[NSUserDefaults standardUserDefaults] setObject:_destination forKey:kCommuteDestinationSettingKey];
+    NSData * originArchive = [NSKeyedArchiver archivedDataWithRootObject:_origin];
+    [[NSUserDefaults standardUserDefaults] setObject:originArchive forKey:kCommuteOriginSettingKey];
+    NSData * destinationArchive = [NSKeyedArchiver archivedDataWithRootObject:_destination];
+    [[NSUserDefaults standardUserDefaults] setObject:destinationArchive forKey:kCommuteDestinationSettingKey];
     [[NSUserDefaults standardUserDefaults] setObject:_pickupTime forKey:kCommuteDepartureTimeSettingKey];
     [[NSUserDefaults standardUserDefaults] setObject:_returnTime forKey:kCommuteReturnTimeSettingKey];
     [[NSUserDefaults standardUserDefaults] setBool:_driving forKey:kCommuterDrivingSettingKey];
@@ -62,10 +63,19 @@ static VCCommuterSettingsManager * instance;
 
 - (void) reset {
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    instance.origin = [defaults objectForKey:kCommuteOriginSettingKey];
-    instance.destination = [defaults objectForKey:kCommuteDestinationSettingKey];
+    instance.origin = [NSKeyedUnarchiver unarchiveObjectWithData: [defaults objectForKey:kCommuteOriginSettingKey]];
+    instance.destination = [NSKeyedUnarchiver unarchiveObjectWithData: [defaults objectForKey:kCommuteDestinationSettingKey]];
     instance.pickupTime = [defaults objectForKey:kCommuteDepartureTimeSettingKey];
     instance.returnTime = [defaults objectForKey:kCommuteReturnTimeSettingKey];
 }
+
+- (BOOL) hasSettings {
+    if( instance.origin == nil || instance.destination == nil || instance.pickupTime == nil || instance.returnTime == nil){
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
 
 @end

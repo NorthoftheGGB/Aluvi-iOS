@@ -32,6 +32,8 @@
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay;
 
 - (void) resetInterface;
+- (void) zoomToCurrentLocation;
+
 
 - (IBAction)didTapCurrentLocationButton:(id)sender;
 

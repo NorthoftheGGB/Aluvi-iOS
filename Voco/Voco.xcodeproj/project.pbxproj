@@ -1688,6 +1688,17 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		F42590701996B3B700FA928E /* V1 Files */ = {
+			isa = PBXGroup;
+			children = (
+				F49EDD081946D27F0020B8BB /* VCRiderHomeViewController.h */,
+				F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */,
+				F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */,
+				4FDB0EC41970A5AC00A8CEC2 /* VCRiderHomeViewControllerV2.xib */,
+			);
+			name = "V1 Files";
+			sourceTree = "<group>";
+		};
 		F45F7BE71935756000A94721 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1840,10 +1851,6 @@
 			children = (
 				4F73CA00197F2A6A001B6663 /* Revision 2.0 */,
 				F4138C2319650C2D00C265CD /* Views */,
-				F49EDD081946D27F0020B8BB /* VCRiderHomeViewController.h */,
-				F49EDD091946D27F0020B8BB /* VCRiderHomeViewController.m */,
-				F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */,
-				4FDB0EC41970A5AC00A8CEC2 /* VCRiderHomeViewControllerV2.xib */,
 				F473F04D195BA54F00D8C900 /* VCRequestsViewController.h */,
 				F473F04E195BA54F00D8C900 /* VCRequestsViewController.m */,
 				F473F04F195BA54F00D8C900 /* VCRequestsViewController.xib */,
@@ -2069,6 +2076,7 @@
 		F4FA0BEF192BF6BF005D8645 /* Voco */ = {
 			isa = PBXGroup;
 			children = (
+				F42590701996B3B700FA928E /* V1 Files */,
 				F4FE1AF51937DD1A00354886 /* Application */,
 				F473F002194A549A00D8C900 /* GIS */,
 				F45F7C0B1935975D00A94721 /* Libraries */,

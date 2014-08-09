@@ -63,7 +63,7 @@
 @property (weak, nonatomic) IBOutlet VCLabel *returnTimeLabel;
 
 //overlay
-@property (strong, nonatomic) IBOutlet UIView *overlayView;
+@property (strong, nonatomic) IBOutlet UIView *waitingScreen;
 
 // Data Entry
 @property (nonatomic) NSInteger step;
@@ -98,18 +98,18 @@
         _appeared = NO;
         
         _morningOptions = @[ @"Select Pickup Time",
-                            @"6:00", @"6:30", @"7:00", @"7:30",
-                            @"8:00", @"8:30", @"9:00", @"9:30",
-                            @"10:00", @"10:30", @"11:00", @"11:30",
-                            @"12:00"];
+                             @"6:00", @"6:30", @"7:00", @"7:30",
+                             @"8:00", @"8:30", @"9:00", @"9:30",
+                             @"10:00", @"10:30", @"11:00", @"11:30",
+                             @"12:00"];
         _eveningOptions = @[ @"Select Return Time",
-                            @"6:00", @"6:30", @"7:00", @"7:30",
-                            @"8:00", @"8:30", @"9:00", @"9:30",
-                            @"10:00", @"10:30", @"11:00", @"11:30",
-                            @"12:00"];
+                             @"6:00", @"6:30", @"7:00", @"7:30",
+                             @"8:00", @"8:30", @"9:00", @"9:30",
+                             @"10:00", @"10:30", @"11:00", @"11:30",
+                             @"12:00"];
         
         _step = kStepSetDepartureLocation;
-
+        
     }
     return self;
 }
@@ -120,9 +120,6 @@
     //self.title = @"Home";
     //custom image
     //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"appcoda-logo.png"]];
-    
-    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(didTapCancel:)];
-    self.navigationItem.rightBarButtonItem = cancelItem;
     
     _homeLocationWidget = [[VCEditLocationWidget alloc] init];
     _homeLocationWidget.delegate = self;
@@ -184,10 +181,91 @@
     
 }
 
+- (void) showCancelBarButton {
+    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(didTapCancel:)];
+    self.navigationItem.rightBarButtonItem = cancelItem;
+}
+
 - (void) transitionToEditCommute {
     [_homeActionView removeFromSuperview];
+    [self showCancelBarButton];
     
-    _pickupTimeLabel.text = [VCCommuterSettingsManager instance].pickupTime;
+    {
+        CGRect frame = _pickupHudView.frame;
+        frame.origin.x = 0;
+        frame.origin.y = 62;
+        frame.size.height = 0;
+        _pickupHudView.frame = frame;
+        [self.view addSubview:self.pickupHudView];
+    }
+    {
+        _homeLocationWidget.mode = kEditLocationWidgetEditMode;
+        CGRect frame = _homeLocationWidget.view.frame;
+        frame.origin.x = 0;
+        frame.origin.y = 102;
+        frame.size.height = 0;
+        _homeLocationWidget.view.frame = frame;
+        _homeLocationWidget.mode = kEditLocationWidgetDisplayMode;
+        [self.view addSubview:_homeLocationWidget.view];
+    }
+    {
+        _workLocationWidget.mode = kEditLocationWidgetEditMode;
+        CGRect frame = _homeLocationWidget.view.frame;
+        frame.origin.x = 0;
+        frame.origin.y = 142;
+        frame.size.height = 0;
+        _workLocationWidget.view.frame = frame;
+        _workLocationWidget.mode = kEditLocationWidgetDisplayMode;
+        [self.view addSubview:_workLocationWidget.view];
+    }
+    {
+        CGRect frame = _returnHudView.frame;
+        frame.origin.x = 0;
+        frame.origin.y = 182;
+        frame.size.height = 0;
+        _returnHudView.frame = frame;
+        [self.view addSubview:self.returnHudView];
+    }
+    {
+        CGRect frame = _hovDriverOptionView.frame;
+        frame.origin.x = 0;
+        frame.origin.y = self.view.frame.size.height - 91;
+        _hovDriverOptionView.frame = frame;
+        [self.view addSubview:_hovDriverOptionView];
+    }
+    {
+        CGRect frame = _scheduleRideButton.frame;
+        frame.origin.x = 0;
+        frame.origin.y = self.view.frame.size.height - 53;
+        _scheduleRideButton.frame = frame;
+        [self.view addSubview:_scheduleRideButton];
+    }
+
+    
+    [UIView animateWithDuration:0.35 animations:^{
+        CGRect frame = _pickupHudView.frame;
+        frame.size.height = 40; //changed height
+        _pickupHudView.frame = frame;
+        
+        frame = _homeLocationWidget.view.frame;
+        frame.size.height = 40;
+        _homeLocationWidget.view.frame = frame;
+        
+        frame = _workLocationWidget.view.frame;
+        frame.size.height = 40;
+        _workLocationWidget.view.frame = frame;
+        
+        frame = _returnHudView.frame;
+        frame.size.height = 40;
+        _returnHudView.frame = frame;
+        
+    }];
+    
+}
+
+- (void) transitionToSetupCommute {
+    [_homeActionView removeFromSuperview];
+    [self showCancelBarButton];
     
     _editCommuteState = kEditCommuteStatePickupTime;
     CGRect frame = _pickupHudView.frame;
@@ -204,13 +282,14 @@
     
     
     [ActionSheetCustomPicker showPickerWithTitle:@"Pickup Time"
-                                         delegate:self
-                                 showCancelButton:YES
-                                           origin:self.view ];
+                                        delegate:self
+                                showCancelButton:YES
+                                          origin:self.view ];
     
 }
 
 - (void) resetInterface {
+    [self clearMap];
     [UIView transitionWithView:self.view duration:.35 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
         [_pickupHudView removeFromSuperview];
         [_homeLocationWidget.view removeFromSuperview];
@@ -220,8 +299,16 @@
         [_hovDriverOptionView removeFromSuperview];
         
         [self showHome];
-    } completion:nil];
+    } completion:^(BOOL finished) {
+        [self zoomToCurrentLocation];
+    }];
     
+}
+
+- (void) clearMap {
+    [super clearMap];
+    [self.map removeAnnotation:_originAnnotation];
+    [self.map removeAnnotation:_destinationAnnotation];
 }
 
 - (void) transitionFromEditPickupTimeToEditHome {
@@ -242,7 +329,7 @@
         _homeLocationWidget.view.frame = frame;
     }];
     
-
+    
 }
 
 - (void) showNextButton {
@@ -259,7 +346,7 @@
 - (void) transitionFromEditHomeToEditWork {
     
     _editCommuteState = kEditCommuteStateEditWork;
-
+    
     [_nextButton removeFromSuperview];
     
     _workLocationWidget.mode = kEditLocationWidgetEditMode;
@@ -281,7 +368,7 @@
 - (void) transitionFromEditWorkToSetReturnTime {
     
     _editCommuteState = kEditCommuteStateReturnTime;
-
+    
     [_nextButton removeFromSuperview];
     
     CGRect frame = _returnHudView.frame;
@@ -297,7 +384,7 @@
     }];
     
     
- 
+    
     [ActionSheetCustomPicker showPickerWithTitle:@"Return Time"
                                         delegate:self
                                 showCancelButton:YES
@@ -321,7 +408,7 @@
     [self showNextButton];
     [_scheduleRideButton removeFromSuperview];
     
-
+    
 }
 
 - (void) transitionFromSetReturnTimeToScheduleRide {
@@ -336,10 +423,16 @@
     
     
     {CGRect frame = _scheduleRideButton.frame;
-    frame.origin.x = 0;
-    frame.origin.y = self.view.frame.size.height - 53;
-    _scheduleRideButton.frame = frame;
+        frame.origin.x = 0;
+        frame.origin.y = self.view.frame.size.height - 53;
+        _scheduleRideButton.frame = frame;
         [self.view addSubview:_scheduleRideButton];}
+}
+
+- (void) transitionToWaitingScreen {
+    //TODO improve animations
+    [_scheduleRideButton removeFromSuperview];
+    [self.view addSubview:self.waitingScreen];
 }
 
 
@@ -386,7 +479,7 @@
     CLLocation * location = [[CLLocation alloc] initWithLatitude:touchMapCoordinate.latitude  longitude:touchMapCoordinate.longitude];
     [self updateEditLocationWidget:widget withLocation:location];
     [self showNextButton];
-   
+    
 }
 
 - (void) updateEditLocationWidget: (VCEditLocationWidget *) editLocationWidget
@@ -405,15 +498,64 @@
     [VCCommuterSettingsManager instance].origin = [[CLLocation alloc] initWithLatitude:_originAnnotation.coordinate.latitude
                                                                              longitude:_originAnnotation.coordinate.longitude];
     [VCCommuterSettingsManager instance].destination = [[CLLocation alloc] initWithLatitude:_destinationAnnotation.coordinate.latitude
-                                                                             longitude:_destinationAnnotation.coordinate.longitude];
-
+                                                                                  longitude:_destinationAnnotation.coordinate.longitude];
+    
     
     [[VCCommuterSettingsManager instance] save];
 }
 
-- (IBAction)didTapEditCommute:(id)sender {
-    [self transitionToEditCommute];
+- (void) loadCommuteSettings {
+    if( [VCCommuterSettingsManager instance].pickupTime != nil){
+        _pickupTimeLabel.text = [VCCommuterSettingsManager instance].pickupTime;
+    }
     
+    if( [VCCommuterSettingsManager instance].origin != nil){
+        [self addOriginAnnotation: [VCCommuterSettingsManager instance].origin ];
+    }
+    
+    if( [VCCommuterSettingsManager instance].destination != nil){
+        [self addDestinationAnnotation: [VCCommuterSettingsManager instance].destination ];
+    }
+    
+    if( [VCCommuterSettingsManager instance].returnTime != nil){
+        _returnTimeLabel.text = [VCCommuterSettingsManager instance].returnTime;
+    }
+    
+    _hovDriveYesButton.selected = [VCCommuterSettingsManager instance].driving;
+    
+    [self showSuggestedRoute: [VCCommuterSettingsManager instance].origin to:[VCCommuterSettingsManager instance].destination];
+    
+}
+
+// Annotations
+- (void)addOriginAnnotation:(CLLocation *)location {
+    if(_originAnnotation != nil){
+        [self.map removeAnnotation:_originAnnotation];
+    }
+    _originAnnotation = [[MKPointAnnotation alloc] init];
+    _originAnnotation.coordinate = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude);
+    _originAnnotation.title = @"Home";
+    [self.map addAnnotation:_originAnnotation];
+}
+
+- (void)addDestinationAnnotation:(CLLocation *)location {
+    if(_destinationAnnotation != nil){
+        [self.map removeAnnotation:_destinationAnnotation];
+    }
+    _destinationAnnotation = [[MKPointAnnotation alloc] init];
+    _destinationAnnotation.coordinate = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude);
+    _destinationAnnotation.title = @"Home";
+    [self.map addAnnotation:_destinationAnnotation];
+}
+
+- (IBAction)didTapEditCommute:(id)sender {
+    [self loadCommuteSettings];
+    
+    if([[VCCommuterSettingsManager instance] hasSettings]) {
+        [self transitionToEditCommute];
+    } else {
+        [self transitionToSetupCommute];
+    }
 }
 
 - (IBAction)didTapRideNow:(id)sender {
@@ -421,7 +563,18 @@
 
 - (IBAction)didTapScheduleRide:(id)sender {
     [self storeCommuterSettings];
-
+    
+    [UIAlertView showWithTitle:@"Schedule Commuter Ride ?" message:@"Do you want us to schedule your commuter ride for tomorrow?" cancelButtonTitle:@"No, not I won't be commuting tomorrow" otherButtonTitles:@[@"Yes!  I want to ride with Voco tomorrow!"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        switch (buttonIndex) {
+            case 1:
+                [self transitionToWaitingScreen];
+                break;
+                
+            default:
+                [self resetInterface]; // TOOD: transition to home ?
+                break;
+        }
+    }];
 }
 
 - (IBAction)didTapNextButton:(id)sender {
@@ -438,38 +591,32 @@
     
     if (_hovDriveYesButton.selected == YES){
         _hovDriveYesButton.selected = NO;
-    }
-    
-    else {
+        [VCCommuterSettingsManager instance].driving = NO;
+    } else {
         _hovDriveYesButton.selected = YES;
+        [VCCommuterSettingsManager instance].driving = YES;
     }
 }
 
 
+
+
+
 #pragma mark - VCLocationSearchViewControllerDelegate
+
 - (void) editLocationWidget:(VCEditLocationWidget *)widget didSelectMapItem:(MKMapItem *)mapItem {
     
     if(widget.type == kHomeType) {
-    
-        if(_originAnnotation != nil){
-            [self.map removeAnnotation:_originAnnotation];
-        }
-        _originAnnotation = [[MKPointAnnotation alloc] init];
-        _originAnnotation.coordinate = CLLocationCoordinate2DMake(mapItem.placemark.coordinate.latitude, mapItem.placemark.coordinate.longitude);
-        _originAnnotation.title = @"Home";
-        [self.map addAnnotation:_originAnnotation];
+        
+        CLLocation * location = [[CLLocation alloc] initWithLatitude:mapItem.placemark.coordinate.latitude longitude:mapItem.placemark.coordinate.longitude];
+        [self addOriginAnnotation:location];
         widget.waiting = NO;
         
         
     } else if (widget.type == kWorkType) {
         
-        if(_destinationAnnotation != nil){
-            [self.map removeAnnotation:_destinationAnnotation];
-        }
-        _destinationAnnotation = [[MKPointAnnotation alloc] init];
-        _destinationAnnotation.coordinate = CLLocationCoordinate2DMake(mapItem.placemark.coordinate.latitude, mapItem.placemark.coordinate.longitude);
-        _destinationAnnotation.title = @"Work";
-        [self.map addAnnotation:_destinationAnnotation];
+        CLLocation * location = [[CLLocation alloc] initWithLatitude:mapItem.placemark.coordinate.latitude longitude:mapItem.placemark.coordinate.longitude];
+        [self addDestinationAnnotation:location];
         widget.waiting = NO;
         
     }
@@ -477,7 +624,7 @@
     [self updateRouteOverlay];
     
     [self showNextButton];
-
+    
     [self.map setCenterCoordinate:mapItem.placemark.coordinate animated:YES];
 }
 
@@ -502,7 +649,7 @@
     pickerView.delegate = self;
     [pickerView setBackgroundColor:[UIColor clearColor]];
     [pickerView setAlpha:.95];
-  
+    
     [actionSheetPicker.toolbar setAlpha:.95];
     [actionSheetPicker.toolbar setBackgroundColor:[UIColor clearColor]];
 }
@@ -536,7 +683,7 @@
     }
     return 0;
 }
- 
+
 #pragma mark - UIPickerViewDelegate
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {

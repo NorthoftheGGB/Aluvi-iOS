@@ -21,5 +21,6 @@
 
 - (void) save;
 - (void) reset;
+- (BOOL) hasSettings;
 
 @end
