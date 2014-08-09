@@ -17,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet VCButtonStandardStyle *confirmButton;
 
 @property (weak, nonatomic) IBOutlet VCButtonStandardStyle *didTapConfirmButton;
+@property (weak, nonatomic) IBOutlet UIImageView *driverPhotoImageView;
 
 @end

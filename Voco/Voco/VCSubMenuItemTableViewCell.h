@@ -7,8 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VCLabel.h"
+
 
 @interface VCSubMenuItemTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet VCLabel *itemTitleLabel;
+@property (weak, nonatomic) IBOutlet VCLabel *itemDateLabel;
+@property (weak, nonatomic) IBOutlet VCLabel *itemTimeLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *arrowImageView;
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 

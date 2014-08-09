@@ -24,10 +24,14 @@
 
 - (void) select {
     self.backgroundImageView.image = [UIImage imageNamed:@"menu-item-bg-select"];
+    self.arrowImageView.image = [UIImage imageNamed:@"menu-submenu-arrow-select"];
+    self.itemTitleLabel.textColor = [UIColor colorWithRed:182 green:31 blue:36 alpha:1.0];
+    self.itemTimeLabel.textColor = [UIColor colorWithRed:182 green:31 blue:36 alpha:1.0];
+    self.itemDateLabel.textColor = [UIColor colorWithRed:182 green:31 blue:36 alpha:1.0];
 }
 
 - (void) deselect {
-    self.backgroundImageView.image = [UIImage imageNamed:@"menu-item-bg"];
+    self.backgroundImageView.image = [UIImage imageNamed:@"menu-item-bg-select"];
 }
 
 @end
