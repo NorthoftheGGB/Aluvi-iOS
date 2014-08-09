@@ -291,6 +291,7 @@
 - (void) resetInterface {
     [self clearMap];
     [UIView transitionWithView:self.view duration:.35 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+        [_waitingScreen removeFromSuperview];
         [_pickupHudView removeFromSuperview];
         [_homeLocationWidget.view removeFromSuperview];
         [_workLocationWidget.view removeFromSuperview];
