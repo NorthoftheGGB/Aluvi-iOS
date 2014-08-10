@@ -54,6 +54,7 @@
 @property (nonatomic, retain) NSNumber * uploaded;
 @property (nonatomic, retain) NSDate * rideDate;
 @property (nonatomic, retain) NSNumber * confirmed;
+@property (nonatomic, retain) NSNumber * driving;
 
 @property (nonatomic, retain) Driver *driver;
 @property (nonatomic, retain) Car *car;
