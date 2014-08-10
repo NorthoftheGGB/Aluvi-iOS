@@ -9,18 +9,22 @@
 #import <Foundation/Foundation.h>
 @import MapKit;
 
-@interface VCCommuterSettingsManager : NSObject
+@interface VCCommuteManager : NSObject
 
-@property (nonatomic, strong) CLLocation * origin;
-@property (nonatomic, strong) CLLocation * destination;
+@property (nonatomic, strong) CLLocation * home;
+@property (nonatomic, strong) CLLocation * work;
+@property (nonatomic, strong) NSString * homePlaceName;
+@property (nonatomic, strong) NSString * workPlaceName;
 @property (nonatomic, strong) NSString * pickupTime;
 @property (nonatomic, strong) NSString * returnTime;
 @property (nonatomic) BOOL driving;
 
-+ (VCCommuterSettingsManager *) instance;
++ (VCCommuteManager *) instance;
 
 - (void) save;
 - (void) reset;
 - (BOOL) hasSettings;
+
+- (void) requestRidesFor:(NSDate *) tomorrow;
 
 @end

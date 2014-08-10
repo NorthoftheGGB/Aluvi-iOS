@@ -16,6 +16,8 @@
                 <outlet property="pickupTimeLabel" destination="KAQ-n3-AaS" id="Ycz-jk-2IJ"/>
                 <outlet property="returnHudView" destination="TKX-pK-w8D" id="kQS-XC-4O0"/>
                 <outlet property="returnTimeLabel" destination="Pwl-0s-xmB" id="9yw-JX-Vq9"/>
+                <outlet property="rideDetailsConfirmation" destination="RWM-tO-NBZ" id="l10-lc-9ki"/>
+                <outlet property="rideDetailsHud" destination="Lv9-d9-EJH" id="0gc-z7-omS"/>
                 <outlet property="rideNowButton" destination="2sw-Bp-ZXq" id="SSL-Jr-zwk"/>
                 <outlet property="scheduleRideButton" destination="fxh-D2-Mbg" id="8gG-Qn-R33"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -144,6 +146,16 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NqD-4i-qh2">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapPickupHud:" destination="-1" eventType="touchUpInside" id="4Oc-1Q-dif"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.63137257099999999" green="0.58039218189999997" blue="0.5647059083" alpha="1" colorSpace="deviceRGB"/>
             <constraints>
@@ -401,7 +413,7 @@
                 <constraint firstItem="oc4-Pp-acs" firstAttribute="top" secondItem="iS9-Iw-Jn9" secondAttribute="bottom" constant="-52" id="EX9-k8-brn"/>
                 <constraint firstItem="iha-zj-PjZ" firstAttribute="top" secondItem="f9u-kb-YvT" secondAttribute="bottom" constant="4" id="Gwe-Yj-MJT"/>
                 <constraint firstItem="1nW-T7-6PG" firstAttribute="top" secondItem="UXb-UY-V0U" secondAttribute="bottom" constant="-4" id="IC6-Fe-U4t"/>
-                <constraint firstItem="iS9-Iw-Jn9" firstAttribute="bottom" secondItem="vBd-Mx-Cx3" secondAttribute="bottom" constant="-4" id="IXb-K1-jOV"/>
+                <constraint firstItem="iS9-Iw-Jn9" firstAttribute="bottom" secondItem="vBd-Mx-Cx3" secondAttribute="bottom" constant="84" id="IXb-K1-jOV"/>
                 <constraint firstItem="aeQ-Xu-ULg" firstAttribute="leading" secondItem="fLf-hD-OJd" secondAttribute="trailing" constant="8" id="Ids-Xg-edF"/>
                 <constraint firstAttribute="trailing" secondItem="Zgy-fF-cwL" secondAttribute="trailing" constant="20" id="LLE-zD-ixM"/>
                 <constraint firstItem="iha-zj-PjZ" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" constant="20" id="Ndf-N4-qIg"/>
@@ -714,6 +726,16 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXK-9R-vh0" userLabel="button">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapReturnHud:" destination="-1" eventType="touchUpInside" id="Fuc-1i-cZq"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.63137257099999999" green="0.58039218189999997" blue="0.5647059083" alpha="1" colorSpace="deviceRGB"/>
             <constraints>

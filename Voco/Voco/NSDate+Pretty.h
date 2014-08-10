@@ -15,5 +15,7 @@
 - (NSString *) formatted;
 - (NSString *) mysqlFormat;
 - (NSString *) typicalDate;
+- (NSString *) monthAndDay;
+- (NSString *) time;
 
 @end

@@ -88,4 +88,21 @@ static NSDateFormatter *formatter = nil;
     return exportDateString;
 }
 
+- (NSString *) monthAndDay {
+    if(!formatter){
+        formatter = [[NSDateFormatter alloc] init];
+    }
+    [formatter setDateFormat:@"M/d"];
+    return [formatter stringFromDate:self];
+}
+
+- (NSString *) time {
+    
+    if(!formatter){
+        formatter = [[NSDateFormatter alloc] init];
+    }
+    [formatter setDateFormat:@"HH:mm a"];
+    return [formatter stringFromDate:self];
+}
+
 @end

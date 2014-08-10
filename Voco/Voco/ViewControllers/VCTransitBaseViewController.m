@@ -75,6 +75,8 @@
 
 - (void) showSuggestedRoute: (CLLocation *) from to: (CLLocation *) to {
     
+    _map.userTrackingMode = MKUserTrackingModeNone;
+
     CLLocationCoordinate2D dropOffPointCoordinate;
     CLLocationCoordinate2D meetingPointCoordinate;
     dropOffPointCoordinate.latitude = from.coordinate.latitude;

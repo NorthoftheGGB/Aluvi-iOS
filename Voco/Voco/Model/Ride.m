@@ -20,7 +20,7 @@
 
 @implementation Ride
 
-@dynamic requestType;
+@dynamic rideType;
 @dynamic car_id;
 @dynamic driver_id;
 @dynamic ride_id;
@@ -32,9 +32,13 @@
 @dynamic destinationLatitude;
 @dynamic destinationLongitude;
 @dynamic destinationPlaceName;
+@dynamic uploaded;
 @dynamic driver;
 @dynamic car;
-
+@dynamic rideDate;
+@dynamic originShortName;
+@dynamic destinationShortName;
+@dynamic confirmed;
 
 + (void)createMappings:(RKObjectManager *)objectManager{
     RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Ride"
@@ -55,8 +59,7 @@
                                                         @"origin_longitude" : @"originLongitude",
                                                         @"destination_place_name" : @"destinationPlaceName",
                                                         @"destination_latitude" : @"destinationLatitude",
-                                                        @"destination_longitude" : @"destinationLongitude",
-                                                        @"pickup_time" : @"pickupTime"
+                                                        @"destination_longitude" : @"destinationLongitude"
                                                         }];
     
     entityMapping.identificationAttributes = @[ @"ride_id" ]; // for riders ride_id is the primary key
@@ -111,6 +114,19 @@
     return self;
 }
 
+- (NSString *) routeDescription {
+    return [NSString stringWithFormat:@"%@ to %@", self.originPlaceName, self.destinationPlaceName];
+}
+
+- (CLLocation *) originLocation {
+    return [[CLLocation alloc] initWithLatitude:[self.originLatitude doubleValue] longitude: [self.originLongitude doubleValue] ];
+}
+
+- (CLLocation *) destinationLocation {
+    return [[CLLocation alloc] initWithLatitude:[self.destinationLatitude doubleValue] longitude: [self.destinationLongitude doubleValue] ];
+}
+
+// For the state machine, currently unused
 - (void)assignStatesAndEvents:(TKStateMachine *)stateMachine {
     
     TKState * created = [TKState stateWithName:kCreatedState];
@@ -143,9 +159,6 @@
 
 
 
-- (NSString *) routeDescription {
-    return [NSString stringWithFormat:@"%@ to %@", self.originPlaceName, self.destinationPlaceName];
-}
 
 
 

@@ -14,16 +14,16 @@
 #import "VCLabel.h"
 #import "VCButtonStandardStyle.h"
 #import "VCEditLocationWidget.h"
-#import "VCCommuterSettingsManager.h"
+#import "VCCommuteManager.h"
 #import "VCRideDetailsView.h"
 #import "VCRideDetailsConfirmationView.h"
 #import "VCRideDetailsHudView.h"
-
 
 #define kEditCommuteStatePickupTime 1000
 #define kEditCommuteStateEditHome 1001
 #define kEditCommuteStateEditWork 1002
 #define kEditCommuteStateReturnTime 1003
+#define kEditCommuteStateEditAll 1004
 
 #define kStepSetDepartureLocation 1
 #define kStepSetDestinationLocation 2
@@ -57,13 +57,17 @@
 //pickup hud
 @property (strong, nonatomic) IBOutlet UIView *pickupHudView;
 @property (weak, nonatomic) IBOutlet VCLabel *pickupTimeLabel;
+- (IBAction)didTapPickupHud:(id)sender;
 
 //return hud
 @property (strong, nonatomic) IBOutlet UIView *returnHudView;
 @property (weak, nonatomic) IBOutlet VCLabel *returnTimeLabel;
+- (IBAction)didTapReturnHud:(id)sender;
 
 //overlay
 @property (strong, nonatomic) IBOutlet UIView *waitingScreen;
+@property (strong, nonatomic) IBOutlet VCRideDetailsConfirmationView *rideDetailsConfirmation;
+@property (strong, nonatomic) IBOutlet VCRideDetailsHudView *rideDetailsHud;
 
 // Data Entry
 @property (nonatomic) NSInteger step;
@@ -137,7 +141,6 @@
     [super viewWillAppear:YES];
     
     if(!_appeared){
-        [self showHome];
         
         self.map = [[MKMapView alloc] initWithFrame:self.view.frame];
         self.map.delegate = self;
@@ -150,7 +153,13 @@
         lpgr.minimumPressDuration = 0.5; //user needs to press for half a second.
         [self.map addGestureRecognizer:lpgr];
     }
-    
+
+    if(_ride == nil) {
+        [self showHome];
+    } else {
+        [self showInterfaceForRide];
+    }
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -181,6 +190,23 @@
     
 }
 
+- (void) showInterfaceForRide {
+    [_homeActionView removeFromSuperview];
+    [self showCancelBarButton];
+    
+    [self addOriginAnnotation: [_ride originLocation] ];
+    [self addDestinationAnnotation: [_ride destinationLocation]];
+    [self showSuggestedRoute: [_ride originLocation] to:[_ride destinationLocation]];
+    if([@[kCreatedState, kRequestedState] containsObject:_ride.state]){
+        [self.view addSubview:self.waitingScreen];
+    } else if([_ride.confirmed isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+        [self.view addSubview:_rideDetailsHud];
+    } else {
+        [self.view addSubview:_rideDetailsConfirmation];
+    }
+    
+}
+
 - (void) showCancelBarButton {
     UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(didTapCancel:)];
     self.navigationItem.rightBarButtonItem = cancelItem;
@@ -188,6 +214,8 @@
 
 - (void) transitionToEditCommute {
     [_homeActionView removeFromSuperview];
+    _editCommuteState = kEditCommuteStateEditAll;
+    
     [self showCancelBarButton];
     
     {
@@ -280,11 +308,7 @@
         _pickupHudView.frame = frame;
     }];
     
-    
-    [ActionSheetCustomPicker showPickerWithTitle:@"Pickup Time"
-                                        delegate:self
-                                showCancelButton:YES
-                                          origin:self.view ];
+    [self showPickupTimePicker];
     
 }
 
@@ -384,14 +408,22 @@
         _returnHudView.frame = frame;
     }];
     
+    [self showReturnTimePicker];
     
-    
+}
+
+- (void) showReturnTimePicker {
     [ActionSheetCustomPicker showPickerWithTitle:@"Return Time"
                                         delegate:self
                                 showCancelButton:YES
                                           origin:self.view ];
-    
-    
+}
+
+- (void) showPickupTimePicker {
+    [ActionSheetCustomPicker showPickerWithTitle:@"Pickup Time"
+                                        delegate:self
+                                showCancelButton:YES
+                                          origin:self.view ];
 }
 
 - (void) transitionFromSetReturnTimeToEditWork {
@@ -438,8 +470,20 @@
 
 
 - (void) didTapCancel: (id)sender {
-    [[VCCommuterSettingsManager instance] reset];
-    [self resetInterface];
+    if(_ride == nil) {
+        [[VCCommuteManager instance] reset];
+        [self resetInterface];
+    } else {
+        [UIAlertView showWithTitle:@"Cancel Ride?" message:@"Are you sure you want to cancel this ride?" cancelButtonTitle:@"No!" otherButtonTitles:@[@"Yes, Cancel this ride"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            switch(buttonIndex){
+                case 1:
+                    [UIAlertView showWithTitle:@"No Impl" message:@"Not Implemented" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                    break;
+                default:
+                    break;
+            }
+        }];
+    }
 }
 
 - (void)handleLongPress:(UIGestureRecognizer *)gestureRecognizer {
@@ -496,35 +540,41 @@
 }
 
 - (void) storeCommuterSettings {
-    [VCCommuterSettingsManager instance].origin = [[CLLocation alloc] initWithLatitude:_originAnnotation.coordinate.latitude
+    [VCCommuteManager instance].home = [[CLLocation alloc] initWithLatitude:_originAnnotation.coordinate.latitude
                                                                              longitude:_originAnnotation.coordinate.longitude];
-    [VCCommuterSettingsManager instance].destination = [[CLLocation alloc] initWithLatitude:_destinationAnnotation.coordinate.latitude
+    [VCCommuteManager instance].work = [[CLLocation alloc] initWithLatitude:_destinationAnnotation.coordinate.latitude
                                                                                   longitude:_destinationAnnotation.coordinate.longitude];
     
     
-    [[VCCommuterSettingsManager instance] save];
+    [[VCCommuteManager instance] save];
+    
+    
 }
 
 - (void) loadCommuteSettings {
-    if( [VCCommuterSettingsManager instance].pickupTime != nil){
-        _pickupTimeLabel.text = [VCCommuterSettingsManager instance].pickupTime;
+    if( [VCCommuteManager instance].pickupTime != nil){
+        _pickupTimeLabel.text = [VCCommuteManager instance].pickupTime;
     }
     
-    if( [VCCommuterSettingsManager instance].origin != nil){
-        [self addOriginAnnotation: [VCCommuterSettingsManager instance].origin ];
+    if( [VCCommuteManager instance].home != nil){
+        [self addOriginAnnotation: [VCCommuteManager instance].home ];
+        [self updateEditLocationWidget:_homeLocationWidget withLocation:[VCCommuteManager instance].home];
     }
     
-    if( [VCCommuterSettingsManager instance].destination != nil){
-        [self addDestinationAnnotation: [VCCommuterSettingsManager instance].destination ];
+    if( [VCCommuteManager instance].work != nil){
+        [self addDestinationAnnotation: [VCCommuteManager instance].work ];
+        [self updateEditLocationWidget:_workLocationWidget withLocation:[VCCommuteManager instance].work];
     }
     
-    if( [VCCommuterSettingsManager instance].returnTime != nil){
-        _returnTimeLabel.text = [VCCommuterSettingsManager instance].returnTime;
+    if( [VCCommuteManager instance].returnTime != nil){
+        _returnTimeLabel.text = [VCCommuteManager instance].returnTime;
     }
     
-    _hovDriveYesButton.selected = [VCCommuterSettingsManager instance].driving;
+    _hovDriveYesButton.selected = [VCCommuteManager instance].driving;
     
-    [self showSuggestedRoute: [VCCommuterSettingsManager instance].origin to:[VCCommuterSettingsManager instance].destination];
+    if( [VCCommuteManager instance].home != nil && [VCCommuteManager instance].home != nil){
+        [self showSuggestedRoute: [VCCommuteManager instance].home to:[VCCommuteManager instance].work];
+    }
     
 }
 
@@ -552,7 +602,7 @@
 - (IBAction)didTapEditCommute:(id)sender {
     [self loadCommuteSettings];
     
-    if([[VCCommuterSettingsManager instance] hasSettings]) {
+    if([[VCCommuteManager instance] hasSettings]) {
         [self transitionToEditCommute];
     } else {
         [self transitionToSetupCommute];
@@ -568,7 +618,18 @@
     [UIAlertView showWithTitle:@"Schedule Commuter Ride ?" message:@"Do you want us to schedule your commuter ride for tomorrow?" cancelButtonTitle:@"No, not I won't be commuting tomorrow" otherButtonTitles:@[@"Yes!  I want to ride with Voco tomorrow!"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
         switch (buttonIndex) {
             case 1:
+            {
                 [self transitionToWaitingScreen];
+                
+                // Create tomorrows rides
+                NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
+                dayComponent.day = 1;
+                
+                NSCalendar *theCalendar = [NSCalendar currentCalendar];
+                NSDate *tomorrow = [theCalendar dateByAddingComponents:dayComponent toDate:[NSDate date] options:0];
+
+                [[VCCommuteManager instance] requestRidesFor:tomorrow];
+            }
                 break;
                 
             default:
@@ -592,15 +653,21 @@
     
     if (_hovDriveYesButton.selected == YES){
         _hovDriveYesButton.selected = NO;
-        [VCCommuterSettingsManager instance].driving = NO;
+        [VCCommuteManager instance].driving = NO;
     } else {
         _hovDriveYesButton.selected = YES;
-        [VCCommuterSettingsManager instance].driving = YES;
+        [VCCommuteManager instance].driving = YES;
     }
 }
 
+- (IBAction)didTapPickupHud:(id)sender {
+    [self showPickupTimePicker];
+}
 
 
+- (IBAction)didTapReturnHud:(id)sender {
+    [self showReturnTimePicker];
+}
 
 
 #pragma mark - VCLocationSearchViewControllerDelegate
@@ -624,7 +691,9 @@
     
     [self updateRouteOverlay];
     
-    [self showNextButton];
+    if(_editCommuteState == kEditCommuteStateEditHome || _editCommuteState == kEditCommuteStateEditWork) {
+        [self showNextButton];
+    }
     
     [self.map setCenterCoordinate:mapItem.placemark.coordinate animated:YES];
 }
@@ -699,10 +768,10 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     NSString * value = [_morningOptions objectAtIndex:row];
     if( _editCommuteState == kEditCommuteStateReturnTime) {
-        [VCCommuterSettingsManager instance].returnTime = value;
+        [VCCommuteManager instance].returnTime = value;
         _returnTimeLabel.text = value;
     } else if ( _editCommuteState == kEditCommuteStatePickupTime) {
-        [VCCommuterSettingsManager instance].pickupTime = value;
+        [VCCommuteManager instance].pickupTime = value;
         _pickupTimeLabel.text = value;
     }
 }
@@ -732,6 +801,8 @@
         } else if ( [annotationView.annotation isEqual: _destinationAnnotation]) {
             [self updateEditLocationWidget:_workLocationWidget withLocation:location];
         }
+        [self clearRoute];
+        [self showSuggestedRoute];
         
     }
 }
