@@ -74,7 +74,7 @@
 }
 
 + (void) requestRide:(Ride *) ride
-             success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+             success:(void ( ^ ) ( RKObjectRequestOperation *operation , VCRideRequestCreated * response ))success
              failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     
     [[VCDebug sharedInstance] apiLog:@"API: request ride"];
@@ -97,7 +97,7 @@
                                             }
                                             //[VCUserState instance].riderState = kUser;
                                             
-                                            success(operation, mappingResult);
+                                            success(operation, response);
                                         }
                                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                             [[VCDebug sharedInstance] apiLog:@"API: request ride failure"];

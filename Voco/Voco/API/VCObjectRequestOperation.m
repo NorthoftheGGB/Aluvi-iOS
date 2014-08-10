@@ -55,6 +55,7 @@
 
             case 401: // not authenticated
             {
+                [[RKObjectManager sharedManager].operationQueue cancelAllOperations];
                 [UIAlertView showWithTitle:@"Invalid Login" message:@"You are no longer logged into Voco.  Please log back in"
                          cancelButtonTitle:@"OK"
                          otherButtonTitles:nil

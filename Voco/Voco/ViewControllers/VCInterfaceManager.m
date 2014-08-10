@@ -43,20 +43,20 @@ static int mode;
 - (void) showInterface {
     
 #warning skipping interface selection for rider interface development
-    [self showRiderInterface];
-    //[self showDriverInterface];
     
     
-    /*if([VCApi loggedIn]){
-        if(mode == kDriverMode) {
+    if([VCApi loggedIn]){
+        [self showRiderInterface];
+
+        /*if(mode == kDriverMode) {
             [self showDriverInterface];
         } else {
             [self showRiderInterface];
         }
+         */
     } else {
         [self showRiderSigninInterface];
-        
-    }*/
+    }
 }
 
 - (void) showRiderSigninInterface {

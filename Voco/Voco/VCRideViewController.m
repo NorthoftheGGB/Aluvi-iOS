@@ -30,6 +30,9 @@
 #define kStepConfirmRequest 3
 #define kStepDone 4
 
+#define kPickerReturnTime 1
+#define kPickerPickupTime 2
+
 #define kFareNotStartedLabelText @"Waiting"
 
 @interface VCRideViewController () <MKMapViewDelegate, VCEditLocationWidgetDelegate, ActionSheetCustomPickerDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
@@ -71,6 +74,7 @@
 
 // Data Entry
 @property (nonatomic) NSInteger step;
+@property (nonatomic) NSInteger whichPicker;
 
 
 @property (strong, nonatomic) VCEditLocationWidget * homeLocationWidget;
@@ -152,13 +156,16 @@
         UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
         lpgr.minimumPressDuration = 0.5; //user needs to press for half a second.
         [self.map addGestureRecognizer:lpgr];
+        
+        if(_ride == nil) {
+            [self showHome];
+            self.map.userTrackingMode = MKUserTrackingModeFollow;
+        } else {
+            [self showInterfaceForRide];
+        }
     }
 
-    if(_ride == nil) {
-        [self showHome];
-    } else {
-        [self showInterfaceForRide];
-    }
+ 
 
 }
 
@@ -210,6 +217,10 @@
 - (void) showCancelBarButton {
     UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(didTapCancel:)];
     self.navigationItem.rightBarButtonItem = cancelItem;
+}
+
+- (void) removeCancelBarButton {
+    self.navigationItem.rightBarButtonItem = nil;
 }
 
 - (void) transitionToEditCommute {
@@ -322,7 +333,8 @@
         [_returnHudView removeFromSuperview];
         [_scheduleRideButton removeFromSuperview];
         [_hovDriverOptionView removeFromSuperview];
-        
+        [_nextButton removeFromSuperview];
+        [self removeCancelBarButton];
         [self showHome];
     } completion:^(BOOL finished) {
         [self zoomToCurrentLocation];
@@ -413,17 +425,19 @@
 }
 
 - (void) showReturnTimePicker {
+    _whichPicker = kPickerReturnTime;
     [ActionSheetCustomPicker showPickerWithTitle:@"Return Time"
                                         delegate:self
                                 showCancelButton:YES
-                                          origin:self.view ];
+                                          origin:_returnHudView ];
 }
 
 - (void) showPickupTimePicker {
+    _whichPicker = kPickerPickupTime;
     [ActionSheetCustomPicker showPickerWithTitle:@"Pickup Time"
                                         delegate:self
                                 showCancelButton:YES
-                                          origin:self.view ];
+                                          origin:_pickupHudView ];
 }
 
 - (void) transitionFromSetReturnTimeToEditWork {
@@ -466,6 +480,7 @@
     //TODO improve animations
     [_scheduleRideButton removeFromSuperview];
     [self.view addSubview:self.waitingScreen];
+    [self removeCancelBarButton];
 }
 
 
@@ -477,7 +492,13 @@
         [UIAlertView showWithTitle:@"Cancel Ride?" message:@"Are you sure you want to cancel this ride?" cancelButtonTitle:@"No!" otherButtonTitles:@[@"Yes, Cancel this ride"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
             switch(buttonIndex){
                 case 1:
-                    [UIAlertView showWithTitle:@"No Impl" message:@"Not Implemented" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                {
+                    [[VCCommuteManager instance] cancelRide:_ride success:^{
+                        [self resetInterface];
+                    } failure:^{
+                        // do nothing
+                    }];
+                }
                     break;
                 default:
                     break;
@@ -532,10 +553,15 @@
     editLocationWidget.waiting = YES;
     [self.geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
         MKPlacemark * placemark = placemarks[0];
-        [editLocationWidget setLocationText:  ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO)];
+        NSString * placeName = ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);
+        [editLocationWidget setLocationText: placeName ];
         editLocationWidget.mode = kEditLocationWidgetDisplayMode;
         editLocationWidget.waiting = NO;
-        
+        if(editLocationWidget.type == kHomeType){
+            [VCCommuteManager instance].homePlaceName = placeName;
+        } else if(editLocationWidget.type == kWorkType){
+            [VCCommuteManager instance].workPlaceName = placeName;
+        }
     }];
 }
 
@@ -544,8 +570,7 @@
                                                                              longitude:_originAnnotation.coordinate.longitude];
     [VCCommuteManager instance].work = [[CLLocation alloc] initWithLatitude:_destinationAnnotation.coordinate.latitude
                                                                                   longitude:_destinationAnnotation.coordinate.longitude];
-    
-    
+
     [[VCCommuteManager instance] save];
     
     
@@ -558,12 +583,16 @@
     
     if( [VCCommuteManager instance].home != nil){
         [self addOriginAnnotation: [VCCommuteManager instance].home ];
-        [self updateEditLocationWidget:_homeLocationWidget withLocation:[VCCommuteManager instance].home];
+        [_homeLocationWidget setMode:kEditLocationWidgetDisplayMode];
+        [_homeLocationWidget setLocationText:[VCCommuteManager instance].homePlaceName];
+
     }
     
     if( [VCCommuteManager instance].work != nil){
         [self addDestinationAnnotation: [VCCommuteManager instance].work ];
-        [self updateEditLocationWidget:_workLocationWidget withLocation:[VCCommuteManager instance].work];
+        [_workLocationWidget setMode:kEditLocationWidgetDisplayMode];
+        [_workLocationWidget setLocationText:[VCCommuteManager instance].workPlaceName];
+
     }
     
     if( [VCCommuteManager instance].returnTime != nil){
@@ -746,9 +775,9 @@
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    if( _editCommuteState == kEditCommuteStateReturnTime) {
+    if( _whichPicker == kPickerReturnTime) {
         return [_eveningOptions count];
-    } else if ( _editCommuteState == kEditCommuteStatePickupTime) {
+    } else if ( _whichPicker == kPickerPickupTime) {
         return [_morningOptions count];
     }
     return 0;
@@ -757,9 +786,9 @@
 #pragma mark - UIPickerViewDelegate
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    if( _editCommuteState == kEditCommuteStateReturnTime) {
+    if( _whichPicker == kPickerReturnTime) {
         return [_eveningOptions objectAtIndex:row];
-    } else if ( _editCommuteState == kEditCommuteStatePickupTime) {
+    } else if ( _whichPicker == kPickerPickupTime) {
         return [_morningOptions objectAtIndex:row];
     }
     return @"";
@@ -767,10 +796,10 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     NSString * value = [_morningOptions objectAtIndex:row];
-    if( _editCommuteState == kEditCommuteStateReturnTime) {
+    if( _whichPicker == kPickerReturnTime) {
         [VCCommuteManager instance].returnTime = value;
         _returnTimeLabel.text = value;
-    } else if ( _editCommuteState == kEditCommuteStatePickupTime) {
+    } else if ( _whichPicker == kPickerPickupTime) {
         [VCCommuteManager instance].pickupTime = value;
         _pickupTimeLabel.text = value;
     }
@@ -802,7 +831,7 @@
             [self updateEditLocationWidget:_workLocationWidget withLocation:location];
         }
         [self clearRoute];
-        [self showSuggestedRoute];
+        [self updateRouteOverlay];
         
     }
 }

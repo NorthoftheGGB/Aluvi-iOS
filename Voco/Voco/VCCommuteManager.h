@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 @import MapKit;
+#import "Ride.h"
 
 @interface VCCommuteManager : NSObject
 
@@ -23,8 +24,11 @@
 
 - (void) save;
 - (void) reset;
+- (void) load;
+- (void) clear;
 - (BOOL) hasSettings;
 
 - (void) requestRidesFor:(NSDate *) tomorrow;
+- (void) cancelRide:(Ride *) ride success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
 
 @end
