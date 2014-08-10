@@ -16,6 +16,7 @@
 #import "VCSubMenuItemTableViewCell.h"
 #import "VCMenuItemNotConfiguredTableViewCell.h"
 #import "VCMenuItemModeTableViewCell.h"
+#import "NSDate+Pretty.h"
 
 
 // These ones go in the array
@@ -48,6 +49,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSMutableArray * tableCellList;
+@property (nonatomic, strong) NSArray * scheduleItems;
+@property (nonatomic, strong) NSMutableArray * scheduleItemsList;
 
 @property (nonatomic) NSUInteger selectedCellTag;
 @end
@@ -69,7 +72,7 @@
     [super viewDidLoad];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
-
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -84,7 +87,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-
+    
     long row = [indexPath row];
     
     int height = 45; // default
@@ -93,7 +96,7 @@
         case kUserInfoCellInteger:
             height = 117;
             break;
-
+            
     }
     return height;
     
@@ -106,7 +109,7 @@
     
     long tag = [[_tableCellList objectAtIndex:row] integerValue];
     switch(tag){
-        
+            
         case kUserInfoCellInteger:
         { VCMenuUserInfoTableViewCell * menuUserInfoCell = [WRUtilities getViewFromNib:@"VCMenuUserInfoTableViewCell" class:[VCMenuUserInfoTableViewCell class]];
             
@@ -143,10 +146,12 @@
         case kScheduleItemCellInteger:
         {
             VCSubMenuItemTableViewCell * subMenuItemTableViewCell = [WRUtilities getViewFromNib:@"VCSubMenuItemTableViewCell" class:[VCSubMenuItemTableViewCell class]];
-        //TODO: This is a placeholder name, replace it with relevant string!
-            subMenuItemTableViewCell.itemTitleLabel.text = @"Home to Work";
-            subMenuItemTableViewCell.itemDateLabel.text = @"10/23";
-            subMenuItemTableViewCell.itemTimeLabel.text = @"10:10 PM";
+            
+            long scheduleCellIndex = [_tableCellList indexOfObject:kScheduleCell];
+            Ride * ride = [_scheduleItems objectAtIndex:row-scheduleCellIndex-1];
+            subMenuItemTableViewCell.itemTitleLabel.text = [NSString stringWithFormat:@"%@ to %@", ride.originShortName, ride.destinationShortName];
+            subMenuItemTableViewCell.itemDateLabel.text = [ride.pickupTime monthAndDay];
+            subMenuItemTableViewCell.itemTimeLabel.text = [ride.pickupTime time];
             cell = subMenuItemTableViewCell;
         }
             break;
@@ -192,16 +197,16 @@
         }
             break;
             
-       /* case kModeCellInteger:
-        {VCMenuItemModeTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemModeTableViewCell" class:[VCMenuItemModeTableViewCell class]];
-            menuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-map-icon"];
-            menuItemTableViewCell.menuItemLabel.text = @"Map";
-            cell = menuItemTableViewCell;
-        }
-            break;*/
+            /* case kModeCellInteger:
+             {VCMenuItemModeTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemModeTableViewCell" class:[VCMenuItemModeTableViewCell class]];
+             menuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-map-icon"];
+             menuItemTableViewCell.menuItemLabel.text = @"Map";
+             cell = menuItemTableViewCell;
+             }
+             break;*/
             
             
-           }
+    }
     
     if( tag == _selectedCellTag ){
         if([cell isKindOfClass:[VCMenuItemTableViewCell class]]) {
@@ -222,16 +227,16 @@
     if([cell isKindOfClass:[VCMenuItemTableViewCell class]]) {
         [(VCMenuItemTableViewCell*) cell deselect];
     }
-   /* else if([cell isKindOfClass:[VCSubMenuItemTableViewCell class]]){
-        [(VCSubMenuItemTableViewCell*) cell deselect];
-    }*/
+    /* else if([cell isKindOfClass:[VCSubMenuItemTableViewCell class]]){
+     [(VCSubMenuItemTableViewCell*) cell deselect];
+     }*/
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // setCenterViewControllers
     long row = [indexPath row];
     
- 
+    
     long tag = [[_tableCellList objectAtIndex:row] integerValue];
     switch(tag){
         case kProfileCellInteger:
@@ -258,6 +263,19 @@
                 [self showScheduleItems];
             }
         }
+            break;
+            
+        case kScheduleItemCellInteger:
+        {
+            VCRideViewController * rideViewController = [[VCRideViewController alloc] init];
+            long scheduleCellIndex = [_tableCellList indexOfObject:kScheduleCell];
+            rideViewController.ride = [_scheduleItems objectAtIndex:row-scheduleCellIndex-1];
+            [[VCInterfaceManager instance] setCenterViewControllers: @[rideViewController]];
+            VCSubMenuItemTableViewCell * cell = (VCSubMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
+            [cell select];
+        }
+            break;
+            
         default:
             //do nothing
             break;
@@ -277,30 +295,53 @@
 }
 
 - (void) showScheduleItems {
-    long index = [_tableCellList indexOfObject:kScheduleCell];
-    NSArray * scheduleItemsList = @[kScheduleItemCell, kScheduleItemCell, kScheduleItemCell];
-    NSRange range;
-    range.location = index + 1;
-    range.length = [scheduleItemsList count];
-    [_tableCellList insertObjects:scheduleItemsList atIndexes:[NSIndexSet indexSetWithIndexesInRange:range]];
-    [_tableView insertRowsAtIndexPaths:@[ [NSIndexPath indexPathForRow: index+1 inSection:0],
-                                          [NSIndexPath indexPathForRow: index+2 inSection:0],
-                                          [NSIndexPath indexPathForRow: index+3 inSection:0]
-                                          ] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ride"];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"savedState IN %@ ", @[kCreatedState, kRequestedState, kScheduledState]];
+    [fetch setPredicate:predicate];
+    NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];
+    [fetch setSortDescriptors:@[sort]];
+    NSError * error;
+    _scheduleItems = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
+    
+    if([_scheduleItems count] > 0) {
+        
+        long index = [_tableCellList indexOfObject:kScheduleCell];
+        _scheduleItemsList = [NSMutableArray array];
+        NSMutableArray * indexPaths = [NSMutableArray array];
+        for(int i=0; i<[_scheduleItems count]; i++){
+            [_scheduleItemsList addObject:kScheduleItemCell];
+            [indexPaths addObject:[NSIndexPath indexPathForRow: index+i+1 inSection:0]];
+        }
+        
+        NSRange range;
+        range.location = index + 1;
+        range.length = [_scheduleItemsList count];
+        [_tableCellList insertObjects:_scheduleItemsList atIndexes:[NSIndexSet indexSetWithIndexesInRange:range]];
+        [_tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+        
+    }
 }
 
 - (void) hideScheduleItems {
-    long index = [_tableCellList indexOfObject:kScheduleCell];
-    NSArray * scheduleItemsList = @[kScheduleItemCell, kScheduleItemCell, kScheduleItemCell];
-    NSRange range;
-    range.location = index + 1;
-    range.length = [scheduleItemsList count];
-    [_tableCellList removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:range]];
-    [_tableView deleteRowsAtIndexPaths:@[ [NSIndexPath indexPathForRow: index+1 inSection:0],
-                                          [NSIndexPath indexPathForRow: index+2 inSection:0],
-                                          [NSIndexPath indexPathForRow: index+3 inSection:0]
-                                          ] withRowAnimation:UITableViewRowAnimationAutomatic];
-
+    
+    
+    if([_scheduleItems count] > 0) {
+        
+        long index = [_tableCellList indexOfObject:kScheduleCell];
+        NSRange range;
+        range.location = index + 1;
+        range.length = [_scheduleItemsList count];
+        [_tableCellList removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:range]];
+        NSMutableArray * indexPaths = [NSMutableArray array];
+        for(int i=0; i<[_scheduleItems count]; i++){
+            [indexPaths addObject:[NSIndexPath indexPathForRow: index+i+1 inSection:0]];
+        }
+        [_tableView deleteRowsAtIndexPaths:indexPaths
+                          withRowAnimation:UITableViewRowAnimationAutomatic];
+        
+    }
+    
 }
 
 @end

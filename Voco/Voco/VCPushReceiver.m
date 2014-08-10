@@ -243,17 +243,17 @@
         if([rides count] > 0){
             Ride * request = [rides objectAtIndex:0];
             
-            if([request.requestType isEqualToString:kRideRequestTypeOnDemand]) {
+            if([request.rideType isEqualToString:kRideRequestTypeOnDemand]) {
                 [[VCDialogs instance] rideFound: [payload objectForKey:VC_PUSH_RIDE_ID_KEY]];
                 [[NSNotificationCenter defaultCenter] postNotificationName:kPushTypeRideFound object:payload userInfo:@{}];
                 [VCUserStateManager instance].underwayFareId = rideId;
-            } else if ([request.requestType isEqualToString:kRideRequestTypeCommuter]){
+            } else if ([request.rideType isEqualToString:kRideRequestTypeCommuter]){
                 [[VCDialogs instance] commuterRideFound: request];
             }
             
             // TODO Any commuter ride that has not had an alarm set needs to have an alarm set here
             //      And additionally, any commuter ride that has not been delivered needs to be popped up as well
-            if ([request.requestType isEqualToString:kRideRequestTypeCommuter]) {
+            if ([request.rideType isEqualToString:kRideRequestTypeCommuter]) {
                 /*
                 UILocalNotification * localNotif = [[UILocalNotification alloc] init];
                 [localNotif setFireDate:[[NSDate date] dateByAddingTimeInterval:60]]; // demo/debug mode
