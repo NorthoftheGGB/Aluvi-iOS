@@ -55,6 +55,7 @@
 @property (nonatomic, retain) NSDate * rideDate;
 @property (nonatomic, retain) NSNumber * confirmed;
 @property (nonatomic, retain) NSNumber * driving;
+@property (nonatomic, retain) NSNumber * trip_id;
 
 @property (nonatomic, retain) Driver *driver;
 @property (nonatomic, retain) Car *car;

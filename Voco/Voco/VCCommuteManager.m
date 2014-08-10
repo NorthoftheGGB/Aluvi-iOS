@@ -197,23 +197,25 @@ static VCCommuteManager * instance;
     // And attempt to store the rides on the server
     [VCRiderApi requestRide:homeToWorkRide success:^(RKObjectRequestOperation *operation, VCRideRequestCreated * response) {
         homeToWorkRide.uploaded = [NSNumber numberWithBool:YES];
-        homeToWorkRide.ride_id = response.rideId;
         [VCCoreData saveContext];
-
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        // TODO: if it's a network problem, this needs to be uploaded at a later date
-    }];
-    
-    
-    [VCRiderApi requestRide:workToHomeRide success:^(RKObjectRequestOperation *operation, VCRideRequestCreated * response) {
-        workToHomeRide.uploaded = [NSNumber numberWithBool:YES];
-        workToHomeRide.ride_id = response.rideId;
-        [VCCoreData saveContext];
-
         
+        workToHomeRide.trip_id = homeToWorkRide.trip_id;
+        [VCCoreData saveContext];
+
+        [VCRiderApi requestRide:workToHomeRide success:^(RKObjectRequestOperation *operation, VCRideRequestCreated * response) {
+            workToHomeRide.uploaded = [NSNumber numberWithBool:YES];
+            [VCCoreData saveContext];
+            
+            
+        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            // TODO: if it's a network problem, this needs to be uploaded at a later date
+        }];
+
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         // TODO: if it's a network problem, this needs to be uploaded at a later date
     }];
+    
+ 
     
 }
 

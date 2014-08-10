@@ -25,6 +25,7 @@
 @property (nonatomic, strong) NSString * destinationPlaceName;
 @property (nonatomic, strong) NSDate * pickupTime;
 @property (nonatomic, strong) NSNumber * driving;
+@property (nonatomic, strong) NSNumber * tripId;
 
 + (RKObjectMapping *) getMapping;
 + (VCRideRequest *) requestForRide:(Ride *)ride;

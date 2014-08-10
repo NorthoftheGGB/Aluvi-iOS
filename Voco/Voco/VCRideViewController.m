@@ -18,6 +18,8 @@
 #import "VCRideDetailsView.h"
 #import "VCRideDetailsConfirmationView.h"
 #import "VCRideDetailsHudView.h"
+#import "NSDate+Pretty.h"
+#import "Driver.h"
 
 #define kEditCommuteStatePickupTime 1000
 #define kEditCommuteStateEditHome 1001
@@ -209,6 +211,9 @@
     } else if([_ride.confirmed isEqualToNumber:[NSNumber numberWithBool:YES]]) {
         [self.view addSubview:_rideDetailsHud];
     } else {
+        _rideDetailsConfirmation.pickupTimeLabel.text = [_ride.pickupTime time];
+        _rideDetailsConfirmation.driverNameLabel.text = [_ride.driver fullName];
+        _rideDetailsConfirmation.cardNumberLabel.text =  @"LOADING...";
         [self.view addSubview:_rideDetailsConfirmation];
     }
     
@@ -495,6 +500,7 @@
                 {
                     [[VCCommuteManager instance] cancelRide:_ride success:^{
                         [self resetInterface];
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"schedule_updated" object:nil userInfo:@{}];
                     } failure:^{
                         // do nothing
                     }];

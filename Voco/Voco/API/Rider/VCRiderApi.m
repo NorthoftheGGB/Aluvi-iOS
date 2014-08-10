@@ -89,6 +89,7 @@
                                             
                                             VCRideRequestCreated * response = mappingResult.firstObject;
                                             ride.ride_id = response.rideId;
+                                            ride.trip_id = response.tripId;
                                             
                                             NSError * error;
                                             [[VCCoreData managedObjectContext] save:&error];
