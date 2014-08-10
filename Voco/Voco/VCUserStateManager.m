@@ -14,6 +14,7 @@
 #import "VCUserStateResponse.h"
 #import "VCInterfaceManager.h"
 #import "VCDriverApi.h"
+#import "VCCommuteManager.h"
 
 NSString *const VCUserStateDriverStateKeyPath = @"driverState";
 
@@ -136,6 +137,8 @@ static VCUserStateManager *sharedSingleton;
         [VCCoreData clearUserData];
         [[VCInterfaceManager instance] showRiderSigninInterface];
         [[VCDebug sharedInstance] clearLoggedInUserIdentifier];
+        [[VCCommuteManager instance] clear];
+
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         
     }];
@@ -168,6 +171,7 @@ static VCUserStateManager *sharedSingleton;
     _driveProcessState = nil;
     _riderState = nil;
     _driverState = nil;
+
 }
 
 - (void) clearRideState {

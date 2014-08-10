@@ -152,13 +152,16 @@
         UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
         lpgr.minimumPressDuration = 0.5; //user needs to press for half a second.
         [self.map addGestureRecognizer:lpgr];
+        
+        if(_ride == nil) {
+            [self showHome];
+            self.map.userTrackingMode = MKUserTrackingModeFollow;
+        } else {
+            [self showInterfaceForRide];
+        }
     }
 
-    if(_ride == nil) {
-        [self showHome];
-    } else {
-        [self showInterfaceForRide];
-    }
+ 
 
 }
 
@@ -210,6 +213,10 @@
 - (void) showCancelBarButton {
     UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(didTapCancel:)];
     self.navigationItem.rightBarButtonItem = cancelItem;
+}
+
+- (void) removeCancelBarButton {
+    self.navigationItem.rightBarButtonItem = nil;
 }
 
 - (void) transitionToEditCommute {
@@ -322,7 +329,8 @@
         [_returnHudView removeFromSuperview];
         [_scheduleRideButton removeFromSuperview];
         [_hovDriverOptionView removeFromSuperview];
-        
+        [_nextButton removeFromSuperview];
+        [self removeCancelBarButton];
         [self showHome];
     } completion:^(BOOL finished) {
         [self zoomToCurrentLocation];
@@ -477,7 +485,13 @@
         [UIAlertView showWithTitle:@"Cancel Ride?" message:@"Are you sure you want to cancel this ride?" cancelButtonTitle:@"No!" otherButtonTitles:@[@"Yes, Cancel this ride"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
             switch(buttonIndex){
                 case 1:
-                    [UIAlertView showWithTitle:@"No Impl" message:@"Not Implemented" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                {
+                    [[VCCommuteManager instance] cancelRide:_ride success:^{
+                        [self resetInterface];
+                    } failure:^{
+                        // do nothing
+                    }];
+                }
                     break;
                 default:
                     break;
@@ -802,7 +816,7 @@
             [self updateEditLocationWidget:_workLocationWidget withLocation:location];
         }
         [self clearRoute];
-        [self showSuggestedRoute];
+        [self updateRouteOverlay];
         
     }
 }

@@ -41,7 +41,6 @@
                                                                      target:self
                                                                      action:@selector(resetInterface)];
     self.viewDeckController.navigationItem.rightBarButtonItem = anotherButton;
-    _map.userTrackingMode = MKUserTrackingModeFollow;
 
 }
 

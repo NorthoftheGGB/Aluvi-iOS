@@ -98,7 +98,7 @@
         <attribute name="requestedTimestamp" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="ride_id" optional="YES" attributeType="Integer 64" syncable="YES"/>
         <attribute name="rideDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="rideType" attributeType="String" syncable="YES"/>
+        <attribute name="rideType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="savedState" attributeType="String" syncable="YES"/>
         <attribute name="uploaded" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <relationship name="car" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Car" inverseName="rides" inverseEntity="Car" syncable="YES"/>
@@ -120,7 +120,7 @@
         <element name="Fare" positionX="0" positionY="0" width="128" height="240"/>
         <element name="Offer" positionX="0" positionY="0" width="128" height="195"/>
         <element name="Payment" positionX="0" positionY="0" width="128" height="225"/>
-        <element name="Ride" positionX="0" positionY="0" width="128" height="493"/>
+        <element name="Ride" positionX="0" positionY="0" width="128" height="495"/>
         <element name="Rider" positionX="0" positionY="0" width="128" height="135"/>
     </elements>
 </model>

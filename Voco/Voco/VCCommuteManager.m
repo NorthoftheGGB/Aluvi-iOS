@@ -8,6 +8,7 @@
 
 #import "VCCommuteManager.h"
 #import "Ride.h"
+#import "VCRiderApi.h"
 
 #define kCommuteOriginSettingKey @"kCommuterOriginSettingKey"
 #define kCommuteDestinationSettingKey @"kCommuteDestinationSettingKey"
@@ -24,14 +25,8 @@ static VCCommuteManager * instance;
 + (VCCommuteManager *) instance {
     if(instance == nil) {
         instance = [[VCCommuteManager alloc] init];
-        NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-        instance.home = [NSKeyedUnarchiver unarchiveObjectWithData: [defaults objectForKey:kCommuteOriginSettingKey]];
-        instance.work = [NSKeyedUnarchiver unarchiveObjectWithData: [defaults objectForKey:kCommuteDestinationSettingKey]];
-        instance.homePlaceName = [defaults objectForKey:kCommuterOriginPlaceNameKey];
-        instance.workPlaceName = [defaults objectForKey:kCommuterDestinationPlaceNameKey];
-        instance.pickupTime = [defaults objectForKey:kCommuteDepartureTimeSettingKey];
-        instance.returnTime = [defaults objectForKey:kCommuteReturnTimeSettingKey];
-        instance.driving = [defaults boolForKey:kCommuterDrivingSettingKey];
+        [instance load];
+
     }
     return instance;
 }
@@ -56,6 +51,17 @@ static VCCommuteManager * instance;
     _driving = driving;
 }
 
+- (void) load {
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    instance.home = [NSKeyedUnarchiver unarchiveObjectWithData: [defaults objectForKey:kCommuteOriginSettingKey]];
+    instance.work = [NSKeyedUnarchiver unarchiveObjectWithData: [defaults objectForKey:kCommuteDestinationSettingKey]];
+    instance.homePlaceName = [defaults objectForKey:kCommuterOriginPlaceNameKey];
+    instance.workPlaceName = [defaults objectForKey:kCommuterDestinationPlaceNameKey];
+    instance.pickupTime = [defaults objectForKey:kCommuteDepartureTimeSettingKey];
+    instance.returnTime = [defaults objectForKey:kCommuteReturnTimeSettingKey];
+    instance.driving = [defaults boolForKey:kCommuterDrivingSettingKey];
+}
+
 - (void) save {
     NSData * originArchive = [NSKeyedArchiver archivedDataWithRootObject:_home];
     [[NSUserDefaults standardUserDefaults] setObject:originArchive forKey:kCommuteOriginSettingKey];
@@ -66,6 +72,7 @@ static VCCommuteManager * instance;
     [[NSUserDefaults standardUserDefaults] setObject:_homePlaceName forKey:kCommuterOriginPlaceNameKey];
     [[NSUserDefaults standardUserDefaults] setObject:_workPlaceName forKey:kCommuterDestinationPlaceNameKey];
     [[NSUserDefaults standardUserDefaults] setBool:_driving forKey:kCommuterDrivingSettingKey];
+    [[NSUserDefaults standardUserDefaults]  synchronize];
 }
 
 - (void) reset {
@@ -77,6 +84,19 @@ static VCCommuteManager * instance;
     instance.pickupTime = [defaults objectForKey:kCommuteDepartureTimeSettingKey];
     instance.returnTime = [defaults objectForKey:kCommuteReturnTimeSettingKey];
 }
+
+- (void) clear {
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kCommuteOriginSettingKey];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kCommuteDestinationSettingKey];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kCommuteDepartureTimeSettingKey];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kCommuteReturnTimeSettingKey];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kCommuterOriginPlaceNameKey];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kCommuterDestinationPlaceNameKey];
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kCommuterDrivingSettingKey];
+    [[NSUserDefaults standardUserDefaults]  synchronize];
+    [self load];
+}
+
 
 - (BOOL) hasSettings {
     if( instance.home == nil || instance.work == nil || instance.pickupTime == nil || instance.returnTime == nil){
@@ -144,6 +164,7 @@ static VCCommuteManager * instance;
     homeToWorkRide.destinationLongitude = [NSNumber numberWithDouble: instance.work.coordinate.longitude];
     homeToWorkRide.destinationPlaceName = _workPlaceName;
     homeToWorkRide.destinationShortName = @"Work";
+    homeToWorkRide.rideType = kRideRequestTypeCommuter;
     homeToWorkRide.forcedState = kCreatedState;
     NSArray * pickupTimeParts = [_pickupTime componentsSeparatedByString:@":"];
     [f setNumberStyle:NSNumberFormatterDecimalStyle];
@@ -161,6 +182,7 @@ static VCCommuteManager * instance;
     workToHomeRide.destinationLongitude = [NSNumber numberWithDouble: instance.home.coordinate.longitude];
     workToHomeRide.destinationPlaceName = _homePlaceName;
     workToHomeRide.destinationShortName = @"Home";
+    workToHomeRide.rideType = kRideRequestTypeCommuter;
     workToHomeRide.forcedState = kCreatedState;
     pickupTimeParts = [_returnTime componentsSeparatedByString:@":"];
     [f setNumberStyle:NSNumberFormatterDecimalStyle];
@@ -168,13 +190,57 @@ static VCCommuteManager * instance;
     [components setMinute:[[f numberFromString:pickupTimeParts[1]] intValue]];
     workToHomeRide.pickupTime = [gregorian dateFromComponents:components];
     
-    [[VCCoreData managedObjectContext] save:&error];
-    if(error != nil){
-        [WRUtilities criticalError:error];
-    }
+    [VCCoreData saveContext];
+    
+    // And attempt to store the rides on the server
+    [VCRiderApi requestRide:homeToWorkRide success:^(RKObjectRequestOperation *operation, VCRideRequestCreated * response) {
+        homeToWorkRide.uploaded = [NSNumber numberWithBool:YES];
+        homeToWorkRide.ride_id = response.rideId;
+        [VCCoreData saveContext];
+
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        // TODO: if it's a network problem, this needs to be uploaded at a later date
+    }];
+    
+    
+    [VCRiderApi requestRide:workToHomeRide success:^(RKObjectRequestOperation *operation, VCRideRequestCreated * response) {
+        workToHomeRide.uploaded = [NSNumber numberWithBool:YES];
+        workToHomeRide.ride_id = response.rideId;
+        [VCCoreData saveContext];
+
+        
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        // TODO: if it's a network problem, this needs to be uploaded at a later date
+    }];
     
 }
 
+- (void) cancelRide:(Ride *) ride success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure {
+    
+    void ( ^ deleteRide )( Ride * );
+    deleteRide = ^( Ride * ride )
+    {
+        [[VCCoreData managedObjectContext] deleteObject:ride];
+        NSError * error;
+        [[VCCoreData managedObjectContext] save:&error];
+        if(error != nil){
+            [WRUtilities criticalError:error];
+        }
+    };
+    
+    
+    if(ride.ride_id != nil) {
+        [VCRiderApi cancelRide:ride success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            deleteRide(ride);
+            success();
+        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            failure();
+        }];
+    } else {
+        deleteRide(ride);
+        success();
+    }
+}
 
 
 @end

@@ -1052,6 +1052,7 @@
 		F42590731996E53700FA928E /* Voco 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 5.xcdatamodel"; sourceTree = "<group>"; };
 		F42590741996EB4000FA928E /* Voco 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 6.xcdatamodel"; sourceTree = "<group>"; };
 		F42590751996F46B00FA928E /* Voco 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 7.xcdatamodel"; sourceTree = "<group>"; };
+		F42590761997004E00FA928E /* Voco 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 8.xcdatamodel"; sourceTree = "<group>"; };
 		F4354DCF195D0D6A00C06CF7 /* Voco Testing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Voco Testing.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4354DD0195D0D6A00C06CF7 /* Voco Testing-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Voco Testing-Info.plist"; path = "/Users/deepwinter1/software-development/Clients/Will OBrien/voco-ios/Voco/Voco Testing-Info.plist"; sourceTree = "<absolute>"; };
 		F45F7BF4193578DE00A94721 /* VCRiderApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderApi.h; path = API/Rider/VCRiderApi.h; sourceTree = "<group>"; };
@@ -3641,9 +3642,10 @@
 				F42590731996E53700FA928E /* Voco 5.xcdatamodel */,
 				F42590741996EB4000FA928E /* Voco 6.xcdatamodel */,
 				F42590751996F46B00FA928E /* Voco 7.xcdatamodel */,
+				F42590761997004E00FA928E /* Voco 8.xcdatamodel */,
 				F4FA0BFC192BF6BF005D8645 /* Voco.xcdatamodel */,
 			);
-			currentVersion = F42590751996F46B00FA928E /* Voco 7.xcdatamodel */;
+			currentVersion = F42590761997004E00FA928E /* Voco 8.xcdatamodel */;
 			path = Voco.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
