@@ -32,6 +32,10 @@
 
 - (void) deselect {
     self.backgroundImageView.image = [UIImage imageNamed:@"menu-item-bg-select"];
+    self.arrowImageView.image = [UIImage imageNamed:@"menu-submenu-arrow"];
+    self.itemTitleLabel.textColor = [UIColor colorWithRed:162 green:148 blue:144 alpha:1.0];
+    self.itemTimeLabel.textColor = [UIColor colorWithRed:162 green:148 blue:144 alpha:1.0];
+    self.itemDateLabel.textColor = [UIColor colorWithRed:162 green:148 blue:144 alpha:1.0];
 }
 
 @end

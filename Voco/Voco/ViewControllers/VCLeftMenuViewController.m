@@ -90,11 +90,11 @@
     
     long row = [indexPath row];
     
-    int height = 45; // default
+    int height = 44; // default
     switch([[_tableCellList objectAtIndex:row] integerValue]){
             
         case kUserInfoCellInteger:
-            height = 117;
+            height = 116;
             break;
             
     }
@@ -130,6 +130,7 @@
             VCMenuItemTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemTableViewCell" class:[VCMenuItemTableViewCell class]];
             menuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-profile-icon"];
             menuItemTableViewCell.menuItemLabel.text = @"Profile";
+            menuItemTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell = menuItemTableViewCell;
         }
             break;
@@ -139,6 +140,7 @@
             VCMenuItemTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemTableViewCell" class:[VCMenuItemTableViewCell class]];
             menuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-schedule-icon"];
             menuItemTableViewCell.menuItemLabel.text = @"Schedule";
+            menuItemTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell = menuItemTableViewCell;
         }
             break;
@@ -152,6 +154,8 @@
             subMenuItemTableViewCell.itemTitleLabel.text = [NSString stringWithFormat:@"%@ to %@", ride.originShortName, ride.destinationShortName];
             subMenuItemTableViewCell.itemDateLabel.text = [ride.pickupTime monthAndDay];
             subMenuItemTableViewCell.itemTimeLabel.text = [ride.pickupTime time];
+            subMenuItemTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
             cell = subMenuItemTableViewCell;
         }
             break;
@@ -159,6 +163,7 @@
         default:
         {
             VCMenuItemNotConfiguredTableViewCell * menuItemNotConfiguredTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemNotConfiguredTableViewCell" class:[VCMenuItemNotConfiguredTableViewCell class]];
+            menuItemNotConfiguredTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell = menuItemNotConfiguredTableViewCell;
         }
             break;
@@ -168,6 +173,7 @@
             VCMenuItemTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemTableViewCell" class:[VCMenuItemTableViewCell class]];
             menuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-map-icon"];
             menuItemTableViewCell.menuItemLabel.text = @"Map";
+            menuItemTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell = menuItemTableViewCell;
         }
             break;
@@ -177,6 +183,7 @@
             VCMenuItemTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemTableViewCell" class:[VCMenuItemTableViewCell class]];
             menuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-payments-icon"];
             menuItemTableViewCell.menuItemLabel.text = @"Payment Settings";
+            menuItemTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell = menuItemTableViewCell;
         }
             break;
@@ -185,6 +192,7 @@
         {VCMenuItemTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemTableViewCell" class:[VCMenuItemTableViewCell class]];
             menuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-receipts-icon"];
             menuItemTableViewCell.menuItemLabel.text = @"Receipts";
+            menuItemTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell = menuItemTableViewCell;
         }
             break;
@@ -193,14 +201,15 @@
         {VCMenuItemTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemTableViewCell" class:[VCMenuItemTableViewCell class]];
             menuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-support-icon"];
             menuItemTableViewCell.menuItemLabel.text = @"Support";
+            menuItemTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell = menuItemTableViewCell;
         }
             break;
             
             /* case kModeCellInteger:
              {VCMenuItemModeTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemModeTableViewCell" class:[VCMenuItemModeTableViewCell class]];
-             menuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-map-icon"];
-             menuItemTableViewCell.menuItemLabel.text = @"Map";
+             menuItemTableViewCell.menuItemLabel.text = @"Driver Mode";
+             menuItemTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
              cell = menuItemTableViewCell;
              }
              break;*/
@@ -227,9 +236,9 @@
     if([cell isKindOfClass:[VCMenuItemTableViewCell class]]) {
         [(VCMenuItemTableViewCell*) cell deselect];
     }
-    /* else if([cell isKindOfClass:[VCSubMenuItemTableViewCell class]]){
+    else if([cell isKindOfClass:[VCSubMenuItemTableViewCell class]]){
      [(VCSubMenuItemTableViewCell*) cell deselect];
-     }*/
+     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -244,6 +253,8 @@
             //TODO: Put Actual Profile In Here
             VCRiderProfileViewController * profileViewController = [[VCRiderProfileViewController alloc] init];
             [[VCInterfaceManager instance] setCenterViewControllers: @[profileViewController]];
+            VCMenuItemTableViewCell * cell = (VCMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
+            [cell select];
         }
             break;
             
@@ -261,6 +272,9 @@
         {
             if(![_tableCellList containsObject:kScheduleItemCell]){
                 [self showScheduleItems];
+                
+                VCMenuItemTableViewCell * cell = (VCMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
+                [cell select];
             }
         }
             break;
