@@ -72,7 +72,19 @@
     [super viewDidLoad];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
-    
+    // Listen for notifications about updated rides
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scheduleUpdated:) name:@"schedule_updated" object:nil];
+}
+
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void) scheduleUpdated:(NSNotification *) notification {
+    // just reload the table ?
+    [self hideScheduleItems];
+    [self showScheduleItems];
+    [_tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -308,8 +320,7 @@
     
 }
 
-- (void) showScheduleItems {
-    
+- (void) loadScheduleItems {
     NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ride"];
     NSPredicate * predicate = [NSPredicate predicateWithFormat:@"savedState IN %@ ", @[kCreatedState, kRequestedState, kScheduledState]];
     [fetch setPredicate:predicate];
@@ -317,21 +328,31 @@
     [fetch setSortDescriptors:@[sort]];
     NSError * error;
     _scheduleItems = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
+    _scheduleItemsList = [NSMutableArray array];
+    for(int i=0; i<[_scheduleItems count]; i++){
+        [_scheduleItemsList addObject:kScheduleItemCell];
+    }
+    
+    long index = [_tableCellList indexOfObject:kScheduleCell];
+    NSRange range;
+    range.location = index + 1;
+    range.length = [_scheduleItemsList count];
+    [_tableCellList insertObjects:_scheduleItemsList atIndexes:[NSIndexSet indexSetWithIndexesInRange:range]];
+
+}
+
+- (void) showScheduleItems {
+    [self loadScheduleItems];
     
     if([_scheduleItems count] > 0) {
         
         long index = [_tableCellList indexOfObject:kScheduleCell];
-        _scheduleItemsList = [NSMutableArray array];
         NSMutableArray * indexPaths = [NSMutableArray array];
         for(int i=0; i<[_scheduleItems count]; i++){
-            [_scheduleItemsList addObject:kScheduleItemCell];
             [indexPaths addObject:[NSIndexPath indexPathForRow: index+i+1 inSection:0]];
         }
         
-        NSRange range;
-        range.location = index + 1;
-        range.length = [_scheduleItemsList count];
-        [_tableCellList insertObjects:_scheduleItemsList atIndexes:[NSIndexSet indexSetWithIndexesInRange:range]];
+       
         [_tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
         
     }

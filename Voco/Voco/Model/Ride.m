@@ -40,6 +40,7 @@
 @dynamic destinationShortName;
 @dynamic confirmed;
 @dynamic driving;
+@dynamic trip_id;
 
 + (void)createMappings:(RKObjectManager *)objectManager{
     RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Ride"
@@ -61,7 +62,8 @@
                                                         @"destination_place_name" : @"destinationPlaceName",
                                                         @"destination_latitude" : @"destinationLatitude",
                                                         @"destination_longitude" : @"destinationLongitude",
-                                                        @"driving" : @"driving"
+                                                        @"driving" : @"driving",
+                                                        @"trip_id" : @"trip_id"
                                                         }];
     
     entityMapping.identificationAttributes = @[ @"ride_id" ]; // for riders ride_id is the primary key

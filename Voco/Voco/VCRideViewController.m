@@ -18,6 +18,8 @@
 #import "VCRideDetailsView.h"
 #import "VCRideDetailsConfirmationView.h"
 #import "VCRideDetailsHudView.h"
+#import "NSDate+Pretty.h"
+#import "Driver.h"
 
 #define kEditCommuteStatePickupTime 1000
 #define kEditCommuteStateEditHome 1001
@@ -106,15 +108,14 @@
         _appeared = NO;
         
         _morningOptions = @[ @"Select Pickup Time",
-                             @"6:00", @"6:30", @"7:00", @"7:30",
-                             @"8:00", @"8:30", @"9:00", @"9:30",
-                             @"10:00", @"10:30", @"11:00", @"11:30",
-                             @"12:00"];
+                             @"7:00", @"7:15", @"7:30", @"7:45",
+                             @"8:00", @"8:25", @"8:30", @"8:45", @"9:00"
+                             ];
         _eveningOptions = @[ @"Select Return Time",
-                             @"6:00", @"6:30", @"7:00", @"7:30",
-                             @"8:00", @"8:30", @"9:00", @"9:30",
-                             @"10:00", @"10:30", @"11:00", @"11:30",
-                             @"12:00"];
+                             @"4:00", @"4:15", @"4:30", @"4:45",
+                             @"5:00", @"5:15", @"5:30", @"5:45",
+                             @"6:00", @"6:15", @"6:30", @"6:45",
+                             @"7:00"];
         
         _step = kStepSetDepartureLocation;
         
@@ -209,6 +210,9 @@
     } else if([_ride.confirmed isEqualToNumber:[NSNumber numberWithBool:YES]]) {
         [self.view addSubview:_rideDetailsHud];
     } else {
+        _rideDetailsConfirmation.pickupTimeLabel.text = [_ride.pickupTime time];
+        _rideDetailsConfirmation.driverNameLabel.text = [_ride.driver fullName];
+        _rideDetailsConfirmation.cardNumberLabel.text =  @"LOADING...";
         [self.view addSubview:_rideDetailsConfirmation];
     }
     
@@ -495,6 +499,7 @@
                 {
                     [[VCCommuteManager instance] cancelRide:_ride success:^{
                         [self resetInterface];
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"schedule_updated" object:nil userInfo:@{}];
                     } failure:^{
                         // do nothing
                     }];

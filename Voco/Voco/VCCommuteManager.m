@@ -169,9 +169,10 @@ static VCCommuteManager * instance;
     homeToWorkRide.driving = [NSNumber numberWithBool:_driving];;
     NSArray * pickupTimeParts = [_pickupTime componentsSeparatedByString:@":"];
     [f setNumberStyle:NSNumberFormatterDecimalStyle];
+    components = [[NSDateComponents alloc] init];
     [components setHour:[[f numberFromString:pickupTimeParts[0]] intValue] ];
     [components setMinute:[[f numberFromString:pickupTimeParts[1]] intValue]];
-    homeToWorkRide.pickupTime = [gregorian dateFromComponents:components];
+    homeToWorkRide.pickupTime = [gregorian dateByAddingComponents:components toDate:thisDate options:0];
     
     Ride * workToHomeRide = (Ride *) [NSEntityDescription insertNewObjectForEntityForName:@"Ride" inManagedObjectContext:[VCCoreData managedObjectContext]];
     workToHomeRide.rideDate = tomorrow;
@@ -188,29 +189,29 @@ static VCCommuteManager * instance;
     workToHomeRide.driving = [NSNumber numberWithBool:_driving];
     pickupTimeParts = [_returnTime componentsSeparatedByString:@":"];
     [f setNumberStyle:NSNumberFormatterDecimalStyle];
+    components = [[NSDateComponents alloc] init];
     [components setHour:[[f numberFromString:pickupTimeParts[0]] intValue] + 12 ];
     [components setMinute:[[f numberFromString:pickupTimeParts[1]] intValue]];
-    workToHomeRide.pickupTime = [gregorian dateFromComponents:components];
+    workToHomeRide.pickupTime = [gregorian dateByAddingComponents:components toDate:thisDate options:0];
     
     [VCCoreData saveContext];
     
     // And attempt to store the rides on the server
     [VCRiderApi requestRide:homeToWorkRide success:^(RKObjectRequestOperation *operation, VCRideRequestCreated * response) {
         homeToWorkRide.uploaded = [NSNumber numberWithBool:YES];
-        homeToWorkRide.ride_id = response.rideId;
         [VCCoreData saveContext];
-
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        // TODO: if it's a network problem, this needs to be uploaded at a later date
-    }];
-    
-    
-    [VCRiderApi requestRide:workToHomeRide success:^(RKObjectRequestOperation *operation, VCRideRequestCreated * response) {
-        workToHomeRide.uploaded = [NSNumber numberWithBool:YES];
-        workToHomeRide.ride_id = response.rideId;
-        [VCCoreData saveContext];
-
         
+        workToHomeRide.trip_id = homeToWorkRide.trip_id;
+        [VCCoreData saveContext];
+
+        [VCRiderApi requestRide:workToHomeRide success:^(RKObjectRequestOperation *operation, VCRideRequestCreated * response) {
+            workToHomeRide.uploaded = [NSNumber numberWithBool:YES];
+            [VCCoreData saveContext];
+            
+        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            // TODO: if it's a network problem, this needs to be uploaded at a later date
+        }];
+
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         // TODO: if it's a network problem, this needs to be uploaded at a later date
     }];

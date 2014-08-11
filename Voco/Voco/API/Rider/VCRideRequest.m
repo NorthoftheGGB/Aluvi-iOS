@@ -22,7 +22,8 @@
                                                                  @"destination_longitude" : @"destinationLongitude",
                                                                  @"destination_place_name" : @"destinationPlaceName",
                                                                  @"pickup_time" : @"pickupTime",
-                                                                 @"driving" : @"driving"
+                                                                 @"driving" : @"driving",
+                                                                 @"trip_id" : @"tripId"
                                                                 }];
     return rideRequestMapping;
 
@@ -39,6 +40,7 @@
     rideRequest.destinationPlaceName = ride.destinationPlaceName;
     rideRequest.pickupTime = ride.pickupTime;
     rideRequest.driving = ride.driving;
+    rideRequest.tripId = ride.trip_id;
     return rideRequest;
 }
 

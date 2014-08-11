@@ -14,7 +14,10 @@
 + (RKObjectMapping *) getMapping {
 
     RKObjectMapping * mapping = [RKObjectMapping mappingForClass:[VCRideRequestCreated class] ];
-    [mapping addAttributeMappingsFromDictionary:@{@"ride_id": @"rideId"}];
+    [mapping addAttributeMappingsFromDictionary:@{
+                                                  @"ride_id": @"rideId",
+                                                  @"trip_id": @"tripId"
+                                                  }];
     return mapping;
 }
 
