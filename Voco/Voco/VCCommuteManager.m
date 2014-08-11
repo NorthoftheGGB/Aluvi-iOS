@@ -169,9 +169,10 @@ static VCCommuteManager * instance;
     homeToWorkRide.driving = [NSNumber numberWithBool:_driving];;
     NSArray * pickupTimeParts = [_pickupTime componentsSeparatedByString:@":"];
     [f setNumberStyle:NSNumberFormatterDecimalStyle];
+    components = [[NSDateComponents alloc] init];
     [components setHour:[[f numberFromString:pickupTimeParts[0]] intValue] ];
     [components setMinute:[[f numberFromString:pickupTimeParts[1]] intValue]];
-    homeToWorkRide.pickupTime = [gregorian dateFromComponents:components];
+    homeToWorkRide.pickupTime = [gregorian dateByAddingComponents:components toDate:thisDate options:0];
     
     Ride * workToHomeRide = (Ride *) [NSEntityDescription insertNewObjectForEntityForName:@"Ride" inManagedObjectContext:[VCCoreData managedObjectContext]];
     workToHomeRide.rideDate = tomorrow;
@@ -188,9 +189,10 @@ static VCCommuteManager * instance;
     workToHomeRide.driving = [NSNumber numberWithBool:_driving];
     pickupTimeParts = [_returnTime componentsSeparatedByString:@":"];
     [f setNumberStyle:NSNumberFormatterDecimalStyle];
+    components = [[NSDateComponents alloc] init];
     [components setHour:[[f numberFromString:pickupTimeParts[0]] intValue] + 12 ];
     [components setMinute:[[f numberFromString:pickupTimeParts[1]] intValue]];
-    workToHomeRide.pickupTime = [gregorian dateFromComponents:components];
+    workToHomeRide.pickupTime = [gregorian dateByAddingComponents:components toDate:thisDate options:0];
     
     [VCCoreData saveContext];
     
@@ -206,7 +208,6 @@ static VCCommuteManager * instance;
             workToHomeRide.uploaded = [NSNumber numberWithBool:YES];
             [VCCoreData saveContext];
             
-            
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             // TODO: if it's a network problem, this needs to be uploaded at a later date
         }];
@@ -214,8 +215,6 @@ static VCCommuteManager * instance;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         // TODO: if it's a network problem, this needs to be uploaded at a later date
     }];
-    
- 
     
 }
 
