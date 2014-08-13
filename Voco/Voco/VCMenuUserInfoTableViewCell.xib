@@ -51,6 +51,7 @@
                     </button>
                 </subviews>
             </tableViewCellContentView>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="logoutButton" destination="xfh-ir-rk4" id="BVt-QS-I2P"/>
                 <outlet property="userFullName" destination="CiU-JF-wLw" id="cEs-Vb-ZRQ"/>

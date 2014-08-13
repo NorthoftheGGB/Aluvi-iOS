@@ -72,6 +72,7 @@
     [super viewDidLoad];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
+    
     // Listen for notifications about updated rides
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scheduleUpdated:) name:@"schedule_updated" object:nil];
 }
@@ -97,6 +98,7 @@
     return [_tableCellList count];
 }
 
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
@@ -118,6 +120,11 @@
     
     long row = [indexPath row];
     UITableViewCell * cell;
+    
+    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"menu-bg@2x.png"]];
+    [tempImageView setFrame:self.tableView.frame];
+    
+    self.tableView.backgroundView = tempImageView;
     
     long tag = [[_tableCellList objectAtIndex:row] integerValue];
     switch(tag){

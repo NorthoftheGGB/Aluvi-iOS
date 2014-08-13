@@ -15,22 +15,29 @@
             <rect key="frame" x="0.0" y="0.0" width="272" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fc9-No-tkS">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="nvV-Ei-TwS">
+                    <rect key="frame" x="0.0" y="20" width="272" height="480"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fc9-No-tkS">
                     <rect key="frame" x="0.0" y="20" width="272" height="460"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <color key="sectionIndexBackgroundColor" red="0.2470588386" green="0.23921570180000001" blue="0.23529413339999999" alpha="1" colorSpace="deviceRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="lWO-Ot-Idl"/>
                         <outlet property="delegate" destination="-1" id="pLR-hu-7kd"/>
                     </connections>
                 </tableView>
             </subviews>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="fc9-No-tkS" secondAttribute="bottom" id="0IJ-cX-tZk"/>
                 <constraint firstAttribute="trailing" secondItem="fc9-No-tkS" secondAttribute="trailing" id="2QQ-8p-VJH"/>
+                <constraint firstAttribute="trailing" secondItem="nvV-Ei-TwS" secondAttribute="trailing" id="8CB-sR-ffr"/>
+                <constraint firstAttribute="bottom" secondItem="nvV-Ei-TwS" secondAttribute="bottom" constant="-20" id="D53-Pw-bWY"/>
+                <constraint firstItem="nvV-Ei-TwS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ovs-a4-0fL"/>
+                <constraint firstItem="nvV-Ei-TwS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="dFe-la-4d9"/>
                 <constraint firstItem="fc9-No-tkS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="p52-2l-8Rd"/>
                 <constraint firstItem="fc9-No-tkS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="rXS-E7-ChS"/>
             </constraints>
@@ -38,4 +45,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
+    <resources>
+        <image name="menu-bg.png" width="62" height="127"/>
+    </resources>
 </document>

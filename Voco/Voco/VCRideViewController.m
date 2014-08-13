@@ -206,6 +206,11 @@
     [self addDestinationAnnotation: [_ride destinationLocation]];
     [self showSuggestedRoute: [_ride originLocation] to:[_ride destinationLocation]];
     if([@[kCreatedState, kRequestedState] containsObject:_ride.state]){
+        /*CGRect waitingScreenFrame = _waitingScreen.frame;
+        waitingScreenFrame.origin.x = 0;
+        waitingScreenFrame.origin.y = self.view.frame.size.height - 101;
+        _waitingScreen.frame = waitingScreenFrame;*/
+        
         [self.view addSubview:self.waitingScreen];
     } else if([_ride.confirmed isEqualToNumber:[NSNumber numberWithBool:YES]]) {
         [self.view addSubview:_rideDetailsHud];
