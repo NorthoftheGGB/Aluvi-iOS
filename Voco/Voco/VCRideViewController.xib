@@ -166,15 +166,15 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
         <view contentMode="scaleToFill" id="RWM-tO-NBZ" userLabel="Ride Details Confirmation" customClass="VCRideDetailsConfirmationView">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="44" width="320" height="436"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="devon.png" translatesAutoresizingMaskIntoConstraints="NO" id="vBd-Mx-Cx3" userLabel="user Image View">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="devon.png" translatesAutoresizingMaskIntoConstraints="NO" id="vBd-Mx-Cx3" userLabel="user Image View">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="276"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient.png" translatesAutoresizingMaskIntoConstraints="NO" id="iS9-Iw-Jn9" userLabel="gradient Image View">
-                    <rect key="frame" x="0.0" y="270" width="320" height="90"/>
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient.png" translatesAutoresizingMaskIntoConstraints="NO" id="iS9-Iw-Jn9" userLabel="gradient Image View">
+                    <rect key="frame" x="0.0" y="138" width="320" height="90"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="320" id="0UV-UB-RKq"/>
@@ -182,11 +182,11 @@
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="confirmation-hud.png" translatesAutoresizingMaskIntoConstraints="NO" id="oc4-Pp-acs">
-                    <rect key="frame" x="0.0" y="308" width="320" height="260"/>
+                    <rect key="frame" x="0.0" y="176" width="320" height="260"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nx0-ot-14p" customClass="VCButtonStandardStyle">
-                    <rect key="frame" x="0.0" y="514" width="320" height="46"/>
+                    <rect key="frame" x="0.0" y="382" width="320" height="46"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="46" id="0Hb-gg-bU5"/>
@@ -213,7 +213,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup Time :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smm-lU-ouO" customClass="VCLabel">
-                    <rect key="frame" x="13" y="422" width="97" height="21"/>
+                    <rect key="frame" x="13" y="290" width="97" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="8Qs-10-YS3"/>
@@ -229,7 +229,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Car Type :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9u-kb-YvT" customClass="VCLabel">
-                    <rect key="frame" x="20" y="447" width="90" height="21"/>
+                    <rect key="frame" x="20" y="315" width="90" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="90" id="VT2-Ux-EHy"/>
@@ -245,7 +245,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="License # :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iha-zj-PjZ" customClass="VCLabel">
-                    <rect key="frame" x="20" y="472" width="90" height="21"/>
+                    <rect key="frame" x="20" y="340" width="90" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="90" id="BoR-iJ-5Ay"/>
@@ -261,7 +261,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="est. fare" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1nW-T7-6PG" customClass="VCLabel">
-                    <rect key="frame" x="33" y="372" width="57" height="21"/>
+                    <rect key="frame" x="33" y="240" width="57" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="57" id="cyN-uO-WvZ"/>
@@ -277,7 +277,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$44" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXb-UY-V0U" customClass="VCLabelBold">
-                    <rect key="frame" x="25" y="331" width="72" height="45"/>
+                    <rect key="frame" x="25" y="199" width="72" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="J9q-Vy-IHu"/>
@@ -293,7 +293,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="June 18, 99:99 AM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zgy-fF-cwL" customClass="VCLabel">
-                    <rect key="frame" x="118" y="422" width="182" height="21"/>
+                    <rect key="frame" x="118" y="290" width="182" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="182" id="ZVG-hb-om7"/>
@@ -309,7 +309,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bullwinkle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R4l-5d-Vc0" customClass="VCLabel">
-                    <rect key="frame" x="118" y="447" width="182" height="21"/>
+                    <rect key="frame" x="118" y="315" width="182" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="182" id="Mvl-dT-OzF"/>
@@ -325,7 +325,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999999" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMV-AV-c4O" customClass="VCLabel">
-                    <rect key="frame" x="118" y="472" width="182" height="21"/>
+                    <rect key="frame" x="118" y="340" width="182" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="L0N-R3-MP7"/>
@@ -341,7 +341,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i6s-VW-kkM">
-                    <rect key="frame" x="118" y="372" width="32" height="20"/>
+                    <rect key="frame" x="118" y="240" width="32" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="9JL-UA-YKB"/>
@@ -349,7 +349,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyCard" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLf-hD-OJd" customClass="VCLabel">
-                    <rect key="frame" x="158" y="372" width="70" height="21"/>
+                    <rect key="frame" x="158" y="240" width="70" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="70" id="CG1-pv-aye"/>
@@ -365,7 +365,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*9999" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aeQ-Xu-ULg" customClass="VCLabel">
-                    <rect key="frame" x="236" y="372" width="45" height="21"/>
+                    <rect key="frame" x="236" y="240" width="45" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="QOJ-GU-ZFs"/>
@@ -381,7 +381,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Devon Drakesbad" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CIS-vw-GPg" customClass="VCLabelBold">
-                    <rect key="frame" x="118" y="333" width="196" height="24"/>
+                    <rect key="frame" x="118" y="201" width="196" height="24"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="iSg-jd-4RL"/>
@@ -412,7 +412,7 @@
                 <constraint firstItem="oc4-Pp-acs" firstAttribute="top" secondItem="iS9-Iw-Jn9" secondAttribute="bottom" constant="-52" id="EX9-k8-brn"/>
                 <constraint firstItem="iha-zj-PjZ" firstAttribute="top" secondItem="f9u-kb-YvT" secondAttribute="bottom" constant="4" id="Gwe-Yj-MJT"/>
                 <constraint firstItem="1nW-T7-6PG" firstAttribute="top" secondItem="UXb-UY-V0U" secondAttribute="bottom" constant="-4" id="IC6-Fe-U4t"/>
-                <constraint firstItem="iS9-Iw-Jn9" firstAttribute="bottom" secondItem="vBd-Mx-Cx3" secondAttribute="bottom" constant="84" id="IXb-K1-jOV"/>
+                <constraint firstItem="iS9-Iw-Jn9" firstAttribute="bottom" secondItem="vBd-Mx-Cx3" secondAttribute="bottom" constant="-48" id="IXb-K1-jOV"/>
                 <constraint firstItem="aeQ-Xu-ULg" firstAttribute="leading" secondItem="fLf-hD-OJd" secondAttribute="trailing" constant="8" id="Ids-Xg-edF"/>
                 <constraint firstAttribute="trailing" secondItem="Zgy-fF-cwL" secondAttribute="trailing" constant="20" id="LLE-zD-ixM"/>
                 <constraint firstItem="iha-zj-PjZ" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" constant="20" id="Ndf-N4-qIg"/>
@@ -424,6 +424,7 @@
                 <constraint firstItem="f9u-kb-YvT" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" constant="20" id="gJM-Ij-2Q4"/>
                 <constraint firstItem="iS9-Iw-Jn9" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" id="kdl-Kc-yCE"/>
                 <constraint firstItem="smm-lU-ouO" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" constant="13" id="lTx-Ju-CeT"/>
+                <constraint firstItem="oc4-Pp-acs" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" id="mgP-0D-JzM"/>
                 <constraint firstItem="fLf-hD-OJd" firstAttribute="leading" secondItem="i6s-VW-kkM" secondAttribute="trailing" constant="8" id="rNL-Po-ZTB"/>
                 <constraint firstAttribute="bottom" secondItem="nx0-ot-14p" secondAttribute="bottom" constant="8" id="t9G-7J-dC5"/>
                 <constraint firstItem="nx0-ot-14p" firstAttribute="top" secondItem="iha-zj-PjZ" secondAttribute="bottom" constant="21" id="tea-6q-pzv"/>
@@ -431,7 +432,8 @@
                 <constraint firstAttribute="trailing" secondItem="oc4-Pp-acs" secondAttribute="trailing" id="xun-dq-0Ll"/>
                 <constraint firstItem="oc4-Pp-acs" firstAttribute="top" secondItem="i6s-VW-kkM" secondAttribute="bottom" constant="-84" id="ymN-Rt-iAJ"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="carTypeLabel" destination="R4l-5d-Vc0" id="AfN-nc-QfH"/>
                 <outlet property="cardNicknamelabel" destination="fLf-hD-OJd" id="4yz-9d-26f"/>
