@@ -10,7 +10,7 @@
 #import "VCRideViewController.h"
 #import "VCDriveViewController.h"
 #import "VCInterfaceManager.h"
-#import "VCRiderProfileViewController.h"
+#import "VCProfileViewController.h"
 #import "VCMenuItemTableViewCell.h"
 #import "VCMenuUserInfoTableViewCell.h"
 #import "VCMenuDriverClockOnTableViewCell.h"
@@ -270,7 +270,7 @@
         case kProfileCellInteger:
         {
             //TODO: Put Actual Profile In Here
-            VCRiderProfileViewController * profileViewController = [[VCRiderProfileViewController alloc] init];
+            VCProfileViewController * profileViewController = [[VCProfileViewController alloc] init];
             [[VCInterfaceManager instance] setCenterViewControllers: @[profileViewController]];
             VCMenuItemTableViewCell * cell = (VCMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
             [cell select];
