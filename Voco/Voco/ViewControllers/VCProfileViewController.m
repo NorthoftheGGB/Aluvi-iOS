@@ -71,7 +71,7 @@
     _firstNameTextField.text = profile.firstName;
     _lastNameTextField.text = profile.lastName;
     _emailTextField.text = profile.email;
-    //TODO: phone field
+    _phoneTextField.text = profile.phone;
     _passwordTextField.text = @"********";
 
 UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
