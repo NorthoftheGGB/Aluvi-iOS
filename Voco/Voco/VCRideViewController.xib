@@ -170,7 +170,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="devon.png" translatesAutoresizingMaskIntoConstraints="NO" id="vBd-Mx-Cx3" userLabel="user Image View">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="276"/>
+                    <rect key="frame" x="0.0" y="-48" width="320" height="276"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient.png" translatesAutoresizingMaskIntoConstraints="NO" id="iS9-Iw-Jn9" userLabel="gradient Image View">
@@ -412,7 +412,6 @@
                 <constraint firstItem="oc4-Pp-acs" firstAttribute="top" secondItem="iS9-Iw-Jn9" secondAttribute="bottom" constant="-52" id="EX9-k8-brn"/>
                 <constraint firstItem="iha-zj-PjZ" firstAttribute="top" secondItem="f9u-kb-YvT" secondAttribute="bottom" constant="4" id="Gwe-Yj-MJT"/>
                 <constraint firstItem="1nW-T7-6PG" firstAttribute="top" secondItem="UXb-UY-V0U" secondAttribute="bottom" constant="-4" id="IC6-Fe-U4t"/>
-                <constraint firstItem="iS9-Iw-Jn9" firstAttribute="bottom" secondItem="vBd-Mx-Cx3" secondAttribute="bottom" constant="-48" id="IXb-K1-jOV"/>
                 <constraint firstItem="aeQ-Xu-ULg" firstAttribute="leading" secondItem="fLf-hD-OJd" secondAttribute="trailing" constant="8" id="Ids-Xg-edF"/>
                 <constraint firstAttribute="trailing" secondItem="Zgy-fF-cwL" secondAttribute="trailing" constant="20" id="LLE-zD-ixM"/>
                 <constraint firstItem="iha-zj-PjZ" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" constant="20" id="Ndf-N4-qIg"/>
@@ -428,6 +427,7 @@
                 <constraint firstItem="fLf-hD-OJd" firstAttribute="leading" secondItem="i6s-VW-kkM" secondAttribute="trailing" constant="8" id="rNL-Po-ZTB"/>
                 <constraint firstAttribute="bottom" secondItem="nx0-ot-14p" secondAttribute="bottom" constant="8" id="t9G-7J-dC5"/>
                 <constraint firstItem="nx0-ot-14p" firstAttribute="top" secondItem="iha-zj-PjZ" secondAttribute="bottom" constant="21" id="tea-6q-pzv"/>
+                <constraint firstAttribute="bottom" secondItem="vBd-Mx-Cx3" secondAttribute="bottom" constant="208" id="tvD-c1-LBh"/>
                 <constraint firstItem="oc4-Pp-acs" firstAttribute="top" secondItem="fLf-hD-OJd" secondAttribute="bottom" constant="-85" id="uEv-S8-Ba3"/>
                 <constraint firstAttribute="trailing" secondItem="oc4-Pp-acs" secondAttribute="trailing" id="xun-dq-0Ll"/>
                 <constraint firstItem="oc4-Pp-acs" firstAttribute="top" secondItem="i6s-VW-kkM" secondAttribute="bottom" constant="-84" id="ymN-Rt-iAJ"/>
