@@ -26,7 +26,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BQ7-4F-qNh">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQ7-4F-qNh">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <constraints>
@@ -37,17 +37,18 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="BQ7-4F-qNh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ByN-Le-dUA"/>
+                <constraint firstAttribute="bottom" secondItem="BQ7-4F-qNh" secondAttribute="bottom" id="GHR-6w-Nji"/>
                 <constraint firstItem="BQ7-4F-qNh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="j3x-7I-EBH"/>
+                <constraint firstItem="BQ7-4F-qNh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="of3-aw-fDq"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
         <view contentMode="scaleToFill" id="bC0-fy-Fem">
-            <rect key="frame" x="0.0" y="64" width="320" height="748"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="682"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hHo-Y7-gSD" userLabel="User Image View">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="devon.png" translatesAutoresizingMaskIntoConstraints="NO" id="hHo-Y7-gSD" userLabel="User Image View">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="324"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" red="0.98593795299999998" green="0.44947996109999999" blue="0.67937132219999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -185,15 +186,23 @@
                         <action selector="didTapSaveChanges:" destination="-1" eventType="touchUpInside" id="ME0-1V-bVu"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="v0.0b0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faT-jo-LTb">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v0.0b0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faT-jo-LTb">
                     <rect key="frame" x="267" y="661" width="45" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="Dnt-RK-2cs"/>
+                        <constraint firstAttribute="width" constant="45" id="zZc-WK-L21"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6j1-PT-iSR" customClass="VCButtonStandardStyle">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6j1-PT-iSR" customClass="VCButtonStandardStyle">
                     <rect key="frame" x="126" y="657" width="69" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="8f3-tq-UPt"/>
+                        <constraint firstAttribute="width" constant="69" id="dIR-JY-GjB"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <state key="normal" title="LOGOUT">
                         <color key="titleColor" red="0.72941178080000002" green="0.68235296010000002" blue="0.67058825489999996" alpha="1" colorSpace="deviceRGB"/>
@@ -226,19 +235,21 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="GJP-fi-epG" firstAttribute="top" secondItem="5mb-IJ-dxQ" secondAttribute="bottom" constant="8" id="1Qi-KQ-1ZC"/>
+                <constraint firstAttribute="trailing" secondItem="faT-jo-LTb" secondAttribute="trailing" constant="8" id="1Zs-ty-CC6"/>
                 <constraint firstItem="h3d-jf-48E" firstAttribute="top" secondItem="xqJ-t5-ilK" secondAttribute="bottom" constant="-90" id="4PJ-Fi-QLc"/>
                 <constraint firstItem="hHo-Y7-gSD" firstAttribute="leading" secondItem="bC0-fy-Fem" secondAttribute="leading" id="9Ld-MO-1Y4"/>
+                <constraint firstAttribute="bottom" secondItem="faT-jo-LTb" secondAttribute="bottom" id="DcZ-G8-u6Z"/>
+                <constraint firstAttribute="bottom" secondItem="6j1-PT-iSR" secondAttribute="bottom" constant="-5" id="G6L-H5-BPI"/>
                 <constraint firstItem="yjC-Yy-Tgp" firstAttribute="leading" secondItem="bC0-fy-Fem" secondAttribute="leading" constant="22" id="KTf-qW-76J"/>
                 <constraint firstItem="5mb-IJ-dxQ" firstAttribute="top" secondItem="AZs-m8-oR6" secondAttribute="bottom" constant="8" id="Kxp-pr-vfG"/>
                 <constraint firstItem="kLq-EE-apG" firstAttribute="top" secondItem="xqJ-t5-ilK" secondAttribute="bottom" constant="3" id="M2n-fr-lSW"/>
                 <constraint firstItem="ljN-fv-dwb" firstAttribute="leading" secondItem="bC0-fy-Fem" secondAttribute="leading" constant="9" id="Mjl-86-lU2"/>
                 <constraint firstItem="h3d-jf-48E" firstAttribute="top" secondItem="fYN-K8-URI" secondAttribute="top" constant="-152" id="Mmp-3Q-4zc"/>
+                <constraint firstItem="6j1-PT-iSR" firstAttribute="leading" secondItem="bC0-fy-Fem" secondAttribute="leading" constant="126" id="RD3-fL-h6q"/>
                 <constraint firstItem="GJP-fi-epG" firstAttribute="leading" secondItem="bC0-fy-Fem" secondAttribute="leading" constant="9" id="RHi-cB-ibe"/>
                 <constraint firstItem="AZs-m8-oR6" firstAttribute="top" secondItem="ljN-fv-dwb" secondAttribute="bottom" constant="8" id="XAf-bU-205"/>
                 <constraint firstItem="kLq-EE-apG" firstAttribute="leading" secondItem="bC0-fy-Fem" secondAttribute="leading" constant="37" id="XjD-Ew-834"/>
                 <constraint firstItem="h3d-jf-48E" firstAttribute="leading" secondItem="bC0-fy-Fem" secondAttribute="leading" id="bYy-SO-1zi"/>
-                <constraint firstItem="hHo-Y7-gSD" firstAttribute="top" secondItem="bC0-fy-Fem" secondAttribute="top" id="cak-Ba-hrk"/>
-                <constraint firstAttribute="bottom" secondItem="h3d-jf-48E" secondAttribute="bottom" constant="185" id="fQ1-PM-IuV"/>
                 <constraint firstItem="AZs-m8-oR6" firstAttribute="leading" secondItem="bC0-fy-Fem" secondAttribute="leading" constant="9" id="geN-Kz-umD"/>
                 <constraint firstItem="fYN-K8-URI" firstAttribute="leading" secondItem="bC0-fy-Fem" secondAttribute="leading" constant="9" id="hAn-6J-Czy"/>
                 <constraint firstItem="xqJ-t5-ilK" firstAttribute="leading" secondItem="bC0-fy-Fem" secondAttribute="leading" constant="43" id="hYM-Vq-laG"/>
@@ -246,15 +257,18 @@
                 <constraint firstItem="yjC-Yy-Tgp" firstAttribute="top" secondItem="h3d-jf-48E" secondAttribute="top" constant="45" id="o1f-Lf-ekN"/>
                 <constraint firstItem="ljN-fv-dwb" firstAttribute="top" secondItem="Qf9-53-MIF" secondAttribute="bottom" constant="8" id="srl-Rk-ab8"/>
                 <constraint firstItem="Qf9-53-MIF" firstAttribute="top" secondItem="fYN-K8-URI" secondAttribute="bottom" constant="8" id="vEx-eS-dYm"/>
+                <constraint firstItem="hHo-Y7-gSD" firstAttribute="top" secondItem="6j1-PT-iSR" secondAttribute="top" constant="-657" id="vyE-1C-ZMg"/>
+                <constraint firstItem="hHo-Y7-gSD" firstAttribute="top" secondItem="bC0-fy-Fem" secondAttribute="top" id="y0J-Gm-SoC"/>
+                <constraint firstAttribute="bottom" secondItem="h3d-jf-48E" secondAttribute="bottom" constant="119" id="yDZ-yI-RJN"/>
                 <constraint firstItem="Qf9-53-MIF" firstAttribute="leading" secondItem="bC0-fy-Fem" secondAttribute="leading" constant="9" id="zKO-3I-EtF"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
     <resources>
         <image name="camera-icon.png" width="36" height="36"/>
         <image name="confirmation-hud.png" width="320" height="260"/>
+        <image name="devon.png" width="330" height="322"/>
     </resources>
 </document>
