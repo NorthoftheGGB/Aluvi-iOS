@@ -148,6 +148,8 @@
         [self.view addSubview:_driverCancelHUD];
     }
     
+    [self showCancelBarButton];
+    
     /*
     [self addOriginAnnotation: [_fare originLocation] ];
     [self addDestinationAnnotation: [_fare destinationLocation]];

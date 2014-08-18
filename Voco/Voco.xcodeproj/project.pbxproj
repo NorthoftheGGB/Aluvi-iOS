@@ -79,8 +79,6 @@
 		4F184A421992E41F006EA959 /* VCMenuItemModeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A3D1992E41F006EA959 /* VCMenuItemModeTableViewCell.xib */; };
 		4F184A431992E41F006EA959 /* VCMenuItemModeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A3D1992E41F006EA959 /* VCMenuItemModeTableViewCell.xib */; };
 		4F2A71091978C220009A5E37 /* driver-request-form@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FF142D5195CE4BD00CC61B6 /* driver-request-form@2x.png */; };
-		4F2EF99B1960D280006A1962 /* VCDriverHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2EF9991960D280006A1962 /* VCDriverHomeViewController.m */; };
-		4F2EF99C1960D280006A1962 /* VCDriverHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2EF9991960D280006A1962 /* VCDriverHomeViewController.m */; };
 		4F2EF99D1960D280006A1962 /* VCDriverHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF99A1960D280006A1962 /* VCDriverHomeViewController.xib */; };
 		4F2EF99E1960D280006A1962 /* VCDriverHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF99A1960D280006A1962 /* VCDriverHomeViewController.xib */; };
 		4F2EF9A21960EC8C006A1962 /* profile-menu-button-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9A01960EC8C006A1962 /* profile-menu-button-select@2x.png */; };
@@ -363,8 +361,6 @@
 		F40144701978728100769802 /* VCFillCommuterPass.m in Sources */ = {isa = PBXBuildFile; fileRef = F401446E1978728100769802 /* VCFillCommuterPass.m */; };
 		F4138C2619650C5600C265CD /* VCCommuterHud.m in Sources */ = {isa = PBXBuildFile; fileRef = F4138C2519650C5600C265CD /* VCCommuterHud.m */; };
 		F4138C2719650C5600C265CD /* VCCommuterHud.m in Sources */ = {isa = PBXBuildFile; fileRef = F4138C2519650C5600C265CD /* VCCommuterHud.m */; };
-		F4138C2D1965467D00C265CD /* VCFaresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4138C2B1965467D00C265CD /* VCFaresViewController.m */; };
-		F4138C2E1965467D00C265CD /* VCFaresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4138C2B1965467D00C265CD /* VCFaresViewController.m */; };
 		F4138C2F1965467D00C265CD /* VCFaresViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4138C2C1965467D00C265CD /* VCFaresViewController.xib */; };
 		F4138C301965467D00C265CD /* VCFaresViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4138C2C1965467D00C265CD /* VCFaresViewController.xib */; };
 		F4138C38196784C700C265CD /* VCGeoApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4138C37196784C700C265CD /* VCGeoApi.m */; };
@@ -573,7 +569,6 @@
 		F4C6B1D3197F06B100F6C10B /* LEBackgroundThread.m in Sources */ = {isa = PBXBuildFile; fileRef = F4792AD619750975005AB652 /* LEBackgroundThread.m */; };
 		F4C6B1D4197F06B100F6C10B /* VCUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8777219775D7E00870945 /* VCUtilities.m */; };
 		F4C6B1D5197F06B100F6C10B /* LogFile.m in Sources */ = {isa = PBXBuildFile; fileRef = F4792AE019750975005AB652 /* LogFile.m */; };
-		F4C6B1D6197F06B100F6C10B /* VCFaresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4138C2B1965467D00C265CD /* VCFaresViewController.m */; };
 		F4C6B1D7197F06B100F6C10B /* VCLocalNotificationReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FB55751977CD690043557A /* VCLocalNotificationReceiver.m */; };
 		F4C6B1D8197F06B100F6C10B /* VCLabelItalic.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DC1941621E0059BED1 /* VCLabelItalic.m */; };
 		F4C6B1D9197F06B100F6C10B /* Driver.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F03E195B971C00D8C900 /* Driver.m */; };
@@ -643,7 +638,6 @@
 		F4C6B21C197F06B100F6C10B /* VCValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFDB19491C2B00D8C900 /* VCValidation.m */; };
 		F4C6B21D197F06B100F6C10B /* VCDriverChangeBankAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCD7C8D19776CD6007609E8 /* VCDriverChangeBankAccountViewController.m */; };
 		F4C6B21E197F06B100F6C10B /* MQRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F0151950358000D8C900 /* MQRoute.m */; };
-		F4C6B21F197F06B100F6C10B /* VCDriverHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2EF9991960D280006A1962 /* VCDriverHomeViewController.m */; };
 		F4C6B220197F06B100F6C10B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FA0BF5192BF6BF005D8645 /* main.m */; };
 		F4C6B221197F06B100F6C10B /* VCFare.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8776B19774CAB00870945 /* VCFare.m */; };
 		F4C6B222197F06B100F6C10B /* VCReferralCodeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEC41966369700AD4229 /* VCReferralCodeTextField.m */; };
@@ -1349,9 +1343,6 @@
 			children = (
 				4F4D8BEF19882A9B0027A2AF /* Revision 2.0 */,
 				F4C6B1B01979154900F6C10B /* Views */,
-				4F2EF9981960D280006A1962 /* VCDriverHomeViewController.h */,
-				4F2EF9991960D280006A1962 /* VCDriverHomeViewController.m */,
-				4F2EF99A1960D280006A1962 /* VCDriverHomeViewController.xib */,
 				F4138C2A1965467D00C265CD /* VCFaresViewController.h */,
 				F4138C2B1965467D00C265CD /* VCFaresViewController.m */,
 				F4138C2C1965467D00C265CD /* VCFaresViewController.xib */,
@@ -1696,6 +1687,9 @@
 		F42590701996B3B700FA928E /* V1 Files */ = {
 			isa = PBXGroup;
 			children = (
+				4F2EF9981960D280006A1962 /* VCDriverHomeViewController.h */,
+				4F2EF9991960D280006A1962 /* VCDriverHomeViewController.m */,
+				4F2EF99A1960D280006A1962 /* VCDriverHomeViewController.xib */,
 				F473EFEB1949304300D8C900 /* VCMenuViewController.h */,
 				F473EFEC1949304300D8C900 /* VCMenuViewController.m */,
 				F473EFED1949304300D8C900 /* VCMenuViewController.xib */,
@@ -2889,7 +2883,6 @@
 				F40144701978728100769802 /* VCFillCommuterPass.m in Sources */,
 				4F9ECEAC196619D800AD4229 /* VCPhoneTextField.m in Sources */,
 				4FE712CA197368B90071020C /* VCCarBrandTextField.m in Sources */,
-				4F2EF99C1960D280006A1962 /* VCDriverHomeViewController.m in Sources */,
 				4FE712C21973688F0071020C /* VCBankAccountTextField.m in Sources */,
 				F4354D64195D0D6A00C06CF7 /* VCUserStateResponse.m in Sources */,
 				4FCD7C721976244F007609E8 /* VCDriverEarningsViewController.m in Sources */,
@@ -2973,7 +2966,6 @@
 				4FFBA44F195E7BCD00A51B84 /* VCPasswordTextField.m in Sources */,
 				F4354D8A195D0D6A00C06CF7 /* VCGeoObject.m in Sources */,
 				F4354D8B195D0D6A00C06CF7 /* VCLogin.m in Sources */,
-				F4138C2E1965467D00C265CD /* VCFaresViewController.m in Sources */,
 				F4354D8C195D0D6A00C06CF7 /* VCDevice.m in Sources */,
 				F4354D8D195D0D6A00C06CF7 /* Ride.m in Sources */,
 				F4A7C81219626DDE007E05AD /* VCFareIdentity.m in Sources */,
@@ -3033,7 +3025,6 @@
 				F4C6B1D3197F06B100F6C10B /* LEBackgroundThread.m in Sources */,
 				F4C6B1D4197F06B100F6C10B /* VCUtilities.m in Sources */,
 				F4C6B1D5197F06B100F6C10B /* LogFile.m in Sources */,
-				F4C6B1D6197F06B100F6C10B /* VCFaresViewController.m in Sources */,
 				F4C6B1D7197F06B100F6C10B /* VCLocalNotificationReceiver.m in Sources */,
 				F4C6B1D8197F06B100F6C10B /* VCLabelItalic.m in Sources */,
 				F4C6B1D9197F06B100F6C10B /* Driver.m in Sources */,
@@ -3117,7 +3108,6 @@
 				F4C6B21C197F06B100F6C10B /* VCValidation.m in Sources */,
 				F4C6B21D197F06B100F6C10B /* VCDriverChangeBankAccountViewController.m in Sources */,
 				F4C6B21E197F06B100F6C10B /* MQRoute.m in Sources */,
-				F4C6B21F197F06B100F6C10B /* VCDriverHomeViewController.m in Sources */,
 				F4C6B220197F06B100F6C10B /* main.m in Sources */,
 				F4C6B221197F06B100F6C10B /* VCFare.m in Sources */,
 				F4C6B222197F06B100F6C10B /* VCReferralCodeTextField.m in Sources */,
@@ -3164,7 +3154,6 @@
 				F4792AE319750975005AB652 /* LEBackgroundThread.m in Sources */,
 				F4D8777319775D7E00870945 /* VCUtilities.m in Sources */,
 				F4792AEB19750975005AB652 /* LogFile.m in Sources */,
-				F4138C2D1965467D00C265CD /* VCFaresViewController.m in Sources */,
 				F4FB55761977CD690043557A /* VCLocalNotificationReceiver.m in Sources */,
 				4FE641DD1941621E0059BED1 /* VCLabelItalic.m in Sources */,
 				F473F03F195B971C00D8C900 /* Driver.m in Sources */,
@@ -3245,7 +3234,6 @@
 				F473EFDC19491C2B00D8C900 /* VCValidation.m in Sources */,
 				4FCD7C8F19776CD6007609E8 /* VCDriverChangeBankAccountViewController.m in Sources */,
 				F473F0161950358000D8C900 /* MQRoute.m in Sources */,
-				4F2EF99B1960D280006A1962 /* VCDriverHomeViewController.m in Sources */,
 				F4FA0BF6192BF6BF005D8645 /* main.m in Sources */,
 				F425906719958E9600FA928E /* VCRideViewController.m in Sources */,
 				F4D8776C19774CAB00870945 /* VCFare.m in Sources */,
