@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "VCTransitBaseViewController.h"
+#import "Ride.h"
 
-@interface VCDriveViewController : UIViewController //VCTransitBaseViewController
+@interface VCDriveViewController : VCTransitBaseViewController
+
+@property (nonatomic, strong) Ride * ride; // should be FARE not RIDE
 
 @end

@@ -71,7 +71,7 @@
     
     entityMapping.identificationAttributes = @[ @"ride_id" ]; // for riders ride_id is the primary key
 
-    
+    /*
     [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
         RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:API_GET_ACTIVE_RIDES];
         
@@ -85,6 +85,8 @@
         
         return nil;
     }];
+     */
+    
      
     
     [entityMapping addRelationshipMappingWithSourceKeyPath:@"driver" mapping:[Driver createMappings:objectManager]];

@@ -136,6 +136,8 @@ static VCCoreData * sharedInstance;
         [WRUtilities criticalError:error];
         return;
     }
+
+    
     /*
     NSPersistentStore * store = [[self instance].persistentStoreCoordinator.persistentStores objectAtIndex:0];
     [[self persistentStoreCoordinator] removePersistentStore:store error:&error];

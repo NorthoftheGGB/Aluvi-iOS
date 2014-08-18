@@ -8,6 +8,7 @@
 
 #import "VCLeftMenuViewController.h"
 #import "VCRideViewController.h"
+#import "VCDriveViewController.h"
 #import "VCInterfaceManager.h"
 #import "VCRiderProfileViewController.h"
 #import "VCMenuItemTableViewCell.h"
@@ -299,10 +300,18 @@
             
         case kScheduleItemCellInteger:
         {
-            VCRideViewController * rideViewController = [[VCRideViewController alloc] init];
             long scheduleCellIndex = [_tableCellList indexOfObject:kScheduleCell];
-            rideViewController.ride = [_scheduleItems objectAtIndex:row-scheduleCellIndex-1];
-            [[VCInterfaceManager instance] setCenterViewControllers: @[rideViewController]];
+            Ride * ride = [_scheduleItems objectAtIndex:row-scheduleCellIndex-1];
+            
+            if([ride.driving boolValue]) {
+                VCDriveViewController * driveViewController = [[VCDriveViewController alloc] init];
+                driveViewController.ride = ride;
+                [[VCInterfaceManager instance] setCenterViewControllers: @[driveViewController]];
+            } else {
+                VCRideViewController * rideViewController = [[VCRideViewController alloc] init];
+                rideViewController.ride = ride;
+                [[VCInterfaceManager instance] setCenterViewControllers: @[rideViewController]];
+            }
             VCSubMenuItemTableViewCell * cell = (VCSubMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
             [cell select];
         }

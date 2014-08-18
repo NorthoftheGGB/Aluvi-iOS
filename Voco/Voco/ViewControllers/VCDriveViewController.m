@@ -7,9 +7,8 @@
 //
 
 #import "VCDriveViewController.h"
-//#import <MapKit/MapKit.h>
 #import "VCButtonFont.h"
-
+#import "VCCommuteManager.h"
 
 #define kDriverCallHudOriginX 271
 #define kDriverCallHudOriginY 226
@@ -61,9 +60,7 @@
 - (IBAction)didTapDirectionsListButton:(id)sender;
 
 
-
-
-//@property (nonatomic) BOOL appeared;
+@property (nonatomic) BOOL appeared;
 
 @end
 
@@ -75,40 +72,45 @@
     if (self) {
         _callHudPanLocked = NO;
         _callHudOpen = NO;
+        _appeared = NO;
     }
     return self;
 }
 
 - (void) viewWillAppear:(BOOL)animated{
+    
+    
+    if(!_appeared){
+        
+        self.map = [[MKMapView alloc] initWithFrame:self.view.frame];
+        //self.map.delegate = self;
+        [self.view insertSubview:self.map atIndex:0];
+        self.map.showsUserLocation = YES;
+        
+        _appeared = YES;
+        
+    }
+    
     [self showHome];
+
+
     
 }
 
 - (void)viewDidLoad{
     
-        [super viewDidLoad];
-        
-        
-        UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(move:)];
-        [panRecognizer setMinimumNumberOfTouches:1];
-        [panRecognizer setMaximumNumberOfTouches:1];
-        [_driverCallHUD addGestureRecognizer:panRecognizer];
-        
-        
-        
-        {UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(move2:)];
-            [panRecognizer setMinimumNumberOfTouches:1];
-            [panRecognizer setMaximumNumberOfTouches:1];
-            [_driverCancelHUD addGestureRecognizer:panRecognizer];}
-        
-    }
+    [super viewDidLoad];
     
+    [self setupDriverCallHud];
+    
+}
+
 - (void)didReceiveMemoryWarning
-    {
-        [super didReceiveMemoryWarning];
-        // Dispose of any resources that can be recreated.
-    }
-    
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 
 - (void) showHome{
     
@@ -137,200 +139,256 @@
     
     [self.view addSubview:_driverCallHUD];
     
-    {CGRect frame = _driverCancelHUD.frame;
+    {
+        CGRect frame = _driverCancelHUD.frame;
         frame.origin.x = kDriverCancelHudOriginX;
         frame.origin.y = self.view.frame.size.height - kDriverCancelHudOriginY;
         _driverCancelHUD.frame = frame;
         
-        [self.view addSubview:_driverCancelHUD];}
+        [self.view addSubview:_driverCancelHUD];
+    }
+    
+    /*
+    [self addOriginAnnotation: [_fare originLocation] ];
+    [self addDestinationAnnotation: [_fare destinationLocation]];
+    [self showSuggestedRoute: [_fare originLocation] to:[_ride destinationLocation]];
+     */
+}
+
+- (void) showCancelBarButton {
+    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(didTapCancel:)];
+    self.navigationItem.rightBarButtonItem = cancelItem;
+}
+
+- (void) removeCancelBarButton {
+    self.navigationItem.rightBarButtonItem = nil;
+}
+
+- (void) setupDriverCallHud {
+    
+    {
+        UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(move:)];
+        [panRecognizer setMinimumNumberOfTouches:1];
+        [panRecognizer setMaximumNumberOfTouches:1];
+        [_driverCallHUD addGestureRecognizer:panRecognizer];
+    }
+    
+    {
+        UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(move2:)];
+        [panRecognizer setMinimumNumberOfTouches:1];
+        [panRecognizer setMaximumNumberOfTouches:1];
+        [_driverCancelHUD addGestureRecognizer:panRecognizer];
+    }
     
 }
 
 -(void)move:(id)sender {
-        NSLog(@"%@", @"YO!");
+    
+    if( _callHudPanLocked ) {
+        return;
+    }
+    
+    CGPoint translatedPoint = [(UIPanGestureRecognizer*)sender translationInView:self.view];
+    
+    if(_callHudOpen == NO) {
         
-        if( _callHudPanLocked ) {
+        if(translatedPoint.x > 0){
             return;
         }
         
-        CGPoint translatedPoint = [(UIPanGestureRecognizer*)sender translationInView:self.view];
+        if(translatedPoint.x < kDriverCallHudOpenX - kDriverCallHudOriginX ){
+            return;
+        }
         
-        if(_callHudOpen == NO) {
+        if ([(UIPanGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
+            CGPoint velocity = [(UIPanGestureRecognizer*)sender velocityInView:self.view];
             
-            if(translatedPoint.x > 0){
-                return;
-            }
-            
-            if(translatedPoint.x < kDriverCallHudOpenX - kDriverCallHudOriginX ){
-                return;
-            }
-            
-            if ([(UIPanGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
-                CGPoint velocity = [(UIPanGestureRecognizer*)sender velocityInView:self.view];
-                
-                if(velocity.x < -2000) {
-                    [self animateCallHudToOpen];
-                } else if(translatedPoint.x < -75){
-                    [self animateCallHudToOpen];
-                } else {
-                    [self animateCallHudToClosed];
-                }
-                
-                return;
-            }
-            
-            CGRect frame = _driverCallHUD.frame;
-            frame.origin.x = kDriverCallHudOriginX + translatedPoint.x;
-            _driverCallHUD.frame = frame;
-            if ( kDriverCallHudOriginX + translatedPoint.x <= kDriverCallHudOpenX ){
+            if(velocity.x < -2000) {
                 [self animateCallHudToOpen];
-            }
-            
-        } else {
-            if(translatedPoint.x < 0){
-                return;
-            }
-            
-            if ([(UIPanGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
+            } else if(translatedPoint.x < -75){
+                [self animateCallHudToOpen];
+            } else {
                 [self animateCallHudToClosed];
             }
-        }
-    }
-    
-    -(void)move2:(id)sender {
-        NSLog(@"%@", @"YO!");
-        
-        if( _cancelHudPanLocked ) {
+            
             return;
         }
         
-        CGPoint translatedPoint = [(UIPanGestureRecognizer*)sender translationInView:self.view];
+        CGRect frame = _driverCallHUD.frame;
+        frame.origin.x = kDriverCallHudOriginX + translatedPoint.x;
+        _driverCallHUD.frame = frame;
+        if ( kDriverCallHudOriginX + translatedPoint.x <= kDriverCallHudOpenX ){
+            [self animateCallHudToOpen];
+        }
         
-        if(_cancelHudOpen == NO) {
-            
-            if(translatedPoint.x > 0){
-                return;
-            }
-            
-            if(translatedPoint.x < kDriverCallHudOpenX - kDriverCallHudOriginX ){
-                return;
-            }
-            
-            if ([(UIPanGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
-                CGPoint velocity = [(UIPanGestureRecognizer*)sender velocityInView:self.view];
-                
-                if(velocity.x < -2000) {
-                    [self animateCancelHudToOpen];
-                } else if(translatedPoint.x < -100){
-                    [self animateCancelHudToOpen];
-                } else {
-                    [self animateCancelHudToClosed];
-                }
-                
-                return;
-            }
-            
-            CGRect frame = _driverCancelHUD.frame;
-            frame.origin.x = kDriverCancelHudOriginX + translatedPoint.x;
-            _driverCancelHUD.frame = frame;
-            if ( kDriverCancelHudOriginX + translatedPoint.x <= kDriverCancelHudOpenX ){
-                [self animateCancelHudToOpen];
-            }
-            
-        } else {
-            if(translatedPoint.x < 0){
-                return;
-            }
-            
-            if ([(UIPanGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
-                [self animateCancelHudToClosed];
-            }
+    } else {
+        if(translatedPoint.x < 0){
+            return;
+        }
+        
+        if ([(UIPanGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
+            [self animateCallHudToClosed];
         }
     }
-    
-    
-    - (void) animateCallHudToOpen {
-        _callHudPanLocked = YES;
-        
-        _timer = [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(unlockCallHudPan:) userInfo:nil repeats:NO];
-        
-        [UIView animateWithDuration:0.15 animations:^{
-            CGRect frame = _driverCallHUD.frame;
-            frame.origin.x = kDriverCallHudOpenX;
-            _driverCallHUD.frame = frame;
-            _callHudOpen = YES;
-        }];
-        
-    }
+}
 
-    - (void) animateCancelHudToOpen {
-        _cancelHudPanLocked = YES;
-        
-        _cancelTimer = [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(unlockCancelHudPan:) userInfo:nil repeats:NO];
-        
-        [UIView animateWithDuration:0.15 animations:^{
-            CGRect frame = _driverCancelHUD.frame;
-            frame.origin.x = kDriverCancelHudOpenX;
-            _driverCancelHUD.frame = frame;
-            _cancelHudOpen = YES;
-        }];
-        
+-(void)move2:(id)sender {
+    NSLog(@"%@", @"YO!");
+    
+    if( _cancelHudPanLocked ) {
+        return;
     }
     
-    - (void) animateCallHudToClosed{
-        _callHudPanLocked = YES;
+    CGPoint translatedPoint = [(UIPanGestureRecognizer*)sender translationInView:self.view];
+    
+    if(_cancelHudOpen == NO) {
         
-        _timer = [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(unlockCallHudPan:) userInfo:nil repeats:NO];
+        if(translatedPoint.x > 0){
+            return;
+        }
         
-        [UIView animateWithDuration:0.15 animations:^{
-            CGRect frame = _driverCallHUD.frame;
-            frame.origin.x = kDriverCallHudOriginX;
-            _driverCallHUD.frame = frame;
-            _callHudOpen = NO;
-        }];
+        if(translatedPoint.x < kDriverCallHudOpenX - kDriverCallHudOriginX ){
+            return;
+        }
         
+        if ([(UIPanGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
+            CGPoint velocity = [(UIPanGestureRecognizer*)sender velocityInView:self.view];
+            
+            if(velocity.x < -2000) {
+                [self animateCancelHudToOpen];
+            } else if(translatedPoint.x < -100){
+                [self animateCancelHudToOpen];
+            } else {
+                [self animateCancelHudToClosed];
+            }
+            
+            return;
+        }
+        
+        CGRect frame = _driverCancelHUD.frame;
+        frame.origin.x = kDriverCancelHudOriginX + translatedPoint.x;
+        _driverCancelHUD.frame = frame;
+        if ( kDriverCancelHudOriginX + translatedPoint.x <= kDriverCancelHudOpenX ){
+            [self animateCancelHudToOpen];
+        }
+        
+    } else {
+        if(translatedPoint.x < 0){
+            return;
+        }
+        
+        if ([(UIPanGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
+            [self animateCancelHudToClosed];
+        }
     }
+}
 
+- (void) didTapCancel: (id)sender {
     
-    - (void) animateCancelHudToClosed{
-        _cancelHudPanLocked = YES;
-        
-        _cancelTimer = [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(unlockCancelHudPan:) userInfo:nil repeats:NO];
-        
-        [UIView animateWithDuration:0.15 animations:^{
-            CGRect frame = _driverCancelHUD.frame;
-            frame.origin.x = kDriverCancelHudOriginX;
-            _driverCancelHUD.frame = frame;
-            _cancelHudOpen = NO;
+    if(_ride != nil) {
+        [UIAlertView showWithTitle:@"Cancel Ride?" message:@"Are you sure you want to cancel this trip?" cancelButtonTitle:@"No!" otherButtonTitles:@[@"Yes, Cancel this ride"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            switch(buttonIndex){
+                case 1:
+                {
+                    [[VCCommuteManager instance] cancelRide:_ride success:^{
+                        [UIAlertView showWithTitle:@"Fare Cancelled" message:@"Fare Cancelled" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                    } failure:^{
+                        // do nothing
+                    }];
+                }
+                    break;
+                default:
+                    break;
+            }
         }];
-        
     }
+     
+}
+
+
+
+- (void) animateCallHudToOpen {
+    _callHudPanLocked = YES;
     
+    _timer = [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(unlockCallHudPan:) userInfo:nil repeats:NO];
     
-    - (void) unlockCallHudPan:(id)sender {
-        _callHudPanLocked = NO;
-    }
+    [UIView animateWithDuration:0.15 animations:^{
+        CGRect frame = _driverCallHUD.frame;
+        frame.origin.x = kDriverCallHudOpenX;
+        _driverCallHUD.frame = frame;
+        _callHudOpen = YES;
+    }];
     
+}
+
+- (void) animateCancelHudToOpen {
+    _cancelHudPanLocked = YES;
     
-    - (void) unlockCancelHudPan:(id)sender {
-        _cancelHudPanLocked = NO;
-    }
+    _cancelTimer = [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(unlockCancelHudPan:) userInfo:nil repeats:NO];
     
+    [UIView animateWithDuration:0.15 animations:^{
+        CGRect frame = _driverCancelHUD.frame;
+        frame.origin.x = kDriverCancelHudOpenX;
+        _driverCancelHUD.frame = frame;
+        _cancelHudOpen = YES;
+    }];
+    
+}
+
+- (void) animateCallHudToClosed{
+    _callHudPanLocked = YES;
+    
+    _timer = [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(unlockCallHudPan:) userInfo:nil repeats:NO];
+    
+    [UIView animateWithDuration:0.15 animations:^{
+        CGRect frame = _driverCallHUD.frame;
+        frame.origin.x = kDriverCallHudOriginX;
+        _driverCallHUD.frame = frame;
+        _callHudOpen = NO;
+    }];
+    
+}
+
+
+- (void) animateCancelHudToClosed{
+    _cancelHudPanLocked = YES;
+    
+    _cancelTimer = [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(unlockCancelHudPan:) userInfo:nil repeats:NO];
+    
+    [UIView animateWithDuration:0.15 animations:^{
+        CGRect frame = _driverCancelHUD.frame;
+        frame.origin.x = kDriverCancelHudOriginX;
+        _driverCancelHUD.frame = frame;
+        _cancelHudOpen = NO;
+    }];
+    
+}
+
+
+- (void) unlockCallHudPan:(id)sender {
+    _callHudPanLocked = NO;
+}
+
+
+- (void) unlockCancelHudPan:(id)sender {
+    _cancelHudPanLocked = NO;
+}
+
 - (IBAction)didTapCallRider1:(id)sender {
-    }
+}
 - (IBAction)didTapCallRider3:(id)sender {
-    }
+}
 - (IBAction)didTapCallRider2:(id)sender {
-    }
+}
 - (IBAction)didTapCurrentLocationButton:(id)sender {
-    }
+}
 - (IBAction)didTapDirectionsListButton:(id)sender {
-    }
+}
 - (IBAction)didTapRidersPickedUp:(id)sender {
-    }
+}
 - (IBAction)didTapRideCompleted:(id)sender {
-    }
+}
 - (IBAction)didTapCancelRide:(id)sender {
-    }
+}
 
 @end

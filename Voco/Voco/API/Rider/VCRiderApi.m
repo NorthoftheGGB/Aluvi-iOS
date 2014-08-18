@@ -175,10 +175,6 @@
     [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_ACTIVE_RIDES parameters:nil
                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                   
-                                                  // It's completely possible that state is out of sync with the server
-                                                  // May need to update state here
-                                                  // How to detect state change on the server ?
-                                                  
                                                   success(operation, mappingResult);
                                                   
                                               } failure:^(RKObjectRequestOperation *operation, NSError *error) {

@@ -236,12 +236,14 @@ static VCCommuteManager * instance;
     if(ride.ride_id != nil) {
         [VCRiderApi cancelRide:ride success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             deleteRide(ride);
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"schedule_updated" object:nil userInfo:@{}];
             success();
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             failure();
         }];
     } else {
         deleteRide(ride);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"schedule_updated" object:nil userInfo:@{}];
         success();
     }
 }

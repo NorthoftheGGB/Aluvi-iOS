@@ -58,20 +58,11 @@
 {
     [super viewDidLoad];
     
-    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [VCUsersApi getProfile:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        hud.hidden = YES;
-        VCProfile * profile = mappingResult.firstObject;
-        _firstNameField.text = profile.firstName;
-        _lastNameField.text = profile.lastName;
-        _emailField.text = profile.email;
-        _passwordField.text = @"********";
-        
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        hud.hidden = YES;
-        
-    }];
-    
+    VCProfile * profile = [VCUserStateManager instance].profile;
+    _firstNameField.text = profile.firstName;
+    _lastNameField.text = profile.lastName;
+    _emailField.text = profile.email;
+    _passwordField.text = @"********";
     
     UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [tapBackground setNumberOfTapsRequired:1];

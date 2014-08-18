@@ -102,10 +102,17 @@ static VCUserStateManager *sharedSingleton;
                   if(loginResponse.driverState != nil){
                       self.driverState = loginResponse.driverState;
                   }
+                  
+                  [VCUsersApi getProfile:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                      _profile = mappingResult.firstObject;
+                  } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                      //[WRUtilities criticalError:error];
+                  }];
+
                   [VCDevicesApi updateUserWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                       success();
                   } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                      [WRUtilities criticalError:error];
+                      //[WRUtilities criticalError:error];
                   }];
                   
               } failure:^(RKObjectRequestOperation *operation, NSError *error) {
