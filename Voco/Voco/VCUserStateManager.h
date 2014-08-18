@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-@import MapKit;
+@import CoreLocation;
+#import "VCProfile.h"
 
 NSString *const VCUserStateDriverStateKeyPath;
 
@@ -42,6 +43,8 @@ NSString *const VCUserStateDriverStateKeyPath;
 
 @property(nonatomic, strong) NSString * apiToken;
 
+@property(nonatomic, strong) VCProfile * profile;
+
 // commuter preferences
 @property(nonatomic, strong) CLLocation * commuteOrigin;
 @property(nonatomic, strong) CLLocation * commuteDestination;
@@ -66,5 +69,6 @@ NSString *const VCUserStateDriverStateKeyPath;
                      failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
 - (void) clearRideState;
+- (void) clearUser;
 
 @end

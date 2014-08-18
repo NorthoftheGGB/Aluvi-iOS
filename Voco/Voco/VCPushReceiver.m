@@ -12,6 +12,7 @@
 #import "VCPushApi.h"
 #import "VCRiderApi.h"
 #import "VCDriverApi.h"
+#import "VCNotifications.h"
 
 #import "VCDevice.h"
 #import "WRUtilities.h"
@@ -219,6 +220,24 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:kPushTypeNoDriversAvailable object:payload userInfo:@{}];
     } else if([type isEqualToString:kPushTypeUserStateChanged]){
         [[VCUserStateManager instance] synchronizeUserState];
+    } else if([type isEqualToString:kPushTypeTripFulfilled]){
+        
+        [[VCDialogs instance] commuteFulfilled];
+        [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationTypeTripFulfilled object:payload];
+        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            //
+        }];
+
+    } else if([type isEqualToString:kPushTypeTripUnfulfilled]){
+        
+        [[VCDialogs instance] commuteUnfulfilled];
+        [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            //
+        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            //
+        }];
+
     } else {
 #ifdef DEBUG
         [UIAlertView showWithTitle:@"Error" message:[NSString stringWithFormat:@"Invalid push type: %@", type] cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];

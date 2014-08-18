@@ -48,6 +48,7 @@
                 if(apiError != nil){
                     [UIAlertView showWithTitle:@"Error" message:apiError.error cancelButtonTitle:@"Oh, ok" otherButtonTitles:nil tapBlock:nil];
                 } else {
+                    NSLog(@"Error %i", statusCode);
                     [UIAlertView showWithTitle:@"Error" message:@"Unspecified Error" cancelButtonTitle:@"Ok, I'll try that again I guess" otherButtonTitles:nil tapBlock:nil];
                 }
             }
@@ -61,7 +62,7 @@
                          otherButtonTitles:nil
                                   tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                                       // Call logout and Bump the user back out to the login screen
-                                      [[VCUserStateManager instance] finalizeLogout];
+                                      [[VCUserStateManager instance] clearUser];
                                   }];
             }
                 break;

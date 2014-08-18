@@ -112,6 +112,7 @@ static VCCommuteManager * instance;
     
     // start by retrieving day, weekday, month and year components for the given day
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    [gregorian setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"PST"]];
     NSDateComponents *tomorrowComponents = [gregorian components:(NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:tomorrow];
     NSInteger theDay = [tomorrowComponents day];
     NSInteger theMonth = [tomorrowComponents month];
@@ -235,12 +236,14 @@ static VCCommuteManager * instance;
     if(ride.ride_id != nil) {
         [VCRiderApi cancelRide:ride success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             deleteRide(ride);
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"schedule_updated" object:nil userInfo:@{}];
             success();
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             failure();
         }];
     } else {
         deleteRide(ride);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"schedule_updated" object:nil userInfo:@{}];
         success();
     }
 }

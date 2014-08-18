@@ -118,9 +118,7 @@
         [[VCDebug sharedInstance] apiLog:@"API: Rider cancel ride"];
         
         // Alread have a ride id, so this is a ride cancellation
-        VCRideIdentity * rideIdentity = [[VCRideIdentity alloc] init];
-        rideIdentity.rideId = ride.fare_id;
-        [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_RIDER_CANCELLED parameters:nil
+        [[RKObjectManager sharedManager] postObject:nil path:API_POST_RIDER_CANCELLED parameters:@{@"fare_id" : ride.fare_id}
                                             success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                 
                                                 [[VCDebug sharedInstance] apiLog:@"API: Rider cancel ride success"];
@@ -176,10 +174,6 @@
     // Update all rides for this user using RestKit entity
     [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_ACTIVE_RIDES parameters:nil
                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                  
-                                                  // It's completely possible that state is out of sync with the server
-                                                  // May need to update state here
-                                                  // How to detect state change on the server ?
                                                   
                                                   success(operation, mappingResult);
                                                   

@@ -20,6 +20,11 @@
 #import "VCRideDetailsHudView.h"
 #import "NSDate+Pretty.h"
 #import "Driver.h"
+#import "VCNotifications.h"
+#import "VCPushApi.h"
+#import "Car.h"
+#import "VCUserStateManager.h"
+#import "VCDriveViewController.h"
 
 #define kEditCommuteStatePickupTime 1000
 #define kEditCommuteStateEditHome 1001
@@ -82,10 +87,6 @@
 @property (strong, nonatomic) VCEditLocationWidget * homeLocationWidget;
 @property (strong, nonatomic) VCEditLocationWidget * workLocationWidget;
 
-//RIDE DETAILS CONFIRMATION SCREEN
-
-
-
 @property (nonatomic) BOOL appeared;
 @property (nonatomic) NSInteger editCommuteState;
 
@@ -118,6 +119,7 @@
                              @"7:00"];
         
         _step = kStepSetDepartureLocation;
+        _ride = nil;
         
     }
     return self;
@@ -165,10 +167,35 @@
             [self showInterfaceForRide];
         }
     }
-
- 
-
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripFulfilled:) name:kNotificationTypeTripFulfilled object:nil];
 }
+
+- (void) viewWillDisppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void) tripFulfilled:(NSNotification *) notification {
+    NSDictionary * payload = notification.object;
+    NSNumber * tripId = [payload objectForKey:VC_PUSH_TRIP_ID_KEY];
+    //if(_ride == nil || [_ride.trip_id isEqualToNumber:tripId]) {
+        NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ride"];
+        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"trip_id = %@", tripId];
+        [fetch setPredicate:predicate];
+        NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];
+        [fetch setSortDescriptors:@[sort]];
+        NSError * error;
+        NSArray * ridesForTrip = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
+        if(ridesForTrip == nil){
+            [WRUtilities criticalError:error];
+            return;
+        }
+        _ride = [ridesForTrip objectAtIndex:0];
+        [self showInterfaceForRide];
+    //}
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -176,7 +203,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) setRequest:(Ride *)ride {
+- (void) setRide:(Ride *)ride {
     _ride = ride;
     self.transit = ride;
 }
@@ -199,7 +226,9 @@
 }
 
 - (void) showInterfaceForRide {
-    [_homeActionView removeFromSuperview];
+    [self clearMap];
+    [self removeHuds];
+    [self.homeActionView removeFromSuperview];
     [self showCancelBarButton];
     
     [self addOriginAnnotation: [_ride originLocation] ];
@@ -212,13 +241,37 @@
         _waitingScreen.frame = waitingScreenFrame;*/
         
         [self.view addSubview:self.waitingScreen];
-    } else if([_ride.confirmed isEqualToNumber:[NSNumber numberWithBool:YES]]) {
-        [self.view addSubview:_rideDetailsHud];
-    } else {
-        _rideDetailsConfirmation.pickupTimeLabel.text = [_ride.pickupTime time];
-        _rideDetailsConfirmation.driverNameLabel.text = [_ride.driver fullName];
-        _rideDetailsConfirmation.cardNumberLabel.text =  @"LOADING...";
-        [self.view addSubview:_rideDetailsConfirmation];
+    } else if([_ride.state isEqualToString:kScheduledState]){
+        
+        if([_ride.driving boolValue]) {
+            
+            // Replace with the driver view controller
+            VCDriveViewController * vc = [[VCDriveViewController alloc] init];
+            self.navigationController.viewControllers  = @[vc];
+            
+        } else {
+        
+            if([_ride.confirmed isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+                //_rideDetailsHud.pickupTimeLabel.text = [_ride.pickupTime time];
+                _rideDetailsHud.driverFirstNameLabel.text = _ride.driver.firstName;
+                _rideDetailsHud.driverLastNameLabel.text = _ride.driver.lastName;
+                _rideDetailsHud.carTypeLabel.text = [_ride.car summary];
+                _rideDetailsHud.lisenceLabel.text = _ride.car.licensePlate;
+                _rideDetailsHud.cardNicknamelabel.text = [VCUserStateManager instance].profile.cardBrand;
+                _rideDetailsHud.cardNumberLabel.text = [VCUserStateManager instance].profile.cardLastFour;
+                [self.view addSubview:_rideDetailsHud];
+            } else {
+                _rideDetailsConfirmation.pickupTimeLabel.text = [_ride.pickupTime time];
+                _rideDetailsConfirmation.driverNameLabel.text = [_ride.driver fullName];
+                _rideDetailsConfirmation.carTypeLabel.text = [_ride.car summary];
+                _rideDetailsConfirmation.lisenceLabel.text = _ride.car.licensePlate;
+                //_rideDetailsConfirmation.fareLabel.text = _ride.estimatedFareAmount;
+                _rideDetailsConfirmation.cardNicknamelabel.text = [VCUserStateManager instance].profile.cardBrand;
+                _rideDetailsConfirmation.cardNumberLabel.text = [VCUserStateManager instance].profile.cardLastFour;
+                [self.view addSubview:_rideDetailsConfirmation];
+            }
+            
+        }
     }
     
 }
@@ -332,17 +385,10 @@
     
 }
 
-- (void) resetInterface {
+- (void) resetInterfaceToHome {
     [self clearMap];
     [UIView transitionWithView:self.view duration:.35 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-        [_waitingScreen removeFromSuperview];
-        [_pickupHudView removeFromSuperview];
-        [_homeLocationWidget.view removeFromSuperview];
-        [_workLocationWidget.view removeFromSuperview];
-        [_returnHudView removeFromSuperview];
-        [_scheduleRideButton removeFromSuperview];
-        [_hovDriverOptionView removeFromSuperview];
-        [_nextButton removeFromSuperview];
+        [self removeHuds];
         [self removeCancelBarButton];
         [self showHome];
     } completion:^(BOOL finished) {
@@ -355,6 +401,19 @@
     [super clearMap];
     [self.map removeAnnotation:_originAnnotation];
     [self.map removeAnnotation:_destinationAnnotation];
+}
+
+- (void) removeHuds {
+    [_waitingScreen removeFromSuperview];
+    [_pickupHudView removeFromSuperview];
+    [_homeLocationWidget.view removeFromSuperview];
+    [_workLocationWidget.view removeFromSuperview];
+    [_returnHudView removeFromSuperview];
+    [_scheduleRideButton removeFromSuperview];
+    [_hovDriverOptionView removeFromSuperview];
+    [_nextButton removeFromSuperview];
+    [_rideDetailsConfirmation removeFromSuperview];
+    [_rideDetailsHud removeFromSuperview];
 }
 
 - (void) transitionFromEditPickupTimeToEditHome {
@@ -496,15 +555,14 @@
 - (void) didTapCancel: (id)sender {
     if(_ride == nil) {
         [[VCCommuteManager instance] reset];
-        [self resetInterface];
+        [self resetInterfaceToHome];
     } else {
-        [UIAlertView showWithTitle:@"Cancel Ride?" message:@"Are you sure you want to cancel this ride?" cancelButtonTitle:@"No!" otherButtonTitles:@[@"Yes, Cancel this ride"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        [UIAlertView showWithTitle:@"Cancel Ride?" message:@"Are you sure you want to cancel this trip?" cancelButtonTitle:@"No!" otherButtonTitles:@[@"Yes, Cancel this ride"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
             switch(buttonIndex){
                 case 1:
                 {
                     [[VCCommuteManager instance] cancelRide:_ride success:^{
-                        [self resetInterface];
-                        [[NSNotificationCenter defaultCenter] postNotificationName:@"schedule_updated" object:nil userInfo:@{}];
+                        [self resetInterfaceToHome];
                     } failure:^{
                         // do nothing
                     }];
@@ -672,7 +730,7 @@
                 break;
                 
             default:
-                [self resetInterface]; // TOOD: transition to home ?
+                [self resetInterfaceToHome]; // TOOD: transition to home ?
                 break;
         }
     }];
@@ -708,6 +766,11 @@
     [self showReturnTimePicker];
 }
 
+- (IBAction)didTapConfirmedCommuterRide:(id)sender {
+    _ride.confirmed = [NSNumber numberWithBool:YES];
+    [VCCoreData saveContext];
+    [self showInterfaceForRide];
+}
 
 #pragma mark - VCLocationSearchViewControllerDelegate
 
@@ -775,7 +838,7 @@
     if( _editCommuteState == kEditCommuteStateReturnTime) {
         [self transitionFromSetReturnTimeToEditWork];
     } else if ( _editCommuteState == kEditCommuteStatePickupTime) {
-        [self resetInterface];
+        [self resetInterfaceToHome];
     }
 }
 
@@ -805,11 +868,12 @@
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    NSString * value = [_morningOptions objectAtIndex:row];
     if( _whichPicker == kPickerReturnTime) {
+        NSString * value = [_eveningOptions objectAtIndex:row];
         [VCCommuteManager instance].returnTime = value;
         _returnTimeLabel.text = value;
     } else if ( _whichPicker == kPickerPickupTime) {
+        NSString * value = [_morningOptions objectAtIndex:row];
         [VCCommuteManager instance].pickupTime = value;
         _pickupTimeLabel.text = value;
     }

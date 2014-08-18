@@ -18,6 +18,7 @@
 #import "Payment.h"
 #import "VCUtilities.h"
 #import "VCRiderRecieptDetailViewController.h"
+#import "VCUserStateManager.h"
 
 #define kChangeCardText @"Change Card"
 #define kUpdateCardText @"Update Card"
@@ -89,21 +90,13 @@
         // nothing to do
     }];
     
-    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [VCUsersApi getProfile:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        hud.hidden = YES;
-        VCProfile * profile = mappingResult.firstObject;
-        if(profile.cardLastFour != nil && profile.cardBrand != nil){
-            _cardInfoLabel.text = [NSString stringWithFormat:@"%@ XXXX-XXXX-XXXX-%@", profile.cardBrand, profile.cardLastFour];
-        } else {
-            _cardInfoLabel.text = @"No Credit Card Assigned";
-        }
-        
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        hud.hidden = YES;
-        
-    }];
-
+    VCProfile * profile = [VCUserStateManager instance].profile;
+    if(profile.cardLastFour != nil && profile.cardBrand != nil){
+        _cardInfoLabel.text = [NSString stringWithFormat:@"%@ XXXX-XXXX-XXXX-%@", profile.cardBrand, profile.cardLastFour];
+    } else {
+        _cardInfoLabel.text = @"No Credit Card Assigned";
+    }
+    
     
 }
 
@@ -113,7 +106,6 @@
 	if (![[self fetchedResultsController] performFetch:&error]) {
 		[WRUtilities criticalError:error];
 	}
-    
     
 }
 
@@ -153,8 +145,10 @@
                                           _updateCardButton.titleLabel.text = kChangeCardText;
                                           _state = kInterfaceStateDisplayCard;
 
-                                          VCProfile * profile = mappingResult.firstObject;
-                                          _cardInfoLabel.text = [NSString stringWithFormat:@"%@ XXXX-XXXX-XXXX-%@", profile.cardBrand, profile.cardLastFour];
+                                          VCProfile * updatedProfile = mappingResult.firstObject;
+                                          [VCUserStateManager instance].profile.cardBrand = updatedProfile.cardBrand;
+                                          [VCUserStateManager instance].profile.cardLastFour = updatedProfile.cardLastFour;
+                                          _cardInfoLabel.text = [NSString stringWithFormat:@"%@ XXXX-XXXX-XXXX-%@", [VCUserStateManager instance].profile.cardBrand, [VCUserStateManager instance].profile.cardLastFour];
                                           _cardInfoLabel.hidden = NO;
 
                                       }

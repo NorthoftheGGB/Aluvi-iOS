@@ -13,7 +13,7 @@
 #define VC_PUSH_RIDE_ID_KEY @"ride_id"
 #define VC_PUSH_FARE_ID_KEY @"fare_id"
 #define VC_PUSH_AMOUNT_KEY @"amount"
-#define VC_PUSH_FARE_ID_KEY @"fare_id"
+#define VC_PUSH_TRIP_ID_KEY @"trip_id"
 
 #define kPushTypeRideFound @"fare_found"
 #define kPushTypeFareAssigned @"fare_assigned"
@@ -25,6 +25,8 @@
 #define kPushTypeUserStateChanged @"user_state_change"
 #define kPushTypeRideOffer @"offer"
 #define kPushTypeRideOfferClosed @"offer_closed"
+#define kPushTypeTripFulfilled @"trip_fulfilled"
+#define kPushTypeTripUnfulfilled @"trip_unfulfilled"
 
 // Internal Notifications
 #define kNotificationTypeFareComplete @"fare_complete"

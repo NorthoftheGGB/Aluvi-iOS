@@ -28,6 +28,5 @@
 }
 */
 
-- (IBAction)didTapConfirm:(id)sender {
-}
+
 @end

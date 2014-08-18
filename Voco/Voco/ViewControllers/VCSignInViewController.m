@@ -14,6 +14,7 @@
 #import "VCPasswordRecoveryViewController.h"
 #import "VCDriverRequestViewController.h"
 #import "VCInterfaceManager.h"
+#import "VCRiderApi.h"
 #import <MBProgressHUD.h>
 
 #define kPhoneFieldTag 1
@@ -90,9 +91,18 @@
     [[VCUserStateManager instance] loginWithPhone:_phoneNumberField.text
                                   password:_passwordField.text
                                    success:^{
-                                       [hud hide:YES];
-                                       [[VCInterfaceManager instance] showRiderInterface];
                                        
+                                       [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                           
+                                           [hud hide:YES];
+                                           [[VCInterfaceManager instance] showRiderInterface];
+                                           
+                                       } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                           [WRUtilities criticalError:error];
+                                           [hud hide:YES];
+
+                                       }];
+                                     
                                    } failure:^{
                                        [hud hide:YES];
                                        [UIAlertView showWithTitle:@"Login Failed!" message:@"Invalid Phone Number or Password" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
