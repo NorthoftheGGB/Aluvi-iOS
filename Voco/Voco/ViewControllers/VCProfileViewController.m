@@ -7,8 +7,18 @@
 //
 
 #import "VCProfileViewController.h"
+#import <MBProgressHUD.h>
+#import "VCNameTextField.h"
+#import "VCEmailTextField.h"
+#import "VCPasswordTextField.h"
+#import "VCPhoneTextField.h"
 #import "VCTextField.h"
 #import "VCButtonStandardStyle.h"
+#import "VCLabel.h"
+#import "VCUserStateManager.h"
+#import "VCInterfaceManager.h"
+#import "VCUsersApi.h"
+
 
 @interface VCProfileViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -25,9 +35,11 @@
 @property (weak, nonatomic) IBOutlet VCTextField *phoneTextField;
 @property (weak, nonatomic) IBOutlet VCTextField *passwordTextField;
 
+//Version
+@property (weak, nonatomic) IBOutlet UILabel *versionLabel;
+
 //Buttons
 @property (weak, nonatomic) IBOutlet VCButtonStandardStyle *saveChangesButton;
-
 @property (weak, nonatomic) IBOutlet VCButtonStandardStyle *logoutButton;
 
 - (IBAction)didTapSaveChanges:(id)sender;
@@ -53,7 +65,28 @@
 {
     [super viewDidLoad];
     [self.scrollView setContentSize:_contentView.frame.size];
-    [self.scrollView addSubview:_contentView];}
+    [self.scrollView addSubview:_contentView];
+    
+    VCProfile * profile = [VCUserStateManager instance].profile;
+    _firstNameTextField.text = profile.firstName;
+    _lastNameTextField.text = profile.lastName;
+    _emailTextField.text = profile.email;
+    //TODO: phone field
+    _passwordTextField.text = @"********";
+
+UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
+[tapBackground setNumberOfTapsRequired:1];
+    [self.view addGestureRecognizer:tapBackground];
+
+NSString * version = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
+NSString * build = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
+_versionLabel.text = [NSString stringWithFormat:@"v%@b%@", version, build];
+
+}
+
+- (void) dismissKeyboard:(id) sender{
+    [self.view endEditing:YES];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -61,12 +94,18 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
 - (IBAction)didTapSaveChanges:(id)sender {
+    //TODO: API fun fun
 }
 
 - (IBAction)didTapLogoutButton:(id)sender {
+    [[VCUserStateManager instance] logout];
+    [[VCInterfaceManager instance] showRiderSigninInterface];
 }
 
 - (IBAction)didTapTakePhotoButton:(id)sender {
+    //TODO: take a picture
 }
 @end

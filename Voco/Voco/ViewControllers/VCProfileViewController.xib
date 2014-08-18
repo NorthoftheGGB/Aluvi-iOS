@@ -7,8 +7,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCProfileViewController">
             <connections>
                 <outlet property="contentView" destination="bC0-fy-Fem" id="owM-7S-emi"/>
-                <outlet property="didTapLogoutButton" destination="6j1-PT-iSR" id="EHw-r1-XbU"/>
-                <outlet property="didTapTakePhotoButton" destination="yjC-Yy-Tgp" id="uT0-Pw-VVV"/>
                 <outlet property="emailTextField" destination="ljN-fv-dwb" id="brr-pR-NhC"/>
                 <outlet property="firstNameTextField" destination="fYN-K8-URI" id="Fpf-IL-SVs"/>
                 <outlet property="lastNameTextField" destination="Qf9-53-MIF" id="bAN-Bs-piG"/>
@@ -19,6 +17,7 @@
                 <outlet property="scrollView" destination="BQ7-4F-qNh" id="nbK-Ng-tmU"/>
                 <outlet property="takePhotoButton" destination="yjC-Yy-Tgp" id="ls2-uY-Ve4"/>
                 <outlet property="userImageView" destination="hHo-Y7-gSD" id="83t-K9-rfM"/>
+                <outlet property="versionLabel" destination="faT-jo-LTb" id="zOV-Kc-pOy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -48,10 +47,14 @@
             <rect key="frame" x="0.0" y="64" width="320" height="748"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hHo-Y7-gSD" userLabel="User Image View">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hHo-Y7-gSD" userLabel="User Image View">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="324"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" red="0.98593795299999998" green="0.44947996109999999" blue="0.67937132219999996" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="320" id="hN8-zo-Xec"/>
+                        <constraint firstAttribute="height" constant="324" id="zi6-s2-yHb"/>
+                    </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="confirmation-hud.png" translatesAutoresizingMaskIntoConstraints="NO" id="h3d-jf-48E">
                     <rect key="frame" x="0.0" y="239" width="320" height="324"/>
@@ -224,6 +227,7 @@
             <constraints>
                 <constraint firstItem="GJP-fi-epG" firstAttribute="top" secondItem="5mb-IJ-dxQ" secondAttribute="bottom" constant="8" id="1Qi-KQ-1ZC"/>
                 <constraint firstItem="h3d-jf-48E" firstAttribute="top" secondItem="xqJ-t5-ilK" secondAttribute="bottom" constant="-90" id="4PJ-Fi-QLc"/>
+                <constraint firstItem="hHo-Y7-gSD" firstAttribute="leading" secondItem="bC0-fy-Fem" secondAttribute="leading" id="9Ld-MO-1Y4"/>
                 <constraint firstItem="yjC-Yy-Tgp" firstAttribute="leading" secondItem="bC0-fy-Fem" secondAttribute="leading" constant="22" id="KTf-qW-76J"/>
                 <constraint firstItem="5mb-IJ-dxQ" firstAttribute="top" secondItem="AZs-m8-oR6" secondAttribute="bottom" constant="8" id="Kxp-pr-vfG"/>
                 <constraint firstItem="kLq-EE-apG" firstAttribute="top" secondItem="xqJ-t5-ilK" secondAttribute="bottom" constant="3" id="M2n-fr-lSW"/>
@@ -233,6 +237,7 @@
                 <constraint firstItem="AZs-m8-oR6" firstAttribute="top" secondItem="ljN-fv-dwb" secondAttribute="bottom" constant="8" id="XAf-bU-205"/>
                 <constraint firstItem="kLq-EE-apG" firstAttribute="leading" secondItem="bC0-fy-Fem" secondAttribute="leading" constant="37" id="XjD-Ew-834"/>
                 <constraint firstItem="h3d-jf-48E" firstAttribute="leading" secondItem="bC0-fy-Fem" secondAttribute="leading" id="bYy-SO-1zi"/>
+                <constraint firstItem="hHo-Y7-gSD" firstAttribute="top" secondItem="bC0-fy-Fem" secondAttribute="top" id="cak-Ba-hrk"/>
                 <constraint firstAttribute="bottom" secondItem="h3d-jf-48E" secondAttribute="bottom" constant="185" id="fQ1-PM-IuV"/>
                 <constraint firstItem="AZs-m8-oR6" firstAttribute="leading" secondItem="bC0-fy-Fem" secondAttribute="leading" constant="9" id="geN-Kz-umD"/>
                 <constraint firstItem="fYN-K8-URI" firstAttribute="leading" secondItem="bC0-fy-Fem" secondAttribute="leading" constant="9" id="hAn-6J-Czy"/>

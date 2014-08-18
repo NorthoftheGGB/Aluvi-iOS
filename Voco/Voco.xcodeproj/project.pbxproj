@@ -1653,14 +1653,14 @@
 			name = Validation;
 			sourceTree = "<group>";
 		};
-		4FFCF2BA19A2428700A4A24E /* Menu Items */ = {
+		4FFCF2BA19A2428700A4A24E /* Menu Views */ = {
 			isa = PBXGroup;
 			children = (
 				4FFCF2BB19A25F2100A4A24E /* VCProfileViewController.h */,
 				4FFCF2BC19A25F2100A4A24E /* VCProfileViewController.m */,
 				4FFCF2BD19A25F2100A4A24E /* VCProfileViewController.xib */,
 			);
-			name = "Menu Items";
+			name = "Menu Views";
 			sourceTree = "<group>";
 		};
 		4FFE138C1989AB3A004D4413 /* Revision 2.0 */ = {
@@ -1731,7 +1731,7 @@
 				F473F022195192D600D8C900 /* Dev */,
 				F473F00E194A6D3400D8C900 /* Common */,
 				F473F047195BA4E000D8C900 /* Menu */,
-				4FFCF2BA19A2428700A4A24E /* Menu Items */,
+				4FFCF2BA19A2428700A4A24E /* Menu Views */,
 				F45F7C141935A3AF00A94721 /* Driver */,
 				F45F7C131935A3A500A94721 /* Rider */,
 			);
