@@ -1193,6 +1193,7 @@
 		F4C6B29D197F437800F6C10B /* VCApiError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCApiError.m; path = API/VCApiError.m; sourceTree = "<group>"; };
 		F4C6B2A2197F8A9400F6C10B /* VCEditLocationWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCEditLocationWidget.h; path = ViewControllers/VCEditLocationWidget.h; sourceTree = "<group>"; };
 		F4C6B2A3197F8A9400F6C10B /* VCEditLocationWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCEditLocationWidget.m; path = ViewControllers/VCEditLocationWidget.m; sourceTree = "<group>"; };
+		F4CC33D719A05A06006359B4 /* VCNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCNotifications.h; sourceTree = "<group>"; };
 		F4D877641976721D00870945 /* VCProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCProfile.h; path = Users/VCProfile.h; sourceTree = "<group>"; };
 		F4D877651976721D00870945 /* VCProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCProfile.m; path = Users/VCProfile.m; sourceTree = "<group>"; };
 		F4D8776A19774CAB00870945 /* VCFare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCFare.h; path = API/Driver/VCFare.h; sourceTree = "<group>"; };
@@ -2157,6 +2158,7 @@
 				F49EDD0F1946E2F90020B8BB /* VCInterfaceManager.m */,
 				F425906B1995E30000FA928E /* VCCommuteManager.h */,
 				F425906C1995E30000FA928E /* VCCommuteManager.m */,
+				F4CC33D719A05A06006359B4 /* VCNotifications.h */,
 			);
 			name = Application;
 			sourceTree = "<group>";

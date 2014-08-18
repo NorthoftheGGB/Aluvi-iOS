@@ -20,6 +20,8 @@
 #import "VCRideDetailsHudView.h"
 #import "NSDate+Pretty.h"
 #import "Driver.h"
+#import "VCNotifications.h"
+#import "VCPushApi.h"
 
 #define kEditCommuteStatePickupTime 1000
 #define kEditCommuteStateEditHome 1001
@@ -165,10 +167,39 @@
             [self showInterfaceForRide];
         }
     }
-
- 
-
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripFulfilled:) name:kNotificationTypeTripFulfilled object:nil];
 }
+
+- (void) viewWillDisppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void) tripFulfilled:(NSNotification *) notification {
+    NSDictionary * payload = notification.object;
+    NSNumber * tripId = [payload objectForKey:VC_PUSH_TRIP_ID_KEY];
+    if(_ride == nil) {
+        NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ride"];
+        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"trip_id = %@", tripId];
+        [fetch setPredicate:predicate];
+        NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];
+        [fetch setSortDescriptors:@[sort]];
+        NSError * error;
+        NSArray * ridesForTrip = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
+        if(ridesForTrip == nil){
+            [WRUtilities criticalError:error];
+            return;
+        }
+        _ride = [ridesForTrip objectAtIndex:0];
+        [self showInterfaceForRide];
+
+    } else if([_ride.trip_id isEqualToNumber:tripId]){
+        [[VCCoreData managedObjectContext] refreshObject:_ride mergeChanges:YES];
+        [self showInterfaceForRide];
+    }
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -212,13 +243,16 @@
         _waitingScreen.frame = waitingScreenFrame;*/
         
         [self.view addSubview:self.waitingScreen];
-    } else if([_ride.confirmed isEqualToNumber:[NSNumber numberWithBool:YES]]) {
-        [self.view addSubview:_rideDetailsHud];
-    } else {
-        _rideDetailsConfirmation.pickupTimeLabel.text = [_ride.pickupTime time];
-        _rideDetailsConfirmation.driverNameLabel.text = [_ride.driver fullName];
-        _rideDetailsConfirmation.cardNumberLabel.text =  @"LOADING...";
-        [self.view addSubview:_rideDetailsConfirmation];
+    } else if([_ride.state isEqualToString:kScheduledState]){
+        
+        if([_ride.confirmed isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+            [self.view addSubview:_rideDetailsHud];
+        } else {
+            _rideDetailsConfirmation.pickupTimeLabel.text = [_ride.pickupTime time];
+            _rideDetailsConfirmation.driverNameLabel.text = [_ride.driver fullName];
+            _rideDetailsConfirmation.cardNumberLabel.text =  @"LOADING...";
+            [self.view addSubview:_rideDetailsConfirmation];
+        }
     }
     
 }
@@ -343,6 +377,8 @@
         [_scheduleRideButton removeFromSuperview];
         [_hovDriverOptionView removeFromSuperview];
         [_nextButton removeFromSuperview];
+        [_rideDetailsConfirmation removeFromSuperview];
+        [_rideDetailsHud removeFromSuperview];
         [self removeCancelBarButton];
         [self showHome];
     } completion:^(BOOL finished) {
@@ -498,7 +534,7 @@
         [[VCCommuteManager instance] reset];
         [self resetInterface];
     } else {
-        [UIAlertView showWithTitle:@"Cancel Ride?" message:@"Are you sure you want to cancel this ride?" cancelButtonTitle:@"No!" otherButtonTitles:@[@"Yes, Cancel this ride"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        [UIAlertView showWithTitle:@"Cancel Ride?" message:@"Are you sure you want to cancel this trip?" cancelButtonTitle:@"No!" otherButtonTitles:@[@"Yes, Cancel this ride"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
             switch(buttonIndex){
                 case 1:
                 {

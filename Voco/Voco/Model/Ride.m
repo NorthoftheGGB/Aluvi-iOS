@@ -59,11 +59,14 @@
                                                         @"origin_place_name" : @"originPlaceName",
                                                         @"origin_latitude" : @"originLatitude",
                                                         @"origin_longitude" : @"originLongitude",
+                                                        @"origin_short_name" : @"originShortName",
                                                         @"destination_place_name" : @"destinationPlaceName",
                                                         @"destination_latitude" : @"destinationLatitude",
                                                         @"destination_longitude" : @"destinationLongitude",
+                                                        @"destination_short_name" : @"destinationShortName",
                                                         @"driving" : @"driving",
-                                                        @"trip_id" : @"trip_id"
+                                                        @"trip_id" : @"trip_id",
+                                                        @"pickup_time" : @"pickupTime"
                                                         }];
     
     entityMapping.identificationAttributes = @[ @"ride_id" ]; // for riders ride_id is the primary key

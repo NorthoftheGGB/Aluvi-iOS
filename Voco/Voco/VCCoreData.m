@@ -131,6 +131,12 @@ static VCCoreData * sharedInstance;
 
 + (void) clearUserData {
     NSError * error = nil;
+    [[RKManagedObjectStore defaultStore] resetPersistentStores:&error];
+    if(error != nil){
+        [WRUtilities criticalError:error];
+        return;
+    }
+    /*
     NSPersistentStore * store = [[self instance].persistentStoreCoordinator.persistentStores objectAtIndex:0];
     [[self persistentStoreCoordinator] removePersistentStore:store error:&error];
     if(error != nil) {
@@ -143,6 +149,7 @@ static VCCoreData * sharedInstance;
         return;
     }
     [self createPersistentStore];
+     */
 }
 
 + (void)saveContext

@@ -31,5 +31,6 @@
 - (void) rideAssigned: (Fare *) ride;
 - (void) commuterRideAlarm: (NSNumber *) requestId;
 - (void) showRidePaymentProblem: (NSNumber *) rideId;
-
+- (void) commuteFulfilled;
+- (void) commuteUnfulfilled;
 @end

@@ -212,5 +212,17 @@ static VCDialogs *sharedSingleton;
     }];
 }
 
+- (void) commuteFulfilled {
+    [UIAlertView showWithTitle:@"Commuter Ride Scheduled!" message:@"Your Commute to and from work has been Fulfilled!" cancelButtonTitle:@"Great!" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        //
+    }];
+}
+
+- (void) commuteUnfulfilled {
+    [UIAlertView showWithTitle:@"Commuter Ride Not Successful." message:@"We were unable to fulfill your commute to and from work.  Please try again tomorrow." cancelButtonTitle:@"Okay :(" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        //
+    }];
+}
+
 
 @end

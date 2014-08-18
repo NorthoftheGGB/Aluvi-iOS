@@ -132,17 +132,20 @@ static VCUserStateManager *sharedSingleton;
     VCDevice * device = [[VCDevice alloc] init];
     device.userId = [NSNumber numberWithInt:0]; // unassign the push token
     [VCDevicesApi patchDevice:device success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        [VCApi clearApiToken];
-        [self clearUserState];
-        [VCCoreData clearUserData];
-        [[VCInterfaceManager instance] showRiderSigninInterface];
-        [[VCDebug sharedInstance] clearLoggedInUserIdentifier];
-        [[VCCommuteManager instance] clear];
-
+        [self clearUser];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         
     }];
 
+}
+
+- (void) clearUser {
+    [VCApi clearApiToken];
+    [self clearUserState];
+    [VCCoreData clearUserData];
+    [[VCInterfaceManager instance] showRiderSigninInterface];
+    [[VCDebug sharedInstance] clearLoggedInUserIdentifier];
+    [[VCCommuteManager instance] clear];
 }
 
 - (void) synchronizeUserState {

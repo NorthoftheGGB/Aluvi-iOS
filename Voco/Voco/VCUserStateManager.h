@@ -66,5 +66,6 @@ NSString *const VCUserStateDriverStateKeyPath;
                      failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
 - (void) clearRideState;
+- (void) clearUser;
 
 @end
