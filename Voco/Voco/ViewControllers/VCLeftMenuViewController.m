@@ -123,7 +123,6 @@
     
     UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"menu-bg@2x.png"]];
     [tempImageView setFrame:self.tableView.frame];
-    
     self.tableView.backgroundView = tempImageView;
     
     long tag = [[_tableCellList objectAtIndex:row] integerValue];
