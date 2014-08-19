@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCRideViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCTicketViewController">
             <connections>
                 <outlet property="currentLocationButton" destination="XIm-sQ-LdY" id="ihB-70-3YB"/>
                 <outlet property="editCommuteButton" destination="N2Q-DX-cGh" id="s78-rO-yRn"/>

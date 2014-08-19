@@ -7,7 +7,7 @@
 //
 
 #import "VCLeftMenuViewController.h"
-#import "VCRideViewController.h"
+#import "VCTicketViewController.h"
 #import "VCDriveViewController.h"
 #import "VCInterfaceManager.h"
 #import "VCRiderProfileViewController.h"
@@ -279,7 +279,7 @@
             
         case kMapCellInteger:
         {
-            VCRideViewController * rideViewController = [[VCRideViewController alloc] init];
+            VCTicketViewController * rideViewController = [[VCTicketViewController alloc] init];
             [[VCInterfaceManager instance] setCenterViewControllers: @[rideViewController]];
             
             VCMenuItemTableViewCell * cell = (VCMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
@@ -308,7 +308,7 @@
                 driveViewController.ride = ride;
                 [[VCInterfaceManager instance] setCenterViewControllers: @[driveViewController]];
             } else {
-                VCRideViewController * rideViewController = [[VCRideViewController alloc] init];
+                VCTicketViewController * rideViewController = [[VCTicketViewController alloc] init];
                 rideViewController.ticket = ride;
                 [[VCInterfaceManager instance] setCenterViewControllers: @[rideViewController]];
             }

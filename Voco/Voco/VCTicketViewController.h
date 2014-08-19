@@ -10,7 +10,7 @@
 #import "VCTransitBaseViewController.h"
 #import "Ticket.h"
 
-@interface VCRideViewController : VCTransitBaseViewController
+@interface VCTicketViewController : VCTransitBaseViewController
 
 @property (strong, nonatomic) Ticket * ticket;
 @property (strong, nonatomic) MKPolyline * walkingRouteToMeetingPointOverlay;

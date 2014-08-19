@@ -8,7 +8,7 @@
 
 #import "VCInterfaceManager.h"
 #import "VCSignInViewController.h"
-#import "VCRideViewController.h"
+#import "VCTicketViewController.h"
 #import "VCDriveViewController.h"
 #import "VCLeftMenuViewController.h"
 #import "IIViewDeckController.h"
@@ -94,7 +94,7 @@ static int mode;
 }
 
 - (void) showRiderInterface {
-    VCRideViewController * rideViewController = [[VCRideViewController alloc] init];
+    VCTicketViewController * rideViewController = [[VCTicketViewController alloc] init];
 
     if( [VCUserStateManager instance].underwayFareId != nil ) {
         NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];

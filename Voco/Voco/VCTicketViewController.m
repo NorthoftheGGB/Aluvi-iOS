@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCRideViewController.h"
+#import "VCTicketViewController.h"
 #import <MapKit/MapKit.h>
 #import <ActionSheetPicker-3.0/ActionSheetStringPicker.h>
 #import <ActionSheetCustomPicker.h>
@@ -42,7 +42,7 @@
 
 #define kFareNotStartedLabelText @"Waiting"
 
-@interface VCRideViewController () <MKMapViewDelegate, VCEditLocationWidgetDelegate, ActionSheetCustomPickerDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
+@interface VCTicketViewController () <MKMapViewDelegate, VCEditLocationWidgetDelegate, ActionSheetCustomPickerDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
 // map
 @property (strong, nonatomic) MKPointAnnotation * originAnnotation;
@@ -100,7 +100,7 @@
 
 @end
 
-@implementation VCRideViewController
+@implementation VCTicketViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
