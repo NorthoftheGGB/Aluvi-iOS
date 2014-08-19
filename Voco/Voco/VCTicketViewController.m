@@ -452,8 +452,11 @@
 
 - (void) clearMap {
     [super clearMap];
+    [self.map removeOverlays:self.map.overlays];
     [self.map removeAnnotation:_originAnnotation];
     [self.map removeAnnotation:_destinationAnnotation];
+    [self.map removeAnnotation:_meetingPointAnnotation];
+    [self.map removeAnnotation:_dropOffPointAnnotation];
 }
 
 - (void) removeHuds {

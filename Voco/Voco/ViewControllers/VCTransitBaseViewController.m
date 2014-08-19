@@ -112,8 +112,6 @@
 }
 
 - (void) clearMap {
-   // [_map removeAnnotation:_meetingPointAnnotation];
-   // [_map removeAnnotation:_dropOffAnnotation];
     [self clearRoute];
 }
 
