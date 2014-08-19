@@ -62,6 +62,7 @@ NSString *const VCUserStateDriverStateKeyPath;
 - (void) finalizeLogout;
 - (void) synchronizeUserState;
 - (BOOL) isLoggedIn;
+- (BOOL) isHovDriver;
 
 - (void) clockOnWithSuccess: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                     failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;

@@ -37,7 +37,7 @@
         return _fetchedResultsController;
     }
     
-    NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Ride"];
+    NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
     
     NSSortDescriptor *sort = [[NSSortDescriptor alloc]
                               initWithKey:@"requestedTimestamp" ascending:YES];

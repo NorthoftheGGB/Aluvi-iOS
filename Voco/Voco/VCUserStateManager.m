@@ -204,6 +204,14 @@ static VCUserStateManager *sharedSingleton;
     }
 }
 
+- (BOOL) isHovDriver {
+    if([self.driverState isEqualToString:kDriverStateActive]){
+        return YES;
+    }
+    return NO;
+}
+
+
 - (void) clockOnWithSuccess: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                     failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     [VCDriverApi clockOnWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {

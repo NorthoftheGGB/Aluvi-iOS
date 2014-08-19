@@ -50,6 +50,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+/*
 - (void) annotateMeetingPoint: (CLLocation *) meetingPoint andDropOffPoint: (CLLocation *) dropOffPoint {
     
     _meetingPointAnnotation = [[MKPointAnnotation alloc] init];
@@ -66,6 +67,7 @@
     [_map addAnnotation:_dropOffAnnotation];
     
 }
+ */
 
 
 - (void) showSuggestedRoute {
@@ -110,8 +112,8 @@
 }
 
 - (void) clearMap {
-    [_map removeAnnotation:_meetingPointAnnotation];
-    [_map removeAnnotation:_dropOffAnnotation];
+   // [_map removeAnnotation:_meetingPointAnnotation];
+   // [_map removeAnnotation:_dropOffAnnotation];
     [self clearRoute];
 }
 

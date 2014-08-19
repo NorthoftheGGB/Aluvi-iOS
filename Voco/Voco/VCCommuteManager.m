@@ -108,7 +108,7 @@ static VCCommuteManager * instance;
 
 - (void) requestRidesFor:(NSDate *) tomorrow {
     // Look for pre-existing request for tomorrow, error if it exists
-    NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ride"];
+    NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
     
     // start by retrieving day, weekday, month and year components for the given day
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -155,7 +155,7 @@ static VCCommuteManager * instance;
     // OK to proceed with ride creation and request
     NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
     
-    Ticket * homeToWorkRide = (Ticket *) [NSEntityDescription insertNewObjectForEntityForName:@"Ride" inManagedObjectContext:[VCCoreData managedObjectContext]];
+    Ticket * homeToWorkRide = (Ticket *) [NSEntityDescription insertNewObjectForEntityForName:@"Ticket" inManagedObjectContext:[VCCoreData managedObjectContext]];
     homeToWorkRide.rideDate = tomorrow;
     homeToWorkRide.originLatitude = [NSNumber numberWithDouble: instance.home.coordinate.latitude];
     homeToWorkRide.originLongitude = [NSNumber numberWithDouble: instance.home.coordinate.longitude];
@@ -175,7 +175,7 @@ static VCCommuteManager * instance;
     [components setMinute:[[f numberFromString:pickupTimeParts[1]] intValue]];
     homeToWorkRide.pickupTime = [gregorian dateByAddingComponents:components toDate:thisDate options:0];
     
-    Ticket * workToHomeRide = (Ticket *) [NSEntityDescription insertNewObjectForEntityForName:@"Ride" inManagedObjectContext:[VCCoreData managedObjectContext]];
+    Ticket * workToHomeRide = (Ticket *) [NSEntityDescription insertNewObjectForEntityForName:@"Ticket" inManagedObjectContext:[VCCoreData managedObjectContext]];
     workToHomeRide.rideDate = tomorrow;
     workToHomeRide.originLatitude =[NSNumber numberWithDouble: instance.work.coordinate.latitude];
     workToHomeRide.originLongitude = [NSNumber numberWithDouble: instance.work.coordinate.longitude];

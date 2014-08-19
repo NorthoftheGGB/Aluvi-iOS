@@ -18,6 +18,7 @@
 #import "VCMenuItemNotConfiguredTableViewCell.h"
 #import "VCMenuItemModeTableViewCell.h"
 #import "NSDate+Pretty.h"
+#import "VCUserStateManager.h"
 
 
 // These ones go in the array
@@ -138,7 +139,10 @@
             
             //TODO: This is a placeholder name, replace it with relevant string!
             
-            menuUserInfoCell.userFullName.text = @"Devon Drakesbad";
+            menuUserInfoCell.userFullName.text = [NSString stringWithFormat: @"%@ %@",
+                                                  [[VCUserStateManager instance] profile].firstName,
+                                                  [[VCUserStateManager instance] profile].lastName
+                                                  ];
             menuUserInfoCell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell = menuUserInfoCell;
         }
@@ -336,7 +340,7 @@
 }
 
 - (void) loadScheduleItems {
-    NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ride"];
+    NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
     NSPredicate * predicate = [NSPredicate predicateWithFormat:@"savedState IN %@ ", @[kCreatedState, kRequestedState, kScheduledState]];
     [fetch setPredicate:predicate];
     NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];

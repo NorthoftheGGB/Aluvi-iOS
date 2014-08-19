@@ -25,6 +25,7 @@
 #import "Car.h"
 #import "VCUserStateManager.h"
 #import "VCDriveViewController.h"
+#import "VCMapQuestRouting.h"
 
 #define kEditCommuteStatePickupTime 1000
 #define kEditCommuteStateEditHome 1001
@@ -47,6 +48,8 @@
 // map
 @property (strong, nonatomic) MKPointAnnotation * originAnnotation;
 @property (strong, nonatomic) MKPointAnnotation * destinationAnnotation;
+@property (strong, nonatomic) MKPointAnnotation * meetingPointAnnotation;
+@property (strong, nonatomic) MKPointAnnotation * dropOffPointAnnotation;
 @property (strong, nonatomic) IBOutlet UIButton *currentLocationButton;
 
 // data
@@ -140,10 +143,8 @@
     _workLocationWidget.type = kWorkType;
     [self addChildViewController:_homeLocationWidget];
     [self addChildViewController:_workLocationWidget];
-    
-    
-    
 }
+
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
     
@@ -180,19 +181,19 @@
     NSDictionary * payload = notification.object;
     NSNumber * tripId = [payload objectForKey:VC_PUSH_TRIP_ID_KEY];
     //if(_ride == nil || [_ride.trip_id isEqualToNumber:tripId]) {
-        NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ride"];
-        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"trip_id = %@", tripId];
-        [fetch setPredicate:predicate];
-        NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];
-        [fetch setSortDescriptors:@[sort]];
-        NSError * error;
-        NSArray * ridesForTrip = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
-        if(ridesForTrip == nil){
-            [WRUtilities criticalError:error];
-            return;
-        }
-        _ticket = [ridesForTrip objectAtIndex:0];
-        [self showInterfaceForRide];
+    NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"trip_id = %@", tripId];
+    [fetch setPredicate:predicate];
+    NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];
+    [fetch setSortDescriptors:@[sort]];
+    NSError * error;
+    NSArray * ridesForTrip = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
+    if(ridesForTrip == nil){
+        [WRUtilities criticalError:error];
+        return;
+    }
+    _ticket = [ridesForTrip objectAtIndex:0];
+    [self showInterfaceForRide];
     //}
 }
 
@@ -227,23 +228,63 @@
     
 }
 
+- (void) addPedestrianRoute: (CLLocation *) from to: (CLLocation *) to {
+    CLLocationCoordinate2D fromCoordinate = CLLocationCoordinate2DMake(from.coordinate.latitude, from.coordinate.longitude);
+    CLLocationCoordinate2D toCoordinate = CLLocationCoordinate2DMake(to.coordinate.latitude, to.coordinate.longitude);
+    
+    [VCMapQuestRouting pedestrianRoute:fromCoordinate
+                                    to:toCoordinate
+                               success:^(MKPolyline *polyline, MKCoordinateRegion region) {
+                                   polyline.title = @"pedestrian";
+                                   [self.map addOverlay:polyline];
+                               }
+                               failure:^{
+                                   NSLog(@"%@", @"Error talking with MapQuest routing API");
+                               }];
+}
+
+- (void) addDriverLegRoute: (CLLocation *) from to: (CLLocation *) to {
+    CLLocationCoordinate2D fromCoordinate = CLLocationCoordinate2DMake(from.coordinate.latitude, from.coordinate.longitude);
+    CLLocationCoordinate2D toCoordinate = CLLocationCoordinate2DMake(to.coordinate.latitude, to.coordinate.longitude);
+    
+    [VCMapQuestRouting pedestrianRoute:fromCoordinate
+                                    to:toCoordinate
+                               success:^(MKPolyline *polyline, MKCoordinateRegion region) {
+                                   polyline.title = @"driver_leg";
+                                   [self.map addOverlay:polyline];
+                               }
+                               failure:^{
+                                   NSLog(@"%@", @"Error talking with MapQuest routing API");
+                               }];
+}
+
 - (void) showInterfaceForRide {
     [self clearMap];
     [self removeHuds];
-    [self.editCommuteButton removeFromSuperview]; //homeActionView goes here
+    [self.editCommuteButton removeFromSuperview];
     [self showCancelBarButton];
     
-    [self addOriginAnnotation: [_ticket originLocation] ];
-    [self addDestinationAnnotation: [_ticket destinationLocation]];
-    [self showSuggestedRoute: [_ticket originLocation] to:[_ticket destinationLocation]];
+    
     if([@[kCreatedState, kRequestedState] containsObject:_ticket.state]){
-        /*CGRect waitingScreenFrame = _waitingScreen.frame;
-        waitingScreenFrame.origin.x = 0;
-        waitingScreenFrame.origin.y = self.view.frame.size.height - 101;
-        _waitingScreen.frame = waitingScreenFrame;*/
-        
+        [self addOriginAnnotation: [_ticket originLocation] ];
+        [self addDestinationAnnotation: [_ticket destinationLocation]];
+        [self showSuggestedRoute: [_ticket originLocation] to:[_ticket destinationLocation]];
         [self.view addSubview:self.waitingScreen];
+        
     } else if([_ticket.state isEqualToString:kScheduledState]){
+        [self addOriginAnnotation: [_ticket originLocation] ];
+        [self addDestinationAnnotation: [_ticket destinationLocation]];
+        [self addMeetingPointAnnotation: [_ticket meetingPointLocation]];
+        [self addDropOffPointAnnotation: [_ticket dropOffPointLocation]];
+        
+        [self showSuggestedRoute: [_ticket meetingPointLocation] to:[_ticket dropOffPointLocation]];
+        if( [_ticket.driving boolValue] ) {
+            [self addDriverLegRoute:[_ticket originLocation] to:[_ticket meetingPointLocation]];
+            [self addDriverLegRoute:[_ticket dropOffPointLocation] to:[_ticket destinationLocation]];
+        } else {
+            [self addPedestrianRoute:[_ticket originLocation] to:[_ticket meetingPointLocation]];
+            [self addPedestrianRoute:[_ticket dropOffPointLocation] to:[_ticket destinationLocation]];
+        }
         
         if([_ticket.driving boolValue]) {
             
@@ -252,7 +293,7 @@
             self.navigationController.viewControllers  = @[vc];
             
         } else {
-        
+            
             if([_ticket.confirmed isEqualToNumber:[NSNumber numberWithBool:YES]]) {
                 //_rideDetailsHud.pickupTimeLabel.text = [_ride.pickupTime time];
                 _rideDetailsHud.driverFirstNameLabel.text = _ticket.driver.firstName;
@@ -338,11 +379,13 @@
         [self.view addSubview:self.returnHudView];
     }
     {
-        CGRect frame = _hovDriverOptionView.frame;
-        frame.origin.x = 0;
-        frame.origin.y = self.view.frame.size.height - 91;
-        _hovDriverOptionView.frame = frame;
-        [self.view addSubview:_hovDriverOptionView];
+        if([[VCUserStateManager instance] isHovDriver]){
+            CGRect frame = _hovDriverOptionView.frame;
+            frame.origin.x = 0;
+            frame.origin.y = self.view.frame.size.height - 91;
+            _hovDriverOptionView.frame = frame;
+            [self.view addSubview:_hovDriverOptionView];
+        }
     }
     {
         CGRect frame = _scheduleRideButton.frame;
@@ -351,7 +394,7 @@
         _scheduleRideButton.frame = frame;
         [self.view addSubview:_scheduleRideButton];
     }
-
+    
     
     [UIView animateWithDuration:0.35 animations:^{
         CGRect frame = _pickupHudView.frame;
@@ -540,11 +583,14 @@
     
     [_currentLocationButton removeFromSuperview];
     
-    CGRect frame = _hovDriverOptionView.frame;
-    frame.origin.x = 0;
-    frame.origin.y = self.view.frame.size.height - 91;
-    _hovDriverOptionView.frame = frame;
-    [self.view addSubview:_hovDriverOptionView];
+    
+    if([[VCUserStateManager instance] isHovDriver]){
+        CGRect frame = _hovDriverOptionView.frame;
+        frame.origin.x = 0;
+        frame.origin.y = self.view.frame.size.height - 91;
+        _hovDriverOptionView.frame = frame;
+        [self.view addSubview:_hovDriverOptionView];
+    }
     
     
     {CGRect frame = _scheduleRideButton.frame;
@@ -645,10 +691,10 @@
 
 - (void) storeCommuterSettings {
     [VCCommuteManager instance].home = [[CLLocation alloc] initWithLatitude:_originAnnotation.coordinate.latitude
-                                                                             longitude:_originAnnotation.coordinate.longitude];
+                                                                  longitude:_originAnnotation.coordinate.longitude];
     [VCCommuteManager instance].work = [[CLLocation alloc] initWithLatitude:_destinationAnnotation.coordinate.latitude
-                                                                                  longitude:_destinationAnnotation.coordinate.longitude];
-
+                                                                  longitude:_destinationAnnotation.coordinate.longitude];
+    
     [[VCCommuteManager instance] save];
     
     
@@ -663,14 +709,14 @@
         [self addOriginAnnotation: [VCCommuteManager instance].home ];
         [_homeLocationWidget setMode:kEditLocationWidgetDisplayMode];
         [_homeLocationWidget setLocationText:[VCCommuteManager instance].homePlaceName];
-
+        
     }
     
     if( [VCCommuteManager instance].work != nil){
         [self addDestinationAnnotation: [VCCommuteManager instance].work ];
         [_workLocationWidget setMode:kEditLocationWidgetDisplayMode];
         [_workLocationWidget setLocationText:[VCCommuteManager instance].workPlaceName];
-
+        
     }
     
     if( [VCCommuteManager instance].returnTime != nil){
@@ -702,8 +748,28 @@
     }
     _destinationAnnotation = [[MKPointAnnotation alloc] init];
     _destinationAnnotation.coordinate = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude);
-    _destinationAnnotation.title = @"Home";
+    _destinationAnnotation.title = @"Work";
     [self.map addAnnotation:_destinationAnnotation];
+}
+
+- (void)addMeetingPointAnnotation:(CLLocation *)location {
+    if(self.meetingPointAnnotation != nil){
+        [self.map removeAnnotation:_meetingPointAnnotation];
+    }
+    _meetingPointAnnotation = [[MKPointAnnotation alloc] init];
+    _meetingPointAnnotation.coordinate = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude);
+    _meetingPointAnnotation.title = @"Meeting Point";
+    [self.map addAnnotation:_meetingPointAnnotation];
+}
+
+- (void)addDropOffPointAnnotation:(CLLocation *)location {
+    if(_dropOffPointAnnotation != nil){
+        [self.map removeAnnotation:_dropOffPointAnnotation];
+    }
+    _dropOffPointAnnotation = [[MKPointAnnotation alloc] init];
+    _dropOffPointAnnotation.coordinate = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude);
+    _dropOffPointAnnotation.title = @"Drop Off";
+    [self.map addAnnotation:_dropOffPointAnnotation];
 }
 
 - (IBAction)didTapEditCommute:(id)sender {
@@ -734,7 +800,7 @@
                 
                 NSCalendar *theCalendar = [NSCalendar currentCalendar];
                 NSDate *tomorrow = [theCalendar dateByAddingComponents:dayComponent toDate:[NSDate date] options:0];
-
+                
                 [[VCCommuteManager instance] requestRidesFor:tomorrow];
             }
                 break;
@@ -917,6 +983,32 @@
         [self updateRouteOverlay];
         
     }
+}
+
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay
+{
+    if ([overlay isKindOfClass:[MKPolyline class]])
+    {
+        MKPolyline * polyline = (MKPolyline *) overlay;
+        if( [polyline.title isEqualToString:@"pedestrian"]) {
+            MKPolylineRenderer*   aRenderer = [[MKPolylineRenderer alloc] initWithPolyline:(MKPolyline*)overlay];
+            aRenderer.strokeColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
+            aRenderer.lineWidth = 4;
+            aRenderer.lineDashPattern = @[[NSNumber numberWithInt:10], [NSNumber numberWithInt:6]];
+            return aRenderer;
+        } else if ([polyline.title isEqualToString:@"driver_leg"]) {
+            MKPolylineRenderer*   aRenderer = [[MKPolylineRenderer alloc] initWithPolyline:(MKPolyline*)overlay];
+            aRenderer.strokeColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
+            aRenderer.lineWidth = 4;
+            return aRenderer;
+        } else {
+            return [super mapView:mapView viewForOverlay:overlay];
+        }
+            
+
+    }
+    
+    return nil;
 }
 
 

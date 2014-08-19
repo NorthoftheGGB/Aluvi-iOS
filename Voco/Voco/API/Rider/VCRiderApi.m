@@ -172,7 +172,7 @@
                                   failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     
     // Update all rides for this user using RestKit entity
-    [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_ACTIVE_RIDES parameters:nil
+    [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_ACTIVE_TICKETS parameters:nil
                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                   
                                                   success(operation, mappingResult);
