@@ -74,7 +74,7 @@
 @property (weak, nonatomic) IBOutlet VCLabel *returnTimeLabel;
 - (IBAction)didTapReturnHud:(id)sender;
 
-//overlay
+//Ride Details / Ride Status
 @property (strong, nonatomic) IBOutlet UIView *waitingScreen;
 @property (strong, nonatomic) IBOutlet VCRideDetailsConfirmationView *rideDetailsConfirmation;
 @property (strong, nonatomic) IBOutlet VCRideDetailsHudView *rideDetailsHud;
@@ -209,12 +209,14 @@
 }
 
 - (void) showHome{
+    //Replaced homeActionView with editCommuteButton for this version
     
-    CGRect frame = _homeActionView.frame;
+    CGRect frame = _editCommuteButton.frame;
     frame.origin.x = 0;
     frame.origin.y = self.view.frame.size.height - 53;
-    _homeActionView.frame = frame;
-    [self.view addSubview:self.homeActionView];
+    _editCommuteButton.frame = frame;
+    [self.view addSubview:self.editCommuteButton];
+    
     
     CGRect currentLocationframe = _currentLocationButton.frame;
     currentLocationframe.origin.x = 276;
@@ -228,7 +230,7 @@
 - (void) showInterfaceForRide {
     [self clearMap];
     [self removeHuds];
-    [self.homeActionView removeFromSuperview];
+    [self.editCommuteButton removeFromSuperview]; //homeActionView goes here
     [self showCancelBarButton];
     
     [self addOriginAnnotation: [_ticket originLocation] ];
@@ -259,6 +261,10 @@
                 _rideDetailsHud.lisenceLabel.text = _ticket.car.licensePlate;
                 _rideDetailsHud.cardNicknamelabel.text = [VCUserStateManager instance].profile.cardBrand;
                 _rideDetailsHud.cardNumberLabel.text = [VCUserStateManager instance].profile.cardLastFour;
+                CGRect frame = _rideDetailsHud.frame;
+                frame.origin.x = 0;
+                frame.origin.y = self.view.frame.size.height - 154;
+                _rideDetailsHud.frame = frame;
                 [self.view addSubview:_rideDetailsHud];
             } else {
                 _rideDetailsConfirmation.pickupTimeLabel.text = [_ticket.pickupTime time];
@@ -268,6 +274,10 @@
                 //_rideDetailsConfirmation.fareLabel.text = _ride.estimatedFareAmount;
                 _rideDetailsConfirmation.cardNicknamelabel.text = [VCUserStateManager instance].profile.cardBrand;
                 _rideDetailsConfirmation.cardNumberLabel.text = [VCUserStateManager instance].profile.cardLastFour;
+                CGRect frame = _rideDetailsConfirmation.frame;
+                frame.origin.x = 0;
+                frame.origin.y = self.view.frame.size.height - 480;
+                _rideDetailsConfirmation.frame = frame;
                 [self.view addSubview:_rideDetailsConfirmation];
             }
             
@@ -286,7 +296,7 @@
 }
 
 - (void) transitionToEditCommute {
-    [_homeActionView removeFromSuperview];
+    [_editCommuteButton removeFromSuperview]; //homeActionView goes here
     _editCommuteState = kEditCommuteStateEditAll;
     
     [self showCancelBarButton];
@@ -365,7 +375,7 @@
 }
 
 - (void) transitionToSetupCommute {
-    [_homeActionView removeFromSuperview];
+    [_editCommuteButton removeFromSuperview]; //homeActionView goes here
     [self showCancelBarButton];
     
     _editCommuteState = kEditCommuteStatePickupTime;
@@ -814,7 +824,6 @@
     
 }
 
-// TODO: do something
 
 #pragma mark - ActionSheetCustomPickerDelegate
 - (void)actionSheetPicker:(AbstractActionSheetPicker *)actionSheetPicker configurePickerView:(UIPickerView *)pickerView {
