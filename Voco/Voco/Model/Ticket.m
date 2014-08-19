@@ -6,19 +6,19 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "Ride.h"
+#import "Ticket.h"
 #import "Car.h"
 #import "Driver.h"
 #import <RKPathMatcher.h>
 #import "VCApi.h"
 #import "VCPushApi.h"
 
-@interface Ride ()
+@interface Ticket ()
 
 
 @end
 
-@implementation Ride
+@implementation Ticket
 
 @dynamic rideType;
 @dynamic car_id;
@@ -43,7 +43,7 @@
 @dynamic trip_id;
 
 + (void)createMappings:(RKObjectManager *)objectManager{
-    RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Ride"
+    RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Ticket"
                                                           inManagedObjectStore: [VCCoreData managedObjectStore]];
     
     [entityMapping addAttributeMappingsFromDictionary:@{
@@ -101,8 +101,8 @@
 }
 
 
-+ (Ride *) rideWithFareId: (NSNumber *) fareId{
-    NSFetchRequest * request = [[NSFetchRequest alloc] initWithEntityName:@"Ride"];
++ (Ticket *) rideWithFareId: (NSNumber *) fareId{
+    NSFetchRequest * request = [[NSFetchRequest alloc] initWithEntityName:@"Ticket"];
     NSPredicate * predicate = [NSPredicate predicateWithFormat:@"fare_id = %@", fareId];
     [request setPredicate:predicate];
     NSError * error;

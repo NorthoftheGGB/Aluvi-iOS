@@ -7,7 +7,7 @@
 //
 
 #import "Driver.h"
-#import "Ride.h"
+#import "Ticket.h"
 
 
 @implementation Driver

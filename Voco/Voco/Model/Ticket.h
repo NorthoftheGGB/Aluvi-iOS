@@ -36,7 +36,7 @@
 
 @class Car, Driver;
 
-@interface Ride : Transit 
+@interface Ticket : Transit 
 @property (nonatomic, retain) NSNumber * ride_id;
 @property (nonatomic, retain) NSString * rideType;
 @property (nonatomic, retain) NSNumber * car_id;
@@ -61,7 +61,7 @@
 @property (nonatomic, retain) Car *car;
 
 
-+ (Ride *) rideWithFareId: (NSNumber *) fareId;
++ (Ticket *) rideWithFareId: (NSNumber *) fareId;
 
 + (void)createMappings:(RKObjectManager *)objectManager;
 

@@ -169,7 +169,7 @@
             VCSubMenuItemTableViewCell * subMenuItemTableViewCell = [WRUtilities getViewFromNib:@"VCSubMenuItemTableViewCell" class:[VCSubMenuItemTableViewCell class]];
             
             long scheduleCellIndex = [_tableCellList indexOfObject:kScheduleCell];
-            Ride * ride = [_scheduleItems objectAtIndex:row-scheduleCellIndex-1];
+            Ticket * ride = [_scheduleItems objectAtIndex:row-scheduleCellIndex-1];
             subMenuItemTableViewCell.itemTitleLabel.text = [NSString stringWithFormat:@"%@ to %@", ride.originShortName, ride.destinationShortName];
             subMenuItemTableViewCell.itemDateLabel.text = [ride.pickupTime monthAndDay];
             subMenuItemTableViewCell.itemTimeLabel.text = [ride.pickupTime time];
@@ -301,7 +301,7 @@
         case kScheduleItemCellInteger:
         {
             long scheduleCellIndex = [_tableCellList indexOfObject:kScheduleCell];
-            Ride * ride = [_scheduleItems objectAtIndex:row-scheduleCellIndex-1];
+            Ticket * ride = [_scheduleItems objectAtIndex:row-scheduleCellIndex-1];
             
             if([ride.driving boolValue]) {
                 VCDriveViewController * driveViewController = [[VCDriveViewController alloc] init];
@@ -309,7 +309,7 @@
                 [[VCInterfaceManager instance] setCenterViewControllers: @[driveViewController]];
             } else {
                 VCRideViewController * rideViewController = [[VCRideViewController alloc] init];
-                rideViewController.ride = ride;
+                rideViewController.ticket = ride;
                 [[VCInterfaceManager instance] setCenterViewControllers: @[rideViewController]];
             }
             VCSubMenuItemTableViewCell * cell = (VCSubMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];

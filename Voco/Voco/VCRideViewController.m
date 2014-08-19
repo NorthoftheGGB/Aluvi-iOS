@@ -119,7 +119,7 @@
                              @"7:00"];
         
         _step = kStepSetDepartureLocation;
-        _ride = nil;
+        _ticket = nil;
         
     }
     return self;
@@ -160,7 +160,7 @@
         lpgr.minimumPressDuration = 0.5; //user needs to press for half a second.
         [self.map addGestureRecognizer:lpgr];
         
-        if(_ride == nil) {
+        if(_ticket == nil) {
             [self showHome];
             self.map.userTrackingMode = MKUserTrackingModeFollow;
         } else {
@@ -191,7 +191,7 @@
             [WRUtilities criticalError:error];
             return;
         }
-        _ride = [ridesForTrip objectAtIndex:0];
+        _ticket = [ridesForTrip objectAtIndex:0];
         [self showInterfaceForRide];
     //}
 }
@@ -203,8 +203,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) setRide:(Ride *)ride {
-    _ride = ride;
+- (void) setTicket:(Ticket *)ride {
+    _ticket = ride;
     self.transit = ride;
 }
 
@@ -231,19 +231,19 @@
     [self.homeActionView removeFromSuperview];
     [self showCancelBarButton];
     
-    [self addOriginAnnotation: [_ride originLocation] ];
-    [self addDestinationAnnotation: [_ride destinationLocation]];
-    [self showSuggestedRoute: [_ride originLocation] to:[_ride destinationLocation]];
-    if([@[kCreatedState, kRequestedState] containsObject:_ride.state]){
+    [self addOriginAnnotation: [_ticket originLocation] ];
+    [self addDestinationAnnotation: [_ticket destinationLocation]];
+    [self showSuggestedRoute: [_ticket originLocation] to:[_ticket destinationLocation]];
+    if([@[kCreatedState, kRequestedState] containsObject:_ticket.state]){
         /*CGRect waitingScreenFrame = _waitingScreen.frame;
         waitingScreenFrame.origin.x = 0;
         waitingScreenFrame.origin.y = self.view.frame.size.height - 101;
         _waitingScreen.frame = waitingScreenFrame;*/
         
         [self.view addSubview:self.waitingScreen];
-    } else if([_ride.state isEqualToString:kScheduledState]){
+    } else if([_ticket.state isEqualToString:kScheduledState]){
         
-        if([_ride.driving boolValue]) {
+        if([_ticket.driving boolValue]) {
             
             // Replace with the driver view controller
             VCDriveViewController * vc = [[VCDriveViewController alloc] init];
@@ -251,20 +251,20 @@
             
         } else {
         
-            if([_ride.confirmed isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+            if([_ticket.confirmed isEqualToNumber:[NSNumber numberWithBool:YES]]) {
                 //_rideDetailsHud.pickupTimeLabel.text = [_ride.pickupTime time];
-                _rideDetailsHud.driverFirstNameLabel.text = _ride.driver.firstName;
-                _rideDetailsHud.driverLastNameLabel.text = _ride.driver.lastName;
-                _rideDetailsHud.carTypeLabel.text = [_ride.car summary];
-                _rideDetailsHud.lisenceLabel.text = _ride.car.licensePlate;
+                _rideDetailsHud.driverFirstNameLabel.text = _ticket.driver.firstName;
+                _rideDetailsHud.driverLastNameLabel.text = _ticket.driver.lastName;
+                _rideDetailsHud.carTypeLabel.text = [_ticket.car summary];
+                _rideDetailsHud.lisenceLabel.text = _ticket.car.licensePlate;
                 _rideDetailsHud.cardNicknamelabel.text = [VCUserStateManager instance].profile.cardBrand;
                 _rideDetailsHud.cardNumberLabel.text = [VCUserStateManager instance].profile.cardLastFour;
                 [self.view addSubview:_rideDetailsHud];
             } else {
-                _rideDetailsConfirmation.pickupTimeLabel.text = [_ride.pickupTime time];
-                _rideDetailsConfirmation.driverNameLabel.text = [_ride.driver fullName];
-                _rideDetailsConfirmation.carTypeLabel.text = [_ride.car summary];
-                _rideDetailsConfirmation.lisenceLabel.text = _ride.car.licensePlate;
+                _rideDetailsConfirmation.pickupTimeLabel.text = [_ticket.pickupTime time];
+                _rideDetailsConfirmation.driverNameLabel.text = [_ticket.driver fullName];
+                _rideDetailsConfirmation.carTypeLabel.text = [_ticket.car summary];
+                _rideDetailsConfirmation.lisenceLabel.text = _ticket.car.licensePlate;
                 //_rideDetailsConfirmation.fareLabel.text = _ride.estimatedFareAmount;
                 _rideDetailsConfirmation.cardNicknamelabel.text = [VCUserStateManager instance].profile.cardBrand;
                 _rideDetailsConfirmation.cardNumberLabel.text = [VCUserStateManager instance].profile.cardLastFour;
@@ -553,7 +553,7 @@
 
 
 - (void) didTapCancel: (id)sender {
-    if(_ride == nil) {
+    if(_ticket == nil) {
         [[VCCommuteManager instance] reset];
         [self resetInterfaceToHome];
     } else {
@@ -561,7 +561,7 @@
             switch(buttonIndex){
                 case 1:
                 {
-                    [[VCCommuteManager instance] cancelRide:_ride success:^{
+                    [[VCCommuteManager instance] cancelRide:_ticket success:^{
                         [self resetInterfaceToHome];
                     } failure:^{
                         // do nothing
@@ -767,7 +767,7 @@
 }
 
 - (IBAction)didTapConfirmedCommuterRide:(id)sender {
-    _ride.confirmed = [NSNumber numberWithBool:YES];
+    _ticket.confirmed = [NSNumber numberWithBool:YES];
     [VCCoreData saveContext];
     [self showInterfaceForRide];
 }

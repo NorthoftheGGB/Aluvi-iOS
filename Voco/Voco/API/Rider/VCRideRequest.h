@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import <RestKit.h>
-#import "Ride.h"
+#import "Ticket.h"
 
 
 
@@ -28,6 +28,6 @@
 @property (nonatomic, strong) NSNumber * tripId;
 
 + (RKObjectMapping *) getMapping;
-+ (VCRideRequest *) requestForRide:(Ride *)ride;
++ (VCRideRequest *) requestForRide:(Ticket *)ride;
 
 @end
