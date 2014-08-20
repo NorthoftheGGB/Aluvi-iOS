@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "VCTransitBaseViewController.h"
-#import "Ride.h"
+#import "Ticket.h"
 
-@interface VCRideViewController : VCTransitBaseViewController
+@interface VCTicketViewController : VCTransitBaseViewController
 
-@property (strong, nonatomic) Ride * ride;
+@property (strong, nonatomic) Ticket * ticket;
 @property (strong, nonatomic) MKPolyline * walkingRouteToMeetingPointOverlay;
 @property (strong, nonatomic) MKPolyline * walkingRouteToDestinationOverlay;
 

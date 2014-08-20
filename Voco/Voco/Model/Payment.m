@@ -8,7 +8,7 @@
 
 #import "Payment.h"
 #import "Driver.h"
-#import "Ride.h"
+#import "Ticket.h"
 #import "Fare.h"
 #import <RKPathMatcher.h>
 #import "VCApi.h"

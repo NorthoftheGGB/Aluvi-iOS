@@ -22,7 +22,7 @@
 #import "VCMapQuestRouting.h"
 #import "VCUsersApi.h"
 #import "VCLocalNotificationReceiver.h"
-#import "VCRideViewController.h"
+#import "VCTicketViewController.h"
 
 @interface VCAppDelegate ()
 

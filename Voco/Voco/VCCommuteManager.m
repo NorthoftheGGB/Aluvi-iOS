@@ -7,7 +7,7 @@
 //
 
 #import "VCCommuteManager.h"
-#import "Ride.h"
+#import "Ticket.h"
 #import "VCRiderApi.h"
 
 #define kCommuteOriginSettingKey @"kCommuterOriginSettingKey"
@@ -108,7 +108,7 @@ static VCCommuteManager * instance;
 
 - (void) requestRidesFor:(NSDate *) tomorrow {
     // Look for pre-existing request for tomorrow, error if it exists
-    NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ride"];
+    NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
     
     // start by retrieving day, weekday, month and year components for the given day
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -155,7 +155,7 @@ static VCCommuteManager * instance;
     // OK to proceed with ride creation and request
     NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
     
-    Ride * homeToWorkRide = (Ride *) [NSEntityDescription insertNewObjectForEntityForName:@"Ride" inManagedObjectContext:[VCCoreData managedObjectContext]];
+    Ticket * homeToWorkRide = (Ticket *) [NSEntityDescription insertNewObjectForEntityForName:@"Ticket" inManagedObjectContext:[VCCoreData managedObjectContext]];
     homeToWorkRide.rideDate = tomorrow;
     homeToWorkRide.originLatitude = [NSNumber numberWithDouble: instance.home.coordinate.latitude];
     homeToWorkRide.originLongitude = [NSNumber numberWithDouble: instance.home.coordinate.longitude];
@@ -175,7 +175,7 @@ static VCCommuteManager * instance;
     [components setMinute:[[f numberFromString:pickupTimeParts[1]] intValue]];
     homeToWorkRide.pickupTime = [gregorian dateByAddingComponents:components toDate:thisDate options:0];
     
-    Ride * workToHomeRide = (Ride *) [NSEntityDescription insertNewObjectForEntityForName:@"Ride" inManagedObjectContext:[VCCoreData managedObjectContext]];
+    Ticket * workToHomeRide = (Ticket *) [NSEntityDescription insertNewObjectForEntityForName:@"Ticket" inManagedObjectContext:[VCCoreData managedObjectContext]];
     workToHomeRide.rideDate = tomorrow;
     workToHomeRide.originLatitude =[NSNumber numberWithDouble: instance.work.coordinate.latitude];
     workToHomeRide.originLongitude = [NSNumber numberWithDouble: instance.work.coordinate.longitude];
@@ -219,10 +219,10 @@ static VCCommuteManager * instance;
     
 }
 
-- (void) cancelRide:(Ride *) ride success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure {
+- (void) cancelRide:(Ticket *) ride success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure {
     
-    void ( ^ deleteRide )( Ride * );
-    deleteRide = ^( Ride * ride )
+    void ( ^ deleteRide )( Ticket * );
+    deleteRide = ^( Ticket * ride )
     {
         [[VCCoreData managedObjectContext] deleteObject:ride];
         NSError * error;

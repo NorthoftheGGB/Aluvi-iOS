@@ -7,7 +7,7 @@
 //
 
 #import "VCLeftMenuViewController.h"
-#import "VCRideViewController.h"
+#import "VCTicketViewController.h"
 #import "VCDriveViewController.h"
 #import "VCInterfaceManager.h"
 #import "VCProfileViewController.h"
@@ -18,6 +18,7 @@
 #import "VCMenuItemNotConfiguredTableViewCell.h"
 #import "VCMenuItemModeTableViewCell.h"
 #import "NSDate+Pretty.h"
+#import "VCUserStateManager.h"
 
 
 // These ones go in the array
@@ -138,7 +139,10 @@
             
             //TODO: This is a placeholder name, replace it with relevant string!
             
-            menuUserInfoCell.userFullName.text = @"Devon Drakesbad";
+            menuUserInfoCell.userFullName.text = [NSString stringWithFormat: @"%@ %@",
+                                                  [[VCUserStateManager instance] profile].firstName,
+                                                  [[VCUserStateManager instance] profile].lastName
+                                                  ];
             menuUserInfoCell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell = menuUserInfoCell;
         }
@@ -169,7 +173,7 @@
             VCSubMenuItemTableViewCell * subMenuItemTableViewCell = [WRUtilities getViewFromNib:@"VCSubMenuItemTableViewCell" class:[VCSubMenuItemTableViewCell class]];
             
             long scheduleCellIndex = [_tableCellList indexOfObject:kScheduleCell];
-            Ride * ride = [_scheduleItems objectAtIndex:row-scheduleCellIndex-1];
+            Ticket * ride = [_scheduleItems objectAtIndex:row-scheduleCellIndex-1];
             subMenuItemTableViewCell.itemTitleLabel.text = [NSString stringWithFormat:@"%@ to %@", ride.originShortName, ride.destinationShortName];
             subMenuItemTableViewCell.itemDateLabel.text = [ride.pickupTime monthAndDay];
             subMenuItemTableViewCell.itemTimeLabel.text = [ride.pickupTime time];
@@ -279,7 +283,7 @@
             
         case kMapCellInteger:
         {
-            VCRideViewController * rideViewController = [[VCRideViewController alloc] init];
+            VCTicketViewController * rideViewController = [[VCTicketViewController alloc] init];
             [[VCInterfaceManager instance] setCenterViewControllers: @[rideViewController]];
             
             VCMenuItemTableViewCell * cell = (VCMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
@@ -301,15 +305,15 @@
         case kScheduleItemCellInteger:
         {
             long scheduleCellIndex = [_tableCellList indexOfObject:kScheduleCell];
-            Ride * ride = [_scheduleItems objectAtIndex:row-scheduleCellIndex-1];
+            Ticket * ride = [_scheduleItems objectAtIndex:row-scheduleCellIndex-1];
             
             if([ride.driving boolValue]) {
                 VCDriveViewController * driveViewController = [[VCDriveViewController alloc] init];
                 driveViewController.ride = ride;
                 [[VCInterfaceManager instance] setCenterViewControllers: @[driveViewController]];
             } else {
-                VCRideViewController * rideViewController = [[VCRideViewController alloc] init];
-                rideViewController.ride = ride;
+                VCTicketViewController * rideViewController = [[VCTicketViewController alloc] init];
+                rideViewController.ticket = ride;
                 [[VCInterfaceManager instance] setCenterViewControllers: @[rideViewController]];
             }
             VCSubMenuItemTableViewCell * cell = (VCSubMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
@@ -336,7 +340,7 @@
 }
 
 - (void) loadScheduleItems {
-    NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ride"];
+    NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
     NSPredicate * predicate = [NSPredicate predicateWithFormat:@"savedState IN %@ ", @[kCreatedState, kRequestedState, kScheduledState]];
     [fetch setPredicate:predicate];
     NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];

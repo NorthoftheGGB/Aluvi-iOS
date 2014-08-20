@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 @import MapKit;
-#import "Ride.h"
+#import "Ticket.h"
 
 @interface VCCommuteManager : NSObject
 
@@ -29,6 +29,6 @@
 - (BOOL) hasSettings;
 
 - (void) requestRidesFor:(NSDate *) tomorrow;
-- (void) cancelRide:(Ride *) ride success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
+- (void) cancelRide:(Ticket *) ride success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
 
 @end

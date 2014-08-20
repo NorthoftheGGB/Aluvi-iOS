@@ -36,7 +36,7 @@
 
 @class Car, Driver;
 
-@interface Ride : Transit 
+@interface Ticket : Transit 
 @property (nonatomic, retain) NSNumber * ride_id;
 @property (nonatomic, retain) NSString * rideType;
 @property (nonatomic, retain) NSNumber * car_id;
@@ -51,6 +51,12 @@
 @property (nonatomic, retain) NSNumber * destinationLongitude;
 @property (nonatomic, retain) NSString * destinationPlaceName;
 @property (nonatomic, retain) NSString * destinationShortName;
+@property (nonatomic, retain) NSNumber * meetingPointLatitude;
+@property (nonatomic, retain) NSNumber * meetingPointLongitude;
+@property (nonatomic, retain) NSString * meetingPointPlaceName;
+@property (nonatomic, retain) NSNumber * dropOffPointLatitude;
+@property (nonatomic, retain) NSNumber * dropOffPointLongitude;
+@property (nonatomic, retain) NSString * dropOffPointPlaceName;
 @property (nonatomic, retain) NSNumber * uploaded;
 @property (nonatomic, retain) NSDate * rideDate;
 @property (nonatomic, retain) NSNumber * confirmed;
@@ -61,11 +67,13 @@
 @property (nonatomic, retain) Car *car;
 
 
-+ (Ride *) rideWithFareId: (NSNumber *) fareId;
++ (Ticket *) ticketWithFareId: (NSNumber *) fareId;
 
 + (void)createMappings:(RKObjectManager *)objectManager;
 
 - (CLLocation *) originLocation;
 - (CLLocation *) destinationLocation;
+- (CLLocation *) meetingPointLocation;
+- (CLLocation *) dropOffPointLocation;
 
 @end

@@ -28,7 +28,7 @@
 #define API_POST_FARE_COMPLETED @"rides/arrived"
 
 #define API_GET_FARE_OFFERS @"rides/offers"
-#define API_GET_ACTIVE_RIDES @"rides/rides"
+#define API_GET_ACTIVE_TICKETS @"rides/tickets"
 #define API_GET_ACTIVE_FARES @"rides/fares"
 
 #define API_GET_PAYMENTS @"rides/payments"

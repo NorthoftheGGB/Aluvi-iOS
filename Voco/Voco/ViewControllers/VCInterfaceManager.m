@@ -8,7 +8,7 @@
 
 #import "VCInterfaceManager.h"
 #import "VCSignInViewController.h"
-#import "VCRideViewController.h"
+#import "VCTicketViewController.h"
 #import "VCDriveViewController.h"
 #import "VCLeftMenuViewController.h"
 #import "IIViewDeckController.h"
@@ -94,16 +94,16 @@ static int mode;
 }
 
 - (void) showRiderInterface {
-    VCRideViewController * rideViewController = [[VCRideViewController alloc] init];
+    VCTicketViewController * rideViewController = [[VCTicketViewController alloc] init];
 
     if( [VCUserStateManager instance].underwayFareId != nil ) {
-        NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Fare"];
+        NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
         NSPredicate * predicate = [NSPredicate predicateWithFormat:@"fare_id = %@", [VCUserStateManager instance].underwayFareId];
         [fetch setPredicate:predicate];
         NSError * error;
         NSArray * items = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
         if(items != nil && [items count] > 0){
-            rideViewController.ride = [items objectAtIndex:0];
+            rideViewController.ticket = [items objectAtIndex:0];
         }
     }
     

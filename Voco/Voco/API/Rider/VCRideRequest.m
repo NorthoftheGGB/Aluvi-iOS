@@ -29,7 +29,7 @@
 
 }
 
-+ (VCRideRequest *) requestForRide:(Ride *)ride {
++ (VCRideRequest *) requestForRide:(Ticket *)ride {
     VCRideRequest * rideRequest = [[VCRideRequest alloc] init];
     rideRequest.type = ride.rideType;
     rideRequest.departureLatitude = ride.originLatitude;

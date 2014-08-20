@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIAlertView+Blocks.h>
 #import "Offer.h"
-#import "Ride.h"
+#import "Ticket.h"
 
 #define VC_INTERFACE_STATE_IDLE @"VC_INTERFACE_STATE_IDLE"
 #define VC_INTERFACE_STATE_OFFER_DIALOG @"VC_INTERFACE_STATE_OFFER_DIALOG"
@@ -27,7 +27,7 @@
 - (void) rideCancelledByRider;
 - (void) rideCancelledByDriver;
 - (void) showRideReceipt: (NSNumber *) rideId amount: (NSNumber *) amount;
-- (void) commuterRideFound: (Ride *) request;
+- (void) commuterRideFound: (Ticket *) request;
 - (void) rideAssigned: (Fare *) ride;
 - (void) commuterRideAlarm: (NSNumber *) requestId;
 - (void) showRidePaymentProblem: (NSNumber *) rideId;

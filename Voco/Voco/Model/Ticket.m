@@ -6,19 +6,19 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "Ride.h"
+#import "Ticket.h"
 #import "Car.h"
 #import "Driver.h"
 #import <RKPathMatcher.h>
 #import "VCApi.h"
 #import "VCPushApi.h"
 
-@interface Ride ()
+@interface Ticket ()
 
 
 @end
 
-@implementation Ride
+@implementation Ticket
 
 @dynamic rideType;
 @dynamic car_id;
@@ -41,9 +41,15 @@
 @dynamic confirmed;
 @dynamic driving;
 @dynamic trip_id;
+@dynamic meetingPointLatitude;
+@dynamic meetingPointLongitude;
+@dynamic meetingPointPlaceName;
+@dynamic dropOffPointLatitude;
+@dynamic dropOffPointLongitude;
+@dynamic dropOffPointPlaceName;
 
 + (void)createMappings:(RKObjectManager *)objectManager{
-    RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Ride"
+    RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Ticket"
                                                           inManagedObjectStore: [VCCoreData managedObjectStore]];
     
     [entityMapping addAttributeMappingsFromDictionary:@{
@@ -73,13 +79,13 @@
 
     /*
     [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
-        RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:API_GET_ACTIVE_RIDES];
+        RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:API_GET_ACTIVE_TICKETS];
         
         NSString * relativePath = [URL relativePath];
         NSDictionary *argsDict = nil;
         BOOL match = [pathMatcher matchesPath:relativePath tokenizeQueryStrings:NO parsedArguments:&argsDict];
         if (match) {
-            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Ride"];
+            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
             return fetchRequest;
         }
         
@@ -94,15 +100,15 @@
     
     RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping
                                                                                              method:RKRequestMethodGET
-                                                                                        pathPattern:API_GET_ACTIVE_RIDES
+                                                                                        pathPattern:API_GET_ACTIVE_TICKETS
                                                                                             keyPath:nil
                                                                                         statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 }
 
 
-+ (Ride *) rideWithFareId: (NSNumber *) fareId{
-    NSFetchRequest * request = [[NSFetchRequest alloc] initWithEntityName:@"Ride"];
++ (Ticket *) ticketWithFareId: (NSNumber *) fareId{
+    NSFetchRequest * request = [[NSFetchRequest alloc] initWithEntityName:@"Ticket"];
     NSPredicate * predicate = [NSPredicate predicateWithFormat:@"fare_id = %@", fareId];
     [request setPredicate:predicate];
     NSError * error;
@@ -133,6 +139,14 @@
 
 - (CLLocation *) destinationLocation {
     return [[CLLocation alloc] initWithLatitude:[self.destinationLatitude doubleValue] longitude: [self.destinationLongitude doubleValue] ];
+}
+
+- (CLLocation *) meetingPointLocation {
+    return [[CLLocation alloc] initWithLatitude:[self.meetingPointLatitude doubleValue] longitude: [self.meetingPointLongitude doubleValue] ];
+}
+
+- (CLLocation *) dropOffPointLocation {
+    return [[CLLocation alloc] initWithLatitude:[self.dropOffPointLatitude doubleValue] longitude: [self.dropOffPointLongitude doubleValue] ];
 }
 
 // For the state machine, currently unused
