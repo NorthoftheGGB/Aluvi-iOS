@@ -269,7 +269,7 @@
     switch(tag){
         case kProfileCellInteger:
         {
-            //TODO: Put Actual Profile In Here
+            
             VCProfileViewController * profileViewController = [[VCProfileViewController alloc] init];
             [[VCInterfaceManager instance] setCenterViewControllers: @[profileViewController]];
             VCMenuItemTableViewCell * cell = (VCMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
@@ -321,7 +321,7 @@
             //do nothing
             break;
     }
-    
+    //VCSupportViewController
     
     if( [[_tableCellList objectAtIndex:row] integerValue] != kScheduleCellInteger
        && [[_tableCellList objectAtIndex:row] integerValue] != kScheduleItemCellInteger
