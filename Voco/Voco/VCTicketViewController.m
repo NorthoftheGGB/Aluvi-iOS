@@ -45,6 +45,9 @@
 
 @interface VCTicketViewController () <MKMapViewDelegate, VCEditLocationWidgetDelegate, ActionSheetCustomPickerDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
+@property (strong, nonatomic) IBOutlet UIButton *hamburgerButton;
+- (IBAction)didTapHamburger:(id)sender;
+
 // map
 @property (strong, nonatomic) MKPointAnnotation * originAnnotation;
 @property (strong, nonatomic) MKPointAnnotation * destinationAnnotation;
@@ -143,6 +146,8 @@
     _workLocationWidget.type = kWorkType;
     [self addChildViewController:_homeLocationWidget];
     [self addChildViewController:_workLocationWidget];
+    
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated{
@@ -330,6 +335,12 @@
 - (void) showCancelBarButton {
     UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(didTapCancel:)];
     self.navigationItem.rightBarButtonItem = cancelItem;
+}
+
+- (void) showHamburgerBarButton {
+    
+    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(didTapHamburger:)];
+    self.navigationItem.leftBarButtonItem = hamburgerButton;
 }
 
 - (void) removeCancelBarButton {
@@ -1015,4 +1026,6 @@
 }
 
 
+- (IBAction)didTapHamburger:(id)sender {
+}
 @end

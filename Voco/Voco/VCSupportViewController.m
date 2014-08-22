@@ -8,6 +8,8 @@
 
 #import "VCSupportViewController.h"
 
+
+
 @interface VCSupportViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *messageTextView;
 @property (weak, nonatomic) IBOutlet UIButton *sumbitButton;
@@ -29,7 +31,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
+    [tapBackground setNumberOfTapsRequired:1];
+    [self.view addGestureRecognizer:tapBackground];
+}
+
+
+- (void) dismissKeyboard:(id) sender{
+    [self.view endEditing:YES];
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)messageTextView
+{
+    messageTextView.text = @"";
 }
 
 - (void)didReceiveMemoryWarning

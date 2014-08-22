@@ -16,38 +16,76 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yf4-yX-U0s">
-                    <rect key="frame" x="40" y="106" width="240" height="160"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="EID-fm-qNa">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <string key="text">Enter your message here. It will be delivered to our team, and we will respond to you via the email associated with your account.</string>
+                </imageView>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yf4-yX-U0s">
+                    <rect key="frame" x="8" y="172" width="305" height="160"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="305" id="o6H-rf-ERF"/>
+                        <constraint firstAttribute="height" constant="160" id="q5V-Tu-Xsl"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="S3l-mh-TMK"/>
+                    </connections>
                 </textView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IgF-PE-2e5">
-                    <rect key="frame" x="80" y="284" width="160" height="46"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IgF-PE-2e5" customClass="VCButtonStandardStyle">
+                    <rect key="frame" x="8" y="361" width="305" height="47"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Submit" backgroundImage="button-default.png">
-                        <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="47" id="hBm-Bd-duQ"/>
+                        <constraint firstAttribute="width" constant="305" id="nyq-OQ-aha"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="Submit" backgroundImage="login-button.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="selected" backgroundImage="button-select.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="highlighted" title="Submit" backgroundImage="button-select.png"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="didTapSubmit:" destination="-1" eventType="touchUpInside" id="wir-cB-yoh"/>
                     </connections>
                 </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="305" translatesAutoresizingMaskIntoConstraints="NO" id="vcW-KT-aP8">
+                    <rect key="frame" x="8" y="84" width="305" height="75"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <string key="text">Enter your message here. It will be delivered to our team, and we will respond to you via the email associated with your account.</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="EID-fm-qNa" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="CiS-sy-fCs"/>
+                <constraint firstItem="IgF-PE-2e5" firstAttribute="top" secondItem="Yf4-yX-U0s" secondAttribute="bottom" constant="29" id="Hgm-Du-B7p"/>
+                <constraint firstItem="IgF-PE-2e5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="JRu-5h-wJN"/>
+                <constraint firstItem="Yf4-yX-U0s" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="KWe-WM-T7L"/>
+                <constraint firstAttribute="bottom" secondItem="EID-fm-qNa" secondAttribute="bottom" id="UjV-KD-FdG"/>
+                <constraint firstAttribute="trailing" secondItem="EID-fm-qNa" secondAttribute="trailing" id="VYf-V4-5hq"/>
+                <constraint firstItem="EID-fm-qNa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lwS-Pj-Osc"/>
+                <constraint firstItem="Yf4-yX-U0s" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="172" id="npe-Ah-1Gg"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
     <resources>
-        <image name="button-default.png" width="160" height="46"/>
+        <image name="background.png" width="77" height="136"/>
         <image name="button-select.png" width="160" height="46"/>
+        <image name="login-button.png" width="304" height="47"/>
     </resources>
 </document>

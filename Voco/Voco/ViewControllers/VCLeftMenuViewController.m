@@ -11,6 +11,7 @@
 #import "VCDriveViewController.h"
 #import "VCInterfaceManager.h"
 #import "VCProfileViewController.h"
+#import "VCSupportViewController.h"
 #import "VCMenuItemTableViewCell.h"
 #import "VCMenuUserInfoTableViewCell.h"
 #import "VCMenuDriverClockOnTableViewCell.h"
@@ -320,12 +321,21 @@
             [cell select];
         }
             break;
+        
+        case kSupportCellInteger:
+        {
+
+            VCSupportViewController * supportViewController = [[VCSupportViewController alloc] init];
+            [[VCInterfaceManager instance] setCenterViewControllers: @[supportViewController]];
+            VCMenuItemTableViewCell * cell = (VCMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
+            [cell select];
+        }
+            break;
             
         default:
             //do nothing
             break;
     }
-    //VCSupportViewController
     
     if( [[_tableCellList objectAtIndex:row] integerValue] != kScheduleCellInteger
        && [[_tableCellList objectAtIndex:row] integerValue] != kScheduleItemCellInteger

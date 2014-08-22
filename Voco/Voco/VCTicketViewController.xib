@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="currentLocationButton" destination="XIm-sQ-LdY" id="ihB-70-3YB"/>
                 <outlet property="editCommuteButton" destination="2iv-cM-ZrM" id="nTt-IF-jth"/>
+                <outlet property="hamburgerButton" destination="Txn-Pn-Uxn" id="fy4-TT-lgu"/>
                 <outlet property="homeActionView" destination="XY9-N9-RDa" id="LQH-QX-Bja"/>
                 <outlet property="hovDriveYesButton" destination="LT0-2Y-Gc6" id="GyN-lZ-mp0"/>
                 <outlet property="hovDriverOptionView" destination="CKa-ug-jy9" id="5ZD-9F-mzB"/>
@@ -845,6 +846,16 @@
                 <action selector="didTapEditCommute:" destination="-1" eventType="touchUpInside" id="DlS-Vb-NWH"/>
             </connections>
         </button>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Txn-Pn-Uxn">
+            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <state key="normal" image="hamburger.png">
+                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <connections>
+                <action selector="didTapHamburger:" destination="-1" eventType="touchUpInside" id="Znn-Va-FgK"/>
+            </connections>
+        </button>
     </objects>
     <resources>
         <image name="button-default.png" width="160" height="46"/>
@@ -859,6 +870,7 @@
         <image name="directions-button.png" width="36" height="36"/>
         <image name="driver-hov-toggle-select.png" width="23" height="23"/>
         <image name="driver-hov-toggle.png" width="23" height="23"/>
+        <image name="hamburger.png" width="20" height="20"/>
         <image name="overlay-graphic.png" width="255" height="255"/>
         <image name="ride-details-hud.png" width="330" height="154"/>
         <image name="user-image-small.png" width="65" height="65"/>
