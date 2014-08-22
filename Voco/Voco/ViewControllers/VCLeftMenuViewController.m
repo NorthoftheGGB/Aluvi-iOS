@@ -306,15 +306,15 @@
         case kScheduleItemCellInteger:
         {
             long scheduleCellIndex = [_tableCellList indexOfObject:kScheduleCell];
-            Ticket * ride = [_scheduleItems objectAtIndex:row-scheduleCellIndex-1];
+            Ticket * ticket = [_scheduleItems objectAtIndex:row-scheduleCellIndex-1];
             
-            if([ride.driving boolValue]) {
-                VCDriveViewController * driveViewController = [[VCDriveViewController alloc] init];
-                driveViewController.ride = ride;
+            if([ticket.driving boolValue]) {
+                VCTicketViewController * driveViewController = [[VCTicketViewController alloc] init];
+                driveViewController.ticket = ticket;
                 [[VCInterfaceManager instance] setCenterViewControllers: @[driveViewController]];
             } else {
                 VCTicketViewController * rideViewController = [[VCTicketViewController alloc] init];
-                rideViewController.ticket = ride;
+                rideViewController.ticket = ticket;
                 [[VCInterfaceManager instance] setCenterViewControllers: @[rideViewController]];
             }
             VCSubMenuItemTableViewCell * cell = (VCSubMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];

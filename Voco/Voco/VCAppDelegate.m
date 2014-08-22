@@ -59,7 +59,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-#warning bypassing interface mode setup in AppDelegate
+// #warning bypassing interface mode setup in AppDelegate
     /*VCRideViewController * vc = [[VCRideViewController alloc] init];
     UINavigationController * nc = [[UINavigationController alloc] initWithRootViewController:vc];
     [self.window setRootViewController:nc];*/

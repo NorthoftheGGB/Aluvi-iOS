@@ -26,6 +26,8 @@
 #import "VCUserStateManager.h"
 #import "VCDriveViewController.h"
 #import "VCMapQuestRouting.h"
+#import "VCButton.h"
+#import "IIViewDeckController.h"
 
 #define kEditCommuteStatePickupTime 1000
 #define kEditCommuteStateEditHome 1001
@@ -43,7 +45,17 @@
 
 #define kFareNotStartedLabelText @"Waiting"
 
-@interface VCTicketViewController () <MKMapViewDelegate, VCEditLocationWidgetDelegate, ActionSheetCustomPickerDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
+#define kDriverCallHudOriginX 271
+#define kDriverCallHudOriginY 226
+#define kDriverCallHudOpenX 31
+#define kDriverCallHudOpenY 226
+
+#define kDriverCancelHudOriginX 271
+#define kDriverCancelHudOriginY 302
+#define kDriverCancelHudOpenX 165
+#define kDriverCancelHudOpenY 302
+
+@interface VCTicketViewController () <MKMapViewDelegate, VCEditLocationWidgetDelegate, ActionSheetCustomPickerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIButton *hamburgerButton;
 - (IBAction)didTapHamburger:(id)sender;
@@ -54,6 +66,7 @@
 @property (strong, nonatomic) MKPointAnnotation * meetingPointAnnotation;
 @property (strong, nonatomic) MKPointAnnotation * dropOffPointAnnotation;
 @property (strong, nonatomic) IBOutlet UIButton *currentLocationButton;
+@property (strong, nonatomic) CLLocationManager * locationManager;
 
 // data
 @property (strong, nonatomic) NSArray * morningOptions;
@@ -103,6 +116,37 @@
 - (IBAction)didTapHovDriveYesButton:(id)sender;
 
 
+@property (strong, nonatomic) IBOutlet UIView *driverCallHUD;
+@property (strong, nonatomic) IBOutlet UIView *driverCancelHUD;
+@property (strong, nonatomic) IBOutlet UIButton *directionsListButton;
+
+//Call HUD
+@property (nonatomic) BOOL callHudPanLocked;
+@property (strong, nonatomic) NSTimer * timer;
+@property (nonatomic) BOOL callHudOpen;
+@property (weak, nonatomic) IBOutlet VCButton *riderCallButton1;
+@property (weak, nonatomic) IBOutlet VCButton *riderCallButton2;
+@property (weak, nonatomic) IBOutlet VCButton *riderCallButton3;
+@property (weak, nonatomic) IBOutlet UIImageView *phoneIconImageView;
+- (IBAction)didTapCallRider1:(id)sender;
+- (IBAction)didTapCallRider2:(id)sender;
+- (IBAction)didTapCallRider3:(id)sender;
+
+//Cancel HUD
+@property (nonatomic) BOOL cancelHudPanLocked;
+@property (strong, nonatomic) NSTimer * cancelTimer;
+@property (nonatomic) BOOL cancelHudOpen;
+@property (weak, nonatomic) IBOutlet VCButton *cancelRideButton;
+@property (weak, nonatomic) IBOutlet UIImageView *cancelIconImageView;
+- (IBAction)didTapCancelRide:(id)sender;
+
+
+
+//Ride Status
+@property (strong, nonatomic) IBOutlet VCButton *ridersPickedUpButton;
+@property (strong, nonatomic) IBOutlet VCButton *rideCompleteButton;
+- (IBAction)didTapRidersPickedUp:(id)sender;
+- (IBAction)didTapRideCompleted:(id)sender;
 
 @end
 
@@ -127,6 +171,9 @@
         _step = kStepSetDepartureLocation;
         _ticket = nil;
         
+        _callHudPanLocked = NO;
+        _callHudOpen = NO;
+        _appeared = NO;
     }
     return self;
 }
@@ -146,7 +193,6 @@
     _workLocationWidget.type = kWorkType;
     [self addChildViewController:_homeLocationWidget];
     [self addChildViewController:_workLocationWidget];
-    
     
 }
 
@@ -169,6 +215,7 @@
         if(_ticket == nil) {
             [self showHome];
             self.map.userTrackingMode = MKUserTrackingModeFollow;
+            [self startLocationUpdates];
         } else {
             [self showInterfaceForRide];
         }
@@ -252,7 +299,7 @@
     CLLocationCoordinate2D fromCoordinate = CLLocationCoordinate2DMake(from.coordinate.latitude, from.coordinate.longitude);
     CLLocationCoordinate2D toCoordinate = CLLocationCoordinate2DMake(to.coordinate.latitude, to.coordinate.longitude);
     
-    [VCMapQuestRouting pedestrianRoute:fromCoordinate
+    [VCMapQuestRouting route:fromCoordinate
                                     to:toCoordinate
                                success:^(MKPolyline *polyline, MKCoordinateRegion region) {
                                    polyline.title = @"driver_leg";
@@ -284,19 +331,21 @@
         
         [self showSuggestedRoute: [_ticket meetingPointLocation] to:[_ticket dropOffPointLocation]];
         if( [_ticket.driving boolValue] ) {
-            [self addDriverLegRoute:[_ticket originLocation] to:[_ticket meetingPointLocation]];
-            [self addDriverLegRoute:[_ticket dropOffPointLocation] to:[_ticket destinationLocation]];
+            if(![[_ticket meetingPointLocation] isEqual:[_ticket originLocation]]){
+                [self addDriverLegRoute:[_ticket originLocation] to:[_ticket meetingPointLocation]];
+            }
+            if(![[_ticket dropOffPointLocation] isEqual:[_ticket destinationLocation]]){
+                [self addDriverLegRoute:[_ticket dropOffPointLocation] to:[_ticket destinationLocation]];
+            }
         } else {
             [self addPedestrianRoute:[_ticket originLocation] to:[_ticket meetingPointLocation]];
             [self addPedestrianRoute:[_ticket dropOffPointLocation] to:[_ticket destinationLocation]];
         }
         
         if([_ticket.driving boolValue]) {
-            
-            // Replace with the driver view controller
-            VCDriveViewController * vc = [[VCDriveViewController alloc] init];
-            self.navigationController.viewControllers  = @[vc];
-            
+        
+            [self showHovDriverInterface];
+
         } else {
             
             if([_ticket.confirmed isEqualToNumber:[NSNumber numberWithBool:YES]]) {
@@ -481,6 +530,10 @@
     [_nextButton removeFromSuperview];
     [_rideDetailsConfirmation removeFromSuperview];
     [_rideDetailsHud removeFromSuperview];
+    [_driverCallHUD removeFromSuperview];
+    [_driverCancelHUD removeFromSuperview];
+    [_ridersPickedUpButton removeFromSuperview];
+    [_rideCompleteButton removeFromSuperview];
 }
 
 - (void) transitionFromEditPickupTimeToEditHome {
@@ -745,6 +798,31 @@
     
 }
 
+// Getting first location
+- (void)startLocationUpdates {
+    // Create the location manager if this object does not
+    // already have one.
+    if (nil == _locationManager)
+        _locationManager = [[CLLocationManager alloc] init];
+    
+    _locationManager.delegate = self;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    
+    // Set a movement threshold for new events.
+    _locationManager.distanceFilter = 500; // meters
+    
+    [_locationManager startUpdatingLocation];
+}
+
+- (void)stopLocationUpdates {
+    [_locationManager stopUpdatingLocation];
+}
+
+- (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    [self zoomToCurrentLocation];
+    [self stopLocationUpdates];
+}
+
 // Annotations
 - (void)addOriginAnnotation:(CLLocation *)location {
     if(_originAnnotation != nil){
@@ -945,6 +1023,10 @@
     return 0;
 }
 
+
+- (IBAction)didTapHamburger:(id)sender {
+}
+
 #pragma mark - UIPickerViewDelegate
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
@@ -1026,6 +1108,274 @@
 }
 
 
-- (IBAction)didTapHamburger:(id)sender {
+
+
+#pragma mark HovDriverInterface
+- (void) showHovDriverInterface{
+    
+    CGRect currentLocationframe = _currentLocationButton.frame;
+    currentLocationframe.origin.x = 271;
+    currentLocationframe.origin.y = self.view.frame.size.height - 46;
+    _currentLocationButton.frame = currentLocationframe;
+    [self.view addSubview:self.currentLocationButton];
+    
+    CGRect directionsListFrame = _directionsListButton.frame;
+    directionsListFrame.origin.x = 224;
+    directionsListFrame.origin.y = self.view.frame.size.height - 46;
+    _directionsListButton.frame = directionsListFrame;
+    [self.view addSubview:self.directionsListButton];
+    
+    CGRect ridersPickedUpFrame = _ridersPickedUpButton.frame;
+    ridersPickedUpFrame.origin.x = 18;
+    ridersPickedUpFrame.origin.y = self.view.frame.size.height - 46;
+    _ridersPickedUpButton.frame = ridersPickedUpFrame;
+    [self.view addSubview:self.ridersPickedUpButton];
+    
+    CGRect frame = _driverCallHUD.frame;
+    frame.origin.x = kDriverCallHudOriginX;
+    frame.origin.y = self.view.frame.size.height - kDriverCallHudOriginY;
+    _driverCallHUD.frame = frame;
+    
+    [self.view addSubview:_driverCallHUD];
+    
+    {
+        CGRect frame = _driverCancelHUD.frame;
+        frame.origin.x = kDriverCancelHudOriginX;
+        frame.origin.y = self.view.frame.size.height - kDriverCancelHudOriginY;
+        _driverCancelHUD.frame = frame;
+        
+        [self.view addSubview:_driverCancelHUD];
+    }
+    
+    [self setupDriverCallHud];
+    
 }
+
+- (void) setupDriverCallHud {
+    
+    {
+        UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(move:)];
+        [panRecognizer setMinimumNumberOfTouches:1];
+        [panRecognizer setMaximumNumberOfTouches:1];
+        [_driverCallHUD addGestureRecognizer:panRecognizer];
+    }
+    
+    {
+        UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(move2:)];
+        [panRecognizer setMinimumNumberOfTouches:1];
+        [panRecognizer setMaximumNumberOfTouches:1];
+        [_driverCancelHUD addGestureRecognizer:panRecognizer];
+    }
+    
+}
+
+-(void)move:(id)sender {
+    
+    if( _callHudPanLocked ) {
+        return;
+    }
+    
+    CGPoint translatedPoint = [(UIPanGestureRecognizer*)sender translationInView:self.view];
+    
+    if(_callHudOpen == NO) {
+        
+        if(translatedPoint.x > 0){
+            return;
+        }
+        
+        if(translatedPoint.x < kDriverCallHudOpenX - kDriverCallHudOriginX ){
+            return;
+        }
+        
+        if ([(UIPanGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
+            CGPoint velocity = [(UIPanGestureRecognizer*)sender velocityInView:self.view];
+            
+            if(velocity.x < -2000) {
+                [self animateCallHudToOpen];
+            } else if(translatedPoint.x < -75){
+                [self animateCallHudToOpen];
+            } else {
+                [self animateCallHudToClosed];
+            }
+            
+            return;
+        }
+        
+        CGRect frame = _driverCallHUD.frame;
+        frame.origin.x = kDriverCallHudOriginX + translatedPoint.x;
+        _driverCallHUD.frame = frame;
+        if ( kDriverCallHudOriginX + translatedPoint.x <= kDriverCallHudOpenX ){
+            [self animateCallHudToOpen];
+        }
+        
+    } else {
+        if(translatedPoint.x < 0){
+            return;
+        }
+        
+        if ([(UIPanGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
+            [self animateCallHudToClosed];
+        }
+    }
+}
+
+-(void)move2:(id)sender {
+    NSLog(@"%@", @"YO!");
+    
+    if( _cancelHudPanLocked ) {
+        return;
+    }
+    
+    CGPoint translatedPoint = [(UIPanGestureRecognizer*)sender translationInView:self.view];
+    
+    if(_cancelHudOpen == NO) {
+        
+        if(translatedPoint.x > 0){
+            return;
+        }
+        
+        if(translatedPoint.x < kDriverCallHudOpenX - kDriverCallHudOriginX ){
+            return;
+        }
+        
+        if ([(UIPanGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
+            CGPoint velocity = [(UIPanGestureRecognizer*)sender velocityInView:self.view];
+            
+            if(velocity.x < -2000) {
+                [self animateCancelHudToOpen];
+            } else if(translatedPoint.x < -100){
+                [self animateCancelHudToOpen];
+            } else {
+                [self animateCancelHudToClosed];
+            }
+            
+            return;
+        }
+        
+        CGRect frame = _driverCancelHUD.frame;
+        frame.origin.x = kDriverCancelHudOriginX + translatedPoint.x;
+        _driverCancelHUD.frame = frame;
+        if ( kDriverCancelHudOriginX + translatedPoint.x <= kDriverCancelHudOpenX ){
+            [self animateCancelHudToOpen];
+        }
+        
+    } else {
+        if(translatedPoint.x < 0){
+            return;
+        }
+        
+        if ([(UIPanGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
+            [self animateCancelHudToClosed];
+        }
+    }
+}
+
+- (void) didTapCancelRide: (id)sender {
+    
+    if(_ticket != nil) {
+        [UIAlertView showWithTitle:@"Cancel Trip?" message:@"Are you sure you want to cancel this trip?" cancelButtonTitle:@"No!" otherButtonTitles:@[@"Yes, Cancel this ride"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            switch(buttonIndex){
+                case 1:
+                {
+                    [[VCCommuteManager instance] cancelRide:_ticket success:^{
+                        [UIAlertView showWithTitle:@"Trip Cancelled" message:@"Fare Cancelled" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                    } failure:^{
+                        // do nothing
+                    }];
+                }
+                    break;
+                default:
+                    break;
+            }
+        }];
+    }
+    
+}
+
+
+
+- (void) animateCallHudToOpen {
+    _callHudPanLocked = YES;
+    
+    _timer = [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(unlockCallHudPan:) userInfo:nil repeats:NO];
+    
+    [UIView animateWithDuration:0.15 animations:^{
+        CGRect frame = _driverCallHUD.frame;
+        frame.origin.x = kDriverCallHudOpenX;
+        _driverCallHUD.frame = frame;
+        _callHudOpen = YES;
+    }];
+    
+}
+
+- (void) animateCancelHudToOpen {
+    _cancelHudPanLocked = YES;
+    
+    _cancelTimer = [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(unlockCancelHudPan:) userInfo:nil repeats:NO];
+    
+    [UIView animateWithDuration:0.15 animations:^{
+        CGRect frame = _driverCancelHUD.frame;
+        frame.origin.x = kDriverCancelHudOpenX;
+        _driverCancelHUD.frame = frame;
+        _cancelHudOpen = YES;
+    }];
+    
+}
+
+- (void) animateCallHudToClosed{
+    _callHudPanLocked = YES;
+    
+    _timer = [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(unlockCallHudPan:) userInfo:nil repeats:NO];
+    
+    [UIView animateWithDuration:0.15 animations:^{
+        CGRect frame = _driverCallHUD.frame;
+        frame.origin.x = kDriverCallHudOriginX;
+        _driverCallHUD.frame = frame;
+        _callHudOpen = NO;
+    }];
+    
+}
+
+
+- (void) animateCancelHudToClosed{
+    _cancelHudPanLocked = YES;
+    
+    _cancelTimer = [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(unlockCancelHudPan:) userInfo:nil repeats:NO];
+    
+    [UIView animateWithDuration:0.15 animations:^{
+        CGRect frame = _driverCancelHUD.frame;
+        frame.origin.x = kDriverCancelHudOriginX;
+        _driverCancelHUD.frame = frame;
+        _cancelHudOpen = NO;
+    }];
+    
+}
+
+
+- (void) unlockCallHudPan:(id)sender {
+    _callHudPanLocked = NO;
+}
+
+
+- (void) unlockCancelHudPan:(id)sender {
+    _cancelHudPanLocked = NO;
+}
+
+- (IBAction)didTapCallRider1:(id)sender {
+}
+- (IBAction)didTapCallRider3:(id)sender {
+}
+- (IBAction)didTapCallRider2:(id)sender {
+}
+- (IBAction)didTapCurrentLocationButton:(id)sender {
+}
+- (IBAction)didTapDirectionsListButton:(id)sender {
+}
+- (IBAction)didTapRidersPickedUp:(id)sender {
+}
+- (IBAction)didTapRideCompleted:(id)sender {
+}
+
+
+
 @end

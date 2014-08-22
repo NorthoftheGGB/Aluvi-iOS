@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "VCButtonFont.h"
+#import "VCButton.h"
 #import "VCLabelBold.h"
 
 @interface VCMenuUserInfoTableViewCell : UITableViewCell
@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet VCLabelBold *userFullName;
 
 
-@property (weak, nonatomic) IBOutlet VCButtonFont *logoutButton;
+@property (weak, nonatomic) IBOutlet VCButton *logoutButton;
 - (IBAction)didTapLogout:(id)sender;
 
 

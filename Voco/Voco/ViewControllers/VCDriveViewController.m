@@ -7,7 +7,7 @@
 //
 
 #import "VCDriveViewController.h"
-#import "VCButtonFont.h"
+#import "VCButton.h"
 #import "VCCommuteManager.h"
 
 #define kDriverCallHudOriginX 271
@@ -31,9 +31,9 @@
 @property (nonatomic) BOOL callHudPanLocked;
 @property (strong, nonatomic) NSTimer * timer;
 @property (nonatomic) BOOL callHudOpen;
-@property (weak, nonatomic) IBOutlet VCButtonFont *riderCallButton1;
-@property (weak, nonatomic) IBOutlet VCButtonFont *riderCallButton2;
-@property (weak, nonatomic) IBOutlet VCButtonFont *riderCallButton3;
+@property (weak, nonatomic) IBOutlet VCButton *riderCallButton1;
+@property (weak, nonatomic) IBOutlet VCButton *riderCallButton2;
+@property (weak, nonatomic) IBOutlet VCButton *riderCallButton3;
 @property (weak, nonatomic) IBOutlet UIImageView *phoneIconImageView;
 - (IBAction)didTapCallRider1:(id)sender;
 - (IBAction)didTapCallRider2:(id)sender;
@@ -43,15 +43,15 @@
 @property (nonatomic) BOOL cancelHudPanLocked;
 @property (strong, nonatomic) NSTimer * cancelTimer;
 @property (nonatomic) BOOL cancelHudOpen;
-@property (weak, nonatomic) IBOutlet VCButtonFont *cancelRideButton;
+@property (weak, nonatomic) IBOutlet VCButton *cancelRideButton;
 @property (weak, nonatomic) IBOutlet UIImageView *cancelIconImageView;
 - (IBAction)didTapCancelRide:(id)sender;
 
 
 
 //Ride Status
-@property (strong, nonatomic) IBOutlet VCButtonFont *ridersPickedUpButton;
-@property (strong, nonatomic) IBOutlet VCButtonFont *rideCompleteButton;
+@property (strong, nonatomic) IBOutlet VCButton *ridersPickedUpButton;
+@property (strong, nonatomic) IBOutlet VCButton *rideCompleteButton;
 - (IBAction)didTapRidersPickedUp:(id)sender;
 - (IBAction)didTapRideCompleted:(id)sender;
 

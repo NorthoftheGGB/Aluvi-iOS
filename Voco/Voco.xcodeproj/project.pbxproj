@@ -308,7 +308,7 @@
 		4FE641F9194168E80059BED1 /* signupBox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641EC194168E80059BED1 /* signupBox@2x.png */; };
 		4FE641FA194168E80059BED1 /* voco_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641ED194168E80059BED1 /* voco_logo@2x.png */; };
 		4FE641FB194168E80059BED1 /* VOCOfinal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641EE194168E80059BED1 /* VOCOfinal@2x.png */; };
-		4FE641FE194170F50059BED1 /* VCButtonFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641FD194170F50059BED1 /* VCButtonFont.m */; };
+		4FE641FE194170F50059BED1 /* VCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641FD194170F50059BED1 /* VCButton.m */; };
 		4FE712BD1973686B0071020C /* VCDriversLicenseTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE712BC1973686B0071020C /* VCDriversLicenseTextField.m */; };
 		4FE712BE1973686B0071020C /* VCDriversLicenseTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE712BC1973686B0071020C /* VCDriversLicenseTextField.m */; };
 		4FE712C11973688F0071020C /* VCBankAccountTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE712C01973688F0071020C /* VCBankAccountTextField.m */; };
@@ -429,7 +429,7 @@
 		F4354D71195D0D6A00C06CF7 /* Fare.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AFD193839DF00354886 /* Fare.m */; };
 		F4354D72195D0D6A00C06CF7 /* VCNewUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904919468E44007C4671 /* VCNewUser.m */; };
 		F4354D73195D0D6A00C06CF7 /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE119492C2A00D8C900 /* IISideController.m */; };
-		F4354D75195D0D6A00C06CF7 /* VCButtonFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641FD194170F50059BED1 /* VCButtonFont.m */; };
+		F4354D75195D0D6A00C06CF7 /* VCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641FD194170F50059BED1 /* VCButton.m */; };
 		F4354D76195D0D6A00C06CF7 /* MQShape.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F00B194A5A6100D8C900 /* MQShape.m */; };
 		F4354D77195D0D6A00C06CF7 /* VCRideRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BFB19357B8A00A94721 /* VCRideRequest.m */; };
 		F4354D78195D0D6A00C06CF7 /* VCPushReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AF71937DD5600354886 /* VCPushReceiver.m */; };
@@ -618,7 +618,7 @@
 		F4C6B1E4197F06B100F6C10B /* Fare.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AFD193839DF00354886 /* Fare.m */; };
 		F4C6B1E5197F06B100F6C10B /* VCNewUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904919468E44007C4671 /* VCNewUser.m */; };
 		F4C6B1E6197F06B100F6C10B /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE119492C2A00D8C900 /* IISideController.m */; };
-		F4C6B1E8197F06B100F6C10B /* VCButtonFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641FD194170F50059BED1 /* VCButtonFont.m */; };
+		F4C6B1E8197F06B100F6C10B /* VCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641FD194170F50059BED1 /* VCButton.m */; };
 		F4C6B1E9197F06B100F6C10B /* MQShape.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F00B194A5A6100D8C900 /* MQShape.m */; };
 		F4C6B1EA197F06B100F6C10B /* VCRideRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BFB19357B8A00A94721 /* VCRideRequest.m */; };
 		F4C6B1EB197F06B100F6C10B /* VCPushReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AF71937DD5600354886 /* VCPushReceiver.m */; };
@@ -1026,8 +1026,8 @@
 		4FE641EC194168E80059BED1 /* signupBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "signupBox@2x.png"; sourceTree = "<group>"; };
 		4FE641ED194168E80059BED1 /* voco_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "voco_logo@2x.png"; sourceTree = "<group>"; };
 		4FE641EE194168E80059BED1 /* VOCOfinal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VOCOfinal@2x.png"; sourceTree = "<group>"; };
-		4FE641FC194170F50059BED1 /* VCButtonFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCButtonFont.h; path = Controls/VCButtonFont.h; sourceTree = "<group>"; };
-		4FE641FD194170F50059BED1 /* VCButtonFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCButtonFont.m; path = Controls/VCButtonFont.m; sourceTree = "<group>"; };
+		4FE641FC194170F50059BED1 /* VCButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCButton.h; path = Controls/VCButton.h; sourceTree = "<group>"; };
+		4FE641FD194170F50059BED1 /* VCButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCButton.m; path = Controls/VCButton.m; sourceTree = "<group>"; };
 		4FE712BB1973686B0071020C /* VCDriversLicenseTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCDriversLicenseTextField.h; sourceTree = "<group>"; };
 		4FE712BC1973686B0071020C /* VCDriversLicenseTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCDriversLicenseTextField.m; sourceTree = "<group>"; };
 		4FE712BF1973688F0071020C /* VCBankAccountTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCBankAccountTextField.h; sourceTree = "<group>"; };
@@ -1593,8 +1593,8 @@
 				4FE641D91941607B0059BED1 /* VCTextField.m */,
 				4FE641DB1941621E0059BED1 /* VCLabelItalic.h */,
 				4FE641DC1941621E0059BED1 /* VCLabelItalic.m */,
-				4FE641FC194170F50059BED1 /* VCButtonFont.h */,
-				4FE641FD194170F50059BED1 /* VCButtonFont.m */,
+				4FE641FC194170F50059BED1 /* VCButton.h */,
+				4FE641FD194170F50059BED1 /* VCButton.m */,
 				4FE641DE194162360059BED1 /* VCButtonStandardStyle.h */,
 				4FE641DF194162360059BED1 /* VCButtonStandardStyle.m */,
 				F473EFFF194A498E00D8C900 /* VCLabel.h */,
@@ -1608,43 +1608,43 @@
 		4FE641E1194168E80059BED1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				4FCD7C7F19771931007609E8 /* rider-call-button-select@2x.png */,
-				4FCD7C8019771931007609E8 /* rider-call-button@2x.png */,
-				4FCD7C7C19766B77007609E8 /* rider-icon@2x.png */,
+				4FE641E2194168E80059BED1 /* bubble@2x.png */,
 				4FCD7C6019761C20007609E8 /* call-button-select@2x.png */,
 				4FCD7C6119761C21007609E8 /* call-button@2x.png */,
-				4FDB0ECA1970B0F000A8CEC2 /* Revision 2.0 */,
-				4FDB0EC71970AC8200A8CEC2 /* colors_03.png */,
 				F4138C3A19678BE000C265CD /* car@2x.png */,
+				4FDB0EC71970AC8200A8CEC2 /* colors_03.png */,
+				4FE641E3194168E80059BED1 /* commute_logo@2x.png */,
 				4FE286FF1962C52700FD8AF6 /* confirm-location-select.png */,
 				4FE287001962C52700FD8AF6 /* confirm-location@2x.png */,
-				4FE286FC1962C25400FD8AF6 /* pin@2x.png */,
-				4FE286F31962BDB300FD8AF6 /* zoom-ride-bounds-select@2x.png */,
-				4FE286F41962BDB300FD8AF6 /* zoom-ride-bounds@2x.png */,
-				4FE286ED1962BB3F00FD8AF6 /* search-location-select@2x.png */,
-				4FE286EE1962BB3F00FD8AF6 /* search-location@2x.png */,
 				4FE286E71962B89700FD8AF6 /* current-location-arrow-select@2x.png */,
 				4FE286E81962B89700FD8AF6 /* current-location-arrow@2x.png */,
-				4F2EF99F1960EC62006A1962 /* Menu Assets */,
 				4FF142D5195CE4BD00CC61B6 /* driver-request-form@2x.png */,
-				4F9909C4195CCE6500E83164 /* log-in-box@2x.png */,
-				F473F017195044AA00D8C900 /* menu-list.png */,
-				F473F018195044AA00D8C900 /* menu-list@2x.png */,
-				F473EFFD19497FBF00D8C900 /* map_pin_fill-512.png */,
-				F49EDD071946A63F0020B8BB /* Fonts */,
-				4FE641E2194168E80059BED1 /* bubble@2x.png */,
-				4FE641E3194168E80059BED1 /* commute_logo@2x.png */,
 				4FE641E4194168E80059BED1 /* driver_must_box@2x.png */,
 				4FE641E5194168E80059BED1 /* driving_car@2x.png */,
+				F49EDD071946A63F0020B8BB /* Fonts */,
+				4F9909C4195CCE6500E83164 /* log-in-box@2x.png */,
 				4FE641E6194168E80059BED1 /* login_btn@2x.png */,
 				4FE641E7194168E80059BED1 /* login_form@2x.png */,
 				4FE641E8194168E80059BED1 /* loginBox@2x.png */,
+				F473EFFD19497FBF00D8C900 /* map_pin_fill-512.png */,
+				4F2EF99F1960EC62006A1962 /* Menu Assets */,
+				F473F017195044AA00D8C900 /* menu-list.png */,
+				F473F018195044AA00D8C900 /* menu-list@2x.png */,
+				4FE286FC1962C25400FD8AF6 /* pin@2x.png */,
 				4FE641E9194168E80059BED1 /* red_box@2x.png */,
+				4FDB0ECA1970B0F000A8CEC2 /* Revision 2.0 */,
+				4FCD7C7F19771931007609E8 /* rider-call-button-select@2x.png */,
+				4FCD7C8019771931007609E8 /* rider-call-button@2x.png */,
+				4FCD7C7C19766B77007609E8 /* rider-icon@2x.png */,
+				4FE286ED1962BB3F00FD8AF6 /* search-location-select@2x.png */,
+				4FE286EE1962BB3F00FD8AF6 /* search-location@2x.png */,
 				4FE641EA194168E80059BED1 /* signup_box@2x.png */,
 				4FE641EB194168E80059BED1 /* signUp_btn@2x.png */,
 				4FE641EC194168E80059BED1 /* signupBox@2x.png */,
 				4FE641ED194168E80059BED1 /* voco_logo@2x.png */,
 				4FE641EE194168E80059BED1 /* VOCOfinal@2x.png */,
+				4FE286F31962BDB300FD8AF6 /* zoom-ride-bounds-select@2x.png */,
+				4FE286F41962BDB300FD8AF6 /* zoom-ride-bounds@2x.png */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -1757,6 +1757,9 @@
 		F42590701996B3B700FA928E /* V1 Files */ = {
 			isa = PBXGroup;
 			children = (
+				F473F04D195BA54F00D8C900 /* VCRequestsViewController.h */,
+				F473F04E195BA54F00D8C900 /* VCRequestsViewController.m */,
+				F473F04F195BA54F00D8C900 /* VCRequestsViewController.xib */,
 				F4C6B1B01979154900F6C10B /* Views */,
 				F4138C2A1965467D00C265CD /* VCFaresViewController.h */,
 				F4138C2B1965467D00C265CD /* VCFaresViewController.m */,
@@ -1928,9 +1931,6 @@
 			children = (
 				4F73CA00197F2A6A001B6663 /* Revision 2.0 */,
 				F4138C2319650C2D00C265CD /* Views */,
-				F473F04D195BA54F00D8C900 /* VCRequestsViewController.h */,
-				F473F04E195BA54F00D8C900 /* VCRequestsViewController.m */,
-				F473F04F195BA54F00D8C900 /* VCRequestsViewController.xib */,
 			);
 			name = "Ride System";
 			sourceTree = "<group>";
@@ -3021,7 +3021,7 @@
 				4F9ECEA8196618C300AD4229 /* VCNameTextField.m in Sources */,
 				F4F5FFBF19779E23001A1C0E /* Payment.m in Sources */,
 				4F184A251991E156006EA959 /* VCSubMenuItemTableViewCell.m in Sources */,
-				F4354D75195D0D6A00C06CF7 /* VCButtonFont.m in Sources */,
+				F4354D75195D0D6A00C06CF7 /* VCButton.m in Sources */,
 				4F184A3F1992E41F006EA959 /* VCMenuItemModeTableViewCell.m in Sources */,
 				F4138C39196784C700C265CD /* VCGeoApi.m in Sources */,
 				F4354D76195D0D6A00C06CF7 /* MQShape.m in Sources */,
@@ -3147,7 +3147,7 @@
 				F4C6B1E4197F06B100F6C10B /* Fare.m in Sources */,
 				F4C6B1E5197F06B100F6C10B /* VCNewUser.m in Sources */,
 				F4C6B1E6197F06B100F6C10B /* IISideController.m in Sources */,
-				F4C6B1E8197F06B100F6C10B /* VCButtonFont.m in Sources */,
+				F4C6B1E8197F06B100F6C10B /* VCButton.m in Sources */,
 				4F184A1219918750006EA959 /* VCMenuUserInfoTableViewCell.m in Sources */,
 				F4C6B1E9197F06B100F6C10B /* MQShape.m in Sources */,
 				F4C6B1EA197F06B100F6C10B /* VCRideRequest.m in Sources */,
@@ -3278,7 +3278,7 @@
 				F4FE1AFE193839DF00354886 /* Fare.m in Sources */,
 				F4D8904A19468E44007C4671 /* VCNewUser.m in Sources */,
 				F473EFE619492C2A00D8C900 /* IISideController.m in Sources */,
-				4FE641FE194170F50059BED1 /* VCButtonFont.m in Sources */,
+				4FE641FE194170F50059BED1 /* VCButton.m in Sources */,
 				4F184A1419918750006EA959 /* VCMenuUserInfoTableViewCell.m in Sources */,
 				F473F00C194A5A6100D8C900 /* MQShape.m in Sources */,
 				F45F7BFC19357B8A00A94721 /* VCRideRequest.m in Sources */,
