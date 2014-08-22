@@ -84,7 +84,7 @@
         </view>
     </objects>
     <resources>
-        <image name="background.png" width="77" height="136"/>
+        <image name="background.png" width="320" height="568"/>
         <image name="button-select.png" width="160" height="46"/>
         <image name="login-button.png" width="304" height="47"/>
     </resources>

@@ -128,6 +128,9 @@
 		4F35FA8F19A6AA62004FB423 /* login-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F35FA8B19A6AA62004FB423 /* login-button@2x.png */; };
 		4F35FA9019A6AA62004FB423 /* login-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F35FA8B19A6AA62004FB423 /* login-button@2x.png */; };
 		4F35FA9119A6AA62004FB423 /* login-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F35FA8B19A6AA62004FB423 /* login-button@2x.png */; };
+		4F35FA9319A7B8BE004FB423 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F35FA9219A7B8BE004FB423 /* background@2x.png */; };
+		4F35FA9419A7B8BE004FB423 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F35FA9219A7B8BE004FB423 /* background@2x.png */; };
+		4F35FA9519A7B8BE004FB423 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F35FA9219A7B8BE004FB423 /* background@2x.png */; };
 		4F37E2DD1949574000753172 /* KlinicSlabLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F37E2D91949574000753172 /* KlinicSlabLight.ttf */; };
 		4F37E2DE1949574000753172 /* KlinicSlabLightIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F37E2DA1949574000753172 /* KlinicSlabLightIt.ttf */; };
 		4F37E2DF1949574000753172 /* KlinicSlabMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F37E2DB1949574000753172 /* KlinicSlabMedium.ttf */; };
@@ -357,7 +360,6 @@
 		4FFCF2E019A54B0000A4A24E /* VCPaymentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFCF2DC19A54B0000A4A24E /* VCPaymentsViewController.xib */; };
 		4FFCF2E119A54B0000A4A24E /* VCPaymentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFCF2DC19A54B0000A4A24E /* VCPaymentsViewController.xib */; };
 		4FFCF2E219A54B0000A4A24E /* VCPaymentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFCF2DC19A54B0000A4A24E /* VCPaymentsViewController.xib */; };
-		4FFCF2E519A692A200A4A24E /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFCF2E419A692A200A4A24E /* background@2x.png */; };
 		4FFE13901989AE09004D4413 /* VCLeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE138E1989AE09004D4413 /* VCLeftMenuViewController.m */; };
 		4FFE13911989AE09004D4413 /* VCLeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE138E1989AE09004D4413 /* VCLeftMenuViewController.m */; };
 		4FFE13921989AE09004D4413 /* VCLeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE138E1989AE09004D4413 /* VCLeftMenuViewController.m */; };
@@ -903,6 +905,7 @@
 		4F35FA8819A69BB6004FB423 /* hamburger@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hamburger@2x.png"; sourceTree = "<group>"; };
 		4F35FA8A19A6AA62004FB423 /* login-button-select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-button-select@2x.png"; sourceTree = "<group>"; };
 		4F35FA8B19A6AA62004FB423 /* login-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-button@2x.png"; sourceTree = "<group>"; };
+		4F35FA9219A7B8BE004FB423 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		4F37E2D91949574000753172 /* KlinicSlabLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KlinicSlabLight.ttf; path = Voco/Fonts/KlinicSlabLight.ttf; sourceTree = SOURCE_ROOT; };
 		4F37E2DA1949574000753172 /* KlinicSlabLightIt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KlinicSlabLightIt.ttf; path = Voco/Fonts/KlinicSlabLightIt.ttf; sourceTree = SOURCE_ROOT; };
 		4F37E2DB1949574000753172 /* KlinicSlabMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KlinicSlabMedium.ttf; path = Voco/Fonts/KlinicSlabMedium.ttf; sourceTree = SOURCE_ROOT; };
@@ -1060,7 +1063,6 @@
 		4FFCF2DA19A54B0000A4A24E /* VCPaymentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPaymentsViewController.h; sourceTree = "<group>"; };
 		4FFCF2DB19A54B0000A4A24E /* VCPaymentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPaymentsViewController.m; sourceTree = "<group>"; };
 		4FFCF2DC19A54B0000A4A24E /* VCPaymentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCPaymentsViewController.xib; sourceTree = "<group>"; };
-		4FFCF2E419A692A200A4A24E /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		4FFE138D1989AE09004D4413 /* VCLeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCLeftMenuViewController.h; path = ViewControllers/VCLeftMenuViewController.h; sourceTree = "<group>"; };
 		4FFE138E1989AE09004D4413 /* VCLeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCLeftMenuViewController.m; path = ViewControllers/VCLeftMenuViewController.m; sourceTree = "<group>"; };
 		4FFE138F1989AE09004D4413 /* VCLeftMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCLeftMenuViewController.xib; path = ViewControllers/VCLeftMenuViewController.xib; sourceTree = "<group>"; };
@@ -1504,10 +1506,10 @@
 		4FDB0ECA1970B0F000A8CEC2 /* Revision 2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				4F35FA9219A7B8BE004FB423 /* background@2x.png */,
 				4F35FA8A19A6AA62004FB423 /* login-button-select@2x.png */,
 				4F35FA8B19A6AA62004FB423 /* login-button@2x.png */,
 				4F35FA8819A69BB6004FB423 /* hamburger@2x.png */,
-				4FFCF2E419A692A200A4A24E /* background@2x.png */,
 				4FFCF2C419A266CC00A4A24E /* camera-icon@2x.png */,
 				4F5085A1199B2F41009EDF80 /* menu-bg@2x.png */,
 				4FCBFBED1995F50700CBF0C8 /* gradient@2x.png */,
@@ -2505,6 +2507,7 @@
 				4FCD7C6519761C21007609E8 /* call-button@2x.png in Resources */,
 				4FFCF2C619A266CC00A4A24E /* camera-icon@2x.png in Resources */,
 				F4138C3C19678BE000C265CD /* car@2x.png in Resources */,
+				4F35FA9419A7B8BE004FB423 /* background@2x.png in Resources */,
 				4FFE17171989EFC0004D4413 /* menu-item-bg@2x.png in Resources */,
 				4F2EF9CF19613B41006A1962 /* support-menu-button-selected@2x.png in Resources */,
 				4FE286F21962BB3F00FD8AF6 /* search-location@2x.png in Resources */,
@@ -2582,10 +2585,10 @@
 				F4C6B25A197F06B100F6C10B /* VCDriverRequestViewController.xib in Resources */,
 				F4C6B25B197F06B100F6C10B /* VCDriverRegistrationViewController.xib in Resources */,
 				F4C6B25C197F06B100F6C10B /* confirm-location-select.png in Resources */,
+				4F35FA9319A7B8BE004FB423 /* background@2x.png in Resources */,
 				F4C6B25D197F06B100F6C10B /* VCRiderPaymentsViewController.xib in Resources */,
 				F4C6B25E197F06B100F6C10B /* driving_car@2x.png in Resources */,
 				F4C6B25F197F06B100F6C10B /* scheduledrides-menu-button-selected@2x.png in Resources */,
-				4FFCF2E519A692A200A4A24E /* background@2x.png in Resources */,
 				4F1849F91991753F006EA959 /* menu-mycar-icon@2x.png in Resources */,
 				F4C6B260197F06B100F6C10B /* zoom-ride-bounds@2x.png in Resources */,
 				F4C6B261197F06B100F6C10B /* terms-menu-button@2x.png in Resources */,
@@ -2796,6 +2799,7 @@
 				4F2EF9C31961391B006A1962 /* tutorial-menu-button-selected@2x.png in Resources */,
 				4FCD7C94197775E1007609E8 /* VCRiderProfileViewController.xib in Resources */,
 				4F2EF9B11961391B006A1962 /* about-menu-button-selected@2x.png in Resources */,
+				4F35FA9519A7B8BE004FB423 /* background@2x.png in Resources */,
 				4F1849E2198F25F9006EA959 /* driver-cancel-hud-button@2x.png in Resources */,
 				4FFE17151989EFC0004D4413 /* menu-item-bg-select@2x.png in Resources */,
 				4FCBFBDB1995847300CBF0C8 /* driver-hov-toggle-select@2x.png in Resources */,
