@@ -517,6 +517,7 @@
     [self.map removeAnnotation:_destinationAnnotation];
     [self.map removeAnnotation:_meetingPointAnnotation];
     [self.map removeAnnotation:_dropOffPointAnnotation];
+    
 }
 
 - (void) removeHuds {
