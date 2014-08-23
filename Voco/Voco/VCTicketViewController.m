@@ -8,6 +8,7 @@
 
 #import "VCTicketViewController.h"
 #import <MapKit/MapKit.h>
+#import "IIViewDeckController.h"
 #import <ActionSheetPicker-3.0/ActionSheetStringPicker.h>
 #import <ActionSheetCustomPicker.h>
 @import AddressBookUI;
@@ -57,8 +58,6 @@
 
 @interface VCTicketViewController () <MKMapViewDelegate, VCEditLocationWidgetDelegate, ActionSheetCustomPickerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate>
 
-@property (strong, nonatomic) IBOutlet UIButton *hamburgerButton;
-- (IBAction)didTapHamburger:(id)sender;
 
 // map
 @property (strong, nonatomic) MKPointAnnotation * originAnnotation;
@@ -193,6 +192,8 @@
     _workLocationWidget.type = kWorkType;
     [self addChildViewController:_homeLocationWidget];
     [self addChildViewController:_workLocationWidget];
+    [self showHamburgerBarButton];
+    
     
 }
 
@@ -384,12 +385,17 @@
 - (void) showCancelBarButton {
     UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(didTapCancel:)];
     self.navigationItem.rightBarButtonItem = cancelItem;
+    self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:(182/255.f) green:(31/255.f) blue:(36/255.f) alpha:1.0];
 }
 
 - (void) showHamburgerBarButton {
-    
-    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(didTapHamburger:)];
+    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage: [UIImage imageNamed:@"hamburger"] style:UIBarButtonItemStylePlain target:self action:@selector(didTapHamburger)];
     self.navigationItem.leftBarButtonItem = hamburgerButton;
+    self.navigationItem.leftBarButtonItem.tintColor= [UIColor colorWithRed:(162/255.f) green:(148/255.f) blue:(144/255.f) alpha:1.0];
+}
+
+- (void) didTapHamburger {
+      [self.navigationController.viewDeckController openLeftView];
 }
 
 - (void) removeCancelBarButton {
@@ -1110,7 +1116,6 @@
 
 
 
-
 #pragma mark HovDriverInterface
 - (void) showHovDriverInterface{
     
@@ -1376,7 +1381,6 @@
 }
 - (IBAction)didTapRideCompleted:(id)sender {
 }
-
 
 
 @end

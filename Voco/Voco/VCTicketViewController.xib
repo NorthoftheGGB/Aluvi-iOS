@@ -13,7 +13,6 @@
                 <outlet property="driverCallHUD" destination="Lak-yG-cWD" id="7Mu-jQ-tOy"/>
                 <outlet property="driverCancelHUD" destination="nT8-pQ-amt" id="gk6-h1-NK5"/>
                 <outlet property="editCommuteButton" destination="2iv-cM-ZrM" id="nTt-IF-jth"/>
-                <outlet property="hamburgerButton" destination="Txn-Pn-Uxn" id="fy4-TT-lgu"/>
                 <outlet property="homeActionView" destination="XY9-N9-RDa" id="LQH-QX-Bja"/>
                 <outlet property="hovDriveYesButton" destination="LT0-2Y-Gc6" id="GyN-lZ-mp0"/>
                 <outlet property="hovDriverOptionView" destination="CKa-ug-jy9" id="5ZD-9F-mzB"/>
@@ -857,15 +856,12 @@
                 <action selector="didTapEditCommute:" destination="-1" eventType="touchUpInside" id="DlS-Vb-NWH"/>
             </connections>
         </button>
-        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Txn-Pn-Uxn">
-            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="QSz-UO-CU9">
+            <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <state key="normal" image="hamburger.png">
                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
             </state>
-            <connections>
-                <action selector="didTapHamburger:" destination="-1" eventType="touchUpInside" id="Znn-Va-FgK"/>
-            </connections>
         </button>
         <button opaque="NO" alpha="0.89999997615814209" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Jh3-aQ-cgL" customClass="VCButton">
             <rect key="frame" x="0.0" y="0.0" width="193" height="36"/>
