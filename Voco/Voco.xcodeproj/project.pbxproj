@@ -121,7 +121,6 @@
 		4F2EF9D919614115006A1962 /* scheduledfares-menu-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9D219614115006A1962 /* scheduledfares-menu-button-selected@2x.png */; };
 		4F2EF9DA19614115006A1962 /* scheduledfares-menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9D319614115006A1962 /* scheduledfares-menu-button@2x.png */; };
 		4F2EF9DB19614115006A1962 /* scheduledfares-menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9D319614115006A1962 /* scheduledfares-menu-button@2x.png */; };
-		4F35FA8919A69BB6004FB423 /* hamburger@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F35FA8819A69BB6004FB423 /* hamburger@2x.png */; };
 		4F35FA8C19A6AA62004FB423 /* login-button-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F35FA8A19A6AA62004FB423 /* login-button-select@2x.png */; };
 		4F35FA8D19A6AA62004FB423 /* login-button-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F35FA8A19A6AA62004FB423 /* login-button-select@2x.png */; };
 		4F35FA8E19A6AA62004FB423 /* login-button-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F35FA8A19A6AA62004FB423 /* login-button-select@2x.png */; };
@@ -131,6 +130,9 @@
 		4F35FA9319A7B8BE004FB423 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F35FA9219A7B8BE004FB423 /* background@2x.png */; };
 		4F35FA9419A7B8BE004FB423 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F35FA9219A7B8BE004FB423 /* background@2x.png */; };
 		4F35FA9519A7B8BE004FB423 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F35FA9219A7B8BE004FB423 /* background@2x.png */; };
+		4F35FA9719A80615004FB423 /* hamburger@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F35FA9619A80615004FB423 /* hamburger@2x.png */; };
+		4F35FA9819A80615004FB423 /* hamburger@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F35FA9619A80615004FB423 /* hamburger@2x.png */; };
+		4F35FA9919A80615004FB423 /* hamburger@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F35FA9619A80615004FB423 /* hamburger@2x.png */; };
 		4F37E2DD1949574000753172 /* KlinicSlabLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F37E2D91949574000753172 /* KlinicSlabLight.ttf */; };
 		4F37E2DE1949574000753172 /* KlinicSlabLightIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F37E2DA1949574000753172 /* KlinicSlabLightIt.ttf */; };
 		4F37E2DF1949574000753172 /* KlinicSlabMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F37E2DB1949574000753172 /* KlinicSlabMedium.ttf */; };
@@ -902,10 +904,10 @@
 		4F2EF9D119614115006A1962 /* mycar-menu-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mycar-menu-button@2x.png"; sourceTree = "<group>"; };
 		4F2EF9D219614115006A1962 /* scheduledfares-menu-button-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scheduledfares-menu-button-selected@2x.png"; sourceTree = "<group>"; };
 		4F2EF9D319614115006A1962 /* scheduledfares-menu-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scheduledfares-menu-button@2x.png"; sourceTree = "<group>"; };
-		4F35FA8819A69BB6004FB423 /* hamburger@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hamburger@2x.png"; sourceTree = "<group>"; };
 		4F35FA8A19A6AA62004FB423 /* login-button-select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-button-select@2x.png"; sourceTree = "<group>"; };
 		4F35FA8B19A6AA62004FB423 /* login-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-button@2x.png"; sourceTree = "<group>"; };
 		4F35FA9219A7B8BE004FB423 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
+		4F35FA9619A80615004FB423 /* hamburger@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hamburger@2x.png"; sourceTree = "<group>"; };
 		4F37E2D91949574000753172 /* KlinicSlabLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KlinicSlabLight.ttf; path = Voco/Fonts/KlinicSlabLight.ttf; sourceTree = SOURCE_ROOT; };
 		4F37E2DA1949574000753172 /* KlinicSlabLightIt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KlinicSlabLightIt.ttf; path = Voco/Fonts/KlinicSlabLightIt.ttf; sourceTree = SOURCE_ROOT; };
 		4F37E2DB1949574000753172 /* KlinicSlabMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KlinicSlabMedium.ttf; path = Voco/Fonts/KlinicSlabMedium.ttf; sourceTree = SOURCE_ROOT; };
@@ -1506,10 +1508,10 @@
 		4FDB0ECA1970B0F000A8CEC2 /* Revision 2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				4F35FA9619A80615004FB423 /* hamburger@2x.png */,
 				4F35FA9219A7B8BE004FB423 /* background@2x.png */,
 				4F35FA8A19A6AA62004FB423 /* login-button-select@2x.png */,
 				4F35FA8B19A6AA62004FB423 /* login-button@2x.png */,
-				4F35FA8819A69BB6004FB423 /* hamburger@2x.png */,
 				4FFCF2C419A266CC00A4A24E /* camera-icon@2x.png */,
 				4F5085A1199B2F41009EDF80 /* menu-bg@2x.png */,
 				4FCBFBED1995F50700CBF0C8 /* gradient@2x.png */,
@@ -2445,6 +2447,7 @@
 				4F2EF9A31960EC8C006A1962 /* profile-menu-button-select@2x.png in Resources */,
 				4F1849E9198F625A006EA959 /* driver-cancel-hud-icon@2x.png in Resources */,
 				4FCD7C8419771931007609E8 /* rider-call-button@2x.png in Resources */,
+				4F35FA9819A80615004FB423 /* hamburger@2x.png in Resources */,
 				4FDB0ED41970C3AD00A8CEC2 /* button-full-default@2x.png in Resources */,
 				4F184A301992E198006EA959 /* user-image-small@2x.png in Resources */,
 				4FE287021962C52800FD8AF6 /* confirm-location-select.png in Resources */,
@@ -2640,6 +2643,7 @@
 				4F3DB5BC1981ED4E00DDD094 /* current-location-button@2x.png in Resources */,
 				F4C6B27F197F06B100F6C10B /* profile-menu-button-select@2x.png in Resources */,
 				F4C6B280197F06B100F6C10B /* button-default@2x.png in Resources */,
+				4F35FA9719A80615004FB423 /* hamburger@2x.png in Resources */,
 				4FCBFBEE1995F50700CBF0C8 /* gradient@2x.png in Resources */,
 				4FFCF2D719A5493500A4A24E /* VCReceiptsViewController.xib in Resources */,
 				4F3DB5CD19825FF700DDD094 /* overlay-graphic@2x.png in Resources */,
@@ -2669,7 +2673,6 @@
 				4F184A1519918750006EA959 /* VCMenuUserInfoTableViewCell.xib in Resources */,
 				F4C6B28C197F06B100F6C10B /* Images.xcassets in Resources */,
 				F4C6B28D197F06B100F6C10B /* commuter-menu-button-selected@2x.png in Resources */,
-				4F35FA8919A69BB6004FB423 /* hamburger@2x.png in Resources */,
 				4F184A1E1991893D006EA959 /* VCMenuDriverClockOnTableViewCell.xib in Resources */,
 				F4C6B28E197F06B100F6C10B /* VCMenuViewController.xib in Resources */,
 				F4C6B28F197F06B100F6C10B /* log-in-box@2x.png in Resources */,
@@ -2786,6 +2789,7 @@
 				4FDB0ECD1970B10600A8CEC2 /* button-default@2x.png in Resources */,
 				4FCBFBF01995F50700CBF0C8 /* gradient@2x.png in Resources */,
 				4FFCF2D919A5493500A4A24E /* VCReceiptsViewController.xib in Resources */,
+				4F35FA9919A80615004FB423 /* hamburger@2x.png in Resources */,
 				4F3DB5CF19825FF700DDD094 /* overlay-graphic@2x.png in Resources */,
 				4FE641F8194168E80059BED1 /* signUp_btn@2x.png in Resources */,
 				4F184A311992E198006EA959 /* user-image-small@2x.png in Resources */,
