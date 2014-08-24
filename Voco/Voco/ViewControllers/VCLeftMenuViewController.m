@@ -33,10 +33,12 @@
 #define kReceiptsCell @1006
 #define kSupportCell @1007
 #define kModeCell @1008
+#define kDriverSettingsCell @1009
+#define kMyCarCell @1010
+#define kEarningsCell @1011
+#define kFareReceiptsCell @1012
 
 //Drive
-
-
 
 // These are used in the switch statement
 #define kUserInfoCellInteger 1000
@@ -48,6 +50,11 @@
 #define kReceiptsCellInteger 1006
 #define kSupportCellInteger 1007
 #define kModeCellInteger 1008
+#define kDriverSettingsInteger 1009
+#define kMyCarCellInteger 1010
+#define kEarningsCellInteger 1011
+#define kFareReceiptsCellInteger 1012
+
 
 @interface VCLeftMenuViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -65,7 +72,12 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        _tableCellList = [NSMutableArray arrayWithArray: @[kUserInfoCell, kProfileCell, kScheduleCell, kMapCell, kPaymentCell, kReceiptsCell, kSupportCell, kModeCell ]];
+        
+        if([[VCUserStateManager instance] isHovDriver]){
+            _tableCellList = [NSMutableArray arrayWithArray: @[kUserInfoCell, kScheduleCell, kMapCell, kPaymentCell, kReceiptsCell, kSupportCell ]];
+        } else {
+            _tableCellList = [NSMutableArray arrayWithArray: @[kUserInfoCell, kScheduleCell, kMapCell, kDriverSettingsCell, kPaymentCell, kReceiptsCell, kSupportCell ]];
+        }
         _selectedCellTag = -1;
     }
     return self;
@@ -185,14 +197,7 @@
         }
             break;
             
-        default:
-        {
-            VCMenuItemNotConfiguredTableViewCell * menuItemNotConfiguredTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemNotConfiguredTableViewCell" class:[VCMenuItemNotConfiguredTableViewCell class]];
-            menuItemNotConfiguredTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell = menuItemNotConfiguredTableViewCell;
-        }
-            break;
-            
+
         case kMapCellInteger:
         {
             VCMenuItemTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemTableViewCell" class:[VCMenuItemTableViewCell class]];
@@ -214,7 +219,8 @@
             break;
             
         case kReceiptsCellInteger:
-        {VCMenuItemTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemTableViewCell" class:[VCMenuItemTableViewCell class]];
+        {
+            VCMenuItemTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemTableViewCell" class:[VCMenuItemTableViewCell class]];
             menuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-receipts-icon"];
             menuItemTableViewCell.menuItemLabel.text = @"Receipts";
             menuItemTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -239,6 +245,47 @@
              }
              break;*/
             
+        case kDriverSettingsInteger:
+        {
+            VCMenuItemTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemTableViewCell" class:[VCMenuItemTableViewCell class]];
+            menuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-receipts-icon"];
+            menuItemTableViewCell.menuItemLabel.text = @"Driver Settings";
+            menuItemTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell = menuItemTableViewCell;
+
+        }
+            break;
+            
+        case kMyCarCellInteger:
+        {
+            
+        }
+            break;
+            
+        case kEarningsCellInteger:
+        {
+            VCSubMenuItemTableViewCell * subMenuItemTableViewCell = [WRUtilities getViewFromNib:@"VCSubMenuItemTableViewCell" class:[VCSubMenuItemTableViewCell class]];
+            subMenuItemTableViewCell.itemTitleLabel.text = @"Earnings";
+            cell = subMenuItemTableViewCell;
+        }
+            break;
+            
+        case kFareReceiptsCellInteger:
+        {
+            VCSubMenuItemTableViewCell * subMenuItemTableViewCell = [WRUtilities getViewFromNib:@"VCSubMenuItemTableViewCell" class:[VCSubMenuItemTableViewCell class]];
+            subMenuItemTableViewCell.itemTitleLabel.text = @"Fare Receipts";
+            cell = subMenuItemTableViewCell;
+        }
+            break;
+            
+        default:
+        {
+            VCMenuItemNotConfiguredTableViewCell * menuItemNotConfiguredTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemNotConfiguredTableViewCell" class:[VCMenuItemNotConfiguredTableViewCell class]];
+            menuItemNotConfiguredTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell = menuItemNotConfiguredTableViewCell;
+        }
+            break;
+            
             
     }
     
@@ -262,18 +309,17 @@
         [(VCMenuItemTableViewCell*) cell deselect];
     }
     else if([cell isKindOfClass:[VCSubMenuItemTableViewCell class]]){
-     [(VCSubMenuItemTableViewCell*) cell deselect];
-     }
+        [(VCSubMenuItemTableViewCell*) cell deselect];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // setCenterViewControllers
     long row = [indexPath row];
     
-    
     long tag = [[_tableCellList objectAtIndex:row] integerValue];
     switch(tag){
-        case kProfileCellInteger:
+        case kUserInfoCellInteger:
         {
             
             VCProfileViewController * profileViewController = [[VCProfileViewController alloc] init];
@@ -327,6 +373,27 @@
             [cell select];
         }
             break;
+            
+        case kDriverSettingsInteger:
+        {
+            
+            if(![_tableCellList containsObject:kEarningsCell]){
+
+                long index = [_tableCellList indexOfObject:kDriverSettingsCell];
+            
+                NSMutableArray * indexPaths = [NSMutableArray array];
+                [indexPaths addObject:[NSIndexPath indexPathForRow: index+1 inSection:0]];
+                [indexPaths addObject:[NSIndexPath indexPathForRow: index+2 inSection:0]];
+            
+                [_tableCellList insertObject:kEarningsCell atIndex:index+1];
+                [_tableCellList insertObject:kFareReceiptsCell atIndex:index+2];
+            
+                [_tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+                VCMenuItemTableViewCell * cell = (VCMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
+                [cell select];
+            }
+        }
+            break;
         
         case kSupportCellInteger:
         {
@@ -348,6 +415,24 @@
        && [_tableCellList containsObject:kScheduleItemCell]
        ){
         [self hideScheduleItems];
+    }
+    
+    if( [[_tableCellList objectAtIndex:row] integerValue] != kDriverSettingsInteger
+       && [[_tableCellList objectAtIndex:row] integerValue] != kEarningsCellInteger
+       && [[_tableCellList objectAtIndex:row] integerValue] != kFareReceiptsCellInteger
+       && [_tableCellList containsObject:kEarningsCell]){
+        
+        long index = [_tableCellList indexOfObject:kDriverSettingsCell];
+        NSRange range;
+        range.location = index + 1;
+        range.length = 2;
+        [_tableCellList removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:range]];
+        NSMutableArray * indexPaths = [NSMutableArray array];
+        for(int i=0; i<2; i++){
+            [indexPaths addObject:[NSIndexPath indexPathForRow: index+i+1 inSection:0]];
+        }
+        [_tableView deleteRowsAtIndexPaths:indexPaths
+                          withRowAnimation:UITableViewRowAnimationAutomatic];
     }
     
     _selectedCellTag = tag;

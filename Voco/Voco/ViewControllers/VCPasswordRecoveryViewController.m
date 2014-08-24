@@ -50,9 +50,9 @@
         [self.view addGestureRecognizer:tapBackground];
     }
     
-    - (void) dismissKeyboard:(id) sender{
-        [self.view endEditing:YES];
-    }
+- (void) dismissKeyboard:(id) sender{
+    [self.view endEditing:YES];
+}
 
 - (void)didReceiveMemoryWarning
 {
