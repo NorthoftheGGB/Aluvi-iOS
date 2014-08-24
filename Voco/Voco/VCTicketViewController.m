@@ -1126,9 +1126,9 @@
     } else {
         _fareDetailsView.driveTimeLabel.text = [_ticket.pickupTime time];
         _fareDetailsView.dateLabel.text = [_ticket.pickupTime monthAndDay];
-        _fareDetailsView.fareEarningsLabel.text = [NSString stringWithFormat:@"%.2f", [_ticket.hovFare.estimatedEarnings floatValue] ];
+        _fareDetailsView.fareEarningsLabel.text = [NSString stringWithFormat:@"$%.0f", [_ticket.hovFare.estimatedEarnings floatValue] ];
         _fareDetailsView.driveDistanceLabel.text = @"";
-        _fareDetailsView.numberOfPeopleLabel.text = [NSString stringWithFormat:@"%d", [_ticket.hovFare.riders count] - 1 ];
+        _fareDetailsView.numberOfPeopleLabel.text = [NSString stringWithFormat:@"%d", [_ticket.hovFare.riders count] ];
         
         CGRect frame = _rideDetailsConfirmation.frame;
         frame.origin.x = 0;
@@ -1137,6 +1137,7 @@
         [self.view addSubview:_fareDetailsView];
 
     }
+    [self removeCancelBarButton];
     
 }
 

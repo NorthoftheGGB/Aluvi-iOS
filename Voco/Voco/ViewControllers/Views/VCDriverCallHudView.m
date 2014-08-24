@@ -29,21 +29,13 @@
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 - (void) setRiders:(NSArray *)riders {
     _riders = riders;
     NSArray * buttons = @[_riderCallButton1, _riderCallButton2, _riderCallButton3];
     int count = [riders count];
     int i = 0;
-    for(; i<3-count; i++){
+    for(; i<count; i++){
         Rider * rider = [riders objectAtIndex:i];
         VCButton * button = ((VCButton *) [buttons objectAtIndex:i]);
         [button setTitle:[rider fullName] forState:UIControlStateNormal];

@@ -38,7 +38,7 @@
         <attribute name="dropOffPointLatitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="dropOffPointLongitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="dropOffPointPlaceName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="estimatedEarnings" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="estimatedEarnings" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
         <attribute name="fare_id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="meetingPointLatitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="meetingPointLongitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
