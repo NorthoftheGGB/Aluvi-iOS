@@ -810,6 +810,9 @@
 		F4F157A3195E8DB5009A33C8 /* VCBaseValidatorTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F157A1195E8DB1009A33C8 /* VCBaseValidatorTextField.m */; };
 		F4F5FFBE19779E23001A1C0E /* Payment.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F5FFBD19779E23001A1C0E /* Payment.m */; };
 		F4F5FFBF19779E23001A1C0E /* Payment.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F5FFBD19779E23001A1C0E /* Payment.m */; };
+		F4F6B8B819A9898E004312A1 /* VCNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6B8B719A9898E004312A1 /* VCNotifications.m */; };
+		F4F6B8B919A9898E004312A1 /* VCNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6B8B719A9898E004312A1 /* VCNotifications.m */; };
+		F4F6B8BA19A9898E004312A1 /* VCNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6B8B719A9898E004312A1 /* VCNotifications.m */; };
 		F4FA0BE8192BF6BF005D8645 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BE7192BF6BF005D8645 /* Foundation.framework */; };
 		F4FA0BEA192BF6BF005D8645 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BE9192BF6BF005D8645 /* CoreGraphics.framework */; };
 		F4FA0BEC192BF6BF005D8645 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BEB192BF6BF005D8645 /* UIKit.framework */; };
@@ -1247,7 +1250,6 @@
 		F4C6B29D197F437800F6C10B /* VCApiError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCApiError.m; path = API/VCApiError.m; sourceTree = "<group>"; };
 		F4C6B2A2197F8A9400F6C10B /* VCEditLocationWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCEditLocationWidget.h; path = ViewControllers/VCEditLocationWidget.h; sourceTree = "<group>"; };
 		F4C6B2A3197F8A9400F6C10B /* VCEditLocationWidget.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCEditLocationWidget.m; path = ViewControllers/VCEditLocationWidget.m; sourceTree = "<group>"; };
-		F4CC33D719A05A06006359B4 /* VCNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCNotifications.h; sourceTree = "<group>"; };
 		F4D877641976721D00870945 /* VCProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCProfile.h; path = Users/VCProfile.h; sourceTree = "<group>"; };
 		F4D877651976721D00870945 /* VCProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCProfile.m; path = Users/VCProfile.m; sourceTree = "<group>"; };
 		F4D8776A19774CAB00870945 /* VCFare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCFare.h; path = API/Driver/VCFare.h; sourceTree = "<group>"; };
@@ -1276,6 +1278,8 @@
 		F4F5FFBD19779E23001A1C0E /* Payment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Payment.m; path = Model/Payment.m; sourceTree = "<group>"; };
 		F4F5FFC01977A599001A1C0E /* Voco 25.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 25.xcdatamodel"; sourceTree = "<group>"; };
 		F4F5FFC11977AE4C001A1C0E /* Voco 26.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 26.xcdatamodel"; sourceTree = "<group>"; };
+		F4F6B8B619A9898E004312A1 /* VCNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCNotifications.h; sourceTree = "<group>"; };
+		F4F6B8B719A9898E004312A1 /* VCNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCNotifications.m; sourceTree = "<group>"; };
 		F4FA0BE4192BF6BF005D8645 /* Voco Alpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Voco Alpha.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FA0BE7192BF6BF005D8645 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F4FA0BE9192BF6BF005D8645 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -2239,7 +2243,8 @@
 				F49EDD0F1946E2F90020B8BB /* VCInterfaceManager.m */,
 				F425906B1995E30000FA928E /* VCCommuteManager.h */,
 				F425906C1995E30000FA928E /* VCCommuteManager.m */,
-				F4CC33D719A05A06006359B4 /* VCNotifications.h */,
+				F4F6B8B619A9898E004312A1 /* VCNotifications.h */,
+				F4F6B8B719A9898E004312A1 /* VCNotifications.m */,
 			);
 			name = Application;
 			sourceTree = "<group>";
@@ -3072,6 +3077,7 @@
 				F425906E1995E30000FA928E /* VCCommuteManager.m in Sources */,
 				4FCD7C8919775C5C007609E8 /* VCDriverRecieptDetailViewController.m in Sources */,
 				4FFE13991989DDF4004D4413 /* VCDriverCallHudView.m in Sources */,
+				F4F6B8B919A9898E004312A1 /* VCNotifications.m in Sources */,
 				F4A7C8261962E235007E05AD /* VCLocationSearchViewController.m in Sources */,
 				4F4D8BF519882AFB0027A2AF /* VCDriveViewController.m in Sources */,
 				4F9ECECA19663B1F00AD4229 /* VCLabelBold.m in Sources */,
@@ -3127,6 +3133,7 @@
 				F4C6B1C3197F06B100F6C10B /* VCPasswordTextField.m in Sources */,
 				F4C6B1C6197F06B100F6C10B /* VCCarModelTextField.m in Sources */,
 				F4C6B1C7197F06B100F6C10B /* VCUserStateResponse.m in Sources */,
+				F4F6B8B819A9898E004312A1 /* VCNotifications.m in Sources */,
 				F4C6B1C8197F06B100F6C10B /* VCScrollableFormViewController.m in Sources */,
 				4FFCF2BE19A25F2100A4A24E /* VCProfileViewController.m in Sources */,
 				F4C6B1C9197F06B100F6C10B /* VCLabelBold.m in Sources */,
@@ -3337,6 +3344,7 @@
 				4F4D8BE91987644F0027A2AF /* VCRideDetailsHudView.m in Sources */,
 				4FE712C9197368B90071020C /* VCCarBrandTextField.m in Sources */,
 				F4FE1B0F1938571E00354886 /* VCFareDriverAssignment.m in Sources */,
+				F4F6B8BA19A9898E004312A1 /* VCNotifications.m in Sources */,
 				4F9ECEAB196619D800AD4229 /* VCPhoneTextField.m in Sources */,
 				4FFBA44E195E7BC600A51B84 /* VCEmailTextField.m in Sources */,
 				4FE641C4194157EB0059BED1 /* VCPasswordRecoveryViewController.m in Sources */,

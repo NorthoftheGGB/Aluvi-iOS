@@ -90,7 +90,7 @@ static UIAlertView * networkUnavailableErrorView = nil;
     [[VCDebug sharedInstance] apiLog:errorString];
     
     UIAlertView *alert = [[UIAlertView alloc]
-                          initWithTitle: @"Critical Error"
+                          initWithTitle: @"Error"
                           message: error
                           delegate: self
                           cancelButtonTitle:@"OK"
@@ -98,6 +98,21 @@ static UIAlertView * networkUnavailableErrorView = nil;
     [alert performSelectorOnMainThread:@selector(show) withObject:nil waitUntilDone:YES];
     
 }
+
++ (void) warningWithString: (NSString *) error {
+    NSString * errorString = [NSString stringWithFormat:@"%@ Warning: %@", [[NSDate date] pretty] , error];
+    NSLog(@"%@", errorString);
+    [[VCDebug sharedInstance] apiLog:errorString];
+    
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle: @"Warning"
+                          message: error
+                          delegate: self
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil];
+    [alert performSelectorOnMainThread:@selector(show) withObject:nil waitUntilDone:YES];
+}
+
 
 + (void) stateErrorWithString: (NSString *) error {
     

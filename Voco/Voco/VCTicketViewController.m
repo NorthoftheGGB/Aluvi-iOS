@@ -7,11 +7,21 @@
 //
 
 #import "VCTicketViewController.h"
+@import AddressBookUI;
 #import <MapKit/MapKit.h>
-#import "IIViewDeckController.h"
+#import <MBProgressHUD.h>
 #import <ActionSheetPicker-3.0/ActionSheetStringPicker.h>
 #import <ActionSheetCustomPicker.h>
-@import AddressBookUI;
+#import "IIViewDeckController.h"
+
+#import "VCNotifications.h"
+
+#import "VCDriverApi.h"
+#import "VCPushApi.h"
+
+#import "Driver.h"
+#import "Car.h"
+
 #import "VCLabel.h"
 #import "VCButtonStandardStyle.h"
 #import "VCEditLocationWidget.h"
@@ -20,10 +30,6 @@
 #import "VCRideDetailsConfirmationView.h"
 #import "VCRideDetailsHudView.h"
 #import "NSDate+Pretty.h"
-#import "Driver.h"
-#import "VCNotifications.h"
-#import "VCPushApi.h"
-#import "Car.h"
 #import "VCUserStateManager.h"
 #import "VCDriveViewController.h"
 #import "VCMapQuestRouting.h"
@@ -31,6 +37,8 @@
 #import "IIViewDeckController.h"
 #import "VCDriveDetailsView.h"
 #import "VCDriverCallHudView.h"
+#import "VCFare.h"
+#import "VCUtilities.h"
 
 #define kEditCommuteStatePickupTime 1000
 #define kEditCommuteStateEditHome 1001
@@ -135,8 +143,8 @@
 @property (nonatomic) BOOL cancelHudPanLocked;
 @property (strong, nonatomic) NSTimer * cancelTimer;
 @property (nonatomic) BOOL cancelHudOpen;
-@property (weak, nonatomic) IBOutlet VCButton *cancelRideButton;
-@property (weak, nonatomic) IBOutlet UIImageView *cancelIconImageView;
+@property (strong, nonatomic) IBOutlet VCButton *cancelRideButton;
+@property (strong, nonatomic) IBOutlet UIImageView *cancelIconImageView;
 - (IBAction)didTapCancelRide:(id)sender;
 
 
@@ -947,6 +955,16 @@
     [self showInterfaceForRide];
 }
 
+- (IBAction)didTapZoomToRideBounds:(id)sender {
+    if (_ticket != nil) {
+        [self.map setRegion:self.rideRegion animated:YES];
+    }
+}
+
+- (IBAction)didTapZoomToCurrentLocation:(id)sender {
+    [self zoomToCurrentLocation];
+}
+
 #pragma mark - VCLocationSearchViewControllerDelegate
 
 - (void) editLocationWidget:(VCEditLocationWidget *)widget didSelectMapItem:(MKMapItem *)mapItem {
@@ -1120,8 +1138,11 @@
 - (void) showHovDriverInterface{
     
     if([_ticket.confirmed isEqualToNumber:[NSNumber numberWithBool:YES]]) {
-    
+        
         [self setupDriverHuds];
+        if([_ticket.hovFare.state isEqualToString:@"started"]){
+            [self moveFromPickupToRideInProgressInteface];
+        }
         
     } else {
         _fareDetailsView.driveTimeLabel.text = [_ticket.pickupTime time];
@@ -1135,7 +1156,7 @@
         frame.origin.y = self.view.frame.size.height - 480;
         _fareDetailsView.frame = frame;
         [self.view addSubview:_fareDetailsView];
-
+        
     }
     [self removeCancelBarButton];
     
@@ -1395,6 +1416,19 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 }
 
+- (void) moveFromPickupToRideInProgressInteface {
+    CGRect rideCompletedFrame = _rideCompleteButton.frame;
+    rideCompletedFrame.origin.x = 18;
+    rideCompletedFrame.origin.y = self.view.frame.size.height - 46;
+    _rideCompleteButton.frame = rideCompletedFrame;
+    
+    [UIView transitionWithView:self.view duration:.35 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+        [self.view addSubview:_rideCompleteButton];
+        [_ridersPickedUpButton removeFromSuperview];
+    } completion:^(BOOL finished) {
+    }];
+}
+
 - (IBAction)didTapCallRider1:(id)sender {
     Rider * rider = [_driverCallHUD.riders objectAtIndex:0];
     [self callPhone:rider.phone];
@@ -1408,14 +1442,69 @@
     [self callPhone:rider.phone];
 }
 
-- (IBAction)didTapCurrentLocationButton:(id)sender {
-}
-- (IBAction)didTapDirectionsListButton:(id)sender {
-}
+
 - (IBAction)didTapRidersPickedUp:(id)sender {
+    if( [VCUserStateManager instance].underwayFareId != nil){
+        if(! [[VCUserStateManager instance].underwayFareId isEqualToNumber: _ticket.fare_id]){
+            [WRUtilities warningWithString:@"State shows another ride is still underway.  Continuing anyway"];
+        }
+    }
+    
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Notifying Server";
+    
+    [VCUserStateManager instance].underwayFareId = _ticket.fare_id;
+    [VCDriverApi ridersPickedUp:_ticket.fare_id
+                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                            [self moveFromPickupToRideInProgressInteface];
+                            _ticket.hovFare.forcedState = @"started";
+                            [VCCoreData saveContext];
+                            [VCUserStateManager instance].driveProcessState = kUserStateRideStarted;
+                            [hud hide:YES];
+                            
+                        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                            [hud hide:YES];
+                            
+                        }];
+    
 }
+
 - (IBAction)didTapRideCompleted:(id)sender {
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Notifying Server";
+    
+    [VCDriverApi fareCompleted:_ticket.fare_id
+                       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                           [VCUserStateManager instance].driveProcessState = kUserStateRideCompleted;
+                           //[self showRideCompletedInterface];
+                           VCFare * fare = mappingResult.firstObject;
+                           [VCUserStateManager instance].underwayFareId = nil;
+                           
+                           _ticket.forcedState = kCompleteState;
+                           [VCCoreData saveContext];
+                           [VCNotifications scheduledUpdated];
+                           [hud hide:YES];
+                           
+                           [_driverCallHUD removeFromSuperview];
+                           [_driverCancelHUD removeFromSuperview];
+                           [_rideCompleteButton removeFromSuperview];
+                           
+                           [UIAlertView showWithTitle:@"Receipt"
+                                              message:[NSString stringWithFormat:@"Thanks for driving.  You earned %@ on this ride.",
+                                                       [VCUtilities formatCurrencyFromCents:fare.driverEarnings]]
+                                    cancelButtonTitle:@"OK"
+                                    otherButtonTitles:nil
+                                             tapBlock:nil];
+                           
+                       } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                           [hud hide:YES];
+                           
+                       }];
+    
 }
+
+
+
 
 
 @end

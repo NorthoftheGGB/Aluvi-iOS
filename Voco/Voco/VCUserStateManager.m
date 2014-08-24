@@ -23,6 +23,7 @@ NSString *const VCUserStateDriverStateKeyPath = @"driverState";
 #define kRiderStateKey @"kRiderStateKey"
 #define kDriverStateKey @"kDriverStateKey"
 #define kRideIdKey @"kRideIdKey"
+#define kProfileDataKey @"kProfileDataKey"
 
 static VCUserStateManager *sharedSingleton;
 
@@ -53,6 +54,11 @@ static VCUserStateManager *sharedSingleton;
         _riderState = [userDefaults objectForKey:kRiderStateKey];
         _driverState = [userDefaults objectForKey:kDriverStateKey];
         _underwayFareId = [userDefaults objectForKey:kRideIdKey];
+        NSData * profileData = [[NSUserDefaults standardUserDefaults] objectForKey:kProfileDataKey];
+        if(profileData != nil) {
+            _profile = [NSKeyedUnarchiver unarchiveObjectWithData:profileData];
+        }
+
     }
     return self;
 }
@@ -88,6 +94,12 @@ static VCUserStateManager *sharedSingleton;
     NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:self.driverState forKey:kDriverStateKey];
     [userDefaults synchronize];
+}
+
+- (void) setProfile:(VCProfile *)profile {
+    NSData * profileData = [NSKeyedArchiver archivedDataWithRootObject:profile];
+    [[NSUserDefaults standardUserDefaults] setObject:profileData forKey:kProfileDataKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void) loginWithPhone:(NSString*) phone
