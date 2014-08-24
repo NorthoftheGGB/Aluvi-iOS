@@ -218,8 +218,21 @@ static VCDialogs *sharedSingleton;
     }];
 }
 
+- (void) commuteDriverFulfilled {
+    [UIAlertView showWithTitle:@"Commuter Drive Scheduled!" message:@"We have found you riders for your commute!" cancelButtonTitle:@"Great!" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        //
+    }];
+}
+
+
 - (void) commuteUnfulfilled {
     [UIAlertView showWithTitle:@"Commuter Ride Not Successful." message:@"We were unable to fulfill your commute to and from work.  Please try again tomorrow." cancelButtonTitle:@"Okay :(" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        //
+    }];
+}
+
+- (void) commuteDriverUnfulfilled {
+    [UIAlertView showWithTitle:@"Commuter Drive Not Successful." message:@"We were unable to find you riders for your commute.  Please try again tomorrow." cancelButtonTitle:@"Okay :(" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
         //
     }];
 }

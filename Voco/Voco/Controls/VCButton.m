@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCButtonFont.h"
+#import "VCButton.h"
 
-@implementation VCButtonFont
+@implementation VCButton
 
 @synthesize fontSize;
 

@@ -7,11 +7,21 @@
 //
 
 #import "VCTicketViewController.h"
+@import AddressBookUI;
 #import <MapKit/MapKit.h>
-#import "IIViewDeckController.h"
+#import <MBProgressHUD.h>
 #import <ActionSheetPicker-3.0/ActionSheetStringPicker.h>
 #import <ActionSheetCustomPicker.h>
-@import AddressBookUI;
+#import "IIViewDeckController.h"
+
+#import "VCNotifications.h"
+
+#import "VCDriverApi.h"
+#import "VCPushApi.h"
+
+#import "Driver.h"
+#import "Car.h"
+
 #import "VCLabel.h"
 #import "VCButtonStandardStyle.h"
 #import "VCEditLocationWidget.h"
@@ -20,13 +30,15 @@
 #import "VCRideDetailsConfirmationView.h"
 #import "VCRideDetailsHudView.h"
 #import "NSDate+Pretty.h"
-#import "Driver.h"
-#import "VCNotifications.h"
-#import "VCPushApi.h"
-#import "Car.h"
 #import "VCUserStateManager.h"
 #import "VCDriveViewController.h"
 #import "VCMapQuestRouting.h"
+#import "VCButton.h"
+#import "IIViewDeckController.h"
+#import "VCDriveDetailsView.h"
+#import "VCDriverCallHudView.h"
+#import "VCFare.h"
+#import "VCUtilities.h"
 
 #define kEditCommuteStatePickupTime 1000
 #define kEditCommuteStateEditHome 1001
@@ -44,7 +56,17 @@
 
 #define kFareNotStartedLabelText @"Waiting"
 
-@interface VCTicketViewController () <MKMapViewDelegate, VCEditLocationWidgetDelegate, ActionSheetCustomPickerDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
+#define kDriverCallHudOriginX 271
+#define kDriverCallHudOriginY 226
+#define kDriverCallHudOpenX 31
+#define kDriverCallHudOpenY 226
+
+#define kDriverCancelHudOriginX 271
+#define kDriverCancelHudOriginY 302
+#define kDriverCancelHudOpenX 165
+#define kDriverCancelHudOpenY 302
+
+@interface VCTicketViewController () <MKMapViewDelegate, VCEditLocationWidgetDelegate, ActionSheetCustomPickerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate>
 
 
 // map
@@ -53,6 +75,7 @@
 @property (strong, nonatomic) MKPointAnnotation * meetingPointAnnotation;
 @property (strong, nonatomic) MKPointAnnotation * dropOffPointAnnotation;
 @property (strong, nonatomic) IBOutlet UIButton *currentLocationButton;
+@property (strong, nonatomic) CLLocationManager * locationManager;
 
 // data
 @property (strong, nonatomic) NSArray * morningOptions;
@@ -60,8 +83,8 @@
 
 
 @property (strong, nonatomic) IBOutlet UIView *homeActionView;
-@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *editCommuteButton;
-@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *rideNowButton;
+@property (strong, nonatomic) IBOutlet VCButtonStandardStyle *editCommuteButton;
+@property (strong, nonatomic) IBOutlet VCButtonStandardStyle *rideNowButton;
 @property (strong, nonatomic) IBOutlet VCButtonStandardStyle *nextButton;
 
 //confirmation
@@ -102,6 +125,34 @@
 - (IBAction)didTapHovDriveYesButton:(id)sender;
 
 
+// HOV Driver
+@property (strong, nonatomic) IBOutlet VCDriverCallHudView *driverCallHUD;
+@property (strong, nonatomic) IBOutlet UIView *driverCancelHUD;
+@property (strong, nonatomic) IBOutlet UIButton *directionsListButton;
+@property (strong, nonatomic) IBOutlet VCDriveDetailsView * fareDetailsView;
+
+//Call HUD
+@property (nonatomic) BOOL callHudPanLocked;
+@property (strong, nonatomic) NSTimer * timer;
+@property (nonatomic) BOOL callHudOpen;
+- (IBAction)didTapCallRider1:(id)sender;
+- (IBAction)didTapCallRider2:(id)sender;
+- (IBAction)didTapCallRider3:(id)sender;
+
+//Cancel HUD
+@property (nonatomic) BOOL cancelHudPanLocked;
+@property (strong, nonatomic) NSTimer * cancelTimer;
+@property (nonatomic) BOOL cancelHudOpen;
+@property (strong, nonatomic) IBOutlet VCButton *cancelRideButton;
+@property (strong, nonatomic) IBOutlet UIImageView *cancelIconImageView;
+- (IBAction)didTapCancelRide:(id)sender;
+
+
+//Ride Status
+@property (strong, nonatomic) IBOutlet VCButton *ridersPickedUpButton;
+@property (strong, nonatomic) IBOutlet VCButton *rideCompleteButton;
+- (IBAction)didTapRidersPickedUp:(id)sender;
+- (IBAction)didTapRideCompleted:(id)sender;
 
 @end
 
@@ -126,6 +177,9 @@
         _step = kStepSetDepartureLocation;
         _ticket = nil;
         
+        _callHudPanLocked = NO;
+        _callHudOpen = NO;
+        _appeared = NO;
     }
     return self;
 }
@@ -146,7 +200,6 @@
     [self addChildViewController:_homeLocationWidget];
     [self addChildViewController:_workLocationWidget];
     [self showHamburgerBarButton];
-    
     
     
 }
@@ -170,12 +223,15 @@
         if(_ticket == nil) {
             [self showHome];
             self.map.userTrackingMode = MKUserTrackingModeFollow;
+            [self startLocationUpdates];
         } else {
             [self showInterfaceForRide];
         }
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripFulfilled:) name:kNotificationTypeTripFulfilled object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripFulfilled:) name:kNotificationTypeTripUnfulfilled object:nil];
+
 }
 
 - (void) viewWillDisppear:(BOOL)animated{
@@ -203,6 +259,23 @@
     //}
 }
 
+- (void) tripUnfulfilled:(NSNotification *) notification {
+    NSDictionary * payload = notification.object;
+    NSNumber * tripId = [payload objectForKey:VC_PUSH_TRIP_ID_KEY];
+    //if(_ride == nil || [_ride.trip_id isEqualToNumber:tripId]) {
+    NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"trip_id = %@", tripId];
+    [fetch setPredicate:predicate];
+    NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];
+    [fetch setSortDescriptors:@[sort]];
+    NSError * error;
+    NSArray * ridesForTrip = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
+    if(ridesForTrip == nil){
+        [WRUtilities criticalError:error];
+        return;
+    }
+    [self resetInterfaceToHome];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -253,15 +326,15 @@
     CLLocationCoordinate2D fromCoordinate = CLLocationCoordinate2DMake(from.coordinate.latitude, from.coordinate.longitude);
     CLLocationCoordinate2D toCoordinate = CLLocationCoordinate2DMake(to.coordinate.latitude, to.coordinate.longitude);
     
-    [VCMapQuestRouting pedestrianRoute:fromCoordinate
-                                    to:toCoordinate
-                               success:^(MKPolyline *polyline, MKCoordinateRegion region) {
-                                   polyline.title = @"driver_leg";
-                                   [self.map addOverlay:polyline];
-                               }
-                               failure:^{
-                                   NSLog(@"%@", @"Error talking with MapQuest routing API");
-                               }];
+    [VCMapQuestRouting route:fromCoordinate
+                          to:toCoordinate
+                     success:^(MKPolyline *polyline, MKCoordinateRegion region) {
+                         polyline.title = @"driver_leg";
+                         [self.map addOverlay:polyline];
+                     }
+                     failure:^{
+                         NSLog(@"%@", @"Error talking with MapQuest routing API");
+                     }];
 }
 
 - (void) showInterfaceForRide {
@@ -278,15 +351,19 @@
         [self.view addSubview:self.waitingScreen];
         
     } else if([_ticket.state isEqualToString:kScheduledState]){
-        [self addOriginAnnotation: [_ticket originLocation] ];
-        [self addDestinationAnnotation: [_ticket destinationLocation]];
+        //[self addOriginAnnotation: [_ticket originLocation] ];
+        //[self addDestinationAnnotation: [_ticket destinationLocation]];
         [self addMeetingPointAnnotation: [_ticket meetingPointLocation]];
         [self addDropOffPointAnnotation: [_ticket dropOffPointLocation]];
         
         [self showSuggestedRoute: [_ticket meetingPointLocation] to:[_ticket dropOffPointLocation]];
         if( [_ticket.driving boolValue] ) {
-            [self addDriverLegRoute:[_ticket originLocation] to:[_ticket meetingPointLocation]];
-            [self addDriverLegRoute:[_ticket dropOffPointLocation] to:[_ticket destinationLocation]];
+            if(![[_ticket meetingPointLocation] isEqual:[_ticket originLocation]]){
+                [self addDriverLegRoute:[_ticket originLocation] to:[_ticket meetingPointLocation]];
+            }
+            if(![[_ticket dropOffPointLocation] isEqual:[_ticket destinationLocation]]){
+                [self addDriverLegRoute:[_ticket dropOffPointLocation] to:[_ticket destinationLocation]];
+            }
         } else {
             [self addPedestrianRoute:[_ticket originLocation] to:[_ticket meetingPointLocation]];
             [self addPedestrianRoute:[_ticket dropOffPointLocation] to:[_ticket destinationLocation]];
@@ -294,9 +371,7 @@
         
         if([_ticket.driving boolValue]) {
             
-            // Replace with the driver view controller
-            VCDriveViewController * vc = [[VCDriveViewController alloc] init];
-            self.navigationController.viewControllers  = @[vc];
+            [self showHovDriverInterface];
             
         } else {
             
@@ -346,7 +421,7 @@
 }
 
 - (void) didTapHamburger {
-      [self.navigationController.viewDeckController openLeftView];
+    [self.navigationController.viewDeckController openLeftView];
 }
 
 - (void) removeCancelBarButton {
@@ -474,6 +549,7 @@
     [self.map removeAnnotation:_destinationAnnotation];
     [self.map removeAnnotation:_meetingPointAnnotation];
     [self.map removeAnnotation:_dropOffPointAnnotation];
+    
 }
 
 - (void) removeHuds {
@@ -487,6 +563,11 @@
     [_nextButton removeFromSuperview];
     [_rideDetailsConfirmation removeFromSuperview];
     [_rideDetailsHud removeFromSuperview];
+    [_driverCallHUD removeFromSuperview];
+    [_driverCancelHUD removeFromSuperview];
+    [_ridersPickedUpButton removeFromSuperview];
+    [_rideCompleteButton removeFromSuperview];
+    [_fareDetailsView removeFromSuperview];
 }
 
 - (void) transitionFromEditPickupTimeToEditHome {
@@ -751,6 +832,31 @@
     
 }
 
+// Getting first location
+- (void)startLocationUpdates {
+    // Create the location manager if this object does not
+    // already have one.
+    if (nil == _locationManager)
+        _locationManager = [[CLLocationManager alloc] init];
+    
+    _locationManager.delegate = self;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    
+    // Set a movement threshold for new events.
+    _locationManager.distanceFilter = 500; // meters
+    
+    [_locationManager startUpdatingLocation];
+}
+
+- (void)stopLocationUpdates {
+    [_locationManager stopUpdatingLocation];
+}
+
+- (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    [self zoomToCurrentLocation];
+    [self stopLocationUpdates];
+}
+
 // Annotations
 - (void)addOriginAnnotation:(CLLocation *)location {
     if(_originAnnotation != nil){
@@ -812,7 +918,6 @@
         switch (buttonIndex) {
             case 1:
             {
-                [self transitionToWaitingScreen];
                 
                 // Create tomorrows rides
                 NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
@@ -821,7 +926,9 @@
                 NSCalendar *theCalendar = [NSCalendar currentCalendar];
                 NSDate *tomorrow = [theCalendar dateByAddingComponents:dayComponent toDate:[NSDate date] options:0];
                 
-                [[VCCommuteManager instance] requestRidesFor:tomorrow];
+                if([[VCCommuteManager instance] requestRidesFor:tomorrow]){
+                    [self transitionToWaitingScreen];
+                }
             }
                 break;
                 
@@ -866,6 +973,16 @@
     _ticket.confirmed = [NSNumber numberWithBool:YES];
     [VCCoreData saveContext];
     [self showInterfaceForRide];
+}
+
+- (IBAction)didTapZoomToRideBounds:(id)sender {
+    if (_ticket != nil) {
+        [self.map setRegion:self.rideRegion animated:YES];
+    }
+}
+
+- (IBAction)didTapZoomToCurrentLocation:(id)sender {
+    [self zoomToCurrentLocation];
 }
 
 #pragma mark - VCLocationSearchViewControllerDelegate
@@ -951,6 +1068,10 @@
     return 0;
 }
 
+
+- (IBAction)didTapHamburger:(id)sender {
+}
+
 #pragma mark - UIPickerViewDelegate
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
@@ -1024,12 +1145,386 @@
         } else {
             return [super mapView:mapView viewForOverlay:overlay];
         }
-            
-
+        
+        
     }
     
     return nil;
 }
+
+
+
+#pragma mark HovDriverInterface
+- (void) showHovDriverInterface{
+    
+    if([_ticket.confirmed isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+        
+        [self setupDriverHuds];
+        if([_ticket.hovFare.state isEqualToString:@"started"]){
+            [self moveFromPickupToRideInProgressInteface];
+        }
+        
+    } else {
+        _fareDetailsView.driveTimeLabel.text = [_ticket.pickupTime time];
+        _fareDetailsView.dateLabel.text = [_ticket.pickupTime monthAndDay];
+        _fareDetailsView.fareEarningsLabel.text = [NSString stringWithFormat:@"$%.0f", [_ticket.hovFare.estimatedEarnings floatValue] ];
+        _fareDetailsView.driveDistanceLabel.text = @"";
+        _fareDetailsView.numberOfPeopleLabel.text = [NSString stringWithFormat:@"%d", [_ticket.hovFare.riders count] ];
+        
+        CGRect frame = _rideDetailsConfirmation.frame;
+        frame.origin.x = 0;
+        frame.origin.y = self.view.frame.size.height - 480;
+        _fareDetailsView.frame = frame;
+        [self.view addSubview:_fareDetailsView];
+        
+    }
+    [self removeCancelBarButton];
+    
+}
+
+- (void) setupDriverHuds {
+    
+    _driverCallHUD.riders = [_ticket.hovFare.riders allObjects];
+    
+    CGRect currentLocationframe = _currentLocationButton.frame;
+    currentLocationframe.origin.x = 271;
+    currentLocationframe.origin.y = self.view.frame.size.height - 46;
+    _currentLocationButton.frame = currentLocationframe;
+    [self.view addSubview:self.currentLocationButton];
+    
+    CGRect directionsListFrame = _directionsListButton.frame;
+    directionsListFrame.origin.x = 224;
+    directionsListFrame.origin.y = self.view.frame.size.height - 46;
+    _directionsListButton.frame = directionsListFrame;
+    [self.view addSubview:self.directionsListButton];
+    
+    CGRect ridersPickedUpFrame = _ridersPickedUpButton.frame;
+    ridersPickedUpFrame.origin.x = 18;
+    ridersPickedUpFrame.origin.y = self.view.frame.size.height - 46;
+    _ridersPickedUpButton.frame = ridersPickedUpFrame;
+    [self.view addSubview:self.ridersPickedUpButton];
+    
+    CGRect frame = _driverCallHUD.frame;
+    frame.origin.x = kDriverCallHudOriginX;
+    frame.origin.y = self.view.frame.size.height - kDriverCallHudOriginY;
+    _driverCallHUD.frame = frame;
+    
+    [self.view addSubview:_driverCallHUD];
+    
+    {
+        CGRect frame = _driverCancelHUD.frame;
+        frame.origin.x = kDriverCancelHudOriginX;
+        frame.origin.y = self.view.frame.size.height - kDriverCancelHudOriginY;
+        _driverCancelHUD.frame = frame;
+        
+        [self.view addSubview:_driverCancelHUD];
+    }
+    
+    {
+        UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(move:)];
+        [panRecognizer setMinimumNumberOfTouches:1];
+        [panRecognizer setMaximumNumberOfTouches:1];
+        [_driverCallHUD addGestureRecognizer:panRecognizer];
+    }
+    
+    {
+        UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(move2:)];
+        [panRecognizer setMinimumNumberOfTouches:1];
+        [panRecognizer setMaximumNumberOfTouches:1];
+        [_driverCancelHUD addGestureRecognizer:panRecognizer];
+    }
+    
+}
+
+-(void)move:(id)sender {
+    
+    if( _callHudPanLocked ) {
+        return;
+    }
+    
+    CGPoint translatedPoint = [(UIPanGestureRecognizer*)sender translationInView:self.view];
+    
+    if(_callHudOpen == NO) {
+        
+        if(translatedPoint.x > 0){
+            return;
+        }
+        
+        if(translatedPoint.x < kDriverCallHudOpenX - kDriverCallHudOriginX ){
+            return;
+        }
+        
+        if ([(UIPanGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
+            CGPoint velocity = [(UIPanGestureRecognizer*)sender velocityInView:self.view];
+            
+            if(velocity.x < -2000) {
+                [self animateCallHudToOpen];
+            } else if(translatedPoint.x < -75){
+                [self animateCallHudToOpen];
+            } else {
+                [self animateCallHudToClosed];
+            }
+            
+            return;
+        }
+        
+        CGRect frame = _driverCallHUD.frame;
+        frame.origin.x = kDriverCallHudOriginX + translatedPoint.x;
+        _driverCallHUD.frame = frame;
+        if ( kDriverCallHudOriginX + translatedPoint.x <= kDriverCallHudOpenX ){
+            [self animateCallHudToOpen];
+        }
+        
+    } else {
+        if(translatedPoint.x < 0){
+            return;
+        }
+        
+        if ([(UIPanGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
+            [self animateCallHudToClosed];
+        }
+    }
+}
+
+-(void)move2:(id)sender {
+    NSLog(@"%@", @"YO!");
+    
+    if( _cancelHudPanLocked ) {
+        return;
+    }
+    
+    CGPoint translatedPoint = [(UIPanGestureRecognizer*)sender translationInView:self.view];
+    
+    if(_cancelHudOpen == NO) {
+        
+        if(translatedPoint.x > 0){
+            return;
+        }
+        
+        if(translatedPoint.x < kDriverCallHudOpenX - kDriverCallHudOriginX ){
+            return;
+        }
+        
+        if ([(UIPanGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
+            CGPoint velocity = [(UIPanGestureRecognizer*)sender velocityInView:self.view];
+            
+            if(velocity.x < -2000) {
+                [self animateCancelHudToOpen];
+            } else if(translatedPoint.x < -100){
+                [self animateCancelHudToOpen];
+            } else {
+                [self animateCancelHudToClosed];
+            }
+            
+            return;
+        }
+        
+        CGRect frame = _driverCancelHUD.frame;
+        frame.origin.x = kDriverCancelHudOriginX + translatedPoint.x;
+        _driverCancelHUD.frame = frame;
+        if ( kDriverCancelHudOriginX + translatedPoint.x <= kDriverCancelHudOpenX ){
+            [self animateCancelHudToOpen];
+        }
+        
+    } else {
+        if(translatedPoint.x < 0){
+            return;
+        }
+        
+        if ([(UIPanGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
+            [self animateCancelHudToClosed];
+        }
+    }
+}
+
+- (void) didTapCancelRide: (id)sender {
+    
+    if(_ticket != nil) {
+        [UIAlertView showWithTitle:@"Cancel Trip?" message:@"Are you sure you want to cancel this trip?" cancelButtonTitle:@"No!" otherButtonTitles:@[@"Yes, Cancel this ride"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            switch(buttonIndex){
+                case 1:
+                {
+                    [[VCCommuteManager instance] cancelRide:_ticket success:^{
+                        [UIAlertView showWithTitle:@"Trip Cancelled" message:@"Fare Cancelled" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                        [self resetInterfaceToHome];
+                    } failure:^{
+                        // do nothing
+                    }];
+                }
+                    break;
+                default:
+                    break;
+            }
+        }];
+    }
+    
+}
+
+
+
+- (void) animateCallHudToOpen {
+    _callHudPanLocked = YES;
+    
+    _timer = [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(unlockCallHudPan:) userInfo:nil repeats:NO];
+    
+    [UIView animateWithDuration:0.15 animations:^{
+        CGRect frame = _driverCallHUD.frame;
+        frame.origin.x = kDriverCallHudOpenX;
+        _driverCallHUD.frame = frame;
+        _callHudOpen = YES;
+    }];
+    
+}
+
+- (void) animateCancelHudToOpen {
+    _cancelHudPanLocked = YES;
+    
+    _cancelTimer = [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(unlockCancelHudPan:) userInfo:nil repeats:NO];
+    
+    [UIView animateWithDuration:0.15 animations:^{
+        CGRect frame = _driverCancelHUD.frame;
+        frame.origin.x = kDriverCancelHudOpenX;
+        _driverCancelHUD.frame = frame;
+        _cancelHudOpen = YES;
+    }];
+    
+}
+
+- (void) animateCallHudToClosed{
+    _callHudPanLocked = YES;
+    
+    _timer = [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(unlockCallHudPan:) userInfo:nil repeats:NO];
+    
+    [UIView animateWithDuration:0.15 animations:^{
+        CGRect frame = _driverCallHUD.frame;
+        frame.origin.x = kDriverCallHudOriginX;
+        _driverCallHUD.frame = frame;
+        _callHudOpen = NO;
+    }];
+    
+}
+
+
+- (void) animateCancelHudToClosed{
+    _cancelHudPanLocked = YES;
+    
+    _cancelTimer = [NSTimer scheduledTimerWithTimeInterval:.5 target:self selector:@selector(unlockCancelHudPan:) userInfo:nil repeats:NO];
+    
+    [UIView animateWithDuration:0.15 animations:^{
+        CGRect frame = _driverCancelHUD.frame;
+        frame.origin.x = kDriverCancelHudOriginX;
+        _driverCancelHUD.frame = frame;
+        _cancelHudOpen = NO;
+    }];
+}
+
+
+- (void) unlockCallHudPan:(id)sender {
+    _callHudPanLocked = NO;
+}
+
+
+- (void) unlockCancelHudPan:(id)sender {
+    _cancelHudPanLocked = NO;
+}
+
+- (void) callPhone:(NSString *) phoneNumber {
+    if(phoneNumber == nil){
+        [UIAlertView showWithTitle:@"Error" message:@"We don't have a phone number for that user" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        return;
+    }
+    NSString *url = [@"telprompt://" stringByAppendingString:phoneNumber];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+}
+
+- (void) moveFromPickupToRideInProgressInteface {
+    CGRect rideCompletedFrame = _rideCompleteButton.frame;
+    rideCompletedFrame.origin.x = 18;
+    rideCompletedFrame.origin.y = self.view.frame.size.height - 46;
+    _rideCompleteButton.frame = rideCompletedFrame;
+    
+    [UIView transitionWithView:self.view duration:.35 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+        [self.view addSubview:_rideCompleteButton];
+        [_ridersPickedUpButton removeFromSuperview];
+    } completion:^(BOOL finished) {
+    }];
+}
+
+- (IBAction)didTapCallRider1:(id)sender {
+    Rider * rider = [_driverCallHUD.riders objectAtIndex:0];
+    [self callPhone:rider.phone];
+}
+- (IBAction)didTapCallRider2:(id)sender {
+    Rider * rider = [_driverCallHUD.riders objectAtIndex:1];
+    [self callPhone:rider.phone];
+}
+- (IBAction)didTapCallRider3:(id)sender {
+    Rider * rider = [_driverCallHUD.riders objectAtIndex:2];
+    [self callPhone:rider.phone];
+}
+
+
+- (IBAction)didTapRidersPickedUp:(id)sender {
+    if( [VCUserStateManager instance].underwayFareId != nil){
+        if(! [[VCUserStateManager instance].underwayFareId isEqualToNumber: _ticket.fare_id]){
+            [WRUtilities warningWithString:@"State shows another ride is still underway.  Continuing anyway"];
+        }
+    }
+    
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Notifying Server";
+    
+    [VCUserStateManager instance].underwayFareId = _ticket.fare_id;
+    [VCDriverApi ridersPickedUp:_ticket.fare_id
+                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                            [self moveFromPickupToRideInProgressInteface];
+                            _ticket.hovFare.forcedState = @"started";
+                            [VCCoreData saveContext];
+                            [VCUserStateManager instance].driveProcessState = kUserStateRideStarted;
+                            [hud hide:YES];
+                            
+                        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                            [hud hide:YES];
+                            
+                        }];
+    
+}
+
+- (IBAction)didTapRideCompleted:(id)sender {
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Notifying Server";
+    
+    [VCDriverApi fareCompleted:_ticket.fare_id
+                       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                           [VCUserStateManager instance].driveProcessState = kUserStateRideCompleted;
+                           //[self showRideCompletedInterface];
+                           VCFare * fare = mappingResult.firstObject;
+                           [VCUserStateManager instance].underwayFareId = nil;
+                           
+                           _ticket.forcedState = kCompleteState;
+                           [VCCoreData saveContext];
+                           [VCNotifications scheduledUpdated];
+                           [hud hide:YES];
+                           
+                           [_driverCallHUD removeFromSuperview];
+                           [_driverCancelHUD removeFromSuperview];
+                           [_rideCompleteButton removeFromSuperview];
+                           
+                           [UIAlertView showWithTitle:@"Receipt"
+                                              message:[NSString stringWithFormat:@"Thanks for driving.  You earned %@ on this ride.",
+                                                       [VCUtilities formatCurrencyFromCents:fare.driverEarnings]]
+                                    cancelButtonTitle:@"OK"
+                                    otherButtonTitles:nil
+                                             tapBlock:nil];
+                           
+                       } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                           [hud hide:YES];
+                           
+                       }];
+    
+}
+
+
 
 
 

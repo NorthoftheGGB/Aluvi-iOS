@@ -2,15 +2,18 @@
 //  VCNotifications.h
 //  Voco
 //
-//  Created by Matthew Shultz on 8/16/14.
+//  Created by Matthew Shultz on 8/23/14.
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#ifndef Voco_VCNotifications_h
-#define Voco_VCNotifications_h
+#import <Foundation/Foundation.h>
 
-// Internal Notifications
-#define kNotificationTypeFareComplete @"fare_complete"
+#define kNotificationScheduleUpdated @"schedule_updated"
 #define kNotificationTypeTripFulfilled @"trip_fulfilled"
+#define kNotificationTypeTripUnfulfilled @"trip_unfulfilled"
 
-#endif
+@interface VCNotifications : NSObject
+
++ (void) scheduledUpdated;
+
+@end

@@ -42,9 +42,6 @@ static int mode;
 
 - (void) showInterface {
     
-#warning skipping interface selection for rider interface development
-    
-    
     if([VCApi loggedIn]){
         [self showRiderInterface];
 

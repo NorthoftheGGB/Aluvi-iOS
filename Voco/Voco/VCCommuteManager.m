@@ -9,6 +9,7 @@
 #import "VCCommuteManager.h"
 #import "Ticket.h"
 #import "VCRiderApi.h"
+#import "VCDriverApi.h"
 
 #define kCommuteOriginSettingKey @"kCommuterOriginSettingKey"
 #define kCommuteDestinationSettingKey @"kCommuteDestinationSettingKey"
@@ -53,8 +54,14 @@ static VCCommuteManager * instance;
 
 - (void) load {
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    instance.home = [NSKeyedUnarchiver unarchiveObjectWithData: [defaults objectForKey:kCommuteOriginSettingKey]];
-    instance.work = [NSKeyedUnarchiver unarchiveObjectWithData: [defaults objectForKey:kCommuteDestinationSettingKey]];
+    NSData * home = [defaults objectForKey:kCommuteOriginSettingKey];
+    if(home != nil) {
+        instance.home = [NSKeyedUnarchiver unarchiveObjectWithData: home];
+    }
+    NSData * work = [defaults objectForKey:kCommuteDestinationSettingKey];
+    if(work != nil) {
+        instance.work = [NSKeyedUnarchiver unarchiveObjectWithData: work];
+    }
     instance.homePlaceName = [defaults objectForKey:kCommuterOriginPlaceNameKey];
     instance.workPlaceName = [defaults objectForKey:kCommuterDestinationPlaceNameKey];
     instance.pickupTime = [defaults objectForKey:kCommuteDepartureTimeSettingKey];
@@ -72,7 +79,8 @@ static VCCommuteManager * instance;
     [[NSUserDefaults standardUserDefaults] setObject:_homePlaceName forKey:kCommuterOriginPlaceNameKey];
     [[NSUserDefaults standardUserDefaults] setObject:_workPlaceName forKey:kCommuterDestinationPlaceNameKey];
     [[NSUserDefaults standardUserDefaults] setBool:_driving forKey:kCommuterDrivingSettingKey];
-    [[NSUserDefaults standardUserDefaults]  synchronize];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
 }
 
 - (void) reset {
@@ -94,7 +102,14 @@ static VCCommuteManager * instance;
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kCommuterDestinationPlaceNameKey];
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kCommuterDrivingSettingKey];
     [[NSUserDefaults standardUserDefaults]  synchronize];
-    [self load];
+    instance.home = nil;
+    instance.work = nil;
+    instance.homePlaceName = nil;
+    instance.workPlaceName = nil;
+    instance.pickupTime = nil;
+    instance.returnTime = nil;
+    instance.driving = NO;
+
 }
 
 
@@ -106,7 +121,7 @@ static VCCommuteManager * instance;
     }
 }
 
-- (void) requestRidesFor:(NSDate *) tomorrow {
+- (BOOL) requestRidesFor:(NSDate *) tomorrow {
     // Look for pre-existing request for tomorrow, error if it exists
     NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
     
@@ -131,7 +146,7 @@ static VCCommuteManager * instance;
     NSDate *nextDate = [gregorian dateByAddingComponents:offsetComponents toDate:thisDate options:0];
     
     // build the predicate
-    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"rideDate > %@ && rideDate < %@", thisDate, nextDate];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"rideDate > %@ && rideDate < %@ && savedState IN %@ ", thisDate, nextDate, @[kCreatedState, kRequestedState, kScheduledState]];
     [fetch setPredicate:predicate];
     
     NSError * error;
@@ -141,7 +156,7 @@ static VCCommuteManager * instance;
     }
     if([rides count] == 2){
         [WRUtilities subcriticalErrorWithString:@"There are already rides scheduled for this day, this is a system error but can be recovered by canceling your commuter rides and requesting again"];
-        return;
+        return NO;
     };
     if([rides count] == 1){
         [WRUtilities subcriticalErrorWithString:@"Orphaned commuter ride found. Autocleaning the database, should be OK to continue"];
@@ -217,6 +232,7 @@ static VCCommuteManager * instance;
         // TODO: if it's a network problem, this needs to be uploaded at a later date
     }];
     
+    return YES;
 }
 
 - (void) cancelRide:(Ticket *) ride success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure {
@@ -234,13 +250,23 @@ static VCCommuteManager * instance;
     
     
     if(ride.ride_id != nil) {
-        [VCRiderApi cancelRide:ride success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            deleteRide(ride);
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"schedule_updated" object:nil userInfo:@{}];
-            success();
-        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            failure();
-        }];
+        if([ride.driving boolValue] ){
+            [VCDriverApi fareCancelledByDriver:ride.fare_id success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                deleteRide(ride);
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"schedule_updated" object:nil userInfo:@{}];
+                success();
+            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                failure();
+            }];
+        } else {
+            [VCRiderApi cancelRide:ride success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                deleteRide(ride);
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"schedule_updated" object:nil userInfo:@{}];
+                success();
+            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                failure();
+            }];
+        }
     } else {
         deleteRide(ride);
         [[NSNotificationCenter defaultCenter] postNotificationName:@"schedule_updated" object:nil userInfo:@{}];

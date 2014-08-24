@@ -23,6 +23,7 @@ NSString *const VCUserStateDriverStateKeyPath = @"driverState";
 #define kRiderStateKey @"kRiderStateKey"
 #define kDriverStateKey @"kDriverStateKey"
 #define kRideIdKey @"kRideIdKey"
+#define kProfileDataKey @"kProfileDataKey"
 
 static VCUserStateManager *sharedSingleton;
 
@@ -53,6 +54,11 @@ static VCUserStateManager *sharedSingleton;
         _riderState = [userDefaults objectForKey:kRiderStateKey];
         _driverState = [userDefaults objectForKey:kDriverStateKey];
         _underwayFareId = [userDefaults objectForKey:kRideIdKey];
+        NSData * profileData = [[NSUserDefaults standardUserDefaults] objectForKey:kProfileDataKey];
+        if(profileData != nil) {
+            _profile = [NSKeyedUnarchiver unarchiveObjectWithData:profileData];
+        }
+
     }
     return self;
 }
@@ -90,6 +96,13 @@ static VCUserStateManager *sharedSingleton;
     [userDefaults synchronize];
 }
 
+- (void) setProfile:(VCProfile *)profile {
+    _profile = profile;
+    NSData * profileData = [NSKeyedArchiver archivedDataWithRootObject:profile];
+    [[NSUserDefaults standardUserDefaults] setObject:profileData forKey:kProfileDataKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 - (void) loginWithPhone:(NSString*) phone
                password: (NSString *) password
                 success:(void ( ^ ) () )success
@@ -103,14 +116,15 @@ static VCUserStateManager *sharedSingleton;
                       self.driverState = loginResponse.driverState;
                   }
                   
-                  [VCUsersApi getProfile:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                      _profile = mappingResult.firstObject;
-                  } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                      //[WRUtilities criticalError:error];
-                  }];
-
+                  //TODO refactor to utilize enqueueBatchOfObjectRequestOperations:progress:completion:
                   [VCDevicesApi updateUserWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                      success();
+                      
+                      [VCUsersApi getProfile:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                          [self setProfile: mappingResult.firstObject];
+                          success();
+                      } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                          //[WRUtilities criticalError:error];
+                      }];
                   } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                       //[WRUtilities criticalError:error];
                   }];

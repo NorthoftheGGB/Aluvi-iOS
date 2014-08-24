@@ -233,7 +233,7 @@
         
         [[VCDialogs instance] commuteUnfulfilled];
         [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            //
+            [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationTypeTripUnfulfilled object:payload];
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             //
         }];

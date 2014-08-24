@@ -123,12 +123,12 @@
     if(self.map.userLocation != nil
        && self.map.userLocation.coordinate.latitude != 0
        && self.map.userLocation.coordinate.longitude != 0) {
-        MKCoordinateRegion mapRegion;
-        mapRegion.center.latitude = self.map.userLocation.coordinate.latitude;
-        mapRegion.center.longitude = self.map.userLocation.coordinate.longitude;
-        mapRegion.span.latitudeDelta = self.map.region.span.latitudeDelta;
-        mapRegion.span.longitudeDelta = self.map.region.span.longitudeDelta;
-        [self.map setRegion:mapRegion animated: YES];
+        
+        [self.map setRegion:MKCoordinateRegionMakeWithDistance(
+                                                               CLLocationCoordinate2DMake(self.map.userLocation.location.coordinate.latitude, self.map.userLocation.coordinate.longitude),
+                                                               500, 500
+                                                               )
+                                                               animated: YES];
     }
 }
 
