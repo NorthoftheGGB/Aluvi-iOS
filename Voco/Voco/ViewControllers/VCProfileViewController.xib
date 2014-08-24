@@ -164,13 +164,8 @@
                         <constraint firstAttribute="width" constant="36" id="bWI-pH-psz"/>
                     </constraints>
                 </imageView>
-<<<<<<< HEAD
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJP-fi-epG" customClass="VCButtonStandardStyle">
                     <rect key="frame" x="9" y="581" width="302" height="28"/>
-=======
-                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJP-fi-epG" customClass="VCButtonStandardStyle">
-                    <rect key="frame" x="9" y="581" width="303" height="30"/>
->>>>>>> 507fc9e59d431677618a775ba92e592f8b2c2b75
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.96542171560000001" green="0.96542171560000001" blue="0.96542171560000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
