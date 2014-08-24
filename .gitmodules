@@ -1,3 +1,6 @@
 [submodule "Submodules/logentries"]
 	path = Submodules/logentries
 	url = git@github.com:logentries/le_ios.git
+[submodule "Submodules/HVTableView"]
+	path = Submodules/HVTableView
+	url = git@github.com:xerxes235/HVTableView.git

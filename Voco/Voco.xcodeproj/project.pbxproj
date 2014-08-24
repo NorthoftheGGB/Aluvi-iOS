@@ -813,6 +813,9 @@
 		F4F6B8B819A9898E004312A1 /* VCNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6B8B719A9898E004312A1 /* VCNotifications.m */; };
 		F4F6B8B919A9898E004312A1 /* VCNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6B8B719A9898E004312A1 /* VCNotifications.m */; };
 		F4F6B8BA19A9898E004312A1 /* VCNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6B8B719A9898E004312A1 /* VCNotifications.m */; };
+		F4F6B8BE19A9ADEF004312A1 /* HVTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6B8BD19A9ADEF004312A1 /* HVTableView.m */; };
+		F4F6B8BF19A9ADEF004312A1 /* HVTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6B8BD19A9ADEF004312A1 /* HVTableView.m */; };
+		F4F6B8C019A9ADEF004312A1 /* HVTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6B8BD19A9ADEF004312A1 /* HVTableView.m */; };
 		F4FA0BE8192BF6BF005D8645 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BE7192BF6BF005D8645 /* Foundation.framework */; };
 		F4FA0BEA192BF6BF005D8645 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BE9192BF6BF005D8645 /* CoreGraphics.framework */; };
 		F4FA0BEC192BF6BF005D8645 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BEB192BF6BF005D8645 /* UIKit.framework */; };
@@ -1280,6 +1283,8 @@
 		F4F5FFC11977AE4C001A1C0E /* Voco 26.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 26.xcdatamodel"; sourceTree = "<group>"; };
 		F4F6B8B619A9898E004312A1 /* VCNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCNotifications.h; sourceTree = "<group>"; };
 		F4F6B8B719A9898E004312A1 /* VCNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCNotifications.m; sourceTree = "<group>"; };
+		F4F6B8BC19A9ADEF004312A1 /* HVTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HVTableView.h; path = ../../Submodules/HVTableView/HRVTableView/HVTableView.h; sourceTree = "<group>"; };
+		F4F6B8BD19A9ADEF004312A1 /* HVTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HVTableView.m; path = ../../Submodules/HVTableView/HRVTableView/HVTableView.m; sourceTree = "<group>"; };
 		F4FA0BE4192BF6BF005D8645 /* Voco Alpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Voco Alpha.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FA0BE7192BF6BF005D8645 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F4FA0BE9192BF6BF005D8645 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1871,6 +1876,7 @@
 		F45F7C0B1935975D00A94721 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				F4F6B8BB19A9ADCF004312A1 /* HVTableView */,
 				F4792AD419750975005AB652 /* lelib */,
 				F473EFDF19492C1600D8C900 /* ViewDeck */,
 				F45F7C0C1935976400A94721 /* Utilities */,
@@ -2119,6 +2125,15 @@
 				F401446E1978728100769802 /* VCFillCommuterPass.m */,
 			);
 			name = Users;
+			sourceTree = "<group>";
+		};
+		F4F6B8BB19A9ADCF004312A1 /* HVTableView */ = {
+			isa = PBXGroup;
+			children = (
+				F4F6B8BC19A9ADEF004312A1 /* HVTableView.h */,
+				F4F6B8BD19A9ADEF004312A1 /* HVTableView.m */,
+			);
+			name = HVTableView;
 			sourceTree = "<group>";
 		};
 		F4FA0BDB192BF6BF005D8645 = {
@@ -3110,6 +3125,7 @@
 				F4354D96195D0D6A00C06CF7 /* VCSignUpViewController.m in Sources */,
 				F4354D97195D0D6A00C06CF7 /* NSDate+Pretty.m in Sources */,
 				F4354D99195D0D6A00C06CF7 /* VCAppDelegate.m in Sources */,
+				F4F6B8BF19A9ADEF004312A1 /* HVTableView.m in Sources */,
 				4F4D8BE81987644F0027A2AF /* VCRideDetailsHudView.m in Sources */,
 				F4354D9A195D0D6A00C06CF7 /* VCUserStateManager.m in Sources */,
 				F4A7C80619623C70007E05AD /* Transit.m in Sources */,
@@ -3198,6 +3214,7 @@
 				4FFCF2DD19A54B0000A4A24E /* VCPaymentsViewController.m in Sources */,
 				4F184A351992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.m in Sources */,
 				F4C6B1FD197F06B100F6C10B /* VCInterfaceManager.m in Sources */,
+				F4F6B8BE19A9ADEF004312A1 /* HVTableView.m in Sources */,
 				F471E3E119A9590E00DF688D /* Rider.m in Sources */,
 				F4C6B1FE197F06B100F6C10B /* VCRequestUpdate.m in Sources */,
 				F4C6B1FF197F06B100F6C10B /* VCCoreData.m in Sources */,
@@ -3377,6 +3394,7 @@
 				4F9ECEB819661C4A00AD4229 /* VCRiderPaymentsViewController.m in Sources */,
 				F4D8905319469F0F007C4671 /* VCDriverInterestedRequest.m in Sources */,
 				4F3DB5CB1981F6F400DDD094 /* VCRideDetailsView.m in Sources */,
+				F4F6B8C019A9ADEF004312A1 /* HVTableView.m in Sources */,
 				F4259069199592C100FA928E /* VCEditLocationWidget.m in Sources */,
 				4FE641C91941584D0059BED1 /* VCSignUpViewController.m in Sources */,
 				F45F7C12193597F500A94721 /* NSDate+Pretty.m in Sources */,
