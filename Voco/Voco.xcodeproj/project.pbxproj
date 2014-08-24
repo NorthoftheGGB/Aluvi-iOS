@@ -206,6 +206,15 @@
 		4F9ECECA19663B1F00AD4229 /* VCLabelBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEC819663B1F00AD4229 /* VCLabelBold.m */; };
 		4FB2682A1952207A0028D4ED /* VCDriverVideoTutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB268281952207A0028D4ED /* VCDriverVideoTutorialController.m */; };
 		4FB2682B1952207A0028D4ED /* VCDriverVideoTutorialController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FB268291952207A0028D4ED /* VCDriverVideoTutorialController.xib */; };
+		4FC7589B19AA84860093DBEA /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FC7589A19AA84860093DBEA /* logo@2x.png */; };
+		4FC7589C19AA84860093DBEA /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FC7589A19AA84860093DBEA /* logo@2x.png */; };
+		4FC7589D19AA84860093DBEA /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FC7589A19AA84860093DBEA /* logo@2x.png */; };
+		4FC758A819AA88330093DBEA /* profile-button@-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758A619AA88330093DBEA /* profile-button@-select@2x.png */; };
+		4FC758A919AA88330093DBEA /* profile-button@-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758A619AA88330093DBEA /* profile-button@-select@2x.png */; };
+		4FC758AA19AA88330093DBEA /* profile-button@-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758A619AA88330093DBEA /* profile-button@-select@2x.png */; };
+		4FC758AB19AA88330093DBEA /* profile-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758A719AA88330093DBEA /* profile-button@2x.png */; };
+		4FC758AC19AA88330093DBEA /* profile-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758A719AA88330093DBEA /* profile-button@2x.png */; };
+		4FC758AD19AA88330093DBEA /* profile-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758A719AA88330093DBEA /* profile-button@2x.png */; };
 		4FCBFBD91995847300CBF0C8 /* driver-hov-toggle-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBFBD51995847300CBF0C8 /* driver-hov-toggle-select@2x.png */; };
 		4FCBFBDA1995847300CBF0C8 /* driver-hov-toggle-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBFBD51995847300CBF0C8 /* driver-hov-toggle-select@2x.png */; };
 		4FCBFBDB1995847300CBF0C8 /* driver-hov-toggle-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBFBD51995847300CBF0C8 /* driver-hov-toggle-select@2x.png */; };
@@ -954,6 +963,9 @@
 		4FB268271952207A0028D4ED /* VCDriverVideoTutorialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCDriverVideoTutorialController.h; path = ViewControllers/VCDriverVideoTutorialController.h; sourceTree = "<group>"; };
 		4FB268281952207A0028D4ED /* VCDriverVideoTutorialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCDriverVideoTutorialController.m; path = ViewControllers/VCDriverVideoTutorialController.m; sourceTree = "<group>"; };
 		4FB268291952207A0028D4ED /* VCDriverVideoTutorialController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCDriverVideoTutorialController.xib; path = ViewControllers/VCDriverVideoTutorialController.xib; sourceTree = "<group>"; };
+		4FC7589A19AA84860093DBEA /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
+		4FC758A619AA88330093DBEA /* profile-button@-select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-button@-select@2x.png"; sourceTree = "<group>"; };
+		4FC758A719AA88330093DBEA /* profile-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-button@2x.png"; sourceTree = "<group>"; };
 		4FCBFBD51995847300CBF0C8 /* driver-hov-toggle-select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "driver-hov-toggle-select@2x.png"; sourceTree = "<group>"; };
 		4FCBFBD61995847300CBF0C8 /* driver-hov-toggle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "driver-hov-toggle@2x.png"; sourceTree = "<group>"; };
 		4FCBFBD71995847300CBF0C8 /* menu-submenu-arrow-select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-submenu-arrow-select@2x.png"; sourceTree = "<group>"; };
@@ -1508,6 +1520,9 @@
 		4FDB0ECA1970B0F000A8CEC2 /* Revision 2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				4FC758A619AA88330093DBEA /* profile-button@-select@2x.png */,
+				4FC758A719AA88330093DBEA /* profile-button@2x.png */,
+				4FC7589A19AA84860093DBEA /* logo@2x.png */,
 				4F35FA9619A80615004FB423 /* hamburger@2x.png */,
 				4F35FA9219A7B8BE004FB423 /* background@2x.png */,
 				4F35FA8A19A6AA62004FB423 /* login-button-select@2x.png */,
@@ -2408,6 +2423,7 @@
 				4FCBFBEB1995F21300CBF0C8 /* devon@2x.png in Resources */,
 				F4354DAA195D0D6A00C06CF7 /* signup_box@2x.png in Resources */,
 				4F35FA8D19A6AA62004FB423 /* login-button-select@2x.png in Resources */,
+				4FC758AC19AA88330093DBEA /* profile-button@2x.png in Resources */,
 				4FCBFBDD1995847300CBF0C8 /* driver-hov-toggle@2x.png in Resources */,
 				4F184A281991E156006EA959 /* VCSubMenuItemTableViewCell.xib in Resources */,
 				4F1849ED198F67A4006EA959 /* driver-call-hud-icon-select@2x.png in Resources */,
@@ -2472,6 +2488,7 @@
 				F4354DBA195D0D6A00C06CF7 /* map_pin_fill-512.png in Resources */,
 				4F2EF9C01961391B006A1962 /* terms-menu-button-selected@2x.png in Resources */,
 				4FCBFBDA1995847300CBF0C8 /* driver-hov-toggle-select@2x.png in Resources */,
+				4FC758A919AA88330093DBEA /* profile-button@-select@2x.png in Resources */,
 				4F2EF9D719614115006A1962 /* mycar-menu-button@2x.png in Resources */,
 				4F9ECEC2196630D700AD4229 /* VCRiderRecieptDetailViewController.xib in Resources */,
 				4F3DB5BA1981ED4E00DDD094 /* current-location-button-selected@2x.png in Resources */,
@@ -2498,6 +2515,7 @@
 				4FE286F61962BDB300FD8AF6 /* zoom-ride-bounds-select@2x.png in Resources */,
 				4FCD7C7B19762465007609E8 /* VCDriverProfileViewController.xib in Resources */,
 				F4354DC3195D0D6A00C06CF7 /* signUp_btn@2x.png in Resources */,
+				4FC7589C19AA84860093DBEA /* logo@2x.png in Resources */,
 				F4A7C80D19625237007E05AD /* VCDebugViewController.xib in Resources */,
 				4F4D8BF819882AFB0027A2AF /* VCDriveViewController.xib in Resources */,
 				4FE286FE1962C25400FD8AF6 /* pin@2x.png in Resources */,
@@ -2569,6 +2587,7 @@
 				F4C6B24C197F06B100F6C10B /* VCLocationSearchViewController.xib in Resources */,
 				F4C6B24D197F06B100F6C10B /* KlinicSlabLightIt.ttf in Resources */,
 				F4C6B24E197F06B100F6C10B /* menu-list@2x.png in Resources */,
+				4FC7589B19AA84860093DBEA /* logo@2x.png in Resources */,
 				F4C6B24F197F06B100F6C10B /* VCDriverProfileViewController.xib in Resources */,
 				F4C6B250197F06B100F6C10B /* scheduledrides-menu-button@2x.png in Resources */,
 				F4C6B251197F06B100F6C10B /* button-full-select@2x.png in Resources */,
@@ -2643,6 +2662,7 @@
 				4F3DB5BC1981ED4E00DDD094 /* current-location-button@2x.png in Resources */,
 				F4C6B27F197F06B100F6C10B /* profile-menu-button-select@2x.png in Resources */,
 				F4C6B280197F06B100F6C10B /* button-default@2x.png in Resources */,
+				4FC758AB19AA88330093DBEA /* profile-button@2x.png in Resources */,
 				4F35FA9719A80615004FB423 /* hamburger@2x.png in Resources */,
 				4FCBFBEE1995F50700CBF0C8 /* gradient@2x.png in Resources */,
 				4FFCF2D719A5493500A4A24E /* VCReceiptsViewController.xib in Resources */,
@@ -2650,6 +2670,7 @@
 				F4C6B281197F06B100F6C10B /* signUp_btn@2x.png in Resources */,
 				4F184A2F1992E198006EA959 /* user-image-small@2x.png in Resources */,
 				4F184A051991753F006EA959 /* menu-schedule-icon@2x.png in Resources */,
+				4FC758A819AA88330093DBEA /* profile-button@-select@2x.png in Resources */,
 				4FCBFBDF1995847300CBF0C8 /* menu-submenu-arrow-select@2x.png in Resources */,
 				F4C6B282197F06B100F6C10B /* VCSignUpViewController.xib in Resources */,
 				4FFCF2C119A25F2100A4A24E /* VCProfileViewController.xib in Resources */,
@@ -2715,6 +2736,7 @@
 				4F37E2DE1949574000753172 /* KlinicSlabLightIt.ttf in Resources */,
 				F473F01A195044AA00D8C900 /* menu-list@2x.png in Resources */,
 				4FCD7C7A19762465007609E8 /* VCDriverProfileViewController.xib in Resources */,
+				4FC7589D19AA84860093DBEA /* logo@2x.png in Resources */,
 				4F2EF9BB1961391B006A1962 /* scheduledrides-menu-button@2x.png in Resources */,
 				4FDB0ED51970C3AD00A8CEC2 /* button-full-select@2x.png in Resources */,
 				4F9ECEC1196630D700AD4229 /* VCRiderRecieptDetailViewController.xib in Resources */,
@@ -2789,6 +2811,7 @@
 				4FDB0ECD1970B10600A8CEC2 /* button-default@2x.png in Resources */,
 				4FCBFBF01995F50700CBF0C8 /* gradient@2x.png in Resources */,
 				4FFCF2D919A5493500A4A24E /* VCReceiptsViewController.xib in Resources */,
+				4FC758AD19AA88330093DBEA /* profile-button@2x.png in Resources */,
 				4F35FA9919A80615004FB423 /* hamburger@2x.png in Resources */,
 				4F3DB5CF19825FF700DDD094 /* overlay-graphic@2x.png in Resources */,
 				4FE641F8194168E80059BED1 /* signUp_btn@2x.png in Resources */,
@@ -2796,6 +2819,7 @@
 				4F184A071991753F006EA959 /* menu-schedule-icon@2x.png in Resources */,
 				4FCBFBE11995847300CBF0C8 /* menu-submenu-arrow-select@2x.png in Resources */,
 				4FE641CA1941584D0059BED1 /* VCSignUpViewController.xib in Resources */,
+				4FC758AA19AA88330093DBEA /* profile-button@-select@2x.png in Resources */,
 				4FFCF2C319A25F2100A4A24E /* VCProfileViewController.xib in Resources */,
 				4FE641FA194168E80059BED1 /* voco_logo@2x.png in Resources */,
 				4F184A0A1991753F006EA959 /* menu-support-icon@2x.png in Resources */,
