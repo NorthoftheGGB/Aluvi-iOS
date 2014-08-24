@@ -230,6 +230,8 @@
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripFulfilled:) name:kNotificationTypeTripFulfilled object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripFulfilled:) name:kNotificationTypeTripUnfulfilled object:nil];
+
 }
 
 - (void) viewWillDisppear:(BOOL)animated{
@@ -257,6 +259,23 @@
     //}
 }
 
+- (void) tripUnfulfilled:(NSNotification *) notification {
+    NSDictionary * payload = notification.object;
+    NSNumber * tripId = [payload objectForKey:VC_PUSH_TRIP_ID_KEY];
+    //if(_ride == nil || [_ride.trip_id isEqualToNumber:tripId]) {
+    NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"trip_id = %@", tripId];
+    [fetch setPredicate:predicate];
+    NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];
+    [fetch setSortDescriptors:@[sort]];
+    NSError * error;
+    NSArray * ridesForTrip = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
+    if(ridesForTrip == nil){
+        [WRUtilities criticalError:error];
+        return;
+    }
+    [self resetInterfaceToHome];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -899,7 +918,6 @@
         switch (buttonIndex) {
             case 1:
             {
-                [self transitionToWaitingScreen];
                 
                 // Create tomorrows rides
                 NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
@@ -908,7 +926,9 @@
                 NSCalendar *theCalendar = [NSCalendar currentCalendar];
                 NSDate *tomorrow = [theCalendar dateByAddingComponents:dayComponent toDate:[NSDate date] options:0];
                 
-                [[VCCommuteManager instance] requestRidesFor:tomorrow];
+                if([[VCCommuteManager instance] requestRidesFor:tomorrow]){
+                    [self transitionToWaitingScreen];
+                }
             }
                 break;
                 
@@ -1326,6 +1346,7 @@
                 {
                     [[VCCommuteManager instance] cancelRide:_ticket success:^{
                         [UIAlertView showWithTitle:@"Trip Cancelled" message:@"Fare Cancelled" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                        [self resetInterfaceToHome];
                     } failure:^{
                         // do nothing
                     }];

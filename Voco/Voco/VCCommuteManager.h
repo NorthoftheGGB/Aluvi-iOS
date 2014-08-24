@@ -28,7 +28,7 @@
 - (void) clear;
 - (BOOL) hasSettings;
 
-- (void) requestRidesFor:(NSDate *) tomorrow;
+- (BOOL) requestRidesFor:(NSDate *) tomorrow;
 - (void) cancelRide:(Ticket *) ride success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
 
 @end

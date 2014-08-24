@@ -97,6 +97,7 @@ static VCUserStateManager *sharedSingleton;
 }
 
 - (void) setProfile:(VCProfile *)profile {
+    _profile = profile;
     NSData * profileData = [NSKeyedArchiver archivedDataWithRootObject:profile];
     [[NSUserDefaults standardUserDefaults] setObject:profileData forKey:kProfileDataKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -119,7 +120,7 @@ static VCUserStateManager *sharedSingleton;
                   [VCDevicesApi updateUserWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                       
                       [VCUsersApi getProfile:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                          _profile = mappingResult.firstObject;
+                          [self setProfile: mappingResult.firstObject];
                           success();
                       } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                           //[WRUtilities criticalError:error];

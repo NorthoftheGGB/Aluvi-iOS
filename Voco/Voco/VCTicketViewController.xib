@@ -452,7 +452,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ride-details-hud.png" translatesAutoresizingMaskIntoConstraints="NO" id="bjb-9G-hqy">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="154"/>
+                    <rect key="frame" x="13" y="2" width="330" height="154"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Devon" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nxs-JX-K3G" customClass="VCLabelBold">
@@ -488,15 +488,15 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zyt-ju-gX4">
-                    <rect key="frame" x="6" y="107" width="32" height="20"/>
+                    <rect key="frame" x="-38" y="-23" width="0.0" height="0.0"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyCard" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocb-Au-ZiP" customClass="VCLabel">
-                    <rect key="frame" x="6" y="128" width="59" height="21"/>
+                    <rect key="frame" x="6" y="128" width="83" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="Lmn-SE-kiJ"/>
-                        <constraint firstAttribute="width" constant="59" id="ZtE-5H-1AR"/>
+                        <constraint firstAttribute="width" constant="83" id="ZtE-5H-1AR"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
@@ -508,7 +508,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*9999" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TaG-Um-H3F" customClass="VCLabel">
-                    <rect key="frame" x="74" y="128" width="35" height="21"/>
+                    <rect key="frame" x="97" y="128" width="35" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="fAH-yF-raf"/>
@@ -640,7 +640,7 @@
                 <constraint firstItem="2Wx-Fa-RsE" firstAttribute="top" secondItem="ufz-sD-hCs" secondAttribute="bottom" id="oa1-74-Lxg"/>
                 <constraint firstItem="YHX-V0-gsv" firstAttribute="top" secondItem="Lv9-d9-EJH" secondAttribute="top" constant="23" id="quE-kH-jYW"/>
                 <constraint firstAttribute="bottom" secondItem="ocb-Au-ZiP" secondAttribute="bottom" constant="5" id="rvH-DH-uho"/>
-                <constraint firstItem="TaG-Um-H3F" firstAttribute="leading" secondItem="ocb-Au-ZiP" secondAttribute="trailing" constant="9" id="sI6-hN-7I7"/>
+                <constraint firstItem="TaG-Um-H3F" firstAttribute="leading" secondItem="ocb-Au-ZiP" secondAttribute="trailing" constant="8" id="sI6-hN-7I7"/>
                 <constraint firstItem="IHO-f4-kdP" firstAttribute="top" secondItem="Nxs-JX-K3G" secondAttribute="bottom" constant="-6" id="ssx-Am-AeS"/>
                 <constraint firstItem="ocb-Au-ZiP" firstAttribute="leading" secondItem="Lv9-d9-EJH" secondAttribute="leading" constant="6" id="zCY-4s-fIN"/>
                 <constraint firstItem="LKt-Aa-kUP" firstAttribute="leading" secondItem="IHO-f4-kdP" secondAttribute="trailing" constant="5" id="zdq-4s-Yse"/>

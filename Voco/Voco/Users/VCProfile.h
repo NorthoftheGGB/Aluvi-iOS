@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface VCProfile : NSObject
+@interface VCProfile : NSObject <NSCoding>
 
 @property(nonatomic, strong) NSString * firstName;
 @property(nonatomic, strong) NSString * lastName;

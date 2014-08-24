@@ -10,6 +10,7 @@
 
 #define kNotificationScheduleUpdated @"schedule_updated"
 #define kNotificationTypeTripFulfilled @"trip_fulfilled"
+#define kNotificationTypeTripUnfulfilled @"trip_unfulfilled"
 
 @interface VCNotifications : NSObject
 
