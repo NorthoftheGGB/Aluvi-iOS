@@ -34,7 +34,7 @@
 #define kEventPaymentProcessedSuccessfully @"payment_processed_successfully"
 #define kEventPaymentFailed @"payment_failed"
 
-@class Car, Driver;
+@class Car, Driver, Fare;
 
 @interface Ticket : Transit 
 @property (nonatomic, retain) NSNumber * ride_id;
@@ -65,6 +65,7 @@
 
 @property (nonatomic, retain) Driver *driver;
 @property (nonatomic, retain) Car *car;
+@property (nonatomic, retain) Fare * hovFare;
 
 
 + (Ticket *) ticketWithFareId: (NSNumber *) fareId;

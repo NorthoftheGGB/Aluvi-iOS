@@ -9,6 +9,7 @@
 #import "Ticket.h"
 #import "Car.h"
 #import "Driver.h"
+#import "Fare.h"
 #import <RKPathMatcher.h>
 #import "VCApi.h"
 #import "VCPushApi.h"
@@ -47,6 +48,7 @@
 @dynamic dropOffPointLatitude;
 @dynamic dropOffPointLongitude;
 @dynamic dropOffPointPlaceName;
+@dynamic hovFare;
 
 + (void)createMappings:(RKObjectManager *)objectManager{
     RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Ticket"

@@ -103,14 +103,15 @@ static VCUserStateManager *sharedSingleton;
                       self.driverState = loginResponse.driverState;
                   }
                   
-                  [VCUsersApi getProfile:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                      _profile = mappingResult.firstObject;
-                  } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                      //[WRUtilities criticalError:error];
-                  }];
-
+                  //TODO refactor to utilize enqueueBatchOfObjectRequestOperations:progress:completion:
                   [VCDevicesApi updateUserWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                      success();
+                      
+                      [VCUsersApi getProfile:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                          _profile = mappingResult.firstObject;
+                          success();
+                      } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                          //[WRUtilities criticalError:error];
+                      }];
                   } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                       //[WRUtilities criticalError:error];
                   }];

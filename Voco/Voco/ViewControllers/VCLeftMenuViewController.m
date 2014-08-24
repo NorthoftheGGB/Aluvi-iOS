@@ -20,6 +20,7 @@
 #import "VCMenuItemModeTableViewCell.h"
 #import "NSDate+Pretty.h"
 #import "VCUserStateManager.h"
+#import "VCRiderApi.h"
 
 
 // These ones go in the array
@@ -295,6 +296,11 @@
         case kScheduleCellInteger:
         {
             if(![_tableCellList containsObject:kScheduleItemCell]){
+                [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                    NSLog(@"%@", @"Refreshed Scheduled Rides");
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"schedule_updated" object:self];
+                } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                }];
                 [self showScheduleItems];
                 
                 VCMenuItemTableViewCell * cell = (VCMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];

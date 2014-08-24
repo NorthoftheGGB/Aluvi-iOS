@@ -29,6 +29,8 @@
 #import "VCMapQuestRouting.h"
 #import "VCButton.h"
 #import "IIViewDeckController.h"
+#import "VCDriveDetailsView.h"
+#import "VCDriverCallHudView.h"
 
 #define kEditCommuteStatePickupTime 1000
 #define kEditCommuteStateEditHome 1001
@@ -73,8 +75,8 @@
 
 
 @property (strong, nonatomic) IBOutlet UIView *homeActionView;
-@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *editCommuteButton;
-@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *rideNowButton;
+@property (strong, nonatomic) IBOutlet VCButtonStandardStyle *editCommuteButton;
+@property (strong, nonatomic) IBOutlet VCButtonStandardStyle *rideNowButton;
 @property (strong, nonatomic) IBOutlet VCButtonStandardStyle *nextButton;
 
 //confirmation
@@ -115,18 +117,16 @@
 - (IBAction)didTapHovDriveYesButton:(id)sender;
 
 
-@property (strong, nonatomic) IBOutlet UIView *driverCallHUD;
+// HOV Driver
+@property (strong, nonatomic) IBOutlet VCDriverCallHudView *driverCallHUD;
 @property (strong, nonatomic) IBOutlet UIView *driverCancelHUD;
 @property (strong, nonatomic) IBOutlet UIButton *directionsListButton;
+@property (strong, nonatomic) IBOutlet VCDriveDetailsView * fareDetailsView;
 
 //Call HUD
 @property (nonatomic) BOOL callHudPanLocked;
 @property (strong, nonatomic) NSTimer * timer;
 @property (nonatomic) BOOL callHudOpen;
-@property (weak, nonatomic) IBOutlet VCButton *riderCallButton1;
-@property (weak, nonatomic) IBOutlet VCButton *riderCallButton2;
-@property (weak, nonatomic) IBOutlet VCButton *riderCallButton3;
-@property (weak, nonatomic) IBOutlet UIImageView *phoneIconImageView;
 - (IBAction)didTapCallRider1:(id)sender;
 - (IBAction)didTapCallRider2:(id)sender;
 - (IBAction)didTapCallRider3:(id)sender;
@@ -138,7 +138,6 @@
 @property (weak, nonatomic) IBOutlet VCButton *cancelRideButton;
 @property (weak, nonatomic) IBOutlet UIImageView *cancelIconImageView;
 - (IBAction)didTapCancelRide:(id)sender;
-
 
 
 //Ride Status
@@ -301,14 +300,14 @@
     CLLocationCoordinate2D toCoordinate = CLLocationCoordinate2DMake(to.coordinate.latitude, to.coordinate.longitude);
     
     [VCMapQuestRouting route:fromCoordinate
-                                    to:toCoordinate
-                               success:^(MKPolyline *polyline, MKCoordinateRegion region) {
-                                   polyline.title = @"driver_leg";
-                                   [self.map addOverlay:polyline];
-                               }
-                               failure:^{
-                                   NSLog(@"%@", @"Error talking with MapQuest routing API");
-                               }];
+                          to:toCoordinate
+                     success:^(MKPolyline *polyline, MKCoordinateRegion region) {
+                         polyline.title = @"driver_leg";
+                         [self.map addOverlay:polyline];
+                     }
+                     failure:^{
+                         NSLog(@"%@", @"Error talking with MapQuest routing API");
+                     }];
 }
 
 - (void) showInterfaceForRide {
@@ -325,8 +324,8 @@
         [self.view addSubview:self.waitingScreen];
         
     } else if([_ticket.state isEqualToString:kScheduledState]){
-        [self addOriginAnnotation: [_ticket originLocation] ];
-        [self addDestinationAnnotation: [_ticket destinationLocation]];
+        //[self addOriginAnnotation: [_ticket originLocation] ];
+        //[self addDestinationAnnotation: [_ticket destinationLocation]];
         [self addMeetingPointAnnotation: [_ticket meetingPointLocation]];
         [self addDropOffPointAnnotation: [_ticket dropOffPointLocation]];
         
@@ -344,9 +343,9 @@
         }
         
         if([_ticket.driving boolValue]) {
-        
+            
             [self showHovDriverInterface];
-
+            
         } else {
             
             if([_ticket.confirmed isEqualToNumber:[NSNumber numberWithBool:YES]]) {
@@ -395,7 +394,7 @@
 }
 
 - (void) didTapHamburger {
-      [self.navigationController.viewDeckController openLeftView];
+    [self.navigationController.viewDeckController openLeftView];
 }
 
 - (void) removeCancelBarButton {
@@ -541,6 +540,7 @@
     [_driverCancelHUD removeFromSuperview];
     [_ridersPickedUpButton removeFromSuperview];
     [_rideCompleteButton removeFromSuperview];
+    [_fareDetailsView removeFromSuperview];
 }
 
 - (void) transitionFromEditPickupTimeToEditHome {
@@ -1107,8 +1107,8 @@
         } else {
             return [super mapView:mapView viewForOverlay:overlay];
         }
-            
-
+        
+        
     }
     
     return nil;
@@ -1118,6 +1118,31 @@
 
 #pragma mark HovDriverInterface
 - (void) showHovDriverInterface{
+    
+    if([_ticket.confirmed isEqualToNumber:[NSNumber numberWithBool:YES]]) {
+    
+        [self setupDriverHuds];
+        
+    } else {
+        _fareDetailsView.driveTimeLabel.text = [_ticket.pickupTime time];
+        _fareDetailsView.dateLabel.text = [_ticket.pickupTime monthAndDay];
+        _fareDetailsView.fareEarningsLabel.text = [NSString stringWithFormat:@"%.2f", [_ticket.hovFare.estimatedEarnings floatValue] ];
+        _fareDetailsView.driveDistanceLabel.text = @"";
+        _fareDetailsView.numberOfPeopleLabel.text = [NSString stringWithFormat:@"%d", [_ticket.hovFare.riders count] - 1 ];
+        
+        CGRect frame = _rideDetailsConfirmation.frame;
+        frame.origin.x = 0;
+        frame.origin.y = self.view.frame.size.height - 480;
+        _fareDetailsView.frame = frame;
+        [self.view addSubview:_fareDetailsView];
+
+    }
+    
+}
+
+- (void) setupDriverHuds {
+    
+    _driverCallHUD.riders = [_ticket.hovFare.riders allObjects];
     
     CGRect currentLocationframe = _currentLocationButton.frame;
     currentLocationframe.origin.x = 271;
@@ -1152,12 +1177,6 @@
         
         [self.view addSubview:_driverCancelHUD];
     }
-    
-    [self setupDriverCallHud];
-    
-}
-
-- (void) setupDriverCallHud {
     
     {
         UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(move:)];
@@ -1354,7 +1373,6 @@
         _driverCancelHUD.frame = frame;
         _cancelHudOpen = NO;
     }];
-    
 }
 
 
@@ -1367,12 +1385,28 @@
     _cancelHudPanLocked = NO;
 }
 
-- (IBAction)didTapCallRider1:(id)sender {
+- (void) callPhone:(NSString *) phoneNumber {
+    if(phoneNumber == nil){
+        [UIAlertView showWithTitle:@"Error" message:@"We don't have a phone number for that user" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        return;
+    }
+    NSString *url = [@"telprompt://" stringByAppendingString:phoneNumber];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 }
-- (IBAction)didTapCallRider3:(id)sender {
+
+- (IBAction)didTapCallRider1:(id)sender {
+    Rider * rider = [_driverCallHUD.riders objectAtIndex:0];
+    [self callPhone:rider.phone];
 }
 - (IBAction)didTapCallRider2:(id)sender {
+    Rider * rider = [_driverCallHUD.riders objectAtIndex:1];
+    [self callPhone:rider.phone];
 }
+- (IBAction)didTapCallRider3:(id)sender {
+    Rider * rider = [_driverCallHUD.riders objectAtIndex:2];
+    [self callPhone:rider.phone];
+}
+
 - (IBAction)didTapCurrentLocationButton:(id)sender {
 }
 - (IBAction)didTapDirectionsListButton:(id)sender {

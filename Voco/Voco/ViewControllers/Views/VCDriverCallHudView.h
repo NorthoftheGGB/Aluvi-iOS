@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Rider.h"
 
 @interface VCDriverCallHudView : UIView
+
+@property(nonatomic, strong) NSArray * riders;
 
 @end

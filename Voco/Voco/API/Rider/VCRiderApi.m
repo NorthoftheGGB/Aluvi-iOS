@@ -20,10 +20,10 @@
 @implementation VCRiderApi
 
 + (void) setup: (RKObjectManager *) objectManager {
-
+    
     [Ticket createMappings:objectManager];
     [Payment createMappings:objectManager];
-
+    
     {
         RKObjectMapping * objectMapping = [VCRideRequest getMapping];
         RKObjectMapping * postRideRequestMapping = [objectMapping inverseMapping];
@@ -54,14 +54,14 @@
                                                                                             pathPattern:API_POST_RIDE_REQUEST keyPath:nil
                                                                                             statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:responseDescriptor];
-
+        
     }
     {
         RKObjectMapping * mapping = [VCRequestUpdate getMapping];
         RKObjectMapping * requestMapping = [mapping inverseMapping];
         RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[VCRequestUpdate class] rootKeyPath:nil method:RKRequestMethodPOST];
         [objectManager addRequestDescriptor:requestDescriptor];
-    }    
+    }
     {
         RKResponseDescriptor * responseDescriptor =
         [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
@@ -175,7 +175,12 @@
     [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_ACTIVE_TICKETS parameters:nil
                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                   
-                                                  success(operation, mappingResult);
+                                                  [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_ACTIVE_FARES
+                                                                                         parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                                                             success(operation, mappingResult);
+                                                                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                                                             failure(operation, error);
+                                                                                         }];
                                                   
                                               } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                                   

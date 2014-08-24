@@ -13,11 +13,11 @@
                 <outlet property="driverCallHUD" destination="Lak-yG-cWD" id="7Mu-jQ-tOy"/>
                 <outlet property="driverCancelHUD" destination="nT8-pQ-amt" id="gk6-h1-NK5"/>
                 <outlet property="editCommuteButton" destination="2iv-cM-ZrM" id="nTt-IF-jth"/>
+                <outlet property="fareDetailsView" destination="gCJ-mG-bEK" id="YnP-up-jXS"/>
                 <outlet property="homeActionView" destination="XY9-N9-RDa" id="LQH-QX-Bja"/>
                 <outlet property="hovDriveYesButton" destination="LT0-2Y-Gc6" id="GyN-lZ-mp0"/>
                 <outlet property="hovDriverOptionView" destination="CKa-ug-jy9" id="5ZD-9F-mzB"/>
                 <outlet property="nextButton" destination="4au-Tm-k8h" id="I8s-9S-4fi"/>
-                <outlet property="phoneIconImageView" destination="0Ln-Bp-0Ir" id="4fD-ge-HHS"/>
                 <outlet property="pickupHudView" destination="h5q-78-s1j" id="0Fq-c8-T1G"/>
                 <outlet property="pickupTimeLabel" destination="KAQ-n3-AaS" id="Ycz-jk-2IJ"/>
                 <outlet property="returnHudView" destination="TKX-pK-w8D" id="kQS-XC-4O0"/>
@@ -26,9 +26,6 @@
                 <outlet property="rideDetailsConfirmation" destination="RWM-tO-NBZ" id="l10-lc-9ki"/>
                 <outlet property="rideDetailsHud" destination="Lv9-d9-EJH" id="0gc-z7-omS"/>
                 <outlet property="rideNowButton" destination="2sw-Bp-ZXq" id="SSL-Jr-zwk"/>
-                <outlet property="riderCallButton1" destination="FhZ-2M-2Cb" id="bb7-S6-PMg"/>
-                <outlet property="riderCallButton2" destination="hsy-pb-Jaj" id="CnG-7y-HF5"/>
-                <outlet property="riderCallButton3" destination="gVW-jM-U8O" id="tx8-4p-ZdX"/>
                 <outlet property="ridersPickedUpButton" destination="5kL-SN-M2N" id="Nx1-g3-YUL"/>
                 <outlet property="scheduleRideButton" destination="fxh-D2-Mbg" id="8gG-Qn-R33"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -887,7 +884,7 @@
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
         </button>
-        <view contentMode="scaleToFill" id="Lak-yG-cWD" userLabel="Driver Call HUD">
+        <view contentMode="scaleToFill" id="Lak-yG-cWD" userLabel="Driver Call HUD" customClass="VCDriverCallHudView">
             <rect key="frame" x="0.0" y="0.0" width="289" height="170"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -970,6 +967,12 @@
                 </button>
             </subviews>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="phoneIconImageView" destination="0Ln-Bp-0Ir" id="Evr-Am-EmG"/>
+                <outlet property="riderCallButton1" destination="FhZ-2M-2Cb" id="8Y7-dT-bnu"/>
+                <outlet property="riderCallButton2" destination="hsy-pb-Jaj" id="aVN-zC-a8B"/>
+                <outlet property="riderCallButton3" destination="gVW-jM-U8O" id="xDr-y1-vgY"/>
+            </connections>
         </view>
         <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ITr-VR-cFD" userLabel="Directions Button">
             <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
@@ -1078,10 +1081,10 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <action selector="didTapConfirmationButton:" destination="gCJ-mG-bEK" eventType="touchUpInside" id="BYA-Bs-0MB"/>
+                        <action selector="didTapConfirmedCommuterRide:" destination="-1" eventType="touchUpInside" id="ijm-O4-x2K"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drive Time :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFl-3K-Vtp" customClass="VCLabel">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup Time :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFl-3K-Vtp" customClass="VCLabel">
                     <rect key="frame" x="13" y="114" width="97" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
@@ -1145,8 +1148,8 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$44" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Py0-5b-pY6" customClass="VCLabelBold">
-                    <rect key="frame" x="25" y="23" width="72" height="45"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Py0-5b-pY6" customClass="VCLabelBold">
+                    <rect key="frame" x="25" y="17" width="72" height="51"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="JsU-pa-9sv"/>
@@ -1161,7 +1164,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.5 hours" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIA-LF-bpT" customClass="VCLabel">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIA-LF-bpT" customClass="VCLabel">
                     <rect key="frame" x="118" y="114" width="182" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
@@ -1193,7 +1196,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5uK-tQ-ftw" customClass="VCLabel">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5uK-tQ-ftw" customClass="VCLabel">
                     <rect key="frame" x="118" y="164" width="182" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>

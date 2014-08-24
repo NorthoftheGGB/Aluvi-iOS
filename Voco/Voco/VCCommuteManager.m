@@ -53,8 +53,14 @@ static VCCommuteManager * instance;
 
 - (void) load {
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    instance.home = [NSKeyedUnarchiver unarchiveObjectWithData: [defaults objectForKey:kCommuteOriginSettingKey]];
-    instance.work = [NSKeyedUnarchiver unarchiveObjectWithData: [defaults objectForKey:kCommuteDestinationSettingKey]];
+    NSData * home = [defaults objectForKey:kCommuteOriginSettingKey];
+    if(home != nil) {
+        instance.home = [NSKeyedUnarchiver unarchiveObjectWithData: home];
+    }
+    NSData * work = [defaults objectForKey:kCommuteDestinationSettingKey];
+    if(work != nil) {
+        instance.work = [NSKeyedUnarchiver unarchiveObjectWithData: work];
+    }
     instance.homePlaceName = [defaults objectForKey:kCommuterOriginPlaceNameKey];
     instance.workPlaceName = [defaults objectForKey:kCommuterDestinationPlaceNameKey];
     instance.pickupTime = [defaults objectForKey:kCommuteDepartureTimeSettingKey];
@@ -72,7 +78,8 @@ static VCCommuteManager * instance;
     [[NSUserDefaults standardUserDefaults] setObject:_homePlaceName forKey:kCommuterOriginPlaceNameKey];
     [[NSUserDefaults standardUserDefaults] setObject:_workPlaceName forKey:kCommuterDestinationPlaceNameKey];
     [[NSUserDefaults standardUserDefaults] setBool:_driving forKey:kCommuterDrivingSettingKey];
-    [[NSUserDefaults standardUserDefaults]  synchronize];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
 }
 
 - (void) reset {
@@ -94,7 +101,14 @@ static VCCommuteManager * instance;
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kCommuterDestinationPlaceNameKey];
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kCommuterDrivingSettingKey];
     [[NSUserDefaults standardUserDefaults]  synchronize];
-    [self load];
+    instance.home = nil;
+    instance.work = nil;
+    instance.homePlaceName = nil;
+    instance.workPlaceName = nil;
+    instance.pickupTime = nil;
+    instance.returnTime = nil;
+    instance.driving = NO;
+
 }
 
 
