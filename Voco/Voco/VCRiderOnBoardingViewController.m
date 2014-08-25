@@ -86,39 +86,45 @@
 - (IBAction)didTapNextButton:(id)sender {
 }
 - (IBAction)didTapTocButton:(id)sender {
+    if (_tocCheckBoxButton.selected == YES){
+        _tocCheckBoxButton.selected = NO;
+        
+    }
 }
 
+
+
+
 /*
-//TODO: clean this code up
+//TODO: clean up validation in this code
  
 - (IBAction)didEndOnExit:(id)sender {
     
     UITextField * textField = (UITextField *) sender;
     switch(textField.tag){
         case kFirstNameFieldTag:
-            if([_firstNameField validate]){
-                [_lastNameField becomeFirstResponder];
+            if([_firstNameTextField validate]){
+                [_lastNameTextField becomeFirstResponder];
             }
             break;
  
-        case kLastNameFieldTag:
-            if([_lastNameField validate]){
-                [_phoneField
+        case kLastNameTextFieldTag:
+            if([_lastNameTextField validate]){
+                [_phoneTextField
                  becomeFirstResponder];
             }
             break;
  
         case kPhoneFieldTag:
-            if([_phoneField validate]){
-                [_zipCodeField
+            if([_phoneTextField validate]){
+                [_zipCodeTextField
                  becomeFirstResponder];
             }
             break;
  
         case kZipCodeFieldTag:
-            if([_zipCodeField validate]){  //set up Zip Validation
-                [_referralCodeField
-                 becomeFirstResponder];
+            if([_zipCodeTextField validate]){  //set up Zip Validation
+                [sender resignFirstResponder];
             }
             break;
     
@@ -127,19 +133,19 @@
 
 - (void) riderOnBoarding {
         
-        if(![_firstNameField validate]){
+        if(![_firstNameTextField validate]){
             return;
         }
         
-        if(![_lastNameField validate]){
+        if(![_lastNameTextField validate]){
             return;
         }
         
-        if(![_phoneField validate]){
+        if(![_phoneTextField validate]){
             return;
         }
         
-        if(![_zipCodeField validate]){
+        if(![_zipCodeTextField validate]){
             return;
         }
         

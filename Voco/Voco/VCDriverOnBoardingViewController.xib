@@ -6,7 +6,19 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCDriverOnBoardingViewController">
             <connections>
+                <outlet property="STPViewContainer" destination="tX3-3H-ihS" id="4Uu-6e-O6R"/>
+                <outlet property="brandTextField" destination="Qgq-jh-Fxp" id="uHa-V6-0Qg"/>
+                <outlet property="cardInfoLabel" destination="Kpy-QP-ADj" id="Dpr-rQ-LYa"/>
+                <outlet property="colorTextField" destination="noR-UA-UgX" id="hwG-yy-H2I"/>
+                <outlet property="contentView" destination="C9S-EL-TfB" id="jcX-Lc-oO6"/>
+                <outlet property="driversLicenseNumberTextField" destination="cwn-ba-jJQ" id="iem-hj-qq1"/>
+                <outlet property="licensePlateTextField" destination="cnT-L4-hQ5" id="ADz-fg-zMe"/>
+                <outlet property="modelTextField" destination="8gL-ol-zqf" id="eDp-6F-W6b"/>
+                <outlet property="saveButton" destination="xqe-E2-2S2" id="oeV-m8-bq5"/>
+                <outlet property="scrollView" destination="zRn-Mj-H8d" id="eih-7q-Sas"/>
+                <outlet property="skipThisStepButton" destination="Pbv-vE-CQu" id="3W3-O7-BAu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="yearTextField" destination="QpF-nl-xau" id="gr2-fd-KuJ"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -14,22 +26,238 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zRn-Mj-H8d">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="zRn-Mj-H8d" secondAttribute="trailing" id="NdO-I9-dw0"/>
+                <constraint firstItem="zRn-Mj-H8d" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="VcI-Qj-X7W"/>
+                <constraint firstAttribute="bottom" secondItem="zRn-Mj-H8d" secondAttribute="bottom" id="ca5-eG-kHd"/>
+                <constraint firstItem="zRn-Mj-H8d" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="swI-Sc-q5S"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <view contentMode="scaleToFill" id="C9S-EL-TfB" userLabel="content view">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="j24-UA-CMd">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pbv-vE-CQu" customClass="VCButtonStandardStyle">
+                    <rect key="frame" x="12" y="381" width="103" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="GkU-ED-zG1"/>
+                        <constraint firstAttribute="width" constant="103" id="qPg-bF-Q9V"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <state key="normal" title="Skip this step >">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="13"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didTapSkipThisStep:" destination="-1" eventType="touchUpInside" id="hvh-LK-C0B"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tX3-3H-ihS" userLabel="Stripe Container View">
+                    <rect key="frame" x="0.0" y="288" width="320" height="69"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kpy-QP-ADj" userLabel="Stripe Label">
+                            <rect key="frame" x="8" y="24" width="305" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="305" id="ccU-Ge-8Pd"/>
+                                <constraint firstAttribute="height" constant="21" id="ypk-Tg-q2I"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="69" id="6sb-96-7Wy"/>
+                        <constraint firstAttribute="width" constant="320" id="Ekz-xu-lso"/>
+                        <constraint firstItem="Kpy-QP-ADj" firstAttribute="top" secondItem="tX3-3H-ihS" secondAttribute="top" constant="24" id="cJH-o0-7GR"/>
+                        <constraint firstItem="Kpy-QP-ADj" firstAttribute="leading" secondItem="tX3-3H-ihS" secondAttribute="leading" constant="8" id="uoL-iU-WDk"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xqe-E2-2S2" customClass="VCButtonStandardStyle">
+                    <rect key="frame" x="8" y="413" width="305" height="47"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="305" id="Mxh-pW-Bgh"/>
+                        <constraint firstAttribute="height" constant="47" id="hqs-Dd-RqX"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="Save" backgroundImage="login-button.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" backgroundImage="button-select.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" title="Submit" backgroundImage="button-select.png"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didTapSave:" destination="-1" eventType="touchUpInside" id="ZLr-Pn-ZqH"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Car Brand" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qgq-jh-Fxp" customClass="VCTextField">
+                    <rect key="frame" x="8" y="98" width="305" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="305" id="7Ei-x7-KAk"/>
+                        <constraint firstAttribute="height" constant="30" id="NHB-3l-uBE"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="14"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didEndOnExit:" destination="-1" eventType="editingDidEnd" id="mx7-Bg-6qD"/>
+                    </connections>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Car Model" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8gL-ol-zqf" customClass="VCTextField">
+                    <rect key="frame" x="8" y="136" width="305" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="0ck-jn-VxU"/>
+                        <constraint firstAttribute="width" constant="305" id="yg7-Sd-oAq"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="14"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didEndOnExit:" destination="-1" eventType="editingDidEnd" id="Kcw-6f-JsL"/>
+                    </connections>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Year" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QpF-nl-xau" customClass="VCTextField">
+                    <rect key="frame" x="8" y="174" width="305" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="305" id="VI3-5K-h6N"/>
+                        <constraint firstAttribute="height" constant="30" id="pUa-Df-T13"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="next"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="14"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didEndOnExit:" destination="-1" eventType="editingDidEnd" id="KXZ-sd-ZSk"/>
+                    </connections>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Color" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="noR-UA-UgX" customClass="VCTextField">
+                    <rect key="frame" x="8" y="212" width="305" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="305" id="en3-Lb-qsv"/>
+                        <constraint firstAttribute="height" constant="30" id="i9k-X3-c5n"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="14"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didEndOnExit:" destination="-1" eventType="editingDidEnd" id="SWS-Fb-sRP"/>
+                    </connections>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="License Plate #" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cnT-L4-hQ5" customClass="VCTextField">
+                    <rect key="frame" x="8" y="250" width="305" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Jcb-kw-hIO"/>
+                        <constraint firstAttribute="width" constant="305" id="kup-H0-0y4"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="14"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didEndOnExit:" destination="-1" eventType="editingDidEnd" id="oz5-fA-mGN"/>
+                    </connections>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Driver's License #" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cwn-ba-jJQ" customClass="VCTextField">
+                    <rect key="frame" x="8" y="60" width="305" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="305" id="FFh-tJ-GFf"/>
+                        <constraint firstAttribute="height" constant="30" id="lFA-2d-loE"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="14"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="LaC-zX-hpD"/>
+                    </connections>
+                </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="j24-UA-CMd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="QdY-Kn-2M6"/>
-                <constraint firstAttribute="trailing" secondItem="j24-UA-CMd" secondAttribute="trailing" id="rNf-Co-QxO"/>
-                <constraint firstItem="j24-UA-CMd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="rwa-d3-q1q"/>
+                <constraint firstItem="tX3-3H-ihS" firstAttribute="leading" secondItem="C9S-EL-TfB" secondAttribute="leading" id="1nm-1S-V5O"/>
+                <constraint firstItem="noR-UA-UgX" firstAttribute="top" secondItem="QpF-nl-xau" secondAttribute="bottom" constant="8" id="2QC-NQ-M6Z"/>
+                <constraint firstItem="Qgq-jh-Fxp" firstAttribute="top" secondItem="cwn-ba-jJQ" secondAttribute="bottom" constant="8" id="7gJ-BP-mxp"/>
+                <constraint firstItem="cnT-L4-hQ5" firstAttribute="top" secondItem="noR-UA-UgX" secondAttribute="bottom" constant="8" id="9Vq-fu-o5F"/>
+                <constraint firstItem="Pbv-vE-CQu" firstAttribute="leading" secondItem="C9S-EL-TfB" secondAttribute="leading" constant="12" id="BPe-cg-Boh"/>
+                <constraint firstItem="8gL-ol-zqf" firstAttribute="leading" secondItem="C9S-EL-TfB" secondAttribute="leading" constant="8" id="GEW-aK-gBU"/>
+                <constraint firstItem="QpF-nl-xau" firstAttribute="leading" secondItem="C9S-EL-TfB" secondAttribute="leading" constant="8" id="IxX-n2-5Ly"/>
+                <constraint firstAttribute="trailing" secondItem="j24-UA-CMd" secondAttribute="trailing" id="Oz7-sz-zuM"/>
+                <constraint firstAttribute="bottom" secondItem="xqe-E2-2S2" secondAttribute="bottom" constant="20" id="Pm3-fY-h17"/>
+                <constraint firstItem="cwn-ba-jJQ" firstAttribute="leading" secondItem="C9S-EL-TfB" secondAttribute="leading" constant="8" id="Qj8-cs-fXU"/>
+                <constraint firstItem="j24-UA-CMd" firstAttribute="top" secondItem="C9S-EL-TfB" secondAttribute="top" id="YW3-YB-YTN"/>
+                <constraint firstItem="xqe-E2-2S2" firstAttribute="leading" secondItem="C9S-EL-TfB" secondAttribute="leading" constant="8" id="adM-DN-TF0"/>
+                <constraint firstItem="j24-UA-CMd" firstAttribute="leading" secondItem="C9S-EL-TfB" secondAttribute="leading" id="app-yz-meD"/>
+                <constraint firstItem="QpF-nl-xau" firstAttribute="top" secondItem="8gL-ol-zqf" secondAttribute="bottom" constant="8" id="bbu-oN-tcW"/>
+                <constraint firstItem="tX3-3H-ihS" firstAttribute="top" secondItem="cnT-L4-hQ5" secondAttribute="bottom" constant="8" id="bq6-RC-Y5e"/>
+                <constraint firstItem="noR-UA-UgX" firstAttribute="leading" secondItem="C9S-EL-TfB" secondAttribute="leading" constant="8" id="cQA-xo-lze"/>
+                <constraint firstItem="cnT-L4-hQ5" firstAttribute="leading" secondItem="C9S-EL-TfB" secondAttribute="leading" constant="8" id="hI6-PJ-Ksh"/>
+                <constraint firstItem="cwn-ba-jJQ" firstAttribute="top" secondItem="C9S-EL-TfB" secondAttribute="top" constant="60" id="mcF-SL-l8r"/>
+                <constraint firstItem="xqe-E2-2S2" firstAttribute="top" secondItem="Pbv-vE-CQu" secondAttribute="bottom" constant="2" id="ohC-Og-bQ1"/>
+                <constraint firstItem="8gL-ol-zqf" firstAttribute="top" secondItem="Qgq-jh-Fxp" secondAttribute="bottom" constant="8" id="t92-er-oI7"/>
+                <constraint firstItem="Qgq-jh-Fxp" firstAttribute="leading" secondItem="C9S-EL-TfB" secondAttribute="leading" constant="8" id="wQq-9z-GUy"/>
             </constraints>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
     <resources>
         <image name="background.png" width="320" height="568"/>
+        <image name="button-select.png" width="160" height="46"/>
+        <image name="login-button.png" width="304" height="47"/>
     </resources>
 </document>
