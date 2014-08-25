@@ -353,7 +353,6 @@
 		4FE641BB194157510059BED1 /* VCSignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641B9194157510059BED1 /* VCSignInViewController.xib */; };
 		4FE641BF194157C60059BED1 /* VCDriverRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641BD194157C60059BED1 /* VCDriverRequestViewController.m */; };
 		4FE641C0194157C60059BED1 /* VCDriverRequestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641BE194157C60059BED1 /* VCDriverRequestViewController.xib */; };
-		4FE641C4194157EB0059BED1 /* VCPasswordRecoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641C2194157EB0059BED1 /* VCPasswordRecoveryViewController.m */; };
 		4FE641C5194157EB0059BED1 /* VCPasswordRecoveryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641C3194157EB0059BED1 /* VCPasswordRecoveryViewController.xib */; };
 		4FE641C91941584D0059BED1 /* VCSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641C71941584D0059BED1 /* VCSignUpViewController.m */; };
 		4FE641CA1941584D0059BED1 /* VCSignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641C81941584D0059BED1 /* VCSignUpViewController.xib */; };
@@ -508,7 +507,6 @@
 		F4354D81195D0D6A00C06CF7 /* VCLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F000194A498E00D8C900 /* VCLabel.m */; };
 		F4354D83195D0D6A00C06CF7 /* VCDriverVideoTutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB268281952207A0028D4ED /* VCDriverVideoTutorialController.m */; };
 		F4354D84195D0D6A00C06CF7 /* VCFareDriverAssignment.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B0E1938571E00354886 /* VCFareDriverAssignment.m */; };
-		F4354D85195D0D6A00C06CF7 /* VCPasswordRecoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641C2194157EB0059BED1 /* VCPasswordRecoveryViewController.m */; };
 		F4354D86195D0D6A00C06CF7 /* VCDriverApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B0A19384F9000354886 /* VCDriverApi.m */; };
 		F4354D87195D0D6A00C06CF7 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE319492C2A00D8C900 /* IIViewDeckController.m */; };
 		F4354D89195D0D6A00C06CF7 /* VCApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BF81935798B00A94721 /* VCApi.m */; };
@@ -719,7 +717,6 @@
 		F4C6B20A197F06B100F6C10B /* VCFareDriverAssignment.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B0E1938571E00354886 /* VCFareDriverAssignment.m */; };
 		F4C6B20B197F06B100F6C10B /* VCPhoneTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEAA196619D800AD4229 /* VCPhoneTextField.m */; };
 		F4C6B20C197F06B100F6C10B /* VCEmailTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFBA44D195E7BC600A51B84 /* VCEmailTextField.m */; };
-		F4C6B20D197F06B100F6C10B /* VCPasswordRecoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641C2194157EB0059BED1 /* VCPasswordRecoveryViewController.m */; };
 		F4C6B20E197F06B100F6C10B /* VCLocationSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C8231962E235007E05AD /* VCLocationSearchViewController.m */; };
 		F4C6B20F197F06B100F6C10B /* VCDriverApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B0A19384F9000354886 /* VCDriverApi.m */; };
 		F4C6B210197F06B100F6C10B /* VCGeoApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4138C37196784C700C265CD /* VCGeoApi.m */; };
@@ -3261,7 +3258,6 @@
 				F4354D83195D0D6A00C06CF7 /* VCDriverVideoTutorialController.m in Sources */,
 				F4354D84195D0D6A00C06CF7 /* VCFareDriverAssignment.m in Sources */,
 				4FFCF2BF19A25F2100A4A24E /* VCProfileViewController.m in Sources */,
-				F4354D85195D0D6A00C06CF7 /* VCPasswordRecoveryViewController.m in Sources */,
 				4F4D8BED1987650A0027A2AF /* VCRideDetailsConfirmationView.m in Sources */,
 				F425906E1995E30000FA928E /* VCCommuteManager.m in Sources */,
 				4FCD7C8919775C5C007609E8 /* VCDriverRecieptDetailViewController.m in Sources */,
@@ -3414,7 +3410,6 @@
 				F4C6B20A197F06B100F6C10B /* VCFareDriverAssignment.m in Sources */,
 				F4C6B20B197F06B100F6C10B /* VCPhoneTextField.m in Sources */,
 				F4C6B20C197F06B100F6C10B /* VCEmailTextField.m in Sources */,
-				F4C6B20D197F06B100F6C10B /* VCPasswordRecoveryViewController.m in Sources */,
 				F4C6B20E197F06B100F6C10B /* VCLocationSearchViewController.m in Sources */,
 				F4C6B20F197F06B100F6C10B /* VCDriverApi.m in Sources */,
 				F4C6B210197F06B100F6C10B /* VCGeoApi.m in Sources */,
@@ -3554,7 +3549,6 @@
 				F4F6B8BA19A9898E004312A1 /* VCNotifications.m in Sources */,
 				4F9ECEAB196619D800AD4229 /* VCPhoneTextField.m in Sources */,
 				4FFBA44E195E7BC600A51B84 /* VCEmailTextField.m in Sources */,
-				4FE641C4194157EB0059BED1 /* VCPasswordRecoveryViewController.m in Sources */,
 				F4A7C8251962E235007E05AD /* VCLocationSearchViewController.m in Sources */,
 				F4FE1B0B19384F9000354886 /* VCDriverApi.m in Sources */,
 				F4138C38196784C700C265CD /* VCGeoApi.m in Sources */,
