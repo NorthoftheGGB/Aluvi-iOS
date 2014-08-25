@@ -269,6 +269,12 @@
 		4FC7590119AAC0770093DBEA /* receipt-down-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FC7590019AAC0770093DBEA /* receipt-down-arrow@2x.png */; };
 		4FC7590219AAC0770093DBEA /* receipt-down-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FC7590019AAC0770093DBEA /* receipt-down-arrow@2x.png */; };
 		4FC7590319AAC0770093DBEA /* receipt-down-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FC7590019AAC0770093DBEA /* receipt-down-arrow@2x.png */; };
+		4FC7590519AACD840093DBEA /* VCDriverSubMenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC7590419AACD840093DBEA /* VCDriverSubMenuItemTableViewCell.xib */; };
+		4FC7590619AACD840093DBEA /* VCDriverSubMenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC7590419AACD840093DBEA /* VCDriverSubMenuItemTableViewCell.xib */; };
+		4FC7590719AACD840093DBEA /* VCDriverSubMenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC7590419AACD840093DBEA /* VCDriverSubMenuItemTableViewCell.xib */; };
+		4FC7590F19AACFF50093DBEA /* VCDriverSubMenuItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC7590E19AACFF50093DBEA /* VCDriverSubMenuItemTableViewCell.m */; };
+		4FC7591019AACFF50093DBEA /* VCDriverSubMenuItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC7590E19AACFF50093DBEA /* VCDriverSubMenuItemTableViewCell.m */; };
+		4FC7591119AACFF50093DBEA /* VCDriverSubMenuItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC7590E19AACFF50093DBEA /* VCDriverSubMenuItemTableViewCell.m */; };
 		4FCBFBD91995847300CBF0C8 /* driver-hov-toggle-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBFBD51995847300CBF0C8 /* driver-hov-toggle-select@2x.png */; };
 		4FCBFBDA1995847300CBF0C8 /* driver-hov-toggle-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBFBD51995847300CBF0C8 /* driver-hov-toggle-select@2x.png */; };
 		4FCBFBDB1995847300CBF0C8 /* driver-hov-toggle-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBFBD51995847300CBF0C8 /* driver-hov-toggle-select@2x.png */; };
@@ -1046,6 +1052,9 @@
 		4FC758F719AA9B570093DBEA /* VCCenterViewBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCCenterViewBaseViewController.h; sourceTree = "<group>"; };
 		4FC758F819AA9B570093DBEA /* VCCenterViewBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCenterViewBaseViewController.m; sourceTree = "<group>"; };
 		4FC7590019AAC0770093DBEA /* receipt-down-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "receipt-down-arrow@2x.png"; sourceTree = "<group>"; };
+		4FC7590419AACD840093DBEA /* VCDriverSubMenuItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCDriverSubMenuItemTableViewCell.xib; sourceTree = "<group>"; };
+		4FC7590D19AACFF50093DBEA /* VCDriverSubMenuItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCDriverSubMenuItemTableViewCell.h; sourceTree = "<group>"; };
+		4FC7590E19AACFF50093DBEA /* VCDriverSubMenuItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCDriverSubMenuItemTableViewCell.m; sourceTree = "<group>"; };
 		4FCBFBD51995847300CBF0C8 /* driver-hov-toggle-select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "driver-hov-toggle-select@2x.png"; sourceTree = "<group>"; };
 		4FCBFBD61995847300CBF0C8 /* driver-hov-toggle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "driver-hov-toggle@2x.png"; sourceTree = "<group>"; };
 		4FCBFBD71995847300CBF0C8 /* menu-submenu-arrow-select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-submenu-arrow-select@2x.png"; sourceTree = "<group>"; };
@@ -1871,6 +1880,9 @@
 				4F184A211991E156006EA959 /* VCSubMenuItemTableViewCell.h */,
 				4F184A221991E156006EA959 /* VCSubMenuItemTableViewCell.m */,
 				4F184A231991E156006EA959 /* VCSubMenuItemTableViewCell.xib */,
+				4FC7590D19AACFF50093DBEA /* VCDriverSubMenuItemTableViewCell.h */,
+				4FC7590E19AACFF50093DBEA /* VCDriverSubMenuItemTableViewCell.m */,
+				4FC7590419AACD840093DBEA /* VCDriverSubMenuItemTableViewCell.xib */,
 				4F184A181991893D006EA959 /* VCMenuDriverClockOnTableViewCell.h */,
 				4F184A191991893D006EA959 /* VCMenuDriverClockOnTableViewCell.m */,
 				4F184A1A1991893D006EA959 /* VCMenuDriverClockOnTableViewCell.xib */,
@@ -2615,6 +2627,7 @@
 				F4354DB5195D0D6A00C06CF7 /* VCDriverRegistrationViewController.xib in Resources */,
 				F4354DB6195D0D6A00C06CF7 /* driving_car@2x.png in Resources */,
 				F4354DB7195D0D6A00C06CF7 /* KlinicSlabMedium.ttf in Resources */,
+				4FC7590619AACD840093DBEA /* VCDriverSubMenuItemTableViewCell.xib in Resources */,
 				4F2EF9D919614115006A1962 /* scheduledfares-menu-button-selected@2x.png in Resources */,
 				4FCBFBEF1995F50700CBF0C8 /* gradient@2x.png in Resources */,
 				4F9ECEB419661C3400AD4229 /* VCCommuterPassViewController.xib in Resources */,
@@ -2849,6 +2862,7 @@
 				4FC758D419AA91810093DBEA /* VCCommuteSetUpOnBoardingViewController.xib in Resources */,
 				F4C6B28F197F06B100F6C10B /* log-in-box@2x.png in Resources */,
 				4F1849E5198F625A006EA959 /* driver-cancel-hud-icon-select@2x.png in Resources */,
+				4FC7590519AACD840093DBEA /* VCDriverSubMenuItemTableViewCell.xib in Resources */,
 				4FC758C219AA91330093DBEA /* VCRiderOnBoardingViewController.xib in Resources */,
 				4F4D8BF719882AFB0027A2AF /* VCDriveViewController.xib in Resources */,
 				F4C6B290197F06B100F6C10B /* mycar-menu-button@2x.png in Resources */,
@@ -3007,6 +3021,7 @@
 				4FC758D619AA91810093DBEA /* VCCommuteSetUpOnBoardingViewController.xib in Resources */,
 				4F9909C5195CCE6500E83164 /* log-in-box@2x.png in Resources */,
 				4F1849E7198F625A006EA959 /* driver-cancel-hud-icon-select@2x.png in Resources */,
+				4FC7590719AACD840093DBEA /* VCDriverSubMenuItemTableViewCell.xib in Resources */,
 				4FC758C419AA91330093DBEA /* VCRiderOnBoardingViewController.xib in Resources */,
 				4F4D8BF919882AFB0027A2AF /* VCDriveViewController.xib in Resources */,
 				4F2EF9D619614115006A1962 /* mycar-menu-button@2x.png in Resources */,
@@ -3226,6 +3241,8 @@
 				F4354D76195D0D6A00C06CF7 /* MQShape.m in Sources */,
 				4FE712D6197369060071020C /* VCCarLicensePlateTextField.m in Sources */,
 				4F9ECEB919661C4A00AD4229 /* VCPaymentsViewController.m in Sources */,
+				4F9ECEB919661C4A00AD4229 /* VCRiderPaymentsViewController.m in Sources */,
+				4FC7591019AACFF50093DBEA /* VCDriverSubMenuItemTableViewCell.m in Sources */,
 				F4792AE619750975005AB652 /* lecore.m in Sources */,
 				F4354D77195D0D6A00C06CF7 /* VCRideRequest.m in Sources */,
 				F4354D78195D0D6A00C06CF7 /* VCPushReceiver.m in Sources */,
@@ -3425,6 +3442,7 @@
 				F4C6B221197F06B100F6C10B /* VCFare.m in Sources */,
 				F4C6B222197F06B100F6C10B /* VCReferralCodeTextField.m in Sources */,
 				F4C6B223197F06B100F6C10B /* WRUtilities.m in Sources */,
+				4FC7590F19AACFF50093DBEA /* VCDriverSubMenuItemTableViewCell.m in Sources */,
 				F4C6B224197F06B100F6C10B /* VCTextField.m in Sources */,
 				4FFCF2CB19A5381900A4A24E /* VCSupportViewController.m in Sources */,
 				4FC758C819AA91410093DBEA /* VCDriverOnBoardingViewController.m in Sources */,
@@ -3507,6 +3525,7 @@
 				F4FE1AFB1937DD6600354886 /* VCGeolocation.m in Sources */,
 				F4792AF61976492D005AB652 /* VCDriverGeoObject.m in Sources */,
 				4FE641BF194157C60059BED1 /* VCDriverRequestViewController.m in Sources */,
+				4FC7591119AACFF50093DBEA /* VCDriverSubMenuItemTableViewCell.m in Sources */,
 				4FFE139A1989DDF4004D4413 /* VCDriverCallHudView.m in Sources */,
 				F4792AE519750975005AB652 /* lecore.m in Sources */,
 				F4A7C80519623C70007E05AD /* Transit.m in Sources */,
