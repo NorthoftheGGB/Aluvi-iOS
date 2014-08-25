@@ -6,6 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCRiderOnBoardingViewController">
             <connections>
+                <outlet property="STPViewContainer" destination="imd-2Q-wWd" id="Rhr-DO-cRT"/>
+                <outlet property="cardInfoLabel" destination="mbm-g6-hWX" id="X86-wr-7bl"/>
                 <outlet property="contentView" destination="UFv-wM-Gvz" id="AoX-o4-nqc"/>
                 <outlet property="firstNameTextField" destination="tH2-fh-186" id="3m6-Bw-jMg"/>
                 <outlet property="lastNameTextField" destination="h49-sb-DfJ" id="Z7V-iD-Sjj"/>
