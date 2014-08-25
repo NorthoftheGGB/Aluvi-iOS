@@ -193,7 +193,6 @@
 		4F9ECEB319661C3400AD4229 /* VCCommuterPassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB019661C3400AD4229 /* VCCommuterPassViewController.xib */; };
 		4F9ECEB419661C3400AD4229 /* VCCommuterPassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB019661C3400AD4229 /* VCCommuterPassViewController.xib */; };
 		4F9ECEB819661C4A00AD4229 /* VCPaymentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB619661C4A00AD4229 /* VCPaymentsViewController.m */; };
-		4F9ECEB919661C4A00AD4229 /* VCPaymentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB619661C4A00AD4229 /* VCPaymentsViewController.m */; };
 		4F9ECEBA19661C4A00AD4229 /* VCPaymentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB719661C4A00AD4229 /* VCPaymentsViewController.xib */; };
 		4F9ECEBB19661C4A00AD4229 /* VCPaymentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB719661C4A00AD4229 /* VCPaymentsViewController.xib */; };
 		4F9ECEBF196630D700AD4229 /* VCRiderRecieptDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEBD196630D700AD4229 /* VCRiderRecieptDetailViewController.m */; };
@@ -866,6 +865,7 @@
 		F4D8905019469018007C4671 /* VCLoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904F19469018007C4671 /* VCLoginResponse.m */; };
 		F4D8905319469F0F007C4671 /* VCDriverInterestedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8905219469F0F007C4671 /* VCDriverInterestedRequest.m */; };
 		F4D890561946A2D9007C4671 /* VCObjectRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D890551946A2D9007C4671 /* VCObjectRequestOperation.m */; };
+		F4D8FE0319AAEDC600BC0B69 /* VCPaymentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB619661C4A00AD4229 /* VCPaymentsViewController.m */; };
 		F4F157A2195E8DB1009A33C8 /* VCBaseValidatorTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F157A1195E8DB1009A33C8 /* VCBaseValidatorTextField.m */; };
 		F4F157A3195E8DB5009A33C8 /* VCBaseValidatorTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F157A1195E8DB1009A33C8 /* VCBaseValidatorTextField.m */; };
 		F4F5FFBE19779E23001A1C0E /* Payment.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F5FFBD19779E23001A1C0E /* Payment.m */; };
@@ -1362,6 +1362,7 @@
 		F4D8905219469F0F007C4671 /* VCDriverInterestedRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCDriverInterestedRequest.m; path = API/Users/VCDriverInterestedRequest.m; sourceTree = "<group>"; };
 		F4D890541946A2D9007C4671 /* VCObjectRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCObjectRequestOperation.h; path = API/VCObjectRequestOperation.h; sourceTree = "<group>"; };
 		F4D890551946A2D9007C4671 /* VCObjectRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCObjectRequestOperation.m; path = API/VCObjectRequestOperation.m; sourceTree = "<group>"; };
+		F4D8FE0219AADE0600BC0B69 /* Voco 13.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 13.xcdatamodel"; sourceTree = "<group>"; };
 		F4F157A0195E8DB1009A33C8 /* VCBaseValidatorTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCBaseValidatorTextField.h; path = Controls/VCBaseValidatorTextField.h; sourceTree = "<group>"; };
 		F4F157A1195E8DB1009A33C8 /* VCBaseValidatorTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCBaseValidatorTextField.m; path = Controls/VCBaseValidatorTextField.m; sourceTree = "<group>"; };
 		F4F157A4195E976C009A33C8 /* Voco 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 8.xcdatamodel"; sourceTree = "<group>"; };
@@ -3240,8 +3241,6 @@
 				F4138C39196784C700C265CD /* VCGeoApi.m in Sources */,
 				F4354D76195D0D6A00C06CF7 /* MQShape.m in Sources */,
 				4FE712D6197369060071020C /* VCCarLicensePlateTextField.m in Sources */,
-				4F9ECEB919661C4A00AD4229 /* VCPaymentsViewController.m in Sources */,
-				4F9ECEB919661C4A00AD4229 /* VCRiderPaymentsViewController.m in Sources */,
 				4FC7591019AACFF50093DBEA /* VCDriverSubMenuItemTableViewCell.m in Sources */,
 				F4792AE619750975005AB652 /* lecore.m in Sources */,
 				F4354D77195D0D6A00C06CF7 /* VCRideRequest.m in Sources */,
@@ -3284,6 +3283,7 @@
 				F4354D8A195D0D6A00C06CF7 /* VCGeoObject.m in Sources */,
 				F4354D8B195D0D6A00C06CF7 /* VCLogin.m in Sources */,
 				F4354D8C195D0D6A00C06CF7 /* VCDevice.m in Sources */,
+				F4D8FE0319AAEDC600BC0B69 /* VCPaymentsViewController.m in Sources */,
 				F4354D8D195D0D6A00C06CF7 /* Ticket.m in Sources */,
 				F4A7C81219626DDE007E05AD /* VCFareIdentity.m in Sources */,
 				4FCD7C7919762465007609E8 /* VCDriverProfileViewController.m in Sources */,
@@ -3661,7 +3661,7 @@
 				INFOPLIST_FILE = "Voco Testing-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "Voco Testing";
-				PROVISIONING_PROFILE = "662EC7F9-BC44-4B2E-AC94-A1B56623847B";
+				PROVISIONING_PROFILE = "C0A4D2B1-CD69-4B82-B0AE-F36916D07441";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3688,7 +3688,7 @@
 				INFOPLIST_FILE = "Voco Testing-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "Voco Testing";
-				PROVISIONING_PROFILE = "662EC7F9-BC44-4B2E-AC94-A1B56623847B";
+				PROVISIONING_PROFILE = "C0A4D2B1-CD69-4B82-B0AE-F36916D07441";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -3955,6 +3955,7 @@
 		F4FA0BFB192BF6BF005D8645 /* Voco.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				F4D8FE0219AADE0600BC0B69 /* Voco 13.xcdatamodel */,
 				F4792AF01976301F005AB652 /* Voco 21.xcdatamodel */,
 				F4FE1B21193DCB6700354886 /* Voco 2.xcdatamodel */,
 				F473F012194FB1A000D8C900 /* Voco 3.xcdatamodel */,
@@ -3996,7 +3997,7 @@
 				F4B7BFAA19A2EF7400D934D6 /* Voco 11.xcdatamodel */,
 				F4FA0BFC192BF6BF005D8645 /* Voco.xcdatamodel */,
 			);
-			currentVersion = F4A7C8181962A430007E05AD /* Voco 12.xcdatamodel */;
+			currentVersion = F4A7C8191962ACE0007E05AD /* Voco 13.xcdatamodel */;
 			path = Voco.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

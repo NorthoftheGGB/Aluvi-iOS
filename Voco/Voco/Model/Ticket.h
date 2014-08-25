@@ -77,4 +77,7 @@
 - (CLLocation *) meetingPointLocation;
 - (CLLocation *) dropOffPointLocation;
 
+- (NSString *) shortRouteDescription;
+- (NSString *) routeDescription;
+
 @end

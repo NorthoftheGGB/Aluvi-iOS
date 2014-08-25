@@ -33,7 +33,7 @@
 - (void) setRiders:(NSArray *)riders {
     _riders = riders;
     NSArray * buttons = @[_riderCallButton1, _riderCallButton2, _riderCallButton3];
-    int count = [riders count];
+    long count = [riders count];
     int i = 0;
     for(; i<count; i++){
         Rider * rider = [riders objectAtIndex:i];

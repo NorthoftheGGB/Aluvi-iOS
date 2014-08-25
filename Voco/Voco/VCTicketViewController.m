@@ -231,7 +231,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripFulfilled:) name:kNotificationTypeTripFulfilled object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripFulfilled:) name:kNotificationTypeTripUnfulfilled object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fareComplete:) name:kNotificationTypeFareComplete object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fareCompleted:) name:kNotificationTypeFareComplete object:nil];
     
     
 }
@@ -1169,7 +1169,7 @@
         _fareDetailsView.dateLabel.text = [_ticket.pickupTime monthAndDay];
         _fareDetailsView.fareEarningsLabel.text = [NSString stringWithFormat:@"$%.0f", [_ticket.hovFare.estimatedEarnings floatValue] ];
         _fareDetailsView.driveDistanceLabel.text = @"";
-        _fareDetailsView.numberOfPeopleLabel.text = [NSString stringWithFormat:@"%d", [_ticket.hovFare.riders count] ];
+        _fareDetailsView.numberOfPeopleLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)[_ticket.hovFare.riders count] ];
         
         CGRect frame = _rideDetailsConfirmation.frame;
         frame.origin.x = 0;

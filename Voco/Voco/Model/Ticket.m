@@ -135,6 +135,10 @@
     return [NSString stringWithFormat:@"%@ to %@", self.originPlaceName, self.destinationPlaceName];
 }
 
+- (NSString *) shortRouteDescription {
+    return [NSString stringWithFormat:@"%@ to %@", self.originShortName, self.destinationShortName];
+}
+
 - (CLLocation *) originLocation {
     return [[CLLocation alloc] initWithLatitude:[self.originLatitude doubleValue] longitude: [self.originLongitude doubleValue] ];
 }
