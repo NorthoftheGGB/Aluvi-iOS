@@ -1,8 +1,8 @@
 //
-//  VCPaymentsViewController.h
+//  VCRiderPaymentsViewController.h
 //  Voco
 //
-//  Created by Elliott De Aratanha on 8/20/14.
+//  Created by Elliott De Aratanha on 7/3/14.
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
