@@ -210,11 +210,12 @@
         }
     } else if([type isEqualToString:kPushTypeRidePaymentProblems]){
         NSNumber * rideId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
+        [[VCDialogs instance] showRidePaymentProblem:rideId];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationTypeFareComplete object:payload userInfo:@{}];
+        
         if([[VCUserStateManager instance].underwayFareId isEqualToNumber:rideId]){
             [VCUserStateManager instance].underwayFareId = nil;
             [VCUserStateManager instance].rideProcessState = kUserStateIdle;
-            [[VCDialogs instance] showRidePaymentProblem:rideId];
-            [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationTypeFareComplete object:payload userInfo:@{}];
         }
     } else if([type isEqualToString:kPushTypeNoDriversAvailable]){
         [[NSNotificationCenter defaultCenter] postNotificationName:kPushTypeNoDriversAvailable object:payload userInfo:@{}];

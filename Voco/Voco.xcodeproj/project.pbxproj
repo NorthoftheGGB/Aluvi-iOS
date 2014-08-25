@@ -192,10 +192,10 @@
 		4F9ECEB219661C3400AD4229 /* VCCommuterPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEAF19661C3400AD4229 /* VCCommuterPassViewController.m */; };
 		4F9ECEB319661C3400AD4229 /* VCCommuterPassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB019661C3400AD4229 /* VCCommuterPassViewController.xib */; };
 		4F9ECEB419661C3400AD4229 /* VCCommuterPassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB019661C3400AD4229 /* VCCommuterPassViewController.xib */; };
-		4F9ECEB819661C4A00AD4229 /* VCRiderPaymentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB619661C4A00AD4229 /* VCRiderPaymentsViewController.m */; };
-		4F9ECEB919661C4A00AD4229 /* VCRiderPaymentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB619661C4A00AD4229 /* VCRiderPaymentsViewController.m */; };
-		4F9ECEBA19661C4A00AD4229 /* VCRiderPaymentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB719661C4A00AD4229 /* VCRiderPaymentsViewController.xib */; };
-		4F9ECEBB19661C4A00AD4229 /* VCRiderPaymentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB719661C4A00AD4229 /* VCRiderPaymentsViewController.xib */; };
+		4F9ECEB819661C4A00AD4229 /* VCPaymentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB619661C4A00AD4229 /* VCPaymentsViewController.m */; };
+		4F9ECEB919661C4A00AD4229 /* VCPaymentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB619661C4A00AD4229 /* VCPaymentsViewController.m */; };
+		4F9ECEBA19661C4A00AD4229 /* VCPaymentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB719661C4A00AD4229 /* VCPaymentsViewController.xib */; };
+		4F9ECEBB19661C4A00AD4229 /* VCPaymentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB719661C4A00AD4229 /* VCPaymentsViewController.xib */; };
 		4F9ECEBF196630D700AD4229 /* VCRiderRecieptDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEBD196630D700AD4229 /* VCRiderRecieptDetailViewController.m */; };
 		4F9ECEC0196630D700AD4229 /* VCRiderRecieptDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEBD196630D700AD4229 /* VCRiderRecieptDetailViewController.m */; };
 		4F9ECEC1196630D700AD4229 /* VCRiderRecieptDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9ECEBE196630D700AD4229 /* VCRiderRecieptDetailViewController.xib */; };
@@ -412,12 +412,6 @@
 		4FFCF2D719A5493500A4A24E /* VCReceiptsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFCF2D319A5493500A4A24E /* VCReceiptsViewController.xib */; };
 		4FFCF2D819A5493500A4A24E /* VCReceiptsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFCF2D319A5493500A4A24E /* VCReceiptsViewController.xib */; };
 		4FFCF2D919A5493500A4A24E /* VCReceiptsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFCF2D319A5493500A4A24E /* VCReceiptsViewController.xib */; };
-		4FFCF2DD19A54B0000A4A24E /* VCPaymentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCF2DB19A54B0000A4A24E /* VCPaymentsViewController.m */; };
-		4FFCF2DE19A54B0000A4A24E /* VCPaymentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCF2DB19A54B0000A4A24E /* VCPaymentsViewController.m */; };
-		4FFCF2DF19A54B0000A4A24E /* VCPaymentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCF2DB19A54B0000A4A24E /* VCPaymentsViewController.m */; };
-		4FFCF2E019A54B0000A4A24E /* VCPaymentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFCF2DC19A54B0000A4A24E /* VCPaymentsViewController.xib */; };
-		4FFCF2E119A54B0000A4A24E /* VCPaymentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFCF2DC19A54B0000A4A24E /* VCPaymentsViewController.xib */; };
-		4FFCF2E219A54B0000A4A24E /* VCPaymentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFCF2DC19A54B0000A4A24E /* VCPaymentsViewController.xib */; };
 		4FFE13901989AE09004D4413 /* VCLeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE138E1989AE09004D4413 /* VCLeftMenuViewController.m */; };
 		4FFE13911989AE09004D4413 /* VCLeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE138E1989AE09004D4413 /* VCLeftMenuViewController.m */; };
 		4FFE13921989AE09004D4413 /* VCLeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE138E1989AE09004D4413 /* VCLeftMenuViewController.m */; };
@@ -737,7 +731,7 @@
 		F4C6B223197F06B100F6C10B /* WRUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C0E1935976E00A94721 /* WRUtilities.m */; };
 		F4C6B224197F06B100F6C10B /* VCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641D91941607B0059BED1 /* VCTextField.m */; };
 		F4C6B225197F06B100F6C10B /* VCRideRequestCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C09193589A600A94721 /* VCRideRequestCreated.m */; };
-		F4C6B227197F06B100F6C10B /* VCRiderPaymentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB619661C4A00AD4229 /* VCRiderPaymentsViewController.m */; };
+		F4C6B227197F06B100F6C10B /* VCPaymentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB619661C4A00AD4229 /* VCPaymentsViewController.m */; };
 		F4C6B228197F06B100F6C10B /* VCDriverInterestedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8905219469F0F007C4671 /* VCDriverInterestedRequest.m */; };
 		F4C6B229197F06B100F6C10B /* VCSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641C71941584D0059BED1 /* VCSignUpViewController.m */; };
 		F4C6B22A197F06B100F6C10B /* NSDate+Pretty.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C10193597F500A94721 /* NSDate+Pretty.m */; };
@@ -789,7 +783,7 @@
 		F4C6B25A197F06B100F6C10B /* VCDriverRequestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641BE194157C60059BED1 /* VCDriverRequestViewController.xib */; };
 		F4C6B25B197F06B100F6C10B /* VCDriverRegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE629D9194FC6BB0070F797 /* VCDriverRegistrationViewController.xib */; };
 		F4C6B25C197F06B100F6C10B /* confirm-location-select.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286FF1962C52700FD8AF6 /* confirm-location-select.png */; };
-		F4C6B25D197F06B100F6C10B /* VCRiderPaymentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB719661C4A00AD4229 /* VCRiderPaymentsViewController.xib */; };
+		F4C6B25D197F06B100F6C10B /* VCPaymentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB719661C4A00AD4229 /* VCPaymentsViewController.xib */; };
 		F4C6B25E197F06B100F6C10B /* driving_car@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E5194168E80059BED1 /* driving_car@2x.png */; };
 		F4C6B25F197F06B100F6C10B /* scheduledrides-menu-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9AA1961391B006A1962 /* scheduledrides-menu-button-selected@2x.png */; };
 		F4C6B260197F06B100F6C10B /* zoom-ride-bounds@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286F41962BDB300FD8AF6 /* zoom-ride-bounds@2x.png */; };
@@ -1004,9 +998,9 @@
 		4F9ECEAE19661C3400AD4229 /* VCCommuterPassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCCommuterPassViewController.h; sourceTree = "<group>"; };
 		4F9ECEAF19661C3400AD4229 /* VCCommuterPassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCommuterPassViewController.m; sourceTree = "<group>"; };
 		4F9ECEB019661C3400AD4229 /* VCCommuterPassViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCCommuterPassViewController.xib; sourceTree = "<group>"; };
-		4F9ECEB519661C4A00AD4229 /* VCRiderPaymentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRiderPaymentsViewController.h; sourceTree = "<group>"; };
-		4F9ECEB619661C4A00AD4229 /* VCRiderPaymentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRiderPaymentsViewController.m; sourceTree = "<group>"; };
-		4F9ECEB719661C4A00AD4229 /* VCRiderPaymentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCRiderPaymentsViewController.xib; sourceTree = "<group>"; };
+		4F9ECEB519661C4A00AD4229 /* VCPaymentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPaymentsViewController.h; sourceTree = "<group>"; };
+		4F9ECEB619661C4A00AD4229 /* VCPaymentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPaymentsViewController.m; sourceTree = "<group>"; };
+		4F9ECEB719661C4A00AD4229 /* VCPaymentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCPaymentsViewController.xib; sourceTree = "<group>"; };
 		4F9ECEBC196630D700AD4229 /* VCRiderRecieptDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRiderRecieptDetailViewController.h; sourceTree = "<group>"; };
 		4F9ECEBD196630D700AD4229 /* VCRiderRecieptDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRiderRecieptDetailViewController.m; sourceTree = "<group>"; };
 		4F9ECEBE196630D700AD4229 /* VCRiderRecieptDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCRiderRecieptDetailViewController.xib; sourceTree = "<group>"; };
@@ -1151,9 +1145,6 @@
 		4FFCF2D119A5493500A4A24E /* VCReceiptsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCReceiptsViewController.h; sourceTree = "<group>"; };
 		4FFCF2D219A5493500A4A24E /* VCReceiptsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCReceiptsViewController.m; sourceTree = "<group>"; };
 		4FFCF2D319A5493500A4A24E /* VCReceiptsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCReceiptsViewController.xib; sourceTree = "<group>"; };
-		4FFCF2DA19A54B0000A4A24E /* VCPaymentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPaymentsViewController.h; sourceTree = "<group>"; };
-		4FFCF2DB19A54B0000A4A24E /* VCPaymentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPaymentsViewController.m; sourceTree = "<group>"; };
-		4FFCF2DC19A54B0000A4A24E /* VCPaymentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCPaymentsViewController.xib; sourceTree = "<group>"; };
 		4FFE138D1989AE09004D4413 /* VCLeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCLeftMenuViewController.h; path = ViewControllers/VCLeftMenuViewController.h; sourceTree = "<group>"; };
 		4FFE138E1989AE09004D4413 /* VCLeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCLeftMenuViewController.m; path = ViewControllers/VCLeftMenuViewController.m; sourceTree = "<group>"; };
 		4FFE138F1989AE09004D4413 /* VCLeftMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCLeftMenuViewController.xib; path = ViewControllers/VCLeftMenuViewController.xib; sourceTree = "<group>"; };
@@ -1568,9 +1559,6 @@
 				4F9ECEAE19661C3400AD4229 /* VCCommuterPassViewController.h */,
 				4F9ECEAF19661C3400AD4229 /* VCCommuterPassViewController.m */,
 				4F9ECEB019661C3400AD4229 /* VCCommuterPassViewController.xib */,
-				4F9ECEB519661C4A00AD4229 /* VCRiderPaymentsViewController.h */,
-				4F9ECEB619661C4A00AD4229 /* VCRiderPaymentsViewController.m */,
-				4F9ECEB719661C4A00AD4229 /* VCRiderPaymentsViewController.xib */,
 				4F9ECEBC196630D700AD4229 /* VCRiderRecieptDetailViewController.h */,
 				4F9ECEBD196630D700AD4229 /* VCRiderRecieptDetailViewController.m */,
 				4F9ECEBE196630D700AD4229 /* VCRiderRecieptDetailViewController.xib */,
@@ -1829,9 +1817,9 @@
 				4FFCF2BB19A25F2100A4A24E /* VCProfileViewController.h */,
 				4FFCF2BC19A25F2100A4A24E /* VCProfileViewController.m */,
 				4FFCF2BD19A25F2100A4A24E /* VCProfileViewController.xib */,
-				4FFCF2DA19A54B0000A4A24E /* VCPaymentsViewController.h */,
-				4FFCF2DB19A54B0000A4A24E /* VCPaymentsViewController.m */,
-				4FFCF2DC19A54B0000A4A24E /* VCPaymentsViewController.xib */,
+				4F9ECEB519661C4A00AD4229 /* VCPaymentsViewController.h */,
+				4F9ECEB619661C4A00AD4229 /* VCPaymentsViewController.m */,
+				4F9ECEB719661C4A00AD4229 /* VCPaymentsViewController.xib */,
 				4FFCF2D119A5493500A4A24E /* VCReceiptsViewController.h */,
 				4FFCF2D219A5493500A4A24E /* VCReceiptsViewController.m */,
 				4FFCF2D319A5493500A4A24E /* VCReceiptsViewController.xib */,
@@ -2553,7 +2541,6 @@
 				4FCD7C6319761C21007609E8 /* call-button-select@2x.png in Resources */,
 				4FE286EA1962B89700FD8AF6 /* current-location-arrow-select@2x.png in Resources */,
 				4F2EF9BA1961391B006A1962 /* scheduledrides-menu-button-selected@2x.png in Resources */,
-				4FFCF2E119A54B0000A4A24E /* VCPaymentsViewController.xib in Resources */,
 				4F184A391992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.xib in Resources */,
 				4FCBFBEB1995F21300CBF0C8 /* devon@2x.png in Resources */,
 				F4354DAA195D0D6A00C06CF7 /* signup_box@2x.png in Resources */,
@@ -2562,7 +2549,7 @@
 				4FCBFBDD1995847300CBF0C8 /* driver-hov-toggle@2x.png in Resources */,
 				4F184A281991E156006EA959 /* VCSubMenuItemTableViewCell.xib in Resources */,
 				4F1849ED198F67A4006EA959 /* driver-call-hud-icon-select@2x.png in Resources */,
-				4F9ECEBB19661C4A00AD4229 /* VCRiderPaymentsViewController.xib in Resources */,
+				4F9ECEBB19661C4A00AD4229 /* VCPaymentsViewController.xib in Resources */,
 				4F2EF9C41961391B006A1962 /* tutorial-menu-button-selected@2x.png in Resources */,
 				4FDB0EC91970AC8200A8CEC2 /* colors_03.png in Resources */,
 				4F2EF99E1960D280006A1962 /* VCDriverHomeViewController.xib in Resources */,
@@ -2725,7 +2712,6 @@
 				4F3DB5B91981ED4E00DDD094 /* current-location-button-selected@2x.png in Resources */,
 				4FC758F419AA95720093DBEA /* reciept_expanded@2x.png in Resources */,
 				F4C6B248197F06B100F6C10B /* loginBox@2x.png in Resources */,
-				4FFCF2E019A54B0000A4A24E /* VCPaymentsViewController.xib in Resources */,
 				F4C6B249197F06B100F6C10B /* KlinicSlabLight.ttf in Resources */,
 				F4C6B24A197F06B100F6C10B /* driver-request-form@2x.png in Resources */,
 				F4C6B24B197F06B100F6C10B /* VCDebugViewController.xib in Resources */,
@@ -2756,7 +2742,7 @@
 				F4C6B25B197F06B100F6C10B /* VCDriverRegistrationViewController.xib in Resources */,
 				F4C6B25C197F06B100F6C10B /* confirm-location-select.png in Resources */,
 				4F35FA9319A7B8BE004FB423 /* background@2x.png in Resources */,
-				F4C6B25D197F06B100F6C10B /* VCRiderPaymentsViewController.xib in Resources */,
+				F4C6B25D197F06B100F6C10B /* VCPaymentsViewController.xib in Resources */,
 				F4C6B25E197F06B100F6C10B /* driving_car@2x.png in Resources */,
 				F4C6B25F197F06B100F6C10B /* scheduledrides-menu-button-selected@2x.png in Resources */,
 				4F1849F91991753F006EA959 /* menu-mycar-icon@2x.png in Resources */,
@@ -2882,7 +2868,6 @@
 				4F3DB5BB1981ED4E00DDD094 /* current-location-button-selected@2x.png in Resources */,
 				4FE641F5194168E80059BED1 /* loginBox@2x.png in Resources */,
 				4FC758F619AA95720093DBEA /* reciept_expanded@2x.png in Resources */,
-				4FFCF2E219A54B0000A4A24E /* VCPaymentsViewController.xib in Resources */,
 				4F37E2DD1949574000753172 /* KlinicSlabLight.ttf in Resources */,
 				4FF142D6195CE4BD00CC61B6 /* driver-request-form@2x.png in Resources */,
 				F4A7C80C19625237007E05AD /* VCDebugViewController.xib in Resources */,
@@ -2913,7 +2898,7 @@
 				4FE641C0194157C60059BED1 /* VCDriverRequestViewController.xib in Resources */,
 				4FE629DB194FC6BB0070F797 /* VCDriverRegistrationViewController.xib in Resources */,
 				4FE287011962C52800FD8AF6 /* confirm-location-select.png in Resources */,
-				4F9ECEBA19661C4A00AD4229 /* VCRiderPaymentsViewController.xib in Resources */,
+				4F9ECEBA19661C4A00AD4229 /* VCPaymentsViewController.xib in Resources */,
 				4FE641F2194168E80059BED1 /* driving_car@2x.png in Resources */,
 				4F2EF9B91961391B006A1962 /* scheduledrides-menu-button-selected@2x.png in Resources */,
 				4F1849FB1991753F006EA959 /* menu-mycar-icon@2x.png in Resources */,
@@ -3207,7 +3192,6 @@
 				4FCBFBF41996264B00CBF0C8 /* VCDriveDetailsView.m in Sources */,
 				F4354D6F195D0D6A00C06CF7 /* VCSignInViewController.m in Sources */,
 				F4354D70195D0D6A00C06CF7 /* VCDevicesApi.m in Sources */,
-				4FFCF2DE19A54B0000A4A24E /* VCPaymentsViewController.m in Sources */,
 				4FC758DB19AA94C30093DBEA /* VCPasswordRecoveryViewController.m in Sources */,
 				F4354D71195D0D6A00C06CF7 /* Fare.m in Sources */,
 				F4354D72195D0D6A00C06CF7 /* VCNewUser.m in Sources */,
@@ -3225,7 +3209,7 @@
 				F4138C39196784C700C265CD /* VCGeoApi.m in Sources */,
 				F4354D76195D0D6A00C06CF7 /* MQShape.m in Sources */,
 				4FE712D6197369060071020C /* VCCarLicensePlateTextField.m in Sources */,
-				4F9ECEB919661C4A00AD4229 /* VCRiderPaymentsViewController.m in Sources */,
+				4F9ECEB919661C4A00AD4229 /* VCPaymentsViewController.m in Sources */,
 				F4792AE619750975005AB652 /* lecore.m in Sources */,
 				F4354D77195D0D6A00C06CF7 /* VCRideRequest.m in Sources */,
 				F4354D78195D0D6A00C06CF7 /* VCPushReceiver.m in Sources */,
@@ -3379,7 +3363,6 @@
 				F4C6B1FB197F06B100F6C10B /* VCCommuterHud.m in Sources */,
 				F4B7BFAB19A3035C00D934D6 /* VCTransitBaseViewController.m in Sources */,
 				F4C6B1FC197F06B100F6C10B /* VCDriverRecieptDetailViewController.m in Sources */,
-				4FFCF2DD19A54B0000A4A24E /* VCPaymentsViewController.m in Sources */,
 				4F184A351992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.m in Sources */,
 				F4C6B1FD197F06B100F6C10B /* VCInterfaceManager.m in Sources */,
 				F4F6B8BE19A9ADEF004312A1 /* HVTableView.m in Sources */,
@@ -3429,7 +3412,7 @@
 				4FFCF2CB19A5381900A4A24E /* VCSupportViewController.m in Sources */,
 				4FC758C819AA91410093DBEA /* VCDriverOnBoardingViewController.m in Sources */,
 				F4C6B225197F06B100F6C10B /* VCRideRequestCreated.m in Sources */,
-				F4C6B227197F06B100F6C10B /* VCRiderPaymentsViewController.m in Sources */,
+				F4C6B227197F06B100F6C10B /* VCPaymentsViewController.m in Sources */,
 				F4C6B228197F06B100F6C10B /* VCDriverInterestedRequest.m in Sources */,
 				4F3DB5C91981F6F400DDD094 /* VCRideDetailsView.m in Sources */,
 				F4C6B229197F06B100F6C10B /* VCSignUpViewController.m in Sources */,
@@ -3488,7 +3471,6 @@
 				4FE712D5197369060071020C /* VCCarLicensePlateTextField.m in Sources */,
 				F473F02019511D7700D8C900 /* VCDevicesApi.m in Sources */,
 				F4C6B1B71979229900F6C10B /* VCDebug.m in Sources */,
-				4FFCF2DF19A54B0000A4A24E /* VCPaymentsViewController.m in Sources */,
 				4FC758DC19AA94C30093DBEA /* VCPasswordRecoveryViewController.m in Sources */,
 				F4FE1AFE193839DF00354886 /* Fare.m in Sources */,
 				F4D8904A19468E44007C4671 /* VCNewUser.m in Sources */,
@@ -3566,7 +3548,7 @@
 				F45F7C0F1935976E00A94721 /* WRUtilities.m in Sources */,
 				4FE641DA1941607B0059BED1 /* VCTextField.m in Sources */,
 				F45F7C0A193589A600A94721 /* VCRideRequestCreated.m in Sources */,
-				4F9ECEB819661C4A00AD4229 /* VCRiderPaymentsViewController.m in Sources */,
+				4F9ECEB819661C4A00AD4229 /* VCPaymentsViewController.m in Sources */,
 				F4D8905319469F0F007C4671 /* VCDriverInterestedRequest.m in Sources */,
 				4F3DB5CB1981F6F400DDD094 /* VCRideDetailsView.m in Sources */,
 				F4F6B8C019A9ADEF004312A1 /* HVTableView.m in Sources */,

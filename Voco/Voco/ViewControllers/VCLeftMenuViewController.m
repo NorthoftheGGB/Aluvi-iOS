@@ -74,9 +74,10 @@
     if (self) {
         
         if([[VCUserStateManager instance] isHovDriver]){
-            _tableCellList = [NSMutableArray arrayWithArray: @[kUserInfoCell, kScheduleCell, kMapCell, kPaymentCell, kReceiptsCell, kSupportCell ]];
-        } else {
             _tableCellList = [NSMutableArray arrayWithArray: @[kUserInfoCell, kScheduleCell, kMapCell, kDriverSettingsCell, kPaymentCell, kReceiptsCell, kSupportCell ]];
+            
+        } else {
+            _tableCellList = [NSMutableArray arrayWithArray: @[kUserInfoCell, kScheduleCell, kMapCell, kPaymentCell, kReceiptsCell, kSupportCell ]];
         }
         _selectedCellTag = -1;
     }
