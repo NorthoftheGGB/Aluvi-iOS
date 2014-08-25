@@ -176,8 +176,6 @@
 
 + (void) handleRemoteNotification:(NSDictionary *) payload {
     
-    
-    
     NSString * type = [payload objectForKey:VC_PUSH_TYPE_KEY];
     if ([type isEqualToString:kPushTypeRideFound]){
         [self handleRideFoundNotification: payload];
@@ -185,28 +183,32 @@
         [self handleFareAssignedNotification: payload];
     } else if ([type isEqualToString:kPushTypeFareCancelledByRider]){
         NSNumber * rideId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
+        [[VCDialogs instance] rideCancelledByRider];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kPushTypeFareCancelledByRider object:rideId userInfo:@{}];
+        
         if([[VCUserStateManager instance].underwayFareId isEqualToNumber:rideId]){
-            [[VCDialogs instance] rideCancelledByRider];
             [VCUserStateManager instance].underwayFareId = nil;
             [VCUserStateManager instance].driveProcessState = kUserStateIdle;
-            [[NSNotificationCenter defaultCenter] postNotificationName:kPushTypeFareCancelledByRider object:rideId userInfo:@{}];
         }
     } else if([type isEqualToString:kPushTypeFareCancelledByDriver]){
         NSNumber * rideId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
+        [[VCDialogs instance] rideCancelledByDriver];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kPushTypeFareCancelledByDriver object:payload userInfo:@{}];
+
         if([[VCUserStateManager instance].underwayFareId isEqualToNumber:rideId]){
-            [[VCDialogs instance] rideCancelledByDriver];
             [VCUserStateManager instance].underwayFareId = nil;
             [VCUserStateManager instance].rideProcessState = kUserStateIdle;
-            [[NSNotificationCenter defaultCenter] postNotificationName:kPushTypeFareCancelledByDriver object:payload userInfo:@{}];
         }
     } else if([type isEqualToString:kPushTypeRideReceipt]){
         NSNumber * rideId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
         NSNumber * amount = [payload objectForKey:VC_PUSH_AMOUNT_KEY];
+        [[VCDialogs instance] showRideReceipt:rideId amount:amount];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationTypeFareComplete object:payload userInfo:@{}];
+        
         if([[VCUserStateManager instance].underwayFareId isEqualToNumber:rideId]){
             [VCUserStateManager instance].underwayFareId = nil;
             [VCUserStateManager instance].rideProcessState = kUserStateIdle;
-            [[VCDialogs instance] showRideReceipt:rideId amount:amount];
-            [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationTypeFareComplete object:payload userInfo:@{}];
+
         }
     } else if([type isEqualToString:kPushTypeRidePaymentProblems]){
         NSNumber * rideId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];

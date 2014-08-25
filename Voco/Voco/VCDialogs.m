@@ -148,7 +148,7 @@ static VCDialogs *sharedSingleton;
                                 @"Thanks for riding.  We have charged your card for a total of %@",
                                  [VCUtilities formatCurrencyFromCents:amount]]
              cancelButtonTitle:@"OK"
-             otherButtonTitles:@[@"Detailed Receipt"]
+             otherButtonTitles:nil // @[@"Detailed Receipt"]
                       tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                           [VCUserStateManager instance].rideProcessState = kUserStateIdle;
                           if (buttonIndex != 0){

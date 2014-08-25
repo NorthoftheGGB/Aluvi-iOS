@@ -28,8 +28,7 @@
 #define kPushTypeTripFulfilled @"trip_fulfilled"
 #define kPushTypeTripUnfulfilled @"trip_unfulfilled"
 
-// Internal Notifications
-#define kNotificationTypeFareComplete @"fare_complete"
+
 
 @interface VCPushApi : NSObject
 

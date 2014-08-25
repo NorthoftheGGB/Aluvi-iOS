@@ -231,7 +231,9 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripFulfilled:) name:kNotificationTypeTripFulfilled object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripFulfilled:) name:kNotificationTypeTripUnfulfilled object:nil];
-
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fareComplete:) name:kNotificationTypeFareComplete object:nil];
+    
+    
 }
 
 - (void) viewWillDisppear:(BOOL)animated{
@@ -242,39 +244,37 @@
 - (void) tripFulfilled:(NSNotification *) notification {
     NSDictionary * payload = notification.object;
     NSNumber * tripId = [payload objectForKey:VC_PUSH_TRIP_ID_KEY];
-    //if(_ride == nil || [_ride.trip_id isEqualToNumber:tripId]) {
-    NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"trip_id = %@", tripId];
-    [fetch setPredicate:predicate];
-    NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];
-    [fetch setSortDescriptors:@[sort]];
-    NSError * error;
-    NSArray * ridesForTrip = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
-    if(ridesForTrip == nil){
-        [WRUtilities criticalError:error];
-        return;
+    if(_ticket == nil || [_ticket.trip_id isEqualToNumber:tripId]) {
+        NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
+        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"trip_id = %@", tripId];
+        [fetch setPredicate:predicate];
+        NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];
+        [fetch setSortDescriptors:@[sort]];
+        NSError * error;
+        NSArray * ridesForTrip = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
+        if(ridesForTrip == nil){
+            [WRUtilities criticalError:error];
+            return;
+        }
+        _ticket = [ridesForTrip objectAtIndex:0];
+        [self showInterfaceForRide];
     }
-    _ticket = [ridesForTrip objectAtIndex:0];
-    [self showInterfaceForRide];
-    //}
 }
 
 - (void) tripUnfulfilled:(NSNotification *) notification {
     NSDictionary * payload = notification.object;
     NSNumber * tripId = [payload objectForKey:VC_PUSH_TRIP_ID_KEY];
-    //if(_ride == nil || [_ride.trip_id isEqualToNumber:tripId]) {
-    NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"trip_id = %@", tripId];
-    [fetch setPredicate:predicate];
-    NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];
-    [fetch setSortDescriptors:@[sort]];
-    NSError * error;
-    NSArray * ridesForTrip = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
-    if(ridesForTrip == nil){
-        [WRUtilities criticalError:error];
-        return;
+    if( [_ticket.trip_id isEqualToNumber:tripId]) {
+        [self resetInterfaceToHome];
     }
-    [self resetInterfaceToHome];
+}
+
+- (void) fareCompleted:(NSNotification *) notification {
+    NSDictionary * payload = notification.object;
+    NSNumber * fareId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
+    if(_ticket != nil && [fareId isEqualToNumber:_ticket.fare_id]){
+        [self resetInterfaceToHome];
+    }
 }
 
 - (void)didReceiveMemoryWarning
