@@ -1154,11 +1154,11 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Py0-5b-pY6" customClass="VCLabelBold">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Py0-5b-pY6" customClass="VCLabelBold">
                     <rect key="frame" x="25" y="17" width="72" height="51"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="45" id="JsU-pa-9sv"/>
+                        <constraint firstAttribute="height" constant="51" id="JsU-pa-9sv"/>
                         <constraint firstAttribute="width" constant="72" id="bhd-b0-R9t"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="42"/>
