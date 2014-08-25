@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VCScrollableFormViewController.h"
 
-@interface VCRiderOnBoardingViewController : UIViewController
+@interface VCRiderOnBoardingViewController : VCScrollableFormViewController
 
 @end
