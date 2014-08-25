@@ -7,8 +7,10 @@
 //
 
 #import "VCReceiptTableViewCell.h"
+#import "VCLabel.h"
 
 @implementation VCReceiptTableViewCell
+
 
 - (void)awakeFromNib
 {

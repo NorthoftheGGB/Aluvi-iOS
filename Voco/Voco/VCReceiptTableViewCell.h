@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VCLabel.h"
+
 
 @interface VCReceiptTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet VCLabel *dateLabel;
+@property (weak, nonatomic) IBOutlet VCLabel *titleLabel;
 
 @end

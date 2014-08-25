@@ -266,6 +266,9 @@
 		4FC758FA19AA9B570093DBEA /* VCCenterViewBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758F819AA9B570093DBEA /* VCCenterViewBaseViewController.m */; };
 		4FC758FB19AA9B570093DBEA /* VCCenterViewBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758F819AA9B570093DBEA /* VCCenterViewBaseViewController.m */; };
 		4FC758FC19AA9B570093DBEA /* VCCenterViewBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758F819AA9B570093DBEA /* VCCenterViewBaseViewController.m */; };
+		4FC7590119AAC0770093DBEA /* receipt-down-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FC7590019AAC0770093DBEA /* receipt-down-arrow@2x.png */; };
+		4FC7590219AAC0770093DBEA /* receipt-down-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FC7590019AAC0770093DBEA /* receipt-down-arrow@2x.png */; };
+		4FC7590319AAC0770093DBEA /* receipt-down-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FC7590019AAC0770093DBEA /* receipt-down-arrow@2x.png */; };
 		4FCBFBD91995847300CBF0C8 /* driver-hov-toggle-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBFBD51995847300CBF0C8 /* driver-hov-toggle-select@2x.png */; };
 		4FCBFBDA1995847300CBF0C8 /* driver-hov-toggle-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBFBD51995847300CBF0C8 /* driver-hov-toggle-select@2x.png */; };
 		4FCBFBDB1995847300CBF0C8 /* driver-hov-toggle-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBFBD51995847300CBF0C8 /* driver-hov-toggle-select@2x.png */; };
@@ -1048,6 +1051,7 @@
 		4FC758F319AA95720093DBEA /* reciept_expanded@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reciept_expanded@2x.png"; sourceTree = "<group>"; };
 		4FC758F719AA9B570093DBEA /* VCCenterViewBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCCenterViewBaseViewController.h; sourceTree = "<group>"; };
 		4FC758F819AA9B570093DBEA /* VCCenterViewBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCenterViewBaseViewController.m; sourceTree = "<group>"; };
+		4FC7590019AAC0770093DBEA /* receipt-down-arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "receipt-down-arrow@2x.png"; sourceTree = "<group>"; };
 		4FCBFBD51995847300CBF0C8 /* driver-hov-toggle-select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "driver-hov-toggle-select@2x.png"; sourceTree = "<group>"; };
 		4FCBFBD61995847300CBF0C8 /* driver-hov-toggle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "driver-hov-toggle@2x.png"; sourceTree = "<group>"; };
 		4FCBFBD71995847300CBF0C8 /* menu-submenu-arrow-select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-submenu-arrow-select@2x.png"; sourceTree = "<group>"; };
@@ -1643,6 +1647,7 @@
 		4FDB0ECA1970B0F000A8CEC2 /* Revision 2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				4FC7590019AAC0770093DBEA /* receipt-down-arrow@2x.png */,
 				4FC758F319AA95720093DBEA /* reciept_expanded@2x.png */,
 				4FC758AE19AA8BBC0093DBEA /* toc-checked@2x.png */,
 				4FC758A619AA88330093DBEA /* profile-button@-select@2x.png */,
@@ -2632,6 +2637,7 @@
 				4F73CA08197F2AB0001B6663 /* VCTicketViewController.xib in Resources */,
 				4FC758BA19AA8C270093DBEA /* VCLogInViewController.xib in Resources */,
 				4FCD7C8B19775C5C007609E8 /* VCDriverRecieptDetailViewController.xib in Resources */,
+				4FC7590219AAC0770093DBEA /* receipt-down-arrow@2x.png in Resources */,
 				F4354DBA195D0D6A00C06CF7 /* map_pin_fill-512.png in Resources */,
 				4F2EF9C01961391B006A1962 /* terms-menu-button-selected@2x.png in Resources */,
 				4FCBFBDA1995847300CBF0C8 /* driver-hov-toggle-select@2x.png in Resources */,
@@ -2792,6 +2798,7 @@
 				F4C6B26E197F06B100F6C10B /* VCPasswordRecoveryViewController.xib in Resources */,
 				F4C6B26F197F06B100F6C10B /* KlinicSlabMediumIt.ttf in Resources */,
 				4FC758DD19AA94C30093DBEA /* VCPasswordRecoveryViewController.xib in Resources */,
+				4FC7590119AAC0770093DBEA /* receipt-down-arrow@2x.png in Resources */,
 				4FCBFBDC1995847300CBF0C8 /* driver-hov-toggle@2x.png in Resources */,
 				4F1849E8198F625A006EA959 /* driver-cancel-hud-icon@2x.png in Resources */,
 				F4C6B270197F06B100F6C10B /* login_form@2x.png in Resources */,
@@ -2950,6 +2957,7 @@
 				4FCBFBDE1995847300CBF0C8 /* driver-hov-toggle@2x.png in Resources */,
 				4F1849EA198F625A006EA959 /* driver-cancel-hud-icon@2x.png in Resources */,
 				4FC758DF19AA94C30093DBEA /* VCPasswordRecoveryViewController.xib in Resources */,
+				4FC7590319AAC0770093DBEA /* receipt-down-arrow@2x.png in Resources */,
 				4FE641F4194168E80059BED1 /* login_form@2x.png in Resources */,
 				4F2EF9D819614115006A1962 /* scheduledfares-menu-button-selected@2x.png in Resources */,
 				4F1849FE1991753F006EA959 /* menu-payments-icon@2x.png in Resources */,
