@@ -8,8 +8,6 @@
             <connections>
                 <outlet property="STPViewContainer" destination="ow9-e5-77P" id="gaI-ys-enk"/>
                 <outlet property="cardInfoLabel" destination="Rr2-NZ-LtM" id="8b5-gJ-UsH"/>
-                <outlet property="recieptListTableView" destination="z10-B9-CJ4" id="yR4-ig-Blj"/>
-                <outlet property="tableView" destination="z10-B9-CJ4" id="Hfl-m3-Haf"/>
                 <outlet property="updateCardButton" destination="ETd-Ez-9HB" id="PML-Gb-BFy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -59,33 +57,6 @@
                         <action selector="didTapUpdate:" destination="-1" eventType="touchUpInside" id="rDz-bV-0Ur"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Receipts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBh-ka-Fjl" customClass="VCLabelBold">
-                    <rect key="frame" x="20" y="250" width="66" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="B3z-Mg-J5D"/>
-                        <constraint firstAttribute="width" constant="66" id="SeE-li-rwV"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <nil key="highlightedColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="14"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="z10-B9-CJ4">
-                    <rect key="frame" x="10" y="279" width="300" height="201"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="201" id="vO1-cA-gQG"/>
-                    </constraints>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="fWr-Qt-AFw"/>
-                        <outlet property="delegate" destination="-1" id="Vuq-Uc-nre"/>
-                    </connections>
-                </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ow9-e5-77P">
                     <rect key="frame" x="0.0" y="102" width="320" height="69"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -104,18 +75,12 @@
             <constraints>
                 <constraint firstItem="ow9-e5-77P" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0fS-Pl-d1P"/>
                 <constraint firstItem="ow9-e5-77P" firstAttribute="top" secondItem="lHS-X1-zpQ" secondAttribute="bottom" constant="8" symbolic="YES" id="5YZ-Hn-EK9"/>
-                <constraint firstItem="z10-B9-CJ4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="FZy-uc-67t"/>
-                <constraint firstAttribute="trailing" secondItem="z10-B9-CJ4" secondAttribute="trailing" constant="10" id="Id9-6d-EoQ"/>
                 <constraint firstItem="ETd-Ez-9HB" firstAttribute="top" secondItem="ow9-e5-77P" secondAttribute="bottom" constant="20" id="OGp-FT-kwg"/>
-                <constraint firstItem="iBh-ka-Fjl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="SlB-IW-gCY"/>
-                <constraint firstAttribute="bottom" secondItem="z10-B9-CJ4" secondAttribute="bottom" id="SrL-Ge-FBP"/>
                 <constraint firstItem="ETd-Ez-9HB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="53" id="Y8c-Uc-Did"/>
-                <constraint firstItem="iBh-ka-Fjl" firstAttribute="top" secondItem="ETd-Ez-9HB" secondAttribute="bottom" constant="29" id="a3p-Lo-Mx4"/>
+                <constraint firstItem="ETd-Ez-9HB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="191" id="cSX-02-N4J"/>
                 <constraint firstItem="lHS-X1-zpQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="73" id="gfQ-0c-otn"/>
                 <constraint firstAttribute="trailing" secondItem="ow9-e5-77P" secondAttribute="trailing" id="q5v-2X-QZz"/>
                 <constraint firstItem="lHS-X1-zpQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="58" id="qBq-XX-Q6l"/>
-                <constraint firstItem="z10-B9-CJ4" firstAttribute="top" secondItem="iBh-ka-Fjl" secondAttribute="bottom" constant="8" symbolic="YES" id="sEU-zN-hWs"/>
-                <constraint firstItem="iBh-ka-Fjl" firstAttribute="top" secondItem="ow9-e5-77P" secondAttribute="bottom" constant="79" id="vFo-RG-JtQ"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>

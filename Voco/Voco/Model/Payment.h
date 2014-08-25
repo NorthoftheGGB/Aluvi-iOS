@@ -24,7 +24,7 @@
 @property (nonatomic, retain) NSString * motive;
 @property (nonatomic, retain) Driver *driver;
 @property (nonatomic, retain) Fare *fare;
-@property (nonatomic, retain) Ticket *ride;
+@property (nonatomic, retain) Ticket *ticket;
 
 + (void)createMappings:(RKObjectManager *)objectManager;
 

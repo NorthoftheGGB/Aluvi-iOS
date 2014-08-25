@@ -12,6 +12,8 @@
 #import "VCInterfaceManager.h"
 #import "VCProfileViewController.h"
 #import "VCSupportViewController.h"
+#import "VCPaymentsViewController.h"
+#import "VCReceiptsViewController.h"
 #import "VCMenuItemTableViewCell.h"
 #import "VCMenuUserInfoTableViewCell.h"
 #import "VCMenuDriverClockOnTableViewCell.h"
@@ -62,6 +64,7 @@
 @property (nonatomic, strong) NSMutableArray * tableCellList;
 @property (nonatomic, strong) NSArray * scheduleItems;
 @property (nonatomic, strong) NSMutableArray * scheduleItemsList;
+@property (nonatomic) NSInteger notificationCount;
 
 @property (nonatomic) NSUInteger selectedCellTag;
 @end
@@ -80,6 +83,9 @@
             _tableCellList = [NSMutableArray arrayWithArray: @[kUserInfoCell, kScheduleCell, kMapCell, kPaymentCell, kReceiptsCell, kSupportCell ]];
         }
         _selectedCellTag = -1;
+        
+        [self countNotificaitons];
+
     }
     return self;
 }
@@ -102,7 +108,20 @@
     // just reload the table ?
     [self hideScheduleItems];
     [self showScheduleItems];
+    [self countNotificaitons];
     [_tableView reloadData];
+}
+
+- (void) countNotificaitons {
+    NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"savedState IN %@ AND confirmed = %@", @[kScheduledState], [NSNumber numberWithBool:NO]];
+    [fetch setPredicate:predicate];
+    NSError * error;
+    NSArray * pending = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
+    if(pending == nil){
+        [WRUtilities criticalError:error];
+    }
+    _notificationCount = [pending count];
 }
 
 - (void)didReceiveMemoryWarning
@@ -146,7 +165,8 @@
     switch(tag){
             
         case kUserInfoCellInteger:
-        { VCMenuUserInfoTableViewCell * menuUserInfoCell = [WRUtilities getViewFromNib:@"VCMenuUserInfoTableViewCell" class:[VCMenuUserInfoTableViewCell class]];
+        {
+            VCMenuUserInfoTableViewCell * menuUserInfoCell = [WRUtilities getViewFromNib:@"VCMenuUserInfoTableViewCell" class:[VCMenuUserInfoTableViewCell class]];
             
             //TODO: This is a placeholder image, replace it with relevant string!
             
@@ -179,6 +199,13 @@
             menuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-schedule-icon"];
             menuItemTableViewCell.menuItemLabel.text = @"Schedule";
             menuItemTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            if(_notificationCount > 0) {
+                menuItemTableViewCell.badgeView.hidden = NO;
+                menuItemTableViewCell.badgeNumberLabel.text = [NSString stringWithFormat:@"%ld", (long)_notificationCount];
+            } else {
+                menuItemTableViewCell.badgeView.hidden = YES;
+
+            }
             cell = menuItemTableViewCell;
         }
             break;
@@ -395,6 +422,24 @@
             }
         }
             break;
+            
+        case kPaymentCellInteger:
+        {
+            VCPaymentsViewController * vc = [[VCPaymentsViewController alloc] init];
+            [[VCInterfaceManager instance] setCenterViewControllers: @[vc]];
+            VCMenuItemTableViewCell * cell = (VCMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
+            [cell select];
+        }
+            break;
+            
+        case kReceiptsCellInteger:
+        {
+            VCReceiptsViewController * vc = [[VCReceiptsViewController alloc] init];
+            [[VCInterfaceManager instance] setCenterViewControllers: @[vc]];
+            VCMenuItemTableViewCell * cell = (VCMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
+            [cell select];
+        }
+            break;
         
         case kSupportCellInteger:
         {
@@ -454,16 +499,18 @@
         [_scheduleItemsList addObject:kScheduleItemCell];
     }
     
-    long index = [_tableCellList indexOfObject:kScheduleCell];
-    NSRange range;
-    range.location = index + 1;
-    range.length = [_scheduleItemsList count];
-    [_tableCellList insertObjects:_scheduleItemsList atIndexes:[NSIndexSet indexSetWithIndexesInRange:range]];
+ 
 
 }
 
 - (void) showScheduleItems {
     [self loadScheduleItems];
+    
+    long index = [_tableCellList indexOfObject:kScheduleCell];
+    NSRange range;
+    range.location = index + 1;
+    range.length = [_scheduleItemsList count];
+    [_tableCellList insertObjects:_scheduleItemsList atIndexes:[NSIndexSet indexSetWithIndexesInRange:range]];
     
     if([_scheduleItems count] > 0) {
         

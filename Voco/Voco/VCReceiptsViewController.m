@@ -8,10 +8,18 @@
 
 #import "VCReceiptsViewController.h"
 #import "HVTableView.h"
+#import "VCUtilities.h"
+#import "Payment.h"
+#import "Ticket.h"
+#import "Driver.h"
+#import "VCReceiptTableViewCell.h"
+#import "VCReceiptExpandedTableViewCell.h"
+#import "NSDate+Pretty.h"
 
-@interface VCReceiptsViewController () <HVTableViewDataSource, HVTableViewDelegate>
+@interface VCReceiptsViewController () <HVTableViewDataSource, HVTableViewDelegate, NSFetchedResultsControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet HVTableView *hvTableView;
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
 @end
 
@@ -28,10 +36,20 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
     _hvTableView.HVTableViewDelegate = self;
     _hvTableView.HVTableViewDataSource = self;
     _hvTableView.expandOnlyOneCell = YES;
+    [super viewDidLoad];
+
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSError *error;
+	if (![[self fetchedResultsController] performFetch:&error]) {
+		[WRUtilities criticalError:error];
+	}
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,21 +58,162 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSFetchedResultsController *)fetchedResultsController {
+    
+    if (_fetchedResultsController != nil) {
+        return _fetchedResultsController;
+    }
+    
+    NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Payment"];
+    
+    NSSortDescriptor *sort = [[NSSortDescriptor alloc]
+                              initWithKey:@"createdAt" ascending:NO];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
+    
+    [fetchRequest setFetchBatchSize:20];
+    
+    NSFetchedResultsController *theFetchedResultsController =
+    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                        managedObjectContext:[VCCoreData managedObjectContext] sectionNameKeyPath:nil
+                                                   cacheName:nil];
+    self.fetchedResultsController = theFetchedResultsController;
+    _fetchedResultsController.delegate = self;
+    
+    return _fetchedResultsController;
+    
+}
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    id  sectionInfo =
+    [[_fetchedResultsController sections] objectAtIndex:section];
+    NSInteger numberOfRows = [sectionInfo numberOfObjects];
+    return numberOfRows;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath isExpanded:(BOOL)isExpanded {
-    return 0;
+    if(isExpanded){
+        return 369;
+    } else {
+        return 61;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath isExpanded:(BOOL)isExpanded {
     
-    return nil;
+   // static NSString *CollapsedCellIdentifier = @"CollapsedCell";
+   // static NSString *ExpandedCellIdentifier = @"ExpandedCell";
+
+    Payment *payment = [_fetchedResultsController objectAtIndexPath:indexPath];
+    UITableViewCell *cell;
+    if(isExpanded) {
+        VCReceiptExpandedTableViewCell * receiptCell = [WRUtilities getViewFromNib:@"VCReceiptExpandedTableViewCell" class:[VCReceiptExpandedTableViewCell class]];
+        receiptCell.dateTopLabel.text =  [payment.createdAt typicalDate];
+        receiptCell.dateDetailLabel.text =  [payment.createdAt typicalDate];
+        receiptCell.totalFareAmountLabel.text = [NSString stringWithFormat:@"%.2f", [payment.amountCents doubleValue] / 100];
+        receiptCell.rideNumberLabel.text = [payment.ticket.ride_id stringValue];
+        receiptCell.rideNumberLabel.text = [payment.ticket.driver fullName];
+        receiptCell.directionLabel.text = [payment.ticket shortRouteDescription];
+        cell = receiptCell;
+
+    } else {
+        //VCReceiptTableViewCell * receiptCell = [tableView dequeueReusableCellWithIdentifier:CollapsedCellIdentifier];
+        //if (receiptCell == nil) {
+        VCReceiptTableViewCell * receiptCell = [WRUtilities getViewFromNib:@"VCReceiptTableViewCell" class:[VCReceiptTableViewCell class]];
+        //}
+    
+        // Set up the cell...
+        receiptCell.titleLabel.text = [payment.ticket shortRouteDescription];
+        receiptCell.dateLabel.text = [payment.createdAt typicalDate];
+        cell = receiptCell;
+    }
+    
+    return cell;
+
 }
+
+- (void)tableView:(UITableView *)tableView collapseCell:(UITableViewCell *)cell withIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+- (void)tableView:(UITableView *)tableView expandCell:(UITableViewCell *)cell withIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+/*
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath expanded:(BOOL)expanded {
+    Payment *payment = [_fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = [VCUtilities formatCurrencyFromCents:payment.amountCents];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ / %@", payment.stripeChargeStatus, payment.motive];
+}
+ */
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+
+#pragma mark NSFetchedResultsControllerDelegate
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    // The fetch controller is about to start sending change notifications, so prepare the table view for updates.
+    [self.hvTableView beginUpdates];
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    
+    UITableView *tableView = self.hvTableView;
+    
+    switch(type) {
+            
+        case NSFetchedResultsChangeInsert:
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+        {
+            //[self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+        }
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            [tableView deleteRowsAtIndexPaths:[NSArray
+                                               arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:[NSArray
+                                               arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id )sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+    
+    switch(type) {
+            
+        case NSFetchedResultsChangeInsert:
+            [self.hvTableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [self.hvTableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    // The fetch controller has sent all current change notifications, so tell the table view to process all updates.
+    [self.hvTableView endUpdates];
+}
+
 
 @end
