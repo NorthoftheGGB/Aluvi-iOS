@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -451,8 +451,8 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="154"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ride-details-hud.png" translatesAutoresizingMaskIntoConstraints="NO" id="bjb-9G-hqy">
-                    <rect key="frame" x="13" y="2" width="330" height="154"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ride-details-hud.png" translatesAutoresizingMaskIntoConstraints="NO" id="bjb-9G-hqy">
+                    <rect key="frame" x="0.0" y="0.0" width="330" height="154"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Devon" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nxs-JX-K3G" customClass="VCLabelBold">
@@ -539,7 +539,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHX-V0-gsv" customClass="VCLabelBold">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$55" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHX-V0-gsv" customClass="VCLabelBold">
                     <rect key="frame" x="24" y="23" width="72" height="45"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
@@ -631,8 +631,11 @@
                 <constraint firstAttribute="trailing" secondItem="OuK-gE-l67" secondAttribute="trailing" constant="11" id="SCr-FM-5p7"/>
                 <constraint firstItem="8dp-XF-nLu" firstAttribute="top" secondItem="Lv9-d9-EJH" secondAttribute="top" constant="7" id="SLU-IS-hQj"/>
                 <constraint firstItem="W2E-sO-vSO" firstAttribute="leading" secondItem="Lv9-d9-EJH" secondAttribute="leading" constant="32" id="TqA-86-b4Z"/>
+                <constraint firstItem="bjb-9G-hqy" firstAttribute="top" secondItem="Lv9-d9-EJH" secondAttribute="top" id="UAb-0A-zTq"/>
+                <constraint firstItem="bjb-9G-hqy" firstAttribute="leading" secondItem="Lv9-d9-EJH" secondAttribute="leading" id="Wrz-Ww-Ivk"/>
                 <constraint firstItem="W2E-sO-vSO" firstAttribute="top" secondItem="YHX-V0-gsv" secondAttribute="bottom" constant="-4" id="XW2-Gc-PxF"/>
                 <constraint firstItem="ufz-sD-hCs" firstAttribute="top" secondItem="IHO-f4-kdP" secondAttribute="bottom" constant="1" id="b7b-Rp-NYW"/>
+                <constraint firstAttribute="trailing" secondItem="bjb-9G-hqy" secondAttribute="trailing" constant="-10" id="et3-kG-Hlj"/>
                 <constraint firstItem="YHX-V0-gsv" firstAttribute="leading" secondItem="Lv9-d9-EJH" secondAttribute="leading" constant="24" id="ghM-Bq-sCv"/>
                 <constraint firstItem="LKt-Aa-kUP" firstAttribute="leading" secondItem="2Wx-Fa-RsE" secondAttribute="trailing" constant="5" id="jCY-Se-MEL"/>
                 <constraint firstAttribute="bottom" secondItem="LKt-Aa-kUP" secondAttribute="bottom" constant="6" id="nC6-ZI-HxU"/>

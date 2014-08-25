@@ -163,7 +163,7 @@
         }
             break;
             
-        case kProfileCellInteger:
+        /*case kProfileCellInteger:
         {
             VCMenuItemTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemTableViewCell" class:[VCMenuItemTableViewCell class]];
             menuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-profile-icon"];
@@ -171,7 +171,7 @@
             menuItemTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell = menuItemTableViewCell;
         }
-            break;
+            break;*/
             
         case kScheduleCellInteger:
         {
