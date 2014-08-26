@@ -7,8 +7,15 @@
 //
 
 #import "VCCommuteSetUpOnBoardingViewController.h"
+#import "VCButtonStandardStyle.h"
+
 
 @interface VCCommuteSetUpOnBoardingViewController ()
+@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *setUpCommuteButton;
+@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *skipButton;
+- (IBAction)didTapSetUpCommuteButton:(id)sender;
+- (IBAction)didTapSkipButton:(id)sender;
+
 
 @end
 
@@ -35,4 +42,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)didTapSetUpCommuteButton:(id)sender {
+}
+
+- (IBAction)didTapSkipButton:(id)sender {
+}
 @end

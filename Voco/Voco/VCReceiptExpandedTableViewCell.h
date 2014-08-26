@@ -21,5 +21,6 @@
 @property (weak, nonatomic) IBOutlet VCLabel *driverNameLabel;
 @property (weak, nonatomic) IBOutlet VCLabel *distanceLabel;
 @property (weak, nonatomic) IBOutlet VCLabel *directionLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *downArrowImageView;
 
 @end

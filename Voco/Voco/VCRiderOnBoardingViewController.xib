@@ -6,7 +6,17 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCRiderOnBoardingViewController">
             <connections>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="STPViewContainer" destination="imd-2Q-wWd" id="Rhr-DO-cRT"/>
+                <outlet property="cardInfoLabel" destination="mbm-g6-hWX" id="X86-wr-7bl"/>
+                <outlet property="contentView" destination="UFv-wM-Gvz" id="AoX-o4-nqc"/>
+                <outlet property="firstNameTextField" destination="tH2-fh-186" id="3m6-Bw-jMg"/>
+                <outlet property="lastNameTextField" destination="h49-sb-DfJ" id="Z7V-iD-Sjj"/>
+                <outlet property="nextButton" destination="3Qn-0i-FUw" id="9LZ-FQ-u7U"/>
+                <outlet property="phoneTextField" destination="aEJ-gC-XLc" id="KFW-oQ-1ck"/>
+                <outlet property="scrollView" destination="Dke-VR-GXT" id="jCJ-CV-Ie0"/>
+                <outlet property="tocButton" destination="Bzu-3F-31A" id="IhK-95-6o5"/>
+                <outlet property="tocCheckBoxButton" destination="M6q-Ai-6Mw" id="m5v-R0-inB"/>
+                <outlet property="zipCodeTextField" destination="gaM-Db-M8A" id="x42-LP-UYk"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -14,7 +24,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dke-VR-GXT">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dke-VR-GXT" userLabel="Scroll View">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </scrollView>
@@ -37,17 +47,196 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Qn-0i-FUw" customClass="VCButtonStandardStyle">
+                    <rect key="frame" x="8" y="408" width="305" height="47"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="305" id="Evj-b1-UWE"/>
+                        <constraint firstAttribute="height" constant="47" id="eHi-wv-msH"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="NEXT" backgroundImage="login-button.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" backgroundImage="button-select.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" title="Submit" backgroundImage="button-select.png"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didTapNextButton:" destination="-1" eventType="touchUpInside" id="NkA-eI-Tsp"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="imd-2Q-wWd" userLabel="Stripe Container View">
+                    <rect key="frame" x="0.0" y="260" width="320" height="69"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbm-g6-hWX" userLabel="Stripe Label">
+                            <rect key="frame" x="8" y="24" width="305" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="Yxn-ap-zsX"/>
+                                <constraint firstAttribute="width" constant="305" id="eRf-JU-NcO"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="mbm-g6-hWX" firstAttribute="top" secondItem="imd-2Q-wWd" secondAttribute="top" constant="24" id="1iY-T7-f5z"/>
+                        <constraint firstAttribute="width" constant="320" id="IOP-0j-eeb"/>
+                        <constraint firstItem="mbm-g6-hWX" firstAttribute="leading" secondItem="imd-2Q-wWd" secondAttribute="leading" constant="8" id="W8W-Vr-7OY"/>
+                        <constraint firstAttribute="height" constant="69" id="sF1-zh-L6F"/>
+                    </constraints>
+                </view>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tH2-fh-186" customClass="VCTextField">
+                    <rect key="frame" x="8" y="69" width="305" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="0U1-lM-ZLH"/>
+                        <constraint firstAttribute="width" constant="305" id="Yj1-zb-5ZZ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="14"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="sW3-b1-9ZA"/>
+                    </connections>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h49-sb-DfJ" customClass="VCTextField">
+                    <rect key="frame" x="8" y="107" width="305" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Jv2-Re-KsP"/>
+                        <constraint firstAttribute="width" constant="305" id="ktM-CL-gKu"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="14"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didEndOnExit:" destination="-1" eventType="editingDidEnd" id="mM5-n7-afd"/>
+                    </connections>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aEJ-gC-XLc" customClass="VCTextField">
+                    <rect key="frame" x="8" y="145" width="305" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="305" id="7HH-WG-ECF"/>
+                        <constraint firstAttribute="height" constant="30" id="v6g-6h-GLV"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="phonePad" returnKeyType="next"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="14"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didEndOnExit:" destination="-1" eventType="editingDidEnd" id="Aol-lt-zum"/>
+                    </connections>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Zip Code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gaM-Db-M8A" customClass="VCTextField">
+                    <rect key="frame" x="8" y="183" width="305" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="NfC-nA-lFl"/>
+                        <constraint firstAttribute="width" constant="305" id="gTh-qx-Ry7"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" returnKeyType="next"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="14"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didEndOnExit:" destination="-1" eventType="editingDidEnd" id="d9t-ks-nNH"/>
+                    </connections>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bzu-3F-31A" customClass="VCButtonStandardStyle">
+                    <rect key="frame" x="9" y="370" width="196" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="196" id="7Bb-Tt-rSq"/>
+                        <constraint firstAttribute="height" constant="30" id="Tyx-sV-rSS"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" title="Agree to Aluvi Terms &amp; Conditions">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="11"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didTapTocButton:" destination="-1" eventType="touchUpInside" id="wMe-OJ-S0j"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M6q-Ai-6Mw">
+                    <rect key="frame" x="293" y="375" width="20" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="E4O-cw-6IZ"/>
+                        <constraint firstAttribute="width" constant="20" id="ydU-W7-SCS"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="driver-hov-toggle.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" backgroundImage="toc-checked.png"/>
+                    <state key="highlighted" backgroundImage="toc-checked.png"/>
+                    <connections>
+                        <action selector="didTapTocCheckBoxButton:" destination="-1" eventType="touchUpInside" id="I70-6x-o3l"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="3Qn-0i-FUw" firstAttribute="leading" secondItem="UFv-wM-Gvz" secondAttribute="leading" constant="8" id="5fO-yc-Hmy"/>
+                <constraint firstItem="h49-sb-DfJ" firstAttribute="top" secondItem="tH2-fh-186" secondAttribute="bottom" constant="8" id="DZL-6l-ne8"/>
+                <constraint firstAttribute="trailing" secondItem="M6q-Ai-6Mw" secondAttribute="trailing" constant="7" id="LXy-5X-c5t"/>
+                <constraint firstItem="tH2-fh-186" firstAttribute="leading" secondItem="UFv-wM-Gvz" secondAttribute="leading" constant="8" id="PDn-gF-mLa"/>
+                <constraint firstItem="gaM-Db-M8A" firstAttribute="leading" secondItem="UFv-wM-Gvz" secondAttribute="leading" constant="8" id="Plu-Qp-HRE"/>
+                <constraint firstItem="3Qn-0i-FUw" firstAttribute="top" secondItem="Bzu-3F-31A" secondAttribute="bottom" constant="8" id="V3K-G3-jU9"/>
+                <constraint firstItem="tH2-fh-186" firstAttribute="top" secondItem="UFv-wM-Gvz" secondAttribute="top" constant="69" id="Wda-WM-jH0"/>
                 <constraint firstItem="mJO-iK-suv" firstAttribute="leading" secondItem="UFv-wM-Gvz" secondAttribute="leading" id="bob-iE-sl1"/>
+                <constraint firstItem="imd-2Q-wWd" firstAttribute="leading" secondItem="UFv-wM-Gvz" secondAttribute="leading" id="gLv-mL-lm9"/>
                 <constraint firstAttribute="trailing" secondItem="mJO-iK-suv" secondAttribute="trailing" id="j7v-de-AMV"/>
+                <constraint firstItem="imd-2Q-wWd" firstAttribute="top" secondItem="gaM-Db-M8A" secondAttribute="bottom" constant="47" id="k1k-q4-1AJ"/>
+                <constraint firstItem="Bzu-3F-31A" firstAttribute="leading" secondItem="UFv-wM-Gvz" secondAttribute="leading" constant="9" id="ktW-FH-gEO"/>
+                <constraint firstItem="aEJ-gC-XLc" firstAttribute="leading" secondItem="UFv-wM-Gvz" secondAttribute="leading" constant="8" id="l9f-gi-uxl"/>
+                <constraint firstItem="3Qn-0i-FUw" firstAttribute="top" secondItem="M6q-Ai-6Mw" secondAttribute="bottom" constant="13" id="msS-Ie-9Q9"/>
+                <constraint firstItem="aEJ-gC-XLc" firstAttribute="top" secondItem="h49-sb-DfJ" secondAttribute="bottom" constant="8" id="nMP-K0-0VN"/>
+                <constraint firstItem="h49-sb-DfJ" firstAttribute="leading" secondItem="UFv-wM-Gvz" secondAttribute="leading" constant="8" id="oHv-ZO-dPY"/>
+                <constraint firstAttribute="trailing" secondItem="imd-2Q-wWd" secondAttribute="trailing" id="pGf-Qn-mi3"/>
+                <constraint firstItem="gaM-Db-M8A" firstAttribute="top" secondItem="aEJ-gC-XLc" secondAttribute="bottom" constant="8" id="pWV-4d-mhM"/>
                 <constraint firstItem="mJO-iK-suv" firstAttribute="top" secondItem="UFv-wM-Gvz" secondAttribute="top" id="vc1-hr-7IH"/>
+                <constraint firstAttribute="bottom" secondItem="3Qn-0i-FUw" secondAttribute="bottom" constant="25" id="zah-zZ-fm3"/>
             </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
     <resources>
         <image name="background.png" width="320" height="568"/>
+        <image name="button-select.png" width="160" height="46"/>
+        <image name="driver-hov-toggle.png" width="23" height="23"/>
+        <image name="login-button.png" width="304" height="47"/>
+        <image name="toc-checked.png" width="23" height="23"/>
     </resources>
 </document>

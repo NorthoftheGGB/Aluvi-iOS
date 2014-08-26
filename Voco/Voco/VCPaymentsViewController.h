@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VCCenterViewBaseViewController.h"
 
-@interface VCPaymentsViewController : UIViewController
+@interface VCPaymentsViewController : VCCenterViewBaseViewController
 
 @end

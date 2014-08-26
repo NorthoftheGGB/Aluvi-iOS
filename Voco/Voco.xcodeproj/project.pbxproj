@@ -1832,8 +1832,7 @@
 		4FFCF2BA19A2428700A4A24E /* Menu Item View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4FC758E019AA94F00093DBEA /* Receipts Table View Cells */,
-				4FFCF2E319A5B34500A4A24E /* HOV Menu Items */,
+				4FFCF2E319A5B34500A4A24E /* HOV Menu Item View Controllers */,
 				4FFCF2BB19A25F2100A4A24E /* VCProfileViewController.h */,
 				4FFCF2BC19A25F2100A4A24E /* VCProfileViewController.m */,
 				4FFCF2BD19A25F2100A4A24E /* VCProfileViewController.xib */,
@@ -1843,6 +1842,7 @@
 				4FFCF2D119A5493500A4A24E /* VCReceiptsViewController.h */,
 				4FFCF2D219A5493500A4A24E /* VCReceiptsViewController.m */,
 				4FFCF2D319A5493500A4A24E /* VCReceiptsViewController.xib */,
+				4FC758E019AA94F00093DBEA /* Receipts Table View Cells */,
 				4FFCF2C819A5381900A4A24E /* VCSupportViewController.h */,
 				4FFCF2C919A5381900A4A24E /* VCSupportViewController.m */,
 				4FFCF2CA19A5381900A4A24E /* VCSupportViewController.xib */,
@@ -1850,26 +1850,14 @@
 			name = "Menu Item View Controllers";
 			sourceTree = "<group>";
 		};
-		4FFCF2E319A5B34500A4A24E /* HOV Menu Items */ = {
+		4FFCF2E319A5B34500A4A24E /* HOV Menu Item View Controllers */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = "HOV Menu Items";
+			name = "HOV Menu Item View Controllers";
 			sourceTree = "<group>";
 		};
-		4FFE138C1989AB3A004D4413 /* Revision 2.0 */ = {
-			isa = PBXGroup;
-			children = (
-				4FFCF2BA19A2428700A4A24E /* Menu Item View Controllers */,
-				4FFE16F61989E65B004D4413 /* Table View Cells */,
-				4FFE138D1989AE09004D4413 /* VCLeftMenuViewController.h */,
-				4FFE138E1989AE09004D4413 /* VCLeftMenuViewController.m */,
-				4FFE138F1989AE09004D4413 /* VCLeftMenuViewController.xib */,
-			);
-			name = "Revision 2.0";
-			sourceTree = "<group>";
-		};
-		4FFE16F61989E65B004D4413 /* Table View Cells */ = {
+		4FFE16F61989E65B004D4413 /* Menu Item Table View Cells */ = {
 			isa = PBXGroup;
 			children = (
 				4F184A0F19918750006EA959 /* VCMenuUserInfoTableViewCell.h */,
@@ -1894,7 +1882,7 @@
 				4F184A331992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.m */,
 				4F184A341992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.xib */,
 			);
-			name = "Table View Cells";
+			name = "Menu Item Table View Cells";
 			sourceTree = "<group>";
 		};
 		F4138C2319650C2D00C265CD /* Views */ = {
@@ -2163,7 +2151,11 @@
 		F473F047195BA4E000D8C900 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				4FFE138C1989AB3A004D4413 /* Revision 2.0 */,
+				4FFCF2BA19A2428700A4A24E /* Menu Item View Controllers */,
+				4FFE16F61989E65B004D4413 /* Menu Item Table View Cells */,
+				4FFE138D1989AE09004D4413 /* VCLeftMenuViewController.h */,
+				4FFE138E1989AE09004D4413 /* VCLeftMenuViewController.m */,
+				4FFE138F1989AE09004D4413 /* VCLeftMenuViewController.xib */,
 			);
 			name = Menu;
 			sourceTree = "<group>";

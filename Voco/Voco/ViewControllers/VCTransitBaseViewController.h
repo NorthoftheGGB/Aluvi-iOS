@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "Fare.h"
+#import "VCCenterViewBaseViewController.h"
 
-@interface VCTransitBaseViewController : UIViewController
+@interface VCTransitBaseViewController : VCCenterViewBaseViewController
 
 @property (strong, nonatomic) Transit * transit;
 

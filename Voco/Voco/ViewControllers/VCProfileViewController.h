@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VCCenterViewBaseViewController.h"
 
-@interface VCProfileViewController : UIViewController
+@interface VCProfileViewController : VCCenterViewBaseViewController
 
 @end

@@ -199,7 +199,7 @@
     _workLocationWidget.type = kWorkType;
     [self addChildViewController:_homeLocationWidget];
     [self addChildViewController:_workLocationWidget];
-    [self showHamburgerBarButton];
+    
     
     
 }
@@ -414,15 +414,6 @@
     self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:(182/255.f) green:(31/255.f) blue:(36/255.f) alpha:1.0];
 }
 
-- (void) showHamburgerBarButton {
-    UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage: [UIImage imageNamed:@"hamburger"] style:UIBarButtonItemStylePlain target:self action:@selector(didTapHamburger)];
-    self.navigationItem.leftBarButtonItem = hamburgerButton;
-    self.navigationItem.leftBarButtonItem.tintColor= [UIColor colorWithRed:(162/255.f) green:(148/255.f) blue:(144/255.f) alpha:1.0];
-}
-
-- (void) didTapHamburger {
-    [self.navigationController.viewDeckController openLeftView];
-}
 
 - (void) removeCancelBarButton {
     self.navigationItem.rightBarButtonItem = nil;
@@ -1068,9 +1059,6 @@
     return 0;
 }
 
-
-- (IBAction)didTapHamburger:(id)sender {
-}
 
 #pragma mark - UIPickerViewDelegate
 
