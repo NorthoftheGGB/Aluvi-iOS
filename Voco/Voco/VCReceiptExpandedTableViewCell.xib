@@ -229,6 +229,14 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="receipt-down-arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="TmE-4O-huJ">
+                        <rect key="frame" x="296" y="20" width="20" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="SzY-HD-XOl"/>
+                            <constraint firstAttribute="height" constant="20" id="l4e-TM-Ifu"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="rDj-zs-oYg" firstAttribute="top" secondItem="liz-Nd-8d7" secondAttribute="bottom" constant="32" id="05Q-sH-7qy"/>
@@ -253,6 +261,7 @@
                     <constraint firstItem="S7C-Kg-IZb" firstAttribute="leading" secondItem="Uds-Uo-ip6" secondAttribute="trailing" constant="22" id="WjI-DX-LuD"/>
                     <constraint firstItem="scM-Lg-0lf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="XIt-Gw-AHZ"/>
                     <constraint firstItem="UZP-mA-2rf" firstAttribute="leading" secondItem="rDj-zs-oYg" secondAttribute="trailing" constant="22" id="Zi3-yJ-t2P"/>
+                    <constraint firstItem="TmE-4O-huJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="d1m-ZE-DRg"/>
                     <constraint firstItem="liz-Nd-8d7" firstAttribute="top" secondItem="Lid-e4-CV6" secondAttribute="bottom" constant="-2" id="dbF-M7-JON"/>
                     <constraint firstItem="UZP-mA-2rf" firstAttribute="top" secondItem="ips-GV-4nu" secondAttribute="bottom" constant="69" id="fK5-ui-kSo"/>
                     <constraint firstItem="BWQ-uU-cMk" firstAttribute="leading" secondItem="aD6-C7-hdi" secondAttribute="trailing" constant="22" id="joI-KJ-Tuq"/>
@@ -260,6 +269,7 @@
                     <constraint firstItem="ZKo-zO-Nct" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="sbS-v9-stX"/>
                     <constraint firstItem="BWQ-uU-cMk" firstAttribute="top" secondItem="UZP-mA-2rf" secondAttribute="bottom" constant="21" id="ska-X4-6dY"/>
                     <constraint firstItem="Lid-e4-CV6" firstAttribute="top" secondItem="xrL-mQ-CPM" secondAttribute="top" constant="31" id="tAh-4o-cka"/>
+                    <constraint firstAttribute="trailing" secondItem="TmE-4O-huJ" secondAttribute="trailing" constant="4" id="yuN-Eg-AdR"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -267,6 +277,7 @@
                 <outlet property="dateTopLabel" destination="ZKo-zO-Nct" id="YkO-1s-S8i"/>
                 <outlet property="directionLabel" destination="dCv-Tk-q4T" id="ekB-8V-ZFV"/>
                 <outlet property="distanceLabel" destination="S7C-Kg-IZb" id="BLd-XL-HNL"/>
+                <outlet property="downArrowImageView" destination="TmE-4O-huJ" id="MAG-Hs-fF6"/>
                 <outlet property="driverNameLabel" destination="BWQ-uU-cMk" id="vFd-KJ-pu5"/>
                 <outlet property="rideNumberLabel" destination="UZP-mA-2rf" id="ZqT-sA-1fj"/>
                 <outlet property="titleLabel" destination="oZ8-Cp-Rjx" id="BZl-lE-Lob"/>
@@ -275,6 +286,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="receipt-down-arrow.png" width="12" height="8"/>
         <image name="reciept_expanded.png" width="320" height="307"/>
     </resources>
 </document>

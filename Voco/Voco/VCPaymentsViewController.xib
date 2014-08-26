@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -8,7 +8,7 @@
             <connections>
                 <outlet property="STPViewContainer" destination="ow9-e5-77P" id="gaI-ys-enk"/>
                 <outlet property="cardInfoLabel" destination="Rr2-NZ-LtM" id="8b5-gJ-UsH"/>
-                <outlet property="updateCardButton" destination="ETd-Ez-9HB" id="PML-Gb-BFy"/>
+                <outlet property="updateCardButton" destination="VkP-2i-QHk" id="KxC-Cr-gW1"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,7 +18,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit/Debt Card Information" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHS-X1-zpQ" customClass="VCLabelBold">
-                    <rect key="frame" x="58" y="73" width="205" height="21"/>
+                    <rect key="frame" x="58" y="105" width="205" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="Zhe-qR-hqa"/>
@@ -32,33 +32,8 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETd-Ez-9HB" customClass="VCButtonStandardStyle">
-                    <rect key="frame" x="53" y="191" width="215" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.87843143940000001" green="0.094117656349999995" blue="0.09803922474" alpha="1" colorSpace="deviceRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="215" id="KML-tS-ZuO"/>
-                        <constraint firstAttribute="height" constant="30" id="lnp-h2-AR7"/>
-                    </constraints>
-                    <state key="normal" title="Change Card">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="16"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="5"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="didTapUpdate:" destination="-1" eventType="touchUpInside" id="rDz-bV-0Ur"/>
-                    </connections>
-                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ow9-e5-77P">
-                    <rect key="frame" x="0.0" y="102" width="320" height="69"/>
+                    <rect key="frame" x="0.0" y="134" width="320" height="69"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rr2-NZ-LtM">
@@ -69,16 +44,46 @@
                         </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="69" id="Njg-Zh-eaz"/>
+                        <constraint firstAttribute="width" constant="320" id="TNt-yj-SNP"/>
+                    </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VkP-2i-QHk" customClass="VCButtonStandardStyle">
+                    <rect key="frame" x="9" y="235" width="302" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.96542171560000001" green="0.96542171560000001" blue="0.96542171560000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="302" id="7uR-eg-r1r"/>
+                        <constraint firstAttribute="height" constant="28" id="nBb-eY-bLC"/>
+                    </constraints>
+                    <state key="normal" title="UPDATE CARD" backgroundImage="profile-button.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" backgroundImage="profile-button.png">
+                        <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                    </state>
+                    <state key="highlighted" backgroundImage="profile-button@-select.png">
+                        <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="17"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didTapUpdate:" destination="-1" eventType="touchUpInside" id="CaP-oC-lhm"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="ow9-e5-77P" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0fS-Pl-d1P"/>
                 <constraint firstItem="ow9-e5-77P" firstAttribute="top" secondItem="lHS-X1-zpQ" secondAttribute="bottom" constant="8" symbolic="YES" id="5YZ-Hn-EK9"/>
-                <constraint firstItem="ETd-Ez-9HB" firstAttribute="top" secondItem="ow9-e5-77P" secondAttribute="bottom" constant="20" id="OGp-FT-kwg"/>
-                <constraint firstItem="ETd-Ez-9HB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="53" id="Y8c-Uc-Did"/>
-                <constraint firstItem="ETd-Ez-9HB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="191" id="cSX-02-N4J"/>
-                <constraint firstItem="lHS-X1-zpQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="73" id="gfQ-0c-otn"/>
+                <constraint firstItem="VkP-2i-QHk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="9" id="8ft-wt-gYh"/>
+                <constraint firstItem="lHS-X1-zpQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="105" id="gfQ-0c-otn"/>
+                <constraint firstItem="VkP-2i-QHk" firstAttribute="top" secondItem="ow9-e5-77P" secondAttribute="bottom" constant="32" id="hax-ft-AXs"/>
                 <constraint firstAttribute="trailing" secondItem="ow9-e5-77P" secondAttribute="trailing" id="q5v-2X-QZz"/>
                 <constraint firstItem="lHS-X1-zpQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="58" id="qBq-XX-Q6l"/>
             </constraints>
@@ -87,4 +92,8 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
+    <resources>
+        <image name="profile-button.png" width="302" height="28"/>
+        <image name="profile-button@-select.png" width="302" height="28"/>
+    </resources>
 </document>
