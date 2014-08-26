@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VCCenterViewBaseViewController.h"
 
-@interface VCSupportViewController : UIViewController
+@interface VCSupportViewController : VCCenterViewBaseViewController
 
 @end

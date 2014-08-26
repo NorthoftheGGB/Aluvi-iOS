@@ -20,8 +20,8 @@
 #import "VCRiderRecieptDetailViewController.h"
 #import "VCUserStateManager.h"
 
-#define kChangeCardText @"Change Card"
-#define kUpdateCardText @"Update Card"
+#define kChangeCardText @"UPDATE CARD"
+#define kUpdateCardText @"UPDATE CARD"
 #define kInterfaceStateDisplayCard 1
 #define kInterfaceStateUpdateCard 2
 
@@ -72,8 +72,15 @@
         _cardInfoLabel.text = @"No Credit Card Assigned";
     }
     
+   /* UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
+    [tapBackground setNumberOfTapsRequired:1];
+    [self.view addGestureRecognizer:tapBackground];*/
     
 }
+
+/*- (void) dismissKeyboard:(id) sender{
+    [self.view endEditing:YES];
+}*/
 
 
 
@@ -107,7 +114,7 @@
                                       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                           progressHUD.hidden = YES;
                                           [UIAlertView showWithTitle:@"Card Updated" message:@"Your card has been saved" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
-                                          _updateCardButton.titleLabel.text = @"Change Card";
+                                          _updateCardButton.titleLabel.text = @"UPDATE CARD";
                                           [_cardView removeFromSuperview];
                                           _cardView = nil;
                                           _updateCardButton.titleLabel.text = kChangeCardText;
