@@ -7,8 +7,15 @@
 //
 
 #import "VCPasswordRecoveryViewController.h"
+#import "VCLabel.h"
+#import "VCButtonStandardStyle.h"
+#import "VCTextField.h"
+
 
 @interface VCPasswordRecoveryViewController ()
+@property (weak, nonatomic) IBOutlet VCTextField *emailTextField;
+@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *sendPasswordButton;
+- (IBAction)didTapSendPasswordButton:(id)sender;
 
 @end
 
@@ -26,8 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-}
+    self.title = @"Password Recovery";}
 
 - (void)didReceiveMemoryWarning
 {
@@ -35,4 +41,6 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)didTapSendPasswordButton:(id)sender {
+}
 @end
