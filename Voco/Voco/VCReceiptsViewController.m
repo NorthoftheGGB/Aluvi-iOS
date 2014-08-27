@@ -40,7 +40,7 @@
     _hvTableView.HVTableViewDataSource = self;
     _hvTableView.expandOnlyOneCell = YES;
     [super viewDidLoad];
-
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -105,51 +105,57 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath isExpanded:(BOOL)isExpanded {
     
-   // static NSString *CollapsedCellIdentifier = @"CollapsedCell";
-   // static NSString *ExpandedCellIdentifier = @"ExpandedCell";
-
     Payment *payment = [_fetchedResultsController objectAtIndexPath:indexPath];
     UITableViewCell *cell;
-    if(isExpanded) {
-        VCReceiptExpandedTableViewCell * receiptCell = [WRUtilities getViewFromNib:@"VCReceiptExpandedTableViewCell" class:[VCReceiptExpandedTableViewCell class]];
-        receiptCell.dateTopLabel.text =  [payment.createdAt typicalDate];
-        receiptCell.dateDetailLabel.text =  [payment.createdAt typicalDate];
-        receiptCell.totalFareAmountLabel.text = [NSString stringWithFormat:@"%.2f", [payment.amountCents doubleValue] / 100];
-        receiptCell.rideNumberLabel.text = [payment.ticket.ride_id stringValue];
-        receiptCell.rideNumberLabel.text = [payment.ticket.driver fullName];
-        receiptCell.directionLabel.text = [payment.ticket shortRouteDescription];
-        cell = receiptCell;
-
-    } else {
-        //VCReceiptTableViewCell * receiptCell = [tableView dequeueReusableCellWithIdentifier:CollapsedCellIdentifier];
-        //if (receiptCell == nil) {
-        VCReceiptTableViewCell * receiptCell = [WRUtilities getViewFromNib:@"VCReceiptTableViewCell" class:[VCReceiptTableViewCell class]];
-        //}
+    VCReceiptExpandedTableViewCell * receiptCell = [WRUtilities getViewFromNib:@"VCReceiptExpandedTableViewCell" class:[VCReceiptExpandedTableViewCell class]];
+    receiptCell.dateTopLabel.text =  [payment.createdAt typicalDate];
+    receiptCell.dateDetailLabel.text =  [payment.createdAt typicalDate];
+    receiptCell.totalFareAmountLabel.text = [NSString stringWithFormat:@"%.1f", [payment.amountCents doubleValue] / 100];
+    receiptCell.rideNumberLabel.text = [payment.ticket.ride_id stringValue];
+    receiptCell.driverNameLabel.text = [payment.ticket.driver fullName];
+    receiptCell.directionLabel.text = [payment.ticket shortRouteDescription];
+    receiptCell.distanceLabel.text = @"";
     
-        // Set up the cell...
-        receiptCell.titleLabel.text = [payment.ticket shortRouteDescription];
-        receiptCell.dateLabel.text = [payment.createdAt typicalDate];
-        cell = receiptCell;
+    [receiptCell.contentView addSubview:receiptCell.collapsed];
+    
+    CGRect frame = receiptCell.frame;
+    if(isExpanded) {
+        frame.size.height = 369;
+    } else {
+        frame.size.height = 61;
     }
+    receiptCell.frame = frame;
+    [receiptCell.contentView setFrame:frame];
+    //receiptCell.contentView.bounds = frame;
+
+    cell = receiptCell;
     
     return cell;
-
+    
 }
 
 - (void)tableView:(UITableView *)tableView collapseCell:(UITableViewCell *)cell withIndexPath:(NSIndexPath *)indexPath {
     
+    VCReceiptExpandedTableViewCell * receiptCell = (VCReceiptExpandedTableViewCell * ) cell;
+    [receiptCell.expanded removeFromSuperview];
+    [receiptCell.contentView addSubview:receiptCell.collapsed];
+
 }
 
 - (void)tableView:(UITableView *)tableView expandCell:(UITableViewCell *)cell withIndexPath:(NSIndexPath *)indexPath {
     
+    VCReceiptExpandedTableViewCell * receiptCell = (VCReceiptExpandedTableViewCell * ) cell;
+    [receiptCell.collapsed removeFromSuperview];
+    [receiptCell.contentView addSubview:receiptCell.expanded];
+
 }
 
 /*
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath expanded:(BOOL)expanded {
-    Payment *payment = [_fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [VCUtilities formatCurrencyFromCents:payment.amountCents];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ / %@", payment.stripeChargeStatus, payment.motive];
-}
+ - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath expanded:(BOOL)expanded {
+ Payment *payment = [_fetchedResultsController objectAtIndexPath:indexPath];
+ cell.textLabel.text = [VCUtilities formatCurrencyFromCents:payment.amountCents];
+ cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ / %@", payment.stripeChargeStatus, payment.motive];
+ }
  */
 
 
