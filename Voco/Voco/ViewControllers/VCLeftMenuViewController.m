@@ -353,6 +353,7 @@
             VCProfileViewController * profileViewController = [[VCProfileViewController alloc] init];
             [[VCInterfaceManager instance] setCenterViewControllers: @[profileViewController]];
             VCMenuItemTableViewCell * cell = (VCMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
+            [cell select];
         }
             break;
             

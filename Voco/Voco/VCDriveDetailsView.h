@@ -11,6 +11,8 @@
 #import "VCLabelBold.h"
 #import "VCButtonStandardStyle.h"
 
+
+
 @interface VCDriveDetailsView : UIView
 @property (weak, nonatomic) IBOutlet VCLabel *dateLabel;
 @property (weak, nonatomic) IBOutlet VCLabelBold *fareEarningsLabel;

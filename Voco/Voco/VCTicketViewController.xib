@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -177,7 +177,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="devon.png" translatesAutoresizingMaskIntoConstraints="NO" id="vBd-Mx-Cx3" userLabel="user Image View">
+                <imageView hidden="YES" autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="devon.png" translatesAutoresizingMaskIntoConstraints="NO" id="vBd-Mx-Cx3" userLabel="user Image View">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="276"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
@@ -213,6 +213,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <action selector="didTapConfirmButton:" destination="RWM-tO-NBZ" eventType="touchUpInside" id="IdI-qm-xTv"/>
                         <action selector="didTapConfirmedCommuterRide:" destination="-1" eventType="touchUpInside" id="hjj-TJ-Dfc"/>
                     </connections>
                 </button>
@@ -440,6 +441,7 @@
                 <outlet property="cardNumberLabel" destination="aeQ-Xu-ULg" id="ynr-xF-jUo"/>
                 <outlet property="confirmButton" destination="nx0-ot-14p" id="gvT-mm-qap"/>
                 <outlet property="creditCardImageView" destination="i6s-VW-kkM" id="lyQ-Cl-N1H"/>
+                <outlet property="didTapConfirmButton" destination="nx0-ot-14p" id="PxX-Aj-tBI"/>
                 <outlet property="driverNameLabel" destination="CIS-vw-GPg" id="oB8-bg-7gD"/>
                 <outlet property="driverPhotoImageView" destination="vBd-Mx-Cx3" id="cKg-xX-Lcp"/>
                 <outlet property="fareLabel" destination="UXb-UY-V0U" id="kJM-9s-2VA"/>
@@ -471,7 +473,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ufz-sD-hCs" customClass="VCLabel">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ufz-sD-hCs" userLabel="Car Type Label" customClass="VCLabel">
                     <rect key="frame" x="74" y="106" width="152" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
@@ -487,10 +489,6 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zyt-ju-gX4">
-                    <rect key="frame" x="-38" y="-23" width="0.0" height="0.0"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyCard" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocb-Au-ZiP" customClass="VCLabel">
                     <rect key="frame" x="6" y="128" width="83" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -619,11 +617,30 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0b-9K-WB5">
+                    <rect key="frame" x="231" y="64" width="85" height="85"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZQU-zm-bb6">
+                    <rect key="frame" x="6" y="107" width="32" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="fal-8w-2SB"/>
+                        <constraint firstAttribute="height" constant="20" id="lgN-DK-hox"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="OuK-gE-l67" firstAttribute="leading" secondItem="8dp-XF-nLu" secondAttribute="trailing" constant="13" id="7sy-Zd-G5m"/>
                 <constraint firstItem="OuK-gE-l67" firstAttribute="top" secondItem="Lv9-d9-EJH" secondAttribute="top" constant="7" id="8B1-Xs-4Pu"/>
+                <constraint firstItem="P0b-9K-WB5" firstAttribute="bottom" secondItem="LKt-Aa-kUP" secondAttribute="bottom" constant="1" id="95K-eF-4qb"/>
+                <constraint firstItem="ocb-Au-ZiP" firstAttribute="top" secondItem="ZQU-zm-bb6" secondAttribute="bottom" constant="1" id="9Tw-1f-ETG"/>
+                <constraint firstItem="P0b-9K-WB5" firstAttribute="top" secondItem="LKt-Aa-kUP" secondAttribute="top" constant="1" id="Dna-fk-bQY"/>
+                <constraint firstItem="P0b-9K-WB5" firstAttribute="leading" secondItem="LKt-Aa-kUP" secondAttribute="leading" id="EdG-BJ-e9D"/>
                 <constraint firstAttribute="trailing" secondItem="LKt-Aa-kUP" secondAttribute="trailing" constant="4" id="ILQ-Ew-txe"/>
                 <constraint firstAttribute="bottom" secondItem="TaG-Um-H3F" secondAttribute="bottom" constant="5" id="J9E-mE-6w1"/>
                 <constraint firstItem="LKt-Aa-kUP" firstAttribute="leading" secondItem="ufz-sD-hCs" secondAttribute="trailing" constant="5" id="MFd-zi-et9"/>
@@ -645,6 +662,8 @@
                 <constraint firstAttribute="bottom" secondItem="ocb-Au-ZiP" secondAttribute="bottom" constant="5" id="rvH-DH-uho"/>
                 <constraint firstItem="TaG-Um-H3F" firstAttribute="leading" secondItem="ocb-Au-ZiP" secondAttribute="trailing" constant="8" id="sI6-hN-7I7"/>
                 <constraint firstItem="IHO-f4-kdP" firstAttribute="top" secondItem="Nxs-JX-K3G" secondAttribute="bottom" constant="-6" id="ssx-Am-AeS"/>
+                <constraint firstItem="P0b-9K-WB5" firstAttribute="trailing" secondItem="LKt-Aa-kUP" secondAttribute="trailing" id="uJw-HQ-wWl"/>
+                <constraint firstItem="ZQU-zm-bb6" firstAttribute="leading" secondItem="Lv9-d9-EJH" secondAttribute="leading" constant="6" id="v5e-pu-RTg"/>
                 <constraint firstItem="ocb-Au-ZiP" firstAttribute="leading" secondItem="Lv9-d9-EJH" secondAttribute="leading" constant="6" id="zCY-4s-fIN"/>
                 <constraint firstItem="LKt-Aa-kUP" firstAttribute="leading" secondItem="IHO-f4-kdP" secondAttribute="trailing" constant="5" id="zdq-4s-Yse"/>
             </constraints>
@@ -653,7 +672,7 @@
                 <outlet property="carTypeLabel" destination="ufz-sD-hCs" id="dRQ-BE-2LL"/>
                 <outlet property="cardNicknamelabel" destination="ocb-Au-ZiP" id="7SR-xi-Efc"/>
                 <outlet property="cardNumberLabel" destination="TaG-Um-H3F" id="uBr-41-AEE"/>
-                <outlet property="creditCardImageView" destination="Zyt-ju-gX4" id="K64-Hi-4ro"/>
+                <outlet property="creditCardImageView" destination="ZQU-zm-bb6" id="7C8-1G-rZV"/>
                 <outlet property="driverFirstNameLabel" destination="Nxs-JX-K3G" id="ga6-Am-7sd"/>
                 <outlet property="driverImageView" destination="LKt-Aa-kUP" id="pQJ-jv-YNl"/>
                 <outlet property="driverLastNameLabel" destination="IHO-f4-kdP" id="Jny-Wc-6oK"/>
@@ -791,7 +810,7 @@
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
-        <view alpha="0.89999999999999991" contentMode="scaleToFill" id="CKa-ug-jy9">
+        <view alpha="0.89999999999999991" contentMode="scaleToFill" id="CKa-ug-jy9" userLabel="I Would Like To Be The Driver View">
             <rect key="frame" x="0.0" y="0.0" width="320" height="39"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -849,13 +868,6 @@
             <connections>
                 <action selector="didTapEditCommute:" destination="-1" eventType="touchUpInside" id="DlS-Vb-NWH"/>
             </connections>
-        </button>
-        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="QSz-UO-CU9">
-            <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <state key="normal" image="hamburger.png">
-                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-            </state>
         </button>
         <button opaque="NO" alpha="0.89999997615814209" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Jh3-aQ-cgL" customClass="VCButton">
             <rect key="frame" x="0.0" y="0.0" width="193" height="36"/>
@@ -1289,7 +1301,6 @@
         <image name="driver-cancel-hud.png" width="155" height="62"/>
         <image name="driver-hov-toggle-select.png" width="23" height="23"/>
         <image name="driver-hov-toggle.png" width="23" height="23"/>
-        <image name="hamburger.png" width="20" height="20"/>
         <image name="overlay-graphic.png" width="255" height="255"/>
         <image name="ride-details-hud.png" width="330" height="154"/>
         <image name="user-image-small.png" width="65" height="65"/>

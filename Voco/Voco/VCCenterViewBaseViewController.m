@@ -38,6 +38,9 @@
 
 - (void) didTapHamburger {
     [self.navigationController.viewDeckController openLeftView];
+    
+    //[self.navigationController.viewDeckController openCenterView];
+    
 }
 
 - (void)didReceiveMemoryWarning
