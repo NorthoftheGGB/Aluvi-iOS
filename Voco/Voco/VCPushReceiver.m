@@ -176,6 +176,16 @@
 
 + (void) handleRemoteNotification:(NSDictionary *) payload {
     
+    // Any remote notification should trigger a sync on the schedule
+    // TODO: should refactor the below if/else to provide a block used in the Success of this
+    // TODO: or perhaps refreshScheduledRides should not a take a success at all.
+    // TODO: Or wait for sync for ANY handling of push
+    [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [VCNotifications scheduleUpdated];
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        //
+    }];
+    
     NSString * type = [payload objectForKey:VC_PUSH_TYPE_KEY];
     if ([type isEqualToString:kPushTypeRideFound]){
         [self handleRideFoundNotification: payload];
@@ -194,7 +204,7 @@
         NSNumber * rideId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
         [[VCDialogs instance] rideCancelledByDriver];
         [[NSNotificationCenter defaultCenter] postNotificationName:kPushTypeFareCancelledByDriver object:payload userInfo:@{}];
-
+        
         if([[VCUserStateManager instance].underwayFareId isEqualToNumber:rideId]){
             [VCUserStateManager instance].underwayFareId = nil;
             [VCUserStateManager instance].rideProcessState = kUserStateIdle;

@@ -15,6 +15,6 @@
 
 @interface VCNotifications : NSObject
 
-+ (void) scheduledUpdated;
++ (void) scheduleUpdated;
 
 @end

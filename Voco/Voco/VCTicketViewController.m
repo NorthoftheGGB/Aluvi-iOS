@@ -230,7 +230,7 @@
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripFulfilled:) name:kNotificationTypeTripFulfilled object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripFulfilled:) name:kNotificationTypeTripUnfulfilled object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripUnfulfilled:) name:kNotificationTypeTripUnfulfilled object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fareCompleted:) name:kNotificationTypeFareComplete object:nil];
     
     
@@ -383,6 +383,7 @@
                 _rideDetailsHud.lisenceLabel.text = _ticket.car.licensePlate;
                 _rideDetailsHud.cardNicknamelabel.text = [VCUserStateManager instance].profile.cardBrand;
                 _rideDetailsHud.cardNumberLabel.text = [VCUserStateManager instance].profile.cardLastFour;
+                _rideDetailsHud.fareLabel.text = [VCUtilities formatCurrencyFromCents: _ticket.fixedPrice];
                 CGRect frame = _rideDetailsHud.frame;
                 frame.origin.x = 0;
                 frame.origin.y = self.view.frame.size.height - 154;
@@ -396,6 +397,7 @@
                 //_rideDetailsConfirmation.fareLabel.text = _ride.estimatedFareAmount;
                 _rideDetailsConfirmation.cardNicknamelabel.text = [VCUserStateManager instance].profile.cardBrand;
                 _rideDetailsConfirmation.cardNumberLabel.text = [VCUserStateManager instance].profile.cardLastFour;
+                _rideDetailsConfirmation.fareLabel.text = [VCUtilities formatCurrencyFromCents: _ticket.fixedPrice];
                 CGRect frame = _rideDetailsConfirmation.frame;
                 frame.origin.x = 0;
                 frame.origin.y = self.view.frame.size.height - 480;
@@ -986,6 +988,8 @@
         [self addOriginAnnotation:location];
         widget.waiting = NO;
         
+        [VCCommuteManager instance].homePlaceName = widget.locationText;
+
         
     } else if (widget.type == kWorkType) {
         
@@ -993,6 +997,8 @@
         [self addDestinationAnnotation:location];
         widget.waiting = NO;
         
+        [VCCommuteManager instance].workPlaceName = widget.locationText;
+
     }
     
     [self updateRouteOverlay];
@@ -1491,7 +1497,7 @@
                            
                            _ticket.forcedState = kCompleteState;
                            [VCCoreData saveContext];
-                           [VCNotifications scheduledUpdated];
+                           [VCNotifications scheduleUpdated];
                            [hud hide:YES];
                            
                            [_driverCallHUD removeFromSuperview];

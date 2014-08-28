@@ -109,6 +109,11 @@
     }
 }
 
+- (NSString *) locationText {
+    return _locationNameLabel.text;
+}
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

@@ -49,6 +49,7 @@
 @dynamic dropOffPointLongitude;
 @dynamic dropOffPointPlaceName;
 @dynamic hovFare;
+@dynamic fixedPrice;
 
 + (void)createMappings:(RKObjectManager *)objectManager{
     RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Ticket"
@@ -74,7 +75,8 @@
                                                         @"destination_short_name" : @"destinationShortName",
                                                         @"driving" : @"driving",
                                                         @"trip_id" : @"trip_id",
-                                                        @"pickup_time" : @"pickupTime"
+                                                        @"pickup_time" : @"pickupTime",
+                                                        @"fixed_price" : @"fixedPrice"
                                                         }];
     
     entityMapping.identificationAttributes = @[ @"ride_id" ]; // for riders ride_id is the primary key

@@ -250,7 +250,7 @@ static VCCommuteManager * instance;
     
     
     if(ride.ride_id != nil) {
-        if([ride.driving boolValue] ){
+        if(ride.fare_id != nil && [ride.driving boolValue] ){
             [VCDriverApi fareCancelledByDriver:ride.fare_id success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                 deleteRide(ride);
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"schedule_updated" object:nil userInfo:@{}];

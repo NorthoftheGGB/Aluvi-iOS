@@ -10,7 +10,7 @@
 
 @implementation VCNotifications
 
-+ (void) scheduledUpdated {
++ (void) scheduleUpdated {
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationScheduleUpdated object:nil userInfo:@{}];
 }
 @end

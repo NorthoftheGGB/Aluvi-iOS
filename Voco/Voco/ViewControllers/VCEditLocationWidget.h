@@ -30,5 +30,6 @@
 @property (nonatomic) BOOL waiting;
 
 - (void) setLocationText: (NSString *) text;
+- (NSString *) locationText;
 
 @end
