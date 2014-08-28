@@ -12,7 +12,6 @@
 #import "Payment.h"
 #import "Ticket.h"
 #import "Driver.h"
-#import "VCReceiptTableViewCell.h"
 #import "VCReceiptExpandedTableViewCell.h"
 #import "NSDate+Pretty.h"
 
@@ -108,12 +107,19 @@
     Payment *payment = [_fetchedResultsController objectAtIndexPath:indexPath];
     UITableViewCell *cell;
     VCReceiptExpandedTableViewCell * receiptCell = [WRUtilities getViewFromNib:@"VCReceiptExpandedTableViewCell" class:[VCReceiptExpandedTableViewCell class]];
-    receiptCell.dateTopLabel.text =  [payment.createdAt typicalDate];
+    receiptCell.titleLabel.text = [payment.ticket shortRouteDescription];
+    receiptCell.titleLabelCollapsed.text = [payment.ticket shortRouteDescription];
+    receiptCell.dateLabel.text =  [payment.createdAt typicalDate];
+    receiptCell.dateLabelCollapsed.text = [payment.createdAt typicalDate];
     receiptCell.dateDetailLabel.text =  [payment.createdAt typicalDate];
-    receiptCell.totalFareAmountLabel.text = [NSString stringWithFormat:@"%.1f", [payment.amountCents doubleValue] / 100];
+    if([payment.amountCents isEqualToNumber:[NSNumber numberWithInt:0]]) {
+        receiptCell.totalFareAmountLabel.text = [VCUtilities formatCurrencyFromCents:payment.ticket.fixedPrice];
+    } else {
+        receiptCell.totalFareAmountLabel.text = [VCUtilities formatCurrencyFromCents:payment.amountCents];
+    }
     receiptCell.rideNumberLabel.text = [payment.ticket.ride_id stringValue];
     receiptCell.driverNameLabel.text = [payment.ticket.driver fullName];
-    receiptCell.directionLabel.text = [payment.ticket shortRouteDescription];
+    receiptCell.directionLabel.text = payment.stripeChargeStatus;
     receiptCell.distanceLabel.text = @"";
     
     [receiptCell.contentView addSubview:receiptCell.collapsed];

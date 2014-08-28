@@ -15,7 +15,9 @@
 @interface VCReceiptExpandedTableViewCell : UITableViewCell
 @property (strong, nonatomic) IBOutlet UIView * collapsed;
 @property (strong, nonatomic) IBOutlet UIView * expanded;
-@property (weak, nonatomic) IBOutlet VCLabel *dateTopLabel;
+@property (weak, nonatomic) IBOutlet VCLabel *dateLabelCollapsed;
+@property (weak, nonatomic) IBOutlet VCLabel *titleLabelCollapsed;
+@property (weak, nonatomic) IBOutlet VCLabel *dateLabel;
 @property (weak, nonatomic) IBOutlet VCLabel *titleLabel;
 @property (weak, nonatomic) IBOutlet VCLabel *dateDetailLabel;
 @property (weak, nonatomic) IBOutlet VCLabelBold *totalFareAmountLabel;

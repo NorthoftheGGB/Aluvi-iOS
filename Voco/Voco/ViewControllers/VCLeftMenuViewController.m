@@ -20,6 +20,7 @@
 #import "VCSubMenuItemTableViewCell.h"
 #import "VCMenuItemNotConfiguredTableViewCell.h"
 #import "VCMenuItemModeTableViewCell.h"
+#import "VCDriverSubMenuItemTableViewCell.h"
 #import "NSDate+Pretty.h"
 #import "VCUserStateManager.h"
 #import "VCRiderApi.h"
@@ -292,7 +293,7 @@
             
         case kEarningsCellInteger:
         {
-            VCSubMenuItemTableViewCell * subMenuItemTableViewCell = [WRUtilities getViewFromNib:@"VCSubMenuItemTableViewCell" class:[VCSubMenuItemTableViewCell class]];
+            VCDriverSubMenuItemTableViewCell * subMenuItemTableViewCell = [WRUtilities getViewFromNib:@"VCDriverSubMenuItemTableViewCell" class:[VCDriverSubMenuItemTableViewCell class]];
             subMenuItemTableViewCell.itemTitleLabel.text = @"Earnings";
             cell = subMenuItemTableViewCell;
         }
@@ -300,7 +301,7 @@
             
         case kFareReceiptsCellInteger:
         {
-            VCSubMenuItemTableViewCell * subMenuItemTableViewCell = [WRUtilities getViewFromNib:@"VCSubMenuItemTableViewCell" class:[VCSubMenuItemTableViewCell class]];
+            VCDriverSubMenuItemTableViewCell * subMenuItemTableViewCell = [WRUtilities getViewFromNib:@"VCDriverSubMenuItemTableViewCell" class:[VCDriverSubMenuItemTableViewCell class]];
             subMenuItemTableViewCell.itemTitleLabel.text = @"Fare Receipts";
             cell = subMenuItemTableViewCell;
         }
@@ -529,18 +530,29 @@
     
     if([_scheduleItems count] > 0) {
         
-        long index = [_tableCellList indexOfObject:kScheduleCell];
-        NSRange range;
-        range.location = index + 1;
-        range.length = [_scheduleItemsList count];
-        [_tableCellList removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:range]];
-        NSMutableArray * indexPaths = [NSMutableArray array];
-        for(int i=0; i<[_scheduleItems count]; i++){
+        if([_tableCellList containsObject:kScheduleItemCell]){
+
+            /* TODO only remove matching schedule item cells
+                Might also consider only allowing these functions within a mutex
+            for(int i=0; i<[_tableCellList count]; i++){
+                if([_tableCellList objectAtIndex:i] isEqualToString:kScheduleItemCell){
+                    
+                }
+            }
+             */
+            
+            long index = [_tableCellList indexOfObject:kScheduleCell];
+            NSRange range;
+            range.location = index + 1;
+            range.length = [_scheduleItemsList count];
+            [_tableCellList removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:range]];
+            NSMutableArray * indexPaths = [NSMutableArray array];
+            for(int i=0; i<[_scheduleItems count]; i++){
             [indexPaths addObject:[NSIndexPath indexPathForRow: index+i+1 inSection:0]];
-        }
-        [_tableView deleteRowsAtIndexPaths:indexPaths
+            }
+            [_tableView deleteRowsAtIndexPaths:indexPaths
                           withRowAnimation:UITableViewRowAnimationAutomatic];
-        
+        }
     }
     
 }

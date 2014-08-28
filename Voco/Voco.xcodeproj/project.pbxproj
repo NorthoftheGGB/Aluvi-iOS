@@ -247,12 +247,6 @@
 		4FC758DD19AA94C30093DBEA /* VCPasswordRecoveryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758D919AA94C30093DBEA /* VCPasswordRecoveryViewController.xib */; };
 		4FC758DE19AA94C30093DBEA /* VCPasswordRecoveryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758D919AA94C30093DBEA /* VCPasswordRecoveryViewController.xib */; };
 		4FC758DF19AA94C30093DBEA /* VCPasswordRecoveryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758D919AA94C30093DBEA /* VCPasswordRecoveryViewController.xib */; };
-		4FC758E419AA951F0093DBEA /* VCReceiptTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758E219AA951F0093DBEA /* VCReceiptTableViewCell.m */; };
-		4FC758E519AA951F0093DBEA /* VCReceiptTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758E219AA951F0093DBEA /* VCReceiptTableViewCell.m */; };
-		4FC758E619AA951F0093DBEA /* VCReceiptTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758E219AA951F0093DBEA /* VCReceiptTableViewCell.m */; };
-		4FC758E719AA951F0093DBEA /* VCReceiptTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758E319AA951F0093DBEA /* VCReceiptTableViewCell.xib */; };
-		4FC758E819AA951F0093DBEA /* VCReceiptTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758E319AA951F0093DBEA /* VCReceiptTableViewCell.xib */; };
-		4FC758E919AA951F0093DBEA /* VCReceiptTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758E319AA951F0093DBEA /* VCReceiptTableViewCell.xib */; };
 		4FC758ED19AA95300093DBEA /* VCReceiptExpandedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758EB19AA95300093DBEA /* VCReceiptExpandedTableViewCell.m */; };
 		4FC758EE19AA95300093DBEA /* VCReceiptExpandedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758EB19AA95300093DBEA /* VCReceiptExpandedTableViewCell.m */; };
 		4FC758EF19AA95300093DBEA /* VCReceiptExpandedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758EB19AA95300093DBEA /* VCReceiptExpandedTableViewCell.m */; };
@@ -1042,9 +1036,6 @@
 		4FC758D719AA94C30093DBEA /* VCPasswordRecoveryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPasswordRecoveryViewController.h; sourceTree = "<group>"; };
 		4FC758D819AA94C30093DBEA /* VCPasswordRecoveryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPasswordRecoveryViewController.m; sourceTree = "<group>"; };
 		4FC758D919AA94C30093DBEA /* VCPasswordRecoveryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCPasswordRecoveryViewController.xib; sourceTree = "<group>"; };
-		4FC758E119AA951F0093DBEA /* VCReceiptTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCReceiptTableViewCell.h; sourceTree = "<group>"; };
-		4FC758E219AA951F0093DBEA /* VCReceiptTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCReceiptTableViewCell.m; sourceTree = "<group>"; };
-		4FC758E319AA951F0093DBEA /* VCReceiptTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCReceiptTableViewCell.xib; sourceTree = "<group>"; };
 		4FC758EA19AA95300093DBEA /* VCReceiptExpandedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCReceiptExpandedTableViewCell.h; sourceTree = "<group>"; };
 		4FC758EB19AA95300093DBEA /* VCReceiptExpandedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCReceiptExpandedTableViewCell.m; sourceTree = "<group>"; };
 		4FC758EC19AA95300093DBEA /* VCReceiptExpandedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCReceiptExpandedTableViewCell.xib; sourceTree = "<group>"; };
@@ -1614,9 +1605,6 @@
 		4FC758E019AA94F00093DBEA /* Receipts Table View Cells */ = {
 			isa = PBXGroup;
 			children = (
-				4FC758E119AA951F0093DBEA /* VCReceiptTableViewCell.h */,
-				4FC758E219AA951F0093DBEA /* VCReceiptTableViewCell.m */,
-				4FC758E319AA951F0093DBEA /* VCReceiptTableViewCell.xib */,
 				4FC758EA19AA95300093DBEA /* VCReceiptExpandedTableViewCell.h */,
 				4FC758EB19AA95300093DBEA /* VCReceiptExpandedTableViewCell.m */,
 				4FC758EC19AA95300093DBEA /* VCReceiptExpandedTableViewCell.xib */,
@@ -2653,7 +2641,6 @@
 				F4354DBD195D0D6A00C06CF7 /* login_form@2x.png in Resources */,
 				4F2EF9B21961391B006A1962 /* about-menu-button-selected@2x.png in Resources */,
 				F4A7C8281962E235007E05AD /* VCLocationSearchViewController.xib in Resources */,
-				4FC758E819AA951F0093DBEA /* VCReceiptTableViewCell.xib in Resources */,
 				F4354DC0195D0D6A00C06CF7 /* VCDriverVideoTutorialController.xib in Resources */,
 				4F2EF9C21961391B006A1962 /* terms-menu-button@2x.png in Resources */,
 				F4138C301965467D00C265CD /* VCFaresViewController.xib in Resources */,
@@ -2738,7 +2725,6 @@
 				F4C6B24C197F06B100F6C10B /* VCLocationSearchViewController.xib in Resources */,
 				F4C6B24D197F06B100F6C10B /* KlinicSlabLightIt.ttf in Resources */,
 				F4C6B24E197F06B100F6C10B /* menu-list@2x.png in Resources */,
-				4FC758E719AA951F0093DBEA /* VCReceiptTableViewCell.xib in Resources */,
 				4FC7589B19AA84860093DBEA /* logo@2x.png in Resources */,
 				F4C6B24F197F06B100F6C10B /* VCDriverProfileViewController.xib in Resources */,
 				F4C6B250197F06B100F6C10B /* scheduledrides-menu-button@2x.png in Resources */,
@@ -2897,7 +2883,6 @@
 				4F37E2DE1949574000753172 /* KlinicSlabLightIt.ttf in Resources */,
 				F473F01A195044AA00D8C900 /* menu-list@2x.png in Resources */,
 				4FCD7C7A19762465007609E8 /* VCDriverProfileViewController.xib in Resources */,
-				4FC758E919AA951F0093DBEA /* VCReceiptTableViewCell.xib in Resources */,
 				4FC7589D19AA84860093DBEA /* logo@2x.png in Resources */,
 				4F2EF9BB1961391B006A1962 /* scheduledrides-menu-button@2x.png in Resources */,
 				4FDB0ED51970C3AD00A8CEC2 /* button-full-select@2x.png in Resources */,
@@ -3289,7 +3274,6 @@
 				F4354D90195D0D6A00C06CF7 /* MQRoute.m in Sources */,
 				F4354D91195D0D6A00C06CF7 /* main.m in Sources */,
 				4F184A361992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.m in Sources */,
-				4FC758E519AA951F0093DBEA /* VCReceiptTableViewCell.m in Sources */,
 				F4354D92195D0D6A00C06CF7 /* WRUtilities.m in Sources */,
 				F4354D93195D0D6A00C06CF7 /* VCTextField.m in Sources */,
 				F4354D94195D0D6A00C06CF7 /* VCRideRequestCreated.m in Sources */,
@@ -3361,7 +3345,6 @@
 				F4C6B1E1197F06B100F6C10B /* VCCarLicensePlateTextField.m in Sources */,
 				F4C6B1E2197F06B100F6C10B /* VCDevicesApi.m in Sources */,
 				F4C6B1E3197F06B100F6C10B /* VCDebug.m in Sources */,
-				4FC758E419AA951F0093DBEA /* VCReceiptTableViewCell.m in Sources */,
 				F4C6B1E4197F06B100F6C10B /* Fare.m in Sources */,
 				F4C6B1E5197F06B100F6C10B /* VCNewUser.m in Sources */,
 				F4C6B1E6197F06B100F6C10B /* IISideController.m in Sources */,
@@ -3572,7 +3555,6 @@
 				F473F0161950358000D8C900 /* MQRoute.m in Sources */,
 				F4FA0BF6192BF6BF005D8645 /* main.m in Sources */,
 				F425906719958E9600FA928E /* VCTicketViewController.m in Sources */,
-				4FC758E619AA951F0093DBEA /* VCReceiptTableViewCell.m in Sources */,
 				F4D8776C19774CAB00870945 /* VCFare.m in Sources */,
 				4F9ECEC51966369700AD4229 /* VCReferralCodeTextField.m in Sources */,
 				F45F7C0F1935976E00A94721 /* WRUtilities.m in Sources */,
