@@ -11,6 +11,7 @@
 
 @interface VCCenterViewBaseViewController ()
 
+@property (nonatomic) BOOL toggle;
 @end
 
 @implementation VCCenterViewBaseViewController
@@ -19,7 +20,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        _toggle = NO;
     }
     return self;
 }
@@ -34,12 +35,21 @@
     UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage: [UIImage imageNamed:@"hamburger"] style:UIBarButtonItemStylePlain target:self action:@selector(didTapHamburger)];
     self.navigationItem.leftBarButtonItem = hamburgerButton;
     self.navigationItem.leftBarButtonItem.tintColor= [UIColor colorWithRed:(162/255.f) green:(148/255.f) blue:(144/255.f) alpha:1.0];
+    
 }
 
 - (void) didTapHamburger {
-    [self.navigationController.viewDeckController openLeftView];
     
-    //[self.navigationController.viewDeckController openCenterView];
+    if(_toggle==YES) {
+        [self.navigationController.viewDeckController openLeftView];
+        _toggle = NO;
+                }
+    else {
+        [self.navigationController.viewDeckController closeLeftView];
+            _toggle = YES;
+}
+
+
     
 }
 
