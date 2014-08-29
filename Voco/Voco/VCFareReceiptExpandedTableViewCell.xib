@@ -6,28 +6,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="369" id="KGk-i7-Jjw" customClass="VCReceiptExpandedTableViewCell">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="369" id="KGk-i7-Jjw" userLabel="Fare Receipt Expanded Table View Cell" customClass="VCReceiptExpandedTableViewCell">
             <rect key="frame" x="0.0" y="0.0" width="320" height="370"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="369"/>
                 <autoresizingMask key="autoresizingMask"/>
             </tableViewCellContentView>
-            <connections>
-                <outlet property="collapsed" destination="Gg8-K3-vDK" id="tNy-Nx-FEn"/>
-                <outlet property="dateDetailLabel" destination="ips-GV-4nu" id="wGG-np-Fuo"/>
-                <outlet property="dateLabel" destination="ZKo-zO-Nct" id="yV5-6D-r5c"/>
-                <outlet property="dateLabelCollapsed" destination="rul-WZ-3oa" id="ctX-eg-fD3"/>
-                <outlet property="directionLabel" destination="dCv-Tk-q4T" id="ekB-8V-ZFV"/>
-                <outlet property="distanceLabel" destination="S7C-Kg-IZb" id="BLd-XL-HNL"/>
-                <outlet property="driverNameLabel" destination="BWQ-uU-cMk" id="vFd-KJ-pu5"/>
-                <outlet property="driverRiderLabel" destination="aD6-C7-hdi" id="FiN-sU-OKE"/>
-                <outlet property="expanded" destination="d2k-wI-nhH" id="Kp0-wO-v6F"/>
-                <outlet property="rideNumberLabel" destination="UZP-mA-2rf" id="ZqT-sA-1fj"/>
-                <outlet property="titleLabel" destination="oZ8-Cp-Rjx" id="BZl-lE-Lob"/>
-                <outlet property="titleLabelCollapsed" destination="zhw-sL-eid" id="fbz-b7-4mi"/>
-                <outlet property="totalFareAmountLabel" destination="Lid-e4-CV6" id="CFS-fg-m7Y"/>
-            </connections>
         </tableViewCell>
         <view contentMode="scaleToFill" id="d2k-wI-nhH">
             <rect key="frame" x="0.0" y="0.0" width="320" height="370"/>
@@ -41,11 +26,11 @@
                         <constraint firstAttribute="height" constant="309" id="7GH-49-aDu"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="total fare" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="liz-Nd-8d7" customClass="VCLabel">
-                    <rect key="frame" x="31" y="136" width="57" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="total fares" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="liz-Nd-8d7" customClass="VCLabel">
+                    <rect key="frame" x="25" y="133" width="70" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="57" id="5lq-Sl-WKf"/>
+                        <constraint firstAttribute="width" constant="70" id="5lq-Sl-WKf"/>
                         <constraint firstAttribute="height" constant="21" id="ca6-5Z-Bbn"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -121,7 +106,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Driver:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aD6-C7-hdi" customClass="VCLabel">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Riders:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aD6-C7-hdi" customClass="VCLabel">
                     <rect key="frame" x="-2" y="225" width="113" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
@@ -138,7 +123,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uds-Uo-ip6" customClass="VCLabel">
-                    <rect key="frame" x="0.0" y="267" width="113" height="21"/>
+                    <rect key="frame" x="0.0" y="301" width="113" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="113" id="FZ1-cd-DBx"/>
@@ -154,7 +139,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="scM-Lg-0lf" customClass="VCLabel">
-                    <rect key="frame" x="-2" y="309" width="113" height="21"/>
+                    <rect key="frame" x="-2" y="328" width="113" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="1uJ-94-6DI"/>
@@ -169,12 +154,12 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="FirstName LastName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BWQ-uU-cMk" customClass="VCLabel">
-                    <rect key="frame" x="133" y="225" width="182" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FirstName LastName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BWQ-uU-cMk" customClass="VCLabel">
+                    <rect key="frame" x="133" y="225" width="181" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="AuA-Bd-8PO"/>
-                        <constraint firstAttribute="width" constant="174" id="Xf0-Cs-n88"/>
+                        <constraint firstAttribute="width" constant="181" id="Xf0-Cs-n88"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
@@ -186,7 +171,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="999 miles" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7C-Kg-IZb" customClass="VCLabel">
-                    <rect key="frame" x="133" y="267" width="174" height="21"/>
+                    <rect key="frame" x="133" y="301" width="174" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="174" id="HpI-Pr-hYH"/>
@@ -202,7 +187,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCv-Tk-q4T" customClass="VCLabel">
-                    <rect key="frame" x="133" y="309" width="174" height="21"/>
+                    <rect key="frame" x="133" y="328" width="174" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="7ET-nm-bm5"/>
@@ -249,13 +234,46 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FirstName LastName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w27-Ft-P7i" customClass="VCLabel">
+                    <rect key="frame" x="133" y="246" width="181" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="181" id="9wG-Pn-Zhq"/>
+                        <constraint firstAttribute="height" constant="21" id="JHT-93-xHO"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="17"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FirstName LastName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hog-RW-qkC" customClass="VCLabel">
+                    <rect key="frame" x="133" y="267" width="181" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="181" id="EQm-5k-nDh"/>
+                        <constraint firstAttribute="height" constant="21" id="VDe-9n-sty"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="17"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="liz-Nd-8d7" firstAttribute="top" secondItem="Lid-e4-CV6" secondAttribute="bottom" constant="-10" id="0XH-Wu-BuO"/>
+                <constraint firstItem="liz-Nd-8d7" firstAttribute="top" secondItem="Lid-e4-CV6" secondAttribute="bottom" constant="-13" id="0XH-Wu-BuO"/>
                 <constraint firstItem="ZKo-zO-Nct" firstAttribute="leading" secondItem="d2k-wI-nhH" secondAttribute="leading" constant="2" id="2PI-rC-vnI"/>
+                <constraint firstItem="Hog-RW-qkC" firstAttribute="top" secondItem="w27-Ft-P7i" secondAttribute="bottom" id="6Pi-1q-Skn"/>
                 <constraint firstItem="ZKo-zO-Nct" firstAttribute="top" secondItem="d2k-wI-nhH" secondAttribute="top" constant="20" id="8UT-n2-I4b"/>
-                <constraint firstItem="S7C-Kg-IZb" firstAttribute="top" secondItem="BWQ-uU-cMk" secondAttribute="bottom" constant="21" id="8eC-Z5-R1O"/>
+                <constraint firstItem="S7C-Kg-IZb" firstAttribute="top" secondItem="BWQ-uU-cMk" secondAttribute="bottom" constant="55" id="8eC-Z5-R1O"/>
                 <constraint firstItem="aD6-C7-hdi" firstAttribute="top" secondItem="rDj-zs-oYg" secondAttribute="bottom" constant="23" id="EvJ-ge-BS2"/>
                 <constraint firstItem="dCv-Tk-q4T" firstAttribute="leading" secondItem="scM-Lg-0lf" secondAttribute="trailing" constant="22" id="GyK-rM-hnY"/>
                 <constraint firstItem="Uds-Uo-ip6" firstAttribute="leading" secondItem="d2k-wI-nhH" secondAttribute="leading" id="JRu-tX-u5Z"/>
@@ -266,21 +284,24 @@
                 <constraint firstItem="ips-GV-4nu" firstAttribute="top" secondItem="oZ8-Cp-Rjx" secondAttribute="bottom" constant="56" id="QPr-WK-Dby"/>
                 <constraint firstItem="S7C-Kg-IZb" firstAttribute="leading" secondItem="Uds-Uo-ip6" secondAttribute="trailing" constant="20" id="Tpa-LX-asq"/>
                 <constraint firstItem="Lid-e4-CV6" firstAttribute="top" secondItem="ZKo-zO-Nct" secondAttribute="bottom" constant="54" id="WfN-XM-590"/>
-                <constraint firstItem="scM-Lg-0lf" firstAttribute="top" secondItem="Uds-Uo-ip6" secondAttribute="bottom" constant="21" id="ahe-KG-591"/>
+                <constraint firstAttribute="trailing" secondItem="w27-Ft-P7i" secondAttribute="trailing" constant="6" id="ZPS-pG-CDg"/>
+                <constraint firstItem="scM-Lg-0lf" firstAttribute="top" secondItem="Uds-Uo-ip6" secondAttribute="bottom" constant="6" id="ahe-KG-591"/>
+                <constraint firstItem="w27-Ft-P7i" firstAttribute="top" secondItem="BWQ-uU-cMk" secondAttribute="bottom" id="cpP-sF-rF2"/>
                 <constraint firstItem="Lid-e4-CV6" firstAttribute="leading" secondItem="d2k-wI-nhH" secondAttribute="leading" constant="18" id="e8q-Nm-ZJs"/>
+                <constraint firstAttribute="trailing" secondItem="Hog-RW-qkC" secondAttribute="trailing" constant="6" id="fJI-IR-O30"/>
                 <constraint firstItem="scM-Lg-0lf" firstAttribute="leading" secondItem="d2k-wI-nhH" secondAttribute="leading" constant="-2" id="g5S-hY-Dqf"/>
                 <constraint firstItem="oZ8-Cp-Rjx" firstAttribute="leading" secondItem="ZKo-zO-Nct" secondAttribute="trailing" constant="18" id="gK6-7n-ENp"/>
-                <constraint firstItem="Uds-Uo-ip6" firstAttribute="top" secondItem="aD6-C7-hdi" secondAttribute="bottom" constant="21" id="gsU-gS-zOu"/>
+                <constraint firstItem="Uds-Uo-ip6" firstAttribute="top" secondItem="aD6-C7-hdi" secondAttribute="bottom" constant="55" id="gsU-gS-zOu"/>
                 <constraint firstAttribute="trailing" secondItem="ips-GV-4nu" secondAttribute="trailing" constant="86" id="l0w-GM-HWJ"/>
                 <constraint firstItem="BWQ-uU-cMk" firstAttribute="leading" secondItem="aD6-C7-hdi" secondAttribute="trailing" constant="22" id="l9Z-NP-zGn"/>
                 <constraint firstItem="UZP-mA-2rf" firstAttribute="leading" secondItem="rDj-zs-oYg" secondAttribute="trailing" constant="22" id="mfk-52-c6D"/>
                 <constraint firstItem="oZ8-Cp-Rjx" firstAttribute="top" secondItem="d2k-wI-nhH" secondAttribute="top" constant="20" id="o1N-Np-12Z"/>
-                <constraint firstItem="liz-Nd-8d7" firstAttribute="leading" secondItem="d2k-wI-nhH" secondAttribute="leading" constant="31" id="pl0-Dv-e9K"/>
+                <constraint firstItem="liz-Nd-8d7" firstAttribute="leading" secondItem="d2k-wI-nhH" secondAttribute="leading" constant="25" id="pl0-Dv-e9K"/>
                 <constraint firstItem="UZP-mA-2rf" firstAttribute="top" secondItem="ips-GV-4nu" secondAttribute="bottom" constant="63" id="qQM-At-tEp"/>
-                <constraint firstItem="rDj-zs-oYg" firstAttribute="top" secondItem="liz-Nd-8d7" secondAttribute="bottom" constant="24" id="qbv-UT-lpe"/>
+                <constraint firstItem="rDj-zs-oYg" firstAttribute="top" secondItem="liz-Nd-8d7" secondAttribute="bottom" constant="27" id="qbv-UT-lpe"/>
                 <constraint firstAttribute="trailing" secondItem="xrL-mQ-CPM" secondAttribute="trailing" id="rih-A2-2I9"/>
                 <constraint firstItem="xrL-mQ-CPM" firstAttribute="top" secondItem="d2k-wI-nhH" secondAttribute="top" constant="61" id="tqf-Fo-Fdj"/>
-                <constraint firstItem="dCv-Tk-q4T" firstAttribute="top" secondItem="S7C-Kg-IZb" secondAttribute="bottom" constant="21" id="yai-qA-H6Q"/>
+                <constraint firstItem="dCv-Tk-q4T" firstAttribute="top" secondItem="S7C-Kg-IZb" secondAttribute="bottom" constant="6" id="yai-qA-H6Q"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>

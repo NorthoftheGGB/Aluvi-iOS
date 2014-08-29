@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -27,7 +27,7 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UpT-0B-UwL" customClass="VCButtonStandardStyle">
-                    <rect key="frame" x="9" y="327" width="305" height="47"/>
+                    <rect key="frame" x="9" y="289" width="305" height="47"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="305" id="0K3-Dg-1vS"/>
@@ -52,7 +52,7 @@
                     </connections>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WBj-G9-Hq7" customClass="VCTextField">
-                    <rect key="frame" x="9" y="216" width="305" height="30"/>
+                    <rect key="frame" x="9" y="198" width="305" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="305" id="J0W-tI-6rU"/>
@@ -70,7 +70,7 @@
                     </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rOj-vi-Qn2" customClass="VCTextField">
-                    <rect key="frame" x="9" y="261" width="305" height="30"/>
+                    <rect key="frame" x="9" y="236" width="305" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="jo1-in-MWt"/>
@@ -88,10 +88,10 @@
                     </connections>
                 </textField>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="4BS-Xk-d0U">
-                    <rect key="frame" x="123" y="99" width="61" height="84"/>
+                    <rect key="frame" x="123" y="81" width="61" height="84"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tb-J6-sir">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tb-J6-sir">
                     <rect key="frame" x="37" y="448" width="249" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
@@ -111,7 +111,7 @@
             <constraints>
                 <constraint firstItem="WBj-G9-Hq7" firstAttribute="top" secondItem="4BS-Xk-d0U" secondAttribute="bottom" constant="33" id="7n6-zt-gP7"/>
                 <constraint firstAttribute="bottom" secondItem="4tb-J6-sir" secondAttribute="bottom" constant="2" id="90P-de-Bey"/>
-                <constraint firstItem="rOj-vi-Qn2" firstAttribute="top" secondItem="WBj-G9-Hq7" secondAttribute="bottom" constant="15" id="Hb6-cq-rkE"/>
+                <constraint firstItem="rOj-vi-Qn2" firstAttribute="top" secondItem="WBj-G9-Hq7" secondAttribute="bottom" constant="8" id="Hb6-cq-rkE"/>
                 <constraint firstAttribute="trailing" secondItem="MnF-KF-sry" secondAttribute="trailing" id="Hj6-Nd-McL"/>
                 <constraint firstItem="MnF-KF-sry" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="IJB-Vk-6jU"/>
                 <constraint firstItem="MnF-KF-sry" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OfJ-J5-t5K"/>
@@ -119,9 +119,9 @@
                 <constraint firstItem="UpT-0B-UwL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="9" id="aCy-jb-gxJ"/>
                 <constraint firstAttribute="trailing" secondItem="4BS-Xk-d0U" secondAttribute="trailing" constant="136" id="cmL-uS-hn8"/>
                 <constraint firstItem="4tb-J6-sir" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="37" id="f2I-AX-sXc"/>
-                <constraint firstItem="4BS-Xk-d0U" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="99" id="lhx-lK-xjC"/>
+                <constraint firstItem="4BS-Xk-d0U" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="81" id="lhx-lK-xjC"/>
                 <constraint firstItem="rOj-vi-Qn2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="9" id="lle-GJ-68l"/>
-                <constraint firstItem="UpT-0B-UwL" firstAttribute="top" secondItem="rOj-vi-Qn2" secondAttribute="bottom" constant="36" id="oGJ-u7-UeC"/>
+                <constraint firstItem="UpT-0B-UwL" firstAttribute="top" secondItem="rOj-vi-Qn2" secondAttribute="bottom" constant="23" id="oGJ-u7-UeC"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>

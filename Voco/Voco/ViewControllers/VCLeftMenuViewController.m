@@ -294,7 +294,9 @@
         case kEarningsCellInteger:
         {
             VCDriverSubMenuItemTableViewCell * subMenuItemTableViewCell = [WRUtilities getViewFromNib:@"VCDriverSubMenuItemTableViewCell" class:[VCDriverSubMenuItemTableViewCell class]];
+            subMenuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-payments-icon"];
             subMenuItemTableViewCell.itemTitleLabel.text = @"Earnings";
+            subMenuItemTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell = subMenuItemTableViewCell;
         }
             break;
@@ -302,7 +304,9 @@
         case kFareReceiptsCellInteger:
         {
             VCDriverSubMenuItemTableViewCell * subMenuItemTableViewCell = [WRUtilities getViewFromNib:@"VCDriverSubMenuItemTableViewCell" class:[VCDriverSubMenuItemTableViewCell class]];
+            subMenuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-receipts-icon"];
             subMenuItemTableViewCell.itemTitleLabel.text = @"Fare Receipts";
+            subMenuItemTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell = subMenuItemTableViewCell;
         }
             break;

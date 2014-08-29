@@ -561,7 +561,7 @@
                         <constraint firstAttribute="width" constant="85" id="z9Q-ru-tup"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dp-XF-nLu">
+                <button hidden="YES" opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dp-XF-nLu">
                     <rect key="frame" x="224" y="7" width="36" height="36"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="directions-button.png">
@@ -986,7 +986,7 @@
                 <outlet property="riderCallButton3" destination="gVW-jM-U8O" id="xDr-y1-vgY"/>
             </connections>
         </view>
-        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ITr-VR-cFD" userLabel="Directions Button">
+        <button hidden="YES" opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ITr-VR-cFD" userLabel="Directions Button">
             <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <state key="normal" image="directions-button.png">
