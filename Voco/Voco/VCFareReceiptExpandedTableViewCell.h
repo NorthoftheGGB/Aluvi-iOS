@@ -1,4 +1,4 @@
-//
+    //
 //  VCFareReceiptExpandedTableViewCell.h
 //  Voco
 //
