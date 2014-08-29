@@ -14,6 +14,8 @@
 #import "VCSupportViewController.h"
 #import "VCPaymentsViewController.h"
 #import "VCReceiptsViewController.h"
+#import "VCEarningsViewController.h"
+#import "VCFareReceiptsViewController.h"
 #import "VCMenuItemTableViewCell.h"
 #import "VCMenuUserInfoTableViewCell.h"
 #import "VCMenuDriverClockOnTableViewCell.h"
@@ -170,11 +172,7 @@
             VCMenuUserInfoTableViewCell * menuUserInfoCell = [WRUtilities getViewFromNib:@"VCMenuUserInfoTableViewCell" class:[VCMenuUserInfoTableViewCell class]];
             
             //TODO: This is a placeholder image, replace it with relevant string!
-            
-            menuUserInfoCell.userImageView.image = [UIImage imageNamed: @"user-image-small"];
-            
-            //TODO: This is a placeholder name, replace it with relevant string!
-            
+            menuUserInfoCell.userImageView.image = [UIImage imageNamed: @"temp-user-profile-icon"];
             menuUserInfoCell.userFullName.text = [NSString stringWithFormat: @"%@ %@",
                                                   [[VCUserStateManager instance] profile].firstName,
                                                   [[VCUserStateManager instance] profile].lastName
@@ -423,6 +421,26 @@
                 VCMenuItemTableViewCell * cell = (VCMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
                 [cell select];
             }
+        }
+            break;
+            
+        case kEarningsCellInteger:
+        {
+            VCEarningsViewController * vc = [[VCEarningsViewController alloc] init];
+            [[VCInterfaceManager instance] setCenterViewControllers: @[vc]];
+            VCDriverSubMenuItemTableViewCell * cell = (VCDriverSubMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
+            [cell select];
+            
+        }
+            break;
+        case kFareReceiptsCellInteger:
+        {
+            VCFareReceiptsViewController * vc = [[VCFareReceiptsViewController alloc] init];
+            [[VCInterfaceManager instance] setCenterViewControllers: @[vc]];
+            VCDriverSubMenuItemTableViewCell * cell = (VCDriverSubMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
+            [cell select];
+            
+            
         }
             break;
             

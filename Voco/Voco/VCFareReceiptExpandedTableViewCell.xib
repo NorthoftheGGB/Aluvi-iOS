@@ -4,13 +4,30 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCFareReceiptExpandedTableViewCell">
+            <connections>
+                <outlet property="collapsed" destination="Gg8-K3-vDK" id="u6h-Yv-FvO"/>
+                <outlet property="dateDetailLabel" destination="ips-GV-4nu" id="S0o-fi-sLR"/>
+                <outlet property="dateLabel" destination="ZKo-zO-Nct" id="bva-Ov-B2X"/>
+                <outlet property="dateLabelCollapsed" destination="rul-WZ-3oa" id="9Y4-pf-B8f"/>
+                <outlet property="directionLabel" destination="dCv-Tk-q4T" id="d1U-Oi-bT0"/>
+                <outlet property="distanceLabel" destination="S7C-Kg-IZb" id="0Pw-mj-iQr"/>
+                <outlet property="expanded" destination="d2k-wI-nhH" id="lOr-Hg-mVK"/>
+                <outlet property="rideNumberLabel" destination="UZP-mA-2rf" id="f7W-iN-FCP"/>
+                <outlet property="riderNameOneLabel" destination="BWQ-uU-cMk" id="7Ud-mp-V0k"/>
+                <outlet property="riderNameThreeLabel" destination="Hog-RW-qkC" id="ToM-l2-Syl"/>
+                <outlet property="riderNameTwoLabel" destination="w27-Ft-P7i" id="2wF-PB-27v"/>
+                <outlet property="titleLabel" destination="oZ8-Cp-Rjx" id="ay4-d4-hto"/>
+                <outlet property="titleLabelCollapsed" destination="zhw-sL-eid" id="Uh6-ko-TrX"/>
+                <outlet property="totalFareAmountLabel" destination="Lid-e4-CV6" id="rVH-WQ-TvC"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="369" id="KGk-i7-Jjw" userLabel="Fare Receipt Expanded Table View Cell" customClass="VCReceiptExpandedTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="370"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="369" id="KGk-i7-Jjw" userLabel="Fare Receipt Expanded Table View Cell" customClass="VCFareReceiptExpandedTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="371"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="369"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="370"/>
                 <autoresizingMask key="autoresizingMask"/>
             </tableViewCellContentView>
         </tableViewCell>

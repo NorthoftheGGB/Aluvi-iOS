@@ -1,4 +1,4 @@
-//
+    //
 //  VCFareReceiptExpandedTableViewCell.h
 //  Voco
 //
@@ -23,9 +23,9 @@
 @property (weak, nonatomic) IBOutlet VCLabel *dateDetailLabel;
 @property (weak, nonatomic) IBOutlet VCLabelBold *totalFareAmountLabel;
 @property (weak, nonatomic) IBOutlet VCLabel *rideNumberLabel;
-@property (weak, nonatomic) IBOutlet VCLabel *RiderNameOneLabel;
-@property (weak, nonatomic) IBOutlet VCLabel *RiderNameTwoLabel;
-@property (weak, nonatomic) IBOutlet VCLabel *RiderNameThreeLabel;
+@property (weak, nonatomic) IBOutlet VCLabel *riderNameOneLabel;
+@property (weak, nonatomic) IBOutlet VCLabel *riderNameTwoLabel;
+@property (weak, nonatomic) IBOutlet VCLabel *riderNameThreeLabel;
 
 @property (weak, nonatomic) IBOutlet VCLabel *distanceLabel;
 @property (weak, nonatomic) IBOutlet VCLabel *directionLabel;

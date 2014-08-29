@@ -393,7 +393,7 @@
                         <constraint firstAttribute="width" constant="196" id="vxf-zV-Q4P"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
                     <nil key="highlightedColor"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
@@ -553,12 +553,12 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user-image-small.png" translatesAutoresizingMaskIntoConstraints="NO" id="LKt-Aa-kUP">
-                    <rect key="frame" x="231" y="63" width="85" height="85"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="temp-call-button.png" translatesAutoresizingMaskIntoConstraints="NO" id="LKt-Aa-kUP">
+                    <rect key="frame" x="249" y="74" width="60" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="85" id="LtA-84-04V"/>
-                        <constraint firstAttribute="width" constant="85" id="z9Q-ru-tup"/>
+                        <constraint firstAttribute="height" constant="60" id="LtA-84-04V"/>
+                        <constraint firstAttribute="width" constant="60" id="z9Q-ru-tup"/>
                     </constraints>
                 </imageView>
                 <button hidden="YES" opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dp-XF-nLu">
@@ -618,7 +618,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0b-9K-WB5">
-                    <rect key="frame" x="231" y="64" width="85" height="85"/>
+                    <rect key="frame" x="249" y="74" width="60" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -637,14 +637,14 @@
             <constraints>
                 <constraint firstItem="OuK-gE-l67" firstAttribute="leading" secondItem="8dp-XF-nLu" secondAttribute="trailing" constant="13" id="7sy-Zd-G5m"/>
                 <constraint firstItem="OuK-gE-l67" firstAttribute="top" secondItem="Lv9-d9-EJH" secondAttribute="top" constant="7" id="8B1-Xs-4Pu"/>
-                <constraint firstItem="P0b-9K-WB5" firstAttribute="bottom" secondItem="LKt-Aa-kUP" secondAttribute="bottom" constant="1" id="95K-eF-4qb"/>
+                <constraint firstItem="P0b-9K-WB5" firstAttribute="bottom" secondItem="LKt-Aa-kUP" secondAttribute="bottom" id="95K-eF-4qb"/>
                 <constraint firstItem="ocb-Au-ZiP" firstAttribute="top" secondItem="ZQU-zm-bb6" secondAttribute="bottom" constant="1" id="9Tw-1f-ETG"/>
-                <constraint firstItem="P0b-9K-WB5" firstAttribute="top" secondItem="LKt-Aa-kUP" secondAttribute="top" constant="1" id="Dna-fk-bQY"/>
+                <constraint firstItem="P0b-9K-WB5" firstAttribute="top" secondItem="LKt-Aa-kUP" secondAttribute="top" id="Dna-fk-bQY"/>
                 <constraint firstItem="P0b-9K-WB5" firstAttribute="leading" secondItem="LKt-Aa-kUP" secondAttribute="leading" id="EdG-BJ-e9D"/>
-                <constraint firstAttribute="trailing" secondItem="LKt-Aa-kUP" secondAttribute="trailing" constant="4" id="ILQ-Ew-txe"/>
+                <constraint firstAttribute="trailing" secondItem="LKt-Aa-kUP" secondAttribute="trailing" constant="11" id="ILQ-Ew-txe"/>
                 <constraint firstAttribute="bottom" secondItem="TaG-Um-H3F" secondAttribute="bottom" constant="5" id="J9E-mE-6w1"/>
-                <constraint firstItem="LKt-Aa-kUP" firstAttribute="leading" secondItem="ufz-sD-hCs" secondAttribute="trailing" constant="5" id="MFd-zi-et9"/>
-                <constraint firstItem="LKt-Aa-kUP" firstAttribute="leading" secondItem="Nxs-JX-K3G" secondAttribute="trailing" constant="5" id="Q48-lX-2W5"/>
+                <constraint firstItem="LKt-Aa-kUP" firstAttribute="leading" secondItem="ufz-sD-hCs" secondAttribute="trailing" constant="23" id="MFd-zi-et9"/>
+                <constraint firstItem="LKt-Aa-kUP" firstAttribute="leading" secondItem="Nxs-JX-K3G" secondAttribute="trailing" constant="23" id="Q48-lX-2W5"/>
                 <constraint firstAttribute="trailing" secondItem="OuK-gE-l67" secondAttribute="trailing" constant="11" id="SCr-FM-5p7"/>
                 <constraint firstItem="8dp-XF-nLu" firstAttribute="top" secondItem="Lv9-d9-EJH" secondAttribute="top" constant="7" id="SLU-IS-hQj"/>
                 <constraint firstItem="W2E-sO-vSO" firstAttribute="leading" secondItem="Lv9-d9-EJH" secondAttribute="leading" constant="32" id="TqA-86-b4Z"/>
@@ -654,8 +654,8 @@
                 <constraint firstItem="ufz-sD-hCs" firstAttribute="top" secondItem="IHO-f4-kdP" secondAttribute="bottom" constant="1" id="b7b-Rp-NYW"/>
                 <constraint firstAttribute="trailing" secondItem="bjb-9G-hqy" secondAttribute="trailing" constant="-10" id="et3-kG-Hlj"/>
                 <constraint firstItem="YHX-V0-gsv" firstAttribute="leading" secondItem="Lv9-d9-EJH" secondAttribute="leading" constant="24" id="ghM-Bq-sCv"/>
-                <constraint firstItem="LKt-Aa-kUP" firstAttribute="leading" secondItem="2Wx-Fa-RsE" secondAttribute="trailing" constant="5" id="jCY-Se-MEL"/>
-                <constraint firstAttribute="bottom" secondItem="LKt-Aa-kUP" secondAttribute="bottom" constant="6" id="nC6-ZI-HxU"/>
+                <constraint firstItem="LKt-Aa-kUP" firstAttribute="leading" secondItem="2Wx-Fa-RsE" secondAttribute="trailing" constant="23" id="jCY-Se-MEL"/>
+                <constraint firstAttribute="bottom" secondItem="LKt-Aa-kUP" secondAttribute="bottom" constant="20" id="nC6-ZI-HxU"/>
                 <constraint firstAttribute="bottom" secondItem="2Wx-Fa-RsE" secondAttribute="bottom" constant="6" id="nz5-jV-eRv"/>
                 <constraint firstItem="2Wx-Fa-RsE" firstAttribute="top" secondItem="ufz-sD-hCs" secondAttribute="bottom" id="oa1-74-Lxg"/>
                 <constraint firstItem="YHX-V0-gsv" firstAttribute="top" secondItem="Lv9-d9-EJH" secondAttribute="top" constant="23" id="quE-kH-jYW"/>
@@ -665,7 +665,7 @@
                 <constraint firstItem="P0b-9K-WB5" firstAttribute="trailing" secondItem="LKt-Aa-kUP" secondAttribute="trailing" id="uJw-HQ-wWl"/>
                 <constraint firstItem="ZQU-zm-bb6" firstAttribute="leading" secondItem="Lv9-d9-EJH" secondAttribute="leading" constant="6" id="v5e-pu-RTg"/>
                 <constraint firstItem="ocb-Au-ZiP" firstAttribute="leading" secondItem="Lv9-d9-EJH" secondAttribute="leading" constant="6" id="zCY-4s-fIN"/>
-                <constraint firstItem="LKt-Aa-kUP" firstAttribute="leading" secondItem="IHO-f4-kdP" secondAttribute="trailing" constant="5" id="zdq-4s-Yse"/>
+                <constraint firstItem="LKt-Aa-kUP" firstAttribute="leading" secondItem="IHO-f4-kdP" secondAttribute="trailing" constant="23" id="zdq-4s-Yse"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -1303,6 +1303,6 @@
         <image name="driver-hov-toggle.png" width="23" height="23"/>
         <image name="overlay-graphic.png" width="255" height="255"/>
         <image name="ride-details-hud.png" width="330" height="154"/>
-        <image name="user-image-small.png" width="65" height="65"/>
+        <image name="temp-call-button.png" width="60" height="60"/>
     </resources>
 </document>
