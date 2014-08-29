@@ -1838,7 +1838,7 @@
 		4FFCF2BA19A2428700A4A24E /* Menu Item View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4FFCF2E319A5B34500A4A24E /* HOV Menu Item View Controllers */,
+				4FFCF2E319A5B34500A4A24E /* HOV Driver Menu Item View Controllers */,
 				4FFCF2BB19A25F2100A4A24E /* VCProfileViewController.h */,
 				4FFCF2BC19A25F2100A4A24E /* VCProfileViewController.m */,
 				4FFCF2BD19A25F2100A4A24E /* VCProfileViewController.xib */,
@@ -1856,7 +1856,7 @@
 			name = "Menu Item View Controllers";
 			sourceTree = "<group>";
 		};
-		4FFCF2E319A5B34500A4A24E /* HOV Menu Item View Controllers */ = {
+		4FFCF2E319A5B34500A4A24E /* HOV Driver Menu Item View Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				4F3098F319B012F900DFCDD1 /* VCEarningsViewController.h */,
@@ -1866,7 +1866,7 @@
 				4F3098F919B0135600DFCDD1 /* VCFareReceiptsViewController.m */,
 				4F3098FD19B0137000DFCDD1 /* VCFareReceiptsViewController.xib */,
 			);
-			name = "HOV Menu Item View Controllers";
+			name = "HOV Driver Menu Item View Controllers";
 			sourceTree = "<group>";
 		};
 		4FFE16F61989E65B004D4413 /* Menu Item Table View Cells */ = {
