@@ -164,9 +164,6 @@
 		4F3D221C19B13209006EF35D /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3D221A19B13209006EF35D /* background@2x.png */; };
 		4F3D221D19B13209006EF35D /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3D221A19B13209006EF35D /* background@2x.png */; };
 		4F3D221E19B13209006EF35D /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3D221A19B13209006EF35D /* background@2x.png */; };
-		4F3D221F19B13209006EF35D /* loadingscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3D221B19B13209006EF35D /* loadingscreen@2x.png */; };
-		4F3D222019B13209006EF35D /* loadingscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3D221B19B13209006EF35D /* loadingscreen@2x.png */; };
-		4F3D222119B13209006EF35D /* loadingscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3D221B19B13209006EF35D /* loadingscreen@2x.png */; };
 		4F3D222319B132A0006EF35D /* reciept_expanded@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3D222219B132A0006EF35D /* reciept_expanded@2x.png */; };
 		4F3D222419B132A0006EF35D /* reciept_expanded@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3D222219B132A0006EF35D /* reciept_expanded@2x.png */; };
 		4F3D222519B132A0006EF35D /* reciept_expanded@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3D222219B132A0006EF35D /* reciept_expanded@2x.png */; };
@@ -1002,7 +999,6 @@
 		4F37E2DC1949574000753172 /* KlinicSlabMediumIt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = KlinicSlabMediumIt.ttf; path = Voco/Fonts/KlinicSlabMediumIt.ttf; sourceTree = SOURCE_ROOT; };
 		4F3D221619B13072006EF35D /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		4F3D221A19B13209006EF35D /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
-		4F3D221B19B13209006EF35D /* loadingscreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loadingscreen@2x.png"; sourceTree = "<group>"; };
 		4F3D222219B132A0006EF35D /* reciept_expanded@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reciept_expanded@2x.png"; sourceTree = "<group>"; };
 		4F3DB5AD1981C01D00DDD094 /* confirmation-hud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "confirmation-hud@2x.png"; sourceTree = "<group>"; };
 		4F3DB5AE1981C01D00DDD094 /* ride-details-hud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ride-details-hud@2x.png"; sourceTree = "<group>"; };
@@ -1661,7 +1657,6 @@
 			children = (
 				4F3D222219B132A0006EF35D /* reciept_expanded@2x.png */,
 				4F3D221A19B13209006EF35D /* background@2x.png */,
-				4F3D221B19B13209006EF35D /* loadingscreen@2x.png */,
 				4F3D221619B13072006EF35D /* Icon@2x.png */,
 				4F30991219B02BCD00DFCDD1 /* temp-call-button@2x.png */,
 				4F30991319B02BCD00DFCDD1 /* temp-user-profile-icon@2x.png */,
@@ -2650,7 +2645,6 @@
 				4F3D222419B132A0006EF35D /* reciept_expanded@2x.png in Resources */,
 				F4354DB7195D0D6A00C06CF7 /* KlinicSlabMedium.ttf in Resources */,
 				4F30991819B02BCD00DFCDD1 /* temp-user-profile-icon@2x.png in Resources */,
-				4F3D222019B13209006EF35D /* loadingscreen@2x.png in Resources */,
 				4FC7590619AACD840093DBEA /* VCDriverSubMenuItemTableViewCell.xib in Resources */,
 				4F2EF9D919614115006A1962 /* scheduledfares-menu-button-selected@2x.png in Resources */,
 				4FCBFBEF1995F50700CBF0C8 /* gradient@2x.png in Resources */,
@@ -2894,7 +2888,6 @@
 				4F4D8BF719882AFB0027A2AF /* VCDriveViewController.xib in Resources */,
 				F4C6B290197F06B100F6C10B /* mycar-menu-button@2x.png in Resources */,
 				4FC758B919AA8C270093DBEA /* VCLogInViewController.xib in Resources */,
-				4F3D221F19B13209006EF35D /* loadingscreen@2x.png in Resources */,
 				F4C6B291197F06B100F6C10B /* mycar-menu-button-selected@2x.png in Resources */,
 				F4C6B292197F06B100F6C10B /* car@2x.png in Resources */,
 				F4C6B293197F06B100F6C10B /* login_btn@2x.png in Resources */,
@@ -3059,7 +3052,6 @@
 				4F4D8BF919882AFB0027A2AF /* VCDriveViewController.xib in Resources */,
 				4F2EF9D619614115006A1962 /* mycar-menu-button@2x.png in Resources */,
 				4FC758BB19AA8C270093DBEA /* VCLogInViewController.xib in Resources */,
-				4F3D222119B13209006EF35D /* loadingscreen@2x.png in Resources */,
 				4F2EF9D419614115006A1962 /* mycar-menu-button-selected@2x.png in Resources */,
 				F4138C3B19678BE000C265CD /* car@2x.png in Resources */,
 				4FE641F3194168E80059BED1 /* login_btn@2x.png in Resources */,
