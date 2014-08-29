@@ -17,6 +17,9 @@
                 <outlet property="distanceLabel" destination="S7C-Kg-IZb" id="0Pw-mj-iQr"/>
                 <outlet property="expanded" destination="d2k-wI-nhH" id="lOr-Hg-mVK"/>
                 <outlet property="rideNumberLabel" destination="UZP-mA-2rf" id="f7W-iN-FCP"/>
+                <outlet property="riderNameOneLabel" destination="BWQ-uU-cMk" id="7Ud-mp-V0k"/>
+                <outlet property="riderNameThreeLabel" destination="Hog-RW-qkC" id="ToM-l2-Syl"/>
+                <outlet property="riderNameTwoLabel" destination="w27-Ft-P7i" id="2wF-PB-27v"/>
                 <outlet property="titleLabel" destination="oZ8-Cp-Rjx" id="ay4-d4-hto"/>
                 <outlet property="titleLabelCollapsed" destination="zhw-sL-eid" id="Uh6-ko-TrX"/>
                 <outlet property="totalFareAmountLabel" destination="Lid-e4-CV6" id="rVH-WQ-TvC"/>
