@@ -54,7 +54,7 @@ NSString *const VCUserStateDriverStateKeyPath;
 + (VCUserStateManager *) instance;
 + (BOOL) driverIsAvailable;
 
-- (void) loginWithPhone:(NSString*) phone
+- (void) loginWithEmail:(NSString*) phone
                password: (NSString *) password
                 success:(void ( ^ ) () )success
                 failure:(void ( ^ ) () )failure;

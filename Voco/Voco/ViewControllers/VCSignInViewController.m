@@ -88,7 +88,7 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Logging In";
     
-    [[VCUserStateManager instance] loginWithPhone:_phoneNumberField.text
+    [[VCUserStateManager instance] loginWithEmail:_phoneNumberField.text
                                   password:_passwordField.text
                                    success:^{
                                        

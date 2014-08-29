@@ -7,10 +7,16 @@
 //
 
 #import "VCLogInViewController.h"
+#import <MBProgressHUD.h>
+#import "VCUserStateManager.h"
+#import "VCInterfaceManager.h"
+#import "VCRiderApi.h"
 #import "VCTextField.h"
 #import "VCButtonStandardStyle.h"
+#import "VCPasswordRecoveryViewController.h"
 
-
+#define kPhoneFieldTag 1
+#define kPasswordFieldTag 2
 
 @interface VCLogInViewController ()
 @property (weak, nonatomic) IBOutlet VCTextField *emailTextField;
@@ -56,8 +62,73 @@
 }
 
 - (IBAction)didTapSignIn:(id)sender {
+    [self login];
 }
 
+- (void) login {
+    
+    
+    if(![_emailTextField validate]){
+        return;
+    }
+    
+    if(![_passwordTextField validate]){
+        return;
+    }
+    
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Logging In";
+    
+    [[VCUserStateManager instance] loginWithEmail:_emailTextField.text
+                                         password:_passwordTextField.text
+                                          success:^{
+                                              
+                                              [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                  
+                                                  [hud hide:YES];
+                                                  [[VCInterfaceManager instance] showRiderInterface];
+                                                  
+                                              } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                  [WRUtilities criticalError:error];
+                                                  [hud hide:YES];
+                                                  
+                                              }];
+                                              
+                                          } failure:^{
+                                              [hud hide:YES];
+                                              [UIAlertView showWithTitle:@"Login Failed!" message:@"Invalid Phone Number or Password" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                                          }];
+    
+    
+}
+
+
 - (IBAction)didTapForgotPassword:(id)sender {
+    VCPasswordRecoveryViewController * passwordRecoveryViewController = [[VCPasswordRecoveryViewController alloc] init];
+    [self.navigationController pushViewController:passwordRecoveryViewController animated:YES];
+
+}
+
+- (IBAction)didEndOnExit:(id)sender {
+    
+    UITextField * textField = (UITextField *) sender;
+    if([textField.text length] > 0){
+        textField.backgroundColor = [UIColor whiteColor];
+    }
+    
+    switch(textField.tag){
+        case kPhoneFieldTag:
+            if ([_emailTextField validate]){
+                [_passwordTextField becomeFirstResponder];
+            }
+            break;
+        case kPasswordFieldTag:
+            if([_passwordTextField validate]) {
+                [self.view endEditing:YES];
+                [self login];
+            }
+            break;
+    }
 }
 @end

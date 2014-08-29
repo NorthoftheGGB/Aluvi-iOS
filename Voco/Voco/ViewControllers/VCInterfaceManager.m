@@ -7,7 +7,7 @@
 //
 
 #import "VCInterfaceManager.h"
-#import "VCSignInViewController.h"
+#import "VCLogInViewController.h"
 #import "VCTicketViewController.h"
 #import "VCDriveViewController.h"
 #import "VCLeftMenuViewController.h"
@@ -57,7 +57,7 @@ static int mode;
 }
 
 - (void) showRiderSigninInterface {
-    VCSignInViewController * signInViewController = [[VCSignInViewController alloc] init];
+    VCLogInViewController * signInViewController = [[VCLogInViewController alloc] init];
     UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:signInViewController];
     /* [navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [navigationController.navigationBar setShadowImage:[UIImage new]];*/

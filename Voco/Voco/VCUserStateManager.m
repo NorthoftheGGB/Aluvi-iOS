@@ -103,12 +103,12 @@ static VCUserStateManager *sharedSingleton;
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (void) loginWithPhone:(NSString*) phone
+- (void) loginWithEmail:(NSString*) phone
                password: (NSString *) password
                 success:(void ( ^ ) () )success
                 failure:(void ( ^ ) () )failure {
     
-    [VCUsersApi login:[RKObjectManager sharedManager] phone:phone password:password
+    [VCUsersApi login:[RKObjectManager sharedManager] email:phone password:password
               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                   VCLoginResponse * loginResponse = mappingResult.firstObject;
                   self.riderState = loginResponse.riderState;

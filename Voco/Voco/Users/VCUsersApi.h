@@ -14,7 +14,7 @@
 
 + (void) setup: (RKObjectManager *) objectManager;
 
-+ (void) login:( RKObjectManager *) objectManager phone:(NSString*) phone password: (NSString *) password
++ (void) login:( RKObjectManager *) objectManager email:(NSString*) phone password: (NSString *) password
        success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
        failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
@@ -37,7 +37,7 @@
                   success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                   failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
-+ (void) forgotPassword:( RKObjectManager *) objectManager email:(NSString*) email phone: (NSString *) phone
++ (void) forgotPassword:( RKObjectManager *) objectManager email:(NSString*) email
                 success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                 failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
