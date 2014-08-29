@@ -148,7 +148,7 @@
     {
         MKPolylineRenderer*    aRenderer = [[MKPolylineRenderer alloc] initWithPolyline:(MKPolyline*)overlay];
         if([overlay isEqual:_routeOverlay]){
-            aRenderer.strokeColor = [[UIColor greenColor] colorWithAlphaComponent:0.7];
+            aRenderer.strokeColor = [UIColor colorWithRed:17.0f / 256.0f green: 119.0f / 256.0f blue: 45.0f / 256.0f alpha:.7];
             aRenderer.lineWidth = 4;
         }
         return aRenderer;
