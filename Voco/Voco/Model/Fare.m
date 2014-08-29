@@ -34,7 +34,7 @@
 }
 
 
-+ (void)createMappings:(RKObjectManager *)objectManager{
++ (RKEntityMapping *)createMappings:(RKObjectManager *)objectManager{
     RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Fare"
                                                           inManagedObjectStore: [VCCoreData managedObjectStore]];
     
@@ -93,7 +93,7 @@
                                                 statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:responseDescriptor];
     }
-    
+    return entityMapping;
 }
 
 - (void)createMappings:(RKObjectManager *)objectManager{

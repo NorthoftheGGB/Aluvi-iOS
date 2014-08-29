@@ -14,6 +14,7 @@
 #import "Driver.h"
 #import "VCReceiptExpandedTableViewCell.h"
 #import "NSDate+Pretty.h"
+#import "VCRiderApi.h"
 
 @interface VCReceiptsViewController () <HVTableViewDataSource, HVTableViewDelegate, NSFetchedResultsControllerDelegate>
 
@@ -39,6 +40,14 @@
     _hvTableView.HVTableViewDataSource = self;
     _hvTableView.expandOnlyOneCell = YES;
     [super viewDidLoad];
+    
+    // Fire off the payments reload
+    [VCRiderApi payments:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        // no need to do anything
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        // nothing to do
+    }];
+    
     
 }
 

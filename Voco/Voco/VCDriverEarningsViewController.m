@@ -154,7 +154,7 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     Earning *earning = [_fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = [VCUtilities formatCurrencyFromCents:earning.amountCents];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ / %@", [earning.createdAt formatted], [earning.fare routeDescription]  ];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ / %@", [earning.timestamp formatted], [earning.fare routeDescription]  ];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView

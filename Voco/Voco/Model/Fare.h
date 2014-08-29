@@ -22,7 +22,7 @@
 @property (nonatomic, retain) NSSet *riders;
 @property (nonatomic, retain) Ticket *ticket; //TODO: Not used at the moment because of no good place to assign to graph
 
-+ (void)createMappings:(RKObjectManager *)objectManager;
++ (RKEntityMapping *)createMappings:(RKObjectManager *)objectManager;
 
 - (void) markOfferAsAccepted;
 - (void) markOfferAsDeclined;

@@ -19,9 +19,9 @@ static NSDateFormatter *formatter = nil;
         formatter = [[NSDateFormatter alloc] init];
     }
     
-    [formatter setDateFormat:@"HH:mm zzz"];
+    [formatter setDateFormat:@"hh:mm zzz"];
     NSString *timeFromDate = [formatter stringFromDate:self];
-    [formatter setDateFormat:@"Y/M/d"];
+    [formatter setDateFormat:@"M/d/YY"];
     NSString *dateFromDate = [formatter stringFromDate:self];
     NSString *exportDateString = [NSString stringWithFormat:@"%@ at %@", dateFromDate, timeFromDate ];
     return exportDateString;

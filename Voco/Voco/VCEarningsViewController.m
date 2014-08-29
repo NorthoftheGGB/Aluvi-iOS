@@ -58,12 +58,7 @@
     _updateCardButton.titleLabel.text = kChangeCardText;
     _state = kInterfaceStateDisplayCard;
     
-    // Fire off the earnings reload
-    [VCDriverApi earnings:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        // no need to do anything
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        // nothing to do
-    }];
+
     
     VCProfile * profile = [VCUserStateManager instance].profile;
     if(profile.cardLastFour != nil && profile.cardBrand != nil){

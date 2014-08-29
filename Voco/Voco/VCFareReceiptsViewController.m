@@ -14,8 +14,10 @@
 #import "Fare.h"
 #import "Ticket.h"
 #import "Driver.h"
+#import "Rider.h"
 #import "VCFareReceiptExpandedTableViewCell.h"
 #import "NSDate+Pretty.h"
+#import "VCDriverApi.h"
 
 @interface VCFareReceiptsViewController () <HVTableViewDataSource, HVTableViewDelegate, NSFetchedResultsControllerDelegate>
 
@@ -41,6 +43,14 @@
     _hvTableView.HVTableViewDataSource = self;
     _hvTableView.expandOnlyOneCell = YES;
     [super viewDidLoad];
+    
+    // Fire off the earnings reload
+    [VCDriverApi earnings:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        // no need to do anything
+        NSLog(@"Hallo?");
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        // nothing to do
+    }];
     
 }
 
@@ -68,7 +78,7 @@
     NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Earning"];
     
     NSSortDescriptor *sort = [[NSSortDescriptor alloc]
-                              initWithKey:@"createdAt" ascending:NO];
+                              initWithKey:@"timestamp" ascending:NO];
     [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
     
     [fetchRequest setFetchBatchSize:20];
@@ -109,24 +119,34 @@
     Earning *earning = [_fetchedResultsController objectAtIndexPath:indexPath];
     UITableViewCell *cell;
     VCFareReceiptExpandedTableViewCell * receiptCell = [WRUtilities getViewFromNib:@"VCFareReceiptExpandedTableViewCell" class:[VCFareReceiptExpandedTableViewCell class]];
-    //receiptCell.titleLabel.text = [payment.ticket shortRouteDescription];
-    //receiptCell.titleLabelCollapsed.text = [payment.ticket shortRouteDescription];
-    receiptCell.dateLabel.text =  [earning.createdAt typicalDate];
-    receiptCell.dateLabelCollapsed.text = [earning.createdAt typicalDate];
-    receiptCell.dateDetailLabel.text =  [earning.createdAt typicalDate];
-    if([earning.amountCents isEqualToNumber:[NSNumber numberWithInt:0]]) {
-        //receiptCell.totalFareAmountLabel.text = [VCUtilities formatCurrencyFromCents:earning.fare.fixedPrice];
-    } else {
-        receiptCell.totalFareAmountLabel.text = [VCUtilities formatCurrencyFromCents:earning.amountCents];
+    receiptCell.titleLabel.text = @"Commuter Fare";
+    receiptCell.titleLabelCollapsed.text = @"Commuter Fare";
+    receiptCell.dateLabel.text =  [earning.timestamp typicalDate];
+    receiptCell.dateLabelCollapsed.text = [earning.timestamp typicalDate];
+    receiptCell.dateDetailLabel.text =  [earning.timestamp typicalDate];
+    NSString * totalFareAmount = [VCUtilities formatCurrencyFromCents:earning.amountCents];
+    receiptCell.totalFareAmountLabel.text = totalFareAmount;
+    receiptCell.rideNumberLabel.text = [earning.fare_id stringValue];
+    receiptCell.riderNameOneLabel.text = @"";
+    receiptCell.riderNameTwoLabel.text = @"";
+    receiptCell.riderNameThreeLabel.text = @"";
+    int count = [earning.fare.riders count];
+    NSArray * riders = [earning.fare.riders allObjects];
+    if(count > 0){
+        Rider * rider = [riders objectAtIndex:0];
+        receiptCell.riderNameOneLabel.text = [rider fullName];
     }
-    //receiptCell.rideNumberLabel.text = [earning.ride_id stringValue];
-    //receiptCell.driverNameLabel.text = [payment.ticket.driver fullName];
-    //receiptCell.riderNameOneLabel.text = [];
-    //receiptCell.riderNameTwoLabel.text = [];
-    //receiptCell.riderNameThreeLabel.text = [];
+    if(count > 1){
+        Rider * rider = [riders objectAtIndex:1];
+        receiptCell.riderNameTwoLabel.text = [rider fullName];
+    }
+    if(count > 2){
+        Rider * rider = [riders objectAtIndex:2];
+        receiptCell.riderNameThreeLabel.text = [rider fullName];
+    }
     
-    receiptCell.directionLabel.text = earning.stripeChargeStatus;
-    receiptCell.distanceLabel.text = @"";
+    receiptCell.directionLabel.text = @"Paid";
+    receiptCell.distanceLabel.text = [earning.timestamp pretty];
     [receiptCell.contentView addSubview:receiptCell.collapsed];
     
     CGRect frame = receiptCell.frame;

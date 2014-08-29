@@ -58,13 +58,7 @@
     _updateCardButton.titleLabel.text = kChangeCardText;
     _state = kInterfaceStateDisplayCard;
     
-    // Fire off the payments reload
-    [VCRiderApi payments:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        // no need to do anything
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        // nothing to do
-    }];
-    
+
     VCProfile * profile = [VCUserStateManager instance].profile;
     if(profile.cardLastFour != nil && profile.cardBrand != nil){
         _cardInfoLabel.text = [NSString stringWithFormat:@"%@ XXXX-XXXX-XXXX-%@", profile.cardBrand, profile.cardLastFour];

@@ -8,6 +8,7 @@
 
 #import "Earning.h"
 #import "Fare.h"
+#import "Rider.h"
 #import <RKPathMatcher.h>
 #import "VCApi.h"
 
@@ -15,33 +16,24 @@
 @implementation Earning
 
 @dynamic amountCents;
-@dynamic capturedAt;
-@dynamic driver_id;
+
 @dynamic fare_id;
-@dynamic id;
-@dynamic ride_id;
-@dynamic stripeChargeStatus;
-@dynamic fare;
-@dynamic createdAt;
+@dynamic timestamp;
 @dynamic motive;
+@dynamic fare;
 
 + (void)createMappings:(RKObjectManager *)objectManager{
     RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Earning"
                                                           inManagedObjectStore: [VCCoreData managedObjectStore]];
     
     [entityMapping addAttributeMappingsFromDictionary:@{
-                                                        @"id" : @"id",
                                                         @"fare_id" : @"fare_id",
-                                                        @"ride_id" : @"ride_id",
-                                                        @"driver_id" : @"driver_id",
-                                                        @"captured_at" : @"capturedAt",
                                                         @"amount_cents" : @"amountCents",
-                                                        @"stripe_charge_status" : @"stripeChargeStatus",
-                                                        @"created_at" : @"createdAt",
-                                                        @"initiation" : @"motive"
+                                                        @"timestamp" : @"timestamp",
+                                                        @"motive" : @"motive"
                                                         }];
     
-    entityMapping.identificationAttributes = @[ @"id" ];
+    entityMapping.identificationAttributes = @[ @"fare_id" ];
     
     /*
      This caused receipts not to be found after logout/login
@@ -60,8 +52,9 @@
     }];
      */
     
-    [entityMapping addConnectionForRelationship:@"fare" connectedBy:@{@"fare_id" : @"fare_id"}];
-   
+    //[entityMapping addConnectionForRelationship:@"fare" connectedBy:@{@"fare_id" : @"fare_id"}];
+    [entityMapping addRelationshipMappingWithSourceKeyPath:@"fare" mapping:[Fare createMappings:objectManager]];
+
     
     RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping
                                                                                              method:RKRequestMethodGET
