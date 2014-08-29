@@ -20,7 +20,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        _toggle = NO;
+        _toggle = YES;
     }
     return self;
 }
@@ -43,12 +43,12 @@
     if(_toggle==YES) {
         [self.navigationController.viewDeckController openLeftView];
         _toggle = NO;
-                }
+    }
     else {
         [self.navigationController.viewDeckController closeLeftView];
-            _toggle = YES;
-}
-
+        _toggle = YES;
+    }
+    
 
     
 }

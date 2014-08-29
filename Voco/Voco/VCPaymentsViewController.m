@@ -90,6 +90,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) didTapHamburger {
+    [_cardView.paymentView resignFirstResponder];
+    [super didTapHamburger];
+}
+
+
 - (IBAction)didTapUpdate:(id)sender {
     
     if( _state == kInterfaceStateDisplayCard) {
