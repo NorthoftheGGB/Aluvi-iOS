@@ -10,4 +10,6 @@
 
 @interface VCCenterViewBaseViewController : UIViewController
 
+- (void) didTapHamburger;
+
 @end

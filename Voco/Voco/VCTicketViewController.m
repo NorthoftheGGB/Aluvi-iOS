@@ -907,7 +907,7 @@
 - (IBAction)didTapScheduleRide:(id)sender {
     [self storeCommuterSettings];
     
-    [UIAlertView showWithTitle:@"Schedule Commuter Ride ?" message:@"Do you want us to schedule your commuter ride for tomorrow?" cancelButtonTitle:@"No." otherButtonTitles:@[@"Yes!"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+    [UIAlertView showWithTitle:@"Schedule Commuter Ride ?" message:@"Would you like to schedule your commute to and from work tomorrow?" cancelButtonTitle:@"No." otherButtonTitles:@[@"Yes!"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
         switch (buttonIndex) {
             case 1:
             {
