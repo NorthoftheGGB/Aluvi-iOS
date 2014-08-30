@@ -4452,7 +4452,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4474,7 +4474,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4582,7 +4582,7 @@
 				INFOPLIST_FILE = "Voco/Voco-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "662EC7F9-BC44-4B2E-AC94-A1B56623847B";
+				PROVISIONING_PROFILE = "CB5F433B-46FB-4258-8E34-EFAEE5C4D58E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4609,7 +4609,7 @@
 				INFOPLIST_FILE = "Voco/Voco-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "662EC7F9-BC44-4B2E-AC94-A1B56623847B";
+				PROVISIONING_PROFILE = "CB5F433B-46FB-4258-8E34-EFAEE5C4D58E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
