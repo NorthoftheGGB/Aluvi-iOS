@@ -74,13 +74,13 @@
     _phoneTextField.text = profile.phone;
     _passwordTextField.text = @"********";
 
-UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
-[tapBackground setNumberOfTapsRequired:1];
+    UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
+    [tapBackground setNumberOfTapsRequired:1];
     [self.view addGestureRecognizer:tapBackground];
 
-NSString * version = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
-NSString * build = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
-_versionLabel.text = [NSString stringWithFormat:@"v%@b%@", version, build];
+    NSString * version = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
+    NSString * build = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
+    _versionLabel.text = [NSString stringWithFormat:@"v%@b%@", version, build];
 
 }
 
@@ -94,10 +94,25 @@ _versionLabel.text = [NSString stringWithFormat:@"v%@b%@", version, build];
     // Dispose of any resources that can be recreated.
 }
 
-
+- (IBAction) done:(id)sender{
+    [((UITextField *) sender) resignFirstResponder];
+}
 
 - (IBAction)didTapSaveChanges:(id)sender {
     //TODO: API fun fun
+    [VCUserStateManager instance].profile.firstName = _firstNameTextField.text;
+    [VCUserStateManager instance].profile.lastName = _lastNameTextField.text;
+    [VCUserStateManager instance].profile.email = _emailTextField.text;
+    [VCUserStateManager instance].profile.phone = _phoneTextField.text;
+
+    
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [VCUsersApi updateProfile:[VCUserStateManager instance].profile
+                       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                           [hud hide:NO];
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                           [hud hide:NO];
+    }];
 }
 
 - (IBAction)didTapLogoutButton:(id)sender {

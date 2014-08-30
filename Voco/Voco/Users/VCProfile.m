@@ -25,7 +25,9 @@
                                                   @"commuter_refill_enabled" : @"commuterRefillEnabled",
                                                   @"card_last_four" : @"cardLastFour",
                                                   @"card_brand" : @"cardBrand",
-                                                  @"bank_account_name" : @"bankAccountName"
+                                                  @"bank_account_name" : @"bankAccountName",
+                                                  @"recipient_card_last_four" : @"recipientCardLastFour",
+                                                  @"recipient_card_brand" : @"recipientCardBrand"
                                                   }];
     
     return mapping;
@@ -45,6 +47,9 @@
         _cardLastFour = [decoder decodeObjectForKey: @"cardLastFour"];
         _cardBrand = [decoder decodeObjectForKey: @"cardBrand"];
         _bankAccountName = [decoder decodeObjectForKey: @"bankAccountName"];
+        _recipientCardBrand = [decoder decodeObjectForKey:@"recipient_card_brand"];
+        _recipientCardLastFour = [decoder decodeObjectForKey:@"recipient_card_last_four"];
+
 
     }
     return self;
@@ -62,5 +67,8 @@
     [encoder encodeObject: _cardLastFour forKey: @"cardLastFour"];
     [encoder encodeObject: _cardBrand forKey: @"cardBrand"];
     [encoder encodeObject: _bankAccountName forKey: @"bankAccountName"];
+    [encoder encodeObject: _recipientCardBrand forKey:@"recipient_card_brand"];
+    [encoder encodeObject: _recipientCardLastFour forKey:@"recipient_card_last_four"];
+
 }
 @end

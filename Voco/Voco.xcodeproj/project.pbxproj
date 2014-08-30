@@ -317,8 +317,6 @@
 		4FCD7C6319761C21007609E8 /* call-button-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C6019761C20007609E8 /* call-button-select@2x.png */; };
 		4FCD7C6419761C21007609E8 /* call-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C6119761C21007609E8 /* call-button@2x.png */; };
 		4FCD7C6519761C21007609E8 /* call-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C6119761C21007609E8 /* call-button@2x.png */; };
-		4FCD7C691976241D007609E8 /* VCRiderProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCD7C671976241D007609E8 /* VCRiderProfileViewController.m */; };
-		4FCD7C6A1976241D007609E8 /* VCRiderProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCD7C671976241D007609E8 /* VCRiderProfileViewController.m */; };
 		4FCD7C731976244F007609E8 /* VCDriverEarningsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C701976244F007609E8 /* VCDriverEarningsViewController.xib */; };
 		4FCD7C741976244F007609E8 /* VCDriverEarningsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C701976244F007609E8 /* VCDriverEarningsViewController.xib */; };
 		4FCD7C7819762465007609E8 /* VCDriverProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCD7C7619762465007609E8 /* VCDriverProfileViewController.m */; };
@@ -713,7 +711,6 @@
 		F4C6B1FD197F06B100F6C10B /* VCInterfaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD0F1946E2F90020B8BB /* VCInterfaceManager.m */; };
 		F4C6B1FE197F06B100F6C10B /* VCRequestUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F01C195113D100D8C900 /* VCRequestUpdate.m */; };
 		F4C6B1FF197F06B100F6C10B /* VCCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B1A193D301F00354886 /* VCCoreData.m */; };
-		F4C6B200197F06B100F6C10B /* VCRiderProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCD7C671976241D007609E8 /* VCRiderProfileViewController.m */; };
 		F4C6B201197F06B100F6C10B /* VCRiderRecieptDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEBD196630D700AD4229 /* VCRiderRecieptDetailViewController.m */; };
 		F4C6B202197F06B100F6C10B /* VCLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F000194A498E00D8C900 /* VCLabel.m */; };
 		F4C6B203197F06B100F6C10B /* VCDriverProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCD7C7619762465007609E8 /* VCDriverProfileViewController.m */; };
@@ -3315,7 +3312,6 @@
 				F4354D93195D0D6A00C06CF7 /* VCTextField.m in Sources */,
 				F4354D94195D0D6A00C06CF7 /* VCRideRequestCreated.m in Sources */,
 				F4354D95195D0D6A00C06CF7 /* VCDriverInterestedRequest.m in Sources */,
-				4FCD7C6A1976241D007609E8 /* VCRiderProfileViewController.m in Sources */,
 				F4354D96195D0D6A00C06CF7 /* VCSignUpViewController.m in Sources */,
 				F4354D97195D0D6A00C06CF7 /* NSDate+Pretty.m in Sources */,
 				F4354D99195D0D6A00C06CF7 /* VCAppDelegate.m in Sources */,
@@ -3414,7 +3410,6 @@
 				F471E3E119A9590E00DF688D /* Rider.m in Sources */,
 				F4C6B1FE197F06B100F6C10B /* VCRequestUpdate.m in Sources */,
 				F4C6B1FF197F06B100F6C10B /* VCCoreData.m in Sources */,
-				F4C6B200197F06B100F6C10B /* VCRiderProfileViewController.m in Sources */,
 				F425906D1995E30000FA928E /* VCCommuteManager.m in Sources */,
 				F4C6B29E197F437800F6C10B /* VCApiError.m in Sources */,
 				F4C6B201197F06B100F6C10B /* VCRiderRecieptDetailViewController.m in Sources */,
@@ -3551,7 +3546,6 @@
 				F473F01D195113D100D8C900 /* VCRequestUpdate.m in Sources */,
 				F4FE1B1B193D301F00354886 /* VCCoreData.m in Sources */,
 				4FC758D319AA91810093DBEA /* VCCommuteSetUpOnBoardingViewController.m in Sources */,
-				4FCD7C691976241D007609E8 /* VCRiderProfileViewController.m in Sources */,
 				F4C6B2A0197F437800F6C10B /* VCApiError.m in Sources */,
 				4F9ECEBF196630D700AD4229 /* VCRiderRecieptDetailViewController.m in Sources */,
 				F473F001194A498E00D8C900 /* VCLabel.m in Sources */,

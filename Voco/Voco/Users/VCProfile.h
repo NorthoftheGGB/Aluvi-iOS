@@ -23,6 +23,10 @@
 @property(nonatomic, strong) NSString * cardLastFour;
 @property(nonatomic, strong) NSString * cardBrand;
 
+@property(nonatomic, strong) NSString * recipientCardBrand;
+@property(nonatomic, strong) NSString * recipientCardLastFour;
+
+
 @property(nonatomic, strong) NSString * bankAccountName;
 
 + (RKObjectMapping *) getMapping;

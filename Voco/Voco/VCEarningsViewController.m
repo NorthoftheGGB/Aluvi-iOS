@@ -61,8 +61,8 @@
 
     
     VCProfile * profile = [VCUserStateManager instance].profile;
-    if(profile.cardLastFour != nil && profile.cardBrand != nil){
-        _cardInfoLabel.text = [NSString stringWithFormat:@"%@ XXXX-XXXX-XXXX-%@", profile.cardBrand, profile.cardLastFour];
+    if(profile.recipientCardLastFour != nil && profile.recipientCardBrand != nil){
+        _cardInfoLabel.text = [NSString stringWithFormat:@"%@ XXXX-XXXX-XXXX-%@", profile.recipientCardBrand, profile.recipientCardLastFour];
     } else {
         _cardInfoLabel.text = @"No Debit Card Assigned";
     }
@@ -85,6 +85,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) didTapHamburger {
+    [_cardView.paymentView resignFirstResponder];
+    [super didTapHamburger];
+}
+
 - (IBAction)didTapUpdate:(id)sender {
     
     if( _state == kInterfaceStateDisplayCard) {
@@ -104,28 +109,32 @@
         progressHUD.labelText = @"Saving Card";
         [_cardView createToken:^(STPToken *token, NSError *error) {
             if (error == nil) {
-                [VCUsersApi updateDefaultCard:[RKObjectManager sharedManager]
-                                    cardToken:token.tokenId
-                                      success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                          progressHUD.hidden = YES;
-                                          [UIAlertView showWithTitle:@"Card Updated" message:@"Your card has been saved" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
-                                          _updateCardButton.titleLabel.text = @"UPDATE CARD";
-                                          [_cardView removeFromSuperview];
-                                          _cardView = nil;
-                                          _updateCardButton.titleLabel.text = kChangeCardText;
-                                          _state = kInterfaceStateDisplayCard;
-                                          
-                                          VCProfile * updatedProfile = mappingResult.firstObject;
-                                          [VCUserStateManager instance].profile.cardBrand = updatedProfile.cardBrand;
-                                          [VCUserStateManager instance].profile.cardLastFour = updatedProfile.cardLastFour;
-                                          _cardInfoLabel.text = [NSString stringWithFormat:@"%@ XXXX-XXXX-XXXX-%@", [VCUserStateManager instance].profile.cardBrand, [VCUserStateManager instance].profile.cardLastFour];
-                                          _cardInfoLabel.hidden = NO;
-                                          
-                                      }
+                
+                [VCUsersApi updateRecipientCard:[RKObjectManager sharedManager]
+                                      cardToken:token.tokenId
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            progressHUD.hidden = YES;
+                                            [UIAlertView showWithTitle:@"Card Updated" message:@"Your card has been saved" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                                            _updateCardButton.titleLabel.text = @"UPDATE CARD";
+                                            [_cardView removeFromSuperview];
+                                            _cardView = nil;
+                                            _updateCardButton.titleLabel.text = kChangeCardText;
+                                            _state = kInterfaceStateDisplayCard;
+                                            
+                                            VCProfile * updatedProfile = mappingResult.firstObject;
+                                            [VCUserStateManager instance].profile.recipientCardBrand = updatedProfile.recipientCardBrand;
+                                            [VCUserStateManager instance].profile.recipientCardLastFour = updatedProfile.recipientCardLastFour;
+                                            _cardInfoLabel.text = [NSString stringWithFormat:@"%@ XXXX-XXXX-XXXX-%@", [VCUserStateManager instance].profile.recipientCardBrand, [VCUserStateManager instance].profile.recipientCardLastFour];
+                                            _cardInfoLabel.hidden = NO;
+                                            
+                                        }
+
+                 
                                       failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                           progressHUD.hidden = YES;
                                           [UIAlertView showWithTitle:@"Error" message:@"There was a problem saving your card.  Please try again." cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
                                       }];
+                
             } else {
                 progressHUD.hidden = YES;
                 [WRUtilities criticalError:error];
