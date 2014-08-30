@@ -275,7 +275,7 @@
         case kDriverSettingsInteger:
         {
             VCMenuItemTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemTableViewCell" class:[VCMenuItemTableViewCell class]];
-            menuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-receipts-icon"];
+            menuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-mycar-icon"];
             menuItemTableViewCell.menuItemLabel.text = @"Driver Settings";
             menuItemTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell = menuItemTableViewCell;
