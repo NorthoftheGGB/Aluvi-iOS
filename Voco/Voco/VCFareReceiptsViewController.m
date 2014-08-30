@@ -130,7 +130,7 @@
     receiptCell.riderNameOneLabel.text = @"";
     receiptCell.riderNameTwoLabel.text = @"";
     receiptCell.riderNameThreeLabel.text = @"";
-    int count = [earning.fare.riders count];
+    NSUInteger count = [earning.fare.riders count];
     NSArray * riders = [earning.fare.riders allObjects];
     if(count > 0){
         Rider * rider = [riders objectAtIndex:0];
