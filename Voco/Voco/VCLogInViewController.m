@@ -14,6 +14,7 @@
 #import "VCTextField.h"
 #import "VCButtonStandardStyle.h"
 #import "VCPasswordRecoveryViewController.h"
+#import "VCTermsOfServiceViewController.h"
 
 #define kPhoneFieldTag 1
 #define kPasswordFieldTag 2
@@ -27,6 +28,7 @@
 - (IBAction)didTapSignIn:(id)sender;
 
 - (IBAction)didTapForgotPassword:(id)sender;
+- (IBAction)didTapTermsAndConditions:(id)sender;
 
 @end
 
@@ -110,6 +112,12 @@
     VCPasswordRecoveryViewController * passwordRecoveryViewController = [[VCPasswordRecoveryViewController alloc] init];
     [self.navigationController pushViewController:passwordRecoveryViewController animated:YES];
 
+}
+
+- (IBAction)didTapTermsAndConditions:(id)sender {
+    
+    VCTermsOfServiceViewController * vc = [[VCTermsOfServiceViewController alloc] init];
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 
 - (IBAction)didEndOnExit:(id)sender {
