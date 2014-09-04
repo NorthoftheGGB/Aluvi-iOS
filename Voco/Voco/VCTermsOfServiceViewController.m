@@ -9,6 +9,7 @@
 #import "VCTermsOfServiceViewController.h"
 
 @interface VCTermsOfServiceViewController ()
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end
 
@@ -26,8 +27,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-}
+    NSString *htmlFile = [[NSBundle mainBundle] pathForResource:@"Aluvi-TOS" ofType:@"html"];
+    NSString* htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
+    [_webView loadHTMLString:htmlString baseURL:nil];}
 
 - (void)didReceiveMemoryWarning
 {

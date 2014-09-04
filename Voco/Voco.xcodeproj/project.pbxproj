@@ -170,6 +170,12 @@
 		4F38975D19B7DD0100A75C5C /* VCPrivatePolicyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F38975919B7DD0100A75C5C /* VCPrivatePolicyViewController.xib */; };
 		4F38975E19B7DD0100A75C5C /* VCPrivatePolicyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F38975919B7DD0100A75C5C /* VCPrivatePolicyViewController.xib */; };
 		4F38975F19B7DD0100A75C5C /* VCPrivatePolicyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F38975919B7DD0100A75C5C /* VCPrivatePolicyViewController.xib */; };
+		4F38976319B8298200A75C5C /* Aluvi-Privacy-Policy.html in Resources */ = {isa = PBXBuildFile; fileRef = 4F38976119B8298200A75C5C /* Aluvi-Privacy-Policy.html */; };
+		4F38976419B8298200A75C5C /* Aluvi-Privacy-Policy.html in Resources */ = {isa = PBXBuildFile; fileRef = 4F38976119B8298200A75C5C /* Aluvi-Privacy-Policy.html */; };
+		4F38976519B8298200A75C5C /* Aluvi-Privacy-Policy.html in Resources */ = {isa = PBXBuildFile; fileRef = 4F38976119B8298200A75C5C /* Aluvi-Privacy-Policy.html */; };
+		4F38976619B8298200A75C5C /* Aluvi-TOS.html in Resources */ = {isa = PBXBuildFile; fileRef = 4F38976219B8298200A75C5C /* Aluvi-TOS.html */; };
+		4F38976719B8298200A75C5C /* Aluvi-TOS.html in Resources */ = {isa = PBXBuildFile; fileRef = 4F38976219B8298200A75C5C /* Aluvi-TOS.html */; };
+		4F38976819B8298200A75C5C /* Aluvi-TOS.html in Resources */ = {isa = PBXBuildFile; fileRef = 4F38976219B8298200A75C5C /* Aluvi-TOS.html */; };
 		4F3D221719B13072006EF35D /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3D221619B13072006EF35D /* Icon@2x.png */; };
 		4F3D221819B13076006EF35D /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3D221619B13072006EF35D /* Icon@2x.png */; };
 		4F3D221919B13076006EF35D /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3D221619B13072006EF35D /* Icon@2x.png */; };
@@ -1313,6 +1319,8 @@
 		4F38975719B7DD0100A75C5C /* VCPrivatePolicyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPrivatePolicyViewController.h; sourceTree = "<group>"; };
 		4F38975819B7DD0100A75C5C /* VCPrivatePolicyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPrivatePolicyViewController.m; sourceTree = "<group>"; };
 		4F38975919B7DD0100A75C5C /* VCPrivatePolicyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCPrivatePolicyViewController.xib; sourceTree = "<group>"; };
+		4F38976119B8298200A75C5C /* Aluvi-Privacy-Policy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "Aluvi-Privacy-Policy.html"; sourceTree = "<group>"; };
+		4F38976219B8298200A75C5C /* Aluvi-TOS.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "Aluvi-TOS.html"; sourceTree = "<group>"; };
 		4F3D221619B13072006EF35D /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		4F3D221A19B13209006EF35D /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		4F3D222219B132A0006EF35D /* reciept_expanded@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reciept_expanded@2x.png"; sourceTree = "<group>"; };
@@ -1885,6 +1893,15 @@
 			name = "Menu Assets";
 			sourceTree = "<group>";
 		};
+		4F38976019B8294300A75C5C /* HTML */ = {
+			isa = PBXGroup;
+			children = (
+				4F38976119B8298200A75C5C /* Aluvi-Privacy-Policy.html */,
+				4F38976219B8298200A75C5C /* Aluvi-TOS.html */,
+			);
+			name = HTML;
+			sourceTree = "<group>";
+		};
 		4F3DB5C61981F6AB00DDD094 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -2111,6 +2128,7 @@
 		4FE641E1194168E80059BED1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				4F38976019B8294300A75C5C /* HTML */,
 				4FE641E2194168E80059BED1 /* bubble@2x.png */,
 				4FCD7C6019761C20007609E8 /* call-button-select@2x.png */,
 				4FCD7C6119761C21007609E8 /* call-button@2x.png */,
@@ -3026,6 +3044,7 @@
 				4FC758BA19AA8C270093DBEA /* VCLogInViewController.xib in Resources */,
 				4FCD7C8B19775C5C007609E8 /* VCDriverRecieptDetailViewController.xib in Resources */,
 				4FC7590219AAC0770093DBEA /* receipt-down-arrow@2x.png in Resources */,
+				4F38976719B8298200A75C5C /* Aluvi-TOS.html in Resources */,
 				F4354DBA195D0D6A00C06CF7 /* map_pin_fill-512.png in Resources */,
 				4F2EF9C01961391B006A1962 /* terms-menu-button-selected@2x.png in Resources */,
 				4FCBFBDA1995847300CBF0C8 /* driver-hov-toggle-select@2x.png in Resources */,
@@ -3051,6 +3070,7 @@
 				F4138C301965467D00C265CD /* VCFaresViewController.xib in Resources */,
 				4FFE17071989E801004D4413 /* VCMenuItemTableViewCell.xib in Resources */,
 				F4354DC1195D0D6A00C06CF7 /* red_box@2x.png in Resources */,
+				4F38976419B8298200A75C5C /* Aluvi-Privacy-Policy.html in Resources */,
 				4FCBFBE31995847300CBF0C8 /* menu-submenu-arrow@2x.png in Resources */,
 				F4354DC2195D0D6A00C06CF7 /* InfoPlist.strings in Resources */,
 				4F2A71091978C220009A5E37 /* driver-request-form@2x.png in Resources */,
@@ -3207,10 +3227,12 @@
 				4FFE16F31989E006004D4413 /* driver-call-hud@2x.png in Resources */,
 				F4C6B27A197F06B100F6C10B /* rider-icon@2x.png in Resources */,
 				4F1849FF1991753F006EA959 /* menu-profile-icon@2x.png in Resources */,
+				4F38976319B8298200A75C5C /* Aluvi-Privacy-Policy.html in Resources */,
 				F4C6B27B197F06B100F6C10B /* zoom-ride-bounds-select@2x.png in Resources */,
 				4F3D221C19B13209006EF35D /* background@2x.png in Resources */,
 				4FC758CB19AA91410093DBEA /* VCDriverOnBoardingViewController.xib in Resources */,
 				F4C6B27C197F06B100F6C10B /* InfoPlist.strings in Resources */,
+				4F38976619B8298200A75C5C /* Aluvi-TOS.html in Resources */,
 				F4C6B27D197F06B100F6C10B /* terms-menu-button-selected@2x.png in Resources */,
 				F4C6B27E197F06B100F6C10B /* pin@2x.png in Resources */,
 				4FFE171E198A1890004D4413 /* menu-map-icon@2x.png in Resources */,
@@ -3537,10 +3559,12 @@
 				4FCD7C7D19766B77007609E8 /* rider-icon@2x.png in Resources */,
 				4F184A011991753F006EA959 /* menu-profile-icon@2x.png in Resources */,
 				4FE286F51962BDB300FD8AF6 /* zoom-ride-bounds-select@2x.png in Resources */,
+				4F38976519B8298200A75C5C /* Aluvi-Privacy-Policy.html in Resources */,
 				F4FA0BF4192BF6BF005D8645 /* InfoPlist.strings in Resources */,
 				4F3D221E19B13209006EF35D /* background@2x.png in Resources */,
 				4F2EF9BF1961391B006A1962 /* terms-menu-button-selected@2x.png in Resources */,
 				4FC758CD19AA91410093DBEA /* VCDriverOnBoardingViewController.xib in Resources */,
+				4F38976819B8298200A75C5C /* Aluvi-TOS.html in Resources */,
 				4FE286FD1962C25400FD8AF6 /* pin@2x.png in Resources */,
 				4FFE1720198A1890004D4413 /* menu-map-icon@2x.png in Resources */,
 				4F3DB5BE1981ED4E00DDD094 /* current-location-button@2x.png in Resources */,
