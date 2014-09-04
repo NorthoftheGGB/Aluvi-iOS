@@ -35,11 +35,14 @@
 @property (weak, nonatomic) IBOutlet VCTextField *phoneTextField;
 @property (weak, nonatomic) IBOutlet VCTextField *zipCodeTextField;
 @property (weak, nonatomic) IBOutlet UIButton *tocButton;
+@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *privatePolicyButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *tocCheckBoxButton;
 @property (weak, nonatomic) IBOutlet VCButtonStandardStyle *nextButton;
 
 
 - (IBAction)didTapTocButton:(id)sender;
+- (IBAction)didTapPrivatePolicyButton:(id)sender;
 
 - (IBAction)didTapTocCheckBoxButton:(id)sender;
 
@@ -90,6 +93,9 @@
         _tocCheckBoxButton.selected = NO;
         
     }
+}
+
+- (IBAction)didTapPrivatePolicyButton:(id)sender {
 }
 
 
