@@ -380,7 +380,7 @@
                 _rideDetailsHud.driverFirstNameLabel.text = _ticket.driver.firstName;
                 _rideDetailsHud.driverLastNameLabel.text = _ticket.driver.lastName;
                 _rideDetailsHud.carTypeLabel.text = [_ticket.car summary];
-                _rideDetailsHud.lisenceLabel.text = _ticket.car.licensePlate;
+                _rideDetailsHud.licenseLabel.text = _ticket.car.licensePlate;
                 _rideDetailsHud.cardNicknamelabel.text = [VCUserStateManager instance].profile.cardBrand;
                 _rideDetailsHud.cardNumberLabel.text = [VCUserStateManager instance].profile.cardLastFour;
                 _rideDetailsHud.fareLabel.text = [VCUtilities formatCurrencyFromCents: _ticket.fixedPrice];
@@ -393,7 +393,7 @@
                 _rideDetailsConfirmation.pickupTimeLabel.text = [_ticket.pickupTime time];
                 _rideDetailsConfirmation.driverNameLabel.text = [_ticket.driver fullName];
                 _rideDetailsConfirmation.carTypeLabel.text = [_ticket.car summary];
-                _rideDetailsConfirmation.lisenceLabel.text = _ticket.car.licensePlate;
+                _rideDetailsConfirmation.licenseLabel.text = _ticket.car.licensePlate;
                 //_rideDetailsConfirmation.fareLabel.text = _ride.estimatedFareAmount;
                 _rideDetailsConfirmation.cardNicknamelabel.text = [VCUserStateManager instance].profile.cardBrand;
                 _rideDetailsConfirmation.cardNumberLabel.text = [VCUserStateManager instance].profile.cardLastFour;
