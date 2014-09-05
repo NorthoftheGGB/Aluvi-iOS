@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -57,19 +57,19 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$5.25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lid-e4-CV6" customClass="VCLabelBold">
-                    <rect key="frame" x="18" y="95" width="83" height="51"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$55.25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lid-e4-CV6" customClass="VCLabelBold">
+                    <rect key="frame" x="14" y="92" width="91" height="56"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="83" id="31X-le-v2z"/>
-                        <constraint firstAttribute="height" constant="51" id="vhw-83-l2o"/>
+                        <constraint firstAttribute="width" constant="91" id="31X-le-v2z"/>
+                        <constraint firstAttribute="height" constant="56" id="vhw-83-l2o"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="32"/>
+                            <integer key="value" value="28"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
@@ -284,7 +284,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="liz-Nd-8d7" firstAttribute="top" secondItem="Lid-e4-CV6" secondAttribute="bottom" constant="-13" id="0XH-Wu-BuO"/>
+                <constraint firstItem="liz-Nd-8d7" firstAttribute="top" secondItem="Lid-e4-CV6" secondAttribute="bottom" constant="-15" id="0XH-Wu-BuO"/>
                 <constraint firstItem="ZKo-zO-Nct" firstAttribute="leading" secondItem="d2k-wI-nhH" secondAttribute="leading" constant="2" id="2PI-rC-vnI"/>
                 <constraint firstItem="Hog-RW-qkC" firstAttribute="top" secondItem="w27-Ft-P7i" secondAttribute="bottom" id="6Pi-1q-Skn"/>
                 <constraint firstItem="ZKo-zO-Nct" firstAttribute="top" secondItem="d2k-wI-nhH" secondAttribute="top" constant="20" id="8UT-n2-I4b"/>
@@ -298,11 +298,11 @@
                 <constraint firstItem="xrL-mQ-CPM" firstAttribute="leading" secondItem="d2k-wI-nhH" secondAttribute="leading" id="PVl-J8-Itw"/>
                 <constraint firstItem="ips-GV-4nu" firstAttribute="top" secondItem="oZ8-Cp-Rjx" secondAttribute="bottom" constant="56" id="QPr-WK-Dby"/>
                 <constraint firstItem="S7C-Kg-IZb" firstAttribute="leading" secondItem="Uds-Uo-ip6" secondAttribute="trailing" constant="20" id="Tpa-LX-asq"/>
-                <constraint firstItem="Lid-e4-CV6" firstAttribute="top" secondItem="ZKo-zO-Nct" secondAttribute="bottom" constant="54" id="WfN-XM-590"/>
+                <constraint firstItem="Lid-e4-CV6" firstAttribute="top" secondItem="ZKo-zO-Nct" secondAttribute="bottom" constant="51" id="WfN-XM-590"/>
                 <constraint firstAttribute="trailing" secondItem="w27-Ft-P7i" secondAttribute="trailing" constant="6" id="ZPS-pG-CDg"/>
                 <constraint firstItem="scM-Lg-0lf" firstAttribute="top" secondItem="Uds-Uo-ip6" secondAttribute="bottom" constant="6" id="ahe-KG-591"/>
                 <constraint firstItem="w27-Ft-P7i" firstAttribute="top" secondItem="BWQ-uU-cMk" secondAttribute="bottom" id="cpP-sF-rF2"/>
-                <constraint firstItem="Lid-e4-CV6" firstAttribute="leading" secondItem="d2k-wI-nhH" secondAttribute="leading" constant="18" id="e8q-Nm-ZJs"/>
+                <constraint firstItem="Lid-e4-CV6" firstAttribute="leading" secondItem="d2k-wI-nhH" secondAttribute="leading" constant="14" id="e8q-Nm-ZJs"/>
                 <constraint firstAttribute="trailing" secondItem="Hog-RW-qkC" secondAttribute="trailing" constant="6" id="fJI-IR-O30"/>
                 <constraint firstItem="scM-Lg-0lf" firstAttribute="leading" secondItem="d2k-wI-nhH" secondAttribute="leading" constant="-2" id="g5S-hY-Dqf"/>
                 <constraint firstItem="oZ8-Cp-Rjx" firstAttribute="leading" secondItem="ZKo-zO-Nct" secondAttribute="trailing" constant="18" id="gK6-7n-ENp"/>
