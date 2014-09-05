@@ -978,6 +978,11 @@
     [self zoomToCurrentLocation];
 }
 
+- (IBAction)didTapCallDriver:(id)sender {
+    Driver * driver = _ticket.driver;
+    [self callPhone:driver.phone];
+}
+
 #pragma mark - VCLocationSearchViewControllerDelegate
 
 - (void) editLocationWidget:(VCEditLocationWidget *)widget didSelectMapItem:(MKMapItem *)mapItem {
@@ -1456,6 +1461,8 @@
     Rider * rider = [_driverCallHUD.riders objectAtIndex:2];
     [self callPhone:rider.phone];
 }
+
+
 
 
 - (IBAction)didTapRidersPickedUp:(id)sender {

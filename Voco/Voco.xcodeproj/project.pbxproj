@@ -390,7 +390,6 @@
 		4FE287041962C52800FD8AF6 /* confirm-location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE287001962C52700FD8AF6 /* confirm-location@2x.png */; };
 		4FE629DA194FC6BB0070F797 /* VCDriverRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE629D8194FC6BB0070F797 /* VCDriverRegistrationViewController.m */; };
 		4FE629DB194FC6BB0070F797 /* VCDriverRegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE629D9194FC6BB0070F797 /* VCDriverRegistrationViewController.xib */; };
-		4FE641BB194157510059BED1 /* VCSignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641B9194157510059BED1 /* VCSignInViewController.xib */; };
 		4FE641BF194157C60059BED1 /* VCDriverRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641BD194157C60059BED1 /* VCDriverRequestViewController.m */; };
 		4FE641C0194157C60059BED1 /* VCDriverRequestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641BE194157C60059BED1 /* VCDriverRequestViewController.xib */; };
 		4FE641C5194157EB0059BED1 /* VCPasswordRecoveryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641C3194157EB0059BED1 /* VCPasswordRecoveryViewController.xib */; };
@@ -585,7 +584,6 @@
 		F4354DB6195D0D6A00C06CF7 /* driving_car@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E5194168E80059BED1 /* driving_car@2x.png */; };
 		F4354DB7195D0D6A00C06CF7 /* KlinicSlabMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F37E2DB1949574000753172 /* KlinicSlabMedium.ttf */; };
 		F4354DB8195D0D6A00C06CF7 /* menu-list.png in Resources */ = {isa = PBXBuildFile; fileRef = F473F017195044AA00D8C900 /* menu-list.png */; };
-		F4354DB9195D0D6A00C06CF7 /* VCSignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641B9194157510059BED1 /* VCSignInViewController.xib */; };
 		F4354DBA195D0D6A00C06CF7 /* map_pin_fill-512.png in Resources */ = {isa = PBXBuildFile; fileRef = F473EFFD19497FBF00D8C900 /* map_pin_fill-512.png */; };
 		F4354DBB195D0D6A00C06CF7 /* VCPasswordRecoveryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641C3194157EB0059BED1 /* VCPasswordRecoveryViewController.xib */; };
 		F4354DBC195D0D6A00C06CF7 /* KlinicSlabMediumIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F37E2DC1949574000753172 /* KlinicSlabMediumIt.ttf */; };
@@ -826,7 +824,6 @@
 		F4C6B263197F06B100F6C10B /* tutorial-menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9B01961391B006A1962 /* tutorial-menu-button@2x.png */; };
 		F4C6B264197F06B100F6C10B /* menu-list.png in Resources */ = {isa = PBXBuildFile; fileRef = F473F017195044AA00D8C900 /* menu-list.png */; };
 		F4C6B265197F06B100F6C10B /* VCDriverHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF99A1960D280006A1962 /* VCDriverHomeViewController.xib */; };
-		F4C6B266197F06B100F6C10B /* VCSignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641B9194157510059BED1 /* VCSignInViewController.xib */; };
 		F4C6B267197F06B100F6C10B /* current-location-arrow-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286E71962B89700FD8AF6 /* current-location-arrow-select@2x.png */; };
 		F4C6B268197F06B100F6C10B /* map_pin_fill-512.png in Resources */ = {isa = PBXBuildFile; fileRef = F473EFFD19497FBF00D8C900 /* map_pin_fill-512.png */; };
 		F4C6B269197F06B100F6C10B /* commuter-menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9A91961391B006A1962 /* commuter-menu-button@2x.png */; };
@@ -1089,7 +1086,6 @@
 		F4D8FED219B1745A00BC0B69 /* tutorial-menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9B01961391B006A1962 /* tutorial-menu-button@2x.png */; };
 		F4D8FED319B1745A00BC0B69 /* menu-list.png in Resources */ = {isa = PBXBuildFile; fileRef = F473F017195044AA00D8C900 /* menu-list.png */; };
 		F4D8FED419B1745A00BC0B69 /* VCDriverHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF99A1960D280006A1962 /* VCDriverHomeViewController.xib */; };
-		F4D8FED519B1745A00BC0B69 /* VCSignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641B9194157510059BED1 /* VCSignInViewController.xib */; };
 		F4D8FED619B1745A00BC0B69 /* current-location-arrow-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286E71962B89700FD8AF6 /* current-location-arrow-select@2x.png */; };
 		F4D8FED719B1745A00BC0B69 /* VCSubMenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A231991E156006EA959 /* VCSubMenuItemTableViewCell.xib */; };
 		F4D8FED819B1745A00BC0B69 /* map_pin_fill-512.png in Resources */ = {isa = PBXBuildFile; fileRef = F473EFFD19497FBF00D8C900 /* map_pin_fill-512.png */; };
@@ -2088,9 +2084,6 @@
 		4FE641B61941562C0059BED1 /* Sign-In and Registration */ = {
 			isa = PBXGroup;
 			children = (
-				4FE641B7194157510059BED1 /* VCSignInViewController.h */,
-				4FE641B8194157510059BED1 /* VCSignInViewController.m */,
-				4FE641B9194157510059BED1 /* VCSignInViewController.xib */,
 				4FE641BC194157C60059BED1 /* VCDriverRequestViewController.h */,
 				4FE641BD194157C60059BED1 /* VCDriverRequestViewController.m */,
 				4FE641BE194157C60059BED1 /* VCDriverRequestViewController.xib */,
@@ -2278,6 +2271,9 @@
 		F42590701996B3B700FA928E /* V1 Files */ = {
 			isa = PBXGroup;
 			children = (
+				4FE641B7194157510059BED1 /* VCSignInViewController.h */,
+				4FE641B8194157510059BED1 /* VCSignInViewController.m */,
+				4FE641B9194157510059BED1 /* VCSignInViewController.xib */,
 				4FCD7C6D19762437007609E8 /* Driver Menu */,
 				4FCD7C8519775C5C007609E8 /* VCDriverRecieptDetailViewController.h */,
 				4FCD7C8619775C5C007609E8 /* VCDriverRecieptDetailViewController.m */,
@@ -3040,7 +3036,6 @@
 				4F9ECEB419661C3400AD4229 /* VCCommuterPassViewController.xib in Resources */,
 				4FFCF2D819A5493500A4A24E /* VCReceiptsViewController.xib in Resources */,
 				F4354DB8195D0D6A00C06CF7 /* menu-list.png in Resources */,
-				F4354DB9195D0D6A00C06CF7 /* VCSignInViewController.xib in Resources */,
 				4F73CA08197F2AB0001B6663 /* VCTicketViewController.xib in Resources */,
 				4FC758BA19AA8C270093DBEA /* VCLogInViewController.xib in Resources */,
 				4FCD7C8B19775C5C007609E8 /* VCDriverRecieptDetailViewController.xib in Resources */,
@@ -3189,7 +3184,6 @@
 				4F35FA8F19A6AA62004FB423 /* login-button@2x.png in Resources */,
 				F4C6B264197F06B100F6C10B /* menu-list.png in Resources */,
 				F4C6B265197F06B100F6C10B /* VCDriverHomeViewController.xib in Resources */,
-				F4C6B266197F06B100F6C10B /* VCSignInViewController.xib in Resources */,
 				F4C6B267197F06B100F6C10B /* current-location-arrow-select@2x.png in Resources */,
 				4F184A271991E156006EA959 /* VCSubMenuItemTableViewCell.xib in Resources */,
 				F4C6B268197F06B100F6C10B /* map_pin_fill-512.png in Resources */,
@@ -3355,7 +3349,6 @@
 				F4D8FED219B1745A00BC0B69 /* tutorial-menu-button@2x.png in Resources */,
 				F4D8FED319B1745A00BC0B69 /* menu-list.png in Resources */,
 				F4D8FED419B1745A00BC0B69 /* VCDriverHomeViewController.xib in Resources */,
-				F4D8FED519B1745A00BC0B69 /* VCSignInViewController.xib in Resources */,
 				F4D8FED619B1745A00BC0B69 /* current-location-arrow-select@2x.png in Resources */,
 				F4D8FED719B1745A00BC0B69 /* VCSubMenuItemTableViewCell.xib in Resources */,
 				F4D8FED819B1745A00BC0B69 /* map_pin_fill-512.png in Resources */,
@@ -3520,7 +3513,6 @@
 				4F2EF9C51961391B006A1962 /* tutorial-menu-button@2x.png in Resources */,
 				F473F019195044AA00D8C900 /* menu-list.png in Resources */,
 				4F2EF99D1960D280006A1962 /* VCDriverHomeViewController.xib in Resources */,
-				4FE641BB194157510059BED1 /* VCSignInViewController.xib in Resources */,
 				4FE286E91962B89700FD8AF6 /* current-location-arrow-select@2x.png in Resources */,
 				4F184A291991E156006EA959 /* VCSubMenuItemTableViewCell.xib in Resources */,
 				F473EFFE19497FBF00D8C900 /* map_pin_fill-512.png in Resources */,

@@ -7,7 +7,7 @@
 //
 
 #import "VCSupportViewController.h"
-
+#import <MBProgressHUD.h>
 
 
 @interface VCSupportViewController ()
@@ -47,6 +47,12 @@
     messageTextView.text = @"";
 }
 
+- (void) didTapHamburger {
+    [self dismissKeyboard:self];
+    [super didTapHamburger];
+}
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -54,5 +60,8 @@
 }
 
 - (IBAction)didTapSubmit:(id)sender {
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.hidden = YES;
+    [UIAlertView showWithTitle:@"Submitted" message:@"We will contact you shortly" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
 }
 @end

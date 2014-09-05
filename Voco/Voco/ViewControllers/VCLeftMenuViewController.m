@@ -485,9 +485,7 @@
        && [_tableCellList containsObject:kScheduleItemCell]
        ){
         [self hideScheduleItems];
-    }
-    
-    if( [[_tableCellList objectAtIndex:row] integerValue] != kDriverSettingsInteger
+    } else if( [[_tableCellList objectAtIndex:row] integerValue] != kDriverSettingsInteger
        && [[_tableCellList objectAtIndex:row] integerValue] != kEarningsCellInteger
        && [[_tableCellList objectAtIndex:row] integerValue] != kFareReceiptsCellInteger
        && [_tableCellList containsObject:kEarningsCell]){
