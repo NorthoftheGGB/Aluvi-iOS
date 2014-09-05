@@ -1672,7 +1672,7 @@
 		F4C6B1B21979157800F6C10B /* VCDriverHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCDriverHUD.m; sourceTree = "<group>"; };
 		F4C6B1B51979229900F6C10B /* VCDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCDebug.h; sourceTree = "<group>"; };
 		F4C6B1B61979229900F6C10B /* VCDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCDebug.m; sourceTree = "<group>"; };
-		F4C6B29A197F06B100F6C10B /* Voco Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Voco Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4C6B29A197F06B100F6C10B /* Aluvi Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aluvi Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4C6B29B197F06B200F6C10B /* Voco Dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Voco Dev-Info.plist"; path = "/Users/deepwinter1/software-development/Clients/Will OBrien/voco-ios/Voco/Voco Dev-Info.plist"; sourceTree = "<absolute>"; };
 		F4C6B29C197F437800F6C10B /* VCApiError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCApiError.h; path = API/VCApiError.h; sourceTree = "<group>"; };
 		F4C6B29D197F437800F6C10B /* VCApiError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCApiError.m; path = API/VCApiError.m; sourceTree = "<group>"; };
@@ -2657,7 +2657,7 @@
 				F4FA0BE4192BF6BF005D8645 /* Voco Alpha.app */,
 				F4FA0C04192BF6BF005D8645 /* VocoTests.xctest */,
 				F4354DCF195D0D6A00C06CF7 /* Voco Testing.app */,
-				F4C6B29A197F06B100F6C10B /* Voco Dev.app */,
+				F4C6B29A197F06B100F6C10B /* Aluvi Dev.app */,
 				F4D8FF3B19B1745A00BC0B69 /* Aluvi.app */,
 			);
 			name = Products;
@@ -2803,9 +2803,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F4354D5B195D0D6A00C06CF7 /* Voco Testing */ = {
+		F4354D5B195D0D6A00C06CF7 /* Aluvi Testing */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F4354DCC195D0D6A00C06CF7 /* Build configuration list for PBXNativeTarget "Voco Testing" */;
+			buildConfigurationList = F4354DCC195D0D6A00C06CF7 /* Build configuration list for PBXNativeTarget "Aluvi Testing" */;
 			buildPhases = (
 				F4354D5C195D0D6A00C06CF7 /* Check Pods Manifest.lock */,
 				F4354D5D195D0D6A00C06CF7 /* Sources */,
@@ -2818,14 +2818,14 @@
 			);
 			dependencies = (
 			);
-			name = "Voco Testing";
+			name = "Aluvi Testing";
 			productName = Voco;
 			productReference = F4354DCF195D0D6A00C06CF7 /* Voco Testing.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F4C6B1BC197F06B100F6C10B /* Voco Development */ = {
+		F4C6B1BC197F06B100F6C10B /* Aluvi Development */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F4C6B297197F06B100F6C10B /* Build configuration list for PBXNativeTarget "Voco Development" */;
+			buildConfigurationList = F4C6B297197F06B100F6C10B /* Build configuration list for PBXNativeTarget "Aluvi Development" */;
 			buildPhases = (
 				F4C6B1BD197F06B100F6C10B /* Check Pods Manifest.lock */,
 				F4C6B1BE197F06B100F6C10B /* Sources */,
@@ -2838,9 +2838,9 @@
 			);
 			dependencies = (
 			);
-			name = "Voco Development";
+			name = "Aluvi Development";
 			productName = Voco;
-			productReference = F4C6B29A197F06B100F6C10B /* Voco Dev.app */;
+			productReference = F4C6B29A197F06B100F6C10B /* Aluvi Dev.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F4D8FE0619B1745A00BC0B69 /* Aluvi Distribution */ = {
@@ -2863,9 +2863,9 @@
 			productReference = F4D8FF3B19B1745A00BC0B69 /* Aluvi.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F4FA0BE3192BF6BF005D8645 /* Voco Alpha */ = {
+		F4FA0BE3192BF6BF005D8645 /* Aluvi Alpha */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F4FA0C16192BF6BF005D8645 /* Build configuration list for PBXNativeTarget "Voco Alpha" */;
+			buildConfigurationList = F4FA0C16192BF6BF005D8645 /* Build configuration list for PBXNativeTarget "Aluvi Alpha" */;
 			buildPhases = (
 				127C3440BEE44F71B51F18C3 /* Check Pods Manifest.lock */,
 				F4FA0BE0192BF6BF005D8645 /* Sources */,
@@ -2878,7 +2878,7 @@
 			);
 			dependencies = (
 			);
-			name = "Voco Alpha";
+			name = "Aluvi Alpha";
 			productName = Voco;
 			productReference = F4FA0BE4192BF6BF005D8645 /* Voco Alpha.app */;
 			productType = "com.apple.product-type.application";
@@ -2942,9 +2942,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F4C6B1BC197F06B100F6C10B /* Voco Development */,
-				F4354D5B195D0D6A00C06CF7 /* Voco Testing */,
-				F4FA0BE3192BF6BF005D8645 /* Voco Alpha */,
+				F4C6B1BC197F06B100F6C10B /* Aluvi Development */,
+				F4354D5B195D0D6A00C06CF7 /* Aluvi Testing */,
+				F4FA0BE3192BF6BF005D8645 /* Aluvi Alpha */,
 				F4D8FE0619B1745A00BC0B69 /* Aluvi Distribution */,
 				F4FA0C03192BF6BF005D8645 /* VocoTests */,
 			);
@@ -4372,7 +4372,7 @@
 /* Begin PBXTargetDependency section */
 		F4FA0C0B192BF6BF005D8645 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F4FA0BE3192BF6BF005D8645 /* Voco Alpha */;
+			target = F4FA0BE3192BF6BF005D8645 /* Aluvi Alpha */;
 			targetProxy = F4FA0C0A192BF6BF005D8645 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -4467,7 +4467,7 @@
 				GCC_PREFIX_HEADER = "Voco/Voco-Prefix.pch";
 				INFOPLIST_FILE = "Voco Dev-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "Voco Dev";
+				PRODUCT_NAME = "Aluvi Dev";
 				PROVISIONING_PROFILE = "C8290FC8-1D6F-42A1-BF24-17BE574A5300";
 				WRAPPER_EXTENSION = app;
 			};
@@ -4494,7 +4494,7 @@
 				);
 				INFOPLIST_FILE = "Voco Dev-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "Voco Dev";
+				PRODUCT_NAME = "Aluvi Dev";
 				PROVISIONING_PROFILE = "C8290FC8-1D6F-42A1-BF24-17BE574A5300";
 				WRAPPER_EXTENSION = app;
 			};
@@ -4711,7 +4711,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F4354DCC195D0D6A00C06CF7 /* Build configuration list for PBXNativeTarget "Voco Testing" */ = {
+		F4354DCC195D0D6A00C06CF7 /* Build configuration list for PBXNativeTarget "Aluvi Testing" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F4354DCD195D0D6A00C06CF7 /* Debug */,
@@ -4720,7 +4720,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F4C6B297197F06B100F6C10B /* Build configuration list for PBXNativeTarget "Voco Development" */ = {
+		F4C6B297197F06B100F6C10B /* Build configuration list for PBXNativeTarget "Aluvi Development" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F4C6B298197F06B100F6C10B /* Debug */,
@@ -4747,7 +4747,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F4FA0C16192BF6BF005D8645 /* Build configuration list for PBXNativeTarget "Voco Alpha" */ = {
+		F4FA0C16192BF6BF005D8645 /* Build configuration list for PBXNativeTarget "Aluvi Alpha" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F4FA0C17192BF6BF005D8645 /* Debug */,
