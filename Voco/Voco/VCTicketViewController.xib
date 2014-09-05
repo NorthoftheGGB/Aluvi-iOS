@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -445,7 +445,7 @@
                 <outlet property="driverNameLabel" destination="CIS-vw-GPg" id="oB8-bg-7gD"/>
                 <outlet property="driverPhotoImageView" destination="vBd-Mx-Cx3" id="cKg-xX-Lcp"/>
                 <outlet property="fareLabel" destination="UXb-UY-V0U" id="kJM-9s-2VA"/>
-                <outlet property="lisenceLabel" destination="LMV-AV-c4O" id="rlX-Wt-ITf"/>
+                <outlet property="licenseLabel" destination="LMV-AV-c4O" id="ClC-Hs-dfm"/>
                 <outlet property="pickupTimeLabel" destination="Zgy-fF-cwL" id="3qI-YI-2FF"/>
             </connections>
         </view>
@@ -473,7 +473,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ufz-sD-hCs" userLabel="Car Type Label" customClass="VCLabel">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="car type" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ufz-sD-hCs" userLabel="Car Type Label" customClass="VCLabel">
                     <rect key="frame" x="74" y="106" width="152" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
@@ -601,7 +601,7 @@
                         <action selector="didTapZoomToCurrentLocation:" destination="-1" eventType="touchUpInside" id="bgt-fF-0E0"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Wx-Fa-RsE" customClass="VCLabel">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="plate number" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Wx-Fa-RsE" customClass="VCLabel">
                     <rect key="frame" x="159" y="127" width="67" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
@@ -677,7 +677,7 @@
                 <outlet property="driverImageView" destination="LKt-Aa-kUP" id="pQJ-jv-YNl"/>
                 <outlet property="driverLastNameLabel" destination="IHO-f4-kdP" id="Jny-Wc-6oK"/>
                 <outlet property="fareLabel" destination="YHX-V0-gsv" id="o8P-kU-ayI"/>
-                <outlet property="lisenceLabel" destination="2Wx-Fa-RsE" id="ZBE-L9-IVR"/>
+                <outlet property="licenseLabel" destination="2Wx-Fa-RsE" id="3X7-mz-6Ls"/>
             </connections>
         </view>
         <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XIm-sQ-LdY" userLabel="Current Location Button">
