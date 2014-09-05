@@ -623,6 +623,9 @@
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="didTapCallDriverButton:" destination="Lv9-d9-EJH" eventType="touchUpInside" id="kPy-zZ-bdh"/>
+                    </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZQU-zm-bb6">
                     <rect key="frame" x="6" y="107" width="32" height="20"/>
@@ -669,6 +672,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="callDriverButton" destination="P0b-9K-WB5" id="oCd-xg-Mmy"/>
                 <outlet property="carTypeLabel" destination="ufz-sD-hCs" id="dRQ-BE-2LL"/>
                 <outlet property="cardNicknamelabel" destination="ocb-Au-ZiP" id="7SR-xi-Efc"/>
                 <outlet property="cardNumberLabel" destination="TaG-Um-H3F" id="uBr-41-AEE"/>
