@@ -21,6 +21,8 @@
 #import "VCCoreData.h"
 #import "Offer.h"
 
+#define kPushTokenKey @"PUSH_TOKEN_KEY"
+
 @implementation VCPushReceiver
 
 + (void) registerForRemoteNotifications {
@@ -35,6 +37,8 @@
     
     // send PATCH
     NSString * pushToken = [self stringFromDeviceTokenData: deviceToken];
+    [[NSUserDefaults standardUserDefaults] setObject:pushToken forKey:kPushTokenKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     [VCDevicesApi updatePushToken:pushToken success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
