@@ -63,6 +63,8 @@ static RKObjectManager * objectManager;
                               // @"mapWidth": [NSNumber numberWithInt:width],
                              // @"mapHeight": [NSNumber numberWithInt:height]
                               };
+    NSMutableDictionary * paramsAndOptions = [params mutableCopy];
+    [paramsAndOptions addEntriesFromDictionary:options];
     //[objectManager cancelAllObjectRequestOperationsWithMethod:RKRequestMethodGET matchingPathPattern:@"directions/v2/route"];
     [objectManager getObject:nil path:@"directions/v2/route" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
 
