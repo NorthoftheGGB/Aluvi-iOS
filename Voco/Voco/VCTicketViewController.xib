@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -281,7 +281,6 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-<<<<<<< HEAD
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$55.55" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXb-UY-V0U" customClass="VCLabelBold">
                     <rect key="frame" x="16" y="242" width="91" height="56"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -290,25 +289,11 @@
                         <constraint firstAttribute="width" constant="91" id="gTS-Z5-8K4"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="28"/>
-=======
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$10.50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXb-UY-V0U" customClass="VCLabelBold">
-                    <rect key="frame" x="16" y="246" width="91" height="45"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="45" id="J9q-Vy-IHu"/>
-                        <constraint firstAttribute="width" constant="91" id="gTS-Z5-8K4"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
->>>>>>> 2a8b34e185397335dbfece1ff007fb3a0128e79b
                     <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
                     <nil key="highlightedColor"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-<<<<<<< HEAD
                             <integer key="value" value="28"/>
-=======
-                            <integer key="value" value="30"/>
->>>>>>> 2a8b34e185397335dbfece1ff007fb3a0128e79b
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
@@ -369,10 +354,10 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyCard" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLf-hD-OJd" customClass="VCLabel">
-                    <rect key="frame" x="118" y="284" width="110" height="21"/>
+                    <rect key="frame" x="158" y="284" width="70" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="110" id="CG1-pv-aye"/>
+                        <constraint firstAttribute="width" constant="70" id="CG1-pv-aye"/>
                         <constraint firstAttribute="height" constant="21" id="HUT-5q-yqL"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -418,11 +403,7 @@
                 </label>
             </subviews>
             <constraints>
-<<<<<<< HEAD
                 <constraint firstItem="oc4-Pp-acs" firstAttribute="top" secondItem="UXb-UY-V0U" secondAttribute="bottom" constant="-78" id="0ND-G2-mbS"/>
-=======
-                <constraint firstItem="oc4-Pp-acs" firstAttribute="top" secondItem="UXb-UY-V0U" secondAttribute="bottom" constant="-71" id="0ND-G2-mbS"/>
->>>>>>> 2a8b34e185397335dbfece1ff007fb3a0128e79b
                 <constraint firstAttribute="trailing" secondItem="LMV-AV-c4O" secondAttribute="trailing" constant="20" id="0y1-ej-Omn"/>
                 <constraint firstItem="LMV-AV-c4O" firstAttribute="top" secondItem="R4l-5d-Vc0" secondAttribute="bottom" constant="4" id="2XB-E3-ZCk"/>
                 <constraint firstItem="R4l-5d-Vc0" firstAttribute="top" secondItem="Zgy-fF-cwL" secondAttribute="bottom" constant="4" id="3cQ-la-wP5"/>
@@ -434,11 +415,7 @@
                 <constraint firstItem="oc4-Pp-acs" firstAttribute="top" secondItem="CIS-vw-GPg" secondAttribute="bottom" constant="-49" id="98h-zp-EwS"/>
                 <constraint firstItem="nx0-ot-14p" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" id="CV6-bY-Snt"/>
                 <constraint firstItem="iha-zj-PjZ" firstAttribute="top" secondItem="f9u-kb-YvT" secondAttribute="bottom" constant="4" id="Gwe-Yj-MJT"/>
-<<<<<<< HEAD
                 <constraint firstItem="1nW-T7-6PG" firstAttribute="top" secondItem="UXb-UY-V0U" secondAttribute="bottom" constant="-14" id="IC6-Fe-U4t"/>
-=======
-                <constraint firstItem="1nW-T7-6PG" firstAttribute="top" secondItem="UXb-UY-V0U" secondAttribute="bottom" constant="-7" id="IC6-Fe-U4t"/>
->>>>>>> 2a8b34e185397335dbfece1ff007fb3a0128e79b
                 <constraint firstItem="aeQ-Xu-ULg" firstAttribute="leading" secondItem="fLf-hD-OJd" secondAttribute="trailing" constant="8" id="Ids-Xg-edF"/>
                 <constraint firstAttribute="bottom" secondItem="oc4-Pp-acs" secondAttribute="bottom" id="KW0-LU-Zj3"/>
                 <constraint firstAttribute="trailing" secondItem="Zgy-fF-cwL" secondAttribute="trailing" constant="20" id="LLE-zD-ixM"/>
@@ -451,7 +428,7 @@
                 <constraint firstItem="f9u-kb-YvT" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" constant="20" id="gJM-Ij-2Q4"/>
                 <constraint firstItem="smm-lU-ouO" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" constant="13" id="lTx-Ju-CeT"/>
                 <constraint firstItem="oc4-Pp-acs" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" id="mgP-0D-JzM"/>
-                <constraint firstItem="fLf-hD-OJd" firstAttribute="leading" secondItem="i6s-VW-kkM" secondAttribute="trailing" constant="-32" id="rNL-Po-ZTB"/>
+                <constraint firstItem="fLf-hD-OJd" firstAttribute="leading" secondItem="i6s-VW-kkM" secondAttribute="trailing" constant="8" id="rNL-Po-ZTB"/>
                 <constraint firstAttribute="bottom" secondItem="nx0-ot-14p" secondAttribute="bottom" constant="8" id="t9G-7J-dC5"/>
                 <constraint firstItem="nx0-ot-14p" firstAttribute="top" secondItem="iha-zj-PjZ" secondAttribute="bottom" constant="21" id="tea-6q-pzv"/>
                 <constraint firstItem="oc4-Pp-acs" firstAttribute="top" secondItem="fLf-hD-OJd" secondAttribute="bottom" constant="-85" id="uEv-S8-Ba3"/>
@@ -545,7 +522,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="est. fare" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2E-sO-vSO" customClass="VCLabel">
-                    <rect key="frame" x="32" y="70" width="57" height="21"/>
+                    <rect key="frame" x="32" y="64" width="57" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="Bea-W2-Ilh"/>
@@ -560,7 +537,6 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-<<<<<<< HEAD
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$55.55" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHX-V0-gsv" customClass="VCLabelBold">
                     <rect key="frame" x="16" y="23" width="91" height="56"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -569,25 +545,11 @@
                         <constraint firstAttribute="width" constant="91" id="GBY-nn-HfP"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="28"/>
-=======
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$5.50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHX-V0-gsv" customClass="VCLabelBold">
-                    <rect key="frame" x="8" y="22" width="104" height="51"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="51" id="9sq-Jw-Vhq"/>
-                        <constraint firstAttribute="width" constant="104" id="GBY-nn-HfP"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
->>>>>>> 2a8b34e185397335dbfece1ff007fb3a0128e79b
                     <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
                     <nil key="highlightedColor"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-<<<<<<< HEAD
                             <integer key="value" value="28"/>
-=======
-                            <integer key="value" value="30"/>
->>>>>>> 2a8b34e185397335dbfece1ff007fb3a0128e79b
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
@@ -691,22 +653,15 @@
                 <constraint firstItem="W2E-sO-vSO" firstAttribute="leading" secondItem="Lv9-d9-EJH" secondAttribute="leading" constant="32" id="TqA-86-b4Z"/>
                 <constraint firstItem="bjb-9G-hqy" firstAttribute="top" secondItem="Lv9-d9-EJH" secondAttribute="top" id="UAb-0A-zTq"/>
                 <constraint firstItem="bjb-9G-hqy" firstAttribute="leading" secondItem="Lv9-d9-EJH" secondAttribute="leading" id="Wrz-Ww-Ivk"/>
-<<<<<<< HEAD
                 <constraint firstItem="W2E-sO-vSO" firstAttribute="top" secondItem="YHX-V0-gsv" secondAttribute="bottom" constant="-15" id="XW2-Gc-PxF"/>
                 <constraint firstItem="ufz-sD-hCs" firstAttribute="top" secondItem="IHO-f4-kdP" secondAttribute="bottom" constant="1" id="b7b-Rp-NYW"/>
                 <constraint firstAttribute="trailing" secondItem="bjb-9G-hqy" secondAttribute="trailing" constant="-10" id="et3-kG-Hlj"/>
                 <constraint firstItem="YHX-V0-gsv" firstAttribute="leading" secondItem="Lv9-d9-EJH" secondAttribute="leading" constant="16" id="ghM-Bq-sCv"/>
-=======
-                <constraint firstItem="W2E-sO-vSO" firstAttribute="top" secondItem="YHX-V0-gsv" secondAttribute="bottom" constant="-3" id="XW2-Gc-PxF"/>
-                <constraint firstItem="ufz-sD-hCs" firstAttribute="top" secondItem="IHO-f4-kdP" secondAttribute="bottom" constant="1" id="b7b-Rp-NYW"/>
-                <constraint firstAttribute="trailing" secondItem="bjb-9G-hqy" secondAttribute="trailing" constant="-10" id="et3-kG-Hlj"/>
-                <constraint firstItem="YHX-V0-gsv" firstAttribute="leading" secondItem="Lv9-d9-EJH" secondAttribute="leading" constant="8" id="ghM-Bq-sCv"/>
->>>>>>> 2a8b34e185397335dbfece1ff007fb3a0128e79b
                 <constraint firstItem="LKt-Aa-kUP" firstAttribute="leading" secondItem="2Wx-Fa-RsE" secondAttribute="trailing" constant="23" id="jCY-Se-MEL"/>
                 <constraint firstAttribute="bottom" secondItem="LKt-Aa-kUP" secondAttribute="bottom" constant="20" id="nC6-ZI-HxU"/>
                 <constraint firstAttribute="bottom" secondItem="2Wx-Fa-RsE" secondAttribute="bottom" constant="6" id="nz5-jV-eRv"/>
                 <constraint firstItem="2Wx-Fa-RsE" firstAttribute="top" secondItem="ufz-sD-hCs" secondAttribute="bottom" id="oa1-74-Lxg"/>
-                <constraint firstItem="YHX-V0-gsv" firstAttribute="top" secondItem="Lv9-d9-EJH" secondAttribute="top" constant="22" id="quE-kH-jYW"/>
+                <constraint firstItem="YHX-V0-gsv" firstAttribute="top" secondItem="Lv9-d9-EJH" secondAttribute="top" constant="23" id="quE-kH-jYW"/>
                 <constraint firstAttribute="bottom" secondItem="ocb-Au-ZiP" secondAttribute="bottom" constant="5" id="rvH-DH-uho"/>
                 <constraint firstItem="TaG-Um-H3F" firstAttribute="leading" secondItem="ocb-Au-ZiP" secondAttribute="trailing" constant="8" id="sI6-hN-7I7"/>
                 <constraint firstItem="IHO-f4-kdP" firstAttribute="top" secondItem="Nxs-JX-K3G" secondAttribute="bottom" constant="-6" id="ssx-Am-AeS"/>
@@ -1227,11 +1182,7 @@
                     <nil key="highlightedColor"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-<<<<<<< HEAD
                             <integer key="value" value="28"/>
-=======
-                            <integer key="value" value="30"/>
->>>>>>> 2a8b34e185397335dbfece1ff007fb3a0128e79b
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
