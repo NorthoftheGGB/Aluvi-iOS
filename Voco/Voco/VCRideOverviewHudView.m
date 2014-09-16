@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCRideDetailsHudView.h"
+#import "VCRideOverviewHudView.h"
 
-@implementation VCRideDetailsHudView
+@implementation VCRideOverviewHudView
 
 - (id)initWithFrame:(CGRect)frame
 {

@@ -22,7 +22,11 @@
 @property (weak, nonatomic) IBOutlet VCLabel *cardNumberLabel;
 
 @property (weak, nonatomic) IBOutlet VCLabelBold *fareLabel;
-@property (weak, nonatomic) IBOutlet VCLabel *licenseLabel;
-@property (weak, nonatomic) IBOutlet VCLabel *carTypeLabel;
+@property (weak, nonatomic) IBOutlet VCLabel *licenseValueLabel;
+@property (weak, nonatomic) IBOutlet VCLabel *carTypeValueLabel;
+
+
+- (void) hideCarInfo;
+- (void) showCarInfo;
 
 @end

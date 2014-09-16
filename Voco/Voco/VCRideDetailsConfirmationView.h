@@ -26,6 +26,11 @@
 @property (weak, nonatomic) IBOutlet VCLabel *totalRideTimeLabel;
 @property (weak, nonatomic) IBOutlet VCLabelBold *driverNameLabel;
 
+@property (weak, nonatomic) IBOutlet VCLabel *carTypeLabel;
+
+@property (weak, nonatomic) IBOutlet VCLabel *carTypeValueLabel;
+@property (weak, nonatomic) IBOutlet VCLabel *licenseValueLabel;
+
 
 //Riders
 @property (weak, nonatomic) IBOutlet VCLabel *riderSectionTitleLabel;

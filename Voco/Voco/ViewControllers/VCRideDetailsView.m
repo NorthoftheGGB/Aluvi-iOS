@@ -19,6 +19,16 @@
     return self;
 }
 
+- (void) hideCarInfo {
+    _licenseValueLabel.hidden = true;
+    _carTypeValueLabel.hidden = true;
+}
+
+- (void) showCarInfo {
+    _licenseValueLabel.hidden = false;
+    _carTypeValueLabel.hidden = false;
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

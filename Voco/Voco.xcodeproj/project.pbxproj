@@ -209,9 +209,9 @@
 		4F3DB5CD19825FF700DDD094 /* overlay-graphic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3DB5CC19825FF700DDD094 /* overlay-graphic@2x.png */; };
 		4F3DB5CE19825FF700DDD094 /* overlay-graphic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3DB5CC19825FF700DDD094 /* overlay-graphic@2x.png */; };
 		4F3DB5CF19825FF700DDD094 /* overlay-graphic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3DB5CC19825FF700DDD094 /* overlay-graphic@2x.png */; };
-		4F4D8BE71987644F0027A2AF /* VCRideDetailsHudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D8BE61987644F0027A2AF /* VCRideDetailsHudView.m */; };
-		4F4D8BE81987644F0027A2AF /* VCRideDetailsHudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D8BE61987644F0027A2AF /* VCRideDetailsHudView.m */; };
-		4F4D8BE91987644F0027A2AF /* VCRideDetailsHudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D8BE61987644F0027A2AF /* VCRideDetailsHudView.m */; };
+		4F4D8BE71987644F0027A2AF /* VCRideOverviewHudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D8BE61987644F0027A2AF /* VCRideOverviewHudView.m */; };
+		4F4D8BE81987644F0027A2AF /* VCRideOverviewHudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D8BE61987644F0027A2AF /* VCRideOverviewHudView.m */; };
+		4F4D8BE91987644F0027A2AF /* VCRideOverviewHudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D8BE61987644F0027A2AF /* VCRideOverviewHudView.m */; };
 		4F4D8BEC1987650A0027A2AF /* VCRideDetailsConfirmationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D8BEB1987650A0027A2AF /* VCRideDetailsConfirmationView.m */; };
 		4F4D8BED1987650A0027A2AF /* VCRideDetailsConfirmationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D8BEB1987650A0027A2AF /* VCRideDetailsConfirmationView.m */; };
 		4F4D8BEE1987650A0027A2AF /* VCRideDetailsConfirmationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D8BEB1987650A0027A2AF /* VCRideDetailsConfirmationView.m */; };
@@ -970,7 +970,7 @@
 		F4D8FE5C19B1745A00BC0B69 /* VCFareIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C81019626DDE007E05AD /* VCFareIdentity.m */; };
 		F4D8FE5D19B1745A00BC0B69 /* VCDriverVideoTutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB268281952207A0028D4ED /* VCDriverVideoTutorialController.m */; };
 		F4D8FE5E19B1745A00BC0B69 /* VCCommuteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F425906C1995E30000FA928E /* VCCommuteManager.m */; };
-		F4D8FE5F19B1745A00BC0B69 /* VCRideDetailsHudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D8BE61987644F0027A2AF /* VCRideDetailsHudView.m */; };
+		F4D8FE5F19B1745A00BC0B69 /* VCRideOverviewHudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D8BE61987644F0027A2AF /* VCRideOverviewHudView.m */; };
 		F4D8FE6019B1745A00BC0B69 /* VCCarBrandTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE712C8197368B90071020C /* VCCarBrandTextField.m */; };
 		F4D8FE6119B1745A00BC0B69 /* VCFareDriverAssignment.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B0E1938571E00354886 /* VCFareDriverAssignment.m */; };
 		F4D8FE6219B1745A00BC0B69 /* VCNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6B8B719A9898E004312A1 /* VCNotifications.m */; };
@@ -1330,8 +1330,8 @@
 		4F3DB5C71981F6F400DDD094 /* VCRideDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRideDetailsView.h; path = ViewControllers/VCRideDetailsView.h; sourceTree = "<group>"; };
 		4F3DB5C81981F6F400DDD094 /* VCRideDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRideDetailsView.m; path = ViewControllers/VCRideDetailsView.m; sourceTree = "<group>"; };
 		4F3DB5CC19825FF700DDD094 /* overlay-graphic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overlay-graphic@2x.png"; sourceTree = "<group>"; };
-		4F4D8BE51987644F0027A2AF /* VCRideDetailsHudView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRideDetailsHudView.h; sourceTree = "<group>"; };
-		4F4D8BE61987644F0027A2AF /* VCRideDetailsHudView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRideDetailsHudView.m; sourceTree = "<group>"; };
+		4F4D8BE51987644F0027A2AF /* VCRideOverviewHudView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRideOverviewHudView.h; sourceTree = "<group>"; };
+		4F4D8BE61987644F0027A2AF /* VCRideOverviewHudView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRideOverviewHudView.m; sourceTree = "<group>"; };
 		4F4D8BEA1987650A0027A2AF /* VCRideDetailsConfirmationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRideDetailsConfirmationView.h; sourceTree = "<group>"; };
 		4F4D8BEB1987650A0027A2AF /* VCRideDetailsConfirmationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRideDetailsConfirmationView.m; sourceTree = "<group>"; };
 		4F4D8BF119882AFB0027A2AF /* VCDriveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCDriveViewController.h; path = ViewControllers/VCDriveViewController.h; sourceTree = "<group>"; };
@@ -1904,8 +1904,8 @@
 			children = (
 				4F3DB5C71981F6F400DDD094 /* VCRideDetailsView.h */,
 				4F3DB5C81981F6F400DDD094 /* VCRideDetailsView.m */,
-				4F4D8BE51987644F0027A2AF /* VCRideDetailsHudView.h */,
-				4F4D8BE61987644F0027A2AF /* VCRideDetailsHudView.m */,
+				4F4D8BE51987644F0027A2AF /* VCRideOverviewHudView.h */,
+				4F4D8BE61987644F0027A2AF /* VCRideOverviewHudView.m */,
 				4F4D8BEA1987650A0027A2AF /* VCRideDetailsConfirmationView.h */,
 				4F4D8BEB1987650A0027A2AF /* VCRideDetailsConfirmationView.m */,
 			);
@@ -3928,7 +3928,7 @@
 				F4354D97195D0D6A00C06CF7 /* NSDate+Pretty.m in Sources */,
 				F4354D99195D0D6A00C06CF7 /* VCAppDelegate.m in Sources */,
 				F4F6B8BF19A9ADEF004312A1 /* HVTableView.m in Sources */,
-				4F4D8BE81987644F0027A2AF /* VCRideDetailsHudView.m in Sources */,
+				4F4D8BE81987644F0027A2AF /* VCRideOverviewHudView.m in Sources */,
 				F4354D9A195D0D6A00C06CF7 /* VCUserStateManager.m in Sources */,
 				F4A7C80619623C70007E05AD /* Transit.m in Sources */,
 				4FC758EE19AA95300093DBEA /* VCReceiptExpandedTableViewCell.m in Sources */,
@@ -4033,7 +4033,7 @@
 				F4C6B205197F06B100F6C10B /* Earning.m in Sources */,
 				F4C6B206197F06B100F6C10B /* VCFareIdentity.m in Sources */,
 				F4C6B208197F06B100F6C10B /* VCDriverVideoTutorialController.m in Sources */,
-				4F4D8BE71987644F0027A2AF /* VCRideDetailsHudView.m in Sources */,
+				4F4D8BE71987644F0027A2AF /* VCRideOverviewHudView.m in Sources */,
 				F4C6B209197F06B100F6C10B /* VCCarBrandTextField.m in Sources */,
 				F4C6B20A197F06B100F6C10B /* VCFareDriverAssignment.m in Sources */,
 				F4C6B20B197F06B100F6C10B /* VCPhoneTextField.m in Sources */,
@@ -4172,7 +4172,7 @@
 				F4D8FE5C19B1745A00BC0B69 /* VCFareIdentity.m in Sources */,
 				F4D8FE5D19B1745A00BC0B69 /* VCDriverVideoTutorialController.m in Sources */,
 				F4D8FE5E19B1745A00BC0B69 /* VCCommuteManager.m in Sources */,
-				F4D8FE5F19B1745A00BC0B69 /* VCRideDetailsHudView.m in Sources */,
+				F4D8FE5F19B1745A00BC0B69 /* VCRideOverviewHudView.m in Sources */,
 				F4D8FE6019B1745A00BC0B69 /* VCCarBrandTextField.m in Sources */,
 				F4D8FE6119B1745A00BC0B69 /* VCFareDriverAssignment.m in Sources */,
 				F4D8FE6219B1745A00BC0B69 /* VCNotifications.m in Sources */,
@@ -4312,7 +4312,7 @@
 				F4A7C81119626DDE007E05AD /* VCFareIdentity.m in Sources */,
 				4FB2682A1952207A0028D4ED /* VCDriverVideoTutorialController.m in Sources */,
 				F425906F1995E30000FA928E /* VCCommuteManager.m in Sources */,
-				4F4D8BE91987644F0027A2AF /* VCRideDetailsHudView.m in Sources */,
+				4F4D8BE91987644F0027A2AF /* VCRideOverviewHudView.m in Sources */,
 				4FE712C9197368B90071020C /* VCCarBrandTextField.m in Sources */,
 				F4FE1B0F1938571E00354886 /* VCFareDriverAssignment.m in Sources */,
 				F4F6B8BA19A9898E004312A1 /* VCNotifications.m in Sources */,

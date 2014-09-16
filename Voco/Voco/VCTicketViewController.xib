@@ -379,7 +379,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Fellow Riders:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZW-JA-XAC" customClass="VCLabel">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Your Riders:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZW-JA-XAC" customClass="VCLabel">
                     <rect key="frame" x="17" y="236" width="110" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
@@ -500,6 +500,7 @@
                 <outlet property="didTapConfirmButton" destination="sdj-3U-jwk" id="boc-cW-vhV"/>
                 <outlet property="driverNameLabel" destination="qXq-bv-L4m" id="oo5-dq-uLi"/>
                 <outlet property="fareLabel" destination="RC6-Em-c1O" id="oA3-Wm-TTF"/>
+                <outlet property="licenseValueLabel" destination="iha-zj-PjZ" id="fcL-UU-5uo"/>
                 <outlet property="pickupTimeLabel" destination="pMx-iA-6oZ" id="u7P-GV-eCE"/>
                 <outlet property="riderImageView1" destination="Fep-l0-bYy" id="Sq2-Sc-1rV"/>
                 <outlet property="riderImageView2" destination="URE-va-sWD" id="QwE-gB-fOa"/>
@@ -509,7 +510,6 @@
                 <outlet property="riderLabel3" destination="yll-81-PUN" id="9RD-fg-K61"/>
                 <outlet property="riderSectionTitleLabel" destination="Sdk-is-gH6" id="Ol4-Rh-dai"/>
                 <outlet property="segmentedButton" destination="fM4-jK-FhX" id="BHF-QV-8yh"/>
-                <outlet property="totalRideTimeLabel" destination="sjq-Ls-Y9H" id="h9R-6p-w1K"/>
             </connections>
         </view>
         <view contentMode="scaleToFill" id="RWM-tO-NBZ" userLabel="Rider: Ride Details" customClass="VCRideDetailsConfirmationView">
@@ -586,12 +586,12 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Car Type :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9u-kb-YvT" customClass="VCLabel">
-                    <rect key="frame" x="17" y="413" width="102" height="21"/>
+                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Ride Time :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iq0-8h-goE" customClass="VCLabel">
+                    <rect key="frame" x="0.0" y="413" width="119" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="102" id="VT2-Ux-EHy"/>
-                        <constraint firstAttribute="height" constant="21" id="rBP-AF-39g"/>
+                        <constraint firstAttribute="width" constant="119" id="BCU-iE-RB4"/>
+                        <constraint firstAttribute="height" constant="21" id="lvr-fe-fbC"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
@@ -602,12 +602,12 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Ride Time :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iq0-8h-goE" customClass="VCLabel">
-                    <rect key="frame" x="0.0" y="413" width="119" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Car Type :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9u-kb-YvT" customClass="VCLabel">
+                    <rect key="frame" x="17" y="413" width="102" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="119" id="BCU-iE-RB4"/>
-                        <constraint firstAttribute="height" constant="21" id="lvr-fe-fbC"/>
+                        <constraint firstAttribute="width" constant="102" id="VT2-Ux-EHy"/>
+                        <constraint firstAttribute="height" constant="21" id="rBP-AF-39g"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
@@ -682,7 +682,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Ride Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcp-j6-xAA" customClass="VCLabel">
+                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Ride Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcp-j6-xAA" customClass="VCLabel">
                     <rect key="frame" x="127" y="413" width="182" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
@@ -912,7 +912,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="carTypeLabel" destination="R4l-5d-Vc0" id="AfN-nc-QfH"/>
+                <outlet property="carTypeValueLabel" destination="R4l-5d-Vc0" id="Yek-xU-rBX"/>
                 <outlet property="cardNicknamelabel" destination="fLf-hD-OJd" id="4yz-9d-26f"/>
                 <outlet property="cardNumberLabel" destination="aeQ-Xu-ULg" id="ynr-xF-jUo"/>
                 <outlet property="confirmButton" destination="nx0-ot-14p" id="gvT-mm-qap"/>
@@ -921,14 +921,14 @@
                 <outlet property="driverNameLabel" destination="CIS-vw-GPg" id="oB8-bg-7gD"/>
                 <outlet property="driverPhotoImageView" destination="vBd-Mx-Cx3" id="cKg-xX-Lcp"/>
                 <outlet property="fareLabel" destination="UXb-UY-V0U" id="kJM-9s-2VA"/>
-                <outlet property="licenseLabel" destination="LMV-AV-c4O" id="ClC-Hs-dfm"/>
+                <outlet property="licenseValueLabel" destination="LMV-AV-c4O" id="trE-6b-M2O"/>
                 <outlet property="pickupTimeLabel" destination="Zgy-fF-cwL" id="3qI-YI-2FF"/>
                 <outlet property="riderImageView2" destination="Fm0-NN-r1s" id="Dgq-QD-iun"/>
                 <outlet property="riderLabel1" destination="hBK-u4-kFo" id="cgh-nm-ETp"/>
                 <outlet property="segmentedButton" destination="Qz2-lZ-23U" id="Ubq-W8-VSg"/>
             </connections>
         </view>
-        <view contentMode="scaleToFill" id="Lv9-d9-EJH" userLabel="Ride Details HUD" customClass="VCRideDetailsHudView">
+        <view contentMode="scaleToFill" id="Lv9-d9-EJH" userLabel="Ride Details HUD" customClass="VCRideOverviewHudView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="154"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -1152,7 +1152,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="callDriverButton" destination="P0b-9K-WB5" id="oCd-xg-Mmy"/>
-                <outlet property="carTypeLabel" destination="ufz-sD-hCs" id="dRQ-BE-2LL"/>
+                <outlet property="carTypeValueLabel" destination="ufz-sD-hCs" id="Rud-4x-fn6"/>
                 <outlet property="cardNicknamelabel" destination="ocb-Au-ZiP" id="7SR-xi-Efc"/>
                 <outlet property="cardNumberLabel" destination="TaG-Um-H3F" id="uBr-41-AEE"/>
                 <outlet property="creditCardImageView" destination="ZQU-zm-bb6" id="7C8-1G-rZV"/>
@@ -1160,7 +1160,7 @@
                 <outlet property="driverImageView" destination="LKt-Aa-kUP" id="pQJ-jv-YNl"/>
                 <outlet property="driverLastNameLabel" destination="IHO-f4-kdP" id="Jny-Wc-6oK"/>
                 <outlet property="fareLabel" destination="YHX-V0-gsv" id="o8P-kU-ayI"/>
-                <outlet property="licenseLabel" destination="2Wx-Fa-RsE" id="3X7-mz-6Ls"/>
+                <outlet property="licenseValueLabel" destination="2Wx-Fa-RsE" id="bTJ-NI-41s"/>
             </connections>
         </view>
         <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XIm-sQ-LdY" userLabel="Current Location Button">

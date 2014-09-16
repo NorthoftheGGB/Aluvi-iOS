@@ -28,7 +28,7 @@
 #import "VCCommuteManager.h"
 #import "VCRideDetailsView.h"
 #import "VCRideDetailsConfirmationView.h"
-#import "VCRideDetailsHudView.h"
+#import "VCRideOverviewHudView.h"
 #import "NSDate+Pretty.h"
 #import "VCUserStateManager.h"
 #import "VCDriveViewController.h"
@@ -114,7 +114,7 @@
 @property (strong, nonatomic) UIScrollView * scrollView;
 
 //RideOverview
-@property (strong, nonatomic) IBOutlet VCRideDetailsHudView *rideDetailsHud;
+@property (strong, nonatomic) IBOutlet VCRideOverviewHudView *rideDetailsHud;
 
 // Data Entry
 @property (nonatomic) NSInteger step;
@@ -389,8 +389,8 @@
                 //_rideDetailsHud.pickupTimeLabel.text = [_ride.pickupTime time];
                 _rideDetailsHud.driverFirstNameLabel.text = _ticket.driver.firstName;
                 _rideDetailsHud.driverLastNameLabel.text = _ticket.driver.lastName;
-                _rideDetailsHud.carTypeLabel.text = [_ticket.car summary];
-                _rideDetailsHud.licenseLabel.text = _ticket.car.licensePlate;
+                _rideDetailsHud.carTypeValueLabel.text = [_ticket.car summary];
+                _rideDetailsHud.licenseValueLabel.text = _ticket.car.licensePlate;
                 _rideDetailsHud.cardNicknamelabel.text = [VCUserStateManager instance].profile.cardBrand;
                 _rideDetailsHud.cardNumberLabel.text = [VCUserStateManager instance].profile.cardLastFour;
                 _rideDetailsHud.fareLabel.text = [VCUtilities formatCurrencyFromCents: _ticket.fixedPrice];
@@ -402,8 +402,8 @@
             } else {
                 _rideDetailsConfirmation.pickupTimeLabel.text = [_ticket.pickupTime time];
                 _rideDetailsConfirmation.driverNameLabel.text = [_ticket.driver fullName];
-                _rideDetailsConfirmation.carTypeLabel.text = [_ticket.car summary];
-                _rideDetailsConfirmation.licenseLabel.text = _ticket.car.licensePlate;
+                _rideDetailsConfirmation.carTypeValueLabel.text = [_ticket.car summary];
+                _rideDetailsConfirmation.licenseValueLabel.text = _ticket.car.licensePlate;
                 //_rideDetailsConfirmation.fareLabel.text = _ride.estimatedFareAmount;
                 _rideDetailsConfirmation.cardNicknamelabel.text = [VCUserStateManager instance].profile.cardBrand;
                 _rideDetailsConfirmation.cardNumberLabel.text = [VCUserStateManager instance].profile.cardLastFour;

@@ -19,6 +19,20 @@
     return self;
 }
 
+// If Driver
+
+- (void) hideCarInfo {
+    
+    _driverNameLabel
+    _driverPhotoImageView
+    _carTypeLabel
+    _licenseLabel
+    
+}
+
+//If Rider
+
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
