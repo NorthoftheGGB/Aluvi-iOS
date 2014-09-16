@@ -13,13 +13,13 @@
 #import "VCTextField.h"
 #import "VCLabel.h"
 #import "VCLabelBold.h"
-#import "VCButtonFontBold.h"
+#import "VCButtonStandardStyle.h"
 
 @interface VCDriverChangeBankAccountViewController : UIViewController
 @property (weak, nonatomic) IBOutlet VCTextField *accountNameTextField;
 @property (weak, nonatomic) IBOutlet VCBankAccountTextField *accountNumberTextField;
 @property (weak, nonatomic) IBOutlet VCRoutingNumberTextField *routingNumberTextField;
-@property (weak, nonatomic) IBOutlet VCButtonFontBold *sumbitButton;
+@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *sumbitButton;
 - (IBAction)didTapSubmit:(id)sender;
 
 @end

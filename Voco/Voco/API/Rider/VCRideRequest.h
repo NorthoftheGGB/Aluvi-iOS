@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import <RestKit.h>
-#import "Ride.h"
+#import "Ticket.h"
 
 
 
@@ -23,9 +23,11 @@
 @property (nonatomic, strong) NSNumber * destinationLatitude;
 @property (nonatomic, strong) NSNumber * destinationLongitude;
 @property (nonatomic, strong) NSString * destinationPlaceName;
-@property (nonatomic, strong) NSDate * desiredArrival;
+@property (nonatomic, strong) NSDate * pickupTime;
+@property (nonatomic, strong) NSNumber * driving;
+@property (nonatomic, strong) NSNumber * tripId;
 
 + (RKObjectMapping *) getMapping;
-+ (VCRideRequest *) requestForRide:(Ride *)ride;
++ (VCRideRequest *) requestForRide:(Ticket *)ride;
 
 @end

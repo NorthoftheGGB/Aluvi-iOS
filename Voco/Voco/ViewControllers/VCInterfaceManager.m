@@ -1,5 +1,5 @@
 //
-//  VCInterfaceModes.m
+//  VCInterfaceManager.m
 //  Voco
 //
 //  Created by Matthew Shultz on 6/9/14.
@@ -7,9 +7,10 @@
 //
 
 #import "VCInterfaceManager.h"
-#import "VCSignInViewController.h"
-#import "VCRiderHomeViewController.h"
-#import "VCMenuViewController.h"
+#import "VCLogInViewController.h"
+#import "VCTicketViewController.h"
+#import "VCDriveViewController.h"
+#import "VCLeftMenuViewController.h"
 #import "IIViewDeckController.h"
 #import "VCApi.h"
 #import "VCDriverHomeViewController.h"
@@ -22,6 +23,12 @@
 static VCInterfaceManager * instance;
 static IIViewDeckController* deckController;
 static int mode;
+
+@interface VCInterfaceManager () <UIGestureRecognizerDelegate>
+
+@property (nonatomic, strong) UINavigationController * centerNavigationController;
+
+@end
 
 @implementation VCInterfaceManager
 
@@ -36,19 +43,21 @@ static int mode;
 - (void) showInterface {
     
     if([VCApi loggedIn]){
-        if(mode == kDriverMode) {
+        [self showRiderInterface];
+
+        /*if(mode == kDriverMode) {
             [self showDriverInterface];
         } else {
             [self showRiderInterface];
         }
+         */
     } else {
         [self showRiderSigninInterface];
-        
     }
 }
 
 - (void) showRiderSigninInterface {
-    VCSignInViewController * signInViewController = [[VCSignInViewController alloc] init];
+    VCLogInViewController * signInViewController = [[VCLogInViewController alloc] init];
     UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:signInViewController];
     /* [navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [navigationController.navigationBar setShadowImage:[UIImage new]];*/
@@ -61,38 +70,37 @@ static int mode;
 
 - (void) createDeckViewController {
     
-    deckController =  [[IIViewDeckController alloc] init]; //initWithCenterViewController:riderHomeViewController leftViewController:riderMenuViewController rightViewController:nil];
-    deckController.leftSize = 0;
+    deckController =  [[IIViewDeckController alloc] init];
+    deckController.leftSize = 48;
     deckController.openSlideAnimationDuration = 0.20f;
     deckController.closeSlideAnimationDuration = 0.20f;
-    deckController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu-list"]
+    deckController.panningGestureDelegate = self;
+    _centerNavigationController = [[UINavigationController alloc] init];
+    _centerNavigationController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu-list"]
                                                                                        style:UIBarButtonItemStyleBordered
                                                                                       target:deckController
                                                                                       action:@selector(toggleLeftView)];
-    VCMenuViewController * riderMenuViewController = [[VCMenuViewController alloc] init];
+    [_centerNavigationController.navigationBar setTranslucent:YES];
+    deckController.centerController = _centerNavigationController;
+    
+    VCLeftMenuViewController * riderMenuViewController = [[VCLeftMenuViewController alloc] init];
     deckController.leftController = riderMenuViewController;
     
-    [deckController.navigationController.navigationBar setTranslucent:YES];
-
-    
-    UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:deckController];
-    [[UIApplication sharedApplication] delegate].window.rootViewController = navigationController;
-
+    [[UIApplication sharedApplication] delegate].window.rootViewController = deckController;
 
 }
 
 - (void) showRiderInterface {
-    
-    VCRiderHomeViewController * riderHomeViewController = [[VCRiderHomeViewController alloc] init];
+    VCTicketViewController * rideViewController = [[VCTicketViewController alloc] init];
 
     if( [VCUserStateManager instance].underwayFareId != nil ) {
-        NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Fare"];
-        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ride_id = %@", [VCUserStateManager instance].underwayFareId];
+        NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
+        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"fare_id = %@", [VCUserStateManager instance].underwayFareId];
         [fetch setPredicate:predicate];
         NSError * error;
         NSArray * items = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
         if(items != nil && [items count] > 0){
-            riderHomeViewController.request = [items objectAtIndex:0];
+            rideViewController.ticket = [items objectAtIndex:0];
         }
     }
     
@@ -100,7 +108,7 @@ static int mode;
         [self createDeckViewController];
     }
     
-    deckController.centerController = riderHomeViewController;
+    [_centerNavigationController setViewControllers:@[rideViewController]];
     
     [self setMode: kRiderMode];
 
@@ -112,7 +120,19 @@ static int mode;
         [self createDeckViewController];
     }
     
-    if([[VCUserStateManager instance].driverState isEqualToString:kDriverStateActive]
+    /*
+<<<<<<< HEAD:Voco/Voco/ViewControllers/VCInterfaceModes.m
+    VCDriveViewController * driveViewController = [[VCDriveViewController alloc] init];
+    deckController.centerController = driveViewController;
+
+    
+    if([[VCUserState instance].driverState isEqualToString:kDriverStateActive]
+       || [[VCUserState instance].driverState isEqualToString:kDriverStateOnDuty] ) {
+           VCDriverHomeViewController * driverViewController = [[VCDriverHomeViewController alloc] init];
+           deckController.centerController = driverViewController;
+           [self setMode: kDriverMode];
+					 =======
+					 if([[VCUserStateManager instance].driverState isEqualToString:kDriverStateActive]
        || [[VCUserStateManager instance].driverState isEqualToString:kDriverStateOnDuty] ) {
         VCDriverHomeViewController * driverViewController = [[VCDriverHomeViewController alloc] init];
         
@@ -127,7 +147,9 @@ static int mode;
         
         deckController.centerController = driverViewController;
         [self setMode: kDriverMode];
+>>>>>>> master:Voco/Voco/ViewControllers/VCInterfaceManager.m
     }
+     */
     
 }
 
@@ -145,6 +167,11 @@ static int mode;
 
 - (int) mode {
     return mode;
+}
+
+- (void) setCenterViewControllers:(NSArray *) viewControllers{
+    [deckController closeLeftViewAnimated:YES];
+    [_centerNavigationController setViewControllers:viewControllers];
 }
 
 
@@ -194,5 +221,10 @@ static int mode;
     }
 }
 
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    return YES; // until we have hamburger everywhere
+    //return NO;
+}
 
 @end

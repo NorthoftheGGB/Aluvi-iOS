@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Driver, Ride, Fare;
+@class Driver, Ticket, Fare;
 
 @interface Payment : NSManagedObject
 
@@ -24,7 +24,7 @@
 @property (nonatomic, retain) NSString * motive;
 @property (nonatomic, retain) Driver *driver;
 @property (nonatomic, retain) Fare *fare;
-@property (nonatomic, retain) Ride *ride;
+@property (nonatomic, retain) Ticket *ticket;
 
 + (void)createMappings:(RKObjectManager *)objectManager;
 

@@ -148,7 +148,7 @@ static VCDialogs *sharedSingleton;
                                 @"Thanks for riding.  We have charged your card for a total of %@",
                                  [VCUtilities formatCurrencyFromCents:amount]]
              cancelButtonTitle:@"OK"
-             otherButtonTitles:@[@"Detailed Receipt"]
+             otherButtonTitles:nil // @[@"Detailed Receipt"]
                       tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                           [VCUserStateManager instance].rideProcessState = kUserStateIdle;
                           if (buttonIndex != 0){
@@ -168,7 +168,7 @@ static VCDialogs *sharedSingleton;
 }
 
 
-- (void) commuterRideFound: (Ride *) request {
+- (void) commuterRideFound: (Ticket *) request {
     [UIAlertView showWithTitle:@"Commuter Ride Found!"
                        message:[NSString stringWithFormat:@"Your requested pick up at %@ has been found.  Would you like to view the details now?", request.desiredArrival]
              cancelButtonTitle:@"Not now"
@@ -203,12 +203,37 @@ static VCDialogs *sharedSingleton;
         [WRUtilities criticalError:error];
         return;
     }
-    Ride * request = [requests objectAtIndex:0];
+    Ticket * request = [requests objectAtIndex:0];
     [UIAlertView showWithTitle:@"Commuter driver is on the way!" message:@"Your driver is on the way.  Would you like to view your pickup meeting point?" cancelButtonTitle:@"Not now" otherButtonTitles:@[@"Yes!"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
         if(buttonIndex == 1){
             [[NSNotificationCenter defaultCenter] postNotificationName:@"commuter_ride_invoked" object:request userInfo:@{}];
 
         }
+    }];
+}
+
+- (void) commuteFulfilled {
+    [UIAlertView showWithTitle:@"Commuter Ride Scheduled!" message:@"Your Commute to and from work has been Fulfilled!" cancelButtonTitle:@"Great!" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        //
+    }];
+}
+
+- (void) commuteDriverFulfilled {
+    [UIAlertView showWithTitle:@"Commuter Drive Scheduled!" message:@"We have found you riders for your commute!" cancelButtonTitle:@"Great!" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        //
+    }];
+}
+
+
+- (void) commuteUnfulfilled {
+    [UIAlertView showWithTitle:@"Commuter Ride Not Successful." message:@"We were unable to fulfill your commute to and from work.  Please try again tomorrow." cancelButtonTitle:@"Okay :(" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        //
+    }];
+}
+
+- (void) commuteDriverUnfulfilled {
+    [UIAlertView showWithTitle:@"Commuter Drive Not Successful." message:@"We were unable to find you riders for your commute.  Please try again tomorrow." cancelButtonTitle:@"Okay :(" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        //
     }];
 }
 

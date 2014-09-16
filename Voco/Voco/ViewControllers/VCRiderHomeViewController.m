@@ -34,7 +34,7 @@
 
 #define kFareNotStartedLabelText @"Waiting"
 
-@interface VCRiderHomeViewController () <MKMapViewDelegate, VCLocationSearchViewControllerDelegate>
+@interface VCRiderHomeViewController () <MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *mapCenterPin;
 @property (weak, nonatomic) IBOutlet UIView *departureEntryView;
@@ -203,7 +203,7 @@
     
     self.request = (Ride *) [NSEntityDescription insertNewObjectForEntityForName:@"Ride" inManagedObjectContext:[VCCoreData managedObjectContext]];
     self.request.forcedState = kCreatedState;
-    self.request.requestType = kRideRequestTypeCommuter;
+    self.request.rideType = kRideRequestTypeCommuter;
     self.transit = self.request;
     
     [self showRouteRequestInterface];
@@ -220,7 +220,7 @@
 
     self.request = (Ride *) [NSEntityDescription insertNewObjectForEntityForName:@"Ride" inManagedObjectContext:[VCCoreData managedObjectContext]];
     self.request.forcedState = kCreatedState;
-    self.request.requestType = kRideRequestTypeOnDemand;
+    self.request.rideType = kRideRequestTypeOnDemand;
     self.transit = self.request;
     
     [self showRouteRequestInterface];
@@ -289,7 +289,7 @@
         [self startTrackingDriverLocation];
         _cancelRideButton.hidden = NO;
         
-    } else if ([self.request.requestType isEqualToString:kRideRequestTypeCommuter]){
+    } else if ([self.request.rideType isEqualToString:kRideRequestTypeCommuter]){
         
         [self showSuggestedRoute];
         
@@ -401,11 +401,11 @@
          self.meetingPointAnnotation.subtitle = @"Click to change";
         
         [_locationConfirmationButtonLabel setTitle:@"Set Drop-off Location" forState:UIControlStateNormal];
-        if( [self.request.requestType isEqualToString:kRideRequestTypeOnDemand]){
+        if( [self.request.rideType isEqualToString:kRideRequestTypeOnDemand]){
             _locationTypeLabel.text = @"Drop-off Location";
              self.meetingPointAnnotation.title = @"Pickup Location";
             
-        } else if ([self.request.requestType isEqualToString:kRideRequestTypeCommuter]){
+        } else if ([self.request.rideType isEqualToString:kRideRequestTypeCommuter]){
             _locationTypeLabel.text = @"Destination Location";
              self.meetingPointAnnotation.title = @"Departure Location";
         }
@@ -449,9 +449,9 @@
         [self.map addAnnotation:self.dropOffAnnotation];
         
         
-        if([ self.request.requestType isEqualToString:kRideRequestTypeOnDemand]) {
+        if([ self.request.rideType isEqualToString:kRideRequestTypeOnDemand]) {
             [_locationConfirmationButtonLabel setTitle:@"Send Ride Request?" forState:UIControlStateNormal];
-        } else if ( [ self.request.requestType isEqualToString:kRideRequestTypeCommuter]) {
+        } else if ( [ self.request.rideType isEqualToString:kRideRequestTypeCommuter]) {
             _locationConfirmationAnnotation.hidden = YES;
             
         }
@@ -464,7 +464,7 @@
         
     } else if (_step == kStepConfirmRequest) {
         
-        if([ self.request.requestType isEqualToString:kRideRequestTypeOnDemand]) {
+        if([ self.request.rideType isEqualToString:kRideRequestTypeOnDemand]) {
             
             
             _progressHUD = [MBProgressHUD showHUDAddedTo:self.view.window animated:YES];
@@ -583,6 +583,7 @@
                    [NSString stringWithFormat:@"Evening of %@", [dateFormatter stringFromDate:secondSlotDate]], nil];
     }
     
+    /*
     
     [ActionSheetStringPicker showPickerWithTitle:@"Select morning or evening"
                                             rows:options
@@ -600,6 +601,7 @@
                                          NSLog(@"Block Picker Canceled");
                                      }
                                           origin:sender];
+     */
 }
 
 - (IBAction)didTapArrivalTimeButton:(id)sender {
@@ -620,6 +622,7 @@
         options = evengingOptions;
     }
     
+    /*
     [ActionSheetStringPicker showPickerWithTitle:@"Select your arrival time"
                                             rows:options
                                 initialSelection:0
@@ -661,8 +664,8 @@
                                          NSLog(@"Block Picker Canceled");
                                      }
                                           origin:sender];
-    //actionSheetStringPicker.pickerView.delegate = self;
-    
+     */
+
 }
 
 - (IBAction)didTapScheduleRideButton:(id)sender {

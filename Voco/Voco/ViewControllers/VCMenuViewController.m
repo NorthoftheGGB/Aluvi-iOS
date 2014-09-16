@@ -20,6 +20,8 @@
 #import "VCDriverEarningsViewController.h"
 #import "VCDriverProfileViewController.h"
 #import "VCRiderProfileViewController.h"
+#import "VCMenuItemModeTableViewCell.h"
+#import "VCMenuItemNotConfiguredTableViewCell.h"
 
 static void * XXContext = &XXContext;
 

@@ -23,8 +23,6 @@
     if (self) {
         if (!self.geocoder) {
             self.geocoder = [[CLGeocoder alloc] init];
-            
-
         }
     }
     return self;
@@ -33,19 +31,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    _map = [[MKMapView alloc] initWithFrame:self.view.frame];
-    _map.delegate = self;
-    [self.view insertSubview:_map atIndex:0];
-    _map.showsUserLocation = YES;
-    
 }
 
+
+
 - (void) viewDidAppear:(BOOL)animated {
-    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Reset Map" style:UIBarButtonItemStylePlain
-                                                                     target:self action:@selector(resetInterface)];
+    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Reset Map"
+                                                                      style:UIBarButtonItemStylePlain
+                                                                     target:self
+                                                                     action:@selector(resetInterface)];
     self.viewDeckController.navigationItem.rightBarButtonItem = anotherButton;
-    _map.userTrackingMode = MKUserTrackingModeFollow;
 
 }
 
@@ -55,6 +50,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+/*
 - (void) annotateMeetingPoint: (CLLocation *) meetingPoint andDropOffPoint: (CLLocation *) dropOffPoint {
     
     _meetingPointAnnotation = [[MKPointAnnotation alloc] init];
@@ -71,6 +67,7 @@
     [_map addAnnotation:_dropOffAnnotation];
     
 }
+ */
 
 
 - (void) showSuggestedRoute {
@@ -79,47 +76,68 @@
 
 - (void) showSuggestedRoute: (CLLocation *) from to: (CLLocation *) to {
     
+    _map.userTrackingMode = MKUserTrackingModeNone;
+
     CLLocationCoordinate2D dropOffPointCoordinate;
     CLLocationCoordinate2D meetingPointCoordinate;
-    if(from == nil) {
-        dropOffPointCoordinate.latitude = [_transit.dropOffPointLatitude doubleValue];
-        dropOffPointCoordinate.longitude = [_transit.dropOffPointLongitude doubleValue];
-        meetingPointCoordinate.latitude = [_transit.meetingPointLatitude doubleValue];
-        meetingPointCoordinate.longitude = [_transit.meetingPointLongitude doubleValue];
-    } else {
-        dropOffPointCoordinate.latitude = from.coordinate.latitude;
-        dropOffPointCoordinate.longitude = from.coordinate.longitude;
-        meetingPointCoordinate.latitude = to.coordinate.latitude;
-        meetingPointCoordinate.longitude = to.coordinate.longitude;
-    }
+    dropOffPointCoordinate.latitude = from.coordinate.latitude;
+    dropOffPointCoordinate.longitude = from.coordinate.longitude;
+    meetingPointCoordinate.latitude = to.coordinate.latitude;
+    meetingPointCoordinate.longitude = to.coordinate.longitude;
     
-    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText= @"Fetching Route";
+    //MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    //hud.labelText= @"Fetching Route";
     [VCMapQuestRouting route:meetingPointCoordinate to:dropOffPointCoordinate success:^(MKPolyline *polyline, MKCoordinateRegion region) {
+        [_map removeOverlay:_routeOverlay];
         _routeOverlay = polyline;
         [_map addOverlay:_routeOverlay];
-        region.span.latitudeDelta *= 1.10;
-        region.span.longitudeDelta *= 1.10;
+        region.span.latitudeDelta *= 1.5;
+        region.span.longitudeDelta *= 1.5;
+        //region.center.latitude *= .98;
+        
+        // TODO: need to adjust region
         self.rideRegion = region;
         [_map setRegion:region];
-        [hud hide:YES];
+        //[hud hide:YES];
     } failure:^{
-        [UIAlertView showWithTitle:@"Network Error" message:@"Woops, we couldn't contact the routing server.  You can still manage your ride though!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        // [UIAlertView showWithTitle:@"Network Error" message:@"Woops, we couldn't contact the routing server.  You can still manage your ride though!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
         NSLog(@"%@", @"Error talking with MapQuest routing API");
-        [hud hide:YES];
+        //[hud hide:YES];
     }];
     
 }
 
-- (void) clearMap {
-    [_map removeAnnotation:_meetingPointAnnotation];
-    [_map removeAnnotation:_dropOffAnnotation];
+- (void) clearRoute {
     [_map removeOverlay:_routeOverlay];
+}
+
+- (void) clearMap {
+    [self clearRoute];
 }
 
 - (void) resetInterface {
     NSAssert(0, @"Must implement this method");
 }
+
+- (void) zoomToCurrentLocation {
+    if(self.map.userLocation != nil
+       && self.map.userLocation.coordinate.latitude != 0
+       && self.map.userLocation.coordinate.longitude != 0) {
+        
+        [self.map setRegion:MKCoordinateRegionMakeWithDistance(
+                                                               CLLocationCoordinate2DMake(self.map.userLocation.location.coordinate.latitude, self.map.userLocation.coordinate.longitude),
+                                                               500, 500
+                                                               )
+                                                               animated: YES];
+    }
+}
+
+
+// IBOutlets
+- (IBAction)didTapCurrentLocationButton:(id)sender {
+    [self zoomToCurrentLocation];
+}
+
 
 
 #pragma mark MKMapViewDelegate
@@ -130,7 +148,7 @@
     {
         MKPolylineRenderer*    aRenderer = [[MKPolylineRenderer alloc] initWithPolyline:(MKPolyline*)overlay];
         if([overlay isEqual:_routeOverlay]){
-            aRenderer.strokeColor = [[UIColor greenColor] colorWithAlphaComponent:0.7];
+            aRenderer.strokeColor = [UIColor colorWithRed:17.0f / 256.0f green: 119.0f / 256.0f blue: 45.0f / 256.0f alpha:.7];
             aRenderer.lineWidth = 4;
         }
         return aRenderer;

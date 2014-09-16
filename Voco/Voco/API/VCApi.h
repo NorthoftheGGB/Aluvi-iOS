@@ -14,7 +14,7 @@
 #elif TESTING==1
 #define API_BASE_URL @"http://voco-test.herokuapp.com/api/"
 #else
-#define API_BASE_URL @"http://192.168.1.25:3000/api/"
+#define API_BASE_URL @"http://10.0.0.3:3000/api/"
 #endif
 
 #define API_POST_RIDE_REQUEST @"rides/request"
@@ -28,7 +28,7 @@
 #define API_POST_FARE_COMPLETED @"rides/arrived"
 
 #define API_GET_FARE_OFFERS @"rides/offers"
-#define API_GET_ACTIVE_RIDES @"rides/rides"
+#define API_GET_ACTIVE_TICKETS @"rides/tickets"
 #define API_GET_ACTIVE_FARES @"rides/fares"
 
 #define API_GET_PAYMENTS @"rides/payments"

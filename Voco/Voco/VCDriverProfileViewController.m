@@ -12,7 +12,7 @@
 #import "VCEmailTextField.h"
 #import "VCPasswordTextField.h"
 #import "VCTextField.h"
-#import "VCButtonFontBold.h"
+#import "VCButtonStandardStyle.h"
 #import "VCLabelBold.h"
 #import "VCLabel.h"
 #import "VCUserStateManager.h"
@@ -26,7 +26,7 @@
 @property (weak, nonatomic) IBOutlet VCPasswordTextField *passwordField;
 @property (weak, nonatomic) IBOutlet VCEmailTextField *emailField;
 @property (weak, nonatomic) IBOutlet VCTextField *currentCityField;
-@property (weak, nonatomic) IBOutlet VCButtonFontBold *changeButton;
+@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *changeButton;
 
 @property (weak, nonatomic) IBOutlet VCLabel *referralCodeLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *socialSegmentedControl;
@@ -34,7 +34,7 @@
 @property (weak, nonatomic) IBOutlet UIView *newsCheckBoxView;
 @property (weak, nonatomic) IBOutlet UIView *promoCheckBoxView;
 @property (weak, nonatomic) IBOutlet UIView *receiptsCheckBoxView;
-@property (weak, nonatomic) IBOutlet VCButtonFontBold *signoutButton;
+@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *signoutButton;
 @property (weak, nonatomic) IBOutlet UILabel *versionLabel;
 
 - (IBAction)didTapChangeButton:(id)sender;

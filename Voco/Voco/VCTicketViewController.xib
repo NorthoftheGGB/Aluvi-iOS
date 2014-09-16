@@ -1,0 +1,1312 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCTicketViewController">
+            <connections>
+                <outlet property="cancelIconImageView" destination="iiu-Fn-uo8" id="A55-gy-DWh"/>
+                <outlet property="cancelRideButton" destination="tm7-38-m0v" id="1ec-04-D64"/>
+                <outlet property="currentLocationButton" destination="XIm-sQ-LdY" id="ihB-70-3YB"/>
+                <outlet property="directionsListButton" destination="ITr-VR-cFD" id="jna-tz-LRq"/>
+                <outlet property="driverCallHUD" destination="Lak-yG-cWD" id="7Mu-jQ-tOy"/>
+                <outlet property="driverCancelHUD" destination="nT8-pQ-amt" id="gk6-h1-NK5"/>
+                <outlet property="editCommuteButton" destination="2iv-cM-ZrM" id="nTt-IF-jth"/>
+                <outlet property="fareDetailsView" destination="gCJ-mG-bEK" id="YnP-up-jXS"/>
+                <outlet property="homeActionView" destination="XY9-N9-RDa" id="LQH-QX-Bja"/>
+                <outlet property="hovDriveYesButton" destination="LT0-2Y-Gc6" id="GyN-lZ-mp0"/>
+                <outlet property="hovDriverOptionView" destination="CKa-ug-jy9" id="5ZD-9F-mzB"/>
+                <outlet property="nextButton" destination="4au-Tm-k8h" id="I8s-9S-4fi"/>
+                <outlet property="pickupHudView" destination="h5q-78-s1j" id="0Fq-c8-T1G"/>
+                <outlet property="pickupTimeLabel" destination="KAQ-n3-AaS" id="Ycz-jk-2IJ"/>
+                <outlet property="returnHudView" destination="TKX-pK-w8D" id="kQS-XC-4O0"/>
+                <outlet property="returnTimeLabel" destination="Pwl-0s-xmB" id="9yw-JX-Vq9"/>
+                <outlet property="rideCompleteButton" destination="Jh3-aQ-cgL" id="hB9-UZ-Yb5"/>
+                <outlet property="rideDetailsConfirmation" destination="RWM-tO-NBZ" id="l10-lc-9ki"/>
+                <outlet property="rideDetailsHud" destination="Lv9-d9-EJH" id="0gc-z7-omS"/>
+                <outlet property="rideNowButton" destination="2sw-Bp-ZXq" id="SSL-Jr-zwk"/>
+                <outlet property="ridersPickedUpButton" destination="5kL-SN-M2N" id="Nx1-g3-YUL"/>
+                <outlet property="scheduleRideButton" destination="fxh-D2-Mbg" id="8gG-Qn-R33"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="waitingScreen" destination="7XC-Uh-YFh" id="Ksm-jz-qCR"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <view contentMode="scaleToFill" id="XY9-N9-RDa" userLabel="Ride Now / Edit Commute View">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" alpha="0.89999999999999991" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2sw-Bp-ZXq" customClass="VCButtonStandardStyle">
+                    <rect key="frame" x="160" y="0.0" width="160" height="46"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="RIDE NOW" backgroundImage="button-default.png">
+                        <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="RIDE NOW" backgroundImage="button-select.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" title="RIDE NOW" backgroundImage="button-select.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didTapRideNow:" destination="-1" eventType="touchUpInside" id="JkL-qs-TFG"/>
+                    </connections>
+                </button>
+                <button opaque="NO" alpha="0.89999999999999991" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2Q-DX-cGh" customClass="VCButtonStandardStyle">
+                    <rect key="frame" x="0.0" y="0.0" width="160" height="46"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="EDIT COMMUTE" backgroundImage="button-default.png">
+                        <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="EDIT COMMUTE">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" title="EDIT COMMUTE" backgroundImage="button-select.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didTapEditCommute:" destination="-1" eventType="touchUpInside" id="aUU-Cl-hhX"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <button opaque="NO" alpha="0.89999999999999991" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="fxh-D2-Mbg" customClass="VCButtonStandardStyle">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+            <state key="normal" title="SAVE MY COMMUTE" backgroundImage="button-full-default.png">
+                <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <state key="selected" backgroundImage="button-full-select.png">
+                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <state key="highlighted" backgroundImage="button-full-select.png">
+                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                    <integer key="value" value="16"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <action selector="didTapScheduleRide:" destination="-1" eventType="touchUpInside" id="hk6-mb-Tsr"/>
+            </connections>
+        </button>
+        <view clipsSubviews="YES" alpha="0.90000000000000013" contentMode="scaleToFill" id="h5q-78-s1j" userLabel="PickUp HUD">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PICKUP TIME:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMC-XN-Zej" userLabel="pickup time" customClass="VCLabel">
+                    <rect key="frame" x="68" y="9" width="110" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="110" id="Dyt-DI-EaI"/>
+                        <constraint firstAttribute="height" constant="21" id="Hjd-Ts-36K"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAQ-n3-AaS" userLabel="pickup time" customClass="VCLabel">
+                    <rect key="frame" x="177" y="9" width="76" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="76" id="ArC-BK-aiI"/>
+                        <constraint firstAttribute="height" constant="21" id="yJf-Fx-keV"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NqD-4i-qh2">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapPickupHud:" destination="-1" eventType="touchUpInside" id="4Oc-1Q-dif"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.63137257099999999" green="0.58039218189999997" blue="0.5647059083" alpha="1" colorSpace="deviceRGB"/>
+            <constraints>
+                <constraint firstItem="KAQ-n3-AaS" firstAttribute="top" secondItem="h5q-78-s1j" secondAttribute="top" constant="9" id="UQp-4H-4sg"/>
+                <constraint firstItem="pMC-XN-Zej" firstAttribute="top" secondItem="h5q-78-s1j" secondAttribute="top" constant="9" id="XpO-Rf-KZE"/>
+                <constraint firstItem="pMC-XN-Zej" firstAttribute="leading" secondItem="h5q-78-s1j" secondAttribute="leading" constant="68" id="fdn-Fj-J9m"/>
+                <constraint firstAttribute="trailing" secondItem="KAQ-n3-AaS" secondAttribute="trailing" constant="67" id="nn9-2G-1EY"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <view contentMode="scaleToFill" id="RWM-tO-NBZ" userLabel="Ride Details Confirmation" customClass="VCRideDetailsConfirmationView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView hidden="YES" autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="devon.png" translatesAutoresizingMaskIntoConstraints="NO" id="vBd-Mx-Cx3" userLabel="user Image View">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="276"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="320" id="kB1-Ok-Kfg"/>
+                        <constraint firstAttribute="height" constant="276" id="tlV-AJ-2lx"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="confirmation-hud.png" translatesAutoresizingMaskIntoConstraints="NO" id="oc4-Pp-acs">
+                    <rect key="frame" x="0.0" y="220" width="320" height="260"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </imageView>
+                <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nx0-ot-14p" customClass="VCButtonStandardStyle">
+                    <rect key="frame" x="0.0" y="426" width="320" height="46"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="46" id="0Hb-gg-bU5"/>
+                        <constraint firstAttribute="width" constant="320" id="1uv-3Z-z3E"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="OK" backgroundImage="button-full-default.png">
+                        <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="OK" backgroundImage="button-full-select.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" title="OK" backgroundImage="button-full-select.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didTapConfirmButton:" destination="RWM-tO-NBZ" eventType="touchUpInside" id="IdI-qm-xTv"/>
+                        <action selector="didTapConfirmedCommuterRide:" destination="-1" eventType="touchUpInside" id="hjj-TJ-Dfc"/>
+                    </connections>
+                </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup Time :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smm-lU-ouO" customClass="VCLabel">
+                    <rect key="frame" x="13" y="334" width="97" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="8Qs-10-YS3"/>
+                        <constraint firstAttribute="width" constant="97" id="TJE-JG-11w"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.68627452850341797" green="0.10196079313755035" blue="0.16078431904315948" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Car Type :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9u-kb-YvT" customClass="VCLabel">
+                    <rect key="frame" x="20" y="359" width="90" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="90" id="VT2-Ux-EHy"/>
+                        <constraint firstAttribute="height" constant="21" id="rBP-AF-39g"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Plate # :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iha-zj-PjZ" customClass="VCLabel">
+                    <rect key="frame" x="20" y="384" width="90" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="90" id="BoR-iJ-5Ay"/>
+                        <constraint firstAttribute="height" constant="21" id="Ibz-rR-hem"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="est. fare" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1nW-T7-6PG" customClass="VCLabel">
+                    <rect key="frame" x="33" y="284" width="57" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="57" id="cyN-uO-WvZ"/>
+                        <constraint firstAttribute="height" constant="21" id="um7-u6-fux"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="14"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$10.50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXb-UY-V0U" customClass="VCLabelBold">
+                    <rect key="frame" x="16" y="246" width="91" height="45"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="J9q-Vy-IHu"/>
+                        <constraint firstAttribute="width" constant="91" id="gTS-Z5-8K4"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="30"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Value" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zgy-fF-cwL" customClass="VCLabel">
+                    <rect key="frame" x="118" y="334" width="182" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="182" id="ZVG-hb-om7"/>
+                        <constraint firstAttribute="height" constant="21" id="mKj-o2-0Kd"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Value" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R4l-5d-Vc0" customClass="VCLabel">
+                    <rect key="frame" x="118" y="359" width="182" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="182" id="Mvl-dT-OzF"/>
+                        <constraint firstAttribute="height" constant="21" id="gvT-bQ-1JT"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Value" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMV-AV-c4O" customClass="VCLabel">
+                    <rect key="frame" x="118" y="384" width="182" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="L0N-R3-MP7"/>
+                        <constraint firstAttribute="width" constant="182" id="v1M-6C-m2j"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i6s-VW-kkM">
+                    <rect key="frame" x="118" y="284" width="32" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="9JL-UA-YKB"/>
+                        <constraint firstAttribute="width" constant="32" id="HxB-QN-oI6"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyCard" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLf-hD-OJd" customClass="VCLabel">
+                    <rect key="frame" x="118" y="284" width="110" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="110" id="CG1-pv-aye"/>
+                        <constraint firstAttribute="height" constant="21" id="HUT-5q-yqL"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*9999" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aeQ-Xu-ULg" customClass="VCLabel">
+                    <rect key="frame" x="236" y="284" width="45" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="QOJ-GU-ZFs"/>
+                        <constraint firstAttribute="width" constant="45" id="alc-B0-06Q"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Devon Drakesbad" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CIS-vw-GPg" customClass="VCLabelBold">
+                    <rect key="frame" x="118" y="245" width="196" height="24"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="iSg-jd-4RL"/>
+                        <constraint firstAttribute="width" constant="196" id="vxf-zV-Q4P"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                    <color key="textColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="21"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="oc4-Pp-acs" firstAttribute="top" secondItem="UXb-UY-V0U" secondAttribute="bottom" constant="-71" id="0ND-G2-mbS"/>
+                <constraint firstAttribute="trailing" secondItem="LMV-AV-c4O" secondAttribute="trailing" constant="20" id="0y1-ej-Omn"/>
+                <constraint firstItem="LMV-AV-c4O" firstAttribute="top" secondItem="R4l-5d-Vc0" secondAttribute="bottom" constant="4" id="2XB-E3-ZCk"/>
+                <constraint firstItem="R4l-5d-Vc0" firstAttribute="top" secondItem="Zgy-fF-cwL" secondAttribute="bottom" constant="4" id="3cQ-la-wP5"/>
+                <constraint firstAttribute="trailing" secondItem="CIS-vw-GPg" secondAttribute="trailing" constant="6" id="4JU-x5-1Mu"/>
+                <constraint firstItem="i6s-VW-kkM" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" constant="118" id="6T1-CN-3JP"/>
+                <constraint firstItem="nx0-ot-14p" firstAttribute="top" secondItem="LMV-AV-c4O" secondAttribute="bottom" constant="21" id="6UP-zH-K2T"/>
+                <constraint firstItem="UXb-UY-V0U" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" constant="16" id="7Ql-Ps-qA2"/>
+                <constraint firstItem="f9u-kb-YvT" firstAttribute="top" secondItem="smm-lU-ouO" secondAttribute="bottom" constant="4" id="7lO-J1-vRe"/>
+                <constraint firstItem="oc4-Pp-acs" firstAttribute="top" secondItem="CIS-vw-GPg" secondAttribute="bottom" constant="-49" id="98h-zp-EwS"/>
+                <constraint firstItem="nx0-ot-14p" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" id="CV6-bY-Snt"/>
+                <constraint firstItem="iha-zj-PjZ" firstAttribute="top" secondItem="f9u-kb-YvT" secondAttribute="bottom" constant="4" id="Gwe-Yj-MJT"/>
+                <constraint firstItem="1nW-T7-6PG" firstAttribute="top" secondItem="UXb-UY-V0U" secondAttribute="bottom" constant="-7" id="IC6-Fe-U4t"/>
+                <constraint firstItem="aeQ-Xu-ULg" firstAttribute="leading" secondItem="fLf-hD-OJd" secondAttribute="trailing" constant="8" id="Ids-Xg-edF"/>
+                <constraint firstAttribute="bottom" secondItem="oc4-Pp-acs" secondAttribute="bottom" id="KW0-LU-Zj3"/>
+                <constraint firstAttribute="trailing" secondItem="Zgy-fF-cwL" secondAttribute="trailing" constant="20" id="LLE-zD-ixM"/>
+                <constraint firstItem="iha-zj-PjZ" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" constant="20" id="Ndf-N4-qIg"/>
+                <constraint firstItem="vBd-Mx-Cx3" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" id="Os0-c3-isr"/>
+                <constraint firstItem="vBd-Mx-Cx3" firstAttribute="top" secondItem="RWM-tO-NBZ" secondAttribute="top" id="Rby-Jo-doe"/>
+                <constraint firstAttribute="trailing" secondItem="R4l-5d-Vc0" secondAttribute="trailing" constant="20" id="WyK-RW-TIT"/>
+                <constraint firstItem="oc4-Pp-acs" firstAttribute="top" secondItem="aeQ-Xu-ULg" secondAttribute="bottom" constant="-85" id="a77-d1-HbB"/>
+                <constraint firstItem="1nW-T7-6PG" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" constant="33" id="adn-X9-6Ca"/>
+                <constraint firstItem="f9u-kb-YvT" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" constant="20" id="gJM-Ij-2Q4"/>
+                <constraint firstItem="smm-lU-ouO" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" constant="13" id="lTx-Ju-CeT"/>
+                <constraint firstItem="oc4-Pp-acs" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" id="mgP-0D-JzM"/>
+                <constraint firstItem="fLf-hD-OJd" firstAttribute="leading" secondItem="i6s-VW-kkM" secondAttribute="trailing" constant="-32" id="rNL-Po-ZTB"/>
+                <constraint firstAttribute="bottom" secondItem="nx0-ot-14p" secondAttribute="bottom" constant="8" id="t9G-7J-dC5"/>
+                <constraint firstItem="nx0-ot-14p" firstAttribute="top" secondItem="iha-zj-PjZ" secondAttribute="bottom" constant="21" id="tea-6q-pzv"/>
+                <constraint firstItem="oc4-Pp-acs" firstAttribute="top" secondItem="fLf-hD-OJd" secondAttribute="bottom" constant="-85" id="uEv-S8-Ba3"/>
+                <constraint firstItem="oc4-Pp-acs" firstAttribute="top" secondItem="i6s-VW-kkM" secondAttribute="bottom" constant="-84" id="ymN-Rt-iAJ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="carTypeLabel" destination="R4l-5d-Vc0" id="AfN-nc-QfH"/>
+                <outlet property="cardNicknamelabel" destination="fLf-hD-OJd" id="4yz-9d-26f"/>
+                <outlet property="cardNumberLabel" destination="aeQ-Xu-ULg" id="ynr-xF-jUo"/>
+                <outlet property="confirmButton" destination="nx0-ot-14p" id="gvT-mm-qap"/>
+                <outlet property="creditCardImageView" destination="i6s-VW-kkM" id="lyQ-Cl-N1H"/>
+                <outlet property="didTapConfirmButton" destination="nx0-ot-14p" id="PxX-Aj-tBI"/>
+                <outlet property="driverNameLabel" destination="CIS-vw-GPg" id="oB8-bg-7gD"/>
+                <outlet property="driverPhotoImageView" destination="vBd-Mx-Cx3" id="cKg-xX-Lcp"/>
+                <outlet property="fareLabel" destination="UXb-UY-V0U" id="kJM-9s-2VA"/>
+                <outlet property="licenseLabel" destination="LMV-AV-c4O" id="ClC-Hs-dfm"/>
+                <outlet property="pickupTimeLabel" destination="Zgy-fF-cwL" id="3qI-YI-2FF"/>
+            </connections>
+        </view>
+        <view contentMode="scaleToFill" id="Lv9-d9-EJH" userLabel="Ride Details HUD" customClass="VCRideDetailsHudView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="154"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ride-details-hud.png" translatesAutoresizingMaskIntoConstraints="NO" id="bjb-9G-hqy">
+                    <rect key="frame" x="0.0" y="0.0" width="330" height="154"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Devon" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nxs-JX-K3G" customClass="VCLabelBold">
+                    <rect key="frame" x="112" y="63" width="114" height="24"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="114" id="lMG-gS-7b0"/>
+                        <constraint firstAttribute="height" constant="24" id="xpf-e3-Od1"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="18"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="car type" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ufz-sD-hCs" userLabel="Car Type Label" customClass="VCLabel">
+                    <rect key="frame" x="74" y="106" width="152" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="J8L-OR-DKs"/>
+                        <constraint firstAttribute="width" constant="152" id="UgH-OV-8YS"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyCard" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocb-Au-ZiP" customClass="VCLabel">
+                    <rect key="frame" x="6" y="128" width="83" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="Lmn-SE-kiJ"/>
+                        <constraint firstAttribute="width" constant="83" id="ZtE-5H-1AR"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="12"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*9999" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TaG-Um-H3F" customClass="VCLabel">
+                    <rect key="frame" x="97" y="128" width="35" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="fAH-yF-raf"/>
+                        <constraint firstAttribute="width" constant="35" id="qI9-ed-Mg5"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="12"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="est. fare" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2E-sO-vSO" customClass="VCLabel">
+                    <rect key="frame" x="32" y="70" width="57" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="Bea-W2-Ilh"/>
+                        <constraint firstAttribute="width" constant="57" id="OYO-kp-cIu"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="14"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$5.50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHX-V0-gsv" customClass="VCLabelBold">
+                    <rect key="frame" x="8" y="22" width="104" height="51"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="51" id="9sq-Jw-Vhq"/>
+                        <constraint firstAttribute="width" constant="104" id="GBY-nn-HfP"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="30"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="temp-call-button.png" translatesAutoresizingMaskIntoConstraints="NO" id="LKt-Aa-kUP">
+                    <rect key="frame" x="249" y="74" width="60" height="60"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="LtA-84-04V"/>
+                        <constraint firstAttribute="width" constant="60" id="z9Q-ru-tup"/>
+                    </constraints>
+                </imageView>
+                <button hidden="YES" opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dp-XF-nLu">
+                    <rect key="frame" x="224" y="7" width="36" height="36"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="directions-button.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" image="directions-button-selected.png"/>
+                    <state key="highlighted" image="directions-button-selected.png"/>
+                    <connections>
+                        <action selector="didTapZoomToRideBounds:" destination="-1" eventType="touchUpInside" id="0Vk-QP-Zij"/>
+                    </connections>
+                </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drakesbad" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHO-f4-kdP" customClass="VCLabelBold">
+                    <rect key="frame" x="104" y="81" width="122" height="24"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="122" id="YIs-1l-b6q"/>
+                        <constraint firstAttribute="height" constant="24" id="viZ-eg-RlB"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="18"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OuK-gE-l67" userLabel="Current Location Button">
+                    <rect key="frame" x="273" y="7" width="36" height="36"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="current-location-button.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" image="current-location-button-selected.png"/>
+                    <state key="highlighted" image="current-location-button-selected.png"/>
+                    <connections>
+                        <action selector="didTapZoomToCurrentLocation:" destination="-1" eventType="touchUpInside" id="bgt-fF-0E0"/>
+                    </connections>
+                </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="plate number" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Wx-Fa-RsE" customClass="VCLabel">
+                    <rect key="frame" x="159" y="127" width="67" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="ZFf-rC-Bvu"/>
+                        <constraint firstAttribute="width" constant="67" id="wYT-KH-mlS"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0b-9K-WB5">
+                    <rect key="frame" x="249" y="74" width="60" height="60"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapCallDriver:" destination="-1" eventType="touchUpInside" id="tzq-bJ-Og2"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZQU-zm-bb6">
+                    <rect key="frame" x="6" y="107" width="32" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="fal-8w-2SB"/>
+                        <constraint firstAttribute="height" constant="20" id="lgN-DK-hox"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="OuK-gE-l67" firstAttribute="leading" secondItem="8dp-XF-nLu" secondAttribute="trailing" constant="13" id="7sy-Zd-G5m"/>
+                <constraint firstItem="OuK-gE-l67" firstAttribute="top" secondItem="Lv9-d9-EJH" secondAttribute="top" constant="7" id="8B1-Xs-4Pu"/>
+                <constraint firstItem="P0b-9K-WB5" firstAttribute="bottom" secondItem="LKt-Aa-kUP" secondAttribute="bottom" id="95K-eF-4qb"/>
+                <constraint firstItem="ocb-Au-ZiP" firstAttribute="top" secondItem="ZQU-zm-bb6" secondAttribute="bottom" constant="1" id="9Tw-1f-ETG"/>
+                <constraint firstItem="P0b-9K-WB5" firstAttribute="top" secondItem="LKt-Aa-kUP" secondAttribute="top" id="Dna-fk-bQY"/>
+                <constraint firstItem="P0b-9K-WB5" firstAttribute="leading" secondItem="LKt-Aa-kUP" secondAttribute="leading" id="EdG-BJ-e9D"/>
+                <constraint firstAttribute="trailing" secondItem="LKt-Aa-kUP" secondAttribute="trailing" constant="11" id="ILQ-Ew-txe"/>
+                <constraint firstAttribute="bottom" secondItem="TaG-Um-H3F" secondAttribute="bottom" constant="5" id="J9E-mE-6w1"/>
+                <constraint firstItem="LKt-Aa-kUP" firstAttribute="leading" secondItem="ufz-sD-hCs" secondAttribute="trailing" constant="23" id="MFd-zi-et9"/>
+                <constraint firstItem="LKt-Aa-kUP" firstAttribute="leading" secondItem="Nxs-JX-K3G" secondAttribute="trailing" constant="23" id="Q48-lX-2W5"/>
+                <constraint firstAttribute="trailing" secondItem="OuK-gE-l67" secondAttribute="trailing" constant="11" id="SCr-FM-5p7"/>
+                <constraint firstItem="8dp-XF-nLu" firstAttribute="top" secondItem="Lv9-d9-EJH" secondAttribute="top" constant="7" id="SLU-IS-hQj"/>
+                <constraint firstItem="W2E-sO-vSO" firstAttribute="leading" secondItem="Lv9-d9-EJH" secondAttribute="leading" constant="32" id="TqA-86-b4Z"/>
+                <constraint firstItem="bjb-9G-hqy" firstAttribute="top" secondItem="Lv9-d9-EJH" secondAttribute="top" id="UAb-0A-zTq"/>
+                <constraint firstItem="bjb-9G-hqy" firstAttribute="leading" secondItem="Lv9-d9-EJH" secondAttribute="leading" id="Wrz-Ww-Ivk"/>
+                <constraint firstItem="W2E-sO-vSO" firstAttribute="top" secondItem="YHX-V0-gsv" secondAttribute="bottom" constant="-3" id="XW2-Gc-PxF"/>
+                <constraint firstItem="ufz-sD-hCs" firstAttribute="top" secondItem="IHO-f4-kdP" secondAttribute="bottom" constant="1" id="b7b-Rp-NYW"/>
+                <constraint firstAttribute="trailing" secondItem="bjb-9G-hqy" secondAttribute="trailing" constant="-10" id="et3-kG-Hlj"/>
+                <constraint firstItem="YHX-V0-gsv" firstAttribute="leading" secondItem="Lv9-d9-EJH" secondAttribute="leading" constant="8" id="ghM-Bq-sCv"/>
+                <constraint firstItem="LKt-Aa-kUP" firstAttribute="leading" secondItem="2Wx-Fa-RsE" secondAttribute="trailing" constant="23" id="jCY-Se-MEL"/>
+                <constraint firstAttribute="bottom" secondItem="LKt-Aa-kUP" secondAttribute="bottom" constant="20" id="nC6-ZI-HxU"/>
+                <constraint firstAttribute="bottom" secondItem="2Wx-Fa-RsE" secondAttribute="bottom" constant="6" id="nz5-jV-eRv"/>
+                <constraint firstItem="2Wx-Fa-RsE" firstAttribute="top" secondItem="ufz-sD-hCs" secondAttribute="bottom" id="oa1-74-Lxg"/>
+                <constraint firstItem="YHX-V0-gsv" firstAttribute="top" secondItem="Lv9-d9-EJH" secondAttribute="top" constant="22" id="quE-kH-jYW"/>
+                <constraint firstAttribute="bottom" secondItem="ocb-Au-ZiP" secondAttribute="bottom" constant="5" id="rvH-DH-uho"/>
+                <constraint firstItem="TaG-Um-H3F" firstAttribute="leading" secondItem="ocb-Au-ZiP" secondAttribute="trailing" constant="8" id="sI6-hN-7I7"/>
+                <constraint firstItem="IHO-f4-kdP" firstAttribute="top" secondItem="Nxs-JX-K3G" secondAttribute="bottom" constant="-6" id="ssx-Am-AeS"/>
+                <constraint firstItem="P0b-9K-WB5" firstAttribute="trailing" secondItem="LKt-Aa-kUP" secondAttribute="trailing" id="uJw-HQ-wWl"/>
+                <constraint firstItem="ZQU-zm-bb6" firstAttribute="leading" secondItem="Lv9-d9-EJH" secondAttribute="leading" constant="6" id="v5e-pu-RTg"/>
+                <constraint firstItem="ocb-Au-ZiP" firstAttribute="leading" secondItem="Lv9-d9-EJH" secondAttribute="leading" constant="6" id="zCY-4s-fIN"/>
+                <constraint firstItem="LKt-Aa-kUP" firstAttribute="leading" secondItem="IHO-f4-kdP" secondAttribute="trailing" constant="23" id="zdq-4s-Yse"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="callDriverButton" destination="P0b-9K-WB5" id="oCd-xg-Mmy"/>
+                <outlet property="carTypeLabel" destination="ufz-sD-hCs" id="dRQ-BE-2LL"/>
+                <outlet property="cardNicknamelabel" destination="ocb-Au-ZiP" id="7SR-xi-Efc"/>
+                <outlet property="cardNumberLabel" destination="TaG-Um-H3F" id="uBr-41-AEE"/>
+                <outlet property="creditCardImageView" destination="ZQU-zm-bb6" id="7C8-1G-rZV"/>
+                <outlet property="driverFirstNameLabel" destination="Nxs-JX-K3G" id="ga6-Am-7sd"/>
+                <outlet property="driverImageView" destination="LKt-Aa-kUP" id="pQJ-jv-YNl"/>
+                <outlet property="driverLastNameLabel" destination="IHO-f4-kdP" id="Jny-Wc-6oK"/>
+                <outlet property="fareLabel" destination="YHX-V0-gsv" id="o8P-kU-ayI"/>
+                <outlet property="licenseLabel" destination="2Wx-Fa-RsE" id="3X7-mz-6Ls"/>
+            </connections>
+        </view>
+        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XIm-sQ-LdY" userLabel="Current Location Button">
+            <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <state key="normal" image="current-location-button.png">
+                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <state key="selected" image="current-location-button-selected.png"/>
+            <state key="highlighted" image="current-location-button-selected.png"/>
+            <connections>
+                <action selector="didTapZoomToCurrentLocation:" destination="-1" eventType="touchUpInside" id="EZ9-zy-wyn"/>
+            </connections>
+        </button>
+        <button opaque="NO" alpha="0.89999999999999991" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="4au-Tm-k8h" customClass="VCButtonStandardStyle">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+            <state key="normal" title="NEXT" backgroundImage="button-full-default.png">
+                <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <state key="selected" title="NEXT" backgroundImage="button-full-select.png">
+                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <state key="highlighted" title="NEXT" backgroundImage="button-full-select.png">
+                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                    <integer key="value" value="16"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <action selector="didTapNextButton:" destination="-1" eventType="touchUpInside" id="XAZ-QT-DcL"/>
+            </connections>
+        </button>
+        <view clipsSubviews="YES" alpha="0.89999999999999991" contentMode="scaleToFill" id="TKX-pK-w8D" userLabel="Return HUD">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RETURN TIME:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQb-cI-tRN" userLabel="return" customClass="VCLabel">
+                    <rect key="frame" x="66" y="9" width="114" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="2HP-dv-Bbj"/>
+                        <constraint firstAttribute="width" constant="114" id="Skj-dG-54C"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pwl-0s-xmB" userLabel="time" customClass="VCLabel">
+                    <rect key="frame" x="179" y="9" width="76" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="76" id="2VG-0b-rdJ"/>
+                        <constraint firstAttribute="height" constant="21" id="Tkd-90-eq0"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXK-9R-vh0" userLabel="button">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapReturnHud:" destination="-1" eventType="touchUpInside" id="Fuc-1i-cZq"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.63137257099999999" green="0.58039218189999997" blue="0.5647059083" alpha="1" colorSpace="deviceRGB"/>
+            <constraints>
+                <constraint firstItem="eQb-cI-tRN" firstAttribute="top" secondItem="TKX-pK-w8D" secondAttribute="top" constant="9" id="0g1-6A-3rn"/>
+                <constraint firstItem="eQb-cI-tRN" firstAttribute="leading" secondItem="TKX-pK-w8D" secondAttribute="leading" constant="66" id="Csr-pc-s8Y"/>
+                <constraint firstItem="Pwl-0s-xmB" firstAttribute="top" secondItem="TKX-pK-w8D" secondAttribute="top" constant="9" id="dgr-op-CHz"/>
+                <constraint firstAttribute="trailing" secondItem="Pwl-0s-xmB" secondAttribute="trailing" constant="65" id="kI9-UI-3To"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <view alpha="0.79999999999999993" contentMode="scaleToFill" id="7XC-Uh-YFh" userLabel="Overlay">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="overlay-graphic.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ztb-5y-HlY">
+                    <rect key="frame" x="44" y="79" width="232" height="232"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="232" id="MSb-6c-UOB"/>
+                        <constraint firstAttribute="height" constant="232" id="blA-dY-vm4"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We will notify you of your commuting schedule by 9:15pm tonight" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="293" translatesAutoresizingMaskIntoConstraints="NO" id="Gf9-Vr-u8B" customClass="VCLabel">
+                    <rect key="frame" x="14" y="319" width="293" height="54"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="293" id="lom-ko-exZ"/>
+                        <constraint firstAttribute="height" constant="54" id="pfp-Pe-Qmf"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Gf9-Vr-u8B" firstAttribute="top" secondItem="Ztb-5y-HlY" secondAttribute="bottom" constant="8" id="Fp4-XX-2h1"/>
+                <constraint firstItem="Ztb-5y-HlY" firstAttribute="leading" secondItem="7XC-Uh-YFh" secondAttribute="leading" constant="44" id="QoM-8V-oxZ"/>
+                <constraint firstItem="Ztb-5y-HlY" firstAttribute="top" secondItem="7XC-Uh-YFh" secondAttribute="top" constant="79" id="j30-Hd-EHG"/>
+                <constraint firstItem="Gf9-Vr-u8B" firstAttribute="leading" secondItem="7XC-Uh-YFh" secondAttribute="leading" constant="14" id="lxi-5R-8Lj"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+        <view alpha="0.89999999999999991" contentMode="scaleToFill" id="CKa-ug-jy9" userLabel="I Would Like To Be The Driver View">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="39"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I would like to be the driver!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GmX-e8-Oiz" customClass="VCLabel">
+                    <rect key="frame" x="20" y="9" width="241" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="17"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LT0-2Y-Gc6">
+                    <rect key="frame" x="282" y="8" width="23" height="23"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" backgroundImage="driver-hov-toggle.png">
+                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" backgroundImage="driver-hov-toggle-select.png"/>
+                    <state key="highlighted">
+                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapHovDriveYesButton:" destination="-1" eventType="touchUpInside" id="Pfq-KU-gKH"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.63137257099999999" green="0.58039218189999997" blue="0.5647059083" alpha="1" colorSpace="deviceRGB"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <button opaque="NO" alpha="0.89999997615814209" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="2iv-cM-ZrM" customClass="VCButtonStandardStyle">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+            <state key="normal" title="EDIT COMMUTE" backgroundImage="button-full-default.png">
+                <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <state key="selected" title="EDIT COMMUTE">
+                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <state key="highlighted" title="EDIT COMMUTE" backgroundImage="button-select.png">
+                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                    <integer key="value" value="16"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <action selector="didTapEditCommute:" destination="-1" eventType="touchUpInside" id="DlS-Vb-NWH"/>
+            </connections>
+        </button>
+        <button opaque="NO" alpha="0.89999997615814209" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Jh3-aQ-cgL" customClass="VCButton">
+            <rect key="frame" x="0.0" y="0.0" width="193" height="36"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <state key="normal" title="Ride Completed">
+                <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <state key="selected">
+                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <state key="highlighted">
+                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="5"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                    <integer key="value" value="20"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <action selector="didTapRideCompleted:" destination="-1" eventType="touchUpInside" id="mek-mJ-9ut"/>
+            </connections>
+        </button>
+        <view contentMode="scaleToFill" id="Lak-yG-cWD" userLabel="Driver Call HUD" customClass="VCDriverCallHudView">
+            <rect key="frame" x="0.0" y="0.0" width="289" height="170"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="driver-call-hud.png" translatesAutoresizingMaskIntoConstraints="NO" id="GfZ-BN-2RY">
+                    <rect key="frame" x="0.0" y="0.0" width="289" height="170"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="driver-call-hud-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="0Ln-Bp-0Ir">
+                    <rect key="frame" x="6" y="6" width="13" height="23"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FhZ-2M-2Cb" customClass="VCButton">
+                    <rect key="frame" x="23" y="38" width="266" height="36"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="Namey Mc Namerson" backgroundImage="driver-call-hud-button.png">
+                        <color key="titleColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected">
+                        <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didTapCallRider1:" destination="-1" eventType="touchUpInside" id="v8W-9e-Z7g"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hsy-pb-Jaj" customClass="VCButton">
+                    <rect key="frame" x="23" y="82" width="266" height="36"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="Namey Mc Namerson" backgroundImage="driver-call-hud-button.png">
+                        <color key="titleColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected">
+                        <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didTapCallRider2:" destination="-1" eventType="touchUpInside" id="ejo-Ev-KJN"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gVW-jM-U8O" customClass="VCButton">
+                    <rect key="frame" x="23" y="126" width="266" height="36"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="Namey Mc Namerson" backgroundImage="driver-call-hud-button.png">
+                        <color key="titleColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected">
+                        <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didTapCallRider3:" destination="-1" eventType="touchUpInside" id="mYE-m9-mAB"/>
+                    </connections>
+                </button>
+            </subviews>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="phoneIconImageView" destination="0Ln-Bp-0Ir" id="Evr-Am-EmG"/>
+                <outlet property="riderCallButton1" destination="FhZ-2M-2Cb" id="8Y7-dT-bnu"/>
+                <outlet property="riderCallButton2" destination="hsy-pb-Jaj" id="aVN-zC-a8B"/>
+                <outlet property="riderCallButton3" destination="gVW-jM-U8O" id="xDr-y1-vgY"/>
+            </connections>
+        </view>
+        <button hidden="YES" opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ITr-VR-cFD" userLabel="Directions Button">
+            <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <state key="normal" image="directions-button.png">
+                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <state key="selected" image="directions-button-selected.png"/>
+            <state key="highlighted" image="directions-button-selected.png"/>
+            <connections>
+                <action selector="didTapZoomToRideBounds:" destination="-1" eventType="touchUpInside" id="XMm-kC-0f1"/>
+            </connections>
+        </button>
+        <view contentMode="scaleToFill" id="nT8-pQ-amt" userLabel="Driver Cancel HUD">
+            <rect key="frame" x="0.0" y="0.0" width="155" height="62"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="driver-cancel-hud.png" translatesAutoresizingMaskIntoConstraints="NO" id="iad-Qb-gwU">
+                    <rect key="frame" x="0.0" y="0.0" width="155" height="62"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="driver-cancel-hud-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="iiu-Fn-uo8">
+                    <rect key="frame" x="5" y="5" width="12" height="12"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tm7-38-m0v" customClass="VCButton">
+                    <rect key="frame" x="22" y="17" width="133" height="38"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="Cancel Ride" backgroundImage="driver-cancel-hud-button.png">
+                        <color key="titleColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected">
+                        <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didTapCancelRide:" destination="-1" eventType="touchUpInside" id="GXa-YO-ajI"/>
+                    </connections>
+                </button>
+            </subviews>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <button opaque="NO" alpha="0.89999997615814209" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5kL-SN-M2N" customClass="VCButton">
+            <rect key="frame" x="0.0" y="0.0" width="193" height="36"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <state key="normal" title="Riders Picked Up">
+                <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <state key="selected" title="Riders Picked Up">
+                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <state key="highlighted">
+                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="5"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                    <integer key="value" value="20"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <action selector="didTapRidersPickedUp:" destination="-1" eventType="touchUpInside" id="fvM-ad-fGG"/>
+            </connections>
+        </button>
+        <view contentMode="scaleToFill" id="gCJ-mG-bEK" userLabel="Fare Details Confirmation" customClass="VCDriveDetailsView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="260"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="confirmation-hud.png" translatesAutoresizingMaskIntoConstraints="NO" id="wXv-xf-agA">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="260"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="260" id="HFr-m3-zcs"/>
+                        <constraint firstAttribute="width" constant="320" id="rmO-rX-jvt"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Lc-Aq-vNj" customClass="VCButtonStandardStyle">
+                    <rect key="frame" x="0.0" y="206" width="320" height="46"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="320" id="1cH-0U-9CC"/>
+                        <constraint firstAttribute="height" constant="46" id="poJ-eM-4XN"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="OK" backgroundImage="button-full-default.png">
+                        <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="OK" backgroundImage="button-full-select.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" title="OK" backgroundImage="button-full-select.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didTapConfirmedCommuterRide:" destination="-1" eventType="touchUpInside" id="ijm-O4-x2K"/>
+                    </connections>
+                </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup Time :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFl-3K-Vtp" customClass="VCLabel">
+                    <rect key="frame" x="13" y="114" width="97" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="97" id="dIp-bW-1fF"/>
+                        <constraint firstAttribute="height" constant="21" id="eaD-Qp-r3U"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hex-Ko-fHc" customClass="VCLabel">
+                    <rect key="frame" x="20" y="139" width="90" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="KZI-cw-xoG"/>
+                        <constraint firstAttribute="width" constant="90" id="NiG-Ex-AKD"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# of people :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="je8-Z7-8na" customClass="VCLabel">
+                    <rect key="frame" x="20" y="164" width="90" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="90" id="3Tx-tO-6bk"/>
+                        <constraint firstAttribute="height" constant="21" id="b9s-q3-6Gf"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="total fares" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ms8-1C-4Kv" customClass="VCLabel">
+                    <rect key="frame" x="29" y="64" width="65" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="65" id="eym-mt-l1V"/>
+                        <constraint firstAttribute="height" constant="21" id="o06-OJ-Dbo"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="14"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Py0-5b-pY6" customClass="VCLabelBold">
+                    <rect key="frame" x="25" y="17" width="72" height="51"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="51" id="JsU-pa-9sv"/>
+                        <constraint firstAttribute="width" constant="72" id="bhd-b0-R9t"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                    <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="30"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIA-LF-bpT" customClass="VCLabel">
+                    <rect key="frame" x="118" y="114" width="182" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="182" id="Wyd-DA-3Ex"/>
+                        <constraint firstAttribute="height" constant="21" id="o6s-Gv-6jd"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99 miles" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qqd-Za-IRl" customClass="VCLabel">
+                    <rect key="frame" x="118" y="139" width="182" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="182" id="2Ks-uU-aIa"/>
+                        <constraint firstAttribute="height" constant="21" id="Cu2-lR-fa0"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5uK-tQ-ftw" customClass="VCLabel">
+                    <rect key="frame" x="118" y="164" width="182" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="182" id="Cnr-fC-Bdf"/>
+                        <constraint firstAttribute="height" constant="21" id="HGr-qB-bVq"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thurs. Jan 6th, 2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oSh-xN-FjK" customClass="VCLabel">
+                    <rect key="frame" x="118" y="57" width="182" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="EdA-Rz-Opz"/>
+                        <constraint firstAttribute="width" constant="182" id="Egq-Lk-ZQO"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Qqd-Za-IRl" firstAttribute="top" secondItem="BIA-LF-bpT" secondAttribute="bottom" constant="4" id="4Xx-3P-tAd"/>
+                <constraint firstItem="Py0-5b-pY6" firstAttribute="leading" secondItem="gCJ-mG-bEK" secondAttribute="leading" constant="25" id="6Ad-gQ-Xbz"/>
+                <constraint firstItem="2Lc-Aq-vNj" firstAttribute="leading" secondItem="gCJ-mG-bEK" secondAttribute="leading" id="8dR-bK-Uko"/>
+                <constraint firstAttribute="trailing" secondItem="5uK-tQ-ftw" secondAttribute="trailing" constant="20" id="CeY-oH-S8Q"/>
+                <constraint firstAttribute="bottom" secondItem="2Lc-Aq-vNj" secondAttribute="bottom" constant="8" id="HCw-Bi-j8S"/>
+                <constraint firstAttribute="trailing" secondItem="Qqd-Za-IRl" secondAttribute="trailing" constant="20" id="Hhg-jz-iGa"/>
+                <constraint firstItem="wXv-xf-agA" firstAttribute="top" secondItem="oSh-xN-FjK" secondAttribute="bottom" constant="-78" id="Itf-oL-coS"/>
+                <constraint firstItem="Ms8-1C-4Kv" firstAttribute="top" secondItem="Py0-5b-pY6" secondAttribute="bottom" constant="-4" id="KFK-uS-y3T"/>
+                <constraint firstItem="lFl-3K-Vtp" firstAttribute="leading" secondItem="gCJ-mG-bEK" secondAttribute="leading" constant="13" id="M7q-vT-Mf1"/>
+                <constraint firstItem="Ms8-1C-4Kv" firstAttribute="leading" secondItem="gCJ-mG-bEK" secondAttribute="leading" constant="29" id="N0E-NJ-prG"/>
+                <constraint firstItem="wXv-xf-agA" firstAttribute="leading" secondItem="gCJ-mG-bEK" secondAttribute="leading" id="QbP-sl-1Ih"/>
+                <constraint firstItem="Hex-Ko-fHc" firstAttribute="leading" secondItem="gCJ-mG-bEK" secondAttribute="leading" constant="20" id="Wxi-bC-fSz"/>
+                <constraint firstItem="wXv-xf-agA" firstAttribute="top" secondItem="Py0-5b-pY6" secondAttribute="bottom" constant="-68" id="bxu-fE-Q9h"/>
+                <constraint firstItem="je8-Z7-8na" firstAttribute="top" secondItem="Hex-Ko-fHc" secondAttribute="bottom" constant="4" id="czI-9G-kj0"/>
+                <constraint firstItem="Hex-Ko-fHc" firstAttribute="top" secondItem="lFl-3K-Vtp" secondAttribute="bottom" constant="4" id="diM-jt-HpI"/>
+                <constraint firstItem="5uK-tQ-ftw" firstAttribute="top" secondItem="Qqd-Za-IRl" secondAttribute="bottom" constant="4" id="hzo-Ws-tuj"/>
+                <constraint firstItem="oSh-xN-FjK" firstAttribute="leading" secondItem="Ms8-1C-4Kv" secondAttribute="trailing" constant="24" id="lpN-zJ-pVv"/>
+                <constraint firstItem="2Lc-Aq-vNj" firstAttribute="top" secondItem="je8-Z7-8na" secondAttribute="bottom" constant="21" id="s8e-Ig-AyK"/>
+                <constraint firstItem="2Lc-Aq-vNj" firstAttribute="top" secondItem="5uK-tQ-ftw" secondAttribute="bottom" constant="21" id="tNB-uF-IUI"/>
+                <constraint firstAttribute="trailing" secondItem="BIA-LF-bpT" secondAttribute="trailing" constant="20" id="xp8-Pu-gA2"/>
+                <constraint firstAttribute="bottom" secondItem="wXv-xf-agA" secondAttribute="bottom" id="zbF-u3-HMq"/>
+                <constraint firstItem="je8-Z7-8na" firstAttribute="leading" secondItem="gCJ-mG-bEK" secondAttribute="leading" constant="20" id="zdi-EX-jHz"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="confirmationButton" destination="2Lc-Aq-vNj" id="uEE-0I-zqd"/>
+                <outlet property="dateLabel" destination="oSh-xN-FjK" id="E5L-FP-Jun"/>
+                <outlet property="driveDistanceLabel" destination="Qqd-Za-IRl" id="6Uy-6S-kF1"/>
+                <outlet property="driveTimeLabel" destination="BIA-LF-bpT" id="Icu-JS-TJi"/>
+                <outlet property="fareEarningsLabel" destination="Py0-5b-pY6" id="cDV-7e-m4k"/>
+                <outlet property="numberOfPeopleLabel" destination="5uK-tQ-ftw" id="6Iz-JU-qbE"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="button-default.png" width="160" height="46"/>
+        <image name="button-full-default.png" width="320" height="46"/>
+        <image name="button-full-select.png" width="320" height="46"/>
+        <image name="button-select.png" width="160" height="46"/>
+        <image name="confirmation-hud.png" width="320" height="260"/>
+        <image name="current-location-button-selected.png" width="36" height="36"/>
+        <image name="current-location-button.png" width="36" height="36"/>
+        <image name="devon.png" width="330" height="322"/>
+        <image name="directions-button-selected.png" width="36" height="36"/>
+        <image name="directions-button.png" width="36" height="36"/>
+        <image name="driver-call-hud-button.png" width="266" height="36"/>
+        <image name="driver-call-hud-icon.png" width="12" height="23"/>
+        <image name="driver-call-hud.png" width="289" height="170"/>
+        <image name="driver-cancel-hud-button.png" width="133" height="37"/>
+        <image name="driver-cancel-hud-icon.png" width="12" height="12"/>
+        <image name="driver-cancel-hud.png" width="155" height="62"/>
+        <image name="driver-hov-toggle-select.png" width="23" height="23"/>
+        <image name="driver-hov-toggle.png" width="23" height="23"/>
+        <image name="overlay-graphic.png" width="255" height="255"/>
+        <image name="ride-details-hud.png" width="330" height="154"/>
+        <image name="temp-call-button.png" width="60" height="60"/>
+    </resources>
+</document>

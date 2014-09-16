@@ -8,9 +8,7 @@
 
 #import "VCUsersApi.h"
 #import "VCUserStateManager.h"
-#import "VCLogin.h"
 #import "VCNewUser.h"
-#import "VCForgotPasswordRequest.h"
 #import "VCLoginResponse.h"
 #import "VCDriverInterestedRequest.h"
 #import "VCDriverStateResponse.h"
@@ -21,11 +19,6 @@
 
 @implementation VCUsersApi
 + (void) setup: (RKObjectManager *) objectManager {
-    
-    RKObjectMapping * loginMapping = [VCLogin getMapping];
-    RKObjectMapping * loginRequestMapping = [loginMapping inverseMapping];
-    RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:loginRequestMapping objectClass:[VCLogin class] rootKeyPath:nil method:RKRequestMethodPOST];
-    [objectManager addRequestDescriptor:requestDescriptor];
     
     RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[VCLoginResponse getMapping]
                                                                                              method:RKRequestMethodPOST
@@ -39,12 +32,13 @@
     profileUpdateMapping.assignsDefaultValueForMissingAttributes = NO;
     RKRequestDescriptor * profileRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:profileUpdateMapping objectClass:[VCProfile class] rootKeyPath:nil method:RKRequestMethodPOST];
     [objectManager addRequestDescriptor:profileRequestDescriptor];
+    
     {
         RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
-                                                                                                        method:RKRequestMethodPOST
-                                                                                                   pathPattern:API_USER_PROFILE
-                                                                                                       keyPath:nil
-                                                                                                   statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+                                                                                                 method:RKRequestMethodPOST
+                                                                                            pathPattern:API_USER_PROFILE
+                                                                                                keyPath:nil
+                                                                                            statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:responseDescriptor];
     }
     
@@ -57,10 +51,10 @@
     {
         RKResponseDescriptor * newUserResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping
                                                                                                                 mappingForClass:[NSObject class]]
-                                                                                                    method:RKRequestMethodPOST
-                                                                                               pathPattern:API_USERS
-                                                                                                   keyPath:nil
-                                                                                               statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+                                                                                                        method:RKRequestMethodPOST
+                                                                                                   pathPattern:API_USERS
+                                                                                                       keyPath:nil
+                                                                                                   statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:newUserResponseDescriptor];
     }
     {
@@ -71,8 +65,6 @@
         [objectManager addResponseDescriptor:responseDescriptor2];
     }
     
-    RKRequestDescriptor *forgotPasswordRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:[[VCForgotPasswordRequest getMapping] inverseMapping] objectClass:[VCForgotPasswordRequest class] rootKeyPath:nil method:RKRequestMethodPOST];
-    [objectManager addRequestDescriptor:forgotPasswordRequestDescriptor];
     RKResponseDescriptor * forgotPasswordResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
                                                                                                            method:RKRequestMethodPOST
                                                                                                       pathPattern:API_FORGOT_PASSWORD
@@ -96,7 +88,7 @@
                                             statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:driverInterestedResponseDescriptor];
     
-
+    
     {
         RKResponseDescriptor * responseDescriptor =
         [RKResponseDescriptor responseDescriptorWithMapping:[VCUserStateResponse getMapping]
@@ -118,7 +110,7 @@
         RKObjectMapping * mapping = [VCProfile getMapping];
         RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping method:RKRequestMethodGET pathPattern:API_USER_PROFILE keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:responseDescriptor];
-  
+        
     }
     
     {
@@ -127,7 +119,7 @@
         [objectManager addResponseDescriptor:responseDescriptor];
         
     }
-        
+    
     {
         RKObjectMapping * mapping = [VCProfile getMapping];
         RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping method:RKRequestMethodPOST pathPattern:API_FILL_COMMUTER_PASS keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
@@ -137,21 +129,18 @@
     
 }
 
-+ (void) login:( RKObjectManager *) objectManager phone:(NSString*) phone password: (NSString *) password
++ (void) login:( RKObjectManager *) objectManager email:(NSString*) email password: (NSString *) password
        success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
        failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     
     [[VCDebug sharedInstance] apiLog:@"API: Login"];
-
-    VCLogin * login = [[VCLogin alloc] init];
-    login.phone = phone;
-    login.password = password;
-    [objectManager postObject:login path:API_LOGIN parameters:nil
+    
+    [objectManager postObject:nil path:API_LOGIN parameters:@{ @"email" : email, @"password" : password }
                       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                           [[VCDebug sharedInstance] apiLog:@"API: Login success"];
                           
-                          [[VCDebug sharedInstance] setLoggedInUserIdentifier: phone];
-
+                          [[VCDebug sharedInstance] setLoggedInUserIdentifier: email];
+                          
                           VCLoginResponse * tokenResponse = mappingResult.firstObject;
                           [VCApi setApiToken: tokenResponse.token];
                           
@@ -165,7 +154,7 @@
 
 + (void) createUser:( RKObjectManager *) objectManager
           firstName:(NSString*) firstName
-          lastName:(NSString*) lastName
+           lastName:(NSString*) lastName
               email:(NSString*) email
            password:(NSString*) password
               phone:(NSString*) phone
@@ -184,14 +173,11 @@
     [objectManager postObject:newUser path:API_USERS parameters:nil success:success failure:failure];
 }
 
-+ (void) forgotPassword:( RKObjectManager *) objectManager email:(NSString*) email phone: (NSString *) phone
++ (void) forgotPassword:( RKObjectManager *) objectManager email:(NSString*) email
                 success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                 failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     
-    VCForgotPasswordRequest * forgotPasswordRequest = [[VCForgotPasswordRequest alloc] init];
-    forgotPasswordRequest.email = email;
-    forgotPasswordRequest.phone = phone;
-    [objectManager postObject:forgotPasswordRequest path:API_FORGOT_PASSWORD parameters:nil
+    [objectManager postObject:nil path:API_FORGOT_PASSWORD parameters:@{ @"email" : email }
                       success:success failure:failure];
 }
 
@@ -221,11 +207,11 @@
               success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
               failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     [objectManager getObject:nil path:API_USER_STATE parameters:nil
-    success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        success(operation, mappingResult);
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        failure(operation, error);
-    }];
+                     success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                         success(operation, mappingResult);
+                     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                         failure(operation, error);
+                     }];
 }
 
 + (void) updateDefaultCard: ( RKObjectManager *) objectManager
@@ -238,13 +224,13 @@
         success(operation, mappingResult);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         failure(operation, error);
-
+        
     }];
 }
 
 + (void) updateProfile: (VCProfile *) profile
-                success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
-                failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+               success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+               failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     [[RKObjectManager sharedManager] postObject:profile path:API_USER_PROFILE parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult){
         success(operation, mappingResult);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -271,14 +257,28 @@
     fillCommuterPassObject.amountCents = centsToAdd;
     
     [[RKObjectManager sharedManager] postObject:fillCommuterPassObject
-                         path:API_FILL_COMMUTER_PASS
-                   parameters:nil
+                                           path:API_FILL_COMMUTER_PASS
+                                     parameters:nil
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            success(operation, mappingResult);
+                                        }
+                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            failure(operation, error);
+                                        }];
+}
+
++ (void) updateRecipientCard: ( RKObjectManager *) objectManager
+                   cardToken: (NSString *) token
+                     success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                     failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+    [objectManager postObject:nil path:API_USER_PROFILE parameters:@{@"default_recipient_debit_card_token" : token}
                       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                           success(operation, mappingResult);
-                      }
-                      failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                      } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                           failure(operation, error);
+                          
                       }];
+    
 }
 
 @end

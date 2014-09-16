@@ -17,6 +17,8 @@
 + (id)getViewFromNib: (NSString *) nibName class: (id) class;
 + (void) criticalError: (NSError *) error;
 + (void) criticalErrorWithString: (NSString *) error;
++ (void) subcriticalErrorWithString: (NSString *) error;
++ (void) warningWithString: (NSString *) error;
 + (void) successMessage: (NSString *) message;
 + (void) stateErrorWithString: (NSString*) message;
 + (void) showNetworkUnavailableMessage;

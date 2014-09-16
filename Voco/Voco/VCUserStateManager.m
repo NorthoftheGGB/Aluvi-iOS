@@ -14,6 +14,7 @@
 #import "VCUserStateResponse.h"
 #import "VCInterfaceManager.h"
 #import "VCDriverApi.h"
+#import "VCCommuteManager.h"
 
 NSString *const VCUserStateDriverStateKeyPath = @"driverState";
 
@@ -22,6 +23,7 @@ NSString *const VCUserStateDriverStateKeyPath = @"driverState";
 #define kRiderStateKey @"kRiderStateKey"
 #define kDriverStateKey @"kDriverStateKey"
 #define kRideIdKey @"kRideIdKey"
+#define kProfileDataKey @"kProfileDataKey"
 
 static VCUserStateManager *sharedSingleton;
 
@@ -52,6 +54,11 @@ static VCUserStateManager *sharedSingleton;
         _riderState = [userDefaults objectForKey:kRiderStateKey];
         _driverState = [userDefaults objectForKey:kDriverStateKey];
         _underwayFareId = [userDefaults objectForKey:kRideIdKey];
+        NSData * profileData = [[NSUserDefaults standardUserDefaults] objectForKey:kProfileDataKey];
+        if(profileData != nil) {
+            _profile = [NSKeyedUnarchiver unarchiveObjectWithData:profileData];
+        }
+
     }
     return self;
 }
@@ -89,22 +96,37 @@ static VCUserStateManager *sharedSingleton;
     [userDefaults synchronize];
 }
 
-- (void) loginWithPhone:(NSString*) phone
+- (void) setProfile:(VCProfile *)profile {
+    _profile = profile;
+    NSData * profileData = [NSKeyedArchiver archivedDataWithRootObject:profile];
+    [[NSUserDefaults standardUserDefaults] setObject:profileData forKey:kProfileDataKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void) loginWithEmail:(NSString*) phone
                password: (NSString *) password
                 success:(void ( ^ ) () )success
                 failure:(void ( ^ ) () )failure {
     
-    [VCUsersApi login:[RKObjectManager sharedManager] phone:phone password:password
+    [VCUsersApi login:[RKObjectManager sharedManager] email:phone password:password
               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                   VCLoginResponse * loginResponse = mappingResult.firstObject;
                   self.riderState = loginResponse.riderState;
                   if(loginResponse.driverState != nil){
                       self.driverState = loginResponse.driverState;
                   }
+                  
+                  //TODO refactor to utilize enqueueBatchOfObjectRequestOperations:progress:completion:
                   [VCDevicesApi updateUserWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                      success();
+                      
+                      [VCUsersApi getProfile:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                          [self setProfile: mappingResult.firstObject];
+                          success();
+                      } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                          //[WRUtilities criticalError:error];
+                      }];
                   } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                      [WRUtilities criticalError:error];
+                      //[WRUtilities criticalError:error];
                   }];
                   
               } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -131,15 +153,20 @@ static VCUserStateManager *sharedSingleton;
     VCDevice * device = [[VCDevice alloc] init];
     device.userId = [NSNumber numberWithInt:0]; // unassign the push token
     [VCDevicesApi patchDevice:device success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        [VCApi clearApiToken];
-        [self clearUserState];
-        [VCCoreData clearUserData];
-        [[VCInterfaceManager instance] showRiderSigninInterface];
-        [[VCDebug sharedInstance] clearLoggedInUserIdentifier];
+        [self clearUser];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         
     }];
 
+}
+
+- (void) clearUser {
+    [VCApi clearApiToken];
+    [self clearUserState];
+    [VCCoreData clearUserData];
+    [[VCInterfaceManager instance] showRiderSigninInterface];
+    [[VCDebug sharedInstance] clearLoggedInUserIdentifier];
+    [[VCCommuteManager instance] clear];
 }
 
 - (void) synchronizeUserState {
@@ -168,6 +195,7 @@ static VCUserStateManager *sharedSingleton;
     _driveProcessState = nil;
     _riderState = nil;
     _driverState = nil;
+
 }
 
 - (void) clearRideState {
@@ -190,6 +218,14 @@ static VCUserStateManager *sharedSingleton;
     }
 }
 
+- (BOOL) isHovDriver {
+    if([self.driverState isEqualToString:kDriverStateActive]){
+        return YES;
+    }
+    return NO;
+}
+
+
 - (void) clockOnWithSuccess: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                     failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     [VCDriverApi clockOnWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
@@ -210,6 +246,13 @@ static VCUserStateManager *sharedSingleton;
         failure(operation, error);
     }];
 }
+
+- (void) updateCommuterPreferences {
+    
+}
+
+
+
 
 
 @end

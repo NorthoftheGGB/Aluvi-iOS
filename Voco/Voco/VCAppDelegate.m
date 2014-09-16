@@ -22,6 +22,7 @@
 #import "VCMapQuestRouting.h"
 #import "VCUsersApi.h"
 #import "VCLocalNotificationReceiver.h"
+#import "VCTicketViewController.h"
 
 @interface VCAppDelegate ()
 
@@ -58,8 +59,14 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
+// #warning bypassing interface mode setup in AppDelegate
+    /*VCRideViewController * vc = [[VCRideViewController alloc] init];
+    UINavigationController * nc = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self.window setRootViewController:nc];*/
+    
+   ///put background color and makeKeyVisible here
+    
     NSLog(@"Registering for push notifications...");
-
 #if !(TARGET_IPHONE_SIMULATOR)
     [VCPushReceiver registerForRemoteNotifications];
 #endif
@@ -71,8 +78,8 @@
         [VCLocalNotificationReceiver handleLocalNotification:localNotif];
     }
     
-    RKLogConfigureByName("RestKit/Network", RKLogLevelInfo);
-    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
+    // RKLogConfigureByName("RestKit/Network", RKLogLevelInfo);
+    // RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
     
     return YES;
 }

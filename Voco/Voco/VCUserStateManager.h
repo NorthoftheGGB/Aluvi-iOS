@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+@import CoreLocation;
+#import "VCProfile.h"
 
 NSString *const VCUserStateDriverStateKeyPath;
 
@@ -41,11 +43,18 @@ NSString *const VCUserStateDriverStateKeyPath;
 
 @property(nonatomic, strong) NSString * apiToken;
 
+@property(nonatomic, strong) VCProfile * profile;
+
+// commuter preferences
+@property(nonatomic, strong) CLLocation * commuteOrigin;
+@property(nonatomic, strong) CLLocation * commuteDestination;
+@property(nonatomic, strong) NSString * commuteDepartureTime;
+@property(nonatomic, strong) NSString * commuteReturnTime;
 
 + (VCUserStateManager *) instance;
 + (BOOL) driverIsAvailable;
 
-- (void) loginWithPhone:(NSString*) phone
+- (void) loginWithEmail:(NSString*) phone
                password: (NSString *) password
                 success:(void ( ^ ) () )success
                 failure:(void ( ^ ) () )failure;
@@ -53,6 +62,7 @@ NSString *const VCUserStateDriverStateKeyPath;
 - (void) finalizeLogout;
 - (void) synchronizeUserState;
 - (BOOL) isLoggedIn;
+- (BOOL) isHovDriver;
 
 - (void) clockOnWithSuccess: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                     failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
@@ -60,5 +70,6 @@ NSString *const VCUserStateDriverStateKeyPath;
                      failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
 - (void) clearRideState;
+- (void) clearUser;
 
 @end

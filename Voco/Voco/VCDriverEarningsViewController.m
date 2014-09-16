@@ -14,7 +14,7 @@
 #import "VCTextField.h"
 #import "VCLabel.h"
 #import "VCLabelBold.h"
-#import "VCButtonFontBold.h"
+#import "VCButtonStandardStyle.h"
 #import "VCDriverApi.h"
 #import "VCUsersApi.h"
 #import "VCDriverRecieptDetailViewController.h"
@@ -28,7 +28,7 @@
 @property (weak, nonatomic) IBOutlet VCTextField *accountNameTextField;
 @property (weak, nonatomic) IBOutlet VCBankAccountTextField *accountNumberTextField;
 @property (weak, nonatomic) IBOutlet VCRoutingNumberTextField *routingNumberTextField;
-@property (weak, nonatomic) IBOutlet VCButtonFontBold *changeBankInfoButton;
+@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *changeBankInfoButton;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
@@ -154,7 +154,7 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     Earning *earning = [_fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = [VCUtilities formatCurrencyFromCents:earning.amountCents];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ / %@", [earning.createdAt formatted], [earning.fare routeDescription]  ];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ / %@", [earning.timestamp formatted], [earning.fare routeDescription]  ];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView

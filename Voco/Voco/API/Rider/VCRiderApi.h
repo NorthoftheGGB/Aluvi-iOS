@@ -8,17 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import <RestKit.h>
-#import "Ride.h"
+#import "Ticket.h"
+#import "VCRideRequestCreated.h"
 
 @interface VCRiderApi : NSObject
 
 + (void) setup: (RKObjectManager *) objectManager;
 
-+ (void) requestRide:(Ride *) ride
-             success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
++ (void) requestRide:(Ticket *) ride
+             success:(void ( ^ ) ( RKObjectRequestOperation *operation , VCRideRequestCreated * response ))success
              failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
-+ (void) cancelRide:(Ride *) ride
++ (void) cancelRide:(Ticket *) ride
              success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
              failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 

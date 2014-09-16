@@ -24,8 +24,11 @@
 
 - (void)awakeFromNib{
     
+    //rev 1.0
+    //UIFont *customFont = [UIFont fontWithName:@"KlinicSlab-Light" size:[fontSize intValue] ];
     
-    UIFont *customFont = [UIFont fontWithName:@"KlinicSlab-Medium" size:[fontSize intValue] ];
+    //rev 2.0
+    UIFont *customFont = [UIFont fontWithName:@"HelveticaNeue-Medium" size:[fontSize intValue] ];
     
     [self setFont:customFont];
     

@@ -21,22 +21,26 @@
                                                                  @"destination_latitude" : @"destinationLatitude",
                                                                  @"destination_longitude" : @"destinationLongitude",
                                                                  @"destination_place_name" : @"destinationPlaceName",
-                                                                 @"desired_arrival" : @"desiredArrival"
+                                                                 @"pickup_time" : @"pickupTime",
+                                                                 @"driving" : @"driving",
+                                                                 @"trip_id" : @"tripId"
                                                                 }];
     return rideRequestMapping;
 
 }
 
-+ (VCRideRequest *) requestForRide:(Ride *)request {
++ (VCRideRequest *) requestForRide:(Ticket *)ride {
     VCRideRequest * rideRequest = [[VCRideRequest alloc] init];
-    rideRequest.type = request.requestType;
-    rideRequest.departureLatitude = request.originLatitude;
-    rideRequest.departureLongitude = request.originLongitude;
-    rideRequest.departurePlaceName = request.originPlaceName;
-    rideRequest.destinationLatitude = request.destinationLatitude;
-    rideRequest.destinationLongitude = request.destinationLongitude;
-    rideRequest.destinationPlaceName = request.destinationPlaceName;
-    rideRequest.desiredArrival = request.desiredArrival;
+    rideRequest.type = ride.rideType;
+    rideRequest.departureLatitude = ride.originLatitude;
+    rideRequest.departureLongitude = ride.originLongitude;
+    rideRequest.departurePlaceName = ride.originPlaceName;
+    rideRequest.destinationLatitude = ride.destinationLatitude;
+    rideRequest.destinationLongitude = ride.destinationLongitude;
+    rideRequest.destinationPlaceName = ride.destinationPlaceName;
+    rideRequest.pickupTime = ride.pickupTime;
+    rideRequest.driving = ride.driving;
+    rideRequest.tripId = ride.trip_id;
     return rideRequest;
 }
 

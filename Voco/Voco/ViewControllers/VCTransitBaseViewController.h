@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "Fare.h"
+#import "VCCenterViewBaseViewController.h"
 
-@interface VCTransitBaseViewController : UIViewController
+@interface VCTransitBaseViewController : VCCenterViewBaseViewController
 
 @property (strong, nonatomic) Transit * transit;
 
@@ -18,16 +19,23 @@
 @property (strong, nonatomic) MKMapView * map;
 @property (strong, nonatomic) MKPolyline * routeOverlay;
 @property (strong, nonatomic) CLGeocoder * geocoder;
-@property (strong, nonatomic) MKPointAnnotation * dropOffAnnotation;
-@property (strong, nonatomic) MKPointAnnotation * meetingPointAnnotation;
+//@property (strong, nonatomic) MKPointAnnotation * dropOffAnnotation;
+//@property (strong, nonatomic) MKPointAnnotation * meetingPointAnnotation;
 @property (nonatomic) MKCoordinateRegion rideRegion;
+
 
 - (void) showSuggestedRoute;
 - (void) showSuggestedRoute: (CLLocation *) from to: (CLLocation *) to;
-- (void) annotateMeetingPoint: (CLLocation *) meetingPoint andDropOffPoint: (CLLocation *) dropOffPoint;
+//- (void) annotateMeetingPoint: (CLLocation *) meetingPoint andDropOffPoint: (CLLocation *) dropOffPoint;
 - (void) clearMap;
+- (void) clearRoute;
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay;
 
 - (void) resetInterface;
+- (void) zoomToCurrentLocation;
+
+
+- (IBAction)didTapCurrentLocationButton:(id)sender;
+
 @end

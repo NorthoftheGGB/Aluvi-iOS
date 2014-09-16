@@ -48,6 +48,7 @@
                 if(apiError != nil){
                     [UIAlertView showWithTitle:@"Error" message:apiError.error cancelButtonTitle:@"Oh, ok" otherButtonTitles:nil tapBlock:nil];
                 } else {
+                    NSLog(@"Error %li", (long)statusCode);
                     [UIAlertView showWithTitle:@"Error" message:@"Unspecified Error" cancelButtonTitle:@"Ok, I'll try that again I guess" otherButtonTitles:nil tapBlock:nil];
                 }
             }
@@ -55,12 +56,13 @@
 
             case 401: // not authenticated
             {
+                [[RKObjectManager sharedManager].operationQueue cancelAllOperations];
                 [UIAlertView showWithTitle:@"Invalid Login" message:@"You are no longer logged into Voco.  Please log back in"
                          cancelButtonTitle:@"OK"
                          otherButtonTitles:nil
                                   tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                                       // Call logout and Bump the user back out to the login screen
-                                      [[VCUserStateManager instance] finalizeLogout];
+                                      [[VCUserStateManager instance] clearUser];
                                   }];
             }
                 break;

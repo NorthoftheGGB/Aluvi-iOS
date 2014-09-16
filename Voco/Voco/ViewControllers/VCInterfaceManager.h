@@ -16,6 +16,7 @@
 @interface VCInterfaceManager : NSObject
 
 + (VCInterfaceManager * ) instance;
+- (void) setCenterViewControllers:(NSArray *) viewControllers;
 - (void) showInterface;
 - (void) showRiderSigninInterface;
 - (void) showRiderInterface;

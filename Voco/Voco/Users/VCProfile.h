@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface VCProfile : NSObject
+@interface VCProfile : NSObject <NSCoding>
 
 @property(nonatomic, strong) NSString * firstName;
 @property(nonatomic, strong) NSString * lastName;
@@ -22,6 +22,10 @@
 @property(nonatomic, strong) NSString * defaultCardToken;
 @property(nonatomic, strong) NSString * cardLastFour;
 @property(nonatomic, strong) NSString * cardBrand;
+
+@property(nonatomic, strong) NSString * recipientCardBrand;
+@property(nonatomic, strong) NSString * recipientCardLastFour;
+
 
 @property(nonatomic, strong) NSString * bankAccountName;
 

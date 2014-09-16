@@ -83,6 +83,37 @@ static UIAlertView * networkUnavailableErrorView = nil;
     
 }
 
++ (void) subcriticalErrorWithString: (NSString *) error {
+    
+    NSString * errorString = [NSString stringWithFormat:@"%@ Error: %@", [[NSDate date] pretty] , error];
+    NSLog(@"%@", errorString);
+    [[VCDebug sharedInstance] apiLog:errorString];
+    
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle: @"Error"
+                          message: error
+                          delegate: self
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil];
+    [alert performSelectorOnMainThread:@selector(show) withObject:nil waitUntilDone:YES];
+    
+}
+
++ (void) warningWithString: (NSString *) error {
+    NSString * errorString = [NSString stringWithFormat:@"%@ Warning: %@", [[NSDate date] pretty] , error];
+    NSLog(@"%@", errorString);
+    [[VCDebug sharedInstance] apiLog:errorString];
+    
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle: @"Warning"
+                          message: error
+                          delegate: self
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil];
+    [alert performSelectorOnMainThread:@selector(show) withObject:nil waitUntilDone:YES];
+}
+
+
 + (void) stateErrorWithString: (NSString *) error {
     
     NSLog(@"%@ Critical Error: %@", [[NSDate date] pretty] , error);

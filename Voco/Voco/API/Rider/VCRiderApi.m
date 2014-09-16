@@ -11,7 +11,7 @@
 #import "VCRideRequest.h"
 #import "VCRideRequestCreated.h"
 #import "VCDevice.h"
-#import "Ride.h"
+#import "Ticket.h"
 #import "VCRideIdentity.h"
 #import "VCUserStateManager.h"
 #import "VCRequestUpdate.h"
@@ -20,10 +20,10 @@
 @implementation VCRiderApi
 
 + (void) setup: (RKObjectManager *) objectManager {
-
-    [Ride createMappings:objectManager];
+    
+    [Ticket createMappings:objectManager];
     [Payment createMappings:objectManager];
-
+    
     {
         RKObjectMapping * objectMapping = [VCRideRequest getMapping];
         RKObjectMapping * postRideRequestMapping = [objectMapping inverseMapping];
@@ -54,14 +54,14 @@
                                                                                             pathPattern:API_POST_RIDE_REQUEST keyPath:nil
                                                                                             statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:responseDescriptor];
-
+        
     }
     {
         RKObjectMapping * mapping = [VCRequestUpdate getMapping];
         RKObjectMapping * requestMapping = [mapping inverseMapping];
         RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[VCRequestUpdate class] rootKeyPath:nil method:RKRequestMethodPOST];
         [objectManager addRequestDescriptor:requestDescriptor];
-    }    
+    }
     {
         RKResponseDescriptor * responseDescriptor =
         [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
@@ -73,8 +73,8 @@
     }
 }
 
-+ (void) requestRide:(Ride *) ride
-             success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
++ (void) requestRide:(Ticket *) ride
+             success:(void ( ^ ) ( RKObjectRequestOperation *operation , VCRideRequestCreated * response ))success
              failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     
     [[VCDebug sharedInstance] apiLog:@"API: request ride"];
@@ -89,6 +89,7 @@
                                             
                                             VCRideRequestCreated * response = mappingResult.firstObject;
                                             ride.ride_id = response.rideId;
+                                            ride.trip_id = response.tripId;
                                             
                                             NSError * error;
                                             [[VCCoreData managedObjectContext] save:&error];
@@ -97,7 +98,7 @@
                                             }
                                             //[VCUserState instance].riderState = kUser;
                                             
-                                            success(operation, mappingResult);
+                                            success(operation, response);
                                         }
                                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                             [[VCDebug sharedInstance] apiLog:@"API: request ride failure"];
@@ -108,7 +109,7 @@
 }
 
 
-+ (void) cancelRide:(Ride *) ride
++ (void) cancelRide:(Ticket *) ride
             success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
             failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     
@@ -117,9 +118,7 @@
         [[VCDebug sharedInstance] apiLog:@"API: Rider cancel ride"];
         
         // Alread have a ride id, so this is a ride cancellation
-        VCRideIdentity * rideIdentity = [[VCRideIdentity alloc] init];
-        rideIdentity.rideId = ride.fare_id;
-        [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_RIDER_CANCELLED parameters:nil
+        [[RKObjectManager sharedManager] postObject:nil path:API_POST_RIDER_CANCELLED parameters:@{@"fare_id" : ride.fare_id}
                                             success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                 
                                                 [[VCDebug sharedInstance] apiLog:@"API: Rider cancel ride success"];
@@ -173,14 +172,15 @@
                                   failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     
     // Update all rides for this user using RestKit entity
-    [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_ACTIVE_RIDES parameters:nil
+    [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_ACTIVE_TICKETS parameters:nil
                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                   
-                                                  // It's completely possible that state is out of sync with the server
-                                                  // May need to update state here
-                                                  // How to detect state change on the server ?
-                                                  
-                                                  success(operation, mappingResult);
+                                                  [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_ACTIVE_FARES
+                                                                                         parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                                                             success(operation, mappingResult);
+                                                                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                                                             failure(operation, error);
+                                                                                         }];
                                                   
                                               } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                                   

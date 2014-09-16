@@ -184,7 +184,7 @@
 }
 
 - (void) login {
-    [[VCUserStateManager instance] loginWithPhone:_phoneField.text password:_passwordField.text
+    [[VCUserStateManager instance] loginWithEmail:_phoneField.text password:_passwordField.text
               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                   _hud.hidden = YES;
                   [[VCInterfaceManager instance] showRiderInterface];

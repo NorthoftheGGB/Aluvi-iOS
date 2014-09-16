@@ -9,7 +9,7 @@
 #import "VCRequestsViewController.h"
 #import "VCCoreData.h"
 #import "Ride.h"
-#import "VCRiderHomeViewController.h"
+//#import "VCRiderHomeViewController.h"
 #import "VCRiderApi.h"
 
 @interface VCRequestsViewController () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
@@ -37,7 +37,7 @@
         return _fetchedResultsController;
     }
     
-    NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Ride"];
+    NSFetchRequest * fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
     
     NSSortDescriptor *sort = [[NSSortDescriptor alloc]
                               initWithKey:@"requestedTimestamp" ascending:YES];
@@ -123,9 +123,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     Ride *ride = [_fetchedResultsController objectAtIndexPath:indexPath];
-    VCRiderHomeViewController * vc = [[VCRiderHomeViewController alloc] init];
-    vc.request = ride;
-    [self.navigationController pushViewController:vc animated:YES];
+  //  VCRiderHomeViewController * vc = [[VCRiderHomeViewController alloc] init];
+  //  vc.request = ride;
+  //  [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark NSFetchedResultsControllerDelegate

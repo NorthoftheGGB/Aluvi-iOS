@@ -19,9 +19,9 @@ static NSDateFormatter *formatter = nil;
         formatter = [[NSDateFormatter alloc] init];
     }
     
-    [formatter setDateFormat:@"HH:mm zzz"];
+    [formatter setDateFormat:@"hh:mm zzz"];
     NSString *timeFromDate = [formatter stringFromDate:self];
-    [formatter setDateFormat:@"Y/M/d"];
+    [formatter setDateFormat:@"M/d/YY"];
     NSString *dateFromDate = [formatter stringFromDate:self];
     NSString *exportDateString = [NSString stringWithFormat:@"%@ at %@", dateFromDate, timeFromDate ];
     return exportDateString;
@@ -86,6 +86,23 @@ static NSDateFormatter *formatter = nil;
     NSString *dateFromDate = [formatter stringFromDate:self];
     NSString *exportDateString = [NSString stringWithFormat:@"%@ %@", dateFromDate, timeFromDate ];
     return exportDateString;
+}
+
+- (NSString *) monthAndDay {
+    if(!formatter){
+        formatter = [[NSDateFormatter alloc] init];
+    }
+    [formatter setDateFormat:@"M/d"];
+    return [formatter stringFromDate:self];
+}
+
+- (NSString *) time {
+    
+    if(!formatter){
+        formatter = [[NSDateFormatter alloc] init];
+    }
+    [formatter setDateFormat:@"hh:mm a"];
+    return [formatter stringFromDate:self];
 }
 
 @end
