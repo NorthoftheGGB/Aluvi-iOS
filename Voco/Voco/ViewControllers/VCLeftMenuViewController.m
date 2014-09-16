@@ -79,13 +79,16 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
+        [self loadScheduleItems];
+        
         if([[VCUserStateManager instance] isHovDriver]){
-            _tableCellList = [NSMutableArray arrayWithArray: @[kUserInfoCell, kScheduleCell, kMapCell, kDriverSettingsCell, kPaymentCell, kReceiptsCell, kSupportCell ]];
+            _tableCellList = [NSMutableArray arrayWithArray: @[kUserInfoCell, kMapCell, kDriverSettingsCell, kPaymentCell, kReceiptsCell, kSupportCell ]];
             
         } else {
-            _tableCellList = [NSMutableArray arrayWithArray: @[kUserInfoCell, kScheduleCell, kMapCell, kPaymentCell, kReceiptsCell, kSupportCell ]];
+            _tableCellList = [NSMutableArray arrayWithArray: @[kUserInfoCell, kMapCell, kPaymentCell, kReceiptsCell, kSupportCell ]];
         }
         _selectedCellTag = -1;
+
         
         [self countNotificaitons];
 
@@ -101,6 +104,22 @@
     
     // Listen for notifications about updated rides
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scheduleUpdated:) name:@"schedule_updated" object:nil];
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+ 
+    
+    [self loadScheduleItems];
+    if([_scheduleItems count] > 0 && [_tableCellList indexOfObject:kScheduleCell] == NSNotFound){
+        [_tableCellList insertObject:kScheduleCell atIndex:1];
+        [_tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+
+    } else if ([_scheduleItems count] == 0 && [_tableCellList indexOfObject:kScheduleCell] != NSNotFound){
+        [_tableCellList removeObject:kScheduleCell];
+        [_tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+
+    }
+    
 }
 
 - (void) dealloc {
