@@ -177,341 +177,6 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
-        <view contentMode="scaleToFill" id="3Ja-Wi-Ekw" userLabel="Driver: Ride Details" customClass="VCRideDetailsConfirmationView">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="502"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="confirmation-hud.png" translatesAutoresizingMaskIntoConstraints="NO" id="57E-ij-H6k">
-                    <rect key="frame" x="0.0" y="55" width="320" height="260"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                </imageView>
-                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fM4-jK-FhX">
-                    <rect key="frame" x="75" y="9" width="170" height="29"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="28" id="Cib-Gp-Ir0"/>
-                        <constraint firstAttribute="width" constant="170" id="pUg-6y-wOa"/>
-                    </constraints>
-                    <segments>
-                        <segment title="To Work"/>
-                        <segment title="Back Home"/>
-                    </segments>
-                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                </segmentedControl>
-                <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sdj-3U-jwk" customClass="VCButtonStandardStyle">
-                    <rect key="frame" x="0.0" y="339" width="320" height="46"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="46" id="idu-wV-ub4"/>
-                        <constraint firstAttribute="width" constant="320" id="sfJ-Fy-4PF"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="OK, Show me the pickup location." backgroundImage="button-full-default.png">
-                        <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="selected" title="OK" backgroundImage="button-full-select.png">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="highlighted" title="OK" backgroundImage="button-full-select.png">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="16"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="didTapConfirmButton:" destination="3Ja-Wi-Ekw" eventType="touchUpInside" id="9nc-Ya-8RC"/>
-                        <action selector="didTapConfirmedCommuterRide:" destination="-1" eventType="touchUpInside" id="5Lp-EK-TFG"/>
-                    </connections>
-                </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Pickup Time :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hy-03-Xup" customClass="VCLabel">
-                    <rect key="frame" x="30" y="169" width="97" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="97" id="2QT-Lc-iZm"/>
-                        <constraint firstAttribute="height" constant="21" id="JKv-ae-9dc"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
-                    <nil key="highlightedColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="16"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Total Ride Time :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PTx-8Q-crb" customClass="VCLabel">
-                    <rect key="frame" x="8" y="194" width="119" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="90" id="V1u-QU-xLt"/>
-                        <constraint firstAttribute="height" constant="21" id="zvt-lO-nOi"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
-                    <nil key="highlightedColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="16"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="est. fare" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjG-o2-ewP" customClass="VCLabel">
-                    <rect key="frame" x="33" y="122" width="57" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="57" id="8me-XI-d7v"/>
-                        <constraint firstAttribute="height" constant="21" id="lwW-30-std"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
-                    <nil key="highlightedColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="14"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="$55.55" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RC6-Em-c1O" customClass="VCLabelBold">
-                    <rect key="frame" x="16" y="77" width="91" height="56"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="91" id="9fg-JO-fxf"/>
-                        <constraint firstAttribute="height" constant="56" id="S7r-WH-R0l"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                    <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
-                    <nil key="highlightedColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="28"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="No Value" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMx-iA-6oZ" customClass="VCLabel">
-                    <rect key="frame" x="133" y="169" width="182" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="182" id="KS0-0I-Vgo"/>
-                        <constraint firstAttribute="height" constant="21" id="qf0-0u-ml2"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
-                    <nil key="highlightedColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="16"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="No Value" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjq-Ls-Y9H" customClass="VCLabel">
-                    <rect key="frame" x="133" y="194" width="182" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="BYf-R9-y2X"/>
-                        <constraint firstAttribute="width" constant="182" id="y8d-f0-7fM"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
-                    <nil key="highlightedColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="16"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RuX-cY-5J5">
-                    <rect key="frame" x="118" y="119" width="32" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="20" id="AZj-w9-39s"/>
-                        <constraint firstAttribute="width" constant="32" id="MG3-DD-JIp"/>
-                    </constraints>
-                </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="MyCard" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w33-jC-iyM" customClass="VCLabel">
-                    <rect key="frame" x="158" y="119" width="70" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="70" id="E0P-ds-3cr"/>
-                        <constraint firstAttribute="height" constant="21" id="bUw-t5-dDW"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
-                    <nil key="highlightedColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="15"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="*9999" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d22-oD-xly" customClass="VCLabel">
-                    <rect key="frame" x="236" y="119" width="45" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="45" id="eKj-QZ-VYH"/>
-                        <constraint firstAttribute="height" constant="21" id="y3I-vG-Stl"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
-                    <nil key="highlightedColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="15"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Devon Drakesbad" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qXq-bv-L4m" customClass="VCLabelBold">
-                    <rect key="frame" x="118" y="80" width="196" height="24"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="24" id="rF7-87-MIg"/>
-                        <constraint firstAttribute="width" constant="196" id="urY-Sc-yge"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                    <color key="textColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
-                    <nil key="highlightedColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="21"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Your Riders:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZW-JA-XAC" customClass="VCLabel">
-                    <rect key="frame" x="17" y="236" width="110" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="110" id="3Lb-aw-Ls0"/>
-                        <constraint firstAttribute="height" constant="21" id="wQJ-eD-WyI"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
-                    <nil key="highlightedColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="16"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </label>
-                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fSB-fw-JaO">
-                    <rect key="frame" x="0.0" y="265" width="106" height="106"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.42754912760000002" green="1" blue="0.41485014920000002" alpha="1" colorSpace="calibratedRGB"/>
-                </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="No Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ft-Zg-T9n" customClass="VCLabel">
-                    <rect key="frame" x="0.0" y="296" width="106" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="32K-ba-jWH"/>
-                        <constraint firstAttribute="width" constant="106" id="crm-6J-ROe"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
-                    <nil key="highlightedColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="16"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </label>
-                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="URE-va-sWD">
-                    <rect key="frame" x="107" y="265" width="106" height="106"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.42754912760000002" green="1" blue="0.41485014920000002" alpha="1" colorSpace="calibratedRGB"/>
-                </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="No Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13i-vF-9sZ" customClass="VCLabel">
-                    <rect key="frame" x="107" y="296" width="106" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="7bH-5b-Ffc"/>
-                        <constraint firstAttribute="width" constant="106" id="uyK-s9-4vc"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
-                    <nil key="highlightedColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="16"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </label>
-                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ncW-1s-KRe">
-                    <rect key="frame" x="214" y="265" width="106" height="106"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.42754912760000002" green="1" blue="0.41485014920000002" alpha="1" colorSpace="calibratedRGB"/>
-                </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="No Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lio-yF-M6j" customClass="VCLabel">
-                    <rect key="frame" x="214" y="296" width="106" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="5Ts-yZ-mDc"/>
-                        <constraint firstAttribute="width" constant="106" id="emu-bp-peA"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
-                    <nil key="highlightedColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="16"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </label>
-            </subviews>
-            <constraints>
-                <constraint firstItem="57E-ij-H6k" firstAttribute="leading" secondItem="3Ja-Wi-Ekw" secondAttribute="leading" id="0bB-Mw-GKU"/>
-                <constraint firstItem="fM4-jK-FhX" firstAttribute="top" secondItem="3Ja-Wi-Ekw" secondAttribute="top" constant="9" id="1As-Dd-8ev"/>
-                <constraint firstItem="PTx-8Q-crb" firstAttribute="leading" secondItem="3Ja-Wi-Ekw" secondAttribute="leading" constant="20" id="2K9-FR-Oyl"/>
-                <constraint firstItem="sdj-3U-jwk" firstAttribute="top" secondItem="1ft-Zg-T9n" secondAttribute="bottom" constant="22" id="3bR-Vp-5uB"/>
-                <constraint firstItem="gjG-o2-ewP" firstAttribute="leading" secondItem="3Ja-Wi-Ekw" secondAttribute="leading" constant="33" id="6bV-FB-x5Q"/>
-                <constraint firstItem="57E-ij-H6k" firstAttribute="top" secondItem="RC6-Em-c1O" secondAttribute="bottom" constant="-78" id="9pH-D2-jNW"/>
-                <constraint firstItem="57E-ij-H6k" firstAttribute="top" secondItem="qXq-bv-L4m" secondAttribute="bottom" constant="-49" id="HGk-IU-WbG"/>
-                <constraint firstItem="sdj-3U-jwk" firstAttribute="top" secondItem="57E-ij-H6k" secondAttribute="bottom" constant="47" id="IsX-3m-D2B"/>
-                <constraint firstItem="RuX-cY-5J5" firstAttribute="leading" secondItem="3Ja-Wi-Ekw" secondAttribute="leading" constant="118" id="JRU-Zk-Egd"/>
-                <constraint firstItem="d22-oD-xly" firstAttribute="leading" secondItem="w33-jC-iyM" secondAttribute="trailing" constant="8" id="K9b-UH-Osr"/>
-                <constraint firstAttribute="trailing" secondItem="qXq-bv-L4m" secondAttribute="trailing" constant="6" id="KBa-n6-bFd"/>
-                <constraint firstItem="57E-ij-H6k" firstAttribute="top" secondItem="RuX-cY-5J5" secondAttribute="bottom" constant="-84" id="Kqq-BT-e2H"/>
-                <constraint firstItem="PTx-8Q-crb" firstAttribute="top" secondItem="6hy-03-Xup" secondAttribute="bottom" constant="4" id="Nte-rl-wK1"/>
-                <constraint firstItem="w33-jC-iyM" firstAttribute="leading" secondItem="RuX-cY-5J5" secondAttribute="trailing" constant="8" id="OL5-H7-ZEo"/>
-                <constraint firstItem="fM4-jK-FhX" firstAttribute="leading" secondItem="3Ja-Wi-Ekw" secondAttribute="leading" constant="75" id="QEX-ZQ-OZz"/>
-                <constraint firstItem="RC6-Em-c1O" firstAttribute="leading" secondItem="3Ja-Wi-Ekw" secondAttribute="leading" constant="16" id="QmJ-G1-K5Q"/>
-                <constraint firstItem="gjG-o2-ewP" firstAttribute="top" secondItem="RC6-Em-c1O" secondAttribute="bottom" constant="-11" id="YEZ-Au-lND"/>
-                <constraint firstItem="57E-ij-H6k" firstAttribute="top" secondItem="d22-oD-xly" secondAttribute="bottom" constant="-85" id="eJm-Rz-h37"/>
-                <constraint firstAttribute="trailing" secondItem="pMx-iA-6oZ" secondAttribute="trailing" constant="20" id="fD3-Sv-aIp"/>
-                <constraint firstItem="sdj-3U-jwk" firstAttribute="leading" secondItem="3Ja-Wi-Ekw" secondAttribute="leading" id="g34-0q-s4G"/>
-                <constraint firstItem="1ft-Zg-T9n" firstAttribute="leading" secondItem="3Ja-Wi-Ekw" secondAttribute="leading" id="kxX-bb-JZY"/>
-                <constraint firstItem="aZW-JA-XAC" firstAttribute="leading" secondItem="3Ja-Wi-Ekw" secondAttribute="leading" id="mgq-R3-EzT"/>
-                <constraint firstItem="sdj-3U-jwk" firstAttribute="top" secondItem="13i-vF-9sZ" secondAttribute="bottom" constant="22" id="pW7-oA-zvy"/>
-                <constraint firstItem="sjq-Ls-Y9H" firstAttribute="top" secondItem="pMx-iA-6oZ" secondAttribute="bottom" constant="4" id="sk9-PL-h8b"/>
-                <constraint firstItem="lio-yF-M6j" firstAttribute="leading" secondItem="13i-vF-9sZ" secondAttribute="trailing" constant="1" id="tpg-GW-afV"/>
-                <constraint firstItem="sdj-3U-jwk" firstAttribute="top" secondItem="lio-yF-M6j" secondAttribute="bottom" constant="22" id="xJO-8j-604"/>
-                <constraint firstItem="13i-vF-9sZ" firstAttribute="leading" secondItem="1ft-Zg-T9n" secondAttribute="trailing" constant="1" id="xTD-v2-c86"/>
-                <constraint firstItem="6hy-03-Xup" firstAttribute="leading" secondItem="3Ja-Wi-Ekw" secondAttribute="leading" constant="13" id="xWJ-Ws-PIh"/>
-                <constraint firstAttribute="trailing" secondItem="sjq-Ls-Y9H" secondAttribute="trailing" constant="20" id="y1l-Nz-GKQ"/>
-                <constraint firstItem="57E-ij-H6k" firstAttribute="top" secondItem="w33-jC-iyM" secondAttribute="bottom" constant="-85" id="yNg-NX-Wyn"/>
-            </constraints>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="cardNicknamelabel" destination="w33-jC-iyM" id="5hJ-cq-m5c"/>
-                <outlet property="cardNumberLabel" destination="d22-oD-xly" id="VFd-AI-bhk"/>
-                <outlet property="confirmButton" destination="sdj-3U-jwk" id="rou-tX-QJX"/>
-                <outlet property="creditCardImageView" destination="RuX-cY-5J5" id="hld-ou-koC"/>
-                <outlet property="didTapConfirmButton" destination="sdj-3U-jwk" id="boc-cW-vhV"/>
-                <outlet property="driverNameLabel" destination="qXq-bv-L4m" id="oo5-dq-uLi"/>
-                <outlet property="fareLabel" destination="RC6-Em-c1O" id="oA3-Wm-TTF"/>
-                <outlet property="licenseValueLabel" destination="iha-zj-PjZ" id="fcL-UU-5uo"/>
-                <outlet property="pickupTimeLabel" destination="pMx-iA-6oZ" id="u7P-GV-eCE"/>
-                <outlet property="riderImageView1" destination="Fep-l0-bYy" id="Sq2-Sc-1rV"/>
-                <outlet property="riderImageView2" destination="URE-va-sWD" id="QwE-gB-fOa"/>
-                <outlet property="riderImageView3" destination="lSt-h2-UiR" id="lNp-ch-HXi"/>
-                <outlet property="riderLabel1" destination="1ft-Zg-T9n" id="1Yn-xf-MhF"/>
-                <outlet property="riderLabel2" destination="0Mv-iT-BOd" id="gNT-qy-V7O"/>
-                <outlet property="riderLabel3" destination="yll-81-PUN" id="9RD-fg-K61"/>
-                <outlet property="riderSectionTitleLabel" destination="Sdk-is-gH6" id="Ol4-Rh-dai"/>
-                <outlet property="segmentedButton" destination="fM4-jK-FhX" id="BHF-QV-8yh"/>
-            </connections>
-        </view>
         <view contentMode="scaleToFill" id="RWM-tO-NBZ" userLabel="Rider: Ride Details" customClass="VCRideDetailsConfirmationView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="635"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -682,7 +347,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Ride Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcp-j6-xAA" customClass="VCLabel">
+                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ride Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcp-j6-xAA" customClass="VCLabel">
                     <rect key="frame" x="127" y="413" width="182" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
@@ -699,10 +364,10 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Value" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R4l-5d-Vc0" customClass="VCLabel">
-                    <rect key="frame" x="127" y="413" width="182" height="21"/>
+                    <rect key="frame" x="127" y="413" width="161" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="182" id="Mvl-dT-OzF"/>
+                        <constraint firstAttribute="width" constant="161" id="Mvl-dT-OzF"/>
                         <constraint firstAttribute="height" constant="21" id="gvT-bQ-1JT"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -892,7 +557,7 @@
                 <constraint firstItem="iq0-8h-goE" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" id="QXC-PW-sGs"/>
                 <constraint firstItem="vBd-Mx-Cx3" firstAttribute="top" secondItem="RWM-tO-NBZ" secondAttribute="top" id="Rby-Jo-doe"/>
                 <constraint firstItem="iq0-8h-goE" firstAttribute="top" secondItem="smm-lU-ouO" secondAttribute="bottom" constant="4" id="VQT-Pn-Mio"/>
-                <constraint firstAttribute="trailing" secondItem="R4l-5d-Vc0" secondAttribute="trailing" constant="11" id="WyK-RW-TIT"/>
+                <constraint firstAttribute="trailing" secondItem="R4l-5d-Vc0" secondAttribute="trailing" constant="32" id="WyK-RW-TIT"/>
                 <constraint firstItem="Qz2-lZ-23U" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" constant="75" id="YYC-hx-qSa"/>
                 <constraint firstItem="oc4-Pp-acs" firstAttribute="top" secondItem="aeQ-Xu-ULg" secondAttribute="bottom" constant="-85" id="a77-d1-HbB"/>
                 <constraint firstItem="1nW-T7-6PG" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" constant="33" id="adn-X9-6Ca"/>
@@ -902,9 +567,11 @@
                 <constraint firstItem="f9u-kb-YvT" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" constant="17" id="gJM-Ij-2Q4"/>
                 <constraint firstItem="0Mv-iT-BOd" firstAttribute="leading" secondItem="hBK-u4-kFo" secondAttribute="trailing" constant="1" id="hil-23-y5Z"/>
                 <constraint firstItem="hBK-u4-kFo" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" id="hmt-vq-huJ"/>
+                <constraint firstAttribute="trailing" secondItem="kcp-j6-xAA" secondAttribute="trailing" constant="11" id="htj-rh-nO5"/>
                 <constraint firstItem="nx0-ot-14p" firstAttribute="top" secondItem="0Mv-iT-BOd" secondAttribute="bottom" constant="22" id="ibG-0A-TZz"/>
                 <constraint firstItem="smm-lU-ouO" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" constant="17" id="lTx-Ju-CeT"/>
                 <constraint firstItem="oc4-Pp-acs" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" id="mgP-0D-JzM"/>
+                <constraint firstItem="kcp-j6-xAA" firstAttribute="top" secondItem="Zgy-fF-cwL" secondAttribute="bottom" constant="4" id="o8y-sB-tdr"/>
                 <constraint firstItem="fLf-hD-OJd" firstAttribute="leading" secondItem="i6s-VW-kkM" secondAttribute="trailing" constant="8" id="rNL-Po-ZTB"/>
                 <constraint firstItem="nx0-ot-14p" firstAttribute="top" secondItem="iha-zj-PjZ" secondAttribute="bottom" constant="116" id="tea-6q-pzv"/>
                 <constraint firstItem="oc4-Pp-acs" firstAttribute="top" secondItem="fLf-hD-OJd" secondAttribute="bottom" constant="-85" id="uEv-S8-Ba3"/>
@@ -912,6 +579,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="carTypeLabel" destination="f9u-kb-YvT" id="YK3-51-TJr"/>
                 <outlet property="carTypeValueLabel" destination="R4l-5d-Vc0" id="Yek-xU-rBX"/>
                 <outlet property="cardNicknamelabel" destination="fLf-hD-OJd" id="4yz-9d-26f"/>
                 <outlet property="cardNumberLabel" destination="aeQ-Xu-ULg" id="ynr-xF-jUo"/>
@@ -921,10 +589,18 @@
                 <outlet property="driverNameLabel" destination="CIS-vw-GPg" id="oB8-bg-7gD"/>
                 <outlet property="driverPhotoImageView" destination="vBd-Mx-Cx3" id="cKg-xX-Lcp"/>
                 <outlet property="fareLabel" destination="UXb-UY-V0U" id="kJM-9s-2VA"/>
+                <outlet property="licenseLabel" destination="iha-zj-PjZ" id="y1S-il-Prl"/>
                 <outlet property="licenseValueLabel" destination="LMV-AV-c4O" id="trE-6b-M2O"/>
                 <outlet property="pickupTimeLabel" destination="Zgy-fF-cwL" id="3qI-YI-2FF"/>
+                <outlet property="rideTimeLabel" destination="iq0-8h-goE" id="bjn-fK-aih"/>
+                <outlet property="rideTimeValueLabel" destination="kcp-j6-xAA" id="owZ-V0-tAn"/>
+                <outlet property="riderFirstNameLabel1" destination="hBK-u4-kFo" id="o2C-8h-WQJ"/>
+                <outlet property="riderFirstNameLabel2" destination="0Mv-iT-BOd" id="4Yg-5j-mWL"/>
+                <outlet property="riderFirstNameLabel3" destination="yll-81-PUN" id="Gvh-SP-aDx"/>
+                <outlet property="riderImageView1" destination="Fep-l0-bYy" id="lyb-Ud-qHn"/>
                 <outlet property="riderImageView2" destination="Fm0-NN-r1s" id="Dgq-QD-iun"/>
-                <outlet property="riderLabel1" destination="hBK-u4-kFo" id="cgh-nm-ETp"/>
+                <outlet property="riderImageView3" destination="lSt-h2-UiR" id="5bO-eB-bAN"/>
+                <outlet property="riderSectionTitleLabel" destination="Sdk-is-gH6" id="ea1-XS-AEC"/>
                 <outlet property="segmentedButton" destination="Qz2-lZ-23U" id="Ubq-W8-VSg"/>
             </connections>
         </view>

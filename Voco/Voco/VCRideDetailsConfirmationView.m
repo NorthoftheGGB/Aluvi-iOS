@@ -21,12 +21,13 @@
 
 // If Driver
 
-- (void) hideCarInfo {
+- (void) hideForDriver {
     
-    _driverNameLabel
-    _driverPhotoImageView
-    _carTypeLabel
-    _licenseLabel
+    _driverNameLabel;
+    _driverPhotoImageView;
+    _carTypeLabel;
+    _licenseLabel;
+    
     
 }
 

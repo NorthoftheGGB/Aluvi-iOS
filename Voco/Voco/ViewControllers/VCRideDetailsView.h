@@ -26,7 +26,7 @@
 @property (weak, nonatomic) IBOutlet VCLabel *carTypeValueLabel;
 
 
-- (void) hideCarInfo;
-- (void) showCarInfo;
+- (void) hideCarValues;
+//- (void) showCarValues;
 
 @end
