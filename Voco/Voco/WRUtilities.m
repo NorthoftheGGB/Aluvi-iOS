@@ -83,6 +83,31 @@ static UIAlertView * networkUnavailableErrorView = nil;
     
 }
 
+
++ (void) subcriticaError: (NSError *) error {
+
+    NSString * errorString = [NSString stringWithFormat:@"%@ Error: %@", [[NSDate date] pretty], [error debugDescription]];
+    NSLog(@"%@", errorString);
+    [[VCDebug sharedInstance] apiLog:errorString];
+    
+#if DEBUG==1
+    if(criticalErrorView != nil){
+        [criticalErrorView dismissWithClickedButtonIndex:0 animated:NO];
+    }
+    
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle: @"Critical Error"
+                          message: [error debugDescription]
+                          delegate: nil
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil];
+    criticalErrorView = alert;
+    [alert show];
+#else
+    CLS_LOG(@"%@ Critical Error: %@", [[NSDate date] pretty] , error);
+#endif
+}
+
 + (void) subcriticalErrorWithString: (NSString *) error {
     
     NSString * errorString = [NSString stringWithFormat:@"%@ Error: %@", [[NSDate date] pretty] , error];

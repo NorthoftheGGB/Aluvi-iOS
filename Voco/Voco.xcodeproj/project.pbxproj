@@ -1711,7 +1711,7 @@
 		F4F6B8B719A9898E004312A1 /* VCNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCNotifications.m; sourceTree = "<group>"; };
 		F4F6B8BC19A9ADEF004312A1 /* HVTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HVTableView.h; path = ../../Submodules/HVTableView/HRVTableView/HVTableView.h; sourceTree = "<group>"; };
 		F4F6B8BD19A9ADEF004312A1 /* HVTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HVTableView.m; path = ../../Submodules/HVTableView/HRVTableView/HVTableView.m; sourceTree = "<group>"; };
-		F4FA0BE4192BF6BF005D8645 /* Voco Alpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Voco Alpha.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4FA0BE4192BF6BF005D8645 /* Aluvi Alpha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aluvi Alpha.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4FA0BE7192BF6BF005D8645 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F4FA0BE9192BF6BF005D8645 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		F4FA0BEB192BF6BF005D8645 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -2654,7 +2654,7 @@
 		F4FA0BE5192BF6BF005D8645 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F4FA0BE4192BF6BF005D8645 /* Voco Alpha.app */,
+				F4FA0BE4192BF6BF005D8645 /* Aluvi Alpha.app */,
 				F4FA0C04192BF6BF005D8645 /* VocoTests.xctest */,
 				F4354DCF195D0D6A00C06CF7 /* Voco Testing.app */,
 				F4C6B29A197F06B100F6C10B /* Aluvi Dev.app */,
@@ -2880,7 +2880,7 @@
 			);
 			name = "Aluvi Alpha";
 			productName = Voco;
-			productReference = F4FA0BE4192BF6BF005D8645 /* Voco Alpha.app */;
+			productReference = F4FA0BE4192BF6BF005D8645 /* Aluvi Alpha.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F4FA0C03192BF6BF005D8645 /* VocoTests */ = {
@@ -4419,7 +4419,7 @@
 				INFOPLIST_FILE = "Voco Testing-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "Voco Testing";
-				PROVISIONING_PROFILE = "18dba206-3530-4c60-88c7-92f5760b3821";
+				PROVISIONING_PROFILE = "3a51bdaf-593d-46be-9a36-b379d6162ab8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4446,7 +4446,7 @@
 				INFOPLIST_FILE = "Voco Testing-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "Voco Testing";
-				PROVISIONING_PROFILE = "18dba206-3530-4c60-88c7-92f5760b3821";
+				PROVISIONING_PROFILE = "3a51bdaf-593d-46be-9a36-b379d6162ab8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

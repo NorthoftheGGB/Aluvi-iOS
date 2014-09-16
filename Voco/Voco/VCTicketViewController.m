@@ -394,7 +394,7 @@
                 _rideDetailsConfirmation.driverNameLabel.text = [_ticket.driver fullName];
                 _rideDetailsConfirmation.carTypeLabel.text = [_ticket.car summary];
                 _rideDetailsConfirmation.licenseLabel.text = _ticket.car.licensePlate;
-                //_rideDetailsConfirmation.fareLabel.text = _ride.estimatedFareAmount;
+                _rideDetailsConfirmation.fareLabel.text = [VCUtilities formatCurrencyFromCents:_ticket.fixedPrice];
                 _rideDetailsConfirmation.cardNicknamelabel.text = [VCUserStateManager instance].profile.cardBrand;
                 _rideDetailsConfirmation.cardNumberLabel.text = [VCUserStateManager instance].profile.cardLastFour;
                 _rideDetailsConfirmation.fareLabel.text = [VCUtilities formatCurrencyFromCents: _ticket.fixedPrice];
@@ -1166,7 +1166,7 @@
     } else {
         _fareDetailsView.driveTimeLabel.text = [_ticket.pickupTime time];
         _fareDetailsView.dateLabel.text = [_ticket.pickupTime monthAndDay];
-        _fareDetailsView.fareEarningsLabel.text = [NSString stringWithFormat:@"$%.0f", [_ticket.hovFare.estimatedEarnings floatValue] ];
+        _fareDetailsView.fareEarningsLabel.text = [VCUtilities formatCurrencyFromCents:_ticket.hovFare.estimatedEarnings ];
         _fareDetailsView.driveDistanceLabel.text = @"";
         _fareDetailsView.numberOfPeopleLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)[_ticket.hovFare.riders count] ];
         

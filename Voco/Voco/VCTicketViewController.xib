@@ -1170,14 +1170,14 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Py0-5b-pY6" customClass="VCLabelBold">
-                    <rect key="frame" x="25" y="17" width="72" height="51"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$18.22" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Py0-5b-pY6" customClass="VCLabelBold">
+                    <rect key="frame" x="9" y="22" width="104" height="51"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="51" id="JsU-pa-9sv"/>
-                        <constraint firstAttribute="width" constant="72" id="bhd-b0-R9t"/>
+                        <constraint firstAttribute="width" constant="104" id="bhd-b0-R9t"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
                     <color key="textColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
                     <nil key="highlightedColor"/>
                     <userDefinedRuntimeAttributes>
@@ -1253,18 +1253,18 @@
             </subviews>
             <constraints>
                 <constraint firstItem="Qqd-Za-IRl" firstAttribute="top" secondItem="BIA-LF-bpT" secondAttribute="bottom" constant="4" id="4Xx-3P-tAd"/>
-                <constraint firstItem="Py0-5b-pY6" firstAttribute="leading" secondItem="gCJ-mG-bEK" secondAttribute="leading" constant="25" id="6Ad-gQ-Xbz"/>
+                <constraint firstItem="Py0-5b-pY6" firstAttribute="leading" secondItem="gCJ-mG-bEK" secondAttribute="leading" constant="9" id="6Ad-gQ-Xbz"/>
                 <constraint firstItem="2Lc-Aq-vNj" firstAttribute="leading" secondItem="gCJ-mG-bEK" secondAttribute="leading" id="8dR-bK-Uko"/>
                 <constraint firstAttribute="trailing" secondItem="5uK-tQ-ftw" secondAttribute="trailing" constant="20" id="CeY-oH-S8Q"/>
                 <constraint firstAttribute="bottom" secondItem="2Lc-Aq-vNj" secondAttribute="bottom" constant="8" id="HCw-Bi-j8S"/>
                 <constraint firstAttribute="trailing" secondItem="Qqd-Za-IRl" secondAttribute="trailing" constant="20" id="Hhg-jz-iGa"/>
                 <constraint firstItem="wXv-xf-agA" firstAttribute="top" secondItem="oSh-xN-FjK" secondAttribute="bottom" constant="-78" id="Itf-oL-coS"/>
-                <constraint firstItem="Ms8-1C-4Kv" firstAttribute="top" secondItem="Py0-5b-pY6" secondAttribute="bottom" constant="-4" id="KFK-uS-y3T"/>
+                <constraint firstItem="Ms8-1C-4Kv" firstAttribute="top" secondItem="Py0-5b-pY6" secondAttribute="bottom" constant="-9" id="KFK-uS-y3T"/>
                 <constraint firstItem="lFl-3K-Vtp" firstAttribute="leading" secondItem="gCJ-mG-bEK" secondAttribute="leading" constant="13" id="M7q-vT-Mf1"/>
                 <constraint firstItem="Ms8-1C-4Kv" firstAttribute="leading" secondItem="gCJ-mG-bEK" secondAttribute="leading" constant="29" id="N0E-NJ-prG"/>
                 <constraint firstItem="wXv-xf-agA" firstAttribute="leading" secondItem="gCJ-mG-bEK" secondAttribute="leading" id="QbP-sl-1Ih"/>
                 <constraint firstItem="Hex-Ko-fHc" firstAttribute="leading" secondItem="gCJ-mG-bEK" secondAttribute="leading" constant="20" id="Wxi-bC-fSz"/>
-                <constraint firstItem="wXv-xf-agA" firstAttribute="top" secondItem="Py0-5b-pY6" secondAttribute="bottom" constant="-68" id="bxu-fE-Q9h"/>
+                <constraint firstItem="wXv-xf-agA" firstAttribute="top" secondItem="Py0-5b-pY6" secondAttribute="bottom" constant="-73" id="bxu-fE-Q9h"/>
                 <constraint firstItem="je8-Z7-8na" firstAttribute="top" secondItem="Hex-Ko-fHc" secondAttribute="bottom" constant="4" id="czI-9G-kj0"/>
                 <constraint firstItem="Hex-Ko-fHc" firstAttribute="top" secondItem="lFl-3K-Vtp" secondAttribute="bottom" constant="4" id="diM-jt-HpI"/>
                 <constraint firstItem="5uK-tQ-ftw" firstAttribute="top" secondItem="Qqd-Za-IRl" secondAttribute="bottom" constant="4" id="hzo-Ws-tuj"/>

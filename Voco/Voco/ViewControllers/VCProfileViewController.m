@@ -21,7 +21,6 @@
 
 
 @interface VCProfileViewController ()
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 
 //User Image + Controls
@@ -82,6 +81,11 @@
     NSString * build = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
     _versionLabel.text = [NSString stringWithFormat:@"v%@b%@", version, build];
 
+}
+
+- (void) didTapHamburger {
+    [self dismissKeyboard:self];
+    [super didTapHamburger];
 }
 
 - (void) dismissKeyboard:(id) sender{
