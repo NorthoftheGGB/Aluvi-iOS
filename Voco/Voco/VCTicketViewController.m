@@ -102,9 +102,18 @@
 @property (weak, nonatomic) IBOutlet VCLabel *returnTimeLabel;
 - (IBAction)didTapReturnHud:(id)sender;
 
-//Ride Details / Ride Status
-@property (strong, nonatomic) IBOutlet UIView *waitingScreen;
-@property (strong, nonatomic) IBOutlet VCRideDetailsConfirmationView *rideDetailsConfirmation;
+//Holding Screen
+@property (strong, nonatomic) IBOutlet UIView *holdingScreen;
+@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *showRideDetailsButton;
+@property (weak, nonatomic) IBOutlet VCLabel *rideRequestStatusLabel;
+@property (weak, nonatomic) IBOutlet VCLabel *rideRequestDetailLabel;
+@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *okButton;
+
+//Ride Details
+@property (strong, nonatomic) IBOutlet VCRideDetailsConfirmationView * rideDetailsConfirmation;
+@property (strong, nonatomic) UIScrollView * scrollView;
+
+//RideOverview
 @property (strong, nonatomic) IBOutlet VCRideDetailsHudView *rideDetailsHud;
 
 // Data Entry
@@ -123,6 +132,7 @@
 - (IBAction)didTapScheduleRide:(id)sender;
 - (IBAction)didTapNextButton:(id)sender;
 - (IBAction)didTapHovDriveYesButton:(id)sender;
+- (IBAction)didTapshowRideDetailsButton:(id)sender;
 
 
 // HOV Driver
@@ -348,7 +358,7 @@
         [self addOriginAnnotation: [_ticket originLocation] ];
         [self addDestinationAnnotation: [_ticket destinationLocation]];
         [self showSuggestedRoute: [_ticket originLocation] to:[_ticket destinationLocation]];
-        [self.view addSubview:self.waitingScreen];
+        [self.view addSubview:self.holdingScreen];
         
     } else if([_ticket.state isEqualToString:kScheduledState]){
         //[self addOriginAnnotation: [_ticket originLocation] ];
@@ -398,11 +408,18 @@
                 _rideDetailsConfirmation.cardNicknamelabel.text = [VCUserStateManager instance].profile.cardBrand;
                 _rideDetailsConfirmation.cardNumberLabel.text = [VCUserStateManager instance].profile.cardLastFour;
                 _rideDetailsConfirmation.fareLabel.text = [VCUtilities formatCurrencyFromCents: _ticket.fixedPrice];
-                CGRect frame = _rideDetailsConfirmation.frame;
+                
+                self.scrollView = [[UIScrollView alloc] init];
+                self.scrollView.frame = self.view.frame;
+                [self.view addSubview:self.scrollView];
+                [self.scrollView setContentSize:_rideDetailsConfirmation.frame.size];
+                [self.scrollView addSubview:_rideDetailsConfirmation];
+                
+                /*CGRect frame = _rideDetailsConfirmation.frame;
                 frame.origin.x = 0;
                 frame.origin.y = self.view.frame.size.height - 480;
                 _rideDetailsConfirmation.frame = frame;
-                [self.view addSubview:_rideDetailsConfirmation];
+                [self.view addSubview:_rideDetailsConfirmation];*/
             }
             
         }
@@ -546,7 +563,7 @@
 }
 
 - (void) removeHuds {
-    [_waitingScreen removeFromSuperview];
+    [_holdingScreen removeFromSuperview];
     [_pickupHudView removeFromSuperview];
     [_homeLocationWidget.view removeFromSuperview];
     [_workLocationWidget.view removeFromSuperview];
@@ -697,7 +714,7 @@
 - (void) transitionToWaitingScreen {
     //TODO improve animations
     [_scheduleRideButton removeFromSuperview];
-    [self.view addSubview:self.waitingScreen];
+    [self.view addSubview:self.holdingScreen];
     [self removeCancelBarButton];
 }
 
@@ -951,6 +968,9 @@
         _hovDriveYesButton.selected = YES;
         [VCCommuteManager instance].driving = YES;
     }
+}
+
+- (IBAction)didTapshowRideDetailsButton:(id)sender {
 }
 
 - (IBAction)didTapPickupHud:(id)sender {

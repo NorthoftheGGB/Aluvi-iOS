@@ -11,12 +11,35 @@
 
 @interface VCRideDetailsConfirmationView : VCRideDetailsView
 
-@property (weak, nonatomic) IBOutlet VCLabel *pickupTimeLabel;
-@property (weak, nonatomic) IBOutlet VCLabelBold *driverNameLabel;
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedButton;
 
 @property (weak, nonatomic) IBOutlet VCButtonStandardStyle *confirmButton;
 
-@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *didTapConfirmButton;
+- (IBAction)didTapConfirmButton:(id)sender;
+
 @property (weak, nonatomic) IBOutlet UIImageView *driverPhotoImageView;
+
+//Details
+
+@property (weak, nonatomic) IBOutlet VCLabel *pickupTimeLabel;
+@property (weak, nonatomic) IBOutlet VCLabel *totalRideTimeLabel;
+@property (weak, nonatomic) IBOutlet VCLabelBold *driverNameLabel;
+
+
+//Riders
+@property (weak, nonatomic) IBOutlet VCLabel *riderSectionTitleLabel;
+
+@property (weak, nonatomic) IBOutlet UIImageView *riderImageView1;
+
+@property (weak, nonatomic) IBOutlet UIImageView *riderImageView2;
+
+@property (weak, nonatomic) IBOutlet UIImageView *riderImageView3;
+
+
+@property (weak, nonatomic) IBOutlet VCLabel *riderLabel1;
+@property (weak, nonatomic) IBOutlet VCLabel *riderLabel2;
+@property (weak, nonatomic) IBOutlet VCLabel *riderLabel3;
+
 
 @end
