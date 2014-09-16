@@ -45,5 +45,5 @@
 @property (weak, nonatomic) IBOutlet VCLabel *riderFirstNameLabel2;
 @property (weak, nonatomic) IBOutlet VCLabel *riderFirstNameLabel3;
 
-- (void) hideForDriver;
+- (void) showDriverDetails;
 @end

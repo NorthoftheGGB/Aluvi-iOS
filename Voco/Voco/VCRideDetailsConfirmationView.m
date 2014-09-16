@@ -21,12 +21,15 @@
 
 // If Driver
 
-- (void) hideForDriver {
+- (void) showDriverDetails {
     
-    _driverNameLabel;
-    _driverPhotoImageView;
-    _carTypeLabel;
-    _licenseLabel;
+    _driverNameLabel.hidden = true;
+    _driverPhotoImageView.hidden = true;
+    _carTypeLabel.hidden = true;
+    _licenseLabel.hidden = true;
+    _rideTimeLabel = false;
+    _rideTimeValueLabel = false;
+    _riderSectionTitleLabel.text = [NSString stringWithFormat:@"Your Riders :"];
     
     
 }
