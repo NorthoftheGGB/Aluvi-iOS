@@ -242,6 +242,8 @@
         [[VCDialogs instance] commuteFulfilled];
         [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationTypeTripFulfilled object:payload];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"schedule_updated" object:self];
+
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             //
         }];
@@ -251,6 +253,8 @@
         [[VCDialogs instance] commuteUnfulfilled];
         [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationTypeTripUnfulfilled object:payload];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"schedule_updated" object:self];
+
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             //
         }];
