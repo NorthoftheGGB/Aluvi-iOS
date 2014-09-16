@@ -654,6 +654,8 @@
 		F4792AF71976492D005AB652 /* VCDriverGeoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F4792AF51976492D005AB652 /* VCDriverGeoObject.m */; };
 		F49EDD0C1946D27F0020B8BB /* VCRiderHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F49EDD0A1946D27F0020B8BB /* VCRiderHomeViewController.xib */; };
 		F49EDD101946E2F90020B8BB /* VCInterfaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD0F1946E2F90020B8BB /* VCInterfaceManager.m */; };
+		F4A5654819C8F3EA0030104D /* Aluvi-Privacy-Policy.html in Resources */ = {isa = PBXBuildFile; fileRef = 4F38976119B8298200A75C5C /* Aluvi-Privacy-Policy.html */; };
+		F4A5654919C8F3EC0030104D /* Aluvi-TOS.html in Resources */ = {isa = PBXBuildFile; fileRef = 4F38976219B8298200A75C5C /* Aluvi-TOS.html */; };
 		F4A7C80519623C70007E05AD /* Transit.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C80419623C70007E05AD /* Transit.m */; };
 		F4A7C80619623C70007E05AD /* Transit.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C80419623C70007E05AD /* Transit.m */; };
 		F4A7C80A19625237007E05AD /* VCDebugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C80819625237007E05AD /* VCDebugViewController.m */; };
@@ -3399,6 +3401,7 @@
 				F4D8FF0519B1745A00BC0B69 /* button-default@2x.png in Resources */,
 				F4D8FF0619B1745A00BC0B69 /* gradient@2x.png in Resources */,
 				F4D8FF0719B1745A00BC0B69 /* VCReceiptsViewController.xib in Resources */,
+				F4A5654819C8F3EA0030104D /* Aluvi-Privacy-Policy.html in Resources */,
 				F4D8FF0819B1745A00BC0B69 /* profile-button@2x.png in Resources */,
 				F4D8FF0919B1745A00BC0B69 /* hamburger@2x.png in Resources */,
 				F4D8FF0A19B1745A00BC0B69 /* overlay-graphic@2x.png in Resources */,
@@ -3439,6 +3442,7 @@
 				F4D8FF2D19B1745A00BC0B69 /* VCDriverSubMenuItemTableViewCell.xib in Resources */,
 				F4D8FF2E19B1745A00BC0B69 /* VCRiderOnBoardingViewController.xib in Resources */,
 				F4D8FF2F19B1745A00BC0B69 /* VCDriveViewController.xib in Resources */,
+				F4A5654919C8F3EC0030104D /* Aluvi-TOS.html in Resources */,
 				F4D8FF3019B1745A00BC0B69 /* mycar-menu-button@2x.png in Resources */,
 				F4D8FF3119B1745A00BC0B69 /* VCLogInViewController.xib in Resources */,
 				F4D8FF3219B1745A00BC0B69 /* mycar-menu-button-selected@2x.png in Resources */,
