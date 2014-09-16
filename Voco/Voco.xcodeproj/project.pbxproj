@@ -4637,6 +4637,11 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Voco/Voco-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"ALPHA=1",
+				);
 				INFOPLIST_FILE = "Voco/Voco-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -4662,7 +4667,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
-					"RELEASE=1",
+					"ALPHA=1",
 				);
 				INFOPLIST_FILE = "Voco/Voco-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
