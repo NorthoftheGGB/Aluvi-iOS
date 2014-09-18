@@ -1581,8 +1581,8 @@
 
 - (void) displayDriverRideDetails {
     
-    [self hideCarValues];
-    [self showDriverDetails];
+    //[self hideCarValues];
+    //[self showDriverDetails];
 
     
 }
