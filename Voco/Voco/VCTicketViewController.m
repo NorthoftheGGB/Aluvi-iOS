@@ -102,12 +102,13 @@
 @property (weak, nonatomic) IBOutlet VCLabel *returnTimeLabel;
 - (IBAction)didTapReturnHud:(id)sender;
 
-//Holding Screen
+//Holding Screen / Confirmation Screen
 @property (strong, nonatomic) IBOutlet UIView *holdingScreen;
 @property (weak, nonatomic) IBOutlet VCButtonStandardStyle *showRideDetailsButton;
 @property (weak, nonatomic) IBOutlet VCLabel *rideRequestStatusLabel;
 @property (weak, nonatomic) IBOutlet VCLabel *rideRequestDetailLabel;
 @property (weak, nonatomic) IBOutlet VCButtonStandardStyle *okButton;
+- (IBAction)didTapOKButton:(id)sender;
 
 //Ride Details
 @property (strong, nonatomic) IBOutlet VCRideDetailsConfirmationView * rideDetailsConfirmation;
@@ -1544,9 +1545,39 @@
                        }];
     
 }
+//TO DO: here are the methods for the Confirmation Screen
+
+/*
+ Confirmation Screen: Ride Request Approved
+ 
+ - Show “showRideDetailsButton”
+ - rideRequestStatusLabel - change text string to: "Your ride to and from work is ready!"
+ 
+ didTapShowRideDetailsButton ==> takes you to Ride Details*/
+
+- (void) transitionToRideRequestApproved{
+    _rideRequestStatusLabel.text = [NSString stringWithFormat:@"Your ride to and from work is ready!"];
+    [self showRideDetailsButton];
+}
+
+/*
+ Confirmation Screen: Ride Request Denied
+ 
+ - rideRequestStatusLabel - change text string to: “Sorry, we were unable to fulfill your ride request."
+ - rideRequestDetailLabel - change text string to: “Would you like to try again for the next day?"
+ 
+ - Show okButton
+ - didTapOK - takes you back to the map with edit commute button. */
+
+- (void) transitionToRideRequestDenied{
+    _rideRequestStatusLabel.text = [NSString stringWithFormat:@"Sorry, we were unable to fulfill your ride request."];
+    _rideRequestDetailLabel.text = [NSString stringWithFormat:@"If you would like to schedule a commute for the following day, please try again tomorrow."];
+    [self okButton];
+    
+}
 
 
 
-
-
+- (IBAction)didTapOKButton:(id)sender {
+}
 @end
