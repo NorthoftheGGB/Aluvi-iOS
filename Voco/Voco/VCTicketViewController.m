@@ -1545,7 +1545,7 @@
                        }];
     
 }
-//TO DO: here are the methods for the Confirmation Screen
+//TODO: here are the methods for the Confirmation Screen
 
 /*
  Confirmation Screen: Ride Request Approved
@@ -1577,6 +1577,15 @@
     
 }
 
+//TODO: here are the methods for displaying the DRIVER Ride Details
+
+- (void) displayDriverRideDetails {
+    
+    [self hideCarValues];
+    [self showDriverDetails];
+
+    
+}
 
 
 - (IBAction)didTapOKButton:(id)sender {

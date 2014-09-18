@@ -19,7 +19,7 @@
     return self;
 }
 
-- (void) hideCarvalues {
+- (void) hideCarValues {
     _licenseValueLabel.hidden = true;
     _carTypeValueLabel.hidden = true;
 }
