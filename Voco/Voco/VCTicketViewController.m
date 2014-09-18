@@ -1572,6 +1572,7 @@
 - (void) transitionToRideRequestDenied{
     _rideRequestStatusLabel.text = [NSString stringWithFormat:@"Sorry, we were unable to fulfill your ride request."];
     _rideRequestDetailLabel.text = [NSString stringWithFormat:@"If you would like to schedule a commute for the following day, please try again tomorrow."];
+    
     [self okButton];
     
 }
