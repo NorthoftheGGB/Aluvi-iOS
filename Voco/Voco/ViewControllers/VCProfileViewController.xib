@@ -51,7 +51,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fYN-K8-URI" customClass="VCTextField">
-                    <rect key="frame" x="9" y="124" width="303" height="30"/>
+                    <rect key="frame" x="9" y="77" width="303" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="303" id="2VW-HF-9oy"/>
@@ -69,7 +69,7 @@
                     </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qf9-53-MIF" customClass="VCTextField">
-                    <rect key="frame" x="9" y="162" width="303" height="30"/>
+                    <rect key="frame" x="9" y="115" width="303" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="OFs-4k-9kw"/>
@@ -87,7 +87,7 @@
                     </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ljN-fv-dwb" customClass="VCTextField">
-                    <rect key="frame" x="9" y="200" width="303" height="30"/>
+                    <rect key="frame" x="9" y="153" width="303" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="qO2-Fk-b0S"/>
@@ -123,7 +123,7 @@
                     </connections>
                 </textField>
                 <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5mb-IJ-dxQ" customClass="VCTextField">
-                    <rect key="frame" x="9" y="244" width="303" height="30"/>
+                    <rect key="frame" x="9" y="197" width="303" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="43t-Je-ZG5"/>
@@ -141,7 +141,7 @@
                     </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJP-fi-epG" customClass="VCButtonStandardStyle">
-                    <rect key="frame" x="9" y="337" width="303" height="28"/>
+                    <rect key="frame" x="9" y="290" width="303" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.96542171560000001" green="0.96542171560000001" blue="0.96542171560000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -168,7 +168,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v0.0b0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faT-jo-LTb">
-                    <rect key="frame" x="261" y="408" width="45" height="21"/>
+                    <rect key="frame" x="261" y="361" width="45" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="Dnt-RK-2cs"/>
@@ -178,7 +178,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6j1-PT-iSR" customClass="VCButtonStandardStyle">
-                    <rect key="frame" x="125" y="404" width="69" height="30"/>
+                    <rect key="frame" x="125" y="357" width="69" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="8f3-tq-UPt"/>
@@ -203,16 +203,16 @@
                 <constraint firstItem="GJP-fi-epG" firstAttribute="top" secondItem="5mb-IJ-dxQ" secondAttribute="bottom" constant="63" id="1Qi-KQ-1ZC"/>
                 <constraint firstAttribute="trailing" secondItem="faT-jo-LTb" secondAttribute="trailing" constant="14" id="1Zs-ty-CC6"/>
                 <constraint firstItem="rSS-yk-gN7" firstAttribute="top" secondItem="bC0-fy-Fem" secondAttribute="top" id="5Sz-Y1-dIa"/>
-                <constraint firstAttribute="bottom" secondItem="faT-jo-LTb" secondAttribute="bottom" constant="18" id="DcZ-G8-u6Z"/>
+                <constraint firstAttribute="bottom" secondItem="faT-jo-LTb" secondAttribute="bottom" constant="65" id="DcZ-G8-u6Z"/>
                 <constraint firstAttribute="trailing" secondItem="rSS-yk-gN7" secondAttribute="trailing" id="EaV-Fg-qcS"/>
-                <constraint firstAttribute="bottom" secondItem="6j1-PT-iSR" secondAttribute="bottom" constant="13" id="G6L-H5-BPI"/>
-                <constraint firstItem="fYN-K8-URI" firstAttribute="top" secondItem="bC0-fy-Fem" secondAttribute="top" constant="124" id="KbA-Lw-lGt"/>
-                <constraint firstItem="5mb-IJ-dxQ" firstAttribute="top" secondItem="AZs-m8-oR6" secondAttribute="bottom" constant="-24" id="Kxp-pr-vfG"/>
+                <constraint firstAttribute="bottom" secondItem="6j1-PT-iSR" secondAttribute="bottom" constant="60" id="G6L-H5-BPI"/>
+                <constraint firstItem="fYN-K8-URI" firstAttribute="top" secondItem="bC0-fy-Fem" secondAttribute="top" constant="77" id="KbA-Lw-lGt"/>
+                <constraint firstItem="5mb-IJ-dxQ" firstAttribute="top" secondItem="AZs-m8-oR6" secondAttribute="bottom" constant="-71" id="Kxp-pr-vfG"/>
                 <constraint firstItem="ljN-fv-dwb" firstAttribute="leading" secondItem="bC0-fy-Fem" secondAttribute="leading" constant="9" id="Mjl-86-lU2"/>
                 <constraint firstItem="rSS-yk-gN7" firstAttribute="leading" secondItem="bC0-fy-Fem" secondAttribute="leading" id="PIk-Bb-5rb"/>
                 <constraint firstItem="6j1-PT-iSR" firstAttribute="leading" secondItem="bC0-fy-Fem" secondAttribute="leading" constant="125" id="RD3-fL-h6q"/>
                 <constraint firstItem="GJP-fi-epG" firstAttribute="leading" secondItem="bC0-fy-Fem" secondAttribute="leading" constant="9" id="RHi-cB-ibe"/>
-                <constraint firstItem="AZs-m8-oR6" firstAttribute="top" secondItem="ljN-fv-dwb" secondAttribute="bottom" constant="8" id="XAf-bU-205"/>
+                <constraint firstItem="AZs-m8-oR6" firstAttribute="top" secondItem="ljN-fv-dwb" secondAttribute="bottom" constant="55" id="XAf-bU-205"/>
                 <constraint firstItem="AZs-m8-oR6" firstAttribute="leading" secondItem="bC0-fy-Fem" secondAttribute="leading" constant="9" id="geN-Kz-umD"/>
                 <constraint firstItem="fYN-K8-URI" firstAttribute="leading" secondItem="bC0-fy-Fem" secondAttribute="leading" constant="9" id="hAn-6J-Czy"/>
                 <constraint firstItem="5mb-IJ-dxQ" firstAttribute="leading" secondItem="bC0-fy-Fem" secondAttribute="leading" constant="9" id="jsN-Lx-PoR"/>

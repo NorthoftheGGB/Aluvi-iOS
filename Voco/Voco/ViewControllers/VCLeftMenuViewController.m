@@ -79,7 +79,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
-        [self loadScheduleItems];
         
         if([[VCUserStateManager instance] isHovDriver]){
             _tableCellList = [NSMutableArray arrayWithArray: @[kUserInfoCell, kMapCell, kDriverSettingsCell, kPaymentCell, kReceiptsCell, kSupportCell ]];
@@ -89,7 +88,7 @@
         }
         _selectedCellTag = -1;
 
-        
+        [self loadScheduleItems];
         [self countNotificaitons];
 
     }
@@ -107,19 +106,9 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
- 
     
     [self loadScheduleItems];
-    if([_scheduleItems count] > 0 && [_tableCellList indexOfObject:kScheduleCell] == NSNotFound){
-        [_tableCellList insertObject:kScheduleCell atIndex:1];
-        [_tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
-
-    } else if ([_scheduleItems count] == 0 && [_tableCellList indexOfObject:kScheduleCell] != NSNotFound){
-        [_tableCellList removeObject:kScheduleCell];
-        [_tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
-
-    }
-    
+    [self showOrHideScheduleCell];
 }
 
 - (void) dealloc {
@@ -129,6 +118,8 @@
 - (void) scheduleUpdated:(NSNotification *) notification {
     // just reload the table ?
     [self hideScheduleItems];
+    [self loadScheduleItems];
+    [self showOrHideScheduleCell];
     [self showScheduleItems];
     [self countNotificaitons];
     [_tableView reloadData];
@@ -348,6 +339,10 @@
         }
     }
     
+    if(cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"NONE"];
+        cell.textLabel.text = @"Error";
+    }
     return cell;
     
 }
@@ -398,6 +393,7 @@
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"schedule_updated" object:self];
                 } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                 }];
+                [self loadScheduleItems];
                 [self showScheduleItems];
                 
                 VCMenuItemTableViewCell * cell = (VCMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
@@ -527,6 +523,20 @@
     
 }
 
+
+
+- (void) showOrHideScheduleCell {
+    if([_scheduleItems count] > 0 && [_tableCellList indexOfObject:kScheduleCell] == NSNotFound){
+        [_tableCellList insertObject:kScheduleCell atIndex:1];
+        [_tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+        
+    } else if ([_scheduleItems count] == 0 && [_tableCellList indexOfObject:kScheduleCell] != NSNotFound){
+        [_tableCellList removeObject:kScheduleCell];
+        [_tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+        
+    }
+}
+
 - (void) loadScheduleItems {
     NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
     NSPredicate * predicate = [NSPredicate predicateWithFormat:@"savedState IN %@ ", @[kCreatedState, kRequestedState, kScheduledState]];
@@ -545,7 +555,6 @@
 }
 
 - (void) showScheduleItems {
-    [self loadScheduleItems];
     
     long index = [_tableCellList indexOfObject:kScheduleCell];
     NSRange range;

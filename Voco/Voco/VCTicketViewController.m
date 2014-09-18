@@ -46,6 +46,7 @@
 #define kEditCommuteStateReturnTime 1003
 #define kEditCommuteStateEditAll 1004
 
+#define kStepNone 0
 #define kStepSetDepartureLocation 1
 #define kStepSetDestinationLocation 2
 #define kStepConfirmRequest 3
@@ -174,7 +175,6 @@
                              @"6:00", @"6:15", @"6:30", @"6:45",
                              @"7:00"];
         
-        _step = kStepSetDepartureLocation;
         _ticket = nil;
         
         _callHudPanLocked = NO;
@@ -190,6 +190,11 @@
     //self.title = @"Home";
     //custom image
     //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"appcoda-logo.png"]];
+    
+    
+    if(_ticket == nil) {
+        _step = kStepSetDepartureLocation;
+    }
     
     _homeLocationWidget = [[VCEditLocationWidget alloc] init];
     _homeLocationWidget.delegate = self;
@@ -262,9 +267,7 @@
 }
 
 - (void) tripUnfulfilled:(NSNotification *) notification {
-    NSDictionary * payload = notification.object;
-    NSNumber * tripId = [payload objectForKey:VC_PUSH_TRIP_ID_KEY];
-    if( [_ticket.trip_id isEqualToNumber:tripId]) {
+    if(_ticket == nil &&  _step == kStepDone) {
         [self resetInterfaceToHome];
     }
 }
@@ -699,6 +702,7 @@
     [_scheduleRideButton removeFromSuperview];
     [self.view addSubview:self.waitingScreen];
     [self removeCancelBarButton];
+    _step = kStepDone;
 }
 
 
@@ -711,10 +715,14 @@
             switch(buttonIndex){
                 case 1:
                 {
+                    
+                    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                    hud.labelText = @"Canceling..";
                     [[VCCommuteManager instance] cancelRide:_ticket success:^{
                         [self resetInterfaceToHome];
+                        hud.hidden = YES;
                     } failure:^{
-                        // do nothing
+                        hud.hidden = YES;
                     }];
                 }
                     break;

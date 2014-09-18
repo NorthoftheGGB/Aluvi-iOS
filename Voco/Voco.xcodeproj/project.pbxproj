@@ -656,6 +656,9 @@
 		F49EDD101946E2F90020B8BB /* VCInterfaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD0F1946E2F90020B8BB /* VCInterfaceManager.m */; };
 		F4A5654819C8F3EA0030104D /* Aluvi-Privacy-Policy.html in Resources */ = {isa = PBXBuildFile; fileRef = 4F38976119B8298200A75C5C /* Aluvi-Privacy-Policy.html */; };
 		F4A5654919C8F3EC0030104D /* Aluvi-TOS.html in Resources */ = {isa = PBXBuildFile; fileRef = 4F38976219B8298200A75C5C /* Aluvi-TOS.html */; };
+		F4A5654A19CA5B020030104D /* VCPrivatePolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F38975819B7DD0100A75C5C /* VCPrivatePolicyViewController.m */; };
+		F4A5654B19CA5C470030104D /* VCTermsOfServiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F38975019B7DC5000A75C5C /* VCTermsOfServiceViewController.xib */; };
+		F4A5654C19CA5C4A0030104D /* VCPrivatePolicyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F38975919B7DD0100A75C5C /* VCPrivatePolicyViewController.xib */; };
 		F4A7C80519623C70007E05AD /* Transit.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C80419623C70007E05AD /* Transit.m */; };
 		F4A7C80619623C70007E05AD /* Transit.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C80419623C70007E05AD /* Transit.m */; };
 		F4A7C80A19625237007E05AD /* VCDebugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C80819625237007E05AD /* VCDebugViewController.m */; };
@@ -3354,6 +3357,7 @@
 				F4D8FED619B1745A00BC0B69 /* current-location-arrow-select@2x.png in Resources */,
 				F4D8FED719B1745A00BC0B69 /* VCSubMenuItemTableViewCell.xib in Resources */,
 				F4D8FED819B1745A00BC0B69 /* map_pin_fill-512.png in Resources */,
+				F4A5654C19CA5C4A0030104D /* VCPrivatePolicyViewController.xib in Resources */,
 				F4D8FED919B1745A00BC0B69 /* driver-call-hud-icon-select@2x.png in Resources */,
 				F4D8FEDA19B1745A00BC0B69 /* commuter-menu-button@2x.png in Resources */,
 				F4D8FEDB19B1745A00BC0B69 /* about-menu-button@2x.png in Resources */,
@@ -3398,6 +3402,7 @@
 				F4D8FF0219B1745A00BC0B69 /* menu-map-icon@2x.png in Resources */,
 				F4D8FF0319B1745A00BC0B69 /* current-location-button@2x.png in Resources */,
 				F4D8FF0419B1745A00BC0B69 /* profile-menu-button-select@2x.png in Resources */,
+				F4A5654B19CA5C470030104D /* VCTermsOfServiceViewController.xib in Resources */,
 				F4D8FF0519B1745A00BC0B69 /* button-default@2x.png in Resources */,
 				F4D8FF0619B1745A00BC0B69 /* gradient@2x.png in Resources */,
 				F4D8FF0719B1745A00BC0B69 /* VCReceiptsViewController.xib in Resources */,
@@ -4107,6 +4112,7 @@
 				F4D8FE1919B1745A00BC0B69 /* VCDriverOnBoardingViewController.m in Sources */,
 				F4D8FE1A19B1745A00BC0B69 /* VCRiderApi.m in Sources */,
 				F4D8FE1B19B1745A00BC0B69 /* VCMenuItemTableViewCell.m in Sources */,
+				F4A5654A19CA5B020030104D /* VCPrivatePolicyViewController.m in Sources */,
 				F4D8FE1C19B1745A00BC0B69 /* VCDriverRegistrationViewController.m in Sources */,
 				F4D8FE1D19B1745A00BC0B69 /* VCButtonStandardStyle.m in Sources */,
 				F4D8FE1E19B1745A00BC0B69 /* LEBackgroundThread.m in Sources */,
@@ -4510,8 +4516,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Matthew Shultz (M7P4B7L87L)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -4521,7 +4527,7 @@
 				INFOPLIST_FILE = "Aluvi Distribution-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = Aluvi;
-				PROVISIONING_PROFILE = "f760d937-f4fd-4662-b6d3-fd8a5da48a9b";
+				PROVISIONING_PROFILE = "3DF1A7A1-7F7A-41B8-A6C9-DC37C7DA0CDA";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4532,7 +4538,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
