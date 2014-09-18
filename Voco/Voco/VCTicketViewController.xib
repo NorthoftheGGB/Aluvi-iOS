@@ -172,7 +172,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
-        <view contentMode="scaleToFill" id="RWM-tO-NBZ" userLabel="Ride Details" customClass="VCRideDetailsConfirmationView">
+        <view contentMode="scaleToFill" id="RWM-tO-NBZ" customClass="VCRideDetailsConfirmationView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="635"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
