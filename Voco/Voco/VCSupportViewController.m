@@ -60,6 +60,7 @@
 }
 
 - (IBAction)didTapSubmit:(id)sender {
+    [self.view endEditing:YES];
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.hidden = YES;
     [UIAlertView showWithTitle:@"Submitted" message:@"We will contact you shortly" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];

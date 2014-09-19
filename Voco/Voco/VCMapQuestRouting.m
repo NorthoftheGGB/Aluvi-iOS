@@ -66,7 +66,7 @@ static RKObjectManager * objectManager;
     NSMutableDictionary * paramsAndOptions = [params mutableCopy];
     [paramsAndOptions addEntriesFromDictionary:options];
     //[objectManager cancelAllObjectRequestOperationsWithMethod:RKRequestMethodGET matchingPathPattern:@"directions/v2/route"];
-    [objectManager getObject:nil path:@"directions/v2/route" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [objectManager getObject:nil path:@"directions/v2/route" parameters:paramsAndOptions success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
 
         MQRouteResponse * response = mappingResult.firstObject;
         if(response.route.shape == nil){

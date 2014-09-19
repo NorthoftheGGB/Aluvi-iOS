@@ -46,6 +46,7 @@
 #define kEditCommuteStateReturnTime 1003
 #define kEditCommuteStateEditAll 1004
 
+#define kStepNone 0
 #define kStepSetDepartureLocation 1
 #define kStepSetDestinationLocation 2
 #define kStepConfirmRequest 3
@@ -185,7 +186,6 @@
                              @"6:00", @"6:15", @"6:30", @"6:45",
                              @"7:00"];
         
-        _step = kStepSetDepartureLocation;
         _ticket = nil;
         
         _callHudPanLocked = NO;
@@ -201,6 +201,11 @@
     //self.title = @"Home";
     //custom image
     //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"appcoda-logo.png"]];
+    
+    
+    if(_ticket == nil) {
+        _step = kStepSetDepartureLocation;
+    }
     
     _homeLocationWidget = [[VCEditLocationWidget alloc] init];
     _homeLocationWidget.delegate = self;
@@ -273,9 +278,7 @@
 }
 
 - (void) tripUnfulfilled:(NSNotification *) notification {
-    NSDictionary * payload = notification.object;
-    NSNumber * tripId = [payload objectForKey:VC_PUSH_TRIP_ID_KEY];
-    if( [_ticket.trip_id isEqualToNumber:tripId]) {
+    if(_ticket == nil &&  _step == kStepDone) {
         [self resetInterfaceToHome];
     }
 }
@@ -403,9 +406,9 @@
             } else {
                 _rideDetailsConfirmation.pickupTimeLabel.text = [_ticket.pickupTime time];
                 _rideDetailsConfirmation.driverNameLabel.text = [_ticket.driver fullName];
-                _rideDetailsConfirmation.carTypeValueLabel.text = [_ticket.car summary];
-                _rideDetailsConfirmation.licenseValueLabel.text = _ticket.car.licensePlate;
-                //_rideDetailsConfirmation.fareLabel.text = _ride.estimatedFareAmount;
+                _rideDetailsConfirmation.carTypeLabel.text = [_ticket.car summary];
+                _rideDetailsConfirmation.licenseLabel.text = _ticket.car.licensePlate;
+                _rideDetailsConfirmation.fareLabel.text = [VCUtilities formatCurrencyFromCents:_ticket.fixedPrice];
                 _rideDetailsConfirmation.cardNicknamelabel.text = [VCUserStateManager instance].profile.cardBrand;
                 _rideDetailsConfirmation.cardNumberLabel.text = [VCUserStateManager instance].profile.cardLastFour;
                 _rideDetailsConfirmation.fareLabel.text = [VCUtilities formatCurrencyFromCents: _ticket.fixedPrice];
@@ -717,6 +720,7 @@
     [_scheduleRideButton removeFromSuperview];
     [self.view addSubview:self.holdingScreen];
     [self removeCancelBarButton];
+    _step = kStepDone;
 }
 
 
@@ -729,10 +733,14 @@
             switch(buttonIndex){
                 case 1:
                 {
+                    
+                    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                    hud.labelText = @"Canceling..";
                     [[VCCommuteManager instance] cancelRide:_ticket success:^{
                         [self resetInterfaceToHome];
+                        hud.hidden = YES;
                     } failure:^{
-                        // do nothing
+                        hud.hidden = YES;
                     }];
                 }
                     break;
@@ -1188,7 +1196,7 @@
     } else {
         _fareDetailsView.driveTimeLabel.text = [_ticket.pickupTime time];
         _fareDetailsView.dateLabel.text = [_ticket.pickupTime monthAndDay];
-        _fareDetailsView.fareEarningsLabel.text = [NSString stringWithFormat:@"$%.0f", [_ticket.hovFare.estimatedEarnings floatValue] ];
+        _fareDetailsView.fareEarningsLabel.text = [VCUtilities formatCurrencyFromCents:_ticket.hovFare.estimatedEarnings ];
         _fareDetailsView.driveDistanceLabel.text = @"";
         _fareDetailsView.numberOfPeopleLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)[_ticket.hovFare.riders count] ];
         

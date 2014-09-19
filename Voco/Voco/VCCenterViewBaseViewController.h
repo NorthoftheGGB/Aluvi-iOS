@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VCScrollableFormViewController.h"
 
-@interface VCCenterViewBaseViewController : UIViewController
+@interface VCCenterViewBaseViewController : VCScrollableFormViewController
 
 - (void) didTapHamburger;
 

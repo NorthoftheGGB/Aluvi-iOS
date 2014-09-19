@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 
 // rides API
-#if RELEASE==1
+#if ALPHA==1
+#define API_BASE_URL @"http://voco-alpha.herokuapp.com/api/"
+#elif RELEASE==1
 #define API_BASE_URL @"http://voco-alpha.herokuapp.com/api/"
 #elif TESTING==1
 #define API_BASE_URL @"http://voco-test.herokuapp.com/api/"
