@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "VCRideDetailsView.h"
+#import "VCAbstractRideDetailsView.h"
 
-@interface VCRideOverviewHudView : VCRideDetailsView
+@interface VCRideOverviewHudView : VCAbstractRideDetailsView
 @property (weak, nonatomic) IBOutlet UIImageView *driverImageView;
 @property (weak, nonatomic) IBOutlet VCLabelBold *driverFirstNameLabel;
 @property (weak, nonatomic) IBOutlet VCLabelBold *driverLastNameLabel;

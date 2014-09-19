@@ -213,8 +213,10 @@ static VCCommuteManager * instance;
     [VCCoreData saveContext];
     
     // And attempt to store the rides on the server
+    // TODO: This will happen in single request to the server, which will create and supply the tickets
     [VCRiderApi requestRide:homeToWorkRide success:^(RKObjectRequestOperation *operation, VCRideRequestCreated * response) {
         homeToWorkRide.uploaded = [NSNumber numberWithBool:YES];
+        homeToWorkRide.direction = @"a";
         [VCCoreData saveContext];
         
         workToHomeRide.trip_id = homeToWorkRide.trip_id;
@@ -222,6 +224,7 @@ static VCCommuteManager * instance;
 
         [VCRiderApi requestRide:workToHomeRide success:^(RKObjectRequestOperation *operation, VCRideRequestCreated * response) {
             workToHomeRide.uploaded = [NSNumber numberWithBool:YES];
+            workToHomeRide.direction = @"b";
             [VCCoreData saveContext];
             
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {

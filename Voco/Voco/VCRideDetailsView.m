@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCRideDetailsConfirmationView.h"
+#import "VCRideDetailsView.h"
 
-@implementation VCRideDetailsConfirmationView
+@implementation VCRideDetailsView
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -21,7 +21,7 @@
 
 // If Driver
 
-- (void) showDriverDetails {
+- (void) driverLayout {
     
     _driverNameLabel.hidden = true;
     _driverPhotoImageView.hidden = true;
@@ -30,8 +30,14 @@
     _rideTimeLabel = false;
     _rideTimeValueLabel = false;
     _riderSectionTitleLabel.text = [NSString stringWithFormat:@"Your Riders :"];
+    self.licenseValueLabel.hidden = false;
+    self.carTypeValueLabel.hidden = false;
     
-    
+}
+
+- (void) riderDisplay {
+    self.licenseValueLabel.hidden = true;
+    self.carTypeValueLabel.hidden = true;
 }
 
 //If Rider

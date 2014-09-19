@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "VCRideDetailsView.h"
+#import "VCAbstractRideDetailsView.h"
 
-@interface VCRideDetailsConfirmationView : VCRideDetailsView
+@interface VCRideDetailsView : VCAbstractRideDetailsView
 
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedButton;
@@ -45,5 +45,8 @@
 @property (weak, nonatomic) IBOutlet VCLabel *riderFirstNameLabel2;
 @property (weak, nonatomic) IBOutlet VCLabel *riderFirstNameLabel3;
 
-- (void) showDriverDetails;
+
+
+- (void) driverLayout;
+
 @end

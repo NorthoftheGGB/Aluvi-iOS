@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCRideDetailsView.h"
+#import "VCAbstractRideDetailsView.h"
 
-@implementation VCRideDetailsView
+@implementation VCAbstractRideDetailsView
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -19,15 +19,7 @@
     return self;
 }
 
-- (void) hideCarValues {
-    _licenseValueLabel.hidden = true;
-    _carTypeValueLabel.hidden = true;
-}
 
-- (void) showCarValues {
-    _licenseValueLabel.hidden = false;
-    _carTypeValueLabel.hidden = false;
-}
 
 /*
 // Only override drawRect: if you perform custom drawing.

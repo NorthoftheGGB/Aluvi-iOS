@@ -214,11 +214,16 @@
             VCSubMenuItemTableViewCell * subMenuItemTableViewCell = [WRUtilities getViewFromNib:@"VCSubMenuItemTableViewCell" class:[VCSubMenuItemTableViewCell class]];
             
             long scheduleCellIndex = [_tableCellList indexOfObject:kScheduleCell];
-            Ticket * ride = [_scheduleItems objectAtIndex:row-scheduleCellIndex-1];
-            subMenuItemTableViewCell.itemTitleLabel.text = [NSString stringWithFormat:@"%@ to %@", ride.originShortName, ride.destinationShortName];
-            subMenuItemTableViewCell.itemDateLabel.text = [ride.pickupTime monthAndDay];
-            subMenuItemTableViewCell.itemTimeLabel.text = [ride.pickupTime time];
-            subMenuItemTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            Ticket * ticket = [_scheduleItems objectAtIndex:row-scheduleCellIndex-1];
+            if([ticket.state isEqualToString:kScheduledState]) {
+                subMenuItemTableViewCell.itemTitleLabel.text = [NSString stringWithFormat:@"%@ to %@", ticket.originShortName, ticket.destinationShortName];
+                subMenuItemTableViewCell.itemDateLabel.text = [ticket.pickupTime monthAndDay];
+                subMenuItemTableViewCell.itemTimeLabel.text = [ticket.pickupTime time];
+                subMenuItemTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            } else {
+                subMenuItemTableViewCell.itemTitleLabel.text = @"Pending Commute";
+                subMenuItemTableViewCell.itemDateLabel.text = [ticket.pickupTime monthAndDay];
+            }
             
             cell = subMenuItemTableViewCell;
         }
@@ -392,15 +397,10 @@
             long scheduleCellIndex = [_tableCellList indexOfObject:kScheduleCell];
             Ticket * ticket = [_scheduleItems objectAtIndex:row-scheduleCellIndex-1];
             
-            if([ticket.driving boolValue]) {
-                VCTicketViewController * driveViewController = [[VCTicketViewController alloc] init];
-                driveViewController.ticket = ticket;
-                [[VCInterfaceManager instance] setCenterViewControllers: @[driveViewController]];
-            } else {
-                VCTicketViewController * rideViewController = [[VCTicketViewController alloc] init];
-                rideViewController.ticket = ticket;
-                [[VCInterfaceManager instance] setCenterViewControllers: @[rideViewController]];
-            }
+            VCTicketViewController * ticketViewController = [[VCTicketViewController alloc] init];
+            ticketViewController.ticket = ticket;
+            [[VCInterfaceManager instance] setCenterViewControllers: @[ticketViewController]];
+            
             VCSubMenuItemTableViewCell * cell = (VCSubMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
             [cell select];
         }
@@ -510,7 +510,7 @@
 
 - (void) loadScheduleItems {
     NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"savedState IN %@ ", @[kCreatedState, kRequestedState, kScheduledState]];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"savedState IN %@ OR ( savedState IN %@  AND direction = 'a' )", @[kScheduledState], @[kCreatedState, kRequestedState] ];
     [fetch setPredicate:predicate];
     NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];
     [fetch setSortDescriptors:@[sort]];

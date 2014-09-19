@@ -12,7 +12,7 @@
 #import "VCButtonStandardStyle.h"
 
 
-@interface VCRideDetailsView : UIView
+@interface VCAbstractRideDetailsView : UIView
 
 //details
 
@@ -26,7 +26,5 @@
 @property (weak, nonatomic) IBOutlet VCLabel *carTypeValueLabel;
 
 
-- (void) hideCarValues;
-//- (void) showCarValues;
 
 @end

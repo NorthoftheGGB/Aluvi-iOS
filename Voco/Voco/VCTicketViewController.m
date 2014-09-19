@@ -26,8 +26,8 @@
 #import "VCButtonStandardStyle.h"
 #import "VCEditLocationWidget.h"
 #import "VCCommuteManager.h"
+#import "VCAbstractRideDetailsView.h"
 #import "VCRideDetailsView.h"
-#import "VCRideDetailsConfirmationView.h"
 #import "VCRideOverviewHudView.h"
 #import "NSDate+Pretty.h"
 #import "VCUserStateManager.h"
@@ -111,7 +111,7 @@
 - (IBAction)didTapOKButton:(id)sender;
 
 //Ride Details
-@property (strong, nonatomic) IBOutlet VCRideDetailsConfirmationView * rideDetailsConfirmation;
+@property (strong, nonatomic) IBOutlet VCRideDetailsView * rideDetailsConfirmation;
 @property (strong, nonatomic) UIScrollView * scrollView;
 
 //RideOverview
@@ -1184,6 +1184,7 @@
             [self moveFromPickupToRideInProgressInteface];
         }
         
+        
     } else {
         _fareDetailsView.driveTimeLabel.text = [_ticket.pickupTime time];
         _fareDetailsView.dateLabel.text = [_ticket.pickupTime monthAndDay];
@@ -1198,7 +1199,6 @@
         [self.view addSubview:_fareDetailsView];
         
     }
-    [self removeCancelBarButton];
     
 }
 

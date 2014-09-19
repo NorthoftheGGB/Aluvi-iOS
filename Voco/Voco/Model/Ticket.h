@@ -63,6 +63,7 @@
 @property (nonatomic, retain) NSNumber * driving;
 @property (nonatomic, retain) NSNumber * trip_id;
 @property (nonatomic, retain) NSNumber * fixedPrice;
+@property (nonatomic, retain) NSString * direction;
 
 @property (nonatomic, retain) Driver *driver;
 @property (nonatomic, retain) Car *car;
