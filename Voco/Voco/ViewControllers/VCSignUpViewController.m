@@ -11,7 +11,6 @@
 #import "VCUsersApi.h"
 #import "VCValidation.h"
 #import "WRUtilities.h"
-#import "VCRiderHomeViewController.h"
 #import "VCInterfaceManager.h"
 #import <MBProgressHUD.h>
 #import "US2ConditionCollection.h"

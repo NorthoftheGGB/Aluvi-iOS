@@ -125,6 +125,7 @@ static VCUserStateManager *sharedSingleton;
                       } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                           //[WRUtilities criticalError:error];
                       }];
+                      
                   } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                       //[WRUtilities criticalError:error];
                   }];

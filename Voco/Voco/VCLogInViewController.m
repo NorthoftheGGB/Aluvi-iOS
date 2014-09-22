@@ -15,6 +15,7 @@
 #import "VCButtonStandardStyle.h"
 #import "VCPasswordRecoveryViewController.h"
 #import "VCTermsOfServiceViewController.h"
+#import "VCNotifications.h"
 
 #define kPhoneFieldTag 1
 #define kPasswordFieldTag 2
@@ -92,6 +93,7 @@
                                                   
                                                   [hud hide:YES];
                                                   [[VCInterfaceManager instance] showRiderInterface];
+                                                  [VCNotifications scheduleUpdated];
                                                   
                                               } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                                   [WRUtilities criticalError:error];

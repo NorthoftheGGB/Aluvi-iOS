@@ -943,7 +943,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <action selector="didTapshowRideDetailsButton:" destination="-1" eventType="touchUpInside" id="CMl-xe-ikr"/>
+                        <action selector="didTapShowRideDetailsButton:" destination="-1" eventType="touchUpInside" id="TaR-5Z-Hoy"/>
                     </connections>
                 </button>
                 <button hidden="YES" opaque="NO" alpha="0.89999997615814209" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBf-gu-Tg9" customClass="VCButtonStandardStyle">
@@ -965,8 +965,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <action selector="didTapOKButton:" destination="-1" eventType="touchUpInside" id="CC4-Xf-WB7"/>
-                        <action selector="didTapshowRideDetailsButton:" destination="-1" eventType="touchUpInside" id="KlA-eF-t5c"/>
+                        <action selector="didTapOKButton:" destination="-1" eventType="touchUpInside" id="pQN-TK-sX0"/>
                     </connections>
                 </button>
             </subviews>

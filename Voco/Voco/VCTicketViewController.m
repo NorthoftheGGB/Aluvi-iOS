@@ -134,7 +134,7 @@
 - (IBAction)didTapScheduleRide:(id)sender;
 - (IBAction)didTapNextButton:(id)sender;
 - (IBAction)didTapHovDriveYesButton:(id)sender;
-- (IBAction)didTapshowRideDetailsButton:(id)sender;
+- (IBAction)didTapShowRideDetailsButton:(id)sender;
 
 
 // HOV Driver
@@ -198,14 +198,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //self.title = @"Home";
-    //custom image
-    //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"appcoda-logo.png"]];
-    
-    
-    if(_ticket == nil) {
-        _step = kStepSetDepartureLocation;
-    }
     
     _homeLocationWidget = [[VCEditLocationWidget alloc] init];
     _homeLocationWidget.delegate = self;
@@ -216,6 +208,24 @@
     [self addChildViewController:_homeLocationWidget];
     [self addChildViewController:_workLocationWidget];
     
+    if(_ticket == nil) {
+        
+        // Check for existing commuter ticket that is has not been processed
+        NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
+        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"savedState IN %@  AND direction = 'a' ", @[kCreatedState, kRequestedState, kCommuteSchedulerFailedState] ];
+        [fetch setPredicate:predicate];
+        NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];
+        [fetch setSortDescriptors:@[sort]];
+        NSError * error;
+        NSArray * tickets = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
+        if(tickets == nil) {
+            [WRUtilities criticalError:error];
+        } else if([tickets count] > 0) {
+            _ticket = [tickets objectAtIndex:0];
+        } else {
+            _step = kStepSetDepartureLocation;
+        }
+    }
     
     
 }
@@ -241,7 +251,7 @@
             self.map.userTrackingMode = MKUserTrackingModeFollow;
             [self startLocationUpdates];
         } else {
-            [self showInterfaceForRide];
+            [self showInterfaceForTicket];
         }
     }
     
@@ -258,7 +268,15 @@
 }
 
 - (void) tripFulfilled:(NSNotification *) notification {
-    NSDictionary * payload = notification.object;
+    [self showInterfaceForPayload:notification.object];
+}
+
+- (void) tripUnfulfilled:(NSNotification *) notification {
+    [self showInterfaceForPayload:notification.object];
+
+}
+
+- (void) showInterfaceForPayload:(NSDictionary *)payload {
     NSNumber * tripId = [payload objectForKey:VC_PUSH_TRIP_ID_KEY];
     if(_ticket == nil || [_ticket.trip_id isEqualToNumber:tripId]) {
         NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
@@ -273,15 +291,11 @@
             return;
         }
         _ticket = [ridesForTrip objectAtIndex:0];
-        [self showInterfaceForRide];
+        [self showInterfaceForTicket];
     }
+
 }
 
-- (void) tripUnfulfilled:(NSNotification *) notification {
-    if(_ticket == nil &&  _step == kStepDone) {
-        [self resetInterfaceToHome];
-    }
-}
 
 - (void) fareCompleted:(NSNotification *) notification {
     NSDictionary * payload = notification.object;
@@ -351,7 +365,7 @@
                      }];
 }
 
-- (void) showInterfaceForRide {
+- (void) showInterfaceForTicket {
     [self clearMap];
     [self removeHuds];
     [self.editCommuteButton removeFromSuperview];
@@ -362,6 +376,12 @@
         [self addOriginAnnotation: [_ticket originLocation] ];
         [self addDestinationAnnotation: [_ticket destinationLocation]];
         [self showSuggestedRoute: [_ticket originLocation] to:[_ticket destinationLocation]];
+        [self.view addSubview:self.holdingScreen];
+    
+    } else if([_ticket.state isEqualToString:kCommuteSchedulerFailedState]) {
+        self.rideRequestStatusLabel.text = @"Sorry, we were unable to fulfill your ride request";
+        self.rideRequestDetailLabel.text = @"Would you like to try again for the next day?";
+        self.okButton.hidden = NO;
         [self.view addSubview:self.holdingScreen];
         
     } else if([_ticket.state isEqualToString:kScheduledState]){
@@ -404,6 +424,11 @@
                 _rideDetailsHud.frame = frame;
                 [self.view addSubview:_rideDetailsHud];
             } else {
+                self.rideRequestDetailLabel.text = @"Your ride to and from work is ready!";
+                self.showRideDetailsButton.hidden = NO;
+                [self.view addSubview:self.holdingScreen];
+
+                /*
                 _rideDetailsConfirmation.pickupTimeLabel.text = [_ticket.pickupTime time];
                 _rideDetailsConfirmation.driverNameLabel.text = [_ticket.driver fullName];
                 _rideDetailsConfirmation.carTypeLabel.text = [_ticket.car summary];
@@ -418,12 +443,8 @@
                 [self.view addSubview:self.scrollView];
                 [self.scrollView setContentSize:_rideDetailsConfirmation.frame.size];
                 [self.scrollView addSubview:_rideDetailsConfirmation];
+                */
                 
-                /*CGRect frame = _rideDetailsConfirmation.frame;
-                frame.origin.x = 0;
-                frame.origin.y = self.view.frame.size.height - 480;
-                _rideDetailsConfirmation.frame = frame;
-                [self.view addSubview:_rideDetailsConfirmation];*/
             }
             
         }
@@ -979,7 +1000,7 @@
     }
 }
 
-- (IBAction)didTapshowRideDetailsButton:(id)sender {
+- (IBAction)didTapShowRideDetailsButton:(id)sender {
 }
 
 - (IBAction)didTapPickupHud:(id)sender {
@@ -994,7 +1015,7 @@
 - (IBAction)didTapConfirmedCommuterRide:(id)sender {
     _ticket.confirmed = [NSNumber numberWithBool:YES];
     [VCCoreData saveContext];
-    [self showInterfaceForRide];
+    [self showInterfaceForTicket];
 }
 
 - (IBAction)didTapZoomToRideBounds:(id)sender {
@@ -1010,6 +1031,11 @@
 - (IBAction)didTapCallDriver:(id)sender {
     Driver * driver = _ticket.driver;
     [self callPhone:driver.phone];
+}
+
+- (IBAction)didTapOKButton:(id)sender {
+    [self resetInterfaceToHome];
+
 }
 
 #pragma mark - VCLocationSearchViewControllerDelegate
@@ -1596,6 +1622,5 @@
 }
 
 
-- (IBAction)didTapOKButton:(id)sender {
-}
+
 @end
