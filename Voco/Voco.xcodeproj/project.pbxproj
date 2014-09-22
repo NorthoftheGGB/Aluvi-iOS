@@ -462,9 +462,6 @@
 		4FFE17161989EFC0004D4413 /* menu-item-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE17121989EFC0004D4413 /* menu-item-bg@2x.png */; };
 		4FFE17171989EFC0004D4413 /* menu-item-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE17121989EFC0004D4413 /* menu-item-bg@2x.png */; };
 		4FFE17181989EFC0004D4413 /* menu-item-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE17121989EFC0004D4413 /* menu-item-bg@2x.png */; };
-		4FFE171A1989F93F004D4413 /* menu-item-badge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE17191989F93F004D4413 /* menu-item-badge@2x.png */; };
-		4FFE171B1989F93F004D4413 /* menu-item-badge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE17191989F93F004D4413 /* menu-item-badge@2x.png */; };
-		4FFE171C1989F93F004D4413 /* menu-item-badge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE17191989F93F004D4413 /* menu-item-badge@2x.png */; };
 		4FFE171E198A1890004D4413 /* menu-map-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE171D198A1890004D4413 /* menu-map-icon@2x.png */; };
 		4FFE171F198A1890004D4413 /* menu-map-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE171D198A1890004D4413 /* menu-map-icon@2x.png */; };
 		4FFE1720198A1890004D4413 /* menu-map-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE171D198A1890004D4413 /* menu-map-icon@2x.png */; };
@@ -1453,7 +1450,6 @@
 		4FFE17021989E801004D4413 /* VCMenuItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCMenuItemTableViewCell.xib; sourceTree = "<group>"; };
 		4FFE17111989EFC0004D4413 /* menu-item-bg-select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-item-bg-select@2x.png"; sourceTree = "<group>"; };
 		4FFE17121989EFC0004D4413 /* menu-item-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-item-bg@2x.png"; sourceTree = "<group>"; };
-		4FFE17191989F93F004D4413 /* menu-item-badge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-item-badge@2x.png"; sourceTree = "<group>"; };
 		4FFE171D198A1890004D4413 /* menu-map-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-map-icon@2x.png"; sourceTree = "<group>"; };
 		4FFE1721198B0475004D4413 /* driver-cancel-hud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "driver-cancel-hud@2x.png"; sourceTree = "<group>"; };
 		CD677E046A804589A26C0608 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -1967,7 +1963,6 @@
 				4F1849DC198F25F9006EA959 /* driver-cancel-hud-button@2x.png */,
 				4FFE1721198B0475004D4413 /* driver-cancel-hud@2x.png */,
 				4FFE171D198A1890004D4413 /* menu-map-icon@2x.png */,
-				4FFE17191989F93F004D4413 /* menu-item-badge@2x.png */,
 				4FFE17111989EFC0004D4413 /* menu-item-bg-select@2x.png */,
 				4FFE17121989EFC0004D4413 /* menu-item-bg@2x.png */,
 				4FFE16F21989E006004D4413 /* driver-call-hud@2x.png */,
@@ -2873,7 +2868,6 @@
 				4F1849FA1991753F006EA959 /* menu-mycar-icon@2x.png in Resources */,
 				4FC758CC19AA91410093DBEA /* VCDriverOnBoardingViewController.xib in Resources */,
 				4F2EF9BE1961391B006A1962 /* support-menu-button@2x.png in Resources */,
-				4FFE171B1989F93F004D4413 /* menu-item-badge@2x.png in Resources */,
 				F4354DB0195D0D6A00C06CF7 /* VOCOfinal@2x.png in Resources */,
 				4F184A001991753F006EA959 /* menu-profile-icon@2x.png in Resources */,
 				4F5085A3199B2F41009EDF80 /* menu-bg@2x.png in Resources */,
