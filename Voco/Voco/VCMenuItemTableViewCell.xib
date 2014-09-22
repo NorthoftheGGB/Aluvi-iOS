@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -34,13 +34,20 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VfQ-SH-r9T">
-                        <rect key="frame" x="234" y="12" width="22" height="22"/>
+                        <rect key="frame" x="234" y="12" width="19" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menu-badge.png" translatesAutoresizingMaskIntoConstraints="NO" id="i9s-xd-yyM">
-                                <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menu-item-badge.png" translatesAutoresizingMaskIntoConstraints="NO" id="i9s-xd-yyM">
+                                <rect key="frame" x="0.0" y="0.0" width="19" height="19"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KfN-bt-899">
+                                <rect key="frame" x="0.0" y="0.0" width="19" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" red="0.15686275064945221" green="0.14509804546833038" blue="0.14117647707462311" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
@@ -48,6 +55,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="backgroundImageView" destination="xKP-Jl-mlr" id="4sz-dC-cWY"/>
+                <outlet property="badgeNumberLabel" destination="KfN-bt-899" id="rdg-x7-Yys"/>
                 <outlet property="badgeView" destination="VfQ-SH-r9T" id="Ddt-gr-Ybj"/>
                 <outlet property="iconImageView" destination="iHY-2v-9Ck" id="cQc-DP-bc2"/>
                 <outlet property="menuItemLabel" destination="nmx-dJ-Njz" id="BTG-m7-2Yb"/>
@@ -55,7 +63,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="menu-badge.png" width="280" height="44"/>
+        <image name="menu-item-badge.png" width="19" height="19"/>
         <image name="menu-item-bg.png" width="280" height="44"/>
     </resources>
 </document>

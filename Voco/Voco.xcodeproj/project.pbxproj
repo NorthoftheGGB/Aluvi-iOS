@@ -478,6 +478,9 @@
 		4FFE17161989EFC0004D4413 /* menu-item-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE17121989EFC0004D4413 /* menu-item-bg@2x.png */; };
 		4FFE17171989EFC0004D4413 /* menu-item-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE17121989EFC0004D4413 /* menu-item-bg@2x.png */; };
 		4FFE17181989EFC0004D4413 /* menu-item-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE17121989EFC0004D4413 /* menu-item-bg@2x.png */; };
+		4FFE171A1989F93F004D4413 /* menu-item-badge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE17191989F93F004D4413 /* menu-item-badge@2x.png */; };
+		4FFE171B1989F93F004D4413 /* menu-item-badge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE17191989F93F004D4413 /* menu-item-badge@2x.png */; };
+		4FFE171C1989F93F004D4413 /* menu-item-badge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE17191989F93F004D4413 /* menu-item-badge@2x.png */; };
 		4FFE171E198A1890004D4413 /* menu-map-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE171D198A1890004D4413 /* menu-map-icon@2x.png */; };
 		4FFE171F198A1890004D4413 /* menu-map-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE171D198A1890004D4413 /* menu-map-icon@2x.png */; };
 		4FFE1720198A1890004D4413 /* menu-map-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE171D198A1890004D4413 /* menu-map-icon@2x.png */; };
@@ -1101,6 +1104,7 @@
 		F4D8FEE019B1745A00BC0B69 /* rider-call-button-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C7F19771931007609E8 /* rider-call-button-select@2x.png */; };
 		F4D8FEE119B1745A00BC0B69 /* VCDriverRecieptDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C8719775C5C007609E8 /* VCDriverRecieptDetailViewController.xib */; };
 		F4D8FEE219B1745A00BC0B69 /* temp-user-profile-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F30991319B02BCD00DFCDD1 /* temp-user-profile-icon@2x.png */; };
+		F4D8FEE319B1745A00BC0B69 /* menu-item-badge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE17191989F93F004D4413 /* menu-item-badge@2x.png */; };
 		F4D8FEE419B1745A00BC0B69 /* VCRequestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F473F04F195BA54F00D8C900 /* VCRequestsViewController.xib */; };
 		F4D8FEE519B1745A00BC0B69 /* ride-details-hud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3DB5AE1981C01D00DDD094 /* ride-details-hud@2x.png */; };
 		F4D8FEE619B1745A00BC0B69 /* VCPasswordRecoveryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641C3194157EB0059BED1 /* VCPasswordRecoveryViewController.xib */; };
@@ -1511,6 +1515,7 @@
 		4FFE17021989E801004D4413 /* VCMenuItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCMenuItemTableViewCell.xib; sourceTree = "<group>"; };
 		4FFE17111989EFC0004D4413 /* menu-item-bg-select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-item-bg-select@2x.png"; sourceTree = "<group>"; };
 		4FFE17121989EFC0004D4413 /* menu-item-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-item-bg@2x.png"; sourceTree = "<group>"; };
+		4FFE17191989F93F004D4413 /* menu-item-badge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-item-badge@2x.png"; sourceTree = "<group>"; };
 		4FFE171D198A1890004D4413 /* menu-map-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-map-icon@2x.png"; sourceTree = "<group>"; };
 		4FFE1721198B0475004D4413 /* driver-cancel-hud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "driver-cancel-hud@2x.png"; sourceTree = "<group>"; };
 		CD677E046A804589A26C0608 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -2050,6 +2055,7 @@
 				4F1849DC198F25F9006EA959 /* driver-cancel-hud-button@2x.png */,
 				4FFE1721198B0475004D4413 /* driver-cancel-hud@2x.png */,
 				4FFE171D198A1890004D4413 /* menu-map-icon@2x.png */,
+				4FFE17191989F93F004D4413 /* menu-item-badge@2x.png */,
 				4FFE17111989EFC0004D4413 /* menu-item-bg-select@2x.png */,
 				4FFE17121989EFC0004D4413 /* menu-item-bg@2x.png */,
 				4FFE16F21989E006004D4413 /* driver-call-hud@2x.png */,
@@ -2999,6 +3005,7 @@
 				4F1849FA1991753F006EA959 /* menu-mycar-icon@2x.png in Resources */,
 				4FC758CC19AA91410093DBEA /* VCDriverOnBoardingViewController.xib in Resources */,
 				4F2EF9BE1961391B006A1962 /* support-menu-button@2x.png in Resources */,
+				4FFE171B1989F93F004D4413 /* menu-item-badge@2x.png in Resources */,
 				F4354DB0195D0D6A00C06CF7 /* VOCOfinal@2x.png in Resources */,
 				4F184A001991753F006EA959 /* menu-profile-icon@2x.png in Resources */,
 				4F5085A3199B2F41009EDF80 /* menu-bg@2x.png in Resources */,
@@ -3196,6 +3203,7 @@
 				4F30991719B02BCD00DFCDD1 /* temp-user-profile-icon@2x.png in Resources */,
 				F4C6B26B197F06B100F6C10B /* rider-call-button-select@2x.png in Resources */,
 				F4C6B26C197F06B100F6C10B /* VCDriverRecieptDetailViewController.xib in Resources */,
+				4FFE171A1989F93F004D4413 /* menu-item-badge@2x.png in Resources */,
 				F4C6B26D197F06B100F6C10B /* VCRequestsViewController.xib in Resources */,
 				4F3DB5B21981C01D00DDD094 /* ride-details-hud@2x.png in Resources */,
 				F4C6B26E197F06B100F6C10B /* VCPasswordRecoveryViewController.xib in Resources */,
@@ -3361,6 +3369,7 @@
 				F4D8FEE019B1745A00BC0B69 /* rider-call-button-select@2x.png in Resources */,
 				F4D8FEE119B1745A00BC0B69 /* VCDriverRecieptDetailViewController.xib in Resources */,
 				F4D8FEE219B1745A00BC0B69 /* temp-user-profile-icon@2x.png in Resources */,
+				F4D8FEE319B1745A00BC0B69 /* menu-item-badge@2x.png in Resources */,
 				F4D8FEE419B1745A00BC0B69 /* VCRequestsViewController.xib in Resources */,
 				F4D8FEE519B1745A00BC0B69 /* ride-details-hud@2x.png in Resources */,
 				F4D8FEE619B1745A00BC0B69 /* VCPasswordRecoveryViewController.xib in Resources */,
@@ -3527,6 +3536,7 @@
 				4FCD7C8119771931007609E8 /* rider-call-button-select@2x.png in Resources */,
 				4FCD7C8A19775C5C007609E8 /* VCDriverRecieptDetailViewController.xib in Resources */,
 				4F30991919B02BCD00DFCDD1 /* temp-user-profile-icon@2x.png in Resources */,
+				4FFE171C1989F93F004D4413 /* menu-item-badge@2x.png in Resources */,
 				F473F051195BA54F00D8C900 /* VCRequestsViewController.xib in Resources */,
 				4F3DB5B41981C01D00DDD094 /* ride-details-hud@2x.png in Resources */,
 				4FE641C5194157EB0059BED1 /* VCPasswordRecoveryViewController.xib in Resources */,
