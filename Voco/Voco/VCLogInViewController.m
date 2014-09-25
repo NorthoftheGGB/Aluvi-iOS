@@ -80,29 +80,20 @@
 #elif ALPHA
 
 #else
-    userEmails = @[ @"hkj@gig.com", @"jgjh@com.com"];
-    passwords = @[ @"5555555555", @"9999999999"];
-    userLabels = @[ @"driver", @"rider"];
+    userEmails = @[ @"v1@vocotransportation.com", @"v3@vocotransportation.com"];
+    passwords = @[ @"9999999999", @"5555555555" ];
+    userLabels = @[  @"rider", @"driver"];
 #endif
 
     
     [UIAlertView showWithTitle:@"Debug" message:@"Log In?" cancelButtonTitle:@"No" otherButtonTitles:userLabels tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-        switch (buttonIndex) {
-            case 1:
-                _emailTextField.text = @"hkj@gig.com";
-                _passwordTextField.text = @"5555555555";
-                [self login];
-                break;
-            case 2:
-                _emailTextField.text = @"jgjh@com.com";
-                _passwordTextField.text = @"9999999999";
-                [self login];
-                break;
-
-                
-            default:
-                break;
+        
+        if(buttonIndex <= [userEmails count]){
+            _emailTextField.text = [userEmails objectAtIndex:buttonIndex-1];
+            _passwordTextField.text = [passwords objectAtIndex:buttonIndex-1];
+            [self login];
         }
+        
     }];
 
 }
