@@ -276,6 +276,7 @@ static VCCommuteManager * instance;
 - (void) cancelTrip:(NSNumber *) tripId success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure {
     
     [UIAlertView showWithTitle:@"Not Supported" message:@"Not yet able to cancel entire trip" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+    failure();
     
     /*NSArray * ticketsForTrip = [Ticket ticketsForTrip:tripId];
     
