@@ -210,17 +210,13 @@ static VCCommuteManager * instance;
     [components setMinute:[[f numberFromString:pickupTimeParts[1]] intValue]];
     workToHomeRide.pickupTime = [gregorian dateByAddingComponents:components toDate:thisDate options:0];
     
-    [VCCoreData saveContext];
-    
     // And attempt to store the rides on the server
     // TODO: This will happen in single request to the server, which will create and supply the tickets
     [VCRiderApi requestRide:homeToWorkRide success:^(RKObjectRequestOperation *operation, VCRideRequestCreated * response) {
         homeToWorkRide.uploaded = [NSNumber numberWithBool:YES];
         homeToWorkRide.direction = @"a";
-        [VCCoreData saveContext];
         
         workToHomeRide.trip_id = homeToWorkRide.trip_id;
-        [VCCoreData saveContext];
 
         [VCRiderApi requestRide:workToHomeRide success:^(RKObjectRequestOperation *operation, VCRideRequestCreated * response) {
             workToHomeRide.uploaded = [NSNumber numberWithBool:YES];
@@ -275,6 +271,23 @@ static VCCommuteManager * instance;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"schedule_updated" object:nil userInfo:@{}];
         success();
     }
+}
+
+- (void) cancelTrip:(NSNumber *) tripId success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure {
+    
+    [UIAlertView showWithTitle:@"Not Supported" message:@"Not yet able to cancel entire trip" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+    
+    /*NSArray * ticketsForTrip = [Ticket ticketsForTrip:tripId];
+    
+    // TODO refactor to use RKRequestQueue and RKRequestQueueDelegate
+    
+    
+    [self cancelRide:_ticket[0] success:^{
+        <#code#>
+    } failure:^{
+        <#code#>
+    }];
+     */
 }
 
 

@@ -109,11 +109,14 @@
 @property (weak, nonatomic) IBOutlet VCLabel *rideRequestStatusLabel;
 @property (weak, nonatomic) IBOutlet VCLabel *rideRequestDetailLabel;
 @property (weak, nonatomic) IBOutlet VCButtonStandardStyle *okButton;
+
+@property (weak, nonatomic) Ticket * showingTicket;
 - (IBAction)didTapOKButton:(id)sender;
 
 //Ride Details
 @property (strong, nonatomic) IBOutlet VCRideDetailsView * rideDetailsConfirmation;
 @property (strong, nonatomic) UIScrollView * scrollView;
+- (IBAction)didChangeDisplayDirectionValue:(id)sender;
 
 //RideOverview
 @property (strong, nonatomic) IBOutlet VCRideOverviewHudView *rideDetailsHud;
@@ -212,7 +215,7 @@
         
         // Check for existing commuter ticket that is has not been processed
         NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
-        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"savedState IN %@  AND direction = 'a' ", @[kCreatedState, kRequestedState, kCommuteSchedulerFailedState] ];
+        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"savedState IN %@  AND direction = 'a' AND confirmed = false ", @[kCreatedState, kRequestedState, kCommuteSchedulerFailedState] ];
         [fetch setPredicate:predicate];
         NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];
         [fetch setSortDescriptors:@[sort]];
@@ -258,7 +261,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripFulfilled:) name:kNotificationTypeTripFulfilled object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripUnfulfilled:) name:kNotificationTypeTripUnfulfilled object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fareCompleted:) name:kNotificationTypeFareComplete object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fareCancelledByDriver:) name:kPushTypeFareCancelledByDriver object:nil];
     
 }
 
@@ -273,27 +276,21 @@
 
 - (void) tripUnfulfilled:(NSNotification *) notification {
     [self showInterfaceForPayload:notification.object];
-
+    
 }
 
 - (void) showInterfaceForPayload:(NSDictionary *)payload {
     NSNumber * tripId = [payload objectForKey:VC_PUSH_TRIP_ID_KEY];
     if(_ticket == nil || [_ticket.trip_id isEqualToNumber:tripId]) {
-        NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
-        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"trip_id = %@", tripId];
-        [fetch setPredicate:predicate];
-        NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];
-        [fetch setSortDescriptors:@[sort]];
-        NSError * error;
-        NSArray * ridesForTrip = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
-        if(ridesForTrip == nil){
-            [WRUtilities criticalError:error];
+        NSArray * ticketsForTrip = [Ticket ticketsForTrip:tripId];
+        _ticket = [ticketsForTrip objectAtIndex:0];
+        if(_ticket == nil){
+            [WRUtilities criticalErrorWithString:@"Missing ticket for trip."];
             return;
         }
-        _ticket = [ridesForTrip objectAtIndex:0];
         [self showInterfaceForTicket];
     }
-
+    
 }
 
 
@@ -304,6 +301,15 @@
         [self resetInterfaceToHome];
     }
 }
+
+- (void) fareCancelledByDriver:(NSNotification *) notification {
+    NSDictionary * payload = notification.object;
+    NSNumber * fareId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
+    if(_ticket != nil && [fareId isEqualToNumber:_ticket.fare_id]){
+        [self resetInterfaceToHome];
+    }
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -377,12 +383,9 @@
         [self addDestinationAnnotation: [_ticket destinationLocation]];
         [self showSuggestedRoute: [_ticket originLocation] to:[_ticket destinationLocation]];
         [self.view addSubview:self.holdingScreen];
-    
+        
     } else if([_ticket.state isEqualToString:kCommuteSchedulerFailedState]) {
-        self.rideRequestStatusLabel.text = @"Sorry, we were unable to fulfill your ride request";
-        self.rideRequestDetailLabel.text = @"Would you like to try again for the next day?";
-        self.okButton.hidden = NO;
-        [self.view addSubview:self.holdingScreen];
+        [self transitionToRideRequestDenied];
         
     } else if([_ticket.state isEqualToString:kScheduledState]){
         //[self addOriginAnnotation: [_ticket originLocation] ];
@@ -403,49 +406,18 @@
             [self addPedestrianRoute:[_ticket dropOffPointLocation] to:[_ticket destinationLocation]];
         }
         
-        if([_ticket.driving boolValue]) {
+        if([_ticket.confirmed boolValue]){
             
-            [self showHovDriverInterface];
+            // show the HUD interface
+            if([_ticket.driving boolValue] ) {
+                [self showHovDriverInterface];
+            } else {
+                [self showRiderInterface];
+            }
             
         } else {
             
-            if([_ticket.confirmed isEqualToNumber:[NSNumber numberWithBool:YES]]) {
-                //_rideDetailsHud.pickupTimeLabel.text = [_ride.pickupTime time];
-                _rideDetailsHud.driverFirstNameLabel.text = _ticket.driver.firstName;
-                _rideDetailsHud.driverLastNameLabel.text = _ticket.driver.lastName;
-                _rideDetailsHud.carTypeValueLabel.text = [_ticket.car summary];
-                _rideDetailsHud.licenseValueLabel.text = _ticket.car.licensePlate;
-                _rideDetailsHud.cardNicknamelabel.text = [VCUserStateManager instance].profile.cardBrand;
-                _rideDetailsHud.cardNumberLabel.text = [VCUserStateManager instance].profile.cardLastFour;
-                _rideDetailsHud.fareLabel.text = [VCUtilities formatCurrencyFromCents: _ticket.fixedPrice];
-                CGRect frame = _rideDetailsHud.frame;
-                frame.origin.x = 0;
-                frame.origin.y = self.view.frame.size.height - 154;
-                _rideDetailsHud.frame = frame;
-                [self.view addSubview:_rideDetailsHud];
-            } else {
-                self.rideRequestDetailLabel.text = @"Your ride to and from work is ready!";
-                self.showRideDetailsButton.hidden = NO;
-                [self.view addSubview:self.holdingScreen];
-
-                /*
-                _rideDetailsConfirmation.pickupTimeLabel.text = [_ticket.pickupTime time];
-                _rideDetailsConfirmation.driverNameLabel.text = [_ticket.driver fullName];
-                _rideDetailsConfirmation.carTypeLabel.text = [_ticket.car summary];
-                _rideDetailsConfirmation.licenseLabel.text = _ticket.car.licensePlate;
-                _rideDetailsConfirmation.fareLabel.text = [VCUtilities formatCurrencyFromCents:_ticket.fixedPrice];
-                _rideDetailsConfirmation.cardNicknamelabel.text = [VCUserStateManager instance].profile.cardBrand;
-                _rideDetailsConfirmation.cardNumberLabel.text = [VCUserStateManager instance].profile.cardLastFour;
-                _rideDetailsConfirmation.fareLabel.text = [VCUtilities formatCurrencyFromCents: _ticket.fixedPrice];
-                
-                self.scrollView = [[UIScrollView alloc] init];
-                self.scrollView.frame = self.view.frame;
-                [self.view addSubview:self.scrollView];
-                [self.scrollView setContentSize:_rideDetailsConfirmation.frame.size];
-                [self.scrollView addSubview:_rideDetailsConfirmation];
-                */
-                
-            }
+            [self transitionToRideRequestApproved];
             
         }
     }
@@ -589,6 +561,9 @@
 
 - (void) removeHuds {
     [_holdingScreen removeFromSuperview];
+    _okButton.hidden = YES;
+    _showRideDetailsButton.hidden = YES;
+
     [_pickupHudView removeFromSuperview];
     [_homeLocationWidget.view removeFromSuperview];
     [_workLocationWidget.view removeFromSuperview];
@@ -744,6 +719,37 @@
     _step = kStepDone;
 }
 
+- (void) transitionToRideDetailsConfirmation {
+    
+    if([[self.view subviews] containsObject:_holdingScreen]){
+        [_holdingScreen removeFromSuperview];
+    }
+    
+    [self updateRideDetailsConfirmationView: _ticket];
+
+    self.scrollView = [[UIScrollView alloc] init];
+    CGRect frame = self.view.frame;
+    frame.origin.y = frame.origin.y + 62;
+    frame.size.height = frame.size.height - 62;
+    self.scrollView.frame = frame;
+    [self.view addSubview:self.scrollView];
+    [self.scrollView setContentSize:_rideDetailsConfirmation.frame.size];
+    [self.scrollView addSubview:_rideDetailsConfirmation];
+    
+
+}
+
+- (void) updateRideDetailsConfirmationView:(Ticket *) ticket {
+    
+    if([ticket.driving boolValue]) {
+        [_rideDetailsConfirmation driverLayout: ticket];
+        
+    } else {
+        [_rideDetailsConfirmation riderLayout: ticket];
+    }
+ 
+
+}
 
 - (void) didTapCancel: (id)sender {
     if(_ticket == nil) {
@@ -757,12 +763,24 @@
                     
                     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
                     hud.labelText = @"Canceling..";
-                    [[VCCommuteManager instance] cancelRide:_ticket success:^{
-                        [self resetInterfaceToHome];
-                        hud.hidden = YES;
-                    } failure:^{
-                        hud.hidden = YES;
-                    }];
+                    if([_ticket.confirmed boolValue]) {
+                        [[VCCommuteManager instance] cancelRide:_ticket success:^{
+                            [self resetInterfaceToHome];
+                            _ticket = nil;
+                            hud.hidden = YES;
+                        } failure:^{
+                            hud.hidden = YES;
+                        }];
+                    } else {
+                        // Here we are cancelling BOTH legs of the trip
+                        [[VCCommuteManager instance] cancelTrip:_ticket.trip_id success:^{
+                            [self resetInterfaceToHome];
+                            _ticket = nil;
+                            hud.hidden = YES;
+                        } failure:^{
+                            hud.hidden = YES;
+                        }];
+                    }
                 }
                     break;
                 default:
@@ -1001,6 +1019,9 @@
 }
 
 - (IBAction)didTapShowRideDetailsButton:(id)sender {
+    
+    [self transitionToRideDetailsConfirmation];
+    
 }
 
 - (IBAction)didTapPickupHud:(id)sender {
@@ -1013,8 +1034,12 @@
 }
 
 - (IBAction)didTapConfirmedCommuterRide:(id)sender {
+    
     _ticket.confirmed = [NSNumber numberWithBool:YES];
+    _ticket.returnTicket.confirmed = [NSNumber numberWithBool:YES];
+    [VCNotifications scheduleUpdated];
     [VCCoreData saveContext];
+    
     [self showInterfaceForTicket];
 }
 
@@ -1034,8 +1059,10 @@
 }
 
 - (IBAction)didTapOKButton:(id)sender {
+    _ticket.confirmed = [NSNumber numberWithBool:YES];
+    [VCNotifications scheduleUpdated];
+    [VCCoreData saveContext];
     [self resetInterfaceToHome];
-
 }
 
 #pragma mark - VCLocationSearchViewControllerDelegate
@@ -1049,7 +1076,7 @@
         widget.waiting = NO;
         
         [VCCommuteManager instance].homePlaceName = widget.locationText;
-
+        
         
     } else if (widget.type == kWorkType) {
         
@@ -1058,7 +1085,7 @@
         widget.waiting = NO;
         
         [VCCommuteManager instance].workPlaceName = widget.locationText;
-
+        
     }
     
     [self updateRouteOverlay];
@@ -1206,32 +1233,29 @@
     return nil;
 }
 
+#pragma makr RiderInterface
 
+- (void) showRiderInterface {
+    _rideDetailsHud.driverFirstNameLabel.text = _ticket.driver.firstName;
+    _rideDetailsHud.driverLastNameLabel.text = _ticket.driver.lastName;
+    _rideDetailsHud.carTypeValueLabel.text = [_ticket.car summary];
+    _rideDetailsHud.licenseValueLabel.text = _ticket.car.licensePlate;
+    _rideDetailsHud.cardNicknamelabel.text = [VCUserStateManager instance].profile.cardBrand;
+    _rideDetailsHud.cardNumberLabel.text = [VCUserStateManager instance].profile.cardLastFour;
+    _rideDetailsHud.fareLabel.text = [VCUtilities formatCurrencyFromCents: _ticket.fixedPrice];
+    CGRect frame = _rideDetailsHud.frame;
+    frame.origin.x = 0;
+    frame.origin.y = self.view.frame.size.height - 154;
+    _rideDetailsHud.frame = frame;
+    [self.view addSubview:_rideDetailsHud];
+}
 
 #pragma mark HovDriverInterface
 - (void) showHovDriverInterface{
     
-    if([_ticket.confirmed isEqualToNumber:[NSNumber numberWithBool:YES]]) {
-        
-        [self setupDriverHuds];
-        if([_ticket.hovFare.state isEqualToString:@"started"]){
-            [self moveFromPickupToRideInProgressInteface];
-        }
-        
-        
-    } else {
-        _fareDetailsView.driveTimeLabel.text = [_ticket.pickupTime time];
-        _fareDetailsView.dateLabel.text = [_ticket.pickupTime monthAndDay];
-        _fareDetailsView.fareEarningsLabel.text = [VCUtilities formatCurrencyFromCents:_ticket.hovFare.estimatedEarnings ];
-        _fareDetailsView.driveDistanceLabel.text = @"";
-        _fareDetailsView.numberOfPeopleLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)[_ticket.hovFare.riders count] ];
-        
-        CGRect frame = _rideDetailsConfirmation.frame;
-        frame.origin.x = 0;
-        frame.origin.y = self.view.frame.size.height - 480;
-        _fareDetailsView.frame = frame;
-        [self.view addSubview:_fareDetailsView];
-        
+    [self setupDriverHuds];
+    if([_ticket.hovFare.state isEqualToString:@"started"]){
+        [self moveFromPickupToRideInProgressInteface];
     }
     
 }
@@ -1579,7 +1603,30 @@
                        }];
     
 }
-//TODO: here are the methods for the Confirmation Screen
+
+
+
+- (IBAction)didChangeDisplayDirectionValue:(id)sender {
+    
+    switch(_rideDetailsConfirmation.segmentedButton.selectedSegmentIndex){
+        case 0:
+            [self updateRideDetailsConfirmationView:_ticket];
+            break;
+        case 1:
+            [self updateRideDetailsConfirmationView:_ticket.returnTicket];
+            break;
+    }
+    
+}
+
+- (void) addHoldingScreenIfNotAdded {
+    if([_holdingScreen superview] == nil) {
+        CGRect frame = _holdingScreen.frame;
+        frame.size.height = self.view.frame.size.height;
+        _holdingScreen.frame = frame;
+        [self.view addSubview:_holdingScreen];
+    }
+}
 
 /*
  Confirmation Screen: Ride Request Approved
@@ -1590,8 +1637,14 @@
  didTapShowRideDetailsButton ==> takes you to Ride Details*/
 
 - (void) transitionToRideRequestApproved{
-    _rideRequestStatusLabel.text = [NSString stringWithFormat:@"Your ride to and from work is ready!"];
-    [self showRideDetailsButton];
+    if([_ticket.driving boolValue]) {
+        _rideRequestStatusLabel.text = [NSString stringWithFormat:@"Your driving details are ready!"];
+        _rideRequestDetailLabel.text = @"";
+    } else {
+        _rideRequestStatusLabel.text = [NSString stringWithFormat:@"Your ride to and from work is ready!"];
+    }
+    _showRideDetailsButton.hidden = NO;
+    [self addHoldingScreenIfNotAdded];
 }
 
 /*
@@ -1606,8 +1659,9 @@
 - (void) transitionToRideRequestDenied{
     _rideRequestStatusLabel.text = [NSString stringWithFormat:@"Sorry, we were unable to fulfill your ride request."];
     _rideRequestDetailLabel.text = [NSString stringWithFormat:@"If you would like to schedule a commute for the following day, please try again tomorrow."];
+    _okButton.hidden = NO;
+    [self addHoldingScreenIfNotAdded];
     
-    [self okButton];
     
 }
 
@@ -1617,7 +1671,7 @@
     
     //[self hideCarValues];
     //[self showDriverDetails];
-
+    
     
 }
 

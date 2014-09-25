@@ -30,5 +30,6 @@
 
 - (BOOL) requestRidesFor:(NSDate *) tomorrow;
 - (void) cancelRide:(Ticket *) ride success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
+- (void) cancelTrip:(NSNumber *) tripId success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
 
 @end

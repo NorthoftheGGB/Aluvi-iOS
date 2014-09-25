@@ -176,7 +176,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="635"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView hidden="YES" autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="devon.png" translatesAutoresizingMaskIntoConstraints="NO" id="vBd-Mx-Cx3" userLabel="user Image View">
+                <imageView autoresizesSubviews="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="devon.png" translatesAutoresizingMaskIntoConstraints="NO" id="vBd-Mx-Cx3" userLabel="user Image View">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="320" id="kB1-Ok-Kfg"/>
@@ -198,6 +198,9 @@
                         <segment title="Back Home"/>
                     </segments>
                     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <action selector="didChangeDisplayDirectionValue:" destination="-1" eventType="valueChanged" id="K3T-Cg-jhJ"/>
+                    </connections>
                 </segmentedControl>
                 <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nx0-ot-14p" customClass="VCButtonStandardStyle">
                     <rect key="frame" x="0.0" y="575" width="320" height="46"/>
@@ -946,8 +949,12 @@
                         <action selector="didTapShowRideDetailsButton:" destination="-1" eventType="touchUpInside" id="TaR-5Z-Hoy"/>
                     </connections>
                 </button>
-                <button hidden="YES" opaque="NO" alpha="0.89999997615814209" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBf-gu-Tg9" customClass="VCButtonStandardStyle">
+                <button hidden="YES" opaque="NO" alpha="0.89999997615814209" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBf-gu-Tg9" customClass="VCButtonStandardStyle">
                     <rect key="frame" x="0.0" y="514" width="320" height="46"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="320" id="Ixq-dW-ihc"/>
+                        <constraint firstAttribute="height" constant="46" id="RHw-b2-yfB"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" title="OK" backgroundImage="button-full-default.png">
                         <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
@@ -973,9 +980,12 @@
             <constraints>
                 <constraint firstItem="bLN-bY-Loj" firstAttribute="leading" secondItem="7XC-Uh-YFh" secondAttribute="leading" constant="14" id="1F3-rd-z2l"/>
                 <constraint firstItem="Gf9-Vr-u8B" firstAttribute="top" secondItem="Ztb-5y-HlY" secondAttribute="bottom" constant="35" id="Fp4-XX-2h1"/>
+                <constraint firstAttribute="bottom" secondItem="tBf-gu-Tg9" secondAttribute="bottom" constant="8" id="Il2-jR-Q0h"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2iv-cM-ZrM" secondAttribute="bottom" constant="8" id="JZ5-CR-lTT"/>
                 <constraint firstAttribute="bottom" secondItem="2iv-cM-ZrM" secondAttribute="bottom" constant="8" id="KXr-Or-og5"/>
                 <constraint firstItem="2iv-cM-ZrM" firstAttribute="leading" secondItem="7XC-Uh-YFh" secondAttribute="leading" id="N8p-va-Dwt"/>
                 <constraint firstItem="Ztb-5y-HlY" firstAttribute="leading" secondItem="7XC-Uh-YFh" secondAttribute="leading" constant="78" id="QoM-8V-oxZ"/>
+                <constraint firstItem="tBf-gu-Tg9" firstAttribute="leading" secondItem="7XC-Uh-YFh" secondAttribute="leading" id="fH0-gg-YaY"/>
                 <constraint firstItem="Ztb-5y-HlY" firstAttribute="top" secondItem="7XC-Uh-YFh" secondAttribute="top" constant="57" id="j30-Hd-EHG"/>
                 <constraint firstItem="Gf9-Vr-u8B" firstAttribute="leading" secondItem="7XC-Uh-YFh" secondAttribute="leading" constant="14" id="lxi-5R-8Lj"/>
                 <constraint firstItem="bLN-bY-Loj" firstAttribute="top" secondItem="Gf9-Vr-u8B" secondAttribute="bottom" constant="10" id="vCq-fu-zim"/>

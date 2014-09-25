@@ -547,11 +547,29 @@
 }
 
 - (void) loadScheduleItems {
+    
+    
+    // TODO: set up filter by date < today at midnight.
+    
+    NSDate *date = [NSDate date];
+    NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+    NSUInteger preservedComponents = (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit);
+    NSDateComponents * components = [calendar components:preservedComponents fromDate:date];
+    [components setHour:0];
+    [components setMinute:0];
+    [components setSecond:0];
+    date = [calendar dateFromComponents:components];
+    
     NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"( savedState IN %@ AND confirmed = true ) \
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"( ( savedState IN %@ AND confirmed = true ) \
                                OR ( savedState IN %@  AND direction = 'a' )  \
-                               OR ( savedState = %@ AND direction = 'a' AND confirmed = false )",
-                               @[kScheduledState], @[kCreatedState, kRequestedState, kScheduledState], kCommuteSchedulerFailedState ];
+                               OR ( savedState = %@ AND direction = 'a' AND confirmed = false ) ) \
+                               AND pickupTime > %@ \
+                               ",
+                               @[kScheduledState],
+                               @[kCreatedState, kRequestedState, kScheduledState],
+                               kCommuteSchedulerFailedState,
+                               date  ];
     [fetch setPredicate:predicate];
     NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];
     [fetch setSortDescriptors:@[sort]];

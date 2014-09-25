@@ -70,10 +70,15 @@
 @property (nonatomic, retain) Car *car;
 @property (nonatomic, retain) Fare * hovFare;
 
+@property (nonatomic, retain) NSArray * returnTicketFetchRequest;
 
 + (Ticket *) ticketWithFareId: (NSNumber *) fareId;
 
 + (void)createMappings:(RKObjectManager *)objectManager;
+
++ (NSArray * ) ticketsForTrip:(NSNumber *) tripId;
+
+- (Ticket *) returnTicket;
 
 - (CLLocation *) originLocation;
 - (CLLocation *) destinationLocation;

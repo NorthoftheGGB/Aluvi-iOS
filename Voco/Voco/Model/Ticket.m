@@ -51,6 +51,7 @@
 @dynamic hovFare;
 @dynamic fixedPrice;
 @dynamic direction;
+@dynamic returnTicketFetchRequest;
 
 + (void)createMappings:(RKObjectManager *)objectManager{
     RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Ticket"
@@ -190,7 +191,33 @@
     return kCreatedState;
 }
 
+- (Ticket *) returnTicket {
+    NSArray * returnTicketResults = self.returnTicketFetchRequest;
+    if(returnTicketResults == nil || [returnTicketResults count] < 1){
+        return nil;
+    } else {
+        return returnTicketResults[0];
+    }
+}
 
+
+
+
++ (NSArray * ) ticketsForTrip:(NSNumber *) tripId {
+    NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"trip_id = %@", tripId];
+    [fetch setPredicate:predicate];
+    NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];
+    [fetch setSortDescriptors:@[sort]];
+    NSError * error;
+    NSArray * ticketsForTrip = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
+    if(ticketsForTrip == nil){
+        [WRUtilities criticalError:error];
+        return nil;
+    }
+    return ticketsForTrip;
+
+}
 
 
 

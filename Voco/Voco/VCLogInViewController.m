@@ -51,12 +51,51 @@
     UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [tapBackground setNumberOfTapsRequired:1];
     [self.view addGestureRecognizer:tapBackground];
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];\
+    
+#ifndef RELEASE
+    UISwipeGestureRecognizer * shortCut = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(debug:)];
+    [shortCut setNumberOfTouchesRequired:2];
+    [shortCut setDirection:UISwipeGestureRecognizerDirectionUp];
+    [self.view addGestureRecognizer:shortCut];
+#endif
 
 }
 
 - (void) dismissKeyboard:(id) sender{
     [self.view endEditing:YES];
+}
+
+- (void) debug:(id) sender {
+    
+
+    NSArray * userEmails;
+    NSArray * passwords;
+    NSArray * userLabels;
+    
+    userEmails = @[ @"hkj@gig.com", @"jgjh@com.com"];
+    passwords = @[ @"5555555555", @"9999999999"];
+    userLabels = @[ @"driver", @"rider"];
+    
+    [UIAlertView showWithTitle:@"Debug" message:@"Log In?" cancelButtonTitle:@"No" otherButtonTitles:userLabels tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        switch (buttonIndex) {
+            case 1:
+                _emailTextField.text = @"hkj@gig.com";
+                _passwordTextField.text = @"5555555555";
+                [self login];
+                break;
+            case 2:
+                _emailTextField.text = @"jgjh@com.com";
+                _passwordTextField.text = @"9999999999";
+                [self login];
+                break;
+
+                
+            default:
+                break;
+        }
+    }];
+
 }
 
 

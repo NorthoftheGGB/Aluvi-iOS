@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "VCAbstractRideDetailsView.h"
+#import "Ticket.h"
 
 @interface VCRideDetailsView : VCAbstractRideDetailsView
 
@@ -47,6 +48,7 @@
 
 
 
-- (void) driverLayout;
+- (void) driverLayout:(Ticket *) ticket;
+- (void) riderLayout:(Ticket *) ticket;
 
 @end
