@@ -38,4 +38,7 @@
     self.itemDateLabel.textColor = [UIColor colorWithRed:(162/255.f) green:(148/255.f) blue:(144/255.f) alpha:1.0];
 }
 
+//badged
+//highlighted
+
 @end
