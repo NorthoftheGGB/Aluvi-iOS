@@ -69,13 +69,22 @@
 - (void) debug:(id) sender {
     
 
-    NSArray * userEmails;
-    NSArray * passwords;
-    NSArray * userLabels;
-    
+    NSArray * userEmails = [NSArray array];
+    NSArray * passwords = [NSArray array];
+    NSArray * userLabels = [NSArray array];
+
+#ifdef TESTING
+    userEmails = @[ @"v1@vocotransportation.com", @"v3@vocotransportation.com"];
+    passwords = @[ @"abc123456", @"abc123456"];
+    userLabels = @[ @"rider", @"driver"];
+#elif ALPHA
+
+#else
     userEmails = @[ @"hkj@gig.com", @"jgjh@com.com"];
     passwords = @[ @"5555555555", @"9999999999"];
     userLabels = @[ @"driver", @"rider"];
+#endif
+
     
     [UIAlertView showWithTitle:@"Debug" message:@"Log In?" cancelButtonTitle:@"No" otherButtonTitles:userLabels tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
         switch (buttonIndex) {
