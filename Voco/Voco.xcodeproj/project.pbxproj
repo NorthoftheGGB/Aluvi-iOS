@@ -1072,9 +1072,8 @@
 		F4D8FEDF19B1745A00BC0B69 /* reciept_expanded@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3D222219B132A0006EF35D /* reciept_expanded@2x.png */; };
 		F4D8FEE019B1745A00BC0B69 /* rider-call-button-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C7F19771931007609E8 /* rider-call-button-select@2x.png */; };
 		F4D8FEE219B1745A00BC0B69 /* temp-user-profile-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F30991319B02BCD00DFCDD1 /* temp-user-profile-icon@2x.png */; };
-		F4D8FEE319B1745A00BC0B69 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F4D8FEE319B1745A00BC0B69 /* menu-item-badge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE17191989F93F004D4413 /* menu-item-badge@2x.png */; };
-		F4D8FEE419B1745A00BC0B69 /* VCRequestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F473F04F195BA54F00D8C900 /* VCRequestsViewController.xib */; };
+		F4D8FEE419B1745A00BC0B69 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F4D8FEE519B1745A00BC0B69 /* ride-details-hud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3DB5AE1981C01D00DDD094 /* ride-details-hud@2x.png */; };
 		F4D8FEE619B1745A00BC0B69 /* VCPasswordRecoveryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641C3194157EB0059BED1 /* VCPasswordRecoveryViewController.xib */; };
 		F4D8FEE719B1745A00BC0B69 /* KlinicSlabMediumIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F37E2DC1949574000753172 /* KlinicSlabMediumIt.ttf */; };
@@ -3075,9 +3074,7 @@
 				4FFE17161989EFC0004D4413 /* menu-item-bg@2x.png in Resources */,
 				4F30991719B02BCD00DFCDD1 /* temp-user-profile-icon@2x.png in Resources */,
 				F4C6B26B197F06B100F6C10B /* rider-call-button-select@2x.png in Resources */,
-				F4C6B26C197F06B100F6C10B /* VCDriverRecieptDetailViewController.xib in Resources */,
 				4FFE171A1989F93F004D4413 /* menu-item-badge@2x.png in Resources */,
-				F4C6B26D197F06B100F6C10B /* VCRequestsViewController.xib in Resources */,
 				4F3DB5B21981C01D00DDD094 /* ride-details-hud@2x.png in Resources */,
 				F4C6B26E197F06B100F6C10B /* VCPasswordRecoveryViewController.xib in Resources */,
 				4FAB576F19D0C637009055D7 /* menu-item-bg-depressed-select@2x.png in Resources */,
@@ -3235,9 +3232,9 @@
 				F4D8FEDF19B1745A00BC0B69 /* reciept_expanded@2x.png in Resources */,
 				F4D8FEE019B1745A00BC0B69 /* rider-call-button-select@2x.png in Resources */,
 				F4D8FEE219B1745A00BC0B69 /* temp-user-profile-icon@2x.png in Resources */,
-				F4D8FEE319B1745A00BC0B69 /* (null) in Resources */,
 				F4D8FEE319B1745A00BC0B69 /* menu-item-badge@2x.png in Resources */,
-				F4D8FEE419B1745A00BC0B69 /* VCRequestsViewController.xib in Resources */,
+				F4D8FEE319B1745A00BC0B69 /* menu-item-badge@2x.png in Resources */,
+				F4D8FEE419B1745A00BC0B69 /* (null) in Resources */,
 				F4D8FEE519B1745A00BC0B69 /* ride-details-hud@2x.png in Resources */,
 				F4D8FEE619B1745A00BC0B69 /* VCPasswordRecoveryViewController.xib in Resources */,
 				F4D8FEE719B1745A00BC0B69 /* KlinicSlabMediumIt.ttf in Resources */,
@@ -3397,7 +3394,6 @@
 				4FCD7C8119771931007609E8 /* rider-call-button-select@2x.png in Resources */,
 				4F30991919B02BCD00DFCDD1 /* temp-user-profile-icon@2x.png in Resources */,
 				4FFE171C1989F93F004D4413 /* menu-item-badge@2x.png in Resources */,
-				F473F051195BA54F00D8C900 /* VCRequestsViewController.xib in Resources */,
 				4F3DB5B41981C01D00DDD094 /* ride-details-hud@2x.png in Resources */,
 				4FE641C5194157EB0059BED1 /* VCPasswordRecoveryViewController.xib in Resources */,
 				4F37E2E01949574000753172 /* KlinicSlabMediumIt.ttf in Resources */,
@@ -4286,7 +4282,7 @@
 				INFOPLIST_FILE = "Voco Testing-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "Voco Testing";
-				PROVISIONING_PROFILE = "3a51bdaf-593d-46be-9a36-b379d6162ab8";
+				PROVISIONING_PROFILE = "18dba206-3530-4c60-88c7-92f5760b3821";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4313,7 +4309,7 @@
 				INFOPLIST_FILE = "Voco Testing-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "Voco Testing";
-				PROVISIONING_PROFILE = "3a51bdaf-593d-46be-9a36-b379d6162ab8";
+				PROVISIONING_PROFILE = "18dba206-3530-4c60-88c7-92f5760b3821";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
