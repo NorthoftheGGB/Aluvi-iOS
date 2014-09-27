@@ -230,6 +230,14 @@
 		4F73CA11197F82DA001B6663 /* VCEditLocationWidget.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F73CA0F197F82DA001B6663 /* VCEditLocationWidget.xib */; };
 		4F73CA12197F82DA001B6663 /* VCEditLocationWidget.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F73CA0F197F82DA001B6663 /* VCEditLocationWidget.xib */; };
 		4F9909C5195CCE6500E83164 /* log-in-box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9909C4195CCE6500E83164 /* log-in-box@2x.png */; };
+		4F9D808B19D6547E008B0D3E /* hamburger-badge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9D808919D6547E008B0D3E /* hamburger-badge@2x.png */; };
+		4F9D808C19D6547E008B0D3E /* hamburger-badge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9D808919D6547E008B0D3E /* hamburger-badge@2x.png */; };
+		4F9D808D19D6547E008B0D3E /* hamburger-badge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9D808919D6547E008B0D3E /* hamburger-badge@2x.png */; };
+		4F9D808E19D6547E008B0D3E /* hamburger-badge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9D808919D6547E008B0D3E /* hamburger-badge@2x.png */; };
+		4F9D808F19D6547E008B0D3E /* hamburger-nobadge.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9D808A19D6547E008B0D3E /* hamburger-nobadge.png */; };
+		4F9D809019D6547E008B0D3E /* hamburger-nobadge.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9D808A19D6547E008B0D3E /* hamburger-nobadge.png */; };
+		4F9D809119D6547E008B0D3E /* hamburger-nobadge.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9D808A19D6547E008B0D3E /* hamburger-nobadge.png */; };
+		4F9D809219D6547E008B0D3E /* hamburger-nobadge.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9D808A19D6547E008B0D3E /* hamburger-nobadge.png */; };
 		4F9ECEA7196618C300AD4229 /* VCNameTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEA6196618C300AD4229 /* VCNameTextField.m */; };
 		4F9ECEA8196618C300AD4229 /* VCNameTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEA6196618C300AD4229 /* VCNameTextField.m */; };
 		4F9ECEAB196619D800AD4229 /* VCPhoneTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEAA196619D800AD4229 /* VCPhoneTextField.m */; };
@@ -1319,6 +1327,8 @@
 		4F73CA03197F2AB0001B6663 /* VCTicketViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCTicketViewController.xib; sourceTree = "<group>"; };
 		4F73CA0F197F82DA001B6663 /* VCEditLocationWidget.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCEditLocationWidget.xib; sourceTree = "<group>"; };
 		4F9909C4195CCE6500E83164 /* log-in-box@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log-in-box@2x.png"; sourceTree = "<group>"; };
+		4F9D808919D6547E008B0D3E /* hamburger-badge@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hamburger-badge@2x.png"; sourceTree = "<group>"; };
+		4F9D808A19D6547E008B0D3E /* hamburger-nobadge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hamburger-nobadge.png"; sourceTree = "<group>"; };
 		4F9ECEA5196618C300AD4229 /* VCNameTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCNameTextField.h; sourceTree = "<group>"; };
 		4F9ECEA6196618C300AD4229 /* VCNameTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCNameTextField.m; sourceTree = "<group>"; };
 		4F9ECEA9196619D800AD4229 /* VCPhoneTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPhoneTextField.h; sourceTree = "<group>"; };
@@ -1952,6 +1962,8 @@
 		4FDB0ECA1970B0F000A8CEC2 /* Revision 2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				4F9D808919D6547E008B0D3E /* hamburger-badge@2x.png */,
+				4F9D808A19D6547E008B0D3E /* hamburger-nobadge.png */,
 				4FD1297619D62462000E7C39 /* ride-bounds-button-selected@2x.png */,
 				4FD1297719D62462000E7C39 /* ride-bounds-button@2x.png */,
 				4FAB576919D0C637009055D7 /* menu-badge@2x.jpg */,
@@ -2890,6 +2902,7 @@
 				4F184A091991753F006EA959 /* menu-support-icon@2x.png in Resources */,
 				4F184A061991753F006EA959 /* menu-schedule-icon@2x.png in Resources */,
 				4F184A031991753F006EA959 /* menu-receipts-icon@2x.png in Resources */,
+				4F9D808C19D6547E008B0D3E /* hamburger-badge@2x.png in Resources */,
 				4FFE1723198B0475004D4413 /* driver-cancel-hud@2x.png in Resources */,
 				4F73CA11197F82DA001B6663 /* VCEditLocationWidget.xib in Resources */,
 				4F2EF9B41961391B006A1962 /* about-menu-button@2x.png in Resources */,
@@ -2900,6 +2913,7 @@
 				4FC758CC19AA91410093DBEA /* VCDriverOnBoardingViewController.xib in Resources */,
 				4F2EF9BE1961391B006A1962 /* support-menu-button@2x.png in Resources */,
 				4FFE171B1989F93F004D4413 /* menu-item-badge@2x.png in Resources */,
+				4F9D809019D6547E008B0D3E /* hamburger-nobadge.png in Resources */,
 				F4354DB0195D0D6A00C06CF7 /* VOCOfinal@2x.png in Resources */,
 				4F184A001991753F006EA959 /* menu-profile-icon@2x.png in Resources */,
 				4F5085A3199B2F41009EDF80 /* menu-bg@2x.png in Resources */,
@@ -3051,6 +3065,7 @@
 				F4C6B253197F06B100F6C10B /* confirm-location@2x.png in Resources */,
 				4FC758AF19AA8BBC0093DBEA /* toc-checked@2x.png in Resources */,
 				F4C6B254197F06B100F6C10B /* VOCOfinal@2x.png in Resources */,
+				4F9D808B19D6547E008B0D3E /* hamburger-badge@2x.png in Resources */,
 				4FFCF2CE19A5381900A4A24E /* VCSupportViewController.xib in Resources */,
 				F4C6B255197F06B100F6C10B /* payment-menu-button-selected@2x.png in Resources */,
 				4FCBFBEA1995F21300CBF0C8 /* devon@2x.png in Resources */,
@@ -3061,6 +3076,7 @@
 				4FC758F019AA95300093DBEA /* VCReceiptExpandedTableViewCell.xib in Resources */,
 				F4C6B259197F06B100F6C10B /* bubble@2x.png in Resources */,
 				4F184A021991753F006EA959 /* menu-receipts-icon@2x.png in Resources */,
+				4F9D808F19D6547E008B0D3E /* hamburger-nobadge.png in Resources */,
 				4F3098FE19B0137000DFCDD1 /* VCFareReceiptsViewController.xib in Resources */,
 				F4C6B25A197F06B100F6C10B /* VCDriverRequestViewController.xib in Resources */,
 				F4C6B25B197F06B100F6C10B /* VCDriverRegistrationViewController.xib in Resources */,
@@ -3187,6 +3203,7 @@
 				F4D8FE9E19B1745A00BC0B69 /* call-button-select@2x.png in Resources */,
 				F4D8FE9F19B1745A00BC0B69 /* call-button@2x.png in Resources */,
 				F4D8FEA019B1745A00BC0B69 /* scheduledfares-menu-button@2x.png in Resources */,
+				4F9D808E19D6547E008B0D3E /* hamburger-badge@2x.png in Resources */,
 				F4D8FEA119B1745A00BC0B69 /* directions-button-selected@2x.png in Resources */,
 				F4D8FEA319B1745A00BC0B69 /* VCMenuItemTableViewCell.xib in Resources */,
 				F4D8FEA419B1745A00BC0B69 /* camera-icon@2x.png in Resources */,
@@ -3296,6 +3313,7 @@
 				F4D8FF0B19B1745A00BC0B69 /* signUp_btn@2x.png in Resources */,
 				F4D8FF0C19B1745A00BC0B69 /* user-image-small@2x.png in Resources */,
 				F4D8FF0D19B1745A00BC0B69 /* menu-schedule-icon@2x.png in Resources */,
+				4F9D809219D6547E008B0D3E /* hamburger-nobadge.png in Resources */,
 				F4D8FF0E19B1745A00BC0B69 /* menu-submenu-arrow-select@2x.png in Resources */,
 				F4D8FF0F19B1745A00BC0B69 /* VCSignUpViewController.xib in Resources */,
 				F4D8FF1019B1745A00BC0B69 /* profile-button@-select@2x.png in Resources */,
@@ -3375,6 +3393,7 @@
 				4FE641FB194168E80059BED1 /* VOCOfinal@2x.png in Resources */,
 				4FC758B119AA8BBC0093DBEA /* toc-checked@2x.png in Resources */,
 				4FFCF2D019A5381900A4A24E /* VCSupportViewController.xib in Resources */,
+				4F9D808D19D6547E008B0D3E /* hamburger-badge@2x.png in Resources */,
 				4F2EF9C9196139C6006A1962 /* payment-menu-button-selected@2x.png in Resources */,
 				4FCBFBEC1995F21300CBF0C8 /* devon@2x.png in Resources */,
 				4FCBFBE41995847300CBF0C8 /* menu-submenu-arrow@2x.png in Resources */,
@@ -3385,6 +3404,7 @@
 				4FC758F219AA95300093DBEA /* VCReceiptExpandedTableViewCell.xib in Resources */,
 				4F35FA9119A6AA62004FB423 /* login-button@2x.png in Resources */,
 				4F184A041991753F006EA959 /* menu-receipts-icon@2x.png in Resources */,
+				4F9D809119D6547E008B0D3E /* hamburger-nobadge.png in Resources */,
 				4F30990019B0137000DFCDD1 /* VCFareReceiptsViewController.xib in Resources */,
 				4FE641C0194157C60059BED1 /* VCDriverRequestViewController.xib in Resources */,
 				4FE629DB194FC6BB0070F797 /* VCDriverRegistrationViewController.xib in Resources */,
