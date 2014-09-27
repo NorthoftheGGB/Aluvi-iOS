@@ -352,6 +352,14 @@
 		4FCD7C8419771931007609E8 /* rider-call-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C8019771931007609E8 /* rider-call-button@2x.png */; };
 		4FCD7C94197775E1007609E8 /* VCRiderProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C93197775E1007609E8 /* VCRiderProfileViewController.xib */; };
 		4FCD7C95197775E1007609E8 /* VCRiderProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C93197775E1007609E8 /* VCRiderProfileViewController.xib */; };
+		4FD1297819D62462000E7C39 /* ride-bounds-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD1297619D62462000E7C39 /* ride-bounds-button-selected@2x.png */; };
+		4FD1297919D62462000E7C39 /* ride-bounds-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD1297619D62462000E7C39 /* ride-bounds-button-selected@2x.png */; };
+		4FD1297A19D62462000E7C39 /* ride-bounds-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD1297619D62462000E7C39 /* ride-bounds-button-selected@2x.png */; };
+		4FD1297B19D62462000E7C39 /* ride-bounds-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD1297619D62462000E7C39 /* ride-bounds-button-selected@2x.png */; };
+		4FD1297C19D62462000E7C39 /* ride-bounds-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD1297719D62462000E7C39 /* ride-bounds-button@2x.png */; };
+		4FD1297D19D62462000E7C39 /* ride-bounds-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD1297719D62462000E7C39 /* ride-bounds-button@2x.png */; };
+		4FD1297E19D62462000E7C39 /* ride-bounds-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD1297719D62462000E7C39 /* ride-bounds-button@2x.png */; };
+		4FD1297F19D62462000E7C39 /* ride-bounds-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD1297719D62462000E7C39 /* ride-bounds-button@2x.png */; };
 		4FDB0EC81970AC8200A8CEC2 /* colors_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FDB0EC71970AC8200A8CEC2 /* colors_03.png */; };
 		4FDB0EC91970AC8200A8CEC2 /* colors_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FDB0EC71970AC8200A8CEC2 /* colors_03.png */; };
 		4FDB0ECD1970B10600A8CEC2 /* button-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FDB0ECB1970B10600A8CEC2 /* button-default@2x.png */; };
@@ -1377,6 +1385,8 @@
 		4FCD7C7F19771931007609E8 /* rider-call-button-select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rider-call-button-select@2x.png"; sourceTree = "<group>"; };
 		4FCD7C8019771931007609E8 /* rider-call-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rider-call-button@2x.png"; sourceTree = "<group>"; };
 		4FCD7C93197775E1007609E8 /* VCRiderProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCRiderProfileViewController.xib; sourceTree = "<group>"; };
+		4FD1297619D62462000E7C39 /* ride-bounds-button-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ride-bounds-button-selected@2x.png"; sourceTree = "<group>"; };
+		4FD1297719D62462000E7C39 /* ride-bounds-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ride-bounds-button@2x.png"; sourceTree = "<group>"; };
 		4FDB0EC71970AC8200A8CEC2 /* colors_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colors_03.png; sourceTree = "<group>"; };
 		4FDB0ECB1970B10600A8CEC2 /* button-default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-default@2x.png"; sourceTree = "<group>"; };
 		4FDB0ECC1970B10600A8CEC2 /* button-select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-select@2x.png"; sourceTree = "<group>"; };
@@ -1942,6 +1952,8 @@
 		4FDB0ECA1970B0F000A8CEC2 /* Revision 2.0 */ = {
 			isa = PBXGroup;
 			children = (
+				4FD1297619D62462000E7C39 /* ride-bounds-button-selected@2x.png */,
+				4FD1297719D62462000E7C39 /* ride-bounds-button@2x.png */,
 				4FAB576919D0C637009055D7 /* menu-badge@2x.jpg */,
 				4FAB576A19D0C637009055D7 /* menu-item-bg-depressed-select@2x.png */,
 				4F3D222219B132A0006EF35D /* reciept_expanded@2x.png */,
@@ -2928,6 +2940,7 @@
 				4F73CA08197F2AB0001B6663 /* VCTicketViewController.xib in Resources */,
 				4FC758BA19AA8C270093DBEA /* VCLogInViewController.xib in Resources */,
 				4FC7590219AAC0770093DBEA /* receipt-down-arrow@2x.png in Resources */,
+				4FD1297919D62462000E7C39 /* ride-bounds-button-selected@2x.png in Resources */,
 				4F38976719B8298200A75C5C /* Aluvi-TOS.html in Resources */,
 				F4354DBA195D0D6A00C06CF7 /* map_pin_fill-512.png in Resources */,
 				4F2EF9C01961391B006A1962 /* terms-menu-button-selected@2x.png in Resources */,
@@ -2981,6 +2994,7 @@
 				4FCD7C7E19766B77007609E8 /* rider-icon@2x.png in Resources */,
 				4FCBFBE01995847300CBF0C8 /* menu-submenu-arrow-select@2x.png in Resources */,
 				4F3DB5B01981C01D00DDD094 /* confirmation-hud@2x.png in Resources */,
+				4FD1297D19D62462000E7C39 /* ride-bounds-button@2x.png in Resources */,
 				F4354DC5195D0D6A00C06CF7 /* voco_logo@2x.png in Resources */,
 				4F3DB5C31981ED4E00DDD094 /* directions-button@2x.png in Resources */,
 				F4354DC6195D0D6A00C06CF7 /* commute_logo@2x.png in Resources */,
@@ -3087,6 +3101,7 @@
 				F4C6B272197F06B100F6C10B /* scheduledfares-menu-button-selected@2x.png in Resources */,
 				4F1849FC1991753F006EA959 /* menu-payments-icon@2x.png in Resources */,
 				F4C6B273197F06B100F6C10B /* rider-call-button@2x.png in Resources */,
+				4FD1297819D62462000E7C39 /* ride-bounds-button-selected@2x.png in Resources */,
 				4F73CA07197F2AB0001B6663 /* VCTicketViewController.xib in Resources */,
 				F4C6B275197F06B100F6C10B /* search-location@2x.png in Resources */,
 				4FFE1722198B0475004D4413 /* driver-cancel-hud@2x.png in Resources */,
@@ -3140,6 +3155,7 @@
 				4F3DB5C21981ED4E00DDD094 /* directions-button@2x.png in Resources */,
 				F4C6B288197F06B100F6C10B /* payment-menu-button@2x.png in Resources */,
 				F4C6B28A197F06B100F6C10B /* colors_03.png in Resources */,
+				4FD1297C19D62462000E7C39 /* ride-bounds-button@2x.png in Resources */,
 				4FFE13931989AE09004D4413 /* VCLeftMenuViewController.xib in Resources */,
 				F4C6B28B197F06B100F6C10B /* button-select@2x.png in Resources */,
 				4F184A1519918750006EA959 /* VCMenuUserInfoTableViewCell.xib in Resources */,
@@ -3256,6 +3272,7 @@
 				F4D8FEF719B1745A00BC0B69 /* search-location-select@2x.png in Resources */,
 				F4D8FEF819B1745A00BC0B69 /* red_box@2x.png in Resources */,
 				F4D8FEF919B1745A00BC0B69 /* driver-call-hud@2x.png in Resources */,
+				4FD1297F19D62462000E7C39 /* ride-bounds-button@2x.png in Resources */,
 				F4D8FEFA19B1745A00BC0B69 /* rider-icon@2x.png in Resources */,
 				F4D8FEFB19B1745A00BC0B69 /* menu-profile-icon@2x.png in Resources */,
 				F4D8FEFC19B1745A00BC0B69 /* zoom-ride-bounds-select@2x.png in Resources */,
@@ -3302,6 +3319,7 @@
 				F4D8FF2219B1745A00BC0B69 /* colors_03.png in Resources */,
 				F4D8FF2319B1745A00BC0B69 /* VCLeftMenuViewController.xib in Resources */,
 				F4D8FF2419B1745A00BC0B69 /* button-select@2x.png in Resources */,
+				4FD1297B19D62462000E7C39 /* ride-bounds-button-selected@2x.png in Resources */,
 				F4D8FF2519B1745A00BC0B69 /* VCMenuUserInfoTableViewCell.xib in Resources */,
 				F4D8FF2619B1745A00BC0B69 /* Images.xcassets in Resources */,
 				F4D8FF2719B1745A00BC0B69 /* commuter-menu-button-selected@2x.png in Resources */,
@@ -3407,6 +3425,7 @@
 				4F1849FE1991753F006EA959 /* menu-payments-icon@2x.png in Resources */,
 				4FCD7C8319771931007609E8 /* rider-call-button@2x.png in Resources */,
 				4F73CA09197F2AB0001B6663 /* VCTicketViewController.xib in Resources */,
+				4FD1297A19D62462000E7C39 /* ride-bounds-button-selected@2x.png in Resources */,
 				4FE286F11962BB3F00FD8AF6 /* search-location@2x.png in Resources */,
 				4FFE1724198B0475004D4413 /* driver-cancel-hud@2x.png in Resources */,
 				4FB2682B1952207A0028D4ED /* VCDriverVideoTutorialController.xib in Resources */,
@@ -3460,6 +3479,7 @@
 				4F35FA8E19A6AA62004FB423 /* login-button-select@2x.png in Resources */,
 				4F2EF9CB196139C6006A1962 /* payment-menu-button@2x.png in Resources */,
 				4FDB0EC81970AC8200A8CEC2 /* colors_03.png in Resources */,
+				4FD1297E19D62462000E7C39 /* ride-bounds-button@2x.png in Resources */,
 				4FFE13951989AE09004D4413 /* VCLeftMenuViewController.xib in Resources */,
 				4FDB0ECF1970B10600A8CEC2 /* button-select@2x.png in Resources */,
 				4F184A1719918750006EA959 /* VCMenuUserInfoTableViewCell.xib in Resources */,
