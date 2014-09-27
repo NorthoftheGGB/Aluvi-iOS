@@ -8,7 +8,7 @@
 
 #import "VCDriverOnBoardingViewController.h"
 #import <Stripe.h>
-#import <STPView.h>
+#import <PTKView.h>
 #import <MBProgressHUD.h>
 #import <UIAlertView+Blocks.h>
 #import "VCTextField.h"
@@ -40,7 +40,7 @@
 @property (weak, nonatomic) IBOutlet VCButtonStandardStyle *saveButton;
 
 
-@property (weak, nonatomic) IBOutlet UIView *STPViewContainer;
+@property (weak, nonatomic) IBOutlet UIView *PTKViewContainer;
 @property (weak, nonatomic) IBOutlet UILabel *cardInfoLabel;
 
 - (IBAction)didTapSkipThisStep:(id)sender;

@@ -8,7 +8,7 @@
 
 #import "VCRiderOnBoardingViewController.h"
 #import <Stripe.h>
-#import <STPView.h>
+#import <PTKView.h>
 #import <MBProgressHUD.h>
 #import <UIAlertView+Blocks.h>
 #import "VCTextField.h"
@@ -25,8 +25,8 @@
  #define kPhoneFieldTag 3
  #define kZipCodeFieldTag 4
 
-@interface VCRiderOnBoardingViewController () <STPViewDelegate>
-@property (weak, nonatomic) IBOutlet UIView *STPViewContainer;
+@interface VCRiderOnBoardingViewController () <PTKViewDelegate>
+@property (weak, nonatomic) IBOutlet UIView *PTKViewContainer;
 @property (weak, nonatomic) IBOutlet UILabel *cardInfoLabel;
 
 @property (strong, nonatomic) IBOutlet UIView *contentView;
@@ -168,7 +168,7 @@
     }
  */
 
-- (void)stripeView:(STPView *)view withCard:(PKCard *)card isValid:(BOOL)valid
+- (void)stripeView:(PTKView *)view withCard:(PKCard *)card isValid:(BOOL)valid
 {
     // Enable the "save" button only if the card form is complete.
     
