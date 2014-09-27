@@ -563,6 +563,7 @@
     [_holdingScreen removeFromSuperview];
     _okButton.hidden = YES;
     _showRideDetailsButton.hidden = YES;
+    [self.scrollView removeFromSuperview];
 
     [_pickupHudView removeFromSuperview];
     [_homeLocationWidget.view removeFromSuperview];

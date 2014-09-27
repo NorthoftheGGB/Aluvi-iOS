@@ -165,9 +165,9 @@ static VCUserStateManager *sharedSingleton;
     [VCApi clearApiToken];
     [self clearUserState];
     [VCCoreData clearUserData];
-    [[VCInterfaceManager instance] showRiderSigninInterface];
     [[VCDebug sharedInstance] clearLoggedInUserIdentifier];
     [[VCCommuteManager instance] clear];
+    [[VCInterfaceManager instance] showRiderSigninInterface];
 }
 
 - (void) synchronizeUserState {
