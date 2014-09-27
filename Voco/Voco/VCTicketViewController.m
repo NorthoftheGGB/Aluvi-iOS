@@ -728,6 +728,7 @@
     [self updateRideDetailsConfirmationView: _ticket];
 
     self.scrollView = [[UIScrollView alloc] init];
+    self.scrollView.bounces = NO;
     CGRect frame = self.view.frame;
     frame.origin.y = frame.origin.y + 62;
     frame.size.height = frame.size.height - 62;
