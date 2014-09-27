@@ -8,7 +8,7 @@
 
 #import "VCEarningsViewController.h"
 #import <Stripe.h>
-#import <STPView.h>
+#import <PTKView.h>
 #import <MBProgressHUD.h>
 #import <UIAlertView+Blocks.h>
 #import "VCTextField.h"
@@ -25,13 +25,13 @@
 #define kInterfaceStateDisplayCard 1
 #define kInterfaceStateUpdateCard 2
 
-@interface VCEarningsViewController () <STPViewDelegate>
-@property (weak, nonatomic) IBOutlet UIView *STPViewContainer;
+@interface VCEarningsViewController () <PTKViewDelegate>
+@property (weak, nonatomic) IBOutlet UIView *PTKViewContainer;
 //@property (weak, nonatomic) IBOutlet UITableView *recieptListTableView;
 @property (weak, nonatomic) IBOutlet VCButtonStandardStyle *updateCardButton;
 @property (weak, nonatomic) IBOutlet UILabel *cardInfoLabel;
 //@property (weak, nonatomic) IBOutlet UITableView * tableView;
-@property (strong, nonatomic) STPView * cardView;
+@property (strong, nonatomic) PTKView * cardView;
 @property (nonatomic) NSInteger state;
 
 - (IBAction)didTapUpdate:(id)sender;
@@ -97,9 +97,9 @@
         _state = kInterfaceStateUpdateCard;
         [_updateCardButton setTitle:kUpdateCardText forState:UIControlStateNormal];
         _updateCardButton.enabled = FALSE;
-        _cardView = [[STPView alloc] initWithFrame:CGRectMake(15,20,290,55) andKey:@"pk_test_4Gt6M02YRqmpk7yoBud7y5Ah"];
+        _cardView = [[PTKView alloc] initWithFrame:CGRectMake(15,20,290,55) andKey:@"pk_test_4Gt6M02YRqmpk7yoBud7y5Ah"];
         _cardView.delegate = self;
-        [_STPViewContainer addSubview:_cardView];
+        [_PTKViewContainer addSubview:_cardView];
         _cardInfoLabel.hidden = YES;
         
         
@@ -145,7 +145,7 @@
     
 }
 
-- (void)stripeView:(STPView *)view withCard:(PKCard *)card isValid:(BOOL)valid
+- (void)stripeView:(PTKView *)view withCard:(PKCard *)card isValid:(BOOL)valid
 {
     // Enable the "save" button only if the card form is complete.
     if(valid){
