@@ -23,6 +23,7 @@
 #import "VCUsersApi.h"
 #import "VCLocalNotificationReceiver.h"
 #import "VCTicketViewController.h"
+#import <Stripe.h>
 
 @interface VCAppDelegate ()
 
@@ -48,7 +49,10 @@
     // GIS
     [VCGeolocation sharedGeolocation];
     [VCMapQuestRouting setup];
-    
+
+    // Stripe
+    [Stripe setDefaultPublishableKey:@"pk_test_4Gt6M02YRqmpk7yoBud7y5Ah"];
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
 #if DEBUG==12

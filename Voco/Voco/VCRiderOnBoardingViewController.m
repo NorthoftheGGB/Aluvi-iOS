@@ -168,7 +168,7 @@
     }
  */
 
-- (void)stripeView:(PTKView *)view withCard:(PKCard *)card isValid:(BOOL)valid
+- (void)stripeView:(PTKView *)view withCard:(STPCard *)card isValid:(BOOL)valid
 {
     // Enable the "save" button only if the card form is complete.
     
