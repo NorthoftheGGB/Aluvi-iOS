@@ -26,7 +26,7 @@
 #define kInterfaceStateUpdateCard 2
 
 @interface VCEarningsViewController () <PTKViewDelegate>
-@property (weak, nonatomic) IBOutlet UIView *PTKViewContainer;
+@property (weak, nonatomic) IBOutlet UIView *STPViewContainer;
 //@property (weak, nonatomic) IBOutlet UITableView *recieptListTableView;
 @property (weak, nonatomic) IBOutlet VCButtonStandardStyle *updateCardButton;
 @property (weak, nonatomic) IBOutlet UILabel *cardInfoLabel;
@@ -86,7 +86,7 @@
 }
 
 - (void) didTapHamburger {
-    [_cardView.paymentView resignFirstResponder];
+    [_cardView resignFirstResponder];
     [super didTapHamburger];
 }
 
@@ -97,9 +97,9 @@
         _state = kInterfaceStateUpdateCard;
         [_updateCardButton setTitle:kUpdateCardText forState:UIControlStateNormal];
         _updateCardButton.enabled = FALSE;
-        _cardView = [[PTKView alloc] initWithFrame:CGRectMake(15,20,290,55) andKey:@"pk_test_4Gt6M02YRqmpk7yoBud7y5Ah"];
+        _cardView = [[PTKView alloc] initWithFrame:CGRectMake(15,20,290,55)];
         _cardView.delegate = self;
-        [_PTKViewContainer addSubview:_cardView];
+        [_STPViewContainer addSubview:_cardView];
         _cardInfoLabel.hidden = YES;
         
         
@@ -107,7 +107,15 @@
         
         MBProgressHUD * progressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         progressHUD.labelText = @"Saving Card";
-        [_cardView createToken:^(STPToken *token, NSError *error) {
+        
+        
+        STPCard *card = [[STPCard alloc] init];
+        card.number = _cardView.card.number;
+        card.expMonth = _cardView.card.expMonth;
+        card.expYear = _cardView.card.expYear;
+        card.cvc = _cardView.card.cvc;
+        
+        [Stripe createTokenWithCard:card completion:^(STPToken *token, NSError *error) {
             if (error == nil) {
                 
                 [VCUsersApi updateRecipientCard:[RKObjectManager sharedManager]
@@ -145,7 +153,7 @@
     
 }
 
-- (void)stripeView:(PTKView *)view withCard:(PKCard *)card isValid:(BOOL)valid
+- (void)paymentView:(PTKView *)view withCard:(PTKCard *)card isValid:(BOOL)valid
 {
     // Enable the "save" button only if the card form is complete.
     if(valid){
