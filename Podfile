@@ -13,5 +13,6 @@ pod 'ActionSheetPicker-3.0', '~> 1.0.11'
 pod 'US2FormValidator', '~> 1.1.2'
 pod 'BlocksKit', '~> 2.2.2'
 pod 'Stripe'
+pod 'PaymentKit'
 
 link_with 'Aluvi Distribution', 'Aluvi Testing', 'Aluvi Alpha'
