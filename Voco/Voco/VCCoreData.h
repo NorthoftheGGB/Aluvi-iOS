@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <RestKit.h>
+#import <Restkit.h>
 
 @interface VCCoreData : NSObject
 
