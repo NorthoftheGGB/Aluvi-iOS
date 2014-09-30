@@ -14,5 +14,6 @@ pod 'US2FormValidator', '~> 1.1.2'
 pod 'BlocksKit', '~> 2.2.2'
 pod 'Stripe'
 pod 'PaymentKit'
+pod 'DTCoreText'
 
-link_with 'Aluvi Distribution', 'Aluvi Testing', 'Aluvi Alpha'
+link_with 'Aluvi Development', 'Aluvi Distribution', 'Aluvi Testing', 'Aluvi Alpha'

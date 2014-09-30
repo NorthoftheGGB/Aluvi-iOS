@@ -243,6 +243,9 @@
         case NSFetchedResultsChangeDelete:
             [self.hvTableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
             break;
+            
+        default:
+            break;
     }
 }
 
