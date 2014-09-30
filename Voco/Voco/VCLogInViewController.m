@@ -15,6 +15,9 @@
 #import "VCButtonStandardStyle.h"
 #import "VCPasswordRecoveryViewController.h"
 #import "VCTermsOfServiceViewController.h"
+#import <QuartzCore/QuartzCore.h>
+#import "DTHTMLAttributedStringBuilder.h"
+#import "DTCoreTextConstants.h"
 
 #define kPhoneFieldTag 1
 #define kPasswordFieldTag 2
@@ -24,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet VCTextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet VCButtonStandardStyle *signInButton;
 @property (weak, nonatomic) IBOutlet UIButton *forgotPasswordButton;
+@property (strong, nonatomic) NSAttributedString * attributedString;
 
 - (IBAction)didTapSignIn:(id)sender;
 
@@ -38,7 +42,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        [self loadTermsOfService];
     }
     return self;
 }
@@ -51,8 +55,9 @@
     [tapBackground setNumberOfTapsRequired:1];
     [self.view addGestureRecognizer:tapBackground];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
-
+    
 }
+
 
 - (void) dismissKeyboard:(id) sender{
     [self.view endEditing:YES];
@@ -111,12 +116,17 @@
 - (IBAction)didTapForgotPassword:(id)sender {
     VCPasswordRecoveryViewController * passwordRecoveryViewController = [[VCPasswordRecoveryViewController alloc] init];
     [self.navigationController pushViewController:passwordRecoveryViewController animated:YES];
-
+    
 }
 
 - (IBAction)didTapTermsAndConditions:(id)sender {
     
     VCTermsOfServiceViewController * vc = [[VCTermsOfServiceViewController alloc] init];
+    if(_attributedString == nil){
+        // This probably won't still be nil by now, but just in case..
+        [self loadTermsOfService];
+    }
+    vc.termsOfServiceString = _attributedString;
     [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 
@@ -140,5 +150,23 @@
             }
             break;
     }
+}
+
+
+- (void) loadTermsOfService {
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Aluvi-TOS" ofType:@"html"];
+    NSData *htmlData = [NSData dataWithContentsOfFile:filePath];
+    
+    // Set our builder to use the default native font face and size
+    NSDictionary *builderOptions = @{
+                                     DTDefaultFontFamily: @"Helvetica",
+                                     DTDefaultTextColor: @"Black",
+                                     DTUseiOS6Attributes: @YES
+                                     };
+    
+    DTHTMLAttributedStringBuilder *stringBuilder = [[DTHTMLAttributedStringBuilder alloc] initWithHTML:htmlData
+                                                                                               options:builderOptions
+                                                                                    documentAttributes:nil];
+    _attributedString = [stringBuilder generatedAttributedString];
 }
 @end

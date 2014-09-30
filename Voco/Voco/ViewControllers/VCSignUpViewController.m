@@ -46,9 +46,7 @@
 @property (weak, nonatomic) IBOutlet VCEmailTextField *emailField;
 @property (weak, nonatomic) IBOutlet VCReferralCodeTextField *referralCodeField;
 @property (strong, nonatomic) MBProgressHUD *hud;
-
-
-
+@property (strong, nonatomic) NSAttributedString * attributedString;
 
 - (IBAction)didTapSignUp:(id)sender;
 

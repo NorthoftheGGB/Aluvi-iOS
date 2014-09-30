@@ -57,7 +57,6 @@
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    [self loadTermsOfService];
     
 #if DEBUG==12
     [[VCInterfaceModes instance] showDebugInterface];

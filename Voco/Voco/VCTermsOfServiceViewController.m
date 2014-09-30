@@ -30,12 +30,8 @@
 {
     [super viewDidLoad];
     
-    /*
-    NSString *htmlFile = [[NSBundle mainBundle] pathForResource:@"Aluvi-TOS" ofType:@"html"];
-    NSString* htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
-    [_webView loadHTMLString:htmlString baseURL:nil];
-    [[_webView scrollView] setContentInset:UIEdgeInsetsMake(64, 0, 0, 0)];
-     */
+    _textView.attributedText = _termsOfServiceString;
+    
    
 }
 
