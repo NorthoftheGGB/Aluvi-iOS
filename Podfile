@@ -1,5 +1,6 @@
+source 'https://github.com/CocoaPods/Specs.git'
 xcodeproj 'Voco/Voco.xcodeproj'
-platform :ios, '7.1'
+platform :ios, '8.0'
 
 # ignore all warnings from all pods
 inhibit_all_warnings!
@@ -12,7 +13,7 @@ pod 'M13Checkbox', '~> 1.1.0'
 pod 'ActionSheetPicker-3.0', '~> 1.0.11'
 pod 'US2FormValidator', '~> 1.1.2'
 pod 'BlocksKit', '~> 2.2.2'
-pod 'Stripe', '~> 1.2'
+pod 'Stripe', '~> 2.0.3'
 pod 'PaymentKit'
 pod 'DTCoreText'
 
