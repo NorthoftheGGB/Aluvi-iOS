@@ -642,7 +642,6 @@
 		F473F03519539F2A00D8C900 /* VCUserStateResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F03419539F2A00D8C900 /* VCUserStateResponse.m */; };
 		F473F03C195B971B00D8C900 /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F03B195B971B00D8C900 /* Car.m */; };
 		F473F03F195B971C00D8C900 /* Driver.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F03E195B971C00D8C900 /* Driver.m */; };
-		F473F046195BA16D00D8C900 /* DTLazyImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F045195BA16D00D8C900 /* DTLazyImageView.m */; };
 		F4792AD3196C59B2005AB652 /* log-in-box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9909C4195CCE6500E83164 /* log-in-box@2x.png */; };
 		F4792AE319750975005AB652 /* LEBackgroundThread.m in Sources */ = {isa = PBXBuildFile; fileRef = F4792AD619750975005AB652 /* LEBackgroundThread.m */; };
 		F4792AE419750975005AB652 /* LEBackgroundThread.m in Sources */ = {isa = PBXBuildFile; fileRef = F4792AD619750975005AB652 /* LEBackgroundThread.m */; };
@@ -761,7 +760,6 @@
 		F4C6B215197F06B100F6C10B /* VCGeoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B30193EE06400354886 /* VCGeoObject.m */; };
 		F4C6B217197F06B100F6C10B /* VCDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AF01936BE0900354886 /* VCDevice.m */; };
 		F4C6B218197F06B100F6C10B /* Ticket.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C021935880500A94721 /* Ticket.m */; };
-		F4C6B219197F06B100F6C10B /* DTLazyImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F045195BA16D00D8C900 /* DTLazyImageView.m */; };
 		F4C6B21A197F06B100F6C10B /* VCObjectRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D890551946A2D9007C4671 /* VCObjectRequestOperation.m */; };
 		F4C6B21B197F06B100F6C10B /* LogFiles.m in Sources */ = {isa = PBXBuildFile; fileRef = F4792AE219750975005AB652 /* LogFiles.m */; };
 		F4C6B21C197F06B100F6C10B /* VCValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFDB19491C2B00D8C900 /* VCValidation.m */; };
@@ -985,7 +983,6 @@
 		F4D8FE6D19B1745A00BC0B69 /* VCGeoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B30193EE06400354886 /* VCGeoObject.m */; };
 		F4D8FE6E19B1745A00BC0B69 /* VCDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AF01936BE0900354886 /* VCDevice.m */; };
 		F4D8FE6F19B1745A00BC0B69 /* Ticket.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C021935880500A94721 /* Ticket.m */; };
-		F4D8FE7019B1745A00BC0B69 /* DTLazyImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F045195BA16D00D8C900 /* DTLazyImageView.m */; };
 		F4D8FE7119B1745A00BC0B69 /* VCObjectRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D890551946A2D9007C4671 /* VCObjectRequestOperation.m */; };
 		F4D8FE7219B1745A00BC0B69 /* LogFiles.m in Sources */ = {isa = PBXBuildFile; fileRef = F4792AE219750975005AB652 /* LogFiles.m */; };
 		F4D8FE7319B1745A00BC0B69 /* VCValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFDB19491C2B00D8C900 /* VCValidation.m */; };
@@ -1584,8 +1581,6 @@
 		F473F03B195B971B00D8C900 /* Car.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Car.m; path = Model/Car.m; sourceTree = "<group>"; };
 		F473F03D195B971C00D8C900 /* Driver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Driver.h; path = Model/Driver.h; sourceTree = "<group>"; };
 		F473F03E195B971C00D8C900 /* Driver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Driver.m; path = Model/Driver.m; sourceTree = "<group>"; };
-		F473F044195BA16D00D8C900 /* DTLazyImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTLazyImageView.h; path = Controls/DTLazyImageView.h; sourceTree = "<group>"; };
-		F473F045195BA16D00D8C900 /* DTLazyImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTLazyImageView.m; path = Controls/DTLazyImageView.m; sourceTree = "<group>"; };
 		F4792AD519750975005AB652 /* LEBackgroundThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LEBackgroundThread.h; sourceTree = "<group>"; };
 		F4792AD619750975005AB652 /* LEBackgroundThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LEBackgroundThread.m; sourceTree = "<group>"; };
 		F4792AD719750975005AB652 /* lecore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lecore.h; sourceTree = "<group>"; };
@@ -2058,8 +2053,6 @@
 			isa = PBXGroup;
 			children = (
 				4FFBA43E195E5FE900A51B84 /* Validation */,
-				F473F044195BA16D00D8C900 /* DTLazyImageView.h */,
-				F473F045195BA16D00D8C900 /* DTLazyImageView.m */,
 				4FE641D81941607B0059BED1 /* VCTextField.h */,
 				4FE641D91941607B0059BED1 /* VCTextField.m */,
 				4FE641DB1941621E0059BED1 /* VCLabelItalic.h */,
@@ -3965,7 +3958,6 @@
 				F425906819958E9700FA928E /* VCTicketViewController.m in Sources */,
 				F4C6B217197F06B100F6C10B /* VCDevice.m in Sources */,
 				F4C6B218197F06B100F6C10B /* Ticket.m in Sources */,
-				F4C6B219197F06B100F6C10B /* DTLazyImageView.m in Sources */,
 				F4C6B21A197F06B100F6C10B /* VCObjectRequestOperation.m in Sources */,
 				F4C6B21B197F06B100F6C10B /* LogFiles.m in Sources */,
 				F4C6B21C197F06B100F6C10B /* VCValidation.m in Sources */,
@@ -4103,7 +4095,6 @@
 				F4D8FE6D19B1745A00BC0B69 /* VCGeoObject.m in Sources */,
 				F4D8FE6E19B1745A00BC0B69 /* VCDevice.m in Sources */,
 				F4D8FE6F19B1745A00BC0B69 /* Ticket.m in Sources */,
-				F4D8FE7019B1745A00BC0B69 /* DTLazyImageView.m in Sources */,
 				F4D8FE7119B1745A00BC0B69 /* VCObjectRequestOperation.m in Sources */,
 				F4D8FE7219B1745A00BC0B69 /* LogFiles.m in Sources */,
 				F4D8FE7319B1745A00BC0B69 /* VCValidation.m in Sources */,
@@ -4242,7 +4233,6 @@
 				F4FE1B31193EE06400354886 /* VCGeoObject.m in Sources */,
 				F4FE1AF11936BE0900354886 /* VCDevice.m in Sources */,
 				F45F7C031935880500A94721 /* Ticket.m in Sources */,
-				F473F046195BA16D00D8C900 /* DTLazyImageView.m in Sources */,
 				F4D890561946A2D9007C4671 /* VCObjectRequestOperation.m in Sources */,
 				F4792AED19750975005AB652 /* LogFiles.m in Sources */,
 				F473EFDC19491C2B00D8C900 /* VCValidation.m in Sources */,

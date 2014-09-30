@@ -14,6 +14,7 @@ pod 'US2FormValidator', '~> 1.1.2'
 pod 'BlocksKit', '~> 2.2.2'
 pod 'Stripe', '~> 1.2'
 pod 'PaymentKit'
+pod 'DTCoreText'
 
  
   
