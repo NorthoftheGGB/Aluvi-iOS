@@ -26,11 +26,28 @@
 @implementation VCPushReceiver
 
 + (void) registerForRemoteNotifications {
+    
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
+    
+    if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil ]];
+    } else {
+        [[UIApplication sharedApplication]
+         registerForRemoteNotificationTypes:
+         (UIRemoteNotificationTypeAlert |
+          UIRemoteNotificationTypeBadge |
+          UIRemoteNotificationTypeSound)];
+    }
+    
+#else
     [[UIApplication sharedApplication]
      registerForRemoteNotificationTypes:
      (UIRemoteNotificationTypeAlert |
       UIRemoteNotificationTypeBadge |
       UIRemoteNotificationTypeSound)];
+    
+#endif
+    
 }
 
 + (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
@@ -288,13 +305,13 @@
             //      And additionally, any commuter ride that has not been delivered needs to be popped up as well
             if ([request.rideType isEqualToString:kRideRequestTypeCommuter]) {
                 /*
-                UILocalNotification * localNotif = [[UILocalNotification alloc] init];
-                [localNotif setFireDate:[[NSDate date] dateByAddingTimeInterval:60]]; // demo/debug mode
-                [localNotif setAlertBody:@"Commuter Pickup in 1 hour!"];
-                [localNotif setAlertAction:@"View Map"];
-                [localNotif setSoundName:UILocalNotificationDefaultSoundName];
-                [localNotif setUserInfo:@{@"notification_type" : @"commuter_ride", @"request_id" : request.request_id}];
-                [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+                 UILocalNotification * localNotif = [[UILocalNotification alloc] init];
+                 [localNotif setFireDate:[[NSDate date] dateByAddingTimeInterval:60]]; // demo/debug mode
+                 [localNotif setAlertBody:@"Commuter Pickup in 1 hour!"];
+                 [localNotif setAlertAction:@"View Map"];
+                 [localNotif setSoundName:UILocalNotificationDefaultSoundName];
+                 [localNotif setUserInfo:@{@"notification_type" : @"commuter_ride", @"request_id" : request.request_id}];
+                 [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
                  */
             }
         } else {
@@ -329,7 +346,7 @@
         
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-    
+        
     }];
 }
 
