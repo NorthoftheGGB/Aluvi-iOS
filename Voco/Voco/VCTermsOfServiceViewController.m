@@ -7,13 +7,10 @@
 //
 
 #import "VCTermsOfServiceViewController.h"
-#import <QuartzCore/QuartzCore.h>
-#import "DTHTMLAttributedStringBuilder.h"
-#import "DTCoreTextConstants.h"
+
 
 @interface VCTermsOfServiceViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *textView;
-@property (strong, nonatomic) NSAttributedString * attributedString;
 @end
 
 @implementation VCTermsOfServiceViewController
@@ -22,20 +19,9 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Aluvi-TOS" ofType:@"html"];
-        NSData *htmlData = [NSData dataWithContentsOfFile:filePath];
         
-        // Set our builder to use the default native font face and size
-        NSDictionary *builderOptions = @{
-                                         DTDefaultFontFamily: @"Helvetica",
-                                         DTDefaultTextColor: @"Black",
-                                         DTUseiOS6Attributes: @YES
-                                         };
         
-        DTHTMLAttributedStringBuilder *stringBuilder = [[DTHTMLAttributedStringBuilder alloc] initWithHTML:htmlData
-                                                                                                   options:builderOptions
-                                                                                        documentAttributes:nil];
-        _attributedString = [stringBuilder generatedAttributedString];
+        
     }
     return self;
 }
@@ -50,9 +36,6 @@
     [_webView loadHTMLString:htmlString baseURL:nil];
     [[_webView scrollView] setContentInset:UIEdgeInsetsMake(64, 0, 0, 0)];
      */
-    
-   
-    _textView.attributedText = _attributedString;
    
 }
 
