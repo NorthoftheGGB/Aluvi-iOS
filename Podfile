@@ -1,5 +1,6 @@
+source 'https://github.com/CocoaPods/Specs.git'
 xcodeproj 'Voco/Voco.xcodeproj'
-platform :ios, '7.1'
+platform :ios, '8.0'
 
 # ignore all warnings from all pods
 inhibit_all_warnings!
