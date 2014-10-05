@@ -30,6 +30,7 @@
 @property (strong, nonatomic) NSAttributedString * attributedString;
 
 - (IBAction)didTapSignIn:(id)sender;
+- (IBAction)didTapSignUP:(id)sender;
 
 - (IBAction)didTapForgotPassword:(id)sender;
 - (IBAction)didTapTermsAndConditions:(id)sender;
@@ -58,6 +59,14 @@
     
 }
 
+/*
+- (void) viewWillAppear:(BOOL)animated {
+    [UIAlertView showWithTitle:@"title" message:@"mess" cancelButtonTitle:@"ok" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        NSLog(@"hi %@", @"hi");
+    }];
+}
+*/
+
 
 - (void) dismissKeyboard:(id) sender{
     [self.view endEditing:YES];
@@ -72,6 +81,19 @@
 
 - (IBAction)didTapSignIn:(id)sender {
     [self login];
+}
+
+- (IBAction)didTapSignUP:(id)sender {
+    [UIAlertView showWithTitle:@"Sign Up For Aluvi" message:@"To gain access to the application please visit our website." cancelButtonTitle:@"Not Now" otherButtonTitles:@[@"Take me there"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        switch (buttonIndex) {
+            case 1:
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.aluviapp.com/"]];
+                break;
+                
+            default:
+                break;
+        }
+    }];
 }
 
 - (void) login {

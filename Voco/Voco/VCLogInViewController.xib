@@ -33,14 +33,14 @@
                         <constraint firstAttribute="height" constant="47" id="6UL-WS-8cl"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <state key="normal" title="LOG IN / SIGN UP" backgroundImage="login-button.png">
+                    <state key="normal" title="LOG IN" backgroundImage="login-button.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="selected" backgroundImage="button-select.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="highlighted" title="Submit" backgroundImage="button-select.png"/>
+                    <state key="highlighted" backgroundImage="button-select.png"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
                             <integer key="value" value="20"/>
@@ -111,9 +111,35 @@
                         <action selector="didTapTermsAndConditions:" destination="-1" eventType="touchUpInside" id="22k-wI-ePT"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="63D-em-KOi" customClass="VCButtonStandardStyle">
+                    <rect key="frame" x="9" y="350" width="305" height="47"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="47" id="YQy-9i-MVO"/>
+                        <constraint firstAttribute="width" constant="305" id="ayn-ga-h7B"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="SIGN UP" backgroundImage="login-button.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" backgroundImage="button-select.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" backgroundImage="button-select.png"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didTapSignUP:" destination="-1" eventType="touchUpInside" id="Wjx-6H-Xgx"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="63D-em-KOi" firstAttribute="top" secondItem="UpT-0B-UwL" secondAttribute="bottom" constant="14" id="2PU-QZ-H7U"/>
+                <constraint firstItem="63D-em-KOi" firstAttribute="leading" secondItem="UpT-0B-UwL" secondAttribute="leading" id="54H-0e-dyn"/>
                 <constraint firstItem="WBj-G9-Hq7" firstAttribute="top" secondItem="4BS-Xk-d0U" secondAttribute="bottom" constant="33" id="7n6-zt-gP7"/>
                 <constraint firstAttribute="bottom" secondItem="4tb-J6-sir" secondAttribute="bottom" constant="2" id="90P-de-Bey"/>
                 <constraint firstItem="rOj-vi-Qn2" firstAttribute="top" secondItem="WBj-G9-Hq7" secondAttribute="bottom" constant="8" id="Hb6-cq-rkE"/>
