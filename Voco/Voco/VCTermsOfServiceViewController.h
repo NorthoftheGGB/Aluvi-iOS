@@ -10,4 +10,6 @@
 
 @interface VCTermsOfServiceViewController : UIViewController
 
+@property (strong, nonatomic) NSAttributedString * termsOfServiceString;
+
 @end
