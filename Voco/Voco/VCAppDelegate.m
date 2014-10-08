@@ -157,6 +157,28 @@
     [VCLocalNotificationReceiver handleLocalNotification:notification];
 }
 
+-(BOOL)pushNotificationOnOrOff{
+    
+    BOOL pushEnabled=NO;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+    {
+        if ([[UIApplication sharedApplication] isRegisteredForRemoteNotifications]) {
+            pushEnabled=YES;
+        }
+        else
+            pushEnabled=NO;
+    }
+    else
+    {
+        UIRemoteNotificationType types = [[UIApplication sharedApplication]        enabledRemoteNotificationTypes];
+        if (types & UIRemoteNotificationTypeAlert)
+            pushEnabled=YES;
+        else
+            pushEnabled=NO;
+    }
+    
+    return pushEnabled;
+}
 
 
 @end

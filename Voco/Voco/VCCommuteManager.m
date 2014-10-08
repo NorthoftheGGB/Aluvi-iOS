@@ -274,21 +274,11 @@ static VCCommuteManager * instance;
 }
 
 - (void) cancelTrip:(NSNumber *) tripId success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure {
-    
-    [UIAlertView showWithTitle:@"Not Supported" message:@"Not yet able to cancel entire trip" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
-    failure();
-    
-    /*NSArray * ticketsForTrip = [Ticket ticketsForTrip:tripId];
-    
-    // TODO refactor to use RKRequestQueue and RKRequestQueueDelegate
-    
-    
-    [self cancelRide:_ticket[0] success:^{
-        <#code#>
-    } failure:^{
-        <#code#>
-    }];
-     */
+    [VCRiderApi cancelTrip:tripId success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"schedule_updated" object:nil userInfo:@{}];
+        success();
+    } failure:failure];
+
 }
 
 

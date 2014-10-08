@@ -39,6 +39,7 @@
 #import "VCDriverCallHudView.h"
 #import "VCFare.h"
 #import "VCUtilities.h"
+#import "VCHoldingView.h"
 
 #define kEditCommuteStatePickupTime 1000
 #define kEditCommuteStateEditHome 1001
@@ -82,7 +83,6 @@
 @property (strong, nonatomic) NSArray * morningOptions;
 @property (strong, nonatomic) NSArray * eveningOptions;
 
-
 @property (strong, nonatomic) IBOutlet UIView *homeActionView;
 @property (strong, nonatomic) IBOutlet VCButtonStandardStyle *editCommuteButton;
 @property (strong, nonatomic) IBOutlet VCButtonStandardStyle *rideNowButton;
@@ -104,11 +104,8 @@
 - (IBAction)didTapReturnHud:(id)sender;
 
 //Holding Screen / Confirmation Screen
-@property (strong, nonatomic) IBOutlet UIView *holdingScreen;
-@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *showRideDetailsButton;
-@property (weak, nonatomic) IBOutlet VCLabel *rideRequestStatusLabel;
-@property (weak, nonatomic) IBOutlet VCLabel *rideRequestDetailLabel;
-@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *okButton;
+@property (strong, nonatomic) IBOutlet VCHoldingView *holdingScreen;
+
 
 @property (weak, nonatomic) Ticket * showingTicket;
 - (IBAction)didTapOKButton:(id)sender;
@@ -385,26 +382,13 @@
         [self.view addSubview:self.holdingScreen];
         
     } else if([_ticket.state isEqualToString:kCommuteSchedulerFailedState]) {
-        [self transitionToRideRequestDenied];
+        [self hideCancelBarButton];
+        [_holdingScreen transitionToRideRequestDenied];
+        [self addHoldingScreenIfNotAdded];
         
     } else if([_ticket.state isEqualToString:kScheduledState]){
-        //[self addOriginAnnotation: [_ticket originLocation] ];
-        //[self addDestinationAnnotation: [_ticket destinationLocation]];
-        [self addMeetingPointAnnotation: [_ticket meetingPointLocation]];
-        [self addDropOffPointAnnotation: [_ticket dropOffPointLocation]];
         
-        [self showSuggestedRoute: [_ticket meetingPointLocation] to:[_ticket dropOffPointLocation]];
-        if( [_ticket.driving boolValue] ) {
-            if(![[_ticket meetingPointLocation] isEqual:[_ticket originLocation]]){
-                [self addDriverLegRoute:[_ticket originLocation] to:[_ticket meetingPointLocation]];
-            }
-            if(![[_ticket dropOffPointLocation] isEqual:[_ticket destinationLocation]]){
-                [self addDriverLegRoute:[_ticket dropOffPointLocation] to:[_ticket destinationLocation]];
-            }
-        } else {
-            [self addPedestrianRoute:[_ticket originLocation] to:[_ticket meetingPointLocation]];
-            [self addPedestrianRoute:[_ticket dropOffPointLocation] to:[_ticket destinationLocation]];
-        }
+        [self updateMapForTicket:_ticket];
         
         if([_ticket.confirmed boolValue]){
             
@@ -417,11 +401,35 @@
             
         } else {
             
-            [self transitionToRideRequestApproved];
+            [self hideCancelBarButton];
+            [_holdingScreen transitionToRideRequestApproved:_ticket];
+            [self addHoldingScreenIfNotAdded];
             
         }
     }
     
+}
+
+- (void) updateMapForTicket:(Ticket *) ticket {
+    //[self addOriginAnnotation: [ticket originLocation] ];
+    //[self addDestinationAnnotation: [ticket destinationLocation]];
+    [self addMeetingPointAnnotation: [ticket meetingPointLocation]];
+    [self addDropOffPointAnnotation: [ticket dropOffPointLocation]];
+    [self.map selectAnnotation:_meetingPointAnnotation animated:YES];
+    
+    [self showSuggestedRoute: [_ticket meetingPointLocation] to:[_ticket dropOffPointLocation]];
+    if( [_ticket.driving boolValue] ) {
+        if(![[_ticket meetingPointLocation] isEqual:[_ticket originLocation]]){
+            [self addDriverLegRoute:[_ticket originLocation] to:[_ticket meetingPointLocation]];
+        }
+        if(![[_ticket dropOffPointLocation] isEqual:[_ticket destinationLocation]]){
+            [self addDriverLegRoute:[_ticket dropOffPointLocation] to:[_ticket destinationLocation]];
+        }
+    } else {
+        [self addPedestrianRoute:[_ticket originLocation] to:[_ticket meetingPointLocation]];
+        [self addPedestrianRoute:[_ticket dropOffPointLocation] to:[_ticket destinationLocation]];
+    }
+
 }
 
 - (void) showCancelBarButton {
@@ -431,7 +439,7 @@
 }
 
 
-- (void) removeCancelBarButton {
+- (void) hideCancelBarButton {
     self.navigationItem.rightBarButtonItem = nil;
 }
 
@@ -541,7 +549,7 @@
     [self clearMap];
     [UIView transitionWithView:self.view duration:.35 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
         [self removeHuds];
-        [self removeCancelBarButton];
+        [self hideCancelBarButton];
         [self showHome];
     } completion:^(BOOL finished) {
         [self zoomToCurrentLocation];
@@ -561,8 +569,8 @@
 
 - (void) removeHuds {
     [_holdingScreen removeFromSuperview];
-    _okButton.hidden = YES;
-    _showRideDetailsButton.hidden = YES;
+    [_holdingScreen resetView];
+
     [self.scrollView removeFromSuperview];
 
     [_pickupHudView removeFromSuperview];
@@ -716,7 +724,7 @@
     //TODO improve animations
     [_scheduleRideButton removeFromSuperview];
     [self.view addSubview:self.holdingScreen];
-    [self removeCancelBarButton];
+    [self hideCancelBarButton];
     _step = kStepDone;
 }
 
@@ -1613,9 +1621,11 @@
     switch(_rideDetailsConfirmation.segmentedButton.selectedSegmentIndex){
         case 0:
             [self updateRideDetailsConfirmationView:_ticket];
+            [self updateMapForTicket:_ticket];
             break;
         case 1:
             [self updateRideDetailsConfirmationView:_ticket.returnTicket];
+            [self updateMapForTicket:_ticket.returnTicket];
             break;
     }
     
@@ -1630,42 +1640,6 @@
     }
 }
 
-/*
- Confirmation Screen: Ride Request Approved
- 
- - Show “showRideDetailsButton”
- - rideRequestStatusLabel - change text string to: "Your ride to and from work is ready!"
- 
- didTapShowRideDetailsButton ==> takes you to Ride Details*/
-
-- (void) transitionToRideRequestApproved{
-    if([_ticket.driving boolValue]) {
-        _rideRequestStatusLabel.text = [NSString stringWithFormat:@"Your driving details are ready!"];
-        _rideRequestDetailLabel.text = @"";
-    } else {
-        _rideRequestStatusLabel.text = [NSString stringWithFormat:@"Your ride to and from work is ready!"];
-    }
-    _showRideDetailsButton.hidden = NO;
-    [self addHoldingScreenIfNotAdded];
-}
-
-/*
- Confirmation Screen: Ride Request Denied
- 
- - rideRequestStatusLabel - change text string to: “Sorry, we were unable to fulfill your ride request."
- - rideRequestDetailLabel - change text string to: “Would you like to try again for the next day?"
- 
- - Show okButton
- - didTapOK - takes you back to the map with edit commute button. */
-
-- (void) transitionToRideRequestDenied{
-    _rideRequestStatusLabel.text = [NSString stringWithFormat:@"Sorry, we were unable to fulfill your ride request."];
-    _rideRequestDetailLabel.text = [NSString stringWithFormat:@"If you would like to schedule a commute for the following day, please try again tomorrow."];
-    _okButton.hidden = NO;
-    [self addHoldingScreenIfNotAdded];
-    
-    
-}
 
 //TODO: here are the methods for displaying the DRIVER Ride Details
 

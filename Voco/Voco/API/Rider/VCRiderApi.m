@@ -17,6 +17,7 @@
 #import "VCRequestUpdate.h"
 #import "Payment.h"
 
+
 @implementation VCRiderApi
 
 + (void) setup: (RKObjectManager *) objectManager {
@@ -167,6 +168,47 @@
     }
     
 }
+
++ (void) cancelTrip:(NSNumber *) tripId
+            success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+            failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+    
+    // TODO: Refactor to properly use deleteObject when Trip becomes a core data object
+    [[RKObjectManager sharedManager] deleteObject:nil
+                                             path: [API_DELETE_TRIP stringByReplacingOccurrencesOfString:@":trip_id"
+                                                                                              withString:[tripId stringValue]]
+                                       parameters:nil
+                                          success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [[VCDebug sharedInstance] apiLog:@"API: Rider cancel ride success"];
+        
+        NSError * error = nil;
+        NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
+        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"trip_id = %@", tripId];
+        [request setPredicate:predicate];
+        NSArray * tickets = [[VCCoreData managedObjectContext] executeFetchRequest:request error:&error];
+        if(tickets == nil){
+            [WRUtilities criticalError:error];
+        }
+        for(Ticket* ticket in tickets){
+            [[VCCoreData managedObjectContext] deleteObject:ticket];
+        }
+        
+        [[VCCoreData managedObjectContext] save:&error];
+        if(error != nil){
+            [WRUtilities criticalError:error];
+        }
+        
+        success(operation, mappingResult);
+        
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [[VCDebug sharedInstance] apiLog:@"API: Rider cancel ride failure"];
+        
+        NSLog(@"Failed cancel ride %@", error);
+        failure(operation, error);
+    }];
+}
+
+
 
 + (void) refreshScheduledRidesWithSuccess:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                                   failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {

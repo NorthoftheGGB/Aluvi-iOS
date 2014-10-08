@@ -29,6 +29,7 @@
 #define API_POST_RIDER_CANCELLED @"rides/rider_cancelled"
 #define API_POST_RIDE_PICKUP @"rides/pickup"
 #define API_POST_FARE_COMPLETED @"rides/arrived"
+#define API_DELETE_TRIP @"rides/trips/:trip_id"
 
 #define API_GET_FARE_OFFERS @"rides/offers"
 #define API_GET_ACTIVE_TICKETS @"rides/tickets"

@@ -31,6 +31,7 @@
     
     if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil ]];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
     } else {
         [[UIApplication sharedApplication]
          registerForRemoteNotificationTypes:
