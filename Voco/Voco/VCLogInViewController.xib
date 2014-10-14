@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCLogInViewController">
@@ -20,7 +20,6 @@
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="MnF-KF-sry">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="320" id="FdM-la-QCO"/>
                         <constraint firstAttribute="height" constant="568" id="dcz-hh-GLs"/>
@@ -28,20 +27,19 @@
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UpT-0B-UwL" customClass="VCButtonStandardStyle">
                     <rect key="frame" x="9" y="289" width="305" height="47"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="305" id="0K3-Dg-1vS"/>
                         <constraint firstAttribute="height" constant="47" id="6UL-WS-8cl"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <state key="normal" title="LOG IN / SIGN UP" backgroundImage="login-button.png">
+                    <state key="normal" title="LOG IN" backgroundImage="login-button.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="selected" backgroundImage="button-select.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="highlighted" title="Submit" backgroundImage="button-select.png"/>
+                    <state key="highlighted" backgroundImage="button-select.png"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
                             <integer key="value" value="20"/>
@@ -51,27 +49,8 @@
                         <action selector="didTapSignIn:" destination="-1" eventType="touchUpInside" id="erS-7r-ifX"/>
                     </connections>
                 </button>
-                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WBj-G9-Hq7" customClass="VCTextField">
-                    <rect key="frame" x="9" y="198" width="305" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="305" id="J0W-tI-6rU"/>
-                        <constraint firstAttribute="height" constant="30" id="oRd-Rv-vjj"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="14"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="fnh-0k-aKd"/>
-                    </connections>
-                </textField>
                 <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rOj-vi-Qn2" customClass="VCTextField">
                     <rect key="frame" x="9" y="236" width="305" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="jo1-in-MWt"/>
                         <constraint firstAttribute="width" constant="305" id="vnH-tY-i0R"/>
@@ -89,11 +68,9 @@
                 </textField>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="4BS-Xk-d0U">
                     <rect key="frame" x="123" y="81" width="61" height="84"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tb-J6-sir">
                     <rect key="frame" x="37" y="448" width="249" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="249" id="AQe-5Y-nGM"/>
                         <constraint firstAttribute="height" constant="30" id="Kgx-1N-UsA"/>
@@ -106,9 +83,8 @@
                         <action selector="didTapForgotPassword:" destination="-1" eventType="touchUpInside" id="Mhc-ew-fMV"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y5c-Cn-ZJR">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y5c-Cn-ZJR">
                     <rect key="frame" x="42" y="418" width="239" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="VIEW TERMS OF SERVICE">
                         <color key="titleColor" white="0.56210082120000004" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.52000000000000002" alpha="1" colorSpace="calibratedWhite"/>
@@ -117,24 +93,69 @@
                         <action selector="didTapTermsAndConditions:" destination="-1" eventType="touchUpInside" id="22k-wI-ePT"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="63D-em-KOi" customClass="VCButtonStandardStyle">
+                    <rect key="frame" x="9" y="350" width="305" height="47"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="47" id="YQy-9i-MVO"/>
+                        <constraint firstAttribute="width" constant="305" id="ayn-ga-h7B"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <state key="normal" title="SIGN UP" backgroundImage="login-button.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" backgroundImage="button-select.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" backgroundImage="button-select.png"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didTapSignUP:" destination="-1" eventType="touchUpInside" id="Wjx-6H-Xgx"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WBj-G9-Hq7" customClass="VCEmailTextField">
+                    <rect key="frame" x="9" y="198" width="305" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="305" id="J0W-tI-6rU"/>
+                        <constraint firstAttribute="height" constant="30" id="oRd-Rv-vjj"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="14"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="fnh-0k-aKd"/>
+                    </connections>
+                </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="63D-em-KOi" firstAttribute="top" secondItem="UpT-0B-UwL" secondAttribute="bottom" constant="14" id="2PU-QZ-H7U"/>
+                <constraint firstItem="63D-em-KOi" firstAttribute="leading" secondItem="UpT-0B-UwL" secondAttribute="leading" id="54H-0e-dyn"/>
                 <constraint firstItem="WBj-G9-Hq7" firstAttribute="top" secondItem="4BS-Xk-d0U" secondAttribute="bottom" constant="33" id="7n6-zt-gP7"/>
                 <constraint firstAttribute="bottom" secondItem="4tb-J6-sir" secondAttribute="bottom" constant="2" id="90P-de-Bey"/>
                 <constraint firstItem="rOj-vi-Qn2" firstAttribute="top" secondItem="WBj-G9-Hq7" secondAttribute="bottom" constant="8" id="Hb6-cq-rkE"/>
                 <constraint firstAttribute="trailing" secondItem="MnF-KF-sry" secondAttribute="trailing" id="Hj6-Nd-McL"/>
                 <constraint firstItem="MnF-KF-sry" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="IJB-Vk-6jU"/>
                 <constraint firstItem="MnF-KF-sry" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OfJ-J5-t5K"/>
+                <constraint firstItem="4tb-J6-sir" firstAttribute="top" secondItem="y5c-Cn-ZJR" secondAttribute="bottom" id="Qub-ll-0D1"/>
                 <constraint firstItem="WBj-G9-Hq7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="9" id="VGf-6F-e7s"/>
+                <constraint firstItem="y5c-Cn-ZJR" firstAttribute="centerX" secondItem="4tb-J6-sir" secondAttribute="centerX" id="YgI-cm-BhB"/>
                 <constraint firstItem="UpT-0B-UwL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="9" id="aCy-jb-gxJ"/>
                 <constraint firstAttribute="trailing" secondItem="4BS-Xk-d0U" secondAttribute="trailing" constant="136" id="cmL-uS-hn8"/>
                 <constraint firstItem="4tb-J6-sir" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="37" id="f2I-AX-sXc"/>
                 <constraint firstItem="4BS-Xk-d0U" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="81" id="lhx-lK-xjC"/>
                 <constraint firstItem="rOj-vi-Qn2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="9" id="lle-GJ-68l"/>
                 <constraint firstItem="UpT-0B-UwL" firstAttribute="top" secondItem="rOj-vi-Qn2" secondAttribute="bottom" constant="23" id="oGJ-u7-UeC"/>
+                <constraint firstItem="y5c-Cn-ZJR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="42" id="oYu-fj-3yA"/>
             </constraints>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
@@ -144,4 +165,9 @@
         <image name="login-button.png" width="304" height="47"/>
         <image name="logo.png" width="61" height="84"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>

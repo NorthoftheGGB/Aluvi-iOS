@@ -20,7 +20,8 @@
 #import "VCUsersApi.h"
 
 
-@interface VCProfileViewController ()
+@interface VCProfileViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 
 //User Image + Controls
@@ -113,18 +114,41 @@
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [VCUsersApi updateProfile:[VCUserStateManager instance].profile
                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                           [hud hide:NO];
+                           [hud hide:YES];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                           [hud hide:NO];
+                           [hud hide:YES];
     }];
 }
 
 - (IBAction)didTapLogoutButton:(id)sender {
-    [[VCUserStateManager instance] logout];
-    [[VCInterfaceManager instance] showRiderSigninInterface];
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated: YES];
+    [[VCUserStateManager instance] logoutWithCompletion:^{
+        [hud hide:YES];
+        [[VCInterfaceManager instance] showRiderSigninInterface];
+    }];
 }
 
 - (IBAction)didTapTakePhotoButton:(id)sender {
-    //TODO: take a picture
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    imagePickerController.delegate = self;
+    [self presentViewController:imagePickerController animated:YES completion:nil];
+
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+
+// This method is called when an image has been chosen from the library or taken from the camera.
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    
+}
+
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 @end

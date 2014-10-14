@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCDriverOnBoardingViewController">
             <connections>
-                <outlet property="STPViewContainer" destination="tX3-3H-ihS" id="4Uu-6e-O6R"/>
+                <outlet property="PTKViewContainer" destination="tX3-3H-ihS" id="uxi-ub-D0U"/>
                 <outlet property="brandTextField" destination="Qgq-jh-Fxp" id="uHa-V6-0Qg"/>
-                <outlet property="cardInfoLabel" destination="Kpy-QP-ADj" id="Dpr-rQ-LYa"/>
                 <outlet property="colorTextField" destination="noR-UA-UgX" id="hwG-yy-H2I"/>
                 <outlet property="contentView" destination="C9S-EL-TfB" id="jcX-Lc-oO6"/>
                 <outlet property="driversLicenseNumberTextField" destination="cwn-ba-jJQ" id="iem-hj-qq1"/>
@@ -28,7 +27,6 @@
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zRn-Mj-H8d">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -38,20 +36,17 @@
                 <constraint firstAttribute="bottom" secondItem="zRn-Mj-H8d" secondAttribute="bottom" id="ca5-eG-kHd"/>
                 <constraint firstItem="zRn-Mj-H8d" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="swI-Sc-q5S"/>
             </constraints>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
         <view contentMode="scaleToFill" id="C9S-EL-TfB" userLabel="content view">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="j24-UA-CMd">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="j24-UA-CMd">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pbv-vE-CQu" customClass="VCButtonStandardStyle">
                     <rect key="frame" x="12" y="381" width="103" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="GkU-ED-zG1"/>
                         <constraint firstAttribute="width" constant="103" id="qPg-bF-Q9V"/>
@@ -72,30 +67,14 @@
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tX3-3H-ihS" userLabel="Stripe Container View">
                     <rect key="frame" x="0.0" y="288" width="320" height="69"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kpy-QP-ADj" userLabel="Stripe Label">
-                            <rect key="frame" x="8" y="24" width="305" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="305" id="ccU-Ge-8Pd"/>
-                                <constraint firstAttribute="height" constant="21" id="ypk-Tg-q2I"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="69" id="6sb-96-7Wy"/>
                         <constraint firstAttribute="width" constant="320" id="Ekz-xu-lso"/>
-                        <constraint firstItem="Kpy-QP-ADj" firstAttribute="top" secondItem="tX3-3H-ihS" secondAttribute="top" constant="24" id="cJH-o0-7GR"/>
-                        <constraint firstItem="Kpy-QP-ADj" firstAttribute="leading" secondItem="tX3-3H-ihS" secondAttribute="leading" constant="8" id="uoL-iU-WDk"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xqe-E2-2S2" customClass="VCButtonStandardStyle">
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xqe-E2-2S2" customClass="VCButtonStandardStyle">
                     <rect key="frame" x="8" y="413" width="305" height="47"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="305" id="Mxh-pW-Bgh"/>
                         <constraint firstAttribute="height" constant="47" id="hqs-Dd-RqX"/>
@@ -120,7 +99,6 @@
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Car Brand" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qgq-jh-Fxp" customClass="VCTextField">
                     <rect key="frame" x="8" y="98" width="305" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="305" id="7Ei-x7-KAk"/>
                         <constraint firstAttribute="height" constant="30" id="NHB-3l-uBE"/>
@@ -138,7 +116,6 @@
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Car Model" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8gL-ol-zqf" customClass="VCTextField">
                     <rect key="frame" x="8" y="136" width="305" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="0ck-jn-VxU"/>
                         <constraint firstAttribute="width" constant="305" id="yg7-Sd-oAq"/>
@@ -156,7 +133,6 @@
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Year" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QpF-nl-xau" customClass="VCTextField">
                     <rect key="frame" x="8" y="174" width="305" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="305" id="VI3-5K-h6N"/>
                         <constraint firstAttribute="height" constant="30" id="pUa-Df-T13"/>
@@ -174,7 +150,6 @@
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Color" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="noR-UA-UgX" customClass="VCTextField">
                     <rect key="frame" x="8" y="212" width="305" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="305" id="en3-Lb-qsv"/>
                         <constraint firstAttribute="height" constant="30" id="i9k-X3-c5n"/>
@@ -192,7 +167,6 @@
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="License Plate #" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cnT-L4-hQ5" customClass="VCTextField">
                     <rect key="frame" x="8" y="250" width="305" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="Jcb-kw-hIO"/>
                         <constraint firstAttribute="width" constant="305" id="kup-H0-0y4"/>
@@ -210,7 +184,6 @@
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Driver's License #" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cwn-ba-jJQ" customClass="VCTextField">
                     <rect key="frame" x="8" y="60" width="305" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="305" id="FFh-tJ-GFf"/>
                         <constraint firstAttribute="height" constant="30" id="lFA-2d-loE"/>
@@ -251,6 +224,7 @@
                 <constraint firstItem="8gL-ol-zqf" firstAttribute="top" secondItem="Qgq-jh-Fxp" secondAttribute="bottom" constant="8" id="t92-er-oI7"/>
                 <constraint firstItem="Qgq-jh-Fxp" firstAttribute="leading" secondItem="C9S-EL-TfB" secondAttribute="leading" constant="8" id="wQq-9z-GUy"/>
             </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
@@ -260,4 +234,9 @@
         <image name="button-select.png" width="160" height="46"/>
         <image name="login-button.png" width="304" height="47"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>

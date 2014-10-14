@@ -43,12 +43,6 @@ static int mode;
     if([VCApi loggedIn]){
         [self showRiderInterface];
 
-        /*if(mode == kDriverMode) {
-            [self showDriverInterface];
-        } else {
-            [self showRiderInterface];
-        }
-         */
     } else {
         [self showRiderSigninInterface];
     }
@@ -63,7 +57,7 @@ static int mode;
     navigationController.navigationBar.tintColor = [UIColor redColor];
     [[UIApplication sharedApplication] delegate].window.rootViewController = navigationController;
     deckController = nil;
-    [self setMode:kNoMode];
+    [self setMode: kOnBoardingMode];
 }
 
 - (void) createDeckViewController {
@@ -108,48 +102,10 @@ static int mode;
     
     [_centerNavigationController setViewControllers:@[rideViewController]];
     
-    [self setMode: kRiderMode];
+    [self setMode: kServiceMode];
 
 }
 
-- (void) showDriverInterface {
-    
-    if(deckController == nil){
-        [self createDeckViewController];
-    }
-    
-    /*
-<<<<<<< HEAD:Voco/Voco/ViewControllers/VCInterfaceModes.m
-    VCDriveViewController * driveViewController = [[VCDriveViewController alloc] init];
-    deckController.centerController = driveViewController;
-
-    
-    if([[VCUserState instance].driverState isEqualToString:kDriverStateActive]
-       || [[VCUserState instance].driverState isEqualToString:kDriverStateOnDuty] ) {
-           VCDriverHomeViewController * driverViewController = [[VCDriverHomeViewController alloc] init];
-           deckController.centerController = driverViewController;
-           [self setMode: kDriverMode];
-					 =======
-					 if([[VCUserStateManager instance].driverState isEqualToString:kDriverStateActive]
-       || [[VCUserStateManager instance].driverState isEqualToString:kDriverStateOnDuty] ) {
-        VCDriverHomeViewController * driverViewController = [[VCDriverHomeViewController alloc] init];
-        
-        NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Fare"];
-        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"fare_id    = %@", [VCUserStateManager instance].underwayFareId];
-        [fetch setPredicate:predicate];
-        NSError * error;
-        NSArray * items = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
-        if(items != nil && [items count] > 0){
-            driverViewController.fare = [items objectAtIndex:0];
-        }
-        
-        deckController.centerController = driverViewController;
-        [self setMode: kDriverMode];
->>>>>>> master:Voco/Voco/ViewControllers/VCInterfaceManager.m
-    }
-     */
-    
-}
 
 - (void) showDebugInterface{
     VCDebugViewController * vc = [[VCDebugViewController alloc] init];
@@ -189,34 +145,18 @@ static int mode;
 
 // For Rider
 - (void) commuterRideInvokedNotification:(NSNotification *)notification{
-    if(mode == kRiderMode){
-        [deckController closeLeftView];
-    } else {
-        [UIAlertView showWithTitle:@"Woops!"
-                           message:@"You must be in rider mode to view your commuter ride"
-                 cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
-    }
+    [deckController closeLeftView];
+    
 }
 
 // For Driver
 - (void) fareOfferInvokedNotification:(NSNotification *)notification{
-    if(mode == kDriverMode){
-        [deckController closeLeftView];
-    } else {
-        [UIAlertView showWithTitle:@"Woops!"
-                           message:@"You must be in driver mode to view ride offers"
-                 cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
-    }
+    [deckController closeLeftView];
     
 }
 - (void) rideInvoked:(NSNotification *) notification {
-    if(mode == kDriverMode){
-        [deckController closeLeftView];
-    } else {
-        [UIAlertView showWithTitle:@"Woops!"
-                           message:@"You must be in driver mode to view rides"
-                 cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
-    }
+    [deckController closeLeftView];
+   
 }
 
 

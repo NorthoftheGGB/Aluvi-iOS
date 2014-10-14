@@ -23,6 +23,12 @@
 #import "VCEmailTextField.h"
 #import "VCReferralCodeTextField.h"
 
+#import <QuartzCore/QuartzCore.h>
+#import "DTHTMLAttributedStringBuilder.h"
+#import "DTCoreTextConstants.h"
+
+
+
 #define kFirstNameFieldTag 1
 #define kLastNameFieldTag 2
 #define kPhoneFieldTag 3
@@ -39,9 +45,7 @@
 @property (weak, nonatomic) IBOutlet VCEmailTextField *emailField;
 @property (weak, nonatomic) IBOutlet VCReferralCodeTextField *referralCodeField;
 @property (strong, nonatomic) MBProgressHUD *hud;
-
-
-
+@property (strong, nonatomic) NSAttributedString * attributedString;
 
 - (IBAction)didTapSignUp:(id)sender;
 
@@ -193,5 +197,31 @@
                   [UIAlertView showWithTitle:@"Login Failed!" message:@"Invalid" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
               }];
 }
+
+
+- (void) loadTermsOfService {
+    
+    dispatch_queue_t backgroundQueue = dispatch_queue_create("com.vocotransportation.terms_of_service", 0);
+    
+    dispatch_async(backgroundQueue, ^{
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Aluvi-TOS" ofType:@"html"];
+        NSData *htmlData = [NSData dataWithContentsOfFile:filePath];
+        
+        // Set our builder to use the default native font face and size
+        NSDictionary *builderOptions = @{
+                                         DTDefaultFontFamily: @"Helvetica",
+                                         DTDefaultTextColor: @"Black",
+                                         DTUseiOS6Attributes: @YES
+                                         };
+        
+        DTHTMLAttributedStringBuilder *stringBuilder = [[DTHTMLAttributedStringBuilder alloc] initWithHTML:htmlData
+                                                                                                   options:builderOptions
+                                                                                        documentAttributes:nil];
+        _attributedString = [stringBuilder generatedAttributedString];
+        
+    });
+    
+}
+
 
 @end

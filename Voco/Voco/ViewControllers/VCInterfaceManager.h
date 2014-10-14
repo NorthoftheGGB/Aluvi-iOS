@@ -8,10 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#define kDriverMode 2
-#define kRiderMode 3
-#define kNoMode 4
-
+#define kOnBoardingMode 2
+#define kServiceMode 3
 
 @interface VCInterfaceManager : NSObject
 
@@ -20,7 +18,6 @@
 - (void) showInterface;
 - (void) showRiderSigninInterface;
 - (void) showRiderInterface;
-- (void) showDriverInterface;
 - (void) showDebugInterface;
 - (int) mode;
 

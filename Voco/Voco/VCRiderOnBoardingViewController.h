@@ -11,4 +11,8 @@
 
 @interface VCRiderOnBoardingViewController : VCScrollableFormViewController
 
+@property (strong, nonatomic) NSAttributedString * termsOfServiceString;
+@property (strong, nonatomic) NSString * desiredEmail;
+@property (strong, nonatomic) NSString * desiredPassword;
+
 @end

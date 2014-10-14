@@ -15,9 +15,6 @@
 + (void) setup: (RKObjectManager *) objectManager ;
 
 + (void) registerDriverWithLicenseNumber: (NSString *) driversLicenseNumber
-                         bankAccountName: (NSString *) bankAccountName
-                       bankAccountNumber: (NSString *) bankAccountNumber
-                      bankAccountRouting: (NSString *) bankAccountRouting
                                 carBrand: (NSString *) carBrand
                                 carModel: (NSString *) carModel
                                  carYear: (NSString *) carYear

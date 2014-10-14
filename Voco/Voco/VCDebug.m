@@ -48,7 +48,8 @@ static VCDebug * instance;
 }
 
 - (void) log:(NSString *) string {
-    [[LELog sharedInstance] log:[NSString stringWithFormat:@"%@: %@", _userIdentifier, string]];
+    NSLog(@"Log: %@", string);
+    //[[LELog sharedInstance] log:[NSString stringWithFormat:@"%@: %@", _userIdentifier, string]];
 }
 
 - (void) apiLog:(NSString *) string {

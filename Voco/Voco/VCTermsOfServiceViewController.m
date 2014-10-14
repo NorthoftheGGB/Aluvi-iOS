@@ -8,9 +8,9 @@
 
 #import "VCTermsOfServiceViewController.h"
 
-@interface VCTermsOfServiceViewController ()
-@property (strong, nonatomic) IBOutlet UIWebView *webView;
 
+@interface VCTermsOfServiceViewController ()
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 @end
 
 @implementation VCTermsOfServiceViewController
@@ -19,7 +19,9 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        
+        
+        
     }
     return self;
 }
@@ -27,10 +29,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSString *htmlFile = [[NSBundle mainBundle] pathForResource:@"Aluvi-TOS" ofType:@"html"];
-    NSString* htmlString = [NSString stringWithContentsOfFile:htmlFile encoding:NSUTF8StringEncoding error:nil];
-    [_webView loadHTMLString:htmlString baseURL:nil];
-    [[_webView scrollView] setContentInset:UIEdgeInsetsMake(64, 0, 0, 0)];
+    
+    _textView.attributedText = _termsOfServiceString;
+    
    
 }
 

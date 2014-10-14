@@ -15,6 +15,7 @@
 #import "IIViewDeckController.h"
 
 #import "VCNotifications.h"
+#import "VCInterfaceManager.h"
 
 #import "VCDriverApi.h"
 #import "VCPushApi.h"
@@ -224,6 +225,7 @@
             _ticket = [tickets objectAtIndex:0];
         } else {
             _step = kStepSetDepartureLocation;
+            [self transitionToSetupCommute];
         }
     }
     
@@ -987,21 +989,31 @@
             case 1:
             {
                 
-                // Create tomorrows rides
+                // Create tomorrow's rides
                 NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
                 dayComponent.day = 1;
                 
                 NSCalendar *theCalendar = [NSCalendar currentCalendar];
                 NSDate *tomorrow = [theCalendar dateByAddingComponents:dayComponent toDate:[NSDate date] options:0];
                 
-                if([[VCCommuteManager instance] requestRidesFor:tomorrow]){
-                    [self transitionToWaitingScreen];
-                }
+                [[VCCommuteManager instance] requestRidesFor:tomorrow success:^{
+                    if([VCInterfaceManager instance].mode == kOnBoardingMode) {
+                        [[VCInterfaceManager instance] showRiderInterface];
+                    } else {
+                        [self transitionToWaitingScreen];
+                    }
+                } failure:^{
+                    
+                }];
             }
                 break;
                 
             default:
-                [self resetInterfaceToHome]; // TOOD: transition to home ?
+                if([VCInterfaceManager instance].mode == kOnBoardingMode) {
+                    [[VCInterfaceManager instance] showRiderInterface];
+                } else {
+                    [self resetInterfaceToHome];
+                }
                 break;
         }
     }];

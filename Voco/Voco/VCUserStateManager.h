@@ -57,8 +57,8 @@ NSString *const VCUserStateDriverStateKeyPath;
 - (void) loginWithEmail:(NSString*) phone
                password: (NSString *) password
                 success:(void ( ^ ) () )success
-                failure:(void ( ^ ) () )failure;
-- (void) logout;
+                failure:(void ( ^ ) (RKObjectRequestOperation *operation, NSError *error) )failure;
+- (void) logoutWithCompletion: (void ( ^ ) () )success;
 - (void) finalizeLogout;
 - (void) synchronizeUserState;
 - (BOOL) isLoggedIn;

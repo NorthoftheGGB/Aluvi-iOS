@@ -15,6 +15,7 @@
 #import "VCInterfaceManager.h"
 #import "VCDriverApi.h"
 #import "VCCommuteManager.h"
+#import <MBProgressHUD.h>
 
 NSString *const VCUserStateDriverStateKeyPath = @"driverState";
 
@@ -106,7 +107,7 @@ static VCUserStateManager *sharedSingleton;
 - (void) loginWithEmail:(NSString*) phone
                password: (NSString *) password
                 success:(void ( ^ ) () )success
-                failure:(void ( ^ ) () )failure {
+                failure:(void ( ^ ) (RKObjectRequestOperation *operation, NSError *error) )failure {
     
     [VCUsersApi login:[RKObjectManager sharedManager] email:phone password:password
               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
@@ -131,18 +132,17 @@ static VCUserStateManager *sharedSingleton;
                   }];
                   
               } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                  failure();
+                  failure(operation, error);
               }];
     
 }
 
-- (void) logout {
+- (void) logoutWithCompletion: (void ( ^ ) () )success {
     
     if(self.driverState != nil && [self.driverState isEqualToString:kDriverStateOnDuty] ){
         [VCDriverApi clockOffWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             [self finalizeLogout];
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-
         }];
     } else {
         [self finalizeLogout];
@@ -190,6 +190,7 @@ static VCUserStateManager *sharedSingleton;
     [userDefaults removeObjectForKey:kDriveProcessStateKey];
     [userDefaults removeObjectForKey:kDriverStateKey];
     [userDefaults removeObjectForKey:kRiderStateKey];
+    [userDefaults removeObjectForKey:kProfileDataKey];
     [userDefaults synchronize];
     _underwayFareId = nil;
     _rideProcessState = nil;

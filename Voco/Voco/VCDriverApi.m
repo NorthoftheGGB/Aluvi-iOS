@@ -126,9 +126,6 @@
 }
 
 + (void) registerDriverWithLicenseNumber: (NSString *) driversLicenseNumber
-                         bankAccountName: (NSString *) bankAccountName
-                       bankAccountNumber: (NSString *) bankAccountNumber
-                      bankAccountRouting: (NSString *) bankAccountRouting
                                 carBrand: (NSString *) carBrand
                                 carModel: (NSString *) carModel
                                  carYear: (NSString *) carYear
@@ -138,9 +135,6 @@
                                  failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure{
     VCDriverRegistration * driverRegistration = [[VCDriverRegistration alloc] init];
     driverRegistration.driversLicenseNumber = driversLicenseNumber;
-    driverRegistration.bankAccountName = bankAccountName;
-    driverRegistration.bankAccountNumber = bankAccountNumber;
-    driverRegistration.bankAccountRouting = bankAccountRouting;
     driverRegistration.carBrand = carBrand;
     driverRegistration.carModel = carModel;
     driverRegistration.carYear = carYear;

@@ -55,6 +55,7 @@
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
+    
 #if DEBUG==12
     [[VCInterfaceModes instance] showDebugInterface];
 #else
@@ -124,6 +125,7 @@
     [VCCoreData saveContext];
     
 }
+
 
 
 

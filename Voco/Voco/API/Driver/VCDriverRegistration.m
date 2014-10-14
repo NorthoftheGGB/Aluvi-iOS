@@ -15,9 +15,7 @@
     RKObjectMapping * mapping = [RKObjectMapping mappingForClass:[self class]];
     [mapping addAttributeMappingsFromDictionary:@{
                                                  @"drivers_license_number" : @"driversLicenseNumber",
-                                                 @"bank_account_name" : @"bankAccountName",
-                                                 @"bank_account_number" : @"bankAccountNumber",
-                                                 @"bank_account_routing" : @"bankAccountRouting",
+                                                 @"default_recipient_debit_card_token" : @"debitCardToken",
                                                  @"car_brand" : @"carBrand",
                                                  @"car_model" : @"carModel",
                                                  @"car_year" : @"carYear",
