@@ -19,16 +19,19 @@
 #import <QuartzCore/QuartzCore.h>
 #import "DTHTMLAttributedStringBuilder.h"
 #import "DTCoreTextConstants.h"
+#import "VCRiderOnBoardingViewController.h"
+#import "VCEmailTextField.h"
 
 #define kPhoneFieldTag 1
 #define kPasswordFieldTag 2
 
 @interface VCLogInViewController ()
-@property (weak, nonatomic) IBOutlet VCTextField *emailTextField;
+@property (weak, nonatomic) IBOutlet VCEmailTextField *emailTextField;
 @property (weak, nonatomic) IBOutlet VCTextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet VCButtonStandardStyle *signInButton;
 @property (weak, nonatomic) IBOutlet UIButton *forgotPasswordButton;
 @property (strong, nonatomic) NSAttributedString * attributedString;
+@property (strong, nonatomic) MBProgressHUD * hud;
 
 - (IBAction)didTapSignIn:(id)sender;
 - (IBAction)didTapSignUP:(id)sender;
@@ -65,7 +68,6 @@
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
 }
->>>>>>> master
 
 /*
 - (void) viewWillAppear:(BOOL)animated {
@@ -94,9 +96,10 @@
 #elif ALPHA
 
 #else
-    userEmails = @[ @"v1@vocotransportation.com", @"v3@vocotransportation.com"];
-    passwords = @[ @"9999999999", @"5555555555" ];
-    userLabels = @[  @"rider", @"driver"];
+    NSString * newUserEmail = [NSString stringWithFormat:@"%f@z.com", [[NSDate date] timeIntervalSince1970] ];
+    userEmails = @[ @"v1@vocotransportation.com", @"v3@vocotransportation.com", newUserEmail];
+    passwords = @[ @"9999999999", @"5555555555", @"1111111111" ];
+    userLabels = @[  @"rider", @"driver", @"new user"];
 #endif
 
     
@@ -126,6 +129,71 @@
 }
 
 - (IBAction)didTapSignUP:(id)sender {
+    
+    if([_emailTextField.text length] == 0 || [_passwordTextField.text length] == 0){
+        [UIAlertView showWithTitle:@"Username/Password" message:@"Please fill in your desired email and password" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        return;
+    }
+    
+    if(![_emailTextField validate]){
+        return;
+    }
+    
+    if(![_passwordTextField validate]){
+        return;
+    }
+    
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.labelText = @"Checking Email...";
+    [[VCUserStateManager instance] loginWithEmail:_emailTextField.text
+                                         password:_passwordTextField.text
+                                          success:^{
+                                              
+                                              [UIAlertView showWithTitle:@"Already Registered" message:@"That email address is already registered with Aluvi, do you want to complete logging in?" cancelButtonTitle:@"No" otherButtonTitles:@[@"Yes"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                                  switch(buttonIndex){
+                                                      case 0:
+                                                      {
+                                                          [[VCUserStateManager instance] logoutWithCompletion:^{
+                                                              [_hud hide:YES];
+                                                          }];
+                                                      }
+                                                          break;
+                                                    
+                                                      case 1:
+                                                      {
+                                                          _hud.labelText = @"Logging in...";
+                                                          [self completeLogin];
+                                                      }
+                                                          break;
+                                                          
+                                                      default:
+                                                          break;
+                                                  }
+                                              }];
+                                              
+                                          } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                              
+                                              [_hud hide:YES];
+                                              
+                                              switch (operation.HTTPRequestOperation.response.statusCode) {
+                                                  case 404:
+                                                  {
+                                                      [self goToSignUp];
+                                                                                                        }
+                                                      break;
+                                                      
+                                                  case 403:
+                                                      [UIAlertView showWithTitle:@"Already Registered" message:@"That email is already in our system, but your password is incorrect" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                                                      break;
+                                                      
+                                                  default:
+                                                      break;
+                                              }
+                                          }];
+
+
+    
+    /*
     [UIAlertView showWithTitle:@"Sign Up For Aluvi" message:@"To gain access to the application please visit our website." cancelButtonTitle:@"Not Now" otherButtonTitles:@[@"Take me there"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
         switch (buttonIndex) {
             case 1:
@@ -136,6 +204,7 @@
                 break;
         }
     }];
+     */
 }
 
 - (void) login {
@@ -150,31 +219,74 @@
     }
     
     
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Logging In";
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.labelText = @"Logging In";
     
     [[VCUserStateManager instance] loginWithEmail:_emailTextField.text
                                          password:_passwordTextField.text
                                           success:^{
+                                              [self completeLogin];
                                               
-                                              [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                  
-                                                  [hud hide:YES];
-                                                  [[VCInterfaceManager instance] showRiderInterface];
-                                                  [VCNotifications scheduleUpdated];
-                                                  
-                                              } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                  [WRUtilities criticalError:error];
-                                                  [hud hide:YES];
-                                                  
-                                              }];
+                                          } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                               
-                                          } failure:^{
-                                              [hud hide:YES];
-                                              [UIAlertView showWithTitle:@"Login Failed!" message:@"Invalid Email or Password.  " cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                                              
+                                              switch (operation.HTTPRequestOperation.response.statusCode) {
+                                                  case 404:
+                                                  {
+                                                      [UIAlertView showWithTitle:@"New User?"
+                                                                         message:@"That email is not in our system.  Click OK to join Aluvi with these credentials!"
+                                                               cancelButtonTitle:@"Cancel"
+                                                               otherButtonTitles:@[@"OK"]
+                                                                        tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                                                            switch(buttonIndex){
+                                                                                case 1:
+                                                                                    [self goToSignUp];
+                                                                                    break;
+                                                                                default:
+                                                                                    break;
+                                                                            }
+                                                                        }];
+                                                  }
+                                                      break;
+                                                      
+                                                  case 403:
+                                                      [UIAlertView showWithTitle:@"Incorrect Password" message:@"That's not the correct password for this email address, how about trying again." cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                                                      break;
+                                                      
+                                                  default:
+                                                      [UIAlertView showWithTitle:@"Login Failed!" message:@"Invalid Email or Password.  " cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                                                      break;
+                                              }
+                                              [_hud hide:YES];
+
+                                            
                                           }];
     
     
+}
+
+- (void) completeLogin {
+    [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        
+        [_hud hide:YES];
+        [[VCInterfaceManager instance] showRiderInterface];
+        [VCNotifications scheduleUpdated];
+        
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [WRUtilities criticalError:error];
+        [_hud hide:YES];
+        
+    }];
+}
+
+- (void) goToSignUp {
+    // Good to do, email is not in the system
+    VCRiderOnBoardingViewController * vc = [[VCRiderOnBoardingViewController alloc] init];
+    vc.desiredEmail = _emailTextField.text;
+    vc.desiredPassword = _passwordTextField.text;
+    vc.termsOfServiceString = _attributedString;
+    [self.navigationController pushViewController:vc animated:YES];
+
 }
 
 

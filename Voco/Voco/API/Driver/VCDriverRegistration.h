@@ -11,9 +11,7 @@
 @interface VCDriverRegistration : NSObject
 
 @property (nonatomic, strong) NSString * driversLicenseNumber;
-@property (nonatomic, strong) NSString * bankAccountName;
-@property (nonatomic, strong) NSString * bankAccountNumber;
-@property (nonatomic, strong) NSString * bankAccountRouting;
+@property (nonatomic, strong) NSString * debitCardToken;
 @property (nonatomic, strong) NSString * carBrand;
 @property (nonatomic, strong) NSString * carModel;
 @property (nonatomic, strong) NSString * carYear;

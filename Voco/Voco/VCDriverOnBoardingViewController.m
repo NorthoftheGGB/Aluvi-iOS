@@ -18,6 +18,9 @@
 #import "Payment.h"
 #import "VCUtilities.h"
 #import "VCValidation.h"
+#import "VCDriverApi.h"
+#import "VCCommuteSetUpOnBoardingViewController.h"
+#import <PTKTextField.h>
 
 #define kDriversLicenseFieldTag 1
 #define kBrandFieldTag 2
@@ -27,10 +30,9 @@
 #define kLicensePlateFieldTag 6
 
 
-@interface VCDriverOnBoardingViewController ()
+@interface VCDriverOnBoardingViewController () <PTKViewDelegate>
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet VCTextField *driversLicenseNumberTextField;
-
 @property (weak, nonatomic) IBOutlet VCTextField *brandTextField;
 @property (weak, nonatomic) IBOutlet VCTextField *modelTextField;
 @property (weak, nonatomic) IBOutlet VCTextField *yearTextField;
@@ -42,6 +44,8 @@
 
 @property (weak, nonatomic) IBOutlet UIView *PTKViewContainer;
 @property (weak, nonatomic) IBOutlet UILabel *cardInfoLabel;
+@property (strong, nonatomic) PTKView * cardView;
+@property (strong, nonatomic) MBProgressHUD * hud;
 
 - (IBAction)didTapSkipThisStep:(id)sender;
 - (IBAction)didTapSave:(id)sender;
@@ -67,11 +71,38 @@
     [self.scrollView setContentSize:_contentView.frame.size];
     [self.scrollView addSubview:_contentView];
     
+    _cardView = [[PTKView alloc] initWithFrame:CGRectMake(15,20,290,55)];
+    _cardView.delegate = self;
+    [_PTKViewContainer addSubview:_cardView];
     
     UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [tapBackground setNumberOfTapsRequired:1];
     [self.view addGestureRecognizer:tapBackground];
     
+#ifndef RELEASE
+    UISwipeGestureRecognizer * shortCut = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(debug:)];
+    [shortCut setNumberOfTouchesRequired:2];
+    [shortCut setDirection:UISwipeGestureRecognizerDirectionLeft];
+    [self.view addGestureRecognizer:shortCut];
+#endif
+    
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [_driversLicenseNumberTextField becomeFirstResponder];
+}
+
+- (void) debug:(id)sender {
+    _driversLicenseNumberTextField.text = @"S02038290392";
+    _brandTextField.text = @"Ford";
+    _modelTextField.text = @"Prefect";
+    _yearTextField.text = @"2010";
+    _colorTextField.text = @"Orange";
+    _licensePlateTextField.text = @"SDF234";
+    _cardView.cardNumberField.text = @"4000056655665556";
+    _cardView.cardExpiryField.text = @"12/19";
+    _cardView.cardCVCField.text = @"234";
 }
 
 - (void) dismissKeyboard:(id) sender{
@@ -84,12 +115,83 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) showNextStep {
+    VCCommuteSetUpOnBoardingViewController * vc = [[VCCommuteSetUpOnBoardingViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 - (IBAction)didTapSkipThisStep:(id)sender {
+    [self showNextStep];
 }
 
 - (IBAction)didTapSave:(id)sender {
+    if(![_brandTextField validate]){
+        return;
+    }
+    if(![_modelTextField validate]){
+        return;
+    }
+    if(![_yearTextField validate]){
+        return;
+    }
+    if(![_colorTextField validate]){
+        return;
+    }
+    if(![_licensePlateTextField validate]){
+        return;
+    }
+    if(![_driversLicenseNumberTextField validate]){
+        return;
+    }
+    
+    STPCard *card = [[STPCard alloc] init];
+    card.number = _cardView.card.number;
+    card.expMonth = _cardView.card.expMonth;
+    card.expYear = _cardView.card.expYear;
+    card.cvc = _cardView.card.cvc;
+    
+    
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.labelText = @"Saving user info";
+    [Stripe createTokenWithCard:card completion:^(STPToken *token, NSError *error) {
+        
+        if(error == nil) {
+            [VCDriverApi registerDriverWithLicenseNumber:_driversLicenseNumberTextField.text
+                                                carBrand:_brandTextField.text
+                                                carModel:_modelTextField.text
+                                                 carYear:_yearTextField.text
+                                         carLicensePlate:_licensePlateTextField.text
+                                            referralCode:@""
+                                                 success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                     [VCUsersApi updateRecipientCard:[RKObjectManager sharedManager]
+                                                                           cardToken:token.tokenId
+                                                                             success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                                                 [self showNextStep];
+                                                                             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                                                 [self somethingDidNotGoRight];
+                                                                                 [WRUtilities criticalError:error];
+
+                                                                             }];
+                                                     
+                                                     
+                                                 } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                     [self somethingDidNotGoRight];
+                                                     [WRUtilities criticalError:error];
+
+                                                 }];
+        } else {
+            [self somethingDidNotGoRight];
+            [WRUtilities criticalError:error];
+        }
+    }];
+    
 }
 
+- (void) somethingDidNotGoRight {
+    _hud.hidden = YES;
+    [WRUtilities subcriticalErrorWithString:@"Something didn't go right.  Want to try that again?"];
+    
+}
 
 - (IBAction)didEndOnExit:(id)sender {
     
@@ -126,7 +228,24 @@
             break;
     }
     
+    
+}
 
+
+
+- (void)paymentView:(PTKView *)paymentView withCard:(PTKCard *)card isValid:(BOOL)valid
+{
+    // Enable the "save" button only if the card form is complete.
+    if(valid){
+        _saveButton.enabled = YES;
+    } else {
+        _saveButton.enabled = NO;
+    }
+    
+}
+
+- (void)paymentViewDidStartEditing:(PTKView *)paymentView {
+    self.scrollFocusView = _PTKViewContainer;
 }
 
 @end

@@ -78,7 +78,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 - (void) focusActiveView: (CGSize) keyboardSize {
     
     // Step 2: Adjust the bottom content inset of your scroll view by the keyboard height.
@@ -95,10 +94,10 @@
     // 2nd term relates to the placement of the scrollView in the main view
     // aRect now should contain the viewable area (not covered by the keyboard_ of the main view
     
-    if(_activeView == nil){
+    if(_scrollFocusView == nil){
         NSLog(@"%@", @"ERROR: Active view in nil!");
     }
-    CGRect viewRect = _activeView.frame; //the rect of the activeView, should be the table view cell
+    CGRect viewRect = _scrollFocusView.frame; //the rect of the activeView, should be the table view cell
     int scrollTargetY = viewRect.origin.y + viewRect.size.height; //moving the origin down
     int heightThreshold = aRect.size.height - toolBarHeight;
     
@@ -140,9 +139,17 @@
     //Editable field must be in cell by itself for this to work properly
     if([self.scrollView isKindOfClass:[UITableView class]]
        ){
-        self.activeView = textField.superview.superview;
+        self.scrollFocusView = textField.superview.superview;
     } else {
-        self.activeView = textField;
+        UIView * layoutView = textField;
+        while(layoutView.superview != self.scrollView){
+            layoutView = layoutView.superview;
+            if(layoutView == nil){
+                // this view is not inside the scrollview
+                return;
+            }
+        }
+        self.scrollFocusView = layoutView;
     }
     
     [self focusActiveView:lastKeyboardSize];
@@ -150,12 +157,12 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    self.activeView = nil;
+    self.scrollFocusView = nil;
 }
 
 
 - (IBAction) didEndOnExit:(id) sender {
-    [self.activeView resignFirstResponder];
+    [self.scrollFocusView resignFirstResponder];
 }
 
 @end

@@ -12,7 +12,7 @@
 
 
 @property(strong, nonatomic) IBOutlet UIScrollView * scrollView;
-@property(strong, nonatomic) UIView * activeView;
+@property(strong, nonatomic) UIView * scrollFocusView;
 
 
 - (void) setScrollViewTextFieldDelegates:(UIView *) view;

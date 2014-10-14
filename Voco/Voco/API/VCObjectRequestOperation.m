@@ -27,10 +27,7 @@
         
     }failure:^void(RKObjectRequestOperation *operation , NSError *error) {
         
-        //[[NSNotificationCenter defaultCenter] postNotificationName:@"connectionFailure" object:operation];
-        
         NSInteger statusCode = operation.HTTPRequestOperation.response.statusCode;
-        //TODO BOOL handled = FALSE; need to pass this down the chain
         switch (statusCode) {
             case 0: // No internet connection
             {
@@ -77,9 +74,7 @@
             {
                 if(statusCode >= 500) {
                     [WRUtilities criticalError:error];
-                } else {
-                    [WRUtilities subcriticaError:error];
-                }
+                } 
             }
                 break;
         }

@@ -8,6 +8,8 @@
 
 #import "VCCommuteSetUpOnBoardingViewController.h"
 #import "VCButtonStandardStyle.h"
+#import "VCInterfaceManager.h"
+#import "VCTicketViewController.h"
 
 
 @interface VCCommuteSetUpOnBoardingViewController ()
@@ -43,8 +45,11 @@
 }
 
 - (IBAction)didTapSetUpCommuteButton:(id)sender {
+    VCTicketViewController * vc = [[VCTicketViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (IBAction)didTapSkipButton:(id)sender {
+    [[VCInterfaceManager instance] showRiderInterface];
 }
 @end

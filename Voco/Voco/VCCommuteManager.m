@@ -121,7 +121,7 @@ static VCCommuteManager * instance;
     }
 }
 
-- (BOOL) requestRidesFor:(NSDate *) tomorrow {
+- (void) requestRidesFor:(NSDate *) tomorrow success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure  {
     // Look for pre-existing request for tomorrow, error if it exists
     NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
     
@@ -156,7 +156,7 @@ static VCCommuteManager * instance;
     }
     if([rides count] == 2){
         [WRUtilities subcriticalErrorWithString:@"There are already rides scheduled for this day, this is a system error but can be recovered by canceling your commuter rides and requesting again"];
-        return NO;
+        failure();
     };
     if([rides count] == 1){
         [WRUtilities subcriticalErrorWithString:@"Orphaned commuter ride found. Autocleaning the database, should be OK to continue"];
@@ -223,15 +223,21 @@ static VCCommuteManager * instance;
             workToHomeRide.direction = @"b";
             [VCCoreData saveContext];
             
+            [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                success();
+            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                // Not sure what to do here, the request has been posted, but the schedule failed to update
+                success();
+            }];
+            
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            // TODO: if it's a network problem, this needs to be uploaded at a later date
+            failure();
         }];
 
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        // TODO: if it's a network problem, this needs to be uploaded at a later date
+        failure();
     }];
     
-    return YES;
 }
 
 - (void) cancelRide:(Ticket *) ride success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure {

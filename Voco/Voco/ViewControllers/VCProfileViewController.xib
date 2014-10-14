@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCProfileViewController">
@@ -24,9 +25,8 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQ7-4F-qNh">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQ7-4F-qNh">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="480" id="LmX-Oz-UU6"/>
                         <constraint firstAttribute="width" constant="320" id="qsM-qE-yph"/>
@@ -39,7 +39,6 @@
                 <constraint firstItem="BQ7-4F-qNh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="j3x-7I-EBH"/>
                 <constraint firstItem="BQ7-4F-qNh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="of3-aw-fDq"/>
             </constraints>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
         <view contentMode="scaleToFill" id="bC0-fy-Fem">
@@ -48,7 +47,6 @@
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="devon.png" translatesAutoresizingMaskIntoConstraints="NO" id="rSS-yk-gN7">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="270"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="270" id="Kxj-1M-dAT"/>
                         <constraint firstAttribute="width" constant="320" id="RZH-e9-fc6"/>
@@ -56,7 +54,6 @@
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fYN-K8-URI" customClass="VCTextField">
                     <rect key="frame" x="9" y="278" width="303" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="303" id="2VW-HF-9oy"/>
                         <constraint firstAttribute="height" constant="30" id="reM-cH-qNG"/>
@@ -74,7 +71,6 @@
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qf9-53-MIF" customClass="VCTextField">
                     <rect key="frame" x="9" y="316" width="303" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="OFs-4k-9kw"/>
                         <constraint firstAttribute="width" constant="303" id="hVE-5i-MQl"/>
@@ -92,7 +88,6 @@
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ljN-fv-dwb" customClass="VCTextField">
                     <rect key="frame" x="9" y="354" width="303" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="qO2-Fk-b0S"/>
                         <constraint firstAttribute="width" constant="303" id="uYU-Sn-zWN"/>
@@ -110,7 +105,6 @@
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AZs-m8-oR6" customClass="VCTextField">
                     <rect key="frame" x="9" y="439" width="303" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="Chv-yQ-ORH"/>
                         <constraint firstAttribute="width" constant="303" id="bCg-BF-Ndg"/>
@@ -128,7 +122,6 @@
                 </textField>
                 <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5mb-IJ-dxQ" customClass="VCTextField">
                     <rect key="frame" x="9" y="398" width="303" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="43t-Je-ZG5"/>
                         <constraint firstAttribute="width" constant="303" id="xf6-sq-bXw"/>
@@ -146,7 +139,6 @@
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJP-fi-epG" customClass="VCButtonStandardStyle">
                     <rect key="frame" x="9" y="491" width="303" height="28"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.96542171560000001" green="0.96542171560000001" blue="0.96542171560000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="303" id="CcH-f0-U9I"/>
@@ -173,7 +165,6 @@
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v0.0b0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faT-jo-LTb">
                     <rect key="frame" x="261" y="528" width="45" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="Dnt-RK-2cs"/>
                         <constraint firstAttribute="width" constant="45" id="zZc-WK-L21"/>
@@ -183,7 +174,6 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6j1-PT-iSR" customClass="VCButtonStandardStyle">
                     <rect key="frame" x="125" y="524" width="69" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="8f3-tq-UPt"/>
                         <constraint firstAttribute="width" constant="69" id="dIR-JY-GjB"/>
@@ -203,10 +193,12 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bx5-T3-QEG">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="260"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="didTapTakePhotoButton:" destination="-1" eventType="touchUpInside" id="8xz-eO-Ugg"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -231,7 +223,6 @@
                 <constraint firstItem="Qf9-53-MIF" firstAttribute="top" secondItem="fYN-K8-URI" secondAttribute="bottom" constant="8" id="vEx-eS-dYm"/>
                 <constraint firstItem="Qf9-53-MIF" firstAttribute="leading" secondItem="bC0-fy-Fem" secondAttribute="leading" constant="9" id="zKO-3I-EtF"/>
             </constraints>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
@@ -240,4 +231,9 @@
         <image name="profile-button.png" width="302" height="28"/>
         <image name="profile-button@-select.png" width="302" height="28"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>

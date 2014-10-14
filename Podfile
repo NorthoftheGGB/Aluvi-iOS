@@ -14,8 +14,9 @@ pod 'ActionSheetPicker-3.0', '~> 1.0.11'
 pod 'US2FormValidator', '~> 1.1.2'
 pod 'BlocksKit', '~> 2.2.2'
 pod 'Stripe', '~> 2.0.3'
-pod 'PaymentKit'
+pod 'PaymentKit', :git => 'https://github.com/deepwinter/PaymentKit.git'
 pod 'DTCoreText'
+pod 'ASImageResize', '~> 1.0.3'
 
  
   
