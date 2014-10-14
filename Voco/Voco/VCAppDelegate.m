@@ -54,7 +54,12 @@
     [Stripe setDefaultPublishableKey:@"pk_test_4Gt6M02YRqmpk7yoBud7y5Ah"];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
+
+    /*
+        UIViewController * vc = [[ MyThing alloc] init];
+        [self.window setRootViewController: vc];
+        return;
+    */
     
 #if DEBUG==12
     [[VCInterfaceModes instance] showDebugInterface];
