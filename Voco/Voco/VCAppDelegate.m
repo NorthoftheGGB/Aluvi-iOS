@@ -58,6 +58,8 @@
     /*
         UIViewController * vc = [[ MyThing alloc] init];
         [self.window setRootViewController: vc];
+        self.window.backgroundColor = [UIColor whiteColor];
+        [self.window makeKeyAndVisible];
         return;
     */
     
