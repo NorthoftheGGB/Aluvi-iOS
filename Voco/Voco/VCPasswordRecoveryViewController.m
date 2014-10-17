@@ -13,6 +13,7 @@
 
 
 @interface VCPasswordRecoveryViewController ()
+@property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet VCTextField *emailTextField;
 @property (weak, nonatomic) IBOutlet VCButtonStandardStyle *sendPasswordButton;
 - (IBAction)didTapSendPasswordButton:(id)sender;
@@ -33,7 +34,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Password Recovery";}
+    self.title = @"Password Recovery";
+    [self.scrollView setContentSize: _contentView.frame.size];
+    [self.scrollView addSubview: _contentView];
+}
 
 - (void)didReceiveMemoryWarning
 {
