@@ -303,7 +303,6 @@
 		4FC758D419AA91810093DBEA /* VCCommuteSetUpOnBoardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758D019AA91810093DBEA /* VCCommuteSetUpOnBoardingViewController.xib */; };
 		4FC758D519AA91810093DBEA /* VCCommuteSetUpOnBoardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758D019AA91810093DBEA /* VCCommuteSetUpOnBoardingViewController.xib */; };
 		4FC758D619AA91810093DBEA /* VCCommuteSetUpOnBoardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758D019AA91810093DBEA /* VCCommuteSetUpOnBoardingViewController.xib */; };
-		4FC758DA19AA94C30093DBEA /* VCPasswordRecoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758D819AA94C30093DBEA /* VCPasswordRecoveryViewController.m */; };
 		4FC758DB19AA94C30093DBEA /* VCPasswordRecoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758D819AA94C30093DBEA /* VCPasswordRecoveryViewController.m */; };
 		4FC758DC19AA94C30093DBEA /* VCPasswordRecoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758D819AA94C30093DBEA /* VCPasswordRecoveryViewController.m */; };
 		4FC758DD19AA94C30093DBEA /* VCPasswordRecoveryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758D919AA94C30093DBEA /* VCPasswordRecoveryViewController.xib */; };
@@ -3903,7 +3902,6 @@
 				F4C6B214197F06B100F6C10B /* VCBankAccountTextField.m in Sources */,
 				4FCBFBF31996264B00CBF0C8 /* VCDriveDetailsView.m in Sources */,
 				F4C6B215197F06B100F6C10B /* VCGeoObject.m in Sources */,
-				4FC758DA19AA94C30093DBEA /* VCPasswordRecoveryViewController.m in Sources */,
 				F425906819958E9700FA928E /* VCTicketViewController.m in Sources */,
 				F4C6B217197F06B100F6C10B /* VCDevice.m in Sources */,
 				F4C6B218197F06B100F6C10B /* Ticket.m in Sources */,

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VCScrollableFormViewController.h"
 
-@interface VCPasswordRecoveryViewController : UIViewController
+@interface VCPasswordRecoveryViewController : VCScrollableFormViewController
 
 @end

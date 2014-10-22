@@ -13,6 +13,7 @@
 
 
 @interface VCPasswordRecoveryViewController ()
+@property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet VCTextField *emailTextField;
 @property (weak, nonatomic) IBOutlet VCButtonStandardStyle *sendPasswordButton;
 - (IBAction)didTapSendPasswordButton:(id)sender;
@@ -33,7 +34,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Password Recovery";}
+    self.title = @"Password Recovery";
+  
+    [self.scrollView setContentSize: _contentView.frame.size];
+    [self.scrollView addSubview: _contentView];
+    
+}
+
+/*UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(didTapBack:)];
+ self.navigationItem.leftBarButtonItem = backItem;
+ self.navigationItem.leftBarButtonItem.tintColor = [UIColor colorWithRed:(182/255.f) green:(31/255.f) blue:(36/255.f) alpha:1.0];*/
+
+- (void) didTapBack {
+    
+}
 
 - (void)didReceiveMemoryWarning
 {

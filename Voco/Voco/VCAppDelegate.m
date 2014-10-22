@@ -60,7 +60,7 @@
         [self.window setRootViewController: vc];
         self.window.backgroundColor = [UIColor whiteColor];
         [self.window makeKeyAndVisible];
-        return;
+        return YES;
     */
     
 #if DEBUG==12
