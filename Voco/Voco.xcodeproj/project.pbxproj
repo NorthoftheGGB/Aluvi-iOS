@@ -651,6 +651,7 @@
 		F48FBCCF19ECCF3B009352A0 /* VCCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = F48FBCCD19ECCF3B009352A0 /* VCCodes.m */; };
 		F48FBCD019ECCF3B009352A0 /* VCCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = F48FBCCD19ECCF3B009352A0 /* VCCodes.m */; };
 		F48FBCD119ECCF3B009352A0 /* VCCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = F48FBCCD19ECCF3B009352A0 /* VCCodes.m */; };
+		F48FBCD219F84B3A009352A0 /* VCPasswordRecoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758D819AA94C30093DBEA /* VCPasswordRecoveryViewController.m */; };
 		F49EDD101946E2F90020B8BB /* VCInterfaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD0F1946E2F90020B8BB /* VCInterfaceManager.m */; };
 		F4A5654819C8F3EA0030104D /* Aluvi-Privacy-Policy.html in Resources */ = {isa = PBXBuildFile; fileRef = 4F38976119B8298200A75C5C /* Aluvi-Privacy-Policy.html */; };
 		F4A5654919C8F3EC0030104D /* Aluvi-TOS.html in Resources */ = {isa = PBXBuildFile; fileRef = 4F38976219B8298200A75C5C /* Aluvi-TOS.html */; };
@@ -3900,6 +3901,7 @@
 				F4C6B212197F06B100F6C10B /* VCCarYearTextField.m in Sources */,
 				F4C6B213197F06B100F6C10B /* VCApi.m in Sources */,
 				F4C6B214197F06B100F6C10B /* VCBankAccountTextField.m in Sources */,
+				F48FBCD219F84B3A009352A0 /* VCPasswordRecoveryViewController.m in Sources */,
 				4FCBFBF31996264B00CBF0C8 /* VCDriveDetailsView.m in Sources */,
 				F4C6B215197F06B100F6C10B /* VCGeoObject.m in Sources */,
 				F425906819958E9700FA928E /* VCTicketViewController.m in Sources */,
