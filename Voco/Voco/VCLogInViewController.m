@@ -52,7 +52,7 @@
     return self;
 }
 
-- (void)viewDidLtoad
+- (void)viewDidLoad
 {
     [super viewDidLoad];
     
@@ -66,14 +66,12 @@
     [self.view addGestureRecognizer:shortCut];
 #endif
     [self.navigationController setNavigationBarHidden:NO animated:NO];
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(36, 36), NO, 0.0);
-    UIImage *blank = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    [self.navigationController.navigationBar setBackgroundImage:blank forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:blank];
+    UIImage * blankImage = [UIImage imageNamed:@"nav-bar-background"];
+    [self.navigationController.navigationBar setBackgroundImage:blankImage forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:blankImage];
     [self.navigationController.navigationBar setTranslucent:YES];
     [self.navigationController.view setBackgroundColor: [UIColor clearColor]];
-    //[self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     
 }
 
