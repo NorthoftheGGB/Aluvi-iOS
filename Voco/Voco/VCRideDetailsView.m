@@ -35,6 +35,7 @@
     _carTypeLabel.hidden = YES;
     _licenseLabel.hidden = YES;
     self.carTypeValueLabel.hidden = YES;
+    
     self.licenseValueLabel.hidden = YES;
     self.cardNicknamelabel.hidden = YES;
     self.cardNumberLabel.hidden = YES;
