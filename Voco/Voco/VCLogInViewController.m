@@ -66,8 +66,11 @@
     [self.view addGestureRecognizer:shortCut];
 #endif
     [self.navigationController setNavigationBarHidden:NO animated:NO];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(36, 36), NO, 0.0);
+    UIImage *blank = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    [self.navigationController.navigationBar setBackgroundImage:blank forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:blank];
     [self.navigationController.navigationBar setTranslucent:YES];
 }
 
