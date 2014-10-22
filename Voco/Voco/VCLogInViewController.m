@@ -52,7 +52,7 @@
     return self;
 }
 
-- (void)viewDidLoad
+- (void)viewDidLtoad
 {
     [super viewDidLoad];
     
@@ -69,6 +69,9 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     [self.navigationController.navigationBar setTranslucent:YES];
+    [self.navigationController.view setBackgroundColor: [UIColor clearColor]];
+    //[self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    
 }
 
 
