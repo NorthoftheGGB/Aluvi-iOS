@@ -65,17 +65,11 @@
     [shortCut setDirection:UISwipeGestureRecognizerDirectionUp];
     [self.view addGestureRecognizer:shortCut];
 #endif
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
-    
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    [self.navigationController.navigationBar setTranslucent:YES];
 }
-
-/*
-- (void) viewWillAppear:(BOOL)animated {
-    [UIAlertView showWithTitle:@"title" message:@"mess" cancelButtonTitle:@"ok" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-        NSLog(@"hi %@", @"hi");
-    }];
-}
-*/
 
 
 - (void) dismissKeyboard:(id) sender{
