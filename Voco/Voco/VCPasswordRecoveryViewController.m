@@ -36,13 +36,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Password Recovery";
-    
     [self.scrollView setContentSize: _contentView.frame.size];
     [self.scrollView addSubview: _contentView];
     
 }
-
 
 - (void) didTapBack {
     

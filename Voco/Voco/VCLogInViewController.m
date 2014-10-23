@@ -13,6 +13,7 @@
 #import "VCRiderApi.h"
 #import "VCTextField.h"
 #import "VCButtonStandardStyle.h"
+#import "VCButton.h"
 #import "VCPasswordRecoveryViewController.h"
 #import "VCTermsOfServiceViewController.h"
 #import "VCNotifications.h"
@@ -30,16 +31,23 @@
 @interface VCLogInViewController ()
 @property (weak, nonatomic) IBOutlet VCEmailTextField *emailTextField;
 @property (weak, nonatomic) IBOutlet VCTextField *passwordTextField;
-@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *signInButton;
+@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *logInButton;
+@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *createAccountButton;
+
 @property (weak, nonatomic) IBOutlet UIButton *forgotPasswordButton;
+@property (weak, nonatomic) IBOutlet UIButton *modeToggleButton;
 @property (strong, nonatomic) NSAttributedString * attributedString;
 @property (strong, nonatomic) MBProgressHUD * hud;
 
-- (IBAction)didTapSignIn:(id)sender;
-- (IBAction)didTapSignUP:(id)sender;
+@property BOOL mode;
+
+- (IBAction)didTapLogIn:(id)sender;
+- (IBAction)didTapCreateAccount:(id)sender;
 
 - (IBAction)didTapForgotPassword:(id)sender;
 - (IBAction)didTapTermsAndConditions:(id)sender;
+- (IBAction)didTapModeToggleButton:(id)sender;
+
 
 @end
 
@@ -50,6 +58,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         [self loadTermsOfService];
+        _mode = NO;
     }
     return self;
 }
@@ -68,12 +77,12 @@
     [self.view addGestureRecognizer:shortCut];
 #endif
     [self.navigationController setNavigationBarHidden:NO animated:NO];
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(36, 36), NO, 0.0);
-    UIImage *blank = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    [self.navigationController.navigationBar setBackgroundImage:blank forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:blank];
+    UIImage * blankImage = [UIImage imageNamed:@"nav-bar-background"];
+    [self.navigationController.navigationBar setBackgroundImage:blankImage forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:blankImage];
     [self.navigationController.navigationBar setTranslucent:YES];
+    [self.navigationController.view setBackgroundColor: [UIColor clearColor]];
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     
 }
 
@@ -126,11 +135,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)didTapSignIn:(id)sender {
+- (IBAction)didTapLogIn:(id)sender {
     [self login];
 }
 
-- (IBAction)didTapSignUP:(id)sender {
+- (IBAction)didTapCreateAccount:(id)sender {
     
     if([_emailTextField.text length] == 0 || [_passwordTextField.text length] == 0){
         [UIAlertView showWithTitle:@"Username/Password" message:@"Please fill in your desired email and password" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
@@ -357,6 +366,43 @@
     vc.termsOfServiceString = _attributedString;
     [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
+
+- (IBAction)didTapModeToggleButton:(id)sender {
+    if (_mode == YES){
+        _mode = NO;
+    } else {
+        _mode = YES;
+    }
+
+    if (_mode == NO){
+        [UIView transitionWithView:self.view
+                          duration:0.33f
+                           options:UIViewAnimationOptionTransitionCrossDissolve
+                        animations:^{
+                            self.logInButton.hidden = NO;
+                            self.forgotPasswordButton.hidden = NO;
+                            self.createAccountButton.hidden = YES;
+                            [self.modeToggleButton setTitle:@"Or, create an account" forState: UIControlStateNormal];
+
+                        } completion:NULL];
+        
+    }
+    
+    else {
+        [UIView transitionWithView:self.view
+                          duration:0.33f
+                           options:UIViewAnimationOptionTransitionCrossDissolve
+                        animations:^{
+
+        self.logInButton.hidden = YES;
+        self.forgotPasswordButton.hidden = YES;
+        self.createAccountButton.hidden = NO;
+        [self.modeToggleButton setTitle:@"Or, Log In" forState: UIControlStateNormal];
+                              } completion:NULL];
+    }
+}
+
+
 
 - (IBAction)didEndOnExit:(id)sender {
     

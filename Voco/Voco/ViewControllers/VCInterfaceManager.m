@@ -55,7 +55,7 @@ static int mode;
     [navigationController.navigationBar setShadowImage:[UIImage new]];*/
     [navigationController.navigationBar setTranslucent:YES];
     navigationController.navigationBar.hidden = NO;
-    navigationController.navigationBar.tintColor = [UIColor redColor];
+    //navigationController.navigationBar.tintColor = [UIColor whiteColor];
     [[UIApplication sharedApplication] delegate].window.rootViewController = navigationController;
     deckController = nil;
     
