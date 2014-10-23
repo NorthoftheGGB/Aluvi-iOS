@@ -89,6 +89,10 @@
     //hud.labelText= @"Fetching Route";
     [VCMapQuestRouting route:meetingPointCoordinate to:dropOffPointCoordinate success:^(MKPolyline *polyline, MKCoordinateRegion region) {
         [_map removeOverlay:_routeOverlay];
+        if(region.span.latitudeDelta == 0 || region.span.longitudeDelta == 0){
+            return;
+        }
+        
         _routeOverlay = polyline;
         [_map addOverlay:_routeOverlay];
         region.span.latitudeDelta *= 1.5;

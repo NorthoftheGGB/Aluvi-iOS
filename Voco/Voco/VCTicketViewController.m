@@ -247,11 +247,18 @@
         
         if(_ticket == nil) {
             
-            if(![[VCCommuteManager instance] hasSettings]) {
+            if([[VCCommuteManager instance] hasSettings]) {
                 // if commute IS set up already
                 [self showHome];
                 self.map.userTrackingMode = MKUserTrackingModeFollow;
                 [self startLocationUpdates];
+                
+                
+                [self addOriginAnnotation: [VCCommuteManager instance].home];
+                [self addDestinationAnnotation: [VCCommuteManager instance].work];
+                [self showSuggestedRoute: [VCCommuteManager instance].home to:[VCCommuteManager instance].work];
+
+                
             } else {
                 // if commute is not set up
                 _step = kStepSetDepartureLocation;
@@ -1224,6 +1231,8 @@
         pinAnnotationView.animatesDrop = YES;
         pinAnnotationView.pinColor = MKPinAnnotationColorRed;
         pinAnnotationView.draggable = YES;
+        pinAnnotationView.canShowCallout = true;
+        
         return pinAnnotationView;
     }
     return nil;
