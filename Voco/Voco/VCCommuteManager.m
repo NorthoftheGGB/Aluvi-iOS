@@ -91,6 +91,7 @@ static VCCommuteManager * instance;
     instance.workPlaceName = [defaults objectForKey:kCommuterDestinationPlaceNameKey];
     instance.pickupTime = [defaults objectForKey:kCommuteDepartureTimeSettingKey];
     instance.returnTime = [defaults objectForKey:kCommuteReturnTimeSettingKey];
+    instance.driving = [defaults boolForKey:kCommuterDrivingSettingKey];
 }
 
 - (void) clear {

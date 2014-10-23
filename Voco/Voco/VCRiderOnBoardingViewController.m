@@ -47,6 +47,8 @@
 
 @property (strong, nonatomic) MBProgressHUD * hud;
 
+@property (nonatomic) BOOL stripeOK;
+
 - (IBAction)didTapTocButton:(id)sender;
 - (IBAction)didTapPrivatePolicyButton:(id)sender;
 
@@ -61,7 +63,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        _stripeOK = NO;
     }
     return self;
 }
@@ -92,11 +94,13 @@
     [self.view addGestureRecognizer:shortCut];
 #endif
     
+    self.navigationController.navigationBarHidden = NO;
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
-    [_firstNameTextField becomeFirstResponder];
+    [_cardView resignFirstResponder];
 }
 
 - (void) debug:(id)sender {
@@ -194,6 +198,14 @@
         return;
     }
     
+    if(_stripeOK == NO){
+        [UIAlertView showWithTitle:@"Error"
+                           message:@"You must enter a valid payment card"
+                 cancelButtonTitle:@"OK"
+                 otherButtonTitles:nil tapBlock:nil];
+        return;
+    }
+    
     if(_tocCheckBoxButton.selected != YES){
         [UIAlertView showWithTitle:@"Error"
                            message:@"You must accept the terms and conditions"
@@ -228,7 +240,7 @@
                                                                         [VCUsersApi updateDefaultCard:[RKObjectManager sharedManager]
                                                                                             cardToken:token.tokenId
                                                                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                                                                  
+                                                                                                  [_hud hide:YES];
                                                                                                   [self nextPage];
                                                                                               } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                                                                                   [self somethingDidNotGoRight];
@@ -271,10 +283,10 @@
 {
     // Enable the "save" button only if the card form is complete.
     if(valid){
-        _nextButton.enabled = YES;
+        _stripeOK = YES;
         [_cardView resignFirstResponder];
     } else {
-        _nextButton.enabled = NO;
+        _stripeOK = NO;
     }
     
 }

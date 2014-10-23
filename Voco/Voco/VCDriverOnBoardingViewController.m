@@ -47,6 +47,8 @@
 @property (strong, nonatomic) PTKView * cardView;
 @property (strong, nonatomic) MBProgressHUD * hud;
 
+@property (nonatomic) BOOL stripeOK;
+
 - (IBAction)didTapSkipThisStep:(id)sender;
 - (IBAction)didTapSave:(id)sender;
 
@@ -86,11 +88,12 @@
     [self.view addGestureRecognizer:shortCut];
 #endif
     
+    self.navigationController.navigationBarHidden = YES;
+
 }
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [_driversLicenseNumberTextField becomeFirstResponder];
 }
 
 - (void) debug:(id)sender {
@@ -143,6 +146,15 @@
     if(![_driversLicenseNumberTextField validate]){
         return;
     }
+    
+    if(_stripeOK == NO){
+        [UIAlertView showWithTitle:@"Error"
+                           message:@"You must enter a valid debit card to recieve payouts"
+                 cancelButtonTitle:@"OK"
+                 otherButtonTitles:nil tapBlock:nil];
+        return;
+    }
+
     
     STPCard *card = [[STPCard alloc] init];
     card.number = _cardView.card.number;
@@ -237,9 +249,9 @@
 {
     // Enable the "save" button only if the card form is complete.
     if(valid){
-        _saveButton.enabled = YES;
+        _stripeOK = YES;
     } else {
-        _saveButton.enabled = NO;
+        _stripeOK = NO;
     }
     
 }

@@ -23,7 +23,7 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="D5n-5V-eg0">
                     <rect key="frame" x="122" y="99" width="61" height="84"/>
                 </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Would you like to commute tomorrow? Set up your details before 9pm today." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="305" translatesAutoresizingMaskIntoConstraints="NO" id="KNp-91-4P4" customClass="VCLabel">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're almost there! Now we'll setup your route info." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="305" translatesAutoresizingMaskIntoConstraints="NO" id="KNp-91-4P4" customClass="VCLabel">
                     <rect key="frame" x="8" y="215" width="305" height="47"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="305" id="J0A-fk-fcH"/>
@@ -45,14 +45,14 @@
                         <constraint firstAttribute="width" constant="305" id="hVc-kC-RLp"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <state key="normal" title="SET UP COMMUTE" backgroundImage="login-button.png">
+                    <state key="normal" title="SET UP ROUTE" backgroundImage="login-button.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="selected" backgroundImage="button-select.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="highlighted" title="Submit" backgroundImage="button-select.png"/>
+                    <state key="highlighted" backgroundImage="button-select.png"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
                             <integer key="value" value="20"/>
@@ -62,7 +62,7 @@
                         <action selector="didTapSetUpCommuteButton:" destination="-1" eventType="touchUpInside" id="iPJ-Bc-iWz"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5DK-Td-J4v" customClass="VCButtonStandardStyle">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5DK-Td-J4v" customClass="VCButtonStandardStyle">
                     <rect key="frame" x="8" y="357" width="305" height="47"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="305" id="2hU-fp-usq"/>
