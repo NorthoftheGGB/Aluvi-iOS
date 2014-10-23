@@ -2017,7 +2017,6 @@
 				4F38975019B7DC5000A75C5C /* VCTermsOfServiceViewController.xib */,
 				4F38975719B7DD0100A75C5C /* VCPrivatePolicyViewController.h */,
 				4F38975819B7DD0100A75C5C /* VCPrivatePolicyViewController.m */,
-				F473F047195BA4E000D8C900 /* Menu */,
 				4F38975919B7DD0100A75C5C /* VCPrivatePolicyViewController.xib */,
 				4FE641BC194157C60059BED1 /* VCDriverRequestViewController.h */,
 				4FE641BD194157C60059BED1 /* VCDriverRequestViewController.m */,
@@ -2310,6 +2309,7 @@
 		F45F7C131935A3A500A94721 /* Rider */ = {
 			isa = PBXGroup;
 			children = (
+				F473F047195BA4E000D8C900 /* Menu */,
 				4F9ECEAD196619F500AD4229 /* Other Functionality */,
 				F473EFE919492CA400D8C900 /* Ride System */,
 			);

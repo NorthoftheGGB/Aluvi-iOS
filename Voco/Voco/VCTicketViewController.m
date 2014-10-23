@@ -247,7 +247,7 @@
         
         if(_ticket == nil) {
             
-            if([[VCCommuteManager instance] commuteIsSetUp]) {
+            if(![[VCCommuteManager instance] hasSettings]) {
                 // if commute IS set up already
                 [self showHome];
                 self.map.userTrackingMode = MKUserTrackingModeFollow;
@@ -991,7 +991,17 @@
 - (IBAction)didTapScheduleRide:(id)sender {
     [self storeCommuterSettings];
     
-    [UIAlertView showWithTitle:@"Schedule Commuter Ride ?" message:@"Would you like to schedule your commute to and from work tomorrow?" cancelButtonTitle:@"No." otherButtonTitles:@[@"Yes!"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+    [UIAlertView showWithTitle:@"Your Setup is Complete!" message:@"We're processing your info and will contact you when it's time for you to start commuting!" cancelButtonTitle:@"Ok, Can't Wait!" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        if([VCInterfaceManager instance].mode == kOnBoardingMode) {
+            
+            [[VCInterfaceManager instance] showRiderInterface];
+        } else {
+            [self resetInterfaceToHome];
+        }
+
+    } ];
+
+    /*tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
         switch (buttonIndex) {
             case 1:
             {
@@ -1024,6 +1034,7 @@
                 break;
         }
     }];
+ */
 }
 
 - (IBAction)didTapNextButton:(id)sender {
@@ -1569,7 +1580,6 @@
     Rider * rider = [_driverCallHUD.riders objectAtIndex:2];
     [self callPhone:rider.phone];
 }
-
 
 
 
