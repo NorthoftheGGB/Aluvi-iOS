@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCCommuterPassViewController">
@@ -22,7 +23,6 @@
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account Balance:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5LW-Ix-DI7" customClass="VCLabelBold">
                     <rect key="frame" x="20" y="77" width="118" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="118" id="eIn-7s-DOu"/>
                         <constraint firstAttribute="height" constant="21" id="kfV-bg-nqP"/>
@@ -37,7 +37,6 @@
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5k-c3-Fi3" customClass="VCLabel">
                     <rect key="frame" x="146" y="77" width="79" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="79" id="VaE-Ow-q1g"/>
                         <constraint firstAttribute="height" constant="21" id="eDu-nH-ZyO"/>
@@ -52,7 +51,6 @@
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Credit Card:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jc7-ga-ooQ" customClass="VCLabelBold">
                     <rect key="frame" x="20" y="106" width="137" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="TvQ-Rd-Lzd"/>
                         <constraint firstAttribute="width" constant="137" id="k46-w5-w45"/>
@@ -67,7 +65,6 @@
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DL4-7I-NBc" customClass="VCLabel">
                     <rect key="frame" x="20" y="127" width="169" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="169" id="M53-oc-kJC"/>
                         <constraint firstAttribute="height" constant="21" id="ddM-qu-Npj"/>
@@ -82,7 +79,6 @@
                 </label>
                 <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MM/YYYY" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCQ-P2-gfU" customClass="VCLabel">
                     <rect key="frame" x="228" y="127" width="67" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="67" id="BOq-Wp-t8s"/>
                         <constraint firstAttribute="height" constant="21" id="pn1-Ft-Sd9"/>
@@ -97,7 +93,6 @@
                 </label>
                 <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exp:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efT-wr-iT9" customClass="VCLabelBold">
                     <rect key="frame" x="191" y="127" width="34" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="4z9-Da-xQP"/>
                         <constraint firstAttribute="width" constant="34" id="RV2-ZV-5mw"/>
@@ -112,7 +107,6 @@
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto Refill:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ff-5F-pTa" customClass="VCLabelBold">
                     <rect key="frame" x="20" y="242" width="85" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="85" id="a14-sM-kOC"/>
                         <constraint firstAttribute="height" constant="21" id="jaX-Uf-aIZ"/>
@@ -127,14 +121,12 @@
                 </label>
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="leM-lE-0CC">
                     <rect key="frame" x="251" y="242" width="51" height="31"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <connections>
                         <action selector="autoRefillSwitch:" destination="-1" eventType="valueChanged" id="bL7-j5-0DR"/>
                     </connections>
                 </switch>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="when account is below $10." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JkT-p2-0Iq" customClass="VCLabel">
                     <rect key="frame" x="130" y="276" width="186" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="186" id="AmT-af-wbo"/>
                         <constraint firstAttribute="height" constant="21" id="gUV-NW-M8Q"/>
@@ -149,7 +141,6 @@
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S2l-OH-gwg" customClass="VCTextField">
                     <rect key="frame" x="55" y="271" width="71" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="71" id="VXa-AQ-NhA"/>
                         <constraint firstAttribute="height" constant="30" id="w15-1t-HrT"/>
@@ -168,7 +159,6 @@
                 </textField>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="3Hh-xm-Udb">
                     <rect key="frame" x="20" y="420" width="181" height="29"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="181" id="2SP-Vz-wM1"/>
                         <constraint firstAttribute="height" constant="28" id="L7f-6I-vVU"/>
@@ -183,7 +173,6 @@
                 </segmentedControl>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Funds To Account:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REp-IS-6vE" customClass="VCLabelBold">
                     <rect key="frame" x="20" y="391" width="156" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="0Lc-Ju-4hC"/>
                         <constraint firstAttribute="width" constant="156" id="xOF-Gf-n2d"/>
@@ -198,7 +187,6 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="30W-yy-sRI" customClass="VCButtonStandardStyle">
                     <rect key="frame" x="212" y="420" width="88" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.87843143940000001" green="0.094117656349999995" blue="0.09803922474" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="88" id="F6z-1e-chx"/>
@@ -223,7 +211,6 @@
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yyH-xe-uHm" customClass="VCLabel">
                     <rect key="frame" x="20" y="276" width="29" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="ulp-xe-08I"/>
                         <constraint firstAttribute="width" constant="29" id="zVc-oI-ML5"/>
@@ -269,9 +256,13 @@
                 <constraint firstItem="S2l-OH-gwg" firstAttribute="leading" secondItem="yyH-xe-uHm" secondAttribute="trailing" constant="6" id="xMe-Ph-dwb"/>
                 <constraint firstItem="6ff-5F-pTa" firstAttribute="top" secondItem="DL4-7I-NBc" secondAttribute="bottom" constant="94" id="zU8-Iw-UTB"/>
             </constraints>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>

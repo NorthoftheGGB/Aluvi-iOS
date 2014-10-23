@@ -203,7 +203,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tX3-3H-ihS" userLabel="Stripe Container View">
-                    <rect key="frame" x="0.0" y="303" width="320" height="50"/>
+                    <rect key="frame" x="0.0" y="298" width="320" height="50"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="6sb-96-7Wy"/>
@@ -228,7 +228,7 @@
                 <constraint firstItem="xqe-E2-2S2" firstAttribute="leading" secondItem="C9S-EL-TfB" secondAttribute="leading" constant="8" id="adM-DN-TF0"/>
                 <constraint firstItem="j24-UA-CMd" firstAttribute="leading" secondItem="C9S-EL-TfB" secondAttribute="leading" id="app-yz-meD"/>
                 <constraint firstItem="QpF-nl-xau" firstAttribute="top" secondItem="8gL-ol-zqf" secondAttribute="bottom" constant="8" id="bbu-oN-tcW"/>
-                <constraint firstItem="tX3-3H-ihS" firstAttribute="top" secondItem="cnT-L4-hQ5" secondAttribute="bottom" constant="23" id="bq6-RC-Y5e"/>
+                <constraint firstItem="tX3-3H-ihS" firstAttribute="top" secondItem="cnT-L4-hQ5" secondAttribute="bottom" constant="18" id="bq6-RC-Y5e"/>
                 <constraint firstItem="noR-UA-UgX" firstAttribute="leading" secondItem="C9S-EL-TfB" secondAttribute="leading" constant="8" id="cQA-xo-lze"/>
                 <constraint firstItem="cnT-L4-hQ5" firstAttribute="leading" secondItem="C9S-EL-TfB" secondAttribute="leading" constant="8" id="hI6-PJ-Ksh"/>
                 <constraint firstItem="cwn-ba-jJQ" firstAttribute="top" secondItem="C9S-EL-TfB" secondAttribute="top" constant="60" id="mcF-SL-l8r"/>

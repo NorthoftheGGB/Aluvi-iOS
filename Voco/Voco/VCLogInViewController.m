@@ -83,6 +83,7 @@
     [self.navigationController.navigationBar setTranslucent:YES];
     [self.navigationController.view setBackgroundColor: [UIColor clearColor]];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     
 }
 
