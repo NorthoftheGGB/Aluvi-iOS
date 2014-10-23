@@ -113,8 +113,25 @@
                         <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="fnh-0k-aKd"/>
                     </connections>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFv-XP-zFX">
+                    <rect key="frame" x="36" y="494" width="249" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="249" id="DVR-GS-rCq"/>
+                        <constraint firstAttribute="height" constant="30" id="E5j-wU-fyA"/>
+                    </constraints>
+                    <state key="normal" title="Or, create an account">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapModeToggleButton:" destination="-1" eventType="touchUpInside" id="0cu-dk-Jqi"/>
+                    </connections>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tb-J6-sir" customClass="VCButton">
-                    <rect key="frame" x="55" y="364" width="194" height="21"/>
+                    <rect key="frame" x="56" y="363" width="194" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="194" id="AQe-5Y-nGM"/>
                         <constraint firstAttribute="height" constant="21" id="Kgx-1N-UsA"/>
@@ -133,23 +150,6 @@
                         <action selector="didTapForgotPassword:" destination="-1" eventType="touchUpInside" id="Mhc-ew-fMV"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFv-XP-zFX">
-                    <rect key="frame" x="36" y="494" width="249" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="249" id="DVR-GS-rCq"/>
-                        <constraint firstAttribute="height" constant="30" id="E5j-wU-fyA"/>
-                    </constraints>
-                    <state key="normal" title="Or, create an account">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="selected">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="didTapModeToggleButton:" destination="-1" eventType="touchUpInside" id="0cu-dk-Jqi"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -164,12 +164,12 @@
                 <constraint firstItem="WBj-G9-Hq7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="VGf-6F-e7s"/>
                 <constraint firstItem="UpT-0B-UwL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="aCy-jb-gxJ"/>
                 <constraint firstAttribute="trailing" secondItem="4BS-Xk-d0U" secondAttribute="trailing" constant="136" id="cmL-uS-hn8"/>
-                <constraint firstItem="4tb-J6-sir" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="55" id="f2I-AX-sXc"/>
+                <constraint firstItem="4tb-J6-sir" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="56" id="f2I-AX-sXc"/>
                 <constraint firstItem="4BS-Xk-d0U" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="81" id="lhx-lK-xjC"/>
                 <constraint firstItem="rOj-vi-Qn2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="lle-GJ-68l"/>
                 <constraint firstItem="UpT-0B-UwL" firstAttribute="top" secondItem="rOj-vi-Qn2" secondAttribute="bottom" constant="13" id="oGJ-u7-UeC"/>
                 <constraint firstItem="63D-em-KOi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="qBc-ju-Szg"/>
-                <constraint firstItem="4tb-J6-sir" firstAttribute="top" secondItem="UpT-0B-UwL" secondAttribute="bottom" constant="4" id="tZ8-6K-Ahh"/>
+                <constraint firstItem="4tb-J6-sir" firstAttribute="top" secondItem="UpT-0B-UwL" secondAttribute="bottom" constant="3" id="tZ8-6K-Ahh"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="132" y="87"/>

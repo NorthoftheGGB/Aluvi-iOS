@@ -322,18 +322,30 @@
     }
 
     if (_mode == NO){
-        self.logInButton.hidden = NO;
-        self.forgotPasswordButton.hidden = NO;
-        self.createAccountButton.hidden = YES;
-        [self.modeToggleButton setTitle:@"Or, create an account" forState: UIControlStateNormal];
-    
+        [UIView transitionWithView:self.view
+                          duration:0.33f
+                           options:UIViewAnimationOptionTransitionCrossDissolve
+                        animations:^{
+                            self.logInButton.hidden = NO;
+                            self.forgotPasswordButton.hidden = NO;
+                            self.createAccountButton.hidden = YES;
+                            [self.modeToggleButton setTitle:@"Or, create an account" forState: UIControlStateNormal];
+
+                        } completion:NULL];
+        
     }
     
     else {
+        [UIView transitionWithView:self.view
+                          duration:0.33f
+                           options:UIViewAnimationOptionTransitionCrossDissolve
+                        animations:^{
+
         self.logInButton.hidden = YES;
         self.forgotPasswordButton.hidden = YES;
         self.createAccountButton.hidden = NO;
         [self.modeToggleButton setTitle:@"Or, Log In" forState: UIControlStateNormal];
+                              } completion:NULL];
     }
 }
 
