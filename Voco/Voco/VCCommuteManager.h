@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSString * pickupTime;
 @property (nonatomic, strong) NSString * returnTime;
 @property (nonatomic) BOOL driving;
+@property (nonatomic) BOOL commuteIsSetUp;
 
 + (VCCommuteManager *) instance;
 

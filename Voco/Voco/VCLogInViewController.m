@@ -21,6 +21,8 @@
 #import "DTCoreTextConstants.h"
 #import "VCRiderOnBoardingViewController.h"
 #import "VCEmailTextField.h"
+#import "VCCodes.h"
+#import "VCBetaRegisterViewController.h"
 
 #define kPhoneFieldTag 1
 #define kPasswordFieldTag 2
@@ -72,6 +74,7 @@
     [self.navigationController.navigationBar setBackgroundImage:blank forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:blank];
     [self.navigationController.navigationBar setTranslucent:YES];
+    
 }
 
 
@@ -81,28 +84,30 @@
 
 - (void) debug:(id) sender {
     
-
+    
     NSArray * userEmails = [NSArray array];
     NSArray * passwords = [NSArray array];
     NSArray * userLabels = [NSArray array];
-
+    
 #ifdef TESTING
     userEmails = @[ @"v1@vocotransportation.com", @"v3@vocotransportation.com"];
     passwords = @[ @"abc123456", @"abc123456"];
     userLabels = @[ @"rider", @"driver"];
 #elif ALPHA
-
+    
 #else
     NSString * newUserEmail = [NSString stringWithFormat:@"%f@z.com", [[NSDate date] timeIntervalSince1970] ];
     userEmails = @[ @"v1@vocotransportation.com", @"v3@vocotransportation.com", newUserEmail];
     passwords = @[ @"9999999999", @"5555555555", @"1111111111" ];
     userLabels = @[  @"rider", @"driver", @"new user"];
 #endif
-
+    
     
     [UIAlertView showWithTitle:@"Debug" message:@"Log In?" cancelButtonTitle:@"No" otherButtonTitles:userLabels tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
         
-        if(buttonIndex <= [userEmails count]){
+        if(buttonIndex == 0) {
+            
+        } else if(buttonIndex <= [userEmails count]){
             _emailTextField.text = [userEmails objectAtIndex:buttonIndex-1];
             _passwordTextField.text = [passwords objectAtIndex:buttonIndex-1];
             [self login];
@@ -111,7 +116,7 @@
         }
         
     }];
-
+    
 }
 
 
@@ -155,7 +160,7 @@
                                                           }];
                                                       }
                                                           break;
-                                                    
+                                                          
                                                       case 1:
                                                       {
                                                           _hud.labelText = @"Logging in...";
@@ -176,7 +181,7 @@
                                                   case 404:
                                                   {
                                                       [self goToSignUp];
-                                                                                                        }
+                                                  }
                                                       break;
                                                       
                                                   case 403:
@@ -187,20 +192,20 @@
                                                       break;
                                               }
                                           }];
-
-
+    
+    
     
     /*
-    [UIAlertView showWithTitle:@"Sign Up For Aluvi" message:@"To gain access to the application please visit our website." cancelButtonTitle:@"Not Now" otherButtonTitles:@[@"Take me there"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-        switch (buttonIndex) {
-            case 1:
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.aluviapp.com/"]];
-                break;
-                
-            default:
-                break;
-        }
-    }];
+     [UIAlertView showWithTitle:@"Sign Up For Aluvi" message:@"To gain access to the application please visit our website." cancelButtonTitle:@"Not Now" otherButtonTitles:@[@"Take me there"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+     switch (buttonIndex) {
+     case 1:
+     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.aluviapp.com/"]];
+     break;
+     
+     default:
+     break;
+     }
+     }];
      */
 }
 
@@ -255,8 +260,8 @@
                                                       break;
                                               }
                                               [_hud hide:YES];
-
-                                            
+                                              
+                                              
                                           }];
     
     
@@ -277,13 +282,62 @@
 }
 
 - (void) goToSignUp {
-    // Good to do, email is not in the system
-    VCRiderOnBoardingViewController * vc = [[VCRiderOnBoardingViewController alloc] init];
-    vc.desiredEmail = _emailTextField.text;
-    vc.desiredPassword = _passwordTextField.text;
-    vc.termsOfServiceString = _attributedString;
-    [self.navigationController pushViewController:vc animated:YES];
+    
+    [UIAlertView showWithTitle:@"Access Code"
+                       message:@"Please enteryour access code, or register online to recieve one"
+                         style:UIAlertViewStylePlainTextInput cancelButtonTitle:@"Cancel"
+             otherButtonTitles:@[@"Submit Code", @"Register For Code" ]
+                      tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                          switch (buttonIndex) {
+                              case 1:
+                              {
+                                  UITextField * textField = [alertView textFieldAtIndex:0];
+                                  [textField resignFirstResponder];
+                                  if( [VCCodes checkCode:textField.text] ){
+                                      
+                                      // Good to do, email is not in the system
+                                      VCRiderOnBoardingViewController * vc = [[VCRiderOnBoardingViewController alloc] init];
+                                      vc.desiredEmail = _emailTextField.text;
+                                      vc.desiredPassword = _passwordTextField.text;
+                                      vc.termsOfServiceString = _attributedString;
+                                      [self.navigationController pushViewController:vc animated:YES];
+                                      
+                                  } else {
+                                      
+                                      [UIAlertView showWithTitle:@"Invalid Code"
+                                                         message:@"We couldn't verify that code, do you want to try again?  If you don't have a code, please register to recieve one"
+                                               cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Try Again", @"Register For Code"]
+                                                        tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                                            switch (buttonIndex) {
+                                                                case 1:
+                                                                    [self goToSignUp];
+                                                                    break;
+                                                                    
+                                                                case 2:
+                                                                    [self registerOnline];
+                                                                    break;
+                                                                    
+                                                                default:
+                                                                    break;
+                                                            }
+                                                        }];
+                                  }
+                              }
+                                  break;
+                              case 2:
+                                  [self registerOnline];
+                                  break;
+                                  
+                              default:
+                                  break;
+                          }
+                      }];
 
+}
+
+- (void) registerOnline {
+    VCBetaRegisterViewController * vc = [[VCBetaRegisterViewController alloc] init];
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 
 

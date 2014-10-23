@@ -58,6 +58,7 @@ static int mode;
     navigationController.navigationBar.tintColor = [UIColor redColor];
     [[UIApplication sharedApplication] delegate].window.rootViewController = navigationController;
     deckController = nil;
+    
     [self setMode: kOnBoardingMode];
 }
 

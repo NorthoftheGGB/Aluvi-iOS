@@ -223,9 +223,6 @@
             [WRUtilities criticalError:error];
         } else if([tickets count] > 0) {
             _ticket = [tickets objectAtIndex:0];
-        } else {
-            _step = kStepSetDepartureLocation;
-            [self transitionToSetupCommute];
         }
     }
     
@@ -249,9 +246,19 @@
         [self.map addGestureRecognizer:lpgr];
         
         if(_ticket == nil) {
-            [self showHome];
-            self.map.userTrackingMode = MKUserTrackingModeFollow;
-            [self startLocationUpdates];
+            
+            if([[VCCommuteManager instance] commuteIsSetUp]) {
+                // if commute IS set up already
+                [self showHome];
+                self.map.userTrackingMode = MKUserTrackingModeFollow;
+                [self startLocationUpdates];
+            } else {
+                // if commute is not set up
+                _step = kStepSetDepartureLocation;
+                [self transitionToSetupCommute];
+            }
+            
+        
         } else {
             [self showInterfaceForTicket];
         }

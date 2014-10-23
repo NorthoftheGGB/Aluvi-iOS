@@ -7,9 +7,11 @@
 //
 
 #import "VCPasswordRecoveryViewController.h"
+#import <MBProgressHUD.h>
 #import "VCLabel.h"
 #import "VCButtonStandardStyle.h"
 #import "VCTextField.h"
+#import "VCUsersApi.h"
 
 
 @interface VCPasswordRecoveryViewController ()
@@ -35,15 +37,12 @@
 {
     [super viewDidLoad];
     self.title = @"Password Recovery";
-  
+    
     [self.scrollView setContentSize: _contentView.frame.size];
     [self.scrollView addSubview: _contentView];
     
 }
 
-/*UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:self action:@selector(didTapBack:)];
- self.navigationItem.leftBarButtonItem = backItem;
- self.navigationItem.leftBarButtonItem.tintColor = [UIColor colorWithRed:(182/255.f) green:(31/255.f) blue:(36/255.f) alpha:1.0];*/
 
 - (void) didTapBack {
     
@@ -56,5 +55,22 @@
 }
 
 - (IBAction)didTapSendPasswordButton:(id)sender {
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [VCUsersApi forgotPassword:[RKObjectManager sharedManager]
+                         email:_emailTextField.text
+                       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                           [hud hide:YES];
+                           [UIAlertView showWithTitle:@"Success"
+                                              message:@"Please check your email for your new password"
+                                    cancelButtonTitle:@"OK"
+                                    otherButtonTitles:nil tapBlock:nil];
+                       }
+                       failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                           [hud hide:YES];
+                           [UIAlertView showWithTitle:@"Failure"
+                                              message:@"We were not able to reset your password.  Please try again or contact support"
+                                    cancelButtonTitle:@"OK"
+                                    otherButtonTitles:nil tapBlock:nil];
+                       }];
 }
 @end
