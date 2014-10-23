@@ -72,6 +72,7 @@
     self.title = @"Interested In Driving?";
     [self.scrollView setContentSize:_contentView.frame.size];
     [self.scrollView addSubview:_contentView];
+    self.scrollView.bounces = NO;
     
     _cardView = [[PTKView alloc] initWithFrame:CGRectMake(15,20,290,55)];
     _cardView.delegate = self;

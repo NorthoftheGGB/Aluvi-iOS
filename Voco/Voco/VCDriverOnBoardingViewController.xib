@@ -193,7 +193,7 @@
                     </connections>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recieve payments with your debit card:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ref-9d-niE">
-                    <rect key="frame" x="12" y="288" width="238" height="17"/>
+                    <rect key="frame" x="12" y="298" width="238" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="D8f-Vj-adH"/>
                         <constraint firstAttribute="width" constant="238" id="NPf-Tv-vem"/>
@@ -218,9 +218,9 @@
                 <constraint firstItem="Qgq-jh-Fxp" firstAttribute="top" secondItem="cwn-ba-jJQ" secondAttribute="bottom" constant="8" id="7gJ-BP-mxp"/>
                 <constraint firstItem="cnT-L4-hQ5" firstAttribute="top" secondItem="noR-UA-UgX" secondAttribute="bottom" constant="8" id="9Vq-fu-o5F"/>
                 <constraint firstItem="Pbv-vE-CQu" firstAttribute="leading" secondItem="C9S-EL-TfB" secondAttribute="leading" constant="12" id="BPe-cg-Boh"/>
-                <constraint firstItem="tX3-3H-ihS" firstAttribute="top" secondItem="Ref-9d-niE" secondAttribute="bottom" constant="-2" id="CLT-YJ-Zb9"/>
                 <constraint firstItem="8gL-ol-zqf" firstAttribute="leading" secondItem="C9S-EL-TfB" secondAttribute="leading" constant="8" id="GEW-aK-gBU"/>
                 <constraint firstItem="QpF-nl-xau" firstAttribute="leading" secondItem="C9S-EL-TfB" secondAttribute="leading" constant="8" id="IxX-n2-5Ly"/>
+                <constraint firstItem="Ref-9d-niE" firstAttribute="top" secondItem="cnT-L4-hQ5" secondAttribute="bottom" constant="18" id="Myf-j4-4lY"/>
                 <constraint firstAttribute="trailing" secondItem="j24-UA-CMd" secondAttribute="trailing" id="Oz7-sz-zuM"/>
                 <constraint firstAttribute="bottom" secondItem="xqe-E2-2S2" secondAttribute="bottom" constant="20" id="Pm3-fY-h17"/>
                 <constraint firstItem="cwn-ba-jJQ" firstAttribute="leading" secondItem="C9S-EL-TfB" secondAttribute="leading" constant="8" id="Qj8-cs-fXU"/>
