@@ -27,7 +27,7 @@
     //UIFont *customFont = [UIFont fontWithName:@"KlinicSlab-Light" size:[fontSize intValue] ];
     
     //revision 2.0 style
-    UIFont *customFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:[fontSize intValue] ];
+    UIFont *customFont = [UIFont fontWithName:@"HelveticaNeue-Medium" size:[fontSize intValue] ];
     
     [self.titleLabel setFont:customFont];
     

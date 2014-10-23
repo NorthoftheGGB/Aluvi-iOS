@@ -1994,6 +1994,7 @@
 				4F38975019B7DC5000A75C5C /* VCTermsOfServiceViewController.xib */,
 				4F38975719B7DD0100A75C5C /* VCPrivatePolicyViewController.h */,
 				4F38975819B7DD0100A75C5C /* VCPrivatePolicyViewController.m */,
+				F473F047195BA4E000D8C900 /* Menu */,
 				4F38975919B7DD0100A75C5C /* VCPrivatePolicyViewController.xib */,
 				4FE641BC194157C60059BED1 /* VCDriverRequestViewController.h */,
 				4FE641BD194157C60059BED1 /* VCDriverRequestViewController.m */,
@@ -2187,7 +2188,6 @@
 				4FE641B61941562C0059BED1 /* Sign-In and Registration */,
 				F473F022195192D600D8C900 /* Dev */,
 				F473F00E194A6D3400D8C900 /* Common */,
-				F473F047195BA4E000D8C900 /* Menu */,
 				F45F7C141935A3AF00A94721 /* Driver */,
 				F45F7C131935A3A500A94721 /* Rider */,
 			);
