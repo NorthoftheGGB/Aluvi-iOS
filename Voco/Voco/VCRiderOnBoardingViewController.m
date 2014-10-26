@@ -76,6 +76,15 @@
     [self.scrollView addSubview:_contentView];
     self.scrollView.bounces = NO;
 
+    UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
+    numberToolbar.barStyle = UIBarStyleBlackTranslucent;
+    numberToolbar.items = [NSArray arrayWithObjects:
+                            [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                           [[UIBarButtonItem alloc]initWithTitle:@"Next" style:UIBarButtonItemStyleDone target:self action:@selector(didEndOnExit:)],
+                           nil];
+    [numberToolbar sizeToFit];
+    _phoneTextField.inputAccessoryView = numberToolbar;
+    
     
     _termsOfServices.attributedText = _termsOfServiceString;
     
