@@ -20,6 +20,8 @@
 @property (nonatomic, retain) NSDecimalNumber * latitude;
 @property (nonatomic, retain) NSDecimalNumber * longitude;
 @property (nonatomic, retain) NSNumber * state;
+@property (nonatomic, retain) NSString * smallImageUrl;
+@property (nonatomic, retain) NSString * largeImageUrl;
 @property (nonatomic, retain) NSSet *fares;
 
 + (RKEntityMapping *)createMappings:(RKObjectManager *)objectManager;

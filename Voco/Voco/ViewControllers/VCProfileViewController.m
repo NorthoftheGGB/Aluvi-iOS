@@ -8,6 +8,7 @@
 
 #import "VCProfileViewController.h"
 #import <MBProgressHUD.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "VCNameTextField.h"
 #import "VCEmailTextField.h"
 #import "VCPasswordTextField.h"
@@ -18,7 +19,8 @@
 #import "VCUserStateManager.h"
 #import "VCInterfaceManager.h"
 #import "VCUsersApi.h"
-
+#import "UIImage+Resize.h"
+#import "VCApi.h"
 
 @interface VCProfileViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -73,15 +75,17 @@
     _emailTextField.text = profile.email;
     _phoneTextField.text = profile.phone;
     _passwordTextField.text = @"********";
-
+    [_userImageView sd_setImageWithURL:[NSURL URLWithString:profile.largeImageUrl]
+                   placeholderImage:[UIImage imageNamed:@"placeholder-profile.png"]];
+    
     UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [tapBackground setNumberOfTapsRequired:1];
     [self.view addGestureRecognizer:tapBackground];
-
+    
     NSString * version = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
     NSString * build = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
     _versionLabel.text = [NSString stringWithFormat:@"v%@b%@", version, build];
-
+    
 }
 
 - (void) didTapHamburger {
@@ -109,15 +113,15 @@
     [VCUserStateManager instance].profile.lastName = _lastNameTextField.text;
     [VCUserStateManager instance].profile.email = _emailTextField.text;
     [VCUserStateManager instance].profile.phone = _phoneTextField.text;
-
+    
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [VCUsersApi updateProfile:[VCUserStateManager instance].profile
-                       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                           [hud hide:YES];
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                           [hud hide:YES];
-    }];
+                      success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                          [hud hide:YES];
+                      } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                          [hud hide:YES];
+                      }];
 }
 
 - (IBAction)didTapLogoutButton:(id)sender {
@@ -129,12 +133,15 @@
 }
 
 - (IBAction)didTapTakePhotoButton:(id)sender {
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
     imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
     imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
     imagePickerController.delegate = self;
-    [self presentViewController:imagePickerController animated:YES completion:nil];
-
+    [self presentViewController:imagePickerController animated:YES completion:^{
+        [hud hide:YES];
+    }];
+    
 }
 
 #pragma mark - UIImagePickerControllerDelegate
@@ -144,9 +151,38 @@
 {
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     [self dismissViewControllerAnimated:YES completion:nil];
+    CGSize size = CGSizeMake(640, 750);
+    image = [image resizedImageToFitInSize:size scaleIfSmaller:YES];
+    _userImageView.image = image;
+    
+    NSMutableURLRequest *request =
+    [[RKObjectManager sharedManager] multipartFormRequestWithObject:nil
+                                                             method:RKRequestMethodPOST
+                                                               path:API_USER_PROFILE
+                                                         parameters:nil
+                                          constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+                                              [formData appendPartWithFileData:UIImagePNGRepresentation(image)
+                                                                          name:@"image"
+                                                                      fileName:@"image.png"
+                                                                      mimeType:@"image/png"];
+                                          }];
+    
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    RKObjectRequestOperation *operation = [[RKObjectManager sharedManager]
+                                           objectRequestOperationWithRequest:request
+                                           success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                               [hud hide:YES];
+
+                                           } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                               [UIAlertView showWithTitle:@"Problem" message:@"There was a problem saving your image" cancelButtonTitle:@"Darn." otherButtonTitles:nil tapBlock:nil];
+                                               [hud hide:YES];
+
+                                           }];
+    [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation]; // NOTE: Must be enqueued rather than started
+    
+    
     
 }
-
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {

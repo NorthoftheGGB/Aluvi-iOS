@@ -7,6 +7,7 @@
 //
 
 #import "VCLeftMenuViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "VCTicketViewController.h"
 #import "VCDriveViewController.h"
 #import "VCInterfaceManager.h"
@@ -101,6 +102,7 @@
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     
+    
     // Listen for notifications about updated rides
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scheduleUpdated:) name:@"schedule_updated" object:nil];
 }
@@ -182,7 +184,8 @@
             VCMenuUserInfoTableViewCell * menuUserInfoCell = [WRUtilities getViewFromNib:@"VCMenuUserInfoTableViewCell" class:[VCMenuUserInfoTableViewCell class]];
             
             //TODO: This is a placeholder image, replace it with relevant string!
-            menuUserInfoCell.userImageView.image = [UIImage imageNamed: @"temp-user-profile-icon"];
+            [menuUserInfoCell.userImageView sd_setImageWithURL:[NSURL URLWithString: [[VCUserStateManager instance] profile].smallImageUrl ]
+                                              placeholderImage:[UIImage imageNamed:@"placeholder"]];
             menuUserInfoCell.userFullName.text = [NSString stringWithFormat: @"%@ %@",
                                                   [[VCUserStateManager instance] profile].firstName,
                                                   [[VCUserStateManager instance] profile].lastName

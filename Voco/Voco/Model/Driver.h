@@ -17,9 +17,9 @@
 @property (nonatomic, retain) NSString * lastName;
 @property (nonatomic, retain) NSNumber * id;
 @property (nonatomic, retain) NSString * driversLicenseNumber;
-
-
 @property (nonatomic, retain) NSString * phone;
+@property (nonatomic, retain) NSString * smallImageUrl;
+@property (nonatomic, retain) NSString * largeImageUrl;
 @property (nonatomic, retain) NSSet *rides;
 @end
 

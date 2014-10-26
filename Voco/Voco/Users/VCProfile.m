@@ -27,7 +27,9 @@
                                                   @"card_brand" : @"cardBrand",
                                                   @"bank_account_name" : @"bankAccountName",
                                                   @"recipient_card_last_four" : @"recipientCardLastFour",
-                                                  @"recipient_card_brand" : @"recipientCardBrand"
+                                                  @"recipient_card_brand" : @"recipientCardBrand",
+                                                  @"small_image" : @"smallImage",
+                                                  @"large_image" : @"largeImage"
                                                   }];
     
     return mapping;
@@ -49,6 +51,8 @@
         _bankAccountName = [decoder decodeObjectForKey: @"bankAccountName"];
         _recipientCardBrand = [decoder decodeObjectForKey:@"recipient_card_brand"];
         _recipientCardLastFour = [decoder decodeObjectForKey:@"recipient_card_last_four"];
+        _smallImageUrl = [decoder decodeObjectForKey:@"small_image"];
+        _largeImageUrl = [decoder decodeObjectForKey:@"large_image"];
 
 
     }
@@ -69,6 +73,9 @@
     [encoder encodeObject: _bankAccountName forKey: @"bankAccountName"];
     [encoder encodeObject: _recipientCardBrand forKey:@"recipient_card_brand"];
     [encoder encodeObject: _recipientCardLastFour forKey:@"recipient_card_last_four"];
+    [encoder encodeObject: _smallImageUrl forKey:@"small_image"];
+    [encoder encodeObject: _largeImageUrl forKey:@"large_image"];
+
 
 }
 @end

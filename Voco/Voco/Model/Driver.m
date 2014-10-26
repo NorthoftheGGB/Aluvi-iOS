@@ -17,6 +17,8 @@
 @dynamic id;
 @dynamic driversLicenseNumber;
 @dynamic phone;
+@dynamic smallImageUrl;
+@dynamic largeImageUrl;
 @dynamic rides;
 
 + (RKEntityMapping *)createMappings:(RKObjectManager *)objectManager{
@@ -26,7 +28,9 @@
                                                         @"last_name" :@"lastName",
                                                         @"id" : @"id",
                                                         @"drivers_license_number" : @"driversLicenseNumber",
-                                                        @"phone" : @"phone"
+                                                        @"phone" : @"phone",
+                                                        @"large_image" : @"largeImageUrl",
+                                                        @"small_image" : @"smallImageUrl"
                                                        }];
     return entityMapping;
 }

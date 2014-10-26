@@ -69,7 +69,10 @@ static VCCommuteManager * instance;
     instance.driving = [defaults boolForKey:kCommuterDrivingSettingKey];
 }
 
+//- (void) save:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure {
 - (void) save {
+    
+    
     NSData * originArchive = [NSKeyedArchiver archivedDataWithRootObject:_home];
     [[NSUserDefaults standardUserDefaults] setObject:originArchive forKey:kCommuteOriginSettingKey];
     NSData * destinationArchive = [NSKeyedArchiver archivedDataWithRootObject:_work];
