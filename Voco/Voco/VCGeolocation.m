@@ -45,6 +45,7 @@ static void * XXContext = &XXContext;
     self = [super init];
     if(self){
         _locationManager = [[CLLocationManager alloc] init];
+        [_locationManager requestAlwaysAuthorization];
         _locationManager.pausesLocationUpdatesAutomatically = TRUE;
         _locationManager.activityType = CLActivityTypeAutomotiveNavigation;
         _locationManager.delegate = self;

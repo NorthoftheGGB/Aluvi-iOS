@@ -16,6 +16,7 @@
                 <outlet property="phoneTextField" destination="AZs-m8-oR6" id="xaX-t6-EHM"/>
                 <outlet property="saveChangesButton" destination="GJP-fi-epG" id="SUi-0S-HdQ"/>
                 <outlet property="scrollView" destination="BQ7-4F-qNh" id="nbK-Ng-tmU"/>
+                <outlet property="userImageView" destination="rSS-yk-gN7" id="SZx-yG-oq0"/>
                 <outlet property="versionLabel" destination="faT-jo-LTb" id="zOV-Kc-pOy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -45,7 +46,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="565"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="devon.png" translatesAutoresizingMaskIntoConstraints="NO" id="rSS-yk-gN7">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="rSS-yk-gN7">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="270"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="270" id="Kxj-1M-dAT"/>
@@ -227,7 +228,7 @@
         </view>
     </objects>
     <resources>
-        <image name="devon.png" width="330" height="322"/>
+        <image name="placeholder-profile.png" width="640" height="750"/>
         <image name="profile-button.png" width="302" height="28"/>
         <image name="profile-button@-select.png" width="302" height="28"/>
     </resources>

@@ -29,6 +29,9 @@
 
 @property(nonatomic, strong) NSString * bankAccountName;
 
+@property(nonatomic, strong) NSString * smallImageUrl;
+@property(nonatomic, strong) NSString * largeImageUrl;
+
 + (RKObjectMapping *) getMapping;
 
 @end

@@ -19,6 +19,8 @@
 @dynamic state;
 @dynamic fares;
 @dynamic phone;
+@dynamic smallImageUrl;
+@dynamic largeImageUrl;
 
 + (RKEntityMapping *) createMappings:(RKObjectManager *)objectManager{
     RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Rider"
@@ -31,7 +33,9 @@
                                                         @"last_name" : @"lastName",
                                                         @"phone" : @"phone",
                                                         @"latitude" : @"latitude",
-                                                        @"longitude" : @"longitude"
+                                                        @"longitude" : @"longitude",
+                                                        @"large_image" : @"largeImageUrl",
+                                                        @"small_image" : @"smallImageUrl"
                                                         }];
     
     

@@ -112,7 +112,7 @@
 - (IBAction)didTapOKButton:(id)sender;
 
 //Ride Details
-@property (strong, nonatomic) IBOutlet VCRideDetailsView * rideDetailsConfirmation;
+@property (strong, nonatomic) IBOutlet VCRideDetailsView * rideItineraryView;
 @property (strong, nonatomic) UIScrollView * scrollView;
 - (IBAction)didChangeDisplayDirectionValue:(id)sender;
 
@@ -596,7 +596,7 @@
     [_scheduleRideButton removeFromSuperview];
     [_hovDriverOptionView removeFromSuperview];
     [_nextButton removeFromSuperview];
-    [_rideDetailsConfirmation removeFromSuperview];
+    [_rideItineraryView removeFromSuperview];
     [_rideDetailsHud removeFromSuperview];
     [_driverCallHUD removeFromSuperview];
     [_driverCancelHUD removeFromSuperview];
@@ -759,8 +759,8 @@
     frame.size.height = frame.size.height - 62;
     self.scrollView.frame = frame;
     [self.view addSubview:self.scrollView];
-    [self.scrollView setContentSize:_rideDetailsConfirmation.frame.size];
-    [self.scrollView addSubview:_rideDetailsConfirmation];
+    [self.scrollView setContentSize:_rideItineraryView.frame.size];
+    [self.scrollView addSubview:_rideItineraryView];
     
 
 }
@@ -768,10 +768,10 @@
 - (void) updateRideDetailsConfirmationView:(Ticket *) ticket {
     
     if([ticket.driving boolValue]) {
-        [_rideDetailsConfirmation driverLayout: ticket];
+        [_rideItineraryView driverLayout: ticket];
         
     } else {
-        [_rideDetailsConfirmation riderLayout: ticket];
+        [_rideItineraryView riderLayout: ticket];
     }
  
 
@@ -1656,7 +1656,7 @@
 
 - (IBAction)didChangeDisplayDirectionValue:(id)sender {
     
-    switch(_rideDetailsConfirmation.segmentedButton.selectedSegmentIndex){
+    switch(_rideItineraryView.segmentedButton.selectedSegmentIndex){
         case 0:
             [self updateRideDetailsConfirmationView:_ticket];
             [self updateMapForTicket:_ticket];

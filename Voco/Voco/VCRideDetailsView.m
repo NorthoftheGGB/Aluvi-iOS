@@ -7,6 +7,7 @@
 //
 
 #import "VCRideDetailsView.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "NSDate+Pretty.h"
 #import "Rider.h"
 #import "Fare.h"
@@ -52,6 +53,7 @@
     
     for(int i = 0; i<3; i++){
         ((UILabel *) [riderNameLabels objectAtIndex:i]).text= @"";
+       
     }
     long count = [ticket.hovFare.riders count];
     int i = 0;
@@ -60,6 +62,9 @@
         Rider * rider = [riders objectAtIndex:i];
         UILabel * label = ((UILabel *) [riderNameLabels objectAtIndex:i]);
         label.text = rider.firstName;
+        [((UIImageView *) [riderImageViews objectAtIndex:i]) sd_setImageWithURL:[NSURL URLWithString:rider.smallImageUrl]
+                                                               placeholderImage:[UIImage imageNamed:@"placeholder-profile.png"]];
+
     }
 }
 
@@ -86,9 +91,26 @@
     self.cardNumberLabel.text = [VCUserStateManager instance].profile.cardLastFour;
 
     NSArray * riderNameLabels = @[_riderFirstNameLabel1, _riderFirstNameLabel2, _riderFirstNameLabel3];
+    NSArray * riderImageViews = @[_riderImageView1, _riderImageView2, _riderImageView3];
+
     for(int i = 0; i<3; i++){
         ((UILabel *) [riderNameLabels objectAtIndex:i]).text= @"";
     }
+    long count = [ticket.hovFare.riders count];
+    int i = 0;
+    NSArray * riders = [ticket.hovFare.riders allObjects];
+    for(; i<count; i++){
+        Rider * rider = [riders objectAtIndex:i];
+        UILabel * label = ((UILabel *) [riderNameLabels objectAtIndex:i]);
+        label.text = rider.firstName;
+        [((UIImageView *) [riderImageViews objectAtIndex:i]) sd_setImageWithURL:[NSURL URLWithString:rider.smallImageUrl]
+                                                               placeholderImage:[UIImage imageNamed:@"placeholder-profile.png"]];
+        
+    }
+    
+    [_driverPhotoImageView sd_setImageWithURL:[NSURL URLWithString:ticket.driver.largeImageUrl]
+                             placeholderImage:[UIImage imageNamed:@"placeholder-profile.png"]];
+
 }
 
 
