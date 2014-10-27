@@ -294,10 +294,10 @@
 
 - (void) goToSignUp {
     
-    [UIAlertView showWithTitle:@"Access Code"
-                       message:@"Please enteryour access code, or register online to recieve one"
+    [UIAlertView showWithTitle:@"Confirmation Code"
+                       message:@"Please enter your confirmation code, or register online to recieve one."
                          style:UIAlertViewStylePlainTextInput cancelButtonTitle:@"Cancel"
-             otherButtonTitles:@[@"Submit Code", @"Register For Code" ]
+             otherButtonTitles:@[@"Submit", @"Register For Code" ]
                       tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                           switch (buttonIndex) {
                               case 1:

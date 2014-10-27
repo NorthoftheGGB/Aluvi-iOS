@@ -83,7 +83,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Rider Registration";
+    self.title = @"Account Information";
     [self.scrollView setContentSize:_contentView.frame.size];
     [self.scrollView addSubview:_contentView];
     self.scrollView.bounces = NO;

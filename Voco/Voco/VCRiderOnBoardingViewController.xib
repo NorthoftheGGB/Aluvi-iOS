@@ -143,7 +143,7 @@
                         <action selector="didTapTocButton:" destination="-1" eventType="touchUpInside" id="wMe-OJ-S0j"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agree to Aluvi terms of service @ privacy policy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOG-dy-qwe" customClass="VCLabel">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agree to Aluvi terms of service &amp; privacy policy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOG-dy-qwe" customClass="VCLabel">
                     <rect key="frame" x="8" y="465" width="265" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="265" id="0Sz-Kf-TKI"/>

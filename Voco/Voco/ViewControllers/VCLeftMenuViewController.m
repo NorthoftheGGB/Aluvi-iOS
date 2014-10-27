@@ -185,7 +185,7 @@
             
             //TODO: This is a placeholder image, replace it with relevant string!
             [menuUserInfoCell.userImageView sd_setImageWithURL:[NSURL URLWithString: [[VCUserStateManager instance] profile].smallImageUrl ]
-                                              placeholderImage:[UIImage imageNamed:@"placeholder"]];
+                                              placeholderImage:[UIImage imageNamed:@"temp-user-profile-icon"]];
             menuUserInfoCell.userFullName.text = [NSString stringWithFormat: @"%@ %@",
                                                   [[VCUserStateManager instance] profile].firstName,
                                                   [[VCUserStateManager instance] profile].lastName

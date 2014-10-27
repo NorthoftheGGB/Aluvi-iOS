@@ -69,7 +69,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Interested In Driving?";
+    self.title = @"Driver Information";
     [self.scrollView setContentSize:_contentView.frame.size];
     [self.scrollView addSubview:_contentView];
     self.scrollView.bounces = NO;

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCBetaRegisterViewController">
@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cBQ-fk-3Ea">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                     <items>
                         <barButtonItem title="Done" id="Jxw-23-YYs">
                             <connections>
@@ -25,9 +25,10 @@
                             </connections>
                         </barButtonItem>
                     </items>
+                    <color key="tintColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
                 </toolbar>
                 <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jZN-Sm-9bD">
-                    <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                    <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </webView>
             </subviews>
@@ -39,7 +40,7 @@
                 <constraint firstAttribute="bottom" secondItem="jZN-Sm-9bD" secondAttribute="bottom" id="aIU-Td-jMp"/>
                 <constraint firstItem="jZN-Sm-9bD" firstAttribute="top" secondItem="cBQ-fk-3Ea" secondAttribute="bottom" id="bT1-ii-V6J"/>
                 <constraint firstAttribute="trailing" secondItem="cBQ-fk-3Ea" secondAttribute="trailing" id="eIz-Ap-167"/>
-                <constraint firstItem="cBQ-fk-3Ea" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="uAw-BO-RvH"/>
+                <constraint firstItem="cBQ-fk-3Ea" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="uAw-BO-RvH"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
