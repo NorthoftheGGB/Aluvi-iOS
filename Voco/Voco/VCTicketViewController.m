@@ -13,6 +13,7 @@
 #import <ActionSheetPicker-3.0/ActionSheetStringPicker.h>
 #import <ActionSheetCustomPicker.h>
 #import "IIViewDeckController.h"
+#import <MBXMapKit/MBXMapKit.h>
 
 #import "VCNotifications.h"
 #import "VCInterfaceManager.h"
@@ -79,6 +80,7 @@
 @property (strong, nonatomic) MKPointAnnotation * dropOffPointAnnotation;
 @property (strong, nonatomic) IBOutlet UIButton *currentLocationButton;
 @property (strong, nonatomic) CLLocationManager * locationManager;
+@property (strong, nonatomic) MBXRasterTileOverlay * tileOverlay;
 
 // data
 @property (strong, nonatomic) NSArray * morningOptions;
@@ -199,6 +201,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self startLocationUpdates];
     
     _homeLocationWidget = [[VCEditLocationWidget alloc] init];
     _homeLocationWidget.delegate = self;
@@ -239,6 +242,9 @@
         [self.view insertSubview:self.map atIndex:0];
         self.map.showsUserLocation = YES;
         
+        _tileOverlay = [[MBXRasterTileOverlay alloc] initWithMapID:@"aluvi.jlandbj7"];
+        [self.map addOverlay:_tileOverlay];
+        
         _appeared = YES;
         
         UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
@@ -251,9 +257,7 @@
                 // if commute IS set up already
                 [self showHome];
                 self.map.userTrackingMode = MKUserTrackingModeFollow;
-                [self startLocationUpdates];
-                
-                
+
                 [self addOriginAnnotation: [VCCommuteManager instance].home];
                 [self addDestinationAnnotation: [VCCommuteManager instance].work];
                 [self showSuggestedRoute: [VCCommuteManager instance].home to:[VCCommuteManager instance].work];
@@ -511,6 +515,11 @@
         }
     }
     {
+        if( [[VCCommuteManager instance] hasSettings] ){
+            _scheduleRideButton.titleLabel.text = @"COMMUTE TOMORROW";
+        } else {
+            _scheduleRideButton.titleLabel.text = @"SAVE COMMUTE";
+        }
         CGRect frame = _scheduleRideButton.frame;
         frame.origin.x = 0;
         frame.origin.y = self.view.frame.size.height - 53;
@@ -541,6 +550,8 @@
 }
 
 - (void) transitionToSetupCommute {
+    [self zoomToCurrentLocation];
+
     [_editCommuteButton removeFromSuperview]; //homeActionView goes here
     [self showCancelBarButton];
     
@@ -575,7 +586,11 @@
 
 - (void) clearMap {
     [super clearMap];
-    [self.map removeOverlays:self.map.overlays];
+    for( id<MKOverlay> overlay in self.map.overlays) {
+        if(![overlay isEqual:_tileOverlay]){
+            [self.map removeOverlay:overlay];
+        }
+    }
     [self.map removeAnnotation:_originAnnotation];
     [self.map removeAnnotation:_destinationAnnotation];
     [self.map removeAnnotation:_meetingPointAnnotation];
@@ -729,11 +744,18 @@
     }
     
     
-    {CGRect frame = _scheduleRideButton.frame;
+    {
+        if( [[VCCommuteManager instance] hasSettings] ){
+            _scheduleRideButton.titleLabel.text = @"COMMUTE TOMORROW";
+        } else {
+            _scheduleRideButton.titleLabel.text = @"SAVE COMMUTE";
+        }
+        CGRect frame = _scheduleRideButton.frame;
         frame.origin.x = 0;
         frame.origin.y = self.view.frame.size.height - 53;
         _scheduleRideButton.frame = frame;
-        [self.view addSubview:_scheduleRideButton];}
+        [self.view addSubview:_scheduleRideButton];
+    }
 }
 
 - (void) transitionToWaitingScreen {
@@ -1034,7 +1056,7 @@
         [self storeCommuterSettings:^{
             [UIAlertView showWithTitle:@"Your Setup is Complete!" message:@"We're processing your info and will contact you when it's time for you to start commuting!" cancelButtonTitle:@"Ok, Can't Wait!" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                 if([VCInterfaceManager instance].mode == kOnBoardingMode) {
-                    
+                    self.navigationController.navigationBarHidden = NO;
                     [[VCInterfaceManager instance] showRiderInterface];
                 } else {
                     [self resetInterfaceToHome];

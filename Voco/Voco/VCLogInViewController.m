@@ -249,7 +249,7 @@
                                                       [UIAlertView showWithTitle:@"New User?"
                                                                          message:@"That email is not in our system.  Click OK to join Aluvi with these credentials!"
                                                                cancelButtonTitle:@"Cancel"
-                                                               otherButtonTitles:@[@"OK"]
+                                                               otherButtonTitles:@[@"Register"]
                                                                         tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                                                                             switch(buttonIndex){
                                                                                 case 1:

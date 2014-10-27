@@ -24,6 +24,7 @@
 #import "VCLocalNotificationReceiver.h"
 #import "VCTicketViewController.h"
 #import <Stripe.h>
+#import "VCDevicesApi.h"
 
 @interface VCAppDelegate ()
 
@@ -69,7 +70,6 @@
     [[VCInterfaceManager instance] showInterface];
 #endif
     self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
     
 // #warning bypassing interface mode setup in AppDelegate
     /*VCRideViewController * vc = [[VCRideViewController alloc] init];
@@ -93,6 +93,9 @@
     // RKLogConfigureByName("RestKit/Network", RKLogLevelInfo);
     // RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
     
+    
+    [self.window makeKeyAndVisible];
+
     return YES;
 }
 
@@ -124,7 +127,11 @@
             NSLog(@"%@", @"Refreshed Scheduled Rides");
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         }];
-       
+
+        [VCDevicesApi updateUserWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        }];
+
 
     }
 }
