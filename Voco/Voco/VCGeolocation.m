@@ -45,9 +45,10 @@ static void * XXContext = &XXContext;
     self = [super init];
     if(self){
         _locationManager = [[CLLocationManager alloc] init];
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
-        [_locationManager requestAlwaysAuthorization];
-#endif
+        
+        if ([_locationManager respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+            [_locationManager requestAlwaysAuthorization];
+        }
         _locationManager.pausesLocationUpdatesAutomatically = TRUE;
         _locationManager.activityType = CLActivityTypeAutomotiveNavigation;
         _locationManager.delegate = self;
