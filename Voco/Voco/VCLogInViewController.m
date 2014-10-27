@@ -100,9 +100,10 @@
     NSArray * userLabels = [NSArray array];
     
 #ifdef TESTING
-    userEmails = @[ @"v1@vocotransportation.com", @"v3@vocotransportation.com"];
-    passwords = @[ @"abc123456", @"abc123456"];
-    userLabels = @[ @"rider", @"driver"];
+        NSString * newUserEmail = [NSString stringWithFormat:@"%f@z.com", [[NSDate date] timeIntervalSince1970] ];
+    userEmails = @[ @"v1@vocotransportation.com", @"v3@vocotransportation.com", newUserEmail];
+    passwords = @[ @"abc123456", @"abc123456", @"1111111111" ];
+    userLabels = @[ @"rider", @"driver", @"new user"];
 #elif ALPHA
     
 #else

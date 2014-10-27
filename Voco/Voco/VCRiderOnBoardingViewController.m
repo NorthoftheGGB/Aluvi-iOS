@@ -68,6 +68,18 @@
     return self;
 }
 
+- (UIToolbar *)makeToolbar:(SEL) selector
+{
+    UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
+    
+    numberToolbar.items = [NSArray arrayWithObjects:
+                           [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                           [[UIBarButtonItem alloc]initWithTitle:@"Next" style:UIBarButtonItemStyleDone target:self action:selector],
+                           nil];
+    [numberToolbar sizeToFit];
+    return numberToolbar;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -76,15 +88,12 @@
     [self.scrollView addSubview:_contentView];
     self.scrollView.bounces = NO;
 
-    UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
-    numberToolbar.barStyle = UIBarStyleBlackTranslucent;
-    numberToolbar.items = [NSArray arrayWithObjects:
-                            [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                           [[UIBarButtonItem alloc]initWithTitle:@"Next" style:UIBarButtonItemStyleDone target:self action:@selector(didEndOnExit:)],
-                           nil];
-    [numberToolbar sizeToFit];
+    UIToolbar *numberToolbar;
+    numberToolbar = [self makeToolbar:@selector(didSelectNextOnPhoneField:)];
     _phoneTextField.inputAccessoryView = numberToolbar;
     
+    numberToolbar = [self makeToolbar:@selector(didSelectNextOnZipField:)];
+    _zipCodeTextField.inputAccessoryView = numberToolbar;
     
     _termsOfServices.attributedText = _termsOfServiceString;
     
@@ -157,6 +166,18 @@
 
 
 //TODO: clean up validation in this code
+
+- (void) didSelectNextOnPhoneField: (id)sender {
+    [_phoneTextField
+     resignFirstResponder];
+    [self didEndOnExit: _phoneTextField];
+}
+
+- (void) didSelectNextOnZipField: (id)sender {
+    [_zipCodeTextField
+     resignFirstResponder];
+    [self didEndOnExit: _zipCodeTextField];
+}
 
 - (IBAction)didEndOnExit:(id)sender {
     
