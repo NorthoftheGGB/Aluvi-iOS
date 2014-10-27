@@ -294,6 +294,16 @@
 
 - (void) goToSignUp {
     
+#ifdef DEBUG
+    // Good to do, email is not in the system
+    VCRiderOnBoardingViewController * vc = [[VCRiderOnBoardingViewController alloc] init];
+    vc.desiredEmail = _emailTextField.text;
+    vc.desiredPassword = _passwordTextField.text;
+    vc.termsOfServiceString = _attributedString;
+    [self.navigationController pushViewController:vc animated:YES];
+    
+#else
+    
     [UIAlertView showWithTitle:@"Confirmation Code"
                        message:@"Please enter your confirmation code, or register online to recieve one."
                          style:UIAlertViewStylePlainTextInput cancelButtonTitle:@"Cancel"
@@ -343,6 +353,8 @@
                                   break;
                           }
                       }];
+    
+#endif
 
 }
 
