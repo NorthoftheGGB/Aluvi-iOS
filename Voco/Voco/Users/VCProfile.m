@@ -28,8 +28,8 @@
                                                   @"bank_account_name" : @"bankAccountName",
                                                   @"recipient_card_last_four" : @"recipientCardLastFour",
                                                   @"recipient_card_brand" : @"recipientCardBrand",
-                                                  @"small_image" : @"smallImage",
-                                                  @"large_image" : @"largeImage"
+                                                  @"small_image" : @"smallImageUrl",
+                                                  @"large_image" : @"largeImageUrl"
                                                   }];
     
     return mapping;
