@@ -294,7 +294,7 @@
 
 - (void) goToSignUp {
     
-#ifdef DEBUG
+#ifdef DEBUGHOUSE
     // Good to do, email is not in the system
     VCRiderOnBoardingViewController * vc = [[VCRiderOnBoardingViewController alloc] init];
     vc.desiredEmail = _emailTextField.text;

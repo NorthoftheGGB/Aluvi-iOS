@@ -390,7 +390,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fep-l0-bYy">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fep-l0-bYy">
                     <rect key="frame" x="0.0" y="501" width="106" height="106"/>
                     <color key="backgroundColor" red="0.42754912760000002" green="1" blue="0.41485014920000002" alpha="1" colorSpace="calibratedRGB"/>
                 </imageView>
@@ -409,11 +409,11 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fm0-NN-r1s">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fm0-NN-r1s">
                     <rect key="frame" x="107" y="501" width="106" height="106"/>
                     <color key="backgroundColor" red="0.42754912760000002" green="1" blue="0.41485014920000002" alpha="1" colorSpace="calibratedRGB"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lSt-h2-UiR">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lSt-h2-UiR">
                     <rect key="frame" x="214" y="501" width="106" height="106"/>
                     <color key="backgroundColor" red="0.42754912760000002" green="1" blue="0.41485014920000002" alpha="1" colorSpace="calibratedRGB"/>
                 </imageView>
