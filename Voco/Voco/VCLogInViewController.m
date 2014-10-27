@@ -297,7 +297,7 @@
     [UIAlertView showWithTitle:@"Confirmation Code"
                        message:@"Please enter your confirmation code, or register online to recieve one."
                          style:UIAlertViewStylePlainTextInput cancelButtonTitle:@"Cancel"
-             otherButtonTitles:@[@"Submit", @"Register For Code" ]
+             otherButtonTitles:@[@"Submit", @"Register Online" ]
                       tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                           switch (buttonIndex) {
                               case 1:
