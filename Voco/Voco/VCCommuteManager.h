@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 @import MapKit;
 #import "Ticket.h"
+#import "Route.h"
 
 @interface VCCommuteManager : NSObject
 
@@ -22,9 +23,10 @@
 
 + (VCCommuteManager *) instance;
 
-- (void) save;
+- (void) save:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
 - (void) reset;
 - (void) load;
+- (void) loadFromServer;
 - (void) clear;
 - (BOOL) hasSettings;
 

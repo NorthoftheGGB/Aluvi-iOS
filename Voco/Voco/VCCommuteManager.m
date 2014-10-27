@@ -11,6 +11,10 @@
 #import "VCRiderApi.h"
 #import "VCDriverApi.h"
 
+// TODO refactor these out of this class
+#import "VCApi.h"
+#import <MBProgressHUD.h>
+
 #define kCommuteOriginSettingKey @"kCommuterOriginSettingKey"
 #define kCommuteDestinationSettingKey @"kCommuteDestinationSettingKey"
 #define kCommuteDepartureTimeSettingKey @"kCommuteDepartureTimeSettingKey"
@@ -27,7 +31,28 @@ static VCCommuteManager * instance;
     if(instance == nil) {
         instance = [[VCCommuteManager alloc] init];
         [instance load];
-
+        
+        RKObjectMapping * requestMapping = [Route getInverseMapping];
+        
+        RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping
+                                                                                       objectClass:[Route class]
+                                                                                       rootKeyPath:nil
+                                                                                            method:RKRequestMethodPOST];
+        [[RKObjectManager sharedManager] addRequestDescriptor:requestDescriptor];
+        {
+        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[Route getMapping]
+                                                                                                 method:RKRequestMethodPOST
+                                                                                            pathPattern:API_ROUTE keyPath:nil
+                                                                                            statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [[RKObjectManager sharedManager] addResponseDescriptor:responseDescriptor];
+        }
+        {
+            RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[Route getMapping]
+                                                                                                     method:RKRequestMethodGET
+                                                                                                pathPattern:API_ROUTE keyPath:nil
+                                                                                                statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+            [[RKObjectManager sharedManager] addResponseDescriptor:responseDescriptor];
+        }
     }
     return instance;
 }
@@ -52,6 +77,7 @@ static VCCommuteManager * instance;
     _driving = driving;
 }
 
+// Load defaults and then load from web
 - (void) load {
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     NSData * home = [defaults objectForKey:kCommuteOriginSettingKey];
@@ -67,12 +93,36 @@ static VCCommuteManager * instance;
     instance.pickupTime = [defaults objectForKey:kCommuteDepartureTimeSettingKey];
     instance.returnTime = [defaults objectForKey:kCommuteReturnTimeSettingKey];
     instance.driving = [defaults boolForKey:kCommuterDrivingSettingKey];
+    
+    [self loadFromServer];
 }
 
-//- (void) save:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure {
-- (void) save {
+- (void) loadFromServer {
     
-    
+    /*TODO
+     Refactor: move API call to a API library file
+     */
+    // overwrite if possible
+    [[RKObjectManager sharedManager] getObject:nil
+                                          path:API_ROUTE
+                                    parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                        Route * route = mappingResult.firstObject;
+                                        instance.home = route.home;
+                                        instance.work = route.work;
+                                        instance.homePlaceName = route.homePlaceName;
+                                        instance.workPlaceName = route.workPlaceName;
+                                        instance.pickupTime = route.pickupTime;
+                                        instance.returnTime = route.returnTime;
+                                        instance.driving = route.driving;
+                                        [self store];
+
+                                    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                        // Woops!
+                                    }];
+
+}
+
+- (void)store {
     NSData * originArchive = [NSKeyedArchiver archivedDataWithRootObject:_home];
     [[NSUserDefaults standardUserDefaults] setObject:originArchive forKey:kCommuteOriginSettingKey];
     NSData * destinationArchive = [NSKeyedArchiver archivedDataWithRootObject:_work];
@@ -83,6 +133,38 @@ static VCCommuteManager * instance;
     [[NSUserDefaults standardUserDefaults] setObject:_workPlaceName forKey:kCommuterDestinationPlaceNameKey];
     [[NSUserDefaults standardUserDefaults] setBool:_driving forKey:kCommuterDrivingSettingKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void) save:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure {
+    
+    /*TODO
+     Refactor: move API call to a API library file
+     Refactor local route persistance into Route class
+     */
+    
+    // Update the route
+    Route * route = [[Route alloc] init];
+    route.home = _home;
+    route.work = _work;
+    route.homePlaceName = _homePlaceName;
+    route.workPlaceName = _workPlaceName;
+    route.pickupTime = _pickupTime;
+    route.returnTime = _returnTime;
+    route.driving = _driving;
+    
+    [[RKObjectManager sharedManager] postObject:route
+                                           path:API_ROUTE
+                                     parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                         
+                                         [self store];
+                                         success();
+                                         
+                                     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                         failure();
+                                     }];
+    
+    
+
 
 }
 
