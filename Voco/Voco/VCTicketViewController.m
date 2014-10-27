@@ -257,7 +257,7 @@
                 [self addOriginAnnotation: [VCCommuteManager instance].home];
                 [self addDestinationAnnotation: [VCCommuteManager instance].work];
                 [self showSuggestedRoute: [VCCommuteManager instance].home to:[VCCommuteManager instance].work];
-
+                
                 
             } else {
                 // if commute is not set up
@@ -265,7 +265,7 @@
                 [self transitionToSetupCommute];
             }
             
-        
+            
         } else {
             [self showInterfaceForTicket];
         }
@@ -445,7 +445,7 @@
         [self addPedestrianRoute:[_ticket originLocation] to:[_ticket meetingPointLocation]];
         [self addPedestrianRoute:[_ticket dropOffPointLocation] to:[_ticket destinationLocation]];
     }
-
+    
 }
 
 - (void) showCancelBarButton {
@@ -586,9 +586,9 @@
 - (void) removeHuds {
     [_holdingScreen removeFromSuperview];
     [_holdingScreen resetView];
-
+    
     [self.scrollView removeFromSuperview];
-
+    
     [_pickupHudView removeFromSuperview];
     [_homeLocationWidget.view removeFromSuperview];
     [_workLocationWidget.view removeFromSuperview];
@@ -751,7 +751,7 @@
     }
     
     [self updateRideDetailsConfirmationView: _ticket];
-
+    
     self.scrollView = [[UIScrollView alloc] init];
     self.scrollView.bounces = NO;
     CGRect frame = self.view.frame;
@@ -762,7 +762,7 @@
     [self.scrollView setContentSize:_rideItineraryView.frame.size];
     [self.scrollView addSubview:_rideItineraryView];
     
-
+    
 }
 
 - (void) updateRideDetailsConfirmationView:(Ticket *) ticket {
@@ -773,8 +773,8 @@
     } else {
         [_rideItineraryView riderLayout: ticket];
     }
- 
-
+    
+    
 }
 
 - (void) didTapCancel: (id)sender {
@@ -874,13 +874,20 @@
     }];
 }
 
-- (void) storeCommuterSettings {
+- (void) storeCommuterSettings: (void ( ^ ) ()) success failure:( void ( ^ ) ()) failure {
     [VCCommuteManager instance].home = [[CLLocation alloc] initWithLatitude:_originAnnotation.coordinate.latitude
                                                                   longitude:_originAnnotation.coordinate.longitude];
     [VCCommuteManager instance].work = [[CLLocation alloc] initWithLatitude:_destinationAnnotation.coordinate.latitude
                                                                   longitude:_destinationAnnotation.coordinate.longitude];
     
-    [[VCCommuteManager instance] save];
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[VCCommuteManager instance] save:^{
+        [hud hide:YES];
+        success();
+    } failure:^{
+        [hud hide:YES];
+        failure();
+    }];
     
     
 }
@@ -996,52 +1003,70 @@
 }
 
 - (IBAction)didTapScheduleRide:(id)sender {
-    [self storeCommuterSettings];
-    
-    [UIAlertView showWithTitle:@"Your Setup is Complete!" message:@"We're processing your info and will contact you when it's time for you to start commuting!" cancelButtonTitle:@"Ok, Can't Wait!" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-        if([VCInterfaceManager instance].mode == kOnBoardingMode) {
-            
-            [[VCInterfaceManager instance] showRiderInterface];
-        } else {
+    if([[VCCommuteManager instance] hasSettings]) {
+        
+        [self storeCommuterSettings:^{
             [self resetInterfaceToHome];
-        }
+            [UIAlertView showWithTitle:@"Just Checking..."
+                               message:@"Have you been approved to schedule trips?  The system might not work properly if you have not"
+                     cancelButtonTitle:@"No.."
+                     otherButtonTitles:@[@"Yes"]
+                              tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                  switch(buttonIndex){
+                                      case 1:
+                                      {
+                                          [self scheduleCommuteForTomorrow];
+                                      }
+                                          
+                                          break;
+                                      default:
+                                          break;
+                                  }
+                              }];
 
-    } ];
-
-    /*tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-        switch (buttonIndex) {
-            case 1:
-            {
-                
-                // Create tomorrow's rides
-                NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
-                dayComponent.day = 1;
-                
-                NSCalendar *theCalendar = [NSCalendar currentCalendar];
-                NSDate *tomorrow = [theCalendar dateByAddingComponents:dayComponent toDate:[NSDate date] options:0];
-                
-                [[VCCommuteManager instance] requestRidesFor:tomorrow success:^{
-                    if([VCInterfaceManager instance].mode == kOnBoardingMode) {
-                        [[VCInterfaceManager instance] showRiderInterface];
-                    } else {
-                        [self transitionToWaitingScreen];
-                    }
-                } failure:^{
-                    
-                }];
-            }
-                break;
-                
-            default:
+        } failure:^{
+            [UIAlertView showWithTitle:@"Error" message:@"There was a problem sending your request, you might want to try that again" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        }];
+        
+         
+    } else {
+        
+        [self storeCommuterSettings:^{
+            [UIAlertView showWithTitle:@"Your Setup is Complete!" message:@"We're processing your info and will contact you when it's time for you to start commuting!" cancelButtonTitle:@"Ok, Can't Wait!" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                 if([VCInterfaceManager instance].mode == kOnBoardingMode) {
+                    
                     [[VCInterfaceManager instance] showRiderInterface];
                 } else {
                     [self resetInterfaceToHome];
                 }
-                break;
-        }
-    }];
- */
+                
+            } ];
+
+        } failure:^{
+             [UIAlertView showWithTitle:@"Error" message:@"There was a problem sending your request, you might want to try that again" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        }];
+        
+    }
+    
+}
+
+- (void) scheduleCommuteForTomorrow {
+    NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
+    dayComponent.day = 1;
+    
+    NSCalendar *theCalendar = [NSCalendar currentCalendar];
+    NSDate *tomorrow = [theCalendar dateByAddingComponents:dayComponent toDate:[NSDate date] options:0];
+    
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[VCCommuteManager instance] requestRidesFor:tomorrow
+                                         success:^{
+                                             [hud hide:YES];
+                                             [self transitionToWaitingScreen];
+                                         } failure:^{
+                                             [hud hide:YES];
+                                             [UIAlertView showWithTitle:@"Error" message:@"There was a problem sending your request, you might want to try that again" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                                         }];
+
 }
 
 - (IBAction)didTapNextButton:(id)sender {

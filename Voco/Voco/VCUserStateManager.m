@@ -117,6 +117,8 @@ static VCUserStateManager *sharedSingleton;
                       self.driverState = loginResponse.driverState;
                   }
                   
+                  [[VCCommuteManager instance] loadFromServer];
+                  
                   //TODO refactor to utilize enqueueBatchOfObjectRequestOperations:progress:completion:
                   [VCDevicesApi updateUserWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                       

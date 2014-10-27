@@ -7,7 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+@import CoreLocation;
 
 @interface Route : NSObject
+
+@property (nonatomic, strong) CLLocation * home;
+@property (nonatomic, strong) CLLocation * work;
+@property (nonatomic, strong) NSString * homePlaceName;
+@property (nonatomic, strong) NSString * workPlaceName;
+@property (nonatomic, strong) NSString * pickupTime;
+@property (nonatomic, strong) NSString * returnTime;
+@property (nonatomic) BOOL driving;
+
+
++ (RKObjectMapping *) getMapping;
++ (RKObjectMapping *) getInverseMapping;
+
 
 @end

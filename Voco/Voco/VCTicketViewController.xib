@@ -16,7 +16,6 @@
                 <outlet property="editCommuteButton" destination="Qmg-ai-rrd" id="0pA-Hw-jyM"/>
                 <outlet property="fareDetailsView" destination="gCJ-mG-bEK" id="YnP-up-jXS"/>
                 <outlet property="holdingScreen" destination="7XC-Uh-YFh" id="fGe-Pt-wMF"/>
-                <outlet property="homeActionView" destination="XY9-N9-RDa" id="LQH-QX-Bja"/>
                 <outlet property="hovDriveYesButton" destination="LT0-2Y-Gc6" id="GyN-lZ-mp0"/>
                 <outlet property="hovDriverOptionView" destination="CKa-ug-jy9" id="5ZD-9F-mzB"/>
                 <outlet property="nextButton" destination="4au-Tm-k8h" id="I8s-9S-4fi"/>
@@ -27,7 +26,6 @@
                 <outlet property="rideCompleteButton" destination="Jh3-aQ-cgL" id="hB9-UZ-Yb5"/>
                 <outlet property="rideDetailsHud" destination="Lv9-d9-EJH" id="0gc-z7-omS"/>
                 <outlet property="rideItineraryView" destination="RWM-tO-NBZ" id="yJx-lk-icx"/>
-                <outlet property="rideNowButton" destination="2sw-Bp-ZXq" id="SSL-Jr-zwk"/>
                 <outlet property="ridersPickedUpButton" destination="5kL-SN-M2N" id="Nx1-g3-YUL"/>
                 <outlet property="scheduleRideButton" destination="fxh-D2-Mbg" id="8gG-Qn-R33"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -40,59 +38,6 @@
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-        </view>
-        <view contentMode="scaleToFill" id="XY9-N9-RDa" userLabel="Ride Now / Edit Commute View">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <subviews>
-                <button opaque="NO" alpha="0.89999999999999991" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2sw-Bp-ZXq" customClass="VCButtonStandardStyle">
-                    <rect key="frame" x="160" y="0.0" width="160" height="46"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="RIDE NOW" backgroundImage="button-default.png">
-                        <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="selected" title="RIDE NOW" backgroundImage="button-select.png">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="highlighted" title="RIDE NOW" backgroundImage="button-select.png">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="16"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="didTapRideNow:" destination="-1" eventType="touchUpInside" id="JkL-qs-TFG"/>
-                    </connections>
-                </button>
-                <button opaque="NO" alpha="0.89999999999999991" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2Q-DX-cGh" customClass="VCButtonStandardStyle">
-                    <rect key="frame" x="0.0" y="0.0" width="160" height="46"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="EDIT COMMUTE" backgroundImage="button-default.png">
-                        <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="selected" title="EDIT COMMUTE">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="highlighted" title="EDIT COMMUTE" backgroundImage="button-select.png">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="16"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="didTapEditCommute:" destination="-1" eventType="touchUpInside" id="aUU-Cl-hhX"/>
-                    </connections>
-                </button>
-            </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <nil key="simulatedStatusBarMetrics"/>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
         <button opaque="NO" alpha="0.89999999999999991" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="fxh-D2-Mbg" customClass="VCButtonStandardStyle">
             <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
@@ -1045,29 +990,6 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
-        <button opaque="NO" alpha="0.89999997615814209" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="Y59-la-mVI" userLabel="Show Me The Ride!" customClass="VCButtonStandardStyle">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-            <state key="normal" title="EDIT COMMUTE" backgroundImage="button-full-default.png">
-                <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
-                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-            </state>
-            <state key="selected" title="EDIT COMMUTE">
-                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-            </state>
-            <state key="highlighted" title="EDIT COMMUTE" backgroundImage="button-select.png">
-                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-            </state>
-            <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                    <integer key="value" value="16"/>
-                </userDefinedRuntimeAttribute>
-            </userDefinedRuntimeAttributes>
-            <connections>
-                <action selector="didTapEditCommute:" destination="-1" eventType="touchUpInside" id="T3x-y9-S6y"/>
-            </connections>
-        </button>
         <button opaque="NO" alpha="0.89999997615814209" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Jh3-aQ-cgL" customClass="VCButton">
             <rect key="frame" x="0.0" y="0.0" width="193" height="36"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1477,14 +1399,14 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-            <state key="normal" title="EDIT COMMUTE" backgroundImage="button-full-default.png">
+            <state key="normal" title="SCHEDULE COMMUTE" backgroundImage="button-full-default.png">
                 <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
             </state>
-            <state key="selected" title="EDIT COMMUTE">
+            <state key="selected">
                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             </state>
-            <state key="highlighted" title="EDIT COMMUTE" backgroundImage="button-select.png">
+            <state key="highlighted" backgroundImage="button-select.png">
                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             </state>
             <userDefinedRuntimeAttributes>
@@ -1498,7 +1420,6 @@
         </button>
     </objects>
     <resources>
-        <image name="button-default.png" width="160" height="46"/>
         <image name="button-full-default.png" width="320" height="46"/>
         <image name="button-full-select.png" width="320" height="46"/>
         <image name="button-select.png" width="160" height="46"/>

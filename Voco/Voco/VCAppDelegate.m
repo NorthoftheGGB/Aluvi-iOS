@@ -124,6 +124,8 @@
             NSLog(@"%@", @"Refreshed Scheduled Rides");
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         }];
+       
+
     }
 }
 
