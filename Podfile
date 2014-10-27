@@ -19,6 +19,7 @@ pod 'DTCoreText'
 pod 'ASImageResize', '~> 1.0.3'
 pod 'SDWebImage', '~> 3.7.1'
 pod 'RKCLLocationValueTransformer'
+pod 'MBXMapKit'
 
  
   

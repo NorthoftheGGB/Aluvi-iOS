@@ -27,7 +27,8 @@
 #define kPushTypeRideOfferClosed @"offer_closed"
 #define kPushTypeTripFulfilled @"trip_fulfilled"
 #define kPushTypeTripUnfulfilled @"trip_unfulfilled"
-
+#define kPushTypeGeneric @"generic"
+#define kPushTypeCommuteReminder @"commute_reminder"
 
 
 @interface VCPushApi : NSObject

@@ -13,6 +13,7 @@
 #import <ActionSheetPicker-3.0/ActionSheetStringPicker.h>
 #import <ActionSheetCustomPicker.h>
 #import "IIViewDeckController.h"
+#import <MBXMapKit/MBXMapKit.h>
 
 #import "VCNotifications.h"
 #import "VCInterfaceManager.h"
@@ -79,6 +80,7 @@
 @property (strong, nonatomic) MKPointAnnotation * dropOffPointAnnotation;
 @property (strong, nonatomic) IBOutlet UIButton *currentLocationButton;
 @property (strong, nonatomic) CLLocationManager * locationManager;
+@property (strong, nonatomic) MBXRasterTileOverlay * tileOverlay;
 
 // data
 @property (strong, nonatomic) NSArray * morningOptions;
@@ -238,6 +240,9 @@
         self.map.delegate = self;
         [self.view insertSubview:self.map atIndex:0];
         self.map.showsUserLocation = YES;
+        
+        //_tileOverlay = [[MBXRasterTileOverlay alloc] initWithMapID:@"aluvi.jlandbj7"];
+        //[self.map addOverlay:_tileOverlay];
         
         _appeared = YES;
         
@@ -575,7 +580,11 @@
 
 - (void) clearMap {
     [super clearMap];
-    [self.map removeOverlays:self.map.overlays];
+    for( id<MKOverlay> overlay in self.map.overlays) {
+        if(![overlay isEqual:_tileOverlay]){
+            [self.map removeOverlay:overlay];
+        }
+    }
     [self.map removeAnnotation:_originAnnotation];
     [self.map removeAnnotation:_destinationAnnotation];
     [self.map removeAnnotation:_meetingPointAnnotation];
@@ -1034,7 +1043,7 @@
         [self storeCommuterSettings:^{
             [UIAlertView showWithTitle:@"Your Setup is Complete!" message:@"We're processing your info and will contact you when it's time for you to start commuting!" cancelButtonTitle:@"Ok, Can't Wait!" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                 if([VCInterfaceManager instance].mode == kOnBoardingMode) {
-                    
+                    self.navigationController.navigationBarHidden = NO;
                     [[VCInterfaceManager instance] showRiderInterface];
                 } else {
                     [self resetInterfaceToHome];

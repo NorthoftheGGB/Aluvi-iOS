@@ -10,11 +10,20 @@
 
 @implementation VCDevice
 
+- (id) init {
+    self = [super init];
+    NSString * version = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
+    NSString * build = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
+    self.appVersion = [NSString stringWithFormat:@"v%@b%@", version, build];
+    return self;
+}
+
 + (RKObjectMapping*) getMapping {
     RKObjectMapping * deviceMapping = [RKObjectMapping mappingForClass:[VCDevice class]];
     [deviceMapping addAttributeMappingsFromDictionary:@{
                                                         @"user_id" : @"userId",
-                                                        @"push_token" : @"pushToken"
+                                                        @"push_token" : @"pushToken",
+                                                        @"app_version" : @"appVersion"
                                                         }];
     return deviceMapping;
 
