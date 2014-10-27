@@ -201,6 +201,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self startLocationUpdates];
     
     _homeLocationWidget = [[VCEditLocationWidget alloc] init];
     _homeLocationWidget.delegate = self;
@@ -241,8 +242,8 @@
         [self.view insertSubview:self.map atIndex:0];
         self.map.showsUserLocation = YES;
         
-        //_tileOverlay = [[MBXRasterTileOverlay alloc] initWithMapID:@"aluvi.jlandbj7"];
-        //[self.map addOverlay:_tileOverlay];
+        _tileOverlay = [[MBXRasterTileOverlay alloc] initWithMapID:@"aluvi.jlandbj7"];
+        [self.map addOverlay:_tileOverlay];
         
         _appeared = YES;
         
@@ -256,9 +257,7 @@
                 // if commute IS set up already
                 [self showHome];
                 self.map.userTrackingMode = MKUserTrackingModeFollow;
-                [self startLocationUpdates];
-                
-                
+
                 [self addOriginAnnotation: [VCCommuteManager instance].home];
                 [self addDestinationAnnotation: [VCCommuteManager instance].work];
                 [self showSuggestedRoute: [VCCommuteManager instance].home to:[VCCommuteManager instance].work];
@@ -516,6 +515,11 @@
         }
     }
     {
+        if( [[VCCommuteManager instance] hasSettings] ){
+            _scheduleRideButton.titleLabel.text = @"COMMUTE TOMORROW";
+        } else {
+            _scheduleRideButton.titleLabel.text = @"SAVE COMMUTE";
+        }
         CGRect frame = _scheduleRideButton.frame;
         frame.origin.x = 0;
         frame.origin.y = self.view.frame.size.height - 53;
@@ -546,6 +550,8 @@
 }
 
 - (void) transitionToSetupCommute {
+    [self zoomToCurrentLocation];
+
     [_editCommuteButton removeFromSuperview]; //homeActionView goes here
     [self showCancelBarButton];
     
@@ -738,11 +744,18 @@
     }
     
     
-    {CGRect frame = _scheduleRideButton.frame;
+    {
+        if( [[VCCommuteManager instance] hasSettings] ){
+            _scheduleRideButton.titleLabel.text = @"COMMUTE TOMORROW";
+        } else {
+            _scheduleRideButton.titleLabel.text = @"SAVE COMMUTE";
+        }
+        CGRect frame = _scheduleRideButton.frame;
         frame.origin.x = 0;
         frame.origin.y = self.view.frame.size.height - 53;
         _scheduleRideButton.frame = frame;
-        [self.view addSubview:_scheduleRideButton];}
+        [self.view addSubview:_scheduleRideButton];
+    }
 }
 
 - (void) transitionToWaitingScreen {

@@ -13,6 +13,7 @@
 #import "VCRiderApi.h"
 #import "VCDriverApi.h"
 #import "VCNotifications.h"
+#import "VCInterfaceManager.h"
 
 #import "VCDevice.h"
 #import "WRUtilities.h"
@@ -266,12 +267,20 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:@"schedule_updated" object:self];
         
         } else if([type isEqualToString:kPushTypeGeneric]){
-            NSString * message =[[payload objectForKey:@"alert"] objectForKey:@"body"];
+            NSString * message =[[payload objectForKey:@"aps" ] objectForKey:@"alert"];
             [UIAlertView showWithTitle:@"Message from Aluvi" message:message cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
             
         } else if ([type isEqualToString:kPushTypeCommuteReminder]){
             
-            [UIAlertView showWithTitle:@"It's finally time" message:@"Would you like to schedule a commute for tomorrow?" cancelButtonTitle:@"No" otherButtonTitles:@[@"YES!"] tapBlock:nil];
+            [UIAlertView showWithTitle:@"It's finally time" message:@"Would you like to schedule a commute for tomorrow?" cancelButtonTitle:@"No" otherButtonTitles:@[@"YES!"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                switch(buttonIndex){
+                    case 1:
+                        [[VCInterfaceManager instance] showRiderInterface];
+                        break;
+                    default:
+                        break;
+                }
+            }];
 
         } else {
 #ifdef DEBUG
