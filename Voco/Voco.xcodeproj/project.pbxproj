@@ -171,9 +171,6 @@
 		4F38976319B8298200A75C5C /* Aluvi-Privacy-Policy.html in Resources */ = {isa = PBXBuildFile; fileRef = 4F38976119B8298200A75C5C /* Aluvi-Privacy-Policy.html */; };
 		4F38976419B8298200A75C5C /* Aluvi-Privacy-Policy.html in Resources */ = {isa = PBXBuildFile; fileRef = 4F38976119B8298200A75C5C /* Aluvi-Privacy-Policy.html */; };
 		4F38976519B8298200A75C5C /* Aluvi-Privacy-Policy.html in Resources */ = {isa = PBXBuildFile; fileRef = 4F38976119B8298200A75C5C /* Aluvi-Privacy-Policy.html */; };
-		4F38976619B8298200A75C5C /* Aluvi-TOS.html in Resources */ = {isa = PBXBuildFile; fileRef = 4F38976219B8298200A75C5C /* Aluvi-TOS.html */; };
-		4F38976719B8298200A75C5C /* Aluvi-TOS.html in Resources */ = {isa = PBXBuildFile; fileRef = 4F38976219B8298200A75C5C /* Aluvi-TOS.html */; };
-		4F38976819B8298200A75C5C /* Aluvi-TOS.html in Resources */ = {isa = PBXBuildFile; fileRef = 4F38976219B8298200A75C5C /* Aluvi-TOS.html */; };
 		4F3D221719B13072006EF35D /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3D221619B13072006EF35D /* Icon@2x.png */; };
 		4F3D221819B13076006EF35D /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3D221619B13072006EF35D /* Icon@2x.png */; };
 		4F3D221919B13076006EF35D /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3D221619B13072006EF35D /* Icon@2x.png */; };
@@ -646,7 +643,6 @@
 		F496FE9919FDBC9400632055 /* placeholder-profile.png in Resources */ = {isa = PBXBuildFile; fileRef = F496FE9519FDBC9400632055 /* placeholder-profile.png */; };
 		F49EDD101946E2F90020B8BB /* VCInterfaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD0F1946E2F90020B8BB /* VCInterfaceManager.m */; };
 		F4A5654819C8F3EA0030104D /* Aluvi-Privacy-Policy.html in Resources */ = {isa = PBXBuildFile; fileRef = 4F38976119B8298200A75C5C /* Aluvi-Privacy-Policy.html */; };
-		F4A5654919C8F3EC0030104D /* Aluvi-TOS.html in Resources */ = {isa = PBXBuildFile; fileRef = 4F38976219B8298200A75C5C /* Aluvi-TOS.html */; };
 		F4A5654A19CA5B020030104D /* VCPrivatePolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F38975819B7DD0100A75C5C /* VCPrivatePolicyViewController.m */; };
 		F4A5654B19CA5C470030104D /* VCTermsOfServiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F38975019B7DC5000A75C5C /* VCTermsOfServiceViewController.xib */; };
 		F4A5654C19CA5C4A0030104D /* VCPrivatePolicyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F38975919B7DD0100A75C5C /* VCPrivatePolicyViewController.xib */; };
@@ -667,6 +663,10 @@
 		F4B7BFAB19A3035C00D934D6 /* VCTransitBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C7FC19615B9D007E05AD /* VCTransitBaseViewController.m */; };
 		F4B7BFAC19A3035C00D934D6 /* VCTransitBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C7FC19615B9D007E05AD /* VCTransitBaseViewController.m */; };
 		F4B7BFAD19A3035C00D934D6 /* VCTransitBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C7FC19615B9D007E05AD /* VCTransitBaseViewController.m */; };
+		F4BD606419FE1925003D819D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BD606319FE1925003D819D /* libsqlite3.dylib */; };
+		F4BD606719FE193B003D819D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BD606319FE1925003D819D /* libsqlite3.dylib */; };
+		F4BD606819FE1942003D819D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BD606319FE1925003D819D /* libsqlite3.dylib */; };
+		F4BD606919FE194D003D819D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BD606319FE1925003D819D /* libsqlite3.dylib */; };
 		F4C6B1AB1978DF2A00F6C10B /* Earning.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6B1AA1978DF2A00F6C10B /* Earning.m */; };
 		F4C6B1AC1978DF2A00F6C10B /* Earning.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6B1AA1978DF2A00F6C10B /* Earning.m */; };
 		F4C6B1B71979229900F6C10B /* VCDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6B1B61979229900F6C10B /* VCDebug.m */; };
@@ -1267,7 +1267,6 @@
 		4F38975819B7DD0100A75C5C /* VCPrivatePolicyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPrivatePolicyViewController.m; sourceTree = "<group>"; };
 		4F38975919B7DD0100A75C5C /* VCPrivatePolicyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCPrivatePolicyViewController.xib; sourceTree = "<group>"; };
 		4F38976119B8298200A75C5C /* Aluvi-Privacy-Policy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "Aluvi-Privacy-Policy.html"; sourceTree = "<group>"; };
-		4F38976219B8298200A75C5C /* Aluvi-TOS.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "Aluvi-TOS.html"; sourceTree = "<group>"; };
 		4F3D221619B13072006EF35D /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		4F3D221A19B13209006EF35D /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		4F3D222219B132A0006EF35D /* reciept_expanded@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reciept_expanded@2x.png"; sourceTree = "<group>"; };
@@ -1578,6 +1577,8 @@
 		F4A7C8241962E235007E05AD /* VCLocationSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCLocationSearchViewController.xib; path = ViewControllers/VCLocationSearchViewController.xib; sourceTree = "<group>"; };
 		F4A7C8291964E425007E05AD /* Voco 14.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 14.xcdatamodel"; sourceTree = "<group>"; };
 		F4B7BFAA19A2EF7400D934D6 /* Voco 11.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 11.xcdatamodel"; sourceTree = "<group>"; };
+		F4BD606319FE1925003D819D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		F4BD606519FE1932003D819D /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		F4C6B1A91978DEFB00F6C10B /* Earning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Earning.h; path = Model/Earning.h; sourceTree = "<group>"; };
 		F4C6B1AA1978DF2A00F6C10B /* Earning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Earning.m; path = Model/Earning.m; sourceTree = "<group>"; };
 		F4C6B1AD1978E4D400F6C10B /* Voco 27.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 27.xcdatamodel"; sourceTree = "<group>"; };
@@ -1686,6 +1687,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4BD606719FE193B003D819D /* libsqlite3.dylib in Frameworks */,
 				F4354D9D195D0D6A00C06CF7 /* MapKit.framework in Frameworks */,
 				F4354D9E195D0D6A00C06CF7 /* SystemConfiguration.framework in Frameworks */,
 				F4354D9F195D0D6A00C06CF7 /* libxml2.dylib in Frameworks */,
@@ -1705,6 +1707,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4BD606419FE1925003D819D /* libsqlite3.dylib in Frameworks */,
 				F4C6B230197F06B100F6C10B /* MapKit.framework in Frameworks */,
 				F4C6B231197F06B100F6C10B /* SystemConfiguration.framework in Frameworks */,
 				F4C6B232197F06B100F6C10B /* libxml2.dylib in Frameworks */,
@@ -1724,6 +1727,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4BD606919FE194D003D819D /* libsqlite3.dylib in Frameworks */,
 				F4D8FE8C19B1745A00BC0B69 /* MapKit.framework in Frameworks */,
 				F4D8FE8D19B1745A00BC0B69 /* SystemConfiguration.framework in Frameworks */,
 				F4D8FE8E19B1745A00BC0B69 /* libxml2.dylib in Frameworks */,
@@ -1743,6 +1747,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4BD606819FE1942003D819D /* libsqlite3.dylib in Frameworks */,
 				F45F7C0019357C6100A94721 /* MapKit.framework in Frameworks */,
 				F473EFF91949515800D8C900 /* SystemConfiguration.framework in Frameworks */,
 				F473EFF71949514A00D8C900 /* libxml2.dylib in Frameworks */,
@@ -2526,6 +2531,8 @@
 		F4FA0BE6192BF6BF005D8645 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F4BD606519FE1932003D819D /* libsqlite3.0.dylib */,
+				F4BD606319FE1925003D819D /* libsqlite3.dylib */,
 				F473EFF81949515800D8C900 /* SystemConfiguration.framework */,
 				F473EFF61949514A00D8C900 /* libxml2.dylib */,
 				F473EFF41949513F00D8C900 /* AddressBook.framework */,
@@ -2897,7 +2904,6 @@
 				4FC758BA19AA8C270093DBEA /* VCLogInViewController.xib in Resources */,
 				4FC7590219AAC0770093DBEA /* receipt-down-arrow@2x.png in Resources */,
 				4FD1297919D62462000E7C39 /* ride-bounds-button-selected@2x.png in Resources */,
-				4F38976719B8298200A75C5C /* Aluvi-TOS.html in Resources */,
 				F4354DBA195D0D6A00C06CF7 /* map_pin_fill-512.png in Resources */,
 				4F2EF9C01961391B006A1962 /* terms-menu-button-selected@2x.png in Resources */,
 				4FCBFBDA1995847300CBF0C8 /* driver-hov-toggle-select@2x.png in Resources */,
@@ -3065,7 +3071,6 @@
 				4F3D221C19B13209006EF35D /* background@2x.png in Resources */,
 				4FC758CB19AA91410093DBEA /* VCDriverOnBoardingViewController.xib in Resources */,
 				F4C6B27C197F06B100F6C10B /* InfoPlist.strings in Resources */,
-				4F38976619B8298200A75C5C /* Aluvi-TOS.html in Resources */,
 				F4C6B27D197F06B100F6C10B /* terms-menu-button-selected@2x.png in Resources */,
 				F4C6B27E197F06B100F6C10B /* pin@2x.png in Resources */,
 				4FFE171E198A1890004D4413 /* menu-map-icon@2x.png in Resources */,
@@ -3266,7 +3271,6 @@
 				4FCB64D019F8622300B02660 /* nav-bar-background@2x.png in Resources */,
 				F4D8FF2E19B1745A00BC0B69 /* VCRiderOnBoardingViewController.xib in Resources */,
 				F4D8FF2F19B1745A00BC0B69 /* VCDriveViewController.xib in Resources */,
-				F4A5654919C8F3EC0030104D /* Aluvi-TOS.html in Resources */,
 				F4D8FF3019B1745A00BC0B69 /* mycar-menu-button@2x.png in Resources */,
 				F4D8FF3119B1745A00BC0B69 /* VCLogInViewController.xib in Resources */,
 				F4D8FF3219B1745A00BC0B69 /* mycar-menu-button-selected@2x.png in Resources */,
@@ -3374,7 +3378,6 @@
 				4F3D221E19B13209006EF35D /* background@2x.png in Resources */,
 				4F2EF9BF1961391B006A1962 /* terms-menu-button-selected@2x.png in Resources */,
 				4FC758CD19AA91410093DBEA /* VCDriverOnBoardingViewController.xib in Resources */,
-				4F38976819B8298200A75C5C /* Aluvi-TOS.html in Resources */,
 				4FE286FD1962C25400FD8AF6 /* pin@2x.png in Resources */,
 				4FFE1720198A1890004D4413 /* menu-map-icon@2x.png in Resources */,
 				4F3DB5BE1981ED4E00DDD094 /* current-location-button@2x.png in Resources */,
@@ -4231,7 +4234,7 @@
 				INFOPLIST_FILE = "Voco Testing-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "Voco Testing";
-				PROVISIONING_PROFILE = "662EC7F9-BC44-4B2E-AC94-A1B56623847B";
+				PROVISIONING_PROFILE = "0bc6ad2c-8e51-462c-a353-77832a434cc7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4258,7 +4261,7 @@
 				INFOPLIST_FILE = "Voco Testing-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "Voco Testing";
-				PROVISIONING_PROFILE = "662EC7F9-BC44-4B2E-AC94-A1B56623847B";
+				PROVISIONING_PROFILE = "0bc6ad2c-8e51-462c-a353-77832a434cc7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -4280,7 +4283,7 @@
 				INFOPLIST_FILE = "Voco Dev-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "Aluvi Dev";
-				PROVISIONING_PROFILE = "C8290FC8-1D6F-42A1-BF24-17BE574A5300";
+				PROVISIONING_PROFILE = "1f426889-82ae-4cdc-8268-82f754c5a1cc";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4306,7 +4309,7 @@
 				INFOPLIST_FILE = "Voco Dev-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "Aluvi Dev";
-				PROVISIONING_PROFILE = "C8290FC8-1D6F-42A1-BF24-17BE574A5300";
+				PROVISIONING_PROFILE = "1f426889-82ae-4cdc-8268-82f754c5a1cc";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -4452,7 +4455,7 @@
 				INFOPLIST_FILE = "Voco/Voco-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "CB5F433B-46FB-4258-8E34-EFAEE5C4D58E";
+				PROVISIONING_PROFILE = "28f621b9-8ae2-474a-a5a4-895c285c9479";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4479,7 +4482,7 @@
 				INFOPLIST_FILE = "Voco/Voco-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "CB5F433B-46FB-4258-8E34-EFAEE5C4D58E";
+				PROVISIONING_PROFILE = "28f621b9-8ae2-474a-a5a4-895c285c9479";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

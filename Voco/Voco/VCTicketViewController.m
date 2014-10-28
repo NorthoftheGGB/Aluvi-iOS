@@ -70,7 +70,7 @@
 #define kDriverCancelHudOpenX 165
 #define kDriverCancelHudOpenY 302
 
-@interface VCTicketViewController () <MKMapViewDelegate, VCEditLocationWidgetDelegate, ActionSheetCustomPickerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate>
+@interface VCTicketViewController () <MKMapViewDelegate, VCEditLocationWidgetDelegate, ActionSheetCustomPickerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate, MBXRasterTileOverlayDelegate>
 
 
 // map
@@ -243,6 +243,7 @@
         self.map.showsUserLocation = YES;
         
         _tileOverlay = [[MBXRasterTileOverlay alloc] initWithMapID:@"aluvi.jlandbj7"];
+        _tileOverlay.delegate = self;
         [self.map addOverlay:_tileOverlay];
         
         _appeared = YES;
