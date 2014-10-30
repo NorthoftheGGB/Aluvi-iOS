@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCTicketViewController">
@@ -128,7 +128,7 @@
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="confirmation-hud.png" translatesAutoresizingMaskIntoConstraints="NO" id="oc4-Pp-acs">
-                    <rect key="frame" x="0.0" y="268" width="320" height="260"/>
+                    <rect key="frame" x="0.0" y="269" width="320" height="260"/>
                 </imageView>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Qz2-lZ-23U">
                     <rect key="frame" x="75" y="9" width="170" height="29"/>
@@ -146,33 +146,6 @@
                         <action selector="didChangeDisplayDirectionValue:" destination="-1" eventType="valueChanged" id="K3T-Cg-jhJ"/>
                     </connections>
                 </segmentedControl>
-                <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nx0-ot-14p" customClass="VCButtonStandardStyle">
-                    <rect key="frame" x="0.0" y="575" width="320" height="46"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="46" id="0Hb-gg-bU5"/>
-                        <constraint firstAttribute="width" constant="320" id="1uv-3Z-z3E"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="OK, Show me my morning commute." backgroundImage="button-full-default.png">
-                        <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="selected" title="OK, Show me my morning commute." backgroundImage="button-full-select.png">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="highlighted" title="OK, Show me my morning commute." backgroundImage="button-full-select.png">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="16"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="didTapConfirmButton:" destination="RWM-tO-NBZ" eventType="touchUpInside" id="3ON-FN-6Cx"/>
-                        <action selector="didTapConfirmedCommuterRide:" destination="-1" eventType="touchUpInside" id="hjj-TJ-Dfc"/>
-                    </connections>
-                </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup Time :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smm-lU-ouO" customClass="VCLabel">
                     <rect key="frame" x="17" y="388" width="102" height="21"/>
                     <constraints>
@@ -395,7 +368,7 @@
                     <color key="backgroundColor" red="0.42754912760000002" green="1" blue="0.41485014920000002" alpha="1" colorSpace="calibratedRGB"/>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBK-u4-kFo" customClass="VCLabel">
-                    <rect key="frame" x="0.0" y="532" width="106" height="21"/>
+                    <rect key="frame" x="107" y="472" width="106" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="Fbr-29-qlW"/>
                         <constraint firstAttribute="width" constant="106" id="bt0-wU-7wC"/>
@@ -418,7 +391,7 @@
                     <color key="backgroundColor" red="0.42754912760000002" green="1" blue="0.41485014920000002" alpha="1" colorSpace="calibratedRGB"/>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yll-81-PUN" customClass="VCLabel">
-                    <rect key="frame" x="214" y="532" width="106" height="21"/>
+                    <rect key="frame" x="107" y="516" width="106" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="106" id="53v-dj-hE8"/>
                         <constraint firstAttribute="height" constant="21" id="JQ4-Zh-dCV"/>
@@ -433,7 +406,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Mv-iT-BOd" customClass="VCLabel">
-                    <rect key="frame" x="107" y="532" width="106" height="21"/>
+                    <rect key="frame" x="107" y="494" width="106" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="J1j-RD-V3f"/>
                         <constraint firstAttribute="width" constant="106" id="pTs-rZ-8Cp"/>
@@ -447,24 +420,52 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
+                <button opaque="NO" alpha="0.94999998807907104" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nx0-ot-14p" customClass="VCButtonStandardStyle">
+                    <rect key="frame" x="0.0" y="545" width="320" height="46"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="46" id="0Hb-gg-bU5"/>
+                        <constraint firstAttribute="width" constant="320" id="1uv-3Z-z3E"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="OK, Show me my morning commute." backgroundImage="button-full-default.png">
+                        <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="OK, Show me my morning commute." backgroundImage="button-full-select.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted" title="OK, Show me my morning commute." backgroundImage="button-full-select.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didTapConfirmButton:" destination="RWM-tO-NBZ" eventType="touchUpInside" id="3ON-FN-6Cx"/>
+                        <action selector="didTapConfirmedCommuterRide:" destination="-1" eventType="touchUpInside" id="hjj-TJ-Dfc"/>
+                    </connections>
+                </button>
             </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="oc4-Pp-acs" firstAttribute="top" secondItem="UXb-UY-V0U" secondAttribute="bottom" constant="-78" id="0ND-G2-mbS"/>
+                <constraint firstItem="oc4-Pp-acs" firstAttribute="top" secondItem="UXb-UY-V0U" secondAttribute="bottom" constant="-77" id="0ND-G2-mbS"/>
                 <constraint firstAttribute="trailing" secondItem="LMV-AV-c4O" secondAttribute="trailing" constant="11" id="0y1-ej-Omn"/>
                 <constraint firstItem="Qz2-lZ-23U" firstAttribute="top" secondItem="RWM-tO-NBZ" secondAttribute="top" constant="9" id="155-Yi-RPo"/>
                 <constraint firstItem="LMV-AV-c4O" firstAttribute="top" secondItem="R4l-5d-Vc0" secondAttribute="bottom" constant="4" id="2XB-E3-ZCk"/>
                 <constraint firstItem="R4l-5d-Vc0" firstAttribute="top" secondItem="Zgy-fF-cwL" secondAttribute="bottom" constant="4" id="3cQ-la-wP5"/>
                 <constraint firstAttribute="trailing" secondItem="CIS-vw-GPg" secondAttribute="trailing" constant="6" id="4JU-x5-1Mu"/>
                 <constraint firstItem="i6s-VW-kkM" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" constant="118" id="6T1-CN-3JP"/>
-                <constraint firstItem="nx0-ot-14p" firstAttribute="top" secondItem="LMV-AV-c4O" secondAttribute="bottom" constant="116" id="6UP-zH-K2T"/>
-                <constraint firstItem="nx0-ot-14p" firstAttribute="top" secondItem="oc4-Pp-acs" secondAttribute="bottom" constant="47" id="6gQ-GH-RkQ"/>
+                <constraint firstItem="nx0-ot-14p" firstAttribute="top" secondItem="LMV-AV-c4O" secondAttribute="bottom" constant="86" id="6UP-zH-K2T"/>
+                <constraint firstItem="nx0-ot-14p" firstAttribute="top" secondItem="oc4-Pp-acs" secondAttribute="bottom" constant="16" id="6gQ-GH-RkQ"/>
                 <constraint firstItem="UXb-UY-V0U" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" constant="16" id="7Ql-Ps-qA2"/>
                 <constraint firstItem="f9u-kb-YvT" firstAttribute="top" secondItem="smm-lU-ouO" secondAttribute="bottom" constant="4" id="7lO-J1-vRe"/>
-                <constraint firstItem="oc4-Pp-acs" firstAttribute="top" secondItem="CIS-vw-GPg" secondAttribute="bottom" constant="-49" id="98h-zp-EwS"/>
-                <constraint firstAttribute="bottom" secondItem="nx0-ot-14p" secondAttribute="bottom" constant="14" id="An2-fr-wTM"/>
-                <constraint firstItem="nx0-ot-14p" firstAttribute="top" secondItem="yll-81-PUN" secondAttribute="bottom" constant="22" id="BWR-lw-2hA"/>
+                <constraint firstItem="oc4-Pp-acs" firstAttribute="top" secondItem="CIS-vw-GPg" secondAttribute="bottom" constant="-48" id="98h-zp-EwS"/>
+                <constraint firstAttribute="bottom" secondItem="nx0-ot-14p" secondAttribute="bottom" constant="44" id="An2-fr-wTM"/>
+                <constraint firstItem="nx0-ot-14p" firstAttribute="top" secondItem="yll-81-PUN" secondAttribute="bottom" constant="8" id="BWR-lw-2hA"/>
                 <constraint firstItem="nx0-ot-14p" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" id="CV6-bY-Snt"/>
-                <constraint firstItem="nx0-ot-14p" firstAttribute="top" secondItem="hBK-u4-kFo" secondAttribute="bottom" constant="22" id="EVQ-9e-q59"/>
+                <constraint firstItem="nx0-ot-14p" firstAttribute="top" secondItem="hBK-u4-kFo" secondAttribute="bottom" constant="52" id="EVQ-9e-q59"/>
                 <constraint firstItem="iha-zj-PjZ" firstAttribute="top" secondItem="f9u-kb-YvT" secondAttribute="bottom" constant="4" id="Gwe-Yj-MJT"/>
                 <constraint firstItem="1nW-T7-6PG" firstAttribute="top" secondItem="UXb-UY-V0U" secondAttribute="bottom" constant="-11" id="IC6-Fe-U4t"/>
                 <constraint firstItem="aeQ-Xu-ULg" firstAttribute="leading" secondItem="fLf-hD-OJd" secondAttribute="trailing" constant="8" id="Ids-Xg-edF"/>
@@ -476,23 +477,23 @@
                 <constraint firstItem="iq0-8h-goE" firstAttribute="top" secondItem="smm-lU-ouO" secondAttribute="bottom" constant="4" id="VQT-Pn-Mio"/>
                 <constraint firstAttribute="trailing" secondItem="R4l-5d-Vc0" secondAttribute="trailing" constant="32" id="WyK-RW-TIT"/>
                 <constraint firstItem="Qz2-lZ-23U" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" constant="75" id="YYC-hx-qSa"/>
-                <constraint firstItem="oc4-Pp-acs" firstAttribute="top" secondItem="aeQ-Xu-ULg" secondAttribute="bottom" constant="-85" id="a77-d1-HbB"/>
+                <constraint firstItem="oc4-Pp-acs" firstAttribute="top" secondItem="aeQ-Xu-ULg" secondAttribute="bottom" constant="-84" id="a77-d1-HbB"/>
                 <constraint firstItem="1nW-T7-6PG" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" constant="33" id="adn-X9-6Ca"/>
-                <constraint firstItem="yll-81-PUN" firstAttribute="leading" secondItem="0Mv-iT-BOd" secondAttribute="trailing" constant="1" id="alO-Pf-NeG"/>
+                <constraint firstItem="yll-81-PUN" firstAttribute="leading" secondItem="0Mv-iT-BOd" secondAttribute="trailing" constant="-106" id="alO-Pf-NeG"/>
                 <constraint firstItem="Sdk-is-gH6" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" constant="9" id="e8q-LI-gRa"/>
                 <constraint firstItem="Sdk-is-gH6" firstAttribute="top" secondItem="iha-zj-PjZ" secondAttribute="bottom" constant="13" id="eur-Xr-oqD"/>
                 <constraint firstItem="f9u-kb-YvT" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" constant="17" id="gJM-Ij-2Q4"/>
-                <constraint firstItem="0Mv-iT-BOd" firstAttribute="leading" secondItem="hBK-u4-kFo" secondAttribute="trailing" constant="1" id="hil-23-y5Z"/>
-                <constraint firstItem="hBK-u4-kFo" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" id="hmt-vq-huJ"/>
+                <constraint firstItem="0Mv-iT-BOd" firstAttribute="leading" secondItem="hBK-u4-kFo" secondAttribute="trailing" constant="-106" id="hil-23-y5Z"/>
+                <constraint firstItem="hBK-u4-kFo" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" constant="107" id="hmt-vq-huJ"/>
                 <constraint firstAttribute="trailing" secondItem="kcp-j6-xAA" secondAttribute="trailing" constant="11" id="htj-rh-nO5"/>
-                <constraint firstItem="nx0-ot-14p" firstAttribute="top" secondItem="0Mv-iT-BOd" secondAttribute="bottom" constant="22" id="ibG-0A-TZz"/>
+                <constraint firstItem="nx0-ot-14p" firstAttribute="top" secondItem="0Mv-iT-BOd" secondAttribute="bottom" constant="30" id="ibG-0A-TZz"/>
                 <constraint firstItem="smm-lU-ouO" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" constant="17" id="lTx-Ju-CeT"/>
                 <constraint firstItem="oc4-Pp-acs" firstAttribute="leading" secondItem="RWM-tO-NBZ" secondAttribute="leading" id="mgP-0D-JzM"/>
                 <constraint firstItem="kcp-j6-xAA" firstAttribute="top" secondItem="Zgy-fF-cwL" secondAttribute="bottom" constant="4" id="o8y-sB-tdr"/>
                 <constraint firstItem="fLf-hD-OJd" firstAttribute="leading" secondItem="i6s-VW-kkM" secondAttribute="trailing" constant="8" id="rNL-Po-ZTB"/>
-                <constraint firstItem="nx0-ot-14p" firstAttribute="top" secondItem="iha-zj-PjZ" secondAttribute="bottom" constant="116" id="tea-6q-pzv"/>
-                <constraint firstItem="oc4-Pp-acs" firstAttribute="top" secondItem="fLf-hD-OJd" secondAttribute="bottom" constant="-85" id="uEv-S8-Ba3"/>
-                <constraint firstItem="oc4-Pp-acs" firstAttribute="top" secondItem="i6s-VW-kkM" secondAttribute="bottom" constant="-84" id="ymN-Rt-iAJ"/>
+                <constraint firstItem="nx0-ot-14p" firstAttribute="top" secondItem="iha-zj-PjZ" secondAttribute="bottom" constant="86" id="tea-6q-pzv"/>
+                <constraint firstItem="oc4-Pp-acs" firstAttribute="top" secondItem="fLf-hD-OJd" secondAttribute="bottom" constant="-84" id="uEv-S8-Ba3"/>
+                <constraint firstItem="oc4-Pp-acs" firstAttribute="top" secondItem="i6s-VW-kkM" secondAttribute="bottom" constant="-83" id="ymN-Rt-iAJ"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
