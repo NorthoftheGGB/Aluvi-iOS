@@ -64,6 +64,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         _stripeOK = NO;
+        self.showHamburger = NO;
     }
     return self;
 }
@@ -252,7 +253,6 @@
     card.expMonth = _cardView.card.expMonth;
     card.expYear = _cardView.card.expYear;
     card.cvc = _cardView.card.cvc;
-    
     
     _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _hud.labelText = @"Saving user info";

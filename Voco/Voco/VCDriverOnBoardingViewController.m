@@ -61,7 +61,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.showHamburger = NO;
     }
     return self;
 }

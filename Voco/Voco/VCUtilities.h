@@ -10,4 +10,5 @@
 
 @interface VCUtilities : NSObject
 + (NSString *) formatCurrencyFromCents: (NSNumber *) cents;
++ (NSDate *) beginningOfToday;
 @end

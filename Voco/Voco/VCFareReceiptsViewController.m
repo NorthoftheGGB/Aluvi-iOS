@@ -47,7 +47,6 @@
     // Fire off the earnings reload
     [VCDriverApi earnings:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         // no need to do anything
-        NSLog(@"Hallo?");
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         // nothing to do
     }];
@@ -113,7 +112,7 @@
         return 61;
     }
 }
-//TODO: look over this please.
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath isExpanded:(BOOL)isExpanded {
     
     Earning *earning = [_fetchedResultsController objectAtIndexPath:indexPath];
@@ -190,9 +189,9 @@
  */
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-}
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+//}
 
 
 #pragma mark NSFetchedResultsControllerDelegate

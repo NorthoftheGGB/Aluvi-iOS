@@ -21,6 +21,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         _toggle = YES;
+        _showHamburger = YES;
     }
     return self;
 }
@@ -28,7 +29,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self showHamburgerBarButton];
+    if(_showHamburger){
+        [self showHamburgerBarButton];
+    }
 }
 
 - (void) showHamburgerBarButton {

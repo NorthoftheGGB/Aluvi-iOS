@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "VCCenterViewBaseViewController.h"
+#import "VCScrollableFormViewController.h"
 
-@interface VCEarningsViewController : VCCenterViewBaseViewController
+@interface VCEarningsViewController : VCScrollableFormViewController
 
 @end

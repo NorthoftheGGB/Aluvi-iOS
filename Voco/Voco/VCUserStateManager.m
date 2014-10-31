@@ -255,6 +255,17 @@ static VCUserStateManager *sharedSingleton;
     
 }
 
+- (void) refreshProfileWithCompleition: (void ( ^ ) ( ))completion {
+    [VCUsersApi getProfile:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [self setProfile: mappingResult.firstObject];
+        completion();
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [WRUtilities criticalError:error];
+    }];
+
+}
+
+
 
 
 

@@ -7,10 +7,11 @@
 //
 
 #import "VCCommuteSetUpOnBoardingViewController.h"
+#import <MBProgressHUD.h>
 #import "VCButtonStandardStyle.h"
 #import "VCInterfaceManager.h"
 #import "VCTicketViewController.h"
-
+#import "VCUserStateManager.h"
 
 @interface VCCommuteSetUpOnBoardingViewController ()
 @property (weak, nonatomic) IBOutlet VCButtonStandardStyle *setUpCommuteButton;
@@ -36,6 +37,12 @@
 {
     [super viewDidLoad];
     self.navigationController.navigationBarHidden = YES;
+    
+    // Now that the user has entered all their profile information, load it into the app
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[VCUserStateManager instance] refreshProfileWithCompleition:^{
+        [hud hide:YES];
+    }];
 }
 
 - (void)didReceiveMemoryWarning

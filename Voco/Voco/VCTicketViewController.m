@@ -212,11 +212,16 @@
     [self addChildViewController:_homeLocationWidget];
     [self addChildViewController:_workLocationWidget];
     
+    
+    // Look for pending ticket
     if(_ticket == nil) {
         
         // Check for existing commuter ticket that is has not been processed
         NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
-        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"savedState IN %@  AND direction = 'a' AND confirmed = false ", @[kCreatedState, kRequestedState, kCommuteSchedulerFailedState] ];
+        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"savedState IN %@  AND direction = 'a' AND confirmed = false \
+                                   AND pickupTime > %@",
+                                   @[kCreatedState, kRequestedState, kCommuteSchedulerFailedState],
+                                   [VCUtilities beginningOfToday] ];
         [fetch setPredicate:predicate];
         NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];
         [fetch setSortDescriptors:@[sort]];
@@ -228,7 +233,22 @@
             _ticket = [tickets objectAtIndex:0];
         }
     }
-    
+    // Look for next ticket for today/tomorrow
+    if(_ticket == nil) {
+        NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
+        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"savedState = 'scheduled' AND pickupTime > %@",
+                                   [VCUtilities beginningOfToday] ];
+        [fetch setPredicate:predicate];
+        NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];
+        [fetch setSortDescriptors:@[sort]];
+        NSError * error;
+        NSArray * tickets = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
+        if(tickets == nil) {
+            [WRUtilities criticalError:error];
+        } else if([tickets count] > 0) {
+            _ticket = [tickets objectAtIndex:0];
+        }
+    }
     
 }
 
@@ -551,8 +571,18 @@
 }
 
 - (void) transitionToSetupCommute {
-    [self zoomToCurrentLocation];
-
+    if([[VCCommuteManager instance] hasSettings]){
+        [self showSuggestedRoute:[VCCommuteManager instance].home to:[VCCommuteManager instance].work];
+    } else {
+        [self zoomToCurrentLocation];
+    }
+    
+    CGRect currentLocationframe = _currentLocationButton.frame;
+    currentLocationframe.origin.x = 271;
+    currentLocationframe.origin.y = self.view.frame.size.height - 46;
+    _currentLocationButton.frame = currentLocationframe;
+    [self.view addSubview:self.currentLocationButton];
+    
     [_editCommuteButton removeFromSuperview]; //homeActionView goes here
     [self showCancelBarButton];
     
@@ -580,7 +610,13 @@
         [self hideCancelBarButton];
         [self showHome];
     } completion:^(BOOL finished) {
-        [self zoomToCurrentLocation];
+        if([[VCCommuteManager instance] hasSettings]){
+            [self addOriginAnnotation: [VCCommuteManager instance].home ];
+            [self addDestinationAnnotation: [VCCommuteManager instance].home ];
+            [self showSuggestedRoute:[VCCommuteManager instance].home to:[VCCommuteManager instance].work];
+        } else {
+            [self zoomToCurrentLocation];
+        }
     }];
     
 }
@@ -760,10 +796,10 @@
 }
 
 - (void) transitionToWaitingScreen {
-    //TODO improve animations
+    [self showCancelBarButton];
     [_scheduleRideButton removeFromSuperview];
     [self.view addSubview:self.holdingScreen];
-    [self hideCancelBarButton];
+    [self showCancelBarButton];
     _step = kStepDone;
 }
 
@@ -790,13 +826,18 @@
 
 - (void) updateRideDetailsConfirmationView:(Ticket *) ticket {
     
-    if([ticket.driving boolValue]) {
-        [_rideItineraryView driverLayout: ticket];
+    [UIView animateWithDuration: 1.0
+                     animations:^{
+                         
+                         if([ticket.driving boolValue]) {
+                             [_rideItineraryView driverLayout: ticket];
+                             
+                         } else {
+                             [_rideItineraryView riderLayout: ticket];
+                         }
+
+                     }];
         
-    } else {
-        [_rideItineraryView riderLayout: ticket];
-    }
-    
     
 }
 
@@ -967,7 +1008,9 @@
 }
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    [self zoomToCurrentLocation];
+    if(![[VCCommuteManager instance] hasSettings]) {
+        [self zoomToCurrentLocation];
+    }
     [self stopLocationUpdates];
 }
 
@@ -999,6 +1042,7 @@
     _meetingPointAnnotation = [[MKPointAnnotation alloc] init];
     _meetingPointAnnotation.coordinate = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude);
     _meetingPointAnnotation.title = @"Meeting Point";
+    _meetingPointAnnotation.subtitle = [_ticket.pickupTime time];
     [self.map addAnnotation:_meetingPointAnnotation];
 }
 
@@ -1320,6 +1364,10 @@
             aRenderer.strokeColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
             aRenderer.lineWidth = 4;
             return aRenderer;
+        } else if ([overlay isKindOfClass:[MBXRasterTileOverlay class]])
+        {
+            MKTileOverlayRenderer *renderer = [[MKTileOverlayRenderer alloc] initWithTileOverlay:overlay];
+            return renderer;
         } else {
             return [super mapView:mapView viewForOverlay:overlay];
         }
@@ -1329,6 +1377,20 @@
     
     return nil;
 }
+
+/*
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
+{
+    // This is boilerplate code to connect tile overlay layers with suitable renderers
+    //
+    if ([overlay isKindOfClass:[MBXRasterTileOverlay class]])
+    {
+        MKTileOverlayRenderer *renderer = [[MKTileOverlayRenderer alloc] initWithTileOverlay:overlay];
+        return renderer;
+    }
+    return nil;
+}
+ */
 
 #pragma makr RiderInterface
 
