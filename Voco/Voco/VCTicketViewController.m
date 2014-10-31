@@ -551,8 +551,12 @@
 }
 
 - (void) transitionToSetupCommute {
-    [self zoomToCurrentLocation];
-
+    if([[VCCommuteManager instance] hasSettings]){
+        [self showSuggestedRoute:[VCCommuteManager instance].home to:[VCCommuteManager instance].work];
+    } else {
+        [self zoomToCurrentLocation];
+    }
+       
     [_editCommuteButton removeFromSuperview]; //homeActionView goes here
     [self showCancelBarButton];
     
@@ -580,7 +584,13 @@
         [self hideCancelBarButton];
         [self showHome];
     } completion:^(BOOL finished) {
-        [self zoomToCurrentLocation];
+        if([[VCCommuteManager instance] hasSettings]){
+            [self addOriginAnnotation: [VCCommuteManager instance].home ];
+            [self addDestinationAnnotation: [VCCommuteManager instance].home ];
+            [self showSuggestedRoute:[VCCommuteManager instance].home to:[VCCommuteManager instance].work];
+        } else {
+            [self zoomToCurrentLocation];
+        }
     }];
     
 }
@@ -790,13 +800,18 @@
 
 - (void) updateRideDetailsConfirmationView:(Ticket *) ticket {
     
-    if([ticket.driving boolValue]) {
-        [_rideItineraryView driverLayout: ticket];
+    [UIView animateWithDuration: 1.0
+                     animations:^{
+                         
+                         if([ticket.driving boolValue]) {
+                             [_rideItineraryView driverLayout: ticket];
+                             
+                         } else {
+                             [_rideItineraryView riderLayout: ticket];
+                         }
+
+                     }];
         
-    } else {
-        [_rideItineraryView riderLayout: ticket];
-    }
-    
     
 }
 
@@ -967,7 +982,9 @@
 }
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    [self zoomToCurrentLocation];
+    if(![[VCCommuteManager instance] hasSettings]) {
+        [self zoomToCurrentLocation];
+    }
     [self stopLocationUpdates];
 }
 
