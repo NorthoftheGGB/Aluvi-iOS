@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "VCScrollableFormViewController.h"
 
-@interface VCCenterViewBaseViewController : VCScrollableFormViewController
+
+@interface VCCenterViewBaseViewController : UIViewController
+
+@property (nonatomic) BOOL showHamburger;
 
 - (void) didTapHamburger;
 

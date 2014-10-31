@@ -142,6 +142,8 @@
 }
 
 - (IBAction)didTapCreateAccount:(id)sender {
+    [_emailTextField resignFirstResponder];
+    [_passwordTextField resignFirstResponder];
     
     if([_emailTextField.text length] == 0 || [_passwordTextField.text length] == 0){
         [UIAlertView showWithTitle:@"Username/Password" message:@"Please fill in your desired email and password" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
@@ -294,7 +296,7 @@
 
 - (void) goToSignUp {
     
-#ifdef DEBUGHOUSE
+#if 1
     // Good to do, email is not in the system
     VCRiderOnBoardingViewController * vc = [[VCRiderOnBoardingViewController alloc] init];
     vc.desiredEmail = _emailTextField.text;

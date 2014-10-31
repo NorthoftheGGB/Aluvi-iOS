@@ -27,6 +27,7 @@
 #import "NSDate+Pretty.h"
 #import "VCUserStateManager.h"
 #import "VCRiderApi.h"
+#import "VCUtilities.h"
 
 
 // These ones go in the array
@@ -552,16 +553,9 @@
 - (void) loadScheduleItems {
     
     
-    // TODO: set up filter by date < today at midnight.
+    //set up filter by date > today at midnight.
     
-    NSDate *date = [NSDate date];
-    NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
-    NSUInteger preservedComponents = (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit);
-    NSDateComponents * components = [calendar components:preservedComponents fromDate:date];
-    [components setHour:0];
-    [components setMinute:0];
-    [components setSecond:0];
-    date = [calendar dateFromComponents:components];
+   
     
     NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
     NSPredicate * predicate = [NSPredicate predicateWithFormat:@"( ( savedState IN %@ AND confirmed = true ) \
@@ -572,7 +566,7 @@
                                @[kScheduledState],
                                @[kCreatedState, kRequestedState, kScheduledState],
                                kCommuteSchedulerFailedState,
-                               date  ];
+                               [VCUtilities beginningOfToday]  ];
     [fetch setPredicate:predicate];
     NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];
     [fetch setSortDescriptors:@[sort]];

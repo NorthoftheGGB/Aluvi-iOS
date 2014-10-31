@@ -46,7 +46,7 @@ static void * XXContext = &XXContext;
     if(self){
         _locationManager = [[CLLocationManager alloc] init];
         
-        if ([_locationManager respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        if ([_locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
             [_locationManager requestAlwaysAuthorization];
         }
         _locationManager.pausesLocationUpdatesAutomatically = TRUE;

@@ -72,4 +72,7 @@ NSString *const VCUserStateDriverStateKeyPath;
 - (void) clearRideState;
 - (void) clearUser;
 
+- (void) refreshProfileWithCompleition: (void ( ^ ) ( ))completion;
+
+
 @end
