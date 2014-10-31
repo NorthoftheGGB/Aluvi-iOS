@@ -519,7 +519,7 @@
         if( [[VCCommuteManager instance] hasSettings] ){
             _scheduleRideButton.titleLabel.text = @"COMMUTE TOMORROW";
         } else {
-            _scheduleRideButton.titleLabel.text = @"SAVE COMMUTE";
+            _scheduleRideButton.titleLabel.text = @"SAVE MY COMMUTE";
         }
         CGRect frame = _scheduleRideButton.frame;
         frame.origin.x = 0;
