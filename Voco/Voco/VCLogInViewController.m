@@ -249,7 +249,7 @@
                                                   case 404:
                                                   {
                                                       [UIAlertView showWithTitle:@"New User?"
-                                                                         message:@"That email is not in our system.  Click Register to join Aluvi with these credentials!"
+                                                                         message:@"The email you provided was not found. Click 'Register' to join Aluvi."
                                                                cancelButtonTitle:@"Cancel"
                                                                otherButtonTitles:@[@"Register"]
                                                                         tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
