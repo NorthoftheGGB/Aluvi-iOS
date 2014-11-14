@@ -1,5 +1,5 @@
 //
-//  Ride.h
+//  Ticket.h
 //  Voco
 //
 //  Created by Matthew Shultz on 5/27/14.

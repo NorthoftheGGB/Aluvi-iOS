@@ -278,7 +278,7 @@
                 // if commute IS set up already
                 [self showHome];
                 self.map.userTrackingMode = MKUserTrackingModeFollow;
-
+                
                 [self addOriginAnnotation: [VCCommuteManager instance].home];
                 [self addDestinationAnnotation: [VCCommuteManager instance].work];
                 [self showSuggestedRoute: [VCCommuteManager instance].home to:[VCCommuteManager instance].work];
@@ -835,9 +835,9 @@
                          } else {
                              [_rideItineraryView riderLayout: ticket];
                          }
-
+                         
                      }];
-        
+    
     
 }
 
@@ -1090,12 +1090,12 @@
                                           break;
                                   }
                               }];
-
+            
         } failure:^{
             [UIAlertView showWithTitle:@"Error" message:@"There was a problem sending your request, you might want to try that again" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
         }];
         
-         
+        
     } else {
         
         [self storeCommuterSettings:^{
@@ -1108,9 +1108,9 @@
                 }
                 
             } ];
-
+            
         } failure:^{
-             [UIAlertView showWithTitle:@"Error" message:@"There was a problem sending your request, you might want to try that again" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+            [UIAlertView showWithTitle:@"Error" message:@"There was a problem sending your request, you might want to try that again" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
         }];
         
     }
@@ -1133,7 +1133,7 @@
                                              [hud hide:YES];
                                              [UIAlertView showWithTitle:@"Error" message:@"There was a problem sending your request, you might want to try that again" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
                                          }];
-
+    
 }
 
 - (IBAction)didTapNextButton:(id)sender {
@@ -1348,6 +1348,7 @@
     }
 }
 
+/*
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay
 {
     if ([overlay isKindOfClass:[MKPolyline class]])
@@ -1364,33 +1365,50 @@
             aRenderer.strokeColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
             aRenderer.lineWidth = 4;
             return aRenderer;
-        } else if ([overlay isKindOfClass:[MBXRasterTileOverlay class]])
-        {
-            MKTileOverlayRenderer *renderer = [[MKTileOverlayRenderer alloc] initWithTileOverlay:overlay];
-            return renderer;
-        } else {
-            return [super mapView:mapView viewForOverlay:overlay];
         }
-        
-        
+    } else if ([overlay isKindOfClass:[MBXRasterTileOverlay class]])
+    {
+        MKTileOverlayRenderer *renderer = [[MKTileOverlayRenderer alloc] initWithTileOverlay:overlay];
+        return renderer;
+    } else {
+        return [super mapView:mapView viewForOverlay:overlay];
     }
     
     return nil;
 }
+ */
 
-/*
+
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
 {
-    // This is boilerplate code to connect tile overlay layers with suitable renderers
-    //
-    if ([overlay isKindOfClass:[MBXRasterTileOverlay class]])
+    if ([overlay isKindOfClass:[MKPolyline class]])
     {
+        MKPolyline * polyline = (MKPolyline *) overlay;
+        if( [polyline.title isEqualToString:@"pedestrian"]) {
+            MKPolylineRenderer*   aRenderer = [[MKPolylineRenderer alloc] initWithPolyline:(MKPolyline*)overlay];
+            aRenderer.strokeColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
+            aRenderer.lineWidth = 4;
+            aRenderer.lineDashPattern = @[[NSNumber numberWithInt:10], [NSNumber numberWithInt:6]];
+            return aRenderer;
+        } else if ([polyline.title isEqualToString:@"driver_leg"]) {
+            MKPolylineRenderer*   aRenderer = [[MKPolylineRenderer alloc] initWithPolyline:(MKPolyline*)overlay];
+            aRenderer.strokeColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
+            aRenderer.lineWidth = 4;
+            return aRenderer;
+        }
+    } else if ([overlay isKindOfClass:[MBXRasterTileOverlay class]]) {
         MKTileOverlayRenderer *renderer = [[MKTileOverlayRenderer alloc] initWithTileOverlay:overlay];
         return renderer;
+    } else {
+        return [super mapView:mapView viewForOverlay:overlay];
     }
+    
+    
+    
+    
     return nil;
 }
- */
+
 
 #pragma makr RiderInterface
 
