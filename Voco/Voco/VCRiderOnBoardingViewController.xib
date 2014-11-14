@@ -82,10 +82,10 @@
                         <action selector="didTapTocButton:" destination="-1" eventType="touchUpInside" id="wMe-OJ-S0j"/>
                     </connections>
                 </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agree to Aluvi terms of service &amp; privacy policy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOG-dy-qwe" customClass="VCLabel">
-                    <rect key="frame" x="8" y="383" width="265" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agree to Aluvi's terms of service &amp; privacy policy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOG-dy-qwe" customClass="VCLabel">
+                    <rect key="frame" x="8" y="383" width="277" height="21"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="265" id="0Sz-Kf-TKI"/>
+                        <constraint firstAttribute="width" constant="277" id="0Sz-Kf-TKI"/>
                         <constraint firstAttribute="height" constant="21" id="cCZ-XE-Kda"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -249,7 +249,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Bzu-3F-31A" firstAttribute="leading" secondItem="iOG-dy-qwe" secondAttribute="trailing" constant="-183" id="34v-fK-dlb"/>
+                <constraint firstItem="Bzu-3F-31A" firstAttribute="leading" secondItem="iOG-dy-qwe" secondAttribute="trailing" constant="-195" id="34v-fK-dlb"/>
                 <constraint firstItem="3Qn-0i-FUw" firstAttribute="leading" secondItem="UFv-wM-Gvz" secondAttribute="leading" constant="8" id="5fO-yc-Hmy"/>
                 <constraint firstItem="WCY-Ag-1n5" firstAttribute="top" secondItem="gaM-Db-M8A" secondAttribute="bottom" constant="8" id="9BF-cF-BEb"/>
                 <constraint firstItem="iOG-dy-qwe" firstAttribute="leading" secondItem="UFv-wM-Gvz" secondAttribute="leading" constant="8" id="AqX-xX-VV1"/>
