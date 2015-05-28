@@ -16,7 +16,8 @@
 #elif TESTING==1
 #define API_BASE_URL @"http://voco-test.herokuapp.com/api/"
 #else
-#define API_BASE_URL @"http://192.168.1.100:3000/api/" // At Home
+#define API_BASE_URL @"http://52.25.169.216:3000/api/" // AWS, nginx, single worker
+//#define API_BASE_URL @"http://192.168.1.100:3000/api/" // At Home
 //#define API_BASE_URL @"http://192.168.1.29:3000/api/" // The Grove
 
 

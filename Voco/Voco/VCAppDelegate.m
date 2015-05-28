@@ -144,10 +144,6 @@
 
 
 
-
-
-
-
 #pragma mark - Push Notifications
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [VCPushReceiver application:app didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
