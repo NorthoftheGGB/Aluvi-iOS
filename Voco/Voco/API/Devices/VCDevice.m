@@ -15,6 +15,8 @@
     NSString * version = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
     NSString * build = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
     self.appVersion = [NSString stringWithFormat:@"v%@b%@", version, build];
+    NSString* appID = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
+    self.appIdentifier = appID;
     return self;
 }
 
@@ -23,7 +25,8 @@
     [deviceMapping addAttributeMappingsFromDictionary:@{
                                                         @"user_id" : @"userId",
                                                         @"push_token" : @"pushToken",
-                                                        @"app_version" : @"appVersion"
+                                                        @"app_version" : @"appVersion",
+                                                        @"app_identifier" : @"appIdentifier"
                                                         }];
     return deviceMapping;
 

@@ -13,6 +13,8 @@
 @property (nonatomic, strong) NSNumber * userId;
 @property (nonatomic, strong) NSString * pushToken;
 @property (nonatomic, strong) NSString * appVersion;
+@property (nonatomic, strong) NSString * appIdentifier;
+
 
 
 + (RKObjectMapping*) getMapping;

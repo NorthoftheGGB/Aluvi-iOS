@@ -30,6 +30,7 @@
                  failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure  {
     VCDevice * device = [[VCDevice alloc] init];
     device.pushToken = pushToken;
+
     [self patchDevice:device success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSLog(@"Push token accepted by server!");
         success(operation, mappingResult);
