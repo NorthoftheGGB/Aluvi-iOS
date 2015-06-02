@@ -262,10 +262,13 @@
         [self.view insertSubview:self.map atIndex:0];
         self.map.showsUserLocation = YES;
         
+        /*
+         Skip the MapBox overlay for now, iPhone 4 rendering issues
         _tileOverlay = [[MBXRasterTileOverlay alloc] initWithMapID:@"aluvi.jlandbj7"];
         _tileOverlay.delegate = self;
         [self.map addOverlay:_tileOverlay];
-        
+        */
+         
         _appeared = YES;
         
         UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
@@ -536,6 +539,7 @@
         }
     }
     {
+        _scheduleRideButton.titleLabel.adjustsFontSizeToFitWidth = YES;
         if( [[VCCommuteManager instance] hasSettings] ){
             _scheduleRideButton.titleLabel.text = @"COMMUTE TOMORROW";
         } else {
@@ -612,7 +616,7 @@
     } completion:^(BOOL finished) {
         if([[VCCommuteManager instance] hasSettings]){
             [self addOriginAnnotation: [VCCommuteManager instance].home ];
-            [self addDestinationAnnotation: [VCCommuteManager instance].home ];
+            [self addDestinationAnnotation: [VCCommuteManager instance].work ];
             [self showSuggestedRoute:[VCCommuteManager instance].home to:[VCCommuteManager instance].work];
         } else {
             [self zoomToCurrentLocation];
@@ -1074,6 +1078,9 @@
         
         [self storeCommuterSettings:^{
             [self resetInterfaceToHome];
+            [self scheduleCommuteForTomorrow];
+
+            /*
             [UIAlertView showWithTitle:@"Just Checking..."
                                message:@"Have you been approved to schedule trips?  The system might not work properly if you have not"
                      cancelButtonTitle:@"No.."
@@ -1090,7 +1097,7 @@
                                           break;
                                   }
                               }];
-            
+            */
         } failure:^{
             [UIAlertView showWithTitle:@"Error" message:@"There was a problem sending your request, you might want to try that again" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
         }];
@@ -1393,6 +1400,11 @@
         } else if ([polyline.title isEqualToString:@"driver_leg"]) {
             MKPolylineRenderer*   aRenderer = [[MKPolylineRenderer alloc] initWithPolyline:(MKPolyline*)overlay];
             aRenderer.strokeColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
+            aRenderer.lineWidth = 4;
+            return aRenderer;
+        } else {
+            MKPolylineRenderer*    aRenderer = [[MKPolylineRenderer alloc] initWithPolyline:(MKPolyline*)overlay];
+            aRenderer.strokeColor = [UIColor colorWithRed:17.0f / 256.0f green: 119.0f / 256.0f blue: 45.0f / 256.0f alpha:.7];
             aRenderer.lineWidth = 4;
             return aRenderer;
         }

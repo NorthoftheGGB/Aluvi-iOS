@@ -17,7 +17,7 @@ static RKObjectManager * objectManager;
 @implementation VCMapQuestRouting
 
 + (void) setup {
-    objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString: @"http://www.mapquestapi.com/"]];
+    objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString: @"http://open.mapquestapi.com/"]];
     RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[MQRouteResponse getMapping] method:RKRequestMethodGET pathPattern:@"directions/v2/route" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 }

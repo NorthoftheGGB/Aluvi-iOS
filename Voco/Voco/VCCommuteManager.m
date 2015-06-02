@@ -40,11 +40,11 @@ static VCCommuteManager * instance;
                                                                                             method:RKRequestMethodPOST];
         [[RKObjectManager sharedManager] addRequestDescriptor:requestDescriptor];
         {
-        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[Route getMapping]
+            RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[Route getMapping]
                                                                                                  method:RKRequestMethodPOST
                                                                                             pathPattern:API_ROUTE keyPath:nil
                                                                                             statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-        [[RKObjectManager sharedManager] addResponseDescriptor:responseDescriptor];
+            [[RKObjectManager sharedManager] addResponseDescriptor:responseDescriptor];
         }
         {
             RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[Route getMapping]
