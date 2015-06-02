@@ -8,7 +8,10 @@
 
 #import "VCAppDelegate.h"
 #import <RestKit.h>
+#import <Stripe.h>
 #import <Crashlytics/Crashlytics.h>
+#import <Parse/Parse.h>
+#import <ParseCrashReporting/ParseCrashReporting.h>
 #import "VCRiderApi.h"
 #import "VCDriverApi.h"
 #import "VCPushReceiver.h"
@@ -23,7 +26,6 @@
 #import "VCUsersApi.h"
 #import "VCLocalNotificationReceiver.h"
 #import "VCTicketViewController.h"
-#import <Stripe.h>
 #import "VCDevicesApi.h"
 
 @interface VCAppDelegate ()
@@ -44,6 +46,14 @@
 #if TESTING==1
     [Crashlytics startWithAPIKey:@"f7d1a0eeca165a46710d606ff21a38fea3c9ec43"];
 #endif
+    
+    [ParseCrashReporting enable];
+    [Parse setApplicationId:@"2XBg609X5mMR8SBBvxsVW1MNGxQ7A8jOWCWmo3rv"
+                  clientKey:@"oXEF9fLGgmwCMSXCaH3j0p1tqQbjXV8ECaC16RvH"];
+    if(launchOptions == nil) {
+        launchOptions = @{};
+    }
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     [VCDialogs instance];
     
