@@ -30,7 +30,6 @@ static VCCommuteManager * instance;
 + (VCCommuteManager *) instance {
     if(instance == nil) {
         instance = [[VCCommuteManager alloc] init];
-        [instance load];
         
         RKObjectMapping * requestMapping = [Route getInverseMapping];
         
@@ -53,6 +52,9 @@ static VCCommuteManager * instance;
                                                                                                 statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
             [[RKObjectManager sharedManager] addResponseDescriptor:responseDescriptor];
         }
+        
+        [instance load];
+
     }
     return instance;
 }

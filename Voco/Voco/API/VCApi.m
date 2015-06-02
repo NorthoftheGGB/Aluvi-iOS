@@ -51,6 +51,7 @@ static NSString * apiToken;
 
 + (void) setApiToken: (NSString *) token {
     apiToken = token;
+    NSLog(@"%@", apiToken);
     [[NSUserDefaults standardUserDefaults] setObject:apiToken forKey:API_TOKEN_KEY];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [[RKObjectManager sharedManager].HTTPClient setAuthorizationHeaderWithToken:apiToken];
@@ -65,6 +66,7 @@ static NSString * apiToken;
 
 
 + (BOOL) loggedIn {
+    NSLog(@"API TOKEN %@", apiToken);
     if(apiToken == nil){
         return NO;
     } else {
