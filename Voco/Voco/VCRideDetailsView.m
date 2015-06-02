@@ -31,7 +31,7 @@
 
 - (void) driverLayout:(Ticket *) ticket {
     
-    _driverPhotoImageView.hidden = YES;
+    _driverPhotoImageView.hidden = NO; // Until we iron out what actually goes in here
     _driverNameLabel.hidden = YES;
     _carTypeLabel.hidden = YES;
     _licenseLabel.hidden = YES;
