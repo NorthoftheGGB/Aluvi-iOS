@@ -37,6 +37,8 @@ static VCUserStateManager *sharedSingleton;
     return sharedSingleton;
 }
 
+
+/*  On Demand Sys
 + (BOOL) driverIsAvailable {
     // Will need a better way to swith on this
     if([self instance].underwayFareId == nil){
@@ -45,6 +47,7 @@ static VCUserStateManager *sharedSingleton;
         return NO;
     }
 }
+ */
 
 - (id) init {
     self = [super init];
@@ -230,6 +233,7 @@ static VCUserStateManager *sharedSingleton;
 }
 
 
+/*
 - (void) clockOnWithSuccess: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                     failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     [VCDriverApi clockOnWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
@@ -250,6 +254,7 @@ static VCUserStateManager *sharedSingleton;
         failure(operation, error);
     }];
 }
+ */
 
 - (void) updateCommuterPreferences {
     

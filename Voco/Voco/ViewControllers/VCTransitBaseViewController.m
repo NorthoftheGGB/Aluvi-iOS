@@ -145,7 +145,7 @@
 
 
 #pragma mark MKMapViewDelegate
-/* No longer used
+/* No longer used ?? */
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay
 {
     if ([overlay isKindOfClass:[MKPolyline class]])
@@ -160,5 +160,5 @@
     
     return nil;
 }
-*/
+
 @end

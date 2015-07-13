@@ -38,7 +38,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="449" y="167"/>
+            <point key="canvasLocation" x="1285" y="92"/>
         </view>
         <button opaque="NO" alpha="0.89999999999999991" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="wordWrap" id="fxh-D2-Mbg" customClass="VCButtonStandardStyle">
             <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
@@ -523,6 +523,7 @@
                 <outlet property="riderSectionTitleLabel" destination="Sdk-is-gH6" id="ea1-XS-AEC"/>
                 <outlet property="segmentedButton" destination="Qz2-lZ-23U" id="Ubq-W8-VSg"/>
             </connections>
+            <point key="canvasLocation" x="943" y="258.5"/>
         </view>
         <view contentMode="scaleToFill" id="Lv9-d9-EJH" userLabel="Ride Overview HUD" customClass="VCRideOverviewHudView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="154"/>
@@ -752,6 +753,7 @@
                 <outlet property="fareLabel" destination="YHX-V0-gsv" id="o8P-kU-ayI"/>
                 <outlet property="licenseValueLabel" destination="2Wx-Fa-RsE" id="bTJ-NI-41s"/>
             </connections>
+            <point key="canvasLocation" x="-218" y="209"/>
         </view>
         <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XIm-sQ-LdY" userLabel="Current Location Button">
             <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
@@ -1110,7 +1112,7 @@
             </connections>
         </view>
         <button hidden="YES" opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0AX-aa-rkF" userLabel="Zoom To Ride Bounds Button">
-            <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+            <rect key="frame" x="0.0" y="-4" width="36" height="40"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <state key="normal" image="ride-bounds-button.png">
                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1120,6 +1122,7 @@
             <connections>
                 <action selector="didTapZoomToRideBounds:" destination="-1" eventType="touchUpInside" id="hzy-T6-7m0"/>
             </connections>
+            <point key="canvasLocation" x="308" y="365"/>
         </button>
         <button hidden="YES" opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ITr-VR-cFD" userLabel="Walking Directions Button">
             <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
@@ -1400,6 +1403,7 @@
                 <outlet property="fareEarningsLabel" destination="Py0-5b-pY6" id="cDV-7e-m4k"/>
                 <outlet property="numberOfPeopleLabel" destination="5uK-tQ-ftw" id="6Iz-JU-qbE"/>
             </connections>
+            <point key="canvasLocation" x="121" y="-131"/>
         </view>
         <button opaque="NO" alpha="0.89999997615814209" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="Qmg-ai-rrd" customClass="VCButtonStandardStyle">
             <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>

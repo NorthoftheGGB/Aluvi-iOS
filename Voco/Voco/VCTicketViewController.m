@@ -264,10 +264,11 @@
         
         /*
          Skip the MapBox overlay for now, iPhone 4 rendering issues
+         
         _tileOverlay = [[MBXRasterTileOverlay alloc] initWithMapID:@"aluvi.jlandbj7"];
         _tileOverlay.delegate = self;
         [self.map addOverlay:_tileOverlay];
-        */
+        /* */
          
         _appeared = YES;
         

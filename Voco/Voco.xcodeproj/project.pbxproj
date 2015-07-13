@@ -506,6 +506,8 @@
 		849A3CF71B1E5EDA004446AF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CF01B1E5E50004446AF /* libz.dylib */; };
 		849A3CF91B1E5EF3004446AF /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CF81B1E5EF3004446AF /* Accounts.framework */; };
 		849A3CFB1B1E5EFF004446AF /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CFA1B1E5EFF004446AF /* Social.framework */; };
+		849A3CFC1B1E5FD7004446AF /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CF81B1E5EF3004446AF /* Accounts.framework */; };
+		849A3CFD1B1E5FDC004446AF /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CFA1B1E5EFF004446AF /* Social.framework */; };
 		CC26291E90FA484191AB6374 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 351E93948BFC43989C411DB5 /* libPods.a */; };
 		F401446F1978728100769802 /* VCFillCommuterPass.m in Sources */ = {isa = PBXBuildFile; fileRef = F401446E1978728100769802 /* VCFillCommuterPass.m */; };
 		F40144701978728100769802 /* VCFillCommuterPass.m in Sources */ = {isa = PBXBuildFile; fileRef = F401446E1978728100769802 /* VCFillCommuterPass.m */; };
@@ -1745,6 +1747,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				849A3CFD1B1E5FDC004446AF /* Social.framework in Frameworks */,
+				849A3CFC1B1E5FD7004446AF /* Accounts.framework in Frameworks */,
 				F4BD606919FE194D003D819D /* libsqlite3.dylib in Frameworks */,
 				849A3CF11B1E5E50004446AF /* libz.dylib in Frameworks */,
 				849A3CEF1B1E5E48004446AF /* libstdc++.6.dylib in Frameworks */,
@@ -4286,7 +4290,7 @@
 				INFOPLIST_FILE = "Voco Dev-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "Aluvi Dev";
-				PROVISIONING_PROFILE = "c920d4bf-1aee-46ea-8d99-9383140d52bb";
+				PROVISIONING_PROFILE = "d46c3493-fac3-4c80-b03a-13d5918c9f8a";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4312,7 +4316,7 @@
 				INFOPLIST_FILE = "Voco Dev-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "Aluvi Dev";
-				PROVISIONING_PROFILE = "c920d4bf-1aee-46ea-8d99-9383140d52bb";
+				PROVISIONING_PROFILE = "d46c3493-fac3-4c80-b03a-13d5918c9f8a";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
