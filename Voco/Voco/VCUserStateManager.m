@@ -144,14 +144,9 @@ static VCUserStateManager *sharedSingleton;
 
 - (void) logoutWithCompletion: (void ( ^ ) () )success {
     
-    if(self.driverState != nil && [self.driverState isEqualToString:kDriverStateOnDuty] ){
-        [VCDriverApi clockOffWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            [self finalizeLogout];
-        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        }];
-    } else {
-        [self finalizeLogout];
-    }
+    
+    [self finalizeLogout];
+    success();
 }
 
 - (void) finalizeLogout {
@@ -233,34 +228,12 @@ static VCUserStateManager *sharedSingleton;
 }
 
 
-/*
-- (void) clockOnWithSuccess: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
-                    failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
-    [VCDriverApi clockOnWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        self.driverState = kDriverStateOnDuty;
-        success(operation, mappingResult);
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        failure(operation, error);
-    }];
-    
-}
-
-- (void) clockOffWithSuccess: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
-                     failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
-    [VCDriverApi clockOffWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        self.driverState = kDriverStateActive;
-        success(operation, mappingResult);
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        failure(operation, error);
-    }];
-}
- */
 
 - (void) updateCommuterPreferences {
     
 }
 
-- (void) refreshProfileWithCompleition: (void ( ^ ) ( ))completion {
+- (void) refreshProfileWithCompletion: (void ( ^ ) ( ))completion {
     [VCUsersApi getProfile:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [self setProfile: mappingResult.firstObject];
         completion();

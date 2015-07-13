@@ -80,9 +80,7 @@ static NSString * apiToken;
     return [NSString stringWithFormat:@"%@:uuid", API_DEVICES];
 }
 
-+ (NSString *) getRideOffersPath:(NSNumber*) driverId {
-    return [NSString stringWithFormat:@"%@%@", API_GET_FARE_OFFERS, driverId];
-}
+
 
 
 

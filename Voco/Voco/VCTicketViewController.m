@@ -268,7 +268,7 @@
         _tileOverlay = [[MBXRasterTileOverlay alloc] initWithMapID:@"aluvi.jlandbj7"];
         _tileOverlay.delegate = self;
         [self.map addOverlay:_tileOverlay];
-        /* */
+        */
          
         _appeared = YES;
         

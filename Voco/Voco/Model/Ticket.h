@@ -8,13 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import <TransitionKit.h>
 @import MapKit;
 #import "Transit.h"
 
-#define kRideRequestTypeOnDemand @"on_demand"
-#define kRideRequestTypeCommuter @"commuter"
-
+// State
 #define kCreatedState @"created"
 #define kRequestedState @"requested"
 #define kDeclinedState @"declined"
@@ -26,14 +23,9 @@
 #define kCompleteState @"complete"
 #define kPaymentProblemState @"payment_problem"
 
-#define kEventRideCancelledByRider @"ride_canceled_by_rider"
-#define kEventRideRequested @"ride_requested"
-#define kEventRideFound kPushTypeRideFound
-#define kEventRideScheduled @"ride_scheduled"
-#define kEventRideDeclined @"ride_declined"
-#define kEventRideCancelledByDriver kPushTypeFareCancelledByDriver
-#define kEventPaymentProcessedSuccessfully @"payment_processed_successfully"
-#define kEventPaymentFailed @"payment_failed"
+#define kRideRequestTypeOnDemand @"on_demand"
+#define kRideRequestTypeCommuter @"commuter"
+
 
 @class Car, Driver, Fare;
 

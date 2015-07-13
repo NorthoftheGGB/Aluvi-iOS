@@ -8,11 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <UIAlertView+Blocks.h>
-#import "Offer.h"
 #import "Ticket.h"
 
 #define VC_INTERFACE_STATE_IDLE @"VC_INTERFACE_STATE_IDLE"
-#define VC_INTERFACE_STATE_OFFER_DIALOG @"VC_INTERFACE_STATE_OFFER_DIALOG"
 
 @interface VCDialogs : NSObject
 
@@ -20,9 +18,6 @@
 
 + (VCDialogs *) instance;
 
-- (void) offerNextFareToDriver;
-- (void) offerFareToDriver: (Offer *) offer;
-- (void) retractOfferDialog: (Offer *) offer;
 - (void) rideFound: (NSNumber *) requestId;
 - (void) rideCancelledByRider;
 - (void) rideCancelledByDriver;

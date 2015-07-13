@@ -8,6 +8,7 @@
 
 #import "VCDialogs.h"
 #import <RestKit.h>
+#import "Fare.h"
 #import "VCFareDriverAssignment.h"
 #import "VCUserStateManager.h"
 #import "VCDriverApi.h"
@@ -20,7 +21,6 @@ static VCDialogs *sharedSingleton;
 @interface VCDialogs ()
 
 @property(nonatomic, strong) UIAlertView * currentAlertView;
-@property(nonatomic, strong) Offer * offer;
 
 @end
 
@@ -38,86 +38,11 @@ static VCDialogs *sharedSingleton;
     self = [super init];
     if(self != nil){
         _currentAlertView = nil;
-        _offer = nil;
     }
     return self;
 }
 
-- (void)offerNextFareToDriver
-{
-    NSFetchRequest * request = [[NSFetchRequest alloc] initWithEntityName:@"Offer"];
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"decided = %@", [NSNumber numberWithBool:NO]];
-    [request setPredicate:predicate];
-    NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"updatedAt" ascending:YES];
-    [request setSortDescriptors:@[sort]];
-    
-    NSError * error;
-    NSArray * offers = [[VCCoreData managedObjectContext] executeFetchRequest:request error:&error];
-    if([offers count] < 1){
-        return;
-    }
-    
-    [VCUserStateManager instance].driveProcessState = @"ride offered";
-    [self offerFareToDriver:[offers objectAtIndex:0]];
-}
 
-- (void) offerFareToDriver: (Offer *) offer {
-    _interfaceState = VC_INTERFACE_STATE_OFFER_DIALOG;
-    _offer = offer;
-    
-    NSString * title = [NSString stringWithFormat:@"Fare availabled from: %@, To: %@.", offer.meetingPointPlaceName, offer.dropOffPointPlaceName ];
-    
-    _currentAlertView = [UIAlertView showWithTitle:title
-                                           message:@"Do you want view this fare?"
-                                 cancelButtonTitle:@"No"
-                                 otherButtonTitles:@[@"Yes"]
-                                          tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                                              if (buttonIndex == [alertView cancelButtonIndex]) {
-                                                  
-                                                  [VCDriverApi declineFare:offer.fare_id
-                                                                  success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                                      [VCUserStateManager instance].driveProcessState = @"Ride Declined";
-                                                                      [offer markAsDeclined];
-                                                                      [VCCoreData saveContext];
-                                                                      [self offerNextFareToDriver];
-                                                                      _interfaceState = VC_INTERFACE_STATE_IDLE;
-                                                                  } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                                      _interfaceState = VC_INTERFACE_STATE_IDLE;
-                                                                  }];
-                                                  
-                                              } else if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Yes"]) {
-                                                  
-                                                  [VCDriverApi loadFareDetails:offer.fare_id
-                                                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                                            [[NSNotificationCenter defaultCenter] postNotificationName:@"fare_offer_invoked" object:[VCDialogs instance] userInfo:@{@"fare_id" : offer.fare_id }];
-                                                                            _interfaceState = VC_INTERFACE_STATE_IDLE;
-                                                                        }
-                                                                        failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                                            _interfaceState = VC_INTERFACE_STATE_IDLE;
-
-                                                                        }];
-                                                  
-                                                  
-                                              }
-                                          }];
-}
-
-- (void) retractOfferDialog: (NSNumber *) offerId {
-    if([_interfaceState isEqualToString:VC_INTERFACE_STATE_OFFER_DIALOG]
-       && [offerId isEqualToNumber: _offer.id]){
-        [_currentAlertView dismissWithClickedButtonIndex:-1 animated:YES];
-        _offer.decided = [NSNumber numberWithBool:YES];
-        NSError * error = nil;
-        [[VCCoreData managedObjectContext] save:&error];
-        if(error != nil){
-            [WRUtilities criticalError:error];
-        }
-        _offer = nil;
-        [VCUserStateManager instance].driveProcessState = kUserStateIdle;
-        _interfaceState = VC_INTERFACE_STATE_IDLE;
-        [self offerNextFareToDriver];
-    }
-}
 
 - (void) rideFound: (NSNumber *) requestId {
     [UIAlertView showWithTitle:@"Ride Found!" message:@"Your ride has been scheduled" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
@@ -127,7 +52,6 @@ static VCDialogs *sharedSingleton;
 - (void) rideCancelledByRider {
     [UIAlertView showWithTitle:@"Ride Cancelled!" message:@"The rider cancelled the ride" cancelButtonTitle:@"OK" otherButtonTitles:nil
                       tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                          [[VCDialogs instance] offerNextFareToDriver];
                       }];
     
 }

@@ -36,7 +36,6 @@
 #define API_POST_FARE_COMPLETED @"rides/arrived"
 #define API_DELETE_TRIP @"rides/trips/:trip_id"
 
-#define API_GET_FARE_OFFERS @"rides/offers"
 #define API_GET_ACTIVE_TICKETS @"rides/tickets"
 #define API_GET_ACTIVE_FARES @"rides/fares"
 
@@ -86,6 +85,5 @@
 
 // path helpers
 + (NSString *) devicesObjectPathPattern;
-+ (NSString *) getRideOffersPath:(NSNumber*) driverId;
 
 @end

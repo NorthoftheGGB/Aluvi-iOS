@@ -10,7 +10,6 @@
 #import "VCApi.h"
 #import "VCFareDriverAssignment.h"
 #import "VCRideIdentity.h"
-#import "Offer.h"
 #import "VCGeoObject.h"
 #import "VCDriverRegistration.h"
 #import "Fare.h"
@@ -24,7 +23,6 @@
 
 + (void) setup: (RKObjectManager *) objectManager {
     
-    [Offer createMappings:objectManager];
     [Fare createMappings:objectManager];
     [Earning createMappings:objectManager];
     
@@ -151,25 +149,6 @@
     
 }
 
-+ (void) clockOnWithSuccess: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
-                    failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
-    [[RKObjectManager sharedManager] postObject:nil path:API_DRIVER_CLOCK_ON parameters:nil
-                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                            success(operation, mappingResult);
-                                        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                            failure(operation, error);
-                                        }];
-}
-
-+ (void) clockOffWithSuccess: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
-                     failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure{
-    [[RKObjectManager sharedManager] postObject:nil path:API_DRIVER_CLOCK_OFF parameters:nil
-                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                            success(operation, mappingResult);
-                                        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                            failure(operation, error);
-                                        }];
-}
 
 + (void) loadFareDetails: (NSNumber *) fareId success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                   failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
@@ -188,55 +167,7 @@
                                        }];
 }
 
-+ (void) acceptFare: (NSNumber *) fareId
-            success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
-            failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
-    
-    VCFareDriverAssignment * assignment = [[VCFareDriverAssignment alloc] init];
-    assignment.fareId = fareId;
-    [[RKObjectManager sharedManager] postObject:assignment
-                                           path:API_POST_RIDE_ACCEPTED
-                                     parameters:nil
-                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                            success(operation, mappingResult);
-                                        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                            failure(operation, error);
-                                        }];
-}
 
-+ (void) declineFare: (NSNumber *) fareId
-             success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
-             failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
-    
-    VCFareDriverAssignment * assignment = [[VCFareDriverAssignment alloc] init];
-    assignment.fareId = fareId;
-    
-    [[VCDebug sharedInstance] apiLog:@"API: Driver cancel ride"];
-    [[RKObjectManager sharedManager] postObject:assignment
-                                           path:API_POST_RIDE_DECLINED parameters:nil
-                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                            [[VCDebug sharedInstance] apiLog:@"API: Driver cancel ride success"];
-                                            success(operation, mappingResult);
-                                            
-                                        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                            [[VCDebug sharedInstance] apiLog:@"API: Driver cancel ride failure"];
-                                            
-                                            if(operation.HTTPRequestOperation.response.statusCode == 404){
-                                                // ride is actually assigned to this driver already, can't be decline
-                                                [[VCDebug sharedInstance] apiLog:@"API: Driver cancel ride failure - already assigned to the logged in driver"];
-                                                
-                                                [WRUtilities criticalErrorWithString:@"This ride is already assigned to the logged in driver.  It cannot be declined and must be cancelled instead"];
-                                                failure(operation, error);
-                                                
-                                            } else if(operation.HTTPRequestOperation.response.statusCode == 403){
-                                                [[VCDebug sharedInstance] apiLog:@"API: Driver cancel ride failure - ride isn't available anymore anyway, just continue"];
-                                                // ride isn't available anymore anyway, just continue
-                                                success(operation, nil); // It's actually a success from the viewpoint of the caller
-                                            } else {
-                                                [WRUtilities criticalError:error];
-                                            }
-                                        }];
-}
 
 + (void) ridersPickedUp: (NSNumber *) fareId
                 success: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success

@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCStateMachineManagedObject.h"
-
 @interface Transit :  NSManagedObject  // VCStateMachineManagedObject
 // Original implementation extended VCStateMachineManagedObject but using a state machine in the mobile app
 // as well as on the server has been problematic.  For the moment the mobile app state is slaved to the server

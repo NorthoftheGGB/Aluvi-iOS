@@ -38,18 +38,7 @@ static VCCoreData * sharedInstance;
 + (NSManagedObjectContext *)managedObjectContext
 {
     return [self instance].managedObjectStore.persistentStoreManagedObjectContext;
-    /*
-    if ([self instance].managedObjectContext != nil) {
-        return [self instance].managedObjectContext;
-    }
-    
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (coordinator != nil) {
-        [self instance].managedObjectContext = [[NSManagedObjectContext alloc] init];
-        [[self instance].managedObjectContext setPersistentStoreCoordinator:coordinator];
-    }
-    return [self instance].managedObjectContext;
-     */
+   
 }
 
 // Returns the managed object model for the application.
@@ -137,21 +126,6 @@ static VCCoreData * sharedInstance;
         return;
     }
 
-    
-    /*
-    NSPersistentStore * store = [[self instance].persistentStoreCoordinator.persistentStores objectAtIndex:0];
-    [[self persistentStoreCoordinator] removePersistentStore:store error:&error];
-    if(error != nil) {
-        [WRUtilities criticalError:error];
-        return;
-    }
-    [[NSFileManager defaultManager] removeItemAtPath:[self storeURL].path error:&error];
-    if(error != nil){
-        [WRUtilities criticalError:error];
-        return;
-    }
-    [self createPersistentStore];
-     */
 }
 
 + (void)saveContext

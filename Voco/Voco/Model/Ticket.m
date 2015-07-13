@@ -83,24 +83,6 @@
                                                         }];
     
     entityMapping.identificationAttributes = @[ @"ride_id" ]; // for riders ride_id is the primary key
-
-    /*
-    [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
-        RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:API_GET_ACTIVE_TICKETS];
-        
-        NSString * relativePath = [URL relativePath];
-        NSDictionary *argsDict = nil;
-        BOOL match = [pathMatcher matchesPath:relativePath tokenizeQueryStrings:NO parsedArguments:&argsDict];
-        if (match) {
-            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
-            return fetchRequest;
-        }
-        
-        return nil;
-    }];
-     */
-    
-     
     
     [entityMapping addRelationshipMappingWithSourceKeyPath:@"driver" mapping:[Driver createMappings:objectManager]];
     [entityMapping addRelationshipMappingWithSourceKeyPath:@"car" mapping:[Car createMappings:objectManager]];
@@ -158,37 +140,6 @@
 
 - (CLLocation *) dropOffPointLocation {
     return [[CLLocation alloc] initWithLatitude:[self.dropOffPointLatitude doubleValue] longitude: [self.dropOffPointLongitude doubleValue] ];
-}
-
-// For the state machine, currently unused
-- (void)assignStatesAndEvents:(TKStateMachine *)stateMachine {
-    
-    TKState * created = [TKState stateWithName:kCreatedState];
-    TKState * requested = [TKState stateWithName:kRequestedState];
-    TKState * declined = [TKState stateWithName:kDeclinedState];
-    TKState * found = [TKState stateWithName:kFoundState];
-    TKState * scheduled = [TKState stateWithName:kScheduledState];
-    TKState * driverCancelled = [TKState stateWithName:kDriverCancelledState];
-    TKState * riderCancelled = [TKState stateWithName:kRiderCancelledState];
-    TKState * complete = [TKState stateWithName:kCompleteState];
-    TKState * paymentProblem = [TKState stateWithName:kPaymentProblemState];
-    
-    TKEvent * rideRequested = [TKEvent eventWithName:kEventRideRequested transitioningFromStates:@[created] toState:requested];
-    TKEvent * rideCancelledByRider = [TKEvent eventWithName:kEventRideCancelledByRider transitioningFromStates:@[requested, found, scheduled] toState:riderCancelled];
-    TKEvent * rideFound = [TKEvent eventWithName:kEventRideFound transitioningFromStates:@[requested] toState:found];
-    TKEvent * rideScheduled = [TKEvent eventWithName:kEventRideScheduled transitioningFromStates:@[found] toState:scheduled];
-    TKEvent * rideDeclined = [TKEvent eventWithName:kEventRideDeclined transitioningFromStates:@[created, requested] toState:declined];
-    TKEvent * rideCancelledByDriver = [TKEvent eventWithName:kEventRideCancelledByDriver transitioningFromStates:@[scheduled] toState:driverCancelled];
-    TKEvent * paymentProcessedSuccessfully = [TKEvent eventWithName:kEventPaymentProcessedSuccessfully transitioningFromStates:@[scheduled] toState:complete];
-    TKEvent * paymentFailure = [TKEvent eventWithName:kEventPaymentFailed transitioningFromStates:@[scheduled] toState:paymentProblem];
-
-    
-    [stateMachine addStates:@[created, requested, declined, found, scheduled, driverCancelled, riderCancelled, complete, paymentProblem]];
-    [stateMachine addEvents:@[rideRequested, rideCancelledByRider, rideFound, rideScheduled, rideDeclined, rideCancelledByDriver, paymentProcessedSuccessfully, paymentFailure]];
-}
-
-- (NSString *)getInitialState {
-    return kCreatedState;
 }
 
 - (Ticket *) returnTicket {

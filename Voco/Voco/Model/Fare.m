@@ -7,7 +7,6 @@
 //
 
 #import "Fare.h"
-#import "Offer.h"
 #import "VCApi.h"
 #import "Rider.h"
 
@@ -18,7 +17,6 @@
 @implementation Fare
 
 @dynamic car_id;
-@dynamic offer;
 @dynamic ticket;
 @dynamic riders;
 @dynamic driveTime;
@@ -59,21 +57,6 @@
     [entityMapping addRelationshipMappingWithSourceKeyPath:@"riders" mapping:[Rider createMappings:objectManager]];
     [entityMapping addConnectionForRelationship:@"ticket" connectedBy:@{@"fare_id" : @"fare_id"}];
 
-    /*
-     [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
-     RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:API_GET_SCHEDULED_RIDES];
-     
-     NSString * relativePath = [URL relativePath];
-     NSDictionary *argsDict = nil;
-     BOOL match = [pathMatcher matchesPath:relativePath tokenizeQueryStrings:NO parsedArguments:&argsDict];
-     if (match) {
-     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Fare"];
-     return fetchRequest;
-     }
-     
-     return nil;
-     }];
-     */
     
     {
         RKResponseDescriptor * responseDescriptor =
@@ -125,24 +108,6 @@
     
     entityMapping.identificationAttributes = @[ @"ride_id" ]; // for riders ride_id is the primary key
     
-    /*
-     [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
-     RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:API_GET_ACTIVE_TICKETS];
-     
-     NSString * relativePath = [URL relativePath];
-     NSDictionary *argsDict = nil;
-     BOOL match = [pathMatcher matchesPath:relativePath tokenizeQueryStrings:NO parsedArguments:&argsDict];
-     if (match) {
-     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
-     return fetchRequest;
-     }
-     
-     return nil;
-     }];
-     */
-    
-    
-    
     
     RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping
                                                                                              method:RKRequestMethodGET
@@ -152,53 +117,6 @@
     [objectManager addResponseDescriptor:responseDescriptor];
 }
 
-
-
-- (void) markOfferAsAccepted {
-    
-    Offer * rideOffer = [self getOffer];
-    if(rideOffer != nil) {
-        [rideOffer markAsAccepted];
-    }
-    
-}
-
-- (void) markOfferAsDeclined {
-    Offer *  rideOffer = [self getOffer];
-    if(rideOffer != nil) {
-        [rideOffer markAsDeclined];
-    }
-}
-
-- (void) markOfferAsClosed {
-    Offer *  rideOffer = [self getOffer];
-    if(rideOffer != nil) {
-        [rideOffer markAsClosed];
-    }
-}
-
-- (Offer *) getOffer {
-    NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"Offer"];
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"fare_id = %@", self.fare_id];
-    [request setPredicate:predicate];
-    NSError * error;
-    NSArray * results = [[VCCoreData managedObjectContext] executeFetchRequest:request error:&error];
-    if(results == nil){
-        [WRUtilities criticalError:error];
-        return nil;
-    }
-    return results.firstObject;
-    
-}
-
-#pragma mark state machine methods
-- (void) assignStatesAndEvents:(TKStateMachine *) stateMachine{
-    // Nothing for now
-}
-
-- (NSString *) getInitialState {
-    return @"exists"; // Placeholder
-}
 
 - (NSString *) routeDescription {
     return [NSString stringWithFormat:@"%@ to %@", self.meetingPointPlaceName, self.dropOffPointPlaceName];

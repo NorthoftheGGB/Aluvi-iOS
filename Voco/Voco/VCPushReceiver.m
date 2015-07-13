@@ -20,7 +20,6 @@
 #import "VCDialogs.h"
 #import "VCUserStateManager.h"
 #import "VCCoreData.h"
-#import "Offer.h"
 
 #define kPushTokenKey @"PUSH_TOKEN_KEY"
 
@@ -104,39 +103,8 @@
     
     [[VCDebug sharedInstance] remoteNotificationLog: type];
     
-    if([type isEqualToString:kPushTypeRideOffer]) {
-        
-        [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_FARE_OFFERS
-                                               parameters:nil
-                                                  success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                      // save in database - done automatically by Entity Mapping
-                                                      
-                                                      // check state of the application
-                                                      // for now just assume in drive mode if we get here
-                                                      if([VCUserStateManager driverIsAvailable]
-                                                         && [[VCDialogs instance].interfaceState isEqualToString:VC_INTERFACE_STATE_IDLE]){  // guard against invalid state
-                                                          
-                                                          [[VCDialogs instance] offerNextFareToDriver];
-                                                      }
-                                                      
-                                                  }
-                                                  failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                      NSLog(@"Failed send request %@", error);
-                                                      [WRUtilities criticalError:error];
-                                                      
-                                                      // TODO Re-transmit push token later
-                                                  }];
-        
-    } else if([type isEqualToString:kPushTypeRideOfferClosed]){
-        [[VCDialogs instance] retractOfferDialog: [userInfo objectForKey:VC_PUSH_OFFER_ID_KEY]];
-        [[NSNotificationCenter defaultCenter] postNotificationName:kPushTypeRideOfferClosed object:[userInfo objectForKey:VC_PUSH_FARE_ID_KEY] userInfo:@{}];
-    } else {
-        [self handleRemoteNotification:userInfo];
-    }
     
-    
-    
-    
+    [self handleRemoteNotification:userInfo];
     
 }
 
@@ -155,42 +123,7 @@
 // Called when the user selected a remote notification from outside the application
 + (void)handleTappedRemoteNotification:(NSDictionary *)payload {
     NSString * type = [payload objectForKey:VC_PUSH_TYPE_KEY];
-    if([type isEqualToString:kPushTypeRideOffer]){
-        NSNumber * offer_id = [payload objectForKey:VC_PUSH_OFFER_ID_KEY];
-        [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_FARE_OFFERS
-                                               parameters:nil
-                                                  success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                      
-                                                      if([VCUserStateManager driverIsAvailable]
-                                                         && [[VCDialogs instance].interfaceState isEqualToString:VC_INTERFACE_STATE_IDLE]){  // guard against invalid state
-                                                          
-                                                          NSFetchRequest * request = [[NSFetchRequest alloc] initWithEntityName:@"Offer"];
-                                                          NSPredicate * predicate = [NSPredicate predicateWithFormat:@"id = %@", offer_id];
-                                                          [request setPredicate:predicate];
-                                                          NSError * error;
-                                                          
-                                                          NSArray * offers = [[VCCoreData managedObjectContext] executeFetchRequest:request error:&error];
-                                                          if(offers == nil){
-                                                              [WRUtilities criticalError:error];
-                                                          } else if ([offers count] == 0) {
-                                                              [UIAlertView showWithTitle:@"Ride not longer available" message:@"Sorry, that ride is no longer available" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                                                                  //do nothing
-                                                              }];
-                                                          } else {
-                                                              Offer * offer = [offers objectAtIndex:0];
-                                                              [[VCDialogs instance] offerFareToDriver:offer];
-                                                          }
-                                                          
-                                                      }
-                                                      
-                                                  }
-                                                  failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                      NSLog(@"Failed send request %@", error);
-                                                      [WRUtilities criticalError:error];
-                                                      
-                                                      // TODO Re-transmit push token later
-                                                  }];
-    } else if ([type isEqualToString:kPushTypeRideFound]){
+    if ([type isEqualToString:kPushTypeRideFound]){
         [self handleRideFoundNotification:payload];
     } else {
         [self handleRemoteNotification:payload];
@@ -250,8 +183,6 @@
                 [VCUserStateManager instance].underwayFareId = nil;
                 [VCUserStateManager instance].rideProcessState = kUserStateIdle;
             }
-        } else if([type isEqualToString:kPushTypeNoDriversAvailable]){
-            [[NSNotificationCenter defaultCenter] postNotificationName:kPushTypeNoDriversAvailable object:payload userInfo:@{}];
         } else if([type isEqualToString:kPushTypeUserStateChanged]){
             [[VCUserStateManager instance] synchronizeUserState];
         } else if([type isEqualToString:kPushTypeTripFulfilled]){

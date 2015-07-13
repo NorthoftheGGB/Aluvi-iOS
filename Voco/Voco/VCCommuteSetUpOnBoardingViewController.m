@@ -40,7 +40,7 @@
     
     // Now that the user has entered all their profile information, load it into the app
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [[VCUserStateManager instance] refreshProfileWithCompleition:^{
+    [[VCUserStateManager instance] refreshProfileWithCompletion:^{
         [hud hide:YES];
     }];
 }

@@ -27,7 +27,6 @@ NSString *const VCUserStateDriverStateKeyPath;
 
 // These are states for dealing with rides, from the .1 platform
 #define kUserStateIdle @"Idle"
-#define kUserStateRideOffered @"Ride Offered"
 #define kUserStateRideScheduled @"Ride Scheduled"
 #define kUserStateRideAccepted @"Ride Accepted"
 #define kUserStateRideStarted @"Ride Started"
@@ -52,7 +51,6 @@ NSString *const VCUserStateDriverStateKeyPath;
 @property(nonatomic, strong) NSString * commuteReturnTime;
 
 + (VCUserStateManager *) instance;
-+ (BOOL) driverIsAvailable;
 
 - (void) loginWithEmail:(NSString*) phone
                password: (NSString *) password
@@ -64,15 +62,11 @@ NSString *const VCUserStateDriverStateKeyPath;
 - (BOOL) isLoggedIn;
 - (BOOL) isHovDriver;
 
-- (void) clockOnWithSuccess: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
-                    failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
-- (void) clockOffWithSuccess: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
-                     failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
 - (void) clearRideState;
 - (void) clearUser;
 
-- (void) refreshProfileWithCompleition: (void ( ^ ) ( ))completion;
+- (void) refreshProfileWithCompletion: (void ( ^ ) ( ))completion;
 
 
 @end

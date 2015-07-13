@@ -7,7 +7,6 @@ inhibit_all_warnings!
 pod 'RestKit',       '~> 0.23.1'
 pod 'Reachability',  '~> 3.1.1'
 pod 'MBProgressHUD', '~> 0.8'
-pod 'TransitionKit', '~> 2.1.0'
 pod 'UIAlertView+Blocks', :git => 'https://github.com/deepwinter/UIAlertView-Blocks.git'
 pod 'M13Checkbox', '~> 1.1.0'
 pod 'ActionSheetPicker-3.0', '~> 1.0.11'

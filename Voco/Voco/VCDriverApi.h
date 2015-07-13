@@ -23,23 +23,9 @@
                                  success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                                  failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
-+ (void) clockOnWithSuccess: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
-                    failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
-
-+ (void) clockOffWithSuccess: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
-                    failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
-
 + (void) loadFareDetails: (NSNumber *) rideId
                   success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                   failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
-
-+ (void) acceptFare: (NSNumber *) fareId
-            success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
-            failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure ;
-
-+ (void) declineFare: (NSNumber *) fareId
-            success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
-            failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
 + (void) ridersPickedUp: (NSNumber *) fareId
                 success: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success

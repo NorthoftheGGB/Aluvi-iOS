@@ -34,23 +34,7 @@
                                                         }];
     
     entityMapping.identificationAttributes = @[ @"fare_id" ];
-    
-    /*
-     This caused receipts not to be found after logout/login
-    [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
-        RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:API_GET_EARNINGS];
-        
-        NSString * relativePath = [URL relativePath];
-        NSDictionary *argsDict = nil;
-        BOOL match = [pathMatcher matchesPath:relativePath tokenizeQueryStrings:NO parsedArguments:&argsDict];
-        if (match) {
-            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Earning"];
-            return fetchRequest;
-        }
-        
-        return nil;
-    }];
-     */
+   
     
     //[entityMapping addConnectionForRelationship:@"fare" connectedBy:@{@"fare_id" : @"fare_id"}];
     [entityMapping addRelationshipMappingWithSourceKeyPath:@"fare" mapping:[Fare createMappings:objectManager]];

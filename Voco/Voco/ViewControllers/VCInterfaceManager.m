@@ -134,7 +134,6 @@ static int mode;
 - (id) init {
     self =  [super init];
     if (self != nil) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fareOfferInvokedNotification:) name:@"fare_offer_invoked" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(commuterRideInvokedNotification:) name:@"commuter_ride_invoked" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(rideInvoked:) name:@"driver_ride_invoked" object:nil];
     }
@@ -152,10 +151,7 @@ static int mode;
 }
 
 // For Driver
-- (void) fareOfferInvokedNotification:(NSNotification *)notification{
-    [deckController closeLeftView];
-    
-}
+
 - (void) rideInvoked:(NSNotification *) notification {
     [deckController closeLeftView];
    
