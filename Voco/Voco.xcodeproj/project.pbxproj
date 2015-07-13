@@ -1864,6 +1864,8 @@
 				4F4D8BEB1987650A0027A2AF /* VCRideDetailsView.m */,
 				F40CDDCC19D0DC7F0026CFA3 /* VCHoldingView.h */,
 				F40CDDCD19D0DC7F0026CFA3 /* VCHoldingView.m */,
+				F4138C2419650C5600C265CD /* VCCommuterHud.h */,
+				F4138C2519650C5600C265CD /* VCCommuterHud.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -2176,15 +2178,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		F4138C2319650C2D00C265CD /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				F4138C2419650C5600C265CD /* VCCommuterHud.h */,
-				F4138C2519650C5600C265CD /* VCCommuterHud.m */,
-			);
-			name = Views;
-			sourceTree = "<group>";
-		};
 		F45F7BE71935756000A94721 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -2326,13 +2319,11 @@
 		F473EFE919492CA400D8C900 /* Ride System */ = {
 			isa = PBXGroup;
 			children = (
-				F49B6FBA19821F47003D9386 /* Common */,
 				4F3DB5C61981F6AB00DDD094 /* Views */,
 				F4C6B2A1197F8A6200F6C10B /* Edit Location Widget */,
 				4F73CA01197F2AB0001B6663 /* VCTicketViewController.h */,
 				4F73CA02197F2AB0001B6663 /* VCTicketViewController.m */,
 				4F73CA03197F2AB0001B6663 /* VCTicketViewController.xib */,
-				F4138C2319650C2D00C265CD /* Views */,
 			);
 			name = "Ride System";
 			sourceTree = "<group>";
@@ -2428,13 +2419,6 @@
 			name = Vars;
 			sourceTree = "<group>";
 		};
-		F49B6FBA19821F47003D9386 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Common;
-			sourceTree = "<group>";
-		};
 		F49EDD071946A63F0020B8BB /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -2474,14 +2458,14 @@
 			isa = PBXGroup;
 			children = (
 				F473F03319539F0500D8C900 /* Responses */,
+				F4D877641976721D00870945 /* VCProfile.h */,
+				F4D877651976721D00870945 /* VCProfile.m */,
 				F4D8904219468A84007C4671 /* VCUsersApi.h */,
 				F4D8904319468A84007C4671 /* VCUsersApi.m */,
 				F4D8904819468E44007C4671 /* VCNewUser.h */,
 				F4D8904919468E44007C4671 /* VCNewUser.m */,
 				F4D8905119469F0F007C4671 /* VCDriverInterestedRequest.h */,
 				F4D8905219469F0F007C4671 /* VCDriverInterestedRequest.m */,
-				F4D877641976721D00870945 /* VCProfile.h */,
-				F4D877651976721D00870945 /* VCProfile.m */,
 				F401446D1978728100769802 /* VCFillCommuterPass.h */,
 				F401446E1978728100769802 /* VCFillCommuterPass.m */,
 			);

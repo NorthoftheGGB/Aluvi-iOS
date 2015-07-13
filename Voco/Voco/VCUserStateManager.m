@@ -38,17 +38,6 @@ static VCUserStateManager *sharedSingleton;
 }
 
 
-/*  On Demand Sys
-+ (BOOL) driverIsAvailable {
-    // Will need a better way to swith on this
-    if([self instance].underwayFareId == nil){
-        return YES;
-    } else {
-        return NO;
-    }
-}
- */
-
 - (id) init {
     self = [super init];
     if(self != nil){
