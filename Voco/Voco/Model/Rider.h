@@ -13,8 +13,8 @@
 
 @interface Rider : NSManagedObject
 
-@property (nonatomic, retain) NSString * firstName;
 @property (nonatomic, retain) NSNumber * id;
+@property (nonatomic, retain) NSString * firstName;
 @property (nonatomic, retain) NSString * lastName;
 @property (nonatomic, retain) NSString * phone;
 @property (nonatomic, retain) NSDecimalNumber * latitude;
