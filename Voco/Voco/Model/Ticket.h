@@ -14,8 +14,6 @@
 // State
 #define kCreatedState @"created"
 #define kRequestedState @"requested"
-#define kDeclinedState @"declined"
-#define kFoundState @"found"
 #define kScheduledState @"scheduled"
 #define kCommuteSchedulerFailedState @"commute_scheduler_failed"
 #define kDriverCancelledState @"driver_cancelled"
@@ -23,7 +21,6 @@
 #define kCompleteState @"complete"
 #define kPaymentProblemState @"payment_problem"
 
-#define kRideRequestTypeOnDemand @"on_demand"
 #define kRideRequestTypeCommuter @"commuter"
 
 
