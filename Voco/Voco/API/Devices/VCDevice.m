@@ -29,7 +29,7 @@
                                                         @"push_token" : @"pushToken",
                                                         @"app_version" : @"appVersion",
                                                         @"app_identifier" : @"appIdentifier",
-                                                        @"platform" : "@platform"
+                                                        @"platform" : @"platform"
                                                         }];
     return deviceMapping;
 
