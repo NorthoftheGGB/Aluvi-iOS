@@ -122,12 +122,8 @@
 
 // Called when the user selected a remote notification from outside the application
 + (void)handleTappedRemoteNotification:(NSDictionary *)payload {
-    NSString * type = [payload objectForKey:VC_PUSH_TYPE_KEY];
-    if ([type isEqualToString:kPushTypeRideFound]){
-        [self handleRideFoundNotification:payload];
-    } else {
-        [self handleRemoteNotification:payload];
-    }
+    [self handleRemoteNotification:payload];
+    
 }
 
 + (void) handleRemoteNotification:(NSDictionary *) payload {
@@ -141,11 +137,7 @@
         
         
         NSString * type = [payload objectForKey:VC_PUSH_TYPE_KEY];
-        if ([type isEqualToString:kPushTypeRideFound]){
-            [self handleRideFoundNotification: payload];
-        } else if ([type isEqualToString:kPushTypeFareAssigned]){
-            [self handleFareAssignedNotification: payload];
-        } else if ([type isEqualToString:kPushTypeFareCancelledByRider]){
+        if ([type isEqualToString:kPushTypeFareCancelledByRider]){
             NSNumber * rideId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
             [[VCDialogs instance] rideCancelledByRider];
             [[NSNotificationCenter defaultCenter] postNotificationName:kPushTypeFareCancelledByRider object:rideId userInfo:@{}];
@@ -162,17 +154,6 @@
             if([[VCUserStateManager instance].underwayFareId isEqualToNumber:rideId]){
                 [VCUserStateManager instance].underwayFareId = nil;
                 [VCUserStateManager instance].rideProcessState = kUserStateIdle;
-            }
-        } else if([type isEqualToString:kPushTypeRideReceipt]){
-            NSNumber * rideId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
-            NSNumber * amount = [payload objectForKey:VC_PUSH_AMOUNT_KEY];
-            [[VCDialogs instance] showRideReceipt:rideId amount:amount];
-            [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationTypeFareComplete object:payload userInfo:@{}];
-            
-            if([[VCUserStateManager instance].underwayFareId isEqualToNumber:rideId]){
-                [VCUserStateManager instance].underwayFareId = nil;
-                [VCUserStateManager instance].rideProcessState = kUserStateIdle;
-                
             }
         } else if([type isEqualToString:kPushTypeRidePaymentProblems]){
             NSNumber * rideId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
@@ -203,7 +184,7 @@
             
         } else if ([type isEqualToString:kPushTypeCommuteReminder]){
             
-            [UIAlertView showWithTitle:@"It's finally time" message:@"Would you like to schedule a commute for tomorrow?" cancelButtonTitle:@"No" otherButtonTitles:@[@"YES!"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            [UIAlertView showWithTitle:@"Reminder!" message:@"Would you like to schedule a commute for tomorrow?" cancelButtonTitle:@"No" otherButtonTitles:@[@"YES!"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                 switch(buttonIndex){
                     case 1:
                         [[VCInterfaceManager instance] showRiderInterface];

@@ -303,12 +303,16 @@ static VCCommuteManager * instance;
     [VCRiderApi requestRide:homeToWorkRide success:^(RKObjectRequestOperation *operation, VCRideRequestCreated * response) {
         homeToWorkRide.uploaded = [NSNumber numberWithBool:YES];
         homeToWorkRide.direction = @"a";
+        homeToWorkRide.state = kRequestedState;
+        
         
         workToHomeRide.trip_id = homeToWorkRide.trip_id;
 
         [VCRiderApi requestRide:workToHomeRide success:^(RKObjectRequestOperation *operation, VCRideRequestCreated * response) {
             workToHomeRide.uploaded = [NSNumber numberWithBool:YES];
             workToHomeRide.direction = @"b";
+            homeToWorkRide.state = kRequestedState;
+
             [VCCoreData saveContext];
             
             [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {

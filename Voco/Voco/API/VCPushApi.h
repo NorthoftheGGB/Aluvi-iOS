@@ -14,11 +14,8 @@
 #define VC_PUSH_AMOUNT_KEY @"amount"
 #define VC_PUSH_TRIP_ID_KEY @"trip_id"
 
-#define kPushTypeRideFound @"fare_found"
-#define kPushTypeFareAssigned @"fare_assigned"
 #define kPushTypeFareCancelledByRider @"fare_cancelled_by_rider"
 #define kPushTypeFareCancelledByDriver @"fare_cancelled_by_driver"
-#define kPushTypeRideReceipt @"ride_receipt"
 #define kPushTypeRidePaymentProblems @"ride_payment_problem"
 #define kPushTypeUserStateChanged @"user_state_change"
 #define kPushTypeTripFulfilled @"trip_fulfilled"
