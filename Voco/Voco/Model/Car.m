@@ -18,7 +18,7 @@
 @dynamic state;
 @dynamic year;
 @dynamic id;
-@dynamic rides;
+@dynamic tickets;
 @dynamic carPhotoUrl;
 
 + (RKEntityMapping *)createMappings:(RKObjectManager *)objectManager{

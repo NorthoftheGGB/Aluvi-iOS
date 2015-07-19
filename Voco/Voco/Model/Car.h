@@ -20,7 +20,7 @@
 @property (nonatomic, retain) NSString * year;
 @property (nonatomic, retain) NSNumber * id;
 @property (nonatomic, retain) NSString * carPhotoUrl;
-@property (nonatomic, retain) NSSet *rides;
+@property (nonatomic, retain) NSSet *tickets;
 
 @end
 
@@ -29,10 +29,10 @@
 + (RKEntityMapping *)createMappings:(RKObjectManager *)objectManager;
 
 
-- (void)addRidesObject:(Ticket *)value;
-- (void)removeRidesObject:(Ticket *)value;
-- (void)addRides:(NSSet *)values;
-- (void)removeRides:(NSSet *)values;
+- (void)addTicketsObject:(Ticket *)value;
+- (void)removeTicketsObject:(Ticket *)value;
+- (void)addTickets:(NSSet *)values;
+- (void)removeTickets:(NSSet *)values;
 
 - (NSString *) summary;
 

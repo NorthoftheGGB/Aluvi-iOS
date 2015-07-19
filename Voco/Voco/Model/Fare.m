@@ -38,7 +38,7 @@
     
     [entityMapping addAttributeMappingsFromDictionary:@{
                                                         @"id" : @"fare_id",
-                                                        @"state" : @"savedState",
+                                                        @"state" : @"state",
                                                         @"meeting_point_place_name" : @"meetingPointPlaceName",
                                                         @"meeting_point_latitude" : @"meetingPointLatitude",
                                                         @"meeting_point_longitude" : @"meetingPointLongitude",

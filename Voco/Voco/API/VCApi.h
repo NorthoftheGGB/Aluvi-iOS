@@ -28,8 +28,6 @@
 #define API_POST_RIDE_REQUEST @"rides/request"
 #define API_POST_REQUEST_CANCELLED @"rides/request/cancel"
 #define API_GET_RIDES_STATE @"rides/state"
-#define API_POST_RIDE_ACCEPTED @"rides/accepted"
-#define API_POST_RIDE_DECLINED @"rides/declined"
 #define API_POST_DRIVER_CANCELLED @"rides/driver_cancelled"
 #define API_POST_RIDER_CANCELLED @"rides/rider_cancelled"
 #define API_POST_RIDE_PICKUP @"rides/pickup"

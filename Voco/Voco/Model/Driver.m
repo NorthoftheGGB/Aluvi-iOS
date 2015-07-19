@@ -19,7 +19,7 @@
 @dynamic phone;
 @dynamic smallImageUrl;
 @dynamic largeImageUrl;
-@dynamic rides;
+@dynamic tickets;
 
 + (RKEntityMapping *)createMappings:(RKObjectManager *)objectManager{
     RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Driver" inManagedObjectStore:[VCCoreData managedObjectStore]];

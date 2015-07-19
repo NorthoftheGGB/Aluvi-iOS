@@ -1747,7 +1747,7 @@
     [VCDriverApi ridersPickedUp:_ticket.fare_id
                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                             [self moveFromPickupToRideInProgressInteface];
-                            _ticket.hovFare.forcedState = @"started";
+                            _ticket.hovFare.state = @"started";
                             [VCCoreData saveContext];
                             [VCUserStateManager instance].driveProcessState = kUserStateRideStarted;
                             [hud hide:YES];
@@ -1770,7 +1770,7 @@
                            VCFare * fare = mappingResult.firstObject;
                            [VCUserStateManager instance].underwayFareId = nil;
                            
-                           _ticket.forcedState = kCompleteState;
+                           _ticket.state = kCompleteState;
                            [VCCoreData saveContext];
                            [VCNotifications scheduleUpdated];
                            [hud hide:YES];
