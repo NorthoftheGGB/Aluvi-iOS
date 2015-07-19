@@ -8,6 +8,7 @@
 
 #import "VCDevice.h"
 
+
 @implementation VCDevice
 
 - (id) init {
@@ -17,6 +18,7 @@
     self.appVersion = [NSString stringWithFormat:@"v%@b%@", version, build];
     NSString* appID = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
     self.appIdentifier = appID;
+    self.platform = kApplePushPlatform;
     return self;
 }
 
@@ -26,7 +28,8 @@
                                                         @"user_id" : @"userId",
                                                         @"push_token" : @"pushToken",
                                                         @"app_version" : @"appVersion",
-                                                        @"app_identifier" : @"appIdentifier"
+                                                        @"app_identifier" : @"appIdentifier",
+                                                        @"platform" : "@platform"
                                                         }];
     return deviceMapping;
 
