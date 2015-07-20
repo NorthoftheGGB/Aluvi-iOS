@@ -234,7 +234,7 @@ static VCCommuteManager * instance;
     NSDate *nextDate = [gregorian dateByAddingComponents:offsetComponents toDate:thisDate options:0];
     
     // build the predicate
-    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"rideDate > %@ && rideDate < %@ && savedState IN %@ ", thisDate, nextDate, @[kCreatedState, kRequestedState, kScheduledState]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"rideDate > %@ && rideDate < %@ && state IN %@ ", thisDate, nextDate, @[kCreatedState, kRequestedState, kScheduledState]];
     [fetch setPredicate:predicate];
     
     NSError * error;

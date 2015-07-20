@@ -130,7 +130,7 @@
 
 - (void) countNotificaitons {
     NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"savedState IN %@ AND confirmed = %@", @[kScheduledState], [NSNumber numberWithBool:NO]];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"state IN %@ AND confirmed = %@", @[kScheduledState], [NSNumber numberWithBool:NO]];
     [fetch setPredicate:predicate];
     NSError * error;
     NSArray * pending = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
@@ -554,16 +554,13 @@
     
     
     //set up filter by date > today at midnight.
-    
-   
-    
     NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"( ( savedState IN %@ AND confirmed = true ) \
-                               OR ( savedState IN %@  AND direction = 'a' )  \
-                               OR ( savedState = %@ AND direction = 'a' AND confirmed = false ) ) \
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"( ( state = %@ AND confirmed = true ) \
+                               OR ( state IN %@  AND direction = 'a' )  \
+                               OR ( state = %@ AND direction = 'a' AND confirmed = false ) ) \
                                AND pickupTime > %@ \
                                ",
-                               @[kScheduledState],
+                               kScheduledState,
                                @[kCreatedState, kRequestedState, kScheduledState],
                                kCommuteSchedulerFailedState,
                                [VCUtilities beginningOfToday]  ];

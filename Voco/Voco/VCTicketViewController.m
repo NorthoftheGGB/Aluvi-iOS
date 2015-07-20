@@ -218,7 +218,7 @@
         
         // Check for existing commuter ticket that is has not been processed
         NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
-        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"savedState IN %@  AND direction = 'a' AND confirmed = false \
+        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"state IN %@  AND direction = 'a' AND confirmed = false \
                                    AND pickupTime > %@",
                                    @[kCreatedState, kRequestedState, kCommuteSchedulerFailedState],
                                    [VCUtilities beginningOfToday] ];
@@ -236,7 +236,7 @@
     // Look for next ticket for today/tomorrow
     if(_ticket == nil) {
         NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
-        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"savedState = 'scheduled' AND pickupTime > %@",
+        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"state = 'scheduled' AND pickupTime > %@",
                                    [VCUtilities beginningOfToday] ];
         [fetch setPredicate:predicate];
         NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];
