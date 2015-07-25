@@ -1804,6 +1804,7 @@
                            [_driverCallHUD removeFromSuperview];
                            [_driverCancelHUD removeFromSuperview];
                            [_rideCompleteButton removeFromSuperview];
+                           [self resetInterfaceToHome];
                            
                            [UIAlertView showWithTitle:@"Receipt"
                                               message:[NSString stringWithFormat:@"Thanks for driving.  You earned %@ on this ride.",

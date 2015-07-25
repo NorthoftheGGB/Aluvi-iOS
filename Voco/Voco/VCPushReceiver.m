@@ -211,6 +211,14 @@
                         break;
                 }
             }];
+        } else if ([type isEqualToString:kPushTypeRideCompleted]){
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationTypeFareComplete object:payload userInfo:@{}];
+            NSNumber * rideId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
+            if([[VCUserStateManager instance].underwayFareId isEqualToNumber:rideId]){
+                [VCUserStateManager instance].underwayFareId = nil;
+                [VCUserStateManager instance].rideProcessState = kUserStateIdle;
+            }
 
         } else {
 #ifdef DEBUG

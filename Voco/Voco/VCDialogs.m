@@ -105,17 +105,6 @@ static VCDialogs *sharedSingleton;
                       }];
 }
 
-- (void) rideAssigned: (Fare *) ride {
-    [UIAlertView showWithTitle:@"New Ride Assigned!"
-                       message:[NSString stringWithFormat:@"A ride from %@ to %@ at %@ has been assigned to you.  View details now ?",
-                                ride.meetingPointPlaceName, ride.dropOffPointPlaceName, [ride.pickupTime pretty]]
-             cancelButtonTitle:@"Not Now" otherButtonTitles:@[@"Yes!"]
-                      tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                          if(buttonIndex == 1){
-                               [[NSNotificationCenter defaultCenter] postNotificationName:@"driver_ride_invoked" object:ride userInfo:@{}];
-                          }
-                      }];
-}
 
 - (void) commuterRideAlarm: (NSNumber *) requestId {
     NSFetchRequest * fetch = [[NSFetchRequest alloc] initWithEntityName:@"Ride"];

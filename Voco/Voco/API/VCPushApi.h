@@ -24,6 +24,9 @@
 #define kPushTypeCommuteReminder @"commute_reminder"
 
 
+#define kPushTypeRideCompleted @"ride_receipt"
+
+
 @interface VCPushApi : NSObject
 
 @end
