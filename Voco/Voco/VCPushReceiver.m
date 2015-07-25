@@ -21,8 +21,6 @@
 #import "VCUserStateManager.h"
 #import "VCCoreData.h"
 
-#define kPushTokenKey @"PUSH_TOKEN_KEY"
-#define kPushTokenPublishedKey @"PUSH_TOKEN_PUBLISHED"
 
 @implementation VCPushReceiver
 

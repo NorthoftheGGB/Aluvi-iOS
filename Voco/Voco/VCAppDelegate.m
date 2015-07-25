@@ -142,7 +142,12 @@
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         }];
 
-
+    }
+    
+    
+    BOOL pushTokenPublished = [[NSUserDefaults standardUserDefaults] boolForKey:kPushTokenPublishedKey];
+    if(!pushTokenPublished){
+        [VCPushReceiver registerForRemoteNotifications];
     }
 }
 

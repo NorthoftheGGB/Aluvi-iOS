@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+#define kPushTokenKey @"PUSH_TOKEN_KEY"
+#define kPushTokenPublishedKey @"PUSH_TOKEN_PUBLISHED"
+
 @interface VCPushReceiver : NSObject
 
 + (void)registerForRemoteNotifications;
