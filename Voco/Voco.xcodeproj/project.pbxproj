@@ -5040,6 +5040,11 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Voco/Voco-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"API_BASE_URL=@\\\"http\\:\\/\\/52.25.169.216:3000\\/api\\/\\\"",
+				);
 				INFOPLIST_FILE = "Aluvi Distribution-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = Aluvi;
@@ -5066,6 +5071,7 @@
 					"$(inherited)",
 					"COCOAPODS=1",
 					"RELEASE=1",
+					"API_BASE_URL=@\\\"http\\:\\/\\/52.25.169.216:3000\\/api\\/\\\"",
 				);
 				INFOPLIST_FILE = "Aluvi Distribution-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
