@@ -118,7 +118,7 @@ static VCUserStateManager *sharedSingleton;
                           [self setProfile: mappingResult.firstObject];
                           success();
                       } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                          //[WRUtilities criticalError:error];
+                          [WRUtilities subcriticaError:error];
                       }];
                       
                   } failure:^(RKObjectRequestOperation *operation, NSError *error) {

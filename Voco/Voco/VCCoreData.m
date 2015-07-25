@@ -112,8 +112,14 @@ static VCCoreData * sharedInstance;
          Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
          
          */
-        NSLog(@"Unresolved error in core data persistent store setup %@, %@", error, [error userInfo]);
-        [UIAlertView showWithTitle:@"Reinstall Required" message:@"Please reinstall the application!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        NSLog(@"Core Data migration trouble, simply recreating the database");
+        [[NSFileManager defaultManager] removeItemAtURL:[self storeURL]  error:nil];
+        if (![[self instance].persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:[self storeURL] options:options error:&error]) {
+        
+        
+            NSLog(@"Unresolved error in core data persistent store setup %@, %@", error, [error userInfo]);
+            [UIAlertView showWithTitle:@"Reinstall Required" message:@"Please reinstall the application!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        }
     }
 
 }

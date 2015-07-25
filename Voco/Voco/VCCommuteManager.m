@@ -305,7 +305,6 @@ static VCCommuteManager * instance;
         homeToWorkRide.direction = @"a";
         homeToWorkRide.state = kRequestedState;
         
-        
         workToHomeRide.trip_id = homeToWorkRide.trip_id;
 
         [VCRiderApi requestRide:workToHomeRide success:^(RKObjectRequestOperation *operation, VCRideRequestCreated * response) {
@@ -319,7 +318,7 @@ static VCCommuteManager * instance;
                 success();
             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                 // Not sure what to do here, the request has been posted, but the schedule failed to update
-                success();
+                failure();
             }];
             
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {

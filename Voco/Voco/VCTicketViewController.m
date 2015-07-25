@@ -304,7 +304,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripUnfulfilled:) name:kNotificationTypeTripUnfulfilled object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fareCompleted:) name:kNotificationTypeFareComplete object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fareCancelledByDriver:) name:kPushTypeFareCancelledByDriver object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fareCancelledByRider:) name:kPushTypeFareCancelledByRider object:nil];
+
 }
 
 - (void) viewWillDisppear:(BOOL)animated{
@@ -345,6 +346,14 @@
 }
 
 - (void) fareCancelledByDriver:(NSNotification *) notification {
+    NSDictionary * payload = notification.object;
+    NSNumber * fareId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
+    if(_ticket != nil && [fareId isEqualToNumber:_ticket.fare_id]){
+        [self resetInterfaceToHome];
+    }
+}
+
+- (void) fareCancelledByRider: (NSNotification *) notification {
     NSDictionary * payload = notification.object;
     NSNumber * fareId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
     if(_ticket != nil && [fareId isEqualToNumber:_ticket.fare_id]){
@@ -614,6 +623,22 @@
         [self removeHuds];
         [self hideCancelBarButton];
         [self showHome];
+        
+        // check for another scheduled commute
+        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"state = %@", @"scheduled"];
+        NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
+        [fetch setPredicate:predicate];
+        NSError * error;
+        NSArray * tickets = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
+        if(tickets == nil){
+            [WRUtilities criticalError:error];
+        } else {
+            if([tickets count] > 0){
+                // we have a scheduled ticket still.  don't show the commute tomorrow button
+                _editCommuteButton.hidden = YES;
+            }
+        }
+        
     } completion:^(BOOL finished) {
         if([[VCCommuteManager instance] hasSettings]){
             [self addOriginAnnotation: [VCCommuteManager instance].home ];
@@ -862,6 +887,7 @@
                         [[VCCommuteManager instance] cancelRide:_ticket success:^{
                             [self resetInterfaceToHome];
                             _ticket = nil;
+                            
                             hud.hidden = YES;
                         } failure:^{
                             hud.hidden = YES;
