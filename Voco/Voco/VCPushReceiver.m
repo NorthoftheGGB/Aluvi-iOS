@@ -22,6 +22,7 @@
 #import "VCCoreData.h"
 
 #define kPushTokenKey @"PUSH_TOKEN_KEY"
+#define kPushTokenPublishedKey @"PUSH_TOKEN_PUBLISHED"
 
 @implementation VCPushReceiver
 
@@ -55,16 +56,35 @@
     
     // send PATCH
     NSString * pushToken = [self stringFromDeviceTokenData: deviceToken];
-    [[NSUserDefaults standardUserDefaults] setObject:pushToken forKey:kPushTokenKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    if(pushToken == nil || [pushToken isEqualToString:@""]){
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 10 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            [self registerForRemoteNotifications];
+        });
+    } else {
+        [[NSUserDefaults standardUserDefaults] setObject:pushToken forKey:kPushTokenKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [VCPushReceiver publishPushToken: pushToken];
+    }
+}
+
++ (void) publishPushToken: (NSString *) pushToken {
     [VCDevicesApi updatePushToken:pushToken success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        
+        [[NSUserDefaults standardUserDefaults] setBool:true forKey:kPushTokenPublishedKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        //TODO need to save and send again later
+        NSLog(@"Failure to save push token to server");
+        // and send again later
+        [[NSUserDefaults standardUserDefaults] setBool:false forKey:kPushTokenPublishedKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 10 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            [self republishPushToken];
+        });
     }];
-    
-    
-    
+}
+
++ (void) republishPushToken {
+    NSString * pushToken = [[NSUserDefaults standardUserDefaults] stringForKey:kPushTokenKey];
+    [self publishPushToken:pushToken];
 }
 
 
@@ -140,7 +160,7 @@
         if ([type isEqualToString:kPushTypeFareCancelledByRider]){
             NSNumber * rideId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
             [[VCDialogs instance] rideCancelledByRider];
-            [[NSNotificationCenter defaultCenter] postNotificationName:kPushTypeFareCancelledByRider object:rideId userInfo:@{}];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kPushTypeFareCancelledByRider object:payload userInfo:@{}];
             
             if([[VCUserStateManager instance].underwayFareId isEqualToNumber:rideId]){
                 [VCUserStateManager instance].underwayFareId = nil;
