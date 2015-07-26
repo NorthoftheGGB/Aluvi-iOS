@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <RestKit.h>
-
+#import <RestKit/RestKit.h>
+#import <RestKit/CoreData/CoreData.h>
 @interface VCAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

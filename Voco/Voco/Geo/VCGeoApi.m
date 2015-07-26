@@ -7,8 +7,8 @@
 //
 
 #import "VCGeoApi.h"
-#import <RestKit.h>
-#import "VCApi.h"
+#import <RestKit/RestKit.h>
+#import <RestKit/CoreData/CoreData.h>#import "VCApi.h"
 
 @implementation VCGeoApi
 
