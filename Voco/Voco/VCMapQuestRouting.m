@@ -7,8 +7,8 @@
 //
 
 #import "VCMapQuestRouting.h"
-#import <RestKit.h>
-#import "MQRouteResponse.h"
+#import <RestKit/RestKit.h>
+#import <RestKit/CoreData/CoreData.h>#import "MQRouteResponse.h"
 
 #define MAPQUEST_API_KEY @"Fmjtd|luur2guan0,b5=o5-9azxgz"
 

@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RestKit.h"
-#import "VCProfile.h"
+#import <RestKit/RestKit.h>
+#import <RestKit/CoreData/CoreData.h>#import "VCProfile.h"
 
 @interface VCUsersApi : NSObject
 

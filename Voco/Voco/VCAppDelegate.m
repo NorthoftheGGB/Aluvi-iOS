@@ -7,7 +7,8 @@
 //
 
 #import "VCAppDelegate.h"
-#import <RestKit.h>
+#import <RestKit/RestKit.h>
+#import <RestKit/CoreData/CoreData.h>
 #import <Stripe.h>
 #import <Crashlytics/Crashlytics.h>
 #import <Parse/Parse.h>
