@@ -10,6 +10,8 @@
 
 @interface VCDebug : NSObject
 
++ (void) showTriage;
+
 + (VCDebug *) sharedInstance;
 
 - (void) setLoggedInUserIdentifier: (NSString *) identifier;

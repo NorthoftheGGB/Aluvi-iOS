@@ -45,6 +45,8 @@
 #define kMyCarCell @1010
 #define kEarningsCell @1011
 #define kFareReceiptsCell @1012
+#define kTriageCell @1013
+
 
 //Drive
 
@@ -62,6 +64,7 @@
 #define kMyCarCellInteger 1010
 #define kEarningsCellInteger 1011
 #define kFareReceiptsCellInteger 1012
+#define kTriageCellInteger 1013
 
 
 @interface VCLeftMenuViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -84,10 +87,10 @@
         
         
         if([[VCUserStateManager instance] isHovDriver]){
-            _tableCellList = [NSMutableArray arrayWithArray: @[kUserInfoCell, kMapCell, kDriverSettingsCell, kPaymentCell, kReceiptsCell, kSupportCell ]];
+            _tableCellList = [NSMutableArray arrayWithArray: @[kUserInfoCell, kMapCell, kDriverSettingsCell, kPaymentCell, kReceiptsCell, kSupportCell, kTriageCell ]];
             
         } else {
-            _tableCellList = [NSMutableArray arrayWithArray: @[kUserInfoCell, kMapCell, kPaymentCell, kReceiptsCell, kSupportCell ]];
+            _tableCellList = [NSMutableArray arrayWithArray: @[kUserInfoCell, kMapCell, kPaymentCell, kReceiptsCell, kSupportCell, kTriageCell ]];
         }
         _selectedCellTag = -1;
 
@@ -337,6 +340,14 @@
             cell = subMenuItemTableViewCell;
         }
             break;
+        case kTriageCellInteger:
+        {
+            VCMenuItemTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemTableViewCell" class:[VCMenuItemTableViewCell class]];
+            menuItemTableViewCell.menuItemLabel.text = @"Triage";
+            menuItemTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell = menuItemTableViewCell;
+            break;
+        }
             
         default:
         {
@@ -503,6 +514,11 @@
             [cell select];
         }
             break;
+        case kTriageCellInteger:
+        {
+            [VCDebug showTriage];
+         
+        }
             
         default:
             //do nothing
