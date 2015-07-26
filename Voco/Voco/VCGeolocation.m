@@ -8,7 +8,7 @@
 
 #import "VCGeolocation.h"
 #import <RestKit/RestKit.h>
-#import <RestKit/CoreData/CoreData.h>#import "VCApi.h"
+#import "VCApi.h"
 #import "VCGeoObject.h"
 #import "VCUserStateManager.h"
 #import "WRUtilities.h"

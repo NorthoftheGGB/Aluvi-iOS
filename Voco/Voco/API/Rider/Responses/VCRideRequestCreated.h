@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <RestKit/RestKit.h>
-#import <RestKit/CoreData/CoreData.h>
 @interface VCRideRequestCreated : NSObject
 
 @property (nonatomic, strong) NSNumber * rideId;

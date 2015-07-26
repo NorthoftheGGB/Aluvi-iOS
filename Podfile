@@ -3,7 +3,7 @@ xcodeproj 'Voco/Voco.xcodeproj'
 platform :ios, '8.0'
 
 # ignore all warnings from all pods
-#inhibit_all_warnings!
+inhibit_all_warnings!
 pod 'RestKit',       '~> 0.24.0'
 pod 'Reachability',  '~> 3.1.1'
 pod 'MBProgressHUD', '~> 0.8'

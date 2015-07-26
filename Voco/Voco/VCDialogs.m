@@ -8,7 +8,7 @@
 
 #import "VCDialogs.h"
 #import <RestKit/RestKit.h>
-#import <RestKit/CoreData/CoreData.h>#import "Fare.h"
+#import "Fare.h"
 #import "VCFareDriverAssignment.h"
 #import "VCUserStateManager.h"
 #import "VCDriverApi.h"

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import <RestKit/RestKit.h>
-#import <RestKit/CoreData/CoreData.h>#import "Ticket.h"
+#import "Ticket.h"
 
 
 

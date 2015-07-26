@@ -262,31 +262,6 @@
     }];
 }
 
-+ (void) handleFareAssignedNotification:(NSDictionary *) payload {
-    [VCDriverApi refreshActiveRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        NSNumber * fareId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
-        NSFetchRequest * fetch = [[NSFetchRequest alloc] initWithEntityName:@"Fare"];
-        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"fare_id = %@", fareId];
-        [fetch setPredicate:predicate];
-        NSError * error;
-        NSArray * rides = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
-        if(rides == nil){
-            [WRUtilities criticalError:error];
-            return;
-        }
-        if([rides count] > 0) {
-            Fare * ride = rides.firstObject;
-            [[VCDialogs instance] rideAssigned: ride];
-            
-        } else {
-            [WRUtilities stateErrorWithString:@"Ride no longer exists"];
-        }
-        
-        
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        
-    }];
-}
 
 
 

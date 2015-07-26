@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <RestKit/RestKit.h>
-#import <RestKit/CoreData/CoreData.h>#import "Ticket.h"
+#import "Ticket.h"
 #import "VCRideRequestCreated.h"
 
 @interface VCRiderApi : NSObject

@@ -8,7 +8,6 @@
 
 #import "VCAppDelegate.h"
 #import <RestKit/RestKit.h>
-#import <RestKit/CoreData/CoreData.h>
 #import <Stripe.h>
 #import <Crashlytics/Crashlytics.h>
 #import <Parse/Parse.h>
@@ -28,6 +27,9 @@
 #import "VCLocalNotificationReceiver.h"
 #import "VCTicketViewController.h"
 #import "VCDevicesApi.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
 
 @interface VCAppDelegate ()
 
@@ -40,22 +42,8 @@
     
     [VCApi setup];
 
-#if RELEASE==1
-    [Crashlytics startWithAPIKey:@"f7d1a0eeca165a46710d606ff21a38fea3c9ec43"];
-#endif
-    
-#if TESTING==1
-    [Crashlytics startWithAPIKey:@"f7d1a0eeca165a46710d606ff21a38fea3c9ec43"];
-#endif
-    
-    [ParseCrashReporting enable];
-    [Parse setApplicationId:@"2XBg609X5mMR8SBBvxsVW1MNGxQ7A8jOWCWmo3rv"
-                  clientKey:@"oXEF9fLGgmwCMSXCaH3j0p1tqQbjXV8ECaC16RvH"];
-    if(launchOptions == nil) {
-        launchOptions = @{};
-    }
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-    
+    [Fabric with:@[CrashlyticsKit]];
+
     [VCDialogs instance];
     
     // GIS
