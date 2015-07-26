@@ -10,7 +10,7 @@
 @import AddressBookUI;
 #import <MapKit/MapKit.h>
 #import <MBProgressHUD.h>
-#import <ActionSheetPicker-3.0/ActionSheetStringPicker.h>
+#import <ActionSheetStringPicker.h>
 #import <ActionSheetCustomPicker.h>
 #import "IIViewDeckController.h"
 #import <MBXMapKit/MBXMapKit.h>

@@ -4,7 +4,7 @@ platform :ios, '8.0'
 
 # ignore all warnings from all pods
 inhibit_all_warnings!
-pod 'RestKit',       '~> 0.23.1'
+pod 'RestKit',       '~> 0.24'
 pod 'Reachability',  '~> 3.1.1'
 pod 'MBProgressHUD', '~> 0.8'
 pod 'UIAlertView+Blocks', :git => 'https://github.com/deepwinter/UIAlertView-Blocks.git'
@@ -19,6 +19,8 @@ pod 'ASImageResize', '~> 1.0.3'
 pod 'SDWebImage', '~> 3.7.1'
 pod 'RKCLLocationValueTransformer'
 pod 'MBXMapKit'
+pod 'Fabric'
+pod 'Crashlytics'
 
  
   

@@ -4006,7 +4006,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run f7d1a0eeca165a46710d606ff21a38fea3c9ec43 30443cbde3ed6a69c0f8176acfb84b3b3a6de64d3e74596b70f376616eff7558";
+			shellScript = "\"${PODS_ROOT}/Fabric/Fabric.framework/run\" 531b451b5ea5c0dc8f72ba102e736a6a2edb31c0 6f2a42e3e5a68ae7912a914316d8c75c81742a0fe6a47583b69f24b1a498d0d3";
 		};
 		A2C77502DF4D49478F120063 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4064,7 +4064,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run f7d1a0eeca165a46710d606ff21a38fea3c9ec43 30443cbde3ed6a69c0f8176acfb84b3b3a6de64d3e74596b70f376616eff7558";
+			shellScript = "\"${PODS_ROOT}/Fabric/Fabric.framework/run\" 531b451b5ea5c0dc8f72ba102e736a6a2edb31c0 6f2a42e3e5a68ae7912a914316d8c75c81742a0fe6a47583b69f24b1a498d0d3";
 		};
 		F4C6B1BD197F06B100F6C10B /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4107,7 +4107,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run f7d1a0eeca165a46710d606ff21a38fea3c9ec43 30443cbde3ed6a69c0f8176acfb84b3b3a6de64d3e74596b70f376616eff7558";
+			shellScript = "\"${PODS_ROOT}/Fabric/Fabric.framework/run\" 531b451b5ea5c0dc8f72ba102e736a6a2edb31c0 6f2a42e3e5a68ae7912a914316d8c75c81742a0fe6a47583b69f24b1a498d0d3";
 		};
 		F4D8FE0719B1745A00BC0B69 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4150,7 +4150,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run f7d1a0eeca165a46710d606ff21a38fea3c9ec43 30443cbde3ed6a69c0f8176acfb84b3b3a6de64d3e74596b70f376616eff7558";
+			shellScript = "\"${PODS_ROOT}/Fabric/Fabric.framework/run\" 531b451b5ea5c0dc8f72ba102e736a6a2edb31c0 6f2a42e3e5a68ae7912a914316d8c75c81742a0fe6a47583b69f24b1a498d0d3";
 		};
 		F4FE1B25193E9CCF00354886 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4163,7 +4163,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Crashlytics.framework/run f7d1a0eeca165a46710d606ff21a38fea3c9ec43 30443cbde3ed6a69c0f8176acfb84b3b3a6de64d3e74596b70f376616eff7558";
+			shellScript = "\"${PODS_ROOT}/Fabric/Fabric.framework/run\" 531b451b5ea5c0dc8f72ba102e736a6a2edb31c0 6f2a42e3e5a68ae7912a914316d8c75c81742a0fe6a47583b69f24b1a498d0d3";
 		};
 /* End PBXShellScriptBuildPhase section */
 
