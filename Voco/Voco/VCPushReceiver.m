@@ -188,13 +188,11 @@
             
             [[VCDialogs instance] commuteFulfilled];
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationTypeTripFulfilled object:payload];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"schedule_updated" object:self];
             
         } else if([type isEqualToString:kPushTypeTripUnfulfilled]){
             
             [[VCDialogs instance] commuteUnfulfilled];
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationTypeTripUnfulfilled object:payload];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"schedule_updated" object:self];
         
         } else if([type isEqualToString:kPushTypeGeneric]){
             NSString * message =[[payload objectForKey:@"aps" ] objectForKey:@"alert"];

@@ -323,6 +323,7 @@
 }
 
 - (void) showInterfaceForPayload:(NSDictionary *)payload {
+    NSLog(@"%@", [payload debugDescription]);
     NSNumber * tripId = [payload objectForKey:VC_PUSH_TRIP_ID_KEY];
     if(_ticket == nil || [_ticket.trip_id isEqualToNumber:tripId]) {
         NSArray * ticketsForTrip = [Ticket ticketsForTrip:tripId];
@@ -332,6 +333,13 @@
             return;
         }
         [self showInterfaceForTicket];
+    } else {
+        // some debugging
+        if(_ticket == nil){
+            NSLog(@"Nil ticket");
+        } else {
+            NSLog(@"Viewing a different ticket %@", [_ticket debugDescription]);
+        }
     }
     
 }
@@ -343,6 +351,7 @@
     if(_ticket != nil && [fareId isEqualToNumber:_ticket.fare_id]){
         [self resetInterfaceToHome];
     }
+    _ticket = nil;
 }
 
 - (void) fareCancelledByDriver:(NSNotification *) notification {
@@ -351,6 +360,7 @@
     if(_ticket != nil && [fareId isEqualToNumber:_ticket.fare_id]){
         [self resetInterfaceToHome];
     }
+    _ticket = nil;
 }
 
 - (void) fareCancelledByRider: (NSNotification *) notification {
@@ -359,6 +369,7 @@
     if(_ticket != nil && [fareId isEqualToNumber:_ticket.fare_id]){
         [self resetInterfaceToHome];
     }
+    _ticket = nil;
 }
 
 

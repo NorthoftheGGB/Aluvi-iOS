@@ -28,6 +28,7 @@
 #import "VCUserStateManager.h"
 #import "VCRiderApi.h"
 #import "VCUtilities.h"
+#import "VCNotifications.h"
 
 
 // These ones go in the array
@@ -105,7 +106,7 @@
     
     
     // Listen for notifications about updated rides
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scheduleUpdated:) name:@"schedule_updated" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scheduleUpdated:) name:kNotificationScheduleUpdated object:nil];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
