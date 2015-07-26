@@ -776,6 +776,302 @@
 		841648981B64A47D00CD20AC /* mycar-menu-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9D019614115006A1962 /* mycar-menu-button-selected@2x.png */; };
 		841648991B64A47D00CD20AC /* car@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4138C3A19678BE000C265CD /* car@2x.png */; };
 		8416489A1B64A47D00CD20AC /* profile-menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9A11960EC8C006A1962 /* profile-menu-button@2x.png */; };
+		841648A51B658F4900CD20AC /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE519492C2A00D8C900 /* IIWrapController.m */; };
+		841648A61B658F4900CD20AC /* VCDriverRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F02D1952DA8F00D8C900 /* VCDriverRegistration.m */; };
+		841648A71B658F4900CD20AC /* VCCommuteSetUpOnBoardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758CF19AA91810093DBEA /* VCCommuteSetUpOnBoardingViewController.m */; };
+		841648A81B658F4900CD20AC /* VCReceiptsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCF2D219A5493500A4A24E /* VCReceiptsViewController.m */; };
+		841648A91B658F4900CD20AC /* VCPushApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B1F193D8FE500354886 /* VCPushApi.m */; };
+		841648AA1B658F4900CD20AC /* VCPasswordTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFBA440195E608600A51B84 /* VCPasswordTextField.m */; };
+		841648AB1B658F4900CD20AC /* VCCarModelTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE712CC197368C80071020C /* VCCarModelTextField.m */; };
+		841648AC1B658F4900CD20AC /* VCUserStateResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F03419539F2A00D8C900 /* VCUserStateResponse.m */; };
+		841648AD1B658F4900CD20AC /* VCNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6B8B719A9898E004312A1 /* VCNotifications.m */; };
+		841648AE1B658F4900CD20AC /* VCScrollableFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F010194A6D3C00D8C900 /* VCScrollableFormViewController.m */; };
+		841648AF1B658F4900CD20AC /* VCProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCF2BC19A25F2100A4A24E /* VCProfileViewController.m */; };
+		841648B01B658F4900CD20AC /* VCLabelBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEC819663B1F00AD4229 /* VCLabelBold.m */; };
+		841648B11B658F4900CD20AC /* VCDebugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C80819625237007E05AD /* VCDebugViewController.m */; };
+		841648B21B658F4900CD20AC /* Voco.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4FA0BFB192BF6BF005D8645 /* Voco.xcdatamodeld */; };
+		841648B31B658F4900CD20AC /* VCHoldingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F40CDDCD19D0DC7F0026CFA3 /* VCHoldingView.m */; };
+		841648B41B658F4900CD20AC /* VCBaseValidatorTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F157A1195E8DB1009A33C8 /* VCBaseValidatorTextField.m */; };
+		841648B51B658F4900CD20AC /* VCLoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904F19469018007C4671 /* VCLoginResponse.m */; };
+		841648B61B658F4900CD20AC /* VCRiderOnBoardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758BD19AA91330093DBEA /* VCRiderOnBoardingViewController.m */; };
+		841648B71B658F4900CD20AC /* VCRideDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D8BEB1987650A0027A2AF /* VCRideDetailsView.m */; };
+		841648B81B658F4900CD20AC /* VCPrivatePolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F38975819B7DD0100A75C5C /* VCPrivatePolicyViewController.m */; };
+		841648B91B658F4900CD20AC /* VCRideIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B23193E722B00354886 /* VCRideIdentity.m */; };
+		841648BA1B658F4900CD20AC /* VCRiderApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BF5193578DE00A94721 /* VCRiderApi.m */; };
+		841648BB1B658F4900CD20AC /* VCMenuItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE17011989E801004D4413 /* VCMenuItemTableViewCell.m */; };
+		841648BC1B658F4900CD20AC /* VCButtonStandardStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DF194162360059BED1 /* VCButtonStandardStyle.m */; };
+		841648BD1B658F4900CD20AC /* VCTermsOfServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F38974F19B7DC5000A75C5C /* VCTermsOfServiceViewController.m */; };
+		841648BE1B658F4900CD20AC /* VCReceiptExpandedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758EB19AA95300093DBEA /* VCReceiptExpandedTableViewCell.m */; };
+		841648BF1B658F4900CD20AC /* VCUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8777219775D7E00870945 /* VCUtilities.m */; };
+		841648C01B658F4900CD20AC /* VCLocalNotificationReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FB55751977CD690043557A /* VCLocalNotificationReceiver.m */; };
+		841648C11B658F4900CD20AC /* VCLabelItalic.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DC1941621E0059BED1 /* VCLabelItalic.m */; };
+		841648C21B658F4900CD20AC /* Driver.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F03E195B971C00D8C900 /* Driver.m */; };
+		841648C31B658F4900CD20AC /* VCFareReceiptsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3098F919B0135600DFCDD1 /* VCFareReceiptsViewController.m */; };
+		841648C41B658F4900CD20AC /* VCDialogs.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B111938581C00354886 /* VCDialogs.m */; };
+		841648C51B658F4900CD20AC /* MQRouteResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F008194A5A0200D8C900 /* MQRouteResponse.m */; };
+		841648C61B658F4900CD20AC /* VCLeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE138E1989AE09004D4413 /* VCLeftMenuViewController.m */; };
+		841648C71B658F4900CD20AC /* VCRoutingNumberTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE712C4197368A30071020C /* VCRoutingNumberTextField.m */; };
+		841648C81B658F4900CD20AC /* VCMenuItemModeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F184A3C1992E41F006EA959 /* VCMenuItemModeTableViewCell.m */; };
+		841648C91B658F4900CD20AC /* VCEditLocationWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6B2A3197F8A9400F6C10B /* VCEditLocationWidget.m */; };
+		841648CA1B658F4900CD20AC /* VCProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D877651976721D00870945 /* VCProfile.m */; };
+		841648CB1B658F4900CD20AC /* VCMenuDriverClockOnTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F184A191991893D006EA959 /* VCMenuDriverClockOnTableViewCell.m */; };
+		841648CC1B658F4900CD20AC /* VCEarningsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3098F419B012F900DFCDD1 /* VCEarningsViewController.m */; };
+		841648CD1B658F4900CD20AC /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F03B195B971B00D8C900 /* Car.m */; };
+		841648CE1B658F4900CD20AC /* VCCarLicensePlateTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE712D4197369060071020C /* VCCarLicensePlateTextField.m */; };
+		841648CF1B658F4900CD20AC /* VCDevicesApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F01F19511D7700D8C900 /* VCDevicesApi.m */; };
+		841648D01B658F4900CD20AC /* VCDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6B1B61979229900F6C10B /* VCDebug.m */; };
+		841648D11B658F4900CD20AC /* Fare.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AFD193839DF00354886 /* Fare.m */; };
+		841648D21B658F4900CD20AC /* VCNewUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904919468E44007C4671 /* VCNewUser.m */; };
+		841648D31B658F4900CD20AC /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE119492C2A00D8C900 /* IISideController.m */; };
+		841648D41B658F4900CD20AC /* VCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641FD194170F50059BED1 /* VCButton.m */; };
+		841648D51B658F4900CD20AC /* VCMenuUserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F184A1019918750006EA959 /* VCMenuUserInfoTableViewCell.m */; };
+		841648D61B658F4900CD20AC /* MQShape.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F00B194A5A6100D8C900 /* MQShape.m */; };
+		841648D71B658F4900CD20AC /* VCRideRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BFB19357B8A00A94721 /* VCRideRequest.m */; };
+		841648D81B658F4900CD20AC /* VCPushReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AF71937DD5600354886 /* VCPushReceiver.m */; };
+		841648D91B658F4900CD20AC /* VCSubMenuItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F184A221991E156006EA959 /* VCSubMenuItemTableViewCell.m */; };
+		841648DA1B658F4900CD20AC /* VCDriveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D8BF219882AFB0027A2AF /* VCDriveViewController.m */; };
+		841648DB1B658F4900CD20AC /* VCDriverStateResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F0311952F68D00D8C900 /* VCDriverStateResponse.m */; };
+		841648DC1B658F4900CD20AC /* MQBoundingBox.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C81519628F10007E05AD /* MQBoundingBox.m */; };
+		841648DD1B658F4900CD20AC /* VCGeolocation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AFA1937DD6600354886 /* VCGeolocation.m */; };
+		841648DE1B658F4900CD20AC /* VCDriverGeoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F4792AF51976492D005AB652 /* VCDriverGeoObject.m */; };
+		841648DF1B658F4900CD20AC /* VCBetaRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C97B2C19F88B94006521C1 /* VCBetaRegisterViewController.m */; };
+		841648E01B658F4900CD20AC /* VCDriverRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641BD194157C60059BED1 /* VCDriverRequestViewController.m */; };
+		841648E11B658F4900CD20AC /* VCDriverCallHudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE13971989DDF4004D4413 /* VCDriverCallHudView.m */; };
+		841648E21B658F4900CD20AC /* Transit.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C80419623C70007E05AD /* Transit.m */; };
+		841648E31B658F4900CD20AC /* VCDriversLicenseTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE712BC1973686B0071020C /* VCDriversLicenseTextField.m */; };
+		841648E41B658F4900CD20AC /* VCFillCommuterPass.m in Sources */ = {isa = PBXBuildFile; fileRef = F401446E1978728100769802 /* VCFillCommuterPass.m */; };
+		841648E51B658F4900CD20AC /* VCCenterViewBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758F819AA9B570093DBEA /* VCCenterViewBaseViewController.m */; };
+		841648E61B658F4900CD20AC /* VCNameTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEA6196618C300AD4229 /* VCNameTextField.m */; };
+		841648E71B658F4900CD20AC /* VCCommuterPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEAF19661C3400AD4229 /* VCCommuterPassViewController.m */; };
+		841648E81B658F4900CD20AC /* VCMapQuestRouting.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F004194A54AC00D8C900 /* VCMapQuestRouting.m */; };
+		841648E91B658F4900CD20AC /* VCCommuterHud.m in Sources */ = {isa = PBXBuildFile; fileRef = F4138C2519650C5600C265CD /* VCCommuterHud.m */; };
+		841648EA1B658F4900CD20AC /* VCTransitBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C7FC19615B9D007E05AD /* VCTransitBaseViewController.m */; };
+		841648EB1B658F4900CD20AC /* VCMenuItemNotConfiguredTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F184A331992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.m */; };
+		841648EC1B658F4900CD20AC /* VCInterfaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD0F1946E2F90020B8BB /* VCInterfaceManager.m */; };
+		841648ED1B658F4900CD20AC /* HVTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6B8BD19A9ADEF004312A1 /* HVTableView.m */; };
+		841648EE1B658F4900CD20AC /* Rider.m in Sources */ = {isa = PBXBuildFile; fileRef = F471E3E019A9590E00DF688D /* Rider.m */; };
+		841648EF1B658F4900CD20AC /* VCRequestUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F01C195113D100D8C900 /* VCRequestUpdate.m */; };
+		841648F01B658F4900CD20AC /* VCCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B1A193D301F00354886 /* VCCoreData.m */; };
+		841648F11B658F4900CD20AC /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = F496FE9019FDB9FE00632055 /* Route.m */; };
+		841648F21B658F4900CD20AC /* VCCommuteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F425906C1995E30000FA928E /* VCCommuteManager.m */; };
+		841648F31B658F4900CD20AC /* VCApiError.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6B29D197F437800F6C10B /* VCApiError.m */; };
+		841648F41B658F4900CD20AC /* VCRiderRecieptDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEBD196630D700AD4229 /* VCRiderRecieptDetailViewController.m */; };
+		841648F51B658F4900CD20AC /* VCCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = F48FBCCD19ECCF3B009352A0 /* VCCodes.m */; };
+		841648F61B658F4900CD20AC /* VCLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F000194A498E00D8C900 /* VCLabel.m */; };
+		841648F71B658F4900CD20AC /* Payment.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F5FFBD19779E23001A1C0E /* Payment.m */; };
+		841648F81B658F4900CD20AC /* Earning.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6B1AA1978DF2A00F6C10B /* Earning.m */; };
+		841648F91B658F4900CD20AC /* VCFareIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C81019626DDE007E05AD /* VCFareIdentity.m */; };
+		841648FA1B658F4900CD20AC /* VCDriverVideoTutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB268281952207A0028D4ED /* VCDriverVideoTutorialController.m */; };
+		841648FB1B658F4900CD20AC /* VCRideOverviewHudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D8BE61987644F0027A2AF /* VCRideOverviewHudView.m */; };
+		841648FC1B658F4900CD20AC /* VCCarBrandTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE712C8197368B90071020C /* VCCarBrandTextField.m */; };
+		841648FD1B658F4900CD20AC /* VCFareDriverAssignment.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B0E1938571E00354886 /* VCFareDriverAssignment.m */; };
+		841648FE1B658F4900CD20AC /* VCPhoneTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEAA196619D800AD4229 /* VCPhoneTextField.m */; };
+		841648FF1B658F4900CD20AC /* VCEmailTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFBA44D195E7BC600A51B84 /* VCEmailTextField.m */; };
+		841649001B658F4900CD20AC /* VCLocationSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C8231962E235007E05AD /* VCLocationSearchViewController.m */; };
+		841649011B658F4900CD20AC /* VCDriverApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B0A19384F9000354886 /* VCDriverApi.m */; };
+		841649021B658F4900CD20AC /* VCGeoApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4138C37196784C700C265CD /* VCGeoApi.m */; };
+		841649031B658F4900CD20AC /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE319492C2A00D8C900 /* IIViewDeckController.m */; };
+		841649041B658F4900CD20AC /* VCCarYearTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE712D0197368DA0071020C /* VCCarYearTextField.m */; };
+		841649051B658F4900CD20AC /* VCApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BF81935798B00A94721 /* VCApi.m */; };
+		841649061B658F4900CD20AC /* VCBankAccountTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE712C01973688F0071020C /* VCBankAccountTextField.m */; };
+		841649071B658F4900CD20AC /* VCPasswordRecoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758D819AA94C30093DBEA /* VCPasswordRecoveryViewController.m */; };
+		841649081B658F4900CD20AC /* VCDriveDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FCBFBF21996264B00CBF0C8 /* VCDriveDetailsView.m */; };
+		841649091B658F4900CD20AC /* VCGeoObject.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B30193EE06400354886 /* VCGeoObject.m */; };
+		8416490A1B658F4900CD20AC /* VCTicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F73CA02197F2AB0001B6663 /* VCTicketViewController.m */; };
+		8416490B1B658F4900CD20AC /* VCDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AF01936BE0900354886 /* VCDevice.m */; };
+		8416490C1B658F4900CD20AC /* Ticket.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C021935880500A94721 /* Ticket.m */; };
+		8416490D1B658F4900CD20AC /* VCObjectRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D890551946A2D9007C4671 /* VCObjectRequestOperation.m */; };
+		8416490E1B658F4900CD20AC /* VCValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFDB19491C2B00D8C900 /* VCValidation.m */; };
+		8416490F1B658F4900CD20AC /* MQRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F0151950358000D8C900 /* MQRoute.m */; };
+		841649101B658F4900CD20AC /* VCFareReceiptExpandedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F30990A19B0194C00DFCDD1 /* VCFareReceiptExpandedTableViewCell.m */; };
+		841649111B658F4900CD20AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FA0BF5192BF6BF005D8645 /* main.m */; };
+		841649121B658F4900CD20AC /* VCFare.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8776B19774CAB00870945 /* VCFare.m */; };
+		841649131B658F4900CD20AC /* VCReferralCodeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEC41966369700AD4229 /* VCReferralCodeTextField.m */; };
+		841649141B658F4900CD20AC /* WRUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C0E1935976E00A94721 /* WRUtilities.m */; };
+		841649151B658F4900CD20AC /* VCDriverSubMenuItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC7590E19AACFF50093DBEA /* VCDriverSubMenuItemTableViewCell.m */; };
+		841649161B658F4900CD20AC /* VCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641D91941607B0059BED1 /* VCTextField.m */; };
+		841649171B658F4900CD20AC /* VCSupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCF2C919A5381900A4A24E /* VCSupportViewController.m */; };
+		841649181B658F4900CD20AC /* VCDriverOnBoardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758C619AA91410093DBEA /* VCDriverOnBoardingViewController.m */; };
+		841649191B658F4900CD20AC /* VCRideRequestCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C09193589A600A94721 /* VCRideRequestCreated.m */; };
+		8416491A1B658F4900CD20AC /* VCPaymentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB619661C4A00AD4229 /* VCPaymentsViewController.m */; };
+		8416491B1B658F4900CD20AC /* VCDriverInterestedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8905219469F0F007C4671 /* VCDriverInterestedRequest.m */; };
+		8416491C1B658F4900CD20AC /* VCAbstractRideDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3DB5C81981F6F400DDD094 /* VCAbstractRideDetailsView.m */; };
+		8416491D1B658F4900CD20AC /* NSDate+Pretty.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C10193597F500A94721 /* NSDate+Pretty.m */; };
+		8416491E1B658F4900CD20AC /* VCLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758B419AA8C270093DBEA /* VCLogInViewController.m */; };
+		8416491F1B658F4900CD20AC /* VCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FA0BF9192BF6BF005D8645 /* VCAppDelegate.m */; };
+		841649201B658F4900CD20AC /* VCUserStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B1419385CAA00354886 /* VCUserStateManager.m */; };
+		841649211B658F4900CD20AC /* VCUsersApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904319468A84007C4671 /* VCUsersApi.m */; };
+		841649231B658F4900CD20AC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BE9192BF6BF005D8645 /* CoreGraphics.framework */; };
+		841649241B658F4900CD20AC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CE61B1E5E14004446AF /* CFNetwork.framework */; };
+		841649251B658F4900CD20AC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CE81B1E5E26004446AF /* MobileCoreServices.framework */; };
+		841649261B658F4900CD20AC /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CFA1B1E5EFF004446AF /* Social.framework */; };
+		841649271B658F4900CD20AC /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CF81B1E5EF3004446AF /* Accounts.framework */; };
+		841649281B658F4900CD20AC /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BD606319FE1925003D819D /* libsqlite3.dylib */; };
+		841649291B658F4900CD20AC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CF01B1E5E50004446AF /* libz.dylib */; };
+		8416492A1B658F4900CD20AC /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CEE1B1E5E48004446AF /* libstdc++.6.dylib */; };
+		8416492B1B658F4900CD20AC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F473EFF81949515800D8C900 /* SystemConfiguration.framework */; };
+		8416492C1B658F4900CD20AC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CEC1B1E5E39004446AF /* StoreKit.framework */; };
+		8416492D1B658F4900CD20AC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CEA1B1E5E33004446AF /* Security.framework */; };
+		8416492E1B658F4900CD20AC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F473EFF019494DB100D8C900 /* QuartzCore.framework */; };
+		8416492F1B658F4900CD20AC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CE41B1E5E0D004446AF /* AudioToolbox.framework */; };
+		841649301B658F4900CD20AC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45F7BFF19357C6100A94721 /* MapKit.framework */; };
+		841649311B658F4900CD20AC /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F473EFF61949514A00D8C900 /* libxml2.dylib */; };
+		841649321B658F4900CD20AC /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CC71B1E5D14004446AF /* Parse.framework */; };
+		841649331B658F4900CD20AC /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F473EFF41949513F00D8C900 /* AddressBook.framework */; };
+		841649341B658F4900CD20AC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45F7BFD19357C5C00A94721 /* CoreLocation.framework */; };
+		841649351B658F4900CD20AC /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FE1B2C193EA18E00354886 /* Crashlytics.framework */; };
+		841649361B658F4900CD20AC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BED192BF6BF005D8645 /* CoreData.framework */; };
+		841649371B658F4900CD20AC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BEB192BF6BF005D8645 /* UIKit.framework */; };
+		841649381B658F4900CD20AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BE7192BF6BF005D8645 /* Foundation.framework */; };
+		841649391B658F4900CD20AC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 351E93948BFC43989C411DB5 /* libPods.a */; };
+		8416493A1B658F4900CD20AC /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CC61B1E5D14004446AF /* Bolts.framework */; };
+		8416493B1B658F4900CD20AC /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CC81B1E5D14004446AF /* ParseCrashReporting.framework */; };
+		8416493D1B658F4900CD20AC /* VCCommuterPassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB019661C3400AD4229 /* VCCommuterPassViewController.xib */; };
+		8416493E1B658F4900CD20AC /* nav-bar-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCB64CC19F8622300B02660 /* nav-bar-background@2x.png */; };
+		8416493F1B658F4900CD20AC /* temp-call-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F30991219B02BCD00DFCDD1 /* temp-call-button@2x.png */; };
+		841649401B658F4900CD20AC /* call-button-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C6019761C20007609E8 /* call-button-select@2x.png */; };
+		841649411B658F4900CD20AC /* call-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C6119761C21007609E8 /* call-button@2x.png */; };
+		841649421B658F4900CD20AC /* scheduledfares-menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9D319614115006A1962 /* scheduledfares-menu-button@2x.png */; };
+		841649431B658F4900CD20AC /* directions-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3DB5B71981ED4E00DDD094 /* directions-button-selected@2x.png */; };
+		841649441B658F4900CD20AC /* VCMenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE17021989E801004D4413 /* VCMenuItemTableViewCell.xib */; };
+		841649451B658F4900CD20AC /* VCPrivatePolicyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F38975919B7DD0100A75C5C /* VCPrivatePolicyViewController.xib */; };
+		841649461B658F4900CD20AC /* camera-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFCF2C419A266CC00A4A24E /* camera-icon@2x.png */; };
+		841649471B658F4900CD20AC /* support-menu-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9CD19613B41006A1962 /* support-menu-button-selected@2x.png */; };
+		841649481B658F4900CD20AC /* current-location-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286E81962B89700FD8AF6 /* current-location-arrow@2x.png */; };
+		841649491B658F4900CD20AC /* login-button-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F35FA8A19A6AA62004FB423 /* login-button-select@2x.png */; };
+		8416494A1B658F4900CD20AC /* driver-call-hud-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849EF198F67DF006EA959 /* driver-call-hud-icon@2x.png */; };
+		8416494B1B658F4900CD20AC /* current-location-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3DB5B51981ED4E00DDD094 /* current-location-button-selected@2x.png */; };
+		8416494C1B658F4900CD20AC /* KlinicSlabLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F37E2D91949574000753172 /* KlinicSlabLight.ttf */; };
+		8416494D1B658F4900CD20AC /* driver-request-form@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FF142D5195CE4BD00CC61B6 /* driver-request-form@2x.png */; };
+		8416494E1B658F4900CD20AC /* VCDebugViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A7C80919625237007E05AD /* VCDebugViewController.xib */; };
+		8416494F1B658F4900CD20AC /* VCLocationSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4A7C8241962E235007E05AD /* VCLocationSearchViewController.xib */; };
+		841649501B658F4900CD20AC /* KlinicSlabLightIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F37E2DA1949574000753172 /* KlinicSlabLightIt.ttf */; };
+		841649511B658F4900CD20AC /* menu-list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F473F018195044AA00D8C900 /* menu-list@2x.png */; };
+		841649521B658F4900CD20AC /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FC7589A19AA84860093DBEA /* logo@2x.png */; };
+		841649531B658F4900CD20AC /* scheduledrides-menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9AB1961391B006A1962 /* scheduledrides-menu-button@2x.png */; };
+		841649541B658F4900CD20AC /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3D221619B13072006EF35D /* Icon@2x.png */; };
+		841649551B658F4900CD20AC /* TemplateIcon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4C97B1C19F88B15006521C1 /* TemplateIcon2x.png */; };
+		841649561B658F4900CD20AC /* button-full-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FDB0ED21970C3AC00A8CEC2 /* button-full-select@2x.png */; };
+		841649571B658F4900CD20AC /* VCRiderRecieptDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9ECEBE196630D700AD4229 /* VCRiderRecieptDetailViewController.xib */; };
+		841649581B658F4900CD20AC /* menu-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F5085A1199B2F41009EDF80 /* menu-bg@2x.png */; };
+		841649591B658F4900CD20AC /* confirm-location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE287001962C52700FD8AF6 /* confirm-location@2x.png */; };
+		8416495A1B658F4900CD20AC /* toc-checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758AE19AA8BBC0093DBEA /* toc-checked@2x.png */; };
+		8416495B1B658F4900CD20AC /* hamburger-badge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9D808919D6547E008B0D3E /* hamburger-badge@2x.png */; };
+		8416495C1B658F4900CD20AC /* VCSupportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFCF2CA19A5381900A4A24E /* VCSupportViewController.xib */; };
+		8416495D1B658F4900CD20AC /* payment-menu-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9C7196139C6006A1962 /* payment-menu-button-selected@2x.png */; };
+		8416495E1B658F4900CD20AC /* devon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBFBE91995F21300CBF0C8 /* devon@2x.png */; };
+		8416495F1B658F4900CD20AC /* menu-submenu-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBFBD81995847300CBF0C8 /* menu-submenu-arrow@2x.png */; };
+		841649601B658F4900CD20AC /* support-menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9AC1961391B006A1962 /* support-menu-button@2x.png */; };
+		841649611B658F4900CD20AC /* driver_must_box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E4194168E80059BED1 /* driver_must_box@2x.png */; };
+		841649621B658F4900CD20AC /* placeholder-profile.png in Resources */ = {isa = PBXBuildFile; fileRef = F496FE9519FDBC9400632055 /* placeholder-profile.png */; };
+		841649631B658F4900CD20AC /* VCReceiptExpandedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758EC19AA95300093DBEA /* VCReceiptExpandedTableViewCell.xib */; };
+		841649641B658F4900CD20AC /* bubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E2194168E80059BED1 /* bubble@2x.png */; };
+		841649651B658F4900CD20AC /* menu-receipts-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849F61991753F006EA959 /* menu-receipts-icon@2x.png */; };
+		841649661B658F4900CD20AC /* hamburger-nobadge.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9D808A19D6547E008B0D3E /* hamburger-nobadge.png */; };
+		841649671B658F4900CD20AC /* VCFareReceiptsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F3098FD19B0137000DFCDD1 /* VCFareReceiptsViewController.xib */; };
+		841649681B658F4900CD20AC /* SignUp.html in Resources */ = {isa = PBXBuildFile; fileRef = F4C97B1B19F88B15006521C1 /* SignUp.html */; };
+		841649691B658F4900CD20AC /* VCDriverRequestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641BE194157C60059BED1 /* VCDriverRequestViewController.xib */; };
+		8416496A1B658F4900CD20AC /* confirm-location-select.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286FF1962C52700FD8AF6 /* confirm-location-select.png */; };
+		8416496B1B658F4900CD20AC /* VCEarningsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F30990119B013A900DFCDD1 /* VCEarningsViewController.xib */; };
+		8416496C1B658F4900CD20AC /* VCPaymentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB719661C4A00AD4229 /* VCPaymentsViewController.xib */; };
+		8416496D1B658F4900CD20AC /* driving_car@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E5194168E80059BED1 /* driving_car@2x.png */; };
+		8416496E1B658F4900CD20AC /* scheduledrides-menu-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9AA1961391B006A1962 /* scheduledrides-menu-button-selected@2x.png */; };
+		8416496F1B658F4900CD20AC /* menu-mycar-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849F31991753F006EA959 /* menu-mycar-icon@2x.png */; };
+		841649701B658F4900CD20AC /* zoom-ride-bounds@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286F41962BDB300FD8AF6 /* zoom-ride-bounds@2x.png */; };
+		841649711B658F4900CD20AC /* terms-menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9AE1961391B006A1962 /* terms-menu-button@2x.png */; };
+		841649721B658F4900CD20AC /* KlinicSlabMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F37E2DB1949574000753172 /* KlinicSlabMedium.ttf */; };
+		841649731B658F4900CD20AC /* tutorial-menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9B01961391B006A1962 /* tutorial-menu-button@2x.png */; };
+		841649741B658F4900CD20AC /* login-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F35FA8B19A6AA62004FB423 /* login-button@2x.png */; };
+		841649751B658F4900CD20AC /* menu-list.png in Resources */ = {isa = PBXBuildFile; fileRef = F473F017195044AA00D8C900 /* menu-list.png */; };
+		841649761B658F4900CD20AC /* current-location-arrow-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286E71962B89700FD8AF6 /* current-location-arrow-select@2x.png */; };
+		841649771B658F4900CD20AC /* VCSubMenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A231991E156006EA959 /* VCSubMenuItemTableViewCell.xib */; };
+		841649781B658F4900CD20AC /* map_pin_fill-512.png in Resources */ = {isa = PBXBuildFile; fileRef = F473EFFD19497FBF00D8C900 /* map_pin_fill-512.png */; };
+		841649791B658F4900CD20AC /* driver-call-hud-icon-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849EB198F67A4006EA959 /* driver-call-hud-icon-select@2x.png */; };
+		8416497A1B658F4900CD20AC /* commuter-menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9A91961391B006A1962 /* commuter-menu-button@2x.png */; };
+		8416497B1B658F4900CD20AC /* about-menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9A71961391B006A1962 /* about-menu-button@2x.png */; };
+		8416497C1B658F4900CD20AC /* VCMenuItemModeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A3D1992E41F006EA959 /* VCMenuItemModeTableViewCell.xib */; };
+		8416497D1B658F4900CD20AC /* VCMenuItemNotConfiguredTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A341992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.xib */; };
+		8416497E1B658F4900CD20AC /* reciept_expanded@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3D222219B132A0006EF35D /* reciept_expanded@2x.png */; };
+		8416497F1B658F4900CD20AC /* menu-item-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE17121989EFC0004D4413 /* menu-item-bg@2x.png */; };
+		841649801B658F4900CD20AC /* temp-user-profile-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F30991319B02BCD00DFCDD1 /* temp-user-profile-icon@2x.png */; };
+		841649811B658F4900CD20AC /* menu-item-badge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE17191989F93F004D4413 /* menu-item-badge@2x.png */; };
+		841649821B658F4900CD20AC /* ride-details-hud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3DB5AE1981C01D00DDD094 /* ride-details-hud@2x.png */; };
+		841649831B658F4900CD20AC /* menu-item-bg-depressed-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FAB576A19D0C637009055D7 /* menu-item-bg-depressed-select@2x.png */; };
+		841649841B658F4900CD20AC /* KlinicSlabMediumIt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F37E2DC1949574000753172 /* KlinicSlabMediumIt.ttf */; };
+		841649851B658F4900CD20AC /* VCPasswordRecoveryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758D919AA94C30093DBEA /* VCPasswordRecoveryViewController.xib */; };
+		841649861B658F4900CD20AC /* receipt-down-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FC7590019AAC0770093DBEA /* receipt-down-arrow@2x.png */; };
+		841649871B658F4900CD20AC /* driver-hov-toggle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBFBD61995847300CBF0C8 /* driver-hov-toggle@2x.png */; };
+		841649881B658F4900CD20AC /* driver-cancel-hud-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849E4198F625A006EA959 /* driver-cancel-hud-icon@2x.png */; };
+		841649891B658F4900CD20AC /* scheduledfares-menu-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9D219614115006A1962 /* scheduledfares-menu-button-selected@2x.png */; };
+		8416498A1B658F4900CD20AC /* menu-payments-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849F41991753F006EA959 /* menu-payments-icon@2x.png */; };
+		8416498B1B658F4900CD20AC /* ride-bounds-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD1297619D62462000E7C39 /* ride-bounds-button-selected@2x.png */; };
+		8416498C1B658F4900CD20AC /* VCTicketViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F73CA03197F2AB0001B6663 /* VCTicketViewController.xib */; };
+		8416498D1B658F4900CD20AC /* search-location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286EE1962BB3F00FD8AF6 /* search-location@2x.png */; };
+		8416498E1B658F4900CD20AC /* driver-cancel-hud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE1721198B0475004D4413 /* driver-cancel-hud@2x.png */; };
+		8416498F1B658F4900CD20AC /* VCDriverVideoTutorialController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FB268291952207A0028D4ED /* VCDriverVideoTutorialController.xib */; };
+		841649901B658F4900CD20AC /* button-full-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FDB0ED11970C3AC00A8CEC2 /* button-full-default@2x.png */; };
+		841649911B658F4900CD20AC /* menu-item-user-info-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A0B19918609006EA959 /* menu-item-user-info-bg@2x.png */; };
+		841649921B658F4900CD20AC /* search-location-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286ED1962BB3F00FD8AF6 /* search-location-select@2x.png */; };
+		841649931B658F4900CD20AC /* red_box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E9194168E80059BED1 /* red_box@2x.png */; };
+		841649941B658F4900CD20AC /* driver-call-hud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE16F21989E006004D4413 /* driver-call-hud@2x.png */; };
+		841649951B658F4900CD20AC /* menu-profile-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849F51991753F006EA959 /* menu-profile-icon@2x.png */; };
+		841649961B658F4900CD20AC /* Aluvi-Privacy-Policy.html in Resources */ = {isa = PBXBuildFile; fileRef = 4F38976119B8298200A75C5C /* Aluvi-Privacy-Policy.html */; };
+		841649971B658F4900CD20AC /* zoom-ride-bounds-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286F31962BDB300FD8AF6 /* zoom-ride-bounds-select@2x.png */; };
+		841649981B658F4900CD20AC /* menu-badge@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4FAB576919D0C637009055D7 /* menu-badge@2x.jpg */; };
+		841649991B658F4900CD20AC /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3D221A19B13209006EF35D /* background@2x.png */; };
+		8416499A1B658F4900CD20AC /* VCDriverOnBoardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758C719AA91410093DBEA /* VCDriverOnBoardingViewController.xib */; };
+		8416499B1B658F4900CD20AC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4FA0BF2192BF6BF005D8645 /* InfoPlist.strings */; };
+		8416499C1B658F4900CD20AC /* terms-menu-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9AD1961391B006A1962 /* terms-menu-button-selected@2x.png */; };
+		8416499D1B658F4900CD20AC /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286FC1962C25400FD8AF6 /* pin@2x.png */; };
+		8416499E1B658F4900CD20AC /* menu-map-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE171D198A1890004D4413 /* menu-map-icon@2x.png */; };
+		8416499F1B658F4900CD20AC /* current-location-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3DB5B61981ED4E00DDD094 /* current-location-button@2x.png */; };
+		841649A01B658F4900CD20AC /* profile-menu-button-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9A01960EC8C006A1962 /* profile-menu-button-select@2x.png */; };
+		841649A11B658F4900CD20AC /* button-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FDB0ECB1970B10600A8CEC2 /* button-default@2x.png */; };
+		841649A21B658F4900CD20AC /* profile-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758A719AA88330093DBEA /* profile-button@2x.png */; };
+		841649A31B658F4900CD20AC /* hamburger@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F35FA9619A80615004FB423 /* hamburger@2x.png */; };
+		841649A41B658F4900CD20AC /* gradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBFBED1995F50700CBF0C8 /* gradient@2x.png */; };
+		841649A51B658F4900CD20AC /* VCReceiptsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFCF2D319A5493500A4A24E /* VCReceiptsViewController.xib */; };
+		841649A61B658F4900CD20AC /* overlay-graphic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3DB5CC19825FF700DDD094 /* overlay-graphic@2x.png */; };
+		841649A71B658F4900CD20AC /* user-image-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A2E1992E198006EA959 /* user-image-small@2x.png */; };
+		841649A81B658F4900CD20AC /* menu-schedule-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849F71991753F006EA959 /* menu-schedule-icon@2x.png */; };
+		841649A91B658F4900CD20AC /* profile-button@-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758A619AA88330093DBEA /* profile-button@-select@2x.png */; };
+		841649AA1B658F4900CD20AC /* menu-submenu-arrow-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBFBD71995847300CBF0C8 /* menu-submenu-arrow-select@2x.png */; };
+		841649AB1B658F4900CD20AC /* VCProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFCF2BD19A25F2100A4A24E /* VCProfileViewController.xib */; };
+		841649AC1B658F4900CD20AC /* menu-support-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849F81991753F006EA959 /* menu-support-icon@2x.png */; };
+		841649AD1B658F4900CD20AC /* Aluvi-TOS.html in Resources */ = {isa = PBXBuildFile; fileRef = 4F84510919FE0B1400D388E4 /* Aluvi-TOS.html */; };
+		841649AE1B658F4900CD20AC /* confirmation-hud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3DB5AD1981C01D00DDD094 /* confirmation-hud@2x.png */; };
+		841649AF1B658F4900CD20AC /* tutorial-menu-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9AF1961391B006A1962 /* tutorial-menu-button-selected@2x.png */; };
+		841649B01B658F4900CD20AC /* VCRiderProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C93197775E1007609E8 /* VCRiderProfileViewController.xib */; };
+		841649B11B658F4900CD20AC /* VCBetaRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C97B2D19F88B94006521C1 /* VCBetaRegisterViewController.xib */; };
+		841649B21B658F4900CD20AC /* about-menu-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9A61961391B006A1962 /* about-menu-button-selected@2x.png */; };
+		841649B31B658F4900CD20AC /* VCTermsOfServiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F38975019B7DC5000A75C5C /* VCTermsOfServiceViewController.xib */; };
+		841649B41B658F4900CD20AC /* driver-cancel-hud-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849DC198F25F9006EA959 /* driver-cancel-hud-button@2x.png */; };
+		841649B51B658F4900CD20AC /* VCFareReceiptExpandedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F30990E19B01C6900DFCDD1 /* VCFareReceiptExpandedTableViewCell.xib */; };
+		841649B61B658F4900CD20AC /* menu-item-bg-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE17111989EFC0004D4413 /* menu-item-bg-select@2x.png */; };
+		841649B71B658F4900CD20AC /* driver-hov-toggle-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBFBD51995847300CBF0C8 /* driver-hov-toggle-select@2x.png */; };
+		841649B81B658F4900CD20AC /* commute_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E3194168E80059BED1 /* commute_logo@2x.png */; };
+		841649B91B658F4900CD20AC /* VCEditLocationWidget.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F73CA0F197F82DA001B6663 /* VCEditLocationWidget.xib */; };
+		841649BA1B658F4900CD20AC /* driver-call-hud-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849DB198F25F9006EA959 /* driver-call-hud-button@2x.png */; };
+		841649BB1B658F4900CD20AC /* directions-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3DB5B81981ED4E00DDD094 /* directions-button@2x.png */; };
+		841649BC1B658F4900CD20AC /* payment-menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9C8196139C6006A1962 /* payment-menu-button@2x.png */; };
+		841649BD1B658F4900CD20AC /* colors_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FDB0EC71970AC8200A8CEC2 /* colors_03.png */; };
+		841649BE1B658F4900CD20AC /* ride-bounds-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD1297719D62462000E7C39 /* ride-bounds-button@2x.png */; };
+		841649BF1B658F4900CD20AC /* VCLeftMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE138F1989AE09004D4413 /* VCLeftMenuViewController.xib */; };
+		841649C01B658F4900CD20AC /* button-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FDB0ECC1970B10600A8CEC2 /* button-select@2x.png */; };
+		841649C11B658F4900CD20AC /* VCMenuUserInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A1119918750006EA959 /* VCMenuUserInfoTableViewCell.xib */; };
+		841649C21B658F4900CD20AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4FA0BFE192BF6BF005D8645 /* Images.xcassets */; };
+		841649C31B658F4900CD20AC /* commuter-menu-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9A81961391B006A1962 /* commuter-menu-button-selected@2x.png */; };
+		841649C41B658F4900CD20AC /* VCMenuDriverClockOnTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A1A1991893D006EA959 /* VCMenuDriverClockOnTableViewCell.xib */; };
+		841649C51B658F4900CD20AC /* VCCommuteSetUpOnBoardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758D019AA91810093DBEA /* VCCommuteSetUpOnBoardingViewController.xib */; };
+		841649C61B658F4900CD20AC /* driver-cancel-hud-icon-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849E3198F625A006EA959 /* driver-cancel-hud-icon-select@2x.png */; };
+		841649C71B658F4900CD20AC /* VCDriverSubMenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC7590419AACD840093DBEA /* VCDriverSubMenuItemTableViewCell.xib */; };
+		841649C81B658F4900CD20AC /* VCRiderOnBoardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758BE19AA91330093DBEA /* VCRiderOnBoardingViewController.xib */; };
+		841649C91B658F4900CD20AC /* VCDriveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F4D8BF319882AFB0027A2AF /* VCDriveViewController.xib */; };
+		841649CA1B658F4900CD20AC /* mycar-menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9D119614115006A1962 /* mycar-menu-button@2x.png */; };
+		841649CB1B658F4900CD20AC /* VCLogInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758B519AA8C270093DBEA /* VCLogInViewController.xib */; };
+		841649CC1B658F4900CD20AC /* mycar-menu-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9D019614115006A1962 /* mycar-menu-button-selected@2x.png */; };
+		841649CD1B658F4900CD20AC /* car@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4138C3A19678BE000C265CD /* car@2x.png */; };
+		841649CE1B658F4900CD20AC /* profile-menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9A11960EC8C006A1962 /* profile-menu-button@2x.png */; };
 		844070291B64700B00EF35E1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CE81B1E5E26004446AF /* MobileCoreServices.framework */; };
 		849A3CCC1B1E5D14004446AF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CC61B1E5D14004446AF /* Bolts.framework */; };
 		849A3CCD1B1E5D14004446AF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CC61B1E5D14004446AF /* Bolts.framework */; };
@@ -2029,6 +2325,8 @@
 		4FFE1721198B0475004D4413 /* driver-cancel-hud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "driver-cancel-hud@2x.png"; sourceTree = "<group>"; };
 		841648A01B64A47D00CD20AC /* Aluvi Distribution copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aluvi Distribution copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		841648A11B64A47D00CD20AC /* Aluvi Distribution copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Aluvi Distribution copy-Info.plist"; path = "/Users/matthewxi/software-development/Clients/Will_OBrien/aluvi-ios/Voco/Aluvi Distribution copy-Info.plist"; sourceTree = "<absolute>"; };
+		841649D41B658F4900CD20AC /* Aluvi Development copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aluvi Development copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		841649D51B658F4A00CD20AC /* Aluvi Development copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Aluvi Development copy2-Info.plist"; path = "/Users/matthewxi/software-development/Clients/Will_OBrien/aluvi-ios/Voco/Aluvi Development copy2-Info.plist"; sourceTree = "<absolute>"; };
 		849A3CC61B1E5D14004446AF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		849A3CC71B1E5D14004446AF /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		849A3CC81B1E5D14004446AF /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
@@ -2308,6 +2606,38 @@
 				841648041B64A47D00CD20AC /* libPods.a in Frameworks */,
 				841648051B64A47D00CD20AC /* Bolts.framework in Frameworks */,
 				841648061B64A47D00CD20AC /* ParseCrashReporting.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		841649221B658F4900CD20AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				841649231B658F4900CD20AC /* CoreGraphics.framework in Frameworks */,
+				841649241B658F4900CD20AC /* CFNetwork.framework in Frameworks */,
+				841649251B658F4900CD20AC /* MobileCoreServices.framework in Frameworks */,
+				841649261B658F4900CD20AC /* Social.framework in Frameworks */,
+				841649271B658F4900CD20AC /* Accounts.framework in Frameworks */,
+				841649281B658F4900CD20AC /* libsqlite3.dylib in Frameworks */,
+				841649291B658F4900CD20AC /* libz.dylib in Frameworks */,
+				8416492A1B658F4900CD20AC /* libstdc++.6.dylib in Frameworks */,
+				8416492B1B658F4900CD20AC /* SystemConfiguration.framework in Frameworks */,
+				8416492C1B658F4900CD20AC /* StoreKit.framework in Frameworks */,
+				8416492D1B658F4900CD20AC /* Security.framework in Frameworks */,
+				8416492E1B658F4900CD20AC /* QuartzCore.framework in Frameworks */,
+				8416492F1B658F4900CD20AC /* AudioToolbox.framework in Frameworks */,
+				841649301B658F4900CD20AC /* MapKit.framework in Frameworks */,
+				841649311B658F4900CD20AC /* libxml2.dylib in Frameworks */,
+				841649321B658F4900CD20AC /* Parse.framework in Frameworks */,
+				841649331B658F4900CD20AC /* AddressBook.framework in Frameworks */,
+				841649341B658F4900CD20AC /* CoreLocation.framework in Frameworks */,
+				841649351B658F4900CD20AC /* Crashlytics.framework in Frameworks */,
+				841649361B658F4900CD20AC /* CoreData.framework in Frameworks */,
+				841649371B658F4900CD20AC /* UIKit.framework in Frameworks */,
+				841649381B658F4900CD20AC /* Foundation.framework in Frameworks */,
+				841649391B658F4900CD20AC /* libPods.a in Frameworks */,
+				8416493A1B658F4900CD20AC /* Bolts.framework in Frameworks */,
+				8416493B1B658F4900CD20AC /* ParseCrashReporting.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3161,6 +3491,7 @@
 				5BD1E7103A138D9BA6064A2B /* Pods */,
 				84F676621B5C77AA00E9C52E /* Aluvi Development copy-Info.plist */,
 				841648A11B64A47D00CD20AC /* Aluvi Distribution copy-Info.plist */,
+				841649D51B658F4A00CD20AC /* Aluvi Development copy2-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -3174,6 +3505,7 @@
 				F4D8FF3B19B1745A00BC0B69 /* Aluvi.app */,
 				84F676611B5C77AA00E9C52E /* Aluvi Development copy.app */,
 				841648A01B64A47D00CD20AC /* Aluvi Distribution copy.app */,
+				841649D41B658F4900CD20AC /* Aluvi Development copy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -3355,6 +3687,25 @@
 			productReference = 841648A01B64A47D00CD20AC /* Aluvi Distribution copy.app */;
 			productType = "com.apple.product-type.application";
 		};
+		841648A21B658F4900CD20AC /* Usama Development */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 841649D11B658F4900CD20AC /* Build configuration list for PBXNativeTarget "Usama Development" */;
+			buildPhases = (
+				841648A31B658F4900CD20AC /* Check Pods Manifest.lock */,
+				841648A41B658F4900CD20AC /* Sources */,
+				841649221B658F4900CD20AC /* Frameworks */,
+				8416493C1B658F4900CD20AC /* Resources */,
+				841649CF1B658F4900CD20AC /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Usama Development";
+			productName = Voco;
+			productReference = 841649D41B658F4900CD20AC /* Aluvi Development copy.app */;
+			productType = "com.apple.product-type.application";
+		};
 		84F675301B5C77AA00E9C52E /* Aluvi Development Usama */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84F6765E1B5C77AA00E9C52E /* Build configuration list for PBXNativeTarget "Aluvi Development Usama" */;
@@ -3518,6 +3869,7 @@
 			projectRoot = "";
 			targets = (
 				F4C6B1BC197F06B100F6C10B /* Aluvi Development */,
+				841648A21B658F4900CD20AC /* Usama Development */,
 				84F675301B5C77AA00E9C52E /* Aluvi Development Usama */,
 				F4354D5B195D0D6A00C06CF7 /* Aluvi Testing */,
 				F4FA0BE3192BF6BF005D8645 /* Aluvi Alpha */,
@@ -3680,6 +4032,159 @@
 				841648981B64A47D00CD20AC /* mycar-menu-button-selected@2x.png in Resources */,
 				841648991B64A47D00CD20AC /* car@2x.png in Resources */,
 				8416489A1B64A47D00CD20AC /* profile-menu-button@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8416493C1B658F4900CD20AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8416493D1B658F4900CD20AC /* VCCommuterPassViewController.xib in Resources */,
+				8416493E1B658F4900CD20AC /* nav-bar-background@2x.png in Resources */,
+				8416493F1B658F4900CD20AC /* temp-call-button@2x.png in Resources */,
+				841649401B658F4900CD20AC /* call-button-select@2x.png in Resources */,
+				841649411B658F4900CD20AC /* call-button@2x.png in Resources */,
+				841649421B658F4900CD20AC /* scheduledfares-menu-button@2x.png in Resources */,
+				841649431B658F4900CD20AC /* directions-button-selected@2x.png in Resources */,
+				841649441B658F4900CD20AC /* VCMenuItemTableViewCell.xib in Resources */,
+				841649451B658F4900CD20AC /* VCPrivatePolicyViewController.xib in Resources */,
+				841649461B658F4900CD20AC /* camera-icon@2x.png in Resources */,
+				841649471B658F4900CD20AC /* support-menu-button-selected@2x.png in Resources */,
+				841649481B658F4900CD20AC /* current-location-arrow@2x.png in Resources */,
+				841649491B658F4900CD20AC /* login-button-select@2x.png in Resources */,
+				8416494A1B658F4900CD20AC /* driver-call-hud-icon@2x.png in Resources */,
+				8416494B1B658F4900CD20AC /* current-location-button-selected@2x.png in Resources */,
+				8416494C1B658F4900CD20AC /* KlinicSlabLight.ttf in Resources */,
+				8416494D1B658F4900CD20AC /* driver-request-form@2x.png in Resources */,
+				8416494E1B658F4900CD20AC /* VCDebugViewController.xib in Resources */,
+				8416494F1B658F4900CD20AC /* VCLocationSearchViewController.xib in Resources */,
+				841649501B658F4900CD20AC /* KlinicSlabLightIt.ttf in Resources */,
+				841649511B658F4900CD20AC /* menu-list@2x.png in Resources */,
+				841649521B658F4900CD20AC /* logo@2x.png in Resources */,
+				841649531B658F4900CD20AC /* scheduledrides-menu-button@2x.png in Resources */,
+				841649541B658F4900CD20AC /* Icon@2x.png in Resources */,
+				841649551B658F4900CD20AC /* TemplateIcon2x.png in Resources */,
+				841649561B658F4900CD20AC /* button-full-select@2x.png in Resources */,
+				841649571B658F4900CD20AC /* VCRiderRecieptDetailViewController.xib in Resources */,
+				841649581B658F4900CD20AC /* menu-bg@2x.png in Resources */,
+				841649591B658F4900CD20AC /* confirm-location@2x.png in Resources */,
+				8416495A1B658F4900CD20AC /* toc-checked@2x.png in Resources */,
+				8416495B1B658F4900CD20AC /* hamburger-badge@2x.png in Resources */,
+				8416495C1B658F4900CD20AC /* VCSupportViewController.xib in Resources */,
+				8416495D1B658F4900CD20AC /* payment-menu-button-selected@2x.png in Resources */,
+				8416495E1B658F4900CD20AC /* devon@2x.png in Resources */,
+				8416495F1B658F4900CD20AC /* menu-submenu-arrow@2x.png in Resources */,
+				841649601B658F4900CD20AC /* support-menu-button@2x.png in Resources */,
+				841649611B658F4900CD20AC /* driver_must_box@2x.png in Resources */,
+				841649621B658F4900CD20AC /* placeholder-profile.png in Resources */,
+				841649631B658F4900CD20AC /* VCReceiptExpandedTableViewCell.xib in Resources */,
+				841649641B658F4900CD20AC /* bubble@2x.png in Resources */,
+				841649651B658F4900CD20AC /* menu-receipts-icon@2x.png in Resources */,
+				841649661B658F4900CD20AC /* hamburger-nobadge.png in Resources */,
+				841649671B658F4900CD20AC /* VCFareReceiptsViewController.xib in Resources */,
+				841649681B658F4900CD20AC /* SignUp.html in Resources */,
+				841649691B658F4900CD20AC /* VCDriverRequestViewController.xib in Resources */,
+				8416496A1B658F4900CD20AC /* confirm-location-select.png in Resources */,
+				8416496B1B658F4900CD20AC /* VCEarningsViewController.xib in Resources */,
+				8416496C1B658F4900CD20AC /* VCPaymentsViewController.xib in Resources */,
+				8416496D1B658F4900CD20AC /* driving_car@2x.png in Resources */,
+				8416496E1B658F4900CD20AC /* scheduledrides-menu-button-selected@2x.png in Resources */,
+				8416496F1B658F4900CD20AC /* menu-mycar-icon@2x.png in Resources */,
+				841649701B658F4900CD20AC /* zoom-ride-bounds@2x.png in Resources */,
+				841649711B658F4900CD20AC /* terms-menu-button@2x.png in Resources */,
+				841649721B658F4900CD20AC /* KlinicSlabMedium.ttf in Resources */,
+				841649731B658F4900CD20AC /* tutorial-menu-button@2x.png in Resources */,
+				841649741B658F4900CD20AC /* login-button@2x.png in Resources */,
+				841649751B658F4900CD20AC /* menu-list.png in Resources */,
+				841649761B658F4900CD20AC /* current-location-arrow-select@2x.png in Resources */,
+				841649771B658F4900CD20AC /* VCSubMenuItemTableViewCell.xib in Resources */,
+				841649781B658F4900CD20AC /* map_pin_fill-512.png in Resources */,
+				841649791B658F4900CD20AC /* driver-call-hud-icon-select@2x.png in Resources */,
+				8416497A1B658F4900CD20AC /* commuter-menu-button@2x.png in Resources */,
+				8416497B1B658F4900CD20AC /* about-menu-button@2x.png in Resources */,
+				8416497C1B658F4900CD20AC /* VCMenuItemModeTableViewCell.xib in Resources */,
+				8416497D1B658F4900CD20AC /* VCMenuItemNotConfiguredTableViewCell.xib in Resources */,
+				8416497E1B658F4900CD20AC /* reciept_expanded@2x.png in Resources */,
+				8416497F1B658F4900CD20AC /* menu-item-bg@2x.png in Resources */,
+				841649801B658F4900CD20AC /* temp-user-profile-icon@2x.png in Resources */,
+				841649811B658F4900CD20AC /* menu-item-badge@2x.png in Resources */,
+				841649821B658F4900CD20AC /* ride-details-hud@2x.png in Resources */,
+				841649831B658F4900CD20AC /* menu-item-bg-depressed-select@2x.png in Resources */,
+				841649841B658F4900CD20AC /* KlinicSlabMediumIt.ttf in Resources */,
+				841649851B658F4900CD20AC /* VCPasswordRecoveryViewController.xib in Resources */,
+				841649861B658F4900CD20AC /* receipt-down-arrow@2x.png in Resources */,
+				841649871B658F4900CD20AC /* driver-hov-toggle@2x.png in Resources */,
+				841649881B658F4900CD20AC /* driver-cancel-hud-icon@2x.png in Resources */,
+				841649891B658F4900CD20AC /* scheduledfares-menu-button-selected@2x.png in Resources */,
+				8416498A1B658F4900CD20AC /* menu-payments-icon@2x.png in Resources */,
+				8416498B1B658F4900CD20AC /* ride-bounds-button-selected@2x.png in Resources */,
+				8416498C1B658F4900CD20AC /* VCTicketViewController.xib in Resources */,
+				8416498D1B658F4900CD20AC /* search-location@2x.png in Resources */,
+				8416498E1B658F4900CD20AC /* driver-cancel-hud@2x.png in Resources */,
+				8416498F1B658F4900CD20AC /* VCDriverVideoTutorialController.xib in Resources */,
+				841649901B658F4900CD20AC /* button-full-default@2x.png in Resources */,
+				841649911B658F4900CD20AC /* menu-item-user-info-bg@2x.png in Resources */,
+				841649921B658F4900CD20AC /* search-location-select@2x.png in Resources */,
+				841649931B658F4900CD20AC /* red_box@2x.png in Resources */,
+				841649941B658F4900CD20AC /* driver-call-hud@2x.png in Resources */,
+				841649951B658F4900CD20AC /* menu-profile-icon@2x.png in Resources */,
+				841649961B658F4900CD20AC /* Aluvi-Privacy-Policy.html in Resources */,
+				841649971B658F4900CD20AC /* zoom-ride-bounds-select@2x.png in Resources */,
+				841649981B658F4900CD20AC /* menu-badge@2x.jpg in Resources */,
+				841649991B658F4900CD20AC /* background@2x.png in Resources */,
+				8416499A1B658F4900CD20AC /* VCDriverOnBoardingViewController.xib in Resources */,
+				8416499B1B658F4900CD20AC /* InfoPlist.strings in Resources */,
+				8416499C1B658F4900CD20AC /* terms-menu-button-selected@2x.png in Resources */,
+				8416499D1B658F4900CD20AC /* pin@2x.png in Resources */,
+				8416499E1B658F4900CD20AC /* menu-map-icon@2x.png in Resources */,
+				8416499F1B658F4900CD20AC /* current-location-button@2x.png in Resources */,
+				841649A01B658F4900CD20AC /* profile-menu-button-select@2x.png in Resources */,
+				841649A11B658F4900CD20AC /* button-default@2x.png in Resources */,
+				841649A21B658F4900CD20AC /* profile-button@2x.png in Resources */,
+				841649A31B658F4900CD20AC /* hamburger@2x.png in Resources */,
+				841649A41B658F4900CD20AC /* gradient@2x.png in Resources */,
+				841649A51B658F4900CD20AC /* VCReceiptsViewController.xib in Resources */,
+				841649A61B658F4900CD20AC /* overlay-graphic@2x.png in Resources */,
+				841649A71B658F4900CD20AC /* user-image-small@2x.png in Resources */,
+				841649A81B658F4900CD20AC /* menu-schedule-icon@2x.png in Resources */,
+				841649A91B658F4900CD20AC /* profile-button@-select@2x.png in Resources */,
+				841649AA1B658F4900CD20AC /* menu-submenu-arrow-select@2x.png in Resources */,
+				841649AB1B658F4900CD20AC /* VCProfileViewController.xib in Resources */,
+				841649AC1B658F4900CD20AC /* menu-support-icon@2x.png in Resources */,
+				841649AD1B658F4900CD20AC /* Aluvi-TOS.html in Resources */,
+				841649AE1B658F4900CD20AC /* confirmation-hud@2x.png in Resources */,
+				841649AF1B658F4900CD20AC /* tutorial-menu-button-selected@2x.png in Resources */,
+				841649B01B658F4900CD20AC /* VCRiderProfileViewController.xib in Resources */,
+				841649B11B658F4900CD20AC /* VCBetaRegisterViewController.xib in Resources */,
+				841649B21B658F4900CD20AC /* about-menu-button-selected@2x.png in Resources */,
+				841649B31B658F4900CD20AC /* VCTermsOfServiceViewController.xib in Resources */,
+				841649B41B658F4900CD20AC /* driver-cancel-hud-button@2x.png in Resources */,
+				841649B51B658F4900CD20AC /* VCFareReceiptExpandedTableViewCell.xib in Resources */,
+				841649B61B658F4900CD20AC /* menu-item-bg-select@2x.png in Resources */,
+				841649B71B658F4900CD20AC /* driver-hov-toggle-select@2x.png in Resources */,
+				841649B81B658F4900CD20AC /* commute_logo@2x.png in Resources */,
+				841649B91B658F4900CD20AC /* VCEditLocationWidget.xib in Resources */,
+				841649BA1B658F4900CD20AC /* driver-call-hud-button@2x.png in Resources */,
+				841649BB1B658F4900CD20AC /* directions-button@2x.png in Resources */,
+				841649BC1B658F4900CD20AC /* payment-menu-button@2x.png in Resources */,
+				841649BD1B658F4900CD20AC /* colors_03.png in Resources */,
+				841649BE1B658F4900CD20AC /* ride-bounds-button@2x.png in Resources */,
+				841649BF1B658F4900CD20AC /* VCLeftMenuViewController.xib in Resources */,
+				841649C01B658F4900CD20AC /* button-select@2x.png in Resources */,
+				841649C11B658F4900CD20AC /* VCMenuUserInfoTableViewCell.xib in Resources */,
+				841649C21B658F4900CD20AC /* Images.xcassets in Resources */,
+				841649C31B658F4900CD20AC /* commuter-menu-button-selected@2x.png in Resources */,
+				841649C41B658F4900CD20AC /* VCMenuDriverClockOnTableViewCell.xib in Resources */,
+				841649C51B658F4900CD20AC /* VCCommuteSetUpOnBoardingViewController.xib in Resources */,
+				841649C61B658F4900CD20AC /* driver-cancel-hud-icon-select@2x.png in Resources */,
+				841649C71B658F4900CD20AC /* VCDriverSubMenuItemTableViewCell.xib in Resources */,
+				841649C81B658F4900CD20AC /* VCRiderOnBoardingViewController.xib in Resources */,
+				841649C91B658F4900CD20AC /* VCDriveViewController.xib in Resources */,
+				841649CA1B658F4900CD20AC /* mycar-menu-button@2x.png in Resources */,
+				841649CB1B658F4900CD20AC /* VCLogInViewController.xib in Resources */,
+				841649CC1B658F4900CD20AC /* mycar-menu-button-selected@2x.png in Resources */,
+				841649CD1B658F4900CD20AC /* car@2x.png in Resources */,
+				841649CE1B658F4900CD20AC /* profile-menu-button@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4518,6 +5023,36 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/Fabric.framework/run\" 531b451b5ea5c0dc8f72ba102e736a6a2edb31c0 6f2a42e3e5a68ae7912a914316d8c75c81742a0fe6a47583b69f24b1a498d0d3";
 		};
+		841648A31B658F4900CD20AC /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		841649CF1B658F4900CD20AC /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		84F675311B5C77AA00E9C52E /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4850,6 +5385,138 @@
 				841647EA1B64A47D00CD20AC /* VCUserStateManager.m in Sources */,
 				841647EB1B64A47D00CD20AC /* VCSupportViewController.m in Sources */,
 				841647EC1B64A47D00CD20AC /* VCUsersApi.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		841648A41B658F4900CD20AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				841648A51B658F4900CD20AC /* IIWrapController.m in Sources */,
+				841648A61B658F4900CD20AC /* VCDriverRegistration.m in Sources */,
+				841648A71B658F4900CD20AC /* VCCommuteSetUpOnBoardingViewController.m in Sources */,
+				841648A81B658F4900CD20AC /* VCReceiptsViewController.m in Sources */,
+				841648A91B658F4900CD20AC /* VCPushApi.m in Sources */,
+				841648AA1B658F4900CD20AC /* VCPasswordTextField.m in Sources */,
+				841648AB1B658F4900CD20AC /* VCCarModelTextField.m in Sources */,
+				841648AC1B658F4900CD20AC /* VCUserStateResponse.m in Sources */,
+				841648AD1B658F4900CD20AC /* VCNotifications.m in Sources */,
+				841648AE1B658F4900CD20AC /* VCScrollableFormViewController.m in Sources */,
+				841648AF1B658F4900CD20AC /* VCProfileViewController.m in Sources */,
+				841648B01B658F4900CD20AC /* VCLabelBold.m in Sources */,
+				841648B11B658F4900CD20AC /* VCDebugViewController.m in Sources */,
+				841648B21B658F4900CD20AC /* Voco.xcdatamodeld in Sources */,
+				841648B31B658F4900CD20AC /* VCHoldingView.m in Sources */,
+				841648B41B658F4900CD20AC /* VCBaseValidatorTextField.m in Sources */,
+				841648B51B658F4900CD20AC /* VCLoginResponse.m in Sources */,
+				841648B61B658F4900CD20AC /* VCRiderOnBoardingViewController.m in Sources */,
+				841648B71B658F4900CD20AC /* VCRideDetailsView.m in Sources */,
+				841648B81B658F4900CD20AC /* VCPrivatePolicyViewController.m in Sources */,
+				841648B91B658F4900CD20AC /* VCRideIdentity.m in Sources */,
+				841648BA1B658F4900CD20AC /* VCRiderApi.m in Sources */,
+				841648BB1B658F4900CD20AC /* VCMenuItemTableViewCell.m in Sources */,
+				841648BC1B658F4900CD20AC /* VCButtonStandardStyle.m in Sources */,
+				841648BD1B658F4900CD20AC /* VCTermsOfServiceViewController.m in Sources */,
+				841648BE1B658F4900CD20AC /* VCReceiptExpandedTableViewCell.m in Sources */,
+				841648BF1B658F4900CD20AC /* VCUtilities.m in Sources */,
+				841648C01B658F4900CD20AC /* VCLocalNotificationReceiver.m in Sources */,
+				841648C11B658F4900CD20AC /* VCLabelItalic.m in Sources */,
+				841648C21B658F4900CD20AC /* Driver.m in Sources */,
+				841648C31B658F4900CD20AC /* VCFareReceiptsViewController.m in Sources */,
+				841648C41B658F4900CD20AC /* VCDialogs.m in Sources */,
+				841648C51B658F4900CD20AC /* MQRouteResponse.m in Sources */,
+				841648C61B658F4900CD20AC /* VCLeftMenuViewController.m in Sources */,
+				841648C71B658F4900CD20AC /* VCRoutingNumberTextField.m in Sources */,
+				841648C81B658F4900CD20AC /* VCMenuItemModeTableViewCell.m in Sources */,
+				841648C91B658F4900CD20AC /* VCEditLocationWidget.m in Sources */,
+				841648CA1B658F4900CD20AC /* VCProfile.m in Sources */,
+				841648CB1B658F4900CD20AC /* VCMenuDriverClockOnTableViewCell.m in Sources */,
+				841648CC1B658F4900CD20AC /* VCEarningsViewController.m in Sources */,
+				841648CD1B658F4900CD20AC /* Car.m in Sources */,
+				841648CE1B658F4900CD20AC /* VCCarLicensePlateTextField.m in Sources */,
+				841648CF1B658F4900CD20AC /* VCDevicesApi.m in Sources */,
+				841648D01B658F4900CD20AC /* VCDebug.m in Sources */,
+				841648D11B658F4900CD20AC /* Fare.m in Sources */,
+				841648D21B658F4900CD20AC /* VCNewUser.m in Sources */,
+				841648D31B658F4900CD20AC /* IISideController.m in Sources */,
+				841648D41B658F4900CD20AC /* VCButton.m in Sources */,
+				841648D51B658F4900CD20AC /* VCMenuUserInfoTableViewCell.m in Sources */,
+				841648D61B658F4900CD20AC /* MQShape.m in Sources */,
+				841648D71B658F4900CD20AC /* VCRideRequest.m in Sources */,
+				841648D81B658F4900CD20AC /* VCPushReceiver.m in Sources */,
+				841648D91B658F4900CD20AC /* VCSubMenuItemTableViewCell.m in Sources */,
+				841648DA1B658F4900CD20AC /* VCDriveViewController.m in Sources */,
+				841648DB1B658F4900CD20AC /* VCDriverStateResponse.m in Sources */,
+				841648DC1B658F4900CD20AC /* MQBoundingBox.m in Sources */,
+				841648DD1B658F4900CD20AC /* VCGeolocation.m in Sources */,
+				841648DE1B658F4900CD20AC /* VCDriverGeoObject.m in Sources */,
+				841648DF1B658F4900CD20AC /* VCBetaRegisterViewController.m in Sources */,
+				841648E01B658F4900CD20AC /* VCDriverRequestViewController.m in Sources */,
+				841648E11B658F4900CD20AC /* VCDriverCallHudView.m in Sources */,
+				841648E21B658F4900CD20AC /* Transit.m in Sources */,
+				841648E31B658F4900CD20AC /* VCDriversLicenseTextField.m in Sources */,
+				841648E41B658F4900CD20AC /* VCFillCommuterPass.m in Sources */,
+				841648E51B658F4900CD20AC /* VCCenterViewBaseViewController.m in Sources */,
+				841648E61B658F4900CD20AC /* VCNameTextField.m in Sources */,
+				841648E71B658F4900CD20AC /* VCCommuterPassViewController.m in Sources */,
+				841648E81B658F4900CD20AC /* VCMapQuestRouting.m in Sources */,
+				841648E91B658F4900CD20AC /* VCCommuterHud.m in Sources */,
+				841648EA1B658F4900CD20AC /* VCTransitBaseViewController.m in Sources */,
+				841648EB1B658F4900CD20AC /* VCMenuItemNotConfiguredTableViewCell.m in Sources */,
+				841648EC1B658F4900CD20AC /* VCInterfaceManager.m in Sources */,
+				841648ED1B658F4900CD20AC /* HVTableView.m in Sources */,
+				841648EE1B658F4900CD20AC /* Rider.m in Sources */,
+				841648EF1B658F4900CD20AC /* VCRequestUpdate.m in Sources */,
+				841648F01B658F4900CD20AC /* VCCoreData.m in Sources */,
+				841648F11B658F4900CD20AC /* Route.m in Sources */,
+				841648F21B658F4900CD20AC /* VCCommuteManager.m in Sources */,
+				841648F31B658F4900CD20AC /* VCApiError.m in Sources */,
+				841648F41B658F4900CD20AC /* VCRiderRecieptDetailViewController.m in Sources */,
+				841648F51B658F4900CD20AC /* VCCodes.m in Sources */,
+				841648F61B658F4900CD20AC /* VCLabel.m in Sources */,
+				841648F71B658F4900CD20AC /* Payment.m in Sources */,
+				841648F81B658F4900CD20AC /* Earning.m in Sources */,
+				841648F91B658F4900CD20AC /* VCFareIdentity.m in Sources */,
+				841648FA1B658F4900CD20AC /* VCDriverVideoTutorialController.m in Sources */,
+				841648FB1B658F4900CD20AC /* VCRideOverviewHudView.m in Sources */,
+				841648FC1B658F4900CD20AC /* VCCarBrandTextField.m in Sources */,
+				841648FD1B658F4900CD20AC /* VCFareDriverAssignment.m in Sources */,
+				841648FE1B658F4900CD20AC /* VCPhoneTextField.m in Sources */,
+				841648FF1B658F4900CD20AC /* VCEmailTextField.m in Sources */,
+				841649001B658F4900CD20AC /* VCLocationSearchViewController.m in Sources */,
+				841649011B658F4900CD20AC /* VCDriverApi.m in Sources */,
+				841649021B658F4900CD20AC /* VCGeoApi.m in Sources */,
+				841649031B658F4900CD20AC /* IIViewDeckController.m in Sources */,
+				841649041B658F4900CD20AC /* VCCarYearTextField.m in Sources */,
+				841649051B658F4900CD20AC /* VCApi.m in Sources */,
+				841649061B658F4900CD20AC /* VCBankAccountTextField.m in Sources */,
+				841649071B658F4900CD20AC /* VCPasswordRecoveryViewController.m in Sources */,
+				841649081B658F4900CD20AC /* VCDriveDetailsView.m in Sources */,
+				841649091B658F4900CD20AC /* VCGeoObject.m in Sources */,
+				8416490A1B658F4900CD20AC /* VCTicketViewController.m in Sources */,
+				8416490B1B658F4900CD20AC /* VCDevice.m in Sources */,
+				8416490C1B658F4900CD20AC /* Ticket.m in Sources */,
+				8416490D1B658F4900CD20AC /* VCObjectRequestOperation.m in Sources */,
+				8416490E1B658F4900CD20AC /* VCValidation.m in Sources */,
+				8416490F1B658F4900CD20AC /* MQRoute.m in Sources */,
+				841649101B658F4900CD20AC /* VCFareReceiptExpandedTableViewCell.m in Sources */,
+				841649111B658F4900CD20AC /* main.m in Sources */,
+				841649121B658F4900CD20AC /* VCFare.m in Sources */,
+				841649131B658F4900CD20AC /* VCReferralCodeTextField.m in Sources */,
+				841649141B658F4900CD20AC /* WRUtilities.m in Sources */,
+				841649151B658F4900CD20AC /* VCDriverSubMenuItemTableViewCell.m in Sources */,
+				841649161B658F4900CD20AC /* VCTextField.m in Sources */,
+				841649171B658F4900CD20AC /* VCSupportViewController.m in Sources */,
+				841649181B658F4900CD20AC /* VCDriverOnBoardingViewController.m in Sources */,
+				841649191B658F4900CD20AC /* VCRideRequestCreated.m in Sources */,
+				8416491A1B658F4900CD20AC /* VCPaymentsViewController.m in Sources */,
+				8416491B1B658F4900CD20AC /* VCDriverInterestedRequest.m in Sources */,
+				8416491C1B658F4900CD20AC /* VCAbstractRideDetailsView.m in Sources */,
+				8416491D1B658F4900CD20AC /* NSDate+Pretty.m in Sources */,
+				8416491E1B658F4900CD20AC /* VCLogInViewController.m in Sources */,
+				8416491F1B658F4900CD20AC /* VCAppDelegate.m in Sources */,
+				841649201B658F4900CD20AC /* VCUserStateManager.m in Sources */,
+				841649211B658F4900CD20AC /* VCUsersApi.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5606,6 +6273,126 @@
 			};
 			name = Release;
 		};
+		841649D21B658F4900CD20AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D570C24C905CF2756FACB77F /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Voco/Voco-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"API_BASE_URL=@\\\"http\\:\\/\\/52.26.200.141:4000\\/api\\/\\\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/usr/include/libxml2\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/ASImageResize\"",
+					"\"${PODS_ROOT}/Headers/Public/ActionSheetPicker-3.0\"",
+					"\"${PODS_ROOT}/Headers/Public/BlocksKit\"",
+					"\"${PODS_ROOT}/Headers/Public/DTCoreText\"",
+					"\"${PODS_ROOT}/Headers/Public/DTFoundation\"",
+					"\"${PODS_ROOT}/Headers/Public/ISO8601DateFormatterValueTransformer\"",
+					"\"${PODS_ROOT}/Headers/Public/M13Checkbox\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/MBXMapKit\"",
+					"\"${PODS_ROOT}/Headers/Public/PaymentKit\"",
+					"\"${PODS_ROOT}/Headers/Public/RKCLLocationValueTransformer\"",
+					"\"${PODS_ROOT}/Headers/Public/RKValueTransformers\"",
+					"\"${PODS_ROOT}/Headers/Public/Reachability\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit/CoreData\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit/Network\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit/ObjectMapping\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit/Support\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/SOCKit\"",
+					"\"${PODS_ROOT}/Headers/Public/Stripe\"",
+					"\"${PODS_ROOT}/Headers/Public/TransitionKit\"",
+					"\"${PODS_ROOT}/Headers/Public/UIAlertView+Blocks\"",
+					"\"${PODS_ROOT}/Headers/Public/US2FormValidator\"",
+					"\"${PODS_ROOT}/Headers/Public/Vendor/LibComponentLogging/Core\"",
+					"\"${PODS_ROOT}/Headers/Public/Vendor/LibComponentLogging/NSLog\"",
+					"\"$(SDKROOT)/usr/include/libxml2\"",
+				);
+				INFOPLIST_FILE = "Aluvi Development copy2-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "Aluvi Development copy";
+				PROVISIONING_PROFILE = "d46c3493-fac3-4c80-b03a-13d5918c9f8a";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		841649D31B658F4900CD20AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D14E3F5E1EECB39D89015B1 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Voco/Voco-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"API_BASE_URL=@\\\"http\\:\\/\\/52.26.200.141:4000\\/api\\/\\\"",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SDKROOT)/usr/include/libxml2\"",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/ASImageResize\"",
+					"\"${PODS_ROOT}/Headers/Public/ActionSheetPicker-3.0\"",
+					"\"${PODS_ROOT}/Headers/Public/BlocksKit\"",
+					"\"${PODS_ROOT}/Headers/Public/DTCoreText\"",
+					"\"${PODS_ROOT}/Headers/Public/DTFoundation\"",
+					"\"${PODS_ROOT}/Headers/Public/ISO8601DateFormatterValueTransformer\"",
+					"\"${PODS_ROOT}/Headers/Public/M13Checkbox\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/MBXMapKit\"",
+					"\"${PODS_ROOT}/Headers/Public/PaymentKit\"",
+					"\"${PODS_ROOT}/Headers/Public/RKCLLocationValueTransformer\"",
+					"\"${PODS_ROOT}/Headers/Public/RKValueTransformers\"",
+					"\"${PODS_ROOT}/Headers/Public/Reachability\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit/CoreData\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit/Network\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit/ObjectMapping\"",
+					"\"${PODS_ROOT}/Headers/Public/RestKit/Support\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/SOCKit\"",
+					"\"${PODS_ROOT}/Headers/Public/Stripe\"",
+					"\"${PODS_ROOT}/Headers/Public/TransitionKit\"",
+					"\"${PODS_ROOT}/Headers/Public/UIAlertView+Blocks\"",
+					"\"${PODS_ROOT}/Headers/Public/US2FormValidator\"",
+					"\"${PODS_ROOT}/Headers/Public/Vendor/LibComponentLogging/Core\"",
+					"\"${PODS_ROOT}/Headers/Public/Vendor/LibComponentLogging/NSLog\"",
+					"\"$(SDKROOT)/usr/include/libxml2\"",
+				);
+				INFOPLIST_FILE = "Aluvi Development copy2-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "Aluvi Development copy";
+				PROVISIONING_PROFILE = "d46c3493-fac3-4c80-b03a-13d5918c9f8a";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 		84F6765F1B5C77AA00E9C52E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D570C24C905CF2756FACB77F /* Pods.debug.xcconfig */;
@@ -6059,6 +6846,15 @@
 			buildConfigurations = (
 				8416489E1B64A47D00CD20AC /* Debug */,
 				8416489F1B64A47D00CD20AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		841649D11B658F4900CD20AC /* Build configuration list for PBXNativeTarget "Usama Development" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				841649D21B658F4900CD20AC /* Debug */,
+				841649D31B658F4900CD20AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

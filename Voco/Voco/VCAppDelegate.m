@@ -42,7 +42,10 @@
     
     [VCApi setup];
 
-    [Fabric with:@[CrashlyticsKit]];
+    if([[NSBundle mainBundle] objectForInfoDictionaryKey:@"Fabric"] != nil){
+        [Fabric with:@[CrashlyticsKit]];
+    }
+    
 
     [VCDialogs instance];
     
