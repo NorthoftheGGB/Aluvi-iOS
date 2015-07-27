@@ -1480,7 +1480,6 @@
 		849A3CFA1B1E5EFF004446AF /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		84B1FBF61B547C6500A00196 /* Voco 19.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 19.xcdatamodel"; sourceTree = "<group>"; };
 		84B1FBF71B557AA600A00196 /* Voco 20.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 20.xcdatamodel"; sourceTree = "<group>"; };
-		84F676621B5C77AA00E9C52E /* Aluvi Development copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Aluvi Development copy-Info.plist"; path = "/Users/matthewxi/software-development/Clients/Will_OBrien/voco-ios/Voco/Aluvi Development copy-Info.plist"; sourceTree = "<absolute>"; };
 		D570C24C905CF2756FACB77F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F401446D1978728100769802 /* VCFillCommuterPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCFillCommuterPass.h; path = API/Users/VCFillCommuterPass.h; sourceTree = "<group>"; };
 		F401446E1978728100769802 /* VCFillCommuterPass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCFillCommuterPass.m; path = API/Users/VCFillCommuterPass.m; sourceTree = "<group>"; };
@@ -2556,7 +2555,6 @@
 				F4FA0BE6192BF6BF005D8645 /* Frameworks */,
 				F4FA0BE5192BF6BF005D8645 /* Products */,
 				5BD1E7103A138D9BA6064A2B /* Pods */,
-				84F676621B5C77AA00E9C52E /* Aluvi Development copy-Info.plist */,
 				841648A11B64A47D00CD20AC /* Aluvi Distribution copy-Info.plist */,
 				841649D51B658F4A00CD20AC /* Aluvi Development copy2-Info.plist */,
 			);
