@@ -7,6 +7,8 @@
 //
 
 #import "VCDebug.h"
+#import "VCPushReceiver.h"
+#import "VCApi.h"
 
 
 #define kLoggedInUserIdentifier @"DEBUG_LOGGED_IN_USER_IDENTIFIER"
@@ -20,6 +22,17 @@ static VCDebug * instance;
 @end
 
 @implementation VCDebug
+
++ (void) showTriage {
+    NSString * pushToken = [[NSUserDefaults standardUserDefaults] stringForKey:kPushTokenKey];
+    BOOL pushTokenPublished = [[NSUserDefaults standardUserDefaults] boolForKey:kPushTokenPublishedKey];
+    NSString * pushPublished = pushTokenPublished ? @"YES" : @"NO";
+    NSString * userToken = [[VCApi apiToken] substringToIndex:6];
+
+    NSString * message = [NSString stringWithFormat:@"User Token: %@ \n Push Token: %@ \nPush Token Published %@ \n", userToken, pushToken, pushPublished];
+    [UIAlertView showWithTitle:@"Welcome to Triage" message:message cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+    }];
+}
 
 + (VCDebug *) sharedInstance {
     if (instance == nil){
