@@ -25,6 +25,9 @@
 @implementation VCPushReceiver
 
 + (void) registerForRemoteNotifications {
+    [[NSUserDefaults standardUserDefaults] setBool:false forKey:kPushTokenPublishedKey];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kPushTokenKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
     
@@ -69,6 +72,7 @@
     [VCDevicesApi updatePushToken:pushToken success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [[NSUserDefaults standardUserDefaults] setBool:true forKey:kPushTokenPublishedKey];
         [[NSUserDefaults standardUserDefaults] synchronize];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kPushTokenUpdatedNotification object:nil];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         NSLog(@"Failure to save push token to server");
         // and send again later

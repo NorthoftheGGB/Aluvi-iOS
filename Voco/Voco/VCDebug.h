@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define kPushTokenUpdatedNotification @"kPushTokenUpdatedNotification"
+
 @interface VCDebug : NSObject
 
 + (void) showTriage;
@@ -21,5 +23,8 @@
 - (void) apiLog:(NSString *) string;
 - (void) localNotificationLog:(NSString *) string;
 - (void) remoteNotificationLog:(NSString *) string;
+
+- (BOOL) alertsEnabled;
+- (void) enableAlerts;
 
 @end

@@ -33,12 +33,20 @@
 
 @interface VCAppDelegate ()
 
+@property (nonatomic) BOOL launching;
+
 @end
 
 @implementation VCAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    _launching = YES;
+
+    [VCDebug sharedInstance];
+#ifdef DEBUG
+    [[VCDebug sharedInstance] enableAlerts];
+#endif
     
     [VCApi setup];
 
@@ -136,11 +144,20 @@
 
     }
     
+    if(_launching == YES) {
+        _launching = NO;
+    } else {
     
-    BOOL pushTokenPublished = [[NSUserDefaults standardUserDefaults] boolForKey:kPushTokenPublishedKey];
-    if(!pushTokenPublished){
-        [VCPushReceiver registerForRemoteNotifications];
+#if !(TARGET_IPHONE_SIMULATOR)
+        // Logic removed for triage
+        BOOL pushTokenPublished = [[NSUserDefaults standardUserDefaults] boolForKey:kPushTokenPublishedKey];
+        if(!pushTokenPublished){
+            [VCPushReceiver registerForRemoteNotifications];
+        }
+#endif
+
     }
+    
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

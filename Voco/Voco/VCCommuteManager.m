@@ -352,6 +352,7 @@ static VCCommuteManager * instance;
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"schedule_updated" object:nil userInfo:@{}];
                 success();
             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                [WRUtilities criticalError:error];
                 failure();
             }];
         } else {
@@ -360,6 +361,7 @@ static VCCommuteManager * instance;
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"schedule_updated" object:nil userInfo:@{}];
                 success();
             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                [WRUtilities criticalError:error];
                 failure();
             }];
         }
