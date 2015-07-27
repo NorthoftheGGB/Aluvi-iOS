@@ -18,6 +18,7 @@ static VCDebug * instance;
 @interface VCDebug ()
 
 @property (nonatomic, strong) NSString * userIdentifier;
+@property (nonatomic) BOOL pushTokenConfirmationEnabled;
 
 @end
 
@@ -30,7 +31,16 @@ static VCDebug * instance;
     NSString * userToken = [[VCApi apiToken] substringToIndex:6];
 
     NSString * message = [NSString stringWithFormat:@"User Token: %@ \n Push Token: %@ \nPush Token Published %@ \n", userToken, pushToken, pushPublished];
-    [UIAlertView showWithTitle:@"Welcome to Triage" message:message cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+    [UIAlertView showWithTitle:@"Welcome to Triage" message:message cancelButtonTitle:@"OK" otherButtonTitles:@[@"Refresh Push Token"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        switch (buttonIndex) {
+            case 1:
+                [VCPushReceiver registerForRemoteNotifications];
+                [[VCDebug sharedInstance] enablePushTokenConfirmation];
+                break;
+                
+            default:
+                break;
+        }
     }];
 }
 
@@ -45,9 +55,24 @@ static VCDebug * instance;
     self = [super init];
     if (self != nil){
         self.userIdentifier = [[NSUserDefaults standardUserDefaults] objectForKey:kLoggedInUserIdentifier];
+        self.pushTokenConfirmationEnabled = NO;
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushTokenUpdated) name:kPushTokenUpdatedNotification object:nil];
     return self;
 }
+
+- (void) pushTokenUpdated {
+    if(_pushTokenConfirmationEnabled) {
+        [UIAlertView showWithTitle:@"Triage Message" message:@"Push Token Updated" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+    }
+}
+
+- (void) enablePushTokenConfirmation {
+    
+}
+
+
 
 - (void) setLoggedInUserIdentifier: (NSString *) identifier {
     [[NSUserDefaults standardUserDefaults] setObject:identifier forKey:kLoggedInUserIdentifier];

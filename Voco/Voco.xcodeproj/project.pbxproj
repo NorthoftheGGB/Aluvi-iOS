@@ -3874,8 +3874,8 @@
 				F4354D5B195D0D6A00C06CF7 /* Aluvi Testing */,
 				F4FA0BE3192BF6BF005D8645 /* Aluvi Alpha */,
 				F4D8FE0619B1745A00BC0B69 /* Aluvi Distribution */,
-				F4FA0C03192BF6BF005D8645 /* VocoTests */,
 				8416476D1B64A47D00CD20AC /* Aluvi Distribution Internal */,
+				F4FA0C03192BF6BF005D8645 /* VocoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -6240,7 +6240,7 @@
 				INFOPLIST_FILE = "Aluvi Distribution copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "Aluvi Distribution copy";
-				PROVISIONING_PROFILE = "22b56016-716a-4c1f-b1e9-22a70bfc02c3";
+				PROVISIONING_PROFILE = "3082c10e-d1de-409b-8527-518b0f644d6d";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -6268,7 +6268,7 @@
 				INFOPLIST_FILE = "Aluvi Distribution copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "Aluvi Distribution copy";
-				PROVISIONING_PROFILE = "22b56016-716a-4c1f-b1e9-22a70bfc02c3";
+				PROVISIONING_PROFILE = "3082c10e-d1de-409b-8527-518b0f644d6d";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -6577,6 +6577,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
+					"API_BASE_URL=@\\\"http\\:\\/\\/52.26.200.141:3000\\/api\\/\\\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

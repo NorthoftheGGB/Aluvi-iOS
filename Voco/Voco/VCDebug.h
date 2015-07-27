@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define kPushTokenUpdatedNotification @"kPushTokenUpdatedNotification"
+
 @interface VCDebug : NSObject
 
 + (void) showTriage;
