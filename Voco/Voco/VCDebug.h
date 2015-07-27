@@ -24,4 +24,7 @@
 - (void) localNotificationLog:(NSString *) string;
 - (void) remoteNotificationLog:(NSString *) string;
 
+- (BOOL) alertsEnabled;
+- (void) enableAlerts;
+
 @end

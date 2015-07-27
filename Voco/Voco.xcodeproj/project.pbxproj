@@ -3299,8 +3299,6 @@
 		F45F7C0C1935976400A94721 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				F45F7C0D1935976E00A94721 /* WRUtilities.h */,
-				F45F7C0E1935976E00A94721 /* WRUtilities.m */,
 				F45F7C10193597F500A94721 /* NSDate+Pretty.m */,
 				F45F7C11193597F500A94721 /* NSDate+Pretty.h */,
 				F473EFDA19491C2B00D8C900 /* VCValidation.h */,
@@ -3485,6 +3483,8 @@
 				F4D8777219775D7E00870945 /* VCUtilities.m */,
 				F4C6B1B51979229900F6C10B /* VCDebug.h */,
 				F4C6B1B61979229900F6C10B /* VCDebug.m */,
+				F45F7C0D1935976E00A94721 /* WRUtilities.h */,
+				F45F7C0E1935976E00A94721 /* WRUtilities.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";

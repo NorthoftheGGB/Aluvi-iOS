@@ -44,6 +44,9 @@
     _launching = YES;
 
     [VCDebug sharedInstance];
+#ifdef DEBUG
+    [[VCDebug sharedInstance] enableAlerts];
+#endif
     
     [VCApi setup];
 

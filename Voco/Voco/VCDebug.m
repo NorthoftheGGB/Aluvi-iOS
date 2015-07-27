@@ -19,6 +19,7 @@ static VCDebug * instance;
 
 @property (nonatomic, strong) NSString * userIdentifier;
 @property (nonatomic) BOOL pushTokenConfirmationEnabled;
+@property (nonatomic) BOOL alertsEnabled;
 
 @end
 
@@ -56,6 +57,7 @@ static VCDebug * instance;
     if (self != nil){
         self.userIdentifier = [[NSUserDefaults standardUserDefaults] objectForKey:kLoggedInUserIdentifier];
         self.pushTokenConfirmationEnabled = NO;
+        self.alertsEnabled = true;
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushTokenUpdated) name:kPushTokenUpdatedNotification object:nil];
@@ -68,8 +70,16 @@ static VCDebug * instance;
     }
 }
 
-- (void) enablePushTokenConfirmation {
-    
+-(void) enablePushTokenConfirmation {
+    _pushTokenConfirmationEnabled = YES;
+}
+
+- (BOOL) alertsEnabled {
+    return _alertsEnabled;
+}
+
+- (void) enableAlerts {
+    _alertsEnabled = YES;
 }
 
 

@@ -8,6 +8,7 @@
 
 #import "WRUtilities.h"
 #import "NSDate+Pretty.h"
+#import "VCDebug.h"
 
 
 static UIAlertView * criticalErrorView = nil;
@@ -21,7 +22,7 @@ static UIAlertView * networkUnavailableErrorView = nil;
 
 + (id)getViewFromNib: (NSString *) nibName class: (id) class {
     NSArray *bundle = [[NSBundle mainBundle] loadNibNamed:nibName
-                                                owner:nil options:nil];
+                                                    owner:nil options:nil];
     UIView * view;
     for (id object in bundle) {
         if ([object isKindOfClass:class])
@@ -37,23 +38,23 @@ static UIAlertView * networkUnavailableErrorView = nil;
     NSString * errorString = [NSString stringWithFormat:@"%@ Critical Error: %@", [[NSDate date] pretty], [error debugDescription]];
     NSLog(@"%@", errorString);
     [[VCDebug sharedInstance] apiLog:errorString];
-
-#if DEBUG==1
-    if(criticalErrorView != nil){
-        [criticalErrorView dismissWithClickedButtonIndex:0 animated:NO];
-    }
     
-    UIAlertView *alert = [[UIAlertView alloc]
-                          initWithTitle: @"Critical Error"
-                          message: [error debugDescription]
-                          delegate: nil
-                          cancelButtonTitle:@"OK"
-                          otherButtonTitles:nil];
-    criticalErrorView = alert;
-    [alert show];
-#else
+    if([[VCDebug sharedInstance] alertsEnabled]) {
+        if(criticalErrorView != nil){
+            [criticalErrorView dismissWithClickedButtonIndex:0 animated:NO];
+        }
+        
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle: @"Critical Error"
+                              message: [error debugDescription]
+                              delegate: nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+        criticalErrorView = alert;
+        [alert show];
+    }
     CLS_LOG(@"%@ Critical Error: %@", [[NSDate date] pretty] , error);
-#endif
+    
 }
 
 + (void) criticalErrorWithString: (NSString *) error {
@@ -61,51 +62,49 @@ static UIAlertView * networkUnavailableErrorView = nil;
     NSString * errorString = [NSString stringWithFormat:@"%@ Critical Error: %@", [[NSDate date] pretty] , error];
     NSLog(@"%@", errorString);
     [[VCDebug sharedInstance] apiLog:errorString];
-
-#if DEBUG==1
-  
-    if(criticalErrorView != nil){
-        [criticalErrorView dismissWithClickedButtonIndex:0 animated:NO];
-        criticalErrorView = nil;
-    }
     
-    UIAlertView *alert = [[UIAlertView alloc]
-                          initWithTitle: @"Critical Error"
-                          message: error
-                          delegate: self
-                          cancelButtonTitle:@"OK"
-                          otherButtonTitles:nil];
-    criticalErrorView = alert;
-    [alert performSelectorOnMainThread:@selector(show) withObject:nil waitUntilDone:YES];
-#else
+    if([[VCDebug sharedInstance] alertsEnabled]) {
+        
+        if(criticalErrorView != nil){
+            [criticalErrorView dismissWithClickedButtonIndex:0 animated:NO];
+            criticalErrorView = nil;
+        }
+        
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle: @"Critical Error"
+                              message: error
+                              delegate: self
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+        criticalErrorView = alert;
+        [alert performSelectorOnMainThread:@selector(show) withObject:nil waitUntilDone:YES];
+    }
     CLS_LOG(@"%@ Critical Error: %@", [[NSDate date] pretty] , error);
-#endif
     
 }
 
 
 + (void) subcriticaError: (NSError *) error {
-
+    
     NSString * errorString = [NSString stringWithFormat:@"%@ Error: %@", [[NSDate date] pretty], [error debugDescription]];
     NSLog(@"%@", errorString);
     [[VCDebug sharedInstance] apiLog:errorString];
     
-#if DEBUG==1
-    if(criticalErrorView != nil){
-        [criticalErrorView dismissWithClickedButtonIndex:0 animated:NO];
+    if([[VCDebug sharedInstance] alertsEnabled]) {
+        if(criticalErrorView != nil){
+            [criticalErrorView dismissWithClickedButtonIndex:0 animated:NO];
+        }
+        
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle: @"Critical Error"
+                              message: [error debugDescription]
+                              delegate: nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+        criticalErrorView = alert;
+        [alert show];
     }
-    
-    UIAlertView *alert = [[UIAlertView alloc]
-                          initWithTitle: @"Critical Error"
-                          message: [error debugDescription]
-                          delegate: nil
-                          cancelButtonTitle:@"OK"
-                          otherButtonTitles:nil];
-    criticalErrorView = alert;
-    [alert show];
-#else
     CLS_LOG(@"%@ Critical Error: %@", [[NSDate date] pretty] , error);
-#endif
 }
 
 + (void) subcriticalErrorWithString: (NSString *) error {
