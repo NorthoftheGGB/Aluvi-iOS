@@ -113,6 +113,46 @@ static UIAlertView * networkUnavailableErrorView = nil;
 }
 
 
++ (void) triage: (NSString *) error {
+    
+    NSString * errorString = [NSString stringWithFormat:@"%@ Triage: %@", [[NSDate date] pretty] , error];
+    NSLog(@"%@", errorString);
+    [[VCDebug sharedInstance] apiLog:errorString];
+    
+    if([[VCDebug sharedInstance] alertsEnabled]) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            if(criticalErrorView != nil){
+                [criticalErrorView dismissWithClickedButtonIndex:0 animated:NO];
+                criticalErrorView = nil;
+            }
+            criticalErrorView = [UIAlertView showWithTitle:@"Triage"
+                                                   message:error
+                                         cancelButtonTitle:@"Done"
+                                         otherButtonTitles:@[@"Copy"]
+                                                  tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                                      switch (buttonIndex) {
+                                                          case 1:
+                                                          {
+                                                              UIPasteboard *pb = [UIPasteboard generalPasteboard];
+                                                              [pb setString:error];
+                                                          }
+                                                              break;
+                                                              
+                                                          default:
+                                                              break;
+                                                      }
+                                                  }];
+        });
+    }
+    
+    
+    CLS_LOG(@"%@ Critical Error: %@", [[NSDate date] pretty] , error);
+    
+}
+
+
 + (void) subcriticaError: (NSError *) error {
     
     NSString * errorString = [NSString stringWithFormat:@"%@ Error: %@", [[NSDate date] pretty], [error debugDescription]];

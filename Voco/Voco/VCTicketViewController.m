@@ -336,9 +336,9 @@
     } else {
         // some debugging
         if(_ticket == nil){
-            NSLog(@"Nil ticket");
+            [WRUtilities triage:@"Nil ticket"];
         } else {
-            NSLog(@"Viewing a different ticket %@", [_ticket debugDescription]);
+            [WRUtilities triage:[NSString stringWithFormat:@"Viewing a different ticket %@", [_ticket debugDescription]]];
         }
     }
     
@@ -1823,6 +1823,7 @@
                                     cancelButtonTitle:@"OK"
                                     otherButtonTitles:nil
                                              tapBlock:nil];
+                           _ticket = nil;
                            
                        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                            [hud hide:YES];

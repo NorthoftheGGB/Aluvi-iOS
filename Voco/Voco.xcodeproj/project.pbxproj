@@ -3702,9 +3702,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8416476D1B64A47D00CD20AC /* Aluvi Distribution Internal */ = {
+		8416476D1B64A47D00CD20AC /* Aluvi Distribution Nightly */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8416489D1B64A47D00CD20AC /* Build configuration list for PBXNativeTarget "Aluvi Distribution Internal" */;
+			buildConfigurationList = 8416489D1B64A47D00CD20AC /* Build configuration list for PBXNativeTarget "Aluvi Distribution Nightly" */;
 			buildPhases = (
 				8416476E1B64A47D00CD20AC /* Check Pods Manifest.lock */,
 				8416476F1B64A47D00CD20AC /* Sources */,
@@ -3717,7 +3717,7 @@
 			);
 			dependencies = (
 			);
-			name = "Aluvi Distribution Internal";
+			name = "Aluvi Distribution Nightly";
 			productName = Voco;
 			productReference = 841648A01B64A47D00CD20AC /* Aluvi Distribution copy.app */;
 			productType = "com.apple.product-type.application";
@@ -3909,7 +3909,7 @@
 				F4354D5B195D0D6A00C06CF7 /* Aluvi Testing */,
 				F4FA0BE3192BF6BF005D8645 /* Aluvi Alpha */,
 				F4D8FE0619B1745A00BC0B69 /* Aluvi Distribution */,
-				8416476D1B64A47D00CD20AC /* Aluvi Distribution Internal */,
+				8416476D1B64A47D00CD20AC /* Aluvi Distribution Nightly */,
 				F4FA0C03192BF6BF005D8645 /* VocoTests */,
 			);
 		};
@@ -6291,7 +6291,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
-					"API_BASE_URL=@\\\"http\\:\\/\\/52.25.169.216:3000\\/api\\/\\\"",
+					"API_BASE_URL=@\\\"http\\:\\/\\/54.148.6.205:3000\\/api\\/\\\"",
 				);
 				INFOPLIST_FILE = "Aluvi Distribution copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -6319,7 +6319,7 @@
 					"$(inherited)",
 					"COCOAPODS=1",
 					"RELEASE=1",
-					"API_BASE_URL=@\\\"http\\:\\/\\/52.25.169.216:3000\\/api\\/\\\"",
+					"API_BASE_URL=@\\\"http\\:\\/\\/54.148.6.205:3000\\/api\\/\\\"",
 				);
 				INFOPLIST_FILE = "Aluvi Distribution copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -6898,7 +6898,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8416489D1B64A47D00CD20AC /* Build configuration list for PBXNativeTarget "Aluvi Distribution Internal" */ = {
+		8416489D1B64A47D00CD20AC /* Build configuration list for PBXNativeTarget "Aluvi Distribution Nightly" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8416489E1B64A47D00CD20AC /* Debug */,

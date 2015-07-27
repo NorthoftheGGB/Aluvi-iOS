@@ -17,6 +17,7 @@
 + (id)getViewFromNib: (NSString *) nibName class: (id) class;
 + (void) criticalError: (NSError *) error;
 + (void) criticalErrorWithString: (NSString *) error;
++ (void) triage: (NSString *) error;
 + (void) subcriticaError: (NSError *) error;
 + (void) subcriticalErrorWithString: (NSString *) error;
 + (void) warningWithString: (NSString *) error;

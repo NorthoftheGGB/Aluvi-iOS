@@ -435,11 +435,17 @@
         case kScheduleItemCellInteger:
         {
             long scheduleCellIndex = [_tableCellList indexOfObject:kScheduleCell];
-            Ticket * ticket = [_scheduleItems objectAtIndex:row-scheduleCellIndex-1];
             
-            VCTicketViewController * ticketViewController = [[VCTicketViewController alloc] init];
-            ticketViewController.ticket = ticket;
-            [[VCInterfaceManager instance] setCenterViewControllers: @[ticketViewController]];
+            
+            if(row-scheduleCellIndex-1 < [_scheduleItems count] ) {
+                Ticket * ticket = [_scheduleItems objectAtIndex:row-scheduleCellIndex-1];
+                VCTicketViewController * ticketViewController = [[VCTicketViewController alloc] init];
+                ticketViewController.ticket = ticket;
+                [[VCInterfaceManager instance] setCenterViewControllers: @[ticketViewController]];
+            } else {
+                [WRUtilities criticalErrorWithString:[NSString stringWithFormat: @"Index out of bounds? \n%@", [NSThread callStackSymbols] ]];
+            }
+            
             
             VCSubMenuItemTableViewCell * cell = (VCSubMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
             [cell select];

@@ -14,6 +14,7 @@
 #import "VCDriverApi.h"
 #import "VCNotifications.h"
 #import "VCInterfaceManager.h"
+#import <MBProgressHud.h>
 
 #import "VCDevice.h"
 #import "WRUtilities.h"
@@ -154,11 +155,20 @@
     // TODO: should refactor the below if/else to provide a block used in the Success of this
     // TODO: or perhaps refreshScheduledRides should not a take a success at all.
     // TODO: Or wait for sync for ANY handling of push
+    
+    NSString * type = [payload objectForKey:VC_PUSH_TYPE_KEY];
+    MBProgressHUD * hud;
+    if([@[kPushTypeTripFulfilled, kPushTypeTripUnfulfilled] containsObject:type]){
+        hud = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication] keyWindow] animated:YES];
+        [hud show:YES];
+    }
+    
     [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [VCNotifications scheduleUpdated];
+        if(hud != nil){
+            hud.hidden = YES;
+        }
         
-        
-        NSString * type = [payload objectForKey:VC_PUSH_TYPE_KEY];
         if ([type isEqualToString:kPushTypeFareCancelledByRider]){
             NSNumber * rideId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
             [[VCDialogs instance] rideCancelledByRider];
