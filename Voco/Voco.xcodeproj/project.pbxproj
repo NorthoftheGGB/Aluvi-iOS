@@ -7,6 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36638D751B658A5A004EDB09 /* RideRequest.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D741B658A5A004EDB09 /* RideRequest.xib */; };
+		36638D761B658A5A004EDB09 /* RideRequest.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D741B658A5A004EDB09 /* RideRequest.xib */; };
+		36638D771B658A5A004EDB09 /* RideRequest.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D741B658A5A004EDB09 /* RideRequest.xib */; };
+		36638D781B658A5A004EDB09 /* RideRequest.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D741B658A5A004EDB09 /* RideRequest.xib */; };
+		36638D791B658A5A004EDB09 /* RideRequest.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D741B658A5A004EDB09 /* RideRequest.xib */; };
+		36638D7A1B658A5A004EDB09 /* RideRequest.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D741B658A5A004EDB09 /* RideRequest.xib */; };
+		36638D7B1B658A5A004EDB09 /* RideRequest.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D741B658A5A004EDB09 /* RideRequest.xib */; };
+		36638D7D1B659CAE004EDB09 /* DriverTicket.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D7C1B659CAE004EDB09 /* DriverTicket.xib */; };
+		36638D7E1B659CAE004EDB09 /* DriverTicket.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D7C1B659CAE004EDB09 /* DriverTicket.xib */; };
+		36638D7F1B659CAE004EDB09 /* DriverTicket.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D7C1B659CAE004EDB09 /* DriverTicket.xib */; };
+		36638D801B659CAE004EDB09 /* DriverTicket.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D7C1B659CAE004EDB09 /* DriverTicket.xib */; };
+		36638D811B659CAE004EDB09 /* DriverTicket.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D7C1B659CAE004EDB09 /* DriverTicket.xib */; };
+		36638D821B659CAE004EDB09 /* DriverTicket.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D7C1B659CAE004EDB09 /* DriverTicket.xib */; };
+		36638D831B659CAE004EDB09 /* DriverTicket.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D7C1B659CAE004EDB09 /* DriverTicket.xib */; };
+		36638D851B65A988004EDB09 /* RiderTicket.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D841B65A988004EDB09 /* RiderTicket.xib */; };
+		36638D861B65A988004EDB09 /* RiderTicket.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D841B65A988004EDB09 /* RiderTicket.xib */; };
+		36638D871B65A989004EDB09 /* RiderTicket.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D841B65A988004EDB09 /* RiderTicket.xib */; };
+		36638D881B65A989004EDB09 /* RiderTicket.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D841B65A988004EDB09 /* RiderTicket.xib */; };
+		36638D891B65A989004EDB09 /* RiderTicket.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D841B65A988004EDB09 /* RiderTicket.xib */; };
+		36638D8A1B65A989004EDB09 /* RiderTicket.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D841B65A988004EDB09 /* RiderTicket.xib */; };
+		36638D8B1B65A989004EDB09 /* RiderTicket.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D841B65A988004EDB09 /* RiderTicket.xib */; };
 		4F1849DD198F25F9006EA959 /* driver-call-hud-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849DB198F25F9006EA959 /* driver-call-hud-button@2x.png */; };
 		4F1849DE198F25F9006EA959 /* driver-call-hud-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849DB198F25F9006EA959 /* driver-call-hud-button@2x.png */; };
 		4F1849DF198F25F9006EA959 /* driver-call-hud-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849DB198F25F9006EA959 /* driver-call-hud-button@2x.png */; };
@@ -2083,6 +2104,9 @@
 /* Begin PBXFileReference section */
 		0D14E3F5E1EECB39D89015B1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		351E93948BFC43989C411DB5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		36638D741B658A5A004EDB09 /* RideRequest.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RideRequest.xib; sourceTree = "<group>"; };
+		36638D7C1B659CAE004EDB09 /* DriverTicket.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DriverTicket.xib; sourceTree = "<group>"; };
+		36638D841B65A988004EDB09 /* RiderTicket.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RiderTicket.xib; sourceTree = "<group>"; };
 		4F1849DB198F25F9006EA959 /* driver-call-hud-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "driver-call-hud-button@2x.png"; sourceTree = "<group>"; };
 		4F1849DC198F25F9006EA959 /* driver-cancel-hud-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "driver-cancel-hud-button@2x.png"; sourceTree = "<group>"; };
 		4F1849E3198F625A006EA959 /* driver-cancel-hud-icon-select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "driver-cancel-hud-icon-select@2x.png"; sourceTree = "<group>"; };
@@ -2796,6 +2820,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36638D731B658A0B004EDB09 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				36638D741B658A5A004EDB09 /* RideRequest.xib */,
+				36638D7C1B659CAE004EDB09 /* DriverTicket.xib */,
+				36638D841B65A988004EDB09 /* RiderTicket.xib */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		4F2EF9941960D1CA006A1962 /* Fare System */ = {
 			isa = PBXGroup;
 			children = (
@@ -2845,7 +2879,7 @@
 			name = HTML;
 			sourceTree = "<group>";
 		};
-		4F3DB5C61981F6AB00DDD094 /* Views */ = {
+		4F3DB5C61981F6AB00DDD094 /* Old - Views */ = {
 			isa = PBXGroup;
 			children = (
 				4F3DB5C71981F6F400DDD094 /* VCAbstractRideDetailsView.h */,
@@ -2859,7 +2893,7 @@
 				F4138C2419650C5600C265CD /* VCCommuterHud.h */,
 				F4138C2519650C5600C265CD /* VCCommuterHud.m */,
 			);
-			name = Views;
+			name = "Old - Views";
 			sourceTree = "<group>";
 		};
 		4F4D8BF019882AB00027A2AF /* Views */ = {
@@ -3319,7 +3353,8 @@
 		F473EFE919492CA400D8C900 /* Ride System */ = {
 			isa = PBXGroup;
 			children = (
-				4F3DB5C61981F6AB00DDD094 /* Views */,
+				36638D731B658A0B004EDB09 /* Views */,
+				4F3DB5C61981F6AB00DDD094 /* Old - Views */,
 				F4C6B2A1197F8A6200F6C10B /* Edit Location Widget */,
 				4F73CA01197F2AB0001B6663 /* VCTicketViewController.h */,
 				4F73CA02197F2AB0001B6663 /* VCTicketViewController.m */,
@@ -3937,6 +3972,7 @@
 				841648391B64A47D00CD20AC /* tutorial-menu-button@2x.png in Resources */,
 				8416483A1B64A47D00CD20AC /* menu-list.png in Resources */,
 				8416483B1B64A47D00CD20AC /* current-location-arrow-select@2x.png in Resources */,
+				36638D7B1B658A5A004EDB09 /* RideRequest.xib in Resources */,
 				8416483C1B64A47D00CD20AC /* VCSubMenuItemTableViewCell.xib in Resources */,
 				8416483D1B64A47D00CD20AC /* map_pin_fill-512.png in Resources */,
 				8416483E1B64A47D00CD20AC /* VCPrivatePolicyViewController.xib in Resources */,
@@ -4020,10 +4056,12 @@
 				8416488C1B64A47D00CD20AC /* Images.xcassets in Resources */,
 				8416488D1B64A47D00CD20AC /* SignUp.html in Resources */,
 				8416488E1B64A47D00CD20AC /* commuter-menu-button-selected@2x.png in Resources */,
+				36638D8B1B65A989004EDB09 /* RiderTicket.xib in Resources */,
 				8416488F1B64A47D00CD20AC /* VCMenuDriverClockOnTableViewCell.xib in Resources */,
 				841648901B64A47D00CD20AC /* VCCommuteSetUpOnBoardingViewController.xib in Resources */,
 				841648911B64A47D00CD20AC /* driver-cancel-hud-icon-select@2x.png in Resources */,
 				841648921B64A47D00CD20AC /* VCDriverSubMenuItemTableViewCell.xib in Resources */,
+				36638D831B659CAE004EDB09 /* DriverTicket.xib in Resources */,
 				841648931B64A47D00CD20AC /* nav-bar-background@2x.png in Resources */,
 				841648941B64A47D00CD20AC /* VCRiderOnBoardingViewController.xib in Resources */,
 				841648951B64A47D00CD20AC /* VCDriveViewController.xib in Resources */,
@@ -4244,6 +4282,7 @@
 				84F675FB1B5C77AA00E9C52E /* scheduledrides-menu-button-selected@2x.png in Resources */,
 				84F675FC1B5C77AA00E9C52E /* menu-mycar-icon@2x.png in Resources */,
 				84F675FD1B5C77AA00E9C52E /* zoom-ride-bounds@2x.png in Resources */,
+				36638D7E1B659CAE004EDB09 /* DriverTicket.xib in Resources */,
 				84F675FE1B5C77AA00E9C52E /* terms-menu-button@2x.png in Resources */,
 				84F675FF1B5C77AA00E9C52E /* KlinicSlabMedium.ttf in Resources */,
 				84F676001B5C77AA00E9C52E /* tutorial-menu-button@2x.png in Resources */,
@@ -4325,11 +4364,13 @@
 				84F6764C1B5C77AA00E9C52E /* VCLeftMenuViewController.xib in Resources */,
 				84F6764D1B5C77AA00E9C52E /* button-select@2x.png in Resources */,
 				84F6764E1B5C77AA00E9C52E /* VCMenuUserInfoTableViewCell.xib in Resources */,
+				36638D761B658A5A004EDB09 /* RideRequest.xib in Resources */,
 				84F6764F1B5C77AA00E9C52E /* Images.xcassets in Resources */,
 				84F676501B5C77AA00E9C52E /* commuter-menu-button-selected@2x.png in Resources */,
 				84F676511B5C77AA00E9C52E /* VCMenuDriverClockOnTableViewCell.xib in Resources */,
 				84F676521B5C77AA00E9C52E /* VCCommuteSetUpOnBoardingViewController.xib in Resources */,
 				84F676531B5C77AA00E9C52E /* driver-cancel-hud-icon-select@2x.png in Resources */,
+				36638D861B65A988004EDB09 /* RiderTicket.xib in Resources */,
 				84F676541B5C77AA00E9C52E /* VCDriverSubMenuItemTableViewCell.xib in Resources */,
 				84F676551B5C77AA00E9C52E /* VCRiderOnBoardingViewController.xib in Resources */,
 				84F676561B5C77AA00E9C52E /* VCDriveViewController.xib in Resources */,
@@ -4397,6 +4438,7 @@
 				4F1849E9198F625A006EA959 /* driver-cancel-hud-icon@2x.png in Resources */,
 				4F35FA9819A80615004FB423 /* hamburger@2x.png in Resources */,
 				4FC758F119AA95300093DBEA /* VCReceiptExpandedTableViewCell.xib in Resources */,
+				36638D7F1B659CAE004EDB09 /* DriverTicket.xib in Resources */,
 				4F30990319B013A900DFCDD1 /* VCEarningsViewController.xib in Resources */,
 				4FDB0ED41970C3AD00A8CEC2 /* button-full-default@2x.png in Resources */,
 				4FC758B019AA8BBC0093DBEA /* toc-checked@2x.png in Resources */,
@@ -4478,11 +4520,13 @@
 				4F3DB5C31981ED4E00DDD094 /* directions-button@2x.png in Resources */,
 				F4354DC6195D0D6A00C06CF7 /* commute_logo@2x.png in Resources */,
 				F4354DC7195D0D6A00C06CF7 /* Images.xcassets in Resources */,
+				36638D771B658A5A004EDB09 /* RideRequest.xib in Resources */,
 				4F1849DE198F25F9006EA959 /* driver-call-hud-button@2x.png in Resources */,
 				4FFE171F198A1890004D4413 /* menu-map-icon@2x.png in Resources */,
 				4FAB577019D0C637009055D7 /* menu-item-bg-depressed-select@2x.png in Resources */,
 				4F30991519B02BCD00DFCDD1 /* temp-call-button@2x.png in Resources */,
 				4FDB0ED61970C3AD00A8CEC2 /* button-full-select@2x.png in Resources */,
+				36638D871B65A989004EDB09 /* RiderTicket.xib in Resources */,
 				4FE286EC1962B89700FD8AF6 /* current-location-arrow@2x.png in Resources */,
 				4F2EF9BC1961391B006A1962 /* scheduledrides-menu-button@2x.png in Resources */,
 				4F35FA9019A6AA62004FB423 /* login-button@2x.png in Resources */,
@@ -4550,6 +4594,7 @@
 				F4C6B25F197F06B100F6C10B /* scheduledrides-menu-button-selected@2x.png in Resources */,
 				4F1849F91991753F006EA959 /* menu-mycar-icon@2x.png in Resources */,
 				F4C6B260197F06B100F6C10B /* zoom-ride-bounds@2x.png in Resources */,
+				36638D7D1B659CAE004EDB09 /* DriverTicket.xib in Resources */,
 				F4C6B261197F06B100F6C10B /* terms-menu-button@2x.png in Resources */,
 				F4C6B262197F06B100F6C10B /* KlinicSlabMedium.ttf in Resources */,
 				F4C6B263197F06B100F6C10B /* tutorial-menu-button@2x.png in Resources */,
@@ -4631,11 +4676,13 @@
 				4FFE13931989AE09004D4413 /* VCLeftMenuViewController.xib in Resources */,
 				F4C6B28B197F06B100F6C10B /* button-select@2x.png in Resources */,
 				4F184A1519918750006EA959 /* VCMenuUserInfoTableViewCell.xib in Resources */,
+				36638D751B658A5A004EDB09 /* RideRequest.xib in Resources */,
 				F4C6B28C197F06B100F6C10B /* Images.xcassets in Resources */,
 				F4C6B28D197F06B100F6C10B /* commuter-menu-button-selected@2x.png in Resources */,
 				4F184A1E1991893D006EA959 /* VCMenuDriverClockOnTableViewCell.xib in Resources */,
 				4FC758D419AA91810093DBEA /* VCCommuteSetUpOnBoardingViewController.xib in Resources */,
 				4F1849E5198F625A006EA959 /* driver-cancel-hud-icon-select@2x.png in Resources */,
+				36638D851B65A988004EDB09 /* RiderTicket.xib in Resources */,
 				4FC7590519AACD840093DBEA /* VCDriverSubMenuItemTableViewCell.xib in Resources */,
 				4FC758C219AA91330093DBEA /* VCRiderOnBoardingViewController.xib in Resources */,
 				4F4D8BF719882AFB0027A2AF /* VCDriveViewController.xib in Resources */,
@@ -4703,6 +4750,7 @@
 				F4D8FED219B1745A00BC0B69 /* tutorial-menu-button@2x.png in Resources */,
 				F4D8FED319B1745A00BC0B69 /* menu-list.png in Resources */,
 				F4D8FED619B1745A00BC0B69 /* current-location-arrow-select@2x.png in Resources */,
+				36638D791B658A5A004EDB09 /* RideRequest.xib in Resources */,
 				F4D8FED719B1745A00BC0B69 /* VCSubMenuItemTableViewCell.xib in Resources */,
 				F4D8FED819B1745A00BC0B69 /* map_pin_fill-512.png in Resources */,
 				F4A5654C19CA5C4A0030104D /* VCPrivatePolicyViewController.xib in Resources */,
@@ -4786,10 +4834,12 @@
 				F4D8FF2619B1745A00BC0B69 /* Images.xcassets in Resources */,
 				F4C97B2019F88B15006521C1 /* SignUp.html in Resources */,
 				F4D8FF2719B1745A00BC0B69 /* commuter-menu-button-selected@2x.png in Resources */,
+				36638D891B65A989004EDB09 /* RiderTicket.xib in Resources */,
 				F4D8FF2819B1745A00BC0B69 /* VCMenuDriverClockOnTableViewCell.xib in Resources */,
 				F4D8FF2A19B1745A00BC0B69 /* VCCommuteSetUpOnBoardingViewController.xib in Resources */,
 				F4D8FF2C19B1745A00BC0B69 /* driver-cancel-hud-icon-select@2x.png in Resources */,
 				F4D8FF2D19B1745A00BC0B69 /* VCDriverSubMenuItemTableViewCell.xib in Resources */,
+				36638D811B659CAE004EDB09 /* DriverTicket.xib in Resources */,
 				4FCB64D019F8622300B02660 /* nav-bar-background@2x.png in Resources */,
 				F4D8FF2E19B1745A00BC0B69 /* VCRiderOnBoardingViewController.xib in Resources */,
 				F4D8FF2F19B1745A00BC0B69 /* VCDriveViewController.xib in Resources */,
@@ -4857,6 +4907,7 @@
 				4F2EF9B91961391B006A1962 /* scheduledrides-menu-button-selected@2x.png in Resources */,
 				4F1849FB1991753F006EA959 /* menu-mycar-icon@2x.png in Resources */,
 				4FE286F71962BDB300FD8AF6 /* zoom-ride-bounds@2x.png in Resources */,
+				36638D801B659CAE004EDB09 /* DriverTicket.xib in Resources */,
 				4F2EF9C11961391B006A1962 /* terms-menu-button@2x.png in Resources */,
 				4F37E2DF1949574000753172 /* KlinicSlabMedium.ttf in Resources */,
 				4F2EF9C51961391B006A1962 /* tutorial-menu-button@2x.png in Resources */,
@@ -4938,11 +4989,13 @@
 				4FFE13951989AE09004D4413 /* VCLeftMenuViewController.xib in Resources */,
 				4FDB0ECF1970B10600A8CEC2 /* button-select@2x.png in Resources */,
 				4F184A1719918750006EA959 /* VCMenuUserInfoTableViewCell.xib in Resources */,
+				36638D781B658A5A004EDB09 /* RideRequest.xib in Resources */,
 				F4FA0BFF192BF6BF005D8645 /* Images.xcassets in Resources */,
 				4F2EF9B51961391B006A1962 /* commuter-menu-button-selected@2x.png in Resources */,
 				4F184A201991893D006EA959 /* VCMenuDriverClockOnTableViewCell.xib in Resources */,
 				4FC758D619AA91810093DBEA /* VCCommuteSetUpOnBoardingViewController.xib in Resources */,
 				4F1849E7198F625A006EA959 /* driver-cancel-hud-icon-select@2x.png in Resources */,
+				36638D881B65A989004EDB09 /* RiderTicket.xib in Resources */,
 				4FC7590719AACD840093DBEA /* VCDriverSubMenuItemTableViewCell.xib in Resources */,
 				4FC758C419AA91330093DBEA /* VCRiderOnBoardingViewController.xib in Resources */,
 				4F4D8BF919882AFB0027A2AF /* VCDriveViewController.xib in Resources */,
@@ -4958,6 +5011,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36638D8A1B65A989004EDB09 /* RiderTicket.xib in Resources */,
+				36638D7A1B658A5A004EDB09 /* RideRequest.xib in Resources */,
+				36638D821B659CAE004EDB09 /* DriverTicket.xib in Resources */,
 				F4FA0C11192BF6BF005D8645 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
