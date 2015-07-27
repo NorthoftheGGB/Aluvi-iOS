@@ -23,5 +23,4 @@ pod 'Fabric'
 pod 'Crashlytics'
 
  
-  
-link_with 'Aluvi Distribution', 'Aluvi Testing', 'Aluvi Alpha'
+link_with 'Usama Development', 'Aluvi Distributio Alpha', 'Aluvi Distribution Nightly'
