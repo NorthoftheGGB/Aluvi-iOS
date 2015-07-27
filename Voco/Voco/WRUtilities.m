@@ -40,18 +40,34 @@ static UIAlertView * networkUnavailableErrorView = nil;
     [[VCDebug sharedInstance] apiLog:errorString];
     
     if([[VCDebug sharedInstance] alertsEnabled]) {
-        if(criticalErrorView != nil){
-            [criticalErrorView dismissWithClickedButtonIndex:0 animated:NO];
-        }
         
-        UIAlertView *alert = [[UIAlertView alloc]
-                              initWithTitle: @"Critical Error"
-                              message: [error debugDescription]
-                              delegate: nil
-                              cancelButtonTitle:@"OK"
-                              otherButtonTitles:nil];
-        criticalErrorView = alert;
-        [alert show];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if(criticalErrorView != nil){
+                [criticalErrorView dismissWithClickedButtonIndex:0 animated:NO];
+            }
+            
+            NSString * errString = [error debugDescription];
+            
+            criticalErrorView = [UIAlertView showWithTitle:@"System Error"
+                                                   message:errString
+                                         cancelButtonTitle:@"Done"
+                                         otherButtonTitles:@[@"Copy"]
+                                                  tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                                      switch (buttonIndex) {
+                                                          case 1:
+                                                          {
+                                                              UIPasteboard *pb = [UIPasteboard generalPasteboard];
+                                                              [pb setString:errString];
+                                                          }
+                                                              break;
+                                                              
+                                                          default:
+                                                              break;
+                                                      }
+                                                  }];
+        });
+
+        
     }
     CLS_LOG(@"%@ Critical Error: %@", [[NSDate date] pretty] , error);
     
@@ -65,20 +81,33 @@ static UIAlertView * networkUnavailableErrorView = nil;
     
     if([[VCDebug sharedInstance] alertsEnabled]) {
         
+        dispatch_async(dispatch_get_main_queue(), ^{
+
         if(criticalErrorView != nil){
             [criticalErrorView dismissWithClickedButtonIndex:0 animated:NO];
             criticalErrorView = nil;
         }
-        
-        UIAlertView *alert = [[UIAlertView alloc]
-                              initWithTitle: @"Critical Error"
-                              message: error
-                              delegate: self
-                              cancelButtonTitle:@"OK"
-                              otherButtonTitles:nil];
-        criticalErrorView = alert;
-        [alert performSelectorOnMainThread:@selector(show) withObject:nil waitUntilDone:YES];
+        criticalErrorView = [UIAlertView showWithTitle:@"System Error"
+                                                   message:error
+                                         cancelButtonTitle:@"Done"
+                                         otherButtonTitles:@[@"Copy"]
+                                                  tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                                      switch (buttonIndex) {
+                                                          case 1:
+                                                          {
+                                                              UIPasteboard *pb = [UIPasteboard generalPasteboard];
+                                                              [pb setString:error];
+                                                          }
+                                                              break;
+                                                              
+                                                          default:
+                                                              break;
+                                                      }
+                                                  }];
+        });
     }
+                       
+    
     CLS_LOG(@"%@ Critical Error: %@", [[NSDate date] pretty] , error);
     
 }
