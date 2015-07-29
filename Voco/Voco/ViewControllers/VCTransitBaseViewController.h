@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MapKit/MapKit.h>
+//#import <MapKit/MapKit.h>
+#import <Mapbox-iOS-SDK/Mapbox.h>
+#import "MBRegion.h"
 #import "Fare.h"
 #import "VCCenterViewBaseViewController.h"
 
@@ -16,12 +18,13 @@
 @property (strong, nonatomic) Transit * transit;
 
 // Map
-@property (strong, nonatomic) MKMapView * map;
-@property (strong, nonatomic) MKPolyline * routeOverlay;
+//@property (strong, nonatomic) MKMapView * map;
+@property (strong, nonatomic) RMMapView * map;
+@property (strong, nonatomic) NSArray * routeOverlay;
 @property (strong, nonatomic) CLGeocoder * geocoder;
 //@property (strong, nonatomic) MKPointAnnotation * dropOffAnnotation;
 //@property (strong, nonatomic) MKPointAnnotation * meetingPointAnnotation;
-@property (nonatomic) MKCoordinateRegion rideRegion;
+@property (nonatomic) MBRegion *rideRegion;
 
 
 - (void) showSuggestedRoute;
@@ -30,7 +33,7 @@
 - (void) clearMap;
 - (void) clearRoute;
 
-- (MKOverlayRenderer *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay;
+//- (MKOverlayRenderer *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay;
 
 - (void) resetInterface;
 - (void) zoomToCurrentLocation;

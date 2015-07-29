@@ -754,6 +754,7 @@
 		849A3CFB1B1E5EFF004446AF /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CFA1B1E5EFF004446AF /* Social.framework */; };
 		849A3CFC1B1E5FD7004446AF /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CF81B1E5EF3004446AF /* Accounts.framework */; };
 		849A3CFD1B1E5FDC004446AF /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CFA1B1E5EFF004446AF /* Social.framework */; };
+		D19278A41B6738D1009BFBF8 /* MBRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = D19278A31B6738D1009BFBF8 /* MBRegion.m */; };
 		F40CDDCE19D0DC7F0026CFA3 /* VCHoldingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F40CDDCD19D0DC7F0026CFA3 /* VCHoldingView.m */; };
 		F40CDDD119D0DC7F0026CFA3 /* VCHoldingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F40CDDCD19D0DC7F0026CFA3 /* VCHoldingView.m */; };
 		F425906819958E9700FA928E /* VCTicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F73CA02197F2AB0001B6663 /* VCTicketViewController.m */; };
@@ -859,7 +860,6 @@
 		F4C6B22C197F06B100F6C10B /* VCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FA0BF9192BF6BF005D8645 /* VCAppDelegate.m */; };
 		F4C6B22D197F06B100F6C10B /* VCUserStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B1419385CAA00354886 /* VCUserStateManager.m */; };
 		F4C6B22E197F06B100F6C10B /* VCUsersApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904319468A84007C4671 /* VCUsersApi.m */; };
-		F4C6B230197F06B100F6C10B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F45F7BFF19357C6100A94721 /* MapKit.framework */; };
 		F4C6B231197F06B100F6C10B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F473EFF81949515800D8C900 /* SystemConfiguration.framework */; };
 		F4C6B232197F06B100F6C10B /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F473EFF61949514A00D8C900 /* libxml2.dylib */; };
 		F4C6B233197F06B100F6C10B /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F473EFF41949513F00D8C900 /* AddressBook.framework */; };
@@ -1481,6 +1481,8 @@
 		84B1FBF61B547C6500A00196 /* Voco 19.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 19.xcdatamodel"; sourceTree = "<group>"; };
 		84B1FBF71B557AA600A00196 /* Voco 20.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 20.xcdatamodel"; sourceTree = "<group>"; };
 		84F676621B5C77AA00E9C52E /* Aluvi Development copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Aluvi Development copy-Info.plist"; path = "/Users/matthewxi/software-development/Clients/Will_OBrien/voco-ios/Voco/Aluvi Development copy-Info.plist"; sourceTree = "<absolute>"; };
+		D19278A21B6738D1009BFBF8 /* MBRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBRegion.h; path = Model/MBRegion.h; sourceTree = "<group>"; };
+		D19278A31B6738D1009BFBF8 /* MBRegion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBRegion.m; path = Model/MBRegion.m; sourceTree = "<group>"; };
 		D570C24C905CF2756FACB77F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F401446D1978728100769802 /* VCFillCommuterPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCFillCommuterPass.h; path = API/Users/VCFillCommuterPass.h; sourceTree = "<group>"; };
 		F401446E1978728100769802 /* VCFillCommuterPass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCFillCommuterPass.m; path = API/Users/VCFillCommuterPass.m; sourceTree = "<group>"; };
@@ -1791,7 +1793,6 @@
 				849A3CF41B1E5EC2004446AF /* Security.framework in Frameworks */,
 				F4C6B234197F06B100F6C10B /* QuartzCore.framework in Frameworks */,
 				849A3CF21B1E5EAA004446AF /* AudioToolbox.framework in Frameworks */,
-				F4C6B230197F06B100F6C10B /* MapKit.framework in Frameworks */,
 				F4C6B232197F06B100F6C10B /* libxml2.dylib in Frameworks */,
 				849A3CD01B1E5D14004446AF /* Parse.framework in Frameworks */,
 				F4C6B233197F06B100F6C10B /* AddressBook.framework in Frameworks */,
@@ -2277,6 +2278,8 @@
 				F4C6B1AA1978DF2A00F6C10B /* Earning.m */,
 				F496FE8F19FDB9FE00632055 /* Route.h */,
 				F496FE9019FDB9FE00632055 /* Route.m */,
+				D19278A21B6738D1009BFBF8 /* MBRegion.h */,
+				D19278A31B6738D1009BFBF8 /* MBRegion.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -2779,7 +2782,6 @@
 				F4C6B22F197F06B100F6C10B /* Frameworks */,
 				F4C6B23C197F06B100F6C10B /* Resources */,
 				F4C6B295197F06B100F6C10B /* Copy Pods Resources */,
-				F4C6B296197F06B100F6C10B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -3610,19 +3612,6 @@
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F4C6B296197F06B100F6C10B /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/Fabric.framework/run\" 531b451b5ea5c0dc8f72ba102e736a6a2edb31c0 6f2a42e3e5a68ae7912a914316d8c75c81742a0fe6a47583b69f24b1a498d0d3";
-		};
 		F4D8FE0719B1745A00BC0B69 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -4027,6 +4016,7 @@
 				F4C6B209197F06B100F6C10B /* VCCarBrandTextField.m in Sources */,
 				F4C6B20A197F06B100F6C10B /* VCFareDriverAssignment.m in Sources */,
 				F4C6B20B197F06B100F6C10B /* VCPhoneTextField.m in Sources */,
+				D19278A41B6738D1009BFBF8 /* MBRegion.m in Sources */,
 				F4C6B20C197F06B100F6C10B /* VCEmailTextField.m in Sources */,
 				F4C6B20E197F06B100F6C10B /* VCLocationSearchViewController.m in Sources */,
 				F4C6B20F197F06B100F6C10B /* VCDriverApi.m in Sources */,
@@ -4414,6 +4404,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Voco/Voco-Prefix.pch";
@@ -4454,6 +4445,7 @@
 					"\"${PODS_ROOT}/Headers/Public/Vendor/LibComponentLogging/Core\"",
 					"\"${PODS_ROOT}/Headers/Public/Vendor/LibComponentLogging/NSLog\"",
 					"\"$(SDKROOT)/usr/include/libxml2\"",
+					"\"${PODS_ROOT}/Headers/Public/Mapbox-iOS-SDK\"",
 				);
 				INFOPLIST_FILE = "Voco Dev-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -4474,6 +4466,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Voco/Voco-Prefix.pch";
@@ -4514,6 +4507,7 @@
 					"\"${PODS_ROOT}/Headers/Public/Vendor/LibComponentLogging/Core\"",
 					"\"${PODS_ROOT}/Headers/Public/Vendor/LibComponentLogging/NSLog\"",
 					"\"$(SDKROOT)/usr/include/libxml2\"",
+					"\"${PODS_ROOT}/Headers/Public/Mapbox-iOS-SDK\"",
 				);
 				INFOPLIST_FILE = "Voco Dev-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;

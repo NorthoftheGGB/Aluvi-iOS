@@ -87,21 +87,24 @@
     
     //MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     //hud.labelText= @"Fetching Route";
-    [VCMapQuestRouting route:meetingPointCoordinate to:dropOffPointCoordinate success:^(MKPolyline *polyline, MKCoordinateRegion region) {
-        [_map removeOverlay:_routeOverlay];
-        if(region.span.latitudeDelta == 0 || region.span.longitudeDelta == 0){
+    [VCMapQuestRouting route:meetingPointCoordinate to:dropOffPointCoordinate success:^(NSArray *polyline, MBRegion *region) {
+        //[_map removeOverlay:_routeOverlay];
+        [_map removeAnnotations:polyline];
+        if(region.topLocation.latitude == 0 || region.bottomLocation.longitude == 0){
             return;
         }
         
         _routeOverlay = polyline;
-        [_map addOverlay:_routeOverlay];
-        region.span.latitudeDelta *= 1.5;
-        region.span.longitudeDelta *= 1.5;
+        //[_map addOverlay:_routeOverlay];
+        [_map removeAnnotations:_routeOverlay];
+        //region.span.latitudeDelta *= 1.5;
+        //region.span.longitudeDelta *= 1.5;
         //region.center.latitude *= .98;
         
         // TODO: need to adjust region
         self.rideRegion = region;
-        [_map setRegion:region];
+        [_map setConstraintsSouthWest:region.topLocation northEast:region.bottomLocation];
+        //[_map setRegion:region];
         //[hud hide:YES];
     } failure:^{
         // [UIAlertView showWithTitle:@"Network Error" message:@"Woops, we couldn't contact the routing server.  You can still manage your ride though!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
@@ -112,7 +115,8 @@
 }
 
 - (void) clearRoute {
-    [_map removeOverlay:_routeOverlay];
+    //[_map removeOverlay:_routeOverlay];
+    [_map removeAnnotations:_routeOverlay];
 }
 
 - (void) clearMap {
@@ -124,15 +128,19 @@
 }
 
 - (void) zoomToCurrentLocation {
+    
     if(self.map.userLocation != nil
        && self.map.userLocation.coordinate.latitude != 0
        && self.map.userLocation.coordinate.longitude != 0) {
         
-        [self.map setRegion:MKCoordinateRegionMakeWithDistance(
+        [self.map setCenterCoordinate:CLLocationCoordinate2DMake(self.map.userLocation.location.coordinate.latitude, self.map.userLocation.coordinate.longitude) animated:NO];
+        
+        /*[self.map setRegion:MKCoordinateRegionMakeWithDistance(
                                                                CLLocationCoordinate2DMake(self.map.userLocation.location.coordinate.latitude, self.map.userLocation.coordinate.longitude),
                                                                500, 500
                                                                )
                                                                animated: YES];
+        */
     }
 }
 
@@ -143,9 +151,9 @@
 }
 
 
-
 #pragma mark MKMapViewDelegate
 /* No longer used ?? */
+/*
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay
 {
     if ([overlay isKindOfClass:[MKPolyline class]])
@@ -160,5 +168,6 @@
     
     return nil;
 }
+*/
 
 @end

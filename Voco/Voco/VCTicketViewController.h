@@ -13,7 +13,7 @@
 @interface VCTicketViewController : VCTransitBaseViewController
 
 @property (strong, nonatomic) Ticket * ticket;
-@property (strong, nonatomic) MKPolyline * walkingRouteToMeetingPointOverlay;
-@property (strong, nonatomic) MKPolyline * walkingRouteToDestinationOverlay;
+//@property (strong, nonatomic) MKPolyline * walkingRouteToMeetingPointOverlay;
+//@property (strong, nonatomic) MKPolyline * walkingRouteToDestinationOverlay;
 
 @end

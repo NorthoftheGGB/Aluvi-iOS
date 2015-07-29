@@ -8,12 +8,10 @@
 
 #import "VCTicketViewController.h"
 @import AddressBookUI;
-#import <MapKit/MapKit.h>
 #import <MBProgressHUD.h>
 #import <ActionSheetStringPicker.h>
 #import <ActionSheetCustomPicker.h>
 #import "IIViewDeckController.h"
-#import <MBXMapKit/MBXMapKit.h>
 
 #import "VCNotifications.h"
 #import "VCInterfaceManager.h"
@@ -70,17 +68,16 @@
 #define kDriverCancelHudOpenX 165
 #define kDriverCancelHudOpenY 302
 
-@interface VCTicketViewController () <MKMapViewDelegate, VCEditLocationWidgetDelegate, ActionSheetCustomPickerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate, MBXRasterTileOverlayDelegate>
-
+@interface VCTicketViewController () <RMMapViewDelegate, VCEditLocationWidgetDelegate, ActionSheetCustomPickerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate>
 
 // map
-@property (strong, nonatomic) MKPointAnnotation * originAnnotation;
-@property (strong, nonatomic) MKPointAnnotation * destinationAnnotation;
-@property (strong, nonatomic) MKPointAnnotation * meetingPointAnnotation;
-@property (strong, nonatomic) MKPointAnnotation * dropOffPointAnnotation;
+@property (strong, nonatomic) RMAnnotation * originAnnotation;
+@property (strong, nonatomic) RMAnnotation * destinationAnnotation;
+@property (strong, nonatomic) RMAnnotation * meetingPointAnnotation;
+@property (strong, nonatomic) RMAnnotation * dropOffPointAnnotation;
 @property (strong, nonatomic) IBOutlet UIButton *currentLocationButton;
 @property (strong, nonatomic) CLLocationManager * locationManager;
-@property (strong, nonatomic) MBXRasterTileOverlay * tileOverlay;
+//@property (strong, nonatomic) MBXRasterTileOverlay * tileOverlay;
 
 // data
 @property (strong, nonatomic) NSArray * morningOptions;
@@ -203,6 +200,8 @@
     [super viewDidLoad];
     [self startLocationUpdates];
     
+    [[RMConfiguration sharedInstance] setAccessToken:@"sk.eyJ1IjoidG9tZGl6IiwiYSI6ImFkNTVhMmY5YWM0ZTU1N2VkN2Y3MTM1M2Q0YmViZDc4In0.txizC7m63RmmTVUsHCcMUA"];
+
     _homeLocationWidget = [[VCEditLocationWidget alloc] init];
     _homeLocationWidget.delegate = self;
     _workLocationWidget = [[VCEditLocationWidget alloc] init];
@@ -257,7 +256,9 @@
     
     if(!_appeared){
         
-        self.map = [[MKMapView alloc] initWithFrame:self.view.frame];
+        //self.map = [[MKMapView alloc] initWithFrame:self.view.frame];
+        RMMapboxSource *tileSource = [[RMMapboxSource alloc] initWithMapID:@"aluvi.jlandbj7"];
+        self.map = [[RMMapView alloc] initWithFrame:self.view.frame andTilesource:tileSource];
         self.map.delegate = self;
         [self.view insertSubview:self.map atIndex:0];
         self.map.showsUserLocation = YES;
@@ -272,16 +273,13 @@
          
         _appeared = YES;
         
-        UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-        lpgr.minimumPressDuration = 0.5; //user needs to press for half a second.
-        [self.map addGestureRecognizer:lpgr];
-        
         if(_ticket == nil) {
             
             if([[VCCommuteManager instance] hasSettings]) {
                 // if commute IS set up already
                 [self showHome];
-                self.map.userTrackingMode = MKUserTrackingModeFollow;
+                //self.map.userTrackingMode = MKUserTrackingModeFollow;
+                self.map.userTrackingMode = RMUserTrackingModeFollow;
                 
                 [self addOriginAnnotation: [VCCommuteManager instance].home];
                 [self addDestinationAnnotation: [VCCommuteManager instance].work];
@@ -409,9 +407,16 @@
     
     [VCMapQuestRouting pedestrianRoute:fromCoordinate
                                     to:toCoordinate
-                               success:^(MKPolyline *polyline, MKCoordinateRegion region) {
-                                   polyline.title = @"pedestrian";
-                                   [self.map addOverlay:polyline];
+                               success:^(NSArray *polyline, MBRegion *region) {
+                                   //polyline.title = @"pedestrian";
+                                   //[self.map addOverlay:polyline];
+                                   RMAnnotation *annotation = [[RMAnnotation alloc] initWithMapView:self.map
+                                                                                         coordinate:((CLLocation *)[polyline objectAtIndex:0]).coordinate
+                                                                                           andTitle:@"pedestrian"];
+                                   annotation.userInfo = polyline;
+                                   [annotation setBoundingBoxFromLocations:polyline];
+
+                                   [self.map addAnnotation:annotation];
                                }
                                failure:^{
                                    NSLog(@"%@", @"Error talking with MapQuest routing API");
@@ -424,9 +429,16 @@
     
     [VCMapQuestRouting route:fromCoordinate
                           to:toCoordinate
-                     success:^(MKPolyline *polyline, MKCoordinateRegion region) {
-                         polyline.title = @"driver_leg";
-                         [self.map addOverlay:polyline];
+                     success:^(NSArray *polyline, MBRegion *region) {
+                         //polyline.title = @"driver_leg";
+                         //[self.map addOverlay:polyline];
+                         RMAnnotation *annotation = [[RMAnnotation alloc] initWithMapView:self.map
+                                                                               coordinate:((CLLocation *)[polyline objectAtIndex:0]).coordinate
+                                                                                 andTitle:@"driver_leg"];
+                         annotation.userInfo = polyline;
+                         [annotation setBoundingBoxFromLocations:polyline];
+                         
+                         [self.map addAnnotation:annotation];
                      }
                      failure:^{
                          NSLog(@"%@", @"Error talking with MapQuest routing API");
@@ -664,11 +676,13 @@
 
 - (void) clearMap {
     [super clearMap];
+/*
     for( id<MKOverlay> overlay in self.map.overlays) {
         if(![overlay isEqual:_tileOverlay]){
             [self.map removeOverlay:overlay];
         }
     }
+*/
     [self.map removeAnnotation:_originAnnotation];
     [self.map removeAnnotation:_destinationAnnotation];
     [self.map removeAnnotation:_meetingPointAnnotation];
@@ -922,12 +936,13 @@
     }
 }
 
+/*
 - (void)handleLongPress:(UIGestureRecognizer *)gestureRecognizer {
     if (gestureRecognizer.state != UIGestureRecognizerStateBegan) {
         return;
     }
     
-    MKPointAnnotation * annotation;
+    RMAnnotation * annotation;
     VCEditLocationWidget * widget;
     
     if(_editCommuteState == kEditCommuteStateEditHome) {
@@ -946,7 +961,7 @@
     
     CGPoint touchPoint = [gestureRecognizer locationInView:self.map];
     CLLocationCoordinate2D touchMapCoordinate = [self.map convertPoint:touchPoint toCoordinateFromView:self.map];
-    annotation = [[MKPointAnnotation alloc] init];
+    annotation = [[RMAnnotation alloc] init];
     annotation.coordinate = touchMapCoordinate;
     [self.map addAnnotation:annotation];
     
@@ -962,7 +977,7 @@
     [self showNextButton];
     
 }
-
+*/
 - (void) updateEditLocationWidget: (VCEditLocationWidget *) editLocationWidget
                      withLocation: (CLLocation *) location {
     editLocationWidget.waiting = YES;
@@ -1061,7 +1076,7 @@
     if(_originAnnotation != nil){
         [self.map removeAnnotation:_originAnnotation];
     }
-    _originAnnotation = [[MKPointAnnotation alloc] init];
+    _originAnnotation = [[RMAnnotation alloc] init];
     _originAnnotation.coordinate = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude);
     _originAnnotation.title = @"Home";
     [self.map addAnnotation:_originAnnotation];
@@ -1071,7 +1086,7 @@
     if(_destinationAnnotation != nil){
         [self.map removeAnnotation:_destinationAnnotation];
     }
-    _destinationAnnotation = [[MKPointAnnotation alloc] init];
+    _destinationAnnotation = [[RMAnnotation alloc] init];
     _destinationAnnotation.coordinate = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude);
     _destinationAnnotation.title = @"Work";
     [self.map addAnnotation:_destinationAnnotation];
@@ -1081,7 +1096,7 @@
     if(self.meetingPointAnnotation != nil){
         [self.map removeAnnotation:_meetingPointAnnotation];
     }
-    _meetingPointAnnotation = [[MKPointAnnotation alloc] init];
+    _meetingPointAnnotation = [[RMAnnotation alloc] init];
     _meetingPointAnnotation.coordinate = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude);
     _meetingPointAnnotation.title = @"Meeting Point";
     _meetingPointAnnotation.subtitle = [_ticket.pickupTime time];
@@ -1092,7 +1107,7 @@
     if(_dropOffPointAnnotation != nil){
         [self.map removeAnnotation:_dropOffPointAnnotation];
     }
-    _dropOffPointAnnotation = [[MKPointAnnotation alloc] init];
+    _dropOffPointAnnotation = [[RMAnnotation alloc] init];
     _dropOffPointAnnotation.coordinate = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude);
     _dropOffPointAnnotation.title = @"Drop Off";
     [self.map addAnnotation:_dropOffPointAnnotation];
@@ -1229,7 +1244,8 @@
 
 - (IBAction)didTapZoomToRideBounds:(id)sender {
     if (_ticket != nil) {
-        [self.map setRegion:self.rideRegion animated:YES];
+        //[self.map setRegion:self.rideRegion animated:YES];
+        [self.map setConstraintsSouthWest:self.rideRegion.topLocation northEast:self.rideRegion.bottomLocation];
     }
 }
 
@@ -1360,7 +1376,7 @@
     }
 }
 
-
+/*
 #pragma mark - MapViewDelegate
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     if([annotation isEqual: _originAnnotation] || [annotation isEqual:_destinationAnnotation]) {
@@ -1392,6 +1408,7 @@
         
     }
 }
+*/
 
 /*
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay
@@ -1421,9 +1438,9 @@
     
     return nil;
 }
- */
+*/
 
-
+/*
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
 {
     if ([overlay isKindOfClass:[MKPolyline class]])
@@ -1446,19 +1463,18 @@
             aRenderer.lineWidth = 4;
             return aRenderer;
         }
-    } else if ([overlay isKindOfClass:[MBXRasterTileOverlay class]]) {
-        MKTileOverlayRenderer *renderer = [[MKTileOverlayRenderer alloc] initWithTileOverlay:overlay];
-        return renderer;
+
+//    } else if ([overlay isKindOfClass:[MBXRasterTileOverlay class]]) {
+//        MKTileOverlayRenderer *renderer = [[MKTileOverlayRenderer alloc] initWithTileOverlay:overlay];
+//        return renderer;
+
     } else {
         return [super mapView:mapView viewForOverlay:overlay];
     }
-    
-    
-    
-    
+
     return nil;
 }
-
+*/
 
 #pragma makr RiderInterface
 
@@ -1865,10 +1881,87 @@
     
     //[self hideCarValues];
     //[self showDriverDetails];
-    
-    
 }
 
+#pragma mark - RMMapViewDelegate - Annotation support
 
+- (RMMapLayer *)mapView:(RMMapView *)mapView layerForAnnotation:(RMAnnotation *)annotation
+{
+    if (annotation.isUserLocationAnnotation)
+        return nil;
+
+    if( [annotation.title isEqualToString:@"pedestrian"]) {
+        RMShape *shape = [[RMShape alloc] initWithView:mapView];
+        shape.lineColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
+        shape.lineWidth = 4.0;
+        shape.lineDashLengths = [NSArray arrayWithObjects:[NSNumber numberWithInt:10], [NSNumber numberWithInt:6], nil];
+        for (CLLocation *location in (NSArray *)annotation.userInfo)
+            [shape addLineToCoordinate:location.coordinate];
+        return shape;
+    } else if ([annotation.title isEqualToString:@"driver_leg"]) {
+        RMShape *shape = [[RMShape alloc] initWithView:mapView];
+        shape.lineColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
+        shape.lineWidth = 4.0;
+        for (CLLocation *location in (NSArray *)annotation.userInfo)
+            [shape addLineToCoordinate:location.coordinate];
+        return shape;
+    } else {
+        RMShape *shape = [[RMShape alloc] initWithView:mapView];
+        shape.lineColor = [UIColor colorWithRed:17.0f / 256.0f green: 119.0f / 256.0f blue: 45.0f / 256.0f alpha:.7];
+        shape.lineWidth = 4.0;
+        for (CLLocation *location in (NSArray *)annotation.userInfo)
+            [shape addLineToCoordinate:location.coordinate];
+        return shape;
+    }
+}
+
+- (void)longPressOnMap:(RMMapView *)map at:(CGPoint)point {
+    
+    RMAnnotation * annotation;
+    VCEditLocationWidget * widget;
+    
+    if(_editCommuteState == kEditCommuteStateEditHome) {
+        annotation = _originAnnotation;
+        widget = _homeLocationWidget;
+    } else if (_editCommuteState == kEditCommuteStateEditWork) {
+        annotation = _destinationAnnotation;
+        widget = _workLocationWidget;
+    } else {
+        return;
+    }
+    
+    if( annotation != nil ){
+        [self.map removeAnnotation:annotation];
+    }
+    
+    annotation = [[RMAnnotation alloc] init];
+    annotation.position = point;
+    [self.map addAnnotation:annotation];
+    
+    if(_editCommuteState == kEditCommuteStateEditHome) {
+        _originAnnotation = annotation;
+    } else if (_editCommuteState == kEditCommuteStateEditWork) {
+        _destinationAnnotation = annotation;
+    }
+    [self updateRouteOverlay];
+    
+    CLLocation * location = [[CLLocation alloc] initWithLatitude:[map pixelToCoordinate:point].latitude longitude:[map pixelToCoordinate:point].longitude];
+    [self updateEditLocationWidget:widget withLocation:location];
+    [self showNextButton];
+}
+
+- (void)mapView:(RMMapView *)map didEndDragAnnotation:(RMAnnotation *)annotation {
+    
+    CLLocation * location = [[CLLocation alloc] initWithLatitude:annotation.coordinate.latitude
+                                                       longitude:annotation.coordinate.longitude];
+    
+    if([annotation isEqual: _originAnnotation]) {
+        [self updateEditLocationWidget:_homeLocationWidget withLocation:location];
+    } else if ( [annotation isEqual: _destinationAnnotation]) {
+        [self updateEditLocationWidget:_workLocationWidget withLocation:location];
+    }
+    [self clearRoute];
+    [self updateRouteOverlay];
+}
 
 @end
