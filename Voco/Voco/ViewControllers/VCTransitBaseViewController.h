@@ -20,7 +20,7 @@
 // Map
 //@property (strong, nonatomic) MKMapView * map;
 @property (strong, nonatomic) RMMapView * map;
-@property (strong, nonatomic) NSArray * routeOverlay;
+@property (strong, nonatomic) RMAnnotation * routeOverlay;
 @property (strong, nonatomic) CLGeocoder * geocoder;
 //@property (strong, nonatomic) MKPointAnnotation * dropOffAnnotation;
 //@property (strong, nonatomic) MKPointAnnotation * meetingPointAnnotation;
@@ -32,8 +32,6 @@
 //- (void) annotateMeetingPoint: (CLLocation *) meetingPoint andDropOffPoint: (CLLocation *) dropOffPoint;
 - (void) clearMap;
 - (void) clearRoute;
-
-//- (MKOverlayRenderer *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay;
 
 - (void) resetInterface;
 - (void) zoomToCurrentLocation;
