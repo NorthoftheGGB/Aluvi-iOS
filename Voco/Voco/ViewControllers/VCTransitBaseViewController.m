@@ -50,26 +50,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-- (void) annotateMeetingPoint: (CLLocation *) meetingPoint andDropOffPoint: (CLLocation *) dropOffPoint {
-    
-    _meetingPointAnnotation = [[MKPointAnnotation alloc] init];
-    _meetingPointAnnotation.coordinate = CLLocationCoordinate2DMake(meetingPoint.coordinate.latitude, meetingPoint.coordinate.longitude);
-    _meetingPointAnnotation.title = @"Pickup Location";
-    _meetingPointAnnotation.subtitle = self.transit.meetingPointPlaceName;
-    [_map addAnnotation:_meetingPointAnnotation];
-    
-    
-    _dropOffAnnotation = [[MKPointAnnotation alloc] init];
-    _dropOffAnnotation.coordinate = CLLocationCoordinate2DMake(dropOffPoint.coordinate.latitude, dropOffPoint.coordinate.longitude);
-    _dropOffAnnotation.title = @"Drop Off Location";
-    _dropOffAnnotation.subtitle = self.transit.dropOffPointPlaceName;
-    [_map addAnnotation:_dropOffAnnotation];
-    
-}
- */
-
-
 - (void) showSuggestedRoute {
     [self showSuggestedRoute:nil to:nil];
 }
