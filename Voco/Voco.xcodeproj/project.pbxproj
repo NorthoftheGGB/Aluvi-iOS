@@ -754,6 +754,7 @@
 		849A3CFB1B1E5EFF004446AF /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CFA1B1E5EFF004446AF /* Social.framework */; };
 		849A3CFC1B1E5FD7004446AF /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CF81B1E5EF3004446AF /* Accounts.framework */; };
 		849A3CFD1B1E5FDC004446AF /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CFA1B1E5EFF004446AF /* Social.framework */; };
+		D144A4D71B6ADDA900D36D3B /* MBRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = D19278A31B6738D1009BFBF8 /* MBRegion.m */; };
 		D19278A41B6738D1009BFBF8 /* MBRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = D19278A31B6738D1009BFBF8 /* MBRegion.m */; };
 		F40CDDCE19D0DC7F0026CFA3 /* VCHoldingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F40CDDCD19D0DC7F0026CFA3 /* VCHoldingView.m */; };
 		F40CDDD119D0DC7F0026CFA3 /* VCHoldingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F40CDDCD19D0DC7F0026CFA3 /* VCHoldingView.m */; };
@@ -3794,6 +3795,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D144A4D71B6ADDA900D36D3B /* MBRegion.m in Sources */,
 				841648A51B658F4900CD20AC /* IIWrapController.m in Sources */,
 				841648A61B658F4900CD20AC /* VCDriverRegistration.m in Sources */,
 				841648A71B658F4900CD20AC /* VCCommuteSetUpOnBoardingViewController.m in Sources */,

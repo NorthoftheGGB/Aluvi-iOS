@@ -71,13 +71,12 @@
 @interface VCTicketViewController () <RMMapViewDelegate, VCEditLocationWidgetDelegate, ActionSheetCustomPickerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate>
 
 // map
-@property (strong, nonatomic) RMAnnotation * originAnnotation;
-@property (strong, nonatomic) RMAnnotation * destinationAnnotation;
-@property (strong, nonatomic) RMAnnotation * meetingPointAnnotation;
-@property (strong, nonatomic) RMAnnotation * dropOffPointAnnotation;
+@property (strong, nonatomic) RMPointAnnotation * originAnnotation;
+@property (strong, nonatomic) RMPointAnnotation * destinationAnnotation;
+@property (strong, nonatomic) RMPointAnnotation * meetingPointAnnotation;
+@property (strong, nonatomic) RMPointAnnotation * dropOffPointAnnotation;
 @property (strong, nonatomic) IBOutlet UIButton *currentLocationButton;
 @property (strong, nonatomic) CLLocationManager * locationManager;
-//@property (strong, nonatomic) MBXRasterTileOverlay * tileOverlay;
 
 // data
 @property (strong, nonatomic) NSArray * morningOptions;
@@ -674,18 +673,22 @@
     if (_originAnnotation != nil) {
         
         [self.map removeAnnotation:_originAnnotation];
+        _originAnnotation = nil;
     }
     if (_destinationAnnotation != nil) {
         
         [self.map removeAnnotation:_destinationAnnotation];
+        _destinationAnnotation = nil;
     }
     if (_meetingPointAnnotation != nil) {
         
         [self.map removeAnnotation:_meetingPointAnnotation];
+        _meetingPointAnnotation = nil;
     }
     if (_dropOffPointAnnotation != nil) {
         
         [self.map removeAnnotation:_dropOffPointAnnotation];
+        _dropOffPointAnnotation = nil;
     }
 }
 
@@ -1030,43 +1033,48 @@
 
 // Annotations
 - (void)addOriginAnnotation:(CLLocation *)location {
-    if(_originAnnotation != nil){
+    if(_originAnnotation != nil) {
         [self.map removeAnnotation:_originAnnotation];
+        _originAnnotation = nil;
     }
-    _originAnnotation = [[RMAnnotation alloc] init];
-    _originAnnotation.coordinate = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude);
-    _originAnnotation.title = @"Home";
+    _originAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
+                                                          coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+                                                            andTitle:@"Home"];
     [self.map addAnnotation:_originAnnotation];
 }
 
 - (void)addDestinationAnnotation:(CLLocation *)location {
-    if(_destinationAnnotation != nil){
+    if(_destinationAnnotation != nil) {
         [self.map removeAnnotation:_destinationAnnotation];
+        _destinationAnnotation = nil;
     }
-    _destinationAnnotation = [[RMAnnotation alloc] init];
-    _destinationAnnotation.coordinate = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude);
-    _destinationAnnotation.title = @"Work";
+    _destinationAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
+                                                        coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+                                                          andTitle:@"Work"];
     [self.map addAnnotation:_destinationAnnotation];
 }
 
 - (void)addMeetingPointAnnotation:(CLLocation *)location {
-    if(self.meetingPointAnnotation != nil){
+    if(self.meetingPointAnnotation != nil) {
         [self.map removeAnnotation:_meetingPointAnnotation];
+        _meetingPointAnnotation = nil;
     }
-    _meetingPointAnnotation = [[RMAnnotation alloc] init];
-    _meetingPointAnnotation.coordinate = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude);
-    _meetingPointAnnotation.title = @"Meeting Point";
-    _meetingPointAnnotation.subtitle = [_ticket.pickupTime time];
+    _meetingPointAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
+                                                             coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+                                                               andTitle:@"Meeting Point"];
+    _meetingPointAnnotation.image = [UIImage imageNamed:@"map_pin_red"];
     [self.map addAnnotation:_meetingPointAnnotation];
 }
 
 - (void)addDropOffPointAnnotation:(CLLocation *)location {
     if(_dropOffPointAnnotation != nil){
         [self.map removeAnnotation:_dropOffPointAnnotation];
+        _dropOffPointAnnotation = nil;
     }
-    _dropOffPointAnnotation = [[RMAnnotation alloc] init];
-    _dropOffPointAnnotation.coordinate = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude);
-    _dropOffPointAnnotation.title = @"Drop Off";
+    _dropOffPointAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
+                                                              coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+                                                                andTitle:@"Drop Off"];
+    _dropOffPointAnnotation.image = [UIImage imageNamed:@"map_pin_green"];
     [self.map addAnnotation:_dropOffPointAnnotation];
 }
 
@@ -1331,106 +1339,6 @@
         _pickupTimeLabel.text = value;
     }
 }
-
-/*
-#pragma mark - MapViewDelegate
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-    if([annotation isEqual: _originAnnotation] || [annotation isEqual:_destinationAnnotation]) {
-        MKPinAnnotationView * pinAnnotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"PIN_ANNOTATION"];
-        pinAnnotationView.animatesDrop = YES;
-        pinAnnotationView.pinColor = MKPinAnnotationColorRed;
-        pinAnnotationView.draggable = YES;
-        pinAnnotationView.canShowCallout = true;
-        
-        return pinAnnotationView;
-    }
-    return nil;
-}
-
-- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)annotationView didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState {
-    
-    if( oldState == MKAnnotationViewDragStateDragging && newState == MKAnnotationViewDragStateEnding) {
-        
-        CLLocation * location = [[CLLocation alloc] initWithLatitude:annotationView.annotation.coordinate.latitude
-                                                           longitude:annotationView.annotation.coordinate.longitude];
-        
-        if([annotationView.annotation isEqual: _originAnnotation]) {
-            [self updateEditLocationWidget:_homeLocationWidget withLocation:location];
-        } else if ( [annotationView.annotation isEqual: _destinationAnnotation]) {
-            [self updateEditLocationWidget:_workLocationWidget withLocation:location];
-        }
-        [self clearRoute];
-        [self updateRouteOverlay];
-        
-    }
-}
-*/
-
-/*
-- (MKOverlayRenderer *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay
-{
-    if ([overlay isKindOfClass:[MKPolyline class]])
-    {
-        MKPolyline * polyline = (MKPolyline *) overlay;
-        if( [polyline.title isEqualToString:@"pedestrian"]) {
-            MKPolylineRenderer*   aRenderer = [[MKPolylineRenderer alloc] initWithPolyline:(MKPolyline*)overlay];
-            aRenderer.strokeColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
-            aRenderer.lineWidth = 4;
-            aRenderer.lineDashPattern = @[[NSNumber numberWithInt:10], [NSNumber numberWithInt:6]];
-            return aRenderer;
-        } else if ([polyline.title isEqualToString:@"driver_leg"]) {
-            MKPolylineRenderer*   aRenderer = [[MKPolylineRenderer alloc] initWithPolyline:(MKPolyline*)overlay];
-            aRenderer.strokeColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
-            aRenderer.lineWidth = 4;
-            return aRenderer;
-        }
-    } else if ([overlay isKindOfClass:[MBXRasterTileOverlay class]])
-    {
-        MKTileOverlayRenderer *renderer = [[MKTileOverlayRenderer alloc] initWithTileOverlay:overlay];
-        return renderer;
-    } else {
-        return [super mapView:mapView viewForOverlay:overlay];
-    }
-    
-    return nil;
-}
-*/
-
-/*
-- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
-{
-    if ([overlay isKindOfClass:[MKPolyline class]])
-    {
-        MKPolyline * polyline = (MKPolyline *) overlay;
-        if( [polyline.title isEqualToString:@"pedestrian"]) {
-            MKPolylineRenderer*   aRenderer = [[MKPolylineRenderer alloc] initWithPolyline:(MKPolyline*)overlay];
-            aRenderer.strokeColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
-            aRenderer.lineWidth = 4;
-            aRenderer.lineDashPattern = @[[NSNumber numberWithInt:10], [NSNumber numberWithInt:6]];
-            return aRenderer;
-        } else if ([polyline.title isEqualToString:@"driver_leg"]) {
-            MKPolylineRenderer*   aRenderer = [[MKPolylineRenderer alloc] initWithPolyline:(MKPolyline*)overlay];
-            aRenderer.strokeColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
-            aRenderer.lineWidth = 4;
-            return aRenderer;
-        } else {
-            MKPolylineRenderer*    aRenderer = [[MKPolylineRenderer alloc] initWithPolyline:(MKPolyline*)overlay];
-            aRenderer.strokeColor = [UIColor colorWithRed:17.0f / 256.0f green: 119.0f / 256.0f blue: 45.0f / 256.0f alpha:.7];
-            aRenderer.lineWidth = 4;
-            return aRenderer;
-        }
-
-//    } else if ([overlay isKindOfClass:[MBXRasterTileOverlay class]]) {
-//        MKTileOverlayRenderer *renderer = [[MKTileOverlayRenderer alloc] initWithTileOverlay:overlay];
-//        return renderer;
-
-    } else {
-        return [super mapView:mapView viewForOverlay:overlay];
-    }
-
-    return nil;
-}
-*/
 
 #pragma makr RiderInterface
 
@@ -1873,35 +1781,38 @@
 
 - (void)longPressOnMap:(RMMapView *)map at:(CGPoint)point {
     
-    RMAnnotation * annotation;
     VCEditLocationWidget * widget;
     
     if(_editCommuteState == kEditCommuteStateEditHome) {
-        annotation = _originAnnotation;
         widget = _homeLocationWidget;
     } else if (_editCommuteState == kEditCommuteStateEditWork) {
-        annotation = _destinationAnnotation;
         widget = _workLocationWidget;
     } else {
         return;
     }
     
-    if( annotation != nil ){
-        [self.map removeAnnotation:annotation];
-    }
-    
-    annotation = [[RMAnnotation alloc] init];
-    annotation.position = point;
-    [self.map addAnnotation:annotation];
+    CLLocation * location = [[CLLocation alloc] initWithLatitude:[map pixelToCoordinate:point].latitude longitude:[map pixelToCoordinate:point].longitude];
     
     if(_editCommuteState == kEditCommuteStateEditHome) {
-        _originAnnotation = annotation;
+        //_originAnnotation = annotation;
+        [self.map removeAnnotation:_originAnnotation];
+        _originAnnotation = nil;
+        _originAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
+                                                     coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+                                                       andTitle:@"Home"];
+        [self.map addAnnotation:_originAnnotation];
+
     } else if (_editCommuteState == kEditCommuteStateEditWork) {
-        _destinationAnnotation = annotation;
+        //_destinationAnnotation = annotation;
+        [self.map removeAnnotation:_destinationAnnotation];
+        _destinationAnnotation = nil;
+        _destinationAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
+                                                            coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+                                                              andTitle:@"Work"];
+        [self.map addAnnotation:_destinationAnnotation];
     }
     [self updateRouteOverlay];
     
-    CLLocation * location = [[CLLocation alloc] initWithLatitude:[map pixelToCoordinate:point].latitude longitude:[map pixelToCoordinate:point].longitude];
     [self updateEditLocationWidget:widget withLocation:location];
     [self showNextButton];
 }
