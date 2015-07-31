@@ -23,10 +23,10 @@
 		36F9F6521B6ACC8700440D03 /* VCRideRequestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F9F6501B6ACC8700440D03 /* VCRideRequestView.m */; };
 		36F9F6531B6ACC8700440D03 /* VCRideRequestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F9F6501B6ACC8700440D03 /* VCRideRequestView.m */; };
 		36F9F6541B6ACC8700440D03 /* VCRideRequestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F9F6501B6ACC8700440D03 /* VCRideRequestView.m */; };
-		36F9F6571B6AE4A300440D03 /* VCDriverTicket.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F9F6561B6AE4A300440D03 /* VCDriverTicket.m */; };
-		36F9F6581B6AE4A300440D03 /* VCDriverTicket.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F9F6561B6AE4A300440D03 /* VCDriverTicket.m */; };
-		36F9F6591B6AE4A300440D03 /* VCDriverTicket.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F9F6561B6AE4A300440D03 /* VCDriverTicket.m */; };
-		36F9F65A1B6AE4A300440D03 /* VCDriverTicket.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F9F6561B6AE4A300440D03 /* VCDriverTicket.m */; };
+		36F9F6571B6AE4A300440D03 /* VCDriverTicketView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F9F6561B6AE4A300440D03 /* VCDriverTicketView.m */; };
+		36F9F6581B6AE4A300440D03 /* VCDriverTicketView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F9F6561B6AE4A300440D03 /* VCDriverTicketView.m */; };
+		36F9F6591B6AE4A300440D03 /* VCDriverTicketView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F9F6561B6AE4A300440D03 /* VCDriverTicketView.m */; };
+		36F9F65A1B6AE4A300440D03 /* VCDriverTicketView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F9F6561B6AE4A300440D03 /* VCDriverTicketView.m */; };
 		36F9F65D1B6AF58E00440D03 /* VCRiderTicket.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F9F65C1B6AF58E00440D03 /* VCRiderTicket.m */; };
 		36F9F65E1B6AF58E00440D03 /* VCRiderTicket.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F9F65C1B6AF58E00440D03 /* VCRiderTicket.m */; };
 		36F9F65F1B6AF58E00440D03 /* VCRiderTicket.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F9F65C1B6AF58E00440D03 /* VCRiderTicket.m */; };
@@ -1229,8 +1229,8 @@
 		36638D841B65A988004EDB09 /* VCRiderTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCRiderTicketView.xib; sourceTree = "<group>"; };
 		36F9F64F1B6ACC8700440D03 /* VCRideRequestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRideRequestView.h; sourceTree = "<group>"; };
 		36F9F6501B6ACC8700440D03 /* VCRideRequestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRideRequestView.m; sourceTree = "<group>"; };
-		36F9F6551B6AE4A300440D03 /* VCDriverTicket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCDriverTicket.h; sourceTree = "<group>"; };
-		36F9F6561B6AE4A300440D03 /* VCDriverTicket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCDriverTicket.m; sourceTree = "<group>"; };
+		36F9F6551B6AE4A300440D03 /* VCDriverTicketView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCDriverTicketView.h; sourceTree = "<group>"; };
+		36F9F6561B6AE4A300440D03 /* VCDriverTicketView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCDriverTicketView.m; sourceTree = "<group>"; };
 		36F9F65B1B6AF58E00440D03 /* VCRiderTicket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRiderTicket.h; sourceTree = "<group>"; };
 		36F9F65C1B6AF58E00440D03 /* VCRiderTicket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRiderTicket.m; sourceTree = "<group>"; };
 		4F1849DB198F25F9006EA959 /* driver-call-hud-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "driver-call-hud-button@2x.png"; sourceTree = "<group>"; };
@@ -1868,8 +1868,8 @@
 				36638D841B65A988004EDB09 /* VCRiderTicketView.xib */,
 				36F9F64F1B6ACC8700440D03 /* VCRideRequestView.h */,
 				36F9F6501B6ACC8700440D03 /* VCRideRequestView.m */,
-				36F9F6551B6AE4A300440D03 /* VCDriverTicket.h */,
-				36F9F6561B6AE4A300440D03 /* VCDriverTicket.m */,
+				36F9F6551B6AE4A300440D03 /* VCDriverTicketView.h */,
+				36F9F6561B6AE4A300440D03 /* VCDriverTicketView.m */,
 				36F9F65B1B6AF58E00440D03 /* VCRiderTicket.h */,
 				36F9F65C1B6AF58E00440D03 /* VCRiderTicket.m */,
 			);
@@ -3811,7 +3811,7 @@
 				841647E41B64A47D00CD20AC /* VCAbstractRideDetailsView.m in Sources */,
 				841647E51B64A47D00CD20AC /* HVTableView.m in Sources */,
 				841647E61B64A47D00CD20AC /* VCEditLocationWidget.m in Sources */,
-				36F9F65A1B6AE4A300440D03 /* VCDriverTicket.m in Sources */,
+				36F9F65A1B6AE4A300440D03 /* VCDriverTicketView.m in Sources */,
 				841647E71B64A47D00CD20AC /* NSDate+Pretty.m in Sources */,
 				841647E81B64A47D00CD20AC /* VCReceiptExpandedTableViewCell.m in Sources */,
 				841647E91B64A47D00CD20AC /* VCAppDelegate.m in Sources */,
@@ -3946,7 +3946,7 @@
 				841649191B658F4900CD20AC /* VCRideRequestCreated.m in Sources */,
 				8416491A1B658F4900CD20AC /* VCPaymentsViewController.m in Sources */,
 				8416491B1B658F4900CD20AC /* VCDriverInterestedRequest.m in Sources */,
-				36F9F6581B6AE4A300440D03 /* VCDriverTicket.m in Sources */,
+				36F9F6581B6AE4A300440D03 /* VCDriverTicketView.m in Sources */,
 				8416491C1B658F4900CD20AC /* VCAbstractRideDetailsView.m in Sources */,
 				8416491D1B658F4900CD20AC /* NSDate+Pretty.m in Sources */,
 				8416491E1B658F4900CD20AC /* VCLogInViewController.m in Sources */,
@@ -4081,7 +4081,7 @@
 				F4C6B225197F06B100F6C10B /* VCRideRequestCreated.m in Sources */,
 				F4C6B227197F06B100F6C10B /* VCPaymentsViewController.m in Sources */,
 				F4C6B228197F06B100F6C10B /* VCDriverInterestedRequest.m in Sources */,
-				36F9F6571B6AE4A300440D03 /* VCDriverTicket.m in Sources */,
+				36F9F6571B6AE4A300440D03 /* VCDriverTicketView.m in Sources */,
 				4F3DB5C91981F6F400DDD094 /* VCAbstractRideDetailsView.m in Sources */,
 				F4C6B22A197F06B100F6C10B /* NSDate+Pretty.m in Sources */,
 				4FC758B619AA8C270093DBEA /* VCLogInViewController.m in Sources */,
@@ -4216,7 +4216,7 @@
 				F4D8FE8019B1745A00BC0B69 /* VCAbstractRideDetailsView.m in Sources */,
 				F4D8FE8119B1745A00BC0B69 /* HVTableView.m in Sources */,
 				F4D8FE8219B1745A00BC0B69 /* VCEditLocationWidget.m in Sources */,
-				36F9F6591B6AE4A300440D03 /* VCDriverTicket.m in Sources */,
+				36F9F6591B6AE4A300440D03 /* VCDriverTicketView.m in Sources */,
 				F4D8FE8419B1745A00BC0B69 /* NSDate+Pretty.m in Sources */,
 				F4D8FE8519B1745A00BC0B69 /* VCReceiptExpandedTableViewCell.m in Sources */,
 				F4D8FE8719B1745A00BC0B69 /* VCAppDelegate.m in Sources */,

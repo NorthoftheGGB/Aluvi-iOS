@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="m8c-Zu-kay" customClass="VCDriverTicket">
+        <view contentMode="scaleToFill" id="m8c-Zu-kay" customClass="VCDriverTicketView">
             <rect key="frame" x="0.0" y="1" width="320" height="179"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -140,8 +140,6 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="didTapRiderThreeButton" destination="sDT-9C-fwg" id="839-sM-xYj"/>
-                <outlet property="didTapRiderTwoButton" destination="uqL-YQ-bCb" id="gEC-gw-eyh"/>
                 <outlet property="riderOneButton" destination="g90-Mb-lfm" id="6to-d3-Jx2"/>
                 <outlet property="riderOneView" destination="FLA-mw-4vG" id="IPB-6X-WUT"/>
                 <outlet property="riderThreeButton" destination="sDT-9C-fwg" id="T3q-gu-mEt"/>

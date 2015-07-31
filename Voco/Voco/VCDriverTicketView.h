@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VCDriverTicket : UIView
+@interface VCDriverTicketView : UIView
 @property (strong, nonatomic) IBOutlet UIButton *ridersOnboardButton;
 @property (strong, nonatomic) IBOutlet UILabel *totalFareLabel;
 @property (strong, nonatomic) IBOutlet UILabel *totalRidersLabel;

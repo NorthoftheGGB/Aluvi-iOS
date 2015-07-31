@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Voco. All rights reserved.
 //
 
-#import "VCDriverTicket.h"
+#import "VCDriverTicketView.h"
 
-@implementation VCDriverTicket
+@implementation VCDriverTicketView
 
 /*
 // Only override drawRect: if you perform custom drawing.
