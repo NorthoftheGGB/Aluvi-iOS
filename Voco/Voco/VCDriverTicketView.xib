@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="m8c-Zu-kay" customClass="VCDriverTicket">
+            <rect key="frame" x="0.0" y="1" width="320" height="179"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB">
+                    <rect key="frame" x="0.0" y="55" width="320" height="124"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCy-bs-KQF">
+                            <rect key="frame" x="0.0" y="0.0" width="76" height="26"/>
+                            <color key="backgroundColor" red="0.30571072861950149" green="0.75838124351477176" blue="0.99243437532872925" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="zCy-bs-KQF" secondAttribute="height" multiplier="73:25" id="27l-vb-XvU"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="2" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rCb-Ie-oWp">
+                            <rect key="frame" x="8" y="42" width="57" height="57"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="57" id="9bt-A4-Wkh"/>
+                                <constraint firstAttribute="height" constant="57" id="oSY-4t-onY"/>
+                            </constraints>
+                            <attributedString key="attributedText">
+                                <fragment content="3 Riders">
+                                    <attributes>
+                                        <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FLA-mw-4vG">
+                            <rect key="frame" x="91" y="42" width="57" height="57"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g90-Mb-lfm">
+                                    <rect key="frame" x="0.0" y="0.0" width="57" height="57"/>
+                                    <state key="normal" title="Rider 1">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="didTapRiderOneButton:" destination="m8c-Zu-kay" eventType="touchUpInside" id="IKw-Zh-k8o"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="57" id="WrA-zv-DDF"/>
+                                <constraint firstAttribute="width" constant="57" id="cxZ-KZ-J24"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ykA-Ku-epM">
+                            <rect key="frame" x="255" y="42" width="57" height="57"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sDT-9C-fwg">
+                                    <rect key="frame" x="0.0" y="0.0" width="57" height="57"/>
+                                    <state key="normal" title="Rider 3">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="didTapRiderThreeButton:" destination="m8c-Zu-kay" eventType="touchUpInside" id="ibe-lz-1cQ"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="57" id="2qM-SN-9jX"/>
+                                <constraint firstAttribute="height" constant="57" id="d2X-RY-lmZ"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mSm-5p-gRK">
+                            <rect key="frame" x="174" y="42" width="57" height="57"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uqL-YQ-bCb">
+                                    <rect key="frame" x="0.0" y="0.0" width="57" height="57"/>
+                                    <state key="normal" title="Rider 2">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="didTapRiderTwoButton:" destination="m8c-Zu-kay" eventType="touchUpInside" id="06D-Nx-Fto"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="57" id="dxi-WW-Pdc"/>
+                                <constraint firstAttribute="height" constant="57" id="lj5-94-4MY"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="rCb-Ie-oWp" secondAttribute="bottom" constant="25" id="2s3-QL-uaG"/>
+                        <constraint firstAttribute="bottom" secondItem="mSm-5p-gRK" secondAttribute="bottom" constant="25" id="Gri-4T-bPM"/>
+                        <constraint firstItem="FLA-mw-4vG" firstAttribute="leading" secondItem="rCb-Ie-oWp" secondAttribute="trailing" constant="26" id="J5H-Dp-Apk"/>
+                        <constraint firstAttribute="bottom" secondItem="ykA-Ku-epM" secondAttribute="bottom" constant="25" id="JQp-5g-ZHS"/>
+                        <constraint firstItem="mSm-5p-gRK" firstAttribute="leading" secondItem="FLA-mw-4vG" secondAttribute="trailing" constant="26" id="SXi-FW-b5b"/>
+                        <constraint firstAttribute="height" constant="124" id="WgH-Jt-vXe"/>
+                        <constraint firstItem="zCy-bs-KQF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pSm-Ve-YDP"/>
+                        <constraint firstItem="zCy-bs-KQF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="pYB-Ms-xZK"/>
+                        <constraint firstItem="rCb-Ie-oWp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="vuY-99-eot"/>
+                        <constraint firstItem="ykA-Ku-epM" firstAttribute="leading" secondItem="mSm-5p-gRK" secondAttribute="trailing" constant="24" id="xYc-j2-2Fi"/>
+                        <constraint firstAttribute="bottom" secondItem="FLA-mw-4vG" secondAttribute="bottom" constant="25" id="xox-l2-lG5"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HId-Qw-im3">
+                    <rect key="frame" x="215" y="5" width="95" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="95" id="yQv-vc-x4F"/>
+                        <constraint firstAttribute="height" constant="30" id="ymU-hi-Mv8"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" title="Riders Onboard">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapRidersOnboardButton:" destination="m8c-Zu-kay" eventType="touchUpInside" id="iM3-0f-PqP"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="iN0-l3-epB" firstAttribute="top" secondItem="HId-Qw-im3" secondAttribute="bottom" constant="20" id="JNO-mm-FnB"/>
+                <constraint firstItem="iN0-l3-epB" firstAttribute="leading" secondItem="m8c-Zu-kay" secondAttribute="leading" id="NeT-Me-j1o"/>
+                <constraint firstAttribute="trailing" secondItem="HId-Qw-im3" secondAttribute="trailing" constant="10" id="hNt-Ub-uae"/>
+                <constraint firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="nsy-Is-ebU"/>
+                <constraint firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="yRs-5q-NhM"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="didTapRiderThreeButton" destination="sDT-9C-fwg" id="839-sM-xYj"/>
+                <outlet property="didTapRiderTwoButton" destination="uqL-YQ-bCb" id="gEC-gw-eyh"/>
+                <outlet property="riderOneButton" destination="g90-Mb-lfm" id="6to-d3-Jx2"/>
+                <outlet property="riderOneView" destination="FLA-mw-4vG" id="IPB-6X-WUT"/>
+                <outlet property="riderThreeButton" destination="sDT-9C-fwg" id="T3q-gu-mEt"/>
+                <outlet property="riderThreeView" destination="ykA-Ku-epM" id="vZP-HH-aYz"/>
+                <outlet property="riderTwoButton" destination="uqL-YQ-bCb" id="byv-Dr-3ca"/>
+                <outlet property="riderTwoView" destination="mSm-5p-gRK" id="LVC-3c-xAc"/>
+                <outlet property="ridersOnboardButton" destination="HId-Qw-im3" id="8Xg-HF-Lga"/>
+                <outlet property="totalFareLabel" destination="zCy-bs-KQF" id="Wc2-Hq-oSS"/>
+                <outlet property="totalRidersLabel" destination="rCb-Ie-oWp" id="91l-sP-Jec"/>
+            </connections>
+            <point key="canvasLocation" x="308" y="524.5"/>
+        </view>
+    </objects>
+</document>
