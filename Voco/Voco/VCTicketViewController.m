@@ -43,6 +43,8 @@
 #import "VCUtilities.h"
 #import "VCHoldingView.h"
 
+#import "VCDriverTicketView.h"
+
 #define kEditCommuteStatePickupTime 1000
 #define kEditCommuteStateEditHome 1001
 #define kEditCommuteStateEditWork 1002
@@ -250,6 +252,19 @@
         }
     }
     
+    
+    //Get the view
+    VCDriverTicketView * view = [WRUtilities getViewFromNib:@"VCDriverTicketView" class:[VCDriverTicketView class]];
+    
+    // Set up the frame
+    CGRect frame = view.frame;
+    frame.origin.x = 0;
+    frame.origin.y = 300;
+    frame.size.width = self.view.frame.size.width;
+    view.frame = frame;
+    
+    // Add to the view
+    [self.view addSubview:view];
 }
 
 - (void) viewWillAppear:(BOOL)animated{
