@@ -462,15 +462,27 @@
 
 - (void) updateRightMenuButton {
     
-    UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithTitle:@"Schedule" style:UIBarButtonItemStylePlain target:self action:@selector(didTapSchedule:)];
+    UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithTitle:@"Schedule" style:UIBarButtonItemStylePlain target:self action:@selector(didTapScheduleMenuButton:)];
     self.navigationItem.rightBarButtonItem = buttonItem;
     self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:(182/255.f) green:(31/255.f) blue:(36/255.f) alpha:1.0];
 
 }
 
 
-- (void) didTapSchedule:(id)sender {
+- (void) didTapScheduleMenuButton:(id)sender {
     
+    // load from nib
+    // getView
+    
+    // configure with current data parameters (not yet)
+    
+    // configure view size
+    // frame stuff
+    
+    // animate in
+    // set the frame before and after
+    // start off screen
+    // end on screen
 }
 
 
