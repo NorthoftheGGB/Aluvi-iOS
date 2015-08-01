@@ -468,6 +468,7 @@
     
      // set your starting frame
     VCRideRequestView * view = [WRUtilities getViewFromNib:@"VCRideRequestView" class:[VCRideRequestView class]];
+    view.delegate = self; 
     
     CGRect frame = view.frame;
     frame.origin.x = 0;
@@ -478,14 +479,21 @@
     
     // add the view to the superview
     [[[[UIApplication sharedApplication] delegate] window] addSubview:view];
-     
-     [UIView animateWithDuration:0.35 animations:^{
-        
+    
+    [UIView animateWithDuration:0.4
+                          delay:0
+         usingSpringWithDamping:0.3
+          initialSpringVelocity:0.5
+                        options:0
+                     animations:^{
         // final placement
         CGRect frame = view.frame;
         frame.origin.y = 0;
         view.frame = frame;
+    } completion:^(BOOL finished) {
+        
     }];
+
 
 }
 

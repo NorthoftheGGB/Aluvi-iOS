@@ -13,6 +13,7 @@
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PqE-dA-J7r">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                    <color key="backgroundColor" red="0.3532539577618119" green="1" blue="0.86404371248809386" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="CLOSE">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -56,13 +57,13 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="AT:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpY-kl-Vgk">
                             <rect key="frame" x="8" y="33" width="23" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="7:30 AM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lh0-5k-YwK">
                             <rect key="frame" x="128" y="33" width="65" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -74,7 +75,7 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I'll drive us there!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nzM-f7-MVQ">
                             <rect key="frame" x="89" y="12" width="131" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CyT-ga-CI3">
@@ -98,13 +99,13 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RETURN HOME:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDa-NQ-yMP">
                             <rect key="frame" x="8" y="33" width="99" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="7:00 PM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEo-mK-oC3">
                             <rect key="frame" x="128" y="33" width="65" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -141,9 +142,9 @@
                 <constraint firstItem="PqE-dA-J7r" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="yVN-by-gQk"/>
                 <constraint firstItem="Ors-N9-lLM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="yzQ-7X-5Kc"/>
             </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <connections>
-                <outlet property="didTapDriverCheckbox" destination="CyT-ga-CI3" id="NHO-Cw-pcC"/>
                 <outlet property="driverCheckbox" destination="CyT-ga-CI3" id="4j8-QP-n75"/>
                 <outlet property="fromButton" destination="Ors-N9-lLM" id="6i8-lX-DcK"/>
                 <outlet property="scheduleButton" destination="v8E-fS-JXq" id="lbT-7W-vxH"/>
