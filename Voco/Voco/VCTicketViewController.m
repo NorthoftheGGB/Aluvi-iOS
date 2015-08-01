@@ -252,6 +252,8 @@
         }
     }
     
+    [self updateRightMenuButton];
+
     
     //Get the view
     //Test out the views
@@ -458,11 +460,25 @@
                      }];
 }
 
+- (void) updateRightMenuButton {
+    
+    UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithTitle:@"Schedule" style:UIBarButtonItemStylePlain target:self action:@selector(didTapSchedule:)];
+    self.navigationItem.rightBarButtonItem = buttonItem;
+    self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:(182/255.f) green:(31/255.f) blue:(36/255.f) alpha:1.0];
+
+}
+
+
+- (void) didTapSchedule:(id)sender {
+    
+}
+
+
 - (void) showInterfaceForTicket {
     [self clearMap];
     [self removeHuds];
     [self.editCommuteButton removeFromSuperview];
-    [self showCancelBarButton];
+    [self updateRightMenuButton];
     
     
     if([@[kCreatedState, kRequestedState] containsObject:_ticket.state]){
@@ -472,7 +488,7 @@
         [self.view addSubview:self.holdingScreen];
         
     } else if([_ticket.state isEqualToString:kCommuteSchedulerFailedState]) {
-        [self hideCancelBarButton];
+        [self updateRightMenuButton];
         [_holdingScreen transitionToRideRequestDenied];
         [self addHoldingScreenIfNotAdded];
         
@@ -491,7 +507,7 @@
             
         } else {
             
-            [self hideCancelBarButton];
+            [self updateRightMenuButton];
             [_holdingScreen transitionToRideRequestApproved:_ticket];
             [self addHoldingScreenIfNotAdded];
             
@@ -522,22 +538,12 @@
     
 }
 
-- (void) showCancelBarButton {
-    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(didTapCancel:)];
-    self.navigationItem.rightBarButtonItem = cancelItem;
-    self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:(182/255.f) green:(31/255.f) blue:(36/255.f) alpha:1.0];
-}
-
-
-- (void) hideCancelBarButton {
-    self.navigationItem.rightBarButtonItem = nil;
-}
 
 - (void) transitionToEditCommute {
     [_editCommuteButton removeFromSuperview]; //homeActionView goes here
     _editCommuteState = kEditCommuteStateEditAll;
     
-    [self showCancelBarButton];
+    [self updateRightMenuButton];
     
     {
         CGRect frame = _pickupHudView.frame;
@@ -634,7 +640,7 @@
     [self.view addSubview:self.currentLocationButton];
     
     [_editCommuteButton removeFromSuperview]; //homeActionView goes here
-    [self showCancelBarButton];
+    [self updateRightMenuButton];
     
     _editCommuteState = kEditCommuteStatePickupTime;
     CGRect frame = _pickupHudView.frame;
@@ -657,7 +663,7 @@
     [self clearMap];
     [UIView transitionWithView:self.view duration:.35 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
         [self removeHuds];
-        [self hideCancelBarButton];
+        [self updateRightMenuButton];
         [self showHome];
         
         // check for another scheduled commute
@@ -872,10 +878,9 @@
 }
 
 - (void) transitionToWaitingScreen {
-    [self showCancelBarButton];
     [_scheduleRideButton removeFromSuperview];
     [self.view addSubview:self.holdingScreen];
-    [self showCancelBarButton];
+    [self updateRightMenuButton];
     _step = kStepDone;
 }
 
