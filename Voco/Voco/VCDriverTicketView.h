@@ -8,7 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class VCDriverTicketView;
+
+@protocol VCDriverTicketViewDelegate <NSObject>
+
+- (VCDriverTicketView *) didTapCallRider: (NSInteger) riderId;
+
+@end
+
 @interface VCDriverTicketView : UIView
+
+@property (weak, nonatomic) id<VCDriverTicketViewDelegate> delegate;
+
 @property (strong, nonatomic) IBOutlet UIButton *ridersOnboardButton;
 @property (strong, nonatomic) IBOutlet UILabel *totalFareLabel;
 @property (strong, nonatomic) IBOutlet UILabel *totalRidersLabel;

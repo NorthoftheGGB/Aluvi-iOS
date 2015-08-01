@@ -31,12 +31,9 @@
 #import "VCRideOverviewHudView.h"
 #import "NSDate+Pretty.h"
 #import "VCUserStateManager.h"
-#import "VCDriveViewController.h"
 #import "VCMapQuestRouting.h"
 #import "VCButton.h"
 #import "IIViewDeckController.h"
-#import "VCDriveDetailsView.h"
-#import "VCDriverCallHudView.h"
 #import "VCFare.h"
 #import "VCUtilities.h"
 
@@ -136,18 +133,16 @@
 
 
 // HOV Driver
-@property (strong, nonatomic) IBOutlet VCDriverCallHudView *driverCallHUD;
+//@property (strong, nonatomic) IBOutlet VCDriverCallHudView *driverCallHUD;
 @property (strong, nonatomic) IBOutlet UIView *driverCancelHUD;
 @property (strong, nonatomic) IBOutlet UIButton *directionsListButton;
-@property (strong, nonatomic) IBOutlet VCDriveDetailsView * fareDetailsView;
+//@property (strong, nonatomic) IBOutlet VCDriveDetailsView * fareDetailsView;
 
 //Call HUD
 @property (nonatomic) BOOL callHudPanLocked;
 @property (strong, nonatomic) NSTimer * timer;
 @property (nonatomic) BOOL callHudOpen;
-- (IBAction)didTapCallRider1:(id)sender;
-- (IBAction)didTapCallRider2:(id)sender;
-- (IBAction)didTapCallRider3:(id)sender;
+
 
 //Cancel HUD
 @property (nonatomic) BOOL cancelHudPanLocked;
@@ -303,7 +298,7 @@
             } else {
                 // if commute is not set up
                 _step = kStepSetDepartureLocation;
-                [self transitionToSetupCommute];
+                // [self transitionToSetupCommute];
             }
             
             
@@ -562,7 +557,7 @@
     
 }
 
-
+/*
 - (void) transitionToEditCommute {
     [_editCommuteButton removeFromSuperview]; //homeActionView goes here
     _editCommuteState = kEditCommuteStateEditAll;
@@ -682,6 +677,7 @@
     [self showPickupTimePicker];
     
 }
+ */
 
 - (void) resetInterfaceToHome {
     [self clearMap];
@@ -754,11 +750,9 @@
     [_nextButton removeFromSuperview];
     [_rideItineraryView removeFromSuperview];
     [_rideDetailsHud removeFromSuperview];
-    [_driverCallHUD removeFromSuperview];
     [_driverCancelHUD removeFromSuperview];
     [_ridersPickedUpButton removeFromSuperview];
     [_rideCompleteButton removeFromSuperview];
-    [_fareDetailsView removeFromSuperview];
 }
 
 - (void) transitionFromEditPickupTimeToEditHome {
@@ -1124,9 +1118,9 @@
     [self loadCommuteSettings];
     
     if([[VCCommuteManager instance] hasSettings]) {
-        [self transitionToEditCommute];
+        // [self transitionToEditCommute];
     } else {
-        [self transitionToSetupCommute];
+        // [self transitionToSetupCommute];
     }
 }
 
@@ -1411,7 +1405,7 @@
 
 - (void) setupDriverHuds {
     
-    _driverCallHUD.riders = [_ticket.hovFare.riders allObjects];
+   // _driverCallHUD.riders = [_ticket.hovFare.riders allObjects];
     
     CGRect currentLocationframe = _currentLocationButton.frame;
     currentLocationframe.origin.x = 271;
@@ -1431,6 +1425,7 @@
     _ridersPickedUpButton.frame = ridersPickedUpFrame;
     [self.view addSubview:self.ridersPickedUpButton];
     
+    /*
     CGRect frame = _driverCallHUD.frame;
     frame.origin.x = kDriverCallHudOriginX;
     frame.origin.y = self.view.frame.size.height - kDriverCallHudOriginY;
@@ -1460,9 +1455,11 @@
         [panRecognizer setMaximumNumberOfTouches:1];
         [_driverCancelHUD addGestureRecognizer:panRecognizer];
     }
+     */
     
 }
 
+/*
 -(void)move:(id)sender {
     
     if( _callHudPanLocked ) {
@@ -1563,6 +1560,7 @@
         }
     }
 }
+ */
 
 - (void) didTapCancelRide: (id)sender {
     
@@ -1588,7 +1586,7 @@
 }
 
 
-
+/*
 - (void) animateCallHudToOpen {
     _callHudPanLocked = YES;
     
@@ -1654,6 +1652,7 @@
 - (void) unlockCancelHudPan:(id)sender {
     _cancelHudPanLocked = NO;
 }
+ */
 
 - (void) callPhone:(NSString *) phoneNumber {
     if(phoneNumber == nil){
@@ -1677,6 +1676,7 @@
     }];
 }
 
+/*
 - (IBAction)didTapCallRider1:(id)sender {
     Rider * rider = [_driverCallHUD.riders objectAtIndex:0];
     [self callPhone:rider.phone];
@@ -1689,6 +1689,7 @@
     Rider * rider = [_driverCallHUD.riders objectAtIndex:2];
     [self callPhone:rider.phone];
 }
+ */
 
 
 
@@ -1734,7 +1735,7 @@
                            [VCNotifications scheduleUpdated];
                            [hud hide:YES];
                            
-                           [_driverCallHUD removeFromSuperview];
+                           //[_driverCallHUD removeFromSuperview];
                            [_driverCancelHUD removeFromSuperview];
                            [_rideCompleteButton removeFromSuperview];
                            [self resetInterfaceToHome];
