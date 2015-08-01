@@ -483,6 +483,28 @@
     // set the frame before and after
     // start off screen
     // end on screen
+    
+    /*
+     // set your starting frame
+     CGRect frame = _pickupHudView.frame;
+     frame.origin.x = 0;
+     frame.origin.y = 62;
+     frame.size.height = 0;
+  
+     // assign frame to the fiew
+     _pickupHudView.frame = frame;
+     
+     // add the view to the superview
+     [self.view addSubview:self.pickupHudView];
+     
+     [UIView animateWithDuration:0.35 animations:^{
+     
+     // final placement
+     CGRect frame = _pickupHudView.frame;
+     frame.size.height = 40; //changed height
+     _pickupHudView.frame = frame;
+     }];
+*/
 }
 
 
