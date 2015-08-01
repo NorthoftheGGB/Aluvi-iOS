@@ -903,7 +903,7 @@
                 <action selector="didTapRideCompleted:" destination="-1" eventType="touchUpInside" id="mek-mJ-9ut"/>
             </connections>
         </button>
-        <view contentMode="scaleToFill" id="Lak-yG-cWD" userLabel="Driver Call HUD" customClass="VCDriverCallHudView">
+        <view contentMode="scaleToFill" id="Lak-yG-cWD" userLabel="Driver Call HUD">
             <rect key="frame" x="0.0" y="0.0" width="289" height="170"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -973,12 +973,6 @@
             </subviews>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="phoneIconImageView" destination="0Ln-Bp-0Ir" id="Evr-Am-EmG"/>
-                <outlet property="riderCallButton1" destination="FhZ-2M-2Cb" id="8Y7-dT-bnu"/>
-                <outlet property="riderCallButton2" destination="hsy-pb-Jaj" id="aVN-zC-a8B"/>
-                <outlet property="riderCallButton3" destination="gVW-jM-U8O" id="xDr-y1-vgY"/>
-            </connections>
         </view>
         <button hidden="YES" opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0AX-aa-rkF" userLabel="Zoom To Ride Bounds Button">
             <rect key="frame" x="0.0" y="-4" width="36" height="40"/>
@@ -1065,7 +1059,7 @@
                 <action selector="didTapRidersPickedUp:" destination="-1" eventType="touchUpInside" id="fvM-ad-fGG"/>
             </connections>
         </button>
-        <view contentMode="scaleToFill" id="gCJ-mG-bEK" userLabel="Fare Details Confirmation" customClass="VCDriveDetailsView">
+        <view contentMode="scaleToFill" id="gCJ-mG-bEK" userLabel="Fare Details Confirmation">
             <rect key="frame" x="0.0" y="0.0" width="320" height="260"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -1264,14 +1258,6 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="confirmationButton" destination="2Lc-Aq-vNj" id="uEE-0I-zqd"/>
-                <outlet property="dateLabel" destination="oSh-xN-FjK" id="E5L-FP-Jun"/>
-                <outlet property="driveDistanceLabel" destination="Qqd-Za-IRl" id="6Uy-6S-kF1"/>
-                <outlet property="driveTimeLabel" destination="BIA-LF-bpT" id="Icu-JS-TJi"/>
-                <outlet property="fareEarningsLabel" destination="Py0-5b-pY6" id="cDV-7e-m4k"/>
-                <outlet property="numberOfPeopleLabel" destination="5uK-tQ-ftw" id="6Iz-JU-qbE"/>
-            </connections>
             <point key="canvasLocation" x="121" y="-131"/>
         </view>
         <button opaque="NO" alpha="0.89999997615814209" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="Qmg-ai-rrd" customClass="VCButtonStandardStyle">
