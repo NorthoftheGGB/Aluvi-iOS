@@ -1872,15 +1872,16 @@
     // animate the view out of the way
     // the view == rideRequestView
     
-    [UIView animateWithDuration:.25
-                     animations:^{
-                         
+    [UIView animateWithDuration:0.35 animations:^{
+        CGRect frame = rideRequestView.frame;
+        frame.origin.y =  -self.view.frame.size.height;;
+        rideRequestView.frame = frame;
                      }
                      completion:^(BOOL finished) {
                          [rideRequestView removeFromSuperview];
                      }];
 }
 
-
+    
 
 @end
