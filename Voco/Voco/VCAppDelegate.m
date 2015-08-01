@@ -60,6 +60,7 @@
     // GIS
     [VCGeolocation sharedGeolocation];
     [VCMapQuestRouting setup];
+    [[RMConfiguration sharedInstance] setAccessToken:@"pk.eyJ1Ijoic25hY2tzIiwiYSI6Il83eXFHMzAifQ.M1ipZJb-b--TvC0vxHvPVg"];
 
     // Stripe
     [Stripe setDefaultPublishableKey:@"pk_test_4Gt6M02YRqmpk7yoBud7y5Ah"];
