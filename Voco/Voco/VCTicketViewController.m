@@ -281,10 +281,18 @@
                 [self showHome];
                 self.map.userTrackingMode = RMUserTrackingModeFollow;
                 
-                [self addOriginAnnotation: [VCCommuteManager instance].home];
-                [self addDestinationAnnotation: [VCCommuteManager instance].work];
-                [self showSuggestedRoute: [VCCommuteManager instance].home to:[VCCommuteManager instance].work];
                 
+                
+                //[self addOriginAnnotation: [VCCommuteManager instance].home];
+                //[self addDestinationAnnotation: [VCCommuteManager instance].work];
+                // Hack Locations for Now
+                CLLocation * location = [[CLLocation alloc] initWithLatitude:41 longitude:-72];
+                [self addOriginAnnotation:  location];
+                CLLocation * location2 = [[CLLocation alloc] initWithLatitude:41.5 longitude:-72];
+                [self addDestinationAnnotation:location2];
+                
+                //[self showSuggestedRoute: [VCCommuteManager instance].home to:[VCCommuteManager instance].work];
+                [self zoomToCurrentLocation];
                 
             } else {
                 // if commute is not set up
@@ -1068,6 +1076,7 @@
     _originAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
                                                           coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
                                                             andTitle:@"Home"];
+    _originAnnotation.image = [UIImage imageNamed:@"map_pin_red"];
     [self.map addAnnotation:_originAnnotation];
 }
 
@@ -1079,6 +1088,7 @@
     _destinationAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
                                                         coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
                                                           andTitle:@"Work"];
+    _destinationAnnotation.image = [UIImage imageNamed:@"map_pin_green"];
     [self.map addAnnotation:_destinationAnnotation];
 }
 
