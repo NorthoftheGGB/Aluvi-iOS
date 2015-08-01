@@ -20,7 +20,7 @@ pod 'SDWebImage', '~> 3.7.1'
 pod 'RKCLLocationValueTransformer'
 pod 'Fabric'
 pod 'Crashlytics'
-pod 'Mapbox-iOS-SDK'
+pod 'Mapbox-iOS-SDK', '1.6.0'
 
  
 link_with 'Usama Development', 'Aluvi Distributio Alpha', 'Aluvi Distribution Nightly'

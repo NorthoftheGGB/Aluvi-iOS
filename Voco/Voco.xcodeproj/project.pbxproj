@@ -268,7 +268,6 @@
 		841647F11B64A47D00CD20AC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CF01B1E5E50004446AF /* libz.dylib */; };
 		841647F21B64A47D00CD20AC /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CEE1B1E5E48004446AF /* libstdc++.6.dylib */; };
 		841647F31B64A47D00CD20AC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F473EFF81949515800D8C900 /* SystemConfiguration.framework */; };
-		841647F41B64A47D00CD20AC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CEC1B1E5E39004446AF /* StoreKit.framework */; };
 		841647F51B64A47D00CD20AC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CEA1B1E5E33004446AF /* Security.framework */; };
 		841647F61B64A47D00CD20AC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F473EFF019494DB100D8C900 /* QuartzCore.framework */; };
 		841647F71B64A47D00CD20AC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CE81B1E5E26004446AF /* MobileCoreServices.framework */; };
@@ -568,7 +567,6 @@
 		841649291B658F4900CD20AC /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CF01B1E5E50004446AF /* libz.dylib */; };
 		8416492A1B658F4900CD20AC /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CEE1B1E5E48004446AF /* libstdc++.6.dylib */; };
 		8416492B1B658F4900CD20AC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F473EFF81949515800D8C900 /* SystemConfiguration.framework */; };
-		8416492C1B658F4900CD20AC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CEC1B1E5E39004446AF /* StoreKit.framework */; };
 		8416492D1B658F4900CD20AC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CEA1B1E5E33004446AF /* Security.framework */; };
 		8416492E1B658F4900CD20AC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F473EFF019494DB100D8C900 /* QuartzCore.framework */; };
 		8416492F1B658F4900CD20AC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CE41B1E5E0D004446AF /* AudioToolbox.framework */; };
@@ -741,13 +739,11 @@
 		849A3CE71B1E5E14004446AF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CE61B1E5E14004446AF /* CFNetwork.framework */; };
 		849A3CE91B1E5E26004446AF /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CE81B1E5E26004446AF /* MobileCoreServices.framework */; };
 		849A3CEB1B1E5E33004446AF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CEA1B1E5E33004446AF /* Security.framework */; };
-		849A3CED1B1E5E39004446AF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CEC1B1E5E39004446AF /* StoreKit.framework */; };
 		849A3CEF1B1E5E48004446AF /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CEE1B1E5E48004446AF /* libstdc++.6.dylib */; };
 		849A3CF11B1E5E50004446AF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CF01B1E5E50004446AF /* libz.dylib */; };
 		849A3CF21B1E5EAA004446AF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CE41B1E5E0D004446AF /* AudioToolbox.framework */; };
 		849A3CF31B1E5EAF004446AF /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CE61B1E5E14004446AF /* CFNetwork.framework */; };
 		849A3CF41B1E5EC2004446AF /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CEA1B1E5E33004446AF /* Security.framework */; };
-		849A3CF51B1E5EC8004446AF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CEC1B1E5E39004446AF /* StoreKit.framework */; };
 		849A3CF61B1E5ED6004446AF /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CEE1B1E5E48004446AF /* libstdc++.6.dylib */; };
 		849A3CF71B1E5EDA004446AF /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CF01B1E5E50004446AF /* libz.dylib */; };
 		849A3CF91B1E5EF3004446AF /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CF81B1E5EF3004446AF /* Accounts.framework */; };
@@ -1474,14 +1470,12 @@
 		849A3CE61B1E5E14004446AF /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		849A3CE81B1E5E26004446AF /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		849A3CEA1B1E5E33004446AF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		849A3CEC1B1E5E39004446AF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		849A3CEE1B1E5E48004446AF /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		849A3CF01B1E5E50004446AF /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		849A3CF81B1E5EF3004446AF /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		849A3CFA1B1E5EFF004446AF /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		84B1FBF61B547C6500A00196 /* Voco 19.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 19.xcdatamodel"; sourceTree = "<group>"; };
 		84B1FBF71B557AA600A00196 /* Voco 20.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 20.xcdatamodel"; sourceTree = "<group>"; };
-		84F676621B5C77AA00E9C52E /* Aluvi Development copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Aluvi Development copy-Info.plist"; path = "/Users/matthewxi/software-development/Clients/Will_OBrien/voco-ios/Voco/Aluvi Development copy-Info.plist"; sourceTree = "<absolute>"; };
 		D19278A21B6738D1009BFBF8 /* MBRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBRegion.h; path = Model/MBRegion.h; sourceTree = "<group>"; };
 		D19278A31B6738D1009BFBF8 /* MBRegion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBRegion.m; path = Model/MBRegion.m; sourceTree = "<group>"; };
 		D570C24C905CF2756FACB77F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1723,7 +1717,6 @@
 				841647F11B64A47D00CD20AC /* libz.dylib in Frameworks */,
 				841647F21B64A47D00CD20AC /* libstdc++.6.dylib in Frameworks */,
 				841647F31B64A47D00CD20AC /* SystemConfiguration.framework in Frameworks */,
-				841647F41B64A47D00CD20AC /* StoreKit.framework in Frameworks */,
 				841647F51B64A47D00CD20AC /* Security.framework in Frameworks */,
 				841647F61B64A47D00CD20AC /* QuartzCore.framework in Frameworks */,
 				841647F71B64A47D00CD20AC /* MobileCoreServices.framework in Frameworks */,
@@ -1758,7 +1751,6 @@
 				841649291B658F4900CD20AC /* libz.dylib in Frameworks */,
 				8416492A1B658F4900CD20AC /* libstdc++.6.dylib in Frameworks */,
 				8416492B1B658F4900CD20AC /* SystemConfiguration.framework in Frameworks */,
-				8416492C1B658F4900CD20AC /* StoreKit.framework in Frameworks */,
 				8416492D1B658F4900CD20AC /* Security.framework in Frameworks */,
 				8416492E1B658F4900CD20AC /* QuartzCore.framework in Frameworks */,
 				8416492F1B658F4900CD20AC /* AudioToolbox.framework in Frameworks */,
@@ -1790,7 +1782,6 @@
 				849A3CF71B1E5EDA004446AF /* libz.dylib in Frameworks */,
 				849A3CF61B1E5ED6004446AF /* libstdc++.6.dylib in Frameworks */,
 				F4C6B231197F06B100F6C10B /* SystemConfiguration.framework in Frameworks */,
-				849A3CF51B1E5EC8004446AF /* StoreKit.framework in Frameworks */,
 				849A3CF41B1E5EC2004446AF /* Security.framework in Frameworks */,
 				F4C6B234197F06B100F6C10B /* QuartzCore.framework in Frameworks */,
 				849A3CF21B1E5EAA004446AF /* AudioToolbox.framework in Frameworks */,
@@ -1818,7 +1809,6 @@
 				849A3CF11B1E5E50004446AF /* libz.dylib in Frameworks */,
 				849A3CEF1B1E5E48004446AF /* libstdc++.6.dylib in Frameworks */,
 				F4D8FE8D19B1745A00BC0B69 /* SystemConfiguration.framework in Frameworks */,
-				849A3CED1B1E5E39004446AF /* StoreKit.framework in Frameworks */,
 				849A3CEB1B1E5E33004446AF /* Security.framework in Frameworks */,
 				F4D8FE9019B1745A00BC0B69 /* QuartzCore.framework in Frameworks */,
 				849A3CE91B1E5E26004446AF /* MobileCoreServices.framework in Frameworks */,
@@ -2560,7 +2550,6 @@
 				F4FA0BE6192BF6BF005D8645 /* Frameworks */,
 				F4FA0BE5192BF6BF005D8645 /* Products */,
 				5BD1E7103A138D9BA6064A2B /* Pods */,
-				84F676621B5C77AA00E9C52E /* Aluvi Development copy-Info.plist */,
 				841648A11B64A47D00CD20AC /* Aluvi Distribution copy-Info.plist */,
 				841649D51B658F4A00CD20AC /* Aluvi Development copy2-Info.plist */,
 			);
@@ -2585,7 +2574,6 @@
 				849A3CF81B1E5EF3004446AF /* Accounts.framework */,
 				849A3CF01B1E5E50004446AF /* libz.dylib */,
 				849A3CEE1B1E5E48004446AF /* libstdc++.6.dylib */,
-				849A3CEC1B1E5E39004446AF /* StoreKit.framework */,
 				849A3CEA1B1E5E33004446AF /* Security.framework */,
 				849A3CE81B1E5E26004446AF /* MobileCoreServices.framework */,
 				849A3CE61B1E5E14004446AF /* CFNetwork.framework */,
@@ -2842,6 +2830,11 @@
 				TargetAttributes = {
 					F4C6B1BC197F06B100F6C10B = {
 						DevelopmentTeam = 269WB9G8WE;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 0;
+							};
+						};
 					};
 					F4D8FE0619B1745A00BC0B69 = {
 						DevelopmentTeam = 269WB9G8WE;
@@ -4452,7 +4445,7 @@
 				INFOPLIST_FILE = "Voco Dev-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "Aluvi Dev";
-				PROVISIONING_PROFILE = "d46c3493-fac3-4c80-b03a-13d5918c9f8a";
+				PROVISIONING_PROFILE = "6b762fb2-bf52-41e8-a1dc-e75df0ad915d";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4514,7 +4507,7 @@
 				INFOPLIST_FILE = "Voco Dev-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "Aluvi Dev";
-				PROVISIONING_PROFILE = "d46c3493-fac3-4c80-b03a-13d5918c9f8a";
+				PROVISIONING_PROFILE = "6b762fb2-bf52-41e8-a1dc-e75df0ad915d";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
