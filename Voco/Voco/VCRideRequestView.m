@@ -59,6 +59,15 @@
 - (IBAction)didTapScheduleButton:(id)sender {
 }
 
+- (IBAction)didTapFromButton:(id)sender {
+    [_delegate rideRequestView:self didTapEditLocation:CLLocationCoordinate2DMake(40, 40) locationName:@"Home"];
+}
+
+- (IBAction)didTapToButton:(id)sender {
+}
+
+
+
 - (IBAction)morningPickupTimeValueChanged:(UIStepper *)sender {
     int value = [sender value];
     _toWorkTimeLabel.text = [_morningOptions objectAtIndex:value];
