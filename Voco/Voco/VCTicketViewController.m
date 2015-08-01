@@ -78,9 +78,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *currentLocationButton;
 @property (strong, nonatomic) CLLocationManager * locationManager;
 
-// data
-@property (strong, nonatomic) NSArray * morningOptions;
-@property (strong, nonatomic) NSArray * eveningOptions;
 
 @property (strong, nonatomic) IBOutlet UIView *homeActionView;
 @property (strong, nonatomic) IBOutlet VCButtonStandardStyle *editCommuteButton;
@@ -103,7 +100,6 @@
 - (IBAction)didTapReturnHud:(id)sender;
 
 @property (weak, nonatomic) Ticket * showingTicket;
-- (IBAction)didTapOKButton:(id)sender;
 
 //Ride Details
 @property (strong, nonatomic) IBOutlet VCRideDetailsView * rideItineraryView;
@@ -173,17 +169,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         _appeared = NO;
-        
-        _morningOptions = @[ @"Select Pickup Time",
-                             @"7:00", @"7:15", @"7:30", @"7:45",
-                             @"8:00", @"8:25", @"8:30", @"8:45", @"9:00"
-                             ];
-        _eveningOptions = @[ @"Select Return Time",
-                             @"4:00", @"4:15", @"4:30", @"4:45",
-                             @"5:00", @"5:15", @"5:30", @"5:45",
-                             @"6:00", @"6:15", @"6:30", @"6:45",
-                             @"7:00"];
-        
         _ticket = nil;
         
         _callHudPanLocked = NO;
@@ -763,7 +748,6 @@
     [_nextButton removeFromSuperview];
     [_rideItineraryView removeFromSuperview];
     [_rideDetailsHud removeFromSuperview];
-    [_driverCancelHUD removeFromSuperview];
     [_ridersPickedUpButton removeFromSuperview];
     [_rideCompleteButton removeFromSuperview];
 }
@@ -1441,13 +1425,14 @@
     currentLocationframe.origin.y = self.view.frame.size.height - 46;
     _currentLocationButton.frame = currentLocationframe;
     [self.view addSubview:self.currentLocationButton];
-    
+    /*
     CGRect directionsListFrame = _directionsListButton.frame;
     directionsListFrame.origin.x = 224;
     directionsListFrame.origin.y = self.view.frame.size.height - 46;
     _directionsListButton.frame = directionsListFrame;
     [self.view addSubview:self.directionsListButton];
-    
+    */
+     
     CGRect ridersPickedUpFrame = _ridersPickedUpButton.frame;
     ridersPickedUpFrame.origin.x = 18;
     ridersPickedUpFrame.origin.y = self.view.frame.size.height - 46;
@@ -1765,7 +1750,7 @@
                            [hud hide:YES];
                            
                            //[_driverCallHUD removeFromSuperview];
-                           [_driverCancelHUD removeFromSuperview];
+                           //[_driverCancelHUD removeFromSuperview];
                            [_rideCompleteButton removeFromSuperview];
                            [self resetInterfaceToHome];
                            
@@ -1899,11 +1884,12 @@
     // animate the view out of the way
     // the view == rideRequestView
     
-    [UIView animateWithDuration:0.35 animations:^{
+    [UIView animateWithDuration:0.35
+                     animations:^{
         CGRect frame = rideRequestView.frame;
         frame.origin.y =  -self.view.frame.size.height;;
         rideRequestView.frame = frame;
-                     }
+    }
                      completion:^(BOOL finished) {
                          [rideRequestView removeFromSuperview];
                      }];
@@ -1911,6 +1897,14 @@
 
 - (void)rideRequestView:(VCRideRequestView *)rideRequestView didTapEditLocation:(CLLocationCoordinate2D)location locationName:(NSString *)locationName {
     [self placeInEditLocationMode];
+    [UIView animateWithDuration:0.35
+                     animations:^{
+        CGRect frame = rideRequestView.frame;
+        frame.origin.y =  -self.view.frame.size.height;;
+        rideRequestView.frame = frame;
+    }
+                     completion:^(BOOL finished) {
+                     }];
     
 }
 
