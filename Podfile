@@ -18,9 +18,9 @@ pod 'DTCoreText'
 pod 'ASImageResize', '~> 1.0.3'
 pod 'SDWebImage', '~> 3.7.1'
 pod 'RKCLLocationValueTransformer'
-pod 'MBXMapKit'
 pod 'Fabric'
 pod 'Crashlytics'
+pod 'Mapbox-iOS-SDK', '1.6.0'
 
  
 link_with 'Usama Development', 'Aluvi Distributio Alpha', 'Aluvi Distribution Nightly'

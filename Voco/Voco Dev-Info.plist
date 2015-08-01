@@ -26,6 +26,8 @@
 	<true/>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Aluvi works best when you share your location with us.  Is this OK ?</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Aluvi works best when you share your location with us. </string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>HelveticaNeueLight</string>

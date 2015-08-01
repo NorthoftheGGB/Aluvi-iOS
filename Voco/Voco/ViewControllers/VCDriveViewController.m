@@ -20,7 +20,7 @@
 #define kDriverCancelHudOpenX 165
 #define kDriverCancelHudOpenY 302
 
-@interface VCDriveViewController () //<MKMapViewDelegate>
+@interface VCDriveViewController () //<RMMapViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *driverCallHUD;
 @property (strong, nonatomic) IBOutlet UIView *driverCancelHUD;
@@ -81,8 +81,10 @@
     
     
     if(!_appeared){
-        
-        self.map = [[MKMapView alloc] initWithFrame:self.view.frame];
+
+        //self.map = [[MKMapView alloc] initWithFrame:self.view.frame];
+        RMMapboxSource *tileSource = [[RMMapboxSource alloc] initWithMapID:@"aluvi.jlandbj7"];
+        self.map = [[RMMapView alloc] initWithFrame:self.view.frame andTilesource:tileSource];
         //self.map.delegate = self;
         [self.view insertSubview:self.map atIndex:0];
         self.map.showsUserLocation = YES;

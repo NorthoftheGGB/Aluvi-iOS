@@ -9,6 +9,7 @@
 #import "VCMapQuestRouting.h"
 #import <RestKit/RestKit.h>
 #import "MQRouteResponse.h"
+#import "MBRegion.h"
 
 #define MAPQUEST_API_KEY @"Fmjtd|luur2guan0,b5=o5-9azxgz"
 
@@ -24,14 +25,14 @@ static RKObjectManager * objectManager;
 
 + (void) route: (CLLocationCoordinate2D) start
             to: (CLLocationCoordinate2D) end
-       success: ( void ( ^ ) ( MKPolyline * polyline, MKCoordinateRegion region )) success
+       success: ( void ( ^ ) ( NSArray * polyline, MBRegion *region )) success
        failure: ( void ( ^ ) ( )) failure {
     [self route:start to:end options:@{} success:success failure:failure];
 }
 
 + (void) pedestrianRoute: (CLLocationCoordinate2D) start
             to: (CLLocationCoordinate2D) end
-       success: ( void ( ^ ) ( MKPolyline * polyline, MKCoordinateRegion region )) success
+       success: ( void ( ^ ) ( NSArray * polyline, MBRegion *region )) success
        failure: ( void ( ^ ) ( )) failure {
     [self route:start to:end options:@{@"routeType" : @"pedestrian"} success:success failure:failure];
 }
@@ -39,7 +40,7 @@ static RKObjectManager * objectManager;
 + (void) route: (CLLocationCoordinate2D) start
             to: (CLLocationCoordinate2D) end
         options: (NSDictionary *) options
-       success: ( void ( ^ ) ( MKPolyline * polyline, MKCoordinateRegion region )) success
+       success: ( void ( ^ ) ( NSArray * polyline, MBRegion *region )) success
        failure: ( void ( ^ ) ( )) failure {
     
     if( start.latitude == 0 || start.longitude == 0 || end.latitude == 0 || end.longitude == 0){
@@ -73,33 +74,32 @@ static RKObjectManager * objectManager;
             failure();
         }
         long polylinePointCount = [response.route.shape.shapePoints count] / 2;
-        CLLocationCoordinate2D *polylinePoints = (CLLocationCoordinate2D*)malloc(polylinePointCount * sizeof(CLLocationCoordinate2D) );
+        //CLLocationCoordinate2D *polylinePoints = (CLLocationCoordinate2D*)malloc(polylinePointCount * sizeof(CLLocationCoordinate2D) );
+        NSMutableArray *polylinePoints = [NSMutableArray new];
 
         for(int i=0; i < polylinePointCount; i++){
-            NSNumber * latitude =  [response.route.shape.shapePoints objectAtIndex:i*2];
-            NSNumber * longitude = [response.route.shape.shapePoints objectAtIndex:i*2+1];
-            polylinePoints[i].latitude = [latitude doubleValue];
-            polylinePoints[i].longitude = [longitude doubleValue];
+            NSNumber *latitude =  [response.route.shape.shapePoints objectAtIndex:i*2];
+            NSNumber *longitude = [response.route.shape.shapePoints objectAtIndex:i*2+1];
+
+            CLLocation *location = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
+            [polylinePoints addObject:location];
+            //CLLocationCoordinate2D new_coordinate = { [latitude doubleValue], [longitude doubleValue] };
+            //[polylinePoints addObject:[NSValue valueWithBytes:&new_coordinate objCType:@encode(CLLocationCoordinate2D)]];
         }
-        MKPolyline * polyline = [MKPolyline polylineWithCoordinates:polylinePoints count:polylinePointCount];
-        free(polylinePoints);
-        
-        MKCoordinateRegion region;
+
         double maxLatitude = [response.route.boundingBox.ul.lat doubleValue];
         double maxLongitude = [response.route.boundingBox.lr.lng doubleValue];
         double minLatitude = [response.route.boundingBox.lr.lat doubleValue];
         double minLongitude = [response.route.boundingBox.ul.lng doubleValue];
-        region.center.latitude = (minLatitude + maxLatitude) / 2;
-        region.center.longitude = (minLongitude + maxLongitude) / 2;
-        region.span.latitudeDelta = (maxLatitude - minLatitude);
-        region.span.longitudeDelta = (maxLongitude - minLongitude);
-        
-        if(region.span.latitudeDelta == 0 || region.span.latitudeDelta == 0 ){
+
+        MBRegion *region = [MBRegion new];
+        [region initWithTopCoordinate:CLLocationCoordinate2DMake(minLatitude, minLongitude) bottomCoordinate:CLLocationCoordinate2DMake(maxLatitude, maxLongitude)];
+        if(region.topLocation.latitude == 0 || region.bottomLocation.latitude == 0 ){
             NSLog(@"%@", @"Return spans are zero.  Aborting route api request");
             failure();
         }
         
-        success(polyline, region);
+        success([polylinePoints copy], region);
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [WRUtilities criticalError:error];

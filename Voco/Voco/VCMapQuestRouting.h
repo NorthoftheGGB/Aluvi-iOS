@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
-#import <MapKit/MapKit.h>
+#import <Mapbox-iOS-SDK/Mapbox.h>
+#import "MBRegion.h"
 
 
 @interface VCMapQuestRouting : NSObject
@@ -18,17 +19,17 @@
 
 + (void) route: (CLLocationCoordinate2D) start
             to: (CLLocationCoordinate2D) end
-       success: ( void ( ^ ) ( MKPolyline * polyline, MKCoordinateRegion region )) success
+       success: ( void ( ^ ) ( NSArray * polyline, MBRegion *region )) success
        failure: ( void ( ^ ) ( )) failure;
 
 + (void) pedestrianRoute: (CLLocationCoordinate2D) start
                       to: (CLLocationCoordinate2D) end
-                 success: ( void ( ^ ) ( MKPolyline * polyline, MKCoordinateRegion region )) success
+                 success: ( void ( ^ ) ( NSArray * polyline, MBRegion *region )) success
                  failure: ( void ( ^ ) ( )) failure;
 
 + (void) route: (CLLocationCoordinate2D) start
             to: (CLLocationCoordinate2D) end
         options: (NSDictionary *) options
-       success: ( void ( ^ ) ( MKPolyline * polyline, MKCoordinateRegion region )) success
+       success: ( void ( ^ ) ( NSArray * polyline, MBRegion *region )) success
        failure: ( void ( ^ ) ( )) failure;
 @end
