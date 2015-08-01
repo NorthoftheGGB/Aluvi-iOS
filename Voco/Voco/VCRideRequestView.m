@@ -24,7 +24,7 @@
     if (self) {
         // Initialization code
         
-        _morningOptions = @[ @"Select Pickup Time",
+        _morningOptions = @[
                              @"7:00", @"7:15", @"7:30", @"7:45",
                              @"8:00", @"8:25", @"8:30", @"8:45", @"9:00"
                              ];
@@ -38,6 +38,8 @@
         _toHomeTimeStepper.maximumValue = [_eveningOptions count]-1;
         _toHomeTimeStepper.stepValue = 1;
         
+        _toWorkTimeStepper.minimumValue = 0;
+        _toWorkTimeStepper.maximumValue = [_morningOptions count]-1;
         
     }
     return self;
@@ -59,7 +61,11 @@
 
 - (IBAction)morningPickupTimeValueChanged:(UIStepper *)sender {
     int value = [sender value];
-    _toHomeTimeLabel.text = [_morningOptions objectAtIndex:value];
+    _toWorkTimeLabel.text = [_morningOptions objectAtIndex:value];
+}
+- (IBAction)eveningPickupValueChanged:(UIStepper *)sender {
+    int value = [sender value];
+    _toHomeTimeLabel.text = [_eveningOptions objectAtIndex:value];
 }
 
 

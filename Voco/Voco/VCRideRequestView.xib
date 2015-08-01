@@ -51,8 +51,7 @@
                         <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" continuous="NO" autorepeat="NO" value="6" minimumValue="6" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Mge-l1-NjZ">
                             <rect key="frame" x="218" y="29" width="94" height="29"/>
                             <connections>
-                                <action selector="didTapToWorkTimeStepper:" destination="iN0-l3-epB" eventType="valueChanged" id="U3u-1g-Yi4"/>
-                                <action selector="morningPickupTimeValueChanged:" destination="iN0-l3-epB" eventType="valueChanged" id="SiB-uK-A4A"/>
+                                <action selector="morningPickupTimeValueChanged:" destination="iN0-l3-epB" eventType="valueChanged" id="8H4-9m-1cS"/>
                             </connections>
                         </stepper>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="AT:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpY-kl-Vgk">
@@ -94,7 +93,7 @@
                         <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="9dj-NR-Kda">
                             <rect key="frame" x="218" y="29" width="94" height="29"/>
                             <connections>
-                                <action selector="didTapToHomeTimeStepper:" destination="iN0-l3-epB" eventType="valueChanged" id="DRf-aF-MtX"/>
+                                <action selector="eveningPickupValueChanged:" destination="iN0-l3-epB" eventType="valueChanged" id="5u0-u0-hkh"/>
                             </connections>
                         </stepper>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RETURN HOME:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDa-NQ-yMP">
