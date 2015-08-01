@@ -11,10 +11,8 @@
                 <outlet property="cancelRideButton" destination="tm7-38-m0v" id="1ec-04-D64"/>
                 <outlet property="currentLocationButton" destination="XIm-sQ-LdY" id="ihB-70-3YB"/>
                 <outlet property="directionsListButton" destination="ITr-VR-cFD" id="jna-tz-LRq"/>
-                <outlet property="driverCallHUD" destination="Lak-yG-cWD" id="7Mu-jQ-tOy"/>
                 <outlet property="driverCancelHUD" destination="nT8-pQ-amt" id="gk6-h1-NK5"/>
                 <outlet property="editCommuteButton" destination="Qmg-ai-rrd" id="0pA-Hw-jyM"/>
-                <outlet property="fareDetailsView" destination="gCJ-mG-bEK" id="YnP-up-jXS"/>
                 <outlet property="hovDriveYesButton" destination="LT0-2Y-Gc6" id="GyN-lZ-mp0"/>
                 <outlet property="hovDriverOptionView" destination="CKa-ug-jy9" id="5ZD-9F-mzB"/>
                 <outlet property="nextButton" destination="4au-Tm-k8h" id="I8s-9S-4fi"/>
@@ -933,9 +931,6 @@
                             <integer key="value" value="20"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="didTapCallRider1:" destination="-1" eventType="touchUpInside" id="v8W-9e-Z7g"/>
-                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hsy-pb-Jaj" customClass="VCButton">
                     <rect key="frame" x="23" y="82" width="266" height="36"/>
@@ -955,9 +950,6 @@
                             <integer key="value" value="20"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="didTapCallRider2:" destination="-1" eventType="touchUpInside" id="ejo-Ev-KJN"/>
-                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gVW-jM-U8O" customClass="VCButton">
                     <rect key="frame" x="23" y="126" width="266" height="36"/>
@@ -977,9 +969,6 @@
                             <integer key="value" value="20"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="didTapCallRider3:" destination="-1" eventType="touchUpInside" id="mYE-m9-mAB"/>
-                    </connections>
                 </button>
             </subviews>
             <nil key="simulatedStatusBarMetrics"/>
