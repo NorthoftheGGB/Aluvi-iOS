@@ -68,7 +68,7 @@
 #define kDriverCancelHudOpenX 165
 #define kDriverCancelHudOpenY 302
 
-@interface VCTicketViewController () <RMMapViewDelegate, VCEditLocationWidgetDelegate, ActionSheetCustomPickerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate>
+@interface VCTicketViewController () <RMMapViewDelegate, VCEditLocationWidgetDelegate, ActionSheetCustomPickerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate, VCRideRequestViewDelegate>
 
 // map
 @property (strong, nonatomic) RMPointAnnotation * originAnnotation;
@@ -1866,5 +1866,21 @@
     [self clearRoute];
     [self updateRouteOverlay];
 }
+
+#pragma mark - VCRideRequestViewDelegate
+- (void) rideRequestViewDidTapClose: (VCRideRequestView *) rideRequestView {
+    // animate the view out of the way
+    // the view == rideRequestView
+    
+    [UIView animateWithDuration:.25
+                     animations:^{
+                         
+                     }
+                     completion:^(BOOL finished) {
+                         [rideRequestView removeFromSuperview];
+                     }];
+}
+
+
 
 @end

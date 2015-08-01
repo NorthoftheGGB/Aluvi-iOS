@@ -19,6 +19,7 @@
 */
 
 - (IBAction)didTapCloseButton:(id)sender {
+    [_delegate rideRequestViewDidTapClose:self];
 }
 
 - (IBAction)didTapToWorkTimeStepper:(id)sender {

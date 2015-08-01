@@ -7,8 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+@import MapKit;
+#import "Route.h"
+
+@class VCRideRequestView;
+
+@protocol VCRideRequestViewDelegate <NSObject>
+
+- (void) rideRequestView: (VCRideRequestView *) rideRequestView didTapEditLocation:  (CLLocationCoordinate2D) location locationName:(NSString *) locationName;
+- (void) rideRequestView: (VCRideRequestView *) rideRequestView didUpdateRouteDetails:(Route *) route;
+- (void) rideRequestView: (VCRideRequestView *) rideRequestView didTapScheduleCommute:(Route *) route;
+- (void) rideRequestViewDidTapClose: (VCRideRequestView *) rideRequestView;
+
+@end
 
 @interface VCRideRequestView : UIView
+
+@property (weak, nonatomic) id<VCRideRequestViewDelegate> delegate;
 
 @property (strong, nonatomic) IBOutlet UIButton *fromButton;
 @property (strong, nonatomic) IBOutlet UIButton *toButton;
@@ -19,11 +34,11 @@
 @property (strong, nonatomic) IBOutlet UIButton *driverCheckbox;
 @property (strong, nonatomic) IBOutlet UIButton *scheduleButton;
 
+- (void) updateRouteDetails: (Route *) route;
 
 - (IBAction)didTapCloseButton:(id)sender;
 - (IBAction)didTapToWorkTimeStepper:(id)sender;
 - (IBAction)didTapToHomeTimeStepper:(id)sender;
-@property (strong, nonatomic) IBOutlet UIButton *didTapDriverCheckbox;
 - (IBAction)didTapScheduleButton:(id)sender;
 
 @end

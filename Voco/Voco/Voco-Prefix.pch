@@ -23,8 +23,8 @@
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
     #import <UIAlertView+Blocks.h>
-    #import "WRUtilities.h"
-    #import "VCCoreData.h"
     #import <Crashlytics/Crashlytics.h>
+    #import "VCCoreData.h"
+    #import "WRUtilities.h"
     #import "VCDebug.h"
 #endif
