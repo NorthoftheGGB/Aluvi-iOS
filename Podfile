@@ -21,6 +21,7 @@ pod 'RKCLLocationValueTransformer'
 pod 'Fabric'
 pod 'Crashlytics'
 pod 'Mapbox-iOS-SDK', '1.6.0'
+pod 'ViewDeck', '~> 2.2.8'
 
  
 link_with 'Usama Development', 'Aluvi Distributio Alpha', 'Aluvi Distribution Nightly'

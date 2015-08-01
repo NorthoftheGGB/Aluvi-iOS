@@ -161,7 +161,6 @@
 		4FFE171A1989F93F004D4413 /* menu-item-badge@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE17191989F93F004D4413 /* menu-item-badge@2x.png */; };
 		4FFE171E198A1890004D4413 /* menu-map-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE171D198A1890004D4413 /* menu-map-icon@2x.png */; };
 		4FFE1722198B0475004D4413 /* driver-cancel-hud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE1721198B0475004D4413 /* driver-cancel-hud@2x.png */; };
-		841647701B64A47D00CD20AC /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE519492C2A00D8C900 /* IIWrapController.m */; };
 		841647711B64A47D00CD20AC /* VCDriverRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F02D1952DA8F00D8C900 /* VCDriverRegistration.m */; };
 		841647721B64A47D00CD20AC /* VCPushApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B1F193D8FE500354886 /* VCPushApi.m */; };
 		841647731B64A47D00CD20AC /* VCPasswordTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFBA440195E608600A51B84 /* VCPasswordTextField.m */; };
@@ -204,7 +203,6 @@
 		841647991B64A47D00CD20AC /* VCNewUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904919468E44007C4671 /* VCNewUser.m */; };
 		8416479A1B64A47D00CD20AC /* VCCenterViewBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758F819AA9B570093DBEA /* VCCenterViewBaseViewController.m */; };
 		8416479B1B64A47D00CD20AC /* VCLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758B419AA8C270093DBEA /* VCLogInViewController.m */; };
-		8416479C1B64A47D00CD20AC /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE119492C2A00D8C900 /* IISideController.m */; };
 		8416479D1B64A47D00CD20AC /* VCFareReceiptsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3098F919B0135600DFCDD1 /* VCFareReceiptsViewController.m */; };
 		8416479E1B64A47D00CD20AC /* VCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641FD194170F50059BED1 /* VCButton.m */; };
 		8416479F1B64A47D00CD20AC /* VCMenuUserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F184A1019918750006EA959 /* VCMenuUserInfoTableViewCell.m */; };
@@ -255,7 +253,6 @@
 		841647CC1B64A47D00CD20AC /* VCLocationSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C8231962E235007E05AD /* VCLocationSearchViewController.m */; };
 		841647CD1B64A47D00CD20AC /* VCDriverApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B0A19384F9000354886 /* VCDriverApi.m */; };
 		841647CE1B64A47D00CD20AC /* VCGeoApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4138C37196784C700C265CD /* VCGeoApi.m */; };
-		841647CF1B64A47D00CD20AC /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE319492C2A00D8C900 /* IIViewDeckController.m */; };
 		841647D01B64A47D00CD20AC /* VCCarYearTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE712D0197368DA0071020C /* VCCarYearTextField.m */; };
 		841647D11B64A47D00CD20AC /* VCApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BF81935798B00A94721 /* VCApi.m */; };
 		841647D21B64A47D00CD20AC /* VCBankAccountTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE712C01973688F0071020C /* VCBankAccountTextField.m */; };
@@ -456,7 +453,6 @@
 		841648981B64A47D00CD20AC /* mycar-menu-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9D019614115006A1962 /* mycar-menu-button-selected@2x.png */; };
 		841648991B64A47D00CD20AC /* car@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4138C3A19678BE000C265CD /* car@2x.png */; };
 		8416489A1B64A47D00CD20AC /* profile-menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9A11960EC8C006A1962 /* profile-menu-button@2x.png */; };
-		841648A51B658F4900CD20AC /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE519492C2A00D8C900 /* IIWrapController.m */; };
 		841648A61B658F4900CD20AC /* VCDriverRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F02D1952DA8F00D8C900 /* VCDriverRegistration.m */; };
 		841648A71B658F4900CD20AC /* VCCommuteSetUpOnBoardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758CF19AA91810093DBEA /* VCCommuteSetUpOnBoardingViewController.m */; };
 		841648A81B658F4900CD20AC /* VCReceiptsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCF2D219A5493500A4A24E /* VCReceiptsViewController.m */; };
@@ -501,7 +497,6 @@
 		841648D01B658F4900CD20AC /* VCDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6B1B61979229900F6C10B /* VCDebug.m */; };
 		841648D11B658F4900CD20AC /* Fare.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AFD193839DF00354886 /* Fare.m */; };
 		841648D21B658F4900CD20AC /* VCNewUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904919468E44007C4671 /* VCNewUser.m */; };
-		841648D31B658F4900CD20AC /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE119492C2A00D8C900 /* IISideController.m */; };
 		841648D41B658F4900CD20AC /* VCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641FD194170F50059BED1 /* VCButton.m */; };
 		841648D51B658F4900CD20AC /* VCMenuUserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F184A1019918750006EA959 /* VCMenuUserInfoTableViewCell.m */; };
 		841648D61B658F4900CD20AC /* MQShape.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F00B194A5A6100D8C900 /* MQShape.m */; };
@@ -549,7 +544,6 @@
 		841649001B658F4900CD20AC /* VCLocationSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C8231962E235007E05AD /* VCLocationSearchViewController.m */; };
 		841649011B658F4900CD20AC /* VCDriverApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B0A19384F9000354886 /* VCDriverApi.m */; };
 		841649021B658F4900CD20AC /* VCGeoApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4138C37196784C700C265CD /* VCGeoApi.m */; };
-		841649031B658F4900CD20AC /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE319492C2A00D8C900 /* IIViewDeckController.m */; };
 		841649041B658F4900CD20AC /* VCCarYearTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE712D0197368DA0071020C /* VCCarYearTextField.m */; };
 		841649051B658F4900CD20AC /* VCApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BF81935798B00A94721 /* VCApi.m */; };
 		841649061B658F4900CD20AC /* VCBankAccountTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE712C01973688F0071020C /* VCBankAccountTextField.m */; };
@@ -793,7 +787,6 @@
 		F4B7BFAB19A3035C00D934D6 /* VCTransitBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C7FC19615B9D007E05AD /* VCTransitBaseViewController.m */; };
 		F4BD606419FE1925003D819D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BD606319FE1925003D819D /* libsqlite3.dylib */; };
 		F4BD606919FE194D003D819D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BD606319FE1925003D819D /* libsqlite3.dylib */; };
-		F4C6B1BF197F06B100F6C10B /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE519492C2A00D8C900 /* IIWrapController.m */; };
 		F4C6B1C0197F06B100F6C10B /* VCDriverRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F02D1952DA8F00D8C900 /* VCDriverRegistration.m */; };
 		F4C6B1C2197F06B100F6C10B /* VCPushApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B1F193D8FE500354886 /* VCPushApi.m */; };
 		F4C6B1C3197F06B100F6C10B /* VCPasswordTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFBA440195E608600A51B84 /* VCPasswordTextField.m */; };
@@ -822,7 +815,6 @@
 		F4C6B1E3197F06B100F6C10B /* VCDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6B1B61979229900F6C10B /* VCDebug.m */; };
 		F4C6B1E4197F06B100F6C10B /* Fare.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AFD193839DF00354886 /* Fare.m */; };
 		F4C6B1E5197F06B100F6C10B /* VCNewUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904919468E44007C4671 /* VCNewUser.m */; };
-		F4C6B1E6197F06B100F6C10B /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE119492C2A00D8C900 /* IISideController.m */; };
 		F4C6B1E8197F06B100F6C10B /* VCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641FD194170F50059BED1 /* VCButton.m */; };
 		F4C6B1E9197F06B100F6C10B /* MQShape.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F00B194A5A6100D8C900 /* MQShape.m */; };
 		F4C6B1EA197F06B100F6C10B /* VCRideRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BFB19357B8A00A94721 /* VCRideRequest.m */; };
@@ -855,7 +847,6 @@
 		F4C6B20E197F06B100F6C10B /* VCLocationSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C8231962E235007E05AD /* VCLocationSearchViewController.m */; };
 		F4C6B20F197F06B100F6C10B /* VCDriverApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B0A19384F9000354886 /* VCDriverApi.m */; };
 		F4C6B210197F06B100F6C10B /* VCGeoApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4138C37196784C700C265CD /* VCGeoApi.m */; };
-		F4C6B211197F06B100F6C10B /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE319492C2A00D8C900 /* IIViewDeckController.m */; };
 		F4C6B212197F06B100F6C10B /* VCCarYearTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE712D0197368DA0071020C /* VCCarYearTextField.m */; };
 		F4C6B213197F06B100F6C10B /* VCApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BF81935798B00A94721 /* VCApi.m */; };
 		F4C6B214197F06B100F6C10B /* VCBankAccountTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE712C01973688F0071020C /* VCBankAccountTextField.m */; };
@@ -957,7 +948,6 @@
 		F4C97B3119F88B94006521C1 /* VCBetaRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C97B2C19F88B94006521C1 /* VCBetaRegisterViewController.m */; };
 		F4C97B3219F88B94006521C1 /* VCBetaRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C97B2D19F88B94006521C1 /* VCBetaRegisterViewController.xib */; };
 		F4C97B3519F88B94006521C1 /* VCBetaRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4C97B2D19F88B94006521C1 /* VCBetaRegisterViewController.xib */; };
-		F4D8FE0919B1745A00BC0B69 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE519492C2A00D8C900 /* IIWrapController.m */; };
 		F4D8FE0A19B1745A00BC0B69 /* VCDriverRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F02D1952DA8F00D8C900 /* VCDriverRegistration.m */; };
 		F4D8FE0B19B1745A00BC0B69 /* VCPushApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B1F193D8FE500354886 /* VCPushApi.m */; };
 		F4D8FE0C19B1745A00BC0B69 /* VCPasswordTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFBA440195E608600A51B84 /* VCPasswordTextField.m */; };
@@ -998,7 +988,6 @@
 		F4D8FE3319B1745A00BC0B69 /* VCNewUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904919468E44007C4671 /* VCNewUser.m */; };
 		F4D8FE3419B1745A00BC0B69 /* VCCenterViewBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758F819AA9B570093DBEA /* VCCenterViewBaseViewController.m */; };
 		F4D8FE3519B1745A00BC0B69 /* VCLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758B419AA8C270093DBEA /* VCLogInViewController.m */; };
-		F4D8FE3619B1745A00BC0B69 /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE119492C2A00D8C900 /* IISideController.m */; };
 		F4D8FE3719B1745A00BC0B69 /* VCFareReceiptsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3098F919B0135600DFCDD1 /* VCFareReceiptsViewController.m */; };
 		F4D8FE3819B1745A00BC0B69 /* VCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641FD194170F50059BED1 /* VCButton.m */; };
 		F4D8FE3919B1745A00BC0B69 /* VCMenuUserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F184A1019918750006EA959 /* VCMenuUserInfoTableViewCell.m */; };
@@ -1045,7 +1034,6 @@
 		F4D8FE6519B1745A00BC0B69 /* VCLocationSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C8231962E235007E05AD /* VCLocationSearchViewController.m */; };
 		F4D8FE6619B1745A00BC0B69 /* VCDriverApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B0A19384F9000354886 /* VCDriverApi.m */; };
 		F4D8FE6719B1745A00BC0B69 /* VCGeoApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4138C37196784C700C265CD /* VCGeoApi.m */; };
-		F4D8FE6819B1745A00BC0B69 /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFE319492C2A00D8C900 /* IIViewDeckController.m */; };
 		F4D8FE6919B1745A00BC0B69 /* VCCarYearTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE712D0197368DA0071020C /* VCCarYearTextField.m */; };
 		F4D8FE6A19B1745A00BC0B69 /* VCApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BF81935798B00A94721 /* VCApi.m */; };
 		F4D8FE6B19B1745A00BC0B69 /* VCBankAccountTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE712C01973688F0071020C /* VCBankAccountTextField.m */; };
@@ -1554,12 +1542,6 @@
 		F471E3E019A9590E00DF688D /* Rider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Rider.m; path = Model/Rider.m; sourceTree = "<group>"; };
 		F473EFDA19491C2B00D8C900 /* VCValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCValidation.h; sourceTree = "<group>"; };
 		F473EFDB19491C2B00D8C900 /* VCValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCValidation.m; sourceTree = "<group>"; };
-		F473EFE019492C2A00D8C900 /* IISideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IISideController.h; sourceTree = "<group>"; };
-		F473EFE119492C2A00D8C900 /* IISideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IISideController.m; sourceTree = "<group>"; };
-		F473EFE219492C2A00D8C900 /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
-		F473EFE319492C2A00D8C900 /* IIViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIViewDeckController.m; sourceTree = "<group>"; };
-		F473EFE419492C2A00D8C900 /* IIWrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIWrapController.h; sourceTree = "<group>"; };
-		F473EFE519492C2A00D8C900 /* IIWrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIWrapController.m; sourceTree = "<group>"; };
 		F473EFF019494DB100D8C900 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F473EFF41949513F00D8C900 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		F473EFF61949514A00D8C900 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
@@ -2350,7 +2332,6 @@
 			isa = PBXGroup;
 			children = (
 				F4F6B8BB19A9ADCF004312A1 /* HVTableView */,
-				F473EFDF19492C1600D8C900 /* ViewDeck */,
 				F45F7C0C1935976400A94721 /* Utilities */,
 			);
 			name = Libraries;
@@ -2393,19 +2374,6 @@
 				F4A7C80419623C70007E05AD /* Transit.m */,
 			);
 			name = Base;
-			sourceTree = "<group>";
-		};
-		F473EFDF19492C1600D8C900 /* ViewDeck */ = {
-			isa = PBXGroup;
-			children = (
-				F473EFE019492C2A00D8C900 /* IISideController.h */,
-				F473EFE119492C2A00D8C900 /* IISideController.m */,
-				F473EFE219492C2A00D8C900 /* IIViewDeckController.h */,
-				F473EFE319492C2A00D8C900 /* IIViewDeckController.m */,
-				F473EFE419492C2A00D8C900 /* IIWrapController.h */,
-				F473EFE519492C2A00D8C900 /* IIWrapController.m */,
-			);
-			name = ViewDeck;
 			sourceTree = "<group>";
 		};
 		F473EFE919492CA400D8C900 /* Ride System */ = {
@@ -3702,7 +3670,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				841647701B64A47D00CD20AC /* IIWrapController.m in Sources */,
 				841647711B64A47D00CD20AC /* VCDriverRegistration.m in Sources */,
 				841647721B64A47D00CD20AC /* VCPushApi.m in Sources */,
 				841647731B64A47D00CD20AC /* VCPasswordTextField.m in Sources */,
@@ -3747,7 +3714,6 @@
 				8416479A1B64A47D00CD20AC /* VCCenterViewBaseViewController.m in Sources */,
 				8416479B1B64A47D00CD20AC /* VCLogInViewController.m in Sources */,
 				36F9F6541B6ACC8700440D03 /* VCRideRequestView.m in Sources */,
-				8416479C1B64A47D00CD20AC /* IISideController.m in Sources */,
 				8416479D1B64A47D00CD20AC /* VCFareReceiptsViewController.m in Sources */,
 				8416479E1B64A47D00CD20AC /* VCButton.m in Sources */,
 				8416479F1B64A47D00CD20AC /* VCMenuUserInfoTableViewCell.m in Sources */,
@@ -3798,7 +3764,6 @@
 				841647CC1B64A47D00CD20AC /* VCLocationSearchViewController.m in Sources */,
 				841647CD1B64A47D00CD20AC /* VCDriverApi.m in Sources */,
 				841647CE1B64A47D00CD20AC /* VCGeoApi.m in Sources */,
-				841647CF1B64A47D00CD20AC /* IIViewDeckController.m in Sources */,
 				841647D01B64A47D00CD20AC /* VCCarYearTextField.m in Sources */,
 				841647D11B64A47D00CD20AC /* VCApi.m in Sources */,
 				841647D21B64A47D00CD20AC /* VCBankAccountTextField.m in Sources */,
@@ -3837,7 +3802,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D144A4D71B6ADDA900D36D3B /* MBRegion.m in Sources */,
-				841648A51B658F4900CD20AC /* IIWrapController.m in Sources */,
 				841648A61B658F4900CD20AC /* VCDriverRegistration.m in Sources */,
 				841648A71B658F4900CD20AC /* VCCommuteSetUpOnBoardingViewController.m in Sources */,
 				841648A81B658F4900CD20AC /* VCReceiptsViewController.m in Sources */,
@@ -3884,7 +3848,6 @@
 				36F9F6521B6ACC8700440D03 /* VCRideRequestView.m in Sources */,
 				841648D11B658F4900CD20AC /* Fare.m in Sources */,
 				841648D21B658F4900CD20AC /* VCNewUser.m in Sources */,
-				841648D31B658F4900CD20AC /* IISideController.m in Sources */,
 				841648D41B658F4900CD20AC /* VCButton.m in Sources */,
 				841648D51B658F4900CD20AC /* VCMenuUserInfoTableViewCell.m in Sources */,
 				841648D61B658F4900CD20AC /* MQShape.m in Sources */,
@@ -3932,7 +3895,6 @@
 				841649001B658F4900CD20AC /* VCLocationSearchViewController.m in Sources */,
 				841649011B658F4900CD20AC /* VCDriverApi.m in Sources */,
 				841649021B658F4900CD20AC /* VCGeoApi.m in Sources */,
-				841649031B658F4900CD20AC /* IIViewDeckController.m in Sources */,
 				841649041B658F4900CD20AC /* VCCarYearTextField.m in Sources */,
 				841649051B658F4900CD20AC /* VCApi.m in Sources */,
 				841649061B658F4900CD20AC /* VCBankAccountTextField.m in Sources */,
@@ -3971,7 +3933,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4C6B1BF197F06B100F6C10B /* IIWrapController.m in Sources */,
 				F4C6B1C0197F06B100F6C10B /* VCDriverRegistration.m in Sources */,
 				4FC758D119AA91810093DBEA /* VCCommuteSetUpOnBoardingViewController.m in Sources */,
 				4FFCF2D419A5493500A4A24E /* VCReceiptsViewController.m in Sources */,
@@ -4018,7 +3979,6 @@
 				36F9F6511B6ACC8700440D03 /* VCRideRequestView.m in Sources */,
 				F4C6B1E4197F06B100F6C10B /* Fare.m in Sources */,
 				F4C6B1E5197F06B100F6C10B /* VCNewUser.m in Sources */,
-				F4C6B1E6197F06B100F6C10B /* IISideController.m in Sources */,
 				F4C6B1E8197F06B100F6C10B /* VCButton.m in Sources */,
 				4F184A1219918750006EA959 /* VCMenuUserInfoTableViewCell.m in Sources */,
 				F4C6B1E9197F06B100F6C10B /* MQShape.m in Sources */,
@@ -4067,7 +4027,6 @@
 				F4C6B20E197F06B100F6C10B /* VCLocationSearchViewController.m in Sources */,
 				F4C6B20F197F06B100F6C10B /* VCDriverApi.m in Sources */,
 				F4C6B210197F06B100F6C10B /* VCGeoApi.m in Sources */,
-				F4C6B211197F06B100F6C10B /* IIViewDeckController.m in Sources */,
 				F4C6B212197F06B100F6C10B /* VCCarYearTextField.m in Sources */,
 				F4C6B213197F06B100F6C10B /* VCApi.m in Sources */,
 				F4C6B214197F06B100F6C10B /* VCBankAccountTextField.m in Sources */,
@@ -4106,7 +4065,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4D8FE0919B1745A00BC0B69 /* IIWrapController.m in Sources */,
 				F4D8FE0A19B1745A00BC0B69 /* VCDriverRegistration.m in Sources */,
 				F4D8FE0B19B1745A00BC0B69 /* VCPushApi.m in Sources */,
 				F4D8FE0C19B1745A00BC0B69 /* VCPasswordTextField.m in Sources */,
@@ -4151,7 +4109,6 @@
 				F4D8FE3419B1745A00BC0B69 /* VCCenterViewBaseViewController.m in Sources */,
 				F4D8FE3519B1745A00BC0B69 /* VCLogInViewController.m in Sources */,
 				36F9F6531B6ACC8700440D03 /* VCRideRequestView.m in Sources */,
-				F4D8FE3619B1745A00BC0B69 /* IISideController.m in Sources */,
 				F4D8FE3719B1745A00BC0B69 /* VCFareReceiptsViewController.m in Sources */,
 				F4D8FE3819B1745A00BC0B69 /* VCButton.m in Sources */,
 				F4D8FE3919B1745A00BC0B69 /* VCMenuUserInfoTableViewCell.m in Sources */,
@@ -4202,7 +4159,6 @@
 				F4D8FE6519B1745A00BC0B69 /* VCLocationSearchViewController.m in Sources */,
 				F4D8FE6619B1745A00BC0B69 /* VCDriverApi.m in Sources */,
 				F4D8FE6719B1745A00BC0B69 /* VCGeoApi.m in Sources */,
-				F4D8FE6819B1745A00BC0B69 /* IIViewDeckController.m in Sources */,
 				F4D8FE6919B1745A00BC0B69 /* VCCarYearTextField.m in Sources */,
 				F4D8FE6A19B1745A00BC0B69 /* VCApi.m in Sources */,
 				F4D8FE6B19B1745A00BC0B69 /* VCBankAccountTextField.m in Sources */,
