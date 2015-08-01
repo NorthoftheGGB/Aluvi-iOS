@@ -244,7 +244,7 @@
     
     [self updateRightMenuButton];
 
-    
+    /*
     //Get the view
     //Test out the views
     VCRideRequestView * view = [WRUtilities getViewFromNib:@"VCRideRequestView" class:[VCRideRequestView class]];
@@ -259,6 +259,7 @@
     
     // Add to the view
     //[self.view addSubview:view];
+     */
 }
 
 - (void) viewWillAppear:(BOOL)animated{
@@ -474,27 +475,28 @@
     // start off screen
     // end on screen
     
-    /*
+    
      // set your starting frame
-     CGRect frame = _pickupHudView.frame;
-     frame.origin.x = 0;
-     frame.origin.y = 62;
-     frame.size.height = 0;
-  
-     // assign frame to the fiew
-     _pickupHudView.frame = frame;
-     
-     // add the view to the superview
-     [self.view addSubview:self.pickupHudView];
+    VCRideRequestView * view = [WRUtilities getViewFromNib:@"VCRideRequestView" class:[VCRideRequestView class]];
+    
+    CGRect frame = view.frame;
+    frame.origin.x = 0;
+    frame.origin.y = -self.view.frame.size.height;
+    frame.size.width = self.view.frame.size.width;
+    frame.size.height = self.view.frame.size.height;
+    view.frame = frame;
+    
+    // add the view to the superview
+    [[[[UIApplication sharedApplication] delegate] window] addSubview:view];
      
      [UIView animateWithDuration:0.35 animations:^{
-     
-     // final placement
-     CGRect frame = _pickupHudView.frame;
-     frame.size.height = 40; //changed height
-     _pickupHudView.frame = frame;
-     }];
-*/
+        
+        // final placement
+        CGRect frame = view.frame;
+        frame.origin.y = 0;
+        view.frame = frame;
+    }];
+
 }
 
 
