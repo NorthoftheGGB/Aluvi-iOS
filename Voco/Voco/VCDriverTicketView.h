@@ -31,7 +31,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *riderThreeButton;
 
 
-
 - (IBAction)didTapRidersOnboardButton:(id)sender;
 - (IBAction)didTapRiderOneButton:(id)sender;
 - (IBAction)didTapRiderTwoButton:(id)sender;

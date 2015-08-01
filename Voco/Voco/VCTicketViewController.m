@@ -11,6 +11,7 @@
 #import <MBProgressHUD.h>
 #import <ActionSheetStringPicker.h>
 #import <ActionSheetCustomPicker.h>
+#import <Masonry.h>
 #import "IIViewDeckController.h"
 
 #import "VCNotifications.h"
@@ -40,6 +41,8 @@
 #import "VCDriverTicketView.h"
 #import "VCRiderTicketView.h"
 #import "VCRideRequestView.h"
+
+#import "VCLocationSearchViewController.h"
 
 #define kEditCommuteStatePickupTime 1000
 #define kEditCommuteStateEditHome 1001
@@ -158,6 +161,7 @@
 // Location Search
 @property (strong, nonatomic) IBOutlet UIView *locationSearchForm;
 @property (strong, nonatomic) IBOutlet UIButton *locationUpdateDoneButton;
+@property (strong, nonatomic) VCLocationSearchViewController * locationSearchTable;
 
 
 @end
@@ -773,17 +777,6 @@
     
 }
 
-- (void) showNextButton {
-    
-    if(_nextButton.superview == nil) {
-        CGRect buttonFrame = _nextButton.frame;
-        buttonFrame.origin.x = 0;
-        buttonFrame.origin.y = self.view.frame.size.height - 53;
-        _nextButton.frame = buttonFrame;
-        [self.view addSubview:_nextButton];
-    }
-}
-
 - (void) transitionFromEditHomeToEditWork {
     
     _editCommuteState = kEditCommuteStateEditWork;
@@ -997,17 +990,27 @@
 
 - (void) placeInEditLocationMode {
     self.navigationController.navigationBarHidden = YES;
-    CGRect formFrame = _locationSearchForm.frame;
-    formFrame.origin.x = 0;
-    formFrame.origin.y = 0;
-    formFrame.size.width = self.view.frame.size.width;
-    _locationSearchForm.frame = formFrame;
+ 
     [self.view addSubview:_locationSearchForm];
     
-    CGRect doneButtonFrame = _locationUpdateDoneButton.frame;
-    doneButtonFrame.origin.x = 0;
-    doneButtonFrame.origin.y = self.view.frame.size.height - doneButtonFrame.size.height;
-    doneButtonFrame.size.width = self.view.frame.size.width;
+    [_locationSearchForm mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.mas_left);
+        make.top.equalTo(self.view.mas_top);
+        make.right.equalTo(self.view.mas_right);
+        make.height.mas_equalTo(_locationSearchForm.frame.size.height);
+    }];
+    [_locationSearchForm setNeedsLayout];
+
+    
+    [self.view addSubview:_locationUpdateDoneButton];
+    
+    [_locationUpdateDoneButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.mas_left);
+        make.bottom.equalTo(self.view.mas_bottom);
+        make.right.equalTo(self.view.mas_right);
+    }];
+    [_locationUpdateDoneButton setNeedsLayout];
+    
     
 }
 
@@ -1286,6 +1289,31 @@
     [self callPhone:driver.phone];
 }
 
+- (IBAction)didBeginEditingLocationSearchField:(id)sender {
+    if(_locationSearchTable == nil){
+        _locationSearchTable = [[VCLocationSearchViewController alloc] init];
+    }
+
+    _locationSearchTable.tableView.alpha = 0;
+    [self.view addSubview:_locationSearchTable.tableView];
+    [_locationSearchTable.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+       //make.left.equalTo(self.view.mas_left);
+       //make.top.equalTo(self.view.mas_top).with.offset(120);  //TODO remove magic number
+       //make.right.equalTo(self.view.mas_right);
+    }];
+    [_locationSearchTable.view setNeedsLayout];
+    
+
+    [UIView transitionWithView:self.view
+                      duration:.65
+                       options:0
+                    animations:^{
+                        _locationSearchTable.view.alpha = 1;
+                    }
+                    completion:nil];
+}
+
+
 
 #pragma mark - VCLocationSearchViewControllerDelegate
 
@@ -1313,7 +1341,7 @@
     [self updateRouteOverlay];
     
     if(_editCommuteState == kEditCommuteStateEditHome || _editCommuteState == kEditCommuteStateEditWork) {
-        [self showNextButton];
+        //[self showNextButton];
     }
     
     [self.map setCenterCoordinate:mapItem.placemark.coordinate animated:YES];
@@ -1833,7 +1861,7 @@
     [self updateRouteOverlay];
     
     [self updateEditLocationWidget:widget withLocation:location];
-    [self showNextButton];
+    //[self showNextButton];
 }
 
 - (void)mapView:(RMMapView *)map didEndDragAnnotation:(RMAnnotation *)annotation {

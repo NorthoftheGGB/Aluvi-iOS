@@ -9,15 +9,11 @@
 #import "VCLocationSearchViewController.h"
 @import AddressBookUI;
 
-@interface VCLocationSearchViewController () <UITableViewDataSource, UITableViewDelegate>
-@property (weak, nonatomic) IBOutlet UITextField *searchField;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@interface VCLocationSearchViewController ()
 
 @property (strong, nonatomic) NSArray * searchItems;
 @property (strong, nonatomic) MKLocalSearch * localSearch;
 
-- (IBAction)didTapDone:(id)sender;
-- (IBAction)didTapCancel:(id)sender;
 
 @end
 
@@ -44,14 +40,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)didTapDone:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (IBAction)didTapCancel:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
+/*
 - (IBAction)didEditSearchText:(id)sender {
     MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
     request.naturalLanguageQuery = _searchField.text;
@@ -79,6 +68,7 @@
         return 0;
     }
 }
+ */
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MKMapItem *mapItem = [_searchItems objectAtIndex:[indexPath row]];
