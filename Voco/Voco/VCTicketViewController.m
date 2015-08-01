@@ -44,6 +44,8 @@
 #import "VCHoldingView.h"
 
 #import "VCDriverTicketView.h"
+#import "VCRiderTicketView.h"
+#import "VCRideRequestView.h"
 
 #define kEditCommuteStatePickupTime 1000
 #define kEditCommuteStateEditHome 1001
@@ -254,13 +256,15 @@
     
     
     //Get the view
-    VCDriverTicketView * view = [WRUtilities getViewFromNib:@"VCDriverTicketView" class:[VCDriverTicketView class]];
+    //Test out the views
+    VCRideRequestView * view = [WRUtilities getViewFromNib:@"VCRideRequestView" class:[VCRideRequestView class]];
     
     // Set up the frame
     CGRect frame = view.frame;
     frame.origin.x = 0;
-    frame.origin.y = 300;
+    frame.origin.y = 0;
     frame.size.width = self.view.frame.size.width;
+    frame.size.height = self.view.frame.size.height;
     view.frame = frame;
     
     // Add to the view

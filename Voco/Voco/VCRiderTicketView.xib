@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="TwM-TO-NEf" customClass="VCRiderTicket">
+        <view contentMode="scaleToFill" id="TwM-TO-NEf" customClass="VCRiderTicketView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -54,7 +55,7 @@
                                 <constraint firstAttribute="width" constant="107" id="od0-aZ-KGg"/>
                                 <constraint firstAttribute="height" constant="107" id="xLY-QC-U2u"/>
                             </constraints>
-                            <state key="normal" title="Driver">
+                            <state key="normal" backgroundImage="test_big@x2.jpg">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -84,7 +85,8 @@
                                 <constraint firstAttribute="width" constant="81" id="hdB-e9-V2Q"/>
                                 <constraint firstAttribute="height" constant="81" id="pNc-n2-auY"/>
                             </constraints>
-                            <state key="normal" title="Peer 1">
+                            <state key="normal" backgroundImage="test.jpg">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -97,9 +99,7 @@
                                 <constraint firstAttribute="height" constant="81" id="NK8-A7-lKY"/>
                                 <constraint firstAttribute="width" constant="81" id="kSh-SK-k2U"/>
                             </constraints>
-                            <state key="normal" title="Peer 2">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
+                            <state key="normal" backgroundImage="test_big.jpg"/>
                             <connections>
                                 <action selector="didTapPeerTwoButton:" destination="TwM-TO-NEf" eventType="touchUpInside" id="Izu-Fu-S5T"/>
                             </connections>
@@ -164,9 +164,6 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="didTapDriverImageButton" destination="1M3-bc-0He" id="Wia-E8-o1V"/>
-                <outlet property="didTapPeerOneButton" destination="4ZK-w4-Bvp" id="Wee-XI-yiD"/>
-                <outlet property="didTapPeerTwoButton" destination="iKK-Zt-ZZ7" id="yFJ-Hs-4tU"/>
                 <outlet property="driverDetails" destination="KPt-DJ-vtM" id="u43-Va-NEr"/>
                 <outlet property="driverImageButton" destination="1M3-bc-0He" id="ogu-ZP-1Ir"/>
                 <outlet property="peerOneButton" destination="4ZK-w4-Bvp" id="bDf-xq-KqQ"/>
@@ -178,4 +175,9 @@
             <point key="canvasLocation" x="263" y="412"/>
         </view>
     </objects>
+    <resources>
+        <image name="test.jpg" width="81" height="81"/>
+        <image name="test_big.jpg" width="107" height="107"/>
+        <image name="test_big@x2.jpg" width="214" height="214"/>
+    </resources>
 </document>
