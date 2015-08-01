@@ -193,8 +193,6 @@
     [super viewDidLoad];
     [self startLocationUpdates];
     
-    [[RMConfiguration sharedInstance] setAccessToken:@"pk.eyJ1Ijoic25hY2tzIiwiYSI6Il83eXFHMzAifQ.M1ipZJb-b--TvC0vxHvPVg"];
-
     _homeLocationWidget = [[VCEditLocationWidget alloc] init];
     _homeLocationWidget.delegate = self;
     _workLocationWidget = [[VCEditLocationWidget alloc] init];
@@ -273,14 +271,6 @@
         self.map.delegate = self;
         [self.view insertSubview:self.map atIndex:0];
         self.map.showsUserLocation = YES;
-        
-        /*
-         Skip the MapBox overlay for now, iPhone 4 rendering issues
-         
-        _tileOverlay = [[MBXRasterTileOverlay alloc] initWithMapID:@"aluvi.jlandbj7"];
-        _tileOverlay.delegate = self;
-        [self.map addOverlay:_tileOverlay];
-        */
          
         _appeared = YES;
         
