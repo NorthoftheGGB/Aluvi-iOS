@@ -43,6 +43,10 @@
 		36F9F6611B6B0C5200440D03 /* VCDriverTicketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D7C1B659CAE004EDB09 /* VCDriverTicketView.xib */; };
 		36F9F6621B6B0C5B00440D03 /* VCRideRequestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D741B658A5A004EDB09 /* VCRideRequestView.xib */; };
 		36F9F6631B6B0C5E00440D03 /* VCRiderTicketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D841B65A988004EDB09 /* VCRiderTicketView.xib */; };
+		36FB728B1B6D6B4200F8A6AF /* VCPaymentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36FB728A1B6D6B4200F8A6AF /* VCPaymentsView.xib */; };
+		36FB728C1B6D6B4200F8A6AF /* VCPaymentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36FB728A1B6D6B4200F8A6AF /* VCPaymentsView.xib */; };
+		36FB728D1B6D6B4200F8A6AF /* VCPaymentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36FB728A1B6D6B4200F8A6AF /* VCPaymentsView.xib */; };
+		36FB728E1B6D6B4200F8A6AF /* VCPaymentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36FB728A1B6D6B4200F8A6AF /* VCPaymentsView.xib */; };
 		4F1849DD198F25F9006EA959 /* driver-call-hud-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849DB198F25F9006EA959 /* driver-call-hud-button@2x.png */; };
 		4F1849E0198F25F9006EA959 /* driver-cancel-hud-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849DC198F25F9006EA959 /* driver-cancel-hud-button@2x.png */; };
 		4F1849E5198F625A006EA959 /* driver-cancel-hud-icon-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849E3198F625A006EA959 /* driver-cancel-hud-icon-select@2x.png */; };
@@ -1201,6 +1205,7 @@
 		36F9F6561B6AE4A300440D03 /* VCDriverTicketView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCDriverTicketView.m; sourceTree = "<group>"; };
 		36F9F65B1B6AF58E00440D03 /* VCRiderTicketView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRiderTicketView.h; sourceTree = "<group>"; };
 		36F9F65C1B6AF58E00440D03 /* VCRiderTicketView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRiderTicketView.m; sourceTree = "<group>"; };
+		36FB728A1B6D6B4200F8A6AF /* VCPaymentsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCPaymentsView.xib; sourceTree = "<group>"; };
 		4F1849DB198F25F9006EA959 /* driver-call-hud-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "driver-call-hud-button@2x.png"; sourceTree = "<group>"; };
 		4F1849DC198F25F9006EA959 /* driver-cancel-hud-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "driver-cancel-hud-button@2x.png"; sourceTree = "<group>"; };
 		4F1849E3198F625A006EA959 /* driver-cancel-hud-icon-select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "driver-cancel-hud-icon-select@2x.png"; sourceTree = "<group>"; };
@@ -1824,6 +1829,22 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		36FB72891B6D6B1400F8A6AF /* Old Other Functionality */ = {
+			isa = PBXGroup;
+			children = (
+				4F9ECEAE19661C3400AD4229 /* VCCommuterPassViewController.h */,
+				4F9ECEAF19661C3400AD4229 /* VCCommuterPassViewController.m */,
+				4F9ECEB019661C3400AD4229 /* VCCommuterPassViewController.xib */,
+				4F9ECEBC196630D700AD4229 /* VCRiderRecieptDetailViewController.h */,
+				4F9ECEBD196630D700AD4229 /* VCRiderRecieptDetailViewController.m */,
+				4F9ECEBE196630D700AD4229 /* VCRiderRecieptDetailViewController.xib */,
+				4FCD7C661976241D007609E8 /* VCRiderProfileViewController.h */,
+				4FCD7C671976241D007609E8 /* VCRiderProfileViewController.m */,
+				4FCD7C93197775E1007609E8 /* VCRiderProfileViewController.xib */,
+			);
+			name = "Old Other Functionality";
+			sourceTree = "<group>";
+		};
 		4F2EF99F1960EC62006A1962 /* Menu Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -1880,15 +1901,8 @@
 		4F9ECEAD196619F500AD4229 /* Other Functionality */ = {
 			isa = PBXGroup;
 			children = (
-				4F9ECEAE19661C3400AD4229 /* VCCommuterPassViewController.h */,
-				4F9ECEAF19661C3400AD4229 /* VCCommuterPassViewController.m */,
-				4F9ECEB019661C3400AD4229 /* VCCommuterPassViewController.xib */,
-				4F9ECEBC196630D700AD4229 /* VCRiderRecieptDetailViewController.h */,
-				4F9ECEBD196630D700AD4229 /* VCRiderRecieptDetailViewController.m */,
-				4F9ECEBE196630D700AD4229 /* VCRiderRecieptDetailViewController.xib */,
-				4FCD7C661976241D007609E8 /* VCRiderProfileViewController.h */,
-				4FCD7C671976241D007609E8 /* VCRiderProfileViewController.m */,
-				4FCD7C93197775E1007609E8 /* VCRiderProfileViewController.xib */,
+				36FB72891B6D6B1400F8A6AF /* Old Other Functionality */,
+				36FB728A1B6D6B4200F8A6AF /* VCPaymentsView.xib */,
 			);
 			name = "Other Functionality";
 			sourceTree = "<group>";
@@ -2812,6 +2826,7 @@
 				841648291B64A47D00CD20AC /* bubble@2x.png in Resources */,
 				8416482A1B64A47D00CD20AC /* VCReceiptExpandedTableViewCell.xib in Resources */,
 				8416482B1B64A47D00CD20AC /* login-button@2x.png in Resources */,
+				36FB728E1B6D6B4200F8A6AF /* VCPaymentsView.xib in Resources */,
 				8416482C1B64A47D00CD20AC /* menu-receipts-icon@2x.png in Resources */,
 				8416482D1B64A47D00CD20AC /* VCFareReceiptsViewController.xib in Resources */,
 				8416482F1B64A47D00CD20AC /* confirm-location-select.png in Resources */,
@@ -3067,6 +3082,7 @@
 				841649C11B658F4900CD20AC /* VCMenuUserInfoTableViewCell.xib in Resources */,
 				841649C21B658F4900CD20AC /* Images.xcassets in Resources */,
 				369DBC1F1B6D24AD00449CB4 /* test_big@x2.jpg in Resources */,
+				36FB728C1B6D6B4200F8A6AF /* VCPaymentsView.xib in Resources */,
 				841649C31B658F4900CD20AC /* commuter-menu-button-selected@2x.png in Resources */,
 				841649C41B658F4900CD20AC /* VCMenuDriverClockOnTableViewCell.xib in Resources */,
 				841649C51B658F4900CD20AC /* VCCommuteSetUpOnBoardingViewController.xib in Resources */,
@@ -3223,6 +3239,7 @@
 				4F184A1519918750006EA959 /* VCMenuUserInfoTableViewCell.xib in Resources */,
 				36638D751B658A5A004EDB09 /* VCRideRequestView.xib in Resources */,
 				369DBC1E1B6D24AD00449CB4 /* test_big@x2.jpg in Resources */,
+				36FB728B1B6D6B4200F8A6AF /* VCPaymentsView.xib in Resources */,
 				F4C6B28C197F06B100F6C10B /* Images.xcassets in Resources */,
 				F4C6B28D197F06B100F6C10B /* commuter-menu-button-selected@2x.png in Resources */,
 				4F184A1E1991893D006EA959 /* VCMenuDriverClockOnTableViewCell.xib in Resources */,
@@ -3281,6 +3298,7 @@
 				F4D8FEC219B1745A00BC0B69 /* bubble@2x.png in Resources */,
 				F4D8FEC319B1745A00BC0B69 /* VCReceiptExpandedTableViewCell.xib in Resources */,
 				F4D8FEC419B1745A00BC0B69 /* login-button@2x.png in Resources */,
+				36FB728D1B6D6B4200F8A6AF /* VCPaymentsView.xib in Resources */,
 				F4D8FEC519B1745A00BC0B69 /* menu-receipts-icon@2x.png in Resources */,
 				F4D8FEC619B1745A00BC0B69 /* VCFareReceiptsViewController.xib in Resources */,
 				F4D8FEC919B1745A00BC0B69 /* confirm-location-select.png in Resources */,

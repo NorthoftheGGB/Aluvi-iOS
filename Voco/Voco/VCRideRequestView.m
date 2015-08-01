@@ -18,31 +18,33 @@
 
 @implementation VCRideRequestView
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-        
-        _morningOptions = @[ @"Select Pickup Time",
-                             @"7:00", @"7:15", @"7:30", @"7:45",
-                             @"8:00", @"8:25", @"8:30", @"8:45", @"9:00"
-                             ];
-        _eveningOptions = @[
-                             @"4:00", @"4:15", @"4:30", @"4:45",
-                             @"5:00", @"5:15", @"5:30", @"5:45",
-                             @"6:00", @"6:15", @"6:30", @"6:45",
-                             @"7:00"];
-        
-        _toHomeTimeStepper.minimumValue = 0;
-        _toHomeTimeStepper.maximumValue = [_eveningOptions count]-1;
-        _toHomeTimeStepper.stepValue = 1;
-        
-        
-    }
-    return self;
-}
 
+
+-(void)awakeFromNib{
+    
+    _morningOptions = @[
+                        @"7:00", @"7:15", @"7:30", @"7:45",
+                        @"8:00", @"8:15", @"8:30", @"8:45", @"9:00"
+                        ];
+    _eveningOptions = @[
+                        @"4:00", @"4:15", @"4:30", @"4:45",
+                        @"5:00", @"5:15", @"5:30", @"5:45",
+                        @"6:00", @"6:15", @"6:30", @"6:45",
+                        @"7:00"];
+    
+    _toHomeTimeLabel.text = [_eveningOptions objectAtIndex:0];
+    _toHomeTimeStepper.minimumValue = 0;
+    _toHomeTimeStepper.maximumValue = [_eveningOptions count]-1;
+    _toHomeTimeStepper.stepValue = 1;
+    
+    _toWorkTimeLabel.text = [_morningOptions objectAtIndex:0];
+    _toWorkTimeStepper.minimumValue = 0;
+    _toWorkTimeStepper.maximumValue = [_morningOptions count]-1;
+    _toWorkTimeStepper.stepValue = 1;
+    
+
+
+}
 
 - (IBAction)didTapCloseButton:(id)sender {
     [_delegate rideRequestViewDidTapClose:self];
@@ -68,7 +70,11 @@
 
 - (IBAction)morningPickupTimeValueChanged:(UIStepper *)sender {
     int value = [sender value];
-    _toHomeTimeLabel.text = [_morningOptions objectAtIndex:value];
+    _toWorkTimeLabel.text = [_morningOptions objectAtIndex:value];
+}
+- (IBAction)eveningPickupValueChanged:(UIStepper *)sender {
+    int value = [sender value];
+    _toHomeTimeLabel.text = [_eveningOptions objectAtIndex:value];
 }
 
 
