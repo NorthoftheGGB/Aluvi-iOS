@@ -125,17 +125,17 @@
 @property (nonatomic) NSInteger editCommuteState;
 
 - (IBAction)didTapEditCommute:(id)sender;
-- (IBAction)didTapRideNow:(id)sender;
+//- (IBAction)didTapRideNow:(id)sender;
 - (IBAction)didTapScheduleRide:(id)sender;
 - (IBAction)didTapNextButton:(id)sender;
-- (IBAction)didTapHovDriveYesButton:(id)sender;
-- (IBAction)didTapShowRideDetailsButton:(id)sender;
+//- (IBAction)didTapHovDriveYesButton:(id)sender;
+//- (IBAction)didTapShowRideDetailsButton:(id)sender;
 
 
 // HOV Driver
 //@property (strong, nonatomic) IBOutlet VCDriverCallHudView *driverCallHUD;
-@property (strong, nonatomic) IBOutlet UIView *driverCancelHUD;
-@property (strong, nonatomic) IBOutlet UIButton *directionsListButton;
+//@property (strong, nonatomic) IBOutlet UIView *driverCancelHUD;
+//@property (strong, nonatomic) IBOutlet UIButton *directionsListButton;
 //@property (strong, nonatomic) IBOutlet VCDriveDetailsView * fareDetailsView;
 
 //Call HUD
@@ -148,9 +148,9 @@
 @property (nonatomic) BOOL cancelHudPanLocked;
 @property (strong, nonatomic) NSTimer * cancelTimer;
 @property (nonatomic) BOOL cancelHudOpen;
-@property (strong, nonatomic) IBOutlet VCButton *cancelRideButton;
-@property (strong, nonatomic) IBOutlet UIImageView *cancelIconImageView;
-- (IBAction)didTapCancelRide:(id)sender;
+//@property (strong, nonatomic) IBOutlet VCButton *cancelRideButton;
+//@property (strong, nonatomic) IBOutlet UIImageView *cancelIconImageView;
+//- (IBAction)didTapCancelRide:(id)sender;
 
 
 //Ride Status
@@ -158,6 +158,11 @@
 @property (strong, nonatomic) IBOutlet VCButton *rideCompleteButton;
 - (IBAction)didTapRidersPickedUp:(id)sender;
 - (IBAction)didTapRideCompleted:(id)sender;
+
+// Location Search
+@property (strong, nonatomic) IBOutlet UIView *locationSearchForm;
+@property (strong, nonatomic) IBOutlet UIButton *locationUpdateDoneButton;
+
 
 @end
 
@@ -974,6 +979,10 @@
     }
 }
 
+
+// Location Editing
+
+// No longer used
 - (void) updateEditLocationWidget: (VCEditLocationWidget *) editLocationWidget
                      withLocation: (CLLocation *) location {
     editLocationWidget.waiting = YES;
@@ -990,6 +999,22 @@
         }
     }];
 }
+
+- (void) placeInEditLocationMode {
+    self.navigationController.navigationBarHidden = YES;
+    CGRect formFrame = _locationSearchForm.frame;
+    formFrame.origin.x = 0;
+    formFrame.origin.y = 0;
+    formFrame.size.width = self.view.frame.size.width;
+    _locationSearchForm.frame = formFrame;
+    [self.view addSubview:_locationSearchForm];
+}
+
+- (void) placeInRouteMode {
+    self.navigationController.navigationBarHidden = NO;
+
+}
+
 
 - (void) storeCommuterSettings: (void ( ^ ) ()) success failure:( void ( ^ ) ()) failure {
     [VCCommuteManager instance].home = [[CLLocation alloc] initWithLatitude:_originAnnotation.coordinate.latitude
@@ -1260,12 +1285,6 @@
     [self callPhone:driver.phone];
 }
 
-- (IBAction)didTapOKButton:(id)sender {
-    _ticket.confirmed = [NSNumber numberWithBool:YES];
-    [VCNotifications scheduleUpdated];
-    [VCCoreData saveContext];
-    [self resetInterfaceToHome];
-}
 
 #pragma mark - VCLocationSearchViewControllerDelegate
 
@@ -1881,6 +1900,10 @@
                      }];
 }
 
+- (void)rideRequestView:(VCRideRequestView *)rideRequestView didTapEditLocation:(CLLocationCoordinate2D)location locationName:(NSString *)locationName {
+    [self placeInEditLocationMode];
+    
+}
 
 
 @end

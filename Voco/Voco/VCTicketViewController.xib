@@ -7,19 +7,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCTicketViewController">
             <connections>
-                <outlet property="cancelIconImageView" destination="iiu-Fn-uo8" id="A55-gy-DWh"/>
-                <outlet property="cancelRideButton" destination="tm7-38-m0v" id="1ec-04-D64"/>
-                <outlet property="currentLocationButton" destination="XIm-sQ-LdY" id="ihB-70-3YB"/>
-                <outlet property="directionsListButton" destination="ITr-VR-cFD" id="jna-tz-LRq"/>
-                <outlet property="driverCancelHUD" destination="nT8-pQ-amt" id="gk6-h1-NK5"/>
                 <outlet property="editCommuteButton" destination="Qmg-ai-rrd" id="0pA-Hw-jyM"/>
-                <outlet property="hovDriveYesButton" destination="LT0-2Y-Gc6" id="GyN-lZ-mp0"/>
-                <outlet property="hovDriverOptionView" destination="CKa-ug-jy9" id="5ZD-9F-mzB"/>
+                <outlet property="locationSearchForm" destination="FqQ-ua-yu5" id="ejr-CN-TdV"/>
+                <outlet property="locationUpdateDoneButton" destination="2yD-F1-43H" id="CAR-g9-EkX"/>
                 <outlet property="nextButton" destination="4au-Tm-k8h" id="I8s-9S-4fi"/>
-                <outlet property="pickupHudView" destination="h5q-78-s1j" id="0Fq-c8-T1G"/>
-                <outlet property="pickupTimeLabel" destination="KAQ-n3-AaS" id="Ycz-jk-2IJ"/>
-                <outlet property="returnHudView" destination="TKX-pK-w8D" id="kQS-XC-4O0"/>
-                <outlet property="returnTimeLabel" destination="Pwl-0s-xmB" id="9yw-JX-Vq9"/>
                 <outlet property="rideCompleteButton" destination="Jh3-aQ-cgL" id="hB9-UZ-Yb5"/>
                 <outlet property="rideDetailsHud" destination="Lv9-d9-EJH" id="0gc-z7-omS"/>
                 <outlet property="rideItineraryView" destination="RWM-tO-NBZ" id="yJx-lk-icx"/>
@@ -35,7 +26,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="1285" y="92"/>
+            <point key="canvasLocation" x="1041" y="46"/>
         </view>
         <button opaque="NO" alpha="0.89999999999999991" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="wordWrap" id="fxh-D2-Mbg" customClass="VCButtonStandardStyle">
             <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
@@ -61,60 +52,6 @@
             </connections>
             <point key="canvasLocation" x="449" y="527"/>
         </button>
-        <view clipsSubviews="YES" alpha="0.90000000000000013" contentMode="scaleToFill" id="h5q-78-s1j" userLabel="PickUp HUD">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PICKUP TIME:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMC-XN-Zej" userLabel="pickup time" customClass="VCLabel">
-                    <rect key="frame" x="68" y="9" width="110" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="110" id="Dyt-DI-EaI"/>
-                        <constraint firstAttribute="height" constant="21" id="Hjd-Ts-36K"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="16"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAQ-n3-AaS" userLabel="pickup time" customClass="VCLabel">
-                    <rect key="frame" x="177" y="9" width="76" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="76" id="ArC-BK-aiI"/>
-                        <constraint firstAttribute="height" constant="21" id="yJf-Fx-keV"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="16"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NqD-4i-qh2">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
-                    <state key="normal">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="didTapPickupHud:" destination="-1" eventType="touchUpInside" id="4Oc-1Q-dif"/>
-                    </connections>
-                </button>
-            </subviews>
-            <color key="backgroundColor" red="0.63137257099999999" green="0.58039218189999997" blue="0.5647059083" alpha="1" colorSpace="deviceRGB"/>
-            <constraints>
-                <constraint firstItem="KAQ-n3-AaS" firstAttribute="top" secondItem="h5q-78-s1j" secondAttribute="top" constant="9" id="UQp-4H-4sg"/>
-                <constraint firstItem="pMC-XN-Zej" firstAttribute="top" secondItem="h5q-78-s1j" secondAttribute="top" constant="9" id="XpO-Rf-KZE"/>
-                <constraint firstItem="pMC-XN-Zej" firstAttribute="leading" secondItem="h5q-78-s1j" secondAttribute="leading" constant="68" id="fdn-Fj-J9m"/>
-                <constraint firstAttribute="trailing" secondItem="KAQ-n3-AaS" secondAttribute="trailing" constant="67" id="nn9-2G-1EY"/>
-            </constraints>
-            <nil key="simulatedStatusBarMetrics"/>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-        </view>
         <view contentMode="scaleToFill" id="RWM-tO-NBZ" userLabel="Ride Itinerary" customClass="VCRideDetailsView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="635"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -520,7 +457,7 @@
                 <outlet property="riderSectionTitleLabel" destination="Sdk-is-gH6" id="ea1-XS-AEC"/>
                 <outlet property="segmentedButton" destination="Qz2-lZ-23U" id="Ubq-W8-VSg"/>
             </connections>
-            <point key="canvasLocation" x="943" y="258.5"/>
+            <point key="canvasLocation" x="483" y="226.5"/>
         </view>
         <view contentMode="scaleToFill" id="Lv9-d9-EJH" userLabel="Ride Overview HUD" customClass="VCRideOverviewHudView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="154"/>
@@ -752,18 +689,6 @@
             </connections>
             <point key="canvasLocation" x="-218" y="209"/>
         </view>
-        <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XIm-sQ-LdY" userLabel="Current Location Button">
-            <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <state key="normal" image="current-location-button.png">
-                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-            </state>
-            <state key="selected" image="current-location-button-selected.png"/>
-            <state key="highlighted" image="current-location-button-selected.png"/>
-            <connections>
-                <action selector="didTapZoomToCurrentLocation:" destination="-1" eventType="touchUpInside" id="EZ9-zy-wyn"/>
-            </connections>
-        </button>
         <button opaque="NO" alpha="0.89999999999999991" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="4au-Tm-k8h" customClass="VCButtonStandardStyle">
             <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -787,95 +712,6 @@
                 <action selector="didTapNextButton:" destination="-1" eventType="touchUpInside" id="XAZ-QT-DcL"/>
             </connections>
         </button>
-        <view clipsSubviews="YES" alpha="0.89999999999999991" contentMode="scaleToFill" id="TKX-pK-w8D" userLabel="Return HUD">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RETURN TIME:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQb-cI-tRN" userLabel="return" customClass="VCLabel">
-                    <rect key="frame" x="66" y="9" width="114" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="2HP-dv-Bbj"/>
-                        <constraint firstAttribute="width" constant="114" id="Skj-dG-54C"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="16"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pwl-0s-xmB" userLabel="time" customClass="VCLabel">
-                    <rect key="frame" x="179" y="9" width="76" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="76" id="2VG-0b-rdJ"/>
-                        <constraint firstAttribute="height" constant="21" id="Tkd-90-eq0"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="16"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qXK-9R-vh0" userLabel="button">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
-                    <state key="normal">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="didTapReturnHud:" destination="-1" eventType="touchUpInside" id="Fuc-1i-cZq"/>
-                    </connections>
-                </button>
-            </subviews>
-            <color key="backgroundColor" red="0.63137257099999999" green="0.58039218189999997" blue="0.5647059083" alpha="1" colorSpace="deviceRGB"/>
-            <constraints>
-                <constraint firstItem="eQb-cI-tRN" firstAttribute="top" secondItem="TKX-pK-w8D" secondAttribute="top" constant="9" id="0g1-6A-3rn"/>
-                <constraint firstItem="eQb-cI-tRN" firstAttribute="leading" secondItem="TKX-pK-w8D" secondAttribute="leading" constant="66" id="Csr-pc-s8Y"/>
-                <constraint firstItem="Pwl-0s-xmB" firstAttribute="top" secondItem="TKX-pK-w8D" secondAttribute="top" constant="9" id="dgr-op-CHz"/>
-                <constraint firstAttribute="trailing" secondItem="Pwl-0s-xmB" secondAttribute="trailing" constant="65" id="kI9-UI-3To"/>
-            </constraints>
-            <nil key="simulatedStatusBarMetrics"/>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-        </view>
-        <view alpha="0.89999999999999991" contentMode="scaleToFill" id="CKa-ug-jy9" userLabel="I Would Like To Be The Driver View">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="39"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I would like to be the driver!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GmX-e8-Oiz" customClass="VCLabel">
-                    <rect key="frame" x="20" y="9" width="241" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="17"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LT0-2Y-Gc6">
-                    <rect key="frame" x="282" y="8" width="23" height="23"/>
-                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <state key="normal" backgroundImage="driver-hov-toggle.png">
-                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="selected" backgroundImage="driver-hov-toggle-select.png"/>
-                    <state key="highlighted">
-                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="didTapHovDriveYesButton:" destination="-1" eventType="touchUpInside" id="Pfq-KU-gKH"/>
-                    </connections>
-                </button>
-            </subviews>
-            <color key="backgroundColor" red="0.63137257099999999" green="0.58039218189999997" blue="0.5647059083" alpha="1" colorSpace="deviceRGB"/>
-            <nil key="simulatedStatusBarMetrics"/>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-        </view>
         <button opaque="NO" alpha="0.89999997615814209" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Jh3-aQ-cgL" customClass="VCButton">
             <rect key="frame" x="0.0" y="0.0" width="193" height="36"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -903,135 +739,6 @@
                 <action selector="didTapRideCompleted:" destination="-1" eventType="touchUpInside" id="mek-mJ-9ut"/>
             </connections>
         </button>
-        <view contentMode="scaleToFill" id="Lak-yG-cWD" userLabel="Driver Call HUD">
-            <rect key="frame" x="0.0" y="0.0" width="289" height="170"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="driver-call-hud.png" translatesAutoresizingMaskIntoConstraints="NO" id="GfZ-BN-2RY">
-                    <rect key="frame" x="0.0" y="0.0" width="289" height="170"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="driver-call-hud-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="0Ln-Bp-0Ir">
-                    <rect key="frame" x="6" y="6" width="13" height="23"/>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FhZ-2M-2Cb" customClass="VCButton">
-                    <rect key="frame" x="23" y="38" width="266" height="36"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <state key="normal" title="Namey Mc Namerson" backgroundImage="driver-call-hud-button.png">
-                        <color key="titleColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="selected">
-                        <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
-                    </state>
-                    <state key="highlighted">
-                        <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
-                    </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="20"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hsy-pb-Jaj" customClass="VCButton">
-                    <rect key="frame" x="23" y="82" width="266" height="36"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <state key="normal" title="Namey Mc Namerson" backgroundImage="driver-call-hud-button.png">
-                        <color key="titleColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="selected">
-                        <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
-                    </state>
-                    <state key="highlighted">
-                        <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
-                    </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="20"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gVW-jM-U8O" customClass="VCButton">
-                    <rect key="frame" x="23" y="126" width="266" height="36"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <state key="normal" title="Namey Mc Namerson" backgroundImage="driver-call-hud-button.png">
-                        <color key="titleColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="selected">
-                        <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
-                    </state>
-                    <state key="highlighted">
-                        <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
-                    </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="20"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </button>
-            </subviews>
-            <nil key="simulatedStatusBarMetrics"/>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-        </view>
-        <button hidden="YES" opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0AX-aa-rkF" userLabel="Zoom To Ride Bounds Button">
-            <rect key="frame" x="0.0" y="-4" width="36" height="40"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <state key="normal" image="ride-bounds-button.png">
-                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-            </state>
-            <state key="selected" image="ride-bounds-button-selected.png"/>
-            <state key="highlighted" image="ride-bounds-button-selected.png"/>
-            <connections>
-                <action selector="didTapZoomToRideBounds:" destination="-1" eventType="touchUpInside" id="hzy-T6-7m0"/>
-            </connections>
-            <point key="canvasLocation" x="308" y="365"/>
-        </button>
-        <button hidden="YES" opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ITr-VR-cFD" userLabel="Walking Directions Button">
-            <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <state key="normal" image="directions-button.png">
-                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-            </state>
-            <state key="selected" image="directions-button-selected.png"/>
-            <state key="highlighted" image="directions-button-selected.png"/>
-        </button>
-        <view contentMode="scaleToFill" id="nT8-pQ-amt" userLabel="Driver Cancel HUD">
-            <rect key="frame" x="0.0" y="0.0" width="155" height="62"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="driver-cancel-hud.png" translatesAutoresizingMaskIntoConstraints="NO" id="iad-Qb-gwU">
-                    <rect key="frame" x="0.0" y="0.0" width="155" height="62"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="driver-cancel-hud-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="iiu-Fn-uo8">
-                    <rect key="frame" x="5" y="5" width="12" height="12"/>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tm7-38-m0v" customClass="VCButton">
-                    <rect key="frame" x="22" y="17" width="133" height="38"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <state key="normal" title="Cancel Ride" backgroundImage="driver-cancel-hud-button.png">
-                        <color key="titleColor" red="0.33333334329999997" green="0.31764706970000001" blue="0.31372550129999999" alpha="1" colorSpace="deviceRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="selected">
-                        <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
-                    </state>
-                    <state key="highlighted">
-                        <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
-                    </state>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                            <integer key="value" value="20"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="didTapCancelRide:" destination="-1" eventType="touchUpInside" id="GXa-YO-ajI"/>
-                    </connections>
-                </button>
-            </subviews>
-            <nil key="simulatedStatusBarMetrics"/>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-        </view>
         <button opaque="NO" alpha="0.89999997615814209" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5kL-SN-M2N" customClass="VCButton">
             <rect key="frame" x="0.0" y="0.0" width="193" height="36"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1283,6 +990,34 @@
                 <action selector="didTapEditCommute:" destination="-1" eventType="touchUpInside" id="iCs-WN-RSW"/>
             </connections>
         </button>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2yD-F1-43H">
+            <rect key="frame" x="0.0" y="-1" width="320" height="48"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <state key="normal" title="Done">
+                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <point key="canvasLocation" x="1041" y="385"/>
+        </button>
+        <view contentMode="scaleToFill" id="FqQ-ua-yu5">
+            <rect key="frame" x="0.0" y="-2" width="323" height="93"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search for addresses and locations" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HRU-3H-xTk">
+                    <rect key="frame" x="12" y="48" width="299" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ojt-JQ-siM">
+                    <rect key="frame" x="12" y="16" width="48" height="30"/>
+                    <state key="normal" title="Cancel">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="1039.5" y="-284.5"/>
+        </view>
     </objects>
     <resources>
         <image name="button-full-default.png" width="320" height="46"/>
@@ -1294,14 +1029,6 @@
         <image name="devon.png" width="330" height="322"/>
         <image name="directions-button-selected.png" width="36" height="36"/>
         <image name="directions-button.png" width="36" height="36"/>
-        <image name="driver-call-hud-button.png" width="266" height="36"/>
-        <image name="driver-call-hud-icon.png" width="12" height="23"/>
-        <image name="driver-call-hud.png" width="289" height="170"/>
-        <image name="driver-cancel-hud-button.png" width="133" height="37"/>
-        <image name="driver-cancel-hud-icon.png" width="12" height="12"/>
-        <image name="driver-cancel-hud.png" width="155" height="62"/>
-        <image name="driver-hov-toggle-select.png" width="23" height="23"/>
-        <image name="driver-hov-toggle.png" width="23" height="23"/>
         <image name="ride-bounds-button-selected.png" width="36" height="36"/>
         <image name="ride-bounds-button.png" width="36" height="36"/>
         <image name="ride-details-hud.png" width="330" height="154"/>
