@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -7,7 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCTicketViewController">
             <connections>
-                <outlet property="editCommuteButton" destination="Qmg-ai-rrd" id="0pA-Hw-jyM"/>
                 <outlet property="locationSearchForm" destination="FqQ-ua-yu5" id="ejr-CN-TdV"/>
                 <outlet property="locationUpdateDoneButton" destination="2yD-F1-43H" id="CAR-g9-EkX"/>
                 <outlet property="nextButton" destination="4au-Tm-k8h" id="I8s-9S-4fi"/>
@@ -967,29 +966,6 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="121" y="-131"/>
         </view>
-        <button opaque="NO" alpha="0.89999997615814209" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" id="Qmg-ai-rrd" customClass="VCButtonStandardStyle">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-            <state key="normal" title="SCHEDULE COMMUTE" backgroundImage="button-full-default.png">
-                <color key="titleColor" red="0.68627452850000004" green="0.1019607931" blue="0.16078431900000001" alpha="1" colorSpace="deviceRGB"/>
-                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-            </state>
-            <state key="selected">
-                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-            </state>
-            <state key="highlighted" backgroundImage="button-select.png">
-                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-            </state>
-            <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                    <integer key="value" value="16"/>
-                </userDefinedRuntimeAttribute>
-            </userDefinedRuntimeAttributes>
-            <connections>
-                <action selector="didTapEditCommute:" destination="-1" eventType="touchUpInside" id="iCs-WN-RSW"/>
-            </connections>
-        </button>
         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2yD-F1-43H">
             <rect key="frame" x="0.0" y="-1" width="320" height="48"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1022,7 +998,6 @@
     <resources>
         <image name="button-full-default.png" width="320" height="46"/>
         <image name="button-full-select.png" width="320" height="46"/>
-        <image name="button-select.png" width="160" height="46"/>
         <image name="confirmation-hud.png" width="320" height="260"/>
         <image name="current-location-button-selected.png" width="36" height="36"/>
         <image name="current-location-button.png" width="36" height="36"/>

@@ -68,7 +68,7 @@
 #define kDriverCancelHudOpenX 165
 #define kDriverCancelHudOpenY 302
 
-@interface VCTicketViewController () <RMMapViewDelegate, VCEditLocationWidgetDelegate, ActionSheetCustomPickerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, CLLocationManagerDelegate, VCRideRequestViewDelegate>
+@interface VCTicketViewController () <RMMapViewDelegate, VCEditLocationWidgetDelegate, ActionSheetCustomPickerDelegate, CLLocationManagerDelegate, VCRideRequestViewDelegate>
 
 // map
 @property (strong, nonatomic) RMPointAnnotation * originAnnotation;
@@ -743,7 +743,7 @@
     [_homeLocationWidget.view removeFromSuperview];
     [_workLocationWidget.view removeFromSuperview];
     [_returnHudView removeFromSuperview];
-    [_scheduleRideButton removeFromSuperview];
+    //[_scheduleRideButton removeFromSuperview];
     [_hovDriverOptionView removeFromSuperview];
     [_nextButton removeFromSuperview];
     [_rideItineraryView removeFromSuperview];
@@ -844,6 +844,8 @@
                                           origin:_pickupHudView ];
 }
 
+
+/*
 - (void) transitionFromSetReturnTimeToEditWork {
     
     _editCommuteState = kEditCommuteStateEditWork;
@@ -857,7 +859,7 @@
     } ];
     
     [self showNextButton];
-    [_scheduleRideButton removeFromSuperview];
+    //[_scheduleRideButton removeFromSuperview];
     
     
 }
@@ -913,6 +915,7 @@
     
     
 }
+ */
 
 - (void) updateRideDetailsConfirmationView:(Ticket *) ticket {
     
@@ -1000,6 +1003,12 @@
     formFrame.size.width = self.view.frame.size.width;
     _locationSearchForm.frame = formFrame;
     [self.view addSubview:_locationSearchForm];
+    
+    CGRect doneButtonFrame = _locationUpdateDoneButton.frame;
+    doneButtonFrame.origin.x = 0;
+    doneButtonFrame.origin.y = self.view.frame.size.height - doneButtonFrame.size.height;
+    doneButtonFrame.size.width = self.view.frame.size.width;
+    
 }
 
 - (void) placeInRouteMode {
@@ -1208,7 +1217,7 @@
     [[VCCommuteManager instance] requestRidesFor:tomorrow
                                          success:^{
                                              [hud hide:YES];
-                                             [self transitionToWaitingScreen];
+                                             //[self transitionToWaitingScreen];
                                          } failure:^{
                                              [hud hide:YES];
                                              [UIAlertView showWithTitle:@"Error" message:@"There was a problem sending your request, you might want to try that again" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
@@ -1239,7 +1248,7 @@
 
 - (IBAction)didTapShowRideDetailsButton:(id)sender {
     
-    [self transitionToRideDetailsConfirmation];
+    //[self transitionToRideDetailsConfirmation];
     
 }
 
@@ -1337,7 +1346,7 @@
 
 - (void) actionSheetPickerDidSucceed:(AbstractActionSheetPicker *)actionSheetPicker origin:(id)origin {
     if( _editCommuteState == kEditCommuteStateReturnTime) {
-        [self transitionFromSetReturnTimeToScheduleRide];
+       // [self transitionFromSetReturnTimeToScheduleRide];
     } else if ( _editCommuteState == kEditCommuteStatePickupTime) {
         [self transitionFromEditPickupTimeToEditHome];
     }
@@ -1345,47 +1354,9 @@
 
 - (void) actionSheetPickerDidCancel:(AbstractActionSheetPicker *)actionSheetPicker origin:(id)origin {
     if( _editCommuteState == kEditCommuteStateReturnTime) {
-        [self transitionFromSetReturnTimeToEditWork];
+        //[self transitionFromSetReturnTimeToEditWork];
     } else if ( _editCommuteState == kEditCommuteStatePickupTime) {
         [self resetInterfaceToHome];
-    }
-}
-
-#pragma mark - UIPickerViewDataSource
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 1;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    if( _whichPicker == kPickerReturnTime) {
-        return [_eveningOptions count];
-    } else if ( _whichPicker == kPickerPickupTime) {
-        return [_morningOptions count];
-    }
-    return 0;
-}
-
-
-#pragma mark - UIPickerViewDelegate
-
--(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    if( _whichPicker == kPickerReturnTime) {
-        return [_eveningOptions objectAtIndex:row];
-    } else if ( _whichPicker == kPickerPickupTime) {
-        return [_morningOptions objectAtIndex:row];
-    }
-    return @"";
-}
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    if( _whichPicker == kPickerReturnTime) {
-        NSString * value = [_eveningOptions objectAtIndex:row];
-        [VCCommuteManager instance].returnTime = value;
-        _returnTimeLabel.text = value;
-    } else if ( _whichPicker == kPickerPickupTime) {
-        NSString * value = [_morningOptions objectAtIndex:row];
-        [VCCommuteManager instance].pickupTime = value;
-        _pickupTimeLabel.text = value;
     }
 }
 
