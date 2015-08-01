@@ -39,7 +39,6 @@
 #import "VCDriverCallHudView.h"
 #import "VCFare.h"
 #import "VCUtilities.h"
-#import "VCHoldingView.h"
 
 #import "VCDriverTicketView.h"
 #import "VCRiderTicketView.h"
@@ -105,10 +104,6 @@
 @property (strong, nonatomic) IBOutlet UIView *returnHudView;
 @property (weak, nonatomic) IBOutlet VCLabel *returnTimeLabel;
 - (IBAction)didTapReturnHud:(id)sender;
-
-//Holding Screen / Confirmation Screen
-@property (strong, nonatomic) IBOutlet VCHoldingView *holdingScreen;
-
 
 @property (weak, nonatomic) Ticket * showingTicket;
 - (IBAction)didTapOKButton:(id)sender;
@@ -519,12 +514,9 @@
         [self addOriginAnnotation: [_ticket originLocation] ];
         [self addDestinationAnnotation: [_ticket destinationLocation]];
         [self showSuggestedRoute: [_ticket originLocation] to:[_ticket destinationLocation]];
-        [self.view addSubview:self.holdingScreen];
         
     } else if([_ticket.state isEqualToString:kCommuteSchedulerFailedState]) {
         [self updateRightMenuButton];
-        [_holdingScreen transitionToRideRequestDenied];
-        [self addHoldingScreenIfNotAdded];
         
     } else if([_ticket.state isEqualToString:kScheduledState]){
         
@@ -542,8 +534,6 @@
         } else {
             
             [self updateRightMenuButton];
-            [_holdingScreen transitionToRideRequestApproved:_ticket];
-            [self addHoldingScreenIfNotAdded];
             
         }
     }
@@ -752,9 +742,7 @@
 }
 
 - (void) removeHuds {
-    [_holdingScreen removeFromSuperview];
-    [_holdingScreen resetView];
-    
+
     [self.scrollView removeFromSuperview];
     
     [_pickupHudView removeFromSuperview];
@@ -911,18 +899,14 @@
     }
 }
 
+
 - (void) transitionToWaitingScreen {
     [_scheduleRideButton removeFromSuperview];
-    [self.view addSubview:self.holdingScreen];
     [self updateRightMenuButton];
     _step = kStepDone;
 }
 
 - (void) transitionToRideDetailsConfirmation {
-    
-    if([[self.view subviews] containsObject:_holdingScreen]){
-        [_holdingScreen removeFromSuperview];
-    }
     
     [self updateRideDetailsConfirmationView: _ticket];
     
@@ -1785,15 +1769,6 @@
             break;
     }
     
-}
-
-- (void) addHoldingScreenIfNotAdded {
-    if([_holdingScreen superview] == nil) {
-        CGRect frame = _holdingScreen.frame;
-        frame.size.height = self.view.frame.size.height;
-        _holdingScreen.frame = frame;
-        [self.view addSubview:_holdingScreen];
-    }
 }
 
 

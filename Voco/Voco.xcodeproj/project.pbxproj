@@ -175,7 +175,6 @@
 		8416477B1B64A47D00CD20AC /* VCBaseValidatorTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F157A1195E8DB1009A33C8 /* VCBaseValidatorTextField.m */; };
 		8416477C1B64A47D00CD20AC /* VCLoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904F19469018007C4671 /* VCLoginResponse.m */; };
 		8416477D1B64A47D00CD20AC /* VCRideDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D8BEB1987650A0027A2AF /* VCRideDetailsView.m */; };
-		8416477E1B64A47D00CD20AC /* VCHoldingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F40CDDCD19D0DC7F0026CFA3 /* VCHoldingView.m */; };
 		8416477F1B64A47D00CD20AC /* VCRideIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B23193E722B00354886 /* VCRideIdentity.m */; };
 		841647801B64A47D00CD20AC /* VCDriverOnBoardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758C619AA91410093DBEA /* VCDriverOnBoardingViewController.m */; };
 		841647811B64A47D00CD20AC /* VCRiderApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BF5193578DE00A94721 /* VCRiderApi.m */; };
@@ -471,7 +470,6 @@
 		841648B01B658F4900CD20AC /* VCLabelBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEC819663B1F00AD4229 /* VCLabelBold.m */; };
 		841648B11B658F4900CD20AC /* VCDebugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C80819625237007E05AD /* VCDebugViewController.m */; };
 		841648B21B658F4900CD20AC /* Voco.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4FA0BFB192BF6BF005D8645 /* Voco.xcdatamodeld */; };
-		841648B31B658F4900CD20AC /* VCHoldingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F40CDDCD19D0DC7F0026CFA3 /* VCHoldingView.m */; };
 		841648B41B658F4900CD20AC /* VCBaseValidatorTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F157A1195E8DB1009A33C8 /* VCBaseValidatorTextField.m */; };
 		841648B51B658F4900CD20AC /* VCLoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904F19469018007C4671 /* VCLoginResponse.m */; };
 		841648B61B658F4900CD20AC /* VCRiderOnBoardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758BD19AA91330093DBEA /* VCRiderOnBoardingViewController.m */; };
@@ -776,8 +774,6 @@
 		849A3CFD1B1E5FDC004446AF /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CFA1B1E5EFF004446AF /* Social.framework */; };
 		D144A4D71B6ADDA900D36D3B /* MBRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = D19278A31B6738D1009BFBF8 /* MBRegion.m */; };
 		D19278A41B6738D1009BFBF8 /* MBRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = D19278A31B6738D1009BFBF8 /* MBRegion.m */; };
-		F40CDDCE19D0DC7F0026CFA3 /* VCHoldingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F40CDDCD19D0DC7F0026CFA3 /* VCHoldingView.m */; };
-		F40CDDD119D0DC7F0026CFA3 /* VCHoldingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F40CDDCD19D0DC7F0026CFA3 /* VCHoldingView.m */; };
 		F425906819958E9700FA928E /* VCTicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F73CA02197F2AB0001B6663 /* VCTicketViewController.m */; };
 		F425906A199592C100FA928E /* VCEditLocationWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6B2A3197F8A9400F6C10B /* VCEditLocationWidget.m */; };
 		F425906D1995E30000FA928E /* VCCommuteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F425906C1995E30000FA928E /* VCCommuteManager.m */; };
@@ -1514,8 +1510,6 @@
 		D570C24C905CF2756FACB77F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F401446D1978728100769802 /* VCFillCommuterPass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCFillCommuterPass.h; path = API/Users/VCFillCommuterPass.h; sourceTree = "<group>"; };
 		F401446E1978728100769802 /* VCFillCommuterPass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCFillCommuterPass.m; path = API/Users/VCFillCommuterPass.m; sourceTree = "<group>"; };
-		F40CDDCC19D0DC7F0026CFA3 /* VCHoldingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCHoldingView.h; sourceTree = "<group>"; };
-		F40CDDCD19D0DC7F0026CFA3 /* VCHoldingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCHoldingView.m; sourceTree = "<group>"; };
 		F40CDDD219D134EE0026CFA3 /* Voco 17.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 17.xcdatamodel"; sourceTree = "<group>"; };
 		F4138C2419650C5600C265CD /* VCCommuterHud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCCommuterHud.h; path = ViewControllers/Views/VCCommuterHud.h; sourceTree = "<group>"; };
 		F4138C2519650C5600C265CD /* VCCommuterHud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCCommuterHud.m; path = ViewControllers/Views/VCCommuterHud.m; sourceTree = "<group>"; };
@@ -1951,8 +1945,6 @@
 				4F4D8BE61987644F0027A2AF /* VCRideOverviewHudView.m */,
 				4F4D8BEA1987650A0027A2AF /* VCRideDetailsView.h */,
 				4F4D8BEB1987650A0027A2AF /* VCRideDetailsView.m */,
-				F40CDDCC19D0DC7F0026CFA3 /* VCHoldingView.h */,
-				F40CDDCD19D0DC7F0026CFA3 /* VCHoldingView.m */,
 				F4138C2419650C5600C265CD /* VCCommuterHud.h */,
 				F4138C2519650C5600C265CD /* VCCommuterHud.m */,
 			);
@@ -3724,7 +3716,6 @@
 				8416477B1B64A47D00CD20AC /* VCBaseValidatorTextField.m in Sources */,
 				8416477C1B64A47D00CD20AC /* VCLoginResponse.m in Sources */,
 				8416477D1B64A47D00CD20AC /* VCRideDetailsView.m in Sources */,
-				8416477E1B64A47D00CD20AC /* VCHoldingView.m in Sources */,
 				8416477F1B64A47D00CD20AC /* VCRideIdentity.m in Sources */,
 				841647801B64A47D00CD20AC /* VCDriverOnBoardingViewController.m in Sources */,
 				841647811B64A47D00CD20AC /* VCRiderApi.m in Sources */,
@@ -3860,7 +3851,6 @@
 				841648B01B658F4900CD20AC /* VCLabelBold.m in Sources */,
 				841648B11B658F4900CD20AC /* VCDebugViewController.m in Sources */,
 				841648B21B658F4900CD20AC /* Voco.xcdatamodeld in Sources */,
-				841648B31B658F4900CD20AC /* VCHoldingView.m in Sources */,
 				841648B41B658F4900CD20AC /* VCBaseValidatorTextField.m in Sources */,
 				841648B51B658F4900CD20AC /* VCLoginResponse.m in Sources */,
 				841648B61B658F4900CD20AC /* VCRiderOnBoardingViewController.m in Sources */,
@@ -3995,7 +3985,6 @@
 				F4C6B1C9197F06B100F6C10B /* VCLabelBold.m in Sources */,
 				F4C6B1CB197F06B100F6C10B /* VCDebugViewController.m in Sources */,
 				F4C6B1CC197F06B100F6C10B /* Voco.xcdatamodeld in Sources */,
-				F40CDDCE19D0DC7F0026CFA3 /* VCHoldingView.m in Sources */,
 				F4C6B1CD197F06B100F6C10B /* VCBaseValidatorTextField.m in Sources */,
 				F4C6B1CE197F06B100F6C10B /* VCLoginResponse.m in Sources */,
 				4FC758BF19AA91330093DBEA /* VCRiderOnBoardingViewController.m in Sources */,
@@ -4131,7 +4120,6 @@
 				F4D8FE1519B1745A00BC0B69 /* VCBaseValidatorTextField.m in Sources */,
 				F4D8FE1619B1745A00BC0B69 /* VCLoginResponse.m in Sources */,
 				F4D8FE1719B1745A00BC0B69 /* VCRideDetailsView.m in Sources */,
-				F40CDDD119D0DC7F0026CFA3 /* VCHoldingView.m in Sources */,
 				F4D8FE1819B1745A00BC0B69 /* VCRideIdentity.m in Sources */,
 				F4D8FE1919B1745A00BC0B69 /* VCDriverOnBoardingViewController.m in Sources */,
 				F4D8FE1A19B1745A00BC0B69 /* VCRiderApi.m in Sources */,
