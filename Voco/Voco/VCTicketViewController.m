@@ -42,6 +42,10 @@
 
 #import "VCLocationSearchViewController.h"
 
+#define kCommuteStateNone 0
+#define kCommuteStatePending 1
+#define kCommuteStateScheduled 2
+
 @interface VCTicketViewController () <RMMapViewDelegate, CLLocationManagerDelegate, VCRideRequestViewDelegate, VCLocationSearchViewControllerDelegate>
 
 // Model
@@ -73,6 +77,7 @@
 
 //Ride requeset
 @property (nonatomic, strong) VCRideRequestView * rideRequestView;
+@property (strong, nonatomic) IBOutlet UIView *waitingMessageView;
 
 // Location Search
 @property (strong, nonatomic) IBOutlet UIView *locationSearchForm;
@@ -81,6 +86,9 @@
 @property (strong, nonatomic) VCLocationSearchViewController * locationSearchTable;
 @property (nonatomic) NSInteger editLocationType;
 @property (strong, nonatomic) MKPlacemark * activePlacemark;
+
+// Colors
+@property (nonatomic, strong) UIColor * barButtonItemColor;
 
 
 @end
@@ -94,7 +102,7 @@
         _appeared = NO;
         _ticket = nil;
         
-        _appeared = NO;
+        _barButtonItemColor = [UIColor colorWithRed:(182/255.f) green:(31/255.f) blue:(36/255.f) alpha:1.0];
     }
     return self;
 }
@@ -141,7 +149,6 @@
         }
     }
     
-    [self updateRightMenuButton];
 }
 
 - (void) viewWillAppear:(BOOL)animated{
@@ -160,34 +167,9 @@
          
         _appeared = YES;
         
-        if(_ticket == nil) {
-            
-            if([[VCCommuteManager instance] hasSettings]) {
-                // if commute IS set up already
-                [self showHome];
-                self.map.userTrackingMode = RMUserTrackingModeFollow;
-               
-                //[self addOriginAnnotation: [VCCommuteManager instance].home];
-                //[self addDestinationAnnotation: [VCCommuteManager instance].work];
-                // Hack Locations for Now
-                CLLocation * location = [[CLLocation alloc] initWithLatitude:41 longitude:-72];
-                [self addOriginAnnotation:  location];
-                CLLocation * location2 = [[CLLocation alloc] initWithLatitude:41.5 longitude:-72];
-                [self addDestinationAnnotation:location2];
-                
-                //[self showSuggestedRoute: [VCCommuteManager instance].home to:[VCCommuteManager instance].work];
-                [self zoomToCurrentLocation];
-                
-            } else {
-                // if commute is not set up
-                //_step = kStepSetDepartureLocation;
-                // [self transitionToSetupCommute];
-            }
-            
-            
-        } else {
-            [self showInterfaceForTicket];
-        }
+        [self showInterfaceForTicket];
+        
+       
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripFulfilled:) name:kNotificationTypeTripFulfilled object:nil];
@@ -326,20 +308,24 @@
                      }];
 }
 
-- (void) updateRightMenuButton {
-    
-    UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithTitle:@"Schedule" style:UIBarButtonItemStylePlain target:self action:@selector(didTapScheduleMenuButton:)];
-    self.navigationItem.rightBarButtonItem = buttonItem;
-    self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:(182/255.f) green:(31/255.f) blue:(36/255.f) alpha:1.0];
-
-}
-
 
 ////////////////
 //////////////// Scheduling a Commute
 ////////////////
 
 - (void) didTapScheduleMenuButton:(id)sender {
+    [self prepareRideRequestViewEditable:YES];
+    [self showRideRequestView];
+    
+}
+
+- (void) didTapReviewScheduleMenuButton:(id)sender {
+    [self prepareRideRequestViewEditable:NO];
+    [self showRideRequestView];
+    
+}
+
+- (void)prepareRideRequestViewEditable: (BOOL) editable {
     if(_rideRequestView == nil) {
         _rideRequestView = [WRUtilities getViewFromNib:@"VCRideRequestView" class:[VCRideRequestView class]];
     }
@@ -347,8 +333,10 @@
     
     [_rideRequestView updateWithRoute:_route];
     [self showRideRequestView];
+    [_rideRequestView setEditable:editable];
     
 }
+
 
 - (void)showRideRequestView {
     CGRect frame = _rideRequestView.frame;
@@ -376,39 +364,81 @@
                      }];
 }
 
+- (void) setRightButtonForState:(NSInteger) state{
+    UIBarButtonItem *buttonItem;
+    switch(state){
+        case kCommuteStateNone:
+        {
+            buttonItem = [[UIBarButtonItem alloc] initWithTitle:@"Schedule Rides" style:UIBarButtonItemStylePlain target:self action:@selector(didTapScheduleMenuButton:)];
+            break;
+        }
+        case kCommuteStatePending:
+        {
+            buttonItem = [[UIBarButtonItem alloc] initWithTitle:@"Commute Pending" style:UIBarButtonItemStylePlain target:self action:@selector(didTapReviewScheduleMenuButton:)];
+            break;
+        }
+        case kCommuteStateScheduled:
+        {
+            buttonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel Ride" style:UIBarButtonItemStylePlain target:self action:@selector(didTapCancel:)];
+            break;
+        }
+        default:
+        {
+            buttonItem = nil;
+            break;
+        }
+            
+    }
+    if(buttonItem != nil){
+        self.navigationItem.rightBarButtonItem = buttonItem;
+        self.navigationItem.rightBarButtonItem.tintColor = _barButtonItemColor;
+    }
+}
+
 
 - (void) showInterfaceForTicket {
     [self clearMap];
     [self removeHuds];
-    [self updateRightMenuButton];
     
-    
-    if([@[kCreatedState, kRequestedState] containsObject:_ticket.state]){
+    if(_ticket == nil) {
+        [self setRightButtonForState:kCommuteStateNone];
+        
+        if([[VCCommuteManager instance] hasSettings]) {
+            // if commute IS set up already
+            [self showHome];
+            self.map.userTrackingMode = RMUserTrackingModeFollow;
+            
+            [self addOriginAnnotation: [VCCommuteManager instance].home];
+            [self addDestinationAnnotation: [VCCommuteManager instance].work];
+            
+            [self showSuggestedRoute: [VCCommuteManager instance].home to:[VCCommuteManager instance].work];
+            [self zoomToCurrentLocation];
+            
+        }
+        
+    } else if([@[kCreatedState, kRequestedState] containsObject:_ticket.state]){
+        
+        [self setRightButtonForState:kCommuteStatePending];
         [self addOriginAnnotation: [_ticket originLocation] ];
         [self addDestinationAnnotation: [_ticket destinationLocation]];
         [self showSuggestedRoute: [_ticket originLocation] to:[_ticket destinationLocation]];
         
     } else if([_ticket.state isEqualToString:kCommuteSchedulerFailedState]) {
-        [self updateRightMenuButton];
+        [self setRightButtonForState:kCommuteStateNone];
         
     } else if([_ticket.state isEqualToString:kScheduledState]){
-        
+        [self setRightButtonForState:kCommuteStateScheduled];
+
         [self updateMapForTicket:_ticket];
         
-        if([_ticket.confirmed boolValue]){
-            
-            // show the HUD interface
-            if([_ticket.driving boolValue] ) {
-                //[self showHovDriverInterface];
-            } else {
-                //[self showRiderInterface];
-            }
-            
+        // show the HUD interface
+        if([_ticket.driving boolValue] ) {
+            //[self showHovDriverInterface];
         } else {
-            
-            [self updateRightMenuButton];
-            
+            //[self showRiderInterface];
         }
+            
+       
     }
     
 }
@@ -439,7 +469,7 @@
     [self clearMap];
     [UIView transitionWithView:self.view duration:.35 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
         [self removeHuds];
-        [self updateRightMenuButton];
+        [self showInterfaceForTicket];
         [self showHome];
         
         // check for another scheduled commute
@@ -711,6 +741,7 @@
                                              [hud hide:YES];
                                              
                                              // Put the waiting text in here.
+                                             [self showInterfaceForTicket];
                                              
                                          } failure:^{
                                              [hud hide:YES];

@@ -74,6 +74,26 @@
     _route = [route copy]; // copy, not retain
 }
 
+- (void) setEditable:(BOOL) editable {
+    if(editable) {
+        _scheduleButton.enabled = YES;
+        _fromButton.enabled = YES;
+        _toButton.enabled = YES;
+        _toHomeTimeStepper.enabled = YES;
+        _toWorkTimeStepper.enabled = YES;
+        _driverCheckbox.enabled= YES;
+    } else {
+        [_scheduleButton setTitle:@"Commute Pending" forState:UIControlStateNormal];
+        _scheduleButton.enabled = NO;
+        _fromButton.enabled = NO;
+        _toButton.enabled = NO;
+        _toHomeTimeStepper.enabled = NO;
+        _toWorkTimeStepper.enabled = NO;
+        _driverCheckbox.enabled= NO;
+    }
+}
+
+
 
 - (IBAction)didTapCloseButton:(id)sender {
     if(_commutePreferencesHaveChanged){

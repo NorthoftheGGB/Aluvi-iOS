@@ -31,6 +31,7 @@
 
 - (void) updateLocation:(MKPlacemark*) placemark type:(NSInteger) type;
 - (void) updateWithRoute:(Route *) route;
+- (void) setEditable:(BOOL) editable;
 
 
 @end
