@@ -7,6 +7,7 @@
 //
 
 #import "VCRideRequestView.h"
+@import AddressBookUI;
 
 @interface VCRideRequestView ()
 
@@ -60,11 +61,11 @@
 }
 
 - (IBAction)didTapFromButton:(id)sender {
-    [_delegate rideRequestView:self didTapEditLocation:CLLocationCoordinate2DMake(40, 40) locationName:@"Home" type:VCLOCATIONTYPEHOME];
+    [_delegate rideRequestView:self didTapEditLocation:CLLocationCoordinate2DMake(40, 40) locationName:@"Home" type:kHomeType];
 }
 
 - (IBAction)didTapToButton:(id)sender {
-    [_delegate rideRequestView:self didTapEditLocation:CLLocationCoordinate2DMake(40, 40) locationName:@"Work" type:VCLOCATIONTYPEWORK];
+    [_delegate rideRequestView:self didTapEditLocation:CLLocationCoordinate2DMake(40, 40) locationName:@"Work" type:kWorkType];
 }
 
 
@@ -78,13 +79,17 @@
     _toHomeTimeLabel.text = [_eveningOptions objectAtIndex:value];
 }
 
-- (void) updateLocation:(MKMapItem*) mapItem type:(NSInteger) type {
+- (void) updateLocation:(MKPlacemark*) placemark type:(NSInteger) type {
     switch (type) {
-        case VCLOCATIONTYPEWORK:
-            
+        case kHomeType:
+        {
+            [self updateFromButton:ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO)];
+        }
             break;
-        case VCLOCATIONTYPEHOME:
-            
+        case kWorkType:
+        {
+            [self updateToButton:ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO)];
+        }
             break;
             
         default:
@@ -92,6 +97,16 @@
     }
 }
 
+
+- (void) updateFromButton:(NSString *) addressString{
+    NSString * title = [NSString stringWithFormat:@"From: %@", addressString];
+    [_fromButton setTitle:title forState:UIControlStateNormal];
+}
+
+- (void) updateToButton:(NSString *) addressString{
+    NSString * title = [NSString stringWithFormat:@"To: %@", addressString];
+    [_toButton setTitle:title forState:UIControlStateNormal];
+}
 
 
 

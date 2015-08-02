@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 @import MapKit;
+@import MapKit.MKLocalSearch;
+@import MapKit.MKLocalSearchRequest;
+@import MapKit.MKLocalSearchResponse;
 
 @class VCLocationSearchViewController;
 

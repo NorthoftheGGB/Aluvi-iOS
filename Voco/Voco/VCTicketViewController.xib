@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCTicketViewController">
             <connections>
+                <outlet property="locationSearchField" destination="HRU-3H-xTk" id="VED-oW-sZV"/>
                 <outlet property="locationSearchForm" destination="FqQ-ua-yu5" id="ejr-CN-TdV"/>
                 <outlet property="locationUpdateDoneButton" destination="2yD-F1-43H" id="CAR-g9-EkX"/>
                 <outlet property="rideCompleteButton" destination="Jh3-aQ-cgL" id="hB9-UZ-Yb5"/>
@@ -923,6 +924,9 @@
             <state key="normal" title="Done">
                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
             </state>
+            <connections>
+                <action selector="didTapLocationEditDone:" destination="-1" eventType="touchUpInside" id="tn6-B5-kJ8"/>
+            </connections>
             <point key="canvasLocation" x="1041" y="385"/>
         </button>
         <view contentMode="scaleToFill" id="FqQ-ua-yu5" userLabel="Local Search Views">
@@ -934,6 +938,9 @@
                     <state key="normal" title="Cancel">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="didTapCancelLocationEdit:" destination="-1" eventType="touchUpInside" id="1xw-PN-IOk"/>
+                    </connections>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search for addresses and locations" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HRU-3H-xTk">
                     <rect key="frame" x="12" y="48" width="299" height="30"/>
@@ -941,7 +948,6 @@
                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
                     <connections>
                         <action selector="didBeginEditingLocationSearchField:" destination="-1" eventType="editingDidBegin" id="JFR-Vb-SZf"/>
-                        <action selector="didEndEditingLocationSearchField:" destination="-1" eventType="editingDidEnd" id="Nkg-Gp-cYh"/>
                         <action selector="editingDidChangeLocationSearchField:" destination="-1" eventType="editingChanged" id="NHm-Ar-VeI"/>
                     </connections>
                 </textField>

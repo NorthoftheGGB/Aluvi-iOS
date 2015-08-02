@@ -88,7 +88,6 @@
     if(_delegate != nil){
         MKMapItem * mapItem = [_searchItems objectAtIndex:[indexPath row]];
         [_delegate locationSearchViewController:self didSelectLocation: mapItem ];
-        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 

@@ -10,8 +10,8 @@
 @import MapKit;
 #import "Route.h"
 
-#define VCLOCATIONTYPEHOME 1001
-#define VCLOCATIONTYPEWORK 1002
+#define kHomeType 3000
+#define kWorkType 3001
 
 @class VCRideRequestView;
 
@@ -36,7 +36,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *driverCheckbox;
 @property (strong, nonatomic) IBOutlet UIButton *scheduleButton;
 
-- (void) updateLocation:(MKMapItem*) mapItem type:(NSInteger) type;
+- (void) updateLocation:(MKPlacemark*) placemark type:(NSInteger) type;
 
 - (IBAction)didTapCloseButton:(id)sender;
 - (IBAction)didTapToWorkTimeStepper:(id)sender;
