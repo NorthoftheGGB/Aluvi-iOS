@@ -40,10 +40,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-- (IBAction)didEditSearchText:(id)sender {
+
+- (void)didEditSearchText:(NSString*) text {
     MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
-    request.naturalLanguageQuery = _searchField.text;
+    request.naturalLanguageQuery = text;
+ 
     // Marin
     MKCoordinateRegion region = MKCoordinateRegionMake(
                            CLLocationCoordinate2DMake(38.05513, -122.7488),
@@ -56,7 +57,7 @@
     _localSearch = [[MKLocalSearch alloc] initWithRequest:request];
     [_localSearch startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
         _searchItems = response.mapItems;
-        [_tableView reloadData];
+        [self.tableView reloadData];
     }];
 }
 
@@ -68,7 +69,7 @@
         return 0;
     }
 }
- */
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MKMapItem *mapItem = [_searchItems objectAtIndex:[indexPath row]];
@@ -86,7 +87,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if(_delegate != nil){
         MKMapItem * mapItem = [_searchItems objectAtIndex:[indexPath row]];
-        [_delegate didSelectLocation: mapItem ];
+        [_delegate locationSearchViewController:self didSelectLocation: mapItem ];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }

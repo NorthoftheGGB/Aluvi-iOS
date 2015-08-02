@@ -9,8 +9,6 @@
 #import "VCTicketViewController.h"
 @import AddressBookUI;
 #import <MBProgressHUD.h>
-#import <ActionSheetStringPicker.h>
-#import <ActionSheetCustomPicker.h>
 #import <Masonry.h>
 #import "IIViewDeckController.h"
 
@@ -71,7 +69,7 @@
 #define kDriverCancelHudOpenX 165
 #define kDriverCancelHudOpenY 302
 
-@interface VCTicketViewController () <RMMapViewDelegate, VCEditLocationWidgetDelegate, ActionSheetCustomPickerDelegate, CLLocationManagerDelegate, VCRideRequestViewDelegate>
+@interface VCTicketViewController () <RMMapViewDelegate, CLLocationManagerDelegate, VCRideRequestViewDelegate, VCLocationSearchViewControllerDelegate>
 
 // map
 @property (strong, nonatomic) RMPointAnnotation * originAnnotation;
@@ -123,34 +121,9 @@
 @property (nonatomic) BOOL appeared;
 @property (nonatomic) NSInteger editCommuteState;
 
-- (IBAction)didTapEditCommute:(id)sender;
-//- (IBAction)didTapRideNow:(id)sender;
-- (IBAction)didTapScheduleRide:(id)sender;
-- (IBAction)didTapNextButton:(id)sender;
-//- (IBAction)didTapHovDriveYesButton:(id)sender;
-//- (IBAction)didTapShowRideDetailsButton:(id)sender;
 
-
-// HOV Driver
-//@property (strong, nonatomic) IBOutlet VCDriverCallHudView *driverCallHUD;
-//@property (strong, nonatomic) IBOutlet UIView *driverCancelHUD;
-//@property (strong, nonatomic) IBOutlet UIButton *directionsListButton;
-//@property (strong, nonatomic) IBOutlet VCDriveDetailsView * fareDetailsView;
-
-//Call HUD
-@property (nonatomic) BOOL callHudPanLocked;
-@property (strong, nonatomic) NSTimer * timer;
-@property (nonatomic) BOOL callHudOpen;
-
-
-//Cancel HUD
-@property (nonatomic) BOOL cancelHudPanLocked;
-@property (strong, nonatomic) NSTimer * cancelTimer;
-@property (nonatomic) BOOL cancelHudOpen;
-//@property (strong, nonatomic) IBOutlet VCButton *cancelRideButton;
-//@property (strong, nonatomic) IBOutlet UIImageView *cancelIconImageView;
-//- (IBAction)didTapCancelRide:(id)sender;
-
+//Ride requeset
+@property (nonatomic, strong) VCRideRequestView * rideRequestView;
 
 //Ride Status
 @property (strong, nonatomic) IBOutlet VCButton *ridersPickedUpButton;
@@ -162,7 +135,7 @@
 @property (strong, nonatomic) IBOutlet UIView *locationSearchForm;
 @property (strong, nonatomic) IBOutlet UIButton *locationUpdateDoneButton;
 @property (strong, nonatomic) VCLocationSearchViewController * locationSearchTable;
-
+@property (nonatomic) NSInteger locationType;
 
 @end
 
@@ -175,8 +148,6 @@
         _appeared = NO;
         _ticket = nil;
         
-        _callHudPanLocked = NO;
-        _callHudOpen = NO;
         _appeared = NO;
     }
     return self;
@@ -186,16 +157,6 @@
 {
     [super viewDidLoad];
     [self startLocationUpdates];
-    
-    _homeLocationWidget = [[VCEditLocationWidget alloc] init];
-    _homeLocationWidget.delegate = self;
-    _workLocationWidget = [[VCEditLocationWidget alloc] init];
-    _workLocationWidget.delegate = self;
-    _homeLocationWidget.type = kHomeType;
-    _workLocationWidget.type = kWorkType;
-    [self addChildViewController:_homeLocationWidget];
-    [self addChildViewController:_workLocationWidget];
-    
     
     // Look for pending ticket
     if(_ticket == nil) {
@@ -274,9 +235,7 @@
                 // if commute IS set up already
                 [self showHome];
                 self.map.userTrackingMode = RMUserTrackingModeFollow;
-                
-                
-                
+               
                 //[self addOriginAnnotation: [VCCommuteManager instance].home];
                 //[self addDestinationAnnotation: [VCCommuteManager instance].work];
                 // Hack Locations for Now
@@ -452,6 +411,32 @@
 }
 
 
+- (void)showRideRequestView {
+    CGRect frame = _rideRequestView.frame;
+    frame.origin.x = 0;
+    frame.origin.y = -self.view.frame.size.height;
+    frame.size.width = self.view.frame.size.width;
+    frame.size.height = self.view.frame.size.height;
+    _rideRequestView.frame = frame;
+    
+    // add the view to the superview
+    [[[[UIApplication sharedApplication] delegate] window] addSubview:_rideRequestView];
+    
+    [UIView animateWithDuration:0.4
+                          delay:0
+         usingSpringWithDamping:0.3
+          initialSpringVelocity:0.5
+                        options:0
+                     animations:^{
+                         // final placement
+                         CGRect frame = _rideRequestView.frame;
+                         frame.origin.y = 0;
+                         _rideRequestView.frame = frame;
+                     } completion:^(BOOL finished) {
+                         
+                     }];
+}
+
 - (void) didTapScheduleMenuButton:(id)sender {
     
     // load from nib
@@ -469,32 +454,11 @@
     
     
      // set your starting frame
-    VCRideRequestView * view = [WRUtilities getViewFromNib:@"VCRideRequestView" class:[VCRideRequestView class]];
-    view.delegate = self; 
+    _rideRequestView = [WRUtilities getViewFromNib:@"VCRideRequestView" class:[VCRideRequestView class]];
+    _rideRequestView.delegate = self; 
     
-    CGRect frame = view.frame;
-    frame.origin.x = 0;
-    frame.origin.y = -self.view.frame.size.height;
-    frame.size.width = self.view.frame.size.width;
-    frame.size.height = self.view.frame.size.height;
-    view.frame = frame;
     
-    // add the view to the superview
-    [[[[UIApplication sharedApplication] delegate] window] addSubview:view];
-    
-    [UIView animateWithDuration:0.4
-                          delay:0
-         usingSpringWithDamping:0.3
-          initialSpringVelocity:0.5
-                        options:0
-                     animations:^{
-        // final placement
-        CGRect frame = view.frame;
-        frame.origin.y = 0;
-        view.frame = frame;
-    } completion:^(BOOL finished) {
-        
-    }];
+    [self showRideRequestView];
 
 
 }
@@ -821,22 +785,6 @@
     
 }
 
-- (void) showReturnTimePicker {
-    _whichPicker = kPickerReturnTime;
-    [ActionSheetCustomPicker showPickerWithTitle:@"Return Time"
-                                        delegate:self
-                                showCancelButton:YES
-                                          origin:_returnHudView ];
-}
-
-- (void) showPickupTimePicker {
-    _whichPicker = kPickerPickupTime;
-    [ActionSheetCustomPicker showPickerWithTitle:@"Pickup Time"
-                                        delegate:self
-                                showCancelButton:YES
-                                          origin:_pickupHudView ];
-}
-
 
 /*
 - (void) transitionFromSetReturnTimeToEditWork {
@@ -969,8 +917,6 @@
 
 
 // Location Editing
-
-// No longer used
 - (void) updateEditLocationWidget: (VCEditLocationWidget *) editLocationWidget
                      withLocation: (CLLocation *) location {
     editLocationWidget.waiting = YES;
@@ -1228,16 +1174,7 @@
     
 }
 
-- (IBAction)didTapNextButton:(id)sender {
-    
-    if( _editCommuteState == kEditCommuteStateEditHome) {
-        [self transitionFromEditHomeToEditWork];
-    } else {
-        [self transitionFromEditWorkToSetReturnTime];
-    }
-    
-}
-
+/*
 - (IBAction)didTapHovDriveYesButton:(id)sender {
     
     if (_hovDriveYesButton.selected == YES){
@@ -1248,31 +1185,8 @@
         [VCCommuteManager instance].driving = YES;
     }
 }
+ */
 
-- (IBAction)didTapShowRideDetailsButton:(id)sender {
-    
-    //[self transitionToRideDetailsConfirmation];
-    
-}
-
-- (IBAction)didTapPickupHud:(id)sender {
-    [self showPickupTimePicker];
-}
-
-
-- (IBAction)didTapReturnHud:(id)sender {
-    [self showReturnTimePicker];
-}
-
-- (IBAction)didTapConfirmedCommuterRide:(id)sender {
-    
-    _ticket.confirmed = [NSNumber numberWithBool:YES];
-    _ticket.returnTicket.confirmed = [NSNumber numberWithBool:YES];
-    [VCNotifications scheduleUpdated];
-    [VCCoreData saveContext];
-    
-    [self showInterfaceForTicket];
-}
 
 - (IBAction)didTapZoomToRideBounds:(id)sender {
     if (_ticket != nil) {
@@ -1297,21 +1211,39 @@
     _locationSearchTable.tableView.alpha = 0;
     [self.view addSubview:_locationSearchTable.tableView];
     [_locationSearchTable.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-       //make.left.equalTo(self.view.mas_left);
-       //make.top.equalTo(self.view.mas_top).with.offset(120);  //TODO remove magic number
-       //make.right.equalTo(self.view.mas_right);
+       make.left.equalTo(self.view.mas_left);
+       make.top.equalTo(self.view.mas_top).with.offset(_locationSearchForm.frame.size.height);
+       make.right.equalTo(self.view.mas_right);
+       make.bottom.equalTo(self.view.mas_bottom);
     }];
     [_locationSearchTable.view setNeedsLayout];
     
 
     [UIView transitionWithView:self.view
-                      duration:.65
+                      duration:.45
                        options:0
                     animations:^{
                         _locationSearchTable.view.alpha = 1;
                     }
                     completion:nil];
 }
+
+- (IBAction)editingDidChangeLocationSearchField:(UITextField*)sender {
+    [_locationSearchTable didEditSearchText:sender.text];
+}
+
+- (IBAction)didEndEditingLocationSearchField:(id)sender {
+    [UIView transitionWithView:self.view
+                      duration:.45
+                       options:0
+                    animations:^{
+                        _locationSearchTable.view.alpha = 0;
+                    }
+                    completion:^(BOOL finished) {
+                        [_locationSearchTable.view removeFromSuperview];
+                    }];
+}
+
 
 
 
@@ -1657,14 +1589,7 @@
 }
 
 
-- (void) unlockCallHudPan:(id)sender {
-    _callHudPanLocked = NO;
-}
 
-
-- (void) unlockCancelHudPan:(id)sender {
-    _cancelHudPanLocked = NO;
-}
  */
 
 - (void) callPhone:(NSString *) phoneNumber {
@@ -1694,14 +1619,7 @@
     Rider * rider = [_driverCallHUD.riders objectAtIndex:0];
     [self callPhone:rider.phone];
 }
-- (IBAction)didTapCallRider2:(id)sender {
-    Rider * rider = [_driverCallHUD.riders objectAtIndex:1];
-    [self callPhone:rider.phone];
-}
-- (IBAction)didTapCallRider3:(id)sender {
-    Rider * rider = [_driverCallHUD.riders objectAtIndex:2];
-    [self callPhone:rider.phone];
-}
+
  */
 
 
@@ -1765,23 +1683,6 @@
                            [hud hide:YES];
                            
                        }];
-    
-}
-
-
-
-- (IBAction)didChangeDisplayDirectionValue:(id)sender {
-    
-    switch(_rideItineraryView.segmentedButton.selectedSegmentIndex){
-        case 0:
-            [self updateRideDetailsConfirmationView:_ticket];
-            [self updateMapForTicket:_ticket];
-            break;
-        case 1:
-            [self updateRideDetailsConfirmationView:_ticket.returnTicket];
-            [self updateMapForTicket:_ticket.returnTicket];
-            break;
-    }
     
 }
 
@@ -1894,8 +1795,10 @@
                      }];
 }
 
-- (void)rideRequestView:(VCRideRequestView *)rideRequestView didTapEditLocation:(CLLocationCoordinate2D)location locationName:(NSString *)locationName {
+- (void)rideRequestView:(VCRideRequestView *)rideRequestView didTapEditLocation:(CLLocationCoordinate2D)location locationName:(NSString *)locationName type:(NSInteger)type {
+    
     [self placeInEditLocationMode];
+    _locationType = type;
     [UIView animateWithDuration:0.35
                      animations:^{
         CGRect frame = rideRequestView.frame;
@@ -1906,5 +1809,15 @@
                      }];
     
 }
+
+
+#pragma mark VCLocationSearchViewController
+- (void) locationSearchViewController: (VCLocationSearchViewController *) locationSearchViewController didSelectLocation: (MKMapItem *) mapItem{
+    [_rideRequestView updateLocation:mapItem type:_locationType];
+    [self showRideRequestView];
+    [self placeInEditLocationMode];
+
+}
+
 
 @end

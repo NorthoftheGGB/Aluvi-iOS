@@ -60,10 +60,11 @@
 }
 
 - (IBAction)didTapFromButton:(id)sender {
-    [_delegate rideRequestView:self didTapEditLocation:CLLocationCoordinate2DMake(40, 40) locationName:@"Home"];
+    [_delegate rideRequestView:self didTapEditLocation:CLLocationCoordinate2DMake(40, 40) locationName:@"Home" type:VCLOCATIONTYPEHOME];
 }
 
 - (IBAction)didTapToButton:(id)sender {
+    [_delegate rideRequestView:self didTapEditLocation:CLLocationCoordinate2DMake(40, 40) locationName:@"Work" type:VCLOCATIONTYPEWORK];
 }
 
 
@@ -76,6 +77,21 @@
     int value = [sender value];
     _toHomeTimeLabel.text = [_eveningOptions objectAtIndex:value];
 }
+
+- (void) updateLocation:(MKMapItem*) mapItem type:(NSInteger) type {
+    switch (type) {
+        case VCLOCATIONTYPEWORK:
+            
+            break;
+        case VCLOCATIONTYPEHOME:
+            
+            break;
+            
+        default:
+            break;
+    }
+}
+
 
 
 

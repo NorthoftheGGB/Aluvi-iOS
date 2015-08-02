@@ -941,6 +941,8 @@
                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
                     <connections>
                         <action selector="didBeginEditingLocationSearchField:" destination="-1" eventType="editingDidBegin" id="JFR-Vb-SZf"/>
+                        <action selector="didEndEditingLocationSearchField:" destination="-1" eventType="editingDidEnd" id="Nkg-Gp-cYh"/>
+                        <action selector="editingDidChangeLocationSearchField:" destination="-1" eventType="editingChanged" id="NHm-Ar-VeI"/>
                     </connections>
                 </textField>
             </subviews>
