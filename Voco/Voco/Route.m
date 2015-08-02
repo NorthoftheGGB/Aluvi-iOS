@@ -69,4 +69,19 @@
     
 }
 
+- (id)copyWithZone:(NSZone *)zone
+{
+    Route * copy = [[Route alloc] init];
+    if(copy){
+        copy.home = self.home;
+        copy.work = self.work;
+        copy.homePlaceName = [self.homePlaceName copy];
+        copy.workPlaceName = [self.workPlaceName copy];
+        copy.driving = self.driving;
+        copy.pickupTime = [self.pickupTime copy];
+        copy.returnTime = [self.returnTime copy];
+    }
+    return copy;
+}
+
 @end

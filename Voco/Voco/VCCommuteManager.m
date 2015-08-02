@@ -137,7 +137,7 @@ static VCCommuteManager * instance;
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (void) save:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure {
+- (void) save:(void ( ^ ) ()) success failure:( void ( ^ ) (NSString * errorMessage)) failure {
     
     /*TODO
      Refactor: move API call to a API library file
@@ -162,7 +162,7 @@ static VCCommuteManager * instance;
                                          success();
                                          
                                      } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                         failure();
+                                         failure(@"Failed to store route,  please try again");
                                      }];
     
     

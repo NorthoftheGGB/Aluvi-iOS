@@ -23,7 +23,7 @@
 
 + (VCCommuteManager *) instance;
 
-- (void) save:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
+- (void) save:(void ( ^ ) ()) success failure:( void ( ^ ) (NSString * errorMessage)) failure;
 - (void) reset;
 - (void) load;
 - (void) loadFromServer;

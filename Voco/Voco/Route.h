@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 @import CoreLocation;
 
-@interface Route : NSObject
+@interface Route : NSObject <NSCopying>
 
 @property (nonatomic, strong) CLLocation * home;
 @property (nonatomic, strong) CLLocation * work;

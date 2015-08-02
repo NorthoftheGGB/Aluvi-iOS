@@ -11,9 +11,23 @@
 
 @interface VCRideRequestView ()
 
+@property (strong, nonatomic) IBOutlet UIButton *fromButton;
+@property (strong, nonatomic) IBOutlet UIButton *toButton;
+@property (strong, nonatomic) IBOutlet UIStepper *toWorkTimeStepper;
+@property (strong, nonatomic) IBOutlet UILabel *toWorkTimeLabel;
+@property (strong, nonatomic) IBOutlet UIStepper *toHomeTimeStepper;
+@property (strong, nonatomic) IBOutlet UILabel *toHomeTimeLabel;
+@property (strong, nonatomic) IBOutlet UIButton *driverCheckbox;
+@property (strong, nonatomic) IBOutlet UIButton *scheduleButton;
+
+
 // data
 @property (strong, nonatomic) NSArray * morningOptions;
 @property (strong, nonatomic) NSArray * eveningOptions;
+
+// state
+@property (nonatomic) BOOL commutePreferencesHaveChanged;
+@property (nonatomic, strong) Route * route;
 
 @end
 
@@ -43,21 +57,41 @@
     _toWorkTimeStepper.maximumValue = [_morningOptions count]-1;
     _toWorkTimeStepper.stepValue = 1;
     
-
+    _commutePreferencesHaveChanged = NO;
 
 }
+
+- (void) updateWithRoute:(Route *) route {
+    _toWorkTimeLabel.text = route.pickupTime;
+    _toHomeTimeLabel.text = route.returnTime;
+    [self updateFromButton:route.homePlaceName];
+    [self updateToButton:route.workPlaceName];
+    if(route.driving){
+        [_driverCheckbox setSelected:YES];
+    } else {
+        [_driverCheckbox setSelected:NO];
+    }
+    _route = [route copy]; // copy, not retain
+}
+
 
 - (IBAction)didTapCloseButton:(id)sender {
-    [_delegate rideRequestViewDidTapClose:self];
+    if(_commutePreferencesHaveChanged){
+        [UIAlertView showWithTitle:@"Save Changes?" message:@"Do you want to save the changes you made to your commute settings?" cancelButtonTitle:@"Nope" otherButtonTitles:@[@"Yes!"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            if(buttonIndex == 1){
+                [_delegate rideRequestViewDidTapClose:self withChanges:_route];
+            }
+        }];
+        _commutePreferencesHaveChanged = NO;
+    } else {
+        [_delegate rideRequestViewDidCancel:self];
+    }
 }
 
-- (IBAction)didTapToWorkTimeStepper:(id)sender {
-}
-
-- (IBAction)didTapToHomeTimeStepper:(id)sender {
-}
 
 - (IBAction)didTapScheduleButton:(id)sender {
+    [_delegate rideRequestView:self didTapScheduleCommute:_route];
+    _commutePreferencesHaveChanged = NO;
 }
 
 - (IBAction)didTapFromButton:(id)sender {
@@ -72,23 +106,35 @@
 
 - (IBAction)morningPickupTimeValueChanged:(UIStepper *)sender {
     int value = [sender value];
-    _toWorkTimeLabel.text = [_morningOptions objectAtIndex:value];
+    NSString * time = [_morningOptions objectAtIndex:value];
+    _toWorkTimeLabel.text = time;
+    _commutePreferencesHaveChanged = YES;
+    _route.pickupTime = time;
 }
 - (IBAction)eveningPickupValueChanged:(UIStepper *)sender {
     int value = [sender value];
-    _toHomeTimeLabel.text = [_eveningOptions objectAtIndex:value];
+    NSString * time = [_eveningOptions objectAtIndex:value];
+    _toHomeTimeLabel.text = time;
+    _commutePreferencesHaveChanged = YES;
+    _route.returnTime = time;
 }
 
 - (void) updateLocation:(MKPlacemark*) placemark type:(NSInteger) type {
     switch (type) {
         case kHomeType:
         {
-            [self updateFromButton:ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO)];
+            _route.home = [[CLLocation alloc] initWithLatitude:placemark.coordinate.latitude longitude:placemark.coordinate.longitude];
+            _route.homePlaceName = ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);
+            [self updateFromButton: _route.homePlaceName];
+            _commutePreferencesHaveChanged = YES;
         }
             break;
         case kWorkType:
         {
-            [self updateToButton:ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO)];
+            _route.work = [[CLLocation alloc] initWithLatitude:placemark.coordinate.latitude longitude:placemark.coordinate.longitude];
+            _route.workPlaceName = ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);
+            [self updateToButton:_route.workPlaceName];
+            _commutePreferencesHaveChanged = YES;
         }
             break;
             
@@ -101,6 +147,7 @@
 - (void) updateFromButton:(NSString *) addressString{
     NSString * title = [NSString stringWithFormat:@"From: %@", addressString];
     [_fromButton setTitle:title forState:UIControlStateNormal];
+
 }
 
 - (void) updateToButton:(NSString *) addressString{

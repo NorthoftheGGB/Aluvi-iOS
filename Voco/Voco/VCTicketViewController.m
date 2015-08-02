@@ -44,7 +44,10 @@
 
 @interface VCTicketViewController () <RMMapViewDelegate, CLLocationManagerDelegate, VCRideRequestViewDelegate, VCLocationSearchViewControllerDelegate>
 
-// map
+// Model
+@property(strong, nonatomic) Route * route;
+
+// Map
 @property (strong, nonatomic) RMPointAnnotation * originAnnotation;
 @property (strong, nonatomic) RMPointAnnotation * destinationAnnotation;
 @property (strong, nonatomic) RMPointAnnotation * meetingPointAnnotation;
@@ -53,50 +56,23 @@
 @property (strong, nonatomic) CLLocationManager * locationManager;
 
 
-@property (strong, nonatomic) IBOutlet UIView *homeActionView;
-@property (strong, nonatomic) IBOutlet VCButtonStandardStyle *rideNowButton;
-@property (strong, nonatomic) IBOutlet VCButtonStandardStyle *nextButton;
+// Ride Details
+@property (strong, nonatomic) VCRiderTicketView * riderTicketHUD;
+@property (strong, nonatomic) VCDriverTicketView * driverTicketHUD;
 
-//confirmation
-@property (strong, nonatomic) IBOutlet UIView *hovDriverOptionView;
-@property (weak, nonatomic) IBOutlet UIButton *hovDriveYesButton;
-@property (strong, nonatomic) IBOutlet VCButtonStandardStyle *scheduleRideButton;
 
-//pickup hud
-@property (strong, nonatomic) IBOutlet UIView *pickupHudView;
-@property (weak, nonatomic) IBOutlet VCLabel *pickupTimeLabel;
-
-//return hud
-@property (strong, nonatomic) IBOutlet UIView *returnHudView;
-@property (weak, nonatomic) IBOutlet VCLabel *returnTimeLabel;
-
+// State
+@property (nonatomic) BOOL appeared;
 @property (weak, nonatomic) Ticket * showingTicket;
 
-//Ride Details
-@property (strong, nonatomic) IBOutlet VCRideDetailsView * rideItineraryView;
-@property (strong, nonatomic) UIScrollView * scrollView;
-
-//RideOverview
-@property (strong, nonatomic) IBOutlet VCRideOverviewHudView *rideDetailsHud;
-
-// Data Entry
-@property (nonatomic) NSInteger step;
-@property (nonatomic) NSInteger whichPicker;
-
-
-@property (strong, nonatomic) VCEditLocationWidget * homeLocationWidget;
-@property (strong, nonatomic) VCEditLocationWidget * workLocationWidget;
-
-@property (nonatomic) BOOL appeared;
-
-
-//Ride requeset
-@property (nonatomic, strong) VCRideRequestView * rideRequestView;
 
 //Ride Status
 @property (strong, nonatomic) IBOutlet VCButton *ridersPickedUpButton;
 @property (strong, nonatomic) IBOutlet VCButton *rideCompleteButton;
 
+
+//Ride requeset
+@property (nonatomic, strong) VCRideRequestView * rideRequestView;
 
 // Location Search
 @property (strong, nonatomic) IBOutlet UIView *locationSearchForm;
@@ -170,6 +146,8 @@
 
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
+    
+    [self loadCommuteSettings];
     
     if(!_appeared){
         
@@ -361,6 +339,17 @@
 //////////////// Scheduling a Commute
 ////////////////
 
+- (void) didTapScheduleMenuButton:(id)sender {
+    if(_rideRequestView == nil) {
+        _rideRequestView = [WRUtilities getViewFromNib:@"VCRideRequestView" class:[VCRideRequestView class]];
+    }
+    _rideRequestView.delegate = self;
+    
+    [_rideRequestView updateWithRoute:_route];
+    [self showRideRequestView];
+    
+}
+
 - (void)showRideRequestView {
     CGRect frame = _rideRequestView.frame;
     frame.origin.x = 0;
@@ -385,15 +374,6 @@
                      } completion:^(BOOL finished) {
                          
                      }];
-}
-
-- (void) didTapScheduleMenuButton:(id)sender {
-    if(_rideRequestView == nil) {
-        _rideRequestView = [WRUtilities getViewFromNib:@"VCRideRequestView" class:[VCRideRequestView class]];
-    }
-    _rideRequestView.delegate = self;
-    [self showRideRequestView];
-
 }
 
 
@@ -514,38 +494,11 @@
 }
 
 - (void) removeHuds {
-
-    [self.scrollView removeFromSuperview];
-    
-    [_pickupHudView removeFromSuperview];
-    [_homeLocationWidget.view removeFromSuperview];
-    [_workLocationWidget.view removeFromSuperview];
-    [_returnHudView removeFromSuperview];
-    //[_scheduleRideButton removeFromSuperview];
-    [_hovDriverOptionView removeFromSuperview];
-    [_nextButton removeFromSuperview];
-    [_rideItineraryView removeFromSuperview];
-    [_rideDetailsHud removeFromSuperview];
     [_ridersPickedUpButton removeFromSuperview];
     [_rideCompleteButton removeFromSuperview];
 }
 
-- (void) updateRideDetailsConfirmationView:(Ticket *) ticket {
-    
-    [UIView animateWithDuration: 1.0
-                     animations:^{
-                         
-                         if([ticket.driving boolValue]) {
-                             [_rideItineraryView driverLayout: ticket];
-                             
-                         } else {
-                             [_rideItineraryView riderLayout: ticket];
-                         }
-                         
-                     }];
-    
-    
-}
+
 
 - (void) didTapCancel: (id)sender {
     if(_ticket == nil) {
@@ -591,16 +544,20 @@
 
 
 - (void) storeCommuterSettings: (void ( ^ ) ()) success failure:( void ( ^ ) ()) failure {
-    [VCCommuteManager instance].home = [[CLLocation alloc] initWithLatitude:_originAnnotation.coordinate.latitude
-                                                                  longitude:_originAnnotation.coordinate.longitude];
-    [VCCommuteManager instance].work = [[CLLocation alloc] initWithLatitude:_destinationAnnotation.coordinate.latitude
-                                                                  longitude:_destinationAnnotation.coordinate.longitude];
-    
+    [VCCommuteManager instance].home = [[CLLocation alloc] initWithLatitude:_route.home.coordinate.latitude
+                                                                  longitude:_route.home.coordinate.longitude];
+    [VCCommuteManager instance].work = [[CLLocation alloc] initWithLatitude:_route.work.coordinate.latitude
+                                                                  longitude:_route.work.coordinate.longitude];
+    [VCCommuteManager instance].homePlaceName = _route.homePlaceName;
+    [VCCommuteManager instance].workPlaceName = _route.workPlaceName;
+    [VCCommuteManager instance].driving = _route.driving;
+
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[VCCommuteManager instance] save:^{
         [hud hide:YES];
         success();
-    } failure:^{
+    } failure:^(NSString * errorMessage){
+        [UIAlertView showWithTitle:@"Network Error" message:errorMessage cancelButtonTitle:@"Darn" otherButtonTitles:nil tapBlock:nil];
         [hud hide:YES];
         failure();
     }];
@@ -609,64 +566,33 @@
 }
 
 - (void) loadCommuteSettings {
-    if( [VCCommuteManager instance].pickupTime != nil){
-        _pickupTimeLabel.text = [VCCommuteManager instance].pickupTime;
+    
+    _route = [[Route alloc] init]; // Yes this model is a NSManagedObject subclass
+                                   // Commute manager will be migrating to using this for direct storage
+                                   // We are using Route here as the model to prepare for this change
+    
+    _route.pickupTime = [VCCommuteManager instance].pickupTime;
+    _route.returnTime = [VCCommuteManager instance].returnTime;
+    _route.home = [VCCommuteManager instance].home;
+    _route.homePlaceName = [VCCommuteManager instance].homePlaceName;
+    _route.work = [VCCommuteManager instance].work;
+    _route.workPlaceName = [VCCommuteManager instance].workPlaceName;
+    _route.driving = [VCCommuteManager instance].driving;
+    
+    if( _route.home != nil){
+        [self addOriginAnnotation: _route.home ];
     }
     
-    if( [VCCommuteManager instance].home != nil){
-        [self addOriginAnnotation: [VCCommuteManager instance].home ];
-        [_homeLocationWidget setMode:kEditLocationWidgetDisplayMode];
-        [_homeLocationWidget setLocationText:[VCCommuteManager instance].homePlaceName];
-        
-    }
-    
-    if( [VCCommuteManager instance].work != nil){
-        [self addDestinationAnnotation: [VCCommuteManager instance].work ];
-        [_workLocationWidget setMode:kEditLocationWidgetDisplayMode];
-        [_workLocationWidget setLocationText:[VCCommuteManager instance].workPlaceName];
-        
-    }
-    
-    if( [VCCommuteManager instance].returnTime != nil){
-        _returnTimeLabel.text = [VCCommuteManager instance].returnTime;
-    }
-    
-    _hovDriveYesButton.selected = [VCCommuteManager instance].driving;
-    
-    if( [VCCommuteManager instance].home != nil && [VCCommuteManager instance].home != nil){
-        [self showSuggestedRoute: [VCCommuteManager instance].home to:[VCCommuteManager instance].work];
+    if( _route.work != nil){
+        [self addDestinationAnnotation: _route.work ];
     }
     
 }
 
-// Getting first location
-- (void)startLocationUpdates {
-    // Create the location manager if this object does not
-    // already have one.
-    if (nil == _locationManager)
-        _locationManager = [[CLLocationManager alloc] init];
-    
-    _locationManager.delegate = self;
-    _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
-    
-    // Set a movement threshold for new events.
-    _locationManager.distanceFilter = 500; // meters
-    
-    [_locationManager startUpdatingLocation];
-}
 
-- (void)stopLocationUpdates {
-    [_locationManager stopUpdatingLocation];
-}
-
-- (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    if(![[VCCommuteManager instance] hasSettings]) {
-        [self zoomToCurrentLocation];
-    }
-    [self stopLocationUpdates];
-}
-
-// Annotations
+/////////////
+///////////// Annotations
+/////////////
 - (void)addOriginAnnotation:(CLLocation *)location {
     if(_originAnnotation != nil) {
         [self.map removeAnnotation:_originAnnotation];
@@ -716,8 +642,12 @@
 }
 
 
+///////////
+///////////  Route and Scheduling
+///////////
 
-- (IBAction)didTapScheduleRide:(id)sender {
+
+- (void) scheduleRide {
     if([[VCCommuteManager instance] hasSettings]) {
         
         [self storeCommuterSettings:^{
@@ -779,7 +709,9 @@
     [[VCCommuteManager instance] requestRidesFor:tomorrow
                                          success:^{
                                              [hud hide:YES];
-                                             //[self transitionToWaitingScreen];
+                                             
+                                             // Put the waiting text in here.
+                                             
                                          } failure:^{
                                              [hud hide:YES];
                                              [UIAlertView showWithTitle:@"Error" message:@"There was a problem sending your request, you might want to try that again" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
@@ -931,30 +863,42 @@
 }
 
 
-//TODO: here are the methods for displaying the DRIVER Ride Details
-
-- (void) displayDriverRideDetails {
-    
-    //[self hideCarValues];
-    //[self showDriverDetails];
-}
 
 
 #pragma mark - VCRideRequestViewDelegate
-- (void) rideRequestViewDidTapClose: (VCRideRequestView *) rideRequestView {
-    // animate the view out of the way
-    // the view == rideRequestView
+
+- (void) rideRequestViewDidCancel: (VCRideRequestView *) rideRequestView {
+    [self removeRideRequestView: rideRequestView];
     
+}
+
+
+- (void) rideRequestViewDidTapClose: (VCRideRequestView *) rideRequestView withChanges: (Route *) route {
+    [self removeRideRequestView: rideRequestView];
+    _route = [route copy];
+    [self storeCommuterSettings:^{
+        if( _route.home != nil && _route.work != nil){
+            [self showSuggestedRoute: _route.home to:_route.work];
+        }
+    } failure:^{
+        // nothing necessary to do
+    }];
+    
+}
+
+- (void) removeRideRequestView: (VCRideRequestView *) rideRequestView  {
     [UIView animateWithDuration:0.35
                      animations:^{
-        CGRect frame = rideRequestView.frame;
-        frame.origin.y =  -self.view.frame.size.height;;
-        rideRequestView.frame = frame;
-    }
+                         CGRect frame = rideRequestView.frame;
+                         frame.origin.y =  -self.view.frame.size.height;;
+                         rideRequestView.frame = frame;
+                     }
                      completion:^(BOOL finished) {
                          [rideRequestView removeFromSuperview];
                      }];
 }
+
+
 
 - (void)rideRequestView:(VCRideRequestView *)rideRequestView didTapEditLocation:(CLLocationCoordinate2D)location locationName:(NSString *)locationName type:(NSInteger)type {
     
@@ -971,7 +915,20 @@
     
 }
 
+- (void)rideRequestView:(VCRideRequestView *)rideRequestView didTapScheduleCommute:(Route *)route {
+    _route = [route copy];
+    [self storeCommuterSettings:^{
+        if( _route.home != nil && _route.work != nil){
+            [self showSuggestedRoute: _route.home to:_route.work];
+        }
+        [self scheduleRide];
+        [self removeRideRequestView:rideRequestView];
+        
+    } failure:^{
+        // nothing necessary to do
+    }];
 
+}
 
 /////////////
 ///////////// Location Editing Machinery
@@ -1204,6 +1161,36 @@
                          
                      }];
     
+}
+
+
+////////////////
+////////////////  Geo Location Updates
+////////////////
+- (void)startLocationUpdates {
+    // Create the location manager if this object does not
+    // already have one.
+    if (nil == _locationManager)
+        _locationManager = [[CLLocationManager alloc] init];
+    
+    _locationManager.delegate = self;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    
+    // Set a movement threshold for new events.
+    _locationManager.distanceFilter = 500; // meters
+    
+    [_locationManager startUpdatingLocation];
+}
+
+- (void)stopLocationUpdates {
+    [_locationManager stopUpdatingLocation];
+}
+
+- (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    if(![[VCCommuteManager instance] hasSettings]) {
+        [self zoomToCurrentLocation];
+    }
+    [self stopLocationUpdates];
 }
 
 @end

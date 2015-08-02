@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -7,12 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCTicketViewController">
             <connections>
-                <outlet property="locationSearchField" destination="HRU-3H-xTk" id="VED-oW-sZV"/>
-                <outlet property="locationSearchForm" destination="FqQ-ua-yu5" id="ejr-CN-TdV"/>
-                <outlet property="locationUpdateDoneButton" destination="2yD-F1-43H" id="CAR-g9-EkX"/>
-                <outlet property="rideCompleteButton" destination="Jh3-aQ-cgL" id="hB9-UZ-Yb5"/>
-                <outlet property="rideDetailsHud" destination="Lv9-d9-EJH" id="0gc-z7-omS"/>
-                <outlet property="rideItineraryView" destination="RWM-tO-NBZ" id="yJx-lk-icx"/>
+                <outlet property="locationSearchField" destination="HRU-3H-xTk" id="naV-gO-w58"/>
+                <outlet property="locationSearchForm" destination="FqQ-ua-yu5" id="fBR-Iy-HWJ"/>
+                <outlet property="locationUpdateDoneButton" destination="2yD-F1-43H" id="dBN-Bw-IFs"/>
                 <outlet property="ridersPickedUpButton" destination="5kL-SN-M2N" id="Nx1-g3-YUL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -63,9 +60,6 @@
                         <segment title="Back Home"/>
                     </segments>
                     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <connections>
-                        <action selector="didChangeDisplayDirectionValue:" destination="-1" eventType="valueChanged" id="K3T-Cg-jhJ"/>
-                    </connections>
                 </segmentedControl>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup Time :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="smm-lU-ouO" customClass="VCLabel">
                     <rect key="frame" x="17" y="388" width="102" height="21"/>
@@ -365,7 +359,6 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="didTapConfirmButton:" destination="RWM-tO-NBZ" eventType="touchUpInside" id="3ON-FN-6Cx"/>
-                        <action selector="didTapConfirmedCommuterRide:" destination="-1" eventType="touchUpInside" id="hjj-TJ-Dfc"/>
                     </connections>
                 </button>
             </subviews>
@@ -761,9 +754,6 @@
                             <integer key="value" value="16"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="didTapConfirmedCommuterRide:" destination="-1" eventType="touchUpInside" id="ijm-O4-x2K"/>
-                    </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup Time :" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFl-3K-Vtp" customClass="VCLabel">
                     <rect key="frame" x="13" y="114" width="97" height="21"/>

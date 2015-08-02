@@ -1815,14 +1815,8 @@
 			isa = PBXGroup;
 			children = (
 				36638D741B658A5A004EDB09 /* VCRideRequestView.xib */,
-				36638D7C1B659CAE004EDB09 /* VCDriverTicketView.xib */,
-				36638D841B65A988004EDB09 /* VCRiderTicketView.xib */,
 				36F9F64F1B6ACC8700440D03 /* VCRideRequestView.h */,
 				36F9F6501B6ACC8700440D03 /* VCRideRequestView.m */,
-				36F9F6551B6AE4A300440D03 /* VCDriverTicketView.h */,
-				36F9F6561B6AE4A300440D03 /* VCDriverTicketView.m */,
-				36F9F65B1B6AF58E00440D03 /* VCRiderTicketView.h */,
-				36F9F65C1B6AF58E00440D03 /* VCRiderTicketView.m */,
 				F4A7C8221962E235007E05AD /* VCLocationSearchViewController.h */,
 				F4A7C8231962E235007E05AD /* VCLocationSearchViewController.m */,
 				F4A7C8241962E235007E05AD /* VCLocationSearchViewController.xib */,
@@ -1884,9 +1878,11 @@
 			name = HTML;
 			sourceTree = "<group>";
 		};
-		4F3DB5C61981F6AB00DDD094 /* Old - Views */ = {
+		4F3DB5C61981F6AB00DDD094 /* Old */ = {
 			isa = PBXGroup;
 			children = (
+				8444152E1B6DA3D7008C7898 /* VCOldCode.h */,
+				8444152F1B6DA3D7008C7898 /* VCOldCode.m */,
 				F4C6B2A2197F8A9400F6C10B /* VCEditLocationWidget.h */,
 				F4C6B2A3197F8A9400F6C10B /* VCEditLocationWidget.m */,
 				4F73CA0F197F82DA001B6663 /* VCEditLocationWidget.xib */,
@@ -1899,7 +1895,7 @@
 				F4138C2419650C5600C265CD /* VCCommuterHud.h */,
 				F4138C2519650C5600C265CD /* VCCommuterHud.m */,
 			);
-			name = "Old - Views";
+			name = Old;
 			sourceTree = "<group>";
 		};
 		4F9ECEAD196619F500AD4229 /* Other Functionality */ = {
@@ -2182,6 +2178,26 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		844415301B6DB1EC008C7898 /* Commute Request */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Commute Request";
+			sourceTree = "<group>";
+		};
+		844415311B6DB1FB008C7898 /* Commute HUDs */ = {
+			isa = PBXGroup;
+			children = (
+				36638D7C1B659CAE004EDB09 /* VCDriverTicketView.xib */,
+				36638D841B65A988004EDB09 /* VCRiderTicketView.xib */,
+				36F9F6551B6AE4A300440D03 /* VCDriverTicketView.h */,
+				36F9F6561B6AE4A300440D03 /* VCDriverTicketView.m */,
+				36F9F65B1B6AF58E00440D03 /* VCRiderTicketView.h */,
+				36F9F65C1B6AF58E00440D03 /* VCRiderTicketView.m */,
+			);
+			name = "Commute HUDs";
+			sourceTree = "<group>";
+		};
 		F45F7BE71935756000A94721 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -2299,13 +2315,13 @@
 		F473EFE919492CA400D8C900 /* Ride System */ = {
 			isa = PBXGroup;
 			children = (
+				844415311B6DB1FB008C7898 /* Commute HUDs */,
+				844415301B6DB1EC008C7898 /* Commute Request */,
 				36638D731B658A0B004EDB09 /* Views */,
-				4F3DB5C61981F6AB00DDD094 /* Old - Views */,
+				4F3DB5C61981F6AB00DDD094 /* Old */,
 				4F73CA01197F2AB0001B6663 /* VCTicketViewController.h */,
 				4F73CA02197F2AB0001B6663 /* VCTicketViewController.m */,
 				4F73CA03197F2AB0001B6663 /* VCTicketViewController.xib */,
-				8444152E1B6DA3D7008C7898 /* VCOldCode.h */,
-				8444152F1B6DA3D7008C7898 /* VCOldCode.m */,
 			);
 			name = "Ride System";
 			sourceTree = "<group>";
