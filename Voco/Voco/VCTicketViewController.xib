@@ -910,15 +910,16 @@
             <point key="canvasLocation" x="121" y="-131"/>
         </view>
         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2yD-F1-43H">
-            <rect key="frame" x="0.0" y="-1" width="320" height="48"/>
+            <rect key="frame" x="0.0" y="1" width="320" height="89"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <color key="backgroundColor" red="1" green="0.9534229212854104" blue="0.93938585451695811" alpha="1" colorSpace="calibratedRGB"/>
             <state key="normal" title="Done">
                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
             </state>
             <connections>
                 <action selector="didTapLocationEditDone:" destination="-1" eventType="touchUpInside" id="tn6-B5-kJ8"/>
             </connections>
-            <point key="canvasLocation" x="1041" y="385"/>
+            <point key="canvasLocation" x="1046" y="371.5"/>
         </button>
         <view contentMode="scaleToFill" id="FqQ-ua-yu5" userLabel="Local Search Views">
             <rect key="frame" x="0.0" y="-2" width="323" height="93"/>

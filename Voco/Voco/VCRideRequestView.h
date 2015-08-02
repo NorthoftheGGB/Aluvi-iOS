@@ -19,6 +19,7 @@
 
 - (void) rideRequestView: (VCRideRequestView *) rideRequestView didTapEditLocation:  (CLLocationCoordinate2D) location locationName:(NSString *) locationName type:(NSInteger) type;
 - (void) rideRequestView: (VCRideRequestView *) rideRequestView didTapScheduleCommute:(Route *) route;
+- (void) rideRequestViewDidCancelCommute: (VCRideRequestView *) rideRequestView;
 
 - (void) rideRequestViewDidCancel: (VCRideRequestView *) rideRequestView;
 - (void) rideRequestViewDidTapClose: (VCRideRequestView *) rideRequestView withChanges: (Route *) route;

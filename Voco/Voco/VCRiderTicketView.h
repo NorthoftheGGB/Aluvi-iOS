@@ -8,7 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class VCRiderTicketView;
+
+@protocol VCRiderTicketViewDelegate <NSObject>
+
+
+@end
+
 @interface VCRiderTicketView : UIView
+
+@property (weak, nonatomic) id<VCRiderTicketViewDelegate> delegate;
+
 @property (strong, nonatomic) IBOutlet UIButton *riderLateButton;
 @property (strong, nonatomic) IBOutlet UILabel *totalCostLabel;
 @property (strong, nonatomic) IBOutlet UILabel *driverDetails;

@@ -46,7 +46,7 @@
 #define kCommuteStatePending 1
 #define kCommuteStateScheduled 2
 
-@interface VCTicketViewController () <RMMapViewDelegate, CLLocationManagerDelegate, VCRideRequestViewDelegate, VCLocationSearchViewControllerDelegate>
+@interface VCTicketViewController () <RMMapViewDelegate, CLLocationManagerDelegate, VCRideRequestViewDelegate, VCLocationSearchViewControllerDelegate, VCRiderTicketViewDelegate, VCDriverTicketViewDelegate>
 
 // Model
 @property(strong, nonatomic) Route * route;
@@ -433,9 +433,9 @@
         
         // show the HUD interface
         if([_ticket.driving boolValue] ) {
-            //[self showHovDriverInterface];
+            [self showDriverTicketHUD];
         } else {
-            //[self showRiderInterface];
+            [self showRiderTicketHUD];
         }
             
        
@@ -523,6 +523,64 @@
     }
 }
 
+
+
+
+- (void) showRiderTicketHUD {
+    VCRiderTicketView * view = [WRUtilities getViewFromNib:@"VCRiderTicketView" class:[VCRiderTicketView class]];
+    view.delegate = self;
+    
+    CGRect frame = view.frame;
+    frame.origin.x = 0;
+    frame.origin.y = 481;
+    frame.size.width = self.view.frame.size.width;
+    view.frame = frame;
+    
+    [self.view addSubview:view];
+    [UIView animateWithDuration:0.4
+                          delay:0
+         usingSpringWithDamping:0.4
+          initialSpringVelocity:0.5
+                        options:0
+                     animations:^{
+                         // final placement
+                         CGRect frame = view.frame;
+                         frame.origin.y = 380;
+                         view.frame = frame;
+                     } completion:^(BOOL finished) {
+                         
+                     }];
+    
+}
+
+- (void) showDriverTicketHUD {
+    VCDriverTicketView * view = [WRUtilities getViewFromNib:@"VCDriverTicketView" class:[VCDriverTicketView class]];
+    view.delegate = self;
+    
+    CGRect frame = view.frame;
+    frame.origin.x = 0;
+    frame.origin.y = 481;
+    frame.size.width = self.view.frame.size.width;
+    view.frame = frame;
+    
+    [self.view addSubview:view];
+    [UIView animateWithDuration:0.4
+                          delay:0
+         usingSpringWithDamping:0.4
+          initialSpringVelocity:0.5
+                        options:0
+                     animations:^{
+                         // final placement
+                         CGRect frame = view.frame;
+                         frame.origin.y = 380;
+                         view.frame = frame;
+                     } completion:^(BOOL finished) {
+                         
+                     }];
+    
+}
+
+
 - (void) removeHuds {
     [_ridersPickedUpButton removeFromSuperview];
     [_rideCompleteButton removeFromSuperview];
@@ -535,32 +593,11 @@
         [[VCCommuteManager instance] reset];
         [self resetInterfaceToHome];
     } else {
-        [UIAlertView showWithTitle:@"Cancel Ride?" message:@"Are you sure you want to cancel this trip?" cancelButtonTitle:@"No!" otherButtonTitles:@[@"Yes, Cancel this ride"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        [UIAlertView showWithTitle:@"Cancel Ride?" message:@"Are you sure you want to cancel this ride?" cancelButtonTitle:@"No!" otherButtonTitles:@[@"Yes, Cancel this ride"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
             switch(buttonIndex){
                 case 1:
                 {
-                    
-                    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-                    hud.labelText = @"Canceling..";
-                    if([_ticket.confirmed boolValue]) {
-                        [[VCCommuteManager instance] cancelRide:_ticket success:^{
-                            [self resetInterfaceToHome];
-                            _ticket = nil;
-                            
-                            hud.hidden = YES;
-                        } failure:^{
-                            hud.hidden = YES;
-                        }];
-                    } else {
-                        // Here we are cancelling BOTH legs of the trip
-                        [[VCCommuteManager instance] cancelTrip:_ticket.trip_id success:^{
-                            [self resetInterfaceToHome];
-                            _ticket = nil;
-                            hud.hidden = YES;
-                        } failure:^{
-                            hud.hidden = YES;
-                        }];
-                    }
+                    [self cancel];
                 }
                     break;
                 default:
@@ -568,6 +605,32 @@
             }
         }];
     }
+}
+
+- (void) cancel {
+    
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Canceling..";
+    if( ![@[kCreatedState, kRequestedState] containsObject: _ticket.state]) {
+        [[VCCommuteManager instance] cancelRide:_ticket success:^{
+            [self resetInterfaceToHome];
+            _ticket = nil;
+            
+            hud.hidden = YES;
+        } failure:^{
+            hud.hidden = YES;
+        }];
+    } else {
+        // Here we are cancelling BOTH legs of the trip
+        [[VCCommuteManager instance] cancelTrip:_ticket.trip_id success:^{
+            [self resetInterfaceToHome];
+            _ticket = nil;
+            hud.hidden = YES;
+        } failure:^{
+            hud.hidden = YES;
+        }];
+    }
+
 }
 
 
@@ -678,54 +741,17 @@
 
 
 - (void) scheduleRide {
-    if([[VCCommuteManager instance] hasSettings]) {
-        
+    
         [self storeCommuterSettings:^{
             [self resetInterfaceToHome];
             [self scheduleCommuteForTomorrow];
 
-            /*
-            [UIAlertView showWithTitle:@"Just Checking..."
-                               message:@"Have you been approved to schedule trips?  The system might not work properly if you have not"
-                     cancelButtonTitle:@"No.."
-                     otherButtonTitles:@[@"Yes"]
-                              tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                                  switch(buttonIndex){
-                                      case 1:
-                                      {
-                                          [self scheduleCommuteForTomorrow];
-                                      }
-                                          
-                                          break;
-                                      default:
-                                          break;
-                                  }
-                              }];
-            */
+       
         } failure:^{
             [UIAlertView showWithTitle:@"Error" message:@"There was a problem sending your request, you might want to try that again" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
         }];
         
         
-    } else {
-        
-        [self storeCommuterSettings:^{
-            [UIAlertView showWithTitle:@"Your Setup is Complete!" message:@"We're processing your info and will contact you when it's time for you to start commuting!" cancelButtonTitle:@"Ok, Can't Wait!" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                if([VCInterfaceManager instance].mode == kOnBoardingMode) {
-                    self.navigationController.navigationBarHidden = NO;
-                    [[VCInterfaceManager instance] showRiderInterface];
-                } else {
-                    [self resetInterfaceToHome];
-                }
-                
-            } ];
-            
-        } failure:^{
-            [UIAlertView showWithTitle:@"Error" message:@"There was a problem sending your request, you might want to try that again" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
-        }];
-        
-    }
-    
 }
 
 - (void) scheduleCommuteForTomorrow {
@@ -779,30 +805,6 @@
         CLLocation * destination = [[CLLocation alloc] initWithLatitude:_destinationAnnotation.coordinate.latitude
                                                               longitude:_destinationAnnotation.coordinate.longitude];
         [self showSuggestedRoute:origin to:destination];
-    }
-    
-}
-
-
-- (void) didTapCancelRide: (id)sender {
-    
-    if(_ticket != nil) {
-        [UIAlertView showWithTitle:@"Cancel Trip?" message:@"Are you sure you want to cancel this trip?" cancelButtonTitle:@"No!" otherButtonTitles:@[@"Yes, Cancel this ride"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-            switch(buttonIndex){
-                case 1:
-                {
-                    [[VCCommuteManager instance] cancelRide:_ticket success:^{
-                        [UIAlertView showWithTitle:@"Trip Cancelled" message:@"Fare Cancelled" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
-                        [self resetInterfaceToHome];
-                    } failure:^{
-                        // do nothing
-                    }];
-                }
-                    break;
-                default:
-                    break;
-            }
-        }];
     }
     
 }
@@ -960,6 +962,21 @@
     }];
 
 }
+
+- (void) rideRequestViewDidCancelCommute:(VCRideRequestView *)rideRequestView{
+    [UIAlertView showWithTitle:@"Cancel Trip?" message:@"Are you sure you want to cancel this trip?" cancelButtonTitle:@"No!" otherButtonTitles:@[@"Yes, Cancel this trip"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        switch(buttonIndex){
+            case 1:
+            {
+                [self cancel];
+            }
+                break;
+            default:
+                break;
+        }
+    }];
+}
+
 
 /////////////
 ///////////// Location Editing Machinery
@@ -1162,36 +1179,6 @@
             [shape addLineToCoordinate:location.coordinate];
         return shape;
     }
-}
-
-
-
-- (IBAction)didTapTestingButton:(id)sender {
-    VCRiderTicketView * view = [WRUtilities getViewFromNib:@"VCRiderTicketView" class:[VCRiderTicketView class]];
-//    view.delegate = self;
-    
-    CGRect frame = view.frame;
-    frame.origin.x = 0;
-    frame.origin.y = 481;
-    frame.size.width = self.view.frame.size.width;  
-    view.frame = frame;
-    
-//    [[[[UIApplication sharedApplication] delegate] window] addSubview:view];
-    [self.view addSubview:view];
-    [UIView animateWithDuration:0.4
-                          delay:0
-         usingSpringWithDamping:0.4
-          initialSpringVelocity:0.5
-                        options:0
-                     animations:^{
-                         // final placement
-                         CGRect frame = view.frame;
-                         frame.origin.y = 380;
-                         view.frame = frame;
-                     } completion:^(BOOL finished) {
-                         
-                     }];
-    
 }
 
 

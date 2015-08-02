@@ -28,6 +28,7 @@
 // state
 @property (nonatomic) BOOL commutePreferencesHaveChanged;
 @property (nonatomic, strong) Route * route;
+@property (nonatomic) BOOL cancelable;
 
 @end
 
@@ -76,20 +77,20 @@
 
 - (void) setEditable:(BOOL) editable {
     if(editable) {
-        _scheduleButton.enabled = YES;
         _fromButton.enabled = YES;
         _toButton.enabled = YES;
         _toHomeTimeStepper.enabled = YES;
         _toWorkTimeStepper.enabled = YES;
         _driverCheckbox.enabled= YES;
+        _cancelable = NO;
     } else {
-        [_scheduleButton setTitle:@"Commute Pending" forState:UIControlStateNormal];
-        _scheduleButton.enabled = NO;
+        [_scheduleButton setTitle:@"Cancel Commute" forState:UIControlStateNormal];
         _fromButton.enabled = NO;
         _toButton.enabled = NO;
         _toHomeTimeStepper.enabled = NO;
         _toWorkTimeStepper.enabled = NO;
         _driverCheckbox.enabled= NO;
+        _cancelable = YES;
     }
 }
 
@@ -110,8 +111,13 @@
 
 
 - (IBAction)didTapScheduleButton:(id)sender {
-    [_delegate rideRequestView:self didTapScheduleCommute:_route];
+    if(_cancelable){
+        [_delegate rideRequestViewDidCancelCommute:self];
+    } else {
+        [_delegate rideRequestView:self didTapScheduleCommute:_route];
+    }
     _commutePreferencesHaveChanged = NO;
+
 }
 
 - (IBAction)didTapFromButton:(id)sender {
