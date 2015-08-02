@@ -727,6 +727,8 @@
 		841649CD1B658F4900CD20AC /* car@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4138C3A19678BE000C265CD /* car@2x.png */; };
 		841649CE1B658F4900CD20AC /* profile-menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9A11960EC8C006A1962 /* profile-menu-button@2x.png */; };
 		844070291B64700B00EF35E1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CE81B1E5E26004446AF /* MobileCoreServices.framework */; };
+		844415331B6DDC8B008C7898 /* MBRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = D19278A31B6738D1009BFBF8 /* MBRegion.m */; };
+		844415351B6DDC8D008C7898 /* MBRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = D19278A31B6738D1009BFBF8 /* MBRegion.m */; };
 		849A3CCC1B1E5D14004446AF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CC61B1E5D14004446AF /* Bolts.framework */; };
 		849A3CCF1B1E5D14004446AF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CC61B1E5D14004446AF /* Bolts.framework */; };
 		849A3CD01B1E5D14004446AF /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CC71B1E5D14004446AF /* Parse.framework */; };
@@ -2198,6 +2200,15 @@
 			name = "Commute HUDs";
 			sourceTree = "<group>";
 		};
+		844415321B6DDC25008C7898 /* MapBox */ = {
+			isa = PBXGroup;
+			children = (
+				D19278A21B6738D1009BFBF8 /* MBRegion.h */,
+				D19278A31B6738D1009BFBF8 /* MBRegion.m */,
+			);
+			name = MapBox;
+			sourceTree = "<group>";
+		};
 		F45F7BE71935756000A94721 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -2230,8 +2241,6 @@
 				F4C6B1AA1978DF2A00F6C10B /* Earning.m */,
 				F496FE8F19FDB9FE00632055 /* Route.h */,
 				F496FE9019FDB9FE00632055 /* Route.m */,
-				D19278A21B6738D1009BFBF8 /* MBRegion.h */,
-				D19278A31B6738D1009BFBF8 /* MBRegion.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -2329,6 +2338,7 @@
 		F473F002194A549A00D8C900 /* GIS */ = {
 			isa = PBXGroup;
 			children = (
+				844415321B6DDC25008C7898 /* MapBox */,
 				F473F006194A59B400D8C900 /* MapQuest */,
 				F4FE1AF91937DD6600354886 /* VCGeolocation.h */,
 				F4FE1AFA1937DD6600354886 /* VCGeolocation.m */,
@@ -3634,6 +3644,7 @@
 				8416479E1B64A47D00CD20AC /* VCButton.m in Sources */,
 				8416479F1B64A47D00CD20AC /* VCMenuUserInfoTableViewCell.m in Sources */,
 				841647A01B64A47D00CD20AC /* MQShape.m in Sources */,
+				844415351B6DDC8D008C7898 /* MBRegion.m in Sources */,
 				841647A11B64A47D00CD20AC /* VCRideRequest.m in Sources */,
 				841647A21B64A47D00CD20AC /* VCPushReceiver.m in Sources */,
 				841647A31B64A47D00CD20AC /* VCSubMenuItemTableViewCell.m in Sources */,
@@ -4011,6 +4022,7 @@
 				F4D8FE3819B1745A00BC0B69 /* VCButton.m in Sources */,
 				F4D8FE3919B1745A00BC0B69 /* VCMenuUserInfoTableViewCell.m in Sources */,
 				F4D8FE3A19B1745A00BC0B69 /* MQShape.m in Sources */,
+				844415331B6DDC8B008C7898 /* MBRegion.m in Sources */,
 				F4D8FE3B19B1745A00BC0B69 /* VCRideRequest.m in Sources */,
 				F4D8FE3C19B1745A00BC0B69 /* VCPushReceiver.m in Sources */,
 				F4D8FE3D19B1745A00BC0B69 /* VCSubMenuItemTableViewCell.m in Sources */,
