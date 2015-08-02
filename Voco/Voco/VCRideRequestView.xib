@@ -12,22 +12,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PqE-dA-J7r">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                    <rect key="frame" x="0.0" y="19" width="320" height="43"/>
                     <color key="backgroundColor" red="0.3532539577618119" green="1" blue="0.86404371248809386" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="CLOSE">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="didTapCloseButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="tpO-OA-pjD"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ors-N9-lLM">
-                    <rect key="frame" x="0.0" y="60" width="320" height="88"/>
-                    <state key="normal" title="FROM:">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="didTapFromButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="WZU-TT-vLl"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8E-fS-JXq">
@@ -64,7 +55,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZD1-82-E7F">
-                    <rect key="frame" x="0.0" y="412" width="320" height="60"/>
+                    <rect key="frame" x="0.0" y="411" width="320" height="43"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I'll drive us there!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nzM-f7-MVQ">
                             <rect key="frame" x="89" y="12" width="131" height="21"/>
@@ -117,28 +108,37 @@
                         <action selector="didTapToButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="Mg7-eR-6q1"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ors-N9-lLM">
+                    <rect key="frame" x="0.0" y="61" width="320" height="88"/>
+                    <state key="normal" title="FROM:">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapFromButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="WZU-TT-vLl"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="vlk-Ca-SsQ" firstAttribute="trailing" secondItem="nPe-c8-O55" secondAttribute="trailing" id="0GN-SK-gop"/>
                 <constraint firstItem="vlk-Ca-SsQ" firstAttribute="trailing" secondItem="Ors-N9-lLM" secondAttribute="trailing" id="1f8-Bt-Uaa"/>
                 <constraint firstAttribute="trailing" secondItem="Ors-N9-lLM" secondAttribute="trailing" id="3zJ-FW-6xw"/>
-                <constraint firstItem="PqE-dA-J7r" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="4Gt-NV-f88"/>
+                <constraint firstItem="PqE-dA-J7r" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="19" id="4Gt-NV-f88"/>
                 <constraint firstAttribute="trailing" secondItem="v8E-fS-JXq" secondAttribute="trailing" id="8DU-17-lM9"/>
                 <constraint firstAttribute="bottom" secondItem="v8E-fS-JXq" secondAttribute="bottom" id="9gS-6P-DxC"/>
                 <constraint firstItem="vlk-Ca-SsQ" firstAttribute="trailing" secondItem="ZD1-82-E7F" secondAttribute="trailing" id="Cek-50-k7P"/>
                 <constraint firstItem="Ors-N9-lLM" firstAttribute="height" secondItem="vlk-Ca-SsQ" secondAttribute="height" id="JFf-Tw-rOu"/>
                 <constraint firstItem="vlk-Ca-SsQ" firstAttribute="leading" secondItem="Ors-N9-lLM" secondAttribute="leading" id="Jvx-9Q-Rgx"/>
-                <constraint firstItem="vlk-Ca-SsQ" firstAttribute="top" secondItem="Ors-N9-lLM" secondAttribute="bottom" id="Mu5-Hv-3jZ"/>
+                <constraint firstItem="vlk-Ca-SsQ" firstAttribute="top" secondItem="Ors-N9-lLM" secondAttribute="bottom" constant="-1" id="Mu5-Hv-3jZ"/>
                 <constraint firstItem="vlk-Ca-SsQ" firstAttribute="leading" secondItem="ZD1-82-E7F" secondAttribute="leading" id="RoP-P9-SWX"/>
                 <constraint firstItem="ZD1-82-E7F" firstAttribute="height" secondItem="PqE-dA-J7r" secondAttribute="height" id="UN4-qa-nvc"/>
                 <constraint firstItem="Ors-N9-lLM" firstAttribute="height" secondItem="v8E-fS-JXq" secondAttribute="height" id="ZfV-lM-sQn"/>
                 <constraint firstItem="vlk-Ca-SsQ" firstAttribute="trailing" secondItem="nTS-dw-VlJ" secondAttribute="trailing" id="ank-Xo-BPt"/>
-                <constraint firstItem="ZD1-82-E7F" firstAttribute="top" secondItem="nPe-c8-O55" secondAttribute="bottom" id="cNn-As-bTN"/>
+                <constraint firstItem="ZD1-82-E7F" firstAttribute="top" secondItem="nPe-c8-O55" secondAttribute="bottom" constant="-1" id="cNn-As-bTN"/>
                 <constraint firstItem="vlk-Ca-SsQ" firstAttribute="leading" secondItem="nTS-dw-VlJ" secondAttribute="leading" id="dFE-Pa-Rlq"/>
                 <constraint firstItem="nTS-dw-VlJ" firstAttribute="top" secondItem="vlk-Ca-SsQ" secondAttribute="bottom" id="dMF-Dg-mpV"/>
                 <constraint firstItem="vlk-Ca-SsQ" firstAttribute="leading" secondItem="nPe-c8-O55" secondAttribute="leading" id="jOG-4Q-nX7"/>
-                <constraint firstItem="Ors-N9-lLM" firstAttribute="top" secondItem="PqE-dA-J7r" secondAttribute="bottom" id="koz-pP-G3b"/>
+                <constraint firstItem="Ors-N9-lLM" firstAttribute="top" secondItem="PqE-dA-J7r" secondAttribute="bottom" constant="-1" id="koz-pP-G3b"/>
                 <constraint firstItem="Ors-N9-lLM" firstAttribute="height" secondItem="nTS-dw-VlJ" secondAttribute="height" id="l5l-wc-gVR"/>
                 <constraint firstAttribute="trailing" secondItem="PqE-dA-J7r" secondAttribute="trailing" id="oY0-BO-XZ4"/>
                 <constraint firstItem="v8E-fS-JXq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pQr-Yo-yF7"/>
@@ -149,7 +149,7 @@
                 <constraint firstItem="Ors-N9-lLM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="yzQ-7X-5Kc"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="driverCheckbox" destination="CyT-ga-CI3" id="4j8-QP-n75"/>
                 <outlet property="fromButton" destination="Ors-N9-lLM" id="6i8-lX-DcK"/>

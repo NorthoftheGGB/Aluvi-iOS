@@ -12,6 +12,10 @@
 
 @interface VCTicketViewController : VCTransitBaseViewController
 
+
 @property (strong, nonatomic) Ticket * ticket;
+
+- (IBAction)didTapTestingButton:(id)sender;
+
 
 @end

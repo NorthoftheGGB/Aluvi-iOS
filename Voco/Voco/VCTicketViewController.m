@@ -374,7 +374,7 @@
     
     [UIView animateWithDuration:0.4
                           delay:0
-         usingSpringWithDamping:0.3
+         usingSpringWithDamping:0.5
           initialSpringVelocity:0.5
                         options:0
                      animations:^{
@@ -1177,5 +1177,33 @@
 }
 
 
+
+- (IBAction)didTapTestingButton:(id)sender {
+    VCRiderTicketView * view = [WRUtilities getViewFromNib:@"VCRiderTicketView" class:[VCRiderTicketView class]];
+//    view.delegate = self;
+    
+    CGRect frame = view.frame;
+    frame.origin.x = 0;
+    frame.origin.y = 481;
+    frame.size.width = self.view.frame.size.width;  
+    view.frame = frame;
+    
+//    [[[[UIApplication sharedApplication] delegate] window] addSubview:view];
+    [self.view addSubview:view];
+    [UIView animateWithDuration:0.4
+                          delay:0
+         usingSpringWithDamping:0.4
+          initialSpringVelocity:0.5
+                        options:0
+                     animations:^{
+                         // final placement
+                         CGRect frame = view.frame;
+                         frame.origin.y = 380;
+                         view.frame = frame;
+                     } completion:^(BOOL finished) {
+                         
+                     }];
+    
+}
 
 @end
