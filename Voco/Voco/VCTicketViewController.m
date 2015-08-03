@@ -1171,7 +1171,8 @@
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[VCCommuteManager instance] requestRidesFor:tomorrow
-                                         success:^{
+                                         success:^(Ticket * homeToWorkTicket){
+                                             _ticket = homeToWorkTicket;
                                              [hud hide:YES];
                                              [self transitionToWaitingScreen];
                                          } failure:^{
@@ -1246,6 +1247,9 @@
     _ticket.confirmed = [NSNumber numberWithBool:YES];
     [VCNotifications scheduleUpdated];
     [VCCoreData saveContext];
+    if([_ticket.state isEqualToString:kCommuteSchedulerFailedState]){
+        _ticket = nil;
+    }
     [self resetInterfaceToHome];
 }
 
@@ -1393,37 +1397,6 @@
     }
 }
 
-/*
-- (MKOverlayRenderer *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay
-{
-    if ([overlay isKindOfClass:[MKPolyline class]])
-    {
-        MKPolyline * polyline = (MKPolyline *) overlay;
-        if( [polyline.title isEqualToString:@"pedestrian"]) {
-            MKPolylineRenderer*   aRenderer = [[MKPolylineRenderer alloc] initWithPolyline:(MKPolyline*)overlay];
-            aRenderer.strokeColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
-            aRenderer.lineWidth = 4;
-            aRenderer.lineDashPattern = @[[NSNumber numberWithInt:10], [NSNumber numberWithInt:6]];
-            return aRenderer;
-        } else if ([polyline.title isEqualToString:@"driver_leg"]) {
-            MKPolylineRenderer*   aRenderer = [[MKPolylineRenderer alloc] initWithPolyline:(MKPolyline*)overlay];
-            aRenderer.strokeColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
-            aRenderer.lineWidth = 4;
-            return aRenderer;
-        }
-    } else if ([overlay isKindOfClass:[MBXRasterTileOverlay class]])
-    {
-        MKTileOverlayRenderer *renderer = [[MKTileOverlayRenderer alloc] initWithTileOverlay:overlay];
-        return renderer;
-    } else {
-        return [super mapView:mapView viewForOverlay:overlay];
-    }
-    
-    return nil;
-}
- */
-
-
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
 {
     if ([overlay isKindOfClass:[MKPolyline class]])
@@ -1452,9 +1425,6 @@
     } else {
         return [super mapView:mapView viewForOverlay:overlay];
     }
-    
-    
-    
     
     return nil;
 }
@@ -1650,7 +1620,7 @@
                 case 1:
                 {
                     [[VCCommuteManager instance] cancelRide:_ticket success:^{
-                        [UIAlertView showWithTitle:@"Trip Cancelled" message:@"Fare Cancelled" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                        [UIAlertView showWithTitle:@"Trip Cancelled" message:@"Trip Cancelled" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
                         [self resetInterfaceToHome];
                     } failure:^{
                         // do nothing

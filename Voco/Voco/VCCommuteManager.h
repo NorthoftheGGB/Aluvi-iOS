@@ -30,7 +30,7 @@
 - (void) clear;
 - (BOOL) hasSettings;
 
-- (void) requestRidesFor:(NSDate *) tomorrow success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
+- (void) requestRidesFor:(NSDate *) tomorrow success:(void ( ^ ) (Ticket * homeToWorkTicket)) success failure:( void ( ^ ) ()) failure;
 - (void) cancelRide:(Ticket *) ride success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
 - (void) cancelTrip:(NSNumber *) tripId success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
 

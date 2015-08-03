@@ -139,6 +139,12 @@
                                                 failure(operation, error);
                                             }];
     } else {
+        
+        /*  I do not believe this is used any more
+            need to refactor cancellation
+         
+         */
+        
         [[VCDebug sharedInstance] apiLog:@"API: Rider cancel request"];
         
         // No ride id yet, so this could be a request cancellation

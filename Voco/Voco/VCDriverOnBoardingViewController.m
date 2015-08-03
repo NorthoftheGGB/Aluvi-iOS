@@ -104,9 +104,9 @@
     _yearTextField.text = @"2010";
     _colorTextField.text = @"Orange";
     _licensePlateTextField.text = @"SDF234";
-    _cardView.cardNumberField.text = @"4000056655665556";
-    _cardView.cardExpiryField.text = @"12/19";
-    _cardView.cardCVCField.text = @"234";
+    //_cardView.cardNumberField.text = @"4000056655665556";
+    //_cardView.cardExpiryField.text = @"12/19";
+    //_cardView.cardCVCField.text = @"234";
 }
 
 - (void) dismissKeyboard:(id) sender{
@@ -148,6 +148,7 @@
         return;
     }
     
+    _stripeOK = YES;
     if(_stripeOK == NO){
         [UIAlertView showWithTitle:@"Error"
                            message:@"You must enter a valid debit card to recieve payouts"
@@ -166,6 +167,22 @@
     
     _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _hud.labelText = @"Saving user info";
+    [VCDriverApi registerDriverWithLicenseNumber:_driversLicenseNumberTextField.text
+                                        carBrand:_brandTextField.text
+                                        carModel:_modelTextField.text
+                                         carYear:_yearTextField.text
+                                 carLicensePlate:_licensePlateTextField.text
+                                    referralCode:@""
+                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                             [self showNextStep];
+                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                             [self somethingDidNotGoRight];
+                                             [WRUtilities criticalError:error];
+                                             
+                                         }];
+
+    
+    /*
     [Stripe createTokenWithCard:card completion:^(STPToken *token, NSError *error) {
         
         if(error == nil) {
@@ -197,6 +214,7 @@
             [WRUtilities criticalError:error];
         }
     }];
+     */
     
 }
 

@@ -10,6 +10,7 @@
 #import "Ticket.h"
 #import "VCRiderApi.h"
 #import "VCDriverApi.h"
+#import "VCNotifications.h"
 
 // TODO refactor these out of this class
 #import "VCApi.h"
@@ -172,13 +173,13 @@ static VCCommuteManager * instance;
 
 - (void) reset {
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    instance.home = [NSKeyedUnarchiver unarchiveObjectWithData: [defaults objectForKey:kCommuteOriginSettingKey]];
-    instance.work = [NSKeyedUnarchiver unarchiveObjectWithData: [defaults objectForKey:kCommuteDestinationSettingKey]];
-    instance.homePlaceName = [defaults objectForKey:kCommuterOriginPlaceNameKey];
-    instance.workPlaceName = [defaults objectForKey:kCommuterDestinationPlaceNameKey];
-    instance.pickupTime = [defaults objectForKey:kCommuteDepartureTimeSettingKey];
-    instance.returnTime = [defaults objectForKey:kCommuteReturnTimeSettingKey];
-    instance.driving = [defaults boolForKey:kCommuterDrivingSettingKey];
+    _home = [NSKeyedUnarchiver unarchiveObjectWithData: [defaults objectForKey:kCommuteOriginSettingKey]];
+    _work = [NSKeyedUnarchiver unarchiveObjectWithData: [defaults objectForKey:kCommuteDestinationSettingKey]];
+    _homePlaceName = [defaults objectForKey:kCommuterOriginPlaceNameKey];
+    _workPlaceName = [defaults objectForKey:kCommuterDestinationPlaceNameKey];
+    _pickupTime = [defaults objectForKey:kCommuteDepartureTimeSettingKey];
+    _returnTime = [defaults objectForKey:kCommuteReturnTimeSettingKey];
+    _driving = [defaults boolForKey:kCommuterDrivingSettingKey];
 }
 
 - (void) clear {
@@ -190,13 +191,13 @@ static VCCommuteManager * instance;
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kCommuterDestinationPlaceNameKey];
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kCommuterDrivingSettingKey];
     [[NSUserDefaults standardUserDefaults]  synchronize];
-    instance.home = nil;
-    instance.work = nil;
-    instance.homePlaceName = nil;
-    instance.workPlaceName = nil;
-    instance.pickupTime = nil;
-    instance.returnTime = nil;
-    instance.driving = NO;
+    _home = nil;
+    _work = nil;
+    _homePlaceName = nil;
+    _workPlaceName = nil;
+    _pickupTime = nil;
+    _returnTime = nil;
+    _driving = NO;
 
 }
 
@@ -209,7 +210,7 @@ static VCCommuteManager * instance;
     }
 }
 
-- (void) requestRidesFor:(NSDate *) tomorrow success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure  {
+- (void) requestRidesFor:(NSDate *) tomorrow success:(void ( ^ ) (Ticket * homeToWorkTicket)) success failure:( void ( ^ ) ()) failure  {
     // Look for pre-existing request for tomorrow, error if it exists
     NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
     
@@ -310,16 +311,13 @@ static VCCommuteManager * instance;
         [VCRiderApi requestRide:workToHomeRide success:^(RKObjectRequestOperation *operation, VCRideRequestCreated * response) {
             workToHomeRide.uploaded = [NSNumber numberWithBool:YES];
             workToHomeRide.direction = @"b";
-            homeToWorkRide.state = kRequestedState;
+            workToHomeRide.state = kRequestedState;
 
             [VCCoreData saveContext];
-            
-            [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                success();
-            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                // Not sure what to do here, the request has been posted, but the schedule failed to update
-                failure();
-            }];
+            [VCNotifications scheduleUpdated];
+
+            success(homeToWorkRide);
+           
             
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             failure();

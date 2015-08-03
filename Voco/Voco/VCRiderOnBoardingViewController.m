@@ -231,6 +231,7 @@
         return;
     }
     
+    _stripeOK = YES;
     if(_stripeOK == NO){
         [UIAlertView showWithTitle:@"Error"
                            message:@"You must enter a valid payment card"
@@ -256,6 +257,34 @@
     
     _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _hud.labelText = @"Saving user info";
+    
+    [VCUsersApi createUser:[RKObjectManager sharedManager]
+                 firstName:_firstNameTextField.text
+                  lastName:_lastNameTextField.text
+                     email:_desiredEmail
+                  password:_desiredPassword
+                     phone:_phoneTextField.text
+              referralCode:@""
+                   success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                       
+                       [[VCUserStateManager instance] loginWithEmail:_desiredEmail
+                                                            password:_desiredPassword success:^{
+                                                                [_hud hide:YES];
+                                                                [self nextPage];
+                                                            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                                [self somethingDidNotGoRight];
+                                                                [WRUtilities criticalError:error];
+                                                            }];
+                       
+                   } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                       [self somethingDidNotGoRight];
+                       [WRUtilities criticalError:error];
+                       
+                       
+                   }];
+
+    
+    /*
     [Stripe createTokenWithCard:card completion:^(STPToken *token, NSError *error) {
         if (error == nil ) {
             [VCUsersApi createUser:[RKObjectManager sharedManager]
@@ -298,6 +327,7 @@
 #endif
         }
     }];
+     */
 }
 
 - (void) somethingDidNotGoRight {
