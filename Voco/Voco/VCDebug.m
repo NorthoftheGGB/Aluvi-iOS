@@ -19,7 +19,6 @@ static VCDebug * instance;
 
 @property (nonatomic, strong) NSString * userIdentifier;
 @property (nonatomic) BOOL pushTokenConfirmationEnabled;
-@property (nonatomic) BOOL alertsEnabled;
 
 @end
 
@@ -32,12 +31,48 @@ static VCDebug * instance;
     NSString * userToken = [[VCApi apiToken] substringToIndex:6];
 
     NSString * message = [NSString stringWithFormat:@"User Token: %@ \n Push Token: %@ \nPush Token Published %@ \n", userToken, pushToken, pushPublished];
-    [UIAlertView showWithTitle:@"Welcome to Triage" message:message cancelButtonTitle:@"OK" otherButtonTitles:@[@"Refresh Push Token"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+    
+    NSString * alertsEnabledText = @"Enable Error Alerts";
+    if([VCDebug sharedInstance].alertsEnabled){
+        alertsEnabledText = @"Disable Error Alerts";
+    }
+    NSString * blockPushMessagesText = @"Block Push Messages";
+    if([VCDebug sharedInstance].blockPushMessages){
+        blockPushMessagesText = @"Unblock Push Messages";
+    }
+
+    NSString * version = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
+    NSString * build = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
+    NSString * appVersion = [NSString stringWithFormat:@"v%@b%@", version, build];
+    NSString * title = [NSString stringWithFormat:@"Welcome to Triage %@", appVersion];
+    [UIAlertView showWithTitle:title message:message cancelButtonTitle:@"OK" otherButtonTitles:@[@"Refresh Push Token", alertsEnabledText, blockPushMessagesText] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
         switch (buttonIndex) {
             case 1:
+            {
                 [VCPushReceiver registerForRemoteNotifications];
                 [[VCDebug sharedInstance] enablePushTokenConfirmation];
+            }
                 break;
+            case 2:
+            {
+                if([VCDebug sharedInstance].alertsEnabled){
+                    [VCDebug sharedInstance].alertsEnabled = false;
+                } else {
+                    [VCDebug sharedInstance].alertsEnabled = true;
+
+                }
+                break;
+            }
+            case 3:
+            {
+                if([VCDebug sharedInstance].blockPushMessages){
+                    [VCDebug sharedInstance].blockPushMessages = false;
+                } else {
+                    [VCDebug sharedInstance].blockPushMessages = true;
+                    
+                }
+                break;
+            }
                 
             default:
                 break;
@@ -48,6 +83,7 @@ static VCDebug * instance;
 + (VCDebug *) sharedInstance {
     if (instance == nil){
         instance = [[VCDebug alloc] init];
+
     }
     return instance;
 }
@@ -57,7 +93,9 @@ static VCDebug * instance;
     if (self != nil){
         self.userIdentifier = [[NSUserDefaults standardUserDefaults] objectForKey:kLoggedInUserIdentifier];
         self.pushTokenConfirmationEnabled = NO;
-        self.alertsEnabled = true;
+#ifdef DEBUG
+        self.alertsEnabled = YES;
+#endif
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushTokenUpdated) name:kPushTokenUpdatedNotification object:nil];
@@ -72,14 +110,6 @@ static VCDebug * instance;
 
 -(void) enablePushTokenConfirmation {
     _pushTokenConfirmationEnabled = YES;
-}
-
-- (BOOL) alertsEnabled {
-    return _alertsEnabled;
-}
-
-- (void) enableAlerts {
-    _alertsEnabled = YES;
 }
 
 

@@ -22,6 +22,8 @@
 #import "VCUserStateManager.h"
 #import "VCCoreData.h"
 
+#import "VCDebug.h"
+
 
 @implementation VCPushReceiver
 
@@ -150,6 +152,11 @@
 }
 
 + (void) handleRemoteNotification:(NSDictionary *) payload {
+    
+    if([VCDebug sharedInstance].blockPushMessages){
+        // allow triage to block push messages
+        return;
+    }
     
     // Any remote notification should trigger a sync on the schedule
     // TODO: should refactor the below if/else to provide a block used in the Success of this
