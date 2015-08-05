@@ -1813,7 +1813,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		36638D731B658A0B004EDB09 /* Views */ = {
+		36638D731B658A0B004EDB09 /* Commute Request */ = {
 			isa = PBXGroup;
 			children = (
 				36638D741B658A5A004EDB09 /* VCRideRequestView.xib */,
@@ -1823,7 +1823,7 @@
 				F4A7C8231962E235007E05AD /* VCLocationSearchViewController.m */,
 				F4A7C8241962E235007E05AD /* VCLocationSearchViewController.xib */,
 			);
-			name = Views;
+			name = "Commute Request";
 			sourceTree = "<group>";
 		};
 		36FB72891B6D6B1400F8A6AF /* Old Other Functionality */ = {
@@ -2041,12 +2041,15 @@
 		4FE641E1194168E80059BED1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				F49EDD071946A63F0020B8BB /* Fonts */,
+				4FDB0ECA1970B0F000A8CEC2 /* Revision 2.0 */,
+				4F2EF99F1960EC62006A1962 /* Menu Assets */,
+				4F38976019B8294300A75C5C /* HTML */,
 				369DBC1D1B6D24AD00449CB4 /* test_big@x2.jpg */,
 				369DBC151B6D22F400449CB4 /* test_big.jpg */,
 				369DBC131B6D228E00449CB4 /* test.jpg */,
 				F496FE9519FDBC9400632055 /* placeholder-profile.png */,
 				4FCB64CC19F8622300B02660 /* nav-bar-background@2x.png */,
-				4F38976019B8294300A75C5C /* HTML */,
 				4FE641E2194168E80059BED1 /* bubble@2x.png */,
 				4FCD7C6019761C20007609E8 /* call-button-select@2x.png */,
 				4FCD7C6119761C21007609E8 /* call-button@2x.png */,
@@ -2060,14 +2063,11 @@
 				4FF142D5195CE4BD00CC61B6 /* driver-request-form@2x.png */,
 				4FE641E4194168E80059BED1 /* driver_must_box@2x.png */,
 				4FE641E5194168E80059BED1 /* driving_car@2x.png */,
-				F49EDD071946A63F0020B8BB /* Fonts */,
 				F473EFFD19497FBF00D8C900 /* map_pin_fill-512.png */,
-				4F2EF99F1960EC62006A1962 /* Menu Assets */,
 				F473F017195044AA00D8C900 /* menu-list.png */,
 				F473F018195044AA00D8C900 /* menu-list@2x.png */,
 				4FE286FC1962C25400FD8AF6 /* pin@2x.png */,
 				4FE641E9194168E80059BED1 /* red_box@2x.png */,
-				4FDB0ECA1970B0F000A8CEC2 /* Revision 2.0 */,
 				4FE286ED1962BB3F00FD8AF6 /* search-location-select@2x.png */,
 				4FE286EE1962BB3F00FD8AF6 /* search-location@2x.png */,
 				4FE286F31962BDB300FD8AF6 /* zoom-ride-bounds-select@2x.png */,
@@ -2180,13 +2180,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		844415301B6DB1EC008C7898 /* Commute Request */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Commute Request";
-			sourceTree = "<group>";
-		};
 		844415311B6DB1FB008C7898 /* Commute HUDs */ = {
 			isa = PBXGroup;
 			children = (
@@ -2213,9 +2206,8 @@
 			isa = PBXGroup;
 			children = (
 				4FE641B61941562C0059BED1 /* Sign-In and Registration */,
-				F473F022195192D600D8C900 /* Dev */,
-				F473F00E194A6D3400D8C900 /* Common */,
 				F45F7C131935A3A500A94721 /* Tickets */,
+				F473F022195192D600D8C900 /* Dev */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -2305,6 +2297,7 @@
 		F45F7C131935A3A500A94721 /* Tickets */ = {
 			isa = PBXGroup;
 			children = (
+				F473F00E194A6D3400D8C900 /* Common */,
 				F473F047195BA4E000D8C900 /* Menu */,
 				4F9ECEAD196619F500AD4229 /* Other Functionality */,
 				F473EFE919492CA400D8C900 /* Ride System */,
@@ -2325,8 +2318,7 @@
 			isa = PBXGroup;
 			children = (
 				844415311B6DB1FB008C7898 /* Commute HUDs */,
-				844415301B6DB1EC008C7898 /* Commute Request */,
-				36638D731B658A0B004EDB09 /* Views */,
+				36638D731B658A0B004EDB09 /* Commute Request */,
 				4F3DB5C61981F6AB00DDD094 /* Old */,
 				4F73CA01197F2AB0001B6663 /* VCTicketViewController.h */,
 				4F73CA02197F2AB0001B6663 /* VCTicketViewController.m */,

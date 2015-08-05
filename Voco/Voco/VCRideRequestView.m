@@ -128,6 +128,20 @@
     [_delegate rideRequestView:self didTapEditLocation:CLLocationCoordinate2DMake(40, 40) locationName:@"Work" type:kWorkType];
 }
 
+- (IBAction)didTapDriverCheckbox:(id)sender {
+    
+    if (_driverCheckbox.selected == YES){
+        _driverCheckbox.selected = NO;
+        _route.driving = NO;
+        _commutePreferencesHaveChanged = YES;
+
+    } else {
+        _driverCheckbox.selected = YES;
+        _route.driving = YES;
+        _commutePreferencesHaveChanged = YES;
+    }
+    
+}
 
 
 - (IBAction)morningPickupTimeValueChanged:(UIStepper *)sender {

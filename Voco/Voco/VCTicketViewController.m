@@ -167,7 +167,7 @@
          
         _appeared = YES;
         
-        [self showInterfaceForTicket];
+        [self updateTicketInterface];
         
        
     }
@@ -204,7 +204,7 @@
             [WRUtilities criticalErrorWithString:@"Missing ticket for trip."];
             return;
         }
-        [self showInterfaceForTicket];
+        [self updateTicketInterface];
     } else {
         // some debugging
         if(_ticket == nil){
@@ -396,7 +396,7 @@
 }
 
 
-- (void) showInterfaceForTicket {
+- (void) updateTicketInterface {
     [self clearMap];
     [self removeHuds];
     
@@ -469,7 +469,7 @@
     [self clearMap];
     [UIView transitionWithView:self.view duration:.35 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
         [self removeHuds];
-        [self showInterfaceForTicket];
+        [self updateTicketInterface];
         [self showHome];
         
         // check for another scheduled commute
@@ -767,7 +767,7 @@
                                              [hud hide:YES];
                                              
                                              // Put the waiting text in here.
-                                             [self showInterfaceForTicket];
+                                             [self updateTicketInterface];
                                              
                                          } failure:^{
                                              [hud hide:YES];
@@ -951,11 +951,9 @@
 - (void)rideRequestView:(VCRideRequestView *)rideRequestView didTapScheduleCommute:(Route *)route {
     _route = [route copy];
     [self storeCommuterSettings:^{
-        if( _route.home != nil && _route.work != nil){
-            [self showSuggestedRoute: _route.home to:_route.work];
-        }
         [self scheduleRide];
         [self removeRideRequestView:rideRequestView];
+        [self updateTicketInterface];
         
     } failure:^{
         // nothing necessary to do
