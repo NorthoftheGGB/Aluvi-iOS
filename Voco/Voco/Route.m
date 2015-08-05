@@ -80,8 +80,27 @@
         copy.driving = self.driving;
         copy.pickupTime = [self.pickupTime copy];
         copy.returnTime = [self.returnTime copy];
+        copy.polyline = [self.polyline copy];
+        copy.region = [self.region copy];
     }
     return copy;
+}
+
+
+- (BOOL) routeSettingsValid {
+    if( self.home == nil || self.work == nil || self.pickupTime == nil || self.returnTime == nil){
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
+- (BOOL) hasCachedRoute {
+    if(self.polyline != nil && self.region != nil && [self.polyline count] > 0){
+        return TRUE;
+    } else {
+        return FALSE;
+    }
 }
 
 @end

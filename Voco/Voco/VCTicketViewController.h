@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "VCTransitBaseViewController.h"
 #import "Ticket.h"
 
-@interface VCTicketViewController : VCTransitBaseViewController
-
+@interface VCTicketViewController : UIViewController
 
 @property (strong, nonatomic) Ticket * ticket;
 
-- (IBAction)didTapTestingButton:(id)sender;
+
+
+
 
 
 @end

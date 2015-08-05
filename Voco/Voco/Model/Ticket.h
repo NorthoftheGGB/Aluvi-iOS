@@ -10,11 +10,13 @@
 #import <CoreData/CoreData.h>
 @import MapKit;
 #import "Transit.h"
+#import "MBRegion.h"
 
 // State
 #define kCreatedState @"created"
 #define kRequestedState @"requested"
 #define kScheduledState @"scheduled"
+#define kInProgressState @"scheduled"
 #define kCommuteSchedulerFailedState @"commute_scheduler_failed"
 #define kDriverCancelledState @"driver_cancelled"
 #define kRiderCancelledState @"rider_cancelled"
@@ -61,6 +63,10 @@
 
 @property (nonatomic, retain) NSArray * returnTicketFetchRequest;
 
+// Map Route Caching
+@property (nonatomic) NSArray * polyline;   // TODO needs to be coded to data using NSKeyedArchiver
+@property (nonatomic) MBRegion * region;    // TODO needs to be coded to data using NSKeyedArchiver
+
 + (Ticket *) ticketWithFareId: (NSNumber *) fareId;
 
 + (void)createMappings:(RKObjectManager *)objectManager;
@@ -76,5 +82,7 @@
 
 - (NSString *) shortRouteDescription;
 - (NSString *) routeDescription;
+- (BOOL) hasCachedRoute;
+
 
 @end

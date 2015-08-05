@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MBRegion.h"
 @import CoreLocation;
 
 @interface Route : NSObject <NSCopying>
@@ -18,10 +19,14 @@
 @property (nonatomic, strong) NSString * pickupTime;
 @property (nonatomic, strong) NSString * returnTime;
 @property (nonatomic) BOOL driving;
+@property (nonatomic) NSArray * polyline;   // TODO needs to be coded to data using NSKeyedArchiver
+@property (nonatomic) MBRegion * region;    // TODO needs to be coded to data using NSKeyedArchiver
 
 
 + (RKObjectMapping *) getMapping;
 + (RKObjectMapping *) getInverseMapping;
 
+- (BOOL) routeSettingsValid;
+- (BOOL) hasCachedRoute;
 
 @end

@@ -170,6 +170,14 @@
 
 }
 
+- (BOOL) hasCachedRoute {
+    if(self.polyline != nil && self.region != nil && [self.polyline count] > 0){
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
 
 
 

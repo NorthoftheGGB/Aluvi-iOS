@@ -83,8 +83,6 @@ static RKObjectManager * objectManager;
 
             CLLocation *location = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
             [polylinePoints addObject:location];
-            //CLLocationCoordinate2D new_coordinate = { [latitude doubleValue], [longitude doubleValue] };
-            //[polylinePoints addObject:[NSValue valueWithBytes:&new_coordinate objCType:@encode(CLLocationCoordinate2D)]];
         }
 
         double maxLatitude = [response.route.boundingBox.ul.lat doubleValue];

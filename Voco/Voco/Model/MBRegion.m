@@ -16,4 +16,15 @@
     _bottomLocation = bottom;
 }
 
+- (id)copyWithZone:(NSZone *)zone
+{
+    MBRegion * copy = [[MBRegion alloc] init];
+    if(copy){
+        copy.topLocation = self.topLocation;
+        copy.bottomLocation = self.bottomLocation;
+    }
+    return copy;
+}
+
+
 @end
