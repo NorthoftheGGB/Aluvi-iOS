@@ -142,7 +142,6 @@ static VCUserStateManager *sharedSingleton;
     
     VCDevice * device = [[VCDevice alloc] init];
     device.userId = [NSNumber numberWithInt:0]; // unassign the push token
-    device.pushToken = @"";
     [VCDevicesApi patchDevice:device success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [self clearUser];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
