@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36000C8E1B7289D7008E84AE /* VCPaymentsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000C8D1B7289D7008E84AE /* VCPaymentsView.m */; };
+		36000C8F1B7289D7008E84AE /* VCPaymentsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000C8D1B7289D7008E84AE /* VCPaymentsView.m */; };
+		36000C901B7289D7008E84AE /* VCPaymentsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000C8D1B7289D7008E84AE /* VCPaymentsView.m */; };
+		36000C911B7289D7008E84AE /* VCPaymentsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000C8D1B7289D7008E84AE /* VCPaymentsView.m */; };
 		36638D751B658A5A004EDB09 /* VCRideRequestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D741B658A5A004EDB09 /* VCRideRequestView.xib */; };
 		36638D791B658A5A004EDB09 /* VCRideRequestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D741B658A5A004EDB09 /* VCRideRequestView.xib */; };
 		36638D7B1B658A5A004EDB09 /* VCRideRequestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D741B658A5A004EDB09 /* VCRideRequestView.xib */; };
@@ -1167,6 +1171,8 @@
 /* Begin PBXFileReference section */
 		0D14E3F5E1EECB39D89015B1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		351E93948BFC43989C411DB5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		36000C8C1B7289D7008E84AE /* VCPaymentsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPaymentsView.h; sourceTree = "<group>"; };
+		36000C8D1B7289D7008E84AE /* VCPaymentsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPaymentsView.m; sourceTree = "<group>"; };
 		36638D741B658A5A004EDB09 /* VCRideRequestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCRideRequestView.xib; sourceTree = "<group>"; };
 		36638D7C1B659CAE004EDB09 /* VCDriverTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCDriverTicketView.xib; sourceTree = "<group>"; };
 		36638D841B65A988004EDB09 /* VCRiderTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCRiderTicketView.xib; sourceTree = "<group>"; };
@@ -2104,6 +2110,8 @@
 			children = (
 				36000C8B1B728884008E84AE /* Old Menu Item View Controllers */,
 				36FB728A1B6D6B4200F8A6AF /* VCPaymentsView.xib */,
+				36000C8C1B7289D7008E84AE /* VCPaymentsView.h */,
+				36000C8D1B7289D7008E84AE /* VCPaymentsView.m */,
 				4FFCF2BB19A25F2100A4A24E /* VCProfileViewController.h */,
 				4FFCF2BC19A25F2100A4A24E /* VCProfileViewController.m */,
 				4FFCF2BD19A25F2100A4A24E /* VCProfileViewController.xib */,
@@ -3620,6 +3628,7 @@
 				841647B81B64A47D00CD20AC /* VCRequestUpdate.m in Sources */,
 				841647B91B64A47D00CD20AC /* VCCoreData.m in Sources */,
 				841647BA1B64A47D00CD20AC /* VCCommuteSetUpOnBoardingViewController.m in Sources */,
+				36000C911B7289D7008E84AE /* VCPaymentsView.m in Sources */,
 				841647BB1B64A47D00CD20AC /* VCApiError.m in Sources */,
 				841647BC1B64A47D00CD20AC /* Route.m in Sources */,
 				841647BD1B64A47D00CD20AC /* VCRiderRecieptDetailViewController.m in Sources */,
@@ -3746,6 +3755,7 @@
 				841648EE1B658F4900CD20AC /* Rider.m in Sources */,
 				841648EF1B658F4900CD20AC /* VCRequestUpdate.m in Sources */,
 				841648F01B658F4900CD20AC /* VCCoreData.m in Sources */,
+				36000C8F1B7289D7008E84AE /* VCPaymentsView.m in Sources */,
 				841648F11B658F4900CD20AC /* Route.m in Sources */,
 				841648F21B658F4900CD20AC /* VCCommuteManager.m in Sources */,
 				841648F31B658F4900CD20AC /* VCApiError.m in Sources */,
@@ -3872,6 +3882,7 @@
 				F4C6B1FE197F06B100F6C10B /* VCRequestUpdate.m in Sources */,
 				F4C6B1FF197F06B100F6C10B /* VCCoreData.m in Sources */,
 				F496FE9119FDB9FE00632055 /* Route.m in Sources */,
+				36000C8E1B7289D7008E84AE /* VCPaymentsView.m in Sources */,
 				F425906D1995E30000FA928E /* VCCommuteManager.m in Sources */,
 				F4C6B29E197F437800F6C10B /* VCApiError.m in Sources */,
 				F4C6B201197F06B100F6C10B /* VCRiderRecieptDetailViewController.m in Sources */,
@@ -3998,6 +4009,7 @@
 				F4D8FE5219B1745A00BC0B69 /* VCRequestUpdate.m in Sources */,
 				F4D8FE5319B1745A00BC0B69 /* VCCoreData.m in Sources */,
 				F4D8FE5419B1745A00BC0B69 /* VCCommuteSetUpOnBoardingViewController.m in Sources */,
+				36000C901B7289D7008E84AE /* VCPaymentsView.m in Sources */,
 				F4D8FE5519B1745A00BC0B69 /* VCApiError.m in Sources */,
 				F496FE9419FDB9FE00632055 /* Route.m in Sources */,
 				F4D8FE5619B1745A00BC0B69 /* VCRiderRecieptDetailViewController.m in Sources */,
