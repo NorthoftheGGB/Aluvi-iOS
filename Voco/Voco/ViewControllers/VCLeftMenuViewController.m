@@ -13,7 +13,7 @@
 #import "VCProfileViewController.h"
 #import "VCSupportViewController.h"
 #import "VCPaymentsViewController.h"
-#import "VCReceiptsViewController.h"
+#import "VCReceiptsViewController_old.h"
 #import "VCEarningsViewController.h"
 #import "VCFareReceiptsViewController.h"
 #import "VCMenuItemTableViewCell.h"
@@ -28,6 +28,7 @@
 #import "VCRiderApi.h"
 #import "VCUtilities.h"
 #import "VCNotifications.h"
+#import "VCReceiptViewController.h"
 
 
 // These ones go in the array
@@ -503,7 +504,7 @@
             
         case kReceiptsCellInteger:
         {
-            VCReceiptsViewController * vc = [[VCReceiptsViewController alloc] init];
+            VCReceiptViewController * vc = [[VCReceiptViewController alloc] init];
             [[VCInterfaceManager instance] setCenterViewControllers: @[vc]];
             VCMenuItemTableViewCell * cell = (VCMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
             [cell select];

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCReceiptsViewController.h"
+#import "VCReceiptsViewController_old.h"
 #import "HVTableView.h"
 #import "VCUtilities.h"
 #import "Payment.h"
@@ -16,14 +16,14 @@
 #import "NSDate+Pretty.h"
 #import "VCRiderApi.h"
 
-@interface VCReceiptsViewController () <HVTableViewDataSource, HVTableViewDelegate, NSFetchedResultsControllerDelegate>
+@interface VCReceiptsViewController_old () <HVTableViewDataSource, HVTableViewDelegate, NSFetchedResultsControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet HVTableView *hvTableView;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
 @end
 
-@implementation VCReceiptsViewController
+@implementation VCReceiptsViewController_old
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

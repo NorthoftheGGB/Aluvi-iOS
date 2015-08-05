@@ -11,14 +11,14 @@
 		36000C8F1B7289D7008E84AE /* VCPaymentsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000C8D1B7289D7008E84AE /* VCPaymentsView.m */; };
 		36000C901B7289D7008E84AE /* VCPaymentsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000C8D1B7289D7008E84AE /* VCPaymentsView.m */; };
 		36000C911B7289D7008E84AE /* VCPaymentsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000C8D1B7289D7008E84AE /* VCPaymentsView.m */; };
-		36000C941B72B295008E84AE /* VCReceiptsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36000C931B72B295008E84AE /* VCReceiptsView.xib */; };
-		36000C951B72B295008E84AE /* VCReceiptsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36000C931B72B295008E84AE /* VCReceiptsView.xib */; };
-		36000C961B72B295008E84AE /* VCReceiptsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36000C931B72B295008E84AE /* VCReceiptsView.xib */; };
-		36000C971B72B295008E84AE /* VCReceiptsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36000C931B72B295008E84AE /* VCReceiptsView.xib */; };
-		36000C9A1B72B2AC008E84AE /* VCReceiptsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000C991B72B2AC008E84AE /* VCReceiptsView.m */; };
-		36000C9B1B72B2AC008E84AE /* VCReceiptsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000C991B72B2AC008E84AE /* VCReceiptsView.m */; };
-		36000C9C1B72B2AC008E84AE /* VCReceiptsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000C991B72B2AC008E84AE /* VCReceiptsView.m */; };
-		36000C9D1B72B2AC008E84AE /* VCReceiptsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000C991B72B2AC008E84AE /* VCReceiptsView.m */; };
+		36000C941B72B295008E84AE /* VCReceiptViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36000C931B72B295008E84AE /* VCReceiptViewController.xib */; };
+		36000C951B72B295008E84AE /* VCReceiptViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36000C931B72B295008E84AE /* VCReceiptViewController.xib */; };
+		36000C961B72B295008E84AE /* VCReceiptViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36000C931B72B295008E84AE /* VCReceiptViewController.xib */; };
+		36000C971B72B295008E84AE /* VCReceiptViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36000C931B72B295008E84AE /* VCReceiptViewController.xib */; };
+		36000C9A1B72B2AC008E84AE /* VCReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000C991B72B2AC008E84AE /* VCReceiptViewController.m */; };
+		36000C9B1B72B2AC008E84AE /* VCReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000C991B72B2AC008E84AE /* VCReceiptViewController.m */; };
+		36000C9C1B72B2AC008E84AE /* VCReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000C991B72B2AC008E84AE /* VCReceiptViewController.m */; };
+		36000C9D1B72B2AC008E84AE /* VCReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000C991B72B2AC008E84AE /* VCReceiptViewController.m */; };
 		36000C9F1B72C169008E84AE /* VCReceiptsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36000C9E1B72C169008E84AE /* VCReceiptsTableViewCell.xib */; };
 		36000CA01B72C169008E84AE /* VCReceiptsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36000C9E1B72C169008E84AE /* VCReceiptsTableViewCell.xib */; };
 		36000CA11B72C169008E84AE /* VCReceiptsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36000C9E1B72C169008E84AE /* VCReceiptsTableViewCell.xib */; };
@@ -165,7 +165,7 @@
 		4FFCF2C519A266CC00A4A24E /* camera-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFCF2C419A266CC00A4A24E /* camera-icon@2x.png */; };
 		4FFCF2CB19A5381900A4A24E /* VCSupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCF2C919A5381900A4A24E /* VCSupportViewController.m */; };
 		4FFCF2CE19A5381900A4A24E /* VCSupportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFCF2CA19A5381900A4A24E /* VCSupportViewController.xib */; };
-		4FFCF2D419A5493500A4A24E /* VCReceiptsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCF2D219A5493500A4A24E /* VCReceiptsViewController.m */; };
+		4FFCF2D419A5493500A4A24E /* VCReceiptsViewController_old.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCF2D219A5493500A4A24E /* VCReceiptsViewController_old.m */; };
 		4FFE13901989AE09004D4413 /* VCLeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE138E1989AE09004D4413 /* VCLeftMenuViewController.m */; };
 		4FFE13931989AE09004D4413 /* VCLeftMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE138F1989AE09004D4413 /* VCLeftMenuViewController.xib */; };
 		4FFE16F31989E006004D4413 /* driver-call-hud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE16F21989E006004D4413 /* driver-call-hud@2x.png */; };
@@ -272,7 +272,7 @@
 		841647D61B64A47D00CD20AC /* Ticket.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C021935880500A94721 /* Ticket.m */; };
 		841647D71B64A47D00CD20AC /* VCObjectRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D890551946A2D9007C4671 /* VCObjectRequestOperation.m */; };
 		841647D81B64A47D00CD20AC /* VCValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFDB19491C2B00D8C900 /* VCValidation.m */; };
-		841647D91B64A47D00CD20AC /* VCReceiptsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCF2D219A5493500A4A24E /* VCReceiptsViewController.m */; };
+		841647D91B64A47D00CD20AC /* VCReceiptsViewController_old.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCF2D219A5493500A4A24E /* VCReceiptsViewController_old.m */; };
 		841647DA1B64A47D00CD20AC /* MQRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F0151950358000D8C900 /* MQRoute.m */; };
 		841647DB1B64A47D00CD20AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FA0BF5192BF6BF005D8645 /* main.m */; };
 		841647DC1B64A47D00CD20AC /* VCTicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F73CA02197F2AB0001B6663 /* VCTicketViewController.m */; };
@@ -455,7 +455,7 @@
 		8416489A1B64A47D00CD20AC /* profile-menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9A11960EC8C006A1962 /* profile-menu-button@2x.png */; };
 		841648A61B658F4900CD20AC /* VCDriverRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F02D1952DA8F00D8C900 /* VCDriverRegistration.m */; };
 		841648A71B658F4900CD20AC /* VCCommuteSetUpOnBoardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758CF19AA91810093DBEA /* VCCommuteSetUpOnBoardingViewController.m */; };
-		841648A81B658F4900CD20AC /* VCReceiptsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCF2D219A5493500A4A24E /* VCReceiptsViewController.m */; };
+		841648A81B658F4900CD20AC /* VCReceiptsViewController_old.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCF2D219A5493500A4A24E /* VCReceiptsViewController_old.m */; };
 		841648A91B658F4900CD20AC /* VCPushApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B1F193D8FE500354886 /* VCPushApi.m */; };
 		841648AA1B658F4900CD20AC /* VCPasswordTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFBA440195E608600A51B84 /* VCPasswordTextField.m */; };
 		841648AB1B658F4900CD20AC /* VCCarModelTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE712CC197368C80071020C /* VCCarModelTextField.m */; };
@@ -1019,7 +1019,7 @@
 		F4D8FE6F19B1745A00BC0B69 /* Ticket.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C021935880500A94721 /* Ticket.m */; };
 		F4D8FE7119B1745A00BC0B69 /* VCObjectRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D890551946A2D9007C4671 /* VCObjectRequestOperation.m */; };
 		F4D8FE7319B1745A00BC0B69 /* VCValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFDB19491C2B00D8C900 /* VCValidation.m */; };
-		F4D8FE7519B1745A00BC0B69 /* VCReceiptsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCF2D219A5493500A4A24E /* VCReceiptsViewController.m */; };
+		F4D8FE7519B1745A00BC0B69 /* VCReceiptsViewController_old.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCF2D219A5493500A4A24E /* VCReceiptsViewController_old.m */; };
 		F4D8FE7619B1745A00BC0B69 /* MQRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F0151950358000D8C900 /* MQRoute.m */; };
 		F4D8FE7719B1745A00BC0B69 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FA0BF5192BF6BF005D8645 /* main.m */; };
 		F4D8FE7819B1745A00BC0B69 /* VCTicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F73CA02197F2AB0001B6663 /* VCTicketViewController.m */; };
@@ -1189,9 +1189,9 @@
 		351E93948BFC43989C411DB5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		36000C8C1B7289D7008E84AE /* VCPaymentsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPaymentsView.h; sourceTree = "<group>"; };
 		36000C8D1B7289D7008E84AE /* VCPaymentsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPaymentsView.m; sourceTree = "<group>"; };
-		36000C931B72B295008E84AE /* VCReceiptsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCReceiptsView.xib; sourceTree = "<group>"; };
-		36000C981B72B2AC008E84AE /* VCReceiptsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCReceiptsView.h; sourceTree = "<group>"; };
-		36000C991B72B2AC008E84AE /* VCReceiptsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCReceiptsView.m; sourceTree = "<group>"; };
+		36000C931B72B295008E84AE /* VCReceiptViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCReceiptViewController.xib; sourceTree = "<group>"; };
+		36000C981B72B2AC008E84AE /* VCReceiptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCReceiptViewController.h; sourceTree = "<group>"; };
+		36000C991B72B2AC008E84AE /* VCReceiptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCReceiptViewController.m; sourceTree = "<group>"; };
 		36000C9E1B72C169008E84AE /* VCReceiptsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCReceiptsTableViewCell.xib; sourceTree = "<group>"; };
 		36000CA31B72C185008E84AE /* VCReceiptsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCReceiptsTableViewCell.h; sourceTree = "<group>"; };
 		36000CA41B72C185008E84AE /* VCReceiptsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCReceiptsTableViewCell.m; sourceTree = "<group>"; };
@@ -1420,9 +1420,9 @@
 		4FFCF2C819A5381900A4A24E /* VCSupportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCSupportViewController.h; sourceTree = "<group>"; };
 		4FFCF2C919A5381900A4A24E /* VCSupportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCSupportViewController.m; sourceTree = "<group>"; };
 		4FFCF2CA19A5381900A4A24E /* VCSupportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCSupportViewController.xib; sourceTree = "<group>"; };
-		4FFCF2D119A5493500A4A24E /* VCReceiptsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCReceiptsViewController.h; sourceTree = "<group>"; };
-		4FFCF2D219A5493500A4A24E /* VCReceiptsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCReceiptsViewController.m; sourceTree = "<group>"; };
-		4FFCF2D319A5493500A4A24E /* VCReceiptsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCReceiptsViewController.xib; sourceTree = "<group>"; };
+		4FFCF2D119A5493500A4A24E /* VCReceiptsViewController_old.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCReceiptsViewController_old.h; sourceTree = "<group>"; };
+		4FFCF2D219A5493500A4A24E /* VCReceiptsViewController_old.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCReceiptsViewController_old.m; sourceTree = "<group>"; };
+		4FFCF2D319A5493500A4A24E /* VCReceiptsViewController_old.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCReceiptsViewController_old.xib; sourceTree = "<group>"; };
 		4FFE138D1989AE09004D4413 /* VCLeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCLeftMenuViewController.h; path = ViewControllers/VCLeftMenuViewController.h; sourceTree = "<group>"; };
 		4FFE138E1989AE09004D4413 /* VCLeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCLeftMenuViewController.m; path = ViewControllers/VCLeftMenuViewController.m; sourceTree = "<group>"; };
 		4FFE138F1989AE09004D4413 /* VCLeftMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCLeftMenuViewController.xib; path = ViewControllers/VCLeftMenuViewController.xib; sourceTree = "<group>"; };
@@ -1821,9 +1821,9 @@
 			isa = PBXGroup;
 			children = (
 				4FC758E019AA94F00093DBEA /* Receipts Table View Cells */,
-				4FFCF2D119A5493500A4A24E /* VCReceiptsViewController.h */,
-				4FFCF2D219A5493500A4A24E /* VCReceiptsViewController.m */,
-				4FFCF2D319A5493500A4A24E /* VCReceiptsViewController.xib */,
+				4FFCF2D119A5493500A4A24E /* VCReceiptsViewController_old.h */,
+				4FFCF2D219A5493500A4A24E /* VCReceiptsViewController_old.m */,
+				4FFCF2D319A5493500A4A24E /* VCReceiptsViewController_old.xib */,
 				4F9ECEB519661C4A00AD4229 /* VCPaymentsViewController.h */,
 				4F9ECEB619661C4A00AD4229 /* VCPaymentsViewController.m */,
 				4F9ECEB719661C4A00AD4229 /* VCPaymentsViewController.xib */,
@@ -2159,9 +2159,9 @@
 				4FFCF2C819A5381900A4A24E /* VCSupportViewController.h */,
 				4FFCF2C919A5381900A4A24E /* VCSupportViewController.m */,
 				4FFCF2CA19A5381900A4A24E /* VCSupportViewController.xib */,
-				36000C931B72B295008E84AE /* VCReceiptsView.xib */,
-				36000C981B72B2AC008E84AE /* VCReceiptsView.h */,
-				36000C991B72B2AC008E84AE /* VCReceiptsView.m */,
+				36000C931B72B295008E84AE /* VCReceiptViewController.xib */,
+				36000C981B72B2AC008E84AE /* VCReceiptViewController.h */,
+				36000C991B72B2AC008E84AE /* VCReceiptViewController.m */,
 				36000C9E1B72C169008E84AE /* VCReceiptsTableViewCell.xib */,
 				36000CA31B72C185008E84AE /* VCReceiptsTableViewCell.h */,
 				36000CA41B72C185008E84AE /* VCReceiptsTableViewCell.m */,
@@ -2830,7 +2830,7 @@
 				841648091B64A47D00CD20AC /* temp-call-button@2x.png in Resources */,
 				8416480A1B64A47D00CD20AC /* call-button-select@2x.png in Resources */,
 				8416480B1B64A47D00CD20AC /* call-button@2x.png in Resources */,
-				36000C971B72B295008E84AE /* VCReceiptsView.xib in Resources */,
+				36000C971B72B295008E84AE /* VCReceiptViewController.xib in Resources */,
 				8416480C1B64A47D00CD20AC /* scheduledfares-menu-button@2x.png in Resources */,
 				8416480D1B64A47D00CD20AC /* hamburger-badge@2x.png in Resources */,
 				8416480E1B64A47D00CD20AC /* directions-button-selected@2x.png in Resources */,
@@ -2998,7 +2998,7 @@
 				8416494B1B658F4900CD20AC /* current-location-button-selected@2x.png in Resources */,
 				8416494C1B658F4900CD20AC /* KlinicSlabLight.ttf in Resources */,
 				8416494D1B658F4900CD20AC /* driver-request-form@2x.png in Resources */,
-				36000C951B72B295008E84AE /* VCReceiptsView.xib in Resources */,
+				36000C951B72B295008E84AE /* VCReceiptViewController.xib in Resources */,
 				8416494E1B658F4900CD20AC /* VCDebugViewController.xib in Resources */,
 				8416494F1B658F4900CD20AC /* VCLocationSearchViewController.xib in Resources */,
 				841649501B658F4900CD20AC /* KlinicSlabLightIt.ttf in Resources */,
@@ -3151,7 +3151,7 @@
 				F4C6B249197F06B100F6C10B /* KlinicSlabLight.ttf in Resources */,
 				F4C6B24A197F06B100F6C10B /* driver-request-form@2x.png in Resources */,
 				F4C6B24B197F06B100F6C10B /* VCDebugViewController.xib in Resources */,
-				36000C941B72B295008E84AE /* VCReceiptsView.xib in Resources */,
+				36000C941B72B295008E84AE /* VCReceiptViewController.xib in Resources */,
 				F4C6B24C197F06B100F6C10B /* VCLocationSearchViewController.xib in Resources */,
 				F4C6B24D197F06B100F6C10B /* KlinicSlabLightIt.ttf in Resources */,
 				F4C6B24E197F06B100F6C10B /* menu-list@2x.png in Resources */,
@@ -3290,7 +3290,7 @@
 				F4D8FE9D19B1745A00BC0B69 /* temp-call-button@2x.png in Resources */,
 				F4D8FE9E19B1745A00BC0B69 /* call-button-select@2x.png in Resources */,
 				F4D8FE9F19B1745A00BC0B69 /* call-button@2x.png in Resources */,
-				36000C961B72B295008E84AE /* VCReceiptsView.xib in Resources */,
+				36000C961B72B295008E84AE /* VCReceiptViewController.xib in Resources */,
 				F4D8FEA019B1745A00BC0B69 /* scheduledfares-menu-button@2x.png in Resources */,
 				4F9D808E19D6547E008B0D3E /* hamburger-badge@2x.png in Resources */,
 				F4D8FEA119B1745A00BC0B69 /* directions-button-selected@2x.png in Resources */,
@@ -3673,7 +3673,7 @@
 				841647B91B64A47D00CD20AC /* VCCoreData.m in Sources */,
 				841647BA1B64A47D00CD20AC /* VCCommuteSetUpOnBoardingViewController.m in Sources */,
 				36000C911B7289D7008E84AE /* VCPaymentsView.m in Sources */,
-				36000C9D1B72B2AC008E84AE /* VCReceiptsView.m in Sources */,
+				36000C9D1B72B2AC008E84AE /* VCReceiptViewController.m in Sources */,
 				841647BB1B64A47D00CD20AC /* VCApiError.m in Sources */,
 				841647BC1B64A47D00CD20AC /* Route.m in Sources */,
 				841647BD1B64A47D00CD20AC /* VCRiderRecieptDetailViewController.m in Sources */,
@@ -3701,7 +3701,7 @@
 				841647D61B64A47D00CD20AC /* Ticket.m in Sources */,
 				841647D71B64A47D00CD20AC /* VCObjectRequestOperation.m in Sources */,
 				841647D81B64A47D00CD20AC /* VCValidation.m in Sources */,
-				841647D91B64A47D00CD20AC /* VCReceiptsViewController.m in Sources */,
+				841647D91B64A47D00CD20AC /* VCReceiptsViewController_old.m in Sources */,
 				841647DA1B64A47D00CD20AC /* MQRoute.m in Sources */,
 				841647DB1B64A47D00CD20AC /* main.m in Sources */,
 				841647DC1B64A47D00CD20AC /* VCTicketViewController.m in Sources */,
@@ -3732,7 +3732,7 @@
 				D144A4D71B6ADDA900D36D3B /* MBRegion.m in Sources */,
 				841648A61B658F4900CD20AC /* VCDriverRegistration.m in Sources */,
 				841648A71B658F4900CD20AC /* VCCommuteSetUpOnBoardingViewController.m in Sources */,
-				841648A81B658F4900CD20AC /* VCReceiptsViewController.m in Sources */,
+				841648A81B658F4900CD20AC /* VCReceiptsViewController_old.m in Sources */,
 				841648A91B658F4900CD20AC /* VCPushApi.m in Sources */,
 				841648AA1B658F4900CD20AC /* VCPasswordTextField.m in Sources */,
 				841648AB1B658F4900CD20AC /* VCCarModelTextField.m in Sources */,
@@ -3802,7 +3802,7 @@
 				841648EF1B658F4900CD20AC /* VCRequestUpdate.m in Sources */,
 				841648F01B658F4900CD20AC /* VCCoreData.m in Sources */,
 				36000C8F1B7289D7008E84AE /* VCPaymentsView.m in Sources */,
-				36000C9B1B72B2AC008E84AE /* VCReceiptsView.m in Sources */,
+				36000C9B1B72B2AC008E84AE /* VCReceiptViewController.m in Sources */,
 				841648F11B658F4900CD20AC /* Route.m in Sources */,
 				841648F21B658F4900CD20AC /* VCCommuteManager.m in Sources */,
 				841648F31B658F4900CD20AC /* VCApiError.m in Sources */,
@@ -3860,7 +3860,7 @@
 			files = (
 				F4C6B1C0197F06B100F6C10B /* VCDriverRegistration.m in Sources */,
 				4FC758D119AA91810093DBEA /* VCCommuteSetUpOnBoardingViewController.m in Sources */,
-				4FFCF2D419A5493500A4A24E /* VCReceiptsViewController.m in Sources */,
+				4FFCF2D419A5493500A4A24E /* VCReceiptsViewController_old.m in Sources */,
 				F4C6B1C2197F06B100F6C10B /* VCPushApi.m in Sources */,
 				F4C6B1C3197F06B100F6C10B /* VCPasswordTextField.m in Sources */,
 				F4C6B1C6197F06B100F6C10B /* VCCarModelTextField.m in Sources */,
@@ -3931,7 +3931,7 @@
 				F4C6B1FF197F06B100F6C10B /* VCCoreData.m in Sources */,
 				F496FE9119FDB9FE00632055 /* Route.m in Sources */,
 				36000C8E1B7289D7008E84AE /* VCPaymentsView.m in Sources */,
-				36000C9A1B72B2AC008E84AE /* VCReceiptsView.m in Sources */,
+				36000C9A1B72B2AC008E84AE /* VCReceiptViewController.m in Sources */,
 				F425906D1995E30000FA928E /* VCCommuteManager.m in Sources */,
 				F4C6B29E197F437800F6C10B /* VCApiError.m in Sources */,
 				F4C6B201197F06B100F6C10B /* VCRiderRecieptDetailViewController.m in Sources */,
@@ -4060,7 +4060,7 @@
 				F4D8FE5319B1745A00BC0B69 /* VCCoreData.m in Sources */,
 				F4D8FE5419B1745A00BC0B69 /* VCCommuteSetUpOnBoardingViewController.m in Sources */,
 				36000C901B7289D7008E84AE /* VCPaymentsView.m in Sources */,
-				36000C9C1B72B2AC008E84AE /* VCReceiptsView.m in Sources */,
+				36000C9C1B72B2AC008E84AE /* VCReceiptViewController.m in Sources */,
 				F4D8FE5519B1745A00BC0B69 /* VCApiError.m in Sources */,
 				F496FE9419FDB9FE00632055 /* Route.m in Sources */,
 				F4D8FE5619B1745A00BC0B69 /* VCRiderRecieptDetailViewController.m in Sources */,
@@ -4088,7 +4088,7 @@
 				F4D8FE6F19B1745A00BC0B69 /* Ticket.m in Sources */,
 				F4D8FE7119B1745A00BC0B69 /* VCObjectRequestOperation.m in Sources */,
 				F4D8FE7319B1745A00BC0B69 /* VCValidation.m in Sources */,
-				F4D8FE7519B1745A00BC0B69 /* VCReceiptsViewController.m in Sources */,
+				F4D8FE7519B1745A00BC0B69 /* VCReceiptsViewController_old.m in Sources */,
 				F4D8FE7619B1745A00BC0B69 /* MQRoute.m in Sources */,
 				F4D8FE7719B1745A00BC0B69 /* main.m in Sources */,
 				F4D8FE7819B1745A00BC0B69 /* VCTicketViewController.m in Sources */,

@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VCReceiptsView : UIView
+@interface VCReceiptViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UITableView *receiptViewTable;
 
 
 - (IBAction)didTouchPrintReceipts:(id)sender;

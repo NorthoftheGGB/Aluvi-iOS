@@ -6,14 +6,14 @@
 //  Copyright (c) 2015 Voco. All rights reserved.
 //
 
-#import "VCReceiptsView.h"
+#import "VCReceiptViewController.h"
 
-@interface VCReceiptsView () <UITableViewDataSource, UITableViewDelegate>
+@interface VCReceiptViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *receiptTableView;
 
 @end
 
-@implementation VCReceiptsView
+@implementation VCReceiptViewController
 
 /*
 // Only override drawRect: if you perform custom drawing.
