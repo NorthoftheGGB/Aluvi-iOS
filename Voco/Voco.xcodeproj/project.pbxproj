@@ -27,6 +27,14 @@
 		36000CA61B72C185008E84AE /* VCReceiptsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000CA41B72C185008E84AE /* VCReceiptsTableViewCell.m */; };
 		36000CA71B72C185008E84AE /* VCReceiptsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000CA41B72C185008E84AE /* VCReceiptsTableViewCell.m */; };
 		36000CA81B72C185008E84AE /* VCReceiptsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000CA41B72C185008E84AE /* VCReceiptsTableViewCell.m */; };
+		36000CAA1B72D5A2008E84AE /* VCCarInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36000CA91B72D5A2008E84AE /* VCCarInfoViewController.xib */; };
+		36000CAB1B72D5A2008E84AE /* VCCarInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36000CA91B72D5A2008E84AE /* VCCarInfoViewController.xib */; };
+		36000CAC1B72D5A2008E84AE /* VCCarInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36000CA91B72D5A2008E84AE /* VCCarInfoViewController.xib */; };
+		36000CAD1B72D5A2008E84AE /* VCCarInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36000CA91B72D5A2008E84AE /* VCCarInfoViewController.xib */; };
+		36000CB01B72D5D2008E84AE /* VCCarInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000CAF1B72D5D2008E84AE /* VCCarInfoViewController.m */; };
+		36000CB11B72D5D2008E84AE /* VCCarInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000CAF1B72D5D2008E84AE /* VCCarInfoViewController.m */; };
+		36000CB21B72D5D2008E84AE /* VCCarInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000CAF1B72D5D2008E84AE /* VCCarInfoViewController.m */; };
+		36000CB31B72D5D2008E84AE /* VCCarInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000CAF1B72D5D2008E84AE /* VCCarInfoViewController.m */; };
 		36638D751B658A5A004EDB09 /* VCRideRequestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D741B658A5A004EDB09 /* VCRideRequestView.xib */; };
 		36638D791B658A5A004EDB09 /* VCRideRequestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D741B658A5A004EDB09 /* VCRideRequestView.xib */; };
 		36638D7B1B658A5A004EDB09 /* VCRideRequestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D741B658A5A004EDB09 /* VCRideRequestView.xib */; };
@@ -1195,6 +1203,9 @@
 		36000C9E1B72C169008E84AE /* VCReceiptsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCReceiptsTableViewCell.xib; sourceTree = "<group>"; };
 		36000CA31B72C185008E84AE /* VCReceiptsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCReceiptsTableViewCell.h; sourceTree = "<group>"; };
 		36000CA41B72C185008E84AE /* VCReceiptsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCReceiptsTableViewCell.m; sourceTree = "<group>"; };
+		36000CA91B72D5A2008E84AE /* VCCarInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCCarInfoViewController.xib; sourceTree = "<group>"; };
+		36000CAE1B72D5D2008E84AE /* VCCarInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCCarInfoViewController.h; sourceTree = "<group>"; };
+		36000CAF1B72D5D2008E84AE /* VCCarInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCarInfoViewController.m; sourceTree = "<group>"; };
 		36638D741B658A5A004EDB09 /* VCRideRequestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCRideRequestView.xib; sourceTree = "<group>"; };
 		36638D7C1B659CAE004EDB09 /* VCDriverTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCDriverTicketView.xib; sourceTree = "<group>"; };
 		36638D841B65A988004EDB09 /* VCRiderTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCRiderTicketView.xib; sourceTree = "<group>"; };
@@ -2153,18 +2164,21 @@
 				36FB728A1B6D6B4200F8A6AF /* VCPaymentsView.xib */,
 				36000C8C1B7289D7008E84AE /* VCPaymentsView.h */,
 				36000C8D1B7289D7008E84AE /* VCPaymentsView.m */,
+				4FFCF2BD19A25F2100A4A24E /* VCProfileViewController.xib */,
 				4FFCF2BB19A25F2100A4A24E /* VCProfileViewController.h */,
 				4FFCF2BC19A25F2100A4A24E /* VCProfileViewController.m */,
-				4FFCF2BD19A25F2100A4A24E /* VCProfileViewController.xib */,
+				4FFCF2CA19A5381900A4A24E /* VCSupportViewController.xib */,
 				4FFCF2C819A5381900A4A24E /* VCSupportViewController.h */,
 				4FFCF2C919A5381900A4A24E /* VCSupportViewController.m */,
-				4FFCF2CA19A5381900A4A24E /* VCSupportViewController.xib */,
 				36000C931B72B295008E84AE /* VCReceiptViewController.xib */,
 				36000C981B72B2AC008E84AE /* VCReceiptViewController.h */,
 				36000C991B72B2AC008E84AE /* VCReceiptViewController.m */,
 				36000C9E1B72C169008E84AE /* VCReceiptsTableViewCell.xib */,
 				36000CA31B72C185008E84AE /* VCReceiptsTableViewCell.h */,
 				36000CA41B72C185008E84AE /* VCReceiptsTableViewCell.m */,
+				36000CA91B72D5A2008E84AE /* VCCarInfoViewController.xib */,
+				36000CAE1B72D5D2008E84AE /* VCCarInfoViewController.h */,
+				36000CAF1B72D5D2008E84AE /* VCCarInfoViewController.m */,
 			);
 			name = "Menu Item View Controllers";
 			sourceTree = "<group>";
@@ -2952,6 +2966,7 @@
 				841648841B64A47D00CD20AC /* directions-button@2x.png in Resources */,
 				841648851B64A47D00CD20AC /* login-button-select@2x.png in Resources */,
 				841648861B64A47D00CD20AC /* payment-menu-button@2x.png in Resources */,
+				36000CAD1B72D5A2008E84AE /* VCCarInfoViewController.xib in Resources */,
 				841648871B64A47D00CD20AC /* colors_03.png in Resources */,
 				841648881B64A47D00CD20AC /* VCLeftMenuViewController.xib in Resources */,
 				841648891B64A47D00CD20AC /* button-select@2x.png in Resources */,
@@ -3052,6 +3067,7 @@
 				841649851B658F4900CD20AC /* VCPasswordRecoveryViewController.xib in Resources */,
 				841649861B658F4900CD20AC /* receipt-down-arrow@2x.png in Resources */,
 				841649871B658F4900CD20AC /* driver-hov-toggle@2x.png in Resources */,
+				36000CAB1B72D5A2008E84AE /* VCCarInfoViewController.xib in Resources */,
 				841649881B658F4900CD20AC /* driver-cancel-hud-icon@2x.png in Resources */,
 				841649891B658F4900CD20AC /* scheduledfares-menu-button-selected@2x.png in Resources */,
 				8416498A1B658F4900CD20AC /* menu-payments-icon@2x.png in Resources */,
@@ -3205,6 +3221,7 @@
 				F4C6B26F197F06B100F6C10B /* KlinicSlabMediumIt.ttf in Resources */,
 				4FC758DD19AA94C30093DBEA /* VCPasswordRecoveryViewController.xib in Resources */,
 				4FC7590119AAC0770093DBEA /* receipt-down-arrow@2x.png in Resources */,
+				36000CAA1B72D5A2008E84AE /* VCCarInfoViewController.xib in Resources */,
 				4FCBFBDC1995847300CBF0C8 /* driver-hov-toggle@2x.png in Resources */,
 				4F1849E8198F625A006EA959 /* driver-cancel-hud-icon@2x.png in Resources */,
 				F4C6B272197F06B100F6C10B /* scheduledfares-menu-button-selected@2x.png in Resources */,
@@ -3412,6 +3429,7 @@
 				F4D8FF1F19B1745A00BC0B69 /* directions-button@2x.png in Resources */,
 				F4D8FF2019B1745A00BC0B69 /* login-button-select@2x.png in Resources */,
 				F4D8FF2119B1745A00BC0B69 /* payment-menu-button@2x.png in Resources */,
+				36000CAC1B72D5A2008E84AE /* VCCarInfoViewController.xib in Resources */,
 				F4D8FF2219B1745A00BC0B69 /* colors_03.png in Resources */,
 				F4D8FF2319B1745A00BC0B69 /* VCLeftMenuViewController.xib in Resources */,
 				F4D8FF2419B1745A00BC0B69 /* button-select@2x.png in Resources */,
@@ -3651,6 +3669,7 @@
 				844415351B6DDC8D008C7898 /* MBRegion.m in Sources */,
 				841647A11B64A47D00CD20AC /* VCRideRequest.m in Sources */,
 				841647A21B64A47D00CD20AC /* VCPushReceiver.m in Sources */,
+				36000CB31B72D5D2008E84AE /* VCCarInfoViewController.m in Sources */,
 				841647A31B64A47D00CD20AC /* VCSubMenuItemTableViewCell.m in Sources */,
 				841647A51B64A47D00CD20AC /* VCDriverStateResponse.m in Sources */,
 				841647A61B64A47D00CD20AC /* VCRiderOnBoardingViewController.m in Sources */,
@@ -3780,6 +3799,7 @@
 				841648D61B658F4900CD20AC /* MQShape.m in Sources */,
 				841648D71B658F4900CD20AC /* VCRideRequest.m in Sources */,
 				841648D81B658F4900CD20AC /* VCPushReceiver.m in Sources */,
+				36000CB11B72D5D2008E84AE /* VCCarInfoViewController.m in Sources */,
 				841648D91B658F4900CD20AC /* VCSubMenuItemTableViewCell.m in Sources */,
 				841648DB1B658F4900CD20AC /* VCDriverStateResponse.m in Sources */,
 				841648DC1B658F4900CD20AC /* MQBoundingBox.m in Sources */,
@@ -3909,6 +3929,7 @@
 				F4C6B1EA197F06B100F6C10B /* VCRideRequest.m in Sources */,
 				F4C6B1EB197F06B100F6C10B /* VCPushReceiver.m in Sources */,
 				4F184A241991E156006EA959 /* VCSubMenuItemTableViewCell.m in Sources */,
+				36000CB01B72D5D2008E84AE /* VCCarInfoViewController.m in Sources */,
 				F4C6B1EC197F06B100F6C10B /* VCDriverStateResponse.m in Sources */,
 				F4C6B1ED197F06B100F6C10B /* MQBoundingBox.m in Sources */,
 				F4C6B1EE197F06B100F6C10B /* VCGeolocation.m in Sources */,
@@ -4038,6 +4059,7 @@
 				844415331B6DDC8B008C7898 /* MBRegion.m in Sources */,
 				F4D8FE3B19B1745A00BC0B69 /* VCRideRequest.m in Sources */,
 				F4D8FE3C19B1745A00BC0B69 /* VCPushReceiver.m in Sources */,
+				36000CB21B72D5D2008E84AE /* VCCarInfoViewController.m in Sources */,
 				F4D8FE3D19B1745A00BC0B69 /* VCSubMenuItemTableViewCell.m in Sources */,
 				F4D8FE3F19B1745A00BC0B69 /* VCDriverStateResponse.m in Sources */,
 				F4D8FE4019B1745A00BC0B69 /* VCRiderOnBoardingViewController.m in Sources */,
