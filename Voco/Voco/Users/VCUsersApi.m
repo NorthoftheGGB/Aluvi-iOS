@@ -42,12 +42,13 @@
         [objectManager addResponseDescriptor:responseDescriptor];
     }
     
-    
-    RKObjectMapping * newUserMapping = [VCNewUser getMapping];
-    RKObjectMapping * newUserRequestMapping = [newUserMapping inverseMapping];
-    RKRequestDescriptor *newUserRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:newUserRequestMapping objectClass:[VCNewUser class] rootKeyPath:nil method:RKRequestMethodPOST];
-    [objectManager addRequestDescriptor:newUserRequestDescriptor];
-    
+    {
+        RKObjectMapping * newUserMapping = [VCNewUser getMapping];
+        RKObjectMapping * newUserRequestMapping = [newUserMapping inverseMapping];
+        RKRequestDescriptor *newUserRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:newUserRequestMapping objectClass:[VCNewUser class] rootKeyPath:nil method:RKRequestMethodPOST];
+        [objectManager addRequestDescriptor:newUserRequestDescriptor];
+    }
+        
     {
         RKResponseDescriptor * newUserResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping
                                                                                                                 mappingForClass:[NSObject class]]
@@ -65,29 +66,33 @@
         [objectManager addResponseDescriptor:responseDescriptor2];
     }
     
-    RKResponseDescriptor * forgotPasswordResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
+    {
+        RKResponseDescriptor * forgotPasswordResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
                                                                                                            method:RKRequestMethodPOST
                                                                                                       pathPattern:API_FORGOT_PASSWORD
                                                                                                           keyPath:nil
                                                                                                       statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:forgotPasswordResponseDescriptor];
-    
-    
-    RKRequestDescriptor * driverInterestedRequestDescriptor =
-    [RKRequestDescriptor requestDescriptorWithMapping:[[VCDriverInterestedRequest getMapping] inverseMapping]
+        [objectManager addResponseDescriptor:forgotPasswordResponseDescriptor];
+    }
+        
+    {
+        RKRequestDescriptor * driverInterestedRequestDescriptor =
+        [RKRequestDescriptor requestDescriptorWithMapping:[[VCDriverInterestedRequest getMapping] inverseMapping]
                                           objectClass:[VCDriverInterestedRequest class]
                                           rootKeyPath:nil
                                                method:RKRequestMethodPOST];
-    [objectManager addRequestDescriptor:driverInterestedRequestDescriptor];
-    
-    RKResponseDescriptor * driverInterestedResponseDescriptor =
-    [RKResponseDescriptor responseDescriptorWithMapping:[VCDriverStateResponse getMapping]
+        [objectManager addRequestDescriptor:driverInterestedRequestDescriptor];
+    }
+        
+    {
+        RKResponseDescriptor * driverInterestedResponseDescriptor =
+        [RKResponseDescriptor responseDescriptorWithMapping:[VCDriverStateResponse getMapping]
                                                  method:RKRequestMethodPOST
                                             pathPattern:API_DRIVER_INTERESTED
                                                 keyPath:nil
                                             statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:driverInterestedResponseDescriptor];
-    
+        [objectManager addResponseDescriptor:driverInterestedResponseDescriptor];
+    }
     
     {
         RKResponseDescriptor * responseDescriptor =
