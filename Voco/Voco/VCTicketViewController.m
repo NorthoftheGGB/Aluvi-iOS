@@ -559,6 +559,8 @@
             // if commute IS set up already
             [self showHome];
             [self showDefaultRoute];
+            [self addOriginAnnotation: _route.home];
+            [self addDestinationAnnotation: _route.work];
         }
         
     } else if([@[kCreatedState, kRequestedState] containsObject:_ticket.state]){
@@ -574,7 +576,22 @@
     } else if([_ticket.state isEqualToString:kScheduledState]){
         [self setRightButtonForState:kCommuteStateScheduled];
         
-        [self updateMapForTicket:_ticket];
+        [self addMeetingPointAnnotation: [_ticket meetingPointLocation]];
+        [self addDropOffPointAnnotation: [_ticket dropOffPointLocation]];
+        [self.map selectAnnotation:_meetingPointAnnotation animated:YES];
+        
+        [self showTicketRoute];
+        if( [_ticket.driving boolValue] ) {
+            if(![[_ticket meetingPointLocation] isEqual:[_ticket originLocation]]){
+                [self addDriverLegRoute:[_ticket originLocation] to:[_ticket meetingPointLocation]];
+            }
+            if(![[_ticket dropOffPointLocation] isEqual:[_ticket destinationLocation]]){
+                [self addDriverLegRoute:[_ticket dropOffPointLocation] to:[_ticket destinationLocation]];
+            }
+        } else {
+            [self addPedestrianRoute:[_ticket originLocation] to:[_ticket meetingPointLocation]];
+            [self addPedestrianRoute:[_ticket dropOffPointLocation] to:[_ticket destinationLocation]];
+        }
         
         // show the HUD interface
         if([_ticket.driving boolValue] ) {
@@ -588,25 +605,7 @@
     
 }
 
-- (void) updateMapForTicket:(Ticket *) ticket {
-    [self addMeetingPointAnnotation: [ticket meetingPointLocation]];
-    [self addDropOffPointAnnotation: [ticket dropOffPointLocation]];
-    [self.map selectAnnotation:_meetingPointAnnotation animated:YES];
-    
-    [self showTicketRoute];
-    if( [_ticket.driving boolValue] ) {
-        if(![[_ticket meetingPointLocation] isEqual:[_ticket originLocation]]){
-            [self addDriverLegRoute:[_ticket originLocation] to:[_ticket meetingPointLocation]];
-        }
-        if(![[_ticket dropOffPointLocation] isEqual:[_ticket destinationLocation]]){
-            [self addDriverLegRoute:[_ticket dropOffPointLocation] to:[_ticket destinationLocation]];
-        }
-    } else {
-        [self addPedestrianRoute:[_ticket originLocation] to:[_ticket meetingPointLocation]];
-        [self addPedestrianRoute:[_ticket dropOffPointLocation] to:[_ticket destinationLocation]];
-    }
-    
-}
+
 
 - (void) resetInterfaceToHome {
     [self clearMap];
@@ -776,17 +775,9 @@
 
 
 - (void) loadCommuteSettings {
-    
+
     _route = [[Route alloc] init];
     _route = [[VCCommuteManager instance].route copy];
-    
-    if( _route.home != nil){
-        [self addOriginAnnotation: _route.home ];
-    }
-    
-    if( _route.work != nil){
-        [self addDestinationAnnotation: _route.work ];
-    }
     
 }
 
