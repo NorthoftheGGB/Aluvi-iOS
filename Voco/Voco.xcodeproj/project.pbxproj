@@ -727,6 +727,10 @@
 		844070291B64700B00EF35E1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CE81B1E5E26004446AF /* MobileCoreServices.framework */; };
 		844415331B6DDC8B008C7898 /* MBRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = D19278A31B6738D1009BFBF8 /* MBRegion.m */; };
 		844415351B6DDC8D008C7898 /* MBRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = D19278A31B6738D1009BFBF8 /* MBRegion.m */; };
+		844415381B72BBE5008C7898 /* VCMapHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 844415371B72BBE5008C7898 /* VCMapHelper.m */; };
+		844415391B72BBE5008C7898 /* VCMapHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 844415371B72BBE5008C7898 /* VCMapHelper.m */; };
+		8444153A1B72BBE5008C7898 /* VCMapHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 844415371B72BBE5008C7898 /* VCMapHelper.m */; };
+		8444153B1B72BBE5008C7898 /* VCMapHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 844415371B72BBE5008C7898 /* VCMapHelper.m */; };
 		849A3CCC1B1E5D14004446AF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CC61B1E5D14004446AF /* Bolts.framework */; };
 		849A3CCF1B1E5D14004446AF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CC61B1E5D14004446AF /* Bolts.framework */; };
 		849A3CD01B1E5D14004446AF /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CC71B1E5D14004446AF /* Parse.framework */; };
@@ -1433,6 +1437,8 @@
 		841649D51B658F4A00CD20AC /* Aluvi Development copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Aluvi Development copy2-Info.plist"; path = "/Users/matthewxi/software-development/Clients/Will_OBrien/aluvi-ios/Voco/Aluvi Development copy2-Info.plist"; sourceTree = "<absolute>"; };
 		8444152E1B6DA3D7008C7898 /* VCOldCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VCOldCode.h; sourceTree = "<group>"; };
 		8444152F1B6DA3D7008C7898 /* VCOldCode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VCOldCode.m; sourceTree = "<group>"; };
+		844415361B72BBE5008C7898 /* VCMapHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCMapHelper.h; sourceTree = "<group>"; };
+		844415371B72BBE5008C7898 /* VCMapHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCMapHelper.m; sourceTree = "<group>"; };
 		849A3CC61B1E5D14004446AF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		849A3CC71B1E5D14004446AF /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		849A3CC81B1E5D14004446AF /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
@@ -2431,6 +2437,8 @@
 				F4C6B1B61979229900F6C10B /* VCDebug.m */,
 				F45F7C0D1935976E00A94721 /* WRUtilities.h */,
 				F45F7C0E1935976E00A94721 /* WRUtilities.m */,
+				844415361B72BBE5008C7898 /* VCMapHelper.h */,
+				844415371B72BBE5008C7898 /* VCMapHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -3633,6 +3641,7 @@
 				841647A31B64A47D00CD20AC /* VCSubMenuItemTableViewCell.m in Sources */,
 				841647A51B64A47D00CD20AC /* VCDriverStateResponse.m in Sources */,
 				841647A61B64A47D00CD20AC /* VCRiderOnBoardingViewController.m in Sources */,
+				8444153B1B72BBE5008C7898 /* VCMapHelper.m in Sources */,
 				841647A71B64A47D00CD20AC /* MQBoundingBox.m in Sources */,
 				841647A81B64A47D00CD20AC /* VCGeolocation.m in Sources */,
 				841647A91B64A47D00CD20AC /* VCDriverGeoObject.m in Sources */,
@@ -3758,6 +3767,7 @@
 				841648D81B658F4900CD20AC /* VCPushReceiver.m in Sources */,
 				841648D91B658F4900CD20AC /* VCSubMenuItemTableViewCell.m in Sources */,
 				841648DB1B658F4900CD20AC /* VCDriverStateResponse.m in Sources */,
+				844415391B72BBE5008C7898 /* VCMapHelper.m in Sources */,
 				841648DC1B658F4900CD20AC /* MQBoundingBox.m in Sources */,
 				841648DD1B658F4900CD20AC /* VCGeolocation.m in Sources */,
 				841648DE1B658F4900CD20AC /* VCDriverGeoObject.m in Sources */,
@@ -3883,6 +3893,7 @@
 				4F184A241991E156006EA959 /* VCSubMenuItemTableViewCell.m in Sources */,
 				F4C6B1EC197F06B100F6C10B /* VCDriverStateResponse.m in Sources */,
 				F4C6B1ED197F06B100F6C10B /* MQBoundingBox.m in Sources */,
+				844415381B72BBE5008C7898 /* VCMapHelper.m in Sources */,
 				F4C6B1EE197F06B100F6C10B /* VCGeolocation.m in Sources */,
 				F4C6B1EF197F06B100F6C10B /* VCDriverGeoObject.m in Sources */,
 				F4C97B2E19F88B94006521C1 /* VCBetaRegisterViewController.m in Sources */,
@@ -4008,6 +4019,7 @@
 				F4D8FE3D19B1745A00BC0B69 /* VCSubMenuItemTableViewCell.m in Sources */,
 				F4D8FE3F19B1745A00BC0B69 /* VCDriverStateResponse.m in Sources */,
 				F4D8FE4019B1745A00BC0B69 /* VCRiderOnBoardingViewController.m in Sources */,
+				8444153A1B72BBE5008C7898 /* VCMapHelper.m in Sources */,
 				F4D8FE4119B1745A00BC0B69 /* MQBoundingBox.m in Sources */,
 				F4D8FE4219B1745A00BC0B69 /* VCGeolocation.m in Sources */,
 				F4D8FE4319B1745A00BC0B69 /* VCDriverGeoObject.m in Sources */,

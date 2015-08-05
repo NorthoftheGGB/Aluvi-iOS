@@ -92,7 +92,7 @@ static RKObjectManager * objectManager;
 
         MBRegion *region = [MBRegion new];
         [region initWithTopCoordinate:CLLocationCoordinate2DMake(minLatitude, minLongitude) bottomCoordinate:CLLocationCoordinate2DMake(maxLatitude, maxLongitude)];
-        if(region.topLocation.latitude == 0 || region.bottomLocation.latitude == 0 ){
+        if(! [region isValidRegion] ){
             NSLog(@"%@", @"Return spans are zero.  Aborting route api request");
             failure();
         }

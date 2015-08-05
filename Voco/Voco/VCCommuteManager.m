@@ -82,11 +82,11 @@ static VCCommuteManager * instance;
     
     NSData * region = [defaults objectForKey:kCommuteRegionKey];
     if(region != nil) {
-        _route.home = [NSKeyedUnarchiver unarchiveObjectWithData: region];
+        _route.region = [NSKeyedUnarchiver unarchiveObjectWithData: region];
     }
     NSData * polyline = [defaults objectForKey:kCommutePolylineKey];
     if(polyline != nil) {
-        _route.work = [NSKeyedUnarchiver unarchiveObjectWithData: polyline];
+        _route.polyline = [NSKeyedUnarchiver unarchiveObjectWithData: polyline];
     }
     
     [self loadFromServer];
@@ -101,7 +101,12 @@ static VCCommuteManager * instance;
     [[RKObjectManager sharedManager] getObject:nil
                                           path:API_ROUTE
                                     parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                        _route = mappingResult.firstObject;
+                                        Route * storedRoute = mappingResult.firstObject;
+                                        if( [storedRoute coordinatesDifferFrom: _route]  ){
+                                            _route = storedRoute;
+                                        } else {
+                                            [_route copyNonCoordinateFieldsFrom: storedRoute];
+                                        }
                                         [self store];
 
                                     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -118,6 +123,7 @@ static VCCommuteManager * instance;
     [[NSUserDefaults standardUserDefaults] setObject:_route.homePlaceName forKey:kCommuterOriginPlaceNameKey];
     [[NSUserDefaults standardUserDefaults] setObject:_route.workPlaceName forKey:kCommuterDestinationPlaceNameKey];
     [[NSUserDefaults standardUserDefaults] setBool:_route.driving forKey:kCommuterDrivingSettingKey];
+    
     [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:_route.region] forKey:kCommuteRegionKey];
     [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:_route.polyline] forKey:kCommutePolylineKey];
     
@@ -131,7 +137,7 @@ static VCCommuteManager * instance;
 }
 
 
-- (void) storeCommuterSettings: (Route *) route succes:(void ( ^ ) ()) success failure:( void ( ^ ) (NSString * errorMessage)) failure {
+- (void) storeCommuterSettings: (Route *) route success:(void ( ^ ) ()) success failure:( void ( ^ ) (NSString * errorMessage)) failure {
     _route = route;
 
     /*TODO

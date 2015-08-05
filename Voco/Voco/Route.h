@@ -26,7 +26,11 @@
 + (RKObjectMapping *) getMapping;
 + (RKObjectMapping *) getInverseMapping;
 
-- (BOOL) routeSettingsValid;
+- (BOOL) routeCoordinateSettingsValid;
 - (BOOL) hasCachedRoute;
+
+- (BOOL) coordinatesDifferFrom: (Route*) route;
+- (void) copyNonCoordinateFieldsFrom: (Route*) route;
+
 
 @end

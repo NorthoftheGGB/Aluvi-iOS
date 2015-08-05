@@ -7,15 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VCCenterViewBaseViewController.h"
 #import "Ticket.h"
 
-@interface VCTicketViewController : UIViewController
+@interface VCTicketViewController : VCCenterViewBaseViewController
 
 @property (strong, nonatomic) Ticket * ticket;
-
-
-
-
-
 
 @end

@@ -18,7 +18,7 @@
 
 + (VCCommuteManager *) instance;
 
-- (void) storeCommuterSettings: (Route *) route  success:(void ( ^ ) ()) success failure:( void ( ^ ) (NSString * errorMessage)) failure;
+- (void) storeCommuterSettings: (Route *) route success:(void ( ^ ) ()) success failure:( void ( ^ ) (NSString * errorMessage)) failure;
 - (void) storeRoute: (NSArray *) polyline withRegion: (MBRegion *) region;
 
 - (void) reset;
