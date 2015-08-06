@@ -8,6 +8,7 @@
 
 #import "VCRideRequestView.h"
 @import AddressBookUI;
+#import "VCUserStateManager.h"
 
 @interface VCRideRequestView ()
 
@@ -19,6 +20,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *toHomeTimeLabel;
 @property (strong, nonatomic) IBOutlet UIButton *driverCheckbox;
 @property (strong, nonatomic) IBOutlet UIButton *scheduleButton;
+@property (strong, nonatomic) IBOutlet UILabel *driverCheckboxLabel;
 
 
 // data
@@ -59,6 +61,16 @@
     _toWorkTimeStepper.stepValue = 1;
     
     _commutePreferencesHaveChanged = NO;
+    
+    [_driverCheckbox setSelected:NO];
+    
+    if(![[VCUserStateManager instance] isHovDriver]){
+        _driverCheckbox.hidden = YES;
+        _driverCheckboxLabel.hidden = YES;
+    } else {
+        _driverCheckbox.hidden = NO;
+        _driverCheckboxLabel.hidden = NO;
+    }
 
 }
 
@@ -77,6 +89,7 @@
 
 - (void) setEditable:(BOOL) editable {
     if(editable) {
+        [_scheduleButton setTitle:@"Commute Tomorrow" forState:UIControlStateNormal];
         _fromButton.enabled = YES;
         _toButton.enabled = YES;
         _toHomeTimeStepper.enabled = YES;
@@ -121,11 +134,11 @@
 }
 
 - (IBAction)didTapFromButton:(id)sender {
-    [_delegate rideRequestView:self didTapEditLocation:CLLocationCoordinate2DMake(40, 40) locationName:@"Home" type:kHomeType];
+    [_delegate rideRequestView:self didTapEditLocation:CLLocationCoordinate2DMake(_route.home.coordinate.latitude, _route.home.coordinate.longitude) locationName:@"Home" type:kHomeType];
 }
 
 - (IBAction)didTapToButton:(id)sender {
-    [_delegate rideRequestView:self didTapEditLocation:CLLocationCoordinate2DMake(40, 40) locationName:@"Work" type:kWorkType];
+    [_delegate rideRequestView:self didTapEditLocation:CLLocationCoordinate2DMake(_route.work.coordinate.latitude, _route.work.coordinate.longitude) locationName:@"Work" type:kWorkType];
 }
 
 - (IBAction)didTapDriverCheckbox:(id)sender {
@@ -159,11 +172,11 @@
     _route.returnTime = time;
 }
 
-- (void) updateLocation:(MKPlacemark*) placemark type:(NSInteger) type {
+- (void) updateLocation:(CLPlacemark*) placemark type:(NSInteger) type {
     switch (type) {
         case kHomeType:
         {
-            _route.home = [[CLLocation alloc] initWithLatitude:placemark.coordinate.latitude longitude:placemark.coordinate.longitude];
+            _route.home = [[CLLocation alloc] initWithLatitude:placemark.location.coordinate.latitude longitude:placemark.location.coordinate.longitude];
             _route.homePlaceName = ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);
             [self updateFromButton: _route.homePlaceName];
             _commutePreferencesHaveChanged = YES;
@@ -171,7 +184,7 @@
             break;
         case kWorkType:
         {
-            _route.work = [[CLLocation alloc] initWithLatitude:placemark.coordinate.latitude longitude:placemark.coordinate.longitude];
+            _route.work = [[CLLocation alloc] initWithLatitude:placemark.location.coordinate.latitude longitude:placemark.location.coordinate.longitude];
             _route.workPlaceName = ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);
             [self updateToButton:_route.workPlaceName];
             _commutePreferencesHaveChanged = YES;

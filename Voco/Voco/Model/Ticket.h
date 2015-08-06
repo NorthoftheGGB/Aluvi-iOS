@@ -64,8 +64,8 @@
 @property (nonatomic, retain) NSArray * returnTicketFetchRequest;
 
 // Map Route Caching
-@property (nonatomic) NSArray * polyline;   // TODO needs to be coded to data using NSKeyedArchiver
-@property (nonatomic) MBRegion * region;    // TODO needs to be coded to data using NSKeyedArchiver
+@property (nonatomic, strong) NSArray * polyline;   // TODO needs to be coded to data using NSKeyedArchiver
+@property (nonatomic, strong) MBRegion * region;    // TODO needs to be coded to data using NSKeyedArchiver
 
 + (Ticket *) ticketWithFareId: (NSNumber *) fareId;
 

@@ -156,6 +156,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="driverCheckbox" destination="CyT-ga-CI3" id="4j8-QP-n75"/>
+                <outlet property="driverCheckboxLabel" destination="nzM-f7-MVQ" id="1XT-v4-Ate"/>
                 <outlet property="fromButton" destination="Ors-N9-lLM" id="6i8-lX-DcK"/>
                 <outlet property="scheduleButton" destination="v8E-fS-JXq" id="lbT-7W-vxH"/>
                 <outlet property="toButton" destination="vlk-Ca-SsQ" id="mBC-Qm-zfs"/>

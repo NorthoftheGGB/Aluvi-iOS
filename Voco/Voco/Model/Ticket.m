@@ -53,6 +53,9 @@
 @dynamic direction;
 @dynamic returnTicketFetchRequest;
 
+@synthesize polyline;
+@synthesize region;
+
 + (void)createMappings:(RKObjectManager *)objectManager{
     RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Ticket"
                                                           inManagedObjectStore: [VCCoreData managedObjectStore]];
