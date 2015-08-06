@@ -85,13 +85,13 @@ static RKObjectManager * objectManager;
             [polylinePoints addObject:location];
         }
 
-        double maxLatitude = [response.route.boundingBox.ul.lat doubleValue];
-        double maxLongitude = [response.route.boundingBox.lr.lng doubleValue];
-        double minLatitude = [response.route.boundingBox.lr.lat doubleValue];
-        double minLongitude = [response.route.boundingBox.ul.lng doubleValue];
+        CLLocationCoordinate2D southWest = CLLocationCoordinate2DMake([response.route.boundingBox.lr.lat doubleValue],
+                                                                      [response.route.boundingBox.ul.lng doubleValue]);
+        CLLocationCoordinate2D northEast = CLLocationCoordinate2DMake([response.route.boundingBox.ul.lat doubleValue],
+                                                                      [response.route.boundingBox.lr.lng doubleValue]);
 
         MBRegion *region = [MBRegion new];
-        [region initWithTopCoordinate:CLLocationCoordinate2DMake(minLatitude, minLongitude) bottomCoordinate:CLLocationCoordinate2DMake(maxLatitude, maxLongitude)];
+        [region initWithSouthWest:southWest northEast:northEast];
         if(! [region isValidRegion] ){
             NSLog(@"%@", @"Return spans are zero.  Aborting route api request");
             failure();

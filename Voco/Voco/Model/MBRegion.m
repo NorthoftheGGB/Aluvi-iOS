@@ -8,10 +8,10 @@
 
 #import "MBRegion.h"
 
-#define kTopKeyLat @"TopKeyLat"
-#define kTopKeyLong @"TopKeyLong"
-#define kBottomKeyLat @"BottomKeyLat"
-#define kBottomKeyLon @"BottomKeyLon"
+#define kNELat @"NELat"
+#define kNELong @"NELong"
+#define kSWLat @"SWLat"
+#define kSWLon @"SWLon"
 
 @implementation MBRegion
 
@@ -19,44 +19,43 @@
     
     self = [super init];
     if(self != nil) {
-        CLLocationCoordinate2D top, bottom;
-        top.latitude = [decoder decodeDoubleForKey:kTopKeyLat];
-        top.longitude = [decoder decodeDoubleForKey:kTopKeyLong];
-        top.latitude = [decoder decodeDoubleForKey:kBottomKeyLat];
-        top.longitude = [decoder decodeDoubleForKey:kBottomKeyLon];
+        CLLocationCoordinate2D northEast, southWest;
+        northEast.latitude = [decoder decodeDoubleForKey:kNELat];
+        northEast.longitude = [decoder decodeDoubleForKey:kNELong];
+        southWest.latitude = [decoder decodeDoubleForKey:kSWLat];
+        southWest.longitude = [decoder decodeDoubleForKey:kSWLon];
 
-        [self initWithTopCoordinate:top bottomCoordinate:bottom];
+        [self initWithSouthWest:southWest northEast:northEast];
     }
     return self;
     
 }
 
-- (void)initWithTopCoordinate:(CLLocationCoordinate2D)top bottomCoordinate:(CLLocationCoordinate2D)bottom {
-
-    _topLocation = top;
-    _bottomLocation = bottom;
+- (void)initWithSouthWest:(CLLocationCoordinate2D)southWest northEast:(CLLocationCoordinate2D)northEast {
+    _southWest = southWest;
+    _northEast = northEast;
 }
 
 - (id)copyWithZone:(NSZone *)zone
 {
     MBRegion * copy = [[MBRegion alloc] init];
     if(copy){
-        copy.topLocation = self.topLocation;
-        copy.bottomLocation = self.bottomLocation;
+        copy.northEast = self.northEast;
+        copy.southWest = self.southWest;
     }
     return copy;
 }
 
 - (void) encodeWithCoder:(NSCoder *)encoder {
-    [encoder encodeDouble:_topLocation.latitude forKey:kTopKeyLat ];
-    [encoder encodeDouble:_topLocation.longitude forKey:kTopKeyLong ];
-    [encoder encodeDouble:_bottomLocation.latitude forKey:kBottomKeyLat ];
-    [encoder encodeDouble:_bottomLocation.longitude forKey:kBottomKeyLon ];
+    [encoder encodeDouble:_northEast.latitude forKey:kNELat ];
+    [encoder encodeDouble:_northEast.longitude forKey:kNELong ];
+    [encoder encodeDouble:_southWest.latitude forKey:kSWLat ];
+    [encoder encodeDouble:_southWest.longitude forKey:kSWLon ];
 }
 
 - (BOOL) isValidRegion {
-    if( fabs(self.topLocation.latitude) <= .000001 || fabs(self.bottomLocation.latitude) <= .000001
-       || fabs(self.topLocation.longitude) <= .000001 || fabs(self.bottomLocation.longitude) <= .000001 ){
+    if( fabs(_northEast.latitude) <= .000001 || fabs(_northEast.latitude) <= .000001
+       || fabs(_southWest.longitude) <= .000001 || fabs(_southWest.longitude) <= .000001 ){
         return NO;
     } else {
         return YES;

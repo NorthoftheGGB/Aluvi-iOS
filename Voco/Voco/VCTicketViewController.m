@@ -157,13 +157,17 @@
         self.map = [[RMMapView alloc] initWithFrame:self.view.frame andTilesource:tileSource];
         self.map.adjustTilesForRetinaDisplay = YES;
         self.map.delegate = self;
-        [self.view insertSubview:self.map atIndex:0];
         self.map.userTrackingMode = RMUserTrackingModeNone;
         self.map.showsUserLocation = YES;
-        
+        [self.map setConstraintsSouthWest:CLLocationCoordinate2DMake(26, -126) northEast:CLLocationCoordinate2DMake(49, -63)];
+        [self.view insertSubview:self.map atIndex:0];
+
         _appeared = YES;
         
-        [self updateTicketInterface];
+        // Delay execution of my block for the MapBox software to fully load and move to correct place on the map
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.25), dispatch_get_main_queue(), ^{
+            [self updateTicketInterface];
+        });
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripFulfilled:) name:kNotificationTypeTripFulfilled object:nil];
@@ -364,7 +368,7 @@
         [_map removeAnnotation:_routeOverlay];
     }
     
-    if(region.topLocation.latitude == 0 || region.bottomLocation.longitude == 0){
+    if(! [region isValidRegion]){
         return;
     }
     
@@ -383,8 +387,8 @@
     self.rideRegion = region;
     
     NSLog(@"Zoom To Region");
-    [_map zoomWithLatitudeLongitudeBoundsSouthWest:[VCMapHelper paddedNELocation:region.topLocation]
-                                         northEast:[VCMapHelper paddedSWLocation:region.bottomLocation]
+    [_map zoomWithLatitudeLongitudeBoundsSouthWest:[VCMapHelper paddedNELocation:region.southWest]
+                                         northEast:[VCMapHelper paddedSWLocation:region.northEast]
                                           animated:YES];
 }
 
@@ -906,7 +910,7 @@
 
 - (IBAction)didTapZoomToRideBounds:(id)sender {
     if (_ticket != nil) {
-        [self.map zoomWithLatitudeLongitudeBoundsSouthWest:self.rideRegion.topLocation northEast:self.rideRegion.bottomLocation animated:NO];
+        [self.map zoomWithLatitudeLongitudeBoundsSouthWest:self.rideRegion.southWest northEast:self.rideRegion.northEast animated:YES];
     }
 }
 
