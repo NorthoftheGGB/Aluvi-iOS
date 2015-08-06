@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <Mapkit/Mapkit.h>
 
-@interface MBRegion : NSObject
+@interface MBRegion : NSObject <NSCoding>
 
 @property (nonatomic) CLLocationCoordinate2D topLocation;
 @property (nonatomic) CLLocationCoordinate2D bottomLocation;
