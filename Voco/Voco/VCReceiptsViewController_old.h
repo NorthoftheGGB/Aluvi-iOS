@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "VCCenterViewBaseViewController.h"
 
-@interface VCReceiptsViewController : VCCenterViewBaseViewController
+@interface VCReceiptsViewController_old : VCCenterViewBaseViewController
 
 @end

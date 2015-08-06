@@ -7,6 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36000C8E1B7289D7008E84AE /* VCPaymentsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000C8D1B7289D7008E84AE /* VCPaymentsView.m */; };
+		36000C8F1B7289D7008E84AE /* VCPaymentsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000C8D1B7289D7008E84AE /* VCPaymentsView.m */; };
+		36000C901B7289D7008E84AE /* VCPaymentsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000C8D1B7289D7008E84AE /* VCPaymentsView.m */; };
+		36000C911B7289D7008E84AE /* VCPaymentsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000C8D1B7289D7008E84AE /* VCPaymentsView.m */; };
+		36000C941B72B295008E84AE /* VCReceiptViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36000C931B72B295008E84AE /* VCReceiptViewController.xib */; };
+		36000C951B72B295008E84AE /* VCReceiptViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36000C931B72B295008E84AE /* VCReceiptViewController.xib */; };
+		36000C961B72B295008E84AE /* VCReceiptViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36000C931B72B295008E84AE /* VCReceiptViewController.xib */; };
+		36000C971B72B295008E84AE /* VCReceiptViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36000C931B72B295008E84AE /* VCReceiptViewController.xib */; };
+		36000C9A1B72B2AC008E84AE /* VCReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000C991B72B2AC008E84AE /* VCReceiptViewController.m */; };
+		36000C9B1B72B2AC008E84AE /* VCReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000C991B72B2AC008E84AE /* VCReceiptViewController.m */; };
+		36000C9C1B72B2AC008E84AE /* VCReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000C991B72B2AC008E84AE /* VCReceiptViewController.m */; };
+		36000C9D1B72B2AC008E84AE /* VCReceiptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000C991B72B2AC008E84AE /* VCReceiptViewController.m */; };
+		36000C9F1B72C169008E84AE /* VCReceiptsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36000C9E1B72C169008E84AE /* VCReceiptsTableViewCell.xib */; };
+		36000CA01B72C169008E84AE /* VCReceiptsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36000C9E1B72C169008E84AE /* VCReceiptsTableViewCell.xib */; };
+		36000CA11B72C169008E84AE /* VCReceiptsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36000C9E1B72C169008E84AE /* VCReceiptsTableViewCell.xib */; };
+		36000CA21B72C169008E84AE /* VCReceiptsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36000C9E1B72C169008E84AE /* VCReceiptsTableViewCell.xib */; };
+		36000CA51B72C185008E84AE /* VCReceiptsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000CA41B72C185008E84AE /* VCReceiptsTableViewCell.m */; };
+		36000CA61B72C185008E84AE /* VCReceiptsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000CA41B72C185008E84AE /* VCReceiptsTableViewCell.m */; };
+		36000CA71B72C185008E84AE /* VCReceiptsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000CA41B72C185008E84AE /* VCReceiptsTableViewCell.m */; };
+		36000CA81B72C185008E84AE /* VCReceiptsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000CA41B72C185008E84AE /* VCReceiptsTableViewCell.m */; };
+		36000CAA1B72D5A2008E84AE /* VCCarInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36000CA91B72D5A2008E84AE /* VCCarInfoViewController.xib */; };
+		36000CAB1B72D5A2008E84AE /* VCCarInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36000CA91B72D5A2008E84AE /* VCCarInfoViewController.xib */; };
+		36000CAC1B72D5A2008E84AE /* VCCarInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36000CA91B72D5A2008E84AE /* VCCarInfoViewController.xib */; };
+		36000CAD1B72D5A2008E84AE /* VCCarInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36000CA91B72D5A2008E84AE /* VCCarInfoViewController.xib */; };
+		36000CB01B72D5D2008E84AE /* VCCarInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000CAF1B72D5D2008E84AE /* VCCarInfoViewController.m */; };
+		36000CB11B72D5D2008E84AE /* VCCarInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000CAF1B72D5D2008E84AE /* VCCarInfoViewController.m */; };
+		36000CB21B72D5D2008E84AE /* VCCarInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000CAF1B72D5D2008E84AE /* VCCarInfoViewController.m */; };
+		36000CB31B72D5D2008E84AE /* VCCarInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000CAF1B72D5D2008E84AE /* VCCarInfoViewController.m */; };
 		36638D751B658A5A004EDB09 /* VCRideRequestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D741B658A5A004EDB09 /* VCRideRequestView.xib */; };
 		36638D791B658A5A004EDB09 /* VCRideRequestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D741B658A5A004EDB09 /* VCRideRequestView.xib */; };
 		36638D7B1B658A5A004EDB09 /* VCRideRequestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D741B658A5A004EDB09 /* VCRideRequestView.xib */; };
@@ -73,10 +101,7 @@
 		4F184A411992E41F006EA959 /* VCMenuItemModeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A3D1992E41F006EA959 /* VCMenuItemModeTableViewCell.xib */; };
 		4F3098F519B012F900DFCDD1 /* VCEarningsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3098F419B012F900DFCDD1 /* VCEarningsViewController.m */; };
 		4F3098FA19B0135600DFCDD1 /* VCFareReceiptsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3098F919B0135600DFCDD1 /* VCFareReceiptsViewController.m */; };
-		4F3098FE19B0137000DFCDD1 /* VCFareReceiptsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F3098FD19B0137000DFCDD1 /* VCFareReceiptsViewController.xib */; };
-		4F30990219B013A900DFCDD1 /* VCEarningsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F30990119B013A900DFCDD1 /* VCEarningsViewController.xib */; };
 		4F30990B19B0194C00DFCDD1 /* VCFareReceiptExpandedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F30990A19B0194C00DFCDD1 /* VCFareReceiptExpandedTableViewCell.m */; };
-		4F30990F19B01C6900DFCDD1 /* VCFareReceiptExpandedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F30990E19B01C6900DFCDD1 /* VCFareReceiptExpandedTableViewCell.xib */; };
 		4F30991419B02BCD00DFCDD1 /* temp-call-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F30991219B02BCD00DFCDD1 /* temp-call-button@2x.png */; };
 		4F30991719B02BCD00DFCDD1 /* temp-user-profile-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F30991319B02BCD00DFCDD1 /* temp-user-profile-icon@2x.png */; };
 		4F35FA8C19A6AA62004FB423 /* login-button-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F35FA8A19A6AA62004FB423 /* login-button-select@2x.png */; };
@@ -127,7 +152,6 @@
 		4FC758D419AA91810093DBEA /* VCCommuteSetUpOnBoardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758D019AA91810093DBEA /* VCCommuteSetUpOnBoardingViewController.xib */; };
 		4FC758DD19AA94C30093DBEA /* VCPasswordRecoveryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758D919AA94C30093DBEA /* VCPasswordRecoveryViewController.xib */; };
 		4FC758ED19AA95300093DBEA /* VCReceiptExpandedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758EB19AA95300093DBEA /* VCReceiptExpandedTableViewCell.m */; };
-		4FC758F019AA95300093DBEA /* VCReceiptExpandedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758EC19AA95300093DBEA /* VCReceiptExpandedTableViewCell.xib */; };
 		4FC758FA19AA9B570093DBEA /* VCCenterViewBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758F819AA9B570093DBEA /* VCCenterViewBaseViewController.m */; };
 		4FC7590119AAC0770093DBEA /* receipt-down-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FC7590019AAC0770093DBEA /* receipt-down-arrow@2x.png */; };
 		4FC7590519AACD840093DBEA /* VCDriverSubMenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC7590419AACD840093DBEA /* VCDriverSubMenuItemTableViewCell.xib */; };
@@ -149,8 +173,7 @@
 		4FFCF2C519A266CC00A4A24E /* camera-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFCF2C419A266CC00A4A24E /* camera-icon@2x.png */; };
 		4FFCF2CB19A5381900A4A24E /* VCSupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCF2C919A5381900A4A24E /* VCSupportViewController.m */; };
 		4FFCF2CE19A5381900A4A24E /* VCSupportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFCF2CA19A5381900A4A24E /* VCSupportViewController.xib */; };
-		4FFCF2D419A5493500A4A24E /* VCReceiptsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCF2D219A5493500A4A24E /* VCReceiptsViewController.m */; };
-		4FFCF2D719A5493500A4A24E /* VCReceiptsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFCF2D319A5493500A4A24E /* VCReceiptsViewController.xib */; };
+		4FFCF2D419A5493500A4A24E /* VCReceiptsViewController_old.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCF2D219A5493500A4A24E /* VCReceiptsViewController_old.m */; };
 		4FFE13901989AE09004D4413 /* VCLeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE138E1989AE09004D4413 /* VCLeftMenuViewController.m */; };
 		4FFE13931989AE09004D4413 /* VCLeftMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE138F1989AE09004D4413 /* VCLeftMenuViewController.xib */; };
 		4FFE16F31989E006004D4413 /* driver-call-hud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE16F21989E006004D4413 /* driver-call-hud@2x.png */; };
@@ -256,7 +279,7 @@
 		841647D61B64A47D00CD20AC /* Ticket.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C021935880500A94721 /* Ticket.m */; };
 		841647D71B64A47D00CD20AC /* VCObjectRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D890551946A2D9007C4671 /* VCObjectRequestOperation.m */; };
 		841647D81B64A47D00CD20AC /* VCValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFDB19491C2B00D8C900 /* VCValidation.m */; };
-		841647D91B64A47D00CD20AC /* VCReceiptsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCF2D219A5493500A4A24E /* VCReceiptsViewController.m */; };
+		841647D91B64A47D00CD20AC /* VCReceiptsViewController_old.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCF2D219A5493500A4A24E /* VCReceiptsViewController_old.m */; };
 		841647DA1B64A47D00CD20AC /* MQRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F0151950358000D8C900 /* MQRoute.m */; };
 		841647DB1B64A47D00CD20AC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FA0BF5192BF6BF005D8645 /* main.m */; };
 		841647DC1B64A47D00CD20AC /* VCTicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F73CA02197F2AB0001B6663 /* VCTicketViewController.m */; };
@@ -333,13 +356,9 @@
 		841648271B64A47D00CD20AC /* support-menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9AC1961391B006A1962 /* support-menu-button@2x.png */; };
 		841648281B64A47D00CD20AC /* driver_must_box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E4194168E80059BED1 /* driver_must_box@2x.png */; };
 		841648291B64A47D00CD20AC /* bubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E2194168E80059BED1 /* bubble@2x.png */; };
-		8416482A1B64A47D00CD20AC /* VCReceiptExpandedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758EC19AA95300093DBEA /* VCReceiptExpandedTableViewCell.xib */; };
 		8416482B1B64A47D00CD20AC /* login-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F35FA8B19A6AA62004FB423 /* login-button@2x.png */; };
 		8416482C1B64A47D00CD20AC /* menu-receipts-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849F61991753F006EA959 /* menu-receipts-icon@2x.png */; };
-		8416482D1B64A47D00CD20AC /* VCFareReceiptsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F3098FD19B0137000DFCDD1 /* VCFareReceiptsViewController.xib */; };
 		8416482F1B64A47D00CD20AC /* confirm-location-select.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286FF1962C52700FD8AF6 /* confirm-location-select.png */; };
-		841648301B64A47D00CD20AC /* VCPaymentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB719661C4A00AD4229 /* VCPaymentsViewController.xib */; };
-		841648311B64A47D00CD20AC /* VCEarningsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F30990119B013A900DFCDD1 /* VCEarningsViewController.xib */; };
 		841648321B64A47D00CD20AC /* driving_car@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E5194168E80059BED1 /* driving_car@2x.png */; };
 		841648331B64A47D00CD20AC /* scheduledrides-menu-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9AA1961391B006A1962 /* scheduledrides-menu-button-selected@2x.png */; };
 		841648341B64A47D00CD20AC /* menu-mycar-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849F31991753F006EA959 /* menu-mycar-icon@2x.png */; };
@@ -397,7 +416,6 @@
 		841648691B64A47D00CD20AC /* VCTermsOfServiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F38975019B7DC5000A75C5C /* VCTermsOfServiceViewController.xib */; };
 		8416486A1B64A47D00CD20AC /* button-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FDB0ECB1970B10600A8CEC2 /* button-default@2x.png */; };
 		8416486B1B64A47D00CD20AC /* gradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBFBED1995F50700CBF0C8 /* gradient@2x.png */; };
-		8416486C1B64A47D00CD20AC /* VCReceiptsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFCF2D319A5493500A4A24E /* VCReceiptsViewController.xib */; };
 		8416486D1B64A47D00CD20AC /* Aluvi-Privacy-Policy.html in Resources */ = {isa = PBXBuildFile; fileRef = 4F38976119B8298200A75C5C /* Aluvi-Privacy-Policy.html */; };
 		8416486E1B64A47D00CD20AC /* profile-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758A719AA88330093DBEA /* profile-button@2x.png */; };
 		8416486F1B64A47D00CD20AC /* hamburger@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F35FA9619A80615004FB423 /* hamburger@2x.png */; };
@@ -416,7 +434,6 @@
 		8416487C1B64A47D00CD20AC /* about-menu-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9A61961391B006A1962 /* about-menu-button-selected@2x.png */; };
 		8416487D1B64A47D00CD20AC /* driver-cancel-hud-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849DC198F25F9006EA959 /* driver-cancel-hud-button@2x.png */; };
 		8416487E1B64A47D00CD20AC /* menu-item-bg-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE17111989EFC0004D4413 /* menu-item-bg-select@2x.png */; };
-		8416487F1B64A47D00CD20AC /* VCFareReceiptExpandedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F30990E19B01C6900DFCDD1 /* VCFareReceiptExpandedTableViewCell.xib */; };
 		841648801B64A47D00CD20AC /* driver-hov-toggle-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBFBD51995847300CBF0C8 /* driver-hov-toggle-select@2x.png */; };
 		841648811B64A47D00CD20AC /* commute_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E3194168E80059BED1 /* commute_logo@2x.png */; };
 		841648821B64A47D00CD20AC /* VCEditLocationWidget.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F73CA0F197F82DA001B6663 /* VCEditLocationWidget.xib */; };
@@ -445,7 +462,7 @@
 		8416489A1B64A47D00CD20AC /* profile-menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9A11960EC8C006A1962 /* profile-menu-button@2x.png */; };
 		841648A61B658F4900CD20AC /* VCDriverRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F02D1952DA8F00D8C900 /* VCDriverRegistration.m */; };
 		841648A71B658F4900CD20AC /* VCCommuteSetUpOnBoardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758CF19AA91810093DBEA /* VCCommuteSetUpOnBoardingViewController.m */; };
-		841648A81B658F4900CD20AC /* VCReceiptsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCF2D219A5493500A4A24E /* VCReceiptsViewController.m */; };
+		841648A81B658F4900CD20AC /* VCReceiptsViewController_old.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCF2D219A5493500A4A24E /* VCReceiptsViewController_old.m */; };
 		841648A91B658F4900CD20AC /* VCPushApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B1F193D8FE500354886 /* VCPushApi.m */; };
 		841648AA1B658F4900CD20AC /* VCPasswordTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFBA440195E608600A51B84 /* VCPasswordTextField.m */; };
 		841648AB1B658F4900CD20AC /* VCCarModelTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE712CC197368C80071020C /* VCCarModelTextField.m */; };
@@ -619,15 +636,11 @@
 		841649601B658F4900CD20AC /* support-menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9AC1961391B006A1962 /* support-menu-button@2x.png */; };
 		841649611B658F4900CD20AC /* driver_must_box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E4194168E80059BED1 /* driver_must_box@2x.png */; };
 		841649621B658F4900CD20AC /* placeholder-profile.png in Resources */ = {isa = PBXBuildFile; fileRef = F496FE9519FDBC9400632055 /* placeholder-profile.png */; };
-		841649631B658F4900CD20AC /* VCReceiptExpandedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758EC19AA95300093DBEA /* VCReceiptExpandedTableViewCell.xib */; };
 		841649641B658F4900CD20AC /* bubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E2194168E80059BED1 /* bubble@2x.png */; };
 		841649651B658F4900CD20AC /* menu-receipts-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849F61991753F006EA959 /* menu-receipts-icon@2x.png */; };
 		841649661B658F4900CD20AC /* hamburger-nobadge.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F9D808A19D6547E008B0D3E /* hamburger-nobadge.png */; };
-		841649671B658F4900CD20AC /* VCFareReceiptsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F3098FD19B0137000DFCDD1 /* VCFareReceiptsViewController.xib */; };
 		841649681B658F4900CD20AC /* SignUp.html in Resources */ = {isa = PBXBuildFile; fileRef = F4C97B1B19F88B15006521C1 /* SignUp.html */; };
 		8416496A1B658F4900CD20AC /* confirm-location-select.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286FF1962C52700FD8AF6 /* confirm-location-select.png */; };
-		8416496B1B658F4900CD20AC /* VCEarningsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F30990119B013A900DFCDD1 /* VCEarningsViewController.xib */; };
-		8416496C1B658F4900CD20AC /* VCPaymentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB719661C4A00AD4229 /* VCPaymentsViewController.xib */; };
 		8416496D1B658F4900CD20AC /* driving_car@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E5194168E80059BED1 /* driving_car@2x.png */; };
 		8416496E1B658F4900CD20AC /* scheduledrides-menu-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9AA1961391B006A1962 /* scheduledrides-menu-button-selected@2x.png */; };
 		8416496F1B658F4900CD20AC /* menu-mycar-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849F31991753F006EA959 /* menu-mycar-icon@2x.png */; };
@@ -683,7 +696,6 @@
 		841649A21B658F4900CD20AC /* profile-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758A719AA88330093DBEA /* profile-button@2x.png */; };
 		841649A31B658F4900CD20AC /* hamburger@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F35FA9619A80615004FB423 /* hamburger@2x.png */; };
 		841649A41B658F4900CD20AC /* gradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBFBED1995F50700CBF0C8 /* gradient@2x.png */; };
-		841649A51B658F4900CD20AC /* VCReceiptsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFCF2D319A5493500A4A24E /* VCReceiptsViewController.xib */; };
 		841649A61B658F4900CD20AC /* overlay-graphic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3DB5CC19825FF700DDD094 /* overlay-graphic@2x.png */; };
 		841649A71B658F4900CD20AC /* user-image-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A2E1992E198006EA959 /* user-image-small@2x.png */; };
 		841649A81B658F4900CD20AC /* menu-schedule-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849F71991753F006EA959 /* menu-schedule-icon@2x.png */; };
@@ -699,7 +711,6 @@
 		841649B21B658F4900CD20AC /* about-menu-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9A61961391B006A1962 /* about-menu-button-selected@2x.png */; };
 		841649B31B658F4900CD20AC /* VCTermsOfServiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F38975019B7DC5000A75C5C /* VCTermsOfServiceViewController.xib */; };
 		841649B41B658F4900CD20AC /* driver-cancel-hud-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849DC198F25F9006EA959 /* driver-cancel-hud-button@2x.png */; };
-		841649B51B658F4900CD20AC /* VCFareReceiptExpandedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F30990E19B01C6900DFCDD1 /* VCFareReceiptExpandedTableViewCell.xib */; };
 		841649B61B658F4900CD20AC /* menu-item-bg-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE17111989EFC0004D4413 /* menu-item-bg-select@2x.png */; };
 		841649B71B658F4900CD20AC /* driver-hov-toggle-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBFBD51995847300CBF0C8 /* driver-hov-toggle-select@2x.png */; };
 		841649B81B658F4900CD20AC /* commute_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E3194168E80059BED1 /* commute_logo@2x.png */; };
@@ -882,7 +893,6 @@
 		F4C6B257197F06B100F6C10B /* driver_must_box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E4194168E80059BED1 /* driver_must_box@2x.png */; };
 		F4C6B259197F06B100F6C10B /* bubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E2194168E80059BED1 /* bubble@2x.png */; };
 		F4C6B25C197F06B100F6C10B /* confirm-location-select.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286FF1962C52700FD8AF6 /* confirm-location-select.png */; };
-		F4C6B25D197F06B100F6C10B /* VCPaymentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB719661C4A00AD4229 /* VCPaymentsViewController.xib */; };
 		F4C6B25E197F06B100F6C10B /* driving_car@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E5194168E80059BED1 /* driving_car@2x.png */; };
 		F4C6B25F197F06B100F6C10B /* scheduledrides-menu-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9AA1961391B006A1962 /* scheduledrides-menu-button-selected@2x.png */; };
 		F4C6B260197F06B100F6C10B /* zoom-ride-bounds@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286F41962BDB300FD8AF6 /* zoom-ride-bounds@2x.png */; };
@@ -1017,7 +1027,7 @@
 		F4D8FE6F19B1745A00BC0B69 /* Ticket.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C021935880500A94721 /* Ticket.m */; };
 		F4D8FE7119B1745A00BC0B69 /* VCObjectRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D890551946A2D9007C4671 /* VCObjectRequestOperation.m */; };
 		F4D8FE7319B1745A00BC0B69 /* VCValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = F473EFDB19491C2B00D8C900 /* VCValidation.m */; };
-		F4D8FE7519B1745A00BC0B69 /* VCReceiptsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCF2D219A5493500A4A24E /* VCReceiptsViewController.m */; };
+		F4D8FE7519B1745A00BC0B69 /* VCReceiptsViewController_old.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCF2D219A5493500A4A24E /* VCReceiptsViewController_old.m */; };
 		F4D8FE7619B1745A00BC0B69 /* MQRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F0151950358000D8C900 /* MQRoute.m */; };
 		F4D8FE7719B1745A00BC0B69 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FA0BF5192BF6BF005D8645 /* main.m */; };
 		F4D8FE7819B1745A00BC0B69 /* VCTicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F73CA02197F2AB0001B6663 /* VCTicketViewController.m */; };
@@ -1081,13 +1091,9 @@
 		F4D8FEBF19B1745A00BC0B69 /* support-menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9AC1961391B006A1962 /* support-menu-button@2x.png */; };
 		F4D8FEC019B1745A00BC0B69 /* driver_must_box@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E4194168E80059BED1 /* driver_must_box@2x.png */; };
 		F4D8FEC219B1745A00BC0B69 /* bubble@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E2194168E80059BED1 /* bubble@2x.png */; };
-		F4D8FEC319B1745A00BC0B69 /* VCReceiptExpandedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758EC19AA95300093DBEA /* VCReceiptExpandedTableViewCell.xib */; };
 		F4D8FEC419B1745A00BC0B69 /* login-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F35FA8B19A6AA62004FB423 /* login-button@2x.png */; };
 		F4D8FEC519B1745A00BC0B69 /* menu-receipts-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849F61991753F006EA959 /* menu-receipts-icon@2x.png */; };
-		F4D8FEC619B1745A00BC0B69 /* VCFareReceiptsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F3098FD19B0137000DFCDD1 /* VCFareReceiptsViewController.xib */; };
 		F4D8FEC919B1745A00BC0B69 /* confirm-location-select.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286FF1962C52700FD8AF6 /* confirm-location-select.png */; };
-		F4D8FECA19B1745A00BC0B69 /* VCPaymentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB719661C4A00AD4229 /* VCPaymentsViewController.xib */; };
-		F4D8FECB19B1745A00BC0B69 /* VCEarningsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F30990119B013A900DFCDD1 /* VCEarningsViewController.xib */; };
 		F4D8FECC19B1745A00BC0B69 /* driving_car@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E5194168E80059BED1 /* driving_car@2x.png */; };
 		F4D8FECD19B1745A00BC0B69 /* scheduledrides-menu-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9AA1961391B006A1962 /* scheduledrides-menu-button-selected@2x.png */; };
 		F4D8FECE19B1745A00BC0B69 /* menu-mycar-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849F31991753F006EA959 /* menu-mycar-icon@2x.png */; };
@@ -1136,7 +1142,6 @@
 		F4D8FF0419B1745A00BC0B69 /* profile-menu-button-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9A01960EC8C006A1962 /* profile-menu-button-select@2x.png */; };
 		F4D8FF0519B1745A00BC0B69 /* button-default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FDB0ECB1970B10600A8CEC2 /* button-default@2x.png */; };
 		F4D8FF0619B1745A00BC0B69 /* gradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBFBED1995F50700CBF0C8 /* gradient@2x.png */; };
-		F4D8FF0719B1745A00BC0B69 /* VCReceiptsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFCF2D319A5493500A4A24E /* VCReceiptsViewController.xib */; };
 		F4D8FF0819B1745A00BC0B69 /* profile-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758A719AA88330093DBEA /* profile-button@2x.png */; };
 		F4D8FF0919B1745A00BC0B69 /* hamburger@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F35FA9619A80615004FB423 /* hamburger@2x.png */; };
 		F4D8FF0A19B1745A00BC0B69 /* overlay-graphic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3DB5CC19825FF700DDD094 /* overlay-graphic@2x.png */; };
@@ -1152,7 +1157,6 @@
 		F4D8FF1719B1745A00BC0B69 /* about-menu-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9A61961391B006A1962 /* about-menu-button-selected@2x.png */; };
 		F4D8FF1819B1745A00BC0B69 /* driver-cancel-hud-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849DC198F25F9006EA959 /* driver-cancel-hud-button@2x.png */; };
 		F4D8FF1919B1745A00BC0B69 /* menu-item-bg-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE17111989EFC0004D4413 /* menu-item-bg-select@2x.png */; };
-		F4D8FF1A19B1745A00BC0B69 /* VCFareReceiptExpandedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F30990E19B01C6900DFCDD1 /* VCFareReceiptExpandedTableViewCell.xib */; };
 		F4D8FF1B19B1745A00BC0B69 /* driver-hov-toggle-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBFBD51995847300CBF0C8 /* driver-hov-toggle-select@2x.png */; };
 		F4D8FF1C19B1745A00BC0B69 /* commute_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE641E3194168E80059BED1 /* commute_logo@2x.png */; };
 		F4D8FF1D19B1745A00BC0B69 /* VCEditLocationWidget.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F73CA0F197F82DA001B6663 /* VCEditLocationWidget.xib */; };
@@ -1191,6 +1195,17 @@
 /* Begin PBXFileReference section */
 		0D14E3F5E1EECB39D89015B1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		351E93948BFC43989C411DB5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		36000C8C1B7289D7008E84AE /* VCPaymentsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPaymentsView.h; sourceTree = "<group>"; };
+		36000C8D1B7289D7008E84AE /* VCPaymentsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPaymentsView.m; sourceTree = "<group>"; };
+		36000C931B72B295008E84AE /* VCReceiptViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCReceiptViewController.xib; sourceTree = "<group>"; };
+		36000C981B72B2AC008E84AE /* VCReceiptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCReceiptViewController.h; sourceTree = "<group>"; };
+		36000C991B72B2AC008E84AE /* VCReceiptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCReceiptViewController.m; sourceTree = "<group>"; };
+		36000C9E1B72C169008E84AE /* VCReceiptsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCReceiptsTableViewCell.xib; sourceTree = "<group>"; };
+		36000CA31B72C185008E84AE /* VCReceiptsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCReceiptsTableViewCell.h; sourceTree = "<group>"; };
+		36000CA41B72C185008E84AE /* VCReceiptsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCReceiptsTableViewCell.m; sourceTree = "<group>"; };
+		36000CA91B72D5A2008E84AE /* VCCarInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCCarInfoViewController.xib; sourceTree = "<group>"; };
+		36000CAE1B72D5D2008E84AE /* VCCarInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCCarInfoViewController.h; sourceTree = "<group>"; };
+		36000CAF1B72D5D2008E84AE /* VCCarInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCarInfoViewController.m; sourceTree = "<group>"; };
 		36638D741B658A5A004EDB09 /* VCRideRequestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCRideRequestView.xib; sourceTree = "<group>"; };
 		36638D7C1B659CAE004EDB09 /* VCDriverTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCDriverTicketView.xib; sourceTree = "<group>"; };
 		36638D841B65A988004EDB09 /* VCRiderTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCRiderTicketView.xib; sourceTree = "<group>"; };
@@ -1416,9 +1431,9 @@
 		4FFCF2C819A5381900A4A24E /* VCSupportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCSupportViewController.h; sourceTree = "<group>"; };
 		4FFCF2C919A5381900A4A24E /* VCSupportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCSupportViewController.m; sourceTree = "<group>"; };
 		4FFCF2CA19A5381900A4A24E /* VCSupportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCSupportViewController.xib; sourceTree = "<group>"; };
-		4FFCF2D119A5493500A4A24E /* VCReceiptsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCReceiptsViewController.h; sourceTree = "<group>"; };
-		4FFCF2D219A5493500A4A24E /* VCReceiptsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCReceiptsViewController.m; sourceTree = "<group>"; };
-		4FFCF2D319A5493500A4A24E /* VCReceiptsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCReceiptsViewController.xib; sourceTree = "<group>"; };
+		4FFCF2D119A5493500A4A24E /* VCReceiptsViewController_old.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCReceiptsViewController_old.h; sourceTree = "<group>"; };
+		4FFCF2D219A5493500A4A24E /* VCReceiptsViewController_old.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCReceiptsViewController_old.m; sourceTree = "<group>"; };
+		4FFCF2D319A5493500A4A24E /* VCReceiptsViewController_old.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCReceiptsViewController_old.xib; sourceTree = "<group>"; };
 		4FFE138D1989AE09004D4413 /* VCLeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCLeftMenuViewController.h; path = ViewControllers/VCLeftMenuViewController.h; sourceTree = "<group>"; };
 		4FFE138E1989AE09004D4413 /* VCLeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCLeftMenuViewController.m; path = ViewControllers/VCLeftMenuViewController.m; sourceTree = "<group>"; };
 		4FFE138F1989AE09004D4413 /* VCLeftMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCLeftMenuViewController.xib; path = ViewControllers/VCLeftMenuViewController.xib; sourceTree = "<group>"; };
@@ -1813,6 +1828,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36000C8B1B728884008E84AE /* Old Menu Item View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4FC758E019AA94F00093DBEA /* Receipts Table View Cells */,
+				4FFCF2D119A5493500A4A24E /* VCReceiptsViewController_old.h */,
+				4FFCF2D219A5493500A4A24E /* VCReceiptsViewController_old.m */,
+				4FFCF2D319A5493500A4A24E /* VCReceiptsViewController_old.xib */,
+				4F9ECEB519661C4A00AD4229 /* VCPaymentsViewController.h */,
+				4F9ECEB619661C4A00AD4229 /* VCPaymentsViewController.m */,
+				4F9ECEB719661C4A00AD4229 /* VCPaymentsViewController.xib */,
+				4FFCF2E319A5B34500A4A24E /* HOV Driver Menu Item View Controllers */,
+			);
+			name = "Old Menu Item View Controllers";
+			sourceTree = "<group>";
+		};
+		36000C921B72AD83008E84AE /* Old Menu Items */ = {
+			isa = PBXGroup;
+			children = (
+				4F184A3B1992E41F006EA959 /* VCMenuItemModeTableViewCell.h */,
+				4F184A3C1992E41F006EA959 /* VCMenuItemModeTableViewCell.m */,
+				4F184A3D1992E41F006EA959 /* VCMenuItemModeTableViewCell.xib */,
+				4F184A211991E156006EA959 /* VCSubMenuItemTableViewCell.h */,
+				4F184A221991E156006EA959 /* VCSubMenuItemTableViewCell.m */,
+				4F184A231991E156006EA959 /* VCSubMenuItemTableViewCell.xib */,
+				4FC7590D19AACFF50093DBEA /* VCDriverSubMenuItemTableViewCell.h */,
+				4FC7590E19AACFF50093DBEA /* VCDriverSubMenuItemTableViewCell.m */,
+				4FC7590419AACD840093DBEA /* VCDriverSubMenuItemTableViewCell.xib */,
+				4F184A181991893D006EA959 /* VCMenuDriverClockOnTableViewCell.h */,
+				4F184A191991893D006EA959 /* VCMenuDriverClockOnTableViewCell.m */,
+				4F184A1A1991893D006EA959 /* VCMenuDriverClockOnTableViewCell.xib */,
+			);
+			name = "Old Menu Items";
+			sourceTree = "<group>";
+		};
 		36638D731B658A0B004EDB09 /* Commute Request */ = {
 			isa = PBXGroup;
 			children = (
@@ -1904,7 +1953,6 @@
 			isa = PBXGroup;
 			children = (
 				36FB72891B6D6B1400F8A6AF /* Old Other Functionality */,
-				36FB728A1B6D6B4200F8A6AF /* VCPaymentsView.xib */,
 			);
 			name = "Other Functionality";
 			sourceTree = "<group>";
@@ -2112,20 +2160,25 @@
 		4FFCF2BA19A2428700A4A24E /* Menu Item View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4FFCF2E319A5B34500A4A24E /* HOV Driver Menu Item View Controllers */,
+				36000C8B1B728884008E84AE /* Old Menu Item View Controllers */,
+				36FB728A1B6D6B4200F8A6AF /* VCPaymentsView.xib */,
+				36000C8C1B7289D7008E84AE /* VCPaymentsView.h */,
+				36000C8D1B7289D7008E84AE /* VCPaymentsView.m */,
+				4FFCF2BD19A25F2100A4A24E /* VCProfileViewController.xib */,
 				4FFCF2BB19A25F2100A4A24E /* VCProfileViewController.h */,
 				4FFCF2BC19A25F2100A4A24E /* VCProfileViewController.m */,
-				4FFCF2BD19A25F2100A4A24E /* VCProfileViewController.xib */,
-				4F9ECEB519661C4A00AD4229 /* VCPaymentsViewController.h */,
-				4F9ECEB619661C4A00AD4229 /* VCPaymentsViewController.m */,
-				4F9ECEB719661C4A00AD4229 /* VCPaymentsViewController.xib */,
-				4FFCF2D119A5493500A4A24E /* VCReceiptsViewController.h */,
-				4FFCF2D219A5493500A4A24E /* VCReceiptsViewController.m */,
-				4FFCF2D319A5493500A4A24E /* VCReceiptsViewController.xib */,
-				4FC758E019AA94F00093DBEA /* Receipts Table View Cells */,
+				4FFCF2CA19A5381900A4A24E /* VCSupportViewController.xib */,
 				4FFCF2C819A5381900A4A24E /* VCSupportViewController.h */,
 				4FFCF2C919A5381900A4A24E /* VCSupportViewController.m */,
-				4FFCF2CA19A5381900A4A24E /* VCSupportViewController.xib */,
+				36000C931B72B295008E84AE /* VCReceiptViewController.xib */,
+				36000C981B72B2AC008E84AE /* VCReceiptViewController.h */,
+				36000C991B72B2AC008E84AE /* VCReceiptViewController.m */,
+				36000C9E1B72C169008E84AE /* VCReceiptsTableViewCell.xib */,
+				36000CA31B72C185008E84AE /* VCReceiptsTableViewCell.h */,
+				36000CA41B72C185008E84AE /* VCReceiptsTableViewCell.m */,
+				36000CA91B72D5A2008E84AE /* VCCarInfoViewController.xib */,
+				36000CAE1B72D5D2008E84AE /* VCCarInfoViewController.h */,
+				36000CAF1B72D5D2008E84AE /* VCCarInfoViewController.m */,
 			);
 			name = "Menu Item View Controllers";
 			sourceTree = "<group>";
@@ -2146,24 +2199,13 @@
 		4FFE16F61989E65B004D4413 /* Menu Item Table View Cells */ = {
 			isa = PBXGroup;
 			children = (
+				36000C921B72AD83008E84AE /* Old Menu Items */,
 				4F184A0F19918750006EA959 /* VCMenuUserInfoTableViewCell.h */,
 				4F184A1019918750006EA959 /* VCMenuUserInfoTableViewCell.m */,
 				4F184A1119918750006EA959 /* VCMenuUserInfoTableViewCell.xib */,
 				4FFE17001989E801004D4413 /* VCMenuItemTableViewCell.h */,
 				4FFE17011989E801004D4413 /* VCMenuItemTableViewCell.m */,
 				4FFE17021989E801004D4413 /* VCMenuItemTableViewCell.xib */,
-				4F184A211991E156006EA959 /* VCSubMenuItemTableViewCell.h */,
-				4F184A221991E156006EA959 /* VCSubMenuItemTableViewCell.m */,
-				4F184A231991E156006EA959 /* VCSubMenuItemTableViewCell.xib */,
-				4FC7590D19AACFF50093DBEA /* VCDriverSubMenuItemTableViewCell.h */,
-				4FC7590E19AACFF50093DBEA /* VCDriverSubMenuItemTableViewCell.m */,
-				4FC7590419AACD840093DBEA /* VCDriverSubMenuItemTableViewCell.xib */,
-				4F184A181991893D006EA959 /* VCMenuDriverClockOnTableViewCell.h */,
-				4F184A191991893D006EA959 /* VCMenuDriverClockOnTableViewCell.m */,
-				4F184A1A1991893D006EA959 /* VCMenuDriverClockOnTableViewCell.xib */,
-				4F184A3B1992E41F006EA959 /* VCMenuItemModeTableViewCell.h */,
-				4F184A3C1992E41F006EA959 /* VCMenuItemModeTableViewCell.m */,
-				4F184A3D1992E41F006EA959 /* VCMenuItemModeTableViewCell.xib */,
 				4F184A321992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.h */,
 				4F184A331992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.m */,
 				4F184A341992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.xib */,
@@ -2802,6 +2844,7 @@
 				841648091B64A47D00CD20AC /* temp-call-button@2x.png in Resources */,
 				8416480A1B64A47D00CD20AC /* call-button-select@2x.png in Resources */,
 				8416480B1B64A47D00CD20AC /* call-button@2x.png in Resources */,
+				36000C971B72B295008E84AE /* VCReceiptViewController.xib in Resources */,
 				8416480C1B64A47D00CD20AC /* scheduledfares-menu-button@2x.png in Resources */,
 				8416480D1B64A47D00CD20AC /* hamburger-badge@2x.png in Resources */,
 				8416480E1B64A47D00CD20AC /* directions-button-selected@2x.png in Resources */,
@@ -2834,14 +2877,10 @@
 				841648271B64A47D00CD20AC /* support-menu-button@2x.png in Resources */,
 				841648281B64A47D00CD20AC /* driver_must_box@2x.png in Resources */,
 				841648291B64A47D00CD20AC /* bubble@2x.png in Resources */,
-				8416482A1B64A47D00CD20AC /* VCReceiptExpandedTableViewCell.xib in Resources */,
 				8416482B1B64A47D00CD20AC /* login-button@2x.png in Resources */,
 				36FB728E1B6D6B4200F8A6AF /* VCPaymentsView.xib in Resources */,
 				8416482C1B64A47D00CD20AC /* menu-receipts-icon@2x.png in Resources */,
-				8416482D1B64A47D00CD20AC /* VCFareReceiptsViewController.xib in Resources */,
 				8416482F1B64A47D00CD20AC /* confirm-location-select.png in Resources */,
-				841648301B64A47D00CD20AC /* VCPaymentsViewController.xib in Resources */,
-				841648311B64A47D00CD20AC /* VCEarningsViewController.xib in Resources */,
 				841648321B64A47D00CD20AC /* driving_car@2x.png in Resources */,
 				841648331B64A47D00CD20AC /* scheduledrides-menu-button-selected@2x.png in Resources */,
 				841648341B64A47D00CD20AC /* menu-mycar-icon@2x.png in Resources */,
@@ -2897,11 +2936,11 @@
 				841648651B64A47D00CD20AC /* pin@2x.png in Resources */,
 				841648661B64A47D00CD20AC /* menu-map-icon@2x.png in Resources */,
 				841648671B64A47D00CD20AC /* current-location-button@2x.png in Resources */,
+				36000CA21B72C169008E84AE /* VCReceiptsTableViewCell.xib in Resources */,
 				841648681B64A47D00CD20AC /* profile-menu-button-select@2x.png in Resources */,
 				841648691B64A47D00CD20AC /* VCTermsOfServiceViewController.xib in Resources */,
 				8416486A1B64A47D00CD20AC /* button-default@2x.png in Resources */,
 				8416486B1B64A47D00CD20AC /* gradient@2x.png in Resources */,
-				8416486C1B64A47D00CD20AC /* VCReceiptsViewController.xib in Resources */,
 				8416486D1B64A47D00CD20AC /* Aluvi-Privacy-Policy.html in Resources */,
 				8416486E1B64A47D00CD20AC /* profile-button@2x.png in Resources */,
 				8416486F1B64A47D00CD20AC /* hamburger@2x.png in Resources */,
@@ -2920,7 +2959,6 @@
 				8416487C1B64A47D00CD20AC /* about-menu-button-selected@2x.png in Resources */,
 				8416487D1B64A47D00CD20AC /* driver-cancel-hud-button@2x.png in Resources */,
 				8416487E1B64A47D00CD20AC /* menu-item-bg-select@2x.png in Resources */,
-				8416487F1B64A47D00CD20AC /* VCFareReceiptExpandedTableViewCell.xib in Resources */,
 				841648801B64A47D00CD20AC /* driver-hov-toggle-select@2x.png in Resources */,
 				841648811B64A47D00CD20AC /* commute_logo@2x.png in Resources */,
 				841648821B64A47D00CD20AC /* VCEditLocationWidget.xib in Resources */,
@@ -2928,6 +2966,7 @@
 				841648841B64A47D00CD20AC /* directions-button@2x.png in Resources */,
 				841648851B64A47D00CD20AC /* login-button-select@2x.png in Resources */,
 				841648861B64A47D00CD20AC /* payment-menu-button@2x.png in Resources */,
+				36000CAD1B72D5A2008E84AE /* VCCarInfoViewController.xib in Resources */,
 				841648871B64A47D00CD20AC /* colors_03.png in Resources */,
 				841648881B64A47D00CD20AC /* VCLeftMenuViewController.xib in Resources */,
 				841648891B64A47D00CD20AC /* button-select@2x.png in Resources */,
@@ -2974,6 +3013,7 @@
 				8416494B1B658F4900CD20AC /* current-location-button-selected@2x.png in Resources */,
 				8416494C1B658F4900CD20AC /* KlinicSlabLight.ttf in Resources */,
 				8416494D1B658F4900CD20AC /* driver-request-form@2x.png in Resources */,
+				36000C951B72B295008E84AE /* VCReceiptViewController.xib in Resources */,
 				8416494E1B658F4900CD20AC /* VCDebugViewController.xib in Resources */,
 				8416494F1B658F4900CD20AC /* VCLocationSearchViewController.xib in Resources */,
 				841649501B658F4900CD20AC /* KlinicSlabLightIt.ttf in Resources */,
@@ -2995,15 +3035,11 @@
 				841649601B658F4900CD20AC /* support-menu-button@2x.png in Resources */,
 				841649611B658F4900CD20AC /* driver_must_box@2x.png in Resources */,
 				841649621B658F4900CD20AC /* placeholder-profile.png in Resources */,
-				841649631B658F4900CD20AC /* VCReceiptExpandedTableViewCell.xib in Resources */,
 				841649641B658F4900CD20AC /* bubble@2x.png in Resources */,
 				841649651B658F4900CD20AC /* menu-receipts-icon@2x.png in Resources */,
 				841649661B658F4900CD20AC /* hamburger-nobadge.png in Resources */,
-				841649671B658F4900CD20AC /* VCFareReceiptsViewController.xib in Resources */,
 				841649681B658F4900CD20AC /* SignUp.html in Resources */,
 				8416496A1B658F4900CD20AC /* confirm-location-select.png in Resources */,
-				8416496B1B658F4900CD20AC /* VCEarningsViewController.xib in Resources */,
-				8416496C1B658F4900CD20AC /* VCPaymentsViewController.xib in Resources */,
 				8416496D1B658F4900CD20AC /* driving_car@2x.png in Resources */,
 				8416496E1B658F4900CD20AC /* scheduledrides-menu-button-selected@2x.png in Resources */,
 				8416496F1B658F4900CD20AC /* menu-mycar-icon@2x.png in Resources */,
@@ -3031,6 +3067,7 @@
 				841649851B658F4900CD20AC /* VCPasswordRecoveryViewController.xib in Resources */,
 				841649861B658F4900CD20AC /* receipt-down-arrow@2x.png in Resources */,
 				841649871B658F4900CD20AC /* driver-hov-toggle@2x.png in Resources */,
+				36000CAB1B72D5A2008E84AE /* VCCarInfoViewController.xib in Resources */,
 				841649881B658F4900CD20AC /* driver-cancel-hud-icon@2x.png in Resources */,
 				841649891B658F4900CD20AC /* scheduledfares-menu-button-selected@2x.png in Resources */,
 				8416498A1B658F4900CD20AC /* menu-payments-icon@2x.png in Resources */,
@@ -3040,6 +3077,7 @@
 				8416498E1B658F4900CD20AC /* driver-cancel-hud@2x.png in Resources */,
 				36F9F6621B6B0C5B00440D03 /* VCRideRequestView.xib in Resources */,
 				841649901B658F4900CD20AC /* button-full-default@2x.png in Resources */,
+				36000CA01B72C169008E84AE /* VCReceiptsTableViewCell.xib in Resources */,
 				841649911B658F4900CD20AC /* menu-item-user-info-bg@2x.png in Resources */,
 				841649921B658F4900CD20AC /* search-location-select@2x.png in Resources */,
 				841649931B658F4900CD20AC /* red_box@2x.png in Resources */,
@@ -3060,7 +3098,6 @@
 				841649A21B658F4900CD20AC /* profile-button@2x.png in Resources */,
 				841649A31B658F4900CD20AC /* hamburger@2x.png in Resources */,
 				841649A41B658F4900CD20AC /* gradient@2x.png in Resources */,
-				841649A51B658F4900CD20AC /* VCReceiptsViewController.xib in Resources */,
 				841649A61B658F4900CD20AC /* overlay-graphic@2x.png in Resources */,
 				841649A71B658F4900CD20AC /* user-image-small@2x.png in Resources */,
 				841649A81B658F4900CD20AC /* menu-schedule-icon@2x.png in Resources */,
@@ -3076,7 +3113,6 @@
 				841649B21B658F4900CD20AC /* about-menu-button-selected@2x.png in Resources */,
 				841649B31B658F4900CD20AC /* VCTermsOfServiceViewController.xib in Resources */,
 				841649B41B658F4900CD20AC /* driver-cancel-hud-button@2x.png in Resources */,
-				841649B51B658F4900CD20AC /* VCFareReceiptExpandedTableViewCell.xib in Resources */,
 				841649B61B658F4900CD20AC /* menu-item-bg-select@2x.png in Resources */,
 				841649B71B658F4900CD20AC /* driver-hov-toggle-select@2x.png in Resources */,
 				36F9F6611B6B0C5200440D03 /* VCDriverTicketView.xib in Resources */,
@@ -3131,6 +3167,7 @@
 				F4C6B249197F06B100F6C10B /* KlinicSlabLight.ttf in Resources */,
 				F4C6B24A197F06B100F6C10B /* driver-request-form@2x.png in Resources */,
 				F4C6B24B197F06B100F6C10B /* VCDebugViewController.xib in Resources */,
+				36000C941B72B295008E84AE /* VCReceiptViewController.xib in Resources */,
 				F4C6B24C197F06B100F6C10B /* VCLocationSearchViewController.xib in Resources */,
 				F4C6B24D197F06B100F6C10B /* KlinicSlabLightIt.ttf in Resources */,
 				F4C6B24E197F06B100F6C10B /* menu-list@2x.png in Resources */,
@@ -3151,15 +3188,11 @@
 				F4C6B256197F06B100F6C10B /* support-menu-button@2x.png in Resources */,
 				F4C6B257197F06B100F6C10B /* driver_must_box@2x.png in Resources */,
 				F496FE9619FDBC9400632055 /* placeholder-profile.png in Resources */,
-				4FC758F019AA95300093DBEA /* VCReceiptExpandedTableViewCell.xib in Resources */,
 				F4C6B259197F06B100F6C10B /* bubble@2x.png in Resources */,
 				4F184A021991753F006EA959 /* menu-receipts-icon@2x.png in Resources */,
 				4F9D808F19D6547E008B0D3E /* hamburger-nobadge.png in Resources */,
-				4F3098FE19B0137000DFCDD1 /* VCFareReceiptsViewController.xib in Resources */,
 				F4C97B1D19F88B15006521C1 /* SignUp.html in Resources */,
 				F4C6B25C197F06B100F6C10B /* confirm-location-select.png in Resources */,
-				4F30990219B013A900DFCDD1 /* VCEarningsViewController.xib in Resources */,
-				F4C6B25D197F06B100F6C10B /* VCPaymentsViewController.xib in Resources */,
 				F4C6B25E197F06B100F6C10B /* driving_car@2x.png in Resources */,
 				F4C6B25F197F06B100F6C10B /* scheduledrides-menu-button-selected@2x.png in Resources */,
 				4F1849F91991753F006EA959 /* menu-mycar-icon@2x.png in Resources */,
@@ -3188,6 +3221,7 @@
 				F4C6B26F197F06B100F6C10B /* KlinicSlabMediumIt.ttf in Resources */,
 				4FC758DD19AA94C30093DBEA /* VCPasswordRecoveryViewController.xib in Resources */,
 				4FC7590119AAC0770093DBEA /* receipt-down-arrow@2x.png in Resources */,
+				36000CAA1B72D5A2008E84AE /* VCCarInfoViewController.xib in Resources */,
 				4FCBFBDC1995847300CBF0C8 /* driver-hov-toggle@2x.png in Resources */,
 				4F1849E8198F625A006EA959 /* driver-cancel-hud-icon@2x.png in Resources */,
 				F4C6B272197F06B100F6C10B /* scheduledfares-menu-button-selected@2x.png in Resources */,
@@ -3197,6 +3231,7 @@
 				369DBC161B6D22F400449CB4 /* test_big.jpg in Resources */,
 				F4C6B275197F06B100F6C10B /* search-location@2x.png in Resources */,
 				4FFE1722198B0475004D4413 /* driver-cancel-hud@2x.png in Resources */,
+				36000C9F1B72C169008E84AE /* VCReceiptsTableViewCell.xib in Resources */,
 				F4C6B277197F06B100F6C10B /* button-full-default@2x.png in Resources */,
 				4F184A0C19918609006EA959 /* menu-item-user-info-bg@2x.png in Resources */,
 				F4C6B278197F06B100F6C10B /* search-location-select@2x.png in Resources */,
@@ -3218,7 +3253,6 @@
 				4FC758AB19AA88330093DBEA /* profile-button@2x.png in Resources */,
 				4F35FA9719A80615004FB423 /* hamburger@2x.png in Resources */,
 				4FCBFBEE1995F50700CBF0C8 /* gradient@2x.png in Resources */,
-				4FFCF2D719A5493500A4A24E /* VCReceiptsViewController.xib in Resources */,
 				4F3DB5CD19825FF700DDD094 /* overlay-graphic@2x.png in Resources */,
 				4F184A2F1992E198006EA959 /* user-image-small@2x.png in Resources */,
 				4F184A051991753F006EA959 /* menu-schedule-icon@2x.png in Resources */,
@@ -3234,7 +3268,6 @@
 				F4C6B286197F06B100F6C10B /* about-menu-button-selected@2x.png in Resources */,
 				4F38975419B7DC5000A75C5C /* VCTermsOfServiceViewController.xib in Resources */,
 				4F1849E0198F25F9006EA959 /* driver-cancel-hud-button@2x.png in Resources */,
-				4F30990F19B01C6900DFCDD1 /* VCFareReceiptExpandedTableViewCell.xib in Resources */,
 				4FFE17131989EFC0004D4413 /* menu-item-bg-select@2x.png in Resources */,
 				4FCBFBD91995847300CBF0C8 /* driver-hov-toggle-select@2x.png in Resources */,
 				F4C6B287197F06B100F6C10B /* commute_logo@2x.png in Resources */,
@@ -3274,6 +3307,7 @@
 				F4D8FE9D19B1745A00BC0B69 /* temp-call-button@2x.png in Resources */,
 				F4D8FE9E19B1745A00BC0B69 /* call-button-select@2x.png in Resources */,
 				F4D8FE9F19B1745A00BC0B69 /* call-button@2x.png in Resources */,
+				36000C961B72B295008E84AE /* VCReceiptViewController.xib in Resources */,
 				F4D8FEA019B1745A00BC0B69 /* scheduledfares-menu-button@2x.png in Resources */,
 				4F9D808E19D6547E008B0D3E /* hamburger-badge@2x.png in Resources */,
 				F4D8FEA119B1745A00BC0B69 /* directions-button-selected@2x.png in Resources */,
@@ -3306,14 +3340,10 @@
 				F4D8FEBF19B1745A00BC0B69 /* support-menu-button@2x.png in Resources */,
 				F4D8FEC019B1745A00BC0B69 /* driver_must_box@2x.png in Resources */,
 				F4D8FEC219B1745A00BC0B69 /* bubble@2x.png in Resources */,
-				F4D8FEC319B1745A00BC0B69 /* VCReceiptExpandedTableViewCell.xib in Resources */,
 				F4D8FEC419B1745A00BC0B69 /* login-button@2x.png in Resources */,
 				36FB728D1B6D6B4200F8A6AF /* VCPaymentsView.xib in Resources */,
 				F4D8FEC519B1745A00BC0B69 /* menu-receipts-icon@2x.png in Resources */,
-				F4D8FEC619B1745A00BC0B69 /* VCFareReceiptsViewController.xib in Resources */,
 				F4D8FEC919B1745A00BC0B69 /* confirm-location-select.png in Resources */,
-				F4D8FECA19B1745A00BC0B69 /* VCPaymentsViewController.xib in Resources */,
-				F4D8FECB19B1745A00BC0B69 /* VCEarningsViewController.xib in Resources */,
 				F4D8FECC19B1745A00BC0B69 /* driving_car@2x.png in Resources */,
 				F4D8FECD19B1745A00BC0B69 /* scheduledrides-menu-button-selected@2x.png in Resources */,
 				F4D8FECE19B1745A00BC0B69 /* menu-mycar-icon@2x.png in Resources */,
@@ -3369,11 +3399,11 @@
 				F4D8FF0119B1745A00BC0B69 /* pin@2x.png in Resources */,
 				F4D8FF0219B1745A00BC0B69 /* menu-map-icon@2x.png in Resources */,
 				F4D8FF0319B1745A00BC0B69 /* current-location-button@2x.png in Resources */,
+				36000CA11B72C169008E84AE /* VCReceiptsTableViewCell.xib in Resources */,
 				F4D8FF0419B1745A00BC0B69 /* profile-menu-button-select@2x.png in Resources */,
 				F4A5654B19CA5C470030104D /* VCTermsOfServiceViewController.xib in Resources */,
 				F4D8FF0519B1745A00BC0B69 /* button-default@2x.png in Resources */,
 				F4D8FF0619B1745A00BC0B69 /* gradient@2x.png in Resources */,
-				F4D8FF0719B1745A00BC0B69 /* VCReceiptsViewController.xib in Resources */,
 				F4A5654819C8F3EA0030104D /* Aluvi-Privacy-Policy.html in Resources */,
 				F4D8FF0819B1745A00BC0B69 /* profile-button@2x.png in Resources */,
 				F4D8FF0919B1745A00BC0B69 /* hamburger@2x.png in Resources */,
@@ -3392,7 +3422,6 @@
 				F4D8FF1719B1745A00BC0B69 /* about-menu-button-selected@2x.png in Resources */,
 				F4D8FF1819B1745A00BC0B69 /* driver-cancel-hud-button@2x.png in Resources */,
 				F4D8FF1919B1745A00BC0B69 /* menu-item-bg-select@2x.png in Resources */,
-				F4D8FF1A19B1745A00BC0B69 /* VCFareReceiptExpandedTableViewCell.xib in Resources */,
 				F4D8FF1B19B1745A00BC0B69 /* driver-hov-toggle-select@2x.png in Resources */,
 				F4D8FF1C19B1745A00BC0B69 /* commute_logo@2x.png in Resources */,
 				F4D8FF1D19B1745A00BC0B69 /* VCEditLocationWidget.xib in Resources */,
@@ -3400,6 +3429,7 @@
 				F4D8FF1F19B1745A00BC0B69 /* directions-button@2x.png in Resources */,
 				F4D8FF2019B1745A00BC0B69 /* login-button-select@2x.png in Resources */,
 				F4D8FF2119B1745A00BC0B69 /* payment-menu-button@2x.png in Resources */,
+				36000CAC1B72D5A2008E84AE /* VCCarInfoViewController.xib in Resources */,
 				F4D8FF2219B1745A00BC0B69 /* colors_03.png in Resources */,
 				F4D8FF2319B1745A00BC0B69 /* VCLeftMenuViewController.xib in Resources */,
 				F4D8FF2419B1745A00BC0B69 /* button-select@2x.png in Resources */,
@@ -3638,6 +3668,7 @@
 				844415351B6DDC8D008C7898 /* MBRegion.m in Sources */,
 				841647A11B64A47D00CD20AC /* VCRideRequest.m in Sources */,
 				841647A21B64A47D00CD20AC /* VCPushReceiver.m in Sources */,
+				36000CB31B72D5D2008E84AE /* VCCarInfoViewController.m in Sources */,
 				841647A31B64A47D00CD20AC /* VCSubMenuItemTableViewCell.m in Sources */,
 				841647A51B64A47D00CD20AC /* VCDriverStateResponse.m in Sources */,
 				841647A61B64A47D00CD20AC /* VCRiderOnBoardingViewController.m in Sources */,
@@ -3660,6 +3691,8 @@
 				841647B81B64A47D00CD20AC /* VCRequestUpdate.m in Sources */,
 				841647B91B64A47D00CD20AC /* VCCoreData.m in Sources */,
 				841647BA1B64A47D00CD20AC /* VCCommuteSetUpOnBoardingViewController.m in Sources */,
+				36000C911B7289D7008E84AE /* VCPaymentsView.m in Sources */,
+				36000C9D1B72B2AC008E84AE /* VCReceiptViewController.m in Sources */,
 				841647BB1B64A47D00CD20AC /* VCApiError.m in Sources */,
 				841647BC1B64A47D00CD20AC /* Route.m in Sources */,
 				841647BD1B64A47D00CD20AC /* VCRiderRecieptDetailViewController.m in Sources */,
@@ -3687,7 +3720,7 @@
 				841647D61B64A47D00CD20AC /* Ticket.m in Sources */,
 				841647D71B64A47D00CD20AC /* VCObjectRequestOperation.m in Sources */,
 				841647D81B64A47D00CD20AC /* VCValidation.m in Sources */,
-				841647D91B64A47D00CD20AC /* VCReceiptsViewController.m in Sources */,
+				841647D91B64A47D00CD20AC /* VCReceiptsViewController_old.m in Sources */,
 				841647DA1B64A47D00CD20AC /* MQRoute.m in Sources */,
 				841647DB1B64A47D00CD20AC /* main.m in Sources */,
 				841647DC1B64A47D00CD20AC /* VCTicketViewController.m in Sources */,
@@ -3695,6 +3728,7 @@
 				841647DE1B64A47D00CD20AC /* VCReferralCodeTextField.m in Sources */,
 				841647DF1B64A47D00CD20AC /* WRUtilities.m in Sources */,
 				841647E01B64A47D00CD20AC /* VCTextField.m in Sources */,
+				36000CA81B72C185008E84AE /* VCReceiptsTableViewCell.m in Sources */,
 				841647E11B64A47D00CD20AC /* VCRideRequestCreated.m in Sources */,
 				841647E21B64A47D00CD20AC /* VCPaymentsViewController.m in Sources */,
 				841647E31B64A47D00CD20AC /* VCDriverInterestedRequest.m in Sources */,
@@ -3717,7 +3751,7 @@
 				D144A4D71B6ADDA900D36D3B /* MBRegion.m in Sources */,
 				841648A61B658F4900CD20AC /* VCDriverRegistration.m in Sources */,
 				841648A71B658F4900CD20AC /* VCCommuteSetUpOnBoardingViewController.m in Sources */,
-				841648A81B658F4900CD20AC /* VCReceiptsViewController.m in Sources */,
+				841648A81B658F4900CD20AC /* VCReceiptsViewController_old.m in Sources */,
 				841648A91B658F4900CD20AC /* VCPushApi.m in Sources */,
 				841648AA1B658F4900CD20AC /* VCPasswordTextField.m in Sources */,
 				841648AB1B658F4900CD20AC /* VCCarModelTextField.m in Sources */,
@@ -3765,6 +3799,7 @@
 				841648D61B658F4900CD20AC /* MQShape.m in Sources */,
 				841648D71B658F4900CD20AC /* VCRideRequest.m in Sources */,
 				841648D81B658F4900CD20AC /* VCPushReceiver.m in Sources */,
+				36000CB11B72D5D2008E84AE /* VCCarInfoViewController.m in Sources */,
 				841648D91B658F4900CD20AC /* VCSubMenuItemTableViewCell.m in Sources */,
 				841648DB1B658F4900CD20AC /* VCDriverStateResponse.m in Sources */,
 				844415391B72BBE5008C7898 /* VCMapHelper.m in Sources */,
@@ -3786,6 +3821,8 @@
 				841648EE1B658F4900CD20AC /* Rider.m in Sources */,
 				841648EF1B658F4900CD20AC /* VCRequestUpdate.m in Sources */,
 				841648F01B658F4900CD20AC /* VCCoreData.m in Sources */,
+				36000C8F1B7289D7008E84AE /* VCPaymentsView.m in Sources */,
+				36000C9B1B72B2AC008E84AE /* VCReceiptViewController.m in Sources */,
 				841648F11B658F4900CD20AC /* Route.m in Sources */,
 				841648F21B658F4900CD20AC /* VCCommuteManager.m in Sources */,
 				841648F31B658F4900CD20AC /* VCApiError.m in Sources */,
@@ -3821,6 +3858,7 @@
 				841649141B658F4900CD20AC /* WRUtilities.m in Sources */,
 				841649151B658F4900CD20AC /* VCDriverSubMenuItemTableViewCell.m in Sources */,
 				841649161B658F4900CD20AC /* VCTextField.m in Sources */,
+				36000CA61B72C185008E84AE /* VCReceiptsTableViewCell.m in Sources */,
 				841649171B658F4900CD20AC /* VCSupportViewController.m in Sources */,
 				841649181B658F4900CD20AC /* VCDriverOnBoardingViewController.m in Sources */,
 				841649191B658F4900CD20AC /* VCRideRequestCreated.m in Sources */,
@@ -3842,7 +3880,7 @@
 			files = (
 				F4C6B1C0197F06B100F6C10B /* VCDriverRegistration.m in Sources */,
 				4FC758D119AA91810093DBEA /* VCCommuteSetUpOnBoardingViewController.m in Sources */,
-				4FFCF2D419A5493500A4A24E /* VCReceiptsViewController.m in Sources */,
+				4FFCF2D419A5493500A4A24E /* VCReceiptsViewController_old.m in Sources */,
 				F4C6B1C2197F06B100F6C10B /* VCPushApi.m in Sources */,
 				F4C6B1C3197F06B100F6C10B /* VCPasswordTextField.m in Sources */,
 				F4C6B1C6197F06B100F6C10B /* VCCarModelTextField.m in Sources */,
@@ -3891,6 +3929,7 @@
 				F4C6B1EA197F06B100F6C10B /* VCRideRequest.m in Sources */,
 				F4C6B1EB197F06B100F6C10B /* VCPushReceiver.m in Sources */,
 				4F184A241991E156006EA959 /* VCSubMenuItemTableViewCell.m in Sources */,
+				36000CB01B72D5D2008E84AE /* VCCarInfoViewController.m in Sources */,
 				F4C6B1EC197F06B100F6C10B /* VCDriverStateResponse.m in Sources */,
 				F4C6B1ED197F06B100F6C10B /* MQBoundingBox.m in Sources */,
 				844415381B72BBE5008C7898 /* VCMapHelper.m in Sources */,
@@ -3912,6 +3951,8 @@
 				F4C6B1FE197F06B100F6C10B /* VCRequestUpdate.m in Sources */,
 				F4C6B1FF197F06B100F6C10B /* VCCoreData.m in Sources */,
 				F496FE9119FDB9FE00632055 /* Route.m in Sources */,
+				36000C8E1B7289D7008E84AE /* VCPaymentsView.m in Sources */,
+				36000C9A1B72B2AC008E84AE /* VCReceiptViewController.m in Sources */,
 				F425906D1995E30000FA928E /* VCCommuteManager.m in Sources */,
 				F4C6B29E197F437800F6C10B /* VCApiError.m in Sources */,
 				F4C6B201197F06B100F6C10B /* VCRiderRecieptDetailViewController.m in Sources */,
@@ -3947,6 +3988,7 @@
 				F4C6B223197F06B100F6C10B /* WRUtilities.m in Sources */,
 				4FC7590F19AACFF50093DBEA /* VCDriverSubMenuItemTableViewCell.m in Sources */,
 				F4C6B224197F06B100F6C10B /* VCTextField.m in Sources */,
+				36000CA51B72C185008E84AE /* VCReceiptsTableViewCell.m in Sources */,
 				4FFCF2CB19A5381900A4A24E /* VCSupportViewController.m in Sources */,
 				4FC758C819AA91410093DBEA /* VCDriverOnBoardingViewController.m in Sources */,
 				F4C6B225197F06B100F6C10B /* VCRideRequestCreated.m in Sources */,
@@ -4016,6 +4058,7 @@
 				844415331B6DDC8B008C7898 /* MBRegion.m in Sources */,
 				F4D8FE3B19B1745A00BC0B69 /* VCRideRequest.m in Sources */,
 				F4D8FE3C19B1745A00BC0B69 /* VCPushReceiver.m in Sources */,
+				36000CB21B72D5D2008E84AE /* VCCarInfoViewController.m in Sources */,
 				F4D8FE3D19B1745A00BC0B69 /* VCSubMenuItemTableViewCell.m in Sources */,
 				F4D8FE3F19B1745A00BC0B69 /* VCDriverStateResponse.m in Sources */,
 				F4D8FE4019B1745A00BC0B69 /* VCRiderOnBoardingViewController.m in Sources */,
@@ -4038,6 +4081,8 @@
 				F4D8FE5219B1745A00BC0B69 /* VCRequestUpdate.m in Sources */,
 				F4D8FE5319B1745A00BC0B69 /* VCCoreData.m in Sources */,
 				F4D8FE5419B1745A00BC0B69 /* VCCommuteSetUpOnBoardingViewController.m in Sources */,
+				36000C901B7289D7008E84AE /* VCPaymentsView.m in Sources */,
+				36000C9C1B72B2AC008E84AE /* VCReceiptViewController.m in Sources */,
 				F4D8FE5519B1745A00BC0B69 /* VCApiError.m in Sources */,
 				F496FE9419FDB9FE00632055 /* Route.m in Sources */,
 				F4D8FE5619B1745A00BC0B69 /* VCRiderRecieptDetailViewController.m in Sources */,
@@ -4065,7 +4110,7 @@
 				F4D8FE6F19B1745A00BC0B69 /* Ticket.m in Sources */,
 				F4D8FE7119B1745A00BC0B69 /* VCObjectRequestOperation.m in Sources */,
 				F4D8FE7319B1745A00BC0B69 /* VCValidation.m in Sources */,
-				F4D8FE7519B1745A00BC0B69 /* VCReceiptsViewController.m in Sources */,
+				F4D8FE7519B1745A00BC0B69 /* VCReceiptsViewController_old.m in Sources */,
 				F4D8FE7619B1745A00BC0B69 /* MQRoute.m in Sources */,
 				F4D8FE7719B1745A00BC0B69 /* main.m in Sources */,
 				F4D8FE7819B1745A00BC0B69 /* VCTicketViewController.m in Sources */,
@@ -4073,6 +4118,7 @@
 				F4D8FE7A19B1745A00BC0B69 /* VCReferralCodeTextField.m in Sources */,
 				F4D8FE7B19B1745A00BC0B69 /* WRUtilities.m in Sources */,
 				F4D8FE7C19B1745A00BC0B69 /* VCTextField.m in Sources */,
+				36000CA71B72C185008E84AE /* VCReceiptsTableViewCell.m in Sources */,
 				F4D8FE7D19B1745A00BC0B69 /* VCRideRequestCreated.m in Sources */,
 				F4D8FE7E19B1745A00BC0B69 /* VCPaymentsViewController.m in Sources */,
 				F4D8FE7F19B1745A00BC0B69 /* VCDriverInterestedRequest.m in Sources */,

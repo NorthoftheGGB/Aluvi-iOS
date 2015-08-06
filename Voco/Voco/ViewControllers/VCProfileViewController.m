@@ -62,14 +62,24 @@
     }
     return self;
 }
+- (void) setGradient {
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = self.view.bounds;
+    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor whiteColor] CGColor], (id)[[UIColor blackColor] CGColor], nil];
+    [self.view.layer insertSublayer:gradient atIndex:0];
+}
 
 - (void)viewDidLoad
 {
+    
+
     [super viewDidLoad];
     [self.scrollView setContentSize:_contentView.frame.size];
     [self.scrollView addSubview:_contentView];
+        
     
     VCProfile * profile = [VCUserStateManager instance].profile;
+    
     _firstNameTextField.text = profile.firstName;
     _lastNameTextField.text = profile.lastName;
     _emailTextField.text = profile.email;

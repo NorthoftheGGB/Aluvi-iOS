@@ -14,16 +14,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menu-item-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="xKP-Jl-mlr">
-                        <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
-                    </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iHY-2v-9Ck">
                         <rect key="frame" x="47" y="11" width="22" height="22"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nmx-dJ-Njz" customClass="VCLabel">
                         <rect key="frame" x="83" y="11" width="143" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="textColor" red="0.43295475262656935" green="1" blue="0.30706491890160315" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
@@ -43,7 +40,6 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
-                <outlet property="backgroundImageView" destination="xKP-Jl-mlr" id="4sz-dC-cWY"/>
                 <outlet property="badgeView" destination="VfQ-SH-r9T" id="Ddt-gr-Ybj"/>
                 <outlet property="iconImageView" destination="iHY-2v-9Ck" id="cQc-DP-bc2"/>
                 <outlet property="menuItemLabel" destination="nmx-dJ-Njz" id="BTG-m7-2Yb"/>
@@ -52,7 +48,6 @@
     </objects>
     <resources>
         <image name="menu-badge.jpg" width="22" height="22"/>
-        <image name="menu-item-bg.png" width="280" height="44"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
