@@ -72,13 +72,7 @@
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    /*
-        UIViewController * vc = [[ MyThing alloc] init];
-        [self.window setRootViewController: vc];
-        self.window.backgroundColor = [UIColor whiteColor];
-        [self.window makeKeyAndVisible];
-        return YES;
-    */
+
     
 #if DEBUG==12
     [[VCInterfaceModes instance] showDebugInterface];
@@ -87,10 +81,7 @@
 #endif
     self.window.backgroundColor = [UIColor whiteColor];
     
-// #warning bypassing interface mode setup in AppDelegate
-    /*VCRideViewController * vc = [[VCRideViewController alloc] init];
-    UINavigationController * nc = [[UINavigationController alloc] initWithRootViewController:vc];
-    [self.window setRootViewController:nc];*/
+
     
    ///put background color and makeKeyVisible here
     
