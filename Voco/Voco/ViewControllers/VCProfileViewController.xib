@@ -27,14 +27,14 @@
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQ7-4F-qNh">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <color key="backgroundColor" red="0.28627450980000002" green="0.039215686270000001" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="568" id="LmX-Oz-UU6"/>
                         <constraint firstAttribute="width" constant="320" id="qsM-qE-yph"/>
                     </constraints>
                 </scrollView>
             </subviews>
-            <color key="backgroundColor" red="0.35325395780000002" green="1" blue="0.86404371250000001" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="BQ7-4F-qNh" secondAttribute="bottom" id="GHR-6w-Nji"/>
                 <constraint firstItem="BQ7-4F-qNh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="j3x-7I-EBH"/>
@@ -183,7 +183,8 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.53615618040000002" green="1" blue="0.88207398150000005" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="774" y="324"/>
         </view>
