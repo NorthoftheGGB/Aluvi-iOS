@@ -41,6 +41,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
+        [[UINavigationBar appearance] setBarTintColor:[UIColor yellowColor]];
+    
+    
     _launching = YES;
 
     [VCDebug sharedInstance];
@@ -108,7 +112,11 @@
     [self.window makeKeyAndVisible];
 
     return YES;
+    
+
 }
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

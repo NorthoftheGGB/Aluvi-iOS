@@ -21,6 +21,7 @@
 #import "VCUsersApi.h"
 #import "UIImage+Resize.h"
 #import "VCApi.h"
+#import "VCStyle.h"
 
 @interface VCProfileViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -65,7 +66,9 @@
 - (void) setGradient {
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = self.view.bounds;
-    gradient.colors = [NSArray arrayWithObjects:(id)[[UIColor whiteColor] CGColor], (id)[[UIColor blackColor] CGColor], nil];
+    gradient.colors = [VCStyle gradientColors];
+    gradient.startPoint = CGPointMake(0.0, 0.5);
+    gradient.endPoint = CGPointMake(1.0, 0.5);
     [self.view.layer insertSublayer:gradient atIndex:0];
 }
 

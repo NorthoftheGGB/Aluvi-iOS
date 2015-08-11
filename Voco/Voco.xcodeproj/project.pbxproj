@@ -56,6 +56,10 @@
 		369DBC1F1B6D24AD00449CB4 /* test_big@x2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 369DBC1D1B6D24AD00449CB4 /* test_big@x2.jpg */; };
 		369DBC201B6D24AD00449CB4 /* test_big@x2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 369DBC1D1B6D24AD00449CB4 /* test_big@x2.jpg */; };
 		369DBC211B6D24AD00449CB4 /* test_big@x2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 369DBC1D1B6D24AD00449CB4 /* test_big@x2.jpg */; };
+		36E48E621B7A80FE0034DFEB /* VCStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E48E611B7A80FE0034DFEB /* VCStyle.m */; };
+		36E48E631B7A80FF0034DFEB /* VCStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E48E611B7A80FE0034DFEB /* VCStyle.m */; };
+		36E48E641B7A80FF0034DFEB /* VCStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E48E611B7A80FE0034DFEB /* VCStyle.m */; };
+		36E48E651B7A80FF0034DFEB /* VCStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E48E611B7A80FE0034DFEB /* VCStyle.m */; };
 		36F9F6511B6ACC8700440D03 /* VCRideRequestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F9F6501B6ACC8700440D03 /* VCRideRequestView.m */; };
 		36F9F6521B6ACC8700440D03 /* VCRideRequestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F9F6501B6ACC8700440D03 /* VCRideRequestView.m */; };
 		36F9F6531B6ACC8700440D03 /* VCRideRequestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F9F6501B6ACC8700440D03 /* VCRideRequestView.m */; };
@@ -1212,6 +1216,8 @@
 		369DBC131B6D228E00449CB4 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
 		369DBC151B6D22F400449CB4 /* test_big.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_big.jpg; sourceTree = "<group>"; };
 		369DBC1D1B6D24AD00449CB4 /* test_big@x2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "test_big@x2.jpg"; sourceTree = "<group>"; };
+		36E48E601B7A80FE0034DFEB /* VCStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCStyle.h; sourceTree = "<group>"; };
+		36E48E611B7A80FE0034DFEB /* VCStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCStyle.m; sourceTree = "<group>"; };
 		36F9F64F1B6ACC8700440D03 /* VCRideRequestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRideRequestView.h; sourceTree = "<group>"; };
 		36F9F6501B6ACC8700440D03 /* VCRideRequestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRideRequestView.m; sourceTree = "<group>"; };
 		36F9F6551B6AE4A300440D03 /* VCDriverTicketView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCDriverTicketView.h; sourceTree = "<group>"; };
@@ -1875,6 +1881,15 @@
 			name = "Commute Request";
 			sourceTree = "<group>";
 		};
+		36E48E5F1B7A80DC0034DFEB /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				36E48E601B7A80FE0034DFEB /* VCStyle.h */,
+				36E48E611B7A80FE0034DFEB /* VCStyle.m */,
+			);
+			name = Style;
+			sourceTree = "<group>";
+		};
 		36FB72891B6D6B1400F8A6AF /* Old Other Functionality */ = {
 			isa = PBXGroup;
 			children = (
@@ -2069,6 +2084,7 @@
 		4FE641D7194160450059BED1 /* UI Elements */ = {
 			isa = PBXGroup;
 			children = (
+				36E48E5F1B7A80DC0034DFEB /* Style */,
 				4FFBA43E195E5FE900A51B84 /* Validation */,
 				4FE641D81941607B0059BED1 /* VCTextField.h */,
 				4FE641D91941607B0059BED1 /* VCTextField.m */,
@@ -3628,6 +3644,7 @@
 				841647791B64A47D00CD20AC /* VCDebugViewController.m in Sources */,
 				8416477A1B64A47D00CD20AC /* Voco.xcdatamodeld in Sources */,
 				8416477B1B64A47D00CD20AC /* VCBaseValidatorTextField.m in Sources */,
+				36E48E651B7A80FF0034DFEB /* VCStyle.m in Sources */,
 				8416477C1B64A47D00CD20AC /* VCLoginResponse.m in Sources */,
 				8416477D1B64A47D00CD20AC /* VCRideDetailsView.m in Sources */,
 				8416477F1B64A47D00CD20AC /* VCRideIdentity.m in Sources */,
@@ -3758,6 +3775,7 @@
 				841648AC1B658F4900CD20AC /* VCUserStateResponse.m in Sources */,
 				841648AD1B658F4900CD20AC /* VCNotifications.m in Sources */,
 				841648AE1B658F4900CD20AC /* VCScrollableFormViewController.m in Sources */,
+				36E48E631B7A80FF0034DFEB /* VCStyle.m in Sources */,
 				841648AF1B658F4900CD20AC /* VCProfileViewController.m in Sources */,
 				841648B01B658F4900CD20AC /* VCLabelBold.m in Sources */,
 				841648B11B658F4900CD20AC /* VCDebugViewController.m in Sources */,
@@ -3888,6 +3906,7 @@
 				F4F6B8B819A9898E004312A1 /* VCNotifications.m in Sources */,
 				F4C6B1C8197F06B100F6C10B /* VCScrollableFormViewController.m in Sources */,
 				4FFCF2BE19A25F2100A4A24E /* VCProfileViewController.m in Sources */,
+				36E48E621B7A80FE0034DFEB /* VCStyle.m in Sources */,
 				F4C6B1C9197F06B100F6C10B /* VCLabelBold.m in Sources */,
 				F4C6B1CB197F06B100F6C10B /* VCDebugViewController.m in Sources */,
 				F4C6B1CC197F06B100F6C10B /* Voco.xcdatamodeld in Sources */,
@@ -4018,6 +4037,7 @@
 				F4D8FE1319B1745A00BC0B69 /* VCDebugViewController.m in Sources */,
 				F4D8FE1419B1745A00BC0B69 /* Voco.xcdatamodeld in Sources */,
 				F4D8FE1519B1745A00BC0B69 /* VCBaseValidatorTextField.m in Sources */,
+				36E48E641B7A80FF0034DFEB /* VCStyle.m in Sources */,
 				F4D8FE1619B1745A00BC0B69 /* VCLoginResponse.m in Sources */,
 				F4D8FE1719B1745A00BC0B69 /* VCRideDetailsView.m in Sources */,
 				F4D8FE1819B1745A00BC0B69 /* VCRideIdentity.m in Sources */,

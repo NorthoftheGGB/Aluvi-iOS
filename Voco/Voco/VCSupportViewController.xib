@@ -19,6 +19,7 @@
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="EID-fm-qNa">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                    <color key="backgroundColor" red="0.53725490196078429" green="1" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
                 </imageView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yf4-yX-U0s">
                     <rect key="frame" x="8" y="131" width="305" height="70"/>
