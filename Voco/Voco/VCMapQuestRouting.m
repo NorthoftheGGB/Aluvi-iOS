@@ -83,8 +83,6 @@ static RKObjectManager * objectManager;
 
             CLLocation *location = [[CLLocation alloc] initWithLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
             [polylinePoints addObject:location];
-            //CLLocationCoordinate2D new_coordinate = { [latitude doubleValue], [longitude doubleValue] };
-            //[polylinePoints addObject:[NSValue valueWithBytes:&new_coordinate objCType:@encode(CLLocationCoordinate2D)]];
         }
 
         double maxLatitude = [response.route.boundingBox.ul.lat doubleValue];
@@ -94,7 +92,7 @@ static RKObjectManager * objectManager;
 
         MBRegion *region = [MBRegion new];
         [region initWithTopCoordinate:CLLocationCoordinate2DMake(minLatitude, minLongitude) bottomCoordinate:CLLocationCoordinate2DMake(maxLatitude, maxLongitude)];
-        if(region.topLocation.latitude == 0 || region.bottomLocation.latitude == 0 ){
+        if(! [region isValidRegion] ){
             NSLog(@"%@", @"Return spans are zero.  Aborting route api request");
             failure();
         }

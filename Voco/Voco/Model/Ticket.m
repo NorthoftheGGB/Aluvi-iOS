@@ -53,6 +53,9 @@
 @dynamic direction;
 @dynamic returnTicketFetchRequest;
 
+@synthesize polyline;
+@synthesize region;
+
 + (void)createMappings:(RKObjectManager *)objectManager{
     RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Ticket"
                                                           inManagedObjectStore: [VCCoreData managedObjectStore]];
@@ -168,6 +171,14 @@
     }
     return ticketsForTrip;
 
+}
+
+- (BOOL) hasCachedRoute {
+    if(self.polyline != nil && self.region != nil && [self.polyline count] > 0){
+        return TRUE;
+    } else {
+        return FALSE;
+    }
 }
 
 

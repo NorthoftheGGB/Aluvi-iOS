@@ -247,10 +247,7 @@
             } else if ( [@[kCreatedState, kRequestedState] containsObject:ticket.state]) {
                 subMenuItemTableViewCell.itemTitleLabel.text = @"Pending Commute";
                 subMenuItemTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
-            } else if ( [ticket.state isEqualToString:kCommuteSchedulerFailedState]) {
-                subMenuItemTableViewCell.itemTitleLabel.text = @"Trip Unfulfilled";
             }
-            
 
             cell = subMenuItemTableViewCell;
         }
@@ -580,12 +577,10 @@
     NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
     NSPredicate * predicate = [NSPredicate predicateWithFormat:@"( ( state = %@ AND confirmed = true ) \
                                OR ( state IN %@  AND direction = 'a' )  \
-                               OR ( state = %@ AND direction = 'a' AND confirmed = false ) ) \
                                AND pickupTime > %@ \
-                               ",
+                               )",
                                kScheduledState,
                                @[kCreatedState, kRequestedState, kScheduledState],
-                               kCommuteSchedulerFailedState,
                                [VCUtilities beginningOfToday]  ];
     [fetch setPredicate:predicate];
     NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];

@@ -425,7 +425,7 @@
                 <outlet property="riderSectionTitleLabel" destination="Sdk-is-gH6" id="ea1-XS-AEC"/>
                 <outlet property="segmentedButton" destination="Qz2-lZ-23U" id="Ubq-W8-VSg"/>
             </connections>
-            <point key="canvasLocation" x="483" y="226.5"/>
+            <point key="canvasLocation" x="551" y="703.5"/>
         </view>
         <view contentMode="scaleToFill" id="Lv9-d9-EJH" userLabel="Ride Overview HUD" customClass="VCRideOverviewHudView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="154"/>
@@ -949,7 +949,7 @@
             <point key="canvasLocation" x="1039.5" y="-284.5"/>
         </view>
         <view alpha="0.5499999999999996" contentMode="scaleToFill" id="Ae0-rx-OGL">
-            <rect key="frame" x="0.0" y="0.0" width="251" height="124"/>
+            <rect key="frame" x="0.0" y="0.0" width="265" height="124"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="We are finding you a commute!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQY-E9-fr5">
@@ -961,7 +961,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="663.5" y="-177"/>
+            <point key="canvasLocation" x="670.5" y="-177"/>
         </view>
     </objects>
     <resources>

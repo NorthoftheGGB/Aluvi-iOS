@@ -80,8 +80,46 @@
         copy.driving = self.driving;
         copy.pickupTime = [self.pickupTime copy];
         copy.returnTime = [self.returnTime copy];
+        copy.polyline = [self.polyline copy];
+        copy.region = [self.region copy];
     }
     return copy;
 }
+
+
+- (BOOL) routeCoordinateSettingsValid {
+    if( self.home == nil || self.work == nil){
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
+- (BOOL) hasCachedRoute {
+    if(self.polyline != nil && self.region != nil && [self.polyline count] > 0 && [self.region isValidRegion] ) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+- (BOOL) coordinatesDifferFrom: (Route*) route {
+    if( [self.home distanceFromLocation:route.home] != 0
+       || [self.work distanceFromLocation:route.work] != 0){
+        return TRUE;
+    } else{
+        return FALSE;
+    }
+}
+
+- (void) copyNonCoordinateFieldsFrom: (Route*) route {
+    self.pickupTime = route.pickupTime;
+    self.returnTime = route.returnTime;
+    self.homePlaceName = route.homePlaceName;
+    self.workPlaceName = route.workPlaceName;
+    self.driving = route.driving;
+}
+
+
 
 @end

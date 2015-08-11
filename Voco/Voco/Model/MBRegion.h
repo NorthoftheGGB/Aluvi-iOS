@@ -9,11 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <Mapkit/Mapkit.h>
 
-@interface MBRegion : NSObject
+@interface MBRegion : NSObject <NSCopying, NSCoding>
 
 @property (nonatomic) CLLocationCoordinate2D topLocation;
 @property (nonatomic) CLLocationCoordinate2D bottomLocation;
 
 - (void)initWithTopCoordinate:(CLLocationCoordinate2D)top bottomCoordinate:(CLLocationCoordinate2D)bottom;
+- (BOOL) isValidRegion;
 
 @end

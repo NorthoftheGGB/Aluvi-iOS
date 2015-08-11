@@ -191,7 +191,6 @@
 		841647751B64A47D00CD20AC /* VCUserStateResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F03419539F2A00D8C900 /* VCUserStateResponse.m */; };
 		841647761B64A47D00CD20AC /* VCScrollableFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F010194A6D3C00D8C900 /* VCScrollableFormViewController.m */; };
 		841647771B64A47D00CD20AC /* VCLabelBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEC819663B1F00AD4229 /* VCLabelBold.m */; };
-		841647781B64A47D00CD20AC /* VCTransitBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C7FC19615B9D007E05AD /* VCTransitBaseViewController.m */; };
 		841647791B64A47D00CD20AC /* VCDebugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C80819625237007E05AD /* VCDebugViewController.m */; };
 		8416477A1B64A47D00CD20AC /* Voco.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4FA0BFB192BF6BF005D8645 /* Voco.xcdatamodeld */; };
 		8416477B1B64A47D00CD20AC /* VCBaseValidatorTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F157A1195E8DB1009A33C8 /* VCBaseValidatorTextField.m */; };
@@ -523,7 +522,6 @@
 		841648E71B658F4900CD20AC /* VCCommuterPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEAF19661C3400AD4229 /* VCCommuterPassViewController.m */; };
 		841648E81B658F4900CD20AC /* VCMapQuestRouting.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F004194A54AC00D8C900 /* VCMapQuestRouting.m */; };
 		841648E91B658F4900CD20AC /* VCCommuterHud.m in Sources */ = {isa = PBXBuildFile; fileRef = F4138C2519650C5600C265CD /* VCCommuterHud.m */; };
-		841648EA1B658F4900CD20AC /* VCTransitBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C7FC19615B9D007E05AD /* VCTransitBaseViewController.m */; };
 		841648EB1B658F4900CD20AC /* VCMenuItemNotConfiguredTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F184A331992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.m */; };
 		841648EC1B658F4900CD20AC /* VCInterfaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD0F1946E2F90020B8BB /* VCInterfaceManager.m */; };
 		841648ED1B658F4900CD20AC /* HVTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6B8BD19A9ADEF004312A1 /* HVTableView.m */; };
@@ -740,6 +738,10 @@
 		844070291B64700B00EF35E1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CE81B1E5E26004446AF /* MobileCoreServices.framework */; };
 		844415331B6DDC8B008C7898 /* MBRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = D19278A31B6738D1009BFBF8 /* MBRegion.m */; };
 		844415351B6DDC8D008C7898 /* MBRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = D19278A31B6738D1009BFBF8 /* MBRegion.m */; };
+		844415381B72BBE5008C7898 /* VCMapHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 844415371B72BBE5008C7898 /* VCMapHelper.m */; };
+		844415391B72BBE5008C7898 /* VCMapHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 844415371B72BBE5008C7898 /* VCMapHelper.m */; };
+		8444153A1B72BBE5008C7898 /* VCMapHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 844415371B72BBE5008C7898 /* VCMapHelper.m */; };
+		8444153B1B72BBE5008C7898 /* VCMapHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 844415371B72BBE5008C7898 /* VCMapHelper.m */; };
 		849A3CCC1B1E5D14004446AF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CC61B1E5D14004446AF /* Bolts.framework */; };
 		849A3CCF1B1E5D14004446AF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CC61B1E5D14004446AF /* Bolts.framework */; };
 		849A3CD01B1E5D14004446AF /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CC71B1E5D14004446AF /* Parse.framework */; };
@@ -778,7 +780,6 @@
 		F4A5654A19CA5B020030104D /* VCPrivatePolicyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F38975819B7DD0100A75C5C /* VCPrivatePolicyViewController.m */; };
 		F4A5654B19CA5C470030104D /* VCTermsOfServiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F38975019B7DC5000A75C5C /* VCTermsOfServiceViewController.xib */; };
 		F4A5654C19CA5C4A0030104D /* VCPrivatePolicyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F38975919B7DD0100A75C5C /* VCPrivatePolicyViewController.xib */; };
-		F4B7BFAB19A3035C00D934D6 /* VCTransitBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C7FC19615B9D007E05AD /* VCTransitBaseViewController.m */; };
 		F4BD606419FE1925003D819D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BD606319FE1925003D819D /* libsqlite3.dylib */; };
 		F4BD606919FE194D003D819D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4BD606319FE1925003D819D /* libsqlite3.dylib */; };
 		F4C6B1C0197F06B100F6C10B /* VCDriverRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F02D1952DA8F00D8C900 /* VCDriverRegistration.m */; };
@@ -944,7 +945,6 @@
 		F4D8FE0E19B1745A00BC0B69 /* VCUserStateResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F03419539F2A00D8C900 /* VCUserStateResponse.m */; };
 		F4D8FE0F19B1745A00BC0B69 /* VCScrollableFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F010194A6D3C00D8C900 /* VCScrollableFormViewController.m */; };
 		F4D8FE1019B1745A00BC0B69 /* VCLabelBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEC819663B1F00AD4229 /* VCLabelBold.m */; };
-		F4D8FE1119B1745A00BC0B69 /* VCTransitBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C7FC19615B9D007E05AD /* VCTransitBaseViewController.m */; };
 		F4D8FE1319B1745A00BC0B69 /* VCDebugViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C80819625237007E05AD /* VCDebugViewController.m */; };
 		F4D8FE1419B1745A00BC0B69 /* Voco.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F4FA0BFB192BF6BF005D8645 /* Voco.xcdatamodeld */; };
 		F4D8FE1519B1745A00BC0B69 /* VCBaseValidatorTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F157A1195E8DB1009A33C8 /* VCBaseValidatorTextField.m */; };
@@ -1452,6 +1452,8 @@
 		841649D51B658F4A00CD20AC /* Aluvi Development copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Aluvi Development copy2-Info.plist"; path = "/Users/matthewxi/software-development/Clients/Will_OBrien/aluvi-ios/Voco/Aluvi Development copy2-Info.plist"; sourceTree = "<absolute>"; };
 		8444152E1B6DA3D7008C7898 /* VCOldCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VCOldCode.h; sourceTree = "<group>"; };
 		8444152F1B6DA3D7008C7898 /* VCOldCode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VCOldCode.m; sourceTree = "<group>"; };
+		844415361B72BBE5008C7898 /* VCMapHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCMapHelper.h; sourceTree = "<group>"; };
+		844415371B72BBE5008C7898 /* VCMapHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCMapHelper.m; sourceTree = "<group>"; };
 		849A3CC61B1E5D14004446AF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		849A3CC71B1E5D14004446AF /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		849A3CC81B1E5D14004446AF /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
@@ -1569,8 +1571,6 @@
 		F49EDD0E1946E2F90020B8BB /* VCInterfaceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCInterfaceManager.h; path = ViewControllers/VCInterfaceManager.h; sourceTree = "<group>"; };
 		F49EDD0F1946E2F90020B8BB /* VCInterfaceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCInterfaceManager.m; path = ViewControllers/VCInterfaceManager.m; sourceTree = "<group>"; };
 		F4A5654D19CBB9900030104D /* Voco 16.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 16.xcdatamodel"; sourceTree = "<group>"; };
-		F4A7C7FB19615B9D007E05AD /* VCTransitBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCTransitBaseViewController.h; path = ViewControllers/VCTransitBaseViewController.h; sourceTree = "<group>"; };
-		F4A7C7FC19615B9D007E05AD /* VCTransitBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCTransitBaseViewController.m; path = ViewControllers/VCTransitBaseViewController.m; sourceTree = "<group>"; };
 		F4A7C80319623C70007E05AD /* Transit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Transit.h; path = Model/Transit.h; sourceTree = "<group>"; };
 		F4A7C80419623C70007E05AD /* Transit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Transit.m; path = Model/Transit.m; sourceTree = "<group>"; };
 		F4A7C80719625237007E05AD /* VCDebugViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCDebugViewController.h; path = ViewControllers/VCDebugViewController.h; sourceTree = "<group>"; };
@@ -2339,7 +2339,6 @@
 		F45F7C131935A3A500A94721 /* Tickets */ = {
 			isa = PBXGroup;
 			children = (
-				F473F00E194A6D3400D8C900 /* Common */,
 				F473F047195BA4E000D8C900 /* Menu */,
 				4F9ECEAD196619F500AD4229 /* Other Functionality */,
 				F473EFE919492CA400D8C900 /* Ride System */,
@@ -2359,6 +2358,7 @@
 		F473EFE919492CA400D8C900 /* Ride System */ = {
 			isa = PBXGroup;
 			children = (
+				F473F00E194A6D3400D8C900 /* Common */,
 				844415311B6DB1FB008C7898 /* Commute HUDs */,
 				36638D731B658A0B004EDB09 /* Commute Request */,
 				4F3DB5C61981F6AB00DDD094 /* Old */,
@@ -2402,8 +2402,6 @@
 			children = (
 				F473F00F194A6D3C00D8C900 /* VCScrollableFormViewController.h */,
 				F473F010194A6D3C00D8C900 /* VCScrollableFormViewController.m */,
-				F4A7C7FB19615B9D007E05AD /* VCTransitBaseViewController.h */,
-				F4A7C7FC19615B9D007E05AD /* VCTransitBaseViewController.m */,
 				4FC758F719AA9B570093DBEA /* VCCenterViewBaseViewController.h */,
 				4FC758F819AA9B570093DBEA /* VCCenterViewBaseViewController.m */,
 			);
@@ -2481,6 +2479,8 @@
 				F4C6B1B61979229900F6C10B /* VCDebug.m */,
 				F45F7C0D1935976E00A94721 /* WRUtilities.h */,
 				F45F7C0E1935976E00A94721 /* WRUtilities.m */,
+				844415361B72BBE5008C7898 /* VCMapHelper.h */,
+				844415371B72BBE5008C7898 /* VCMapHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -3625,7 +3625,6 @@
 				841647751B64A47D00CD20AC /* VCUserStateResponse.m in Sources */,
 				841647761B64A47D00CD20AC /* VCScrollableFormViewController.m in Sources */,
 				841647771B64A47D00CD20AC /* VCLabelBold.m in Sources */,
-				841647781B64A47D00CD20AC /* VCTransitBaseViewController.m in Sources */,
 				841647791B64A47D00CD20AC /* VCDebugViewController.m in Sources */,
 				8416477A1B64A47D00CD20AC /* Voco.xcdatamodeld in Sources */,
 				8416477B1B64A47D00CD20AC /* VCBaseValidatorTextField.m in Sources */,
@@ -3673,6 +3672,7 @@
 				841647A31B64A47D00CD20AC /* VCSubMenuItemTableViewCell.m in Sources */,
 				841647A51B64A47D00CD20AC /* VCDriverStateResponse.m in Sources */,
 				841647A61B64A47D00CD20AC /* VCRiderOnBoardingViewController.m in Sources */,
+				8444153B1B72BBE5008C7898 /* VCMapHelper.m in Sources */,
 				841647A71B64A47D00CD20AC /* MQBoundingBox.m in Sources */,
 				841647A81B64A47D00CD20AC /* VCGeolocation.m in Sources */,
 				841647A91B64A47D00CD20AC /* VCDriverGeoObject.m in Sources */,
@@ -3802,6 +3802,7 @@
 				36000CB11B72D5D2008E84AE /* VCCarInfoViewController.m in Sources */,
 				841648D91B658F4900CD20AC /* VCSubMenuItemTableViewCell.m in Sources */,
 				841648DB1B658F4900CD20AC /* VCDriverStateResponse.m in Sources */,
+				844415391B72BBE5008C7898 /* VCMapHelper.m in Sources */,
 				841648DC1B658F4900CD20AC /* MQBoundingBox.m in Sources */,
 				841648DD1B658F4900CD20AC /* VCGeolocation.m in Sources */,
 				841648DE1B658F4900CD20AC /* VCDriverGeoObject.m in Sources */,
@@ -3814,7 +3815,6 @@
 				841648E71B658F4900CD20AC /* VCCommuterPassViewController.m in Sources */,
 				841648E81B658F4900CD20AC /* VCMapQuestRouting.m in Sources */,
 				841648E91B658F4900CD20AC /* VCCommuterHud.m in Sources */,
-				841648EA1B658F4900CD20AC /* VCTransitBaseViewController.m in Sources */,
 				841648EB1B658F4900CD20AC /* VCMenuItemNotConfiguredTableViewCell.m in Sources */,
 				841648EC1B658F4900CD20AC /* VCInterfaceManager.m in Sources */,
 				841648ED1B658F4900CD20AC /* HVTableView.m in Sources */,
@@ -3932,6 +3932,7 @@
 				36000CB01B72D5D2008E84AE /* VCCarInfoViewController.m in Sources */,
 				F4C6B1EC197F06B100F6C10B /* VCDriverStateResponse.m in Sources */,
 				F4C6B1ED197F06B100F6C10B /* MQBoundingBox.m in Sources */,
+				844415381B72BBE5008C7898 /* VCMapHelper.m in Sources */,
 				F4C6B1EE197F06B100F6C10B /* VCGeolocation.m in Sources */,
 				F4C6B1EF197F06B100F6C10B /* VCDriverGeoObject.m in Sources */,
 				F4C97B2E19F88B94006521C1 /* VCBetaRegisterViewController.m in Sources */,
@@ -3943,7 +3944,6 @@
 				F4C6B1F8197F06B100F6C10B /* VCCommuterPassViewController.m in Sources */,
 				F4C6B1F9197F06B100F6C10B /* VCMapQuestRouting.m in Sources */,
 				F4C6B1FB197F06B100F6C10B /* VCCommuterHud.m in Sources */,
-				F4B7BFAB19A3035C00D934D6 /* VCTransitBaseViewController.m in Sources */,
 				4F184A351992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.m in Sources */,
 				F4C6B1FD197F06B100F6C10B /* VCInterfaceManager.m in Sources */,
 				F4F6B8BE19A9ADEF004312A1 /* HVTableView.m in Sources */,
@@ -4015,7 +4015,6 @@
 				F4D8FE0E19B1745A00BC0B69 /* VCUserStateResponse.m in Sources */,
 				F4D8FE0F19B1745A00BC0B69 /* VCScrollableFormViewController.m in Sources */,
 				F4D8FE1019B1745A00BC0B69 /* VCLabelBold.m in Sources */,
-				F4D8FE1119B1745A00BC0B69 /* VCTransitBaseViewController.m in Sources */,
 				F4D8FE1319B1745A00BC0B69 /* VCDebugViewController.m in Sources */,
 				F4D8FE1419B1745A00BC0B69 /* Voco.xcdatamodeld in Sources */,
 				F4D8FE1519B1745A00BC0B69 /* VCBaseValidatorTextField.m in Sources */,
@@ -4063,6 +4062,7 @@
 				F4D8FE3D19B1745A00BC0B69 /* VCSubMenuItemTableViewCell.m in Sources */,
 				F4D8FE3F19B1745A00BC0B69 /* VCDriverStateResponse.m in Sources */,
 				F4D8FE4019B1745A00BC0B69 /* VCRiderOnBoardingViewController.m in Sources */,
+				8444153A1B72BBE5008C7898 /* VCMapHelper.m in Sources */,
 				F4D8FE4119B1745A00BC0B69 /* MQBoundingBox.m in Sources */,
 				F4D8FE4219B1745A00BC0B69 /* VCGeolocation.m in Sources */,
 				F4D8FE4319B1745A00BC0B69 /* VCDriverGeoObject.m in Sources */,

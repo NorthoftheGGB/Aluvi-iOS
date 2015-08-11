@@ -41,10 +41,13 @@
 #import "VCRideRequestView.h"
 
 #import "VCLocationSearchViewController.h"
+#import "VCMapHelper.h"
 
 #define kCommuteStateNone 0
 #define kCommuteStatePending 1
 #define kCommuteStateScheduled 2
+
+#define kNotificationLocationFound @"kNotificationLocationFound"
 
 @interface VCTicketViewController () <RMMapViewDelegate, CLLocationManagerDelegate, VCRideRequestViewDelegate, VCLocationSearchViewControllerDelegate, VCRiderTicketViewDelegate, VCDriverTicketViewDelegate>
 
@@ -52,12 +55,28 @@
 @property(strong, nonatomic) Route * route;
 
 // Map
+@property (strong, nonatomic) RMMapView * map;
+@property (strong, nonatomic) RMAnnotation * routeOverlay;
+@property (strong, nonatomic) CLGeocoder * geocoder;
+@property (nonatomic) MBRegion *rideRegion;
 @property (strong, nonatomic) RMPointAnnotation * originAnnotation;
 @property (strong, nonatomic) RMPointAnnotation * destinationAnnotation;
 @property (strong, nonatomic) RMPointAnnotation * meetingPointAnnotation;
 @property (strong, nonatomic) RMPointAnnotation * dropOffPointAnnotation;
+@property (strong, nonatomic) RMPointAnnotation * activeAnnotation;
 @property (strong, nonatomic) IBOutlet UIButton *currentLocationButton;
 @property (strong, nonatomic) CLLocationManager * locationManager;
+@property (strong, nonatomic) CLLocation * lastLocation;
+@property (nonatomic) BOOL initialZoomComplete;
+@property (strong, nonatomic) UIImage * homePinImage;
+@property (strong, nonatomic) UIImage * workPinImage;
+
+- (void) clearMap;
+- (void) clearRoute;
+- (void) zoomToCurrentLocation;
+- (IBAction)didTapCurrentLocationButton:(id)sender;
+- (IBAction)didTapTestingButton:(id)sender;
+
 
 
 // Ride Details
@@ -86,6 +105,7 @@
 @property (strong, nonatomic) VCLocationSearchViewController * locationSearchTable;
 @property (nonatomic) NSInteger editLocationType;
 @property (strong, nonatomic) MKPlacemark * activePlacemark;
+@property (nonatomic) BOOL inAddressLookupMode;
 
 // Colors
 @property (nonatomic, strong) UIColor * barButtonItemColor;
@@ -101,8 +121,14 @@
     if (self) {
         _appeared = NO;
         _ticket = nil;
-        
         _barButtonItemColor = [UIColor colorWithRed:(182/255.f) green:(31/255.f) blue:(36/255.f) alpha:1.0];
+        _geocoder = [[CLGeocoder alloc] init];
+        _initialZoomComplete = NO;
+        _homePinImage = [UIImage imageNamed:@"map_pin_red"];
+        _workPinImage = [UIImage imageNamed:@"map_pin_green"];
+        _inAddressLookupMode = NO;
+
+
     }
     return self;
 }
@@ -114,24 +140,76 @@
     
     // Look for pending ticket
     if(_ticket == nil) {
-        
-        // Check for existing commuter ticket that is has not been processed
-        NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
-        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"state IN %@  AND direction = 'a' AND confirmed = false \
-                                   AND pickupTime > %@",
-                                   @[kCreatedState, kRequestedState, kCommuteSchedulerFailedState],
-                                   [VCUtilities beginningOfToday] ];
-        [fetch setPredicate:predicate];
-        NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];
-        [fetch setSortDescriptors:@[sort]];
-        NSError * error;
-        NSArray * tickets = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
-        if(tickets == nil) {
-            [WRUtilities criticalError:error];
-        } else if([tickets count] > 0) {
-            _ticket = [tickets objectAtIndex:0];
-        }
+        [self loadRelevantTicket];
     }
+    
+}
+
+
+- (void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    
+    [self loadCommuteSettings];
+    
+    if(!_appeared){
+        
+        RMMapboxSource *tileSource = [[RMMapboxSource alloc] initWithMapID:@"snacks.c66a5d06"];
+        self.map = [[RMMapView alloc] initWithFrame:self.view.frame andTilesource:tileSource];
+        self.map.adjustTilesForRetinaDisplay = YES;
+        self.map.delegate = self;
+        [self.view insertSubview:self.map atIndex:0];
+        self.map.userTrackingMode = RMUserTrackingModeNone;
+        self.map.showsUserLocation = YES;
+        
+        _appeared = YES;
+        
+        [self updateTicketInterface];
+    }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripFulfilled:) name:kNotificationTypeTripFulfilled object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripUnfulfilled:) name:kNotificationTypeTripUnfulfilled object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fareCompleted:) name:kNotificationTypeFareComplete object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fareCancelledByDriver:) name:kPushTypeFareCancelledByDriver object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fareCancelledByRider:) name:kPushTypeFareCancelledByRider object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationFound:) name:kNotificationLocationFound object:nil];
+}
+
+- (void) viewWillDisppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+///////////////
+///////////////  Determine what to show
+///////////////
+
+
+- (void) loadRelevantTicket {
+    
+    // Check for existing commuter ticket that is has not been processed
+    NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"state IN %@  AND direction = 'a' AND confirmed = false \
+                               AND pickupTime > %@",
+                               @[kCreatedState, kRequestedState],
+                               [VCUtilities beginningOfToday] ];
+    [fetch setPredicate:predicate];
+    NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];
+    [fetch setSortDescriptors:@[sort]];
+    NSError * error;
+    NSArray * tickets = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
+    if(tickets == nil) {
+        [WRUtilities criticalError:error];
+    } else if([tickets count] > 0) {
+        _ticket = [tickets objectAtIndex:0];
+    }
+    
     // Look for next ticket for today/tomorrow
     if(_ticket == nil) {
         NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
@@ -151,52 +229,15 @@
     
 }
 
-- (void) viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:YES];
-    
-    [self loadCommuteSettings];
-    
-    if(!_appeared){
-        
-        RMMapboxSource *tileSource = [[RMMapboxSource alloc] initWithMapID:@"snacks.c66a5d06"];
-        self.map = [[RMMapView alloc] initWithFrame:self.view.frame andTilesource:tileSource];
-        self.map.adjustTilesForRetinaDisplay = YES;
-        self.map.delegate = self;
-        [self.view insertSubview:self.map atIndex:0];
-        self.map.showsUserLocation = YES;
-         
-        _appeared = YES;
-        
-        [self updateTicketInterface];
-        
-       
-    }
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripFulfilled:) name:kNotificationTypeTripFulfilled object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripUnfulfilled:) name:kNotificationTypeTripUnfulfilled object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fareCompleted:) name:kNotificationTypeFareComplete object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fareCancelledByDriver:) name:kPushTypeFareCancelledByDriver object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fareCancelledByRider:) name:kPushTypeFareCancelledByRider object:nil];
 
-}
 
-- (void) viewWillDisppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
+///////////////////
+///////////////////   Handle State Updates
+///////////////////
 
 - (void) tripFulfilled:(NSNotification *) notification {
-    [self showInterfaceForPayload:notification.object];
-}
-
-- (void) tripUnfulfilled:(NSNotification *) notification {
-    [self showInterfaceForPayload:notification.object];
-    
-}
-
-- (void) showInterfaceForPayload:(NSDictionary *)payload {
-    NSLog(@"%@", [payload debugDescription]);
-    NSNumber * tripId = [payload objectForKey:VC_PUSH_TRIP_ID_KEY];
+    NSLog(@"%@", [notification.object debugDescription]);
+    NSNumber * tripId = [notification.object objectForKey:VC_PUSH_TRIP_ID_KEY];
     if(_ticket == nil || [_ticket.trip_id isEqualToNumber:tripId]) {
         NSArray * ticketsForTrip = [Ticket ticketsForTrip:tripId];
         _ticket = [ticketsForTrip objectAtIndex:0];
@@ -213,9 +254,13 @@
             [WRUtilities triage:[NSString stringWithFormat:@"Viewing a different ticket %@", [_ticket debugDescription]]];
         }
     }
-    
 }
 
+- (void) tripUnfulfilled:(NSNotification *) notification {
+    _ticket = nil;
+    [self resetInterfaceToHome];
+    [self updateTicketInterface];
+}
 
 - (void) fareCompleted:(NSNotification *) notification {
     NSDictionary * payload = notification.object;
@@ -224,6 +269,7 @@
         [self resetInterfaceToHome];
     }
     _ticket = nil;
+    [self updateTicketInterface];
 }
 
 - (void) fareCancelledByDriver:(NSNotification *) notification {
@@ -233,6 +279,7 @@
         [self resetInterfaceToHome];
     }
     _ticket = nil;
+    [self updateTicketInterface];
 }
 
 - (void) fareCancelledByRider: (NSNotification *) notification {
@@ -242,31 +289,112 @@
         [self resetInterfaceToHome];
     }
     _ticket = nil;
+    [self updateTicketInterface];
+
 }
 
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+//////////////
+////////////// Map and Routes
+//////////////
+
+
+- (void) showDefaultRoute {
+    if([_route routeCoordinateSettingsValid]){
+        if([_route hasCachedRoute]){
+            [self showRoute:_route.polyline withRegion:_route.region];
+        } else {
+            [self zoomToCurrentLocation];
+            [self updateDefaultRoute];
+        }
+    } else {
+        if(_routeOverlay != nil){
+            [_map removeAnnotation:_routeOverlay];
+        }
+        [self zoomToCurrentLocation];
+    }
 }
 
-- (void) setTicket:(Ticket *)ride {
-    _ticket = ride;
-    self.transit = ride;
-}
 
-- (void) showHome{
-    //Replaced homeActionView with editCommuteButton for this version
+- (void) updateDefaultRoute {
     
-    CGRect currentLocationframe = _currentLocationButton.frame;
-    currentLocationframe.origin.x = 276;
-    currentLocationframe.origin.y = self.view.frame.size.height - 101;
-    _currentLocationButton.frame = currentLocationframe;
-    [self.view addSubview:self.currentLocationButton];
-    
+    [VCMapQuestRouting route:CLLocationCoordinate2DMake(_route.home.coordinate.latitude, _route.home.coordinate.longitude)
+                          to:CLLocationCoordinate2DMake(_route.work.coordinate.latitude, _route.work.coordinate.longitude)
+                     success:^(NSArray *polyline, MBRegion *region) {
+                         
+                         _route.polyline = polyline;
+                         _route.region = region;
+                         [[VCCommuteManager instance] storeRoute:polyline withRegion:region];
+                         [self showRoute:polyline withRegion:region];
+                         
+                     } failure:^{
+                         NSLog(@"%@", @"Error talking with MapQuest routing API");
+                     }];
     
 }
+
+- (void) showTicketRoute {
+    if([_ticket hasCachedRoute]){
+        [self showRoute:_ticket.polyline withRegion:_ticket.region];
+    } else {
+        [self updateTicketRoute];
+    }
+    
+}
+
+- (void) updateTicketRoute {
+    
+    [VCMapQuestRouting route:CLLocationCoordinate2DMake([_ticket.meetingPointLatitude doubleValue], [_ticket.meetingPointLongitude doubleValue])
+                          to:CLLocationCoordinate2DMake([_ticket.dropOffPointLatitude doubleValue], [_ticket.dropOffPointLatitude doubleValue])
+                     success:^(NSArray *polyline, MBRegion *region) {
+                         
+                         _ticket.polyline = polyline;
+                         _ticket.region = region;
+                         [self showRoute:polyline withRegion:region];
+                         
+                     } failure:^{
+                         NSLog(@"%@", @"Error talking with MapQuest routing API");
+                     }];
+    
+}
+
+- (void) showRoute:(NSArray*) polyline withRegion:(MBRegion * ) region {
+    if (_routeOverlay != nil) {
+        [_map removeAnnotation:_routeOverlay];
+    }
+    
+    if(region.topLocation.latitude == 0 || region.bottomLocation.longitude == 0){
+        return;
+    }
+    
+    _initialZoomComplete = YES;
+
+    RMAnnotation *annotation = [[RMAnnotation alloc] initWithMapView:self.map
+                                                          coordinate:((CLLocation *)[polyline objectAtIndex:0]).coordinate
+                                                            andTitle:@"suggested_route"];
+    annotation.userInfo = polyline;
+    [annotation setBoundingBoxFromLocations:polyline];
+    
+    [self.map addAnnotation:annotation];
+    
+    _routeOverlay = annotation;
+    
+    self.rideRegion = region;
+    
+    NSLog(@"Zoom To Region");
+    [_map zoomWithLatitudeLongitudeBoundsSouthWest:[VCMapHelper paddedNELocation:region.topLocation]
+                                         northEast:[VCMapHelper paddedSWLocation:region.bottomLocation]
+                                          animated:YES];
+}
+
+
+- (void) clearRoute {
+    if (_routeOverlay != nil) {
+        [self.map removeAnnotation:_routeOverlay];
+    }
+}
+
 
 - (void) addPedestrianRoute: (CLLocation *) from to: (CLLocation *) to {
     CLLocationCoordinate2D fromCoordinate = CLLocationCoordinate2DMake(from.coordinate.latitude, from.coordinate.longitude);
@@ -280,7 +408,7 @@
                                                                                            andTitle:@"pedestrian"];
                                    annotation.userInfo = polyline;
                                    [annotation setBoundingBoxFromLocations:polyline];
-
+                                   
                                    [self.map addAnnotation:annotation];
                                }
                                failure:^{
@@ -306,6 +434,53 @@
                      failure:^{
                          NSLog(@"%@", @"Error talking with MapQuest routing API");
                      }];
+}
+
+
+
+
+
+
+- (void) locationFound:(NSNotification *) notification {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kNotificationLocationFound object:nil];
+     if( ![_route routeCoordinateSettingsValid] && ! _initialZoomComplete ) {
+        [self zoomToCurrentLocation];
+    }
+}
+
+- (void) zoomToCurrentLocation {
+    NSLog(@"Zoom To Current");
+    
+    if(self.map != nil && _lastLocation != nil) {
+        [self.map setZoom:14 atCoordinate:_lastLocation.coordinate animated:YES];
+    }
+}
+
+
+// IBOutlets
+- (IBAction)didTapCurrentLocationButton:(id)sender {
+    [self zoomToCurrentLocation];
+}
+
+
+
+
+- (void) loadCommuteSettings {
+    _route = [[Route alloc] init];
+    _route = [[VCCommuteManager instance].route copy];
+    
+}
+
+- (void) showHome{
+    //Replaced homeActionView with editCommuteButton for this version
+    
+    CGRect currentLocationframe = _currentLocationButton.frame;
+    currentLocationframe.origin.x = 276;
+    currentLocationframe.origin.y = self.view.frame.size.height - 101;
+    _currentLocationButton.frame = currentLocationframe;
+    [self.view addSubview:self.currentLocationButton];
+    
+    
 }
 
 
@@ -403,17 +578,12 @@
     if(_ticket == nil) {
         [self setRightButtonForState:kCommuteStateNone];
         
-        if([[VCCommuteManager instance] hasSettings]) {
+        if([_route routeCoordinateSettingsValid]) {
             // if commute IS set up already
             [self showHome];
-            self.map.userTrackingMode = RMUserTrackingModeFollow;
-            
-            [self addOriginAnnotation: [VCCommuteManager instance].home];
-            [self addDestinationAnnotation: [VCCommuteManager instance].work];
-            
-            [self showSuggestedRoute: [VCCommuteManager instance].home to:[VCCommuteManager instance].work];
-            [self zoomToCurrentLocation];
-            
+            [self showDefaultRoute];
+            [self addOriginAnnotation: _route.home];
+            [self addDestinationAnnotation: _route.work];
         }
         
     } else if([@[kCreatedState, kRequestedState] containsObject:_ticket.state]){
@@ -421,15 +591,28 @@
         [self setRightButtonForState:kCommuteStatePending];
         [self addOriginAnnotation: [_ticket originLocation] ];
         [self addDestinationAnnotation: [_ticket destinationLocation]];
-        [self showSuggestedRoute: [_ticket originLocation] to:[_ticket destinationLocation]];
-        
-    } else if([_ticket.state isEqualToString:kCommuteSchedulerFailedState]) {
-        [self setRightButtonForState:kCommuteStateNone];
+        [self showDefaultRoute];
+        [self showWaitingMessageView];
         
     } else if([_ticket.state isEqualToString:kScheduledState]){
         [self setRightButtonForState:kCommuteStateScheduled];
-
-        [self updateMapForTicket:_ticket];
+        
+        [self addMeetingPointAnnotation: [_ticket meetingPointLocation]];
+        [self addDropOffPointAnnotation: [_ticket dropOffPointLocation]];
+        [self.map selectAnnotation:_meetingPointAnnotation animated:YES];
+        
+        [self showTicketRoute];
+        if( [_ticket.driving boolValue] ) {
+            if(![[_ticket meetingPointLocation] isEqual:[_ticket originLocation]]){
+                [self addDriverLegRoute:[_ticket originLocation] to:[_ticket meetingPointLocation]];
+            }
+            if(![[_ticket dropOffPointLocation] isEqual:[_ticket destinationLocation]]){
+                [self addDriverLegRoute:[_ticket dropOffPointLocation] to:[_ticket destinationLocation]];
+            }
+        } else {
+            [self addPedestrianRoute:[_ticket originLocation] to:[_ticket meetingPointLocation]];
+            [self addPedestrianRoute:[_ticket dropOffPointLocation] to:[_ticket destinationLocation]];
+        }
         
         // show the HUD interface
         if([_ticket.driving boolValue] ) {
@@ -437,39 +620,27 @@
         } else {
             [self showRiderTicketHUD];
         }
-            
-       
+        
+        
     }
     
 }
 
-- (void) updateMapForTicket:(Ticket *) ticket {
-    //[self addOriginAnnotation: [ticket originLocation] ];
-    //[self addDestinationAnnotation: [ticket destinationLocation]];
-    [self addMeetingPointAnnotation: [ticket meetingPointLocation]];
-    [self addDropOffPointAnnotation: [ticket dropOffPointLocation]];
-    [self.map selectAnnotation:_meetingPointAnnotation animated:YES];
-    
-    [self showSuggestedRoute: [_ticket meetingPointLocation] to:[_ticket dropOffPointLocation]];
-    if( [_ticket.driving boolValue] ) {
-        if(![[_ticket meetingPointLocation] isEqual:[_ticket originLocation]]){
-            [self addDriverLegRoute:[_ticket originLocation] to:[_ticket meetingPointLocation]];
-        }
-        if(![[_ticket dropOffPointLocation] isEqual:[_ticket destinationLocation]]){
-            [self addDriverLegRoute:[_ticket dropOffPointLocation] to:[_ticket destinationLocation]];
-        }
-    } else {
-        [self addPedestrianRoute:[_ticket originLocation] to:[_ticket meetingPointLocation]];
-        [self addPedestrianRoute:[_ticket dropOffPointLocation] to:[_ticket destinationLocation]];
-    }
-    
+- (void) removeHuds {
+    [_ridersPickedUpButton removeFromSuperview];
+    [_rideCompleteButton removeFromSuperview];
+    [_riderTicketHUD removeFromSuperview];
+    [_driverTicketHUD removeFromSuperview];
 }
+
 
 - (void) resetInterfaceToHome {
     [self clearMap];
+    [self hideWaitinMessageView];
     [UIView transitionWithView:self.view duration:.35 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
         [self removeHuds];
         [self updateTicketInterface];
+        
         [self showHome];
         
         // check for another scheduled commute
@@ -488,19 +659,12 @@
         }
         
     } completion:^(BOOL finished) {
-        if([[VCCommuteManager instance] hasSettings]){
-            [self addOriginAnnotation: [VCCommuteManager instance].home ];
-            [self addDestinationAnnotation: [VCCommuteManager instance].work ];
-            [self showSuggestedRoute:[VCCommuteManager instance].home to:[VCCommuteManager instance].work];
-        } else {
-            [self zoomToCurrentLocation];
-        }
+        [self showDefaultRoute];
     }];
     
 }
 
 - (void) clearMap {
-    [super clearMap];
     if (_originAnnotation != nil) {
         
         [self.map removeAnnotation:_originAnnotation];
@@ -521,22 +685,23 @@
         [self.map removeAnnotation:_dropOffPointAnnotation];
         _dropOffPointAnnotation = nil;
     }
+    [self clearRoute];
 }
 
 
 
 
 - (void) showRiderTicketHUD {
-    VCRiderTicketView * view = [WRUtilities getViewFromNib:@"VCRiderTicketView" class:[VCRiderTicketView class]];
-    view.delegate = self;
+    _riderTicketHUD = [WRUtilities getViewFromNib:@"VCRiderTicketView" class:[VCRiderTicketView class]];
+    _riderTicketHUD.delegate = self;
     
-    CGRect frame = view.frame;
+    CGRect frame = _riderTicketHUD.frame;
     frame.origin.x = 0;
     frame.origin.y = 481;
     frame.size.width = self.view.frame.size.width;
-    view.frame = frame;
+    _riderTicketHUD.frame = frame;
     
-    [self.view addSubview:view];
+    [self.view addSubview:_riderTicketHUD];
     [UIView animateWithDuration:0.4
                           delay:0
          usingSpringWithDamping:0.4
@@ -544,9 +709,9 @@
                         options:0
                      animations:^{
                          // final placement
-                         CGRect frame = view.frame;
+                         CGRect frame = _riderTicketHUD.frame;
                          frame.origin.y = 380;
-                         view.frame = frame;
+                         _riderTicketHUD.frame = frame;
                      } completion:^(BOOL finished) {
                          
                      }];
@@ -554,16 +719,16 @@
 }
 
 - (void) showDriverTicketHUD {
-    VCDriverTicketView * view = [WRUtilities getViewFromNib:@"VCDriverTicketView" class:[VCDriverTicketView class]];
-    view.delegate = self;
+    _driverTicketHUD = [WRUtilities getViewFromNib:@"VCDriverTicketView" class:[VCDriverTicketView class]];
+    _driverTicketHUD.delegate = self;
     
-    CGRect frame = view.frame;
+    CGRect frame = _driverTicketHUD.frame;
     frame.origin.x = 0;
     frame.origin.y = 481;
     frame.size.width = self.view.frame.size.width;
-    view.frame = frame;
+    _driverTicketHUD.frame = frame;
     
-    [self.view addSubview:view];
+    [self.view addSubview:_driverTicketHUD];
     [UIView animateWithDuration:0.4
                           delay:0
          usingSpringWithDamping:0.4
@@ -571,21 +736,13 @@
                         options:0
                      animations:^{
                          // final placement
-                         CGRect frame = view.frame;
+                         CGRect frame = _driverTicketHUD.frame;
                          frame.origin.y = 380;
-                         view.frame = frame;
+                         _driverTicketHUD.frame = frame;
                      } completion:^(BOOL finished) {
                          
                      }];
-    
 }
-
-
-- (void) removeHuds {
-    [_ridersPickedUpButton removeFromSuperview];
-    [_rideCompleteButton removeFromSuperview];
-}
-
 
 
 - (void) didTapCancel: (id)sender {
@@ -613,9 +770,8 @@
     hud.labelText = @"Canceling..";
     if( ![@[kCreatedState, kRequestedState] containsObject: _ticket.state]) {
         [[VCCommuteManager instance] cancelRide:_ticket success:^{
-            [self resetInterfaceToHome];
             _ticket = nil;
-            
+            [self resetInterfaceToHome];
             hud.hidden = YES;
         } failure:^{
             hud.hidden = YES;
@@ -623,64 +779,19 @@
     } else {
         // Here we are cancelling BOTH legs of the trip
         [[VCCommuteManager instance] cancelTrip:_ticket.trip_id success:^{
-            [self resetInterfaceToHome];
             _ticket = nil;
+            [self resetInterfaceToHome];
             hud.hidden = YES;
         } failure:^{
             hud.hidden = YES;
         }];
     }
-
-}
-
-
-
-
-- (void) storeCommuterSettings: (void ( ^ ) ()) success failure:( void ( ^ ) ()) failure {
-    [VCCommuteManager instance].home = [[CLLocation alloc] initWithLatitude:_route.home.coordinate.latitude
-                                                                  longitude:_route.home.coordinate.longitude];
-    [VCCommuteManager instance].work = [[CLLocation alloc] initWithLatitude:_route.work.coordinate.latitude
-                                                                  longitude:_route.work.coordinate.longitude];
-    [VCCommuteManager instance].homePlaceName = _route.homePlaceName;
-    [VCCommuteManager instance].workPlaceName = _route.workPlaceName;
-    [VCCommuteManager instance].driving = _route.driving;
-
-    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [[VCCommuteManager instance] save:^{
-        [hud hide:YES];
-        success();
-    } failure:^(NSString * errorMessage){
-        [UIAlertView showWithTitle:@"Network Error" message:errorMessage cancelButtonTitle:@"Darn" otherButtonTitles:nil tapBlock:nil];
-        [hud hide:YES];
-        failure();
-    }];
-    
     
 }
 
-- (void) loadCommuteSettings {
-    
-    _route = [[Route alloc] init]; // Yes this model is a NSManagedObject subclass
-                                   // Commute manager will be migrating to using this for direct storage
-                                   // We are using Route here as the model to prepare for this change
-    
-    _route.pickupTime = [VCCommuteManager instance].pickupTime;
-    _route.returnTime = [VCCommuteManager instance].returnTime;
-    _route.home = [VCCommuteManager instance].home;
-    _route.homePlaceName = [VCCommuteManager instance].homePlaceName;
-    _route.work = [VCCommuteManager instance].work;
-    _route.workPlaceName = [VCCommuteManager instance].workPlaceName;
-    _route.driving = [VCCommuteManager instance].driving;
-    
-    if( _route.home != nil){
-        [self addOriginAnnotation: _route.home ];
-    }
-    
-    if( _route.work != nil){
-        [self addDestinationAnnotation: _route.work ];
-    }
-    
-}
+
+
+
 
 
 /////////////
@@ -692,9 +803,9 @@
         _originAnnotation = nil;
     }
     _originAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
-                                                          coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-                                                            andTitle:@"Home"];
-    _originAnnotation.image = [UIImage imageNamed:@"map_pin_red"];
+                                                        coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+                                                          andTitle:@"Home"];
+    _originAnnotation.image = [self homePinImage];
     [self.map addAnnotation:_originAnnotation];
 }
 
@@ -704,9 +815,9 @@
         _destinationAnnotation = nil;
     }
     _destinationAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
-                                                        coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-                                                          andTitle:@"Work"];
-    _destinationAnnotation.image = [UIImage imageNamed:@"map_pin_green"];
+                                                             coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+                                                               andTitle:@"Work"];
+    _destinationAnnotation.image = [self workPinImage];
     [self.map addAnnotation:_destinationAnnotation];
 }
 
@@ -716,8 +827,8 @@
         _meetingPointAnnotation = nil;
     }
     _meetingPointAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
-                                                             coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-                                                               andTitle:@"Meeting Point"];
+                                                              coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+                                                                andTitle:@"Meeting Point"];
     _meetingPointAnnotation.image = [UIImage imageNamed:@"map_pin_red"];
     [self.map addAnnotation:_meetingPointAnnotation];
 }
@@ -741,17 +852,16 @@
 
 
 - (void) scheduleRide {
+    [[VCCommuteManager instance] storeCommuterSettings:_route
+                                               success:^{
+                                                   [self resetInterfaceToHome];
+                                                   [self scheduleCommuteForTomorrow];
+                                                   
+                                               } failure:^(NSString *errorMessage) {
+                                                   [UIAlertView showWithTitle:@"Error" message:errorMessage cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                                                   
+                                               }];
     
-        [self storeCommuterSettings:^{
-            [self resetInterfaceToHome];
-            [self scheduleCommuteForTomorrow];
-
-       
-        } failure:^{
-            [UIAlertView showWithTitle:@"Error" message:@"There was a problem sending your request, you might want to try that again" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
-        }];
-        
-        
 }
 
 - (void) scheduleCommuteForTomorrow {
@@ -766,7 +876,7 @@
                                          success:^{
                                              [hud hide:YES];
                                              
-                                             // Put the waiting text in here.
+                                             [self loadRelevantTicket];
                                              [self updateTicketInterface];
                                              
                                          } failure:^{
@@ -774,6 +884,23 @@
                                              [UIAlertView showWithTitle:@"Error" message:@"There was a problem sending your request, you might want to try that again" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
                                          }];
     
+}
+
+- (void) showWaitingMessageView {
+    [self.view addSubview:_waitingMessageView];
+    
+    [_waitingMessageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.mas_left);
+        make.top.equalTo(self.view.mas_top).with.offset(62);
+        make.right.equalTo(self.view.mas_right);
+        make.height.mas_equalTo(_waitingMessageView.frame.size.height);
+    }];
+    [_waitingMessageView setNeedsLayout];
+
+}
+
+- (void) hideWaitinMessageView {
+    [_waitingMessageView removeFromSuperview];
 }
 
 
@@ -793,21 +920,6 @@
 }
 
 
-
-
-- (void) updateRouteOverlay {
-    
-    if(_originAnnotation != nil && _destinationAnnotation != nil){
-        [self clearRoute];
-        // if locations change
-        CLLocation * origin = [[CLLocation alloc] initWithLatitude:_originAnnotation.coordinate.latitude
-                                                         longitude:_originAnnotation.coordinate.longitude];
-        CLLocation * destination = [[CLLocation alloc] initWithLatitude:_destinationAnnotation.coordinate.latitude
-                                                              longitude:_destinationAnnotation.coordinate.longitude];
-        [self showSuggestedRoute:origin to:destination];
-    }
-    
-}
 
 - (void) callPhone:(NSString *) phoneNumber {
     if(phoneNumber == nil){
@@ -847,7 +959,7 @@
     [VCDriverApi ridersPickedUp:_ticket.fare_id
                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                             [self moveFromPickupToRideInProgressInteface];
-                            _ticket.hovFare.state = @"started";
+                            _ticket.state = kInProgressState;
                             [VCCoreData saveContext];
                             [VCUserStateManager instance].driveProcessState = kUserStateRideStarted;
                             [hud hide:YES];
@@ -909,15 +1021,19 @@
 - (void) rideRequestViewDidTapClose: (VCRideRequestView *) rideRequestView withChanges: (Route *) route {
     [self removeRideRequestView: rideRequestView];
     _route = [route copy];
-    [self storeCommuterSettings:^{
-        if( _route.home != nil && _route.work != nil){
-            [self showSuggestedRoute: _route.home to:_route.work];
-        }
-    } failure:^{
-        // nothing necessary to do
-    }];
     
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [[VCCommuteManager instance] storeCommuterSettings:_route
+                                               success:^{
+                                                   [hud hide:YES];
+                                                   [self updateDefaultRoute];
+                                                   
+                                               } failure:^(NSString *errorMessage) {
+                                                   [hud hide:YES];
+                                                   
+                                               }];
 }
+
 
 - (void) removeRideRequestView: (VCRideRequestView *) rideRequestView  {
     [UIView animateWithDuration:0.35
@@ -937,12 +1053,27 @@
     
     [self placeInEditLocationMode];
     _editLocationType = type;
+    
+    if(_activeAnnotation != nil) {
+        [self.map removeAnnotation:_activeAnnotation];
+        _activeAnnotation = nil;
+    }
+    _activeAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
+                                                        coordinate:location
+                                                          andTitle:locationName];
+    if(type == kHomeType){
+        _activeAnnotation.image = _homePinImage;
+    } else if (type == kWorkType){
+        _activeAnnotation.image = _workPinImage;
+    }
+    [self.map addAnnotation:_activeAnnotation];
+    
     [UIView animateWithDuration:0.35
                      animations:^{
-        CGRect frame = rideRequestView.frame;
-        frame.origin.y =  -self.view.frame.size.height;;
-        rideRequestView.frame = frame;
-    }
+                         CGRect frame = rideRequestView.frame;
+                         frame.origin.y =  -self.view.frame.size.height;;
+                         rideRequestView.frame = frame;
+                     }
                      completion:^(BOOL finished) {
                      }];
     
@@ -950,15 +1081,18 @@
 
 - (void)rideRequestView:(VCRideRequestView *)rideRequestView didTapScheduleCommute:(Route *)route {
     _route = [route copy];
-    [self storeCommuterSettings:^{
-        [self scheduleRide];
-        [self removeRideRequestView:rideRequestView];
-        [self updateTicketInterface];
-        
-    } failure:^{
-        // nothing necessary to do
-    }];
-
+    [[VCCommuteManager instance]storeCommuterSettings:_route
+                                              success:^{
+                                                  [self scheduleRide];
+                                                  [self removeRideRequestView:rideRequestView];
+                                                  [self updateTicketInterface];
+                                                  
+                                              } failure:^(NSString *errorMessage) {
+                                                    [UIAlertView showWithTitle:@"Error" message:errorMessage cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                                              }];
+    
+    
+    
 }
 
 - (void) rideRequestViewDidCancelCommute:(VCRideRequestView *)rideRequestView{
@@ -967,6 +1101,7 @@
             case 1:
             {
                 [self cancel];
+                [self removeRideRequestView:rideRequestView];
             }
                 break;
             default:
@@ -1003,30 +1138,49 @@
         make.right.equalTo(self.view.mas_right);
     }];
     [_locationUpdateDoneButton setNeedsLayout];
-
+    
 }
 
 - (void) placeInRouteMode {
     self.navigationController.navigationBarHidden = NO;
+    [self clearMap];
     [_locationSearchForm removeFromSuperview];
     _locationSearchField.text = @"";
     [_locationUpdateDoneButton removeFromSuperview];
+    [self updateTicketInterface];
 }
 
 - (IBAction)didTapLocationEditDone:(id)sender {
     
-     [_rideRequestView updateLocation:_activePlacemark type:_editLocationType];
-     [self showRideRequestView]; // TODO: with completion:
-     [self placeInRouteMode];
-
-}
-- (IBAction)didTapCancelLocationEdit:(id)sender {
+    if(_activePlacemark != nil){
+        [_rideRequestView updateLocation:_activePlacemark type:_editLocationType];
+    }
+    _activePlacemark = nil;
     [self showRideRequestView]; // TODO: with completion:
     [self placeInRouteMode];
+    
+}
+- (IBAction)didTapCancelLocationEdit:(id)sender {
+    if(_inAddressLookupMode) {
+        _inAddressLookupMode = NO;
+        [UIView transitionWithView:self.view
+                      duration:.45
+                       options:0
+                    animations:^{
+                        _locationSearchTable.view.alpha = 1;
+                    }
+                    completion:^(BOOL finished) {
+                        [_locationSearchTable.view removeFromSuperview];
+                    }];
+    } else {
+        [self showRideRequestView]; // TODO: with completion:
+        [self placeInRouteMode];
+    }
 }
 
 
 - (IBAction)didBeginEditingLocationSearchField:(id)sender {
+    _inAddressLookupMode = YES;
     if(_locationSearchTable == nil){
         _locationSearchTable = [[VCLocationSearchViewController alloc] init];
         _locationSearchTable.delegate = self;
@@ -1062,26 +1216,24 @@
     
     CLLocation * location = [[CLLocation alloc] initWithLatitude:[map pixelToCoordinate:point].latitude longitude:[map pixelToCoordinate:point].longitude];
     
-    if(_editLocationType == kHomeType) {
-        if(_originAnnotation != nil) {
-            [self.map removeAnnotation:_originAnnotation];
-            _originAnnotation = nil;
-        }
-        _originAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
-                                                            coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-                                                              andTitle:@"Home"];
-        [self.map addAnnotation:_originAnnotation];
-        
-    } else if (_editLocationType == kWorkType) {
-        if(_destinationAnnotation != nil) {
-            [self.map removeAnnotation:_destinationAnnotation];
-            _destinationAnnotation = nil;
-        }
-        _destinationAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
-                                                                 coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-                                                                   andTitle:@"Work"];
-        [self.map addAnnotation:_destinationAnnotation];
+    NSString * title = _activeAnnotation.title;
+    if(_activeAnnotation != nil){
+        [self.map removeAnnotation:_activeAnnotation];
     }
+   
+    _activeAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
+                                                            coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+                                                              andTitle:title];
+    if(_editLocationType == kHomeType){
+        _activeAnnotation.image = _homePinImage;
+    } else if (_editLocationType == kWorkType){
+        _activeAnnotation.image = _workPinImage;
+    }
+    
+    [self.map addAnnotation:_activeAnnotation];
+    
+
+    [self.map addAnnotation:_activeAnnotation];
     
     [self updateLocationDetails:location];
 }
@@ -1203,10 +1355,9 @@
 }
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    if(![[VCCommuteManager instance] hasSettings]) {
-        [self zoomToCurrentLocation];
-    }
-    [self stopLocationUpdates];
+    _lastLocation = locations[0];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationLocationFound object:nil userInfo:@{}];
+    
 }
 
 @end
