@@ -178,7 +178,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(locationFound:) name:kNotificationLocationFound object:nil];
 }
 
-- (void) viewWillDisppear:(BOOL)animated{
+- (void) viewWillDisappear:(BOOL)animated{
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -306,7 +306,7 @@
 
 - (void) showDefaultRoute {
     if([_route routeCoordinateSettingsValid]){
-        if([_route hasCachedRoute]){
+        if([_route hasCachedPath]){
             [self showRoute:_route.polyline withRegion:_route.region];
         } else {
             [self zoomToCurrentLocation];
@@ -722,6 +722,22 @@
     
 }
 
+- (void) VCDriverTicketView: (VCDriverTicketView *) drive didTapCallRider:(NSString *)phoneNumber {
+    [self callPhone:phoneNumber];
+}
+
+- (void) VCDriverTicketViewDidTapRidersOnBoard:(VCDriverTicketView *)driverTicketView {
+    [[VCCommuteManager instance] ridesPickedUp:_ticket success:^{
+        // show the other button
+    } failure:^{
+        // don't do anything
+    }];
+}
+
+- (void)VCDriverTicketViewDidTapCommuteCompleted:(VCDriverTicketView *)driverTicketView {
+    
+}
+
 - (void) showDriverTicketHUD {
     _driverTicketHUD = [WRUtilities getViewFromNib:@"VCDriverTicketView" class:[VCDriverTicketView class]];
     _driverTicketHUD.delegate = self;
@@ -979,7 +995,7 @@
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Notifying Server";
     
-    [VCDriverApi fareCompleted:_ticket.fare_id
+    [VCDriverApi ticketCompleted:_ticket.ride_id
                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                            [VCUserStateManager instance].driveProcessState = kUserStateRideCompleted;
                            //[self showRideCompletedInterface];
@@ -1024,13 +1040,14 @@
 
 - (void) rideRequestViewDidTapClose: (VCRideRequestView *) rideRequestView withChanges: (Route *) route {
     [self removeRideRequestView: rideRequestView];
+    [_route clearCachedPath];  // TODO: Route should invalidate its own cache on coordinate changes
     _route = [route copy];
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[VCCommuteManager instance] storeCommuterSettings:_route
                                                success:^{
                                                    [hud hide:YES];
-                                                   [self updateDefaultRoute];
+                                                   [self updateTicketInterface];
                                                    
                                                } failure:^(NSString *errorMessage) {
                                                    [hud hide:YES];
@@ -1160,7 +1177,7 @@
         [_rideRequestView updateLocation:_activePlacemark type:_editLocationType];
     }
     _activePlacemark = nil;
-    [self showRideRequestView]; // TODO: with completion:
+    [self showRideRequestView];
     [self placeInRouteMode];
     
 }

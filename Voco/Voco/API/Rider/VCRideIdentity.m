@@ -13,7 +13,7 @@
 + (RKObjectMapping *) getMapping {
     RKObjectMapping * mapping = [RKObjectMapping mappingForClass:[VCRideIdentity class]];
     [mapping addAttributeMappingsFromDictionary:@{
-                                                    @"ride_id" : @"rideId"
+                                                    @"ride_id" : @"ticketId"
                                                 }];
     return mapping;
 }

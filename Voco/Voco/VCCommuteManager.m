@@ -350,5 +350,15 @@ static VCCommuteManager * instance;
 
 }
 
+- (void) ridesPickedUp:(Ticket *) ticket success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure {
+    [VCDriverApi ridersPickedUp:ticket.ride_id success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        success();
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [WRUtilities subcriticaError:error];
+        failure();
+    }];
+}
+
+
 
 @end

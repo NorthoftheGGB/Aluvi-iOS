@@ -8,15 +8,31 @@
 
 #import "VCRiderTicketView.h"
 
+@interface VCRiderTicketView ()
+
+@property (strong, nonatomic) IBOutlet UIButton *riderLateButton;
+@property (strong, nonatomic) IBOutlet UILabel *totalCostLabel;
+@property (strong, nonatomic) IBOutlet UILabel *driverDetails;
+@property (strong, nonatomic) IBOutlet UIButton *driverImageButton;
+@property (strong, nonatomic) IBOutlet UILabel *peersLabel;
+@property (strong, nonatomic) IBOutlet UIButton *peerOneButton;
+@property (strong, nonatomic) IBOutlet UIButton *peerTwoButton;
+
+- (IBAction)didTapUpButton:(id)sender;
+
+- (IBAction)didTapRiderLateButton:(id)sender;
+- (IBAction)didTapDriverImageButton:(id)sender;
+- (IBAction)didTapPeerOneButton:(id)sender;
+- (IBAction)didTapPeerTwoButton:(id)sender;
+
+@end
+
 @implementation VCRiderTicketView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (void) updateInterfaceWithFare: (Fare *) fare {
+    // fare needs method for 'other riders'. not including the one using the app.
 }
-*/
+
 
 - (IBAction)didTapUpButton:(id)sender {
 }

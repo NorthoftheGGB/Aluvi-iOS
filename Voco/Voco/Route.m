@@ -69,6 +69,14 @@
     
 }
 
+- (id) init {
+    self = [super init];
+    if(self != nil){
+        [self observeCoordinates];
+    }
+    return self;
+}
+
 - (id)copyWithZone:(NSZone *)zone
 {
     Route * copy = [[Route alloc] init];
@@ -95,12 +103,18 @@
     }
 }
 
-- (BOOL) hasCachedRoute {
+- (BOOL) hasCachedPath {
     if(self.polyline != nil && self.region != nil && [self.polyline count] > 0 && [self.region isValidRegion] ) {
         return TRUE;
     } else {
         return FALSE;
     }
+}
+
+- (void) clearCachedPath {
+    self.polyline = nil;
+    self.region = nil;
+    
 }
 
 - (BOOL) coordinatesDifferFrom: (Route*) route {
@@ -118,6 +132,34 @@
     self.homePlaceName = route.homePlaceName;
     self.workPlaceName = route.workPlaceName;
     self.driving = route.driving;
+}
+
+
+#pragma mark Observing
+- (void)observeCoordinates {
+    [self addObserver:self forKeyPath:@"home"
+              options:(NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew) context:NULL];
+    [self addObserver:self forKeyPath:@"work"
+              options:(NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew) context:NULL];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change
+                       context:(void *)context {
+    if ([keyPath isEqualToString:@"home"] || [keyPath isEqualToString:@"work"] ) {
+        CLLocation *oldValue = [change objectForKey:NSKeyValueChangeOldKey];
+        CLLocation *newValue = [change objectForKey:NSKeyValueChangeNewKey];
+        if([oldValue isEqual:[NSNull null]]|| [newValue isEqual:[NSNull null]]){
+            [self clearCachedPath];
+        } else if (![newValue distanceFromLocation:oldValue] != 0 ) {
+            [self clearCachedPath];
+        }
+    }
+}
+
+- (void)dealloc {
+    [self removeObserver:self forKeyPath:@"home"];
+    [self removeObserver:self forKeyPath:@"work"];
+
 }
 
 

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Fare.h"
 
 @class VCRiderTicketView;
 
@@ -19,21 +20,8 @@
 
 @property (weak, nonatomic) id<VCRiderTicketViewDelegate> delegate;
 
-@property (strong, nonatomic) IBOutlet UIButton *riderLateButton;
-@property (strong, nonatomic) IBOutlet UILabel *totalCostLabel;
-@property (strong, nonatomic) IBOutlet UILabel *driverDetails;
-@property (strong, nonatomic) IBOutlet UIButton *driverImageButton;
-@property (strong, nonatomic) IBOutlet UILabel *peersLabel;
-@property (strong, nonatomic) IBOutlet UIButton *peerOneButton;
-@property (strong, nonatomic) IBOutlet UIButton *peerTwoButton;
+- (void) updateInterfaceWithFare: (Fare*) fare;
 
-
-- (IBAction)didTapUpButton:(id)sender;
-
-- (IBAction)didTapRiderLateButton:(id)sender;
-- (IBAction)didTapDriverImageButton:(id)sender;
-- (IBAction)didTapPeerOneButton:(id)sender;
-- (IBAction)didTapPeerTwoButton:(id)sender;
 
 
 

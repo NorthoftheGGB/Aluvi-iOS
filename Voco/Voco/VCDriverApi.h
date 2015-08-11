@@ -22,10 +22,6 @@
                                  success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                                  failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
-+ (void) loadFareDetails: (NSNumber *) rideId
-                  success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
-                  failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
-
 + (void) ridersPickedUp: (NSNumber *) fareId
                 success: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                 failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
@@ -35,12 +31,10 @@
                 success: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                 failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
-+ (void) fareCompleted: (NSNumber *) fareId
-               success: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
-               failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
++ (void) ticketCompleted: (NSNumber *) ticketId
+                 success: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                 failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
-+ (void) refreshActiveRidesWithSuccess: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
-                               failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 + (void) earnings:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
           failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
