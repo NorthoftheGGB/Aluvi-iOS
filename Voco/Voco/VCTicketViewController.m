@@ -558,6 +558,7 @@
     button.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
     [button setFrame:CGRectMake(0, 0, 150, 33)];
     [button setTitleColor:[VCStyle greyColor] forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont fontWithName:@"Bryant-Regular" size:16.0];
     [button addTarget:self action:@selector(didTapScheduleMenuButton:) forControlEvents:UIControlEventTouchUpInside];
     
     UIBarButtonItem *buttonItem;

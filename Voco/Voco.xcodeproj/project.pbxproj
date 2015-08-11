@@ -64,6 +64,18 @@
 		36E48E681B7AA6920034DFEB /* nav_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E661B7AA6920034DFEB /* nav_bg.png */; };
 		36E48E691B7AA6920034DFEB /* nav_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E661B7AA6920034DFEB /* nav_bg.png */; };
 		36E48E6A1B7AA6920034DFEB /* nav_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E661B7AA6920034DFEB /* nav_bg.png */; };
+		36E48E6C1B7ABF9F0034DFEB /* Bryant-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E6B1B7ABF9F0034DFEB /* Bryant-Regular.ttf */; };
+		36E48E6D1B7ABF9F0034DFEB /* Bryant-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E6B1B7ABF9F0034DFEB /* Bryant-Regular.ttf */; };
+		36E48E6E1B7ABF9F0034DFEB /* Bryant-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E6B1B7ABF9F0034DFEB /* Bryant-Regular.ttf */; };
+		36E48E6F1B7ABF9F0034DFEB /* Bryant-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E6B1B7ABF9F0034DFEB /* Bryant-Regular.ttf */; };
+		36E48E711B7ABFAE0034DFEB /* Bryant-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E701B7ABFAE0034DFEB /* Bryant-Medium.ttf */; };
+		36E48E721B7ABFAE0034DFEB /* Bryant-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E701B7ABFAE0034DFEB /* Bryant-Medium.ttf */; };
+		36E48E731B7ABFAE0034DFEB /* Bryant-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E701B7ABFAE0034DFEB /* Bryant-Medium.ttf */; };
+		36E48E741B7ABFAE0034DFEB /* Bryant-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E701B7ABFAE0034DFEB /* Bryant-Medium.ttf */; };
+		36E48E761B7ABFBE0034DFEB /* Bryant-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E751B7ABFBE0034DFEB /* Bryant-Bold.ttf */; };
+		36E48E771B7ABFBE0034DFEB /* Bryant-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E751B7ABFBE0034DFEB /* Bryant-Bold.ttf */; };
+		36E48E781B7ABFBE0034DFEB /* Bryant-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E751B7ABFBE0034DFEB /* Bryant-Bold.ttf */; };
+		36E48E791B7ABFBE0034DFEB /* Bryant-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E751B7ABFBE0034DFEB /* Bryant-Bold.ttf */; };
 		36F9F6511B6ACC8700440D03 /* VCRideRequestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F9F6501B6ACC8700440D03 /* VCRideRequestView.m */; };
 		36F9F6521B6ACC8700440D03 /* VCRideRequestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F9F6501B6ACC8700440D03 /* VCRideRequestView.m */; };
 		36F9F6531B6ACC8700440D03 /* VCRideRequestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F9F6501B6ACC8700440D03 /* VCRideRequestView.m */; };
@@ -1159,6 +1171,9 @@
 		36E48E601B7A80FE0034DFEB /* VCStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCStyle.h; sourceTree = "<group>"; };
 		36E48E611B7A80FE0034DFEB /* VCStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCStyle.m; sourceTree = "<group>"; };
 		36E48E661B7AA6920034DFEB /* nav_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_bg.png; sourceTree = "<group>"; };
+		36E48E6B1B7ABF9F0034DFEB /* Bryant-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bryant-Regular.ttf"; sourceTree = "<group>"; };
+		36E48E701B7ABFAE0034DFEB /* Bryant-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bryant-Medium.ttf"; sourceTree = "<group>"; };
+		36E48E751B7ABFBE0034DFEB /* Bryant-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bryant-Bold.ttf"; sourceTree = "<group>"; };
 		36F9F64F1B6ACC8700440D03 /* VCRideRequestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRideRequestView.h; sourceTree = "<group>"; };
 		36F9F6501B6ACC8700440D03 /* VCRideRequestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRideRequestView.m; sourceTree = "<group>"; };
 		36F9F6551B6AE4A300440D03 /* VCDriverTicketView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCDriverTicketView.h; sourceTree = "<group>"; };
@@ -2402,6 +2417,9 @@
 		F49EDD071946A63F0020B8BB /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				36E48E751B7ABFBE0034DFEB /* Bryant-Bold.ttf */,
+				36E48E701B7ABFAE0034DFEB /* Bryant-Medium.ttf */,
+				36E48E6B1B7ABF9F0034DFEB /* Bryant-Regular.ttf */,
 			);
 			name = Fonts;
 			sourceTree = "<group>";
@@ -2827,6 +2845,7 @@
 				8416483F1B64A47D00CD20AC /* driver-call-hud-icon-select@2x.png in Resources */,
 				841648401B64A47D00CD20AC /* commuter-menu-button@2x.png in Resources */,
 				841648411B64A47D00CD20AC /* about-menu-button@2x.png in Resources */,
+				36E48E6F1B7ABF9F0034DFEB /* Bryant-Regular.ttf in Resources */,
 				841648421B64A47D00CD20AC /* VCMenuItemModeTableViewCell.xib in Resources */,
 				841648431B64A47D00CD20AC /* VCMenuItemNotConfiguredTableViewCell.xib in Resources */,
 				841648441B64A47D00CD20AC /* menu-item-bg@2x.png in Resources */,
@@ -2837,6 +2856,7 @@
 				841648491B64A47D00CD20AC /* ride-details-hud@2x.png in Resources */,
 				8416484B1B64A47D00CD20AC /* menu-item-bg-depressed-select@2x.png in Resources */,
 				8416484C1B64A47D00CD20AC /* driver-hov-toggle@2x.png in Resources */,
+				36E48E791B7ABFBE0034DFEB /* Bryant-Bold.ttf in Resources */,
 				8416484D1B64A47D00CD20AC /* Aluvi-TOS.html in Resources */,
 				8416484E1B64A47D00CD20AC /* driver-cancel-hud-icon@2x.png in Resources */,
 				8416484F1B64A47D00CD20AC /* VCPasswordRecoveryViewController.xib in Resources */,
@@ -2874,6 +2894,7 @@
 				841648731B64A47D00CD20AC /* hamburger-nobadge.png in Resources */,
 				841648741B64A47D00CD20AC /* menu-submenu-arrow-select@2x.png in Resources */,
 				841648751B64A47D00CD20AC /* profile-button@-select@2x.png in Resources */,
+				36E48E741B7ABFAE0034DFEB /* Bryant-Medium.ttf in Resources */,
 				841648761B64A47D00CD20AC /* VCProfileViewController.xib in Resources */,
 				841648771B64A47D00CD20AC /* menu-support-icon@2x.png in Resources */,
 				841648781B64A47D00CD20AC /* confirmation-hud@2x.png in Resources */,
@@ -2941,6 +2962,7 @@
 				841649551B658F4900CD20AC /* TemplateIcon2x.png in Resources */,
 				841649571B658F4900CD20AC /* VCRiderRecieptDetailViewController.xib in Resources */,
 				841649581B658F4900CD20AC /* menu-bg@2x.png in Resources */,
+				36E48E721B7ABFAE0034DFEB /* Bryant-Medium.ttf in Resources */,
 				841649591B658F4900CD20AC /* confirm-location@2x.png in Resources */,
 				8416495A1B658F4900CD20AC /* toc-checked@2x.png in Resources */,
 				8416495B1B658F4900CD20AC /* hamburger-badge@2x.png in Resources */,
@@ -2956,6 +2978,7 @@
 				8416496A1B658F4900CD20AC /* confirm-location-select.png in Resources */,
 				8416496E1B658F4900CD20AC /* scheduledrides-menu-button-selected@2x.png in Resources */,
 				8416496F1B658F4900CD20AC /* menu-mycar-icon@2x.png in Resources */,
+				36E48E6D1B7ABF9F0034DFEB /* Bryant-Regular.ttf in Resources */,
 				841649701B658F4900CD20AC /* zoom-ride-bounds@2x.png in Resources */,
 				841649711B658F4900CD20AC /* terms-menu-button@2x.png in Resources */,
 				841649731B658F4900CD20AC /* tutorial-menu-button@2x.png in Resources */,
@@ -2990,6 +3013,7 @@
 				36000CA01B72C169008E84AE /* VCReceiptsTableViewCell.xib in Resources */,
 				841649911B658F4900CD20AC /* menu-item-user-info-bg@2x.png in Resources */,
 				841649921B658F4900CD20AC /* search-location-select@2x.png in Resources */,
+				36E48E771B7ABFBE0034DFEB /* Bryant-Bold.ttf in Resources */,
 				841649941B658F4900CD20AC /* driver-call-hud@2x.png in Resources */,
 				841649951B658F4900CD20AC /* menu-profile-icon@2x.png in Resources */,
 				841649961B658F4900CD20AC /* Aluvi-Privacy-Policy.html in Resources */,
@@ -3079,6 +3103,7 @@
 				F4C6B252197F06B100F6C10B /* VCRiderRecieptDetailViewController.xib in Resources */,
 				4F5085A2199B2F41009EDF80 /* menu-bg@2x.png in Resources */,
 				F4C6B253197F06B100F6C10B /* confirm-location@2x.png in Resources */,
+				36E48E711B7ABFAE0034DFEB /* Bryant-Medium.ttf in Resources */,
 				4FC758AF19AA8BBC0093DBEA /* toc-checked@2x.png in Resources */,
 				4F9D808B19D6547E008B0D3E /* hamburger-badge@2x.png in Resources */,
 				4FFCF2CE19A5381900A4A24E /* VCSupportViewController.xib in Resources */,
@@ -3094,6 +3119,7 @@
 				F4C6B25F197F06B100F6C10B /* scheduledrides-menu-button-selected@2x.png in Resources */,
 				4F1849F91991753F006EA959 /* menu-mycar-icon@2x.png in Resources */,
 				F4C6B260197F06B100F6C10B /* zoom-ride-bounds@2x.png in Resources */,
+				36E48E6C1B7ABF9F0034DFEB /* Bryant-Regular.ttf in Resources */,
 				36638D7D1B659CAE004EDB09 /* VCDriverTicketView.xib in Resources */,
 				F4C6B261197F06B100F6C10B /* terms-menu-button@2x.png in Resources */,
 				F4C6B263197F06B100F6C10B /* tutorial-menu-button@2x.png in Resources */,
@@ -3128,6 +3154,7 @@
 				4FFE1722198B0475004D4413 /* driver-cancel-hud@2x.png in Resources */,
 				36000C9F1B72C169008E84AE /* VCReceiptsTableViewCell.xib in Resources */,
 				4F184A0C19918609006EA959 /* menu-item-user-info-bg@2x.png in Resources */,
+				36E48E761B7ABFBE0034DFEB /* Bryant-Bold.ttf in Resources */,
 				F4C6B278197F06B100F6C10B /* search-location-select@2x.png in Resources */,
 				4FFE16F31989E006004D4413 /* driver-call-hud@2x.png in Resources */,
 				4F1849FF1991753F006EA959 /* menu-profile-icon@2x.png in Resources */,
@@ -3242,6 +3269,7 @@
 				F4D8FED919B1745A00BC0B69 /* driver-call-hud-icon-select@2x.png in Resources */,
 				F4D8FEDA19B1745A00BC0B69 /* commuter-menu-button@2x.png in Resources */,
 				F4D8FEDB19B1745A00BC0B69 /* about-menu-button@2x.png in Resources */,
+				36E48E6E1B7ABF9F0034DFEB /* Bryant-Regular.ttf in Resources */,
 				F4D8FEDC19B1745A00BC0B69 /* VCMenuItemModeTableViewCell.xib in Resources */,
 				F4D8FEDD19B1745A00BC0B69 /* VCMenuItemNotConfiguredTableViewCell.xib in Resources */,
 				F4D8FEDE19B1745A00BC0B69 /* menu-item-bg@2x.png in Resources */,
@@ -3252,6 +3280,7 @@
 				F4D8FEE519B1745A00BC0B69 /* ride-details-hud@2x.png in Resources */,
 				4FAB577219D0C637009055D7 /* menu-item-bg-depressed-select@2x.png in Resources */,
 				F4D8FEE819B1745A00BC0B69 /* driver-hov-toggle@2x.png in Resources */,
+				36E48E781B7ABFBE0034DFEB /* Bryant-Bold.ttf in Resources */,
 				4F84510D19FE0B1400D388E4 /* Aluvi-TOS.html in Resources */,
 				F4D8FEE919B1745A00BC0B69 /* driver-cancel-hud-icon@2x.png in Resources */,
 				F4D8FEEA19B1745A00BC0B69 /* VCPasswordRecoveryViewController.xib in Resources */,
@@ -3289,6 +3318,7 @@
 				4F9D809219D6547E008B0D3E /* hamburger-nobadge.png in Resources */,
 				F4D8FF0E19B1745A00BC0B69 /* menu-submenu-arrow-select@2x.png in Resources */,
 				F4D8FF1019B1745A00BC0B69 /* profile-button@-select@2x.png in Resources */,
+				36E48E731B7ABFAE0034DFEB /* Bryant-Medium.ttf in Resources */,
 				F4D8FF1119B1745A00BC0B69 /* VCProfileViewController.xib in Resources */,
 				F4D8FF1319B1745A00BC0B69 /* menu-support-icon@2x.png in Resources */,
 				F4D8FF1419B1745A00BC0B69 /* confirmation-hud@2x.png in Resources */,
