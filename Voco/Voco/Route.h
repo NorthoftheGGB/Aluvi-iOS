@@ -27,7 +27,8 @@
 + (RKObjectMapping *) getInverseMapping;
 
 - (BOOL) routeCoordinateSettingsValid;
-- (BOOL) hasCachedRoute;
+- (BOOL) hasCachedPath;
+- (void) clearCachedPath;
 
 - (BOOL) coordinatesDifferFrom: (Route*) route;
 - (void) copyNonCoordinateFieldsFrom: (Route*) route;

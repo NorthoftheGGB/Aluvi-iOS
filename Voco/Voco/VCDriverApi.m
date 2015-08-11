@@ -10,6 +10,7 @@
 #import "VCApi.h"
 #import "VCFareDriverAssignment.h"
 #import "VCRideIdentity.h"
+#import "VCTicketPayload.h"
 #import "VCGeoObject.h"
 #import "VCDriverRegistration.h"
 #import "Fare.h"
@@ -31,9 +32,17 @@
         RKObjectMapping * requestMapping = [mapping inverseMapping];
         RKRequestDescriptor *requestDescriptorPostData = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[VCFareDriverAssignment class] rootKeyPath:nil method:RKRequestMethodPOST];
         [objectManager addRequestDescriptor:requestDescriptorPostData];
+    }
+    {
+        RKObjectMapping * mapping = [VCTicketPayload getMapping];
+        RKObjectMapping * requestMapping = [mapping inverseMapping];
+        RKRequestDescriptor *requestDescriptorPostData = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[VCTicketPayload class] rootKeyPath:nil method:RKRequestMethodPOST];
+        [objectManager addRequestDescriptor:requestDescriptorPostData];
+    }
+    
+    
         
-        
-        
+    {
         RKResponseDescriptor * responseDescriptor3 = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
                                                                                                   method:RKRequestMethodPOST
                                                                                              pathPattern:API_POST_DRIVER_CANCELLED
@@ -52,14 +61,12 @@
 
     }
     
-    [objectManager.router.routeSet addRoute:[RKRoute routeWithClass:[VCFareIdentity class] pathPattern:API_GET_DRIVER_FARE_PATH_PATTERN method:RKRequestMethodGET]];
-
     
     {
         RKObjectMapping * mapping = [VCFare getMapping];
         RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping
                                                                                                      method:RKRequestMethodPOST
-                                                                                                pathPattern:API_POST_FARE_COMPLETED
+                                                                                                pathPattern:API_POST_RIDE_COMPLETED
                                                                                                     keyPath:nil
                                                                                                 statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:responseDescriptor];
@@ -138,14 +145,14 @@
 
 
 
-+ (void) ridersPickedUp: (NSNumber *) fareId
++ (void) ridersPickedUp: (NSNumber *) ticketId
                 success: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                 failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure
 
 {
-    VCFareDriverAssignment * rideIdentity = [[VCFareDriverAssignment alloc] init];
-    rideIdentity.fareId = fareId;
-      [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_RIDE_PICKUP parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    VCTicketPayload * ticketPayload = [[VCTicketPayload alloc] init];
+    ticketPayload.ticketId = ticketId;
+      [[RKObjectManager sharedManager] postObject:ticketPayload path:API_POST_RIDE_PICKUP parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
           success(operation, mappingResult);
       } failure:^(RKObjectRequestOperation *operation, NSError *error) {
           failure(operation, error);
@@ -166,14 +173,14 @@
      }];
 }
 
-+ (void) fareCompleted: (NSNumber *) fareId
++ (void) ticketCompleted: (NSNumber *) ticketId
                        success: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                        failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     
-    VCFareDriverAssignment * rideIdentity = [[VCFareDriverAssignment alloc] init];
-    rideIdentity.fareId = fareId;
+    VCTicketPayload * ticketPayload = [[VCTicketPayload alloc] init];
+    ticketPayload.ticketId = ticketId;
     
-    [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_FARE_COMPLETED parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [[RKObjectManager sharedManager] postObject:ticketPayload path:API_POST_RIDE_COMPLETED parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         success(operation, mappingResult);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         failure(operation, error);
@@ -182,22 +189,6 @@
 }
 
 
-
-
-+ (void) refreshActiveRidesWithSuccess: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
-                               failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
-    // Update all rides for this user using RestKit entity
-    [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_ACTIVE_FARES parameters:nil
-                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                  
-                                                  success(operation, mappingResult);
-                                                  
-                                              } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                  
-                                                  failure(operation, error);
-                                                  
-                                              }];
-}
 
 + (void) earnings:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
           failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {

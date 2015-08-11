@@ -739,6 +739,10 @@
 		841649CC1B658F4900CD20AC /* mycar-menu-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9D019614115006A1962 /* mycar-menu-button-selected@2x.png */; };
 		841649CD1B658F4900CD20AC /* car@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4138C3A19678BE000C265CD /* car@2x.png */; };
 		841649CE1B658F4900CD20AC /* profile-menu-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EF9A11960EC8C006A1962 /* profile-menu-button@2x.png */; };
+		8435C5891B7A799C000401CA /* VCTicketPayload.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435C5881B7A799C000401CA /* VCTicketPayload.m */; };
+		8435C58A1B7A799C000401CA /* VCTicketPayload.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435C5881B7A799C000401CA /* VCTicketPayload.m */; };
+		8435C58B1B7A799C000401CA /* VCTicketPayload.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435C5881B7A799C000401CA /* VCTicketPayload.m */; };
+		8435C58C1B7A799C000401CA /* VCTicketPayload.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435C5881B7A799C000401CA /* VCTicketPayload.m */; };
 		844070291B64700B00EF35E1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CE81B1E5E26004446AF /* MobileCoreServices.framework */; };
 		844415331B6DDC8B008C7898 /* MBRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = D19278A31B6738D1009BFBF8 /* MBRegion.m */; };
 		844415351B6DDC8D008C7898 /* MBRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = D19278A31B6738D1009BFBF8 /* MBRegion.m */; };
@@ -1456,6 +1460,8 @@
 		841648A11B64A47D00CD20AC /* Aluvi Distribution copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Aluvi Distribution copy-Info.plist"; path = "/Users/matthewxi/software-development/Clients/Will_OBrien/aluvi-ios/Voco/Aluvi Distribution copy-Info.plist"; sourceTree = "<absolute>"; };
 		841649D41B658F4900CD20AC /* Aluvi Development copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aluvi Development copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		841649D51B658F4A00CD20AC /* Aluvi Development copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Aluvi Development copy2-Info.plist"; path = "/Users/matthewxi/software-development/Clients/Will_OBrien/aluvi-ios/Voco/Aluvi Development copy2-Info.plist"; sourceTree = "<absolute>"; };
+		8435C5871B7A799C000401CA /* VCTicketPayload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCTicketPayload.h; sourceTree = "<group>"; };
+		8435C5881B7A799C000401CA /* VCTicketPayload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCTicketPayload.m; sourceTree = "<group>"; };
 		8444152E1B6DA3D7008C7898 /* VCOldCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VCOldCode.h; sourceTree = "<group>"; };
 		8444152F1B6DA3D7008C7898 /* VCOldCode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VCOldCode.m; sourceTree = "<group>"; };
 		844415361B72BBE5008C7898 /* VCMapHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCMapHelper.h; sourceTree = "<group>"; };
@@ -2238,6 +2244,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		8435C5861B7A7981000401CA /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				8435C5871B7A799C000401CA /* VCTicketPayload.h */,
+				8435C5881B7A799C000401CA /* VCTicketPayload.m */,
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		844415311B6DB1FB008C7898 /* Commute HUDs */ = {
 			isa = PBXGroup;
 			children = (
@@ -2298,6 +2313,7 @@
 		F45F7BF2193578AA00A94721 /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				8435C5861B7A7981000401CA /* New Group */,
 				F45F7BF71935798B00A94721 /* VCApi.h */,
 				F45F7BF81935798B00A94721 /* VCApi.m */,
 				F4FE1B1E193D8FE500354886 /* VCPushApi.h */,
@@ -3734,6 +3750,7 @@
 				841647D21B64A47D00CD20AC /* VCBankAccountTextField.m in Sources */,
 				841647D41B64A47D00CD20AC /* VCGeoObject.m in Sources */,
 				841647D51B64A47D00CD20AC /* VCDevice.m in Sources */,
+				8435C58C1B7A799C000401CA /* VCTicketPayload.m in Sources */,
 				841647D61B64A47D00CD20AC /* Ticket.m in Sources */,
 				841647D71B64A47D00CD20AC /* VCObjectRequestOperation.m in Sources */,
 				841647D81B64A47D00CD20AC /* VCValidation.m in Sources */,
@@ -3865,6 +3882,7 @@
 				841649091B658F4900CD20AC /* VCGeoObject.m in Sources */,
 				8416490A1B658F4900CD20AC /* VCTicketViewController.m in Sources */,
 				8416490B1B658F4900CD20AC /* VCDevice.m in Sources */,
+				8435C58A1B7A799C000401CA /* VCTicketPayload.m in Sources */,
 				8416490C1B658F4900CD20AC /* Ticket.m in Sources */,
 				8416490D1B658F4900CD20AC /* VCObjectRequestOperation.m in Sources */,
 				8416490E1B658F4900CD20AC /* VCValidation.m in Sources */,
@@ -3996,6 +4014,7 @@
 				F4C6B215197F06B100F6C10B /* VCGeoObject.m in Sources */,
 				F425906819958E9700FA928E /* VCTicketViewController.m in Sources */,
 				F4C6B217197F06B100F6C10B /* VCDevice.m in Sources */,
+				8435C5891B7A799C000401CA /* VCTicketPayload.m in Sources */,
 				F4C6B218197F06B100F6C10B /* Ticket.m in Sources */,
 				F4C6B21A197F06B100F6C10B /* VCObjectRequestOperation.m in Sources */,
 				F4C6B21C197F06B100F6C10B /* VCValidation.m in Sources */,
@@ -4127,6 +4146,7 @@
 				F4D8FE6B19B1745A00BC0B69 /* VCBankAccountTextField.m in Sources */,
 				F4D8FE6D19B1745A00BC0B69 /* VCGeoObject.m in Sources */,
 				F4D8FE6E19B1745A00BC0B69 /* VCDevice.m in Sources */,
+				8435C58B1B7A799C000401CA /* VCTicketPayload.m in Sources */,
 				F4D8FE6F19B1745A00BC0B69 /* Ticket.m in Sources */,
 				F4D8FE7119B1745A00BC0B69 /* VCObjectRequestOperation.m in Sources */,
 				F4D8FE7319B1745A00BC0B69 /* VCValidation.m in Sources */,

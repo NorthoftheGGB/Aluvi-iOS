@@ -11,10 +11,10 @@
 
 @interface MBRegion : NSObject <NSCopying, NSCoding>
 
-@property (nonatomic) CLLocationCoordinate2D topLocation;
-@property (nonatomic) CLLocationCoordinate2D bottomLocation;
+@property (nonatomic) CLLocationCoordinate2D northEast;
+@property (nonatomic) CLLocationCoordinate2D southWest;
 
-- (void)initWithTopCoordinate:(CLLocationCoordinate2D)top bottomCoordinate:(CLLocationCoordinate2D)bottom;
+- (void) initWithSouthWest:(CLLocationCoordinate2D)southWest northEast:(CLLocationCoordinate2D)northEast;
 - (BOOL) isValidRegion;
 
 @end

@@ -30,8 +30,8 @@
 #define API_GET_RIDES_STATE @"rides/state"
 #define API_POST_DRIVER_CANCELLED @"rides/driver_cancelled"
 #define API_POST_RIDER_CANCELLED @"rides/rider_cancelled"
-#define API_POST_RIDE_PICKUP @"rides/pickup"
-#define API_POST_FARE_COMPLETED @"rides/arrived"
+#define API_POST_RIDE_PICKUP @"v2/rides/pickup"
+#define API_POST_RIDE_COMPLETED @"v2/rides/arrived"
 #define API_DELETE_TRIP @"rides/trips/:trip_id"
 
 #define API_GET_ACTIVE_TICKETS @"rides/tickets"
@@ -63,9 +63,7 @@
 
 // drivers
 #define API_DRIVER_REGISTRATION @"drivers/driver_registration"
-#define API_DRIVER_CLOCK_ON @"drivers/clock_on"
-#define API_DRIVER_CLOCK_OFF @"drivers/clock_off"
-#define API_GET_DRIVER_FARE_PATH_PATTERN @"drivers/fares/:id"
+
 
 // state
 #define API_TOKEN_KEY @"API_TOKEN"
