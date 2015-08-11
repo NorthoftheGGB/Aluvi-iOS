@@ -71,12 +71,12 @@
 
 - (void)viewDidLoad
 {
-    
 
     [super viewDidLoad];
+    [self setGradient];
     [self.scrollView setContentSize:_contentView.frame.size];
     [self.scrollView addSubview:_contentView];
-        
+    
     
     VCProfile * profile = [VCUserStateManager instance].profile;
     
