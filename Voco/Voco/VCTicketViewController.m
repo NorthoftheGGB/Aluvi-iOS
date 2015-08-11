@@ -573,6 +573,9 @@
         {
             [button setTitle:@"COMMUTE PENDING" forState:UIControlStateNormal];
             [button addTarget:self action:@selector(didTapScheduleMenuButton:) forControlEvents:UIControlEventTouchUpInside];
+            button.layer.backgroundColor = [VCStyle drkBlueColor].CGColor;
+            button.layer.borderColor = [VCStyle drkBlueColor].CGColor;
+            [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             break;
         }
         case kCommuteStateScheduled:
