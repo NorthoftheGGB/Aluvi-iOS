@@ -2184,6 +2184,39 @@
 			name = Map;
 			sourceTree = "<group>";
 		};
+		8435C5951B7AE5F9000401CA /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				F4FA0BFB192BF6BF005D8645 /* Voco.xcdatamodeld */,
+				F471E3DF19A9590E00DF688D /* Rider.h */,
+				F471E3E019A9590E00DF688D /* Rider.m */,
+				F473F03D195B971C00D8C900 /* Driver.h */,
+				F473F03E195B971C00D8C900 /* Driver.m */,
+				F473F03A195B971B00D8C900 /* Car.h */,
+				F473F03B195B971B00D8C900 /* Car.m */,
+				F4FE1AFC193839DF00354886 /* Fare.h */,
+				F4FE1AFD193839DF00354886 /* Fare.m */,
+				F45F7C011935880500A94721 /* Ticket.h */,
+				F45F7C021935880500A94721 /* Ticket.m */,
+				F4F5FFBC19779E23001A1C0E /* Payment.h */,
+				F4F5FFBD19779E23001A1C0E /* Payment.m */,
+				F4C6B1A91978DEFB00F6C10B /* Earning.h */,
+				F4C6B1AA1978DF2A00F6C10B /* Earning.m */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
+		8435C5961B7AE604000401CA /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				F496FE8F19FDB9FE00632055 /* Route.h */,
+				F496FE9019FDB9FE00632055 /* Route.m */,
+				F4D877641976721D00870945 /* VCProfile.h */,
+				F4D877651976721D00870945 /* VCProfile.m */,
+			);
+			name = Local;
+			sourceTree = "<group>";
+		};
 		844415311B6DB1FB008C7898 /* Commute HUDs */ = {
 			isa = PBXGroup;
 			children = (
@@ -2218,24 +2251,9 @@
 		F45F7BED193575C100A94721 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8435C5951B7AE5F9000401CA /* Core Data */,
+				8435C5961B7AE604000401CA /* Local */,
 				F473E290195E824400226203 /* Base */,
-				F4FA0BFB192BF6BF005D8645 /* Voco.xcdatamodeld */,
-				F471E3DF19A9590E00DF688D /* Rider.h */,
-				F471E3E019A9590E00DF688D /* Rider.m */,
-				F473F03D195B971C00D8C900 /* Driver.h */,
-				F473F03E195B971C00D8C900 /* Driver.m */,
-				F473F03A195B971B00D8C900 /* Car.h */,
-				F473F03B195B971B00D8C900 /* Car.m */,
-				F4FE1AFC193839DF00354886 /* Fare.h */,
-				F4FE1AFD193839DF00354886 /* Fare.m */,
-				F45F7C011935880500A94721 /* Ticket.h */,
-				F45F7C021935880500A94721 /* Ticket.m */,
-				F4F5FFBC19779E23001A1C0E /* Payment.h */,
-				F4F5FFBD19779E23001A1C0E /* Payment.m */,
-				F4C6B1A91978DEFB00F6C10B /* Earning.h */,
-				F4C6B1AA1978DF2A00F6C10B /* Earning.m */,
-				F496FE8F19FDB9FE00632055 /* Route.h */,
-				F496FE9019FDB9FE00632055 /* Route.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -2440,8 +2458,6 @@
 			children = (
 				F4D8904219468A84007C4671 /* VCUsersApi.h */,
 				F4D8904319468A84007C4671 /* VCUsersApi.m */,
-				F4D877641976721D00870945 /* VCProfile.h */,
-				F4D877651976721D00870945 /* VCProfile.m */,
 				F4D8904819468E44007C4671 /* VCNewUser.h */,
 				F4D8904919468E44007C4671 /* VCNewUser.m */,
 				F4D8905119469F0F007C4671 /* VCDriverInterestedRequest.h */,

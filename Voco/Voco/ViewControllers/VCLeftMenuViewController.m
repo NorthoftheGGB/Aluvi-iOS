@@ -106,10 +106,9 @@
     [super viewDidLoad];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
-    
-    
     // Listen for notifications about updated rides
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scheduleUpdated:) name:kNotificationScheduleUpdated object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(profileUpdated:) name:kNotificationTypeProfileUpdated object:nil];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -120,6 +119,11 @@
 
 - (void) dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void) profileUpdated:(NSNotification *) notification {
+   
+    [_tableView reloadRowsAtIndexPaths:@[ [NSIndexPath indexPathForItem:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (void) scheduleUpdated:(NSNotification *) notification {

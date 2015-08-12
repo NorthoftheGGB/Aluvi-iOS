@@ -13,8 +13,11 @@
 #define kNotificationTypeTripUnfulfilled @"trip_unfulfilled"
 #define kNotificationTypeFareComplete @"fare_complete"
 
+#define kNotificationTypeProfileUpdated @"profile_updated"
+
 @interface VCNotifications : NSObject
 
 + (void) scheduleUpdated;
++ (void) profileUpdated;
 
 @end

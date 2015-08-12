@@ -91,7 +91,11 @@ static VCUserStateManager *sharedSingleton;
 
 - (void) setProfile:(VCProfile *)profile {
     _profile = profile;
-    NSData * profileData = [NSKeyedArchiver archivedDataWithRootObject:profile];
+    [self saveProfile];
+}
+
+- (void) saveProfile {
+    NSData * profileData = [NSKeyedArchiver archivedDataWithRootObject:_profile];
     [[NSUserDefaults standardUserDefaults] setObject:profileData forKey:kProfileDataKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }

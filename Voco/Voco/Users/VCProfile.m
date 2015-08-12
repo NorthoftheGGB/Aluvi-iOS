@@ -19,6 +19,7 @@
                                                   @"last_name" : @"lastName",
                                                   @"phone" : @"phone",
                                                   @"email" : @"email",
+                                                  @"work_email" : @"workEmail",
                                                   @"default_card_token" : @"defaultCardToken",
                                                   @"commuter_refill_amount_cents" : @"commuterRefillAmountCents",
                                                   @"commuter_balance_cents" : @"commuterBalanceCents",
@@ -42,6 +43,7 @@
         _lastName = [decoder decodeObjectForKey: @"lastName"];
         _phone = [decoder decodeObjectForKey: @"phone"];
         _email = [decoder decodeObjectForKey: @"email"];
+        _workEmail = [decoder decodeObjectForKey: @"workEmail"];
         _commuterRefillAmountCents = [decoder decodeObjectForKey: @"commuterRefillAmountCents"];
         _commuterBalanceCents = [decoder decodeObjectForKey: @"commuterBalanceCents"];
         _commuterRefillEnabled = [decoder decodeObjectForKey: @"commuterRefillEnabled"];
@@ -64,6 +66,7 @@
     [encoder encodeObject: _lastName forKey: @"lastName"];
     [encoder encodeObject: _phone forKey: @"phone"];
     [encoder encodeObject: _email forKey: @"email"];
+    [encoder encodeObject: _workEmail forKey: @"workEmail"];
     [encoder encodeObject: _commuterRefillAmountCents forKey: @"commuterRefillAmountCents"];
     [encoder encodeObject: _commuterBalanceCents forKey: @"commuterBalanceCents"];
     [encoder encodeObject: _commuterRefillEnabled forKey: @"commuterRefillEnabled"];

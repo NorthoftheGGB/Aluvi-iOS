@@ -23,6 +23,7 @@
 #import "UIImage+Resize.h"
 #import "VCApi.h"
 #import "VCStyle.h"
+#import "VCNotifications.h"
 
 @interface VCProfileViewController () <PKImagePickerViewControllerDelegate, UINavigationControllerDelegate>
 
@@ -38,6 +39,7 @@
 @property (weak, nonatomic) IBOutlet VCTextField *emailTextField;
 @property (weak, nonatomic) IBOutlet VCTextField *phoneTextField;
 @property (weak, nonatomic) IBOutlet VCTextField *passwordTextField;
+@property (strong, nonatomic) IBOutlet VCTextField *workEmailTextField;
 
 //Version
 @property (weak, nonatomic) IBOutlet UILabel *versionLabel;
@@ -119,12 +121,23 @@
 }
 
 - (IBAction)didTapSaveChanges:(id)sender {
-    //TODO: API fun fun
+
+    BOOL notify = NO;
+    if(![[VCUserStateManager instance].profile.firstName isEqualToString:_firstNameTextField.text]
+       || ![[VCUserStateManager instance].profile.lastName isEqualToString:_lastNameTextField.text] ){
+        notify = YES;
+    }
+    
     [VCUserStateManager instance].profile.firstName = _firstNameTextField.text;
     [VCUserStateManager instance].profile.lastName = _lastNameTextField.text;
     [VCUserStateManager instance].profile.email = _emailTextField.text;
     [VCUserStateManager instance].profile.phone = _phoneTextField.text;
+    [VCUserStateManager instance].profile.workEmail = _workEmailTextField.text;
+    [[VCUserStateManager instance] saveProfile];
     
+    if(notify){
+        [VCNotifications profileUpdated];
+    }
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [VCUsersApi updateProfile:[VCUserStateManager instance].profile
