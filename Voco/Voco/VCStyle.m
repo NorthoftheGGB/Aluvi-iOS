@@ -32,5 +32,12 @@
 }
 
 
++ (UIColor *) greyColor{
+    return [UIColor colorWithRed:.36 green:.40 blue:.40 alpha:1];
+}
+
++ (UIColor *) drkBlueColor{
+    return [UIColor colorWithRed:.20 green:.51 blue:.53 alpha:1];
+}
 
 @end

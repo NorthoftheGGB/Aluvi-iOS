@@ -31,10 +31,9 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>HelveticaNeueLight</string>
-		<string>KlinicSlabLight.ttf</string>
-		<string>KlinicSlabLightIt.ttf</string>
-		<string>KlinicSlabMediumIt.ttf</string>
-		<string>KlinicSlabMedium.ttf</string>
+		<string>Bryant-Bold.ttf</string>
+		<string>Bryant-Regular.ttf</string>
+		<string>Bryant-Medium.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

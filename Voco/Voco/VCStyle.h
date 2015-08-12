@@ -18,4 +18,7 @@
 
 + (NSArray *) gradientColors;
 
++ (UIColor *) greyColor;
++ (UIColor *) drkBlueColor;
+
 @end

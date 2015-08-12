@@ -44,6 +44,7 @@
 #import "VCMapHelper.h"
 #import "VCMapStyle.h"
 #import "VCMapConstants.h"
+#import "VCStyle.h"
 
 #define kCommuteStateNone 0
 #define kCommuteStatePending 1
@@ -542,22 +543,45 @@
                      }];
 }
 
+
 - (void) setRightButtonForState:(NSInteger) state{
+    UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.layer.backgroundColor = [UIColor whiteColor].CGColor;
+    button.layer.cornerRadius = 5.0;
+    button.layer.masksToBounds = NO;
+    button.layer.borderWidth = 1.0f;
+    button.layer.borderColor = [UIColor whiteColor].CGColor;
+    button.layer.shadowColor = [VCStyle drkBlueColor].CGColor;
+    button.layer.shadowOpacity = 1;
+    button.layer.shadowRadius = 0;
+    button.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
+    [button setFrame:CGRectMake(0, 0, 150, 33)];
+    [button setTitleColor:[VCStyle greyColor] forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont fontWithName:@"Bryant-Regular" size:16.0];
+    [button addTarget:self action:@selector(didTapScheduleMenuButton:) forControlEvents:UIControlEventTouchUpInside];
+    
     UIBarButtonItem *buttonItem;
+    //self.toolbarItems = @[buttonItem];
     switch(state){
         case kCommuteStateNone:
         {
-            buttonItem = [[UIBarButtonItem alloc] initWithTitle:@"Schedule Rides" style:UIBarButtonItemStylePlain target:self action:@selector(didTapScheduleMenuButton:)];
+            [button setTitle:@"SCHEDULE RIDE" forState:UIControlStateNormal];
+            [button addTarget:self action:@selector(didTapScheduleMenuButton:) forControlEvents:UIControlEventTouchUpInside];
             break;
         }
         case kCommuteStatePending:
         {
-            buttonItem = [[UIBarButtonItem alloc] initWithTitle:@"Commute Pending" style:UIBarButtonItemStylePlain target:self action:@selector(didTapReviewScheduleMenuButton:)];
+            [button setTitle:@"COMMUTE PENDING" forState:UIControlStateNormal];
+            [button addTarget:self action:@selector(didTapScheduleMenuButton:) forControlEvents:UIControlEventTouchUpInside];
+            button.layer.backgroundColor = [VCStyle drkBlueColor].CGColor;
+            button.layer.borderColor = [VCStyle drkBlueColor].CGColor;
+            [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             break;
         }
         case kCommuteStateScheduled:
         {
-            buttonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel Ride" style:UIBarButtonItemStylePlain target:self action:@selector(didTapCancel:)];
+            [button setTitle:@"CANCEL RIDE" forState:UIControlStateNormal];
+            [button addTarget:self action:@selector(didTapScheduleMenuButton:) forControlEvents:UIControlEventTouchUpInside];
             break;
         }
         default:
@@ -567,9 +591,11 @@
         }
             
     }
+    buttonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
+    
     if(buttonItem != nil){
         self.navigationItem.rightBarButtonItem = buttonItem;
-        self.navigationItem.rightBarButtonItem.tintColor = _barButtonItemColor;
     }
 }
 
@@ -1401,7 +1427,7 @@
         return shape;
     } else {
         RMShape *shape = [[RMShape alloc] initWithView:mapView];
-        shape.lineColor = [UIColor colorWithRed:17.0f / 256.0f green: 119.0f / 256.0f blue: 45.0f / 256.0f alpha:.7];
+        shape.lineColor = [UIColor colorWithRed:0.74 green: 0.25 blue: 0.15 alpha:0.8];
         shape.lineWidth = 4.0;
         for (CLLocation *location in (NSArray *)annotation.userInfo)
             [shape addLineToCoordinate:location.coordinate];
