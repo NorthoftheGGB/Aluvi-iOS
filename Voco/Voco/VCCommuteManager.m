@@ -17,11 +17,13 @@
 
 #define kCommuteOriginSettingKey @"kCommuterOriginSettingKey"
 #define kCommuteDestinationSettingKey @"kCommuteDestinationSettingKey"
+#define kCommutePickupZoneSettingKey @"kCommutePickupZoneSettingKey"
 #define kCommuteDepartureTimeSettingKey @"kCommuteDepartureTimeSettingKey"
 #define kCommuteReturnTimeSettingKey @"kCommuteReturnTimeSettingKey"
 #define kCommuterDrivingSettingKey @"kCommuterDrivingSettingKey"
 #define kCommuterOriginPlaceNameKey @"kCommuterOriginPlaceNameKey"
 #define kCommuterDestinationPlaceNameKey @"kCommuterDestinationPlaceNameKey"
+#define kCommuterPickupZonePlaceNameKey @"kCommuterPickupZonePlaceNameKey"
 #define kCommuteRegionKey @"kCommuteRegionKey"
 #define kCommutePolylineKey @"kCommutePolylineKey"
 
@@ -74,8 +76,13 @@ static VCCommuteManager * instance;
     if(work != nil) {
         _route.work = [NSKeyedUnarchiver unarchiveObjectWithData: work];
     }
+    NSData * pickupZone = [defaults objectForKey:kCommutePickupZoneSettingKey];
+    if(pickupZone != nil) {
+        _route.pickupZoneCenter = [NSKeyedUnarchiver unarchiveObjectWithData: pickupZone];
+    }
     _route.homePlaceName = [defaults objectForKey:kCommuterOriginPlaceNameKey];
     _route.workPlaceName = [defaults objectForKey:kCommuterDestinationPlaceNameKey];
+    _route.pickupZoneCenterPlaceName = [defaults objectForKey:kCommuterPickupZonePlaceNameKey];
     _route.pickupTime = [defaults objectForKey:kCommuteDepartureTimeSettingKey];
     _route.returnTime = [defaults objectForKey:kCommuteReturnTimeSettingKey];
     _route.driving = [defaults boolForKey:kCommuterDrivingSettingKey];
@@ -118,10 +125,12 @@ static VCCommuteManager * instance;
 - (void)store {
     [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:_route.home] forKey:kCommuteOriginSettingKey];
     [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:_route.work] forKey:kCommuteDestinationSettingKey];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:_route.pickupZoneCenter] forKey:kCommutePickupZoneSettingKey];
     [[NSUserDefaults standardUserDefaults] setObject:_route.pickupTime forKey:kCommuteDepartureTimeSettingKey];
     [[NSUserDefaults standardUserDefaults] setObject:_route.returnTime forKey:kCommuteReturnTimeSettingKey];
     [[NSUserDefaults standardUserDefaults] setObject:_route.homePlaceName forKey:kCommuterOriginPlaceNameKey];
     [[NSUserDefaults standardUserDefaults] setObject:_route.workPlaceName forKey:kCommuterDestinationPlaceNameKey];
+    [[NSUserDefaults standardUserDefaults] setObject:_route.pickupZoneCenterPlaceName forKey:kCommuterPickupZonePlaceNameKey];
     [[NSUserDefaults standardUserDefaults] setBool:_route.driving forKey:kCommuterDrivingSettingKey];
     
     [[NSUserDefaults standardUserDefaults] setObject:[NSKeyedArchiver archivedDataWithRootObject:_route.region] forKey:kCommuteRegionKey];
@@ -166,10 +175,12 @@ static VCCommuteManager * instance;
 - (void) clear {
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kCommuteOriginSettingKey];
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kCommuteDestinationSettingKey];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kCommutePickupZoneSettingKey];
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kCommuteDepartureTimeSettingKey];
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kCommuteReturnTimeSettingKey];
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kCommuterOriginPlaceNameKey];
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kCommuterDestinationPlaceNameKey];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kCommuterPickupZonePlaceNameKey];
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kCommuterDrivingSettingKey];
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kCommuteRegionKey];
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kCommutePolylineKey];

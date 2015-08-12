@@ -20,7 +20,8 @@
                                                   @"destination_place_name" : @"workPlaceName",
                                                   @"pickup_time" : @"pickupTime",
                                                   @"return_time" : @"returnTime",
-                                                  @"driving" : @"driving"
+                                                  @"driving" : @"driving",
+                                                  @"pickup_zone_center_place_name" : @"pickupZoneCenterPlaceName"
                                                   }];
     
     return mapping;
@@ -39,6 +40,13 @@
     
     {
         RKAttributeMapping *attributeMapping = [RKAttributeMapping attributeMappingFromKeyPath:@"destination" toKeyPath:@"work"];
+        attributeMapping.propertyValueClass = [CLLocation class];
+        attributeMapping.valueTransformer = [RKCLLocationValueTransformer locationValueTransformerWithLatitudeKey:@"latitude" longitudeKey:@"longitude"];
+        [mapping addPropertyMapping:attributeMapping];
+    }
+    
+    {
+        RKAttributeMapping *attributeMapping = [RKAttributeMapping attributeMappingFromKeyPath:@"pickup_zone_center" toKeyPath:@"pickupZoneCenter"];
         attributeMapping.propertyValueClass = [CLLocation class];
         attributeMapping.valueTransformer = [RKCLLocationValueTransformer locationValueTransformerWithLatitudeKey:@"latitude" longitudeKey:@"longitude"];
         [mapping addPropertyMapping:attributeMapping];
@@ -65,6 +73,13 @@
         [mapping addPropertyMapping:attributeMapping];
     }
     
+    {
+        RKAttributeMapping *attributeMapping = [RKAttributeMapping attributeMappingFromKeyPath:@"pickupZoneCenter" toKeyPath:@"pickup_zone_center"];
+        attributeMapping.propertyValueClass = [NSDictionary class];
+        attributeMapping.valueTransformer = [RKCLLocationValueTransformer locationValueTransformerWithLatitudeKey:@"latitude" longitudeKey:@"longitude"];
+        [mapping addPropertyMapping:attributeMapping];
+    }
+    
     return mapping;
     
 }
@@ -85,6 +100,8 @@
         copy.work = self.work;
         copy.homePlaceName = [self.homePlaceName copy];
         copy.workPlaceName = [self.workPlaceName copy];
+        copy.pickupZoneCenter = self.pickupZoneCenter;
+        copy.pickupZoneCenterPlaceName = self.pickupZoneCenterPlaceName;
         copy.driving = self.driving;
         copy.pickupTime = [self.pickupTime copy];
         copy.returnTime = [self.returnTime copy];
@@ -119,7 +136,8 @@
 
 - (BOOL) coordinatesDifferFrom: (Route*) route {
     if( [self.home distanceFromLocation:route.home] != 0
-       || [self.work distanceFromLocation:route.work] != 0){
+       || [self.work distanceFromLocation:route.work] != 0
+       || [self.pickupZoneCenter distanceFromLocation:route.pickupZoneCenter]){
         return TRUE;
     } else{
         return FALSE;
@@ -131,8 +149,18 @@
     self.returnTime = route.returnTime;
     self.homePlaceName = route.homePlaceName;
     self.workPlaceName = route.workPlaceName;
+    self.pickupZoneCenterPlaceName = route.pickupZoneCenterPlaceName;
     self.driving = route.driving;
 }
+
+- (CLLocation *) getDefaultOrigin {
+    if(_driving){
+        return _pickupZoneCenter;
+    } else {
+        return _home;
+    }
+}
+
 
 
 #pragma mark Observing

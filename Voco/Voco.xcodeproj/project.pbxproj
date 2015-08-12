@@ -743,6 +743,10 @@
 		8435C58A1B7A799C000401CA /* VCTicketPayload.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435C5881B7A799C000401CA /* VCTicketPayload.m */; };
 		8435C58B1B7A799C000401CA /* VCTicketPayload.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435C5881B7A799C000401CA /* VCTicketPayload.m */; };
 		8435C58C1B7A799C000401CA /* VCTicketPayload.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435C5881B7A799C000401CA /* VCTicketPayload.m */; };
+		8435C58F1B7ABE4C000401CA /* VCMapStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435C58E1B7ABE4C000401CA /* VCMapStyle.m */; };
+		8435C5901B7ABE4C000401CA /* VCMapStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435C58E1B7ABE4C000401CA /* VCMapStyle.m */; };
+		8435C5911B7ABE4C000401CA /* VCMapStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435C58E1B7ABE4C000401CA /* VCMapStyle.m */; };
+		8435C5921B7ABE4C000401CA /* VCMapStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435C58E1B7ABE4C000401CA /* VCMapStyle.m */; };
 		844070291B64700B00EF35E1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CE81B1E5E26004446AF /* MobileCoreServices.framework */; };
 		844415331B6DDC8B008C7898 /* MBRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = D19278A31B6738D1009BFBF8 /* MBRegion.m */; };
 		844415351B6DDC8D008C7898 /* MBRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = D19278A31B6738D1009BFBF8 /* MBRegion.m */; };
@@ -1462,6 +1466,9 @@
 		841649D51B658F4A00CD20AC /* Aluvi Development copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Aluvi Development copy2-Info.plist"; path = "/Users/matthewxi/software-development/Clients/Will_OBrien/aluvi-ios/Voco/Aluvi Development copy2-Info.plist"; sourceTree = "<absolute>"; };
 		8435C5871B7A799C000401CA /* VCTicketPayload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCTicketPayload.h; sourceTree = "<group>"; };
 		8435C5881B7A799C000401CA /* VCTicketPayload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCTicketPayload.m; sourceTree = "<group>"; };
+		8435C58D1B7ABE4C000401CA /* VCMapStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCMapStyle.h; sourceTree = "<group>"; };
+		8435C58E1B7ABE4C000401CA /* VCMapStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCMapStyle.m; sourceTree = "<group>"; };
+		8435C5941B7ABEE6000401CA /* VCMapConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCMapConstants.h; sourceTree = "<group>"; };
 		8444152E1B6DA3D7008C7898 /* VCOldCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VCOldCode.h; sourceTree = "<group>"; };
 		8444152F1B6DA3D7008C7898 /* VCOldCode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VCOldCode.m; sourceTree = "<group>"; };
 		844415361B72BBE5008C7898 /* VCMapHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCMapHelper.h; sourceTree = "<group>"; };
@@ -2244,13 +2251,25 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		8435C5861B7A7981000401CA /* New Group */ = {
+		8435C5861B7A7981000401CA /* v2 Payloads */ = {
 			isa = PBXGroup;
 			children = (
 				8435C5871B7A799C000401CA /* VCTicketPayload.h */,
 				8435C5881B7A799C000401CA /* VCTicketPayload.m */,
 			);
-			name = "New Group";
+			name = "v2 Payloads";
+			sourceTree = "<group>";
+		};
+		8435C5931B7ABECE000401CA /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				8435C5941B7ABEE6000401CA /* VCMapConstants.h */,
+				8435C58D1B7ABE4C000401CA /* VCMapStyle.h */,
+				8435C58E1B7ABE4C000401CA /* VCMapStyle.m */,
+				844415361B72BBE5008C7898 /* VCMapHelper.h */,
+				844415371B72BBE5008C7898 /* VCMapHelper.m */,
+			);
+			name = Map;
 			sourceTree = "<group>";
 		};
 		844415311B6DB1FB008C7898 /* Commute HUDs */ = {
@@ -2313,7 +2332,7 @@
 		F45F7BF2193578AA00A94721 /* Api */ = {
 			isa = PBXGroup;
 			children = (
-				8435C5861B7A7981000401CA /* New Group */,
+				8435C5861B7A7981000401CA /* v2 Payloads */,
 				F45F7BF71935798B00A94721 /* VCApi.h */,
 				F45F7BF81935798B00A94721 /* VCApi.m */,
 				F4FE1B1E193D8FE500354886 /* VCPushApi.h */,
@@ -2371,6 +2390,7 @@
 		F45F7C131935A3A500A94721 /* Tickets */ = {
 			isa = PBXGroup;
 			children = (
+				8435C5931B7ABECE000401CA /* Map */,
 				F473F047195BA4E000D8C900 /* Menu */,
 				4F9ECEAD196619F500AD4229 /* Other Functionality */,
 				F473EFE919492CA400D8C900 /* Ride System */,
@@ -2511,8 +2531,6 @@
 				F4C6B1B61979229900F6C10B /* VCDebug.m */,
 				F45F7C0D1935976E00A94721 /* WRUtilities.h */,
 				F45F7C0E1935976E00A94721 /* WRUtilities.m */,
-				844415361B72BBE5008C7898 /* VCMapHelper.h */,
-				844415371B72BBE5008C7898 /* VCMapHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -3765,6 +3783,7 @@
 				36000CA81B72C185008E84AE /* VCReceiptsTableViewCell.m in Sources */,
 				841647E11B64A47D00CD20AC /* VCRideRequestCreated.m in Sources */,
 				841647E21B64A47D00CD20AC /* VCPaymentsViewController.m in Sources */,
+				8435C5921B7ABE4C000401CA /* VCMapStyle.m in Sources */,
 				841647E31B64A47D00CD20AC /* VCDriverInterestedRequest.m in Sources */,
 				841647E41B64A47D00CD20AC /* VCAbstractRideDetailsView.m in Sources */,
 				841647E51B64A47D00CD20AC /* HVTableView.m in Sources */,
@@ -3897,6 +3916,7 @@
 				36000CA61B72C185008E84AE /* VCReceiptsTableViewCell.m in Sources */,
 				841649171B658F4900CD20AC /* VCSupportViewController.m in Sources */,
 				841649181B658F4900CD20AC /* VCDriverOnBoardingViewController.m in Sources */,
+				8435C5901B7ABE4C000401CA /* VCMapStyle.m in Sources */,
 				841649191B658F4900CD20AC /* VCRideRequestCreated.m in Sources */,
 				8416491A1B658F4900CD20AC /* VCPaymentsViewController.m in Sources */,
 				8416491B1B658F4900CD20AC /* VCDriverInterestedRequest.m in Sources */,
@@ -4029,6 +4049,7 @@
 				36000CA51B72C185008E84AE /* VCReceiptsTableViewCell.m in Sources */,
 				4FFCF2CB19A5381900A4A24E /* VCSupportViewController.m in Sources */,
 				4FC758C819AA91410093DBEA /* VCDriverOnBoardingViewController.m in Sources */,
+				8435C58F1B7ABE4C000401CA /* VCMapStyle.m in Sources */,
 				F4C6B225197F06B100F6C10B /* VCRideRequestCreated.m in Sources */,
 				F4C6B227197F06B100F6C10B /* VCPaymentsViewController.m in Sources */,
 				F4C6B228197F06B100F6C10B /* VCDriverInterestedRequest.m in Sources */,
@@ -4161,6 +4182,7 @@
 				36000CA71B72C185008E84AE /* VCReceiptsTableViewCell.m in Sources */,
 				F4D8FE7D19B1745A00BC0B69 /* VCRideRequestCreated.m in Sources */,
 				F4D8FE7E19B1745A00BC0B69 /* VCPaymentsViewController.m in Sources */,
+				8435C5911B7ABE4C000401CA /* VCMapStyle.m in Sources */,
 				F4D8FE7F19B1745A00BC0B69 /* VCDriverInterestedRequest.m in Sources */,
 				F4D8FE8019B1745A00BC0B69 /* VCAbstractRideDetailsView.m in Sources */,
 				F4D8FE8119B1745A00BC0B69 /* HVTableView.m in Sources */,
