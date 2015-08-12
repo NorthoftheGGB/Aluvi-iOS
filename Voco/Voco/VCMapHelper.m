@@ -25,6 +25,13 @@
     l.longitude = location.longitude + kMapPadding;
     return l;
 }
++ (BOOL) validCoordinate: (CLLocationCoordinate2D) location {
+    if(location.latitude != 0 && location.longitude != 0) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
 
 
 

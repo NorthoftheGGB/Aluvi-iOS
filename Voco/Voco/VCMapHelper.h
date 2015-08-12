@@ -14,4 +14,6 @@
 + (CLLocationCoordinate2D) paddedNELocation:(CLLocationCoordinate2D) location;
 + (CLLocationCoordinate2D) paddedSWLocation:(CLLocationCoordinate2D) location;
 
++ (BOOL) validCoordinate: (CLLocationCoordinate2D) location;
+
 @end

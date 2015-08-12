@@ -16,6 +16,8 @@
 @property (nonatomic, strong) CLLocation * work;
 @property (nonatomic, strong) NSString * homePlaceName;
 @property (nonatomic, strong) NSString * workPlaceName;
+@property (nonatomic, strong) CLLocation * pickupZoneCenter;
+@property (nonatomic, strong) NSString * pickupZoneCenterPlaceName;
 @property (nonatomic, strong) NSString * pickupTime;
 @property (nonatomic, strong) NSString * returnTime;
 @property (nonatomic) BOOL driving;
@@ -32,6 +34,6 @@
 
 - (BOOL) coordinatesDifferFrom: (Route*) route;
 - (void) copyNonCoordinateFieldsFrom: (Route*) route;
-
+- (CLLocation *) getDefaultOrigin;
 
 @end

@@ -40,7 +40,7 @@
 #define API_GET_PAYMENTS @"rides/payments"
 #define API_GET_EARNINGS @"rides/earnings"
 
-#define API_ROUTE @"rides/route"
+#define API_ROUTE @"v2/rides/route"
 
 // geo API
 #define API_GEO_DRIVER_PATH @"geo/drivers/:objectId"

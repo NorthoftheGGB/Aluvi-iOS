@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -11,18 +11,8 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PqE-dA-J7r">
-                    <rect key="frame" x="0.0" y="19" width="320" height="43"/>
-                    <color key="backgroundColor" red="0.3532539577618119" green="1" blue="0.86404371248809386" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="CLOSE">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="didTapCloseButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="tpO-OA-pjD"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8E-fS-JXq">
-                    <rect key="frame" x="0.0" y="480" width="320" height="88"/>
+                    <rect key="frame" x="0.0" y="481" width="320" height="87"/>
                     <state key="normal" title="COMMUTE TOMORROW">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -31,7 +21,7 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nTS-dw-VlJ">
-                    <rect key="frame" x="0.0" y="236" width="320" height="88"/>
+                    <rect key="frame" x="0.0" y="237" width="320" height="87"/>
                     <subviews>
                         <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" continuous="NO" autorepeat="NO" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Mge-l1-NjZ">
                             <rect key="frame" x="218" y="29" width="94" height="29"/>
@@ -55,25 +45,50 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZD1-82-E7F">
-                    <rect key="frame" x="0.0" y="411" width="320" height="43"/>
+                    <rect key="frame" x="0.0" y="415" width="320" height="43"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I'll drive us there!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nzM-f7-MVQ">
-                            <rect key="frame" x="89" y="12" width="131" height="21"/>
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mlX-nL-eYT">
+                            <rect key="frame" x="237" y="6" width="51" height="31"/>
+                            <connections>
+                                <action selector="drivingSwitchValueDidChange:" destination="iN0-l3-epB" eventType="valueChanged" id="caD-Rn-iRZ"/>
+                            </connections>
+                        </switch>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I'll be the driver" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKg-IE-5JV">
+                            <rect key="frame" x="8" y="11" width="119" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CyT-ga-CI3">
-                            <rect key="frame" x="21" y="11" width="60" height="23"/>
-                            <state key="normal" image="driver-hov-toggle.png">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <state key="selected" image="driver-hov-toggle-select.png"/>
-                            <connections>
-                                <action selector="didTapDriverCheckbox:" destination="iN0-l3-epB" eventType="touchUpInside" id="69c-jJ-zl3"/>
-                            </connections>
-                        </button>
                     </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="43" id="dqq-BF-Ce3"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vlk-Ca-SsQ">
+                    <rect key="frame" x="0.0" y="149" width="320" height="88"/>
+                    <state key="normal" title="TO:">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapToButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="Mg7-eR-6q1"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PqE-dA-J7r">
+                    <rect key="frame" x="0.0" y="19" width="320" height="43"/>
+                    <color key="backgroundColor" red="0.3532539577618119" green="1" blue="0.86404371248809386" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="43" id="ch3-y6-heI"/>
+                    </constraints>
+                    <state key="normal" title="CLOSE">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapCloseButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="tpO-OA-pjD"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wLa-O1-azf">
+                    <rect key="frame" x="0.0" y="62" width="320" height="87"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nPe-c8-O55">
@@ -100,64 +115,43 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vlk-Ca-SsQ">
-                    <rect key="frame" x="0.0" y="148" width="320" height="88"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="88" id="vqq-xc-A8M"/>
-                    </constraints>
-                    <state key="normal" title="TO:">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="didTapToButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="Mg7-eR-6q1"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ors-N9-lLM">
-                    <rect key="frame" x="0.0" y="61" width="320" height="88"/>
-                    <state key="normal" title="FROM:">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="didTapFromButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="WZU-TT-vLl"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="vlk-Ca-SsQ" firstAttribute="trailing" secondItem="nPe-c8-O55" secondAttribute="trailing" id="0GN-SK-gop"/>
-                <constraint firstItem="vlk-Ca-SsQ" firstAttribute="trailing" secondItem="Ors-N9-lLM" secondAttribute="trailing" id="1f8-Bt-Uaa"/>
-                <constraint firstAttribute="trailing" secondItem="Ors-N9-lLM" secondAttribute="trailing" id="3zJ-FW-6xw"/>
-                <constraint firstItem="PqE-dA-J7r" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="19" id="4Gt-NV-f88"/>
-                <constraint firstAttribute="trailing" secondItem="v8E-fS-JXq" secondAttribute="trailing" id="8DU-17-lM9"/>
-                <constraint firstAttribute="bottom" secondItem="v8E-fS-JXq" secondAttribute="bottom" id="9gS-6P-DxC"/>
-                <constraint firstItem="vlk-Ca-SsQ" firstAttribute="trailing" secondItem="ZD1-82-E7F" secondAttribute="trailing" id="Cek-50-k7P"/>
-                <constraint firstItem="Ors-N9-lLM" firstAttribute="height" secondItem="vlk-Ca-SsQ" secondAttribute="height" id="JFf-Tw-rOu"/>
-                <constraint firstItem="vlk-Ca-SsQ" firstAttribute="leading" secondItem="Ors-N9-lLM" secondAttribute="leading" id="Jvx-9Q-Rgx"/>
-                <constraint firstItem="vlk-Ca-SsQ" firstAttribute="top" secondItem="Ors-N9-lLM" secondAttribute="bottom" constant="-1" id="Mu5-Hv-3jZ"/>
-                <constraint firstItem="vlk-Ca-SsQ" firstAttribute="leading" secondItem="ZD1-82-E7F" secondAttribute="leading" id="RoP-P9-SWX"/>
-                <constraint firstItem="ZD1-82-E7F" firstAttribute="height" secondItem="PqE-dA-J7r" secondAttribute="height" id="UN4-qa-nvc"/>
-                <constraint firstItem="Ors-N9-lLM" firstAttribute="height" secondItem="v8E-fS-JXq" secondAttribute="height" id="ZfV-lM-sQn"/>
-                <constraint firstItem="vlk-Ca-SsQ" firstAttribute="trailing" secondItem="nTS-dw-VlJ" secondAttribute="trailing" id="ank-Xo-BPt"/>
-                <constraint firstItem="ZD1-82-E7F" firstAttribute="top" secondItem="nPe-c8-O55" secondAttribute="bottom" constant="-1" id="cNn-As-bTN"/>
-                <constraint firstItem="vlk-Ca-SsQ" firstAttribute="leading" secondItem="nTS-dw-VlJ" secondAttribute="leading" id="dFE-Pa-Rlq"/>
-                <constraint firstItem="nTS-dw-VlJ" firstAttribute="top" secondItem="vlk-Ca-SsQ" secondAttribute="bottom" id="dMF-Dg-mpV"/>
-                <constraint firstItem="vlk-Ca-SsQ" firstAttribute="leading" secondItem="nPe-c8-O55" secondAttribute="leading" id="jOG-4Q-nX7"/>
-                <constraint firstItem="Ors-N9-lLM" firstAttribute="top" secondItem="PqE-dA-J7r" secondAttribute="bottom" constant="-1" id="koz-pP-G3b"/>
-                <constraint firstItem="Ors-N9-lLM" firstAttribute="height" secondItem="nTS-dw-VlJ" secondAttribute="height" id="l5l-wc-gVR"/>
-                <constraint firstAttribute="trailing" secondItem="PqE-dA-J7r" secondAttribute="trailing" id="oY0-BO-XZ4"/>
-                <constraint firstItem="v8E-fS-JXq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pQr-Yo-yF7"/>
-                <constraint firstItem="vlk-Ca-SsQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="148" id="qFf-Op-50i"/>
-                <constraint firstItem="nPe-c8-O55" firstAttribute="top" secondItem="nTS-dw-VlJ" secondAttribute="bottom" id="sd7-Xi-qCQ"/>
-                <constraint firstItem="Ors-N9-lLM" firstAttribute="height" secondItem="nPe-c8-O55" secondAttribute="height" id="tfx-zS-S8p"/>
-                <constraint firstItem="PqE-dA-J7r" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="yVN-by-gQk"/>
-                <constraint firstItem="Ors-N9-lLM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="yzQ-7X-5Kc"/>
+                <constraint firstItem="vlk-Ca-SsQ" firstAttribute="height" secondItem="nPe-c8-O55" secondAttribute="height" id="4mB-1w-bEe"/>
+                <constraint firstItem="wLa-O1-azf" firstAttribute="top" secondItem="PqE-dA-J7r" secondAttribute="bottom" id="8wj-jP-el5"/>
+                <constraint firstAttribute="trailing" secondItem="wLa-O1-azf" secondAttribute="trailing" id="AMb-9r-1Zh"/>
+                <constraint firstItem="PqE-dA-J7r" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="C0X-h8-B6q"/>
+                <constraint firstAttribute="trailing" secondItem="nTS-dw-VlJ" secondAttribute="trailing" id="EsZ-QB-yBv"/>
+                <constraint firstAttribute="trailing" secondItem="v8E-fS-JXq" secondAttribute="trailing" id="HKl-dT-tn6"/>
+                <constraint firstItem="vlk-Ca-SsQ" firstAttribute="height" secondItem="nTS-dw-VlJ" secondAttribute="height" id="Hwa-UK-mFS"/>
+                <constraint firstItem="ZD1-82-E7F" firstAttribute="top" secondItem="nPe-c8-O55" secondAttribute="bottom" constant="3" id="P25-qN-Ln2"/>
+                <constraint firstAttribute="bottom" secondItem="v8E-fS-JXq" secondAttribute="bottom" id="Rw6-HU-imK"/>
+                <constraint firstItem="nTS-dw-VlJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Ueu-g3-vUB"/>
+                <constraint firstItem="ZD1-82-E7F" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Uf6-cM-1d4"/>
+                <constraint firstItem="nTS-dw-VlJ" firstAttribute="top" secondItem="vlk-Ca-SsQ" secondAttribute="bottom" id="VJ8-nR-h8O"/>
+                <constraint firstItem="v8E-fS-JXq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="WlR-Ng-I1L"/>
+                <constraint firstAttribute="trailing" secondItem="nPe-c8-O55" secondAttribute="trailing" id="aCi-oc-zZd"/>
+                <constraint firstAttribute="trailing" secondItem="vlk-Ca-SsQ" secondAttribute="trailing" id="aZq-hs-YdD"/>
+                <constraint firstItem="nPe-c8-O55" firstAttribute="top" secondItem="nTS-dw-VlJ" secondAttribute="bottom" id="bYU-rw-s72"/>
+                <constraint firstItem="wLa-O1-azf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dsZ-CO-Nex"/>
+                <constraint firstItem="vlk-Ca-SsQ" firstAttribute="top" secondItem="wLa-O1-azf" secondAttribute="bottom" id="efG-fK-gZ4"/>
+                <constraint firstItem="vlk-Ca-SsQ" firstAttribute="height" secondItem="wLa-O1-azf" secondAttribute="height" id="gwZ-pQ-cQf"/>
+                <constraint firstItem="vlk-Ca-SsQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hcq-1M-cjb"/>
+                <constraint firstItem="vlk-Ca-SsQ" firstAttribute="height" secondItem="v8E-fS-JXq" secondAttribute="height" id="oQX-LK-maa"/>
+                <constraint firstAttribute="trailing" secondItem="PqE-dA-J7r" secondAttribute="trailing" id="rkg-Y9-o61"/>
+                <constraint firstAttribute="trailing" secondItem="ZD1-82-E7F" secondAttribute="trailing" id="sWi-2Y-PvH"/>
+                <constraint firstItem="PqE-dA-J7r" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="19" id="sem-zk-24q"/>
+                <constraint firstItem="nPe-c8-O55" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vhg-7o-IcT"/>
+                <constraint firstItem="v8E-fS-JXq" firstAttribute="top" secondItem="ZD1-82-E7F" secondAttribute="bottom" constant="23" id="ysp-RV-YD0"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="driverCheckbox" destination="CyT-ga-CI3" id="4j8-QP-n75"/>
-                <outlet property="driverCheckboxLabel" destination="nzM-f7-MVQ" id="1XT-v4-Ate"/>
+                <outlet property="drivingSwitch" destination="mlX-nL-eYT" id="wyh-Sq-cEc"/>
                 <outlet property="fromButton" destination="Ors-N9-lLM" id="6i8-lX-DcK"/>
+                <outlet property="originView" destination="wLa-O1-azf" id="b76-1I-f96"/>
+                <outlet property="pickupZonebutton" destination="4h6-KT-Xcm" id="z7U-VY-rIX"/>
                 <outlet property="scheduleButton" destination="v8E-fS-JXq" id="lbT-7W-vxH"/>
                 <outlet property="toButton" destination="vlk-Ca-SsQ" id="mBC-Qm-zfs"/>
                 <outlet property="toHomeTimeLabel" destination="zEo-mK-oC3" id="MQY-ur-1Gf"/>
@@ -167,9 +161,25 @@
             </connections>
             <point key="canvasLocation" x="234" y="407"/>
         </view>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4h6-KT-Xcm">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <state key="normal" title="Pickup Zone:">
+                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <connections>
+                <action selector="didTapPickupZoneButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="UwZ-Yo-Kj9"/>
+            </connections>
+        </button>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ors-N9-lLM">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <state key="normal" title="PREFERRED PICKUP POINT:">
+                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <connections>
+                <action selector="didTapFromButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="WZU-TT-vLl"/>
+            </connections>
+        </button>
     </objects>
-    <resources>
-        <image name="driver-hov-toggle-select.png" width="23" height="23"/>
-        <image name="driver-hov-toggle.png" width="23" height="23"/>
-    </resources>
 </document>

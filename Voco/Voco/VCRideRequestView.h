@@ -10,8 +10,7 @@
 @import MapKit;
 #import "Route.h"
 
-#define kHomeType 3000
-#define kWorkType 3001
+
 
 @class VCRideRequestView;
 

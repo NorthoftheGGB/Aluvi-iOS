@@ -9,6 +9,8 @@
 #import "VCRideRequestView.h"
 @import AddressBookUI;
 #import "VCUserStateManager.h"
+#import <Masonry.h>
+#import "VCMapConstants.h"
 
 @interface VCRideRequestView ()
 
@@ -18,9 +20,11 @@
 @property (strong, nonatomic) IBOutlet UILabel *toWorkTimeLabel;
 @property (strong, nonatomic) IBOutlet UIStepper *toHomeTimeStepper;
 @property (strong, nonatomic) IBOutlet UILabel *toHomeTimeLabel;
-@property (strong, nonatomic) IBOutlet UIButton *driverCheckbox;
 @property (strong, nonatomic) IBOutlet UIButton *scheduleButton;
 @property (strong, nonatomic) IBOutlet UILabel *driverCheckboxLabel;
+@property (strong, nonatomic) IBOutlet UISwitch *drivingSwitch;
+@property (strong, nonatomic) IBOutlet UIButton *pickupZonebutton;
+@property (strong, nonatomic) IBOutlet UIView *originView;
 
 
 // data
@@ -62,29 +66,21 @@
     
     _commutePreferencesHaveChanged = NO;
     
-    [_driverCheckbox setSelected:NO];
+    [_drivingSwitch setOn:[[VCUserStateManager instance] isHovDriver]];
     
-    if(![[VCUserStateManager instance] isHovDriver]){
-        _driverCheckbox.hidden = YES;
-        _driverCheckboxLabel.hidden = YES;
-    } else {
-        _driverCheckbox.hidden = NO;
-        _driverCheckboxLabel.hidden = NO;
-    }
-
 }
 
 - (void) updateWithRoute:(Route *) route {
+   
+    _route = [route copy];
     _toWorkTimeLabel.text = route.pickupTime;
     _toHomeTimeLabel.text = route.returnTime;
     [self updateFromButton:route.homePlaceName];
     [self updateToButton:route.workPlaceName];
-    if(route.driving){
-        [_driverCheckbox setSelected:YES];
-    } else {
-        [_driverCheckbox setSelected:NO];
-    }
-    _route = [route copy]; // copy, not retain
+    [self updatePickupZoneButton:route.pickupZoneCenterPlaceName];
+    [_drivingSwitch setOn:route.driving];
+    [self updateInterfaceForDriving: route.driving];
+
 }
 
 - (void) setEditable:(BOOL) editable {
@@ -92,21 +88,78 @@
         [_scheduleButton setTitle:@"Commute Tomorrow" forState:UIControlStateNormal];
         _fromButton.enabled = YES;
         _toButton.enabled = YES;
+        _pickupZonebutton.enabled = YES;
         _toHomeTimeStepper.enabled = YES;
         _toWorkTimeStepper.enabled = YES;
-        _driverCheckbox.enabled= YES;
+        _drivingSwitch.enabled= YES;
         _cancelable = NO;
     } else {
         [_scheduleButton setTitle:@"Cancel Commute" forState:UIControlStateNormal];
         _fromButton.enabled = NO;
         _toButton.enabled = NO;
+        _pickupZonebutton.enabled = NO;
         _toHomeTimeStepper.enabled = NO;
         _toWorkTimeStepper.enabled = NO;
-        _driverCheckbox.enabled= NO;
+        _drivingSwitch.enabled= NO;
         _cancelable = YES;
     }
 }
 
+- (void) updateInterfaceForDriving:(BOOL) driving {
+    if(driving){
+        [_fromButton removeFromSuperview];
+        
+        [_originView addSubview:_pickupZonebutton];
+        
+        [_pickupZonebutton mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_originView.mas_right);
+            make.top.equalTo(_originView.mas_top);
+            make.bottom.equalTo(_originView.mas_bottom);
+            make.width.mas_equalTo(_originView.frame.size.width);
+        }];
+        [_pickupZonebutton layoutIfNeeded];
+        
+        [UIView animateWithDuration:.3 animations:^{
+            [_pickupZonebutton mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(_originView.mas_left);
+                make.top.equalTo(_originView.mas_top);
+                make.right.equalTo(_originView.mas_right);
+                make.bottom.equalTo(_originView.mas_bottom);
+            }];
+            [_pickupZonebutton layoutIfNeeded];
+
+        } completion:^(BOOL finished) {
+            [_fromButton removeFromSuperview];
+        }];
+        
+    } else {
+        [_pickupZonebutton removeFromSuperview];
+        
+        [_originView addSubview:_fromButton];
+        
+        [_fromButton mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_originView.mas_right);
+            make.top.equalTo(_originView.mas_top);
+            make.bottom.equalTo(_originView.mas_bottom);
+            make.width.mas_equalTo(_originView.frame.size.width);
+        }];
+        [_fromButton layoutIfNeeded];
+
+        [UIView animateWithDuration:.3 animations:^{
+            [_fromButton mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(_originView.mas_left);
+                make.top.equalTo(_originView.mas_top);
+                make.right.equalTo(_originView.mas_right);
+                make.bottom.equalTo(_originView.mas_bottom);
+            }];
+            [_fromButton layoutIfNeeded];
+            
+        } completion:^(BOOL finished) {
+            [_pickupZonebutton removeFromSuperview];
+        }];
+    }
+
+}
 
 
 - (IBAction)didTapCloseButton:(id)sender {
@@ -141,21 +194,20 @@
     [_delegate rideRequestView:self didTapEditLocation:CLLocationCoordinate2DMake(_route.work.coordinate.latitude, _route.work.coordinate.longitude) locationName:@"Work" type:kWorkType];
 }
 
-- (IBAction)didTapDriverCheckbox:(id)sender {
-    
-    if (_driverCheckbox.selected == YES){
-        _driverCheckbox.selected = NO;
-        _route.driving = NO;
-        _commutePreferencesHaveChanged = YES;
-
-    } else {
-        _driverCheckbox.selected = YES;
-        _route.driving = YES;
-        _commutePreferencesHaveChanged = YES;
-    }
-    
+- (IBAction)didTapPickupZoneButton:(id)sender {
+    [_delegate rideRequestView:self didTapEditLocation:CLLocationCoordinate2DMake(_route.pickupZoneCenter.coordinate.latitude, _route.pickupZoneCenter.coordinate.longitude) locationName:@"Pickup Zone" type:kPickupZoneType];
 }
 
+
+- (IBAction)drivingSwitchValueDidChange:(id)sender {
+    _route.driving = _drivingSwitch.on;
+    _commutePreferencesHaveChanged = YES;
+    
+    // Check if they are set up as a driver / rider
+    // set switch back if they don't enter the proper data
+    
+    [self updateInterfaceForDriving:_drivingSwitch.on];
+}
 
 - (IBAction)morningPickupTimeValueChanged:(UIStepper *)sender {
     int value = [sender value];
@@ -190,6 +242,12 @@
             _commutePreferencesHaveChanged = YES;
         }
             break;
+        case kPickupZoneType:
+            _route.pickupZoneCenter = [[CLLocation alloc] initWithLatitude:placemark.location.coordinate.latitude longitude:placemark.location.coordinate.longitude];
+            _route.pickupZoneCenterPlaceName = ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);
+            [self updatePickupZoneButton:_route.pickupZoneCenterPlaceName];
+            _commutePreferencesHaveChanged = YES;
+            break;
             
         default:
             break;
@@ -200,7 +258,11 @@
 - (void) updateFromButton:(NSString *) addressString{
     NSString * title = [NSString stringWithFormat:@"From: %@", addressString];
     [_fromButton setTitle:title forState:UIControlStateNormal];
+}
 
+- (void) updatePickupZoneButton:(NSString *) addressString{
+    NSString * title = [NSString stringWithFormat:@"Within 2 Miles Of: %@", addressString];
+    [_pickupZonebutton setTitle:title forState:UIControlStateNormal];
 }
 
 - (void) updateToButton:(NSString *) addressString{
