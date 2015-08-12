@@ -39,6 +39,7 @@
                     </view>
                 </subviews>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="badgeView" destination="VfQ-SH-r9T" id="Ddt-gr-Ybj"/>
                 <outlet property="iconImageView" destination="iHY-2v-9Ck" id="cQc-DP-bc2"/>
