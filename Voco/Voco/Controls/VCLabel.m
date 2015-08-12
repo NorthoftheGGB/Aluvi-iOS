@@ -10,22 +10,13 @@
 
 @implementation VCLabel
 
-@synthesize fontSize;
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        fontSize = [NSNumber numberWithInt:13];
-    }
-    return self;
-}
 
 
 - (void)awakeFromNib{
     
 
-    UIFont *customFont = [UIFont fontWithName:@"Bryant-Regular" size:[fontSize intValue] ];
+    UIFont *customFont = [UIFont fontWithName:@"Bryant-Regular" size:14 ];
 
     
     
@@ -34,4 +25,4 @@
 }
 
 
-@end
+@end 
