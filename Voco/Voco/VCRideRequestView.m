@@ -11,6 +11,7 @@
 #import "VCUserStateManager.h"
 #import <Masonry.h>
 #import "VCMapConstants.h"
+#import "VCStyle.h"
 
 @interface VCRideRequestView ()
 
@@ -42,7 +43,19 @@
 
 
 
+- (void) setGradient {
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = self.bounds;
+    gradient.colors = [VCStyle gradientColors];
+    gradient.startPoint = CGPointMake(0.0, 0.5);
+    gradient.endPoint = CGPointMake(1.0, 0.5);
+    [self.layer insertSublayer:gradient atIndex:0];
+}
+
+
 -(void)awakeFromNib{
+    
+        [self setGradient];
     
     _morningOptions = @[
                         @"7:00", @"7:15", @"7:30", @"7:45",
@@ -69,6 +82,10 @@
     [_drivingSwitch setOn:[[VCUserStateManager instance] isHovDriver]];
     
 }
+
+
+
+
 
 - (void) updateWithRoute:(Route *) route {
    
