@@ -38,7 +38,7 @@
 - (void) showHamburgerBarButton {
     UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage: [UIImage imageNamed:@"hamburger"] style:UIBarButtonItemStylePlain target:self action:@selector(didTapHamburger)];
     self.navigationItem.leftBarButtonItem = hamburgerButton;
-    self.navigationItem.leftBarButtonItem.tintColor= [VCStyle greyColor];
+    self.navigationItem.leftBarButtonItem.tintColor= [VCStyle drkBlueColor];
     
 }
 

@@ -29,11 +29,11 @@
 }
 
 - (void) select {
-    self.backgroundImageView.image = [UIImage imageNamed:@"menu-item-bg-select"];
+//    self.backgroundImageView.image = [UIImage imageNamed:@"menu-item-bg-select"];
 }
 
 - (void) deselect {
-    self.backgroundImageView.image = [UIImage imageNamed:@"menu-item-bg"];
+//    self.backgroundImageView.image = [UIImage imageNamed:@"menu-item-bg"];
 }
 
 

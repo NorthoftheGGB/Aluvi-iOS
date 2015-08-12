@@ -29,6 +29,7 @@
 #import "VCUtilities.h"
 #import "VCNotifications.h"
 #import "VCReceiptViewController.h"
+#import "VCStyle.h"
 
 
 // These ones go in the array
@@ -101,10 +102,22 @@
     return self;
 }
 
+- (void) setGradient {
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = self.view.bounds;
+    gradient.colors = [VCStyle gradientColors];
+    gradient.startPoint = CGPointMake(0.0, 0.5);
+    gradient.endPoint = CGPointMake(1.0, 0.5);
+    [self.view.layer insertSublayer:gradient atIndex:0];
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self setGradient];
+    
     
     // Listen for notifications about updated rides
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scheduleUpdated:) name:kNotificationScheduleUpdated object:nil];
@@ -181,7 +194,7 @@
     long row = [indexPath row];
     UITableViewCell * cell;
     
-    UIImageView *tempImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"menu-bg@2x.png"]];
+    UIImageView *tempImageView;
     [tempImageView setFrame:self.tableView.frame];
     self.tableView.backgroundView = tempImageView;
     
@@ -204,15 +217,6 @@
         }
             break;
             
-        /*case kProfileCellInteger:
-        {
-            VCMenuItemTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemTableViewCell" class:[VCMenuItemTableViewCell class]];
-            menuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-profile-icon"];
-            menuItemTableViewCell.menuItemLabel.text = @"Profile";
-            menuItemTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell = menuItemTableViewCell;
-        }
-            break;*/
             
         case kScheduleCellInteger:
         {
@@ -253,7 +257,7 @@
                 subMenuItemTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
             }
 
-            cell = subMenuItemTableViewCell;
+          //  cell = subMenuItemTableViewCell;
         }
             break;
             
