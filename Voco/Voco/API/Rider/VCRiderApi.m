@@ -16,6 +16,7 @@
 #import "VCUserStateManager.h"
 #import "VCRequestUpdate.h"
 #import "Payment.h"
+#import "VCPickupPoint.h"
 
 
 @implementation VCRiderApi
@@ -72,6 +73,16 @@
                                                 statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:responseDescriptor];
     }
+    {
+        RKObjectMapping * mapping = [VCPickupPoint getMapping];
+        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping
+                                                                                                 method:RKRequestMethodGET
+                                                                                            pathPattern:API_GET_PICKUP_POINTS keyPath:nil
+                                                                                            statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor];
+        
+    }
+
 }
 
 + (void) requestRide:(Ticket *) ride
@@ -243,6 +254,20 @@
                                                }];
 }
 
+
++ (void) getPickupPointsWithSuccess:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                 failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+  
+    [[RKObjectManager sharedManager]  getObjectsAtPath:API_GET_PICKUP_POINTS
+                                            parameters:nil
+                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                   success(operation, mappingResult);
+                                               }
+                                               failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                   failure(operation, error);
+                                               }];
+
+}
 
 
 

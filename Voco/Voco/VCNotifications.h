@@ -12,8 +12,8 @@
 #define kNotificationTypeTripFulfilled @"trip_fulfilled"
 #define kNotificationTypeTripUnfulfilled @"trip_unfulfilled"
 #define kNotificationTypeFareComplete @"fare_complete"
-
 #define kNotificationTypeProfileUpdated @"profile_updated"
+#define kNotificationScheduleNeedsRefresh @"schedule_needs_refresh"
 
 @interface VCNotifications : NSObject
 

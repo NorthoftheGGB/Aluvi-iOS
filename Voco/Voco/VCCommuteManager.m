@@ -10,6 +10,7 @@
 #import "Ticket.h"
 #import "VCRiderApi.h"
 #import "VCDriverApi.h"
+#import "VCNotifications.h"
 
 // TODO refactor these out of this class
 #import "VCApi.h"
@@ -61,6 +62,14 @@ static VCCommuteManager * instance;
 
     }
     return instance;
+}
+
+- (id) init {
+    self = [super init];
+    if(self != nil){
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshScheduleInBackground:) name:kNotificationScheduleNeedsRefresh object:nil];
+    }
+    return self;
 }
 
 
@@ -189,6 +198,14 @@ static VCCommuteManager * instance;
 }
 
 
+- (void) refreshScheduleInBackground:(NSNotification *) notifications {
+    [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        //
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        //
+    }];
+}
+
 
 - (void) requestRidesFor:(NSDate *) tomorrow success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure  {
     // Look for pre-existing request for tomorrow, error if it exists
@@ -224,7 +241,17 @@ static VCCommuteManager * instance;
         [WRUtilities criticalError:error];
     }
     if([rides count] == 2){
-        [WRUtilities subcriticalErrorWithString:@"There are already rides scheduled for this day, this is a system error but can be recovered by canceling your commuter rides and requesting again"];
+        [UIAlertView showWithTitle:@"Recoverable Error" message:@"There are already rides scheduled for this day, this is a system error but can be recovered by canceling your commuter rides and requesting again" cancelButtonTitle:@"Do Nothing" otherButtonTitles:@[@"Clear"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            if(buttonIndex == 1){
+                
+                [self cancelTrip: ((Ticket *)rides[0]).trip_id success:^{
+                     [UIAlertView showWithTitle:@"OK" message:@"OK" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                } failure:^{
+                    [WRUtilities criticalError:error];
+                }];
+               
+            }
+        }];
         failure();
     };
     if([rides count] == 1){
@@ -241,10 +268,10 @@ static VCCommuteManager * instance;
     
     Ticket * homeToWorkRide = (Ticket *) [NSEntityDescription insertNewObjectForEntityForName:@"Ticket" inManagedObjectContext:[VCCoreData managedObjectContext]];
     homeToWorkRide.rideDate = tomorrow;
-    homeToWorkRide.originLatitude = [NSNumber numberWithDouble: _route.home.coordinate.latitude];
-    homeToWorkRide.originLongitude = [NSNumber numberWithDouble: _route.home.coordinate.longitude];
-    homeToWorkRide.originPlaceName = _route.homePlaceName;
-    homeToWorkRide.originShortName = @"Home";
+    homeToWorkRide.originLatitude = [NSNumber numberWithDouble: [_route getDefaultOrigin].coordinate.latitude];
+    homeToWorkRide.originLongitude = [NSNumber numberWithDouble: [_route getDefaultOrigin].coordinate.longitude];
+    homeToWorkRide.originPlaceName = @"Pickup";
+    homeToWorkRide.originShortName = @"Pickup";
     homeToWorkRide.destinationLatitude = [NSNumber numberWithDouble: _route.work.coordinate.latitude];
     homeToWorkRide.destinationLongitude = [NSNumber numberWithDouble: _route.work.coordinate.longitude];
     homeToWorkRide.destinationPlaceName = _route.workPlaceName;
@@ -265,10 +292,10 @@ static VCCommuteManager * instance;
     workToHomeRide.originLongitude = [NSNumber numberWithDouble: _route.work.coordinate.longitude];
     workToHomeRide.originPlaceName = _route.workPlaceName;
     workToHomeRide.originShortName = @"Work";
-    workToHomeRide.destinationLatitude = [NSNumber numberWithDouble: _route.home.coordinate.latitude];
-    workToHomeRide.destinationLongitude = [NSNumber numberWithDouble: _route.home.coordinate.longitude];
-    workToHomeRide.destinationPlaceName = _route.homePlaceName;
-    workToHomeRide.destinationShortName = @"Home";
+    workToHomeRide.destinationLatitude = [NSNumber numberWithDouble: [_route getDefaultOrigin].coordinate.latitude];
+    workToHomeRide.destinationLongitude = [NSNumber numberWithDouble: [_route getDefaultOrigin].coordinate.longitude];
+    workToHomeRide.destinationPlaceName = @"Drop Off";
+    workToHomeRide.destinationShortName = @"Drop Off";
     workToHomeRide.rideType = kRideRequestTypeCommuter;
     workToHomeRide.state = kCreatedState;
     workToHomeRide.driving = [NSNumber numberWithBool:_route.driving];
@@ -330,7 +357,7 @@ static VCCommuteManager * instance;
         if(ride.fare_id != nil && [ride.driving boolValue] ){
             [VCDriverApi fareCancelledByDriver:ride.fare_id success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                 deleteRide(ride);
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"schedule_updated" object:nil userInfo:@{}];
+                [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationScheduleUpdated object:nil userInfo:@{}];
                 success();
             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                 [WRUtilities criticalError:error];
@@ -339,7 +366,7 @@ static VCCommuteManager * instance;
         } else {
             [VCRiderApi cancelRide:ride success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                 deleteRide(ride);
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"schedule_updated" object:nil userInfo:@{}];
+                [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationScheduleUpdated object:nil userInfo:@{}];
                 success();
             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                 [WRUtilities criticalError:error];
@@ -348,14 +375,14 @@ static VCCommuteManager * instance;
         }
     } else {
         deleteRide(ride);
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"schedule_updated" object:nil userInfo:@{}];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationScheduleUpdated object:nil userInfo:@{}];
         success();
     }
 }
 
 - (void) cancelTrip:(NSNumber *) tripId success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure {
     [VCRiderApi cancelTrip:tripId success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"schedule_updated" object:nil userInfo:@{}];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationScheduleUpdated object:nil userInfo:@{}];
         success();
     } failure:failure];
 

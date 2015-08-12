@@ -46,6 +46,10 @@
 #import "VCMapConstants.h"
 #import "VCStyle.h"
 
+// provisional
+#import "VCRiderApi.h"
+#import "VCPickupPoint.h"
+
 #define kCommuteStateNone 0
 #define kCommuteStatePending 1
 #define kCommuteStateScheduled 2
@@ -72,6 +76,9 @@
 @property (strong, nonatomic) CLLocation * lastLocation;
 @property (nonatomic) BOOL initialZoomComplete;
 
+// provisional
+@property (strong, nonatomic) NSArray * pickupPoints;
+@property (strong, nonatomic) NSMutableArray * pickupPointAnnotations;
 
 - (void) clearMap;
 - (void) clearRoute;
@@ -143,6 +150,14 @@
         [self loadRelevantTicket];
     }
     
+    // Provisional
+    [VCRiderApi getPickupPointsWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        _pickupPoints = [mappingResult array];
+        [self buildPickupPointAnnotations];
+        [self addPickupPointAnnotations];
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [WRUtilities criticalError:error];
+    }];
 }
 
 
@@ -572,7 +587,7 @@
         case kCommuteStatePending:
         {
             [button setTitle:@"COMMUTE PENDING" forState:UIControlStateNormal];
-            [button addTarget:self action:@selector(didTapScheduleMenuButton:) forControlEvents:UIControlEventTouchUpInside];
+            [button addTarget:self action:@selector(didTapReviewScheduleMenuButton:) forControlEvents:UIControlEventTouchUpInside];
             button.layer.backgroundColor = [VCStyle drkBlueColor].CGColor;
             button.layer.borderColor = [VCStyle drkBlueColor].CGColor;
             [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -581,7 +596,7 @@
         case kCommuteStateScheduled:
         {
             [button setTitle:@"CANCEL RIDE" forState:UIControlStateNormal];
-            [button addTarget:self action:@selector(didTapScheduleMenuButton:) forControlEvents:UIControlEventTouchUpInside];
+            [button addTarget:self action:@selector(didTapCancelTicket:) forControlEvents:UIControlEventTouchUpInside];
             break;
         }
         default:
@@ -614,6 +629,10 @@
             [self addOriginAnnotation: [_route getDefaultOrigin]];
             [self addDestinationAnnotation: _route.work];
         }
+        
+        //provisional
+        //add pickup points
+        [self addPickupPointAnnotations];
         
     } else if([@[kCreatedState, kRequestedState] containsObject:_ticket.state]){
         
@@ -719,6 +738,7 @@
         [self.map removeAnnotation:_activeAnnotation];
         _activeAnnotation = nil;
     }
+    [self.map removeAnnotations:_pickupPointAnnotations];
     [self clearRoute];
 }
 
@@ -795,7 +815,7 @@
 }
 
 
-- (void) didTapCancel: (id)sender {
+- (void) didTapCancelTicket: (id)sender {
     if(_ticket == nil) {
         [[VCCommuteManager instance] reset];
         [self resetInterfaceToHome];
@@ -903,6 +923,23 @@
     [self.map addAnnotation:_dropOffPointAnnotation];
 }
 
+- (void)buildPickupPointAnnotations {
+    if(_pickupPoints != nil){
+        _pickupPointAnnotations = [[NSMutableArray alloc] init];
+        for (VCPickupPoint* pickupPoint in _pickupPoints)
+        {
+            RMPointAnnotation * annotation = [[RMPointAnnotation alloc] initWithMapView:self.map
+                                            coordinate:CLLocationCoordinate2DMake(pickupPoint.location.coordinate.latitude, pickupPoint.location.coordinate.longitude)
+                                                                               andTitle:[NSString stringWithFormat:@"%@", pickupPoint.numberOfRiders]];
+            annotation.userInfo = kPickupPointsAnnotationType;
+            [_pickupPointAnnotations addObject:annotation];
+        }
+    }
+}
+
+- (void)addPickupPointAnnotations {
+    [self.map addAnnotations:_pickupPointAnnotations];
+}
 
 ///////////
 ///////////  Route and Scheduling
@@ -1077,8 +1114,10 @@
 
 
 - (void) rideRequestViewDidTapClose: (VCRideRequestView *) rideRequestView withChanges: (Route *) route {
-    _route = [route copy];
-    [_route clearCachedPath];  // TODO: Route should invalidate its own cache on coordinate changes
+    if([_route coordinatesDifferFrom:route] || route.driving != _route.driving){
+        [route clearCachedPath];
+    }
+    _route = [route copy];  // TODO: Route should invalidate its own cache on coordinate changes
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[VCCommuteManager instance] storeCommuterSettings:_route
@@ -1093,6 +1132,27 @@
                                                    [self updateTicketInterface];
 
                                                }];
+}
+
+- (void)rideRequestView:(VCRideRequestView *)rideRequestView didTapScheduleCommute:(Route *)route {
+    if([_route coordinatesDifferFrom:route] || route.driving != _route.driving){
+        [route clearCachedPath];
+    }
+    _route = [route copy];
+    
+    
+    [[VCCommuteManager instance]storeCommuterSettings:_route
+                                              success:^{
+                                                  [self scheduleRide];
+                                                  [self removeRideRequestView:rideRequestView];
+                                                  [self updateTicketInterface];
+                                                  
+                                              } failure:^(NSString *errorMessage) {
+                                                  [UIAlertView showWithTitle:@"Error" message:errorMessage cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                                              }];
+    
+    
+    
 }
 
 
@@ -1152,21 +1212,6 @@
     
 }
 
-- (void)rideRequestView:(VCRideRequestView *)rideRequestView didTapScheduleCommute:(Route *)route {
-    _route = [route copy];
-    [[VCCommuteManager instance]storeCommuterSettings:_route
-                                              success:^{
-                                                  [self scheduleRide];
-                                                  [self removeRideRequestView:rideRequestView];
-                                                  [self updateTicketInterface];
-                                                  
-                                              } failure:^(NSString *errorMessage) {
-                                                    [UIAlertView showWithTitle:@"Error" message:errorMessage cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
-                                              }];
-    
-    
-    
-}
 
 - (void) rideRequestViewDidCancelCommute:(VCRideRequestView *)rideRequestView{
     [UIAlertView showWithTitle:@"Cancel Trip?" message:@"Are you sure you want to cancel this trip?" cancelButtonTitle:@"No!" otherButtonTitles:@[@"Yes, Cancel this trip"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
@@ -1409,7 +1454,10 @@
         circle.fillColor = [UIColor colorWithRed:.5 green:.466 blue:.733 alpha:.25];
         circle.lineWidthInPixels = 5.0;
         return circle;
-        
+    } else if ([annotation.userInfo isKindOfClass:[NSString class]] &&
+        [annotation.userInfo isEqualToString:kPickupPointsAnnotationType]){
+        RMMarker * marker = [[RMMarker alloc] initWithUIImage:[UIImage imageNamed:@"pin"]];
+        return marker;
     } else if ([annotation.title isEqualToString:@"pedestrian"]) {
         RMShape *shape = [[RMShape alloc] initWithView:mapView];
         shape.lineColor = [[UIColor redColor] colorWithAlphaComponent:0.7];

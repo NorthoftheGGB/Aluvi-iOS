@@ -33,6 +33,7 @@
 #define API_POST_RIDE_PICKUP @"v2/rides/pickup"
 #define API_POST_RIDE_COMPLETED @"v2/rides/arrived"
 #define API_DELETE_TRIP @"rides/trips/:trip_id"
+#define API_GET_PICKUP_POINTS @"v2/rides/pickup_points"
 
 #define API_GET_ACTIVE_TICKETS @"rides/tickets"
 #define API_GET_ACTIVE_FARES @"rides/fares"

@@ -7,15 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VCCenterViewBaseViewController.h"
 
-@interface VCCarInfoViewController : UIView
+@interface VCCarInfoViewController : VCCenterViewBaseViewController
 
-@property (strong, nonatomic) IBOutlet UITextField *liscencePlateField;
-@property (strong, nonatomic) IBOutlet UITextField *carInfoField;
-
-
-
-- (IBAction)liscencePlateFieldDidEndOnExit:(id)sender;
-- (IBAction)carInfoFieldDidEndOnExit:(id)sender;
 
 @end

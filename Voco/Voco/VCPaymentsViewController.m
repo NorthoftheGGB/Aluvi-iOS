@@ -1,162 +1,34 @@
 //
-//  VCRiderPaymentsViewController.m
+//  VCPaymentsView.m
 //  Voco
 //
-//  Created by Elliott De Aratanha on 7/3/14.
-//  Copyright (c) 2014 Voco. All rights reserved.
+//  Created by snacks on 8/5/15.
+//  Copyright (c) 2015 Voco. All rights reserved.
 //
 
 #import "VCPaymentsViewController.h"
 #import <Stripe.h>
 #import <PTKView.h>
-#import <MBProgressHUD.h>
-#import <UIAlertView+Blocks.h>
-#import "VCTextField.h"
-#import "VCButtonStandardStyle.h"
-#import "VCUsersApi.h"
-#import "VCRiderApi.h"
-#import "Payment.h"
-#import "VCUtilities.h"
-#import "VCRiderRecieptDetailViewController.h"
-#import "VCUserStateManager.h"
-
-#define kChangeCardText @"UPDATE CARD"
-#define kUpdateCardText @"UPDATE CARD"
-#define kInterfaceStateDisplayCard 1
-#define kInterfaceStateUpdateCard 2
+#import <PTKTextField.h>
 
 @interface VCPaymentsViewController () <PTKViewDelegate>
-@property (weak, nonatomic) IBOutlet UIView *STPViewContainer;
-//@property (weak, nonatomic) IBOutlet UITableView *recieptListTableView;
-@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *updateCardButton;
-@property (weak, nonatomic) IBOutlet UILabel *cardInfoLabel;
-@property (strong, nonatomic) PTKView * cardView;
-@property (nonatomic) NSInteger state;
 
-- (IBAction)didTapUpdate:(id)sender;
+@property (strong, nonatomic) PTKView * cardView;
+@property (weak, nonatomic) IBOutlet UIView *PTKViewContainer;
 
 @end
 
 @implementation VCPaymentsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+- (void) viewDidLoad {
+    _cardView = [[PTKView alloc] initWithFrame:CGRectMake(15,20,290,55)];
+    _cardView.delegate = self;
+    
+    [_PTKViewContainer addSubview:_cardView];
 }
 
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    self.title = @"Payments";
-    _updateCardButton.enabled = YES;
-    _updateCardButton.titleLabel.text = kChangeCardText;
-    _state = kInterfaceStateDisplayCard;
-    
-
-    VCProfile * profile = [VCUserStateManager instance].profile;
-    if(profile.cardLastFour != nil && profile.cardBrand != nil){
-        _cardInfoLabel.text = [NSString stringWithFormat:@"%@ XXXX-XXXX-XXXX-%@", profile.cardBrand, profile.cardLastFour];
-    } else {
-        _cardInfoLabel.text = @"No Credit Card Assigned";
-    }
-    
-   /* UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
-    [tapBackground setNumberOfTapsRequired:1];
-    [self.view addGestureRecognizer:tapBackground];*/
-    
-}
-
-/*- (void) dismissKeyboard:(id) sender{
-    [self.view endEditing:YES];
-}*/
-
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void) didTapHamburger {
-    [_cardView resignFirstResponder];
-    [super didTapHamburger];
-}
-
-
-- (IBAction)didTapUpdate:(id)sender {
-    
-    if( _state == kInterfaceStateDisplayCard) {
-        
-        _state = kInterfaceStateUpdateCard;
-        [_updateCardButton setTitle:kUpdateCardText forState:UIControlStateNormal];
-        _updateCardButton.enabled = FALSE;
-        _cardView = [[PTKView alloc] initWithFrame:CGRectMake(15,20,290,55)];
-        _cardView.delegate = self;
-        [_STPViewContainer addSubview:_cardView];
-        _cardInfoLabel.hidden = YES;
-        
-        
-    } else {
-        
-        MBProgressHUD * progressHUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        progressHUD.labelText = @"Saving Card";
-        
-        STPCard *card = [[STPCard alloc] init];
-        card.number = _cardView.card.number;
-        card.expMonth = _cardView.card.expMonth;
-        card.expYear = _cardView.card.expYear;
-        card.cvc = _cardView.card.cvc;
-
-        [Stripe createTokenWithCard:card completion:^(STPToken *token, NSError *error) {
-            if (error == nil) {
-                [VCUsersApi updateDefaultCard:[RKObjectManager sharedManager]
-                                    cardToken:token.tokenId
-                                      success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                          progressHUD.hidden = YES;
-                                          [UIAlertView showWithTitle:@"Card Updated" message:@"Your card has been saved" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
-                                          _updateCardButton.titleLabel.text = @"UPDATE CARD";
-                                          [_cardView removeFromSuperview];
-                                          _cardView = nil;
-                                          _updateCardButton.titleLabel.text = kChangeCardText;
-                                          _state = kInterfaceStateDisplayCard;
-
-                                          VCProfile * updatedProfile = mappingResult.firstObject;
-                                          [VCUserStateManager instance].profile.cardBrand = updatedProfile.cardBrand;
-                                          [VCUserStateManager instance].profile.cardLastFour = updatedProfile.cardLastFour;
-                                          _cardInfoLabel.text = [NSString stringWithFormat:@"%@ XXXX-XXXX-XXXX-%@", [VCUserStateManager instance].profile.cardBrand, [VCUserStateManager instance].profile.cardLastFour];
-                                          _cardInfoLabel.hidden = NO;
-
-                                      }
-                                      failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                          progressHUD.hidden = YES;
-                                          [UIAlertView showWithTitle:@"Error" message:@"There was a problem saving your card.  Please try again." cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
-                                      }];
-            } else {
-                progressHUD.hidden = YES;
-                [WRUtilities criticalError:error];
-            }
-        }];
-        
-    }
-    
-}
-
-- (void)paymentView:(PTKView *)view withCard:(PTKCard *)card isValid:(BOOL)valid
-{
-    // Enable the "save" button only if the card form is complete.
-    if(valid){
-        _updateCardButton.enabled = YES;
-        _updateCardButton.titleLabel.text = @"SAVE CARD";
-    } else {
-        _updateCardButton.enabled = NO;
-        
-    }
+- (IBAction)didTapSave:(id)sender {
 }
 
 @end

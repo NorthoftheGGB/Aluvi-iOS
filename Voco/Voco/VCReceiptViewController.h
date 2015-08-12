@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VCScrollableFormViewController.h"
 
-@interface VCReceiptViewController : UIViewController
+@interface VCReceiptViewController : VCScrollableFormViewController
 
 @property (strong, nonatomic) IBOutlet UITableView *receiptViewTable;
 
