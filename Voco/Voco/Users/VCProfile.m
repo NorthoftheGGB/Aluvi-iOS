@@ -29,8 +29,8 @@
                                                   @"bank_account_name" : @"bankAccountName",
                                                   @"recipient_card_last_four" : @"recipientCardLastFour",
                                                   @"recipient_card_brand" : @"recipientCardBrand",
-                                                  @"small_image" : @"smallImageUrl",
-                                                  @"large_image" : @"largeImageUrl"
+                                                  @"image_small" : @"smallImageUrl",
+                                                  @"image_large" : @"largeImageUrl"
                                                   }];
     
     return mapping;

@@ -77,9 +77,14 @@
 
 - (void)viewDidLoad
 {
-
     [super viewDidLoad];
     [self setGradient];
+    
+    _contentView.frame = self.scrollView.frame;
+    [self.scrollView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+    [self.scrollView setContentSize:_contentView.frame.size];
+    [self.scrollView addSubview:_contentView];
+
     
     VCProfile * profile = [VCUserStateManager instance].profile;
     
@@ -88,8 +93,10 @@
     _emailTextField.text = profile.email;
     _phoneTextField.text = profile.phone;
     _passwordTextField.text = @"********";
-    [_userImageView sd_setImageWithURL:[NSURL URLWithString:profile.largeImageUrl]
-                   placeholderImage:[UIImage imageNamed:@"placeholder-profile.png"]];
+    [_userImageView sd_setImageWithURL:[NSURL URLWithString:profile.smallImageUrl]
+                   placeholderImage:[UIImage imageNamed:@"temp-user-profile-icon"]
+                    options:SDWebImageRefreshCached
+            ];
     
     UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [tapBackground setNumberOfTapsRequired:1];
@@ -161,16 +168,7 @@
     PKImagePickerViewController *imagePicker = [[PKImagePickerViewController alloc]init];
     imagePicker.delegate = self;
     [self presentViewController:imagePicker animated:YES completion:nil];
-    /*
-    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-    imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
-    imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-    imagePickerController.delegate = self;
-    [self presentViewController:imagePickerController animated:YES completion:^{
-        [hud hide:YES];
-    }];
-    */
+
 }
 
 #pragma mark - PKImagePickerControllerDelegate
@@ -197,6 +195,12 @@
                                            objectRequestOperationWithRequest:request
                                            success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                [hud hide:YES];
+                                               
+                                               [VCUsersApi getProfile:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                   [VCNotifications profileUpdated];
+                                               } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                               }];
+                                               
                                                
                                            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                                [UIAlertView showWithTitle:@"Problem" message:@"There was a problem saving your image" cancelButtonTitle:@"Darn." otherButtonTitles:nil tapBlock:nil];
