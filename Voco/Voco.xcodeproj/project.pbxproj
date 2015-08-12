@@ -76,6 +76,18 @@
 		36E48E771B7ABFBE0034DFEB /* Bryant-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E751B7ABFBE0034DFEB /* Bryant-Bold.ttf */; };
 		36E48E781B7ABFBE0034DFEB /* Bryant-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E751B7ABFBE0034DFEB /* Bryant-Bold.ttf */; };
 		36E48E791B7ABFBE0034DFEB /* Bryant-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E751B7ABFBE0034DFEB /* Bryant-Bold.ttf */; };
+		36E48E811B7B01100034DFEB /* Default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E7F1B7B01100034DFEB /* Default@3x.png */; };
+		36E48E821B7B01100034DFEB /* Default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E7F1B7B01100034DFEB /* Default@3x.png */; };
+		36E48E831B7B01100034DFEB /* Default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E7F1B7B01100034DFEB /* Default@3x.png */; };
+		36E48E841B7B01100034DFEB /* Default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E7F1B7B01100034DFEB /* Default@3x.png */; };
+		36E48E851B7B01100034DFEB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E801B7B01100034DFEB /* Default@2x.png */; };
+		36E48E861B7B01100034DFEB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E801B7B01100034DFEB /* Default@2x.png */; };
+		36E48E871B7B01100034DFEB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E801B7B01100034DFEB /* Default@2x.png */; };
+		36E48E881B7B01100034DFEB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E801B7B01100034DFEB /* Default@2x.png */; };
+		36E48E8A1B7B01F10034DFEB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E891B7B01F10034DFEB /* Default.png */; };
+		36E48E8B1B7B01F10034DFEB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E891B7B01F10034DFEB /* Default.png */; };
+		36E48E8C1B7B01F10034DFEB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E891B7B01F10034DFEB /* Default.png */; };
+		36E48E8D1B7B01F10034DFEB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E891B7B01F10034DFEB /* Default.png */; };
 		36F9F6511B6ACC8700440D03 /* VCRideRequestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F9F6501B6ACC8700440D03 /* VCRideRequestView.m */; };
 		36F9F6521B6ACC8700440D03 /* VCRideRequestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F9F6501B6ACC8700440D03 /* VCRideRequestView.m */; };
 		36F9F6531B6ACC8700440D03 /* VCRideRequestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F9F6501B6ACC8700440D03 /* VCRideRequestView.m */; };
@@ -1118,6 +1130,9 @@
 		36E48E6B1B7ABF9F0034DFEB /* Bryant-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bryant-Regular.ttf"; sourceTree = "<group>"; };
 		36E48E701B7ABFAE0034DFEB /* Bryant-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bryant-Medium.ttf"; sourceTree = "<group>"; };
 		36E48E751B7ABFBE0034DFEB /* Bryant-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bryant-Bold.ttf"; sourceTree = "<group>"; };
+		36E48E7F1B7B01100034DFEB /* Default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@3x.png"; sourceTree = "<group>"; };
+		36E48E801B7B01100034DFEB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		36E48E891B7B01F10034DFEB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		36F9F64F1B6ACC8700440D03 /* VCRideRequestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRideRequestView.h; sourceTree = "<group>"; };
 		36F9F6501B6ACC8700440D03 /* VCRideRequestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRideRequestView.m; sourceTree = "<group>"; };
 		36F9F6551B6AE4A300440D03 /* VCDriverTicketView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCDriverTicketView.h; sourceTree = "<group>"; };
@@ -1925,6 +1940,9 @@
 		4FE641E1194168E80059BED1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				36E48E891B7B01F10034DFEB /* Default.png */,
+				36E48E7F1B7B01100034DFEB /* Default@3x.png */,
+				36E48E801B7B01100034DFEB /* Default@2x.png */,
 				F49EDD071946A63F0020B8BB /* Fonts */,
 				4FDB0ECA1970B0F000A8CEC2 /* Revision 2.0 */,
 				4F2EF99F1960EC62006A1962 /* Menu Assets */,
@@ -2703,6 +2721,7 @@
 				8416481B1B64A47D00CD20AC /* logo@2x.png in Resources */,
 				8416481C1B64A47D00CD20AC /* scheduledrides-menu-button@2x.png in Resources */,
 				8416481E1B64A47D00CD20AC /* Icon@2x.png in Resources */,
+				36E48E841B7B01100034DFEB /* Default@3x.png in Resources */,
 				8416481F1B64A47D00CD20AC /* VCRiderRecieptDetailViewController.xib in Resources */,
 				841648211B64A47D00CD20AC /* confirm-location@2x.png in Resources */,
 				841648221B64A47D00CD20AC /* toc-checked@2x.png in Resources */,
@@ -2729,6 +2748,7 @@
 				8416483D1B64A47D00CD20AC /* map_pin_fill-512.png in Resources */,
 				8416483E1B64A47D00CD20AC /* VCPrivatePolicyViewController.xib in Resources */,
 				8416483F1B64A47D00CD20AC /* driver-call-hud-icon-select@2x.png in Resources */,
+				36E48E881B7B01100034DFEB /* Default@2x.png in Resources */,
 				841648401B64A47D00CD20AC /* commuter-menu-button@2x.png in Resources */,
 				841648411B64A47D00CD20AC /* about-menu-button@2x.png in Resources */,
 				36E48E6F1B7ABF9F0034DFEB /* Bryant-Regular.ttf in Resources */,
@@ -2795,6 +2815,7 @@
 				8416488B1B64A47D00CD20AC /* VCMenuUserInfoTableViewCell.xib in Resources */,
 				8416488C1B64A47D00CD20AC /* Images.xcassets in Resources */,
 				8416488D1B64A47D00CD20AC /* SignUp.html in Resources */,
+				36E48E8D1B7B01F10034DFEB /* Default.png in Resources */,
 				8416488E1B64A47D00CD20AC /* commuter-menu-button-selected@2x.png in Resources */,
 				36638D8B1B65A989004EDB09 /* VCRiderTicketView.xib in Resources */,
 				8416488F1B64A47D00CD20AC /* VCMenuDriverClockOnTableViewCell.xib in Resources */,
@@ -2828,6 +2849,7 @@
 				841649461B658F4900CD20AC /* camera-icon@2x.png in Resources */,
 				841649471B658F4900CD20AC /* support-menu-button-selected@2x.png in Resources */,
 				841649481B658F4900CD20AC /* current-location-arrow@2x.png in Resources */,
+				36E48E821B7B01100034DFEB /* Default@3x.png in Resources */,
 				841649491B658F4900CD20AC /* login-button-select@2x.png in Resources */,
 				8416494A1B658F4900CD20AC /* driver-call-hud-icon@2x.png in Resources */,
 				8416494B1B658F4900CD20AC /* current-location-button-selected@2x.png in Resources */,
@@ -2857,6 +2879,7 @@
 				8416496F1B658F4900CD20AC /* menu-mycar-icon@2x.png in Resources */,
 				36E48E6D1B7ABF9F0034DFEB /* Bryant-Regular.ttf in Resources */,
 				841649701B658F4900CD20AC /* zoom-ride-bounds@2x.png in Resources */,
+				36E48E861B7B01100034DFEB /* Default@2x.png in Resources */,
 				841649711B658F4900CD20AC /* terms-menu-button@2x.png in Resources */,
 				841649731B658F4900CD20AC /* tutorial-menu-button@2x.png in Resources */,
 				841649741B658F4900CD20AC /* login-button@2x.png in Resources */,
@@ -2880,6 +2903,7 @@
 				841649891B658F4900CD20AC /* scheduledfares-menu-button-selected@2x.png in Resources */,
 				8416498A1B658F4900CD20AC /* menu-payments-icon@2x.png in Resources */,
 				8416498B1B658F4900CD20AC /* ride-bounds-button-selected@2x.png in Resources */,
+				36E48E8B1B7B01F10034DFEB /* Default.png in Resources */,
 				8416498C1B658F4900CD20AC /* VCTicketViewController.xib in Resources */,
 				8416498D1B658F4900CD20AC /* search-location@2x.png in Resources */,
 				8416498E1B658F4900CD20AC /* driver-cancel-hud@2x.png in Resources */,
@@ -2960,6 +2984,7 @@
 				F4C6B246197F06B100F6C10B /* support-menu-button-selected@2x.png in Resources */,
 				F4C6B247197F06B100F6C10B /* current-location-arrow@2x.png in Resources */,
 				4F35FA8C19A6AA62004FB423 /* login-button-select@2x.png in Resources */,
+				36E48E811B7B01100034DFEB /* Default@3x.png in Resources */,
 				4F1849F0198F67DF006EA959 /* driver-call-hud-icon@2x.png in Resources */,
 				4F3DB5B91981ED4E00DDD094 /* current-location-button-selected@2x.png in Resources */,
 				36000C941B72B295008E84AE /* VCReceiptViewController.xib in Resources */,
@@ -2989,6 +3014,7 @@
 				F4C6B260197F06B100F6C10B /* zoom-ride-bounds@2x.png in Resources */,
 				36E48E6C1B7ABF9F0034DFEB /* Bryant-Regular.ttf in Resources */,
 				36638D7D1B659CAE004EDB09 /* VCDriverTicketView.xib in Resources */,
+				36E48E851B7B01100034DFEB /* Default@2x.png in Resources */,
 				F4C6B261197F06B100F6C10B /* terms-menu-button@2x.png in Resources */,
 				F4C6B263197F06B100F6C10B /* tutorial-menu-button@2x.png in Resources */,
 				4F35FA8F19A6AA62004FB423 /* login-button@2x.png in Resources */,
@@ -3012,6 +3038,7 @@
 				4F1849E8198F625A006EA959 /* driver-cancel-hud-icon@2x.png in Resources */,
 				F4C6B272197F06B100F6C10B /* scheduledfares-menu-button-selected@2x.png in Resources */,
 				4F1849FC1991753F006EA959 /* menu-payments-icon@2x.png in Resources */,
+				36E48E8A1B7B01F10034DFEB /* Default.png in Resources */,
 				4FD1297819D62462000E7C39 /* ride-bounds-button-selected@2x.png in Resources */,
 				4F73CA07197F2AB0001B6663 /* VCTicketViewController.xib in Resources */,
 				369DBC161B6D22F400449CB4 /* test_big.jpg in Resources */,
@@ -3100,6 +3127,7 @@
 				F4D8FEB219B1745A00BC0B69 /* logo@2x.png in Resources */,
 				F4D8FEB319B1745A00BC0B69 /* scheduledrides-menu-button@2x.png in Resources */,
 				F4D8FEB519B1745A00BC0B69 /* Icon@2x.png in Resources */,
+				36E48E831B7B01100034DFEB /* Default@3x.png in Resources */,
 				F4D8FEB619B1745A00BC0B69 /* VCRiderRecieptDetailViewController.xib in Resources */,
 				F4D8FEB819B1745A00BC0B69 /* confirm-location@2x.png in Resources */,
 				F4D8FEBA19B1745A00BC0B69 /* toc-checked@2x.png in Resources */,
@@ -3126,6 +3154,7 @@
 				F4D8FED819B1745A00BC0B69 /* map_pin_fill-512.png in Resources */,
 				F4A5654C19CA5C4A0030104D /* VCPrivatePolicyViewController.xib in Resources */,
 				F4D8FED919B1745A00BC0B69 /* driver-call-hud-icon-select@2x.png in Resources */,
+				36E48E871B7B01100034DFEB /* Default@2x.png in Resources */,
 				F4D8FEDA19B1745A00BC0B69 /* commuter-menu-button@2x.png in Resources */,
 				F4D8FEDB19B1745A00BC0B69 /* about-menu-button@2x.png in Resources */,
 				36E48E6E1B7ABF9F0034DFEB /* Bryant-Regular.ttf in Resources */,
@@ -3192,6 +3221,7 @@
 				F4D8FF2519B1745A00BC0B69 /* VCMenuUserInfoTableViewCell.xib in Resources */,
 				F4D8FF2619B1745A00BC0B69 /* Images.xcassets in Resources */,
 				F4C97B2019F88B15006521C1 /* SignUp.html in Resources */,
+				36E48E8C1B7B01F10034DFEB /* Default.png in Resources */,
 				F4D8FF2719B1745A00BC0B69 /* commuter-menu-button-selected@2x.png in Resources */,
 				36638D891B65A989004EDB09 /* VCRiderTicketView.xib in Resources */,
 				F4D8FF2819B1745A00BC0B69 /* VCMenuDriverClockOnTableViewCell.xib in Resources */,
@@ -4088,7 +4118,7 @@
 			baseConfigurationReference = D570C24C905CF2756FACB77F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -4151,7 +4181,7 @@
 			baseConfigurationReference = 0D14E3F5E1EECB39D89015B1 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
