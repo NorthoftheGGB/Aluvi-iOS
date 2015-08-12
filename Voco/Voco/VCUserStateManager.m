@@ -223,10 +223,6 @@ static VCUserStateManager *sharedSingleton;
 
 
 
-- (void) updateCommuterPreferences {
-    
-}
-
 - (void) refreshProfileWithCompletion: (void ( ^ ) ( ))completion {
     [VCUsersApi getProfile:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [self setProfile: mappingResult.firstObject];
