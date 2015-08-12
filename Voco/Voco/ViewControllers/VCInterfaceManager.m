@@ -13,7 +13,6 @@
 #import "IIViewDeckController.h"
 #import "VCApi.h"
 #import "VCUserStateManager.h"
-#import "VCDebugViewController.h"
 
 #define kInterfaceModeKey @"INTERFACE_MODE_KEY"
 
@@ -107,12 +106,6 @@ static int mode;
 
 }
 
-
-- (void) showDebugInterface{
-    VCDebugViewController * vc = [[VCDebugViewController alloc] init];
-    [[UIApplication sharedApplication] delegate].window.rootViewController = vc;
-    deckController = nil;
-}
 
 - (void) setMode: (int) newMode {
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:newMode] forKey:kInterfaceModeKey];

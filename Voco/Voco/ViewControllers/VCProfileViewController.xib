@@ -17,7 +17,7 @@
                 <outlet property="scrollView" destination="BQ7-4F-qNh" id="nbK-Ng-tmU"/>
                 <outlet property="userImageView" destination="rSS-yk-gN7" id="SZx-yG-oq0"/>
                 <outlet property="versionLabel" destination="faT-jo-LTb" id="zOV-Kc-pOy"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="view" destination="bC0-fy-Fem" id="9f2-sB-FCD"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -41,6 +41,7 @@
                 <constraint firstItem="BQ7-4F-qNh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="of3-aw-fDq"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="418" y="324"/>
         </view>
         <view contentMode="scaleToFill" id="bC0-fy-Fem">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>

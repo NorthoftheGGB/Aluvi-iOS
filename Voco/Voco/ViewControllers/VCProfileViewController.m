@@ -9,6 +9,7 @@
 #import "VCProfileViewController.h"
 #import <MBProgressHUD.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <PKImagePickerViewController.h>
 #import "VCNameTextField.h"
 #import "VCEmailTextField.h"
 #import "VCPasswordTextField.h"
@@ -23,7 +24,7 @@
 #import "VCApi.h"
 #import "VCStyle.h"
 
-@interface VCProfileViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface VCProfileViewController () <PKImagePickerViewControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 
@@ -77,9 +78,6 @@
 
     [super viewDidLoad];
     [self setGradient];
-    [self.scrollView setContentSize:_contentView.frame.size];
-    [self.scrollView addSubview:_contentView];
-    
     
     VCProfile * profile = [VCUserStateManager instance].profile;
     
@@ -146,6 +144,11 @@
 }
 
 - (IBAction)didTapTakePhotoButton:(id)sender {
+    
+    PKImagePickerViewController *imagePicker = [[PKImagePickerViewController alloc]init];
+    imagePicker.delegate = self;
+    [self presentViewController:imagePicker animated:YES completion:nil];
+    /*
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
     imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
@@ -154,18 +157,14 @@
     [self presentViewController:imagePickerController animated:YES completion:^{
         [hud hide:YES];
     }];
-    
+    */
 }
 
-#pragma mark - UIImagePickerControllerDelegate
+#pragma mark - PKImagePickerControllerDelegate
 
-// This method is called when an image has been chosen from the library or taken from the camera.
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
-    [self dismissViewControllerAnimated:YES completion:nil];
+-(void)imageSelected:(UIImage*)img {
     CGSize size = CGSizeMake(640, 750);
-    image = [image resizedImageToFitInSize:size scaleIfSmaller:YES];
+    UIImage * image = [img resizedImageToFitInSize:size scaleIfSmaller:YES];
     _userImageView.image = image;
     
     NSMutableURLRequest *request =
@@ -174,10 +173,10 @@
                                                                path:API_USER_PROFILE
                                                          parameters:nil
                                           constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-                                              [formData appendPartWithFileData:UIImagePNGRepresentation(image)
+                                              [formData appendPartWithFileData:UIImageJPEGRepresentation(image, .9)
                                                                           name:@"image"
-                                                                      fileName:@"image.png"
-                                                                      mimeType:@"image/png"];
+                                                                      fileName:@"image.jpg"
+                                                                      mimeType:@"image/jpg"];
                                           }];
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -185,20 +184,21 @@
                                            objectRequestOperationWithRequest:request
                                            success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                [hud hide:YES];
-
+                                               
                                            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                                [UIAlertView showWithTitle:@"Problem" message:@"There was a problem saving your image" cancelButtonTitle:@"Darn." otherButtonTitles:nil tapBlock:nil];
                                                [hud hide:YES];
-
+                                               
                                            }];
     [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation]; // NOTE: Must be enqueued rather than started
     
-    
+
+}
+
+-(void)imageSelectionCancelled {
     
 }
 
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
-    [self dismissViewControllerAnimated:YES completion:NULL];
-}
+
+
 @end
