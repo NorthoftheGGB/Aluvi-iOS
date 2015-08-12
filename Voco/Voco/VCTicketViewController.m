@@ -1370,7 +1370,7 @@
         return shape;
     } else {
         RMShape *shape = [[RMShape alloc] initWithView:mapView];
-        shape.lineColor = [UIColor colorWithRed:17.0f / 256.0f green: 119.0f / 256.0f blue: 45.0f / 256.0f alpha:.7];
+        shape.lineColor = [UIColor colorWithRed:0.74 green: 0.25 blue: 0.15 alpha:0.8];
         shape.lineWidth = 4.0;
         for (CLLocation *location in (NSArray *)annotation.userInfo)
             [shape addLineToCoordinate:location.coordinate];
