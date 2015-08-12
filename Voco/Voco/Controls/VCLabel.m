@@ -24,26 +24,14 @@
 
 - (void)awakeFromNib{
     
-    
-   //rev 1.0
-    //UIFont *customFont = [UIFont fontWithName:@"KlinicSlab-Light" size:[fontSize intValue] ];
 
-    //rev 2.0
-    
-    UIFont *customFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:[fontSize intValue] ];
+    UIFont *customFont = [UIFont fontWithName:@"Bryant-Regular" size:[fontSize intValue] ];
 
     
     
     [self setFont:customFont];
     
 }
-/*
- // Only override drawRect: if you perform custom drawing.
- // An empty implementation adversely affects performance during animation.
- - (void)drawRect:(CGRect)rect
- {
- // Drawing code
- }
- */
+
 
 @end
