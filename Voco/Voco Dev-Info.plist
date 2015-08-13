@@ -8,6 +8,10 @@
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleIcons</key>
+	<dict/>
+	<key>CFBundleIcons~ipad</key>
+	<dict/>
 	<key>CFBundleIdentifier</key>
 	<string>com.vocotransportation.aluvi.dev</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -31,10 +35,9 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>HelveticaNeueLight</string>
-		<string>KlinicSlabLight.ttf</string>
-		<string>KlinicSlabLightIt.ttf</string>
-		<string>KlinicSlabMediumIt.ttf</string>
-		<string>KlinicSlabMedium.ttf</string>
+		<string>Bryant-Regular</string>
+		<string>Bryant-Meduim</string>
+		<string>Bryant-Bold</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
