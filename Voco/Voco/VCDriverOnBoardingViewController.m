@@ -12,7 +12,7 @@
 #import <MBProgressHUD.h>
 #import <UIAlertView+Blocks.h>
 #import "VCTextField.h"
-#import "VCButtonStandardStyle.h"
+#import "VCButtonBold.h"
 #import "VCUsersApi.h"
 #import "VCRiderApi.h"
 #import "Payment.h"
@@ -38,8 +38,8 @@
 @property (weak, nonatomic) IBOutlet VCTextField *yearTextField;
 @property (weak, nonatomic) IBOutlet VCTextField *colorTextField;
 @property (weak, nonatomic) IBOutlet VCTextField *licensePlateTextField;
-@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *skipThisStepButton;
-@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *saveButton;
+@property (weak, nonatomic) IBOutlet VCButtonBold *skipThisStepButton;
+@property (weak, nonatomic) IBOutlet VCButtonBold *saveButton;
 
 
 @property (weak, nonatomic) IBOutlet UIView *PTKViewContainer;

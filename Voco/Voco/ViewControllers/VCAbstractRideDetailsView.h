@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "VCLabel.h"
 #import "VCLabelBold.h"
-#import "VCButtonStandardStyle.h"
+#import "VCButtonBold.h"
 
 
 @interface VCAbstractRideDetailsView : UIView

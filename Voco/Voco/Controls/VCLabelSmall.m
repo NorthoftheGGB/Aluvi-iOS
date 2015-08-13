@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCLabelItalic.h"
+#import "VCLabelSmall.h"
 
-@implementation VCLabelItalic
+@implementation VCLabelSmall
 
 @synthesize fontSize;
 
@@ -23,7 +23,7 @@
 
 
 - (void)awakeFromNib{
-    UIFont *customFont = [UIFont fontWithName:@"KlinicSlab-LightItalic" size:18];
+    UIFont *customFont = [UIFont fontWithName:@"Bryant-Regular" size:14];
     
     self.font = customFont;
 }

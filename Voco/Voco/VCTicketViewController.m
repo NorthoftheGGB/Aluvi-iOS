@@ -22,7 +22,7 @@
 #import "Car.h"
 
 #import "VCLabel.h"
-#import "VCButtonStandardStyle.h"
+#import "VCButtonBold.h"
 #import "VCEditLocationWidget.h"
 #import "VCCommuteManager.h"
 #import "VCAbstractRideDetailsView.h"

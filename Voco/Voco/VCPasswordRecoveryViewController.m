@@ -9,7 +9,7 @@
 #import "VCPasswordRecoveryViewController.h"
 #import <MBProgressHUD.h>
 #import "VCLabel.h"
-#import "VCButtonStandardStyle.h"
+#import "VCButtonBold.h"
 #import "VCTextField.h"
 #import "VCUsersApi.h"
 
@@ -17,7 +17,7 @@
 @interface VCPasswordRecoveryViewController ()
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet VCTextField *emailTextField;
-@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *sendPasswordButton;
+@property (weak, nonatomic) IBOutlet VCButtonBold *sendPasswordButton;
 - (IBAction)didTapSendPasswordButton:(id)sender;
 
 @end

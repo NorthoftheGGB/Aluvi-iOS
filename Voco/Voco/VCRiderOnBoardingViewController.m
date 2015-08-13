@@ -13,7 +13,7 @@
 #import <MBProgressHUD.h>
 #import <UIAlertView+Blocks.h>
 #import "VCTextField.h"
-#import "VCButtonStandardStyle.h"
+#import "VCButtonBold.h"
 #import "VCUsersApi.h"
 #import "VCRiderApi.h"
 #import "Payment.h"
@@ -39,11 +39,11 @@
 @property (weak, nonatomic) IBOutlet VCTextField *phoneTextField;
 @property (weak, nonatomic) IBOutlet VCTextField *zipCodeTextField;
 @property (weak, nonatomic) IBOutlet UIButton *tocButton;
-@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *privatePolicyButton;
+@property (weak, nonatomic) IBOutlet VCButtonBold *privatePolicyButton;
 @property (weak, nonatomic) IBOutlet UITextView *termsOfServices;
 
 @property (weak, nonatomic) IBOutlet UIButton *tocCheckBoxButton;
-@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *nextButton;
+@property (weak, nonatomic) IBOutlet VCButtonBold *nextButton;
 
 @property (strong, nonatomic) MBProgressHUD * hud;
 

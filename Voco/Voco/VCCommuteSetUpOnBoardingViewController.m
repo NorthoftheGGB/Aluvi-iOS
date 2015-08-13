@@ -8,14 +8,14 @@
 
 #import "VCCommuteSetUpOnBoardingViewController.h"
 #import <MBProgressHUD.h>
-#import "VCButtonStandardStyle.h"
+#import "VCButtonBold.h"
 #import "VCInterfaceManager.h"
 #import "VCTicketViewController.h"
 #import "VCUserStateManager.h"
 
 @interface VCCommuteSetUpOnBoardingViewController ()
-@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *setUpCommuteButton;
-@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *skipButton;
+@property (weak, nonatomic) IBOutlet VCButtonBold *setUpCommuteButton;
+@property (weak, nonatomic) IBOutlet VCButtonBold *skipButton;
 - (IBAction)didTapSetUpCommuteButton:(id)sender;
 - (IBAction)didTapSkipButton:(id)sender;
 

@@ -12,7 +12,7 @@
 #import "VCInterfaceManager.h"
 #import "VCRiderApi.h"
 #import "VCTextField.h"
-#import "VCButtonStandardStyle.h"
+#import "VCButtonBold.h"
 #import "VCButton.h"
 #import "VCPasswordRecoveryViewController.h"
 #import "VCTermsOfServiceViewController.h"
@@ -31,8 +31,8 @@
 @interface VCLogInViewController ()
 @property (weak, nonatomic) IBOutlet VCEmailTextField *emailTextField;
 @property (weak, nonatomic) IBOutlet VCTextField *passwordTextField;
-@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *logInButton;
-@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *createAccountButton;
+@property (weak, nonatomic) IBOutlet VCButtonBold *logInButton;
+@property (weak, nonatomic) IBOutlet VCButtonBold *createAccountButton;
 
 @property (weak, nonatomic) IBOutlet UIButton *forgotPasswordButton;
 @property (weak, nonatomic) IBOutlet UIButton *modeToggleButton;

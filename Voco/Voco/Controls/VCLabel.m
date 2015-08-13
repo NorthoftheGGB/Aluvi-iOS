@@ -16,7 +16,7 @@
 - (void)awakeFromNib{
     
 
-    UIFont *customFont = [UIFont fontWithName:@"Bryant-Regular" size:14 ];
+    UIFont *customFont = [UIFont fontWithName:@"Bryant-Regular" size:16 ];
 
     
     
