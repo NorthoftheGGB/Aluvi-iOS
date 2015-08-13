@@ -15,7 +15,7 @@
 #import "VCPasswordTextField.h"
 #import "VCPhoneTextField.h"
 #import "VCTextField.h"
-#import "VCButtonStandardStyle.h"
+#import "VCButtonBold.h"
 #import "VCLabel.h"
 #import "VCUserStateManager.h"
 #import "VCInterfaceManager.h"
@@ -45,8 +45,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *versionLabel;
 
 //Buttons
-@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *saveChangesButton;
-@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *logoutButton;
+@property (weak, nonatomic) IBOutlet VCButtonBold *saveChangesButton;
+@property (weak, nonatomic) IBOutlet VCButtonBold *logoutButton;
 
 - (IBAction)didTapSaveChanges:(id)sender;
 
@@ -97,6 +97,9 @@
                    placeholderImage:[UIImage imageNamed:@"temp-user-profile-icon"]
                     options:SDWebImageRefreshCached
             ];
+    _userImageView.layer.cornerRadius = _userImageView.frame.size.width / 2;
+    _userImageView.clipsToBounds = YES;
+    
     
     UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [tapBackground setNumberOfTapsRequired:1];
@@ -105,6 +108,9 @@
     NSString * version = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
     NSString * build = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
     _versionLabel.text = [NSString stringWithFormat:@"v%@b%@", version, build];
+    
+    
+
     
 }
 
@@ -177,6 +183,7 @@
     CGSize size = CGSizeMake(640, 750);
     UIImage * image = [img resizedImageToFitInSize:size scaleIfSmaller:YES];
     _userImageView.image = image;
+
     
     NSMutableURLRequest *request =
     [[RKObjectManager sharedManager] multipartFormRequestWithObject:nil

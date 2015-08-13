@@ -6,17 +6,17 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCButtonStandardStyle.h"
+#import "VCButtonBold.h"
 
 
-@implementation VCButtonStandardStyle
+@implementation VCButtonBold
 
 
 
 - (void)awakeFromNib{
     
 
-    UIFont *customFont = [UIFont fontWithName:@"Bryant-Bold" size:16];
+    UIFont *customFont = [UIFont fontWithName:@"Bryant-Bold" size:18];
     
     [self.titleLabel setFont:customFont];
     

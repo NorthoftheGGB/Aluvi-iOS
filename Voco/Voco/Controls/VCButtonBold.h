@@ -1,5 +1,5 @@
 //
-//  VCTextFieldItalic.h
+//  VCTextFieldBold.h
 //  Voco
 //
 //  Created by Elliott De Aratanha on 6/5/14.
@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VCLabelItalic : UILabel
+@interface VCButtonBold : UIButton
 
 @property(nonatomic, strong) NSNumber * fontSize;
-
 
 @end

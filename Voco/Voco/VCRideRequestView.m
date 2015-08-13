@@ -273,7 +273,7 @@
 
 
 - (void) updateFromButton:(NSString *) addressString{
-    NSString * title = [NSString stringWithFormat:@"From: %@", addressString];
+    NSString * title = [NSString stringWithFormat:@"FROM: %@", addressString];
     [_fromButton setTitle:title forState:UIControlStateNormal];
 }
 
@@ -283,7 +283,7 @@
 }
 
 - (void) updateToButton:(NSString *) addressString{
-    NSString * title = [NSString stringWithFormat:@"To: %@", addressString];
+    NSString * title = [NSString stringWithFormat:@"TO: %@", addressString];
     [_toButton setTitle:title forState:UIControlStateNormal];
 }
 
