@@ -25,7 +25,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="temp-user-profile-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="NT5-vN-gbn" userLabel="User Image">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="temp-user-profile-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="NT5-vN-gbn" userLabel="User Image">
                         <rect key="frame" x="12" y="18" width="80" height="80"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5en-wu-wUn" customClass="VCLabel">
