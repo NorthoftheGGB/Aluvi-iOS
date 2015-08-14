@@ -9,6 +9,7 @@
 #import "VCDriverTicketView.h"
 #import "Rider.h"
 #import <SDWebImage/UIButton+WebCache.h>
+#import "VCStyle.h"
 
 @interface VCDriverTicketView ()
 
@@ -65,11 +66,27 @@
     }
 }
 
+
+
+
+- (void)awakeFromNib{
+    _riderOneButton.layer.cornerRadius = _riderOneButton.frame.size.width / 2;
+    _riderOneButton.clipsToBounds = YES;
+    _riderTwoButton.layer.cornerRadius = _riderOneButton.frame.size.width / 2;
+    _riderTwoButton.clipsToBounds = YES;
+    _riderThreeButton.layer.cornerRadius = _riderOneButton.frame.size.width / 2;
+    _riderThreeButton.clipsToBounds = YES;
+
+
+}
+
 - (void) showButton: (UIButton * ) button WithRider: (Rider *) rider {
     [button sd_setBackgroundImageWithURL:[NSURL URLWithString: rider.smallImageUrl]
                                          forState:UIControlStateNormal
                                  placeholderImage:[UIImage imageNamed:@"placeholder-profile"]
                                           options:SDWebImageRefreshCached
+     
+     
      ];
 
 }
