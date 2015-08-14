@@ -206,8 +206,7 @@
                                                   ];
            menuUserInfoCell.userImageView.layer.cornerRadius = menuUserInfoCell.userImageView.frame.size.width / 2;
             menuUserInfoCell.userImageView.clipsToBounds = YES;
-            
-            
+
             menuUserInfoCell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell = menuUserInfoCell;
         }
