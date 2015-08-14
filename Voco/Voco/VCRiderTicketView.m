@@ -35,6 +35,16 @@
 
 @implementation VCRiderTicketView
 
+-(void)awakeFromNib {
+    _peerOneButton.layer.cornerRadius = _peerOneButton.frame.size.width / 2;
+    _peerOneButton.clipsToBounds = YES;
+    _peerTwoButton.layer.cornerRadius = _peerTwoButton.frame.size.width / 2;
+    _peerTwoButton.clipsToBounds = YES;
+    _driverImageButton.layer.cornerRadius = _driverImageButton.frame.size.width / 2;
+    _driverImageButton.clipsToBounds = YES;
+
+}
+
 - (void) updateInterfaceWithTicket: (Ticket *) ticket {
     NSSortDescriptor * sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
     [self showButton:_driverImageButton WithURLString:ticket.driver.smallImageUrl];
