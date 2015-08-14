@@ -67,7 +67,7 @@
         </view>
     </objects>
     <resources>
-        <image name="button-select.png" width="302" height="28"/>
+        <image name="button-select.png" width="22" height="22"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

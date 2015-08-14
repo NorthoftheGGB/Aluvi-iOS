@@ -227,7 +227,7 @@
         case kBackHomeCellInteger:
         {
             VCMenuItemTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemTableViewCell" class:[VCMenuItemTableViewCell class]];
-            menuItemTableViewCell.iconImageView.image = nil;
+            menuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-backhome-icon"];
             menuItemTableViewCell.menuItemLabel.text = @"Back Home";
             menuItemTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell = menuItemTableViewCell;
