@@ -167,7 +167,7 @@
     
     if(!_appeared){
         
-        RMMapboxSource *tileSource = [[RMMapboxSource alloc] initWithMapID:@"snacks.c66a5d06"];
+        RMMapboxSource *tileSource = [[RMMapboxSource alloc] initWithMapID:@"aluvimaps.32wfoe6l"];
         self.map = [[RMMapView alloc] initWithFrame:self.view.frame andTilesource:tileSource];
         self.map.adjustTilesForRetinaDisplay = YES;
         self.map.delegate = self;
