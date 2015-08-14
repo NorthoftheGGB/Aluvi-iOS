@@ -31,7 +31,7 @@
     
     [_PTKViewContainer addSubview:_cardView];
     
-    _commuterAccountBalance.text = [NSString stringWithFormat:@"$%.2f", [[VCUserStateManager instance].profile.commuterBalanceCents double] / 100];
+    _commuterAccountBalance.text = [NSString stringWithFormat:@"$%.2f", [[VCUserStateManager instance].profile.commuterBalanceCents doubleValue] / 100];
 }
 
 
