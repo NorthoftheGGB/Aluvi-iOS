@@ -7,6 +7,7 @@
 //
 
 #import "VCUserStateManager.h"
+#import <MBProgressHUD.h>
 #import "VCUsersApi.h"
 #import "VCApi.h"
 #import "VCDevicesApi.h"
@@ -15,7 +16,7 @@
 #import "VCInterfaceManager.h"
 #import "VCDriverApi.h"
 #import "VCCommuteManager.h"
-#import <MBProgressHUD.h>
+#import "Car.h"
 
 NSString *const VCUserStateDriverStateKeyPath = @"driverState";
 
@@ -124,11 +125,11 @@ static VCUserStateManager *sharedSingleton;
                           [self setProfile: mappingResult.firstObject];
                           success();
                       } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                          [WRUtilities subcriticaError:error];
+                          failure(operation, error);
                       }];
                       
                   } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                      //[WRUtilities criticalError:error];
+                      failure(operation, error);
                   }];
                   
               } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -227,9 +228,18 @@ static VCUserStateManager *sharedSingleton;
 
 - (void) refreshProfileWithCompletion: (void ( ^ ) ( ))completion {
     [VCUsersApi getProfile:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        VCProfile * profile = mappingResult.firstObject;
         NSArray * array = [mappingResult array];
-        profile.carId = ((Car*) array[1]).id;
+        VCProfile * profile;
+        Car * car;
+        if([array[0] isKindOfClass:[VCProfile class]]){
+            profile = mappingResult.firstObject;
+            car = array[1];
+        } else {
+            profile = array[0];
+            car = mappingResult.firstObject;
+        }
+        
+        profile.carId = car.id;
         [self setProfile: mappingResult.firstObject];
         completion();
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {

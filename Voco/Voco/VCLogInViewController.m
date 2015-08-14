@@ -189,7 +189,7 @@
                                               
                                           } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                               
-                                              [_hud hide:YES];
+                                              _hud.hidden = YES;
                                               
                                               switch (operation.HTTPRequestOperation.response.statusCode) {
                                                   case 404:
