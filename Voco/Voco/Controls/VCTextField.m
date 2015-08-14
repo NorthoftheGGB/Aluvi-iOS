@@ -9,17 +9,8 @@
 #import "VCTextField.h"
 
 @implementation VCTextField
-@synthesize fontSize;
 
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        fontSize = [NSNumber numberWithInt:13];
-        self.validateOnFocusLossOnly = TRUE;
-    }
-    return self;
-}
+
 
 
 - (void)awakeFromNib{
@@ -28,7 +19,7 @@
     //UIFont *customFont = [UIFont fontWithName:@"KlinicSlab-Light" size:[fontSize intValue] ];
     
     //revision 2.0 style
-    UIFont *customFont = [UIFont fontWithName:@"Bryant-Regular" size:[fontSize intValue] ];
+    UIFont *customFont = [UIFont fontWithName:@"Bryant-Regular" size:14];
     
     [self setFont:customFont];
 
