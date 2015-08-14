@@ -45,7 +45,7 @@
 }
 
 + (UIFont *) regularFont {
-    return [UIFont fontWithName:@"Bryant-Regular" size:14 ];
+    return [UIFont fontWithName:@"Bryant-Regular" size:16 ];
 }
 
 
