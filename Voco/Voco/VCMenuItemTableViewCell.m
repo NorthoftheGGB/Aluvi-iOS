@@ -47,7 +47,7 @@
 
 - (void) select {
     [_menuItemLabel setFont:[VCStyle boldFont]];
-    self.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:.5];
+    self.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:.25];
 }
 
 - (void) deselect {
