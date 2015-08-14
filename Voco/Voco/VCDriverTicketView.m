@@ -66,9 +66,15 @@
 }
 
 
-- (void)viewDidLoad{
+- (void)awakeFromNib{
     _riderOneButton.layer.cornerRadius = _riderOneButton.frame.size.width / 2;
     _riderOneButton.clipsToBounds = YES;
+    _riderTwoButton.layer.cornerRadius = _riderOneButton.frame.size.width / 2;
+    _riderTwoButton.clipsToBounds = YES;
+    _riderThreeButton.layer.cornerRadius = _riderOneButton.frame.size.width / 2;
+    _riderThreeButton.clipsToBounds = YES;
+
+
 }
 
 - (void) showButton: (UIButton * ) button WithRider: (Rider *) rider {
