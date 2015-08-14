@@ -12,6 +12,9 @@
 
 @interface VCDebug : NSObject
 
+@property (nonatomic) BOOL alertsEnabled;
+@property (nonatomic) BOOL blockPushMessages;
+
 + (void) showTriage;
 
 + (VCDebug *) sharedInstance;
@@ -23,8 +26,5 @@
 - (void) apiLog:(NSString *) string;
 - (void) localNotificationLog:(NSString *) string;
 - (void) remoteNotificationLog:(NSString *) string;
-
-- (BOOL) alertsEnabled;
-- (void) enableAlerts;
 
 @end
