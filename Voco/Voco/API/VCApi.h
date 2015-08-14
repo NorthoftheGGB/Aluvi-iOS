@@ -28,7 +28,7 @@
 #define API_POST_RIDE_PICKUP @"v2/rides/pickup"
 #define API_POST_RIDE_COMPLETED @"v2/rides/arrived"
 #define API_GET_PICKUP_POINTS @"v2/rides/pickup_points"
-#define API_POST_RIDE_REQUEST @"v2/rides/request"
+#define API_POST_RIDE_REQUEST @"rides/request"
 
 #define API_POST_RIDE_CANCELLED @"v2/rides/cancel"
 #define API_DELETE_TRIP @"v2/rides/trips/:trip_id"
