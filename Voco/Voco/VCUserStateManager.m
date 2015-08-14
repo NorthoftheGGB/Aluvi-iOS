@@ -50,7 +50,15 @@ static VCUserStateManager *sharedSingleton;
         //_underwayFareId = [userDefaults objectForKey:kRideIdKey];
         NSData * profileData = [[NSUserDefaults standardUserDefaults] objectForKey:kProfileDataKey];
         if(profileData != nil) {
-            _profile = [NSKeyedUnarchiver unarchiveObjectWithData:profileData];
+            @try {
+                _profile = [NSKeyedUnarchiver unarchiveObjectWithData:profileData];
+            }
+            @catch (NSException *exception) {
+                //
+            }
+            @finally {
+                //
+            }
         }
 
     }
@@ -231,16 +239,19 @@ static VCUserStateManager *sharedSingleton;
         NSArray * array = [mappingResult array];
         VCProfile * profile;
         Car * car;
+        profile.carId = nil;
         if([array[0] isKindOfClass:[VCProfile class]]){
             profile = mappingResult.firstObject;
-            car = array[1];
+            if([array count] > 1) {
+                car = array[1];
+            }
         } else {
-            profile = array[0];
+            profile = array[1];
             car = mappingResult.firstObject;
         }
         
         profile.carId = car.id;
-        [self setProfile: mappingResult.firstObject];
+        [self setProfile: profile];
         completion();
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [WRUtilities criticalError:error];
