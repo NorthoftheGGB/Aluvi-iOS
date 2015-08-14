@@ -102,7 +102,7 @@
 
 - (void) setEditable:(BOOL) editable {
     if(editable) {
-        [_scheduleButton setTitle:@"Commute Tomorrow" forState:UIControlStateNormal];
+        [_scheduleButton setTitle:@"COMMUTE TOMORROW" forState:UIControlStateNormal];
         _fromButton.enabled = YES;
         _toButton.enabled = YES;
         _pickupZonebutton.enabled = YES;
@@ -111,7 +111,7 @@
         _drivingSwitch.enabled= YES;
         _cancelable = NO;
     } else {
-        [_scheduleButton setTitle:@"Cancel Commute" forState:UIControlStateNormal];
+        [_scheduleButton setTitle:@"CANCEL COMMUTE" forState:UIControlStateNormal];
         _fromButton.enabled = NO;
         _toButton.enabled = NO;
         _pickupZonebutton.enabled = NO;

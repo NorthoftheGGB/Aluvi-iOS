@@ -107,6 +107,10 @@
 		36F9F6611B6B0C5200440D03 /* VCDriverTicketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D7C1B659CAE004EDB09 /* VCDriverTicketView.xib */; };
 		36F9F6621B6B0C5B00440D03 /* VCRideRequestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D741B658A5A004EDB09 /* VCRideRequestView.xib */; };
 		36F9F6631B6B0C5E00440D03 /* VCRiderTicketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D841B65A988004EDB09 /* VCRiderTicketView.xib */; };
+		36FA80821B7D61AD00C65DF2 /* VCFancyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FA80811B7D61AD00C65DF2 /* VCFancyButton.m */; };
+		36FA80831B7D61AD00C65DF2 /* VCFancyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FA80811B7D61AD00C65DF2 /* VCFancyButton.m */; };
+		36FA80841B7D61AD00C65DF2 /* VCFancyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FA80811B7D61AD00C65DF2 /* VCFancyButton.m */; };
+		36FA80851B7D61AD00C65DF2 /* VCFancyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FA80811B7D61AD00C65DF2 /* VCFancyButton.m */; };
 		36FB728B1B6D6B4200F8A6AF /* VCPaymentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36FB728A1B6D6B4200F8A6AF /* VCPaymentsViewController.xib */; };
 		36FB728C1B6D6B4200F8A6AF /* VCPaymentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36FB728A1B6D6B4200F8A6AF /* VCPaymentsViewController.xib */; };
 		36FB728D1B6D6B4200F8A6AF /* VCPaymentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36FB728A1B6D6B4200F8A6AF /* VCPaymentsViewController.xib */; };
@@ -1145,6 +1149,8 @@
 		36F9F6561B6AE4A300440D03 /* VCDriverTicketView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCDriverTicketView.m; sourceTree = "<group>"; };
 		36F9F65B1B6AF58E00440D03 /* VCRiderTicketView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRiderTicketView.h; sourceTree = "<group>"; };
 		36F9F65C1B6AF58E00440D03 /* VCRiderTicketView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRiderTicketView.m; sourceTree = "<group>"; };
+		36FA80801B7D61AD00C65DF2 /* VCFancyButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCFancyButton.h; sourceTree = "<group>"; };
+		36FA80811B7D61AD00C65DF2 /* VCFancyButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCFancyButton.m; sourceTree = "<group>"; };
 		36FB728A1B6D6B4200F8A6AF /* VCPaymentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCPaymentsViewController.xib; sourceTree = "<group>"; };
 		4F1849DB198F25F9006EA959 /* driver-call-hud-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "driver-call-hud-button@2x.png"; sourceTree = "<group>"; };
 		4F1849DC198F25F9006EA959 /* driver-cancel-hud-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "driver-cancel-hud-button@2x.png"; sourceTree = "<group>"; };
@@ -1941,6 +1947,8 @@
 				4F9ECEC819663B1F00AD4229 /* VCLabelBold.m */,
 				367795601B7D4FC6005D45BE /* VCButtonSmall.h */,
 				367795611B7D4FC6005D45BE /* VCButtonSmall.m */,
+				36FA80801B7D61AD00C65DF2 /* VCFancyButton.h */,
+				36FA80811B7D61AD00C65DF2 /* VCFancyButton.m */,
 			);
 			name = "UI Elements";
 			sourceTree = "<group>";
@@ -3518,6 +3526,7 @@
 				841647DD1B64A47D00CD20AC /* VCFare.m in Sources */,
 				841647DE1B64A47D00CD20AC /* VCReferralCodeTextField.m in Sources */,
 				841647DF1B64A47D00CD20AC /* WRUtilities.m in Sources */,
+				36FA80851B7D61AD00C65DF2 /* VCFancyButton.m in Sources */,
 				841647E01B64A47D00CD20AC /* VCTextField.m in Sources */,
 				36000CA81B72C185008E84AE /* VCReceiptsTableViewCell.m in Sources */,
 				841647E11B64A47D00CD20AC /* VCRideRequestCreated.m in Sources */,
@@ -3646,6 +3655,7 @@
 				841649141B658F4900CD20AC /* WRUtilities.m in Sources */,
 				841649151B658F4900CD20AC /* VCDriverSubMenuItemTableViewCell.m in Sources */,
 				841649161B658F4900CD20AC /* VCTextField.m in Sources */,
+				36FA80831B7D61AD00C65DF2 /* VCFancyButton.m in Sources */,
 				36000CA61B72C185008E84AE /* VCReceiptsTableViewCell.m in Sources */,
 				841649171B658F4900CD20AC /* VCSupportViewController.m in Sources */,
 				841649181B658F4900CD20AC /* VCDriverOnBoardingViewController.m in Sources */,
@@ -3774,6 +3784,7 @@
 				F4C6B223197F06B100F6C10B /* WRUtilities.m in Sources */,
 				4FC7590F19AACFF50093DBEA /* VCDriverSubMenuItemTableViewCell.m in Sources */,
 				F4C6B224197F06B100F6C10B /* VCTextField.m in Sources */,
+				36FA80821B7D61AD00C65DF2 /* VCFancyButton.m in Sources */,
 				36000CA51B72C185008E84AE /* VCReceiptsTableViewCell.m in Sources */,
 				4FFCF2CB19A5381900A4A24E /* VCSupportViewController.m in Sources */,
 				4FC758C819AA91410093DBEA /* VCDriverOnBoardingViewController.m in Sources */,
@@ -3902,6 +3913,7 @@
 				F4D8FE7919B1745A00BC0B69 /* VCFare.m in Sources */,
 				F4D8FE7A19B1745A00BC0B69 /* VCReferralCodeTextField.m in Sources */,
 				F4D8FE7B19B1745A00BC0B69 /* WRUtilities.m in Sources */,
+				36FA80841B7D61AD00C65DF2 /* VCFancyButton.m in Sources */,
 				F4D8FE7C19B1745A00BC0B69 /* VCTextField.m in Sources */,
 				36000CA71B72C185008E84AE /* VCReceiptsTableViewCell.m in Sources */,
 				F4D8FE7D19B1745A00BC0B69 /* VCRideRequestCreated.m in Sources */,
