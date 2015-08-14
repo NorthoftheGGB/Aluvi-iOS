@@ -2087,8 +2087,6 @@
 				F4FA0BE6192BF6BF005D8645 /* Frameworks */,
 				F4FA0BE5192BF6BF005D8645 /* Products */,
 				5BD1E7103A138D9BA6064A2B /* Pods */,
-				841648A11B64A47D00CD20AC /* Aluvi Distribution copy-Info.plist */,
-				841649D51B658F4A00CD20AC /* Aluvi Development copy2-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2161,6 +2159,8 @@
 		F4FA0BF0192BF6BF005D8645 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				841648A11B64A47D00CD20AC /* Aluvi Distribution copy-Info.plist */,
+				841649D51B658F4A00CD20AC /* Aluvi Development copy2-Info.plist */,
 				F4C97B3619F8C104006521C1 /* Voco Dev-Info.plist */,
 				F4C97B3719F8C104006521C1 /* Voco Testing-Info.plist */,
 				F4FA0BF1192BF6BF005D8645 /* Voco-Info.plist */,

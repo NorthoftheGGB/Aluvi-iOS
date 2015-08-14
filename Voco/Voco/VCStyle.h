@@ -21,4 +21,8 @@
 + (UIColor *) greyColor;
 + (UIColor *) drkBlueColor;
 
++ (UIFont *) boldFont;
++ (UIFont *) regularFont;
+
+
 @end
