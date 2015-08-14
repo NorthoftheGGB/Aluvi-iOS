@@ -8,6 +8,7 @@
 
 #import "VCProfile.h"
 #import "VCApi.h"
+#import "Car.h"
 
 @implementation VCProfile
 
@@ -55,7 +56,7 @@
         _recipientCardLastFour = [decoder decodeObjectForKey:@"recipient_card_last_four"];
         _smallImageUrl = [decoder decodeObjectForKey:@"small_image"];
         _largeImageUrl = [decoder decodeObjectForKey:@"large_image"];
-
+        _carId = [decoder decodeObjectForKey: @"carId"];
 
     }
     return self;
@@ -78,7 +79,7 @@
     [encoder encodeObject: _recipientCardLastFour forKey:@"recipient_card_last_four"];
     [encoder encodeObject: _smallImageUrl forKey:@"small_image"];
     [encoder encodeObject: _largeImageUrl forKey:@"large_image"];
-
+    [encoder encodeObject: _carId forKey:@"carId"];
 
 }
 @end

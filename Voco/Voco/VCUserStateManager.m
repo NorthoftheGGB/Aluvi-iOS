@@ -227,6 +227,9 @@ static VCUserStateManager *sharedSingleton;
 
 - (void) refreshProfileWithCompletion: (void ( ^ ) ( ))completion {
     [VCUsersApi getProfile:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        VCProfile * profile = mappingResult.firstObject;
+        NSArray * array = [mappingResult array];
+        profile.carId = ((Car*) array[1]).id;
         [self setProfile: mappingResult.firstObject];
         completion();
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {

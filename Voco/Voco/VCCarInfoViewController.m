@@ -8,9 +8,10 @@
 
 #import "VCCarInfoViewController.h"
 #import "VCStyle.h"
+#import "VCUserStateManager.h"
 
 @interface VCCarInfoViewController ()
-@property (strong, nonatomic) IBOutlet UITextField *liscencePlateField;
+@property (strong, nonatomic) IBOutlet UITextField *licencePlateField;
 @property (strong, nonatomic) IBOutlet UITextField *carInfoField;
 
 
@@ -38,6 +39,10 @@
 -(void)viewDidLoad{
     
     [self setGradient];
+    
+ //   _licencePlateField = [VCUserStateManager instance].profile
+    
+    
 }
 
 
