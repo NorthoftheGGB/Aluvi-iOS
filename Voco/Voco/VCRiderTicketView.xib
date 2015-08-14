@@ -3,50 +3,26 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="TwM-TO-NEf" customClass="VCRiderTicketView">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+            <rect key="frame" x="0.0" y="5" width="320" height="245"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZ4-1q-QkQ">
-                    <rect key="frame" x="0.0" y="55" width="320" height="245"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="245"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lB9-tE-erV">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lB9-tE-erV" customClass="VCLabelSmall">
                             <rect key="frame" x="0.0" y="0.0" width="76" height="26"/>
-                            <color key="backgroundColor" red="0.30571072859999998" green="0.75838124350000002" blue="0.9924343753" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.2784313725" green="0.60784313729999995" blue="0.63921568630000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="width" secondItem="lB9-tE-erV" secondAttribute="height" multiplier="73:25" id="9YS-qw-6LL"/>
+                                <constraint firstAttribute="height" constant="26" id="INO-oc-jwr"/>
+                                <constraint firstAttribute="width" constant="76" id="Rjc-7r-swk"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="21"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="3" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPt-DJ-vtM">
-                            <rect key="frame" x="24" y="42" width="118" height="74"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="74" id="EZZ-OU-ybr"/>
-                                <constraint firstAttribute="width" constant="118" id="QTw-xo-LkC"/>
-                            </constraints>
-                            <attributedString key="attributedText">
-                                <fragment content="Red Tarus XXXXXX ">
-                                    <attributes>
-                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <font key="NSFont" size="17" name="HelveticaNeue"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                    </attributes>
-                                </fragment>
-                                <fragment content="Daniel">
-                                    <attributes>
-                                        <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <font key="NSFont" size="17" name="HelveticaNeue-Bold"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                    </attributes>
-                                </fragment>
-                            </attributedString>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1M3-bc-0He">
@@ -117,17 +93,33 @@
                                 <action selector="didTapUpButton:" destination="TwM-TO-NEf" eventType="touchUpInside" id="Ubs-Xs-OQE"/>
                             </connections>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Red Ford Tarus" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doj-uA-ggO" customClass="VCLabelSmall">
+                            <rect key="frame" x="24" y="34" width="117" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="XXX XXX" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shT-bc-fTC" customClass="VCLabelSmall">
+                            <rect key="frame" x="24" y="63" width="68" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Siguthor" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="juC-dk-3KI" customClass="VCLabel">
+                            <rect key="frame" x="24" y="92" width="65" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="iKK-Zt-ZZ7" secondAttribute="bottom" constant="28" id="2ci-Bd-Vva"/>
                         <constraint firstItem="lB9-tE-erV" firstAttribute="leading" secondItem="hZ4-1q-QkQ" secondAttribute="leading" id="5wY-Kp-qga"/>
                         <constraint firstItem="iKK-Zt-ZZ7" firstAttribute="leading" secondItem="4ZK-w4-Bvp" secondAttribute="trailing" constant="31" id="9Xn-hL-BeT"/>
                         <constraint firstAttribute="height" constant="245" id="Hu9-Ah-s86"/>
-                        <constraint firstItem="KPt-DJ-vtM" firstAttribute="leading" secondItem="hZ4-1q-QkQ" secondAttribute="leading" constant="24" id="L9W-E4-wtN"/>
                         <constraint firstItem="ySM-Bg-6Jm" firstAttribute="leading" secondItem="hZ4-1q-QkQ" secondAttribute="leading" constant="24" id="N4d-3H-Zb7"/>
                         <constraint firstAttribute="trailing" secondItem="1M3-bc-0He" secondAttribute="trailing" constant="31" id="Sia-YG-vmG"/>
-                        <constraint firstItem="KPt-DJ-vtM" firstAttribute="top" secondItem="lB9-tE-erV" secondAttribute="bottom" constant="16" id="Uhw-K7-Wn0"/>
                         <constraint firstItem="C1D-gx-cpb" firstAttribute="centerX" secondItem="4ZK-w4-Bvp" secondAttribute="centerX" id="YfT-e0-k2H"/>
                         <constraint firstItem="4ZK-w4-Bvp" firstAttribute="leading" secondItem="ySM-Bg-6Jm" secondAttribute="trailing" constant="31" id="ZNH-cN-UOt"/>
                         <constraint firstItem="lB9-tE-erV" firstAttribute="top" secondItem="hZ4-1q-QkQ" secondAttribute="top" id="dya-q8-qFL"/>
@@ -148,14 +140,13 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="driverDetails" destination="KPt-DJ-vtM" id="u43-Va-NEr"/>
                 <outlet property="driverImageButton" destination="1M3-bc-0He" id="ogu-ZP-1Ir"/>
                 <outlet property="peerOneButton" destination="4ZK-w4-Bvp" id="bDf-xq-KqQ"/>
                 <outlet property="peerTwoButton" destination="iKK-Zt-ZZ7" id="Y09-KU-rvo"/>
                 <outlet property="peersLabel" destination="ySM-Bg-6Jm" id="gjB-jU-ylp"/>
                 <outlet property="totalCostLabel" destination="lB9-tE-erV" id="d3S-hr-l7B"/>
             </connections>
-            <point key="canvasLocation" x="263" y="412"/>
+            <point key="canvasLocation" x="263" y="439.5"/>
         </view>
     </objects>
     <resources>
