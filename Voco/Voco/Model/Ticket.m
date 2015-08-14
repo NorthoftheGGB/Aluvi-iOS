@@ -44,6 +44,7 @@
 @dynamic confirmed;
 @dynamic driving;
 @dynamic trip_id;
+@dynamic trip_state;
 @dynamic meetingPointLatitude;
 @dynamic meetingPointLongitude;
 @dynamic meetingPointPlaceName;
@@ -85,6 +86,7 @@
                                                         @"destination_short_name" : @"destinationShortName",
                                                         @"driving" : @"driving",
                                                         @"trip_id" : @"trip_id",
+                                                        @"trip_state" : @"trip_state",
                                                         @"pickup_time" : @"pickupTime",
                                                         @"fixed_price" : @"fixedPrice",
                                                         @"direction" : @"direction"
@@ -106,18 +108,6 @@
 }
 
 
-+ (Ticket *) ticketWithFareId: (NSNumber *) fareId{
-    NSFetchRequest * request = [[NSFetchRequest alloc] initWithEntityName:@"Ticket"];
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"fare_id = %@", fareId];
-    [request setPredicate:predicate];
-    NSError * error;
-    NSArray * rides = [[VCCoreData managedObjectContext] executeFetchRequest:request error:&error];
-    if(rides == nil){
-        [WRUtilities criticalError:error];
-        return nil;
-    }
-    return [rides objectAtIndex:0];
-}
 
 
 - (id) init{

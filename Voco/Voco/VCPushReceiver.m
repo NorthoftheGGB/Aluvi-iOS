@@ -21,6 +21,7 @@
 #import "VCDialogs.h"
 #import "VCUserStateManager.h"
 #import "VCCoreData.h"
+#import "VCCommuteManager.h"
 
 
 @implementation VCPushReceiver
@@ -163,7 +164,7 @@
         [hud show:YES];
     }
     
-    [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [[VCCommuteManager instance] refreshTicketsWithSuccess:^{
         [VCNotifications scheduleUpdated];
         if(hud != nil){
             hud.hidden = YES;
@@ -207,7 +208,7 @@
             
             [[VCDialogs instance] commuteUnfulfilled];
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationTypeTripUnfulfilled object:payload];
-        
+            
         } else if([type isEqualToString:kPushTypeGeneric]){
             NSString * message =[[payload objectForKey:@"aps" ] objectForKey:@"alert"];
             [UIAlertView showWithTitle:@"Message from Aluvi" message:message cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
@@ -231,23 +232,22 @@
                 [VCUserStateManager instance].underwayFareId = nil;
                 [VCUserStateManager instance].rideProcessState = kUserStateIdle;
             }
-
+            
         } else {
 #ifdef DEBUG
             [UIAlertView showWithTitle:@"Error" message:[NSString stringWithFormat:@"Invalid push type: %@", type] cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
 #endif
         }
         
-        
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+
+    } failure:^{
         //
     }];
 }
 
+
 + (void) handleRideFoundNotification:(NSDictionary *) payload {
-    
-    [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        
+    [[VCCommuteManager instance] refreshTicketsWithSuccess:^{
         NSNumber * rideId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
         NSFetchRequest * fetch = [[NSFetchRequest alloc] initWithEntityName:@"Ride"];
         NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ride_id = %@", rideId];
@@ -260,7 +260,7 @@
         }
         if([rides count] > 0){
             Ticket * request = [rides objectAtIndex:0];
-          
+            
             if ([request.rideType isEqualToString:kRideRequestTypeCommuter]){
                 [[VCDialogs instance] commuterRideFound: request];
             }
@@ -270,10 +270,11 @@
             [WRUtilities stateErrorWithString:@"Ride no longer exists"];
             
         }
-        
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [WRUtilities criticalError:error];
+    } failure:^{
+        // nothing
     }];
+    
+
 }
 
 

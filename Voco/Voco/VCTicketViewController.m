@@ -50,9 +50,11 @@
 #import "VCRiderApi.h"
 #import "VCPickupPoint.h"
 
+#define kCommuteStateBackEmpty -1
 #define kCommuteStateNone 0
 #define kCommuteStatePending 1
 #define kCommuteStateScheduled 2
+#define kCommuteStateBackHome 3
 
 #define kNotificationLocationFound @"kNotificationLocationFound"
 
@@ -146,7 +148,7 @@
     
     // Look for pending ticket
     if(_ticket == nil) {
-        [self loadRelevantTicket];
+        _ticket = [[VCCommuteManager instance] getDefaultTicket];
     }
     
     // Provisional
@@ -175,7 +177,7 @@
         self.map.showsUserLocation = YES;
         [self.map setConstraintsSouthWest:CLLocationCoordinate2DMake(26, -126) northEast:CLLocationCoordinate2DMake(49, -63)];
         [self.view insertSubview:self.map atIndex:0];
-
+        
         _appeared = YES;
         
         // Delay execution of my block for the MapBox software to fully load and move to correct place on the map
@@ -201,50 +203,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-
-///////////////
-///////////////  Determine what to show
-///////////////
-
-
-- (void) loadRelevantTicket {
-    
-    // Check for existing commuter ticket that is has not been processed
-    NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"state IN %@  AND direction = 'a' AND confirmed = false \
-                               AND pickupTime > %@",
-                               @[kCreatedState, kRequestedState],
-                               [VCUtilities beginningOfToday] ];
-    [fetch setPredicate:predicate];
-    NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];
-    [fetch setSortDescriptors:@[sort]];
-    NSError * error;
-    NSArray * tickets = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
-    if(tickets == nil) {
-        [WRUtilities criticalError:error];
-    } else if([tickets count] > 0) {
-        _ticket = [tickets objectAtIndex:0];
-    }
-    
-    // Look for next ticket for today/tomorrow
-    if(_ticket == nil) {
-        NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
-        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"state = 'scheduled' AND pickupTime > %@",
-                                   [VCUtilities beginningOfToday] ];
-        [fetch setPredicate:predicate];
-        NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];
-        [fetch setSortDescriptors:@[sort]];
-        NSError * error;
-        NSArray * tickets = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
-        if(tickets == nil) {
-            [WRUtilities criticalError:error];
-        } else if([tickets count] > 0) {
-            _ticket = [tickets objectAtIndex:0];
-        }
-    }
-    
 }
 
 
@@ -308,7 +266,7 @@
     }
     _ticket = nil;
     [self updateTicketInterface];
-
+    
 }
 
 
@@ -353,18 +311,21 @@
 }
 
 - (void) showTicketRoute {
-    if([_ticket hasCachedRoute]){
-        [self showRoute:_ticket.polyline withRegion:_ticket.region];
-    } else {
-        [self updateTicketRoute];
-    }
-    
+    [self updateTicketRoute];
+    /*
+     Check in on route caching later
+     if([_ticket hasCachedRoute]){
+     [self showRoute:_ticket.polyline withRegion:_ticket.region];
+     } else {
+     [self updateTicketRoute];
+     }
+     */
 }
 
 - (void) updateTicketRoute {
     
     [VCMapQuestRouting route:CLLocationCoordinate2DMake([_ticket.meetingPointLatitude doubleValue], [_ticket.meetingPointLongitude doubleValue])
-                          to:CLLocationCoordinate2DMake([_ticket.dropOffPointLatitude doubleValue], [_ticket.dropOffPointLatitude doubleValue])
+                          to:CLLocationCoordinate2DMake([_ticket.dropOffPointLatitude doubleValue], [_ticket.dropOffPointLongitude doubleValue])
                      success:^(NSArray *polyline, MBRegion *region) {
                          
                          _ticket.polyline = polyline;
@@ -387,7 +348,7 @@
     }
     
     _initialZoomComplete = YES;
-
+    
     RMAnnotation *annotation = [[RMAnnotation alloc] initWithMapView:self.map
                                                           coordinate:((CLLocation *)[polyline objectAtIndex:0]).coordinate
                                                             andTitle:@"suggested_route"];
@@ -461,7 +422,7 @@
 
 - (void) locationFound:(NSNotification *) notification {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kNotificationLocationFound object:nil];
-     if( ![_route routeCoordinateSettingsValid] && ! _initialZoomComplete ) {
+    if( ![_route routeCoordinateSettingsValid] && ! _initialZoomComplete ) {
         [self zoomToCurrentLocation];
     }
 }
@@ -500,6 +461,14 @@
     
     
 }
+- (void) didTapSwitchToBackHome:(id) sender {
+    _ticket = [_ticket returnTicket];
+    if(_ticket == nil){
+        [WRUtilities criticalErrorWithString:@"No Return Ticket"];
+    }
+    [self updateTicketInterface];
+}
+
 
 
 ////////////////
@@ -518,6 +487,8 @@
     
 }
 
+
+
 - (void)prepareRideRequestViewEditable: (BOOL) editable {
     if(_rideRequestView == nil) {
         _rideRequestView = [WRUtilities getViewFromNib:@"VCRideRequestView" class:[VCRideRequestView class]];
@@ -527,7 +498,7 @@
     [_rideRequestView setEditable:editable];
     [_rideRequestView updateWithRoute:_route];
     [self showRideRequestView];
-  
+    
 }
 
 
@@ -601,17 +572,22 @@
             [button addTarget:self action:@selector(didTapCancelTicket:) forControlEvents:UIControlEventTouchUpInside];
             break;
         }
+        case kCommuteStateBackHome:
+        {
+            [button setTitle:@"BACK HOME" forState:UIControlStateNormal];
+            [button removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
+            [button addTarget:self action:@selector(didTapSwitchToBackHome:) forControlEvents:UIControlEventTouchUpInside];
+            
+        }
         default:
         {
-            buttonItem = nil;
+            button = nil;
             break;
         }
             
     }
-    buttonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
-    
-    
-    if(buttonItem != nil){
+    if(button != nil) {
+        buttonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
         self.navigationItem.rightBarButtonItem = buttonItem;
     }
 }
@@ -644,7 +620,7 @@
         [self showDefaultRoute];
         [self showWaitingMessageView];
         
-    } else if([_ticket.state isEqualToString:kScheduledState]){
+    } else if([@[kScheduledState, kInProgressState] containsObject:_ticket.state]){
         [self setRightButtonForState:kCommuteStateScheduled];
         
         [self addMeetingPointAnnotation: [_ticket meetingPointLocation]];
@@ -652,17 +628,19 @@
         [self.map selectAnnotation:_meetingPointAnnotation animated:YES];
         
         [self showTicketRoute];
-        if( [_ticket.driving boolValue] ) {
-            if(![[_ticket meetingPointLocation] isEqual:[_ticket originLocation]]){
-                [self addDriverLegRoute:[_ticket originLocation] to:[_ticket meetingPointLocation]];
-            }
-            if(![[_ticket dropOffPointLocation] isEqual:[_ticket destinationLocation]]){
-                [self addDriverLegRoute:[_ticket dropOffPointLocation] to:[_ticket destinationLocation]];
-            }
-        } else {
-            [self addPedestrianRoute:[_ticket originLocation] to:[_ticket meetingPointLocation]];
-            [self addPedestrianRoute:[_ticket dropOffPointLocation] to:[_ticket destinationLocation]];
-        }
+        /*
+         if( [_ticket.driving boolValue] ) {
+         if(![[_ticket meetingPointLocation] isEqual:[_ticket originLocation]]){
+         [self addDriverLegRoute:[_ticket originLocation] to:[_ticket meetingPointLocation]];
+         }
+         if(![[_ticket dropOffPointLocation] isEqual:[_ticket destinationLocation]]){
+         [self addDriverLegRoute:[_ticket dropOffPointLocation] to:[_ticket destinationLocation]];
+         }
+         } else {
+         [self addPedestrianRoute:[_ticket originLocation] to:[_ticket meetingPointLocation]];
+         [self addPedestrianRoute:[_ticket dropOffPointLocation] to:[_ticket destinationLocation]];
+         }
+         */
         
         // show the HUD interface
         if([_ticket.driving boolValue] ) {
@@ -671,6 +649,16 @@
             [self showRiderTicketHUD];
         }
         
+        
+    } else if([@[kCompleteState, kRiderCancelledState, kDriverCancelledState] containsObject:_ticket.state]){
+        if([_ticket.direction isEqualToString:@"a"]){
+            [self setRightButtonForState:kCommuteStateBackHome];
+        } else {
+            [self setRightButtonForState:kCommuteStateBackEmpty];
+        }
+        [self addMeetingPointAnnotation: [_ticket meetingPointLocation]];
+        [self addDropOffPointAnnotation: [_ticket dropOffPointLocation]];
+        [self showTicketRoute];
         
     }
     
@@ -750,24 +738,32 @@
 - (void) showRiderTicketHUD {
     _riderTicketHUD = [WRUtilities getViewFromNib:@"VCRiderTicketView" class:[VCRiderTicketView class]];
     _riderTicketHUD.delegate = self;
-    
-    CGRect frame = _riderTicketHUD.frame;
-    frame.origin.x = 0;
-    frame.origin.y = 481;
-    frame.size.width = self.view.frame.size.width;
-    _riderTicketHUD.frame = frame;
+    [_riderTicketHUD updateInterfaceWithTicket:_ticket];
     
     [self.view addSubview:_riderTicketHUD];
+    [_riderTicketHUD mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.mas_left);
+        make.bottom.equalTo(self.view.mas_bottom).with.offset(_riderTicketHUD.frame.size.height);
+        make.right.equalTo(self.view.mas_right);
+        make.height.mas_equalTo(_driverTicketHUD.frame.size.height);
+    }];
+    
+    
     [UIView animateWithDuration:0.4
                           delay:0
          usingSpringWithDamping:0.4
           initialSpringVelocity:0.5
                         options:0
                      animations:^{
-                         // final placement
-                         CGRect frame = _riderTicketHUD.frame;
-                         frame.origin.y = 380;
-                         _riderTicketHUD.frame = frame;
+                     
+                         [_riderTicketHUD mas_remakeConstraints:^(MASConstraintMaker *make) {
+                             make.left.equalTo(self.view.mas_left);
+                             make.bottom.equalTo(self.view.mas_bottom);
+                             make.right.equalTo(self.view.mas_right);
+                             make.height.mas_equalTo(_riderTicketHUD.frame.size.height);
+                         }];
+                         
+                         
                      } completion:^(BOOL finished) {
                          
                      }];
@@ -795,11 +791,6 @@
     _driverTicketHUD.delegate = self;
     [_driverTicketHUD updateInterfaceWithTicket:_ticket];
     
-    CGRect frame = _driverTicketHUD.frame;
-    frame.origin.x = 0;
-    frame.origin.y = 481;
-    frame.size.width = self.view.frame.size.width;
-    _driverTicketHUD.frame = frame;
     
     [self.view addSubview:_driverTicketHUD];
     [_driverTicketHUD mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -827,7 +818,7 @@
                              make.right.equalTo(self.view.mas_right);
                              make.height.mas_equalTo(_driverTicketHUD.frame.size.height);
                          }];
-
+                         
                          
                      } completion:^(BOOL finished) {
                          
@@ -858,15 +849,7 @@
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Canceling..";
-    if( ![@[kCreatedState, kRequestedState] containsObject: _ticket.state]) {
-        [[VCCommuteManager instance] cancelRide:_ticket success:^{
-            _ticket = nil;
-            [self resetInterfaceToHome];
-            hud.hidden = YES;
-        } failure:^{
-            hud.hidden = YES;
-        }];
-    } else {
+    if( [@[kCreatedState, kRequestedState] containsObject: _ticket.state]) {
         // Here we are cancelling BOTH legs of the trip
         [[VCCommuteManager instance] cancelTrip:_ticket.trip_id success:^{
             _ticket = nil;
@@ -875,6 +858,17 @@
         } failure:^{
             hud.hidden = YES;
         }];
+        
+    } else {
+        
+        [[VCCommuteManager instance] cancelRide:_ticket success:^{
+             _ticket = nil;
+             [self resetInterfaceToHome];
+             hud.hidden = YES;
+         } failure:^{
+             hud.hidden = YES;
+         }];
+        
     }
     
 }
@@ -895,13 +889,13 @@
     
     if(_route.driving) {
         _originAnnotation = [[RMAnnotation alloc] initWithMapView:self.map
-                                                            coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-                                                              andTitle:@"Home"];
+                                                       coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+                                                         andTitle:@"Home"];
         _originAnnotation.userInfo = kPickupZoneAnnotationType;
     } else {
         _originAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
-                                                        coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-                                                          andTitle:@"Home"];
+                                                            coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+                                                              andTitle:@"Home"];
         ((RMPointAnnotation *) _originAnnotation ).image = [VCMapStyle homePinImage];
     }
     [self.map addAnnotation:_originAnnotation];
@@ -920,14 +914,14 @@
 }
 
 - (void)addMeetingPointAnnotation:(CLLocation *)location {
-    if(self.meetingPointAnnotation != nil) {
+    if(_meetingPointAnnotation != nil) {
         [self.map removeAnnotation:_meetingPointAnnotation];
         _meetingPointAnnotation = nil;
     }
     _meetingPointAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
                                                               coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
                                                                 andTitle:@"Meeting Point"];
-    _meetingPointAnnotation.image = [UIImage imageNamed:@"map_pin_red"];
+    _meetingPointAnnotation.image = [VCMapStyle homePinImage];
     [self.map addAnnotation:_meetingPointAnnotation];
 }
 
@@ -939,7 +933,7 @@
     _dropOffPointAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
                                                               coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
                                                                 andTitle:@"Drop Off"];
-    _dropOffPointAnnotation.image = [UIImage imageNamed:@"map_pin_green"];
+    _dropOffPointAnnotation.image = [VCMapStyle workPinImage];
     [self.map addAnnotation:_dropOffPointAnnotation];
 }
 
@@ -949,7 +943,7 @@
         for (VCPickupPoint* pickupPoint in _pickupPoints)
         {
             RMPointAnnotation * annotation = [[RMPointAnnotation alloc] initWithMapView:self.map
-                                            coordinate:CLLocationCoordinate2DMake(pickupPoint.location.coordinate.latitude, pickupPoint.location.coordinate.longitude)
+                                                                             coordinate:CLLocationCoordinate2DMake(pickupPoint.location.coordinate.latitude, pickupPoint.location.coordinate.longitude)
                                                                                andTitle:[NSString stringWithFormat:@"%@", pickupPoint.numberOfRiders]];
             annotation.userInfo = kPickupPointsAnnotationType;
             [_pickupPointAnnotations addObject:annotation];
@@ -991,7 +985,7 @@
                                          success:^{
                                              [hud hide:YES];
                                              
-                                             [self loadRelevantTicket];
+                                             _ticket = [[VCCommuteManager instance] getDefaultTicket];
                                              [self updateTicketInterface];
                                              
                                          } failure:^{
@@ -1011,7 +1005,7 @@
         make.height.mas_equalTo(_waitingMessageView.frame.size.height);
     }];
     [_waitingMessageView setNeedsLayout];
-
+    
 }
 
 - (void) hideWaitinMessageView {
@@ -1091,34 +1085,34 @@
     hud.labelText = @"Notifying Server";
     
     [VCDriverApi ticketCompleted:_ticket.ride_id
-                       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                           [VCUserStateManager instance].driveProcessState = kUserStateRideCompleted;
-                           //[self showRideCompletedInterface];
-                           VCFare * fare = mappingResult.firstObject;
-                           [VCUserStateManager instance].underwayFareId = nil;
-                           
-                           _ticket.state = kCompleteState;
-                           [VCCoreData saveContext];
-                           [VCNotifications scheduleUpdated];
-                           [hud hide:YES];
-                           
-                           //[_driverCallHUD removeFromSuperview];
-                           //[_driverCancelHUD removeFromSuperview];
-                           [_rideCompleteButton removeFromSuperview];
-                           [self resetInterfaceToHome];
-                           
-                           [UIAlertView showWithTitle:@"Receipt"
-                                              message:[NSString stringWithFormat:@"Thanks for driving.  You earned %@ on this ride.",
-                                                       [VCUtilities formatCurrencyFromCents:fare.driverEarnings]]
-                                    cancelButtonTitle:@"OK"
-                                    otherButtonTitles:nil
-                                             tapBlock:nil];
-                           _ticket = nil;
-                           
-                       } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                           [hud hide:YES];
-                           
-                       }];
+                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                             [VCUserStateManager instance].driveProcessState = kUserStateRideCompleted;
+                             //[self showRideCompletedInterface];
+                             VCFare * fare = mappingResult.firstObject;
+                             [VCUserStateManager instance].underwayFareId = nil;
+                             
+                             _ticket.state = kCompleteState;
+                             [VCCoreData saveContext];
+                             [VCNotifications scheduleUpdated];
+                             [hud hide:YES];
+                             
+                             //[_driverCallHUD removeFromSuperview];
+                             //[_driverCancelHUD removeFromSuperview];
+                             [_rideCompleteButton removeFromSuperview];
+                             [self resetInterfaceToHome];
+                             
+                             [UIAlertView showWithTitle:@"Receipt"
+                                                message:[NSString stringWithFormat:@"Thanks for driving.  You earned %@ on this ride.",
+                                                         [VCUtilities formatCurrencyFromCents:fare.driverEarnings]]
+                                      cancelButtonTitle:@"OK"
+                                      otherButtonTitles:nil
+                                               tapBlock:nil];
+                             _ticket = nil;
+                             
+                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                             [hud hide:YES];
+                             
+                         }];
     
 }
 
@@ -1150,7 +1144,7 @@
                                                    [hud hide:YES];
                                                    [self removeRideRequestView: rideRequestView];
                                                    [self updateTicketInterface];
-
+                                                   
                                                }];
 }
 
@@ -1201,21 +1195,21 @@
     }
     
     if([VCMapHelper validCoordinate:location]) {
-    
+        
         if(type == kHomeType || type == kWorkType){
             _activeAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
-                                                            coordinate:location
-                                                              andTitle:locationName];
+                                                                coordinate:location
+                                                                  andTitle:locationName];
             ((RMPointAnnotation *)_activeAnnotation).image = [VCMapStyle annotationImageForType:type];
         } else if (type == kPickupZoneType){
             _activeAnnotation = [[RMAnnotation alloc] initWithMapView:self.map
-                                                       coordinate:location
-                                                         andTitle:locationName];
+                                                           coordinate:location
+                                                             andTitle:locationName];
             _activeAnnotation.userInfo = kPickupZoneAnnotationType;
         }
-
+        
         [self.map addAnnotation:_activeAnnotation];
-    
+        
     }
     
     [self.map setZoom:[VCMapStyle defaultZoomForType:type] atCoordinate:location animated:YES];
@@ -1302,14 +1296,14 @@
     if(_inAddressLookupMode) {
         _inAddressLookupMode = NO;
         [UIView transitionWithView:self.view
-                      duration:.45
-                       options:0
-                    animations:^{
-                        _locationSearchTable.view.alpha = 1;
-                    }
-                    completion:^(BOOL finished) {
-                        [_locationSearchTable.view removeFromSuperview];
-                    }];
+                          duration:.45
+                           options:0
+                        animations:^{
+                            _locationSearchTable.view.alpha = 1;
+                        }
+                        completion:^(BOOL finished) {
+                            [_locationSearchTable.view removeFromSuperview];
+                        }];
     } else {
         [self showRideRequestView]; // TODO: with completion:
         [self placeInRouteMode];
@@ -1359,17 +1353,17 @@
         [self.map removeAnnotation:_activeAnnotation];
         _activeAnnotation = nil;
     }
-   
-
+    
+    
     if(_editLocationType == kHomeType || _editLocationType == kWorkType ){
-       _activeAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
-                                                      coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-                                                        andTitle:title];
-       ((RMPointAnnotation *)_activeAnnotation).image = [VCMapStyle annotationImageForType:_editLocationType ];
-    } else if (_editLocationType == kPickupZoneType) {
-        _activeAnnotation = [[RMAnnotation alloc] initWithMapView:self.map
+        _activeAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
                                                             coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
                                                               andTitle:title];
+        ((RMPointAnnotation *)_activeAnnotation).image = [VCMapStyle annotationImageForType:_editLocationType ];
+    } else if (_editLocationType == kPickupZoneType) {
+        _activeAnnotation = [[RMAnnotation alloc] initWithMapView:self.map
+                                                       coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+                                                         andTitle:title];
         _activeAnnotation.userInfo = kPickupZoneAnnotationType;
     }
     
@@ -1425,18 +1419,18 @@
         case kHomeType:
         case kWorkType:
             _activeAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
-                                                        coordinate:_activePlacemark.coordinate
-                                                          andTitle:title];
+                                                                coordinate:_activePlacemark.coordinate
+                                                                  andTitle:title];
             [self.map setZoom:[VCMapStyle defaultZoomForType:_editLocationType] atCoordinate:_activePlacemark.coordinate animated:YES];
             ((RMPointAnnotation *)_activeAnnotation).image = [VCMapStyle annotationImageForType:_editLocationType];
             break;
         case kPickupZoneType:
             _activeAnnotation = [[RMAnnotation alloc] initWithMapView:self.map
-                                                                coordinate:_activePlacemark.coordinate
-                                                                  andTitle:title];
+                                                           coordinate:_activePlacemark.coordinate
+                                                             andTitle:title];
             _activeAnnotation.userInfo = kPickupZoneAnnotationType;
             [self.map setZoom:[VCMapStyle defaultZoomForType:_editLocationType] atCoordinate:_activePlacemark.coordinate animated:YES];
-
+            
             break;
         default:
             break;
@@ -1475,7 +1469,7 @@
         circle.lineWidthInPixels = 5.0;
         return circle;
     } else if ([annotation.userInfo isKindOfClass:[NSString class]] &&
-        [annotation.userInfo isEqualToString:kPickupPointsAnnotationType]){
+               [annotation.userInfo isEqualToString:kPickupPointsAnnotationType]){
         RMMarker * marker = [[RMMarker alloc] initWithUIImage:[UIImage imageNamed:@"pin"]];
         return marker;
     } else if ([annotation.title isEqualToString:@"pedestrian"]) {

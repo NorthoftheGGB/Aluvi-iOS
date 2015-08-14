@@ -58,7 +58,7 @@
         _riderThreeView.hidden = NO;
         [self showButton:_riderThreeButton WithRider:rider];
     }
-    _totalFareLabel.text = [NSString stringWithFormat:@"%.2f", [ticket.fixedPrice doubleValue]];
+    _totalFareLabel.text = [NSString stringWithFormat:@"%.2f", [ticket.estimatedEarnings doubleValue] / 100];
     _ridersOnboardButton.hidden = NO;
     if([ticket.state isEqualToString:kInProgressState]){
         _ridersOnboardButton.hidden = YES;

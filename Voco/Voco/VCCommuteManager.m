@@ -11,6 +11,7 @@
 #import "VCRiderApi.h"
 #import "VCDriverApi.h"
 #import "VCNotifications.h"
+#import "VCUtilities.h"
 
 // TODO refactor these out of this class
 #import "VCApi.h"
@@ -29,6 +30,11 @@
 #define kCommutePolylineKey @"kCommutePolylineKey"
 
 static VCCommuteManager * instance;
+
+@interface VCCommuteManager ()
+@property (nonatomic, strong) NSArray * activeTickets;
+
+@end
 
 @implementation VCCommuteManager
 
@@ -67,6 +73,7 @@ static VCCommuteManager * instance;
 - (id) init {
     self = [super init];
     if(self != nil){
+        [self loadActiveTickets];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTickets:) name:kNotificationScheduleNeedsRefresh object:nil];
     }
     return self;
@@ -203,12 +210,26 @@ static VCCommuteManager * instance;
 }
 
 - (void) refreshTickets {
+    [self refreshTicketsWithSuccess:nil failure:nil];
+}
+
+- (void) refreshTicketsWithSuccess:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure  {
     [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        //
+        [self loadActiveTickets];
+        [VCNotifications scheduleUpdated];
+        if(success != nil){
+            success();
+        }
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        //
+        [WRUtilities criticalError:error];
+        if(failure != nil){
+            failure();
+        }
     }];
 }
+
+
+
 
 
 - (void) requestRidesFor:(NSDate *) tomorrow success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure  {
@@ -326,12 +347,12 @@ static VCCommuteManager * instance;
 
             [VCCoreData saveContext];
             
-            [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            [self refreshTicketsWithSuccess:^{
                 success();
-            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                // Not sure what to do here, the request has been posted, but the schedule failed to update
+            } failure:^{
                 failure();
             }];
+            
             
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             failure();
@@ -345,48 +366,18 @@ static VCCommuteManager * instance;
 
 - (void) cancelRide:(Ticket *) ride success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure {
     
-    void ( ^ deleteRide )( Ticket * );
-    deleteRide = ^( Ticket * ride )
-    {
-        [[VCCoreData managedObjectContext] deleteObject:ride];
-        NSError * error;
-        [[VCCoreData managedObjectContext] save:&error];
-        if(error != nil){
-            [WRUtilities criticalError:error];
-        }
-    };
-    
-    
-    if(ride.ride_id != nil) {
-        if(ride.fare_id != nil && [ride.driving boolValue] ){
-            [VCDriverApi fareCancelledByDriver:ride.fare_id success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                deleteRide(ride);
-                [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationScheduleUpdated object:nil userInfo:@{}];
-                success();
-            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                [WRUtilities criticalError:error];
-                failure();
-            }];
-        } else {
-            [VCRiderApi cancelRide:ride success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                deleteRide(ride);
-                [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationScheduleUpdated object:nil userInfo:@{}];
-                success();
-            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                [WRUtilities criticalError:error];
-                failure();
-            }];
-        }
-    } else {
-        deleteRide(ride);
-        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationScheduleUpdated object:nil userInfo:@{}];
+    [VCRiderApi cancelRide:ride success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [VCNotifications scheduleUpdated];
         success();
-    }
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [WRUtilities criticalError:error];
+        failure();
+    }];
 }
 
 - (void) cancelTrip:(NSNumber *) tripId success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure {
     [VCRiderApi cancelTrip:tripId success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationScheduleUpdated object:nil userInfo:@{}];
+        [VCNotifications scheduleUpdated];
         success();
     } failure:failure];
 
@@ -405,6 +396,76 @@ static VCCommuteManager * instance;
         [WRUtilities subcriticaError:error];
         failure();
     }];
+}
+
+
+///////////
+///////////  Methods for Viewing Active Tickets
+///////////
+
+
+- (void) loadActiveTickets {
+    
+    //set up filter by date > today at midnight.
+    NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"( trip_state IN %@  \
+                               AND pickupTime > %@ \
+                               )",
+                               @[kTripRequestedState, kTripFulfilledState],
+                               [VCUtilities beginningOfToday]  ];
+    [fetch setPredicate:predicate];
+    NSSortDescriptor * sortTrip = [NSSortDescriptor sortDescriptorWithKey:@"trip_id" ascending:YES];
+    NSSortDescriptor * sortTime = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];
+    [fetch setSortDescriptors:@[sortTrip, sortTime]];
+    NSError * error;
+    _activeTickets = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
+    
+    
+    
+}
+
+- (BOOL) scheduledCommuteAvailable {
+    if([_activeTickets count] > 0
+       &&  [((Ticket *) _activeTickets[0]).trip_state isEqualToString:kTripFulfilledState]){
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+- (BOOL) returnTicketValid {
+    if([_activeTickets count] < 2){
+        return false;
+    }
+    
+    if( [((Ticket *) _activeTickets[0]).trip_id isEqualToNumber:((Ticket *) _activeTickets[1]).trip_id]){
+        return YES;
+    } else {
+        [WRUtilities warningWithString:@"Mismatched trip ids"];
+        return NO;
+    }
+}
+
+- (Ticket *) getRequestedTripTicket {
+    return _activeTickets[0];
+}
+
+- (Ticket *) getTicketToWork {
+    return _activeTickets[0];
+}
+
+- (Ticket *) getTicketBackHome {
+    return _activeTickets[1];
+}
+
+- (Ticket *) getDefaultTicket {
+    if([self scheduledCommuteAvailable]){
+        return _activeTickets[0];
+    } else if([_activeTickets count] > 0) {
+        return [self getRequestedTripTicket];
+    } else {
+        return nil;
+    }
 }
 
 

@@ -149,6 +149,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
+                        <action selector="didTapLate:" destination="TwM-TO-NEf" eventType="touchUpInside" id="hg9-s3-lKC"/>
                         <action selector="didTapRiderLateButton:" destination="TwM-TO-NEf" eventType="touchUpInside" id="TMS-mD-hkz"/>
                     </connections>
                 </button>

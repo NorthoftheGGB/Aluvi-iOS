@@ -12,7 +12,7 @@
 @interface VCMenuItemTableViewCell ()
 
 
-
+@property (nonatomic) BOOL disabled;
 @end
 
 @implementation VCMenuItemTableViewCell
@@ -28,6 +28,22 @@
     
 
 }
+
+- (void) setDisabled: (BOOL) disabled {
+    if(disabled) {
+        self.contentView.alpha = .5;
+        _disabled = YES;
+    } else {
+        self.contentView.alpha = 1;
+        _disabled = NO;
+    }
+    
+}
+
+- (BOOL) isDisabled {
+    return _disabled;
+}
+
 
 - (void) select {
     [_menuItemLabel setFont:[VCStyle boldFont]];

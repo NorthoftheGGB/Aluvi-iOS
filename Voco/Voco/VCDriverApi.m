@@ -37,20 +37,6 @@
         RKRequestDescriptor *requestDescriptorPostData = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[VCTicketPayload class] rootKeyPath:nil method:RKRequestMethodPOST];
         [objectManager addRequestDescriptor:requestDescriptorPostData];
     }
-    
-    
-        
-    {
-        RKResponseDescriptor * responseDescriptor3 = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
-                                                                                                  method:RKRequestMethodPOST
-                                                                                             pathPattern:API_POST_DRIVER_CANCELLED
-                                                                                                 keyPath:nil
-                                                                                             statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-        [objectManager addResponseDescriptor:responseDescriptor3];
-    }
-    
-
-    
     {
         RKObjectMapping * mapping = [VCDriverRegistration getMapping];
         RKObjectMapping * requestMapping = [mapping inverseMapping];
@@ -58,8 +44,6 @@
         [objectManager addRequestDescriptor:requestDescriptor];
 
     }
-    
-    
     {
         RKObjectMapping * mapping = [VCFare getMapping];
         RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping
@@ -68,9 +52,7 @@
                                                                                                     keyPath:nil
                                                                                                 statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:responseDescriptor];
-    }
-
-   
+    }   
     {
         RKResponseDescriptor * responseDescriptor2 = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSNull class]]
                                                                                                   method:RKRequestMethodPOST
@@ -155,20 +137,6 @@
       } failure:^(RKObjectRequestOperation *operation, NSError *error) {
           failure(operation, error);
       }];
-}
-
-+ (void) fareCancelledByDriver: (NSNumber *) fareId
-                       success: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
-                       failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
-    
-    VCFareDriverAssignment * rideIdentity = [[VCFareDriverAssignment alloc] init];
-    rideIdentity.fareId = fareId;
-    
-     [[RKObjectManager sharedManager] postObject:rideIdentity path:API_POST_DRIVER_CANCELLED parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-         success(operation, mappingResult);
-     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-         failure(operation, error);
-     }];
 }
 
 + (void) ticketCompleted: (NSNumber *) ticketId

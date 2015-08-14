@@ -23,6 +23,14 @@
 #define kCompleteState @"complete"
 #define kPaymentProblemState @"payment_problem"
 
+// Trip State
+#define kTripRequestedState @"requested"
+#define kTripFulfilledState @"fulfilled"
+#define kTripUnfulfilledState @"unfulfilled"
+#define kTripAbortedState @"aborted"
+#define kTripRescindedState @"rescinded"
+
+
 #define kRideRequestTypeCommuter @"commuter"
 
 
@@ -54,6 +62,7 @@
 @property (nonatomic, retain) NSNumber * confirmed;
 @property (nonatomic, retain) NSNumber * driving;
 @property (nonatomic, retain) NSNumber * trip_id;
+@property (nonatomic, retain) NSString * trip_state;
 @property (nonatomic, retain) NSNumber * fixedPrice;
 @property (nonatomic, retain) NSNumber * estimatedEarnings;
 @property (nonatomic, retain) NSString * direction;

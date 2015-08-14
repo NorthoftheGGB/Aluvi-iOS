@@ -9,12 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface VCMenuItemTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *menuItemLabel;
-@property (weak, nonatomic) IBOutlet UIView *badgeView;
-@property (weak, nonatomic) IBOutlet UILabel *badgeNumberLabel;
 
+
+- (void) setDisabled: (BOOL) disabled;
+- (BOOL) isDisabled;
 
 - (void) select;
 - (void) deselect;

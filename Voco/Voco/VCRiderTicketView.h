@@ -13,6 +13,7 @@
 
 @protocol VCRiderTicketViewDelegate <NSObject>
 
+//- (void) VCRiderTicketViewDidTapLate: (VCRiderTicketView *) riderTicketView;
 
 @end
 

@@ -22,7 +22,6 @@
 #import "VCMenuUserInfoTableViewCell.h"
 #import "VCMenuDriverClockOnTableViewCell.h"
 #import "VCSubMenuItemTableViewCell.h"
-#import "VCMenuItemNotConfiguredTableViewCell.h"
 #import "VCMenuItemModeTableViewCell.h"
 #import "VCDriverSubMenuItemTableViewCell.h"
 #import "NSDate+Pretty.h"
@@ -59,9 +58,6 @@
 // These are used in the switch statement
 #define kUserInfoCellInteger 1000
 #define kProfileCellInteger 1001
-#define kScheduleCellInteger 1002
-#define kScheduleItemCellInteger 1003
-#define kMapCellInteger 1004
 #define kPaymentCellInteger 1005
 #define kReceiptsCellInteger 1006
 #define kSupportCellInteger 1007
@@ -79,7 +75,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSMutableArray * tableCellList;
-@property (nonatomic, strong) NSArray * scheduleItems;
 @property (nonatomic) NSInteger notificationCount;
 
 @property (nonatomic) NSUInteger selectedCellTag;
@@ -99,9 +94,7 @@
         } else {
             _tableCellList = [NSMutableArray arrayWithArray: @[kUserInfoCell, kCommuteCell, kBackHomeCell, kPaymentCell, kReceiptsCell, kSupportCell, kLogoutCell, kTriageCell ]];
         }
-        _selectedCellTag = -1;
-
-        [self loadScheduleItems];
+        _selectedCellTag = kCommuteCellInteger;
 
     }
     return self;
@@ -132,8 +125,7 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-    
-    [self loadScheduleItems];
+    [_tableView reloadData];
 }
 
 - (void) dealloc {
@@ -146,8 +138,6 @@
 }
 
 - (void) scheduleUpdated:(NSNotification *) notification {
-    // just reload the table ?
-    [self loadScheduleItems];
     [_tableView reloadData];
 }
 
@@ -204,7 +194,7 @@
                                                   [[VCUserStateManager instance] profile].firstName,
                                                   [[VCUserStateManager instance] profile].lastName
                                                   ];
-           menuUserInfoCell.userImageView.layer.cornerRadius = menuUserInfoCell.userImageView.frame.size.width / 2;
+            menuUserInfoCell.userImageView.layer.cornerRadius = menuUserInfoCell.userImageView.frame.size.width / 2;
             menuUserInfoCell.userImageView.clipsToBounds = YES;
             
             
@@ -230,6 +220,14 @@
             menuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-backhome-icon"];
             menuItemTableViewCell.menuItemLabel.text = @"Back Home";
             menuItemTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            if([[VCCommuteManager instance] scheduledCommuteAvailable]
+               && [[VCCommuteManager instance] returnTicketValid]) {
+                [menuItemTableViewCell setDisabled:NO];
+            } else {
+                [menuItemTableViewCell setDisabled:YES];
+            }
+            
             cell = menuItemTableViewCell;
         }
             break;
@@ -297,9 +295,7 @@
             
         default:
         {
-            VCMenuItemNotConfiguredTableViewCell * menuItemNotConfiguredTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemNotConfiguredTableViewCell" class:[VCMenuItemNotConfiguredTableViewCell class]];
-            menuItemNotConfiguredTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell = menuItemNotConfiguredTableViewCell;
+            cell = nil;
         }
             break;
             
@@ -308,10 +304,10 @@
     
     if( tag == _selectedCellTag ){
         if([cell isKindOfClass:[VCMenuItemTableViewCell class]]) {
-            [(VCMenuItemTableViewCell*) cell deselect];
+            [(VCMenuItemTableViewCell*) cell select];
         }
         else if([cell isKindOfClass:[VCSubMenuItemTableViewCell class]]){
-            [(VCSubMenuItemTableViewCell*) cell deselect];
+            [(VCSubMenuItemTableViewCell*) cell select];
         }
     }
     
@@ -341,6 +337,13 @@
     // setCenterViewControllers
     long row = [indexPath row];
     
+    UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+    if([cell isKindOfClass:[VCMenuItemTableViewCell class]]){
+        if([((VCMenuItemTableViewCell *) cell) isDisabled] ){
+            return;
+        }
+    }
+    
     long tag = [[_tableCellList objectAtIndex:row] integerValue];
     switch(tag){
         case kUserInfoCellInteger:
@@ -354,11 +357,14 @@
         case kCommuteCellInteger:
         {
             VCTicketViewController * ticketViewController = [[VCTicketViewController alloc] init];
+            ticketViewController.ticket = [[VCCommuteManager instance] getDefaultTicket];
             [[VCInterfaceManager instance] setCenterViewControllers: @[ticketViewController]];
             
             VCMenuItemTableViewCell * cell = (VCMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
             [cell select];
             
+            
+            // Need to do this somewhere
             [[VCCommuteManager instance] refreshTickets];
         }
             break;
@@ -366,6 +372,7 @@
         case kBackHomeCellInteger:
         {
             VCTicketViewController * ticketViewController = [[VCTicketViewController alloc] init];
+            ticketViewController.ticket = [[VCCommuteManager instance] getTicketBackHome];
             [[VCInterfaceManager instance] setCenterViewControllers: @[ticketViewController]];
             
             VCMenuItemTableViewCell * cell = (VCMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
@@ -436,26 +443,6 @@
 
 
 
-
-- (void) loadScheduleItems {
-    
-    
-    //set up filter by date > today at midnight.
-    NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"( state IN %@  \
-                               AND pickupTime > %@ \
-                               )",
-                               @[kCreatedState, kRequestedState, kScheduledState, kInProgressState, kCompleteState],
-                               [VCUtilities beginningOfToday]  ];
-    [fetch setPredicate:predicate];
-    NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];
-    [fetch setSortDescriptors:@[sort]];
-    NSError * error;
-    _scheduleItems = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
-    
- 
-
-}
 
 
 @end

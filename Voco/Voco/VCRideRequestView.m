@@ -90,8 +90,12 @@
 - (void) updateWithRoute:(Route *) route {
    
     _route = [route copy];
-    _toWorkTimeLabel.text = route.pickupTime;
-    _toHomeTimeLabel.text = route.returnTime;
+    if(route.pickupTime != nil) {
+        _toWorkTimeLabel.text = route.pickupTime;
+    }
+    if(route.returnTime != nil) {
+        _toHomeTimeLabel.text = route.returnTime;
+    }
     [self updateFromButton:route.homePlaceName];
     [self updateToButton:route.workPlaceName];
     [self updatePickupZoneButton:route.pickupZoneCenterPlaceName];

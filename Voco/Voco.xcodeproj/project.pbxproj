@@ -138,8 +138,6 @@
 		4F184A1E1991893D006EA959 /* VCMenuDriverClockOnTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A1A1991893D006EA959 /* VCMenuDriverClockOnTableViewCell.xib */; };
 		4F184A241991E156006EA959 /* VCSubMenuItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F184A221991E156006EA959 /* VCSubMenuItemTableViewCell.m */; };
 		4F184A271991E156006EA959 /* VCSubMenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A231991E156006EA959 /* VCSubMenuItemTableViewCell.xib */; };
-		4F184A351992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F184A331992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.m */; };
-		4F184A381992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A341992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.xib */; };
 		4F184A3E1992E41F006EA959 /* VCMenuItemModeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F184A3C1992E41F006EA959 /* VCMenuItemModeTableViewCell.m */; };
 		4F184A411992E41F006EA959 /* VCMenuItemModeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A3D1992E41F006EA959 /* VCMenuItemModeTableViewCell.xib */; };
 		4F30991419B02BCD00DFCDD1 /* temp-call-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F30991219B02BCD00DFCDD1 /* temp-call-button@2x.png */; };
@@ -242,7 +240,6 @@
 		841647AE1B64A47D00CD20AC /* Transit.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C80419623C70007E05AD /* Transit.m */; };
 		841647AF1B64A47D00CD20AC /* VCDriversLicenseTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE712BC1973686B0071020C /* VCDriversLicenseTextField.m */; };
 		841647B01B64A47D00CD20AC /* VCFillCommuterPass.m in Sources */ = {isa = PBXBuildFile; fileRef = F401446E1978728100769802 /* VCFillCommuterPass.m */; };
-		841647B11B64A47D00CD20AC /* VCMenuItemNotConfiguredTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F184A331992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.m */; };
 		841647B21B64A47D00CD20AC /* VCNameTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEA6196618C300AD4229 /* VCNameTextField.m */; };
 		841647B31B64A47D00CD20AC /* VCCommuterPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEAF19661C3400AD4229 /* VCCommuterPassViewController.m */; };
 		841647B41B64A47D00CD20AC /* VCMapQuestRouting.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F004194A54AC00D8C900 /* VCMapQuestRouting.m */; };
@@ -343,7 +340,6 @@
 		8416483E1B64A47D00CD20AC /* VCPrivatePolicyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F38975919B7DD0100A75C5C /* VCPrivatePolicyViewController.xib */; };
 		8416483F1B64A47D00CD20AC /* driver-call-hud-icon-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849EB198F67A4006EA959 /* driver-call-hud-icon-select@2x.png */; };
 		841648421B64A47D00CD20AC /* VCMenuItemModeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A3D1992E41F006EA959 /* VCMenuItemModeTableViewCell.xib */; };
-		841648431B64A47D00CD20AC /* VCMenuItemNotConfiguredTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A341992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.xib */; };
 		841648461B64A47D00CD20AC /* temp-user-profile-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F30991319B02BCD00DFCDD1 /* temp-user-profile-icon@2x.png */; };
 		841648481B64A47D00CD20AC /* (null) in Resources */ = {isa = PBXBuildFile; };
 		8416484E1B64A47D00CD20AC /* driver-cancel-hud-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849E4198F625A006EA959 /* driver-cancel-hud-icon@2x.png */; };
@@ -437,7 +433,6 @@
 		841648E71B658F4900CD20AC /* VCCommuterPassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEAF19661C3400AD4229 /* VCCommuterPassViewController.m */; };
 		841648E81B658F4900CD20AC /* VCMapQuestRouting.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F004194A54AC00D8C900 /* VCMapQuestRouting.m */; };
 		841648E91B658F4900CD20AC /* VCCommuterHud.m in Sources */ = {isa = PBXBuildFile; fileRef = F4138C2519650C5600C265CD /* VCCommuterHud.m */; };
-		841648EB1B658F4900CD20AC /* VCMenuItemNotConfiguredTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F184A331992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.m */; };
 		841648EC1B658F4900CD20AC /* VCInterfaceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F49EDD0F1946E2F90020B8BB /* VCInterfaceManager.m */; };
 		841648ED1B658F4900CD20AC /* HVTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6B8BD19A9ADEF004312A1 /* HVTableView.m */; };
 		841648EE1B658F4900CD20AC /* Rider.m in Sources */ = {isa = PBXBuildFile; fileRef = F471E3E019A9590E00DF688D /* Rider.m */; };
@@ -536,7 +531,6 @@
 		841649781B658F4900CD20AC /* map_pin_fill-512.png in Resources */ = {isa = PBXBuildFile; fileRef = F473EFFD19497FBF00D8C900 /* map_pin_fill-512.png */; };
 		841649791B658F4900CD20AC /* driver-call-hud-icon-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849EB198F67A4006EA959 /* driver-call-hud-icon-select@2x.png */; };
 		8416497C1B658F4900CD20AC /* VCMenuItemModeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A3D1992E41F006EA959 /* VCMenuItemModeTableViewCell.xib */; };
-		8416497D1B658F4900CD20AC /* VCMenuItemNotConfiguredTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A341992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.xib */; };
 		841649801B658F4900CD20AC /* temp-user-profile-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F30991319B02BCD00DFCDD1 /* temp-user-profile-icon@2x.png */; };
 		841649851B658F4900CD20AC /* VCPasswordRecoveryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758D919AA94C30093DBEA /* VCPasswordRecoveryViewController.xib */; };
 		841649861B658F4900CD20AC /* receipt-down-arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FC7590019AAC0770093DBEA /* receipt-down-arrow@2x.png */; };
@@ -875,7 +869,6 @@
 		F4D8FED819B1745A00BC0B69 /* map_pin_fill-512.png in Resources */ = {isa = PBXBuildFile; fileRef = F473EFFD19497FBF00D8C900 /* map_pin_fill-512.png */; };
 		F4D8FED919B1745A00BC0B69 /* driver-call-hud-icon-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849EB198F67A4006EA959 /* driver-call-hud-icon-select@2x.png */; };
 		F4D8FEDC19B1745A00BC0B69 /* VCMenuItemModeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A3D1992E41F006EA959 /* VCMenuItemModeTableViewCell.xib */; };
-		F4D8FEDD19B1745A00BC0B69 /* VCMenuItemNotConfiguredTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A341992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.xib */; };
 		F4D8FEE219B1745A00BC0B69 /* temp-user-profile-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F30991319B02BCD00DFCDD1 /* temp-user-profile-icon@2x.png */; };
 		F4D8FEE419B1745A00BC0B69 /* (null) in Resources */ = {isa = PBXBuildFile; };
 		F4D8FEE919B1745A00BC0B69 /* driver-cancel-hud-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849E4198F625A006EA959 /* driver-cancel-hud-icon@2x.png */; };
@@ -908,7 +901,6 @@
 		F4D8FF2D19B1745A00BC0B69 /* VCDriverSubMenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC7590419AACD840093DBEA /* VCDriverSubMenuItemTableViewCell.xib */; };
 		F4D8FF2E19B1745A00BC0B69 /* VCRiderOnBoardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758BE19AA91330093DBEA /* VCRiderOnBoardingViewController.xib */; };
 		F4D8FF3119B1745A00BC0B69 /* VCLogInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758B519AA8C270093DBEA /* VCLogInViewController.xib */; };
-		F4D8FF3E19B1827800BC0B69 /* VCMenuItemNotConfiguredTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F184A331992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.m */; };
 		F4F6A50D19B91EFA007E8A16 /* VCTermsOfServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F38974F19B7DC5000A75C5C /* VCTermsOfServiceViewController.m */; };
 		F4F6B8B819A9898E004312A1 /* VCNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6B8B719A9898E004312A1 /* VCNotifications.m */; };
 		F4F6B8BE19A9ADEF004312A1 /* HVTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6B8BD19A9ADEF004312A1 /* HVTableView.m */; };
@@ -980,9 +972,6 @@
 		4F184A211991E156006EA959 /* VCSubMenuItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCSubMenuItemTableViewCell.h; sourceTree = "<group>"; };
 		4F184A221991E156006EA959 /* VCSubMenuItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCSubMenuItemTableViewCell.m; sourceTree = "<group>"; };
 		4F184A231991E156006EA959 /* VCSubMenuItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCSubMenuItemTableViewCell.xib; sourceTree = "<group>"; };
-		4F184A321992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCMenuItemNotConfiguredTableViewCell.h; sourceTree = "<group>"; };
-		4F184A331992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCMenuItemNotConfiguredTableViewCell.m; sourceTree = "<group>"; };
-		4F184A341992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCMenuItemNotConfiguredTableViewCell.xib; sourceTree = "<group>"; };
 		4F184A3B1992E41F006EA959 /* VCMenuItemModeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCMenuItemModeTableViewCell.h; sourceTree = "<group>"; };
 		4F184A3C1992E41F006EA959 /* VCMenuItemModeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCMenuItemModeTableViewCell.m; sourceTree = "<group>"; };
 		4F184A3D1992E41F006EA959 /* VCMenuItemModeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCMenuItemModeTableViewCell.xib; sourceTree = "<group>"; };
@@ -1134,7 +1123,7 @@
 		84B1FBF61B547C6500A00196 /* Voco 19.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 19.xcdatamodel"; sourceTree = "<group>"; };
 		84B1FBF71B557AA600A00196 /* Voco 20.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 20.xcdatamodel"; sourceTree = "<group>"; };
 		84BB90031B7D8C1000D7397B /* Voco 21.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 21.xcdatamodel"; sourceTree = "<group>"; };
-		84BB90061B7D91DD00D7397B /* Fare.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Fare.m; path = Model/Fare.m; sourceTree = "<group>"; };
+		84BB90071B7D9A8F00D7397B /* Voco 22.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 22.xcdatamodel"; sourceTree = "<group>"; };
 		D19278A21B6738D1009BFBF8 /* MBRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBRegion.h; path = Model/MBRegion.h; sourceTree = "<group>"; };
 		D19278A31B6738D1009BFBF8 /* MBRegion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBRegion.m; path = Model/MBRegion.m; sourceTree = "<group>"; };
 		D570C24C905CF2756FACB77F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1753,9 +1742,6 @@
 				4FFE17001989E801004D4413 /* VCMenuItemTableViewCell.h */,
 				4FFE17011989E801004D4413 /* VCMenuItemTableViewCell.m */,
 				4FFE17021989E801004D4413 /* VCMenuItemTableViewCell.xib */,
-				4F184A321992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.h */,
-				4F184A331992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.m */,
-				4F184A341992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.xib */,
 			);
 			name = "Menu Item Table View Cells";
 			sourceTree = "<group>";
@@ -1793,7 +1779,6 @@
 		8435C5951B7AE5F9000401CA /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				84BB90061B7D91DD00D7397B /* Fare.m */,
 				F4FA0BFB192BF6BF005D8645 /* Voco.xcdatamodeld */,
 				F471E3DF19A9590E00DF688D /* Rider.h */,
 				F471E3E019A9590E00DF688D /* Rider.m */,
@@ -2448,7 +2433,6 @@
 				36E48E881B7B01100034DFEB /* Default@2x.png in Resources */,
 				36E48E6F1B7ABF9F0034DFEB /* BryantRegular.ttf in Resources */,
 				841648421B64A47D00CD20AC /* VCMenuItemModeTableViewCell.xib in Resources */,
-				841648431B64A47D00CD20AC /* VCMenuItemNotConfiguredTableViewCell.xib in Resources */,
 				841648461B64A47D00CD20AC /* temp-user-profile-icon@2x.png in Resources */,
 				841648481B64A47D00CD20AC /* (null) in Resources */,
 				36E48E791B7ABFBE0034DFEB /* Bryant-Bold.ttf in Resources */,
@@ -2534,7 +2518,6 @@
 				841649781B658F4900CD20AC /* map_pin_fill-512.png in Resources */,
 				841649791B658F4900CD20AC /* driver-call-hud-icon-select@2x.png in Resources */,
 				8416497C1B658F4900CD20AC /* VCMenuItemModeTableViewCell.xib in Resources */,
-				8416497D1B658F4900CD20AC /* VCMenuItemNotConfiguredTableViewCell.xib in Resources */,
 				841649801B658F4900CD20AC /* temp-user-profile-icon@2x.png in Resources */,
 				841649851B658F4900CD20AC /* VCPasswordRecoveryViewController.xib in Resources */,
 				841649861B658F4900CD20AC /* receipt-down-arrow@2x.png in Resources */,
@@ -2623,7 +2606,6 @@
 				369DBC141B6D228E00449CB4 /* test.jpg in Resources */,
 				4F1849EC198F67A4006EA959 /* driver-call-hud-icon-select@2x.png in Resources */,
 				4F184A411992E41F006EA959 /* VCMenuItemModeTableViewCell.xib in Resources */,
-				4F184A381992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.xib in Resources */,
 				4F30991719B02BCD00DFCDD1 /* temp-user-profile-icon@2x.png in Resources */,
 				4FC758DD19AA94C30093DBEA /* VCPasswordRecoveryViewController.xib in Resources */,
 				4FC7590119AAC0770093DBEA /* receipt-down-arrow@2x.png in Resources */,
@@ -2713,7 +2695,6 @@
 				36E48E871B7B01100034DFEB /* Default@2x.png in Resources */,
 				36E48E6E1B7ABF9F0034DFEB /* BryantRegular.ttf in Resources */,
 				F4D8FEDC19B1745A00BC0B69 /* VCMenuItemModeTableViewCell.xib in Resources */,
-				F4D8FEDD19B1745A00BC0B69 /* VCMenuItemNotConfiguredTableViewCell.xib in Resources */,
 				F4D8FEE219B1745A00BC0B69 /* temp-user-profile-icon@2x.png in Resources */,
 				F4D8FEE419B1745A00BC0B69 /* (null) in Resources */,
 				36E48E781B7ABFBE0034DFEB /* Bryant-Bold.ttf in Resources */,
@@ -2988,7 +2969,6 @@
 				841647AE1B64A47D00CD20AC /* Transit.m in Sources */,
 				841647AF1B64A47D00CD20AC /* VCDriversLicenseTextField.m in Sources */,
 				841647B01B64A47D00CD20AC /* VCFillCommuterPass.m in Sources */,
-				841647B11B64A47D00CD20AC /* VCMenuItemNotConfiguredTableViewCell.m in Sources */,
 				841647B21B64A47D00CD20AC /* VCNameTextField.m in Sources */,
 				841647B31B64A47D00CD20AC /* VCCommuterPassViewController.m in Sources */,
 				841647B41B64A47D00CD20AC /* VCMapQuestRouting.m in Sources */,
@@ -3118,7 +3098,6 @@
 				841648E71B658F4900CD20AC /* VCCommuterPassViewController.m in Sources */,
 				841648E81B658F4900CD20AC /* VCMapQuestRouting.m in Sources */,
 				841648E91B658F4900CD20AC /* VCCommuterHud.m in Sources */,
-				841648EB1B658F4900CD20AC /* VCMenuItemNotConfiguredTableViewCell.m in Sources */,
 				841648EC1B658F4900CD20AC /* VCInterfaceManager.m in Sources */,
 				841648ED1B658F4900CD20AC /* HVTableView.m in Sources */,
 				841648EE1B658F4900CD20AC /* Rider.m in Sources */,
@@ -3245,7 +3224,6 @@
 				F4C6B1F8197F06B100F6C10B /* VCCommuterPassViewController.m in Sources */,
 				F4C6B1F9197F06B100F6C10B /* VCMapQuestRouting.m in Sources */,
 				F4C6B1FB197F06B100F6C10B /* VCCommuterHud.m in Sources */,
-				4F184A351992E3E1006EA959 /* VCMenuItemNotConfiguredTableViewCell.m in Sources */,
 				F4C6B1FD197F06B100F6C10B /* VCInterfaceManager.m in Sources */,
 				F4F6B8BE19A9ADEF004312A1 /* HVTableView.m in Sources */,
 				F471E3E119A9590E00DF688D /* Rider.m in Sources */,
@@ -3372,7 +3350,6 @@
 				F4D8FE4819B1745A00BC0B69 /* Transit.m in Sources */,
 				F4D8FE4919B1745A00BC0B69 /* VCDriversLicenseTextField.m in Sources */,
 				F4D8FE4A19B1745A00BC0B69 /* VCFillCommuterPass.m in Sources */,
-				F4D8FF3E19B1827800BC0B69 /* VCMenuItemNotConfiguredTableViewCell.m in Sources */,
 				F4D8FE4C19B1745A00BC0B69 /* VCNameTextField.m in Sources */,
 				F4D8FE4D19B1745A00BC0B69 /* VCCommuterPassViewController.m in Sources */,
 				F4D8FE4E19B1745A00BC0B69 /* VCMapQuestRouting.m in Sources */,
@@ -3995,6 +3972,7 @@
 		F4FA0BFB192BF6BF005D8645 /* Voco.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				84BB90071B7D9A8F00D7397B /* Voco 22.xcdatamodel */,
 				84BB90031B7D8C1000D7397B /* Voco 21.xcdatamodel */,
 				84B1FBF71B557AA600A00196 /* Voco 20.xcdatamodel */,
 				84B1FBF61B547C6500A00196 /* Voco 19.xcdatamodel */,
@@ -4045,7 +4023,7 @@
 				F4B7BFAA19A2EF7400D934D6 /* Voco 11.xcdatamodel */,
 				F4FA0BFC192BF6BF005D8645 /* Voco.xcdatamodel */,
 			);
-			currentVersion = F4792AF01976301F005AB652 /* Voco 21.xcdatamodel */;
+			currentVersion = F4792AF119763284005AB652 /* Voco 22.xcdatamodel */;
 			path = Voco.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -29,6 +29,7 @@
 #import "VCDevicesApi.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import "VCCommuteManager.h"
 
 
 @interface VCAppDelegate ()
@@ -143,11 +144,11 @@
     
     if([[VCUserStateManager instance] isLoggedIn]){
         [[VCUserStateManager instance] synchronizeUserState];
-    
-        [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        
+        [[VCCommuteManager instance] refreshTicketsWithSuccess:^{
             NSLog(@"%@", @"Refreshed Scheduled Rides");
-        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        }];
+        } failure:^{}];
+    
 
         [VCDevicesApi updateUserWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {

@@ -32,5 +32,15 @@
 - (void) cancelTrip:(NSNumber *) tripId success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
 - (void) ridesPickedUp:(Ticket *) ticket success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
 - (void) refreshTickets;
+- (void) refreshTicketsWithSuccess:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
+
+
+- (BOOL) scheduledCommuteAvailable;
+- (BOOL) returnTicketValid;
+- (Ticket *) getRequestedTripTicket;
+- (Ticket *) getTicketToWork;
+- (Ticket *) getTicketBackHome;
+- (Ticket *) getDefaultTicket;
+
 
 @end

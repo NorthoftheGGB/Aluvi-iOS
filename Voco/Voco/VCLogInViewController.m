@@ -10,6 +10,7 @@
 #import <MBProgressHUD.h>
 #import "VCUserStateManager.h"
 #import "VCInterfaceManager.h"
+#import "VCCommuteManager.h"
 #import "VCRiderApi.h"
 #import "VCTextField.h"
 #import "VCButtonBold.h"
@@ -281,16 +282,15 @@
 }
 
 - (void) completeLogin {
-    [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        
+    
+    [[VCCommuteManager instance] refreshTicketsWithSuccess:^{
         [_hud hide:YES];
         [[VCInterfaceManager instance] showRiderInterface];
         [VCNotifications scheduleUpdated];
-        
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [WRUtilities criticalError:error];
+
+    } failure:^{
         [_hud hide:YES];
-        
+
     }];
 }
 

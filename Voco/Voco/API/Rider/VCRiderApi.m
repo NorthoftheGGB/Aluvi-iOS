@@ -44,7 +44,7 @@
         
         RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
                                                                                                  method:RKRequestMethodPOST
-                                                                                            pathPattern:API_POST_RIDER_CANCELLED
+                                                                                            pathPattern:API_POST_RIDE_CANCELLED
                                                                                                 keyPath:nil
                                                                                             statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:responseDescriptor];
@@ -63,15 +63,6 @@
         RKObjectMapping * requestMapping = [mapping inverseMapping];
         RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[VCRequestUpdate class] rootKeyPath:nil method:RKRequestMethodPOST];
         [objectManager addRequestDescriptor:requestDescriptor];
-    }
-    {
-        RKResponseDescriptor * responseDescriptor =
-        [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
-                                                     method:RKRequestMethodPOST
-                                                pathPattern:API_POST_REQUEST_CANCELLED
-                                                    keyPath:nil
-                                                statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-        [objectManager addResponseDescriptor:responseDescriptor];
     }
     {
         RKObjectMapping * mapping = [VCPickupPoint getMapping];
@@ -126,57 +117,44 @@
             failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     
     
-    if(ride.fare_id != nil){
-        [[VCDebug sharedInstance] apiLog:@"API: Rider cancel ride"];
-        
-        // Alread have a ride id, so this is a ride cancellation
-        [[RKObjectManager sharedManager] postObject:nil path:API_POST_RIDER_CANCELLED parameters:@{@"fare_id" : ride.fare_id}
-                                            success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                
-                                                [[VCDebug sharedInstance] apiLog:@"API: Rider cancel ride success"];
-                                                
-                                                NSError * error = nil;
-                                                [[VCCoreData managedObjectContext] deleteObject:ride];
-                                                [[VCCoreData managedObjectContext] save:&error];
-                                                if(error != nil){
-                                                    [WRUtilities criticalError:error];
+    [[VCDebug sharedInstance] apiLog:@"API: cancel ride"];
+    
+    // Alread have a ride id, so this is a ride cancellation
+    [[RKObjectManager sharedManager] postObject:nil path:API_POST_RIDE_CANCELLED parameters:@{@"ride_id" : ride.ride_id}
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            
+                                            [[VCDebug sharedInstance] apiLog:@"API: Rider cancel ride success"];
+                                            
+                                            NSError * error = nil;
+                                            ride.state = kRiderCancelledState;
+                                            
+                                            // Get ride of the tickets and trip if they aren't relevant now
+                                            NSArray * tickets = [Ticket ticketsForTrip:ride.trip_id];
+                                            BOOL stillActive = NO;
+                                            for(Ticket* ticket in tickets){
+                                                if([@[kScheduledState, kInProgressState, kCompleteState] containsObject:ticket.state]){
+                                                    stillActive = YES;
                                                 }
-                                                
-                                                success(operation, mappingResult);
-                                            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                [[VCDebug sharedInstance] apiLog:@"API: Rider cancel ride failure"];
-                                                
-                                                NSLog(@"Failed cancel ride %@", error);
-                                                failure(operation, error);
-                                            }];
-    } else {
-        [[VCDebug sharedInstance] apiLog:@"API: Rider cancel request"];
-        
-        // No ride id yet, so this could be a request cancellation
-        // OR a ride cancellation if the ride found message has not arrived
-        // This control fork gets handled on the server side
-        VCRequestUpdate * requestIdentity = [[VCRequestUpdate alloc] init];
-        requestIdentity.rideId = ride.ride_id;
-        [[RKObjectManager sharedManager] postObject:requestIdentity path:API_POST_REQUEST_CANCELLED parameters:nil
-                                            success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                [[VCDebug sharedInstance] apiLog:@"API: Rider cancel request success"];
-                                                
-                                                NSError * error = nil;
-                                                [[VCCoreData managedObjectContext] deleteObject:ride];
-                                                [[VCCoreData managedObjectContext] save:&error];
-                                                if(error != nil){
-                                                    [WRUtilities criticalError:error];
+                                            }
+                                            if( !stillActive ){
+                                                for(Ticket* ticket in tickets){
+                                                    [[VCCoreData managedObjectContext] deleteObject:ticket];
                                                 }
-                                                
-                                                success(operation, mappingResult);
-                                                
-                                            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                [[VCDebug sharedInstance] apiLog:@"API: Rider cancel request success"];
-                                                
-                                                NSLog(@"Failed cancel ride %@", error);
-                                                failure(operation, error);
-                                            }];
-    }
+                                            }
+                                            
+                                            
+                                            [[VCCoreData managedObjectContext] save:&error];
+                                            if(error != nil){
+                                                [WRUtilities criticalError:error];
+                                            }
+                                            
+                                            success(operation, mappingResult);
+                                        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            [[VCDebug sharedInstance] apiLog:@"API: Rider cancel ride failure"];
+                                            
+                                            NSLog(@"Failed cancel ride %@", error);
+                                            failure(operation, error);
+                                        }];
     
 }
 
@@ -192,18 +170,13 @@
                                           success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [[VCDebug sharedInstance] apiLog:@"API: Rider cancel ride success"];
         
-        NSError * error = nil;
-        NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
-        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"trip_id = %@", tripId];
-        [request setPredicate:predicate];
-        NSArray * tickets = [[VCCoreData managedObjectContext] executeFetchRequest:request error:&error];
-        if(tickets == nil){
-            [WRUtilities criticalError:error];
-        }
+                                              
+        NSArray * tickets = [Ticket ticketsForTrip:tripId];
         for(Ticket* ticket in tickets){
             [[VCCoreData managedObjectContext] deleteObject:ticket];
         }
         
+        NSError * error;
         [[VCCoreData managedObjectContext] save:&error];
         if(error != nil){
             [WRUtilities criticalError:error];
