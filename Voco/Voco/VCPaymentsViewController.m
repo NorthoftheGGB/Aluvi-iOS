@@ -13,6 +13,7 @@
 #import <MBProgressHUD.h>
 #import "VCUserStateManager.h"
 #import "VCUsersApi.h"
+#import "VCStyle.h"
 
 @interface VCPaymentsViewController () <PTKViewDelegate>
 
@@ -24,8 +25,19 @@
 
 @implementation VCPaymentsViewController
 
+- (void) setGradient {
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = self.view.bounds;
+    gradient.colors = [VCStyle gradientColors];
+    gradient.startPoint = CGPointMake(0.0, 0.5);
+    gradient.endPoint = CGPointMake(1.0, 0.5);
+    [self.view.layer insertSublayer:gradient atIndex:0];
+}
+
+
 - (void) viewDidLoad {
     [super viewDidLoad];
+    [self setGradient];
     _cardView = [[PTKView alloc] initWithFrame:CGRectMake(15,20,290,55)];
     _cardView.delegate = self;
     
