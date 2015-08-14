@@ -20,6 +20,7 @@
 @dynamic id;
 @dynamic tickets;
 @dynamic carPhotoUrl;
+@dynamic color;
 
 + (RKEntityMapping *)createMappings:(RKObjectManager *)objectManager{
     RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Car" inManagedObjectStore:[VCCoreData managedObjectStore]];
@@ -30,7 +31,8 @@
                                                         @"license_plate" : @"licensePlate",
                                                         @"state" : @"state",
                                                         @"year" : @"year",
-                                                        @"car_photo" : @"carPhotoUrl"
+                                                        @"car_photo" : @"carPhotoUrl",
+                                                        @"color" : @"color"
                                                         }];
     
     entityMapping.identificationAttributes = @[ @"id" ]; 

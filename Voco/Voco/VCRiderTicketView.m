@@ -10,6 +10,9 @@
 #import <SDWebImage/UIButton+WebCache.h>
 #import "Rider.h"
 #import "Driver.h"
+#import "Car.h"
+#import "VCLabelSmall.h"
+#import "VCLabel.h"
 
 @interface VCRiderTicketView ()
 
@@ -20,6 +23,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *peersLabel;
 @property (strong, nonatomic) IBOutlet UIButton *peerOneButton;
 @property (strong, nonatomic) IBOutlet UIButton *peerTwoButton;
+@property (strong, nonatomic) IBOutlet VCLabelSmall *carLabel;
+@property (strong, nonatomic) IBOutlet VCLabelSmall *licensePlateLabel;
+@property (strong, nonatomic) IBOutlet VCLabel *driverNameLabel;
 
 @property (nonatomic, strong) NSArray * riders;
 
@@ -65,6 +71,10 @@
     if(length > 1){
         [self showButton:_peerTwoButton WithURLString:((Rider *) _riders[1]).smallImageUrl];
     }
+    
+    _carLabel.text = [ticket.car summary];
+    _licensePlateLabel.text = ticket.car.licensePlate;
+    _driverNameLabel.text = ticket.driver.fullName;
     
 }
 

@@ -45,6 +45,12 @@
 
     }
     {
+        RKObjectMapping * mapping = [Car createMappings:objectManager];
+        RKObjectMapping * requestMapping = [mapping inverseMapping];
+        RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[Car class] rootKeyPath:nil method:RKRequestMethodPOST];
+        [objectManager addRequestDescriptor:requestDescriptor];
+    }
+    {
         RKObjectMapping * mapping = [VCFare getMapping];
         RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping
                                                                                                      method:RKRequestMethodPOST
@@ -74,6 +80,20 @@
                                                                                              pathPattern:API_DRIVER_REGISTRATION
                                                                                                  keyPath:nil
                                                                                              statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor2];
+    }
+    {
+        RKResponseDescriptor * responseDescriptor2 = [RKResponseDescriptor responseDescriptorWithMapping:[VCApiError getMapping]                                                                                             method:RKRequestMethodPOST
+                                                                                             pathPattern:API_CAR_UPDATE
+                                                                                                 keyPath:nil
+                                                                                             statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor2];
+    }
+    {
+        RKResponseDescriptor * responseDescriptor2 = [RKResponseDescriptor responseDescriptorWithMapping:[VCApiError getMapping]                                                                                             method:RKRequestMethodPOST
+                                                                                             pathPattern:API_CAR_UPDATE
+                                                                                                 keyPath:nil
+                                                                                             statusCodes:[NSIndexSet indexSetWithIndex:400]];
         [objectManager addResponseDescriptor:responseDescriptor2];
     }
     
@@ -167,5 +187,16 @@
                                                    failure(operation, error);
                                                }];
 }
+
++ (void) updateDefaultCar: (Car *) car
+                  success: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                  failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+    [[RKObjectManager sharedManager] postObject:car path:API_CAR_UPDATE parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        success(operation, mappingResult);
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        failure(operation, error);
+    }];
+}
+
 
 @end

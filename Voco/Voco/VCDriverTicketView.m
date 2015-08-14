@@ -64,6 +64,8 @@
     if([ticket.state isEqualToString:kInProgressState]){
         _ridersOnboardButton.hidden = YES;
     }
+    
+    
 }
 
 

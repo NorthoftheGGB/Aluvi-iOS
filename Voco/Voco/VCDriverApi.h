@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <RestKit/RestKit.h>
+#import "Car.h"
 
 @interface VCDriverApi : NSObject
 
@@ -27,15 +28,16 @@
                 failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
 
-+ (void) fareCancelledByDriver: (NSNumber *) fareId
-                success: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
-                failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
-
 + (void) ticketCompleted: (NSNumber *) ticketId
                  success: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                  failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
 + (void) earnings:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
           failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
+
++ (void) updateDefaultCar: (Car *) car
+                 success: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                 failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
+
 
 @end
