@@ -171,13 +171,11 @@
         }
         
         if ([type isEqualToString:kPushTypeFareCancelledByRider]){
-            NSNumber * rideId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
             [[VCDialogs instance] rideCancelledByRider];
             [[NSNotificationCenter defaultCenter] postNotificationName:kPushTypeFareCancelledByRider object:payload userInfo:@{}];
             
 
         } else if([type isEqualToString:kPushTypeFareCancelledByDriver]){
-            NSNumber * rideId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
             [[VCDialogs instance] rideCancelledByDriver];
             [[NSNotificationCenter defaultCenter] postNotificationName:kPushTypeFareCancelledByDriver object:payload userInfo:@{}];
             
