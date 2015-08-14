@@ -7,7 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCPaymentsViewController">
             <connections>
-                <outlet property="PTKViewContainer" destination="hiE-68-k4f" id="y97-Nc-0Ew"/>
+                <outlet property="PTKViewContainer" destination="cyk-mO-6UT" id="wy9-Va-3Uh"/>
+                <outlet property="commuterAccountBalance" destination="dJ5-sd-d9F" id="PTd-7m-dFu"/>
                 <outlet property="view" destination="iN0-l3-epB" id="m2l-22-ijd"/>
             </connections>
         </placeholder>
@@ -16,19 +17,14 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="STRIPE" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hiE-68-k4f">
-                    <rect key="frame" x="30" y="54" width="260" height="30"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Account Balance:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PzC-cd-mWx">
-                    <rect key="frame" x="30" y="130" width="143" height="21"/>
+                    <rect key="frame" x="28" y="199" width="143" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$22" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJ5-sd-d9F">
-                    <rect key="frame" x="173" y="130" width="43" height="21"/>
+                    <rect key="frame" x="171" y="199" width="43" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -42,8 +38,13 @@
                         <action selector="didTapSave:" destination="-1" eventType="touchUpInside" id="0Li-HN-NqQ"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cyk-mO-6UT">
+                    <rect key="frame" x="0.0" y="86" width="320" height="69"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="326" y="215"/>
         </view>

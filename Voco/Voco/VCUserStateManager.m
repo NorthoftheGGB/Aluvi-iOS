@@ -46,7 +46,7 @@ static VCUserStateManager *sharedSingleton;
         _driveProcessState = [userDefaults objectForKey:kDriveProcessStateKey];
         _riderState = [userDefaults objectForKey:kRiderStateKey];
         _driverState = [userDefaults objectForKey:kDriverStateKey];
-        _underwayFareId = [userDefaults objectForKey:kRideIdKey];
+        //_underwayFareId = [userDefaults objectForKey:kRideIdKey];
         NSData * profileData = [[NSUserDefaults standardUserDefaults] objectForKey:kProfileDataKey];
         if(profileData != nil) {
             _profile = [NSKeyedUnarchiver unarchiveObjectWithData:profileData];
@@ -57,6 +57,7 @@ static VCUserStateManager *sharedSingleton;
 }
 
 
+/*
 - (void) setUnderwayFareId:(NSNumber *)rideId {
     _underwayFareId = rideId;
     NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
@@ -64,6 +65,7 @@ static VCUserStateManager *sharedSingleton;
     [userDefaults synchronize];
     
 }
+ */
 - (void) setRideProcessState:(NSString *)rideProcessState {
     _rideProcessState = rideProcessState;
     NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
@@ -186,7 +188,7 @@ static VCUserStateManager *sharedSingleton;
     [userDefaults removeObjectForKey:kRiderStateKey];
     [userDefaults removeObjectForKey:kProfileDataKey];
     [userDefaults synchronize];
-    _underwayFareId = nil;
+    //_underwayFareId = nil;
     _rideProcessState = nil;
     _driveProcessState = nil;
     _riderState = nil;
@@ -200,7 +202,7 @@ static VCUserStateManager *sharedSingleton;
     [userDefaults removeObjectForKey:kRideProcessStateKey];
     [userDefaults removeObjectForKey:kDriveProcessStateKey];
     [userDefaults synchronize];
-    _underwayFareId = nil;
+    //_underwayFareId = nil;
     _rideProcessState = nil;
     _driveProcessState = nil;
 }

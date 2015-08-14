@@ -1055,16 +1055,11 @@
 
 
 - (IBAction)didTapRidersPickedUp:(id)sender {
-    if( [VCUserStateManager instance].underwayFareId != nil){
-        if(! [[VCUserStateManager instance].underwayFareId isEqualToNumber: _ticket.fare_id]){
-            [WRUtilities warningWithString:@"State shows another ride is still underway.  Continuing anyway"];
-        }
-    }
+
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Notifying Server";
     
-    [VCUserStateManager instance].underwayFareId = _ticket.fare_id;
     [VCDriverApi ridersPickedUp:_ticket.fare_id
                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                             [self moveFromPickupToRideInProgressInteface];
@@ -1089,7 +1084,6 @@
                              [VCUserStateManager instance].driveProcessState = kUserStateRideCompleted;
                              //[self showRideCompletedInterface];
                              VCFare * fare = mappingResult.firstObject;
-                             [VCUserStateManager instance].underwayFareId = nil;
                              
                              _ticket.state = kCompleteState;
                              [VCCoreData saveContext];

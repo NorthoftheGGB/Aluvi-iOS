@@ -84,17 +84,6 @@ static int mode;
 
 - (void) showRiderInterface {
     VCTicketViewController * rideViewController = [[VCTicketViewController alloc] init];
-
-    if( [VCUserStateManager instance].underwayFareId != nil ) {
-        NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
-        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"fare_id = %@", [VCUserStateManager instance].underwayFareId];
-        [fetch setPredicate:predicate];
-        NSError * error;
-        NSArray * items = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
-        if(items != nil && [items count] > 0){
-            rideViewController.ticket = [items objectAtIndex:0];
-        }
-    }
     
     if(deckController == nil){
         [self createDeckViewController];

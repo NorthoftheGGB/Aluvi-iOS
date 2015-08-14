@@ -206,7 +206,6 @@
 		841647851B64A47D00CD20AC /* Rider.m in Sources */ = {isa = PBXBuildFile; fileRef = F471E3E019A9590E00DF688D /* Rider.m */; };
 		841647861B64A47D00CD20AC /* VCUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8777219775D7E00870945 /* VCUtilities.m */; };
 		841647871B64A47D00CD20AC /* VCTermsOfServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F38974F19B7DC5000A75C5C /* VCTermsOfServiceViewController.m */; };
-		841647881B64A47D00CD20AC /* VCLocalNotificationReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FB55751977CD690043557A /* VCLocalNotificationReceiver.m */; };
 		841647891B64A47D00CD20AC /* VCLabelSmall.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DC1941621E0059BED1 /* VCLabelSmall.m */; };
 		8416478A1B64A47D00CD20AC /* Driver.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F03E195B971C00D8C900 /* Driver.m */; };
 		8416478B1B64A47D00CD20AC /* VCDialogs.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B111938581C00354886 /* VCDialogs.m */; };
@@ -399,7 +398,6 @@
 		841648BC1B658F4900CD20AC /* VCButtonBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DF194162360059BED1 /* VCButtonBold.m */; };
 		841648BD1B658F4900CD20AC /* VCTermsOfServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F38974F19B7DC5000A75C5C /* VCTermsOfServiceViewController.m */; };
 		841648BF1B658F4900CD20AC /* VCUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8777219775D7E00870945 /* VCUtilities.m */; };
-		841648C01B658F4900CD20AC /* VCLocalNotificationReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FB55751977CD690043557A /* VCLocalNotificationReceiver.m */; };
 		841648C11B658F4900CD20AC /* VCLabelSmall.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DC1941621E0059BED1 /* VCLabelSmall.m */; };
 		841648C21B658F4900CD20AC /* Driver.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F03E195B971C00D8C900 /* Driver.m */; };
 		841648C41B658F4900CD20AC /* VCDialogs.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B111938581C00354886 /* VCDialogs.m */; };
@@ -638,7 +636,6 @@
 		F4C6B1D0197F06B100F6C10B /* VCRiderApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BF5193578DE00A94721 /* VCRiderApi.m */; };
 		F4C6B1D2197F06B100F6C10B /* VCButtonBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DF194162360059BED1 /* VCButtonBold.m */; };
 		F4C6B1D4197F06B100F6C10B /* VCUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8777219775D7E00870945 /* VCUtilities.m */; };
-		F4C6B1D7197F06B100F6C10B /* VCLocalNotificationReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FB55751977CD690043557A /* VCLocalNotificationReceiver.m */; };
 		F4C6B1D8197F06B100F6C10B /* VCLabelSmall.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DC1941621E0059BED1 /* VCLabelSmall.m */; };
 		F4C6B1D9197F06B100F6C10B /* Driver.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F03E195B971C00D8C900 /* Driver.m */; };
 		F4C6B1DA197F06B100F6C10B /* VCDialogs.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B111938581C00354886 /* VCDialogs.m */; };
@@ -752,7 +749,6 @@
 		F4D8FE1D19B1745A00BC0B69 /* VCButtonBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DF194162360059BED1 /* VCButtonBold.m */; };
 		F4D8FE1F19B1745A00BC0B69 /* Rider.m in Sources */ = {isa = PBXBuildFile; fileRef = F471E3E019A9590E00DF688D /* Rider.m */; };
 		F4D8FE2019B1745A00BC0B69 /* VCUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8777219775D7E00870945 /* VCUtilities.m */; };
-		F4D8FE2219B1745A00BC0B69 /* VCLocalNotificationReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FB55751977CD690043557A /* VCLocalNotificationReceiver.m */; };
 		F4D8FE2319B1745A00BC0B69 /* VCLabelSmall.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DC1941621E0059BED1 /* VCLabelSmall.m */; };
 		F4D8FE2419B1745A00BC0B69 /* Driver.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F03E195B971C00D8C900 /* Driver.m */; };
 		F4D8FE2519B1745A00BC0B69 /* VCDialogs.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B111938581C00354886 /* VCDialogs.m */; };
@@ -1124,6 +1120,7 @@
 		84B1FBF71B557AA600A00196 /* Voco 20.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 20.xcdatamodel"; sourceTree = "<group>"; };
 		84BB90031B7D8C1000D7397B /* Voco 21.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 21.xcdatamodel"; sourceTree = "<group>"; };
 		84BB90071B7D9A8F00D7397B /* Voco 22.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 22.xcdatamodel"; sourceTree = "<group>"; };
+		84BB90081B7DD53F00D7397B /* Voco 23.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 23.xcdatamodel"; sourceTree = "<group>"; };
 		D19278A21B6738D1009BFBF8 /* MBRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBRegion.h; path = Model/MBRegion.h; sourceTree = "<group>"; };
 		D19278A31B6738D1009BFBF8 /* MBRegion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBRegion.m; path = Model/MBRegion.m; sourceTree = "<group>"; };
 		D570C24C905CF2756FACB77F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1306,8 +1303,6 @@
 		F4FA0C0E192BF6BF005D8645 /* VocoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VocoTests-Info.plist"; sourceTree = "<group>"; };
 		F4FA0C10192BF6BF005D8645 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F4FA0C12192BF6BF005D8645 /* VocoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VocoTests.m; sourceTree = "<group>"; };
-		F4FB55741977CD690043557A /* VCLocalNotificationReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCLocalNotificationReceiver.h; sourceTree = "<group>"; };
-		F4FB55751977CD690043557A /* VCLocalNotificationReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCLocalNotificationReceiver.m; sourceTree = "<group>"; };
 		F4FE1AEF1936BE0900354886 /* VCDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCDevice.h; path = API/Devices/VCDevice.h; sourceTree = "<group>"; };
 		F4FE1AF01936BE0900354886 /* VCDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCDevice.m; path = API/Devices/VCDevice.m; sourceTree = "<group>"; };
 		F4FE1AF61937DD5600354886 /* VCPushReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPushReceiver.h; sourceTree = "<group>"; };
@@ -1912,6 +1907,7 @@
 			isa = PBXGroup;
 			children = (
 				8435C5931B7ABECE000401CA /* Map */,
+				F473F00E194A6D3400D8C900 /* Common */,
 				F473F047195BA4E000D8C900 /* Menu */,
 				4F9ECEAD196619F500AD4229 /* Other Functionality */,
 				F473EFE919492CA400D8C900 /* Ride System */,
@@ -1931,7 +1927,6 @@
 		F473EFE919492CA400D8C900 /* Ride System */ = {
 			isa = PBXGroup;
 			children = (
-				F473F00E194A6D3400D8C900 /* Common */,
 				844415311B6DB1FB008C7898 /* Commute HUDs */,
 				36638D731B658A0B004EDB09 /* Commute Request */,
 				4F3DB5C61981F6AB00DDD094 /* Old */,
@@ -2200,8 +2195,6 @@
 				F4FE1B1A193D301F00354886 /* VCCoreData.m */,
 				F4FE1AF61937DD5600354886 /* VCPushReceiver.h */,
 				F4FE1AF71937DD5600354886 /* VCPushReceiver.m */,
-				F4FB55741977CD690043557A /* VCLocalNotificationReceiver.h */,
-				F4FB55751977CD690043557A /* VCLocalNotificationReceiver.m */,
 				F4FE1B101938581C00354886 /* VCDialogs.h */,
 				F4FE1B111938581C00354886 /* VCDialogs.m */,
 				F4FE1B1319385CAA00354886 /* VCUserStateManager.h */,
@@ -2929,7 +2922,6 @@
 				841647851B64A47D00CD20AC /* Rider.m in Sources */,
 				841647861B64A47D00CD20AC /* VCUtilities.m in Sources */,
 				841647871B64A47D00CD20AC /* VCTermsOfServiceViewController.m in Sources */,
-				841647881B64A47D00CD20AC /* VCLocalNotificationReceiver.m in Sources */,
 				841647891B64A47D00CD20AC /* VCLabelSmall.m in Sources */,
 				8416478A1B64A47D00CD20AC /* Driver.m in Sources */,
 				8416478B1B64A47D00CD20AC /* VCDialogs.m in Sources */,
@@ -3059,7 +3051,6 @@
 				841648BC1B658F4900CD20AC /* VCButtonBold.m in Sources */,
 				841648BD1B658F4900CD20AC /* VCTermsOfServiceViewController.m in Sources */,
 				841648BF1B658F4900CD20AC /* VCUtilities.m in Sources */,
-				841648C01B658F4900CD20AC /* VCLocalNotificationReceiver.m in Sources */,
 				841648C11B658F4900CD20AC /* VCLabelSmall.m in Sources */,
 				367795631B7D4FC6005D45BE /* VCButtonSmall.m in Sources */,
 				36F9F65E1B6AF58E00440D03 /* VCRiderTicketView.m in Sources */,
@@ -3185,7 +3176,6 @@
 				F4C6B1D2197F06B100F6C10B /* VCButtonBold.m in Sources */,
 				4F38975119B7DC5000A75C5C /* VCTermsOfServiceViewController.m in Sources */,
 				F4C6B1D4197F06B100F6C10B /* VCUtilities.m in Sources */,
-				F4C6B1D7197F06B100F6C10B /* VCLocalNotificationReceiver.m in Sources */,
 				F4C6B1D8197F06B100F6C10B /* VCLabelSmall.m in Sources */,
 				36F9F65D1B6AF58E00440D03 /* VCRiderTicketView.m in Sources */,
 				367795621B7D4FC6005D45BE /* VCButtonSmall.m in Sources */,
@@ -3310,7 +3300,6 @@
 				F4D8FE1F19B1745A00BC0B69 /* Rider.m in Sources */,
 				F4D8FE2019B1745A00BC0B69 /* VCUtilities.m in Sources */,
 				F4F6A50D19B91EFA007E8A16 /* VCTermsOfServiceViewController.m in Sources */,
-				F4D8FE2219B1745A00BC0B69 /* VCLocalNotificationReceiver.m in Sources */,
 				F4D8FE2319B1745A00BC0B69 /* VCLabelSmall.m in Sources */,
 				F4D8FE2419B1745A00BC0B69 /* Driver.m in Sources */,
 				F4D8FE2519B1745A00BC0B69 /* VCDialogs.m in Sources */,
@@ -3972,6 +3961,7 @@
 		F4FA0BFB192BF6BF005D8645 /* Voco.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				84BB90081B7DD53F00D7397B /* Voco 23.xcdatamodel */,
 				84BB90071B7D9A8F00D7397B /* Voco 22.xcdatamodel */,
 				84BB90031B7D8C1000D7397B /* Voco 21.xcdatamodel */,
 				84B1FBF71B557AA600A00196 /* Voco 20.xcdatamodel */,
@@ -4023,7 +4013,7 @@
 				F4B7BFAA19A2EF7400D934D6 /* Voco 11.xcdatamodel */,
 				F4FA0BFC192BF6BF005D8645 /* Voco.xcdatamodel */,
 			);
-			currentVersion = F4792AF119763284005AB652 /* Voco 22.xcdatamodel */;
+			currentVersion = F4792AF2197642B3005AB652 /* Voco 23.xcdatamodel */;
 			path = Voco.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -24,7 +24,6 @@
 #import "VCInterfaceManager.h"
 #import "VCMapQuestRouting.h"
 #import "VCUsersApi.h"
-#import "VCLocalNotificationReceiver.h"
 #import "VCTicketViewController.h"
 #import "VCDevicesApi.h"
 #import <Fabric/Fabric.h>
@@ -103,9 +102,6 @@
     
     if([launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey] != nil){
         [VCPushReceiver handleTappedRemoteNotification:[launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey]];
-    } else if( [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey] != nil ) {
-        UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
-        [VCLocalNotificationReceiver handleLocalNotification:localNotif];
     }
     
     // RKLogConfigureByName("RestKit/Network", RKLogLevelInfo);
@@ -204,7 +200,7 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
-    [VCLocalNotificationReceiver handleLocalNotification:notification];
+    //[VCLocalNotificationReceiver handleLocalNotification:notification];
 }
 
 -(BOOL)pushNotificationOnOrOff{
