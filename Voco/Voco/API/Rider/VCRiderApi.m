@@ -227,18 +227,9 @@
     // Update all rides for this user using RestKit entity
     [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_ACTIVE_TICKETS parameters:nil
                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                  
-                                                  [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_ACTIVE_FARES
-                                                                                         parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                                                             success(operation, mappingResult);
-                                                                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                                                             failure(operation, error);
-                                                                                         }];
-                                                  
+                                                  success(operation, mappingResult);
                                               } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                  
                                                   failure(operation, error);
-                                                  
                                               }];
 }
 

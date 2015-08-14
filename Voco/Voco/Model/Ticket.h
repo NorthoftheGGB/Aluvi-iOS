@@ -16,7 +16,7 @@
 #define kCreatedState @"created"
 #define kRequestedState @"requested"
 #define kScheduledState @"scheduled"
-#define kInProgressState @"scheduled"
+#define kInProgressState @"started"
 #define kCommuteSchedulerFailedState @"commute_scheduler_failed"
 #define kDriverCancelledState @"driver_cancelled"
 #define kRiderCancelledState @"rider_cancelled"
@@ -26,7 +26,7 @@
 #define kRideRequestTypeCommuter @"commuter"
 
 
-@class Car, Driver, Fare;
+@class Car, Driver, Rider, Payment, Earning;
 
 @interface Ticket : Transit 
 @property (nonatomic, retain) NSNumber * ride_id;
@@ -55,11 +55,15 @@
 @property (nonatomic, retain) NSNumber * driving;
 @property (nonatomic, retain) NSNumber * trip_id;
 @property (nonatomic, retain) NSNumber * fixedPrice;
+@property (nonatomic, retain) NSNumber * estimatedEarnings;
 @property (nonatomic, retain) NSString * direction;
 
+@property (nonatomic, retain) Payment *payment;
+@property (nonatomic, retain) Earning *earning;
 @property (nonatomic, retain) Driver *driver;
 @property (nonatomic, retain) Car *car;
-@property (nonatomic, retain) Fare * hovFare;
+@property (nonatomic, retain) NSSet *riders;
+
 
 @property (nonatomic, retain) NSArray * returnTicketFetchRequest;
 
@@ -84,5 +88,13 @@
 - (NSString *) routeDescription;
 - (BOOL) hasCachedRoute;
 
+@end
+
+@interface Ticket (CoreDataGeneratedAccessors)
+
+- (void)addRidesObject:(Rider *)value;
+- (void)removeRidersObject:(Rider *)value;
+- (void)addRiders:(NSSet *)values;
+- (void)removeRiders:(NSSet *)values;
 
 @end

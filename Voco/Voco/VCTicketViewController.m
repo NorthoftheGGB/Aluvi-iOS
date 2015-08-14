@@ -84,7 +84,6 @@
 - (void) clearRoute;
 - (void) zoomToCurrentLocation;
 - (IBAction)didTapCurrentLocationButton:(id)sender;
-- (IBAction)didTapTestingButton:(id)sender;
 
 
 
@@ -581,12 +580,14 @@
         case kCommuteStateNone:
         {
             [button setTitle:@"SCHEDULE RIDE" forState:UIControlStateNormal];
+            [button removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
             [button addTarget:self action:@selector(didTapScheduleMenuButton:) forControlEvents:UIControlEventTouchUpInside];
             break;
         }
         case kCommuteStatePending:
         {
             [button setTitle:@"COMMUTE PENDING" forState:UIControlStateNormal];
+            [button removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
             [button addTarget:self action:@selector(didTapReviewScheduleMenuButton:) forControlEvents:UIControlEventTouchUpInside];
             button.layer.backgroundColor = [VCStyle drkBlueColor].CGColor;
             button.layer.borderColor = [VCStyle drkBlueColor].CGColor;
@@ -596,6 +597,7 @@
         case kCommuteStateScheduled:
         {
             [button setTitle:@"CANCEL RIDE" forState:UIControlStateNormal];
+            [button removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
             [button addTarget:self action:@selector(didTapCancelTicket:) forControlEvents:UIControlEventTouchUpInside];
             break;
         }
@@ -776,11 +778,11 @@
     [self callPhone:phoneNumber];
 }
 
-- (void) VCDriverTicketViewDidTapRidersOnBoard:(VCDriverTicketView *)driverTicketView {
+- (void)VCDriverTicketViewDidTapRidersOnBoard:(VCDriverTicketView *)driverTicketView success:(void (^)())success {
     [[VCCommuteManager instance] ridesPickedUp:_ticket success:^{
-        // show the other button
+        success();
     } failure:^{
-        // don't do anything
+        // do we want to say something?
     }];
 }
 

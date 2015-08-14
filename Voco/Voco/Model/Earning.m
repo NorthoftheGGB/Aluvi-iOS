@@ -7,37 +7,34 @@
 //
 
 #import "Earning.h"
-#import "Fare.h"
-#import "Rider.h"
 #import <RKPathMatcher.h>
+#import "Rider.h"
+#import "Ticket.h"
 #import "VCApi.h"
-
 
 @implementation Earning
 
 @dynamic amountCents;
 
-@dynamic fare_id;
+@dynamic ticket_id;
 @dynamic timestamp;
 @dynamic motive;
-@dynamic fare;
 
 + (void)createMappings:(RKObjectManager *)objectManager{
     RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Earning"
                                                           inManagedObjectStore: [VCCoreData managedObjectStore]];
     
     [entityMapping addAttributeMappingsFromDictionary:@{
-                                                        @"fare_id" : @"fare_id",
+                                                        @"ticket_id" : @"ticket_id",
                                                         @"amount_cents" : @"amountCents",
                                                         @"timestamp" : @"timestamp",
                                                         @"motive" : @"motive"
                                                         }];
     
-    entityMapping.identificationAttributes = @[ @"fare_id" ];
+    entityMapping.identificationAttributes = @[ @"ticket_id" ];
    
     
-    //[entityMapping addConnectionForRelationship:@"fare" connectedBy:@{@"fare_id" : @"fare_id"}];
-    [entityMapping addRelationshipMappingWithSourceKeyPath:@"fare" mapping:[Fare createMappings:objectManager]];
+    [entityMapping addConnectionForRelationship:@"ticket" connectedBy:@{@"ticket_id" : @"ride_id"}];
 
     
     RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping

@@ -241,7 +241,6 @@
 		841647951B64A47D00CD20AC /* VCDevicesApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F01F19511D7700D8C900 /* VCDevicesApi.m */; };
 		841647961B64A47D00CD20AC /* VCDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6B1B61979229900F6C10B /* VCDebug.m */; };
 		841647971B64A47D00CD20AC /* VCPasswordRecoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758D819AA94C30093DBEA /* VCPasswordRecoveryViewController.m */; };
-		841647981B64A47D00CD20AC /* Fare.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AFD193839DF00354886 /* Fare.m */; };
 		841647991B64A47D00CD20AC /* VCNewUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904919468E44007C4671 /* VCNewUser.m */; };
 		8416479A1B64A47D00CD20AC /* VCCenterViewBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758F819AA9B570093DBEA /* VCCenterViewBaseViewController.m */; };
 		8416479B1B64A47D00CD20AC /* VCLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758B419AA8C270093DBEA /* VCLogInViewController.m */; };
@@ -485,7 +484,6 @@
 		841648CE1B658F4900CD20AC /* VCCarLicensePlateTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE712D4197369060071020C /* VCCarLicensePlateTextField.m */; };
 		841648CF1B658F4900CD20AC /* VCDevicesApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F01F19511D7700D8C900 /* VCDevicesApi.m */; };
 		841648D01B658F4900CD20AC /* VCDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6B1B61979229900F6C10B /* VCDebug.m */; };
-		841648D11B658F4900CD20AC /* Fare.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AFD193839DF00354886 /* Fare.m */; };
 		841648D21B658F4900CD20AC /* VCNewUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904919468E44007C4671 /* VCNewUser.m */; };
 		841648D41B658F4900CD20AC /* VCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641FD194170F50059BED1 /* VCButton.m */; };
 		841648D51B658F4900CD20AC /* VCMenuUserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F184A1019918750006EA959 /* VCMenuUserInfoTableViewCell.m */; };
@@ -775,7 +773,6 @@
 		F4C6B1E1197F06B100F6C10B /* VCCarLicensePlateTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE712D4197369060071020C /* VCCarLicensePlateTextField.m */; };
 		F4C6B1E2197F06B100F6C10B /* VCDevicesApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F01F19511D7700D8C900 /* VCDevicesApi.m */; };
 		F4C6B1E3197F06B100F6C10B /* VCDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6B1B61979229900F6C10B /* VCDebug.m */; };
-		F4C6B1E4197F06B100F6C10B /* Fare.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AFD193839DF00354886 /* Fare.m */; };
 		F4C6B1E5197F06B100F6C10B /* VCNewUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904919468E44007C4671 /* VCNewUser.m */; };
 		F4C6B1E8197F06B100F6C10B /* VCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641FD194170F50059BED1 /* VCButton.m */; };
 		F4C6B1E9197F06B100F6C10B /* MQShape.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F00B194A5A6100D8C900 /* MQShape.m */; };
@@ -920,7 +917,6 @@
 		F4D8FE2F19B1745A00BC0B69 /* VCDevicesApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F01F19511D7700D8C900 /* VCDevicesApi.m */; };
 		F4D8FE3019B1745A00BC0B69 /* VCDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6B1B61979229900F6C10B /* VCDebug.m */; };
 		F4D8FE3119B1745A00BC0B69 /* VCPasswordRecoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758D819AA94C30093DBEA /* VCPasswordRecoveryViewController.m */; };
-		F4D8FE3219B1745A00BC0B69 /* Fare.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AFD193839DF00354886 /* Fare.m */; };
 		F4D8FE3319B1745A00BC0B69 /* VCNewUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904919468E44007C4671 /* VCNewUser.m */; };
 		F4D8FE3419B1745A00BC0B69 /* VCCenterViewBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758F819AA9B570093DBEA /* VCCenterViewBaseViewController.m */; };
 		F4D8FE3519B1745A00BC0B69 /* VCLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758B419AA8C270093DBEA /* VCLogInViewController.m */; };
@@ -1362,6 +1358,8 @@
 		849A3CFA1B1E5EFF004446AF /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		84B1FBF61B547C6500A00196 /* Voco 19.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 19.xcdatamodel"; sourceTree = "<group>"; };
 		84B1FBF71B557AA600A00196 /* Voco 20.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 20.xcdatamodel"; sourceTree = "<group>"; };
+		84BB90031B7D8C1000D7397B /* Voco 21.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 21.xcdatamodel"; sourceTree = "<group>"; };
+		84BB90061B7D91DD00D7397B /* Fare.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Fare.m; path = Model/Fare.m; sourceTree = "<group>"; };
 		D19278A21B6738D1009BFBF8 /* MBRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBRegion.h; path = Model/MBRegion.h; sourceTree = "<group>"; };
 		D19278A31B6738D1009BFBF8 /* MBRegion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBRegion.m; path = Model/MBRegion.m; sourceTree = "<group>"; };
 		D570C24C905CF2756FACB77F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1556,8 +1554,6 @@
 		F4FE1AF71937DD5600354886 /* VCPushReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPushReceiver.m; sourceTree = "<group>"; };
 		F4FE1AF91937DD6600354886 /* VCGeolocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCGeolocation.h; sourceTree = "<group>"; };
 		F4FE1AFA1937DD6600354886 /* VCGeolocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCGeolocation.m; sourceTree = "<group>"; };
-		F4FE1AFC193839DF00354886 /* Fare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Fare.h; path = Model/Fare.h; sourceTree = "<group>"; };
-		F4FE1AFD193839DF00354886 /* Fare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Fare.m; path = Model/Fare.m; sourceTree = "<group>"; };
 		F4FE1B0919384F9000354886 /* VCDriverApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCDriverApi.h; sourceTree = "<group>"; };
 		F4FE1B0A19384F9000354886 /* VCDriverApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCDriverApi.m; sourceTree = "<group>"; };
 		F4FE1B0D1938571E00354886 /* VCFareDriverAssignment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCFareDriverAssignment.h; sourceTree = "<group>"; };
@@ -2087,6 +2083,7 @@
 		8435C5951B7AE5F9000401CA /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				84BB90061B7D91DD00D7397B /* Fare.m */,
 				F4FA0BFB192BF6BF005D8645 /* Voco.xcdatamodeld */,
 				F471E3DF19A9590E00DF688D /* Rider.h */,
 				F471E3E019A9590E00DF688D /* Rider.m */,
@@ -2094,8 +2091,6 @@
 				F473F03E195B971C00D8C900 /* Driver.m */,
 				F473F03A195B971B00D8C900 /* Car.h */,
 				F473F03B195B971B00D8C900 /* Car.m */,
-				F4FE1AFC193839DF00354886 /* Fare.h */,
-				F4FE1AFD193839DF00354886 /* Fare.m */,
 				F45F7C011935880500A94721 /* Ticket.h */,
 				F45F7C021935880500A94721 /* Ticket.m */,
 				F4F5FFBC19779E23001A1C0E /* Payment.h */,
@@ -3448,7 +3443,6 @@
 				841647951B64A47D00CD20AC /* VCDevicesApi.m in Sources */,
 				841647961B64A47D00CD20AC /* VCDebug.m in Sources */,
 				841647971B64A47D00CD20AC /* VCPasswordRecoveryViewController.m in Sources */,
-				841647981B64A47D00CD20AC /* Fare.m in Sources */,
 				841647991B64A47D00CD20AC /* VCNewUser.m in Sources */,
 				8416479A1B64A47D00CD20AC /* VCCenterViewBaseViewController.m in Sources */,
 				8416479B1B64A47D00CD20AC /* VCLogInViewController.m in Sources */,
@@ -3579,7 +3573,6 @@
 				841648CF1B658F4900CD20AC /* VCDevicesApi.m in Sources */,
 				841648D01B658F4900CD20AC /* VCDebug.m in Sources */,
 				36F9F6521B6ACC8700440D03 /* VCRideRequestView.m in Sources */,
-				841648D11B658F4900CD20AC /* Fare.m in Sources */,
 				841648D21B658F4900CD20AC /* VCNewUser.m in Sources */,
 				841648D41B658F4900CD20AC /* VCButton.m in Sources */,
 				841648D51B658F4900CD20AC /* VCMenuUserInfoTableViewCell.m in Sources */,
@@ -3706,7 +3699,6 @@
 				F4C6B1E2197F06B100F6C10B /* VCDevicesApi.m in Sources */,
 				F4C6B1E3197F06B100F6C10B /* VCDebug.m in Sources */,
 				36F9F6511B6ACC8700440D03 /* VCRideRequestView.m in Sources */,
-				F4C6B1E4197F06B100F6C10B /* Fare.m in Sources */,
 				F4C6B1E5197F06B100F6C10B /* VCNewUser.m in Sources */,
 				F4C6B1E8197F06B100F6C10B /* VCButton.m in Sources */,
 				4F184A1219918750006EA959 /* VCMenuUserInfoTableViewCell.m in Sources */,
@@ -3832,7 +3824,6 @@
 				F4D8FE2F19B1745A00BC0B69 /* VCDevicesApi.m in Sources */,
 				F4D8FE3019B1745A00BC0B69 /* VCDebug.m in Sources */,
 				F4D8FE3119B1745A00BC0B69 /* VCPasswordRecoveryViewController.m in Sources */,
-				F4D8FE3219B1745A00BC0B69 /* Fare.m in Sources */,
 				F4D8FE3319B1745A00BC0B69 /* VCNewUser.m in Sources */,
 				F4D8FE3419B1745A00BC0B69 /* VCCenterViewBaseViewController.m in Sources */,
 				F4D8FE3519B1745A00BC0B69 /* VCLogInViewController.m in Sources */,
@@ -4478,6 +4469,7 @@
 		F4FA0BFB192BF6BF005D8645 /* Voco.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				84BB90031B7D8C1000D7397B /* Voco 21.xcdatamodel */,
 				84B1FBF71B557AA600A00196 /* Voco 20.xcdatamodel */,
 				84B1FBF61B547C6500A00196 /* Voco 19.xcdatamodel */,
 				F4C97B3D19F8D2D9006521C1 /* Voco 18.xcdatamodel */,
@@ -4527,7 +4519,7 @@
 				F4B7BFAA19A2EF7400D934D6 /* Voco 11.xcdatamodel */,
 				F4FA0BFC192BF6BF005D8645 /* Voco.xcdatamodel */,
 			);
-			currentVersion = F4792AEF19762D70005AB652 /* Voco 20.xcdatamodel */;
+			currentVersion = F4792AF01976301F005AB652 /* Voco 21.xcdatamodel */;
 			path = Voco.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

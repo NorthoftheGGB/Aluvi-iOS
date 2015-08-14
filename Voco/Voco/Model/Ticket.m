@@ -7,10 +7,12 @@
 //
 
 #import "Ticket.h"
+#import <RKPathMatcher.h>
 #import "Car.h"
 #import "Driver.h"
-#import "Fare.h"
-#import <RKPathMatcher.h>
+#import "Rider.h"
+#import "Payment.h"
+#import "Earning.h"
 #import "VCApi.h"
 #import "VCPushApi.h"
 
@@ -48,10 +50,13 @@
 @dynamic dropOffPointLatitude;
 @dynamic dropOffPointLongitude;
 @dynamic dropOffPointPlaceName;
-@dynamic hovFare;
 @dynamic fixedPrice;
 @dynamic direction;
 @dynamic returnTicketFetchRequest;
+@dynamic riders;
+@dynamic payment;
+@dynamic earning;
+@dynamic estimatedEarnings;
 
 @synthesize polyline;
 @synthesize region;
@@ -89,6 +94,8 @@
     
     [entityMapping addRelationshipMappingWithSourceKeyPath:@"driver" mapping:[Driver createMappings:objectManager]];
     [entityMapping addRelationshipMappingWithSourceKeyPath:@"car" mapping:[Car createMappings:objectManager]];
+    [entityMapping addRelationshipMappingWithSourceKeyPath:@"riders" mapping:[Rider createMappings:objectManager]];
+
     
     RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping
                                                                                              method:RKRequestMethodGET

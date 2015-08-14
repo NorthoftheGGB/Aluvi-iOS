@@ -9,7 +9,6 @@
 #import "Payment.h"
 #import "Driver.h"
 #import "Ticket.h"
-#import "Fare.h"
 #import <RKPathMatcher.h>
 #import "VCApi.h"
 
@@ -61,7 +60,6 @@
     }];
     
     
-    [entityMapping addConnectionForRelationship:@"fare" connectedBy:@{@"fare_id" : @"fare_id"}];
     [entityMapping addConnectionForRelationship:@"ticket" connectedBy:@{@"ride_id" : @"ride_id"}];
     [entityMapping addConnectionForRelationship:@"driver" connectedBy:@{@"driver_id" : @"id"}];
     

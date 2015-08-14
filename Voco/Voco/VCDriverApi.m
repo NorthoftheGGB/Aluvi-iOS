@@ -13,7 +13,6 @@
 #import "VCTicketPayload.h"
 #import "VCGeoObject.h"
 #import "VCDriverRegistration.h"
-#import "Fare.h"
 #import "VCFareIdentity.h"
 #import "VCDriverGeoObject.h"
 #import "VCFare.h"
@@ -24,7 +23,6 @@
 
 + (void) setup: (RKObjectManager *) objectManager {
     
-    [Fare createMappings:objectManager];
     [Earning createMappings:objectManager];
     
     {
@@ -74,7 +72,7 @@
 
    
     {
-        RKResponseDescriptor * responseDescriptor2 = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
+        RKResponseDescriptor * responseDescriptor2 = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSNull class]]
                                                                                                   method:RKRequestMethodPOST
                                                                                              pathPattern:API_POST_RIDE_PICKUP
                                                                                                  keyPath:nil

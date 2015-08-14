@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Fare.h"
+#import "Ticket.h"
 
 @class VCRiderTicketView;
 
@@ -20,7 +20,7 @@
 
 @property (weak, nonatomic) id<VCRiderTicketViewDelegate> delegate;
 
-- (void) updateInterfaceWithFare: (Fare*) fare;
+- (void) updateInterfaceWithTicket: (Ticket*) ticket;
 
 
 

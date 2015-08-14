@@ -29,8 +29,8 @@
 
 @implementation VCRiderTicketView
 
-- (void) updateInterfaceWithFare: (Fare *) fare {
-    // fare needs method for 'other riders'. not including the one using the app.
+- (void) updateInterfaceWithTicket: (Ticket*) ticket {
+    // ticket needs method for 'other riders'. not including the one using the app.
 }
 
 

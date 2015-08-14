@@ -10,7 +10,6 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "NSDate+Pretty.h"
 #import "Rider.h"
-#import "Fare.h"
 #import "Driver.h"
 #import "Car.h"
 #import "VCUtilities.h"
@@ -45,7 +44,7 @@
     _riderSectionTitleLabel.text = @"Your Riders";
     
     _pickupTimeLabel.text = [ticket.pickupTime time];
-    self.fareLabel.text = [VCUtilities formatCurrencyFromCents:ticket.hovFare.estimatedEarnings];
+    self.fareLabel.text = [VCUtilities formatCurrencyFromCents:ticket.estimatedEarnings];
     
     
     NSArray * riderNameLabels = @[_riderFirstNameLabel1, _riderFirstNameLabel2, _riderFirstNameLabel3];
@@ -55,9 +54,9 @@
         ((UILabel *) [riderNameLabels objectAtIndex:i]).text= @"";
        
     }
-    long count = [ticket.hovFare.riders count];
+    long count = [ticket.riders count];
     int i = 0;
-    NSArray * riders = [ticket.hovFare.riders allObjects];
+    NSArray * riders = [ticket.riders allObjects];
     for(; i<count; i++){
         Rider * rider = [riders objectAtIndex:i];
         UILabel * label = ((UILabel *) [riderNameLabels objectAtIndex:i]);
@@ -96,9 +95,9 @@
     for(int i = 0; i<3; i++){
         ((UILabel *) [riderNameLabels objectAtIndex:i]).text= @"";
     }
-    long count = [ticket.hovFare.riders count];
+    long count = [ticket.riders count];
     int i = 0;
-    NSArray * riders = [ticket.hovFare.riders allObjects];
+    NSArray * riders = [ticket.riders allObjects];
     for(; i<count; i++){
         Rider * rider = [riders objectAtIndex:i];
         UILabel * label = ((UILabel *) [riderNameLabels objectAtIndex:i]);
