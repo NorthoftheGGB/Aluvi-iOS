@@ -194,7 +194,7 @@
     </objects>
     <resources>
         <image name="placeholder-profile.png" width="640" height="750"/>
-        <image name="profile-button.png" width="302" height="28"/>
+        <image name="profile-button.png" width="22" height="22"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
