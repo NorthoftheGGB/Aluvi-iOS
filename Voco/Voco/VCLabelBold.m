@@ -8,6 +8,7 @@
 //nothing to see here
 
 #import "VCLabelBold.h"
+#import "VCStyle.h"
 
 @implementation VCLabelBold
 
@@ -16,9 +17,7 @@
 
 - (void)awakeFromNib{
     
-    UIFont *customFont = [UIFont fontWithName:@"Bryant-Medium" size:14 ];
-    
-    [self setFont:customFont];
+    [self setFont:[VCStyle boldFont]];
     
 }
 

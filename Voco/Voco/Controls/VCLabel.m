@@ -7,6 +7,7 @@
 //
 
 #import "VCLabel.h"
+#import "VCStyle.h"
 
 @implementation VCLabel
 
@@ -15,12 +16,7 @@
 
 - (void)awakeFromNib{
     
-
-    UIFont *customFont = [UIFont fontWithName:@"Bryant-Regular" size:16 ];
-
-    
-    
-    [self setFont:customFont];
+    [self setFont:[VCStyle regularFont]];
     
 }
 

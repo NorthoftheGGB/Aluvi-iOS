@@ -40,4 +40,13 @@
     return [UIColor colorWithRed:.20 green:.51 blue:.53 alpha:1];
 }
 
++ (UIFont *) boldFont {
+    return [UIFont fontWithName:@"Bryant-Medium" size:14 ];
+}
+
++ (UIFont *) regularFont {
+    return [UIFont fontWithName:@"Bryant-Regular" size:14 ];
+}
+
+
 @end

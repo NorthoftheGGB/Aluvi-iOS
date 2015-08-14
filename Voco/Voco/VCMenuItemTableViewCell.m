@@ -7,6 +7,7 @@
 //
 
 #import "VCMenuItemTableViewCell.h"
+#import "VCStyle.h"
 
 @interface VCMenuItemTableViewCell ()
 
@@ -24,16 +25,18 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
+    
 
-    // Configure the view for the selected state
 }
 
 - (void) select {
-//    self.backgroundImageView.image = [UIImage imageNamed:@"menu-item-bg-select"];
+    [_menuItemLabel setFont:[VCStyle boldFont]];
+    self.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:.5];
 }
 
 - (void) deselect {
-//    self.backgroundImageView.image = [UIImage imageNamed:@"menu-item-bg"];
+    [_menuItemLabel setFont:[VCStyle regularFont]];
+    self.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0];
 }
 
 

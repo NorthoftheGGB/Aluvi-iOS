@@ -442,12 +442,10 @@
     
     //set up filter by date > today at midnight.
     NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"( ( state = %@ AND confirmed = true ) \
-                               OR ( state IN %@  AND direction = 'a' )  \
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"( state IN %@  \
                                AND pickupTime > %@ \
                                )",
-                               kScheduledState,
-                               @[kCreatedState, kRequestedState, kScheduledState],
+                               @[kCreatedState, kRequestedState, kScheduledState, kInProgressState, kCompleteState],
                                [VCUtilities beginningOfToday]  ];
     [fetch setPredicate:predicate];
     NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"pickupTime" ascending:YES];
