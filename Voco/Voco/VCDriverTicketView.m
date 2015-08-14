@@ -7,8 +7,8 @@
 //
 
 #import "VCDriverTicketView.h"
-#import "Fare.h"
 #import "Rider.h"
+#import <SDWebImage/UIButton+WebCache.h>
 
 @interface VCDriverTicketView ()
 
@@ -35,27 +35,43 @@
 @implementation VCDriverTicketView
 
 - (void) updateInterfaceWithTicket: (Ticket *) ticket {
-    Fare * fare = ticket.hovFare;
     NSSortDescriptor * sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
-    _riders= [fare.riders sortedArrayUsingDescriptors:@[sortDescriptor]];
+    _riders= [ticket.riders sortedArrayUsingDescriptors:@[sortDescriptor]];
     long length = [_riders count];
     _riderOneView.hidden = YES;
     _riderTwoView.hidden = YES;
     _riderThreeView.hidden = YES;
+    
+    _totalRidersLabel.text = [NSString stringWithFormat:@"%ld Riders", length];
     if(length > 0){
         Rider * rider = _riders[0];
         _riderOneView.hidden = NO;
-        // Use SDWebImage, APSmartStore, DLImageLoader or something simlar to load these images
-        //[_riderOneButton setBackgroundImage:rider.smallImageUrl forState:UIControlStateNormal];
+        [self showButton:_riderOneButton WithRider:rider];
     }
     if(length > 1){
         Rider * rider = _riders[1];
         _riderTwoView.hidden = NO;
+        [self showButton:_riderTwoButton WithRider:rider];
     }
     if(length > 2){
         Rider * rider = _riders[2];
         _riderThreeView.hidden = NO;
+        [self showButton:_riderThreeButton WithRider:rider];
     }
+    _totalFareLabel.text = [NSString stringWithFormat:@"%.2f", [ticket.fixedPrice doubleValue]];
+    _ridersOnboardButton.hidden = NO;
+    if([ticket.state isEqualToString:kInProgressState]){
+        _ridersOnboardButton.hidden = YES;
+    }
+}
+
+- (void) showButton: (UIButton * ) button WithRider: (Rider *) rider {
+    [button sd_setBackgroundImageWithURL:[NSURL URLWithString: rider.smallImageUrl]
+                                         forState:UIControlStateNormal
+                                 placeholderImage:[UIImage imageNamed:@"placeholder-profile"]
+                                          options:SDWebImageRefreshCached
+     ];
+
 }
 
 

@@ -23,6 +23,6 @@
 
 @property (weak, nonatomic) id<VCDriverTicketViewDelegate> delegate;
 
-- (void) updateInterfaceWithFare: (Fare *) fare;
+- (void) updateInterfaceWithTicket: (Ticket *) ticket;
 
 @end

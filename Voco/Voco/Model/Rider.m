@@ -7,7 +7,6 @@
 //
 
 #import "Rider.h"
-#import "Fare.h"
 
 @implementation Rider
 

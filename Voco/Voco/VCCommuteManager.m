@@ -67,7 +67,7 @@ static VCCommuteManager * instance;
 - (id) init {
     self = [super init];
     if(self != nil){
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshScheduleInBackground:) name:kNotificationScheduleNeedsRefresh object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTickets:) name:kNotificationScheduleNeedsRefresh object:nil];
     }
     return self;
 }
@@ -198,7 +198,11 @@ static VCCommuteManager * instance;
 }
 
 
-- (void) refreshScheduleInBackground:(NSNotification *) notifications {
+- (void) refreshTickets:(NSNotification *) notifications {
+    [self refreshTickets];
+}
+
+- (void) refreshTickets {
     [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         //
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -390,6 +394,12 @@ static VCCommuteManager * instance;
 
 - (void) ridesPickedUp:(Ticket *) ticket success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure {
     [VCDriverApi ridersPickedUp:ticket.ride_id success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        ticket.state = kInProgressState;
+        NSError * error;
+        [[VCCoreData managedObjectContext] save:&error];
+        if(error != nil){
+            [WRUtilities criticalError:error];
+        }
         success();
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [WRUtilities subcriticaError:error];

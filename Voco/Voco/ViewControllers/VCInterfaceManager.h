@@ -18,7 +18,6 @@
 - (void) showInterface;
 - (void) showRiderSigninInterface;
 - (void) showRiderInterface;
-- (void) showDebugInterface;
 - (int) mode;
 
 @end

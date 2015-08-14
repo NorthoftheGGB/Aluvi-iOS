@@ -10,6 +10,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <MBProgressHUD.h>
 #import "VCUserStateManager.h"
+#import "VCCommuteManager.h"
 #import "VCTicketViewController.h"
 #import "VCInterfaceManager.h"
 #import "VCProfileViewController.h"
@@ -357,6 +358,8 @@
             
             VCMenuItemTableViewCell * cell = (VCMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
             [cell select];
+            
+            [[VCCommuteManager instance] refreshTickets];
         }
             break;
             

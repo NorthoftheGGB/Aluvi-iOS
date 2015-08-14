@@ -84,7 +84,6 @@
 - (void) clearRoute;
 - (void) zoomToCurrentLocation;
 - (IBAction)didTapCurrentLocationButton:(id)sender;
-- (IBAction)didTapTestingButton:(id)sender;
 
 
 
@@ -581,12 +580,14 @@
         case kCommuteStateNone:
         {
             [button setTitle:@"SCHEDULE RIDE" forState:UIControlStateNormal];
+            [button removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
             [button addTarget:self action:@selector(didTapScheduleMenuButton:) forControlEvents:UIControlEventTouchUpInside];
             break;
         }
         case kCommuteStatePending:
         {
             [button setTitle:@"COMMUTE PENDING" forState:UIControlStateNormal];
+            [button removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
             [button addTarget:self action:@selector(didTapReviewScheduleMenuButton:) forControlEvents:UIControlEventTouchUpInside];
             button.layer.backgroundColor = [VCStyle drkBlueColor].CGColor;
             button.layer.borderColor = [VCStyle drkBlueColor].CGColor;
@@ -596,6 +597,7 @@
         case kCommuteStateScheduled:
         {
             [button setTitle:@"CANCEL RIDE" forState:UIControlStateNormal];
+            [button removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
             [button addTarget:self action:@selector(didTapCancelTicket:) forControlEvents:UIControlEventTouchUpInside];
             break;
         }
@@ -776,11 +778,11 @@
     [self callPhone:phoneNumber];
 }
 
-- (void) VCDriverTicketViewDidTapRidersOnBoard:(VCDriverTicketView *)driverTicketView {
+- (void)VCDriverTicketViewDidTapRidersOnBoard:(VCDriverTicketView *)driverTicketView success:(void (^)())success {
     [[VCCommuteManager instance] ridesPickedUp:_ticket success:^{
-        // show the other button
+        success();
     } failure:^{
-        // don't do anything
+        // do we want to say something?
     }];
 }
 
@@ -791,6 +793,7 @@
 - (void) showDriverTicketHUD {
     _driverTicketHUD = [WRUtilities getViewFromNib:@"VCDriverTicketView" class:[VCDriverTicketView class]];
     _driverTicketHUD.delegate = self;
+    [_driverTicketHUD updateInterfaceWithTicket:_ticket];
     
     CGRect frame = _driverTicketHUD.frame;
     frame.origin.x = 0;
@@ -799,6 +802,14 @@
     _driverTicketHUD.frame = frame;
     
     [self.view addSubview:_driverTicketHUD];
+    [_driverTicketHUD mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.mas_left);
+        make.bottom.equalTo(self.view.mas_bottom).with.offset(_driverTicketHUD.frame.size.height);
+        make.right.equalTo(self.view.mas_right);
+        make.height.mas_equalTo(_driverTicketHUD.frame.size.height);
+    }];
+    
+    
     [UIView animateWithDuration:0.4
                           delay:0
          usingSpringWithDamping:0.4
@@ -809,6 +820,15 @@
                          CGRect frame = _driverTicketHUD.frame;
                          frame.origin.y = 380;
                          _driverTicketHUD.frame = frame;
+                         
+                         [_driverTicketHUD mas_remakeConstraints:^(MASConstraintMaker *make) {
+                             make.left.equalTo(self.view.mas_left);
+                             make.bottom.equalTo(self.view.mas_bottom);
+                             make.right.equalTo(self.view.mas_right);
+                             make.height.mas_equalTo(_driverTicketHUD.frame.size.height);
+                         }];
+
+                         
                      } completion:^(BOOL finished) {
                          
                      }];
