@@ -31,7 +31,16 @@
     
     [_PTKViewContainer addSubview:_cardView];
     
+    [self updateFieldValues];
+
+    [[VCUserStateManager instance] refreshProfileWithCompletion:^{
+        [self updateFieldValues];
+    }];
+}
+
+- (void) updateFieldValues {
     _commuterAccountBalance.text = [NSString stringWithFormat:@"$%.2f", [[VCUserStateManager instance].profile.commuterBalanceCents doubleValue] / 100];
+
 }
 
 
