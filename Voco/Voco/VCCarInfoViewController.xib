@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Liscence Plate #" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9aa-TZ-zcJ">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Liscence Plate #" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9aa-TZ-zcJ" customClass="VCTextField">
                     <rect key="frame" x="45" y="123" width="230" height="44"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -26,7 +26,7 @@
                         <action selector="liscencePlateFieldDidEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="g7S-jh-c2k"/>
                     </connections>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Make, Model, Color" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="17U-B3-qrJ">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Make, Model, Color" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="17U-B3-qrJ" customClass="VCTextField">
                     <rect key="frame" x="45" y="188" width="230" height="44"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -45,7 +45,7 @@
                     </connections>
                 </button>
                 <view alpha="0.79999999999999982" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fo5-me-NYj">
-                    <rect key="frame" x="0.0" y="75" width="320" height="427"/>
+                    <rect key="frame" x="0.0" y="65" width="320" height="427"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
