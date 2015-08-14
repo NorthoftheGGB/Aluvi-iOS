@@ -791,6 +791,7 @@
 - (void) showDriverTicketHUD {
     _driverTicketHUD = [WRUtilities getViewFromNib:@"VCDriverTicketView" class:[VCDriverTicketView class]];
     _driverTicketHUD.delegate = self;
+    [_driverTicketHUD updateInterfaceWithTicket:_ticket];
     
     CGRect frame = _driverTicketHUD.frame;
     frame.origin.x = 0;
@@ -799,6 +800,14 @@
     _driverTicketHUD.frame = frame;
     
     [self.view addSubview:_driverTicketHUD];
+    [_driverTicketHUD mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.mas_left);
+        make.bottom.equalTo(self.view.mas_bottom).with.offset(_driverTicketHUD.frame.size.height);
+        make.right.equalTo(self.view.mas_right);
+        make.height.mas_equalTo(_driverTicketHUD.frame.size.height);
+    }];
+    
+    
     [UIView animateWithDuration:0.4
                           delay:0
          usingSpringWithDamping:0.4
@@ -809,6 +818,15 @@
                          CGRect frame = _driverTicketHUD.frame;
                          frame.origin.y = 380;
                          _driverTicketHUD.frame = frame;
+                         
+                         [_driverTicketHUD mas_remakeConstraints:^(MASConstraintMaker *make) {
+                             make.left.equalTo(self.view.mas_left);
+                             make.bottom.equalTo(self.view.mas_bottom);
+                             make.right.equalTo(self.view.mas_right);
+                             make.height.mas_equalTo(_driverTicketHUD.frame.size.height);
+                         }];
+
+                         
                      } completion:^(BOOL finished) {
                          
                      }];

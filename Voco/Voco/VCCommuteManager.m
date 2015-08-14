@@ -198,7 +198,11 @@ static VCCommuteManager * instance;
 }
 
 
-- (void) refreshScheduleInBackground:(NSNotification *) notifications {
+- (void) refreshTickets:(NSNotification *) notifications {
+    [self refreshTickets];
+}
+
+- (void) refreshTickets {
     [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         //
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
