@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCCarInfoViewController">
             <connections>
                 <outlet property="carInfoField" destination="17U-B3-qrJ" id="DgV-DH-Fex"/>
-                <outlet property="licencePlateField" destination="9aa-TZ-zcJ" id="Njv-d1-yKb"/>
+                <outlet property="licensePlateField" destination="9aa-TZ-zcJ" id="i8e-m3-kuj"/>
                 <outlet property="view" destination="iN0-l3-epB" id="dIO-Fz-1k0"/>
             </connections>
         </placeholder>

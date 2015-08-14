@@ -62,6 +62,7 @@
 
 // drivers
 #define API_DRIVER_REGISTRATION @"drivers/driver_registration"
+#define API_CAR_UPDATE @"drivers/car"
 
 
 // state

@@ -1121,6 +1121,7 @@
 		84BB90031B7D8C1000D7397B /* Voco 21.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 21.xcdatamodel"; sourceTree = "<group>"; };
 		84BB90071B7D9A8F00D7397B /* Voco 22.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 22.xcdatamodel"; sourceTree = "<group>"; };
 		84BB90081B7DD53F00D7397B /* Voco 23.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 23.xcdatamodel"; sourceTree = "<group>"; };
+		84BB90091B7DF07700D7397B /* Voco 24.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 24.xcdatamodel"; sourceTree = "<group>"; };
 		D19278A21B6738D1009BFBF8 /* MBRegion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBRegion.h; path = Model/MBRegion.h; sourceTree = "<group>"; };
 		D19278A31B6738D1009BFBF8 /* MBRegion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBRegion.m; path = Model/MBRegion.m; sourceTree = "<group>"; };
 		D570C24C905CF2756FACB77F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -3961,6 +3962,7 @@
 		F4FA0BFB192BF6BF005D8645 /* Voco.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				84BB90091B7DF07700D7397B /* Voco 24.xcdatamodel */,
 				84BB90081B7DD53F00D7397B /* Voco 23.xcdatamodel */,
 				84BB90071B7D9A8F00D7397B /* Voco 22.xcdatamodel */,
 				84BB90031B7D8C1000D7397B /* Voco 21.xcdatamodel */,
@@ -4013,7 +4015,7 @@
 				F4B7BFAA19A2EF7400D934D6 /* Voco 11.xcdatamodel */,
 				F4FA0BFC192BF6BF005D8645 /* Voco.xcdatamodel */,
 			);
-			currentVersion = F4792AF2197642B3005AB652 /* Voco 23.xcdatamodel */;
+			currentVersion = F4792AF319764523005AB652 /* Voco 24.xcdatamodel */;
 			path = Voco.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
