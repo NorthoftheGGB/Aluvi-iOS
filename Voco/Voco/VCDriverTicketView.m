@@ -65,11 +65,19 @@
     }
 }
 
+
+- (void)viewDidLoad{
+    _riderOneButton.layer.cornerRadius = _riderOneButton.frame.size.width / 2;
+    _riderOneButton.clipsToBounds = YES;
+}
+
 - (void) showButton: (UIButton * ) button WithRider: (Rider *) rider {
     [button sd_setBackgroundImageWithURL:[NSURL URLWithString: rider.smallImageUrl]
                                          forState:UIControlStateNormal
                                  placeholderImage:[UIImage imageNamed:@"placeholder-profile"]
                                           options:SDWebImageRefreshCached
+     
+     
      ];
 
 }
