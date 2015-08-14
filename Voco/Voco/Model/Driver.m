@@ -24,14 +24,16 @@
 + (RKEntityMapping *)createMappings:(RKObjectManager *)objectManager{
     RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Driver" inManagedObjectStore:[VCCoreData managedObjectStore]];
     [entityMapping addAttributeMappingsFromDictionary:@{
+                                                        @"id" : @"id",
                                                         @"first_name": @"firstName",
                                                         @"last_name" :@"lastName",
-                                                        @"id" : @"id",
                                                         @"drivers_license_number" : @"driversLicenseNumber",
                                                         @"phone" : @"phone",
                                                         @"large_image" : @"largeImageUrl",
                                                         @"small_image" : @"smallImageUrl"
                                                        }];
+    entityMapping.identificationAttributes = @[ @"id" ];
+
     return entityMapping;
 }
 

@@ -23,16 +23,22 @@
 
 + (RKEntityMapping *)createMappings:(RKObjectManager *)objectManager{
     RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Car" inManagedObjectStore:[VCCoreData managedObjectStore]];
-    [entityMapping addAttributeMappingsFromDictionary:@{@"make": @"make",
+    [entityMapping addAttributeMappingsFromDictionary:@{
+                                                        @"id" : @"id",
+                                                        @"make": @"make",
                                                         @"model" :@"model",
                                                         @"license_plate" : @"licensePlate",
                                                         @"state" : @"state",
                                                         @"year" : @"year",
-                                                        @"id" : @"id",
                                                         @"car_photo" : @"carPhotoUrl"
                                                         }];
+    
+    entityMapping.identificationAttributes = @[ @"id" ]; 
+
     return entityMapping;
 }
+
+
 
 - (NSString *) summary {
     return [NSString stringWithFormat:@"%@ %@ %@", self.year, self.make, self.model];

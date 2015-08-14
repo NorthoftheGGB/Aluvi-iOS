@@ -7,6 +7,7 @@
 //
 
 #import "VCUserStateManager.h"
+#import <MBProgressHUD.h>
 #import "VCUsersApi.h"
 #import "VCApi.h"
 #import "VCDevicesApi.h"
@@ -15,7 +16,7 @@
 #import "VCInterfaceManager.h"
 #import "VCDriverApi.h"
 #import "VCCommuteManager.h"
-#import <MBProgressHUD.h>
+#import "Car.h"
 
 NSString *const VCUserStateDriverStateKeyPath = @"driverState";
 
@@ -49,7 +50,15 @@ static VCUserStateManager *sharedSingleton;
         //_underwayFareId = [userDefaults objectForKey:kRideIdKey];
         NSData * profileData = [[NSUserDefaults standardUserDefaults] objectForKey:kProfileDataKey];
         if(profileData != nil) {
-            _profile = [NSKeyedUnarchiver unarchiveObjectWithData:profileData];
+            @try {
+                _profile = [NSKeyedUnarchiver unarchiveObjectWithData:profileData];
+            }
+            @catch (NSException *exception) {
+                //
+            }
+            @finally {
+                //
+            }
         }
 
     }
@@ -124,11 +133,11 @@ static VCUserStateManager *sharedSingleton;
                           [self setProfile: mappingResult.firstObject];
                           success();
                       } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                          [WRUtilities subcriticaError:error];
+                          failure(operation, error);
                       }];
                       
                   } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                      //[WRUtilities criticalError:error];
+                      failure(operation, error);
                   }];
                   
               } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -227,7 +236,22 @@ static VCUserStateManager *sharedSingleton;
 
 - (void) refreshProfileWithCompletion: (void ( ^ ) ( ))completion {
     [VCUsersApi getProfile:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        [self setProfile: mappingResult.firstObject];
+        NSArray * array = [mappingResult array];
+        VCProfile * profile;
+        Car * car;
+        profile.carId = nil;
+        if([array[0] isKindOfClass:[VCProfile class]]){
+            profile = mappingResult.firstObject;
+            if([array count] > 1) {
+                car = array[1];
+            }
+        } else {
+            profile = array[1];
+            car = mappingResult.firstObject;
+        }
+        
+        profile.carId = car.id;
+        [self setProfile: profile];
         completion();
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [WRUtilities criticalError:error];

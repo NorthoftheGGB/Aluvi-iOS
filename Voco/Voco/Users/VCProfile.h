@@ -10,6 +10,8 @@
 
 @interface VCProfile : NSObject <NSCoding>
 
+@property(nonatomic, strong) NSNumber * carId;
+
 @property(nonatomic, strong) NSString * firstName;
 @property(nonatomic, strong) NSString * lastName;
 @property(nonatomic, strong) NSString * phone;

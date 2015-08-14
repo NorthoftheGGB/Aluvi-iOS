@@ -16,6 +16,7 @@
 #import "VCFillCommuterPass.h"
 #import "VCApiError.h"
 #import "VCApi.h"
+#import "Car.h"
 
 @implementation VCUsersApi
 + (void) setup: (RKObjectManager *) objectManager {
@@ -110,7 +111,11 @@
         RKObjectMapping * mapping = [VCProfile getMapping];
         RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping method:RKRequestMethodGET pathPattern:API_USER_PROFILE keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:responseDescriptor];
-        
+    }
+    {
+        RKObjectMapping * mapping = [Car createMappings:objectManager];
+        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping method:RKRequestMethodGET pathPattern:API_USER_PROFILE keyPath:@"car" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor];
     }
     
     {
