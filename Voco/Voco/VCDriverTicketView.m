@@ -9,6 +9,7 @@
 #import "VCDriverTicketView.h"
 #import "Rider.h"
 #import <SDWebImage/UIButton+WebCache.h>
+#import "VCStyle.h"
 
 @interface VCDriverTicketView ()
 
@@ -64,6 +65,8 @@
         _ridersOnboardButton.hidden = YES;
     }
 }
+
+
 
 
 - (void)awakeFromNib{

@@ -16,7 +16,7 @@
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCy-bs-KQF" customClass="VCLabel">
                             <rect key="frame" x="0.0" y="0.0" width="76" height="26"/>
-                            <color key="backgroundColor" red="0.30571072861950149" green="0.75838124351477176" blue="0.99243437532872925" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.2784313725" green="0.60784313729999995" blue="0.63921568630000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="26" id="Ac6-jc-fLH"/>
                                 <constraint firstAttribute="width" constant="76" id="x4G-af-owy"/>
@@ -118,7 +118,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="rCb-Ie-oWp" secondAttribute="bottom" constant="25" id="2s3-QL-uaG"/>
                         <constraint firstAttribute="bottom" secondItem="mSm-5p-gRK" secondAttribute="bottom" constant="5" id="Gri-4T-bPM"/>
