@@ -127,6 +127,8 @@
     // Listen for notifications about updated rides
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scheduleUpdated:) name:kNotificationScheduleUpdated object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(profileUpdated:) name:kNotificationTypeProfileUpdated object:nil];
+    
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -202,6 +204,10 @@
                                                   [[VCUserStateManager instance] profile].firstName,
                                                   [[VCUserStateManager instance] profile].lastName
                                                   ];
+           menuUserInfoCell.userImageView.layer.cornerRadius = menuUserInfoCell.userImageView.frame.size.width / 2;
+            menuUserInfoCell.userImageView.clipsToBounds = YES;
+            
+            
             menuUserInfoCell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell = menuUserInfoCell;
         }
@@ -233,7 +239,7 @@
         {
             VCMenuItemTableViewCell * menuItemTableViewCell = [WRUtilities getViewFromNib:@"VCMenuItemTableViewCell" class:[VCMenuItemTableViewCell class]];
             menuItemTableViewCell.iconImageView.image = [UIImage imageNamed: @"menu-payments-icon"];
-            menuItemTableViewCell.menuItemLabel.text = @"Payment Settings";
+            menuItemTableViewCell.menuItemLabel.text = @"Payment";
             menuItemTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell = menuItemTableViewCell;
         }
