@@ -35,6 +35,14 @@
 		36000CB11B72D5D2008E84AE /* VCCarInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000CAF1B72D5D2008E84AE /* VCCarInfoViewController.m */; };
 		36000CB21B72D5D2008E84AE /* VCCarInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000CAF1B72D5D2008E84AE /* VCCarInfoViewController.m */; };
 		36000CB31B72D5D2008E84AE /* VCCarInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000CAF1B72D5D2008E84AE /* VCCarInfoViewController.m */; };
+		36049F831B8155EE0090ECAE /* VCOnboardingSetRouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36049F821B8155EE0090ECAE /* VCOnboardingSetRouteViewController.m */; };
+		36049F841B8155EE0090ECAE /* VCOnboardingSetRouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36049F821B8155EE0090ECAE /* VCOnboardingSetRouteViewController.m */; };
+		36049F851B8155EE0090ECAE /* VCOnboardingSetRouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36049F821B8155EE0090ECAE /* VCOnboardingSetRouteViewController.m */; };
+		36049F861B8155EE0090ECAE /* VCOnboardingSetRouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36049F821B8155EE0090ECAE /* VCOnboardingSetRouteViewController.m */; };
+		36049F881B8156370090ECAE /* VCOnboardingSetRouteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36049F871B8156370090ECAE /* VCOnboardingSetRouteViewController.xib */; };
+		36049F891B8156370090ECAE /* VCOnboardingSetRouteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36049F871B8156370090ECAE /* VCOnboardingSetRouteViewController.xib */; };
+		36049F8A1B8156370090ECAE /* VCOnboardingSetRouteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36049F871B8156370090ECAE /* VCOnboardingSetRouteViewController.xib */; };
+		36049F8B1B8156370090ECAE /* VCOnboardingSetRouteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36049F871B8156370090ECAE /* VCOnboardingSetRouteViewController.xib */; };
 		36638D751B658A5A004EDB09 /* VCRideRequestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D741B658A5A004EDB09 /* VCRideRequestView.xib */; };
 		36638D791B658A5A004EDB09 /* VCRideRequestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D741B658A5A004EDB09 /* VCRideRequestView.xib */; };
 		36638D7B1B658A5A004EDB09 /* VCRideRequestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D741B658A5A004EDB09 /* VCRideRequestView.xib */; };
@@ -870,6 +878,9 @@
 		36000CA91B72D5A2008E84AE /* VCCarInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCCarInfoViewController.xib; sourceTree = "<group>"; };
 		36000CAE1B72D5D2008E84AE /* VCCarInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCCarInfoViewController.h; sourceTree = "<group>"; };
 		36000CAF1B72D5D2008E84AE /* VCCarInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCarInfoViewController.m; sourceTree = "<group>"; };
+		36049F811B8155EE0090ECAE /* VCOnboardingSetRouteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCOnboardingSetRouteViewController.h; sourceTree = "<group>"; };
+		36049F821B8155EE0090ECAE /* VCOnboardingSetRouteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCOnboardingSetRouteViewController.m; sourceTree = "<group>"; };
+		36049F871B8156370090ECAE /* VCOnboardingSetRouteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCOnboardingSetRouteViewController.xib; sourceTree = "<group>"; };
 		36638D741B658A5A004EDB09 /* VCRideRequestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCRideRequestView.xib; sourceTree = "<group>"; };
 		36638D7C1B659CAE004EDB09 /* VCDriverTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCDriverTicketView.xib; sourceTree = "<group>"; };
 		36638D841B65A988004EDB09 /* VCRiderTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCRiderTicketView.xib; sourceTree = "<group>"; };
@@ -1567,6 +1578,9 @@
 				4FC758B319AA8C270093DBEA /* VCLogInViewController.h */,
 				4FC758B419AA8C270093DBEA /* VCLogInViewController.m */,
 				4FC758B519AA8C270093DBEA /* VCLogInViewController.xib */,
+				36049F811B8155EE0090ECAE /* VCOnboardingSetRouteViewController.h */,
+				36049F821B8155EE0090ECAE /* VCOnboardingSetRouteViewController.m */,
+				36049F871B8156370090ECAE /* VCOnboardingSetRouteViewController.xib */,
 			);
 			name = "Sign-In and Registration";
 			sourceTree = "<group>";
@@ -2373,6 +2387,7 @@
 				8416482F1B64A47D00CD20AC /* confirm-location-select.png in Resources */,
 				841648341B64A47D00CD20AC /* menu-mycar-icon@2x.png in Resources */,
 				841648361B64A47D00CD20AC /* zoom-ride-bounds@2x.png in Resources */,
+				36049F8B1B8156370090ECAE /* VCOnboardingSetRouteViewController.xib in Resources */,
 				8416483B1B64A47D00CD20AC /* current-location-arrow-select@2x.png in Resources */,
 				36638D7B1B658A5A004EDB09 /* VCRideRequestView.xib in Resources */,
 				8416483C1B64A47D00CD20AC /* VCSubMenuItemTableViewCell.xib in Resources */,
@@ -2504,6 +2519,7 @@
 				841649CB1B658F4900CD20AC /* VCLogInViewController.xib in Resources */,
 				36E48E681B7AA6920034DFEB /* nav_bg.png in Resources */,
 				369DBC1A1B6D22F700449CB4 /* test.jpg in Resources */,
+				36049F891B8156370090ECAE /* VCOnboardingSetRouteViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2585,6 +2601,7 @@
 				36FA80871B7D831C00C65DF2 /* driver-hov-toggle@2x.png in Resources */,
 				4FC758B919AA8C270093DBEA /* VCLogInViewController.xib in Resources */,
 				36E48E671B7AA6920034DFEB /* nav_bg.png in Resources */,
+				36049F881B8156370090ECAE /* VCOnboardingSetRouteViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2617,6 +2634,7 @@
 				F4D8FEC919B1745A00BC0B69 /* confirm-location-select.png in Resources */,
 				F4D8FECE19B1745A00BC0B69 /* menu-mycar-icon@2x.png in Resources */,
 				F4D8FECF19B1745A00BC0B69 /* zoom-ride-bounds@2x.png in Resources */,
+				36049F8A1B8156370090ECAE /* VCOnboardingSetRouteViewController.xib in Resources */,
 				F4D8FED619B1745A00BC0B69 /* current-location-arrow-select@2x.png in Resources */,
 				36638D791B658A5A004EDB09 /* VCRideRequestView.xib in Resources */,
 				F4D8FED719B1745A00BC0B69 /* VCSubMenuItemTableViewCell.xib in Resources */,
@@ -2863,6 +2881,7 @@
 				841647901B64A47D00CD20AC /* VCMenuItemModeTableViewCell.m in Sources */,
 				841647911B64A47D00CD20AC /* VCProfile.m in Sources */,
 				841647921B64A47D00CD20AC /* VCMenuDriverClockOnTableViewCell.m in Sources */,
+				36049F861B8155EE0090ECAE /* VCOnboardingSetRouteViewController.m in Sources */,
 				841647931B64A47D00CD20AC /* Car.m in Sources */,
 				841647941B64A47D00CD20AC /* VCCarLicensePlateTextField.m in Sources */,
 				841647951B64A47D00CD20AC /* VCDevicesApi.m in Sources */,
@@ -2982,6 +3001,7 @@
 				841648C61B658F4900CD20AC /* VCLeftMenuViewController.m in Sources */,
 				841648C71B658F4900CD20AC /* VCRoutingNumberTextField.m in Sources */,
 				841648C81B658F4900CD20AC /* VCMenuItemModeTableViewCell.m in Sources */,
+				36049F841B8155EE0090ECAE /* VCOnboardingSetRouteViewController.m in Sources */,
 				841648CA1B658F4900CD20AC /* VCProfile.m in Sources */,
 				841648CB1B658F4900CD20AC /* VCMenuDriverClockOnTableViewCell.m in Sources */,
 				841648CD1B658F4900CD20AC /* Car.m in Sources */,
@@ -3101,6 +3121,7 @@
 				F4C6B1DD197F06B100F6C10B /* VCRoutingNumberTextField.m in Sources */,
 				4F184A3E1992E41F006EA959 /* VCMenuItemModeTableViewCell.m in Sources */,
 				F4C6B1DF197F06B100F6C10B /* VCProfile.m in Sources */,
+				36049F831B8155EE0090ECAE /* VCOnboardingSetRouteViewController.m in Sources */,
 				4F184A1B1991893D006EA959 /* VCMenuDriverClockOnTableViewCell.m in Sources */,
 				F4C6B1E0197F06B100F6C10B /* Car.m in Sources */,
 				F4C6B1E1197F06B100F6C10B /* VCCarLicensePlateTextField.m in Sources */,
@@ -3220,6 +3241,7 @@
 				F4D8FE2A19B1745A00BC0B69 /* VCMenuItemModeTableViewCell.m in Sources */,
 				F4D8FE2B19B1745A00BC0B69 /* VCProfile.m in Sources */,
 				F4D8FE2C19B1745A00BC0B69 /* VCMenuDriverClockOnTableViewCell.m in Sources */,
+				36049F851B8155EE0090ECAE /* VCOnboardingSetRouteViewController.m in Sources */,
 				F4D8FE2D19B1745A00BC0B69 /* Car.m in Sources */,
 				F4D8FE2E19B1745A00BC0B69 /* VCCarLicensePlateTextField.m in Sources */,
 				F4D8FE2F19B1745A00BC0B69 /* VCDevicesApi.m in Sources */,
