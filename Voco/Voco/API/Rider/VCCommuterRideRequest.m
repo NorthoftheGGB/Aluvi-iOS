@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCRideRequest.h"
+#import "VCCommuterRideRequest.h"
 
-@implementation VCRideRequest
+@implementation VCCommuterRideRequest
 
 + (RKObjectMapping *) getMapping {
 
-    RKObjectMapping * rideRequestMapping = [RKObjectMapping mappingForClass:[VCRideRequest class]];
+    RKObjectMapping * rideRequestMapping = [RKObjectMapping mappingForClass:[VCCommuterRideRequest class]];
     [rideRequestMapping addAttributeMappingsFromDictionary:@{
                                                                  @"type" : @"type",
                                                                  @"departure_latitude" : @"departureLatitude",
@@ -21,7 +21,8 @@
                                                                  @"destination_latitude" : @"destinationLatitude",
                                                                  @"destination_longitude" : @"destinationLongitude",
                                                                  @"destination_place_name" : @"destinationPlaceName",
-                                                                 @"pickup_time" : @"pickupTime",
+                                                                 @"departure_pickup_time" : @"pickupTime",
+                                                                 @"return_pickup_time" : @"returnPickupTime",
                                                                  @"driving" : @"driving",
                                                                  @"trip_id" : @"tripId"
                                                                 }];
@@ -29,20 +30,6 @@
 
 }
 
-+ (VCRideRequest *) requestForRide:(Ticket *)ride {
-    VCRideRequest * rideRequest = [[VCRideRequest alloc] init];
-    rideRequest.type = ride.rideType;
-    rideRequest.departureLatitude = ride.originLatitude;
-    rideRequest.departureLongitude = ride.originLongitude;
-    rideRequest.departurePlaceName = ride.originPlaceName;
-    rideRequest.destinationLatitude = ride.destinationLatitude;
-    rideRequest.destinationLongitude = ride.destinationLongitude;
-    rideRequest.destinationPlaceName = ride.destinationPlaceName;
-    rideRequest.pickupTime = ride.pickupTime;
-    rideRequest.driving = ride.driving;
-    rideRequest.tripId = ride.trip_id;
-    return rideRequest;
-}
 
 
 @end

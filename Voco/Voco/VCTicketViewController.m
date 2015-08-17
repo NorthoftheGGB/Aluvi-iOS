@@ -159,6 +159,9 @@
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [WRUtilities criticalError:error];
     }];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scheduleUpdated:) name:kNotificationScheduleUpdated object:nil];
+
 }
 
 
@@ -203,6 +206,19 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    _isFinished = YES;
+}
+
+
+- (void) scheduleUpdated:(NSNotification *) notification {
+    if(_ticket != nil && [[VCCommuteManager instance] getDefaultTicket] == nil){
+        _ticket = nil;
+        [self updateTicketInterface];
+    }
 }
 
 
@@ -577,7 +593,7 @@
             [button setTitle:@"BACK HOME" forState:UIControlStateNormal];
             [button removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
             [button addTarget:self action:@selector(didTapSwitchToBackHome:) forControlEvents:UIControlEventTouchUpInside];
-            
+            break;
         }
         default:
         {
@@ -864,6 +880,7 @@
         [[VCCommuteManager instance] cancelRide:_ticket success:^{
              _ticket = nil;
              [self resetInterfaceToHome];
+             [self updateTicketInterface];
              hud.hidden = YES;
          } failure:^{
              hud.hidden = YES;

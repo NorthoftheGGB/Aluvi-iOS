@@ -38,7 +38,7 @@ static NSString * apiToken;
     [self setApiToken: [[NSUserDefaults standardUserDefaults] stringForKey:API_TOKEN_KEY]];
     
 #ifdef DEBUG
-    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelDebug);
+    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelError);
     RKLogConfigureByName("RestKit/Network", RKLogLevelError);
 #endif
     

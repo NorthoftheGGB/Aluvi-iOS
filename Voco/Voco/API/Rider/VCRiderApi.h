@@ -9,14 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <RestKit/RestKit.h>
 #import "Ticket.h"
-#import "VCRideRequestCreated.h"
+#import "VCCommuterRideRequestCreated.h"
+#import "VCCommuterRideRequest.h"
 
 @interface VCRiderApi : NSObject
 
 + (void) setup: (RKObjectManager *) objectManager;
 
-+ (void) requestRide:(Ticket *) ride
-             success:(void ( ^ ) ( RKObjectRequestOperation *operation , VCRideRequestCreated * response ))success
++ (void) requestRide:(VCCommuterRideRequest *) request
+             success:(void ( ^ ) ( RKObjectRequestOperation *operation , VCCommuterRideRequestCreated * response ))success
              failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
 + (void) cancelRide:(Ticket *) ride

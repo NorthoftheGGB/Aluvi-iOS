@@ -13,7 +13,7 @@
 
 
 
-@interface VCRideRequest : NSObject
+@interface VCCommuterRideRequest : NSObject
 
 @property (nonatomic) NSInteger customerId;
 @property (nonatomic, strong) NSString * type;
@@ -24,10 +24,10 @@
 @property (nonatomic, strong) NSNumber * destinationLongitude;
 @property (nonatomic, strong) NSString * destinationPlaceName;
 @property (nonatomic, strong) NSDate * pickupTime;
+@property (nonatomic, strong) NSDate * returnPickupTime;
 @property (nonatomic, strong) NSNumber * driving;
 @property (nonatomic, strong) NSNumber * tripId;
 
 + (RKObjectMapping *) getMapping;
-+ (VCRideRequest *) requestForRide:(Ticket *)ride;
 
 @end

@@ -41,7 +41,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
+    /* Font debugging
     for (NSString* family in [UIFont familyNames])
     {
         NSLog(@"FONT %@", family);
@@ -51,6 +51,7 @@
             NSLog(@"  %@", name);
         }
     }
+     */
     
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"nav_bg.png"] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setShadowImage:[UIImage new]];

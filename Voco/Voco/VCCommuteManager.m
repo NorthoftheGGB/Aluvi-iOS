@@ -12,6 +12,7 @@
 #import "VCDriverApi.h"
 #import "VCNotifications.h"
 #import "VCUtilities.h"
+#import "VCCommuterRideRequest.h"
 
 // TODO refactor these out of this class
 #import "VCApi.h"
@@ -303,7 +304,7 @@ static VCCommuteManager * instance;
     homeToWorkRide.destinationShortName = @"Work";
     homeToWorkRide.rideType = kRideRequestTypeCommuter;
     homeToWorkRide.state = kCreatedState;
-    homeToWorkRide.driving = [NSNumber numberWithBool:_route.driving];;
+    homeToWorkRide.driving = [NSNumber numberWithBool:_route.driving];
     NSArray * pickupTimeParts = [_route.pickupTime componentsSeparatedByString:@":"];
     [f setNumberStyle:NSNumberFormatterDecimalStyle];
     components = [[NSDateComponents alloc] init];
@@ -331,23 +332,38 @@ static VCCommuteManager * instance;
     [components setMinute:[[f numberFromString:pickupTimeParts[1]] intValue]];
     workToHomeRide.pickupTime = [gregorian dateByAddingComponents:components toDate:thisDate options:0];
     
+    VCCommuterRideRequest * request = [[VCCommuterRideRequest alloc] init];
+    request.departureLatitude = homeToWorkRide.originLatitude;
+    request.departureLongitude = homeToWorkRide.originLongitude;
+    request.departurePlaceName = homeToWorkRide.originPlaceName;
+    request.destinationLatitude = homeToWorkRide.destinationLatitude;
+    request.destinationLongitude = homeToWorkRide.destinationLongitude;
+    request.destinationPlaceName = homeToWorkRide.destinationPlaceName;
+    request.pickupTime = homeToWorkRide.pickupTime;
+    request.returnPickupTime = workToHomeRide.pickupTime;
+    request.driving = [NSNumber numberWithBool:_route.driving];
+
+    
     // And attempt to store the rides on the server
     // TODO: This will happen in single request to the server, which will create and supply the tickets
-    [VCRiderApi requestRide:homeToWorkRide success:^(RKObjectRequestOperation *operation, VCRideRequestCreated * response) {
+    [VCRiderApi requestRide:request success:^(RKObjectRequestOperation *operation, VCCommuterRideRequestCreated * response) {
+
+        
+        homeToWorkRide.ride_id = response.outgoingRideId;
+        homeToWorkRide.trip_id = response.tripId;
         homeToWorkRide.uploaded = [NSNumber numberWithBool:YES];
         homeToWorkRide.direction = @"a";
         homeToWorkRide.state = kRequestedState;
         
-        workToHomeRide.trip_id = homeToWorkRide.trip_id;
+        workToHomeRide.ride_id = response.returnRideId;
+        workToHomeRide.trip_id = response.tripId;
+        workToHomeRide.uploaded = [NSNumber numberWithBool:YES];
+        workToHomeRide.direction = @"b";
+        workToHomeRide.state = kRequestedState;
 
-        [VCRiderApi requestRide:workToHomeRide success:^(RKObjectRequestOperation *operation, VCRideRequestCreated * response) {
-            workToHomeRide.uploaded = [NSNumber numberWithBool:YES];
-            workToHomeRide.direction = @"b";
-            homeToWorkRide.state = kRequestedState;
-
-            [VCCoreData saveContext];
+        [VCCoreData saveContext];
             
-            [self refreshTicketsWithSuccess:^{
+        [self refreshTicketsWithSuccess:^{
                 success();
             } failure:^{
                 failure();
@@ -356,10 +372,6 @@ static VCCommuteManager * instance;
             
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             failure();
-        }];
-
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        failure();
     }];
     
 }

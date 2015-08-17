@@ -10,8 +10,10 @@
 #import "VCCenterViewBaseViewController.h"
 #import "Ticket.h"
 
+
 @interface VCTicketViewController : VCCenterViewBaseViewController
 
 @property (strong, nonatomic) Ticket * ticket;
+@property (nonatomic) BOOL isFinished;  // for KVO
 
 @end

@@ -71,6 +71,8 @@
 #define kBackHomeCellInteger 1015
 #define kLogoutCellInteger 1016
 
+static void * XXContext = &XXContext;
+
 @interface VCLeftMenuViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -120,7 +122,7 @@
     // Listen for notifications about updated rides
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scheduleUpdated:) name:kNotificationScheduleUpdated object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(profileUpdated:) name:kNotificationTypeProfileUpdated object:nil];
-    
+
     
 }
 
@@ -140,6 +142,7 @@
 - (void) scheduleUpdated:(NSNotification *) notification {
     [_tableView reloadData];
 }
+
 
 
 - (void)didReceiveMemoryWarning
@@ -357,6 +360,10 @@
         {
             VCTicketViewController * ticketViewController = [[VCTicketViewController alloc] init];
             ticketViewController.ticket = [[VCCommuteManager instance] getDefaultTicket];
+            //[ticketViewController addObserver:self forKeyPath:@"ticket" options:NSKeyValueObservingOptionNew context:XXContext];
+            //[ticketViewController addObserver:self forKeyPath:@"isFinished" options:NSKeyValueObservingOptionNew context:XXContext];
+
+            
             [[VCInterfaceManager instance] setCenterViewControllers: @[ticketViewController]];
             
             VCMenuItemTableViewCell * cell = (VCMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
@@ -372,6 +379,9 @@
         {
             VCTicketViewController * ticketViewController = [[VCTicketViewController alloc] init];
             ticketViewController.ticket = [[VCCommuteManager instance] getTicketBackHome];
+            //[ticketViewController addObserver:self forKeyPath:@"ticket" options:NSKeyValueObservingOptionNew context:XXContext];
+            //[ticketViewController addObserver:self forKeyPath:@"isFinished" options:NSKeyValueObservingOptionNew context:XXContext];
+
             [[VCInterfaceManager instance] setCenterViewControllers: @[ticketViewController]];
             
             VCMenuItemTableViewCell * cell = (VCMenuItemTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
@@ -439,6 +449,26 @@
     
 }
 
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if([keyPath isEqualToString:NSStringFromSelector(@selector(ticket))]){
+        Ticket * ticket = [change objectForKey:keyPath];
+        int newSelectedCell;
+        if(ticket == nil){
+            newSelectedCell = kCommuteCellInteger;
+        } else if ([ticket.direction isEqualToString:@"a"]) {
+            newSelectedCell = kCommuteCellInteger;
+        } else if ([ticket.direction isEqualToString:@"a"]) {
+            newSelectedCell = kBackHomeCellInteger;
+        }
+        if(newSelectedCell != _selectedCellTag){
+            _selectedCellTag = newSelectedCell;
+            [self.tableView reloadData];
+        }
+    } else if([keyPath isEqualToString:NSStringFromSelector(@selector(isFinished))]){
+        [object removeObserver:self];
+    }
+}
 
 
 

@@ -40,12 +40,18 @@ static VCDebug * instance;
     if([VCDebug sharedInstance].blockPushMessages){
         blockPushMessagesText = @"Unblock Push Messages";
     }
+    
+    NSArray * buttons=  @[@"Refresh Push Token", alertsEnabledText, blockPushMessagesText];
+#ifdef NIGHTLY
+    buttons = [[NSMutableArray arrayWithArray: buttons] addObject:@"Schedule Tickets"];
+#endif
+    
 
     NSString * version = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
     NSString * build = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
     NSString * appVersion = [NSString stringWithFormat:@"v%@b%@", version, build];
     NSString * title = [NSString stringWithFormat:@"Welcome to Triage %@", appVersion];
-    [UIAlertView showWithTitle:title message:message cancelButtonTitle:@"OK" otherButtonTitles:@[@"Refresh Push Token", alertsEnabledText, blockPushMessagesText] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+    [UIAlertView showWithTitle:title message:message cancelButtonTitle:@"OK" otherButtonTitles:buttons tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
         switch (buttonIndex) {
             case 1:
             {
@@ -73,6 +79,12 @@ static VCDebug * instance;
                 }
                 break;
             }
+            case 4:
+            {
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString: [NSString stringWithFormat:@"%@%@", API_BASE_URL, @"commuter_rides/schedule_trips"] ]];
+            }
+                
+                break;
                 
             default:
                 break;

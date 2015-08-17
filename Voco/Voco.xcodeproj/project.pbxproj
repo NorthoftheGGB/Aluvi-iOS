@@ -226,7 +226,7 @@
 		8416479E1B64A47D00CD20AC /* VCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641FD194170F50059BED1 /* VCButton.m */; };
 		8416479F1B64A47D00CD20AC /* VCMenuUserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F184A1019918750006EA959 /* VCMenuUserInfoTableViewCell.m */; };
 		841647A01B64A47D00CD20AC /* MQShape.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F00B194A5A6100D8C900 /* MQShape.m */; };
-		841647A11B64A47D00CD20AC /* VCRideRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BFB19357B8A00A94721 /* VCRideRequest.m */; };
+		841647A11B64A47D00CD20AC /* VCCommuterRideRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BFB19357B8A00A94721 /* VCCommuterRideRequest.m */; };
 		841647A21B64A47D00CD20AC /* VCPushReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AF71937DD5600354886 /* VCPushReceiver.m */; };
 		841647A31B64A47D00CD20AC /* VCSubMenuItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F184A221991E156006EA959 /* VCSubMenuItemTableViewCell.m */; };
 		841647A51B64A47D00CD20AC /* VCDriverStateResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F0311952F68D00D8C900 /* VCDriverStateResponse.m */; };
@@ -281,7 +281,7 @@
 		841647DE1B64A47D00CD20AC /* VCReferralCodeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEC41966369700AD4229 /* VCReferralCodeTextField.m */; };
 		841647DF1B64A47D00CD20AC /* WRUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C0E1935976E00A94721 /* WRUtilities.m */; };
 		841647E01B64A47D00CD20AC /* VCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641D91941607B0059BED1 /* VCTextField.m */; };
-		841647E11B64A47D00CD20AC /* VCRideRequestCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C09193589A600A94721 /* VCRideRequestCreated.m */; };
+		841647E11B64A47D00CD20AC /* VCCommuterRideRequestCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C09193589A600A94721 /* VCCommuterRideRequestCreated.m */; };
 		841647E31B64A47D00CD20AC /* VCDriverInterestedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8905219469F0F007C4671 /* VCDriverInterestedRequest.m */; };
 		841647E41B64A47D00CD20AC /* VCAbstractRideDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3DB5C81981F6F400DDD094 /* VCAbstractRideDetailsView.m */; };
 		841647E51B64A47D00CD20AC /* HVTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6B8BD19A9ADEF004312A1 /* HVTableView.m */; };
@@ -415,7 +415,7 @@
 		841648D41B658F4900CD20AC /* VCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641FD194170F50059BED1 /* VCButton.m */; };
 		841648D51B658F4900CD20AC /* VCMenuUserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F184A1019918750006EA959 /* VCMenuUserInfoTableViewCell.m */; };
 		841648D61B658F4900CD20AC /* MQShape.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F00B194A5A6100D8C900 /* MQShape.m */; };
-		841648D71B658F4900CD20AC /* VCRideRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BFB19357B8A00A94721 /* VCRideRequest.m */; };
+		841648D71B658F4900CD20AC /* VCCommuterRideRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BFB19357B8A00A94721 /* VCCommuterRideRequest.m */; };
 		841648D81B658F4900CD20AC /* VCPushReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AF71937DD5600354886 /* VCPushReceiver.m */; };
 		841648D91B658F4900CD20AC /* VCSubMenuItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F184A221991E156006EA959 /* VCSubMenuItemTableViewCell.m */; };
 		841648DB1B658F4900CD20AC /* VCDriverStateResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F0311952F68D00D8C900 /* VCDriverStateResponse.m */; };
@@ -472,7 +472,7 @@
 		841649161B658F4900CD20AC /* VCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641D91941607B0059BED1 /* VCTextField.m */; };
 		841649171B658F4900CD20AC /* VCSupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCF2C919A5381900A4A24E /* VCSupportViewController.m */; };
 		841649181B658F4900CD20AC /* VCDriverOnBoardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758C619AA91410093DBEA /* VCDriverOnBoardingViewController.m */; };
-		841649191B658F4900CD20AC /* VCRideRequestCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C09193589A600A94721 /* VCRideRequestCreated.m */; };
+		841649191B658F4900CD20AC /* VCCommuterRideRequestCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C09193589A600A94721 /* VCCommuterRideRequestCreated.m */; };
 		8416491B1B658F4900CD20AC /* VCDriverInterestedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8905219469F0F007C4671 /* VCDriverInterestedRequest.m */; };
 		8416491C1B658F4900CD20AC /* VCAbstractRideDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3DB5C81981F6F400DDD094 /* VCAbstractRideDetailsView.m */; };
 		8416491D1B658F4900CD20AC /* NSDate+Pretty.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C10193597F500A94721 /* NSDate+Pretty.m */; };
@@ -649,7 +649,7 @@
 		F4C6B1E5197F06B100F6C10B /* VCNewUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904919468E44007C4671 /* VCNewUser.m */; };
 		F4C6B1E8197F06B100F6C10B /* VCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641FD194170F50059BED1 /* VCButton.m */; };
 		F4C6B1E9197F06B100F6C10B /* MQShape.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F00B194A5A6100D8C900 /* MQShape.m */; };
-		F4C6B1EA197F06B100F6C10B /* VCRideRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BFB19357B8A00A94721 /* VCRideRequest.m */; };
+		F4C6B1EA197F06B100F6C10B /* VCCommuterRideRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BFB19357B8A00A94721 /* VCCommuterRideRequest.m */; };
 		F4C6B1EB197F06B100F6C10B /* VCPushReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AF71937DD5600354886 /* VCPushReceiver.m */; };
 		F4C6B1EC197F06B100F6C10B /* VCDriverStateResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F0311952F68D00D8C900 /* VCDriverStateResponse.m */; };
 		F4C6B1ED197F06B100F6C10B /* MQBoundingBox.m in Sources */ = {isa = PBXBuildFile; fileRef = F4A7C81519628F10007E05AD /* MQBoundingBox.m */; };
@@ -691,7 +691,7 @@
 		F4C6B222197F06B100F6C10B /* VCReferralCodeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEC41966369700AD4229 /* VCReferralCodeTextField.m */; };
 		F4C6B223197F06B100F6C10B /* WRUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C0E1935976E00A94721 /* WRUtilities.m */; };
 		F4C6B224197F06B100F6C10B /* VCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641D91941607B0059BED1 /* VCTextField.m */; };
-		F4C6B225197F06B100F6C10B /* VCRideRequestCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C09193589A600A94721 /* VCRideRequestCreated.m */; };
+		F4C6B225197F06B100F6C10B /* VCCommuterRideRequestCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C09193589A600A94721 /* VCCommuterRideRequestCreated.m */; };
 		F4C6B228197F06B100F6C10B /* VCDriverInterestedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8905219469F0F007C4671 /* VCDriverInterestedRequest.m */; };
 		F4C6B22A197F06B100F6C10B /* NSDate+Pretty.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C10193597F500A94721 /* NSDate+Pretty.m */; };
 		F4C6B22C197F06B100F6C10B /* VCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FA0BF9192BF6BF005D8645 /* VCAppDelegate.m */; };
@@ -769,7 +769,7 @@
 		F4D8FE3819B1745A00BC0B69 /* VCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641FD194170F50059BED1 /* VCButton.m */; };
 		F4D8FE3919B1745A00BC0B69 /* VCMenuUserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F184A1019918750006EA959 /* VCMenuUserInfoTableViewCell.m */; };
 		F4D8FE3A19B1745A00BC0B69 /* MQShape.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F00B194A5A6100D8C900 /* MQShape.m */; };
-		F4D8FE3B19B1745A00BC0B69 /* VCRideRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BFB19357B8A00A94721 /* VCRideRequest.m */; };
+		F4D8FE3B19B1745A00BC0B69 /* VCCommuterRideRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BFB19357B8A00A94721 /* VCCommuterRideRequest.m */; };
 		F4D8FE3C19B1745A00BC0B69 /* VCPushReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1AF71937DD5600354886 /* VCPushReceiver.m */; };
 		F4D8FE3D19B1745A00BC0B69 /* VCSubMenuItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F184A221991E156006EA959 /* VCSubMenuItemTableViewCell.m */; };
 		F4D8FE3F19B1745A00BC0B69 /* VCDriverStateResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F0311952F68D00D8C900 /* VCDriverStateResponse.m */; };
@@ -821,7 +821,7 @@
 		F4D8FE7A19B1745A00BC0B69 /* VCReferralCodeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEC41966369700AD4229 /* VCReferralCodeTextField.m */; };
 		F4D8FE7B19B1745A00BC0B69 /* WRUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C0E1935976E00A94721 /* WRUtilities.m */; };
 		F4D8FE7C19B1745A00BC0B69 /* VCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641D91941607B0059BED1 /* VCTextField.m */; };
-		F4D8FE7D19B1745A00BC0B69 /* VCRideRequestCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C09193589A600A94721 /* VCRideRequestCreated.m */; };
+		F4D8FE7D19B1745A00BC0B69 /* VCCommuterRideRequestCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C09193589A600A94721 /* VCCommuterRideRequestCreated.m */; };
 		F4D8FE7F19B1745A00BC0B69 /* VCDriverInterestedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8905219469F0F007C4671 /* VCDriverInterestedRequest.m */; };
 		F4D8FE8019B1745A00BC0B69 /* VCAbstractRideDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3DB5C81981F6F400DDD094 /* VCAbstractRideDetailsView.m */; };
 		F4D8FE8119B1745A00BC0B69 /* HVTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F6B8BD19A9ADEF004312A1 /* HVTableView.m */; };
@@ -1152,14 +1152,14 @@
 		F45F7BF5193578DE00A94721 /* VCRiderApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRiderApi.m; path = API/Rider/VCRiderApi.m; sourceTree = "<group>"; };
 		F45F7BF71935798B00A94721 /* VCApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCApi.h; path = API/VCApi.h; sourceTree = "<group>"; };
 		F45F7BF81935798B00A94721 /* VCApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCApi.m; path = API/VCApi.m; sourceTree = "<group>"; };
-		F45F7BFA19357B8A00A94721 /* VCRideRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRideRequest.h; path = API/Rider/VCRideRequest.h; sourceTree = "<group>"; };
-		F45F7BFB19357B8A00A94721 /* VCRideRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRideRequest.m; path = API/Rider/VCRideRequest.m; sourceTree = "<group>"; };
+		F45F7BFA19357B8A00A94721 /* VCCommuterRideRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCCommuterRideRequest.h; path = API/Rider/VCCommuterRideRequest.h; sourceTree = "<group>"; };
+		F45F7BFB19357B8A00A94721 /* VCCommuterRideRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCCommuterRideRequest.m; path = API/Rider/VCCommuterRideRequest.m; sourceTree = "<group>"; };
 		F45F7BFD19357C5C00A94721 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		F45F7BFF19357C6100A94721 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F45F7C011935880500A94721 /* Ticket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ticket.h; path = Model/Ticket.h; sourceTree = "<group>"; };
 		F45F7C021935880500A94721 /* Ticket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Ticket.m; path = Model/Ticket.m; sourceTree = "<group>"; };
-		F45F7C08193589A600A94721 /* VCRideRequestCreated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRideRequestCreated.h; path = API/Rider/Responses/VCRideRequestCreated.h; sourceTree = "<group>"; };
-		F45F7C09193589A600A94721 /* VCRideRequestCreated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRideRequestCreated.m; path = API/Rider/Responses/VCRideRequestCreated.m; sourceTree = "<group>"; };
+		F45F7C08193589A600A94721 /* VCCommuterRideRequestCreated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCCommuterRideRequestCreated.h; path = API/Rider/Responses/VCCommuterRideRequestCreated.h; sourceTree = "<group>"; };
+		F45F7C09193589A600A94721 /* VCCommuterRideRequestCreated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCCommuterRideRequestCreated.m; path = API/Rider/Responses/VCCommuterRideRequestCreated.m; sourceTree = "<group>"; };
 		F45F7C0D1935976E00A94721 /* WRUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRUtilities.h; sourceTree = "<group>"; };
 		F45F7C0E1935976E00A94721 /* WRUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WRUtilities.m; sourceTree = "<group>"; };
 		F45F7C10193597F500A94721 /* NSDate+Pretty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Pretty.m"; sourceTree = "<group>"; };
@@ -1870,14 +1870,14 @@
 			children = (
 				F45F7BF4193578DE00A94721 /* VCRiderApi.h */,
 				F45F7BF5193578DE00A94721 /* VCRiderApi.m */,
-				F45F7BFA19357B8A00A94721 /* VCRideRequest.h */,
-				F45F7BFB19357B8A00A94721 /* VCRideRequest.m */,
+				F45F7BFA19357B8A00A94721 /* VCCommuterRideRequest.h */,
+				F45F7BFB19357B8A00A94721 /* VCCommuterRideRequest.m */,
 				F4FE1B22193E722B00354886 /* VCRideIdentity.h */,
 				F4FE1B23193E722B00354886 /* VCRideIdentity.m */,
 				F473F01B195113D100D8C900 /* VCRequestUpdate.h */,
 				F473F01C195113D100D8C900 /* VCRequestUpdate.m */,
-				F45F7C08193589A600A94721 /* VCRideRequestCreated.h */,
-				F45F7C09193589A600A94721 /* VCRideRequestCreated.m */,
+				F45F7C08193589A600A94721 /* VCCommuterRideRequestCreated.h */,
+				F45F7C09193589A600A94721 /* VCCommuterRideRequestCreated.m */,
 				8435C5971B7B0C70000401CA /* VCPickupPoint.h */,
 				8435C5981B7B0C70000401CA /* VCPickupPoint.m */,
 			);
@@ -2947,7 +2947,7 @@
 				8416479F1B64A47D00CD20AC /* VCMenuUserInfoTableViewCell.m in Sources */,
 				841647A01B64A47D00CD20AC /* MQShape.m in Sources */,
 				844415351B6DDC8D008C7898 /* MBRegion.m in Sources */,
-				841647A11B64A47D00CD20AC /* VCRideRequest.m in Sources */,
+				841647A11B64A47D00CD20AC /* VCCommuterRideRequest.m in Sources */,
 				841647A21B64A47D00CD20AC /* VCPushReceiver.m in Sources */,
 				36000CB31B72D5D2008E84AE /* VCCarInfoViewController.m in Sources */,
 				841647A31B64A47D00CD20AC /* VCSubMenuItemTableViewCell.m in Sources */,
@@ -3010,7 +3010,7 @@
 				36FA80851B7D61AD00C65DF2 /* VCFancyButton.m in Sources */,
 				841647E01B64A47D00CD20AC /* VCTextField.m in Sources */,
 				36000CA81B72C185008E84AE /* VCReceiptsTableViewCell.m in Sources */,
-				841647E11B64A47D00CD20AC /* VCRideRequestCreated.m in Sources */,
+				841647E11B64A47D00CD20AC /* VCCommuterRideRequestCreated.m in Sources */,
 				8435C5921B7ABE4C000401CA /* VCMapStyle.m in Sources */,
 				841647E31B64A47D00CD20AC /* VCDriverInterestedRequest.m in Sources */,
 				841647E41B64A47D00CD20AC /* VCAbstractRideDetailsView.m in Sources */,
@@ -3072,7 +3072,7 @@
 				841648D41B658F4900CD20AC /* VCButton.m in Sources */,
 				841648D51B658F4900CD20AC /* VCMenuUserInfoTableViewCell.m in Sources */,
 				841648D61B658F4900CD20AC /* MQShape.m in Sources */,
-				841648D71B658F4900CD20AC /* VCRideRequest.m in Sources */,
+				841648D71B658F4900CD20AC /* VCCommuterRideRequest.m in Sources */,
 				841648D81B658F4900CD20AC /* VCPushReceiver.m in Sources */,
 				36000CB11B72D5D2008E84AE /* VCCarInfoViewController.m in Sources */,
 				841648D91B658F4900CD20AC /* VCSubMenuItemTableViewCell.m in Sources */,
@@ -3138,7 +3138,7 @@
 				841649171B658F4900CD20AC /* VCSupportViewController.m in Sources */,
 				841649181B658F4900CD20AC /* VCDriverOnBoardingViewController.m in Sources */,
 				8435C5901B7ABE4C000401CA /* VCMapStyle.m in Sources */,
-				841649191B658F4900CD20AC /* VCRideRequestCreated.m in Sources */,
+				841649191B658F4900CD20AC /* VCCommuterRideRequestCreated.m in Sources */,
 				8416491B1B658F4900CD20AC /* VCDriverInterestedRequest.m in Sources */,
 				36F9F6581B6AE4A300440D03 /* VCDriverTicketView.m in Sources */,
 				8416491C1B658F4900CD20AC /* VCAbstractRideDetailsView.m in Sources */,
@@ -3197,7 +3197,7 @@
 				F4C6B1E8197F06B100F6C10B /* VCButton.m in Sources */,
 				4F184A1219918750006EA959 /* VCMenuUserInfoTableViewCell.m in Sources */,
 				F4C6B1E9197F06B100F6C10B /* MQShape.m in Sources */,
-				F4C6B1EA197F06B100F6C10B /* VCRideRequest.m in Sources */,
+				F4C6B1EA197F06B100F6C10B /* VCCommuterRideRequest.m in Sources */,
 				F4C6B1EB197F06B100F6C10B /* VCPushReceiver.m in Sources */,
 				4F184A241991E156006EA959 /* VCSubMenuItemTableViewCell.m in Sources */,
 				36000CB01B72D5D2008E84AE /* VCCarInfoViewController.m in Sources */,
@@ -3264,7 +3264,7 @@
 				4FFCF2CB19A5381900A4A24E /* VCSupportViewController.m in Sources */,
 				4FC758C819AA91410093DBEA /* VCDriverOnBoardingViewController.m in Sources */,
 				8435C58F1B7ABE4C000401CA /* VCMapStyle.m in Sources */,
-				F4C6B225197F06B100F6C10B /* VCRideRequestCreated.m in Sources */,
+				F4C6B225197F06B100F6C10B /* VCCommuterRideRequestCreated.m in Sources */,
 				F4C6B228197F06B100F6C10B /* VCDriverInterestedRequest.m in Sources */,
 				36F9F6571B6AE4A300440D03 /* VCDriverTicketView.m in Sources */,
 				4F3DB5C91981F6F400DDD094 /* VCAbstractRideDetailsView.m in Sources */,
@@ -3325,7 +3325,7 @@
 				F4D8FE3919B1745A00BC0B69 /* VCMenuUserInfoTableViewCell.m in Sources */,
 				F4D8FE3A19B1745A00BC0B69 /* MQShape.m in Sources */,
 				844415331B6DDC8B008C7898 /* MBRegion.m in Sources */,
-				F4D8FE3B19B1745A00BC0B69 /* VCRideRequest.m in Sources */,
+				F4D8FE3B19B1745A00BC0B69 /* VCCommuterRideRequest.m in Sources */,
 				F4D8FE3C19B1745A00BC0B69 /* VCPushReceiver.m in Sources */,
 				36000CB21B72D5D2008E84AE /* VCCarInfoViewController.m in Sources */,
 				F4D8FE3D19B1745A00BC0B69 /* VCSubMenuItemTableViewCell.m in Sources */,
@@ -3388,7 +3388,7 @@
 				36FA80841B7D61AD00C65DF2 /* VCFancyButton.m in Sources */,
 				F4D8FE7C19B1745A00BC0B69 /* VCTextField.m in Sources */,
 				36000CA71B72C185008E84AE /* VCReceiptsTableViewCell.m in Sources */,
-				F4D8FE7D19B1745A00BC0B69 /* VCRideRequestCreated.m in Sources */,
+				F4D8FE7D19B1745A00BC0B69 /* VCCommuterRideRequestCreated.m in Sources */,
 				8435C5911B7ABE4C000401CA /* VCMapStyle.m in Sources */,
 				F4D8FE7F19B1745A00BC0B69 /* VCDriverInterestedRequest.m in Sources */,
 				F4D8FE8019B1745A00BC0B69 /* VCAbstractRideDetailsView.m in Sources */,
@@ -3450,6 +3450,7 @@
 					"$(inherited)",
 					"COCOAPODS=1",
 					"API_BASE_URL=@\\\"http\\:\\/\\/54.148.6.205:3000\\/api\\/\\\"",
+					"NIGHTLY=1",
 				);
 				INFOPLIST_FILE = "Aluvi Distribution copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -3478,6 +3479,7 @@
 					"COCOAPODS=1",
 					"RELEASE=1",
 					"API_BASE_URL=@\\\"http\\:\\/\\/54.148.6.205:3000\\/api\\/\\\"",
+					"NIGHTLY=1",
 				);
 				INFOPLIST_FILE = "Aluvi Distribution copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;

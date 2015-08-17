@@ -8,8 +8,7 @@
 
 #import "VCRiderApi.h"
 #import "VCApi.h"
-#import "VCRideRequest.h"
-#import "VCRideRequestCreated.h"
+#import "VCCommuterRideRequestCreated.h"
 #import "VCDevice.h"
 #import "Ticket.h"
 #import "VCRideIdentity.h"
@@ -27,9 +26,9 @@
     [Payment createMappings:objectManager];
     
     {
-        RKObjectMapping * objectMapping = [VCRideRequest getMapping];
+        RKObjectMapping * objectMapping = [VCCommuterRideRequest getMapping];
         RKObjectMapping * postRideRequestMapping = [objectMapping inverseMapping];
-        RKRequestDescriptor *requestDescriptorPostData = [RKRequestDescriptor requestDescriptorWithMapping:postRideRequestMapping objectClass:[VCRideRequest class] rootKeyPath:nil method:RKRequestMethodPOST];
+        RKRequestDescriptor *requestDescriptorPostData = [RKRequestDescriptor requestDescriptorWithMapping:postRideRequestMapping objectClass:[VCCommuterRideRequest class] rootKeyPath:nil method:RKRequestMethodPOST];
         [objectManager addRequestDescriptor:requestDescriptorPostData];
     }
     
@@ -50,7 +49,7 @@
         [objectManager addResponseDescriptor:responseDescriptor];
     }
     {
-        RKObjectMapping * mapping = [VCRideRequestCreated getMapping];
+        RKObjectMapping * mapping = [VCCommuterRideRequestCreated getMapping];
         RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping
                                                                                                  method:RKRequestMethodPOST
                                                                                             pathPattern:API_POST_RIDE_REQUEST keyPath:nil
@@ -76,13 +75,13 @@
 
 }
 
-+ (void) requestRide:(Ticket *) ride
-             success:(void ( ^ ) ( RKObjectRequestOperation *operation , VCRideRequestCreated * response ))success
++ (void) requestRide:(VCCommuterRideRequest *) request
+             success:(void ( ^ ) ( RKObjectRequestOperation *operation , VCCommuterRideRequestCreated * response ))success
              failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     
     [[VCDebug sharedInstance] apiLog:@"API: request ride"];
     
-    [[RKObjectManager sharedManager] postObject:[VCRideRequest requestForRide:ride]
+    [[RKObjectManager sharedManager] postObject:request
                                            path: API_POST_RIDE_REQUEST
                                      parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
@@ -90,16 +89,8 @@
                                             
                                             NSLog(@"Ride request accepted by server!");
                                             
-                                            VCRideRequestCreated * response = mappingResult.firstObject;
-                                            ride.ride_id = response.rideId;
-                                            ride.trip_id = response.tripId;
                                             
-                                            NSError * error;
-                                            [[VCCoreData managedObjectContext] save:&error];
-                                            if(error != nil){
-                                                [WRUtilities criticalError:error];
-                                            }
-                                            //[VCUserState instance].riderState = kUser;
+                                            VCCommuterRideRequestCreated * response  = mappingResult.firstObject;
                                             
                                             success(operation, response);
                                         }

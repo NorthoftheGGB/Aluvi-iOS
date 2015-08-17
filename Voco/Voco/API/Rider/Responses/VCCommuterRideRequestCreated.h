@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <RestKit/RestKit.h>
-@interface VCRideRequestCreated : NSObject
+@interface VCCommuterRideRequestCreated : NSObject
 
-@property (nonatomic, strong) NSNumber * rideId;
+@property (nonatomic, strong) NSNumber * outgoingRideId;
+@property (nonatomic, strong) NSNumber * returnRideId;
 @property (nonatomic, strong) NSNumber * tripId;
 
 + (RKObjectMapping *) getMapping;
