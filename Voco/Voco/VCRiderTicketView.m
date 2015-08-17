@@ -13,6 +13,7 @@
 #import "Car.h"
 #import "VCLabelSmall.h"
 #import "VCLabel.h"
+#import "VCRiderView.h"
 
 @interface VCRiderTicketView ()
 
@@ -26,6 +27,10 @@
 @property (strong, nonatomic) IBOutlet VCLabelSmall *carLabel;
 @property (strong, nonatomic) IBOutlet VCLabelSmall *licensePlateLabel;
 @property (strong, nonatomic) IBOutlet VCLabel *driverNameLabel;
+@property (strong, nonatomic) IBOutlet VCRiderView *riderOneView;
+@property (strong, nonatomic) IBOutlet VCRiderView *riderTwoView;
+@property (strong, nonatomic) IBOutlet VCLabelSmall *riderOneLabel;
+@property (strong, nonatomic) IBOutlet VCLabelSmall *riderTwoLabel;
 
 @property (nonatomic, strong) NSArray * riders;
 
@@ -54,39 +59,48 @@
 - (void) updateInterfaceWithTicket: (Ticket *) ticket {
     NSSortDescriptor * sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
     [self showButton:_driverImageButton WithURLString:ticket.driver.smallImageUrl];
-    _totalCostLabel.text = [NSString stringWithFormat:@"%.2f", [ticket.fixedPrice doubleValue] / 100];
+     _totalCostLabel.text = [NSString stringWithFormat:@"%.2f", [ticket.fixedPrice doubleValue] / 100];
     
     _riders= [ticket.riders sortedArrayUsingDescriptors:@[sortDescriptor]];
 
     long length = [_riders count];
-    /*
     _riderOneView.hidden = YES;
     _riderTwoView.hidden = YES;
-    _riderThreeView.hidden = YES;
-    */
-     
+    
     if(length > 0){
-        [self showButton:_peerOneButton WithURLString:((Rider *) _riders[0]).smallImageUrl];
+        [self showRiderView:_riderOneView withRider:_riders[0]];
     }
     if(length > 1){
-        [self showButton:_peerTwoButton WithURLString:((Rider *) _riders[1]).smallImageUrl];
+        _riderTwoView.hidden = NO;
+        [self showRiderView:_riderOneView withRider:_riders[1]];
     }
     
     _carLabel.text = [ticket.car summary];
     _licensePlateLabel.text = ticket.car.licensePlate;
     _driverNameLabel.text = ticket.driver.fullName;
     
+    _peersLabel.text = [NSString stringWithFormat:@"%d Other Riders", [_riders count]];
+    
 }
 
-- (void) showButton: (UIButton * ) button WithURLString: (NSString *) url {
+- (void) showRiderView: (VCRiderView *) riderView withRider: (Rider *) rider {
     
-    [button sd_setBackgroundImageWithURL:[NSURL URLWithString: url]
-                                forState:UIControlStateNormal
-                        placeholderImage:[UIImage imageNamed:@"placeholder-profile"]
-                                 options:SDWebImageRefreshCached
-     ];
+    [self showButton:riderView.button WithURLString:rider.smallImageUrl];
+    riderView.label.text = [rider fullName];
+    riderView.hidden = NO;
     
 }
+     
+- (void) showButton: (UIButton * ) button WithURLString: (NSString *) url {
+         
+         [button sd_setBackgroundImageWithURL:[NSURL URLWithString: url]
+                                     forState:UIControlStateNormal
+                             placeholderImage:[UIImage imageNamed:@"placeholder-profile"]
+                                      options:SDWebImageRefreshCached
+          ];
+         
+     }
+
 
 - (IBAction)didTapLate:(id)sender {
 }

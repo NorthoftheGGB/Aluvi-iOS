@@ -41,7 +41,7 @@ static VCDebug * instance;
         blockPushMessagesText = @"Unblock Push Messages";
     }
     
-    NSMutableArray * buttons =  [@[@"Refresh Push Token", alertsEnabledText, blockPushMessagesText] mutableCopy];
+    NSMutableArray * buttons =  [@[@"Refresh Push Token", alertsEnabledText, blockPushMessagesText, @"Purge Tickets"] mutableCopy];
 #ifdef NIGHTLY
     [buttons addObject:@"Schedule Tickets"];
 #endif
@@ -81,7 +81,22 @@ static VCDebug * instance;
             }
             case 4:
             {
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString: [NSString stringWithFormat:@"%@%@", API_BASE_URL, @"commuter_rides/schedule_trips"] ]];
+                NSURLRequest *req = [NSURLRequest requestWithURL:
+                                     [NSURL URLWithString:
+                                      [NSString stringWithFormat:@"%@%@", API_BASE_URL, @"debug/purge"]
+                                     ]];
+                NSURLConnection *conn = [NSURLConnection connectionWithRequest:req delegate:nil];
+                [conn start];
+
+            }
+            case 5:
+            {
+                NSURLRequest *req = [NSURLRequest requestWithURL:
+                                     [NSURL URLWithString: @"http://54.148.6.205:3000/commuter_rides/schedule_trips"]
+                                     ];
+                NSURLConnection *conn = [NSURLConnection connectionWithRequest:req delegate:nil];
+                [conn start];
+
             }
                 
                 break;

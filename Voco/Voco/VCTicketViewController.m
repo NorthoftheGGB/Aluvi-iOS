@@ -92,6 +92,7 @@
 // Ride Details
 @property (strong, nonatomic) VCRiderTicketView * riderTicketHUD;
 @property (strong, nonatomic) VCDriverTicketView * driverTicketHUD;
+@property (strong, nonatomic) UIButton *ridersOnboardButton;
 
 
 // State
@@ -237,6 +238,7 @@
             [WRUtilities criticalErrorWithString:@"Missing ticket for trip."];
             return;
         }
+        [self hideWaitinMessageView];
         [self updateTicketInterface];
     } else {
         // some debugging
@@ -790,14 +792,6 @@
     [self callPhone:phoneNumber];
 }
 
-- (void)VCDriverTicketViewDidTapRidersOnBoard:(VCDriverTicketView *)driverTicketView success:(void (^)())success {
-    [[VCCommuteManager instance] ridesPickedUp:_ticket success:^{
-        success();
-    } failure:^{
-        // do we want to say something?
-    }];
-}
-
 - (void)VCDriverTicketViewDidTapCommuteCompleted:(VCDriverTicketView *)driverTicketView {
     
 }
@@ -838,7 +832,53 @@
                          
                      } completion:^(BOOL finished) {
                          
-                     }];
+                         
+                         _ridersOnboardButton = [UIButton buttonWithType:UIButtonTypeSystem];
+                         CGRect frame = CGRectMake(0, 0, 100, 50);
+                         _ridersOnboardButton.frame = frame;
+                        
+                         [self.view addSubview:_ridersOnboardButton];
+                         [_ridersOnboardButton mas_makeConstraints:^(MASConstraintMaker *make) {
+                             make.width.mas_equalTo(_ridersOnboardButton.frame.size.width);
+                             make.bottom.equalTo(_driverTicketHUD.mas_top);
+                             make.right.equalTo(self.view.mas_right);
+                             make.height.mas_equalTo(_ridersOnboardButton.frame.size.height);
+                         }];
+                         
+                         [self updateRidersOnBoardButton];
+                  }];
+}
+
+- (void) updateRidersOnBoardButton {
+    _ridersOnboardButton.hidden = NO;
+    if([_ticket.state isEqualToString:kScheduledState]){
+        [_ridersOnboardButton setTitle:@"Riders On Board" forState:UIControlStateNormal];
+        [_ridersOnboardButton addTarget:self action:@selector(didTapRidersOnboardButton:) forControlEvents:UIControlEventTouchUpInside];
+    } else  if([_ticket.state isEqualToString:kInProgressState]){
+        [_ridersOnboardButton setTitle:@"Riders Dropped Off" forState:UIControlStateNormal];
+        [_ridersOnboardButton addTarget:self action:@selector(didTapRidersDroppedOff:) forControlEvents:UIControlEventTouchUpInside];
+    } else {
+        _ridersOnboardButton.hidden = YES;
+    }
+
+}
+
+- (void)didTapRidersOnboardButton:(id)sender {
+    [[VCCommuteManager instance] ridesPickedUp:_ticket success:^{
+        [self updateRidersOnBoardButton];
+    } failure:^{
+        // do we want to say something?
+    }];
+
+}
+
+- (void)didTapRidersDroppedOff:(id)sender {
+    [[VCCommuteManager instance] ridesDroppedOff:_ticket success:^{
+        [self updateRidersOnBoardButton];
+        [self updateTicketInterface];
+    } failure:^{
+        // do we want to say something?
+    }];
 }
 
 
@@ -878,10 +918,13 @@
     } else {
         
         [[VCCommuteManager instance] cancelRide:_ticket success:^{
-             _ticket = nil;
-             [self resetInterfaceToHome];
-             [self updateTicketInterface];
-             hud.hidden = YES;
+            [[VCCoreData managedObjectContext]  refreshObject:_ticket mergeChanges:YES];
+            if([_ticket.trip_state isEqualToString:@"aborted"]){
+                _ticket = nil;
+            }
+            [self resetInterfaceToHome];
+            [self updateTicketInterface];
+            hud.hidden = YES;
          } failure:^{
              hud.hidden = YES;
          }];

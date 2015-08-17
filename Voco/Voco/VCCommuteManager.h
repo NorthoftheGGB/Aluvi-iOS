@@ -31,6 +31,7 @@
 - (void) cancelRide:(Ticket *) ride success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
 - (void) cancelTrip:(NSNumber *) tripId success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
 - (void) ridesPickedUp:(Ticket *) ticket success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
+- (void) ridesDroppedOff:(Ticket *) ticket success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
 - (void) refreshTickets;
 - (void) refreshTicketsWithSuccess:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
 

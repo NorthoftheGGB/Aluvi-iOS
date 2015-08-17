@@ -63,7 +63,7 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qLM-Gy-Sat">
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qLM-Gy-Sat" customClass="VCRiderView">
                             <rect key="frame" x="92" y="122" width="101" height="123"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zkK-24-orL" customClass="VCLabelSmall">
@@ -84,8 +84,12 @@
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <outlet property="button" destination="4ZK-w4-Bvp" id="W7p-a6-MFF"/>
+                                <outlet property="label" destination="zkK-24-orL" id="FpY-hq-ruT"/>
+                            </connections>
                         </view>
-                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Acz-9S-aau">
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Acz-9S-aau" customClass="VCRiderView">
                             <rect key="frame" x="204" y="122" width="116" height="123"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iKK-Zt-ZZ7">
@@ -103,6 +107,10 @@
                                 </label>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <outlet property="button" destination="iKK-Zt-ZZ7" id="6Bb-b6-s5Q"/>
+                                <outlet property="label" destination="PyG-hm-fBX" id="fcJ-tX-LIC"/>
+                            </connections>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="2" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ySM-Bg-6Jm" customClass="VCLabel">
                             <rect key="frame" x="24" y="149" width="57" height="70"/>
@@ -132,6 +140,10 @@
                 <outlet property="peerOneButton" destination="4ZK-w4-Bvp" id="bDf-xq-KqQ"/>
                 <outlet property="peerTwoButton" destination="iKK-Zt-ZZ7" id="Y09-KU-rvo"/>
                 <outlet property="peersLabel" destination="ySM-Bg-6Jm" id="gjB-jU-ylp"/>
+                <outlet property="riderOneLabel" destination="zkK-24-orL" id="uNY-W1-hjK"/>
+                <outlet property="riderOneView" destination="qLM-Gy-Sat" id="Ku1-xm-DY5"/>
+                <outlet property="riderTwoLabel" destination="PyG-hm-fBX" id="TE7-jG-LOM"/>
+                <outlet property="riderTwoView" destination="Acz-9S-aau" id="yfl-ce-Zfo"/>
                 <outlet property="totalCostLabel" destination="lB9-tE-erV" id="d3S-hr-l7B"/>
             </connections>
             <point key="canvasLocation" x="263" y="439.5"/>

@@ -7,13 +7,13 @@
 //
 
 #import "VCDriverTicketView.h"
-#import "Rider.h"
 #import <SDWebImage/UIButton+WebCache.h>
+#import <Masonry.h>
+#import "Rider.h"
 #import "VCStyle.h"
 
 @interface VCDriverTicketView ()
 
-@property (strong, nonatomic) IBOutlet UIButton *ridersOnboardButton;
 @property (strong, nonatomic) IBOutlet UILabel *totalFareLabel;
 @property (strong, nonatomic) IBOutlet UILabel *totalRidersLabel;
 @property (strong, nonatomic) IBOutlet UIView *riderOneView;
@@ -34,6 +34,19 @@
 @end
 
 @implementation VCDriverTicketView
+
+
+- (void)awakeFromNib{
+    _riderOneButton.layer.cornerRadius = _riderOneButton.frame.size.width / 2;
+    _riderOneButton.clipsToBounds = YES;
+    _riderTwoButton.layer.cornerRadius = _riderTwoButton.frame.size.width / 2;
+    _riderTwoButton.clipsToBounds = YES;
+    _riderThreeButton.layer.cornerRadius = _riderThreeButton.frame.size.width / 2;
+    _riderThreeButton.clipsToBounds = YES;
+    
+ 
+    
+}
 
 - (void) updateInterfaceWithTicket: (Ticket *) ticket {
     NSSortDescriptor * sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"id" ascending:YES];
@@ -60,10 +73,7 @@
         [self showButton:_riderThreeButton WithRider:rider];
     }
     _totalFareLabel.text = [NSString stringWithFormat:@"%.2f", [ticket.estimatedEarnings doubleValue] / 100];
-    _ridersOnboardButton.hidden = NO;
-    if([ticket.state isEqualToString:kInProgressState]){
-        _ridersOnboardButton.hidden = YES;
-    }
+    
     
     
 }
@@ -71,16 +81,6 @@
 
 
 
-- (void)awakeFromNib{
-    _riderOneButton.layer.cornerRadius = _riderOneButton.frame.size.width / 2;
-    _riderOneButton.clipsToBounds = YES;
-    _riderTwoButton.layer.cornerRadius = _riderTwoButton.frame.size.width / 2;
-    _riderTwoButton.clipsToBounds = YES;
-    _riderThreeButton.layer.cornerRadius = _riderThreeButton.frame.size.width / 2;
-    _riderThreeButton.clipsToBounds = YES;
-
-
-}
 
 - (void) showButton: (UIButton * ) button WithRider: (Rider *) rider {
     [button sd_setBackgroundImageWithURL:[NSURL URLWithString: rider.smallImageUrl]
@@ -94,11 +94,6 @@
 }
 
 
-- (IBAction)didTapRidersOnboardButton:(id)sender {
-    [_delegate VCDriverTicketViewDidTapRidersOnBoard:self success:^{
-        _ridersOnboardButton.hidden = YES;
-    }];
-}
 
 
 - (void) callRider: (Rider *) rider {

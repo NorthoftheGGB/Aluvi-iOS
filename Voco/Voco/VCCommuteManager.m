@@ -410,6 +410,20 @@ static VCCommuteManager * instance;
     }];
 }
 
+- (void) ridesDroppedOff:(Ticket *) ticket success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure {
+    [VCDriverApi ticketCompleted:ticket.ride_id success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        ticket.state = kCompleteState;
+        NSError * error;
+        [[VCCoreData managedObjectContext] save:&error];
+        if(error != nil){
+            [WRUtilities criticalError:error];
+        }
+        success();
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [WRUtilities subcriticaError:error];
+        failure();
+    }];
+}
 
 ///////////
 ///////////  Methods for Viewing Active Tickets

@@ -169,6 +169,7 @@ static VCUserStateManager *sharedSingleton;
 - (void) clearUser {
     [VCApi clearApiToken];
     [self clearUserState];
+    [self setProfile:nil];
     [VCCoreData clearUserData];
     [[VCDebug sharedInstance] clearLoggedInUserIdentifier];
     [[VCCommuteManager instance] clear];
