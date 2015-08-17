@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCOnboardingSetRouteViewController">
             <connections>
+                <outlet property="onboardingPickupPointButton" destination="mWN-wU-Arg" id="7qH-c4-Qgl"/>
                 <outlet property="view" destination="iN0-l3-epB" id="niB-op-DXJ"/>
             </connections>
         </placeholder>
@@ -38,6 +39,9 @@
                         <color key="titleColor" red="0.30588235289999999" green="0.63921568630000003" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="onboardingWorkLocationButton:" destination="-1" eventType="touchUpInside" id="JBh-28-Pog"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="haZ-gZ-Gmr" customClass="VCButtonBold">
                     <rect key="frame" x="0.0" y="510" width="321" height="58"/>
@@ -53,6 +57,9 @@
                     <state key="highlighted">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="nextButtonUserPhoto:" destination="-1" eventType="touchUpInside" id="gS5-2C-2Ut"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

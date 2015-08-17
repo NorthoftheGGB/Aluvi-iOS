@@ -34,4 +34,14 @@
 }
 */
 
+- (IBAction)OnboardingFullNameTextField:(id)sender {
+}
+- (IBAction)onboardingPhoneNumberTextField:(id)sender {
+}
+
+- (IBAction)onboardingWorkEmailTextField:(id)sender {
+}
+
+- (IBAction)nextButtonTutorial:(id)sender {
+}
 @end

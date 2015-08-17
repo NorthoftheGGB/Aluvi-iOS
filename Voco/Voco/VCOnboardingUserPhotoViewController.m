@@ -10,4 +10,14 @@
 
 @implementation VCOnboardingUserPhotoViewController
 
+
+
+- (IBAction)onboardingTakePhoto:(id)sender {
+}
+
+- (IBAction)onboardingChooseExistingPhoto:(id)sender {
+}
+- (IBAction)nextButtonPersonalInfo:(id)sender {
+}
+
 @end

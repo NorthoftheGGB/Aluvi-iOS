@@ -9,5 +9,17 @@
 #import <UIKit/UIKit.h>
 
 @interface VCOnboardingPersonalInfoViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UITextField *onboardingFullNameTextField;
+@property (strong, nonatomic) IBOutlet UITextField *onboardingPhoneNumberTextField;
+@property (strong, nonatomic) IBOutlet UITextField *onboardingWorkEmailTextField;
+
+
+
+
+- (IBAction)onboardingFullNameTextField:(id)sender;
+- (IBAction)onboardingPhoneNumberTextField:(id)sender;
+- (IBAction)onboardingWorkEmailTextField:(id)sender;
+
+- (IBAction)nextButtonTutorial:(id)sender;
 
 @end

@@ -10,4 +10,11 @@
 
 @interface VCOnboardingSetRouteViewController : UIViewController
 
+
+- (IBAction)onboardingPIckupPointButton:(id)sender;
+
+- (IBAction)onboardingWorkLocationButton:(id)sender;
+
+- (IBAction)nextButtonUserPhoto:(id)sender;
+
 @end

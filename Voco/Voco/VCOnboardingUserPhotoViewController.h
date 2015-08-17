@@ -9,5 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface VCOnboardingUserPhotoViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UIImageView *onboardingUserImage;
+
+
+
+- (IBAction)onboardingTakePhoto:(id)sender;
+- (IBAction)onboardingChooseExistingPhoto:(id)sender;
+- (IBAction)nextButtonPersonalInfo:(id)sender;
 
 @end
