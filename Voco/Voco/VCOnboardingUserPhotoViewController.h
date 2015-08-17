@@ -1,5 +1,5 @@
 //
-//  VCOnboardingSetRouteViewController.h
+//  VCOnboardingUserPhotoViewController.h
 //  Voco
 //
 //  Created by snacks on 8/16/15.
@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface VCOnboardingSetRouteViewController : UIViewController
+@interface VCOnboardingUserPhotoViewController : UIViewController
 
 @end

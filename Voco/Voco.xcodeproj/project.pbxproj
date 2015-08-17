@@ -43,6 +43,22 @@
 		36049F891B8156370090ECAE /* VCOnboardingSetRouteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36049F871B8156370090ECAE /* VCOnboardingSetRouteViewController.xib */; };
 		36049F8A1B8156370090ECAE /* VCOnboardingSetRouteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36049F871B8156370090ECAE /* VCOnboardingSetRouteViewController.xib */; };
 		36049F8B1B8156370090ECAE /* VCOnboardingSetRouteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36049F871B8156370090ECAE /* VCOnboardingSetRouteViewController.xib */; };
+		36049F8D1B815AE90090ECAE /* VCOnboardingUserPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36049F8C1B815AE90090ECAE /* VCOnboardingUserPhotoViewController.xib */; };
+		36049F8E1B815AE90090ECAE /* VCOnboardingUserPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36049F8C1B815AE90090ECAE /* VCOnboardingUserPhotoViewController.xib */; };
+		36049F8F1B815AE90090ECAE /* VCOnboardingUserPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36049F8C1B815AE90090ECAE /* VCOnboardingUserPhotoViewController.xib */; };
+		36049F901B815AE90090ECAE /* VCOnboardingUserPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36049F8C1B815AE90090ECAE /* VCOnboardingUserPhotoViewController.xib */; };
+		36049F931B815C490090ECAE /* VCOnboardingUserPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36049F921B815C490090ECAE /* VCOnboardingUserPhotoViewController.m */; };
+		36049F941B815C490090ECAE /* VCOnboardingUserPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36049F921B815C490090ECAE /* VCOnboardingUserPhotoViewController.m */; };
+		36049F951B815C490090ECAE /* VCOnboardingUserPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36049F921B815C490090ECAE /* VCOnboardingUserPhotoViewController.m */; };
+		36049F961B815C490090ECAE /* VCOnboardingUserPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36049F921B815C490090ECAE /* VCOnboardingUserPhotoViewController.m */; };
+		36049F981B815EFD0090ECAE /* VCOnboardingPersonalInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36049F971B815EFD0090ECAE /* VCOnboardingPersonalInfoViewController.xib */; };
+		36049F991B815EFD0090ECAE /* VCOnboardingPersonalInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36049F971B815EFD0090ECAE /* VCOnboardingPersonalInfoViewController.xib */; };
+		36049F9A1B815EFD0090ECAE /* VCOnboardingPersonalInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36049F971B815EFD0090ECAE /* VCOnboardingPersonalInfoViewController.xib */; };
+		36049F9B1B815EFD0090ECAE /* VCOnboardingPersonalInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36049F971B815EFD0090ECAE /* VCOnboardingPersonalInfoViewController.xib */; };
+		36049F9E1B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36049F9D1B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.m */; };
+		36049F9F1B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36049F9D1B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.m */; };
+		36049FA01B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36049F9D1B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.m */; };
+		36049FA11B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36049F9D1B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.m */; };
 		36638D751B658A5A004EDB09 /* VCRideRequestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D741B658A5A004EDB09 /* VCRideRequestView.xib */; };
 		36638D791B658A5A004EDB09 /* VCRideRequestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D741B658A5A004EDB09 /* VCRideRequestView.xib */; };
 		36638D7B1B658A5A004EDB09 /* VCRideRequestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D741B658A5A004EDB09 /* VCRideRequestView.xib */; };
@@ -881,6 +897,12 @@
 		36049F811B8155EE0090ECAE /* VCOnboardingSetRouteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCOnboardingSetRouteViewController.h; sourceTree = "<group>"; };
 		36049F821B8155EE0090ECAE /* VCOnboardingSetRouteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCOnboardingSetRouteViewController.m; sourceTree = "<group>"; };
 		36049F871B8156370090ECAE /* VCOnboardingSetRouteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCOnboardingSetRouteViewController.xib; sourceTree = "<group>"; };
+		36049F8C1B815AE90090ECAE /* VCOnboardingUserPhotoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCOnboardingUserPhotoViewController.xib; sourceTree = "<group>"; };
+		36049F911B815C490090ECAE /* VCOnboardingUserPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCOnboardingUserPhotoViewController.h; sourceTree = "<group>"; };
+		36049F921B815C490090ECAE /* VCOnboardingUserPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCOnboardingUserPhotoViewController.m; sourceTree = "<group>"; };
+		36049F971B815EFD0090ECAE /* VCOnboardingPersonalInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCOnboardingPersonalInfoViewController.xib; sourceTree = "<group>"; };
+		36049F9C1B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCOnboardingPersonalInfoViewController.h; sourceTree = "<group>"; };
+		36049F9D1B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCOnboardingPersonalInfoViewController.m; sourceTree = "<group>"; };
 		36638D741B658A5A004EDB09 /* VCRideRequestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCRideRequestView.xib; sourceTree = "<group>"; };
 		36638D7C1B659CAE004EDB09 /* VCDriverTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCDriverTicketView.xib; sourceTree = "<group>"; };
 		36638D841B65A988004EDB09 /* VCRiderTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCRiderTicketView.xib; sourceTree = "<group>"; };
@@ -1581,6 +1603,12 @@
 				36049F811B8155EE0090ECAE /* VCOnboardingSetRouteViewController.h */,
 				36049F821B8155EE0090ECAE /* VCOnboardingSetRouteViewController.m */,
 				36049F871B8156370090ECAE /* VCOnboardingSetRouteViewController.xib */,
+				36049F8C1B815AE90090ECAE /* VCOnboardingUserPhotoViewController.xib */,
+				36049F911B815C490090ECAE /* VCOnboardingUserPhotoViewController.h */,
+				36049F921B815C490090ECAE /* VCOnboardingUserPhotoViewController.m */,
+				36049F971B815EFD0090ECAE /* VCOnboardingPersonalInfoViewController.xib */,
+				36049F9C1B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.h */,
+				36049F9D1B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.m */,
 			);
 			name = "Sign-In and Registration";
 			sourceTree = "<group>";
@@ -2378,6 +2406,7 @@
 				841648141B64A47D00CD20AC /* current-location-button-selected@2x.png in Resources */,
 				841648181B64A47D00CD20AC /* VCLocationSearchViewController.xib in Resources */,
 				36E48E841B7B01100034DFEB /* Default@3x.png in Resources */,
+				36049F9B1B815EFD0090ECAE /* VCOnboardingPersonalInfoViewController.xib in Resources */,
 				8416481F1B64A47D00CD20AC /* VCRiderRecieptDetailViewController.xib in Resources */,
 				841648211B64A47D00CD20AC /* confirm-location@2x.png in Resources */,
 				841648231B64A47D00CD20AC /* VCSupportViewController.xib in Resources */,
@@ -2400,6 +2429,7 @@
 				841648481B64A47D00CD20AC /* (null) in Resources */,
 				36E48E791B7ABFBE0034DFEB /* Bryant-Bold.ttf in Resources */,
 				8416484E1B64A47D00CD20AC /* driver-cancel-hud-icon@2x.png in Resources */,
+				36049F901B815AE90090ECAE /* VCOnboardingUserPhotoViewController.xib in Resources */,
 				841648501B64A47D00CD20AC /* receipt-down-arrow@2x.png in Resources */,
 				841648521B64A47D00CD20AC /* menu-payments-icon@2x.png in Resources */,
 				841648531B64A47D00CD20AC /* VCTicketViewController.xib in Resources */,
@@ -2452,6 +2482,7 @@
 				841649411B658F4900CD20AC /* call-button@2x.png in Resources */,
 				841649431B658F4900CD20AC /* directions-button-selected@2x.png in Resources */,
 				841649441B658F4900CD20AC /* VCMenuItemTableViewCell.xib in Resources */,
+				36049F8E1B815AE90090ECAE /* VCOnboardingUserPhotoViewController.xib in Resources */,
 				841649461B658F4900CD20AC /* camera-icon@2x.png in Resources */,
 				841649481B658F4900CD20AC /* current-location-arrow@2x.png in Resources */,
 				36E48E821B7B01100034DFEB /* Default@3x.png in Resources */,
@@ -2503,6 +2534,7 @@
 				841649B71B658F4900CD20AC /* driver-hov-toggle-select@2x.png in Resources */,
 				36F9F6611B6B0C5200440D03 /* VCDriverTicketView.xib in Resources */,
 				841649B91B658F4900CD20AC /* VCEditLocationWidget.xib in Resources */,
+				36049F991B815EFD0090ECAE /* VCOnboardingPersonalInfoViewController.xib in Resources */,
 				841649BB1B658F4900CD20AC /* directions-button@2x.png in Resources */,
 				841649BE1B658F4900CD20AC /* ride-bounds-button@2x.png in Resources */,
 				841649BF1B658F4900CD20AC /* VCLeftMenuViewController.xib in Resources */,
@@ -2534,6 +2566,7 @@
 				4F3DB5BF1981ED4E00DDD094 /* directions-button-selected@2x.png in Resources */,
 				4FFE17061989E801004D4413 /* VCMenuItemTableViewCell.xib in Resources */,
 				4FFCF2C519A266CC00A4A24E /* camera-icon@2x.png in Resources */,
+				36049F8D1B815AE90090ECAE /* VCOnboardingUserPhotoViewController.xib in Resources */,
 				F4C6B247197F06B100F6C10B /* current-location-arrow@2x.png in Resources */,
 				36E48E811B7B01100034DFEB /* Default@3x.png in Resources */,
 				4F1849F0198F67DF006EA959 /* driver-call-hud-icon@2x.png in Resources */,
@@ -2585,6 +2618,7 @@
 				F4C6B285197F06B100F6C10B /* VCRiderProfileViewController.xib in Resources */,
 				4FCBFBD91995847300CBF0C8 /* driver-hov-toggle-select@2x.png in Resources */,
 				4F73CA10197F82DA001B6663 /* VCEditLocationWidget.xib in Resources */,
+				36049F981B815EFD0090ECAE /* VCOnboardingPersonalInfoViewController.xib in Resources */,
 				4F3DB5C21981ED4E00DDD094 /* directions-button@2x.png in Resources */,
 				4FD1297C19D62462000E7C39 /* ride-bounds-button@2x.png in Resources */,
 				4FFE13931989AE09004D4413 /* VCLeftMenuViewController.xib in Resources */,
@@ -2625,6 +2659,7 @@
 				F4D8FEA919B1745A00BC0B69 /* current-location-button-selected@2x.png in Resources */,
 				F4D8FEAE19B1745A00BC0B69 /* VCLocationSearchViewController.xib in Resources */,
 				36E48E831B7B01100034DFEB /* Default@3x.png in Resources */,
+				36049F9A1B815EFD0090ECAE /* VCOnboardingPersonalInfoViewController.xib in Resources */,
 				F4D8FEB619B1745A00BC0B69 /* VCRiderRecieptDetailViewController.xib in Resources */,
 				F4D8FEB819B1745A00BC0B69 /* confirm-location@2x.png in Resources */,
 				F4D8FEBB19B1745A00BC0B69 /* VCSupportViewController.xib in Resources */,
@@ -2647,6 +2682,7 @@
 				F4D8FEE419B1745A00BC0B69 /* (null) in Resources */,
 				36E48E781B7ABFBE0034DFEB /* Bryant-Bold.ttf in Resources */,
 				F4D8FEE919B1745A00BC0B69 /* driver-cancel-hud-icon@2x.png in Resources */,
+				36049F8F1B815AE90090ECAE /* VCOnboardingUserPhotoViewController.xib in Resources */,
 				F4D8FEEB19B1745A00BC0B69 /* receipt-down-arrow@2x.png in Resources */,
 				F4D8FEEE19B1745A00BC0B69 /* menu-payments-icon@2x.png in Resources */,
 				F4D8FEF019B1745A00BC0B69 /* VCTicketViewController.xib in Resources */,
@@ -2878,6 +2914,7 @@
 				36F9F6601B6AF58E00440D03 /* VCRiderTicketView.m in Sources */,
 				8416478D1B64A47D00CD20AC /* VCLeftMenuViewController.m in Sources */,
 				8416478F1B64A47D00CD20AC /* VCRoutingNumberTextField.m in Sources */,
+				36049F961B815C490090ECAE /* VCOnboardingUserPhotoViewController.m in Sources */,
 				841647901B64A47D00CD20AC /* VCMenuItemModeTableViewCell.m in Sources */,
 				841647911B64A47D00CD20AC /* VCProfile.m in Sources */,
 				841647921B64A47D00CD20AC /* VCMenuDriverClockOnTableViewCell.m in Sources */,
@@ -2937,6 +2974,7 @@
 				841647CE1B64A47D00CD20AC /* VCGeoApi.m in Sources */,
 				841647D01B64A47D00CD20AC /* VCCarYearTextField.m in Sources */,
 				841647D11B64A47D00CD20AC /* VCApi.m in Sources */,
+				36049FA11B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.m in Sources */,
 				841647D21B64A47D00CD20AC /* VCBankAccountTextField.m in Sources */,
 				841647D41B64A47D00CD20AC /* VCGeoObject.m in Sources */,
 				841647D51B64A47D00CD20AC /* VCDevice.m in Sources */,
@@ -2998,6 +3036,7 @@
 				841648C21B658F4900CD20AC /* Driver.m in Sources */,
 				841648C41B658F4900CD20AC /* VCDialogs.m in Sources */,
 				841648C51B658F4900CD20AC /* MQRouteResponse.m in Sources */,
+				36049F941B815C490090ECAE /* VCOnboardingUserPhotoViewController.m in Sources */,
 				841648C61B658F4900CD20AC /* VCLeftMenuViewController.m in Sources */,
 				841648C71B658F4900CD20AC /* VCRoutingNumberTextField.m in Sources */,
 				841648C81B658F4900CD20AC /* VCMenuItemModeTableViewCell.m in Sources */,
@@ -3057,6 +3096,7 @@
 				841649041B658F4900CD20AC /* VCCarYearTextField.m in Sources */,
 				841649051B658F4900CD20AC /* VCApi.m in Sources */,
 				841649061B658F4900CD20AC /* VCBankAccountTextField.m in Sources */,
+				36049F9F1B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.m in Sources */,
 				841649091B658F4900CD20AC /* VCGeoObject.m in Sources */,
 				8416490A1B658F4900CD20AC /* VCTicketViewController.m in Sources */,
 				8416490B1B658F4900CD20AC /* VCDevice.m in Sources */,
@@ -3118,6 +3158,7 @@
 				F4C6B1DA197F06B100F6C10B /* VCDialogs.m in Sources */,
 				F4C6B1DB197F06B100F6C10B /* MQRouteResponse.m in Sources */,
 				4FFE13901989AE09004D4413 /* VCLeftMenuViewController.m in Sources */,
+				36049F931B815C490090ECAE /* VCOnboardingUserPhotoViewController.m in Sources */,
 				F4C6B1DD197F06B100F6C10B /* VCRoutingNumberTextField.m in Sources */,
 				4F184A3E1992E41F006EA959 /* VCMenuItemModeTableViewCell.m in Sources */,
 				F4C6B1DF197F06B100F6C10B /* VCProfile.m in Sources */,
@@ -3177,6 +3218,7 @@
 				F4C6B212197F06B100F6C10B /* VCCarYearTextField.m in Sources */,
 				F4C6B213197F06B100F6C10B /* VCApi.m in Sources */,
 				F4C6B214197F06B100F6C10B /* VCBankAccountTextField.m in Sources */,
+				36049F9E1B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.m in Sources */,
 				F4C6B215197F06B100F6C10B /* VCGeoObject.m in Sources */,
 				F425906819958E9700FA928E /* VCTicketViewController.m in Sources */,
 				F4C6B217197F06B100F6C10B /* VCDevice.m in Sources */,
@@ -3238,6 +3280,7 @@
 				36F9F65F1B6AF58E00440D03 /* VCRiderTicketView.m in Sources */,
 				F4D8FE2719B1745A00BC0B69 /* VCLeftMenuViewController.m in Sources */,
 				F4D8FE2919B1745A00BC0B69 /* VCRoutingNumberTextField.m in Sources */,
+				36049F951B815C490090ECAE /* VCOnboardingUserPhotoViewController.m in Sources */,
 				F4D8FE2A19B1745A00BC0B69 /* VCMenuItemModeTableViewCell.m in Sources */,
 				F4D8FE2B19B1745A00BC0B69 /* VCProfile.m in Sources */,
 				F4D8FE2C19B1745A00BC0B69 /* VCMenuDriverClockOnTableViewCell.m in Sources */,
@@ -3297,6 +3340,7 @@
 				F4D8FE6719B1745A00BC0B69 /* VCGeoApi.m in Sources */,
 				F4D8FE6919B1745A00BC0B69 /* VCCarYearTextField.m in Sources */,
 				F4D8FE6A19B1745A00BC0B69 /* VCApi.m in Sources */,
+				36049FA01B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.m in Sources */,
 				F4D8FE6B19B1745A00BC0B69 /* VCBankAccountTextField.m in Sources */,
 				F4D8FE6D19B1745A00BC0B69 /* VCGeoObject.m in Sources */,
 				F4D8FE6E19B1745A00BC0B69 /* VCDevice.m in Sources */,
