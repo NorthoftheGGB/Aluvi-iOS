@@ -1368,9 +1368,13 @@
 
 }
 - (IBAction)didTapCancelLocationEdit:(id)sender {
-    if(_inAddressLookupMode) {
-        _inAddressLookupMode = NO;
-        [UIView transitionWithView:self.view
+    
+    if(_delegate != nil) {
+        [_delegate overrideCancelledUpdateLocation];
+    } else {
+        if(_inAddressLookupMode) {
+            _inAddressLookupMode = NO;
+            [UIView transitionWithView:self.view
                           duration:.45
                            options:0
                         animations:^{
@@ -1379,9 +1383,11 @@
                         completion:^(BOOL finished) {
                             [_locationSearchTable.view removeFromSuperview];
                         }];
-    } else {
-        [self showRideRequestView]; // TODO: with completion:
-        [self placeInRouteMode];
+        } else {
+            [self showRideRequestView]; // TODO: with completion:
+            [self placeInRouteMode];
+        }
+        
     }
 }
 

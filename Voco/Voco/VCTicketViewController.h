@@ -13,6 +13,7 @@
 @protocol VCTicketViewControllerDelegate <NSObject>
 
 - (void) overrideUpdateLocation:(CLPlacemark*) placemark type:(NSInteger) type;
+- (void) overrideCancelledUpdateLocation;
 
 @end
 
