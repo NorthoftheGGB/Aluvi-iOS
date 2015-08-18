@@ -1918,12 +1918,12 @@
 				36049F811B8155EE0090ECAE /* VCOnboardingSetRouteViewController.h */,
 				36049F821B8155EE0090ECAE /* VCOnboardingSetRouteViewController.m */,
 				36049F871B8156370090ECAE /* VCOnboardingSetRouteViewController.xib */,
-				36049F8C1B815AE90090ECAE /* VCOnboardingUserPhotoViewController.xib */,
 				36049F911B815C490090ECAE /* VCOnboardingUserPhotoViewController.h */,
 				36049F921B815C490090ECAE /* VCOnboardingUserPhotoViewController.m */,
-				36049F971B815EFD0090ECAE /* VCOnboardingPersonalInfoViewController.xib */,
+				36049F8C1B815AE90090ECAE /* VCOnboardingUserPhotoViewController.xib */,
 				36049F9C1B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.h */,
 				36049F9D1B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.m */,
+				36049F971B815EFD0090ECAE /* VCOnboardingPersonalInfoViewController.xib */,
 			);
 			name = "Sign-In and Registration";
 			sourceTree = "<group>";
