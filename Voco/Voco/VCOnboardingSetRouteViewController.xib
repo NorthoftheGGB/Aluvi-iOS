@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
@@ -40,7 +39,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="onboardingWorkLocationButton:" destination="-1" eventType="touchUpInside" id="JBh-28-Pog"/>
+                        <action selector="didTapOnboardingWorkLocationButton:" destination="-1" eventType="touchUpInside" id="B1h-rM-goY"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="haZ-gZ-Gmr" customClass="VCButtonBold">
@@ -58,7 +57,7 @@
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
-                        <action selector="nextButtonUserPhoto:" destination="-1" eventType="touchUpInside" id="gS5-2C-2Ut"/>
+                        <action selector="didTapNextButtonUserPhoto:" destination="-1" eventType="touchUpInside" id="pWR-In-HX0"/>
                     </connections>
                 </button>
             </subviews>

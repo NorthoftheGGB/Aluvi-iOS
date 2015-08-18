@@ -9,22 +9,29 @@
 #import "VCOnboardingSetRouteViewController.h"
 #import "VCTicketViewController.h"
 
-@interface VCOnboardingSetRouteViewController () <
+@interface VCOnboardingSetRouteViewController () <VCTicketViewControllerDelegate>
 
-@end
+@property(nonatomic) BOOL finished;
 
 @end
 
 @implementation VCOnboardingSetRouteViewController
 
-
-
-- (IBAction)onboardingPIckupPointButton:(id)sender {
+- (id)init {
+    self = [super init];
+    if(self != nil){
+        _finished = NO;
+    }
+    return self;
 }
 
-- (IBAction)onboardingWorkLocationButton:(id)sender {
+
+- (IBAction)didTapOnboardingPickupPointButton:(id)sender {
 }
 
-- (IBAction)nextButtonUserPhoto:(id)sender {
+- (IBAction)didTapOnboardingWorkLocationButton:(id)sender {
+}
+
+- (IBAction)didTapNextButtonUserPhoto:(id)sender {
 }
 @end

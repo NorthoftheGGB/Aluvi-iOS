@@ -1355,13 +1355,17 @@
 
 - (IBAction)didTapLocationEditDone:(id)sender {
     
-    if(_activePlacemark != nil){
-        [_rideRequestView updateLocation:_activePlacemark type:_editLocationType];
+    if(_delegate != nil){
+        [_delegate overrideUpdateLocation:_activePlacemark type:_editLocationType];
+    } else {
+        if(_activePlacemark != nil){
+            [_rideRequestView updateLocation:_activePlacemark type:_editLocationType];
+        }
+        [self showRideRequestView];
+        [self placeInRouteMode];
     }
     _activePlacemark = nil;
-    [self showRideRequestView];
-    [self placeInRouteMode];
-    
+
 }
 - (IBAction)didTapCancelLocationEdit:(id)sender {
     if(_inAddressLookupMode) {
