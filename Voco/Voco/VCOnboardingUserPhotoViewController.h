@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "VCOnboardingChildViewController.h"
 
-@interface VCOnboardingUserPhotoViewController : UIViewController
+@interface VCOnboardingUserPhotoViewController : VCOnboardingChildViewController
 @property (strong, nonatomic) IBOutlet UIImageView *onboardingUserImage;
 
 

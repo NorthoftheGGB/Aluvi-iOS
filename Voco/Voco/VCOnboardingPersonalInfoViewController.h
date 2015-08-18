@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VCOnboardingChildViewController.h"
 
-@interface VCOnboardingPersonalInfoViewController : UIViewController
+@interface VCOnboardingPersonalInfoViewController : VCOnboardingChildViewController
 @property (strong, nonatomic) IBOutlet UITextField *onboardingFullNameTextField;
 @property (strong, nonatomic) IBOutlet UITextField *onboardingPhoneNumberTextField;
 @property (strong, nonatomic) IBOutlet UITextField *onboardingWorkEmailTextField;

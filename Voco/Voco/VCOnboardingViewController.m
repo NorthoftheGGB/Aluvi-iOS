@@ -7,8 +7,12 @@
 //
 
 #import "VCOnboardingViewController.h"
+#import "VCOnboardingChildViewController.h"
 
-@interface VCOnboardingViewController ()
+@interface VCOnboardingViewController () <UIPageViewControllerDataSource>
+
+@property (strong, nonatomic) UIPageViewController *pageController;
+
 
 @end
 
@@ -24,14 +28,48 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
+    
+    NSUInteger index = [(VCOnboardingChildViewController *)viewController index];
+    
+    if (index == 0) {
+        return nil;
+    }
+    
+    index--;
+    
+    return [self viewControllerAtIndex:index];
+    
 }
-*/
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
+    
+    NSUInteger index = [(VCOnboardingChildViewController *)viewController index];
+    
+    
+    index++;
+    
+    if (index == 5) {
+        return nil;
+    }
+    
+    return [self viewControllerAtIndex:index];
+    
+}
+
+
+- (VCOnboardingChildViewController *)viewControllerAtIndex:(NSUInteger)index {
+   
+    /*
+    APPChildViewController *childViewController = [[APPChildViewController alloc] initWithNibName:@"APPChildViewController" bundle:nil];
+    childViewController.index = index;
+    
+    return childViewController;
+    */
+     
+    return nil;
+}
+
 
 @end

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VCOnboardingChildViewController.h"
 
-@interface VCOnboardingViewController : UIViewController
+@interface VCOnboardingViewController : VCOnboardingChildViewController
 
 @end
