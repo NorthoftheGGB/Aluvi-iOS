@@ -34,7 +34,7 @@
 	<string>Aluvi works best when you share your location with us. </string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>BryantRegular.ttf</string>
+		<string>Bryant-Regular.ttf</string>
 		<string>Bryant-Meduim.ttf</string>
 		<string>Bryant-Bold.ttf</string>
 	</array>
