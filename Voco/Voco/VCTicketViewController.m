@@ -587,6 +587,7 @@
         }
         case kCommuteStatePending:
         {
+            button.titleLabel.font = [UIFont fontWithName:@"Bryant-Regular" size:14.0];
             [button setTitle:@"COMMUTE PENDING" forState:UIControlStateNormal];
             [button removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
             [button addTarget:self action:@selector(didTapReviewScheduleMenuButton:) forControlEvents:UIControlEventTouchUpInside];
