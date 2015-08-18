@@ -72,6 +72,11 @@
 		367795631B7D4FC6005D45BE /* VCButtonSmall.m in Sources */ = {isa = PBXBuildFile; fileRef = 367795611B7D4FC6005D45BE /* VCButtonSmall.m */; };
 		367795641B7D4FC6005D45BE /* VCButtonSmall.m in Sources */ = {isa = PBXBuildFile; fileRef = 367795611B7D4FC6005D45BE /* VCButtonSmall.m */; };
 		367795651B7D4FC6005D45BE /* VCButtonSmall.m in Sources */ = {isa = PBXBuildFile; fileRef = 367795611B7D4FC6005D45BE /* VCButtonSmall.m */; };
+		369992C51B82DA6C00F47C5E /* VCLabelExtraBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 369992C41B82DA6C00F47C5E /* VCLabelExtraBold.m */; };
+		369992C61B82DA6C00F47C5E /* VCLabelExtraBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 369992C41B82DA6C00F47C5E /* VCLabelExtraBold.m */; };
+		369992C71B82DA6C00F47C5E /* VCLabelExtraBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 369992C41B82DA6C00F47C5E /* VCLabelExtraBold.m */; };
+		369992C81B82DA6C00F47C5E /* VCLabelExtraBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 369992C41B82DA6C00F47C5E /* VCLabelExtraBold.m */; };
+		369992C91B82DA6C00F47C5E /* VCLabelExtraBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 369992C41B82DA6C00F47C5E /* VCLabelExtraBold.m */; };
 		369DBC141B6D228E00449CB4 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 369DBC131B6D228E00449CB4 /* test.jpg */; };
 		369DBC161B6D22F400449CB4 /* test_big.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 369DBC151B6D22F400449CB4 /* test_big.jpg */; };
 		369DBC171B6D22F400449CB4 /* test_big.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 369DBC151B6D22F400449CB4 /* test_big.jpg */; };
@@ -1195,6 +1200,8 @@
 		36638D841B65A988004EDB09 /* VCRiderTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCRiderTicketView.xib; sourceTree = "<group>"; };
 		367795601B7D4FC6005D45BE /* VCButtonSmall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCButtonSmall.h; sourceTree = "<group>"; };
 		367795611B7D4FC6005D45BE /* VCButtonSmall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCButtonSmall.m; sourceTree = "<group>"; };
+		369992C31B82DA6C00F47C5E /* VCLabelExtraBold.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCLabelExtraBold.h; sourceTree = "<group>"; };
+		369992C41B82DA6C00F47C5E /* VCLabelExtraBold.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCLabelExtraBold.m; sourceTree = "<group>"; };
 		369DBC131B6D228E00449CB4 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
 		369DBC151B6D22F400449CB4 /* test_big.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_big.jpg; sourceTree = "<group>"; };
 		369DBC1D1B6D24AD00449CB4 /* test_big@x2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "test_big@x2.jpg"; sourceTree = "<group>"; };
@@ -1956,6 +1963,8 @@
 				4FE641DF194162360059BED1 /* VCButtonBold.m */,
 				36FA80801B7D61AD00C65DF2 /* VCFancyButton.h */,
 				36FA80811B7D61AD00C65DF2 /* VCFancyButton.m */,
+				369992C31B82DA6C00F47C5E /* VCLabelExtraBold.h */,
+				369992C41B82DA6C00F47C5E /* VCLabelExtraBold.m */,
 			);
 			name = "UI Elements";
 			sourceTree = "<group>";
@@ -3431,6 +3440,7 @@
 				841647931B64A47D00CD20AC /* Car.m in Sources */,
 				841647941B64A47D00CD20AC /* VCCarLicensePlateTextField.m in Sources */,
 				841647951B64A47D00CD20AC /* VCDevicesApi.m in Sources */,
+				369992C81B82DA6C00F47C5E /* VCLabelExtraBold.m in Sources */,
 				841647961B64A47D00CD20AC /* VCDebug.m in Sources */,
 				841647991B64A47D00CD20AC /* VCNewUser.m in Sources */,
 				8416479A1B64A47D00CD20AC /* VCCenterViewBaseViewController.m in Sources */,
@@ -3561,6 +3571,7 @@
 				841648CA1B658F4900CD20AC /* VCProfile.m in Sources */,
 				841648CB1B658F4900CD20AC /* VCMenuDriverClockOnTableViewCell.m in Sources */,
 				841648CD1B658F4900CD20AC /* Car.m in Sources */,
+				369992C61B82DA6C00F47C5E /* VCLabelExtraBold.m in Sources */,
 				841648CE1B658F4900CD20AC /* VCCarLicensePlateTextField.m in Sources */,
 				841648CF1B658F4900CD20AC /* VCDevicesApi.m in Sources */,
 				841648D01B658F4900CD20AC /* VCDebug.m in Sources */,
@@ -3691,6 +3702,7 @@
 				84F222511B82611B00E5F7B7 /* Car.m in Sources */,
 				84F222521B82611B00E5F7B7 /* VCCarLicensePlateTextField.m in Sources */,
 				84F222531B82611B00E5F7B7 /* VCDevicesApi.m in Sources */,
+				369992C91B82DA6C00F47C5E /* VCLabelExtraBold.m in Sources */,
 				84F222541B82611B00E5F7B7 /* VCDebug.m in Sources */,
 				84F222551B82611B00E5F7B7 /* VCNewUser.m in Sources */,
 				84F222561B82611B00E5F7B7 /* VCCenterViewBaseViewController.m in Sources */,
@@ -3821,6 +3833,7 @@
 				4F184A1B1991893D006EA959 /* VCMenuDriverClockOnTableViewCell.m in Sources */,
 				F4C6B1E0197F06B100F6C10B /* Car.m in Sources */,
 				F4C6B1E1197F06B100F6C10B /* VCCarLicensePlateTextField.m in Sources */,
+				369992C51B82DA6C00F47C5E /* VCLabelExtraBold.m in Sources */,
 				F4C6B1E2197F06B100F6C10B /* VCDevicesApi.m in Sources */,
 				F4C6B1E3197F06B100F6C10B /* VCDebug.m in Sources */,
 				36F9F6511B6ACC8700440D03 /* VCRideRequestView.m in Sources */,
@@ -3951,6 +3964,7 @@
 				F4D8FE2D19B1745A00BC0B69 /* Car.m in Sources */,
 				F4D8FE2E19B1745A00BC0B69 /* VCCarLicensePlateTextField.m in Sources */,
 				F4D8FE2F19B1745A00BC0B69 /* VCDevicesApi.m in Sources */,
+				369992C71B82DA6C00F47C5E /* VCLabelExtraBold.m in Sources */,
 				F4D8FE3019B1745A00BC0B69 /* VCDebug.m in Sources */,
 				F4D8FE3319B1745A00BC0B69 /* VCNewUser.m in Sources */,
 				F4D8FE3419B1745A00BC0B69 /* VCCenterViewBaseViewController.m in Sources */,

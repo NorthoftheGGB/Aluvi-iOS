@@ -18,7 +18,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pce-5Y-CAV">
-                    <rect key="frame" x="0.0" y="68" width="320" height="422"/>
+                    <rect key="frame" x="0.0" y="65" width="320" height="422"/>
                     <color key="backgroundColor" white="1" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Account Balance:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PzC-cd-mWx" customClass="VCLabel">

@@ -950,18 +950,26 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="1039.5" y="-284.5"/>
         </view>
-        <view alpha="0.5499999999999996" contentMode="scaleToFill" id="Ae0-rx-OGL">
+        <view contentMode="scaleToFill" id="Ae0-rx-OGL">
             <rect key="frame" x="0.0" y="0.0" width="265" height="124"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="We are finding your commuting partners.." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQY-E9-fr5">
-                    <rect key="frame" x="13" y="51" width="317" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We are finding your commute buddies. Oh, friendship." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQY-E9-fr5" customClass="VCLabelExtraBold">
+                    <rect key="frame" x="46" y="21" width="173" height="82"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="82" id="jcn-OR-jgZ"/>
+                        <constraint firstAttribute="width" constant="173" id="pm2-3f-yOp"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" red="0.35686274509999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="1" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerY" secondItem="LQY-E9-fr5" secondAttribute="centerY" id="1Am-hs-33X"/>
+                <constraint firstAttribute="centerX" secondItem="LQY-E9-fr5" secondAttribute="centerX" id="v9S-rR-rSz"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="670.5" y="-177"/>
         </view>
@@ -972,7 +980,7 @@
         <image name="confirmation-hud.png" width="320" height="260"/>
         <image name="current-location-button-selected.png" width="36" height="36"/>
         <image name="current-location-button.png" width="36" height="36"/>
-        <image name="devon.png" width="320" height="568"/>
+        <image name="devon.png" width="22" height="22"/>
         <image name="directions-button-selected.png" width="36" height="36"/>
         <image name="directions-button.png" width="36" height="36"/>
         <image name="ride-bounds-button-selected.png" width="36" height="36"/>

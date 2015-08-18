@@ -570,7 +570,7 @@
     button.layer.shadowOpacity = 1;
     button.layer.shadowRadius = 0;
     button.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
-    [button setFrame:CGRectMake(0, 0, 150, 33)];
+    [button setFrame:CGRectMake(0, 0, 150, 28)];
     [button setTitleColor:[VCStyle greyColor] forState:UIControlStateNormal];
     button.titleLabel.font = [UIFont fontWithName:@"Bryant-Regular" size:16.0];
     [button addTarget:self action:@selector(didTapScheduleMenuButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -1077,7 +1077,7 @@
     
     [_waitingMessageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.view.mas_left);
-        make.top.equalTo(self.view.mas_top).with.offset(62);
+        make.top.equalTo(self.view.mas_top).with.offset(65);
         make.right.equalTo(self.view.mas_right);
         make.height.mas_equalTo(_waitingMessageView.frame.size.height);
     }];
