@@ -81,12 +81,15 @@ static VCDebug * instance;
             }
             case 4:
             {
-                NSURLRequest *req = [NSURLRequest requestWithURL:
+                NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:
                                      [NSURL URLWithString:
-                                      [NSString stringWithFormat:@"%@%@", API_BASE_URL, @"debug/purge"]
+                                      [NSString stringWithFormat:@"%@%@", API_BASE_URL, @"v2/debug/purge"]
                                      ]];
+                [req setHTTPMethod:@"POST"];
+                [req addValue:[NSString stringWithFormat:@"Token token=\"%@\"", [VCApi apiToken] ] forHTTPHeaderField:@"Authorization"];
                 NSURLConnection *conn = [NSURLConnection connectionWithRequest:req delegate:nil];
                 [conn start];
+                break;
 
             }
             case 5:

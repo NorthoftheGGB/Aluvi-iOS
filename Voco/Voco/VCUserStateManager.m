@@ -129,8 +129,7 @@ static VCUserStateManager *sharedSingleton;
                   //TODO refactor to utilize enqueueBatchOfObjectRequestOperations:progress:completion:
                   [VCDevicesApi updateUserWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                       
-                      [VCUsersApi getProfile:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                          [self setProfile: mappingResult.firstObject];
+                      [[VCUserStateManager instance] refreshProfileWithCompletion:^{
                           success();
                       } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                           failure(operation, error);
@@ -147,8 +146,6 @@ static VCUserStateManager *sharedSingleton;
 }
 
 - (void) logoutWithCompletion: (void ( ^ ) () )success {
-    
-    
     [self finalizeLogout];
     success();
 }
@@ -233,9 +230,7 @@ static VCUserStateManager *sharedSingleton;
     return NO;
 }
 
-
-
-- (void) refreshProfileWithCompletion: (void ( ^ ) ( ))completion {
+- (void) refreshProfileWithCompletion: (void ( ^ ) ( ))completion  failure:(void ( ^ ) (RKObjectRequestOperation *operation, NSError *error) )failure  {
     [VCUsersApi getProfile:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSArray * array = [mappingResult array];
         VCProfile * profile;
@@ -257,7 +252,17 @@ static VCUserStateManager *sharedSingleton;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [WRUtilities criticalError:error];
     }];
+    
+}
 
+
+
+- (void) refreshProfileWithCompletion: (void ( ^ ) ( ))completion {
+    [self refreshProfileWithCompletion:^{
+        completion();
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        //
+    }];
 }
 
 

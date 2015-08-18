@@ -80,7 +80,7 @@
 @property (nonatomic, strong) NSArray * polyline;   // TODO needs to be coded to data using NSKeyedArchiver
 @property (nonatomic, strong) MBRegion * region;    // TODO needs to be coded to data using NSKeyedArchiver
 
-+ (void)createMappings:(RKObjectManager *)objectManager;
++ (RKEntityMapping *)createMappings:(RKObjectManager *)objectManager;
 
 + (NSArray * ) ticketsForTrip:(NSNumber *) tripId;
 

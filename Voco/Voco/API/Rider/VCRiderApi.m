@@ -22,7 +22,47 @@
 
 + (void) setup: (RKObjectManager *) objectManager {
     
-    [Ticket createMappings:objectManager];
+    RKEntityMapping * ticketMapping = [Ticket createMappings:objectManager];
+    
+    
+    
+    [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
+        RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:API_GET_ACTIVE_TICKETS];
+        
+        NSString * relativePath = [URL relativePath];
+        NSDictionary *argsDict = nil;
+        BOOL match = [pathMatcher matchesPath:relativePath tokenizeQueryStrings:NO parsedArguments:&argsDict];
+        if (match) {
+            // needs to return what needs to be delete
+            // i.e. tickets that are not in the new batch
+            // or just delete tickets that are no longer relevant???
+            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
+            return fetchRequest;
+        }
+        return nil;
+    }];
+    
+    
+    {
+        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:ticketMapping
+                                                                                             method:RKRequestMethodGET
+                                                                                        pathPattern:API_GET_ACTIVE_TICKETS
+                                                                                            keyPath:nil
+                                                                                        statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor];
+    }
+    {
+        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:ticketMapping
+                                                                                                 method:RKRequestMethodPOST
+                                                                                            pathPattern:API_POST_RIDE_CANCELLED
+                                                                                                keyPath:nil
+                                                                                            statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor];
+
+    }
+    
+
+    
     [Payment createMappings:objectManager];
     
     {
@@ -41,13 +81,7 @@
         
         
         
-        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
-                                                                                                 method:RKRequestMethodPOST
-                                                                                            pathPattern:API_POST_RIDE_CANCELLED
-                                                                                                keyPath:nil
-                                                                                            statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-        [objectManager addResponseDescriptor:responseDescriptor];
-    }
+          }
     {
         RKObjectMapping * mapping = [VCCommuterRideRequestCreated getMapping];
         RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping
@@ -115,29 +149,6 @@
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                             
                                             [[VCDebug sharedInstance] apiLog:@"API: Rider cancel ride success"];
-                                            
-                                            NSError * error = nil;
-                                            ride.state = kRiderCancelledState;
-                                            
-                                            // Get ride of the tickets and trip if they aren't relevant now
-                                            NSArray * tickets = [Ticket ticketsForTrip:ride.trip_id];
-                                            BOOL stillActive = NO;
-                                            for(Ticket* ticket in tickets){
-                                                if([@[kScheduledState, kInProgressState, kCompleteState] containsObject:ticket.state]){
-                                                    stillActive = YES;
-                                                }
-                                            }
-                                            if( !stillActive ){
-                                                for(Ticket* ticket in tickets){
-                                                    [[VCCoreData managedObjectContext] deleteObject:ticket];
-                                                }
-                                            }
-                                            
-                                            
-                                            [[VCCoreData managedObjectContext] save:&error];
-                                            if(error != nil){
-                                                [WRUtilities criticalError:error];
-                                            }
                                             
                                             success(operation, mappingResult);
                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {

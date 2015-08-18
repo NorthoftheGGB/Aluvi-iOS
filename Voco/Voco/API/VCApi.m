@@ -28,6 +28,7 @@ static NSString * apiToken;
     RKObjectManager * objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:API_BASE_URL]];
     [objectManager registerRequestOperationClass:[VCObjectRequestOperation class]];
     objectManager.managedObjectStore = [VCCoreData managedObjectStore];
+    //[[NSURLCache sharedURLCache].cach
     
     [VCRiderApi setup: objectManager];
     [VCDriverApi setup: objectManager];

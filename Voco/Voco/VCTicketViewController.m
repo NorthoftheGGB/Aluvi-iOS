@@ -153,6 +153,7 @@
     }
     
     // Provisional
+    /*
     [VCRiderApi getPickupPointsWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         _pickupPoints = [mappingResult array];
         [self buildPickupPointAnnotations];
@@ -160,6 +161,7 @@
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [WRUtilities criticalError:error];
     }];
+     */
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scheduleUpdated:) name:kNotificationScheduleUpdated object:nil];
 
@@ -216,8 +218,12 @@
 
 
 - (void) scheduleUpdated:(NSNotification *) notification {
-    if(_ticket != nil && [[VCCommuteManager instance] getDefaultTicket] == nil){
+    Ticket * defaulTicket = [[VCCommuteManager instance] getDefaultTicket];
+    if(_ticket != nil && defaulTicket == nil){
         _ticket = nil;
+        [self updateTicketInterface];
+    } else if(_ticket == nil && defaulTicket != nil){
+        _ticket = defaulTicket;
         [self updateTicketInterface];
     }
 }
@@ -919,7 +925,7 @@
         
         [[VCCommuteManager instance] cancelRide:_ticket success:^{
             [[VCCoreData managedObjectContext]  refreshObject:_ticket mergeChanges:YES];
-            if([_ticket.trip_state isEqualToString:@"aborted"]){
+            if([_ticket.trip_state isEqualToString:@"aborted"] || _ticket.isDeleted){
                 _ticket = nil;
             }
             [self resetInterfaceToHome];
@@ -998,6 +1004,7 @@
 }
 
 - (void)buildPickupPointAnnotations {
+    return;
     if(_pickupPoints != nil){
         _pickupPointAnnotations = [[NSMutableArray alloc] init];
         for (VCPickupPoint* pickupPoint in _pickupPoints)
@@ -1012,6 +1019,7 @@
 }
 
 - (void)addPickupPointAnnotations {
+    return;
     [self.map addAnnotations:_pickupPointAnnotations];
 }
 

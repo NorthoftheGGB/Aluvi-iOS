@@ -14,7 +14,9 @@
 
 - (id)initWithRequest:(NSURLRequest *)request responseDescriptors:(NSArray *)responseDescriptors {
     
-    return [super initWithRequest:request responseDescriptors:responseDescriptors];
+    self = [super initWithRequest:request responseDescriptors:responseDescriptors];
+    self.deletesOrphanedObjects = YES;
+    return self;
 }
 
 

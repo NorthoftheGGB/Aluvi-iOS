@@ -62,7 +62,7 @@
 @synthesize polyline;
 @synthesize region;
 
-+ (void)createMappings:(RKObjectManager *)objectManager{
++ (RKEntityMapping * )createMappings:(RKObjectManager *)objectManager{
     RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Ticket"
                                                           inManagedObjectStore: [VCCoreData managedObjectStore]];
     
@@ -97,14 +97,9 @@
     [entityMapping addRelationshipMappingWithSourceKeyPath:@"driver" mapping:[Driver createMappings:objectManager]];
     [entityMapping addRelationshipMappingWithSourceKeyPath:@"car" mapping:[Car createMappings:objectManager]];
     [entityMapping addRelationshipMappingWithSourceKeyPath:@"riders" mapping:[Rider createMappings:objectManager]];
-
     
-    RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping
-                                                                                             method:RKRequestMethodGET
-                                                                                        pathPattern:API_GET_ACTIVE_TICKETS
-                                                                                            keyPath:nil
-                                                                                        statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:responseDescriptor];
+      
+    return entityMapping;
 }
 
 

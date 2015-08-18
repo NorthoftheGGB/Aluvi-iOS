@@ -111,8 +111,9 @@
     NSLog(@"%@", str);
     
     // try again
-    [self performSelector:@selector(registerForRemoteNotifications) withObject:nil afterDelay:10 * NSEC_PER_SEC];
-    [VCPushReceiver registerForRemoteNotifications];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 10 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [self registerForRemoteNotifications];
+    });
 }
 
 
