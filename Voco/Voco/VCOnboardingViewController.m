@@ -36,8 +36,11 @@
     vc3.index = 2;
     _viewControllers = @[vc1,vc2,vc3];
     
+    _pageController = [[UIPageViewController alloc] init];
     [_pageController setViewControllers:@[_viewControllers[0]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    [self addChildViewController:_pageController];
     [self.view addSubview:_pageController.view];
+     [self.pageController didMoveToParentViewController:self];
 }
 
 - (void)didReceiveMemoryWarning {
