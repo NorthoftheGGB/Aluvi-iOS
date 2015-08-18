@@ -16,4 +16,7 @@
 @property (strong, nonatomic) Ticket * ticket;
 @property (nonatomic) BOOL isFinished;  // for KVO
 
+- (void) placeInEditLocationMode;
+- (void) placeInRouteMode;
+
 @end
