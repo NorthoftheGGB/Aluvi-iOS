@@ -606,6 +606,11 @@
 		84B30A601B82E54A0095F31D /* VCOnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B30A581B82E54A0095F31D /* VCOnboardingViewController.xib */; };
 		84B30A611B82E54A0095F31D /* VCOnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B30A581B82E54A0095F31D /* VCOnboardingViewController.xib */; };
 		84B30A621B82E54A0095F31D /* VCOnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84B30A581B82E54A0095F31D /* VCOnboardingViewController.xib */; };
+		84B30A661B82E5DE0095F31D /* VCOnboardingChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B30A651B82E5DE0095F31D /* VCOnboardingChildViewController.m */; };
+		84B30A671B82E5DE0095F31D /* VCOnboardingChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B30A651B82E5DE0095F31D /* VCOnboardingChildViewController.m */; };
+		84B30A681B82E5DE0095F31D /* VCOnboardingChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B30A651B82E5DE0095F31D /* VCOnboardingChildViewController.m */; };
+		84B30A691B82E5DE0095F31D /* VCOnboardingChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B30A651B82E5DE0095F31D /* VCOnboardingChildViewController.m */; };
+		84B30A6A1B82E5DE0095F31D /* VCOnboardingChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B30A651B82E5DE0095F31D /* VCOnboardingChildViewController.m */; };
 		84F221FA1B819DCE00E5F7B7 /* VCRiderOnBoardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758BE19AA91330093DBEA /* VCRiderOnBoardingViewController.xib */; };
 		84F221FB1B819DCE00E5F7B7 /* VCRiderOnBoardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758BE19AA91330093DBEA /* VCRiderOnBoardingViewController.xib */; };
 		84F221FC1B819DCF00E5F7B7 /* VCRiderOnBoardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758BE19AA91330093DBEA /* VCRiderOnBoardingViewController.xib */; };
@@ -1401,6 +1406,8 @@
 		84B30A561B82E54A0095F31D /* VCOnboardingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCOnboardingViewController.h; sourceTree = "<group>"; };
 		84B30A571B82E54A0095F31D /* VCOnboardingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCOnboardingViewController.m; sourceTree = "<group>"; };
 		84B30A581B82E54A0095F31D /* VCOnboardingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCOnboardingViewController.xib; sourceTree = "<group>"; };
+		84B30A641B82E5DE0095F31D /* VCOnboardingChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCOnboardingChildViewController.h; sourceTree = "<group>"; };
+		84B30A651B82E5DE0095F31D /* VCOnboardingChildViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCOnboardingChildViewController.m; sourceTree = "<group>"; };
 		84BB90031B7D8C1000D7397B /* Voco 21.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 21.xcdatamodel"; sourceTree = "<group>"; };
 		84BB90071B7D9A8F00D7397B /* Voco 22.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 22.xcdatamodel"; sourceTree = "<group>"; };
 		84BB90081B7DD53F00D7397B /* Voco 23.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 23.xcdatamodel"; sourceTree = "<group>"; };
@@ -1931,19 +1938,12 @@
 		4FE641B61941562C0059BED1 /* Sign-In and Registration */ = {
 			isa = PBXGroup;
 			children = (
+				84B30A631B82E5C40095F31D /* Base */,
+				84B30A6B1B82E6A40095F31D /* Page View Controllers */,
 				36049F801B8146A30090ECAE /* Old Sign In */,
 				4FC758B319AA8C270093DBEA /* VCLogInViewController.h */,
 				4FC758B419AA8C270093DBEA /* VCLogInViewController.m */,
 				4FC758B519AA8C270093DBEA /* VCLogInViewController.xib */,
-				36049F811B8155EE0090ECAE /* VCOnboardingSetRouteViewController.h */,
-				36049F821B8155EE0090ECAE /* VCOnboardingSetRouteViewController.m */,
-				36049F871B8156370090ECAE /* VCOnboardingSetRouteViewController.xib */,
-				36049F911B815C490090ECAE /* VCOnboardingUserPhotoViewController.h */,
-				36049F921B815C490090ECAE /* VCOnboardingUserPhotoViewController.m */,
-				36049F8C1B815AE90090ECAE /* VCOnboardingUserPhotoViewController.xib */,
-				36049F9C1B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.h */,
-				36049F9D1B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.m */,
-				36049F971B815EFD0090ECAE /* VCOnboardingPersonalInfoViewController.xib */,
 				84B30A561B82E54A0095F31D /* VCOnboardingViewController.h */,
 				84B30A571B82E54A0095F31D /* VCOnboardingViewController.m */,
 				84B30A581B82E54A0095F31D /* VCOnboardingViewController.xib */,
@@ -2163,6 +2163,31 @@
 				D19278A31B6738D1009BFBF8 /* MBRegion.m */,
 			);
 			name = MapBox;
+			sourceTree = "<group>";
+		};
+		84B30A631B82E5C40095F31D /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				84B30A641B82E5DE0095F31D /* VCOnboardingChildViewController.h */,
+				84B30A651B82E5DE0095F31D /* VCOnboardingChildViewController.m */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		84B30A6B1B82E6A40095F31D /* Page View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				36049F811B8155EE0090ECAE /* VCOnboardingSetRouteViewController.h */,
+				36049F821B8155EE0090ECAE /* VCOnboardingSetRouteViewController.m */,
+				36049F871B8156370090ECAE /* VCOnboardingSetRouteViewController.xib */,
+				36049F911B815C490090ECAE /* VCOnboardingUserPhotoViewController.h */,
+				36049F921B815C490090ECAE /* VCOnboardingUserPhotoViewController.m */,
+				36049F8C1B815AE90090ECAE /* VCOnboardingUserPhotoViewController.xib */,
+				36049F9C1B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.h */,
+				36049F9D1B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.m */,
+				36049F971B815EFD0090ECAE /* VCOnboardingPersonalInfoViewController.xib */,
+			);
+			name = "Page View Controllers";
 			sourceTree = "<group>";
 		};
 		F45F7BE71935756000A94721 /* ViewControllers */ = {
@@ -3454,6 +3479,7 @@
 				84F222141B819DF000E5F7B7 /* VCPasswordRecoveryViewController.m in Sources */,
 				841647A51B64A47D00CD20AC /* VCDriverStateResponse.m in Sources */,
 				8444153B1B72BBE5008C7898 /* VCMapHelper.m in Sources */,
+				84B30A691B82E5DE0095F31D /* VCOnboardingChildViewController.m in Sources */,
 				841647A71B64A47D00CD20AC /* MQBoundingBox.m in Sources */,
 				841647A81B64A47D00CD20AC /* VCGeolocation.m in Sources */,
 				841647A91B64A47D00CD20AC /* VCDriverGeoObject.m in Sources */,
@@ -3585,6 +3611,7 @@
 				84F222101B819DEF00E5F7B7 /* VCPasswordRecoveryViewController.m in Sources */,
 				844415391B72BBE5008C7898 /* VCMapHelper.m in Sources */,
 				841648DC1B658F4900CD20AC /* MQBoundingBox.m in Sources */,
+				84B30A671B82E5DE0095F31D /* VCOnboardingChildViewController.m in Sources */,
 				841648DD1B658F4900CD20AC /* VCGeolocation.m in Sources */,
 				841648DE1B658F4900CD20AC /* VCDriverGeoObject.m in Sources */,
 				841648E21B658F4900CD20AC /* Transit.m in Sources */,
@@ -3716,6 +3743,7 @@
 				84F222621B82611B00E5F7B7 /* VCPasswordRecoveryViewController.m in Sources */,
 				84F222631B82611B00E5F7B7 /* VCDriverStateResponse.m in Sources */,
 				84F222641B82611B00E5F7B7 /* VCMapHelper.m in Sources */,
+				84B30A6A1B82E5DE0095F31D /* VCOnboardingChildViewController.m in Sources */,
 				84F222651B82611B00E5F7B7 /* MQBoundingBox.m in Sources */,
 				84F222661B82611B00E5F7B7 /* VCGeolocation.m in Sources */,
 				84F222671B82611B00E5F7B7 /* VCDriverGeoObject.m in Sources */,
@@ -3847,6 +3875,7 @@
 				84F2220E1B819DEF00E5F7B7 /* VCPasswordRecoveryViewController.m in Sources */,
 				844415381B72BBE5008C7898 /* VCMapHelper.m in Sources */,
 				F4C6B1EE197F06B100F6C10B /* VCGeolocation.m in Sources */,
+				84B30A661B82E5DE0095F31D /* VCOnboardingChildViewController.m in Sources */,
 				F4C6B1EF197F06B100F6C10B /* VCDriverGeoObject.m in Sources */,
 				F4C6B1F3197F06B100F6C10B /* Transit.m in Sources */,
 				F4C6B1F4197F06B100F6C10B /* VCDriversLicenseTextField.m in Sources */,
@@ -3978,6 +4007,7 @@
 				84F222121B819DF000E5F7B7 /* VCPasswordRecoveryViewController.m in Sources */,
 				F4D8FE3F19B1745A00BC0B69 /* VCDriverStateResponse.m in Sources */,
 				8444153A1B72BBE5008C7898 /* VCMapHelper.m in Sources */,
+				84B30A681B82E5DE0095F31D /* VCOnboardingChildViewController.m in Sources */,
 				F4D8FE4119B1745A00BC0B69 /* MQBoundingBox.m in Sources */,
 				F4D8FE4219B1745A00BC0B69 /* VCGeolocation.m in Sources */,
 				F4D8FE4319B1745A00BC0B69 /* VCDriverGeoObject.m in Sources */,

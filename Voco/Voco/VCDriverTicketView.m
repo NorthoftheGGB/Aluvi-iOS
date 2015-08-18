@@ -23,7 +23,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *riderTwoButton;
 @property (strong, nonatomic) IBOutlet UIButton *riderThreeButton;
 
-- (IBAction)didTapRidersOnboardButton:(id)sender;
 - (IBAction)didTapRiderOneButton:(id)sender;
 - (IBAction)didTapRiderTwoButton:(id)sender;
 - (IBAction)didTapRiderThreeButton:(id)sender;
@@ -43,9 +42,6 @@
     _riderTwoButton.clipsToBounds = YES;
     _riderThreeButton.layer.cornerRadius = _riderThreeButton.frame.size.width / 2;
     _riderThreeButton.clipsToBounds = YES;
-    
- 
-    
 }
 
 - (void) updateInterfaceWithTicket: (Ticket *) ticket {

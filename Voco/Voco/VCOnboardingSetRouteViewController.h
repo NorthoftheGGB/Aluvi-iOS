@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "VCOnboardingChildViewController.h"
 
-@interface VCOnboardingSetRouteViewController : UIViewController
+@interface VCOnboardingSetRouteViewController : VCOnboardingChildViewController
 
 
 - (IBAction)didTapOnboardingPickupPointButton:(id)sender;

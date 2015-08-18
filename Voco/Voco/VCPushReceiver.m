@@ -14,7 +14,7 @@
 #import "VCDriverApi.h"
 #import "VCNotifications.h"
 #import "VCInterfaceManager.h"
-#import <MBProgressHud.h>
+#import <MBProgressHUD.h>
 
 #import "VCDevice.h"
 #import "WRUtilities.h"
