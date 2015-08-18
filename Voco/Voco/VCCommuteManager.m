@@ -379,6 +379,7 @@ static VCCommuteManager * instance;
 - (void) cancelRide:(Ticket *) ride success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure {
     
     [VCRiderApi cancelRide:ride success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [self loadActiveTickets];
         [VCNotifications scheduleUpdated];
         success();
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -389,6 +390,7 @@ static VCCommuteManager * instance;
 
 - (void) cancelTrip:(NSNumber *) tripId success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure {
     [VCRiderApi cancelTrip:tripId success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [self loadActiveTickets];
         [VCNotifications scheduleUpdated];
         success();
     } failure:failure];
