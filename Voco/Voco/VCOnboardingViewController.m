@@ -37,7 +37,7 @@
     _viewControllers = @[vc1,vc2,vc3];
     
     [_pageController setViewControllers:@[_viewControllers[0]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
-    
+    [self.view addSubview:_pageController.view];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -8,6 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "VCOnboardingChildViewController.h"
+#import "Route.h"
+
+@class VCOnboardingSetRouteViewController;
+
+@protocol VCOnboardingSetRouteViewControllerDelegate <NSObject>
+
+- (void) VCOnboardingSetRouteViewController: (VCOnboardingSetRouteViewController *) onboardingSetRouteViewController doneCreatingRoute: (Route*) route;
+
+@end
 
 @interface VCOnboardingSetRouteViewController : VCOnboardingChildViewController
 
