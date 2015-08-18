@@ -30,7 +30,6 @@
 	<string>Aluvi works best when you share your location with us. </string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>HelveticaNeueLight</string>
 		<string>Bryant-Bold.ttf</string>
 		<string>Bryant-Regular.ttf</string>
 		<string>Bryant-Medium.ttf</string>
