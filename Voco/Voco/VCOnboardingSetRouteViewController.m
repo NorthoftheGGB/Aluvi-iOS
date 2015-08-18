@@ -9,9 +9,7 @@
 #import "VCOnboardingSetRouteViewController.h"
 #import "VCTicketViewController.h"
 
-@interface VCOnboardingSetRouteViewController () <
-
-@end
+@interface VCOnboardingSetRouteViewController () <VCTicketViewControllerDelegate>
 
 @end
 
