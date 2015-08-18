@@ -97,6 +97,12 @@
 		369992E51B82E57A00F47C5E /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 369992D21B82E57A00F47C5E /* Icon-Small@2x.png */; };
 		369992E61B82E57A00F47C5E /* Icon-Small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 369992D31B82E57A00F47C5E /* Icon-Small@3x.png */; };
 		369992E71B82E57A00F47C5E /* Icon-Small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 369992D31B82E57A00F47C5E /* Icon-Small@3x.png */; };
+		369992EA1B82E7F200F47C5E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4FA0BFE192BF6BF005D8645 /* Images.xcassets */; };
+		369992EB1B82E7F300F47C5E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4FA0BFE192BF6BF005D8645 /* Images.xcassets */; };
+		369992EC1B82E7F300F47C5E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4FA0BFE192BF6BF005D8645 /* Images.xcassets */; };
+		369992ED1B82E84800F47C5E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4FA0BFE192BF6BF005D8645 /* Images.xcassets */; };
+		369992EE1B82E84900F47C5E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4FA0BFE192BF6BF005D8645 /* Images.xcassets */; };
+		369992EF1B82E84A00F47C5E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4FA0BFE192BF6BF005D8645 /* Images.xcassets */; };
 		369DBC141B6D228E00449CB4 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 369DBC131B6D228E00449CB4 /* test.jpg */; };
 		369DBC161B6D22F400449CB4 /* test_big.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 369DBC151B6D22F400449CB4 /* test_big.jpg */; };
 		369DBC171B6D22F400449CB4 /* test_big.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 369DBC151B6D22F400449CB4 /* test_big.jpg */; };
@@ -395,7 +401,6 @@
 		841648881B64A47D00CD20AC /* VCLeftMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE138F1989AE09004D4413 /* VCLeftMenuViewController.xib */; };
 		8416488A1B64A47D00CD20AC /* ride-bounds-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD1297619D62462000E7C39 /* ride-bounds-button-selected@2x.png */; };
 		8416488B1B64A47D00CD20AC /* VCMenuUserInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A1119918750006EA959 /* VCMenuUserInfoTableViewCell.xib */; };
-		8416488C1B64A47D00CD20AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4FA0BFE192BF6BF005D8645 /* Images.xcassets */; };
 		8416488F1B64A47D00CD20AC /* VCMenuDriverClockOnTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A1A1991893D006EA959 /* VCMenuDriverClockOnTableViewCell.xib */; };
 		841648901B64A47D00CD20AC /* VCCommuteSetUpOnBoardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758D019AA91810093DBEA /* VCCommuteSetUpOnBoardingViewController.xib */; };
 		841648911B64A47D00CD20AC /* driver-cancel-hud-icon-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849E3198F625A006EA959 /* driver-cancel-hud-icon-select@2x.png */; };
@@ -570,7 +575,6 @@
 		841649BE1B658F4900CD20AC /* ride-bounds-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD1297719D62462000E7C39 /* ride-bounds-button@2x.png */; };
 		841649BF1B658F4900CD20AC /* VCLeftMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE138F1989AE09004D4413 /* VCLeftMenuViewController.xib */; };
 		841649C11B658F4900CD20AC /* VCMenuUserInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A1119918750006EA959 /* VCMenuUserInfoTableViewCell.xib */; };
-		841649C21B658F4900CD20AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4FA0BFE192BF6BF005D8645 /* Images.xcassets */; };
 		841649C41B658F4900CD20AC /* VCMenuDriverClockOnTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A1A1991893D006EA959 /* VCMenuDriverClockOnTableViewCell.xib */; };
 		841649C51B658F4900CD20AC /* VCCommuteSetUpOnBoardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758D019AA91810093DBEA /* VCCommuteSetUpOnBoardingViewController.xib */; };
 		841649C61B658F4900CD20AC /* driver-cancel-hud-icon-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849E3198F625A006EA959 /* driver-cancel-hud-icon-select@2x.png */; };
@@ -897,7 +901,6 @@
 		84F2230C1B82611B00E5F7B7 /* VCLeftMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE138F1989AE09004D4413 /* VCLeftMenuViewController.xib */; };
 		84F2230D1B82611B00E5F7B7 /* ride-bounds-button-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FD1297619D62462000E7C39 /* ride-bounds-button-selected@2x.png */; };
 		84F2230E1B82611B00E5F7B7 /* VCMenuUserInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A1119918750006EA959 /* VCMenuUserInfoTableViewCell.xib */; };
-		84F2230F1B82611B00E5F7B7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4FA0BFE192BF6BF005D8645 /* Images.xcassets */; };
 		84F223101B82611B00E5F7B7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 36E48E891B7B01F10034DFEB /* Default.png */; };
 		84F223111B82611B00E5F7B7 /* VCRiderTicketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D841B65A988004EDB09 /* VCRiderTicketView.xib */; };
 		84F223121B82611B00E5F7B7 /* VCMenuDriverClockOnTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A1A1991893D006EA959 /* VCMenuDriverClockOnTableViewCell.xib */; };
@@ -1028,7 +1031,6 @@
 		F4C6B27C197F06B100F6C10B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F4FA0BF2192BF6BF005D8645 /* InfoPlist.strings */; };
 		F4C6B27E197F06B100F6C10B /* pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FE286FC1962C25400FD8AF6 /* pin@2x.png */; };
 		F4C6B285197F06B100F6C10B /* VCRiderProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C93197775E1007609E8 /* VCRiderProfileViewController.xib */; };
-		F4C6B28C197F06B100F6C10B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4FA0BFE192BF6BF005D8645 /* Images.xcassets */; };
 		F4C6B29E197F437800F6C10B /* VCApiError.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6B29D197F437800F6C10B /* VCApiError.m */; };
 		F4D8FE0A19B1745A00BC0B69 /* VCDriverRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F02D1952DA8F00D8C900 /* VCDriverRegistration.m */; };
 		F4D8FE0B19B1745A00BC0B69 /* VCPushApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B1F193D8FE500354886 /* VCPushApi.m */; };
@@ -1182,7 +1184,6 @@
 		F4D8FF1F19B1745A00BC0B69 /* directions-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3DB5B81981ED4E00DDD094 /* directions-button@2x.png */; };
 		F4D8FF2319B1745A00BC0B69 /* VCLeftMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE138F1989AE09004D4413 /* VCLeftMenuViewController.xib */; };
 		F4D8FF2519B1745A00BC0B69 /* VCMenuUserInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A1119918750006EA959 /* VCMenuUserInfoTableViewCell.xib */; };
-		F4D8FF2619B1745A00BC0B69 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F4FA0BFE192BF6BF005D8645 /* Images.xcassets */; };
 		F4D8FF2819B1745A00BC0B69 /* VCMenuDriverClockOnTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F184A1A1991893D006EA959 /* VCMenuDriverClockOnTableViewCell.xib */; };
 		F4D8FF2A19B1745A00BC0B69 /* VCCommuteSetUpOnBoardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FC758D019AA91810093DBEA /* VCCommuteSetUpOnBoardingViewController.xib */; };
 		F4D8FF2C19B1745A00BC0B69 /* driver-cancel-hud-icon-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849E3198F625A006EA959 /* driver-cancel-hud-icon-select@2x.png */; };
@@ -2864,7 +2865,6 @@
 				841648881B64A47D00CD20AC /* VCLeftMenuViewController.xib in Resources */,
 				8416488A1B64A47D00CD20AC /* ride-bounds-button-selected@2x.png in Resources */,
 				8416488B1B64A47D00CD20AC /* VCMenuUserInfoTableViewCell.xib in Resources */,
-				8416488C1B64A47D00CD20AC /* Images.xcassets in Resources */,
 				369992E01B82E57A00F47C5E /* Icon-76@2x.png in Resources */,
 				36E48E8D1B7B01F10034DFEB /* Default.png in Resources */,
 				36638D8B1B65A989004EDB09 /* VCRiderTicketView.xib in Resources */,
@@ -2872,6 +2872,7 @@
 				841648901B64A47D00CD20AC /* VCCommuteSetUpOnBoardingViewController.xib in Resources */,
 				36FA808F1B7D8FFC00C65DF2 /* menu-backhome-icon@2x.png in Resources */,
 				841648911B64A47D00CD20AC /* driver-cancel-hud-icon-select@2x.png in Resources */,
+				369992ED1B82E84800F47C5E /* Images.xcassets in Resources */,
 				841648921B64A47D00CD20AC /* VCDriverSubMenuItemTableViewCell.xib in Resources */,
 				36638D831B659CAE004EDB09 /* VCDriverTicketView.xib in Resources */,
 				841648971B64A47D00CD20AC /* VCLogInViewController.xib in Resources */,
@@ -2891,6 +2892,7 @@
 				841649441B658F4900CD20AC /* VCMenuItemTableViewCell.xib in Resources */,
 				36049F8E1B815AE90090ECAE /* VCOnboardingUserPhotoViewController.xib in Resources */,
 				841649461B658F4900CD20AC /* camera-icon@2x.png in Resources */,
+				369992EB1B82E7F300F47C5E /* Images.xcassets in Resources */,
 				841649481B658F4900CD20AC /* current-location-arrow@2x.png in Resources */,
 				36E48E821B7B01100034DFEB /* Default@3x.png in Resources */,
 				8416494A1B658F4900CD20AC /* driver-call-hud-icon@2x.png in Resources */,
@@ -2953,7 +2955,6 @@
 				841649BE1B658F4900CD20AC /* ride-bounds-button@2x.png in Resources */,
 				841649BF1B658F4900CD20AC /* VCLeftMenuViewController.xib in Resources */,
 				841649C11B658F4900CD20AC /* VCMenuUserInfoTableViewCell.xib in Resources */,
-				841649C21B658F4900CD20AC /* Images.xcassets in Resources */,
 				369DBC1F1B6D24AD00449CB4 /* test_big@x2.jpg in Resources */,
 				36FB728C1B6D6B4200F8A6AF /* VCPaymentsViewController.xib in Resources */,
 				841649C41B658F4900CD20AC /* VCMenuDriverClockOnTableViewCell.xib in Resources */,
@@ -3057,7 +3058,6 @@
 				84F2230C1B82611B00E5F7B7 /* VCLeftMenuViewController.xib in Resources */,
 				84F2230D1B82611B00E5F7B7 /* ride-bounds-button-selected@2x.png in Resources */,
 				84F2230E1B82611B00E5F7B7 /* VCMenuUserInfoTableViewCell.xib in Resources */,
-				84F2230F1B82611B00E5F7B7 /* Images.xcassets in Resources */,
 				369992E11B82E57A00F47C5E /* Icon-76@2x.png in Resources */,
 				84F223101B82611B00E5F7B7 /* Default.png in Resources */,
 				84F223111B82611B00E5F7B7 /* VCRiderTicketView.xib in Resources */,
@@ -3065,6 +3065,7 @@
 				84F223131B82611B00E5F7B7 /* VCCommuteSetUpOnBoardingViewController.xib in Resources */,
 				84F223141B82611B00E5F7B7 /* menu-backhome-icon@2x.png in Resources */,
 				84F223151B82611B00E5F7B7 /* driver-cancel-hud-icon-select@2x.png in Resources */,
+				369992EE1B82E84900F47C5E /* Images.xcassets in Resources */,
 				84F223161B82611B00E5F7B7 /* VCDriverSubMenuItemTableViewCell.xib in Resources */,
 				84F223171B82611B00E5F7B7 /* VCDriverTicketView.xib in Resources */,
 				84F223181B82611B00E5F7B7 /* VCLogInViewController.xib in Resources */,
@@ -3084,6 +3085,7 @@
 				4FFCF2C519A266CC00A4A24E /* camera-icon@2x.png in Resources */,
 				36049F8D1B815AE90090ECAE /* VCOnboardingUserPhotoViewController.xib in Resources */,
 				F4C6B247197F06B100F6C10B /* current-location-arrow@2x.png in Resources */,
+				369992EA1B82E7F200F47C5E /* Images.xcassets in Resources */,
 				36E48E811B7B01100034DFEB /* Default@3x.png in Resources */,
 				4F1849F0198F67DF006EA959 /* driver-call-hud-icon@2x.png in Resources */,
 				4F3DB5B91981ED4E00DDD094 /* current-location-button-selected@2x.png in Resources */,
@@ -3149,7 +3151,6 @@
 				36638D751B658A5A004EDB09 /* VCRideRequestView.xib in Resources */,
 				369DBC1E1B6D24AD00449CB4 /* test_big@x2.jpg in Resources */,
 				36FB728B1B6D6B4200F8A6AF /* VCPaymentsViewController.xib in Resources */,
-				F4C6B28C197F06B100F6C10B /* Images.xcassets in Resources */,
 				4F184A1E1991893D006EA959 /* VCMenuDriverClockOnTableViewCell.xib in Resources */,
 				4FC758D419AA91810093DBEA /* VCCommuteSetUpOnBoardingViewController.xib in Resources */,
 				4F1849E5198F625A006EA959 /* driver-cancel-hud-icon-select@2x.png in Resources */,
@@ -3177,6 +3178,7 @@
 				84F222231B819DF900E5F7B7 /* VCPrivatePolicyViewController.xib in Resources */,
 				369DBC1B1B6D22F800449CB4 /* test.jpg in Resources */,
 				84F222131B819DF000E5F7B7 /* VCPasswordRecoveryViewController.xib in Resources */,
+				369992EC1B82E7F300F47C5E /* Images.xcassets in Resources */,
 				F4D8FEA319B1745A00BC0B69 /* VCMenuItemTableViewCell.xib in Resources */,
 				F4D8FEA419B1745A00BC0B69 /* camera-icon@2x.png in Resources */,
 				36FA80891B7D831C00C65DF2 /* driver-hov-toggle@2x.png in Resources */,
@@ -3241,7 +3243,6 @@
 				F4D8FF2319B1745A00BC0B69 /* VCLeftMenuViewController.xib in Resources */,
 				4FD1297B19D62462000E7C39 /* ride-bounds-button-selected@2x.png in Resources */,
 				F4D8FF2519B1745A00BC0B69 /* VCMenuUserInfoTableViewCell.xib in Resources */,
-				F4D8FF2619B1745A00BC0B69 /* Images.xcassets in Resources */,
 				36E48E8C1B7B01F10034DFEB /* Default.png in Resources */,
 				36638D891B65A989004EDB09 /* VCRiderTicketView.xib in Resources */,
 				F4D8FF2819B1745A00BC0B69 /* VCMenuDriverClockOnTableViewCell.xib in Resources */,
@@ -3259,6 +3260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4FA0C11192BF6BF005D8645 /* InfoPlist.strings in Resources */,
+				369992EF1B82E84A00F47C5E /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4146,7 +4148,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D570C24C905CF2756FACB77F /* Pods.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -4174,7 +4176,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0D14E3F5E1EECB39D89015B1 /* Pods.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Voco Transportation Inc (269WB9G8WE)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Voco Transportation Inc (269WB9G8WE)";
@@ -4325,7 +4327,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D570C24C905CF2756FACB77F /* Pods.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -4353,7 +4355,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0D14E3F5E1EECB39D89015B1 /* Pods.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
