@@ -16,15 +16,13 @@
 #import "VCButtonBold.h"
 #import "VCButton.h"
 #import "VCPasswordRecoveryViewController.h"
-#import "VCTermsOfServiceViewController.h"
 #import "VCNotifications.h"
 #import <QuartzCore/QuartzCore.h>
 #import "DTHTMLAttributedStringBuilder.h"
 #import "DTCoreTextConstants.h"
-#import "VCRiderOnBoardingViewController.h"
+#import "VCOnBoardingViewController.h"
 #import "VCEmailTextField.h"
 #import "VCCodes.h"
-#import "VCBetaRegisterViewController.h"
 
 #define kPhoneFieldTag 1
 #define kPasswordFieldTag 2
@@ -297,13 +295,10 @@
 - (void) goToSignUp {
     
 #if 1
-    // Good to do, email is not in the system
-    VCRiderOnBoardingViewController * vc = [[VCRiderOnBoardingViewController alloc] init];
-    vc.desiredEmail = _emailTextField.text;
-    vc.desiredPassword = _passwordTextField.text;
-    vc.termsOfServiceString = _attributedString;
-    [self.navigationController pushViewController:vc animated:YES];
     
+    VCOnboardingViewController * vc = [[VCOnboardingViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];    
+
 #else
     
     [UIAlertView showWithTitle:@"Confirmation Code"
@@ -361,8 +356,8 @@
 }
 
 - (void) registerOnline {
-    VCBetaRegisterViewController * vc = [[VCBetaRegisterViewController alloc] init];
-    [self.navigationController presentViewController:vc animated:YES completion:nil];
+    //VCBetaRegisterViewController * vc = [[VCBetaRegisterViewController alloc] init];
+    //[self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 
 
@@ -370,17 +365,6 @@
     VCPasswordRecoveryViewController * passwordRecoveryViewController = [[VCPasswordRecoveryViewController alloc] init];
     [self.navigationController pushViewController:passwordRecoveryViewController animated:YES];
     
-}
-
-- (IBAction)didTapTermsAndConditions:(id)sender {
-    
-    VCTermsOfServiceViewController * vc = [[VCTermsOfServiceViewController alloc] init];
-    if(_attributedString == nil){
-        // This probably won't still be nil by now, but just in case..
-        [self loadTermsOfService];
-    }
-    vc.termsOfServiceString = _attributedString;
-    [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 
 - (IBAction)didTapModeToggleButton:(id)sender {

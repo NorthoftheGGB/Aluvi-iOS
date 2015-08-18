@@ -8,11 +8,17 @@
 
 #import "VCOnboardingViewController.h"
 #import "VCOnboardingChildViewController.h"
+#import "VCOnboardingSetRouteViewController.h"
+#import "VCOnboardingUserPhotoViewController.h"
+#import "VCOnboardingPersonalInfoViewController.h"
+#import "Route.h"
 
-@interface VCOnboardingViewController () <UIPageViewControllerDataSource>
+@interface VCOnboardingViewController () <UIPageViewControllerDelegate>
 
 @property (strong, nonatomic) UIPageViewController *pageController;
+@property (strong, nonatomic) NSArray * viewControllers;
 
+@property (strong, nonatomic) Route * route;
 
 @end
 
@@ -20,7 +26,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    
+    VCOnboardingChildViewController * vc1 = [[VCOnboardingSetRouteViewController alloc] init];
+    vc1.index = 0;
+    VCOnboardingChildViewController * vc2 = [[VCOnboardingUserPhotoViewController alloc] init];
+    vc2.index = 1;
+    VCOnboardingChildViewController * vc3 = [[VCOnboardingPersonalInfoViewController alloc] init];
+    vc3.index = 2;
+    _viewControllers = @[vc1,vc2,vc3];
+    
+    [_pageController setViewControllers:@[_viewControllers[0]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,6 +46,7 @@
 }
 
 
+/*
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
     
     NSUInteger index = [(VCOnboardingChildViewController *)viewController index];
@@ -68,8 +86,8 @@
     return childViewController;
     */
      
-    return nil;
-}
+  //  return nil;
+//}
 
 
 @end
