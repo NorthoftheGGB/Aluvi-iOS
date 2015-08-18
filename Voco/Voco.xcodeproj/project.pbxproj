@@ -77,6 +77,26 @@
 		369992C71B82DA6C00F47C5E /* VCLabelExtraBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 369992C41B82DA6C00F47C5E /* VCLabelExtraBold.m */; };
 		369992C81B82DA6C00F47C5E /* VCLabelExtraBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 369992C41B82DA6C00F47C5E /* VCLabelExtraBold.m */; };
 		369992C91B82DA6C00F47C5E /* VCLabelExtraBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 369992C41B82DA6C00F47C5E /* VCLabelExtraBold.m */; };
+		369992D41B82E57A00F47C5E /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 369992CA1B82E57A00F47C5E /* Icon-40.png */; };
+		369992D51B82E57A00F47C5E /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 369992CA1B82E57A00F47C5E /* Icon-40.png */; };
+		369992D61B82E57A00F47C5E /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 369992CB1B82E57A00F47C5E /* Icon-40@2x.png */; };
+		369992D71B82E57A00F47C5E /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 369992CB1B82E57A00F47C5E /* Icon-40@2x.png */; };
+		369992D81B82E57A00F47C5E /* Icon-40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 369992CC1B82E57A00F47C5E /* Icon-40@3x.png */; };
+		369992D91B82E57A00F47C5E /* Icon-40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 369992CC1B82E57A00F47C5E /* Icon-40@3x.png */; };
+		369992DA1B82E57A00F47C5E /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 369992CD1B82E57A00F47C5E /* Icon-60@2x.png */; };
+		369992DB1B82E57A00F47C5E /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 369992CD1B82E57A00F47C5E /* Icon-60@2x.png */; };
+		369992DC1B82E57A00F47C5E /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 369992CE1B82E57A00F47C5E /* Icon-60@3x.png */; };
+		369992DD1B82E57A00F47C5E /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 369992CE1B82E57A00F47C5E /* Icon-60@3x.png */; };
+		369992DE1B82E57A00F47C5E /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 369992CF1B82E57A00F47C5E /* Icon-76.png */; };
+		369992DF1B82E57A00F47C5E /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 369992CF1B82E57A00F47C5E /* Icon-76.png */; };
+		369992E01B82E57A00F47C5E /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 369992D01B82E57A00F47C5E /* Icon-76@2x.png */; };
+		369992E11B82E57A00F47C5E /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 369992D01B82E57A00F47C5E /* Icon-76@2x.png */; };
+		369992E21B82E57A00F47C5E /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 369992D11B82E57A00F47C5E /* Icon-Small.png */; };
+		369992E31B82E57A00F47C5E /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 369992D11B82E57A00F47C5E /* Icon-Small.png */; };
+		369992E41B82E57A00F47C5E /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 369992D21B82E57A00F47C5E /* Icon-Small@2x.png */; };
+		369992E51B82E57A00F47C5E /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 369992D21B82E57A00F47C5E /* Icon-Small@2x.png */; };
+		369992E61B82E57A00F47C5E /* Icon-Small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 369992D31B82E57A00F47C5E /* Icon-Small@3x.png */; };
+		369992E71B82E57A00F47C5E /* Icon-Small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 369992D31B82E57A00F47C5E /* Icon-Small@3x.png */; };
 		369DBC141B6D228E00449CB4 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 369DBC131B6D228E00449CB4 /* test.jpg */; };
 		369DBC161B6D22F400449CB4 /* test_big.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 369DBC151B6D22F400449CB4 /* test_big.jpg */; };
 		369DBC171B6D22F400449CB4 /* test_big.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 369DBC151B6D22F400449CB4 /* test_big.jpg */; };
@@ -1197,6 +1217,16 @@
 		367795611B7D4FC6005D45BE /* VCButtonSmall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCButtonSmall.m; sourceTree = "<group>"; };
 		369992C31B82DA6C00F47C5E /* VCLabelExtraBold.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCLabelExtraBold.h; sourceTree = "<group>"; };
 		369992C41B82DA6C00F47C5E /* VCLabelExtraBold.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCLabelExtraBold.m; sourceTree = "<group>"; };
+		369992CA1B82E57A00F47C5E /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40.png"; sourceTree = "<group>"; };
+		369992CB1B82E57A00F47C5E /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@2x.png"; sourceTree = "<group>"; };
+		369992CC1B82E57A00F47C5E /* Icon-40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@3x.png"; sourceTree = "<group>"; };
+		369992CD1B82E57A00F47C5E /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
+		369992CE1B82E57A00F47C5E /* Icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@3x.png"; sourceTree = "<group>"; };
+		369992CF1B82E57A00F47C5E /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
+		369992D01B82E57A00F47C5E /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76@2x.png"; sourceTree = "<group>"; };
+		369992D11B82E57A00F47C5E /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		369992D21B82E57A00F47C5E /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		369992D31B82E57A00F47C5E /* Icon-Small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@3x.png"; sourceTree = "<group>"; };
 		369DBC131B6D228E00449CB4 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
 		369DBC151B6D22F400449CB4 /* test_big.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_big.jpg; sourceTree = "<group>"; };
 		369DBC1D1B6D24AD00449CB4 /* test_big@x2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "test_big@x2.jpg"; sourceTree = "<group>"; };
@@ -1988,6 +2018,16 @@
 				4FE286EE1962BB3F00FD8AF6 /* search-location@2x.png */,
 				4FE286F31962BDB300FD8AF6 /* zoom-ride-bounds-select@2x.png */,
 				4FE286F41962BDB300FD8AF6 /* zoom-ride-bounds@2x.png */,
+				369992CA1B82E57A00F47C5E /* Icon-40.png */,
+				369992CB1B82E57A00F47C5E /* Icon-40@2x.png */,
+				369992CC1B82E57A00F47C5E /* Icon-40@3x.png */,
+				369992CD1B82E57A00F47C5E /* Icon-60@2x.png */,
+				369992CE1B82E57A00F47C5E /* Icon-60@3x.png */,
+				369992CF1B82E57A00F47C5E /* Icon-76.png */,
+				369992D01B82E57A00F47C5E /* Icon-76@2x.png */,
+				369992D11B82E57A00F47C5E /* Icon-Small.png */,
+				369992D21B82E57A00F47C5E /* Icon-Small@2x.png */,
+				369992D31B82E57A00F47C5E /* Icon-Small@3x.png */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -2733,7 +2773,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				841648081B64A47D00CD20AC /* VCCommuterPassViewController.xib in Resources */,
+				369992DC1B82E57A00F47C5E /* Icon-60@3x.png in Resources */,
 				841648091B64A47D00CD20AC /* temp-call-button@2x.png in Resources */,
+				369992E41B82E57A00F47C5E /* Icon-Small@2x.png in Resources */,
 				8416480A1B64A47D00CD20AC /* call-button-select@2x.png in Resources */,
 				8416480B1B64A47D00CD20AC /* call-button@2x.png in Resources */,
 				36E48E6A1B7AA6920034DFEB /* nav_bg.png in Resources */,
@@ -2744,9 +2786,12 @@
 				369DBC1C1B6D22F900449CB4 /* test.jpg in Resources */,
 				84F222151B819DF000E5F7B7 /* VCPasswordRecoveryViewController.xib in Resources */,
 				8416480F1B64A47D00CD20AC /* VCMenuItemTableViewCell.xib in Resources */,
+				369992E61B82E57A00F47C5E /* Icon-Small@3x.png in Resources */,
 				841648101B64A47D00CD20AC /* camera-icon@2x.png in Resources */,
 				36FA808A1B7D831C00C65DF2 /* driver-hov-toggle@2x.png in Resources */,
 				841648121B64A47D00CD20AC /* current-location-arrow@2x.png in Resources */,
+				369992DA1B82E57A00F47C5E /* Icon-60@2x.png in Resources */,
+				369992DE1B82E57A00F47C5E /* Icon-76.png in Resources */,
 				841648131B64A47D00CD20AC /* driver-call-hud-icon@2x.png in Resources */,
 				841648141B64A47D00CD20AC /* current-location-button-selected@2x.png in Resources */,
 				841648181B64A47D00CD20AC /* VCLocationSearchViewController.xib in Resources */,
@@ -2760,6 +2805,7 @@
 				8416482C1B64A47D00CD20AC /* menu-receipts-icon@2x.png in Resources */,
 				8416482F1B64A47D00CD20AC /* confirm-location-select.png in Resources */,
 				841648341B64A47D00CD20AC /* menu-mycar-icon@2x.png in Resources */,
+				369992D81B82E57A00F47C5E /* Icon-40@3x.png in Resources */,
 				84F2222D1B819DFE00E5F7B7 /* VCBetaRegisterViewController.xib in Resources */,
 				841648361B64A47D00CD20AC /* zoom-ride-bounds@2x.png in Resources */,
 				36049F8B1B8156370090ECAE /* VCOnboardingSetRouteViewController.xib in Resources */,
@@ -2796,17 +2842,21 @@
 				36E48E741B7ABFAE0034DFEB /* Bryant-Medium.ttf in Resources */,
 				841648761B64A47D00CD20AC /* VCProfileViewController.xib in Resources */,
 				841648771B64A47D00CD20AC /* menu-support-icon@2x.png in Resources */,
+				369992E21B82E57A00F47C5E /* Icon-Small.png in Resources */,
 				84F222091B819DE700E5F7B7 /* VCDriverOnBoardingViewController.xib in Resources */,
+				369992D61B82E57A00F47C5E /* Icon-40@2x.png in Resources */,
 				8416487A1B64A47D00CD20AC /* VCRiderProfileViewController.xib in Resources */,
 				8416487B1B64A47D00CD20AC /* placeholder-profile.png in Resources */,
 				841648801B64A47D00CD20AC /* driver-hov-toggle-select@2x.png in Resources */,
 				841648821B64A47D00CD20AC /* VCEditLocationWidget.xib in Resources */,
+				369992D41B82E57A00F47C5E /* Icon-40.png in Resources */,
 				841648841B64A47D00CD20AC /* directions-button@2x.png in Resources */,
 				36000CAD1B72D5A2008E84AE /* VCCarInfoViewController.xib in Resources */,
 				841648881B64A47D00CD20AC /* VCLeftMenuViewController.xib in Resources */,
 				8416488A1B64A47D00CD20AC /* ride-bounds-button-selected@2x.png in Resources */,
 				8416488B1B64A47D00CD20AC /* VCMenuUserInfoTableViewCell.xib in Resources */,
 				8416488C1B64A47D00CD20AC /* Images.xcassets in Resources */,
+				369992E01B82E57A00F47C5E /* Icon-76@2x.png in Resources */,
 				36E48E8D1B7B01F10034DFEB /* Default.png in Resources */,
 				36638D8B1B65A989004EDB09 /* VCRiderTicketView.xib in Resources */,
 				8416488F1B64A47D00CD20AC /* VCMenuDriverClockOnTableViewCell.xib in Resources */,
@@ -2914,7 +2964,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				84F222C51B82611B00E5F7B7 /* VCCommuterPassViewController.xib in Resources */,
+				369992DD1B82E57A00F47C5E /* Icon-60@3x.png in Resources */,
 				84F222C61B82611B00E5F7B7 /* temp-call-button@2x.png in Resources */,
+				369992E51B82E57A00F47C5E /* Icon-Small@2x.png in Resources */,
 				84F222C71B82611B00E5F7B7 /* call-button-select@2x.png in Resources */,
 				84F222C81B82611B00E5F7B7 /* call-button@2x.png in Resources */,
 				84F222C91B82611B00E5F7B7 /* nav_bg.png in Resources */,
@@ -2925,9 +2977,12 @@
 				84F222CE1B82611B00E5F7B7 /* test.jpg in Resources */,
 				84F222CF1B82611B00E5F7B7 /* VCPasswordRecoveryViewController.xib in Resources */,
 				84F222D01B82611B00E5F7B7 /* VCMenuItemTableViewCell.xib in Resources */,
+				369992E71B82E57A00F47C5E /* Icon-Small@3x.png in Resources */,
 				84F222D11B82611B00E5F7B7 /* camera-icon@2x.png in Resources */,
 				84F222D21B82611B00E5F7B7 /* driver-hov-toggle@2x.png in Resources */,
 				84F222D31B82611B00E5F7B7 /* current-location-arrow@2x.png in Resources */,
+				369992DB1B82E57A00F47C5E /* Icon-60@2x.png in Resources */,
+				369992DF1B82E57A00F47C5E /* Icon-76.png in Resources */,
 				84F222D41B82611B00E5F7B7 /* driver-call-hud-icon@2x.png in Resources */,
 				84F222D51B82611B00E5F7B7 /* current-location-button-selected@2x.png in Resources */,
 				84F222D61B82611B00E5F7B7 /* VCLocationSearchViewController.xib in Resources */,
@@ -2941,6 +2996,7 @@
 				84F222DE1B82611B00E5F7B7 /* menu-receipts-icon@2x.png in Resources */,
 				84F222DF1B82611B00E5F7B7 /* confirm-location-select.png in Resources */,
 				84F222E01B82611B00E5F7B7 /* menu-mycar-icon@2x.png in Resources */,
+				369992D91B82E57A00F47C5E /* Icon-40@3x.png in Resources */,
 				84F222E11B82611B00E5F7B7 /* VCBetaRegisterViewController.xib in Resources */,
 				84F222E21B82611B00E5F7B7 /* zoom-ride-bounds@2x.png in Resources */,
 				84F222E31B82611B00E5F7B7 /* VCOnboardingSetRouteViewController.xib in Resources */,
@@ -2977,17 +3033,21 @@
 				84F223021B82611B00E5F7B7 /* Bryant-Medium.ttf in Resources */,
 				84F223031B82611B00E5F7B7 /* VCProfileViewController.xib in Resources */,
 				84F223041B82611B00E5F7B7 /* menu-support-icon@2x.png in Resources */,
+				369992E31B82E57A00F47C5E /* Icon-Small.png in Resources */,
 				84F223051B82611B00E5F7B7 /* VCDriverOnBoardingViewController.xib in Resources */,
+				369992D71B82E57A00F47C5E /* Icon-40@2x.png in Resources */,
 				84F223061B82611B00E5F7B7 /* VCRiderProfileViewController.xib in Resources */,
 				84F223071B82611B00E5F7B7 /* placeholder-profile.png in Resources */,
 				84F223081B82611B00E5F7B7 /* driver-hov-toggle-select@2x.png in Resources */,
 				84F223091B82611B00E5F7B7 /* VCEditLocationWidget.xib in Resources */,
+				369992D51B82E57A00F47C5E /* Icon-40.png in Resources */,
 				84F2230A1B82611B00E5F7B7 /* directions-button@2x.png in Resources */,
 				84F2230B1B82611B00E5F7B7 /* VCCarInfoViewController.xib in Resources */,
 				84F2230C1B82611B00E5F7B7 /* VCLeftMenuViewController.xib in Resources */,
 				84F2230D1B82611B00E5F7B7 /* ride-bounds-button-selected@2x.png in Resources */,
 				84F2230E1B82611B00E5F7B7 /* VCMenuUserInfoTableViewCell.xib in Resources */,
 				84F2230F1B82611B00E5F7B7 /* Images.xcassets in Resources */,
+				369992E11B82E57A00F47C5E /* Icon-76@2x.png in Resources */,
 				84F223101B82611B00E5F7B7 /* Default.png in Resources */,
 				84F223111B82611B00E5F7B7 /* VCRiderTicketView.xib in Resources */,
 				84F223121B82611B00E5F7B7 /* VCMenuDriverClockOnTableViewCell.xib in Resources */,
