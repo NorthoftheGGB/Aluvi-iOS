@@ -11,10 +11,10 @@
 @interface VCOnboardingSetRouteViewController : UIViewController
 
 
-- (IBAction)onboardingPIckupPointButton:(id)sender;
+- (IBAction)didTapOnboardingPickupPointButton:(id)sender;
 
-- (IBAction)onboardingWorkLocationButton:(id)sender;
+- (IBAction)didTapOnboardingWorkLocationButton:(id)sender;
 
-- (IBAction)nextButtonUserPhoto:(id)sender;
+- (IBAction)didTapNextButtonUserPhoto:(id)sender;
 
 @end
