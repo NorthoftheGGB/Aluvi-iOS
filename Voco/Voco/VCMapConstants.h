@@ -12,6 +12,7 @@
 #define kHomeType 3000
 #define kWorkType 3001
 #define kPickupZoneType 3002
+#define kMeetingPointType 3003
 
 #define kPickupZoneAnnotationType @"kPickupZoneTypeString"
 #define kPickupPointsAnnotationType @"kPickupPointsAnnotationType"

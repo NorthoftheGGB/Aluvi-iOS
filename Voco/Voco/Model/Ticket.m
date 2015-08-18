@@ -137,6 +137,11 @@
     return [[CLLocation alloc] initWithLatitude:[self.dropOffPointLatitude doubleValue] longitude: [self.dropOffPointLongitude doubleValue] ];
 }
 
+- (CLLocationCoordinate2D) meetingPointCoordinate {
+    return CLLocationCoordinate2DMake([self.meetingPointLatitude doubleValue], [self.meetingPointLongitude doubleValue]);
+}
+
+
 - (Ticket *) returnTicket {
     NSArray * returnTicketResults = self.returnTicketFetchRequest;
     if(returnTicketResults == nil || [returnTicketResults count] < 1){

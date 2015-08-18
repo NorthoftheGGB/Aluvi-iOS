@@ -38,6 +38,8 @@
 + (NSInteger) defaultZoomForType: (NSInteger) type {
     if(type == kHomeType || type == kWorkType){
         return 11;
+    } else if (type == kMeetingPointType) {
+        return 15;
     } else if (type == kPickupZoneType){
         return 9;
     }

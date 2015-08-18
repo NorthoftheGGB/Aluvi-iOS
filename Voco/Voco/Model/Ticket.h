@@ -91,6 +91,8 @@
 - (CLLocation *) meetingPointLocation;
 - (CLLocation *) dropOffPointLocation;
 
+- (CLLocationCoordinate2D) meetingPointCoordinate;
+
 - (NSString *) shortRouteDescription;
 - (NSString *) routeDescription;
 - (BOOL) hasCachedRoute;

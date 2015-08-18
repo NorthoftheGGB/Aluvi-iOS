@@ -303,10 +303,10 @@
 - (void) showDefaultRoute {
     if([_route routeCoordinateSettingsValid]){
         if([_route hasCachedPath]){
-            [self showRoute:_route.polyline withRegion:_route.region];
+            [self showRoute:_route.polyline withRegion:_route.region withZoom:YES];
         } else {
             [self zoomToCurrentLocation];
-            [self updateDefaultRoute];
+            [self updateDefaultRouteWithZoom:YES];
         }
     } else {
         if(_routeOverlay != nil){
@@ -317,7 +317,7 @@
 }
 
 
-- (void) updateDefaultRoute {
+- (void) updateDefaultRouteWithZoom: (BOOL) withZoom {
     
     [VCMapQuestRouting route:CLLocationCoordinate2DMake([_route getDefaultOrigin].coordinate.latitude, [_route getDefaultOrigin].coordinate.longitude)
                           to:CLLocationCoordinate2DMake(_route.work.coordinate.latitude, _route.work.coordinate.longitude)
@@ -326,7 +326,7 @@
                          _route.polyline = polyline;
                          _route.region = region;
                          [[VCCommuteManager instance] storeRoute:polyline withRegion:region];
-                         [self showRoute:polyline withRegion:region];
+                         [self showRoute:polyline withRegion:region withZoom:withZoom];
                          
                      } failure:^{
                          NSLog(@"%@", @"Error talking with MapQuest routing API");
@@ -334,8 +334,8 @@
     
 }
 
-- (void) showTicketRoute {
-    [self updateTicketRoute];
+- (void) showTicketRouteWithZoom: (BOOL) withZoom {
+    [self updateTicketRouteWithZoom: withZoom];
     /*
      Check in on route caching later
      if([_ticket hasCachedRoute]){
@@ -346,7 +346,11 @@
      */
 }
 
-- (void) updateTicketRoute {
+- (void) showTicketRoute {
+    [self showTicketRouteWithZoom:YES];
+}
+
+- (void) updateTicketRouteWithZoom: (BOOL) withZoom {
     
     [VCMapQuestRouting route:CLLocationCoordinate2DMake([_ticket.meetingPointLatitude doubleValue], [_ticket.meetingPointLongitude doubleValue])
                           to:CLLocationCoordinate2DMake([_ticket.dropOffPointLatitude doubleValue], [_ticket.dropOffPointLongitude doubleValue])
@@ -354,7 +358,7 @@
                          
                          _ticket.polyline = polyline;
                          _ticket.region = region;
-                         [self showRoute:polyline withRegion:region];
+                         [self showRoute:polyline withRegion:region withZoom:withZoom];
                          
                      } failure:^{
                          NSLog(@"%@", @"Error talking with MapQuest routing API");
@@ -362,7 +366,7 @@
     
 }
 
-- (void) showRoute:(NSArray*) polyline withRegion:(MBRegion * ) region {
+- (void) showRoute:(NSArray*) polyline withRegion:(MBRegion * ) region withZoom:(BOOL) withZoom{
     if (_routeOverlay != nil) {
         [_map removeAnnotation:_routeOverlay];
     }
@@ -385,10 +389,12 @@
     
     self.rideRegion = region;
     
-    NSLog(@"Zoom To Region");
-    [_map zoomWithLatitudeLongitudeBoundsSouthWest:[VCMapHelper paddedNELocation:region.southWest]
+    if(withZoom) {
+        NSLog(@"Zoom To Region");
+        [_map zoomWithLatitudeLongitudeBoundsSouthWest:[VCMapHelper paddedNELocation:region.southWest]
                                          northEast:[VCMapHelper paddedSWLocation:region.northEast]
                                           animated:YES];
+    }
 }
 
 
@@ -651,7 +657,9 @@
         [self addDropOffPointAnnotation: [_ticket dropOffPointLocation]];
         [self.map selectAnnotation:_meetingPointAnnotation animated:YES];
         
-        [self showTicketRoute];
+        [self showTicketRouteWithZoom:NO];
+        [self.map setZoom:[VCMapStyle defaultZoomForType:kMeetingPointType] atCoordinate: [_ticket meetingPointCoordinate]  animated:YES];
+
         /*
          if( [_ticket.driving boolValue] ) {
          if(![[_ticket meetingPointLocation] isEqual:[_ticket originLocation]]){
