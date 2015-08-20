@@ -182,38 +182,26 @@
     UIImage * image = [img resizedImageToFitInSize:size scaleIfSmaller:YES];
     _userImageView.image = image;
 
-    
-    NSMutableURLRequest *request =
-    [[RKObjectManager sharedManager] multipartFormRequestWithObject:nil
-                                                             method:RKRequestMethodPOST
-                                                               path:API_USER_PROFILE
-                                                         parameters:nil
-                                          constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-                                              [formData appendPartWithFileData:UIImageJPEGRepresentation(image, .9)
-                                                                          name:@"image"
-                                                                      fileName:@"image.jpg"
-                                                                      mimeType:@"image/jpg"];
-                                          }];
-    
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    RKObjectRequestOperation *operation = [[RKObjectManager sharedManager]
-                                           objectRequestOperationWithRequest:request
-                                           success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                               [hud hide:YES];
-                                               
-                                               [VCUsersApi getProfile:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                   [VCNotifications profileUpdated];
-                                               } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                               }];
-                                               
-                                               
-                                           } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                               [UIAlertView showWithTitle:@"Problem" message:@"There was a problem saving your image" cancelButtonTitle:@"Darn." otherButtonTitles:nil tapBlock:nil];
-                                               [hud hide:YES];
-                                               
-                                           }];
-    [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation]; // NOTE: Must be enqueued rather than started
-    
+    [VCUsersApi updateProfileImage:image success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [hud hide:YES];
+        
+        [VCUsersApi getProfile:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            [VCNotifications profileUpdated];
+        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        }];
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [UIAlertView showWithTitle:@"Problem" message:@"There was a problem saving your image" cancelButtonTitle:@"Darn." otherButtonTitles:nil tapBlock:nil];
+        [hud hide:YES];
+    }];
+     
+     
+   
+
+   
+     
+
+     
 
 }
 

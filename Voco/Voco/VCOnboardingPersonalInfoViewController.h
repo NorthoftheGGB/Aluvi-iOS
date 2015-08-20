@@ -10,13 +10,5 @@
 #import "VCOnboardingChildViewController.h"
 
 @interface VCOnboardingPersonalInfoViewController : VCOnboardingChildViewController
-@property (strong, nonatomic) IBOutlet UITextField *onboardingFullNameTextField;
-@property (strong, nonatomic) IBOutlet UITextField *onboardingPhoneNumberTextField;
-@property (strong, nonatomic) IBOutlet UITextField *onboardingWorkEmailTextField;
-
-
-
-
-- (IBAction)nextButtonTutorial:(id)sender;
 
 @end

@@ -15,6 +15,7 @@
 
 @interface VCOnboardingUserPhotoViewController ()<PKImagePickerViewControllerDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *onboardingUserImage;
+@property (strong, nonatomic) UIImage * profileImage;
 
 - (IBAction)onboardingTakePhoto:(id)sender;
 - (IBAction)onboardingChooseExistingPhoto:(id)sender;
@@ -35,7 +36,16 @@
 }
 
 - (IBAction)nextButtonPersonalInfo:(id)sender {
+    if(_profileImage == nil){
+        [UIAlertView showWithTitle:@"Please select a user image" message:@"Ridesharing isn't anonymous.  We require a user image to help facilitate trust and safety between our users" cancelButtonTitle:@"Ok" otherButtonTitles:nil tapBlock:nil];
+         return;
+    }
+    NSDictionary * values = @{
+                              ProfileImageValueKey : _profileImage
+                              };
+    [self.delegate VCOnboardingChildViewController:self didSetValues:values];
     [self.delegate VCOnboardingChildViewControllerDidFinish:self];
+
 }
 
 
@@ -43,8 +53,8 @@
 
 -(void)imageSelected:(UIImage*)img {
     CGSize size = CGSizeMake(640, 750);
-    UIImage * image = [img resizedImageToFitInSize:size scaleIfSmaller:YES];
-    _onboardingUserImage.image = image;
+    _profileImage = [img resizedImageToFitInSize:size scaleIfSmaller:YES];
+    _onboardingUserImage.image = _profileImage;
 }
 
 -(void)imageSelectionCancelled {

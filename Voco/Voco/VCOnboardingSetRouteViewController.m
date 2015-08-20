@@ -25,6 +25,7 @@
 @property (strong, nonatomic) Route * route;
 @property (strong, nonatomic) IBOutlet VCButtonSmall *pickupPointButton;
 @property (strong, nonatomic) IBOutlet VCButtonSmall *dropOffPointButton;
+@property (strong, nonatomic) IBOutlet UISwitch *driverSwitch;
 @end
 
 @implementation VCOnboardingSetRouteViewController
@@ -91,7 +92,11 @@
 }
 
 - (IBAction)didTapOnboardingPickupPointButton:(id)sender {
-    _editLocationType = kHomeType;
+    if(_driverSwitch.on){
+        _editLocationType = kPickupZoneType;
+    } else {
+        _editLocationType = kHomeType;
+    }
     [self transitionToTicketViewController: _editLocationType];
 }
 
@@ -101,9 +106,21 @@
 }
 
 - (IBAction)didTapNextButtonUserPhoto:(id)sender {
+    if(_route.work == nil || (_route.home == nil && _route.pickupZoneCenter == nil)){
+        [UIAlertView showWithTitle:@"Locations" message:@"Please select a pickup point / zone and a work location" cancelButtonTitle:@"Ok" otherButtonTitles:nil tapBlock:nil];
+        return;
+    }
+    
+    NSDictionary * values = @{
+        RouteObjectValueKey : _route,
+        DriverValueKey : [NSNumber numberWithBool: _driverSwitch.on ]
+    };
+    [self.delegate VCOnboardingChildViewController:self didSetValues:values];
     [self.delegate VCOnboardingChildViewControllerDidFinish:self];
 }
 
+- (IBAction)driverSwitchValueChanged:(id)sender {
+}
 
 #pragma delegate
 - (void) overrideUpdateLocation:(CLPlacemark*) placemark type:(NSInteger) type {
@@ -113,6 +130,8 @@
         {
             _route.home = [[CLLocation alloc] initWithLatitude:placemark.location.coordinate.latitude longitude:placemark.location.coordinate.longitude];
             _route.homePlaceName = ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);
+            _route.pickupZoneCenter = [[CLLocation alloc] initWithLatitude:placemark.location.coordinate.latitude longitude:placemark.location.coordinate.longitude];
+            _route.pickupZoneCenterPlaceName = ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);
             [self updateFromButton: _route.homePlaceName];
         }
             break;
@@ -125,6 +144,8 @@
             break;
         case kPickupZoneType:
         {
+            _route.home = [[CLLocation alloc] initWithLatitude:placemark.location.coordinate.latitude longitude:placemark.location.coordinate.longitude];
+            _route.homePlaceName = ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);
             _route.pickupZoneCenter = [[CLLocation alloc] initWithLatitude:placemark.location.coordinate.latitude longitude:placemark.location.coordinate.longitude];
             _route.pickupZoneCenterPlaceName = ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);
             [self updateToButton: _route.pickupZoneCenterPlaceName];

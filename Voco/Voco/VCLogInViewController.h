@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "VCOnboardingChildViewController.h"
 
-#define EmailValueKey @"EmailValueKey"
-#define PasswordValueKey @"PasswordValueKey"
+
 
 @class VCLogInViewController;
 
