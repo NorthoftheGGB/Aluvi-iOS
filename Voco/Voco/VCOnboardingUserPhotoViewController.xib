@@ -23,16 +23,6 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1e2-5n-qyg">
                     <rect key="frame" x="99" y="75" width="122" height="122"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ris-86-hAd" customClass="VCButton">
-                    <rect key="frame" x="113" y="230" width="94" height="30"/>
-                    <state key="normal" title="TAKE PHOTO">
-                        <color key="titleColor" red="0.35686274509999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="onboardingTakePhoto:" destination="-1" eventType="touchUpInside" id="3qD-UG-A07"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tQr-S7-Z8b" customClass="VCButtonBold">
                     <rect key="frame" x="0.0" y="502" width="321" height="58"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -51,14 +41,14 @@
                         <action selector="nextButtonPersonalInfo:" destination="-1" eventType="touchUpInside" id="L5u-2f-Bi9"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DsZ-UV-Wve" customClass="VCButton">
-                    <rect key="frame" x="92" y="291" width="137" height="30"/>
-                    <state key="normal" title="CHOOSE EXISTING">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ris-86-hAd" customClass="VCButton">
+                    <rect key="frame" x="75" y="269" width="189" height="30"/>
+                    <state key="normal" title="TAKE OR CHOOSE PHOTO">
                         <color key="titleColor" red="0.35686274509999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="onboardingChooseExistingPhoto:" destination="-1" eventType="touchUpInside" id="7t5-TU-9sr"/>
+                        <action selector="onboardingTakePhoto:" destination="-1" eventType="touchUpInside" id="3qD-UG-A07"/>
                     </connections>
                 </button>
             </subviews>

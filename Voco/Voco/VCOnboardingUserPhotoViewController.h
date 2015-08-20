@@ -10,12 +10,5 @@
 #import "VCOnboardingChildViewController.h"
 
 @interface VCOnboardingUserPhotoViewController : VCOnboardingChildViewController
-@property (strong, nonatomic) IBOutlet UIImageView *onboardingUserImage;
-
-
-
-- (IBAction)onboardingTakePhoto:(id)sender;
-- (IBAction)onboardingChooseExistingPhoto:(id)sender;
-- (IBAction)nextButtonPersonalInfo:(id)sender;
 
 @end
