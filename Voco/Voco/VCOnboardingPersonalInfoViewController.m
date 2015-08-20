@@ -6,6 +6,10 @@
 //  Copyright (c) 2015 Voco. All rights reserved.
 //
 
+#define kFullNameField 1
+#define kPhoneNumberField 2
+#define kWorkEmailField 3
+
 #import "VCOnboardingPersonalInfoViewController.h"
 
 @interface VCOnboardingPersonalInfoViewController ()
@@ -60,4 +64,20 @@
     [self.delegate VCOnboardingChildViewController:self didSetValues:values];
     [self.delegate VCOnboardingChildViewControllerDidFinish:self];
 }
+
+- (IBAction)didEndOnExit:(id)sender {
+    UITextField * textField = sender;
+    switch (textField.tag) {
+        case kFullNameField:
+            
+            break;
+            
+        default:
+            break;
+    }
+    [sender resignFirstResponder];
+    
+}
+
+
 @end
