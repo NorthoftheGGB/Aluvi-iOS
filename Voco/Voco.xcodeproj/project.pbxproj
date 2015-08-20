@@ -1992,6 +1992,8 @@
 				F473F000194A498E00D8C900 /* VCLabel.m */,
 				4F9ECEC719663B1F00AD4229 /* VCLabelBold.h */,
 				4F9ECEC819663B1F00AD4229 /* VCLabelBold.m */,
+				369992C31B82DA6C00F47C5E /* VCLabelExtraBold.h */,
+				369992C41B82DA6C00F47C5E /* VCLabelExtraBold.m */,
 				367795601B7D4FC6005D45BE /* VCButtonSmall.h */,
 				367795611B7D4FC6005D45BE /* VCButtonSmall.m */,
 				4FE641FC194170F50059BED1 /* VCButton.h */,
@@ -2000,8 +2002,6 @@
 				4FE641DF194162360059BED1 /* VCButtonBold.m */,
 				36FA80801B7D61AD00C65DF2 /* VCFancyButton.h */,
 				36FA80811B7D61AD00C65DF2 /* VCFancyButton.m */,
-				369992C31B82DA6C00F47C5E /* VCLabelExtraBold.h */,
-				369992C41B82DA6C00F47C5E /* VCLabelExtraBold.m */,
 			);
 			name = "UI Elements";
 			sourceTree = "<group>";
