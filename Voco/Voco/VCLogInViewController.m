@@ -28,7 +28,9 @@
 #define kPhoneFieldTag 1
 #define kPasswordFieldTag 2
 
+
 @interface VCLogInViewController ()
+
 @property (weak, nonatomic) IBOutlet VCTextField *emailTextField;
 @property (weak, nonatomic) IBOutlet VCTextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet VCButtonBold *logInButton;
@@ -52,6 +54,8 @@
 @end
 
 @implementation VCLogInViewController
+
+@dynamic delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -301,6 +305,11 @@
     
 #if 1
     
+    NSDictionary * values = @{
+                              EmailValueKey : _emailTextField.text,
+                              PasswordValueKey : _passwordTextField
+                              };
+    [self.delegate VCOnboardingChildViewController:self didSetValues:values];
     [self.delegate VCOnboardingChildViewControllerDidFinish:self];
 
 #else

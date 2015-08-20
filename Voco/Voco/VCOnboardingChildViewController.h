@@ -13,7 +13,7 @@
 @protocol VCOnboardingChildViewControllerDelegate <NSObject>
 
 - (void) VCOnboardingChildViewControllerDidFinish: (VCOnboardingChildViewController*) onboardingChildViewController;
-
+- (void) VCOnboardingChildViewController: (VCOnboardingChildViewController *) onboardingChildViewController didSetValues:(NSDictionary *) values;
 @end
 
 @interface VCOnboardingChildViewController : UIViewController

@@ -20,8 +20,10 @@
 @property (strong, nonatomic) UIPageViewController *pageController;
 @property (strong, nonatomic) NSArray * viewControllers;
 
-@property (strong, nonatomic) Route * route;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property (strong, nonatomic) NSMutableDictionary * values;
+@property (strong, nonatomic) Route * route;
 
 @end
 
@@ -31,6 +33,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _values = [NSMutableDictionary dictionary];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -89,6 +93,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) VCOnboardingChildViewController:(VCOnboardingChildViewController *)onboardingChildViewController didSetValues:(NSDictionary *)values {
+    [_values setValuesForKeysWithDictionary:values];
 }
 
 - (void) VCOnboardingChildViewControllerDidFinish: (VCOnboardingChildViewController*) onboardingChildViewController {
