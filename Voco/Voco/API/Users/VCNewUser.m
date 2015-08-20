@@ -19,7 +19,8 @@
                                                   @"email" : @"email",
                                                   @"password" : @"password",
                                                   @"phone" : @"phone",
-                                                  @"referral_code" : @"referralCode"
+                                                  @"referral_code" : @"referralCode",
+                                                  @"driver" : @"driver"
                                                   }];
     return mapping;
     

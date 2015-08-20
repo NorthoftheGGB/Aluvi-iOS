@@ -17,6 +17,7 @@
 #import "VCDriverApi.h"
 #import "VCCommuteManager.h"
 #import "Car.h"
+#import "VCNotifications.h"
 
 NSString *const VCUserStateDriverStateKeyPath = @"driverState";
 
@@ -66,40 +67,6 @@ static VCUserStateManager *sharedSingleton;
 }
 
 
-/*
-- (void) setUnderwayFareId:(NSNumber *)rideId {
-    _underwayFareId = rideId;
-    NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:_underwayFareId forKey:kRideIdKey];
-    [userDefaults synchronize];
-    
-}
- */
-- (void) setRideProcessState:(NSString *)rideProcessState {
-    _rideProcessState = rideProcessState;
-    NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:_rideProcessState forKey:kRideProcessStateKey];
-    [userDefaults synchronize];
-}
-- (void) setDriveProcessState:(NSString *)driveProcessState {
-    _driveProcessState = driveProcessState;
-    NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:_driveProcessState forKey:kDriveProcessStateKey];
-    [userDefaults synchronize];
-}
-- (void) setRiderState:(NSString *) __riderState {
-    _riderState = __riderState;
-    NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:self.riderState forKey:kRiderStateKey];
-    [userDefaults synchronize];
-}
-- (void) setDriverState:(NSString *) __driverState {
-    _driverState = __driverState;
-    NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:self.driverState forKey:kDriverStateKey];
-    [userDefaults synchronize];
-}
-
 - (void) setProfile:(VCProfile *)profile {
     _profile = profile;
     [self saveProfile];
@@ -111,38 +78,84 @@ static VCUserStateManager *sharedSingleton;
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (void) loginWithEmail:(NSString*) phone
+- (void) loginWithEmail:(NSString*) email
                password: (NSString *) password
                 success:(void ( ^ ) () )success
                 failure:(void ( ^ ) (RKObjectRequestOperation *operation, NSError *error) )failure {
     
-    [VCUsersApi login:[RKObjectManager sharedManager] email:phone password:password
+    [VCUsersApi login:[RKObjectManager sharedManager] email:email password:password
               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                   VCLoginResponse * loginResponse = mappingResult.firstObject;
-                  self.riderState = loginResponse.riderState;
-                  if(loginResponse.driverState != nil){
-                      self.driverState = loginResponse.driverState;
-                  }
+                  
+                  [self setLoggedIn:loginResponse];
+                  [[VCDebug sharedInstance] apiLog:@"API: Login success"];
+                  [[VCDebug sharedInstance] setLoggedInUserIdentifier: email];
+                  
                   
                   [[VCCommuteManager instance] loadFromServer];
                   
-                  //TODO refactor to utilize enqueueBatchOfObjectRequestOperations:progress:completion:
-                  [VCDevicesApi updateUserWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                      
-                      [[VCUserStateManager instance] refreshProfileWithCompletion:^{
-                          success();
-                      } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                          failure(operation, error);
-                      }];
-                      
-                  } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                      failure(operation, error);
-                  }];
+                  success();
                   
               } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                   failure(operation, error);
               }];
     
+}
+
+- (void) setLoggedIn:(VCLoginResponse *) loginResponse {
+    
+    [VCApi setApiToken: loginResponse.token];
+    self.riderState = loginResponse.riderState;
+    if(loginResponse.driverState != nil){
+        self.driverState = loginResponse.driverState;
+    }
+    
+    //TODO refactor to utilize enqueueBatchOfObjectRequestOperations:progress:completion:
+    [VCDevicesApi updateUserWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        // can continue even with error
+        // failure(operation, error);
+    }];
+    
+    [[VCUserStateManager instance] refreshProfileWithCompletion:^{
+        [VCNotifications profileUpdated];
+        //success();
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        // can continue even with error
+        //failure(operation, error);
+    }];
+}
+
+- (void) createUser:( RKObjectManager *) objectManager
+          firstName:(NSString*) firstName
+           lastName:(NSString*) lastName
+              email:(NSString*) email
+           password:(NSString*) password
+              phone:(NSString*) phone
+       referralCode:(NSString*) referralCode
+             driver:(NSNumber*) driver
+            success:(void ( ^ ) () )success
+            failure:(void ( ^ ) ( NSString* error))failure {
+
+    [VCUsersApi createUser:objectManager firstName:firstName lastName:lastName email:email password:password phone:phone referralCode:referralCode driver:driver success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        
+        VCLoginResponse * loginResponse = mappingResult.firstObject;
+        if(loginResponse == nil){
+            failure(@"Problem creating account.  Please try again");
+            return;
+        }
+        
+        [self setLoggedIn:loginResponse];
+        [[VCDebug sharedInstance] apiLog:@"API: Login success"];
+        [[VCDebug sharedInstance] setLoggedInUserIdentifier: email];
+        success();
+        
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [WRUtilities criticalError:error];
+    }];
+    
+
 }
 
 - (void) logoutWithCompletion: (void ( ^ ) () )success {

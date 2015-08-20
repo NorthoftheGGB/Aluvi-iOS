@@ -51,10 +51,21 @@ NSString *const VCUserStateDriverStateKeyPath;
 
 + (VCUserStateManager *) instance;
 
-- (void) loginWithEmail:(NSString*) phone
+- (void) loginWithEmail:(NSString*) email
                password: (NSString *) password
                 success:(void ( ^ ) () )success
                 failure:(void ( ^ ) (RKObjectRequestOperation *operation, NSError *error) )failure;
+- (void) createUser:( RKObjectManager *) objectManager
+          firstName:(NSString*) firstName
+           lastName:(NSString*) lastName
+              email:(NSString*) email
+           password:(NSString*) password
+              phone:(NSString*) phone
+       referralCode:(NSString*) referralCode
+             driver:(NSNumber*) driver
+            success:(void ( ^ ) () )success
+            failure:(void ( ^ ) ( NSString* error))failure;
+
 - (void) logoutWithCompletion: (void ( ^ ) () )success;
 - (void) finalizeLogout;
 - (void) synchronizeUserState;

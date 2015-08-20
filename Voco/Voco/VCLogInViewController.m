@@ -307,7 +307,7 @@
     
     NSDictionary * values = @{
                               EmailValueKey : _emailTextField.text,
-                              PasswordValueKey : _passwordTextField
+                              PasswordValueKey : _passwordTextField.text
                               };
     [self.delegate VCOnboardingChildViewController:self didSetValues:values];
     [self.delegate VCOnboardingChildViewControllerDidFinish:self];

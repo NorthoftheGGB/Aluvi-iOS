@@ -49,10 +49,9 @@
         RKRequestDescriptor *newUserRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:newUserRequestMapping objectClass:[VCNewUser class] rootKeyPath:nil method:RKRequestMethodPOST];
         [objectManager addRequestDescriptor:newUserRequestDescriptor];
     }
-        
+    
     {
-        RKResponseDescriptor * newUserResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping
-                                                                                                                mappingForClass:[NSObject class]]
+        RKResponseDescriptor * newUserResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[VCLoginResponse getMapping]
                                                                                                         method:RKRequestMethodPOST
                                                                                                    pathPattern:API_USERS
                                                                                                        keyPath:nil
@@ -69,29 +68,29 @@
     
     {
         RKResponseDescriptor * forgotPasswordResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
-                                                                                                           method:RKRequestMethodPOST
-                                                                                                      pathPattern:API_FORGOT_PASSWORD
-                                                                                                          keyPath:nil
-                                                                                                      statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+                                                                                                               method:RKRequestMethodPOST
+                                                                                                          pathPattern:API_FORGOT_PASSWORD
+                                                                                                              keyPath:nil
+                                                                                                          statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:forgotPasswordResponseDescriptor];
     }
-        
+    
     {
         RKRequestDescriptor * driverInterestedRequestDescriptor =
         [RKRequestDescriptor requestDescriptorWithMapping:[[VCDriverInterestedRequest getMapping] inverseMapping]
-                                          objectClass:[VCDriverInterestedRequest class]
-                                          rootKeyPath:nil
-                                               method:RKRequestMethodPOST];
+                                              objectClass:[VCDriverInterestedRequest class]
+                                              rootKeyPath:nil
+                                                   method:RKRequestMethodPOST];
         [objectManager addRequestDescriptor:driverInterestedRequestDescriptor];
     }
-        
+    
     {
         RKResponseDescriptor * driverInterestedResponseDescriptor =
         [RKResponseDescriptor responseDescriptorWithMapping:[VCDriverStateResponse getMapping]
-                                                 method:RKRequestMethodPOST
-                                            pathPattern:API_DRIVER_INTERESTED
-                                                keyPath:nil
-                                            statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+                                                     method:RKRequestMethodPOST
+                                                pathPattern:API_DRIVER_INTERESTED
+                                                    keyPath:nil
+                                                statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:driverInterestedResponseDescriptor];
     }
     
@@ -147,12 +146,7 @@
     
     [objectManager postObject:nil path:API_LOGIN parameters:@{ @"email" : email, @"password" : password }
                       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                          [[VCDebug sharedInstance] apiLog:@"API: Login success"];
                           
-                          [[VCDebug sharedInstance] setLoggedInUserIdentifier: email];
-                          
-                          VCLoginResponse * tokenResponse = mappingResult.firstObject;
-                          [VCApi setApiToken: tokenResponse.token];
                           
                           success(operation, mappingResult);
                       }
@@ -168,8 +162,9 @@
               email:(NSString*) email
            password:(NSString*) password
               phone:(NSString*) phone
-            
        referralCode:(NSString*) referralCode
+             driver:(NSNumber*) driver
+
             success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
             failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     
@@ -181,6 +176,7 @@
     newUser.password = password;
     newUser.phone = phone;
     newUser.referralCode = referralCode;
+    newUser.driver = driver;
     [objectManager postObject:newUser path:API_USERS parameters:nil success:success failure:failure];
 }
 
@@ -291,4 +287,31 @@
     
 }
 
-@end
+
++ (void) updateProfileImage:(UIImage *)image success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                    failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+    NSMutableURLRequest *request =
+    [[RKObjectManager sharedManager] multipartFormRequestWithObject:nil
+                                                             method:RKRequestMethodPOST
+                                                               path:API_USER_PROFILE
+                                                         parameters:nil
+                                          constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+                                              [formData appendPartWithFileData:UIImageJPEGRepresentation(image, .9)
+                                                                          name:@"image"
+                                                                      fileName:@"image.jpg"
+                                                                      mimeType:@"image/jpg"];
+                                          }];
+    
+    RKObjectRequestOperation *operation = [[RKObjectManager sharedManager]
+                                           objectRequestOperationWithRequest:request
+                                           success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                               success(operation, mappingResult);
+                                               
+                                           } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                               failure(operation, error);
+                                           }];
+    [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation]; // NOTE: Must be enqueued rather than started
+    
+}
+    
+    @end

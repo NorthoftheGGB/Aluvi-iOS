@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+#define EmailValueKey @"EmailValueKey"
+#define PasswordValueKey @"PasswordValueKey"
+#define RouteObjectValueKey @"RouteObjectValueKey"
+#define ProfileImageValueKey @"ProfileImageValueKey"
+#define FirstNameValueKey @"FirstNameValueKey"
+#define LastNameValueKey @"LastNameValueKey"
+#define PhoneNumberValueKey @"PhoneNumberValueKey"
+#define WorkEmailValueKey @"WorkEmailValueKey"
+#define DriverValueKey @"DriverValueKey"
+
+
 @class VCOnboardingChildViewController;
 
 @protocol VCOnboardingChildViewControllerDelegate <NSObject>

@@ -7,15 +7,21 @@
 //
 
 #import "VCOnboardingViewController.h"
+#import "VCUserStateManager.h"
+#import "VCInterfaceManager.h"
 #import "VCLogInViewController.h"
 #import "VCOnboardingChildViewController.h"
 #import "VCOnboardingSetRouteViewController.h"
 #import "VCOnboardingUserPhotoViewController.h"
 #import "VCOnboardingPersonalInfoViewController.h"
+#import "VCCommuteManager.h"
 #import "Route.h"
 #import "VCStyle.h"
+#import "VCUsersApi.h"
+#import "VCNotifications.h"
 
-@interface VCOnboardingViewController ()<VCOnboardingChildViewControllerDelegate>
+
+@interface VCOnboardingViewController ()<VCOnboardingChildViewControllerDelegate, UIScrollViewDelegate>
 
 @property (strong, nonatomic) UIPageViewController *pageController;
 @property (strong, nonatomic) NSArray * viewControllers;
@@ -25,6 +31,8 @@
 @property (strong, nonatomic) NSMutableDictionary * values;
 @property (strong, nonatomic) Route * route;
 
+@property (nonatomic) BOOL locked;
+@property (nonatomic) NSInteger currentIndex;
 @end
 
 @implementation VCOnboardingViewController
@@ -35,6 +43,8 @@
     [super viewDidLoad];
     
     _values = [NSMutableDictionary dictionary];
+    _locked = YES;
+    _currentIndex = 0;
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -60,6 +70,7 @@
     [self.scrollView setContentSize:size];
     self.scrollView.contentInset=UIEdgeInsetsMake(0.0,0.0,0.0,0.0);
     self.scrollView.contentOffset = CGPointMake(0, 0);
+    self.scrollView.delegate = self;
     
     CGRect gradientFrame = frame;
     gradientFrame.size.width = size.width;
@@ -101,9 +112,70 @@
 
 - (void) VCOnboardingChildViewControllerDidFinish: (VCOnboardingChildViewController*) onboardingChildViewController {
     
-    CGRect visible = CGRectMake(320 * (onboardingChildViewController.index + 1), 0, 320, self.view.frame.size.height);
-    [self.scrollView scrollRectToVisible:visible animated:YES];
+    if(onboardingChildViewController.index + 1 == [_viewControllers count]){
+        [self registerUser];
+    } else {
+        NSInteger width = [[[UIApplication sharedApplication] delegate] window].frame.size.width;
+        CGRect visible = CGRectMake(320 * (onboardingChildViewController.index + 1), 0, width, self.view.frame.size.height);
+        _currentIndex = onboardingChildViewController.index + 1;
+        _locked = NO;
+        _scrollView.userInteractionEnabled = NO;
+        [self.scrollView scrollRectToVisible:visible animated:YES];
+    }
 }
 
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if(_locked) {
+        NSInteger width = [[[UIApplication sharedApplication] delegate] window].frame.size.width;
+        if (scrollView.contentOffset.x > _currentIndex * width ) {
+            [scrollView setContentOffset:CGPointMake(_currentIndex * width, 0)];
+        }
+    }
+}
+
+- (void) scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+    _locked = YES;
+    _scrollView.userInteractionEnabled = YES;
+}
+
+- (void) registerUser {
+    [[VCUserStateManager instance] createUser:[RKObjectManager sharedManager]
+                 firstName:[_values objectForKey:FirstNameValueKey]
+                  lastName:[_values objectForKey:LastNameValueKey]
+                     email:[_values objectForKey:EmailValueKey]
+                  password:[_values objectForKey:PasswordValueKey]
+                     phone:[_values objectForKey:PhoneNumberValueKey]
+              referralCode:nil
+                    driver:[_values objectForKey:DriverValueKey]
+                    success:^() {
+                  
+                
+                  [[VCInterfaceManager instance] showRiderInterface];
+                        
+                        
+                  // User created!  we can send in the route in the background
+                  [[VCCommuteManager instance] storeCommuterSettings:_route success:^{
+                      
+                  } failure:^(NSString *errorMessage) {
+                      [UIAlertView showWithTitle:@"Woops" message:@"We had a problem saving your route to the server" cancelButtonTitle:@"Hmm" otherButtonTitles:nil tapBlock:nil];
+                  }];
+                  
+                  // Also attempt to send profile image in background
+                  [VCUsersApi updateProfileImage:[_values objectForKey:ProfileImageValueKey] success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                      [VCUsersApi getProfile:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                          [VCNotifications profileUpdated];
+                      } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                      }];
+                  } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                      [WRUtilities criticalError:error];
+                  }];
+                  
+                  
+              } failure:^(NSString * errorString) {
+                  [UIAlertView showWithTitle:@"Problem" message:errorString cancelButtonTitle:@"Ok I will" otherButtonTitles:nil tapBlock:nil];
+              }];
+    
+}
 
 @end

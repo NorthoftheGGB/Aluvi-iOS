@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSString * password;
 @property (nonatomic, strong) NSString * phone;
 @property (nonatomic, strong) NSString * referralCode;
+@property (nonatomic, strong) NSNumber * driver;
 
 + (RKObjectMapping *)getMapping;
 

@@ -59,6 +59,11 @@
 		36049F9F1B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36049F9D1B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.m */; };
 		36049FA01B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36049F9D1B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.m */; };
 		36049FA11B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36049F9D1B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.m */; };
+		362A55A61B85B4A10090FF1B /* logo_in.png in Resources */ = {isa = PBXBuildFile; fileRef = 362A55A51B85B4A10090FF1B /* logo_in.png */; };
+		362A55A71B85B4A10090FF1B /* logo_in.png in Resources */ = {isa = PBXBuildFile; fileRef = 362A55A51B85B4A10090FF1B /* logo_in.png */; };
+		362A55A81B85B4A10090FF1B /* logo_in.png in Resources */ = {isa = PBXBuildFile; fileRef = 362A55A51B85B4A10090FF1B /* logo_in.png */; };
+		362A55A91B85B4A10090FF1B /* logo_in.png in Resources */ = {isa = PBXBuildFile; fileRef = 362A55A51B85B4A10090FF1B /* logo_in.png */; };
+		362A55AA1B85B4A10090FF1B /* logo_in.png in Resources */ = {isa = PBXBuildFile; fileRef = 362A55A51B85B4A10090FF1B /* logo_in.png */; };
 		36638D751B658A5A004EDB09 /* VCRideRequestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D741B658A5A004EDB09 /* VCRideRequestView.xib */; };
 		36638D791B658A5A004EDB09 /* VCRideRequestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D741B658A5A004EDB09 /* VCRideRequestView.xib */; };
 		36638D7B1B658A5A004EDB09 /* VCRideRequestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D741B658A5A004EDB09 /* VCRideRequestView.xib */; };
@@ -1166,6 +1171,7 @@
 		36049F971B815EFD0090ECAE /* VCOnboardingPersonalInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCOnboardingPersonalInfoViewController.xib; sourceTree = "<group>"; };
 		36049F9C1B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCOnboardingPersonalInfoViewController.h; sourceTree = "<group>"; };
 		36049F9D1B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCOnboardingPersonalInfoViewController.m; sourceTree = "<group>"; };
+		362A55A51B85B4A10090FF1B /* logo_in.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_in.png; sourceTree = "<group>"; };
 		36638D741B658A5A004EDB09 /* VCRideRequestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCRideRequestView.xib; sourceTree = "<group>"; };
 		36638D7C1B659CAE004EDB09 /* VCDriverTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCDriverTicketView.xib; sourceTree = "<group>"; };
 		36638D841B65A988004EDB09 /* VCRiderTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCRiderTicketView.xib; sourceTree = "<group>"; };
@@ -1903,6 +1909,7 @@
 		4FE641E1194168E80059BED1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				362A55A51B85B4A10090FF1B /* logo_in.png */,
 				36FA808B1B7D8FFC00C65DF2 /* menu-backhome-icon@2x.png */,
 				36E48E891B7B01F10034DFEB /* Default.png */,
 				36E48E7F1B7B01100034DFEB /* Default@3x.png */,
@@ -2785,6 +2792,7 @@
 				369992D41B82E57A00F47C5E /* Icon-40.png in Resources */,
 				841648841B64A47D00CD20AC /* directions-button@2x.png in Resources */,
 				36000CAD1B72D5A2008E84AE /* VCCarInfoViewController.xib in Resources */,
+				362A55A91B85B4A10090FF1B /* logo_in.png in Resources */,
 				841648881B64A47D00CD20AC /* VCLeftMenuViewController.xib in Resources */,
 				8416488A1B64A47D00CD20AC /* ride-bounds-button-selected@2x.png in Resources */,
 				8416488B1B64A47D00CD20AC /* VCMenuUserInfoTableViewCell.xib in Resources */,
@@ -2838,6 +2846,7 @@
 				841649771B658F4900CD20AC /* VCSubMenuItemTableViewCell.xib in Resources */,
 				841649781B658F4900CD20AC /* map_pin_fill-512.png in Resources */,
 				841649791B658F4900CD20AC /* driver-call-hud-icon-select@2x.png in Resources */,
+				362A55A71B85B4A10090FF1B /* logo_in.png in Resources */,
 				84B30A5F1B82E54A0095F31D /* VCOnboardingViewController.xib in Resources */,
 				8416497C1B658F4900CD20AC /* VCMenuItemModeTableViewCell.xib in Resources */,
 				841649801B658F4900CD20AC /* temp-user-profile-icon@2x.png in Resources */,
@@ -2966,6 +2975,7 @@
 				369992D51B82E57A00F47C5E /* Icon-40.png in Resources */,
 				84F2230A1B82611B00E5F7B7 /* directions-button@2x.png in Resources */,
 				84F2230B1B82611B00E5F7B7 /* VCCarInfoViewController.xib in Resources */,
+				362A55AA1B85B4A10090FF1B /* logo_in.png in Resources */,
 				84F2230C1B82611B00E5F7B7 /* VCLeftMenuViewController.xib in Resources */,
 				84F2230D1B82611B00E5F7B7 /* ride-bounds-button-selected@2x.png in Resources */,
 				84F2230E1B82611B00E5F7B7 /* VCMenuUserInfoTableViewCell.xib in Resources */,
@@ -3019,6 +3029,7 @@
 				4F184A271991E156006EA959 /* VCSubMenuItemTableViewCell.xib in Resources */,
 				F4C6B268197F06B100F6C10B /* map_pin_fill-512.png in Resources */,
 				369DBC141B6D228E00449CB4 /* test.jpg in Resources */,
+				362A55A61B85B4A10090FF1B /* logo_in.png in Resources */,
 				84B30A5E1B82E54A0095F31D /* VCOnboardingViewController.xib in Resources */,
 				4F1849EC198F67A4006EA959 /* driver-call-hud-icon-select@2x.png in Resources */,
 				4F184A411992E41F006EA959 /* VCMenuItemModeTableViewCell.xib in Resources */,
@@ -3077,6 +3088,7 @@
 				F4D8FE9E19B1745A00BC0B69 /* call-button-select@2x.png in Resources */,
 				F4D8FE9F19B1745A00BC0B69 /* call-button@2x.png in Resources */,
 				36E48E691B7AA6920034DFEB /* nav_bg.png in Resources */,
+				362A55A81B85B4A10090FF1B /* logo_in.png in Resources */,
 				36000C961B72B295008E84AE /* VCReceiptViewController.xib in Resources */,
 				F4D8FEA119B1745A00BC0B69 /* directions-button-selected@2x.png in Resources */,
 				369DBC1B1B6D22F800449CB4 /* test.jpg in Resources */,

@@ -25,6 +25,7 @@
            password:(NSString*) password
               phone:(NSString*) phone
        referralCode:(NSString*) referralCode
+             driver:(NSNumber*) driver
             success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
             failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
@@ -65,5 +66,8 @@
                  cardToken: (NSString *) token
                    success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                    failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
+
++ (void) updateProfileImage:(UIImage *)image success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                    failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
 @end
