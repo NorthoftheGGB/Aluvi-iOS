@@ -55,6 +55,8 @@
     CGSize size = CGSizeMake(640, 750);
     _profileImage = [img resizedImageToFitInSize:size scaleIfSmaller:YES];
     _onboardingUserImage.image = _profileImage;
+    _onboardingUserImage.layer.cornerRadius = _onboardingUserImage.frame.size.width / 2;
+    _onboardingUserImage.clipsToBounds = YES;
 }
 
 -(void)imageSelectionCancelled {
