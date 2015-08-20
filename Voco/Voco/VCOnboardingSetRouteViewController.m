@@ -92,12 +92,12 @@
 
 - (IBAction)didTapOnboardingPickupPointButton:(id)sender {
     _editLocationType = kHomeType;
-    [self transitionToTicketViewController: kHomeType];
+    [self transitionToTicketViewController: _editLocationType];
 }
 
 - (IBAction)didTapOnboardingWorkLocationButton:(id)sender {
     _editLocationType = kWorkType;
-    [self transitionToTicketViewController: kWorkType];
+    [self transitionToTicketViewController: _editLocationType];
 }
 
 - (IBAction)didTapNextButtonUserPhoto:(id)sender {
@@ -137,7 +137,9 @@
         frame.origin.y = 0;
         _buttonsView.frame = frame;
     } completion:^(BOOL finished) {
-        
+        [_ticketViewController.view removeFromSuperview];
+        _ticketViewController = nil;
+
     }];
 }
 
@@ -147,7 +149,8 @@
         frame.origin.y = 0;
         _buttonsView.frame = frame;
     } completion:^(BOOL finished) {
-        
+        [_ticketViewController.view removeFromSuperview];
+        _ticketViewController = nil;
     }];
 }
 

@@ -110,9 +110,6 @@
     NSString * build = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
     _versionLabel.text = [NSString stringWithFormat:@"v%@b%@", version, build];
     
-    
-
-    
 }
 
 - (void) didTapHamburger {
