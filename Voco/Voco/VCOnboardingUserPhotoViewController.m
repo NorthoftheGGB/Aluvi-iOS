@@ -18,6 +18,7 @@
 - (IBAction)onboardingChooseExistingPhoto:(id)sender {
 }
 - (IBAction)nextButtonPersonalInfo:(id)sender {
+    [self.delegate VCOnboardingChildViewControllerDidFinish:self];
 }
 
 @end

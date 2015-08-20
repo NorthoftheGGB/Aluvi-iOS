@@ -1,55 +1,44 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCOnboardingPersonalInfoViewController">
             <connections>
-                <outlet property="OnboardingFullNameTextField" destination="5Ke-kv-GXX" id="0rh-CR-dht"/>
-                <outlet property="onboardingPhoneNumberTextField" destination="czv-2f-UDa" id="gVu-2Z-Y4d"/>
-                <outlet property="onboardingWorkEmailTextField" destination="c0M-cU-OAC" id="kNf-90-gDM"/>
-                <outlet property="view" destination="iN0-l3-epB" id="KYI-GE-Lia"/>
+                <outlet property="onboardingFullNameTextField" destination="QLa-Hu-tTJ" id="HWL-iA-EUg"/>
+                <outlet property="onboardingPhoneNumberTextField" destination="X06-Pu-wDo" id="AL0-0h-KCU"/>
+                <outlet property="onboardingWorkEmailTextField" destination="3EK-wi-p25" id="Tqc-LW-oKj"/>
+                <outlet property="view" destination="sne-h3-hEL" id="REg-Gf-uZ6"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="sne-h3-hEL">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="FULL NAME" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Ke-kv-GXX">
-                    <rect key="frame" x="46" y="82" width="230" height="44"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="FULL NAME" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QLa-Hu-tTJ">
+                    <rect key="frame" x="46" y="74" width="230" height="44"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="textColor" red="0.30588235289999999" green="0.63921568630000003" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
-                        <action selector="OnboardingFullNameTextField:" destination="-1" eventType="editingDidEndOnExit" id="ExB-uT-hIV"/>
+                        <action selector="OnboardingFullNameTextField:" destination="-1" eventType="editingDidEndOnExit" id="eHA-sF-tt5"/>
                     </connections>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="PHONE #" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="czv-2f-UDa">
-                    <rect key="frame" x="45" y="145" width="230" height="44"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="WORK EMAIL" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3EK-wi-p25">
+                    <rect key="frame" x="45" y="203" width="230" height="44"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="textColor" red="0.30588235289999999" green="0.63921568630000003" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                     <connections>
-                        <action selector="onboardingPhoneNumberTextField:" destination="-1" eventType="editingDidEndOnExit" id="9v8-uD-9G1"/>
+                        <action selector="onboardingWorkEmailTextField:" destination="-1" eventType="editingDidEndOnExit" id="zgA-i9-02B"/>
                     </connections>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="WORK EMAIL" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c0M-cU-OAC">
-                    <rect key="frame" x="45" y="211" width="230" height="44"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <color key="textColor" red="0.30588235289999999" green="0.63921568630000003" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                    <connections>
-                        <action selector="onboardingWorkEmailTextField:" destination="-1" eventType="editingDidEndOnExit" id="4kB-3f-9Vz"/>
-                    </connections>
-                </textField>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gYg-Sj-7p7" customClass="VCButtonBold">
-                    <rect key="frame" x="0.0" y="510" width="321" height="58"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y3l-La-QIL" customClass="VCButtonBold">
+                    <rect key="frame" x="0.0" y="502" width="321" height="58"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Short Tutorial &gt;">
@@ -63,15 +52,26 @@
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
-                        <action selector="nextButtonTutorial:" destination="-1" eventType="touchUpInside" id="Jpp-0Z-yeH"/>
+                        <action selector="nextButtonTutorial:" destination="-1" eventType="touchUpInside" id="rUZ-dE-iqL"/>
                     </connections>
                 </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="PHONE #" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X06-Pu-wDo">
+                    <rect key="frame" x="45" y="137" width="230" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" red="0.30588235289999999" green="0.63921568630000003" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <action selector="onboardingPhoneNumberTextField:" destination="-1" eventType="editingDidEndOnExit" id="vJb-dp-vDC"/>
+                    </connections>
+                </textField>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="376" y="351"/>
         </view>
     </objects>
     <resources>
-        <image name="profile-button.png" width="320" height="568"/>
+        <image name="profile-button.png" width="61" height="84"/>
     </resources>
 </document>

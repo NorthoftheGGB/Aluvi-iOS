@@ -8,8 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class VCOnboardingChildViewController;
+
+@protocol VCOnboardingChildViewControllerDelegate <NSObject>
+
+- (void) VCOnboardingChildViewControllerDidFinish: (VCOnboardingChildViewController*) onboardingChildViewController;
+
+@end
+
 @interface VCOnboardingChildViewController : UIViewController
 
+@property (weak, nonatomic) id<VCOnboardingChildViewControllerDelegate> delegate;
 @property (assign, nonatomic) NSInteger index;
 
 @end

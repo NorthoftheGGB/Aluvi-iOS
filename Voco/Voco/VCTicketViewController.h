@@ -24,7 +24,7 @@
 @property (nonatomic) BOOL isFinished;  // for KVO
 
 
-- (void) placeInEditLocationMode;
+- (void) placeInEditLocationMode: (NSInteger) editLocationType;
 - (void) placeInRouteMode;
 
 @end

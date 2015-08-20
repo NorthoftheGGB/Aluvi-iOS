@@ -1970,11 +1970,8 @@
 			isa = PBXGroup;
 			children = (
 				84B30A631B82E5C40095F31D /* Base */,
-				84B30A6B1B82E6A40095F31D /* Page View Controllers */,
+				84B30A6B1B82E6A40095F31D /* Onboarding View Controllers */,
 				36049F801B8146A30090ECAE /* Old Sign In */,
-				4FC758B319AA8C270093DBEA /* VCLogInViewController.h */,
-				4FC758B419AA8C270093DBEA /* VCLogInViewController.m */,
-				4FC758B519AA8C270093DBEA /* VCLogInViewController.xib */,
 				84B30A561B82E54A0095F31D /* VCOnboardingViewController.h */,
 				84B30A571B82E54A0095F31D /* VCOnboardingViewController.m */,
 				84B30A581B82E54A0095F31D /* VCOnboardingViewController.xib */,
@@ -2215,9 +2212,12 @@
 			name = Base;
 			sourceTree = "<group>";
 		};
-		84B30A6B1B82E6A40095F31D /* Page View Controllers */ = {
+		84B30A6B1B82E6A40095F31D /* Onboarding View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4FC758B319AA8C270093DBEA /* VCLogInViewController.h */,
+				4FC758B419AA8C270093DBEA /* VCLogInViewController.m */,
+				4FC758B519AA8C270093DBEA /* VCLogInViewController.xib */,
 				36049F811B8155EE0090ECAE /* VCOnboardingSetRouteViewController.h */,
 				36049F821B8155EE0090ECAE /* VCOnboardingSetRouteViewController.m */,
 				36049F871B8156370090ECAE /* VCOnboardingSetRouteViewController.xib */,
@@ -2228,7 +2228,7 @@
 				36049F9D1B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.m */,
 				36049F971B815EFD0090ECAE /* VCOnboardingPersonalInfoViewController.xib */,
 			);
-			name = "Page View Controllers";
+			name = "Onboarding View Controllers";
 			sourceTree = "<group>";
 		};
 		F45F7BE71935756000A94721 /* ViewControllers */ = {
@@ -4195,7 +4195,7 @@
 					"NIGHTLY=1",
 				);
 				INFOPLIST_FILE = "Aluvi Distribution copy-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "Aluvi Nightly";
 				PROVISIONING_PROFILE = "6c38d993-3252-4920-9a1a-229c5284342c";
 				WRAPPER_EXTENSION = app;
@@ -4224,7 +4224,7 @@
 					"NIGHTLY=1",
 				);
 				INFOPLIST_FILE = "Aluvi Distribution copy-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "Aluvi Nightly";
 				PROVISIONING_PROFILE = "6c38d993-3252-4920-9a1a-229c5284342c";
 				WRAPPER_EXTENSION = app;

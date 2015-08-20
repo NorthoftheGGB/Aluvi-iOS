@@ -1318,6 +1318,12 @@
 ///////////// Location Editing Machinery
 /////////////
 
+- (void) placeInEditLocationMode: (NSInteger) editLocationType {
+    _editLocationType = editLocationType;
+    [self placeInEditLocationMode];
+}
+
+
 - (void) placeInEditLocationMode {
     self.navigationController.navigationBarHidden = YES;
     [self clearMap];

@@ -23,12 +23,13 @@
 #import "VCOnBoardingViewController.h"
 #import "VCEmailTextField.h"
 #import "VCCodes.h"
+#import "VCOnboardingSetRouteViewController.h"
 
 #define kPhoneFieldTag 1
 #define kPasswordFieldTag 2
 
 @interface VCLogInViewController ()
-@property (weak, nonatomic) IBOutlet VCEmailTextField *emailTextField;
+@property (weak, nonatomic) IBOutlet VCTextField *emailTextField;
 @property (weak, nonatomic) IBOutlet VCTextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet VCButtonBold *logInButton;
 @property (weak, nonatomic) IBOutlet VCButtonBold *createAccountButton;
@@ -83,7 +84,11 @@
     [self.navigationController.view setBackgroundColor: [UIColor clearColor]];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-    
+
+#ifndef RELEASE
+    _emailTextField.text = @"gg@gg.com";
+    _passwordTextField.text = @"gg";
+#endif
 }
 
 
@@ -296,8 +301,7 @@
     
 #if 1
     
-    VCOnboardingViewController * vc = [[VCOnboardingViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];    
+    [self.delegate VCOnboardingChildViewControllerDidFinish:self];
 
 #else
     

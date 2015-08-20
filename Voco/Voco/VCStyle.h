@@ -17,6 +17,7 @@
 + (id) blueCGColor;
 
 + (NSArray *) gradientColors;
++ (CAGradientLayer *) gradientLayer: (CGRect) frame;
 
 + (UIColor *) greyColor;
 + (UIColor *) drkBlueColor;

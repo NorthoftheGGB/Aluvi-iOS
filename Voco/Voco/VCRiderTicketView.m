@@ -79,7 +79,7 @@
     _licensePlateLabel.text = ticket.car.licensePlate;
     _driverNameLabel.text = ticket.driver.fullName;
     
-    _peersLabel.text = [NSString stringWithFormat:@"%d Other Riders", [_riders count]];
+    _peersLabel.text = [NSString stringWithFormat:@"%lu Other Riders", (unsigned long)[_riders count]];
     
 }
 

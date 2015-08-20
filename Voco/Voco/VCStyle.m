@@ -31,6 +31,14 @@
     return @[[self greenCGColor], [self blueCGColor] ];
 }
 
++ (CAGradientLayer *) gradientLayer: (CGRect) frame {
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = frame;
+    gradient.colors = [VCStyle gradientColors];
+    gradient.startPoint = CGPointMake(0.0, 0.5);
+    gradient.endPoint = CGPointMake(1.0, 0.5);
+    return gradient;
+}
 
 + (UIColor *) greyColor{
     return [UIColor colorWithRed:.36 green:.40 blue:.40 alpha:1];

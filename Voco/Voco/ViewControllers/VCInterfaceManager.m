@@ -7,7 +7,7 @@
 //
 
 #import "VCInterfaceManager.h"
-#import "VCLogInViewController.h"
+#import "VCOnboardingViewController.h"
 #import "VCTicketViewController.h"
 #import "VCLeftMenuViewController.h"
 #import "IIViewDeckController.h"
@@ -47,14 +47,12 @@ static int mode;
 }
 
 - (void) showRiderSigninInterface {
-    VCLogInViewController * signInViewController = [[VCLogInViewController alloc] init];
-    UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:signInViewController];
-    /* [navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    [navigationController.navigationBar setShadowImage:[UIImage new]];*/
-    [navigationController.navigationBar setTranslucent:YES];
-    navigationController.navigationBar.hidden = NO;
-    //navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    [[UIApplication sharedApplication] delegate].window.rootViewController = navigationController;
+    VCOnboardingViewController * vc = [[VCOnboardingViewController alloc] init];
+    vc.view.frame = [[UIApplication sharedApplication] delegate].window.frame;
+    
+    [[UIApplication sharedApplication] delegate].window.rootViewController = vc;
+    [vc.view setNeedsLayout];
+
     deckController = nil;
     
     [self setMode: kOnBoardingMode];
