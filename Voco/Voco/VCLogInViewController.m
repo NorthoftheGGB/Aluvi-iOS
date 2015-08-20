@@ -10,29 +10,29 @@
 #import <MBProgressHUD.h>
 #import "VCUserStateManager.h"
 #import "VCInterfaceManager.h"
+#import "VCCommuteManager.h"
 #import "VCRiderApi.h"
 #import "VCTextField.h"
-#import "VCButtonStandardStyle.h"
+#import "VCButtonBold.h"
 #import "VCButton.h"
 #import "VCPasswordRecoveryViewController.h"
-#import "VCTermsOfServiceViewController.h"
 #import "VCNotifications.h"
 #import <QuartzCore/QuartzCore.h>
 #import "DTHTMLAttributedStringBuilder.h"
 #import "DTCoreTextConstants.h"
-#import "VCRiderOnBoardingViewController.h"
+#import "VCOnBoardingViewController.h"
 #import "VCEmailTextField.h"
 #import "VCCodes.h"
-#import "VCBetaRegisterViewController.h"
+#import "VCOnboardingSetRouteViewController.h"
 
 #define kPhoneFieldTag 1
 #define kPasswordFieldTag 2
 
 @interface VCLogInViewController ()
-@property (weak, nonatomic) IBOutlet VCEmailTextField *emailTextField;
+@property (weak, nonatomic) IBOutlet VCTextField *emailTextField;
 @property (weak, nonatomic) IBOutlet VCTextField *passwordTextField;
-@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *logInButton;
-@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *createAccountButton;
+@property (weak, nonatomic) IBOutlet VCButtonBold *logInButton;
+@property (weak, nonatomic) IBOutlet VCButtonBold *createAccountButton;
 
 @property (weak, nonatomic) IBOutlet UIButton *forgotPasswordButton;
 @property (weak, nonatomic) IBOutlet UIButton *modeToggleButton;
@@ -84,7 +84,11 @@
     [self.navigationController.view setBackgroundColor: [UIColor clearColor]];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-    
+
+#ifndef RELEASE
+    _emailTextField.text = @"gg@gg.com";
+    _passwordTextField.text = @"gg";
+#endif
 }
 
 
@@ -188,7 +192,7 @@
                                               
                                           } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                               
-                                              [_hud hide:YES];
+                                              _hud.hidden = YES;
                                               
                                               switch (operation.HTTPRequestOperation.response.statusCode) {
                                                   case 404:
@@ -281,29 +285,24 @@
 }
 
 - (void) completeLogin {
-    [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        
+    
+    [[VCCommuteManager instance] refreshTicketsWithSuccess:^{
         [_hud hide:YES];
         [[VCInterfaceManager instance] showRiderInterface];
         [VCNotifications scheduleUpdated];
-        
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [WRUtilities criticalError:error];
+
+    } failure:^{
         [_hud hide:YES];
-        
+
     }];
 }
 
 - (void) goToSignUp {
     
 #if 1
-    // Good to do, email is not in the system
-    VCRiderOnBoardingViewController * vc = [[VCRiderOnBoardingViewController alloc] init];
-    vc.desiredEmail = _emailTextField.text;
-    vc.desiredPassword = _passwordTextField.text;
-    vc.termsOfServiceString = _attributedString;
-    [self.navigationController pushViewController:vc animated:YES];
     
+    [self.delegate VCOnboardingChildViewControllerDidFinish:self];
+
 #else
     
     [UIAlertView showWithTitle:@"Confirmation Code"
@@ -361,8 +360,8 @@
 }
 
 - (void) registerOnline {
-    VCBetaRegisterViewController * vc = [[VCBetaRegisterViewController alloc] init];
-    [self.navigationController presentViewController:vc animated:YES completion:nil];
+    //VCBetaRegisterViewController * vc = [[VCBetaRegisterViewController alloc] init];
+    //[self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 
 
@@ -370,17 +369,6 @@
     VCPasswordRecoveryViewController * passwordRecoveryViewController = [[VCPasswordRecoveryViewController alloc] init];
     [self.navigationController pushViewController:passwordRecoveryViewController animated:YES];
     
-}
-
-- (IBAction)didTapTermsAndConditions:(id)sender {
-    
-    VCTermsOfServiceViewController * vc = [[VCTermsOfServiceViewController alloc] init];
-    if(_attributedString == nil){
-        // This probably won't still be nil by now, but just in case..
-        [self loadTermsOfService];
-    }
-    vc.termsOfServiceString = _attributedString;
-    [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 
 - (IBAction)didTapModeToggleButton:(id)sender {

@@ -7,11 +7,12 @@
 //
 
 #import "VCMenuItemTableViewCell.h"
+#import "VCStyle.h"
 
 @interface VCMenuItemTableViewCell ()
 
 
-
+@property (nonatomic) BOOL disabled;
 @end
 
 @implementation VCMenuItemTableViewCell
@@ -24,16 +25,34 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
+    
 
-    // Configure the view for the selected state
 }
 
+- (void) setDisabled: (BOOL) disabled {
+    if(disabled) {
+        self.contentView.alpha = .5;
+        _disabled = YES;
+    } else {
+        self.contentView.alpha = 1;
+        _disabled = NO;
+    }
+    
+}
+
+- (BOOL) isDisabled {
+    return _disabled;
+}
+
+
 - (void) select {
-    self.backgroundImageView.image = [UIImage imageNamed:@"menu-item-bg-select"];
+    [_menuItemLabel setFont:[VCStyle boldFont]];
+    self.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:.25];
 }
 
 - (void) deselect {
-    self.backgroundImageView.image = [UIImage imageNamed:@"menu-item-bg"];
+    [_menuItemLabel setFont:[VCStyle regularFont]];
+    self.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0];
 }
 
 

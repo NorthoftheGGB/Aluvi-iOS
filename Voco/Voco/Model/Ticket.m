@@ -7,10 +7,12 @@
 //
 
 #import "Ticket.h"
+#import <RKPathMatcher.h>
 #import "Car.h"
 #import "Driver.h"
-#import "Fare.h"
-#import <RKPathMatcher.h>
+#import "Rider.h"
+#import "Payment.h"
+#import "Earning.h"
 #import "VCApi.h"
 #import "VCPushApi.h"
 
@@ -42,18 +44,25 @@
 @dynamic confirmed;
 @dynamic driving;
 @dynamic trip_id;
+@dynamic trip_state;
 @dynamic meetingPointLatitude;
 @dynamic meetingPointLongitude;
 @dynamic meetingPointPlaceName;
 @dynamic dropOffPointLatitude;
 @dynamic dropOffPointLongitude;
 @dynamic dropOffPointPlaceName;
-@dynamic hovFare;
 @dynamic fixedPrice;
 @dynamic direction;
 @dynamic returnTicketFetchRequest;
+@dynamic riders;
+@dynamic payment;
+@dynamic earning;
+@dynamic estimatedEarnings;
 
-+ (void)createMappings:(RKObjectManager *)objectManager{
+@synthesize polyline;
+@synthesize region;
+
++ (RKEntityMapping * )createMappings:(RKObjectManager *)objectManager{
     RKEntityMapping * entityMapping = [RKEntityMapping mappingForEntityForName:@"Ticket"
                                                           inManagedObjectStore: [VCCoreData managedObjectStore]];
     
@@ -77,6 +86,7 @@
                                                         @"destination_short_name" : @"destinationShortName",
                                                         @"driving" : @"driving",
                                                         @"trip_id" : @"trip_id",
+                                                        @"trip_state" : @"trip_state",
                                                         @"pickup_time" : @"pickupTime",
                                                         @"fixed_price" : @"fixedPrice",
                                                         @"direction" : @"direction"
@@ -86,28 +96,13 @@
     
     [entityMapping addRelationshipMappingWithSourceKeyPath:@"driver" mapping:[Driver createMappings:objectManager]];
     [entityMapping addRelationshipMappingWithSourceKeyPath:@"car" mapping:[Car createMappings:objectManager]];
+    [entityMapping addRelationshipMappingWithSourceKeyPath:@"riders" mapping:[Rider createMappings:objectManager]];
     
-    RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping
-                                                                                             method:RKRequestMethodGET
-                                                                                        pathPattern:API_GET_ACTIVE_TICKETS
-                                                                                            keyPath:nil
-                                                                                        statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:responseDescriptor];
+      
+    return entityMapping;
 }
 
 
-+ (Ticket *) ticketWithFareId: (NSNumber *) fareId{
-    NSFetchRequest * request = [[NSFetchRequest alloc] initWithEntityName:@"Ticket"];
-    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"fare_id = %@", fareId];
-    [request setPredicate:predicate];
-    NSError * error;
-    NSArray * rides = [[VCCoreData managedObjectContext] executeFetchRequest:request error:&error];
-    if(rides == nil){
-        [WRUtilities criticalError:error];
-        return nil;
-    }
-    return [rides objectAtIndex:0];
-}
 
 
 - (id) init{
@@ -142,6 +137,11 @@
     return [[CLLocation alloc] initWithLatitude:[self.dropOffPointLatitude doubleValue] longitude: [self.dropOffPointLongitude doubleValue] ];
 }
 
+- (CLLocationCoordinate2D) meetingPointCoordinate {
+    return CLLocationCoordinate2DMake([self.meetingPointLatitude doubleValue], [self.meetingPointLongitude doubleValue]);
+}
+
+
 - (Ticket *) returnTicket {
     NSArray * returnTicketResults = self.returnTicketFetchRequest;
     if(returnTicketResults == nil || [returnTicketResults count] < 1){
@@ -168,6 +168,14 @@
     }
     return ticketsForTrip;
 
+}
+
+- (BOOL) hasCachedRoute {
+    if(self.polyline != nil && self.region != nil && [self.polyline count] > 0){
+        return TRUE;
+    } else {
+        return FALSE;
+    }
 }
 
 

@@ -8,40 +8,19 @@
 //nothing to see here
 
 #import "VCLabelBold.h"
+#import "VCStyle.h"
 
 @implementation VCLabelBold
 
-@synthesize fontSize;
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        fontSize = [NSNumber numberWithInt:13];
-    }
-    return self;
-}
 
 
 - (void)awakeFromNib{
     
-    //rev 1.0
-    //UIFont *customFont = [UIFont fontWithName:@"KlinicSlab-Light" size:[fontSize intValue] ];
-    
-    //rev 2.0
-    UIFont *customFont = [UIFont fontWithName:@"HelveticaNeue-Medium" size:[fontSize intValue] ];
-    
-    [self setFont:customFont];
+    [self setFont:[VCStyle boldFont]];
     
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
+
 
 @end

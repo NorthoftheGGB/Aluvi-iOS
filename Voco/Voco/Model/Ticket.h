@@ -10,21 +10,31 @@
 #import <CoreData/CoreData.h>
 @import MapKit;
 #import "Transit.h"
+#import "MBRegion.h"
 
 // State
 #define kCreatedState @"created"
 #define kRequestedState @"requested"
 #define kScheduledState @"scheduled"
+#define kInProgressState @"started"
 #define kCommuteSchedulerFailedState @"commute_scheduler_failed"
 #define kDriverCancelledState @"driver_cancelled"
 #define kRiderCancelledState @"rider_cancelled"
 #define kCompleteState @"complete"
 #define kPaymentProblemState @"payment_problem"
 
+// Trip State
+#define kTripRequestedState @"requested"
+#define kTripFulfilledState @"fulfilled"
+#define kTripUnfulfilledState @"unfulfilled"
+#define kTripAbortedState @"aborted"
+#define kTripRescindedState @"rescinded"
+
+
 #define kRideRequestTypeCommuter @"commuter"
 
 
-@class Car, Driver, Fare;
+@class Car, Driver, Rider, Payment, Earning;
 
 @interface Ticket : Transit 
 @property (nonatomic, retain) NSNumber * ride_id;
@@ -52,18 +62,25 @@
 @property (nonatomic, retain) NSNumber * confirmed;
 @property (nonatomic, retain) NSNumber * driving;
 @property (nonatomic, retain) NSNumber * trip_id;
+@property (nonatomic, retain) NSString * trip_state;
 @property (nonatomic, retain) NSNumber * fixedPrice;
+@property (nonatomic, retain) NSNumber * estimatedEarnings;
 @property (nonatomic, retain) NSString * direction;
 
+@property (nonatomic, retain) Payment *payment;
+@property (nonatomic, retain) Earning *earning;
 @property (nonatomic, retain) Driver *driver;
 @property (nonatomic, retain) Car *car;
-@property (nonatomic, retain) Fare * hovFare;
+@property (nonatomic, retain) NSSet *riders;
+
 
 @property (nonatomic, retain) NSArray * returnTicketFetchRequest;
 
-+ (Ticket *) ticketWithFareId: (NSNumber *) fareId;
+// Map Route Caching
+@property (nonatomic, strong) NSArray * polyline;   // TODO needs to be coded to data using NSKeyedArchiver
+@property (nonatomic, strong) MBRegion * region;    // TODO needs to be coded to data using NSKeyedArchiver
 
-+ (void)createMappings:(RKObjectManager *)objectManager;
++ (RKEntityMapping *)createMappings:(RKObjectManager *)objectManager;
 
 + (NSArray * ) ticketsForTrip:(NSNumber *) tripId;
 
@@ -74,7 +91,19 @@
 - (CLLocation *) meetingPointLocation;
 - (CLLocation *) dropOffPointLocation;
 
+- (CLLocationCoordinate2D) meetingPointCoordinate;
+
 - (NSString *) shortRouteDescription;
 - (NSString *) routeDescription;
+- (BOOL) hasCachedRoute;
+
+@end
+
+@interface Ticket (CoreDataGeneratedAccessors)
+
+- (void)addRidesObject:(Rider *)value;
+- (void)removeRidersObject:(Rider *)value;
+- (void)addRiders:(NSSet *)values;
+- (void)removeRiders:(NSSet *)values;
 
 @end

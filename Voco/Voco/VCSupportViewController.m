@@ -9,6 +9,7 @@
 #import "VCSupportViewController.h"
 #import <MBProgressHUD.h>
 #import "VCApi.h"
+#import "VCStyle.h"
 
 @interface VCSupportViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *messageTextView;
@@ -28,9 +29,19 @@
     return self;
 }
 
+- (void) setGradient {
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = self.view.bounds;
+    gradient.colors = [VCStyle gradientColors];
+    gradient.startPoint = CGPointMake(0.0, 0.5);
+    gradient.endPoint = CGPointMake(1.0, 0.5);
+    [self.view.layer insertSublayer:gradient atIndex:0];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setGradient];
     
     UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [tapBackground setNumberOfTapsRequired:1];
@@ -58,6 +69,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
 
 - (IBAction)didTapSubmit:(id)sender {
     [self.view endEditing:YES];

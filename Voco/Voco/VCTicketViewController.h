@@ -7,13 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "VCTransitBaseViewController.h"
+#import "VCCenterViewBaseViewController.h"
 #import "Ticket.h"
 
-@interface VCTicketViewController : VCTransitBaseViewController
+@protocol VCTicketViewControllerDelegate <NSObject>
 
+- (void) overrideUpdateLocation:(CLPlacemark*) placemark type:(NSInteger) type;
+- (void) overrideCancelledUpdateLocation;
+
+@end
+
+@interface VCTicketViewController : VCCenterViewBaseViewController
+
+@property (weak, nonatomic) id<VCTicketViewControllerDelegate> delegate;
 @property (strong, nonatomic) Ticket * ticket;
-@property (strong, nonatomic) MKPolyline * walkingRouteToMeetingPointOverlay;
-@property (strong, nonatomic) MKPolyline * walkingRouteToDestinationOverlay;
+@property (nonatomic) BOOL isFinished;  // for KVO
+
+
+- (void) placeInEditLocationMode: (NSInteger) editLocationType;
+- (void) placeInRouteMode;
 
 @end

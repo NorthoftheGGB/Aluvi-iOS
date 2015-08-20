@@ -7,24 +7,32 @@
 //
 
 #import <UIKit/UIKit.h>
+@import MapKit;
+#import "Route.h"
+
+
+
+@class VCRideRequestView;
+
+@protocol VCRideRequestViewDelegate <NSObject>
+
+- (void) rideRequestView: (VCRideRequestView *) rideRequestView didTapEditLocation:  (CLLocationCoordinate2D) location locationName:(NSString *) locationName type:(NSInteger) type;
+- (void) rideRequestView: (VCRideRequestView *) rideRequestView didTapScheduleCommute:(Route *) route;
+- (void) rideRequestViewDidCancelCommute: (VCRideRequestView *) rideRequestView;
+
+- (void) rideRequestViewDidCancel: (VCRideRequestView *) rideRequestView;
+- (void) rideRequestViewDidTapClose: (VCRideRequestView *) rideRequestView withChanges: (Route *) route;
+
+@end
 
 @interface VCRideRequestView : UIView
 
-@property (strong, nonatomic) IBOutlet UIButton *fromButton;
-@property (strong, nonatomic) IBOutlet UIButton *toButton;
-@property (strong, nonatomic) IBOutlet UIStepper *toWorkTimeStepper;
-@property (strong, nonatomic) IBOutlet UILabel *toWorkTimeLabel;
-@property (strong, nonatomic) IBOutlet UIStepper *toHomeTimeStepper;
-@property (strong, nonatomic) IBOutlet UILabel *toHomeTimeLabel;
-@property (strong, nonatomic) IBOutlet UIButton *driverCheckbox;
-@property (strong, nonatomic) IBOutlet UIButton *scheduleButton;
+@property (weak, nonatomic) id<VCRideRequestViewDelegate> delegate;
 
+- (void) updateLocation:(MKPlacemark*) placemark type:(NSInteger) type;
+- (void) updateWithRoute:(Route *) route;
+- (void) setEditable:(BOOL) editable;
 
-- (IBAction)didTapCloseButton:(id)sender;
-- (IBAction)didTapToWorkTimeStepper:(id)sender;
-- (IBAction)didTapToHomeTimeStepper:(id)sender;
-@property (strong, nonatomic) IBOutlet UIButton *didTapDriverCheckbox;
-- (IBAction)didTapScheduleButton:(id)sender;
 
 @end
 

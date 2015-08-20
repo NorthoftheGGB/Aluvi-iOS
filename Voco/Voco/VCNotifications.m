@@ -13,4 +13,8 @@
 + (void) scheduleUpdated {
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationScheduleUpdated object:nil userInfo:@{}];
 }
+
++ (void) profileUpdated {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationTypeProfileUpdated object:nil userInfo:@{}];
+}
 @end

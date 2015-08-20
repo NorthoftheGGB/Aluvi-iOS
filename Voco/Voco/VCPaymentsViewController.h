@@ -1,14 +1,14 @@
 //
-//  VCRiderPaymentsViewController.h
+//  VCPaymentsView.h
 //  Voco
 //
-//  Created by Elliott De Aratanha on 7/3/14.
-//  Copyright (c) 2014 Voco. All rights reserved.
+//  Created by snacks on 8/5/15.
+//  Copyright (c) 2015 Voco. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "VCCenterViewBaseViewController.h"
+#import "VCScrollableFormViewController.h"
 
-@interface VCPaymentsViewController : VCCenterViewBaseViewController
+@interface VCPaymentsViewController : VCScrollableFormViewController
 
 @end

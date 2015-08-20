@@ -10,7 +10,7 @@
 #import <MBProgressHUD.h>
 #import "VCLabel.h"
 #import "VCTextField.h"
-#import "VCButtonStandardStyle.h"
+#import "VCButtonBold.h"
 #import "VCUsersApi.h"
 #import "VCUtilities.h"
 

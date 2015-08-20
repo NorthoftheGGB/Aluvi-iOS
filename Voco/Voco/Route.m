@@ -20,7 +20,8 @@
                                                   @"destination_place_name" : @"workPlaceName",
                                                   @"pickup_time" : @"pickupTime",
                                                   @"return_time" : @"returnTime",
-                                                  @"driving" : @"driving"
+                                                  @"driving" : @"driving",
+                                                  @"pickup_zone_center_place_name" : @"pickupZoneCenterPlaceName"
                                                   }];
     
     return mapping;
@@ -39,6 +40,13 @@
     
     {
         RKAttributeMapping *attributeMapping = [RKAttributeMapping attributeMappingFromKeyPath:@"destination" toKeyPath:@"work"];
+        attributeMapping.propertyValueClass = [CLLocation class];
+        attributeMapping.valueTransformer = [RKCLLocationValueTransformer locationValueTransformerWithLatitudeKey:@"latitude" longitudeKey:@"longitude"];
+        [mapping addPropertyMapping:attributeMapping];
+    }
+    
+    {
+        RKAttributeMapping *attributeMapping = [RKAttributeMapping attributeMappingFromKeyPath:@"pickup_zone_center" toKeyPath:@"pickupZoneCenter"];
         attributeMapping.propertyValueClass = [CLLocation class];
         attributeMapping.valueTransformer = [RKCLLocationValueTransformer locationValueTransformerWithLatitudeKey:@"latitude" longitudeKey:@"longitude"];
         [mapping addPropertyMapping:attributeMapping];
@@ -65,8 +73,123 @@
         [mapping addPropertyMapping:attributeMapping];
     }
     
+    {
+        RKAttributeMapping *attributeMapping = [RKAttributeMapping attributeMappingFromKeyPath:@"pickupZoneCenter" toKeyPath:@"pickup_zone_center"];
+        attributeMapping.propertyValueClass = [NSDictionary class];
+        attributeMapping.valueTransformer = [RKCLLocationValueTransformer locationValueTransformerWithLatitudeKey:@"latitude" longitudeKey:@"longitude"];
+        [mapping addPropertyMapping:attributeMapping];
+    }
+    
     return mapping;
     
 }
+
+- (id) init {
+    self = [super init];
+    if(self != nil){
+        [self observeCoordinates];
+    }
+    return self;
+}
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    Route * copy = [[Route alloc] init];
+    if(copy){
+        copy.home = self.home;
+        copy.work = self.work;
+        copy.homePlaceName = [self.homePlaceName copy];
+        copy.workPlaceName = [self.workPlaceName copy];
+        copy.pickupZoneCenter = self.pickupZoneCenter;
+        copy.pickupZoneCenterPlaceName = self.pickupZoneCenterPlaceName;
+        copy.driving = self.driving;
+        copy.pickupTime = [self.pickupTime copy];
+        copy.returnTime = [self.returnTime copy];
+        copy.polyline = [self.polyline copy];
+        copy.region = [self.region copy];
+    }
+    return copy;
+}
+
+
+- (BOOL) routeCoordinateSettingsValid {
+    if( self.home == nil || self.work == nil){
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
+- (BOOL) hasCachedPath {
+    if(self.polyline != nil && self.region != nil && [self.polyline count] > 0 && [self.region isValidRegion] ) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+- (void) clearCachedPath {
+    self.polyline = nil;
+    self.region = nil;
+    
+}
+
+- (BOOL) coordinatesDifferFrom: (Route*) route {
+    if( [self.home distanceFromLocation:route.home] != 0
+       || [self.work distanceFromLocation:route.work] != 0
+       || [self.pickupZoneCenter distanceFromLocation:route.pickupZoneCenter]){
+        return TRUE;
+    } else{
+        return FALSE;
+    }
+}
+
+- (void) copyNonCoordinateFieldsFrom: (Route*) route {
+    self.pickupTime = route.pickupTime;
+    self.returnTime = route.returnTime;
+    self.homePlaceName = route.homePlaceName;
+    self.workPlaceName = route.workPlaceName;
+    self.pickupZoneCenterPlaceName = route.pickupZoneCenterPlaceName;
+    self.driving = route.driving;
+}
+
+- (CLLocation *) getDefaultOrigin {
+    if(_driving){
+        return _pickupZoneCenter;
+    } else {
+        return _home;
+    }
+}
+
+
+
+#pragma mark Observing
+- (void)observeCoordinates {
+    [self addObserver:self forKeyPath:@"home"
+              options:(NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew) context:NULL];
+    [self addObserver:self forKeyPath:@"work"
+              options:(NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew) context:NULL];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change
+                       context:(void *)context {
+    if ([keyPath isEqualToString:@"home"] || [keyPath isEqualToString:@"work"] ) {
+        CLLocation *oldValue = [change objectForKey:NSKeyValueChangeOldKey];
+        CLLocation *newValue = [change objectForKey:NSKeyValueChangeNewKey];
+        if([oldValue isEqual:[NSNull null]]|| [newValue isEqual:[NSNull null]]){
+            [self clearCachedPath];
+        } else if (![newValue distanceFromLocation:oldValue] != 0 ) {
+            [self clearCachedPath];
+        }
+    }
+}
+
+- (void)dealloc {
+    [self removeObserver:self forKeyPath:@"home"];
+    [self removeObserver:self forKeyPath:@"work"];
+
+}
+
+
 
 @end

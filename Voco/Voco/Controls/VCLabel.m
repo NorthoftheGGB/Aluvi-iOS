@@ -7,43 +7,18 @@
 //
 
 #import "VCLabel.h"
+#import "VCStyle.h"
 
 @implementation VCLabel
 
-@synthesize fontSize;
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        fontSize = [NSNumber numberWithInt:13];
-    }
-    return self;
-}
 
 
 - (void)awakeFromNib{
     
-    
-   //rev 1.0
-    //UIFont *customFont = [UIFont fontWithName:@"KlinicSlab-Light" size:[fontSize intValue] ];
-
-    //rev 2.0
-    
-    UIFont *customFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:[fontSize intValue] ];
-
-    
-    
-    [self setFont:customFont];
+    [self setFont:[VCStyle regularFont]];
     
 }
-/*
- // Only override drawRect: if you perform custom drawing.
- // An empty implementation adversely affects performance during animation.
- - (void)drawRect:(CGRect)rect
- {
- // Drawing code
- }
- */
 
-@end
+
+@end 

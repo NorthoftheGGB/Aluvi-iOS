@@ -9,20 +9,23 @@
 #import "VCProfileViewController.h"
 #import <MBProgressHUD.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <PKImagePickerViewController.h>
 #import "VCNameTextField.h"
 #import "VCEmailTextField.h"
 #import "VCPasswordTextField.h"
 #import "VCPhoneTextField.h"
 #import "VCTextField.h"
-#import "VCButtonStandardStyle.h"
+#import "VCButtonBold.h"
 #import "VCLabel.h"
 #import "VCUserStateManager.h"
 #import "VCInterfaceManager.h"
 #import "VCUsersApi.h"
 #import "UIImage+Resize.h"
 #import "VCApi.h"
+#import "VCStyle.h"
+#import "VCNotifications.h"
 
-@interface VCProfileViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface VCProfileViewController () <PKImagePickerViewControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 
@@ -36,13 +39,14 @@
 @property (weak, nonatomic) IBOutlet VCTextField *emailTextField;
 @property (weak, nonatomic) IBOutlet VCTextField *phoneTextField;
 @property (weak, nonatomic) IBOutlet VCTextField *passwordTextField;
+@property (strong, nonatomic) IBOutlet VCTextField *workEmailTextField;
 
 //Version
 @property (weak, nonatomic) IBOutlet UILabel *versionLabel;
 
 //Buttons
-@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *saveChangesButton;
-@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *logoutButton;
+@property (weak, nonatomic) IBOutlet VCButtonBold *saveChangesButton;
+@property (weak, nonatomic) IBOutlet VCButtonBold *logoutButton;
 
 - (IBAction)didTapSaveChanges:(id)sender;
 
@@ -62,21 +66,41 @@
     }
     return self;
 }
+- (void) setGradient {
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = self.view.bounds;
+    gradient.colors = [VCStyle gradientColors];
+    gradient.startPoint = CGPointMake(0.0, 0.5);
+    gradient.endPoint = CGPointMake(1.0, 0.5);
+    [self.view.layer insertSublayer:gradient atIndex:0];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setGradient];
+    self.automaticallyAdjustsScrollViewInsets = false;
+    
+    _contentView.frame = self.scrollView.frame;
+ //   [self.scrollView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
     [self.scrollView setContentSize:_contentView.frame.size];
     [self.scrollView addSubview:_contentView];
+
     
     VCProfile * profile = [VCUserStateManager instance].profile;
+    
     _firstNameTextField.text = profile.firstName;
     _lastNameTextField.text = profile.lastName;
     _emailTextField.text = profile.email;
     _phoneTextField.text = profile.phone;
     _passwordTextField.text = @"********";
-    [_userImageView sd_setImageWithURL:[NSURL URLWithString:profile.largeImageUrl]
-                   placeholderImage:[UIImage imageNamed:@"placeholder-profile.png"]];
+    [_userImageView sd_setImageWithURL:[NSURL URLWithString:profile.smallImageUrl]
+                   placeholderImage:[UIImage imageNamed:@"temp-user-profile-icon"]
+                    options:SDWebImageRefreshCached
+            ];
+    _userImageView.layer.cornerRadius = _userImageView.frame.size.width / 2;
+    _userImageView.clipsToBounds = YES;
+    
     
     UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [tapBackground setNumberOfTapsRequired:1];
@@ -108,12 +132,23 @@
 }
 
 - (IBAction)didTapSaveChanges:(id)sender {
-    //TODO: API fun fun
+
+    BOOL notify = NO;
+    if(![[VCUserStateManager instance].profile.firstName isEqualToString:_firstNameTextField.text]
+       || ![[VCUserStateManager instance].profile.lastName isEqualToString:_lastNameTextField.text] ){
+        notify = YES;
+    }
+    
     [VCUserStateManager instance].profile.firstName = _firstNameTextField.text;
     [VCUserStateManager instance].profile.lastName = _lastNameTextField.text;
     [VCUserStateManager instance].profile.email = _emailTextField.text;
     [VCUserStateManager instance].profile.phone = _phoneTextField.text;
+    [VCUserStateManager instance].profile.workEmail = _workEmailTextField.text;
+    [[VCUserStateManager instance] saveProfile];
     
+    if(notify){
+        [VCNotifications profileUpdated];
+    }
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [VCUsersApi updateProfile:[VCUserStateManager instance].profile
@@ -133,27 +168,20 @@
 }
 
 - (IBAction)didTapTakePhotoButton:(id)sender {
-    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-    imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
-    imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-    imagePickerController.delegate = self;
-    [self presentViewController:imagePickerController animated:YES completion:^{
-        [hud hide:YES];
-    }];
     
+    PKImagePickerViewController *imagePicker = [[PKImagePickerViewController alloc]init];
+    imagePicker.delegate = self;
+    [self presentViewController:imagePicker animated:YES completion:nil];
+
 }
 
-#pragma mark - UIImagePickerControllerDelegate
+#pragma mark - PKImagePickerControllerDelegate
 
-// This method is called when an image has been chosen from the library or taken from the camera.
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
-    [self dismissViewControllerAnimated:YES completion:nil];
+-(void)imageSelected:(UIImage*)img {
     CGSize size = CGSizeMake(640, 750);
-    image = [image resizedImageToFitInSize:size scaleIfSmaller:YES];
+    UIImage * image = [img resizedImageToFitInSize:size scaleIfSmaller:YES];
     _userImageView.image = image;
+
     
     NSMutableURLRequest *request =
     [[RKObjectManager sharedManager] multipartFormRequestWithObject:nil
@@ -161,10 +189,10 @@
                                                                path:API_USER_PROFILE
                                                          parameters:nil
                                           constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-                                              [formData appendPartWithFileData:UIImagePNGRepresentation(image)
+                                              [formData appendPartWithFileData:UIImageJPEGRepresentation(image, .9)
                                                                           name:@"image"
-                                                                      fileName:@"image.png"
-                                                                      mimeType:@"image/png"];
+                                                                      fileName:@"image.jpg"
+                                                                      mimeType:@"image/jpg"];
                                           }];
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -172,20 +200,27 @@
                                            objectRequestOperationWithRequest:request
                                            success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                                [hud hide:YES];
-
+                                               
+                                               [VCUsersApi getProfile:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                   [VCNotifications profileUpdated];
+                                               } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                               }];
+                                               
+                                               
                                            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                                [UIAlertView showWithTitle:@"Problem" message:@"There was a problem saving your image" cancelButtonTitle:@"Darn." otherButtonTitles:nil tapBlock:nil];
                                                [hud hide:YES];
-
+                                               
                                            }];
     [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation]; // NOTE: Must be enqueued rather than started
     
-    
+
+}
+
+-(void)imageSelectionCancelled {
     
 }
 
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
-    [self dismissViewControllerAnimated:YES completion:NULL];
-}
+
+
 @end

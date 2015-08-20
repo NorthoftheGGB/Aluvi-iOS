@@ -10,7 +10,7 @@
 
 @interface VCRideIdentity : NSObject
 
-@property(nonatomic, strong) NSNumber * rideId;
+@property(nonatomic, strong) NSNumber * ticketId;
 
 + (RKObjectMapping *) getMapping;
 

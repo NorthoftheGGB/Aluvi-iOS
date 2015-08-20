@@ -14,13 +14,14 @@
 #import "VCDriverApi.h"
 #import "VCNotifications.h"
 #import "VCInterfaceManager.h"
-#import <MBProgressHud.h>
+#import <MBProgressHUD.h>
 
 #import "VCDevice.h"
 #import "WRUtilities.h"
 #import "VCDialogs.h"
 #import "VCUserStateManager.h"
 #import "VCCoreData.h"
+#import "VCCommuteManager.h"
 
 #import "VCDebug.h"
 
@@ -112,8 +113,9 @@
     NSLog(@"%@", str);
     
     // try again
-    [self performSelector:@selector(registerForRemoteNotifications) withObject:nil afterDelay:10 * NSEC_PER_SEC];
-    [VCPushReceiver registerForRemoteNotifications];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 10 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [self registerForRemoteNotifications];
+    });
 }
 
 
@@ -170,39 +172,27 @@
         [hud show:YES];
     }
     
-    [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [[VCCommuteManager instance] refreshTicketsWithSuccess:^{
         [VCNotifications scheduleUpdated];
         if(hud != nil){
             hud.hidden = YES;
         }
         
         if ([type isEqualToString:kPushTypeFareCancelledByRider]){
-            NSNumber * rideId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
             [[VCDialogs instance] rideCancelledByRider];
             [[NSNotificationCenter defaultCenter] postNotificationName:kPushTypeFareCancelledByRider object:payload userInfo:@{}];
             
-            if([[VCUserStateManager instance].underwayFareId isEqualToNumber:rideId]){
-                [VCUserStateManager instance].underwayFareId = nil;
-                [VCUserStateManager instance].driveProcessState = kUserStateIdle;
-            }
+
         } else if([type isEqualToString:kPushTypeFareCancelledByDriver]){
-            NSNumber * rideId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
             [[VCDialogs instance] rideCancelledByDriver];
             [[NSNotificationCenter defaultCenter] postNotificationName:kPushTypeFareCancelledByDriver object:payload userInfo:@{}];
             
-            if([[VCUserStateManager instance].underwayFareId isEqualToNumber:rideId]){
-                [VCUserStateManager instance].underwayFareId = nil;
-                [VCUserStateManager instance].rideProcessState = kUserStateIdle;
-            }
+           
         } else if([type isEqualToString:kPushTypeRidePaymentProblems]){
             NSNumber * rideId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
             [[VCDialogs instance] showRidePaymentProblem:rideId];
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationTypeFareComplete object:payload userInfo:@{}];
             
-            if([[VCUserStateManager instance].underwayFareId isEqualToNumber:rideId]){
-                [VCUserStateManager instance].underwayFareId = nil;
-                [VCUserStateManager instance].rideProcessState = kUserStateIdle;
-            }
         } else if([type isEqualToString:kPushTypeUserStateChanged]){
             [[VCUserStateManager instance] synchronizeUserState];
         } else if([type isEqualToString:kPushTypeTripFulfilled]){
@@ -214,7 +204,7 @@
             
             [[VCDialogs instance] commuteUnfulfilled];
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationTypeTripUnfulfilled object:payload];
-        
+            
         } else if([type isEqualToString:kPushTypeGeneric]){
             NSString * message =[[payload objectForKey:@"aps" ] objectForKey:@"alert"];
             [UIAlertView showWithTitle:@"Message from Aluvi" message:message cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
@@ -233,28 +223,22 @@
         } else if ([type isEqualToString:kPushTypeRideCompleted]){
             
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationTypeFareComplete object:payload userInfo:@{}];
-            NSNumber * rideId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
-            if([[VCUserStateManager instance].underwayFareId isEqualToNumber:rideId]){
-                [VCUserStateManager instance].underwayFareId = nil;
-                [VCUserStateManager instance].rideProcessState = kUserStateIdle;
-            }
-
+            
         } else {
 #ifdef DEBUG
             [UIAlertView showWithTitle:@"Error" message:[NSString stringWithFormat:@"Invalid push type: %@", type] cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
 #endif
         }
         
-        
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+
+    } failure:^{
         //
     }];
 }
 
+
 + (void) handleRideFoundNotification:(NSDictionary *) payload {
-    
-    [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        
+    [[VCCommuteManager instance] refreshTicketsWithSuccess:^{
         NSNumber * rideId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
         NSFetchRequest * fetch = [[NSFetchRequest alloc] initWithEntityName:@"Ride"];
         NSPredicate * predicate = [NSPredicate predicateWithFormat:@"ride_id = %@", rideId];
@@ -267,7 +251,7 @@
         }
         if([rides count] > 0){
             Ticket * request = [rides objectAtIndex:0];
-          
+            
             if ([request.rideType isEqualToString:kRideRequestTypeCommuter]){
                 [[VCDialogs instance] commuterRideFound: request];
             }
@@ -277,10 +261,11 @@
             [WRUtilities stateErrorWithString:@"Ride no longer exists"];
             
         }
-        
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [WRUtilities criticalError:error];
+    } failure:^{
+        // nothing
     }];
+    
+
 }
 
 

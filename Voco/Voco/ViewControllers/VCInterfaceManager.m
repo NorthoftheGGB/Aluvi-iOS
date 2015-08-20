@@ -7,14 +7,12 @@
 //
 
 #import "VCInterfaceManager.h"
-#import "VCLogInViewController.h"
+#import "VCOnboardingViewController.h"
 #import "VCTicketViewController.h"
-#import "VCDriveViewController.h"
 #import "VCLeftMenuViewController.h"
 #import "IIViewDeckController.h"
 #import "VCApi.h"
 #import "VCUserStateManager.h"
-#import "VCDebugViewController.h"
 
 #define kInterfaceModeKey @"INTERFACE_MODE_KEY"
 
@@ -49,14 +47,12 @@ static int mode;
 }
 
 - (void) showRiderSigninInterface {
-    VCLogInViewController * signInViewController = [[VCLogInViewController alloc] init];
-    UINavigationController * navigationController = [[UINavigationController alloc] initWithRootViewController:signInViewController];
-    /* [navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    [navigationController.navigationBar setShadowImage:[UIImage new]];*/
-    [navigationController.navigationBar setTranslucent:YES];
-    navigationController.navigationBar.hidden = NO;
-    //navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    [[UIApplication sharedApplication] delegate].window.rootViewController = navigationController;
+    VCOnboardingViewController * vc = [[VCOnboardingViewController alloc] init];
+    vc.view.frame = [[UIApplication sharedApplication] delegate].window.frame;
+    
+    [[UIApplication sharedApplication] delegate].window.rootViewController = vc;
+    [vc.view setNeedsLayout];
+
     deckController = nil;
     
     [self setMode: kOnBoardingMode];
@@ -86,17 +82,6 @@ static int mode;
 
 - (void) showRiderInterface {
     VCTicketViewController * rideViewController = [[VCTicketViewController alloc] init];
-
-    if( [VCUserStateManager instance].underwayFareId != nil ) {
-        NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
-        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"fare_id = %@", [VCUserStateManager instance].underwayFareId];
-        [fetch setPredicate:predicate];
-        NSError * error;
-        NSArray * items = [[VCCoreData managedObjectContext] executeFetchRequest:fetch error:&error];
-        if(items != nil && [items count] > 0){
-            rideViewController.ticket = [items objectAtIndex:0];
-        }
-    }
     
     if(deckController == nil){
         [self createDeckViewController];
@@ -108,12 +93,6 @@ static int mode;
 
 }
 
-
-- (void) showDebugInterface{
-    VCDebugViewController * vc = [[VCDebugViewController alloc] init];
-    [[UIApplication sharedApplication] delegate].window.rootViewController = vc;
-    deckController = nil;
-}
 
 - (void) setMode: (int) newMode {
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:newMode] forKey:kInterfaceModeKey];

@@ -15,7 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedButton;
 
-@property (weak, nonatomic) IBOutlet VCButtonStandardStyle *confirmButton;
+@property (weak, nonatomic) IBOutlet VCButtonBold *confirmButton;
 
 - (IBAction)didTapConfirmButton:(id)sender;
 

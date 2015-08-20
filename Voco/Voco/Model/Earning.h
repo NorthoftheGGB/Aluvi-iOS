@@ -9,15 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Fare;
-
 @interface Earning : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * amountCents;
 @property (nonatomic, retain) NSDate * timestamp;
-@property (nonatomic, retain) NSNumber * fare_id;
+@property (nonatomic, retain) NSNumber * ticket_id;
 @property (nonatomic, retain) NSString * motive;
-@property (nonatomic, retain) Fare *fare;
 
 + (void)createMappings:(RKObjectManager *)objectManager;
 

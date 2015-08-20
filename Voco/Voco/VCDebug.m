@@ -40,12 +40,18 @@ static VCDebug * instance;
     if([VCDebug sharedInstance].blockPushMessages){
         blockPushMessagesText = @"Unblock Push Messages";
     }
+    
+    NSMutableArray * buttons =  [@[@"Refresh Push Token", alertsEnabledText, blockPushMessagesText, @"Purge Tickets"] mutableCopy];
+#ifdef NIGHTLY
+    [buttons addObject:@"Schedule Tickets"];
+#endif
+    
 
     NSString * version = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
     NSString * build = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
     NSString * appVersion = [NSString stringWithFormat:@"v%@b%@", version, build];
     NSString * title = [NSString stringWithFormat:@"Welcome to Triage %@", appVersion];
-    [UIAlertView showWithTitle:title message:message cancelButtonTitle:@"OK" otherButtonTitles:@[@"Refresh Push Token", alertsEnabledText, blockPushMessagesText] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+    [UIAlertView showWithTitle:title message:message cancelButtonTitle:@"OK" otherButtonTitles:buttons tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
         switch (buttonIndex) {
             case 1:
             {
@@ -73,6 +79,30 @@ static VCDebug * instance;
                 }
                 break;
             }
+            case 4:
+            {
+                NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:
+                                     [NSURL URLWithString:
+                                      [NSString stringWithFormat:@"%@%@", API_BASE_URL, @"v2/debug/purge"]
+                                     ]];
+                [req setHTTPMethod:@"POST"];
+                [req addValue:[NSString stringWithFormat:@"Token token=\"%@\"", [VCApi apiToken] ] forHTTPHeaderField:@"Authorization"];
+                NSURLConnection *conn = [NSURLConnection connectionWithRequest:req delegate:nil];
+                [conn start];
+                break;
+
+            }
+            case 5:
+            {
+                NSURLRequest *req = [NSURLRequest requestWithURL:
+                                     [NSURL URLWithString: @"http://54.148.6.205:3000/commuter_rides/schedule_trips"]
+                                     ];
+                NSURLConnection *conn = [NSURLConnection connectionWithRequest:req delegate:nil];
+                [conn start];
+
+            }
+                
+                break;
                 
             default:
                 break;

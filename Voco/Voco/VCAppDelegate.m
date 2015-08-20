@@ -24,11 +24,11 @@
 #import "VCInterfaceManager.h"
 #import "VCMapQuestRouting.h"
 #import "VCUsersApi.h"
-#import "VCLocalNotificationReceiver.h"
 #import "VCTicketViewController.h"
 #import "VCDevicesApi.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import "VCCommuteManager.h"
 
 
 @interface VCAppDelegate ()
@@ -41,11 +41,26 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    /* Font debugging
+    for (NSString* family in [UIFont familyNames])
+    {
+        NSLog(@"FONT %@", family);
+        
+        for (NSString* name in [UIFont fontNamesForFamilyName: family])
+        {
+            NSLog(@"  %@", name);
+        }
+    }
+     */
+    
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"nav_bg.png"] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setShadowImage:[UIImage new]];
+    
+    
     _launching = YES;
 
     [VCDebug sharedInstance];
 
-    
     [VCApi setup];
 
     if([[NSBundle mainBundle] objectForInfoDictionaryKey:@"Fabric"] != nil){
@@ -58,19 +73,14 @@
     // GIS
     [VCGeolocation sharedGeolocation];
     [VCMapQuestRouting setup];
+    [[RMConfiguration sharedInstance] setAccessToken:@"pk.eyJ1Ijoic25hY2tzIiwiYSI6Il83eXFHMzAifQ.M1ipZJb-b--TvC0vxHvPVg"];
 
     // Stripe
     [Stripe setDefaultPublishableKey:@"pk_test_4Gt6M02YRqmpk7yoBud7y5Ah"];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-    /*
-        UIViewController * vc = [[ MyThing alloc] init];
-        [self.window setRootViewController: vc];
-        self.window.backgroundColor = [UIColor whiteColor];
-        [self.window makeKeyAndVisible];
-        return YES;
-    */
+
     
 #if DEBUG==12
     [[VCInterfaceModes instance] showDebugInterface];
@@ -79,10 +89,7 @@
 #endif
     self.window.backgroundColor = [UIColor whiteColor];
     
-// #warning bypassing interface mode setup in AppDelegate
-    /*VCRideViewController * vc = [[VCRideViewController alloc] init];
-    UINavigationController * nc = [[UINavigationController alloc] initWithRootViewController:vc];
-    [self.window setRootViewController:nc];*/
+
     
    ///put background color and makeKeyVisible here
     
@@ -93,19 +100,20 @@
     
     if([launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey] != nil){
         [VCPushReceiver handleTappedRemoteNotification:[launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey]];
-    } else if( [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey] != nil ) {
-        UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
-        [VCLocalNotificationReceiver handleLocalNotification:localNotif];
     }
     
-    // RKLogConfigureByName("RestKit/Network", RKLogLevelInfo);
-    // RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
+     RKLogConfigureByName("RestKit/Network", RKLogLevelInfo);
+     RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
     
     
     [self.window makeKeyAndVisible];
 
     return YES;
+    
+
 }
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -130,11 +138,11 @@
     
     if([[VCUserStateManager instance] isLoggedIn]){
         [[VCUserStateManager instance] synchronizeUserState];
-    
-        [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        
+        [[VCCommuteManager instance] refreshTicketsWithSuccess:^{
             NSLog(@"%@", @"Refreshed Scheduled Rides");
-        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        }];
+        } failure:^{}];
+    
 
         [VCDevicesApi updateUserWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -190,7 +198,7 @@
 }
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
-    [VCLocalNotificationReceiver handleLocalNotification:notification];
+    //[VCLocalNotificationReceiver handleLocalNotification:notification];
 }
 
 -(BOOL)pushNotificationOnOrOff{

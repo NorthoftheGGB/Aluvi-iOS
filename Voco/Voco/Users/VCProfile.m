@@ -8,6 +8,7 @@
 
 #import "VCProfile.h"
 #import "VCApi.h"
+#import "Car.h"
 
 @implementation VCProfile
 
@@ -19,6 +20,7 @@
                                                   @"last_name" : @"lastName",
                                                   @"phone" : @"phone",
                                                   @"email" : @"email",
+                                                  @"work_email" : @"workEmail",
                                                   @"default_card_token" : @"defaultCardToken",
                                                   @"commuter_refill_amount_cents" : @"commuterRefillAmountCents",
                                                   @"commuter_balance_cents" : @"commuterBalanceCents",
@@ -28,8 +30,8 @@
                                                   @"bank_account_name" : @"bankAccountName",
                                                   @"recipient_card_last_four" : @"recipientCardLastFour",
                                                   @"recipient_card_brand" : @"recipientCardBrand",
-                                                  @"small_image" : @"smallImageUrl",
-                                                  @"large_image" : @"largeImageUrl"
+                                                  @"image_small" : @"smallImageUrl",
+                                                  @"image_large" : @"largeImageUrl"
                                                   }];
     
     return mapping;
@@ -42,6 +44,7 @@
         _lastName = [decoder decodeObjectForKey: @"lastName"];
         _phone = [decoder decodeObjectForKey: @"phone"];
         _email = [decoder decodeObjectForKey: @"email"];
+        _workEmail = [decoder decodeObjectForKey: @"workEmail"];
         _commuterRefillAmountCents = [decoder decodeObjectForKey: @"commuterRefillAmountCents"];
         _commuterBalanceCents = [decoder decodeObjectForKey: @"commuterBalanceCents"];
         _commuterRefillEnabled = [decoder decodeObjectForKey: @"commuterRefillEnabled"];
@@ -53,7 +56,7 @@
         _recipientCardLastFour = [decoder decodeObjectForKey:@"recipient_card_last_four"];
         _smallImageUrl = [decoder decodeObjectForKey:@"small_image"];
         _largeImageUrl = [decoder decodeObjectForKey:@"large_image"];
-
+        _carId = [decoder decodeObjectForKey: @"carId"];
 
     }
     return self;
@@ -64,6 +67,7 @@
     [encoder encodeObject: _lastName forKey: @"lastName"];
     [encoder encodeObject: _phone forKey: @"phone"];
     [encoder encodeObject: _email forKey: @"email"];
+    [encoder encodeObject: _workEmail forKey: @"workEmail"];
     [encoder encodeObject: _commuterRefillAmountCents forKey: @"commuterRefillAmountCents"];
     [encoder encodeObject: _commuterBalanceCents forKey: @"commuterBalanceCents"];
     [encoder encodeObject: _commuterRefillEnabled forKey: @"commuterRefillEnabled"];
@@ -75,7 +79,7 @@
     [encoder encodeObject: _recipientCardLastFour forKey:@"recipient_card_last_four"];
     [encoder encodeObject: _smallImageUrl forKey:@"small_image"];
     [encoder encodeObject: _largeImageUrl forKey:@"large_image"];
-
+    [encoder encodeObject: _carId forKey:@"carId"];
 
 }
 @end

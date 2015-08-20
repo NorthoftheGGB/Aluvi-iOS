@@ -28,6 +28,7 @@ static NSString * apiToken;
     RKObjectManager * objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:API_BASE_URL]];
     [objectManager registerRequestOperationClass:[VCObjectRequestOperation class]];
     objectManager.managedObjectStore = [VCCoreData managedObjectStore];
+    //[[NSURLCache sharedURLCache].cach
     
     [VCRiderApi setup: objectManager];
     [VCDriverApi setup: objectManager];
@@ -38,8 +39,8 @@ static NSString * apiToken;
     [self setApiToken: [[NSUserDefaults standardUserDefaults] stringForKey:API_TOKEN_KEY]];
     
 #ifdef DEBUG
-    //RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelDebug);
-    //RKLogConfigureByName("RestKit/Network", RKLogLevelError);
+    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelError);
+    RKLogConfigureByName("RestKit/Network", RKLogLevelError);
 #endif
     
 

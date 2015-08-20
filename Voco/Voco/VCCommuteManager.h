@@ -13,25 +13,35 @@
 
 @interface VCCommuteManager : NSObject
 
-@property (nonatomic, strong) CLLocation * home;
-@property (nonatomic, strong) CLLocation * work;
-@property (nonatomic, strong) NSString * homePlaceName;
-@property (nonatomic, strong) NSString * workPlaceName;
-@property (nonatomic, strong) NSString * pickupTime;
-@property (nonatomic, strong) NSString * returnTime;
-@property (nonatomic) BOOL driving;
+@property (nonatomic, strong) Route * route;
+
 
 + (VCCommuteManager *) instance;
 
-- (void) save:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
+- (void) storeCommuterSettings: (Route *) route success:(void ( ^ ) ()) success failure:( void ( ^ ) (NSString * errorMessage)) failure;
+- (void) storeRoute: (NSArray *) polyline withRegion: (MBRegion *) region;
+
 - (void) reset;
 - (void) load;
 - (void) loadFromServer;
 - (void) clear;
-- (BOOL) hasSettings;
+
 
 - (void) requestRidesFor:(NSDate *) tomorrow success:(void ( ^ ) (Ticket * homeToWorkTicket)) success failure:( void ( ^ ) ()) failure;
 - (void) cancelRide:(Ticket *) ride success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
 - (void) cancelTrip:(NSNumber *) tripId success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
+- (void) ridesPickedUp:(Ticket *) ticket success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
+- (void) ridesDroppedOff:(Ticket *) ticket success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
+- (void) refreshTickets;
+- (void) refreshTicketsWithSuccess:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
+
+
+- (BOOL) scheduledCommuteAvailable;
+- (BOOL) returnTicketValid;
+- (Ticket *) getRequestedTripTicket;
+- (Ticket *) getTicketToWork;
+- (Ticket *) getTicketBackHome;
+- (Ticket *) getDefaultTicket;
+
 
 @end

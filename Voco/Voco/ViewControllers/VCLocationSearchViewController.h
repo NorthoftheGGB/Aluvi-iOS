@@ -7,16 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MapKit/MapKit.h>
+@import MapKit;
+@import MapKit.MKLocalSearch;
+@import MapKit.MKLocalSearchRequest;
+@import MapKit.MKLocalSearchResponse;
+
+@class VCLocationSearchViewController;
 
 @protocol VCLocationSearchViewControllerDelegate <NSObject>
 
-- (void) didSelectLocation: (MKMapItem *) mapItem;
+- (void) locationSearchViewController: (VCLocationSearchViewController *) locationSearchViewController didSelectLocation: (MKMapItem *) mapItem;
 
 @end
 
-@interface VCLocationSearchViewController : UIViewController
+@interface VCLocationSearchViewController : UITableViewController
 
 @property(nonatomic, weak) id<VCLocationSearchViewControllerDelegate> delegate;
+
+
+- (void)didEditSearchText:(NSString*) text;
 
 @end

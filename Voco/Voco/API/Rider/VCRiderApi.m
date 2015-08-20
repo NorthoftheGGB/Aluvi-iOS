@@ -8,27 +8,67 @@
 
 #import "VCRiderApi.h"
 #import "VCApi.h"
-#import "VCRideRequest.h"
-#import "VCRideRequestCreated.h"
+#import "VCCommuterRideRequestCreated.h"
 #import "VCDevice.h"
 #import "Ticket.h"
 #import "VCRideIdentity.h"
 #import "VCUserStateManager.h"
 #import "VCRequestUpdate.h"
 #import "Payment.h"
+#import "VCPickupPoint.h"
 
 
 @implementation VCRiderApi
 
 + (void) setup: (RKObjectManager *) objectManager {
     
-    [Ticket createMappings:objectManager];
+    RKEntityMapping * ticketMapping = [Ticket createMappings:objectManager];
+    
+    
+    
+    [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
+        RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:API_GET_ACTIVE_TICKETS];
+        
+        NSString * relativePath = [URL relativePath];
+        NSDictionary *argsDict = nil;
+        BOOL match = [pathMatcher matchesPath:relativePath tokenizeQueryStrings:NO parsedArguments:&argsDict];
+        if (match) {
+            // needs to return what needs to be delete
+            // i.e. tickets that are not in the new batch
+            // or just delete tickets that are no longer relevant???
+            NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
+            return fetchRequest;
+        }
+        return nil;
+    }];
+    
+    
+    {
+        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:ticketMapping
+                                                                                             method:RKRequestMethodGET
+                                                                                        pathPattern:API_GET_ACTIVE_TICKETS
+                                                                                            keyPath:nil
+                                                                                        statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor];
+    }
+    {
+        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:ticketMapping
+                                                                                                 method:RKRequestMethodPOST
+                                                                                            pathPattern:API_POST_RIDE_CANCELLED
+                                                                                                keyPath:nil
+                                                                                            statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor];
+
+    }
+    
+
+    
     [Payment createMappings:objectManager];
     
     {
-        RKObjectMapping * objectMapping = [VCRideRequest getMapping];
+        RKObjectMapping * objectMapping = [VCCommuterRideRequest getMapping];
         RKObjectMapping * postRideRequestMapping = [objectMapping inverseMapping];
-        RKRequestDescriptor *requestDescriptorPostData = [RKRequestDescriptor requestDescriptorWithMapping:postRideRequestMapping objectClass:[VCRideRequest class] rootKeyPath:nil method:RKRequestMethodPOST];
+        RKRequestDescriptor *requestDescriptorPostData = [RKRequestDescriptor requestDescriptorWithMapping:postRideRequestMapping objectClass:[VCCommuterRideRequest class] rootKeyPath:nil method:RKRequestMethodPOST];
         [objectManager addRequestDescriptor:requestDescriptorPostData];
     }
     
@@ -41,15 +81,9 @@
         
         
         
-        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
-                                                                                                 method:RKRequestMethodPOST
-                                                                                            pathPattern:API_POST_RIDER_CANCELLED
-                                                                                                keyPath:nil
-                                                                                            statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-        [objectManager addResponseDescriptor:responseDescriptor];
-    }
+          }
     {
-        RKObjectMapping * mapping = [VCRideRequestCreated getMapping];
+        RKObjectMapping * mapping = [VCCommuterRideRequestCreated getMapping];
         RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping
                                                                                                  method:RKRequestMethodPOST
                                                                                             pathPattern:API_POST_RIDE_REQUEST keyPath:nil
@@ -64,23 +98,24 @@
         [objectManager addRequestDescriptor:requestDescriptor];
     }
     {
-        RKResponseDescriptor * responseDescriptor =
-        [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
-                                                     method:RKRequestMethodPOST
-                                                pathPattern:API_POST_REQUEST_CANCELLED
-                                                    keyPath:nil
-                                                statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        RKObjectMapping * mapping = [VCPickupPoint getMapping];
+        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping
+                                                                                                 method:RKRequestMethodGET
+                                                                                            pathPattern:API_GET_PICKUP_POINTS keyPath:nil
+                                                                                            statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:responseDescriptor];
+        
     }
+
 }
 
-+ (void) requestRide:(Ticket *) ride
-             success:(void ( ^ ) ( RKObjectRequestOperation *operation , VCRideRequestCreated * response ))success
++ (void) requestRide:(VCCommuterRideRequest *) request
+             success:(void ( ^ ) ( RKObjectRequestOperation *operation , VCCommuterRideRequestCreated * response ))success
              failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     
     [[VCDebug sharedInstance] apiLog:@"API: request ride"];
     
-    [[RKObjectManager sharedManager] postObject:[VCRideRequest requestForRide:ride]
+    [[RKObjectManager sharedManager] postObject:request
                                            path: API_POST_RIDE_REQUEST
                                      parameters:nil
                                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
@@ -88,16 +123,8 @@
                                             
                                             NSLog(@"Ride request accepted by server!");
                                             
-                                            VCRideRequestCreated * response = mappingResult.firstObject;
-                                            ride.ride_id = response.rideId;
-                                            ride.trip_id = response.tripId;
                                             
-                                            NSError * error;
-                                            [[VCCoreData managedObjectContext] save:&error];
-                                            if(error != nil){
-                                                [WRUtilities criticalError:error];
-                                            }
-                                            //[VCUserState instance].riderState = kUser;
+                                            VCCommuterRideRequestCreated * response  = mappingResult.firstObject;
                                             
                                             success(operation, response);
                                         }
@@ -115,59 +142,21 @@
             failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     
     
-    if(ride.fare_id != nil){
-        [[VCDebug sharedInstance] apiLog:@"API: Rider cancel ride"];
-        
-        // Alread have a ride id, so this is a ride cancellation
-        [[RKObjectManager sharedManager] postObject:nil path:API_POST_RIDER_CANCELLED parameters:@{@"fare_id" : ride.fare_id}
-                                            success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                
-                                                [[VCDebug sharedInstance] apiLog:@"API: Rider cancel ride success"];
-                                                
-                                                NSError * error = nil;
-                                                [[VCCoreData managedObjectContext] deleteObject:ride];
-                                                [[VCCoreData managedObjectContext] save:&error];
-                                                if(error != nil){
-                                                    [WRUtilities criticalError:error];
-                                                }
-                                                
-                                                success(operation, mappingResult);
-                                            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                [[VCDebug sharedInstance] apiLog:@"API: Rider cancel ride failure"];
-                                                
-                                                NSLog(@"Failed cancel ride %@", error);
-                                                failure(operation, error);
-                                            }];
-    } else {
-        
-        
-        [[VCDebug sharedInstance] apiLog:@"API: Rider cancel request"];
-        
-        // No ride id yet, so this could be a request cancellation
-        // OR a ride cancellation if the ride found message has not arrived
-        // This control fork gets handled on the server side
-        VCRequestUpdate * requestIdentity = [[VCRequestUpdate alloc] init];
-        requestIdentity.rideId = ride.ride_id;
-        [[RKObjectManager sharedManager] postObject:requestIdentity path:API_POST_REQUEST_CANCELLED parameters:nil
-                                            success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                [[VCDebug sharedInstance] apiLog:@"API: Rider cancel request success"];
-                                                
-                                                NSError * error = nil;
-                                                [[VCCoreData managedObjectContext] deleteObject:ride];
-                                                [[VCCoreData managedObjectContext] save:&error];
-                                                if(error != nil){
-                                                    [WRUtilities criticalError:error];
-                                                }
-                                                
-                                                success(operation, mappingResult);
-                                                
-                                            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                [[VCDebug sharedInstance] apiLog:@"API: Rider cancel request success"];
-                                                
-                                                NSLog(@"Failed cancel ride %@", error);
-                                                failure(operation, error);
-                                            }];
-    }
+    [[VCDebug sharedInstance] apiLog:@"API: cancel ride"];
+    
+    // Alread have a ride id, so this is a ride cancellation
+    [[RKObjectManager sharedManager] postObject:nil path:API_POST_RIDE_CANCELLED parameters:@{@"ride_id" : ride.ride_id}
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            
+                                            [[VCDebug sharedInstance] apiLog:@"API: Rider cancel ride success"];
+                                            
+                                            success(operation, mappingResult);
+                                        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            [[VCDebug sharedInstance] apiLog:@"API: Rider cancel ride failure"];
+                                            
+                                            NSLog(@"Failed cancel ride %@", error);
+                                            failure(operation, error);
+                                        }];
     
 }
 
@@ -183,18 +172,13 @@
                                           success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [[VCDebug sharedInstance] apiLog:@"API: Rider cancel ride success"];
         
-        NSError * error = nil;
-        NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
-        NSPredicate * predicate = [NSPredicate predicateWithFormat:@"trip_id = %@", tripId];
-        [request setPredicate:predicate];
-        NSArray * tickets = [[VCCoreData managedObjectContext] executeFetchRequest:request error:&error];
-        if(tickets == nil){
-            [WRUtilities criticalError:error];
-        }
+                                              
+        NSArray * tickets = [Ticket ticketsForTrip:tripId];
         for(Ticket* ticket in tickets){
             [[VCCoreData managedObjectContext] deleteObject:ticket];
         }
         
+        NSError * error;
         [[VCCoreData managedObjectContext] save:&error];
         if(error != nil){
             [WRUtilities criticalError:error];
@@ -218,18 +202,9 @@
     // Update all rides for this user using RestKit entity
     [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_ACTIVE_TICKETS parameters:nil
                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                  
-                                                  [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_ACTIVE_FARES
-                                                                                         parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                                                             success(operation, mappingResult);
-                                                                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                                                             failure(operation, error);
-                                                                                         }];
-                                                  
+                                                  success(operation, mappingResult);
                                               } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                  
                                                   failure(operation, error);
-                                                  
                                               }];
 }
 
@@ -245,6 +220,20 @@
                                                }];
 }
 
+
++ (void) getPickupPointsWithSuccess:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                 failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+  
+    [[RKObjectManager sharedManager]  getObjectsAtPath:API_GET_PICKUP_POINTS
+                                            parameters:nil
+                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                   success(operation, mappingResult);
+                                               }
+                                               failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                   failure(operation, error);
+                                               }];
+
+}
 
 
 

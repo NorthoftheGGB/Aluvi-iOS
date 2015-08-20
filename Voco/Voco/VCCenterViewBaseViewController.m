@@ -8,6 +8,7 @@
 
 #import "VCCenterViewBaseViewController.h"
 #import "IIViewDeckController.h"
+#import "VCStyle.h"
 
 @interface VCCenterViewBaseViewController ()
 
@@ -37,7 +38,7 @@
 - (void) showHamburgerBarButton {
     UIBarButtonItem *hamburgerButton = [[UIBarButtonItem alloc] initWithImage: [UIImage imageNamed:@"hamburger"] style:UIBarButtonItemStylePlain target:self action:@selector(didTapHamburger)];
     self.navigationItem.leftBarButtonItem = hamburgerButton;
-    self.navigationItem.leftBarButtonItem.tintColor= [UIColor colorWithRed:(162/255.f) green:(148/255.f) blue:(144/255.f) alpha:1.0];
+    self.navigationItem.leftBarButtonItem.tintColor= [VCStyle drkBlueColor];
     
 }
 

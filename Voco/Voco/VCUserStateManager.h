@@ -34,7 +34,6 @@ NSString *const VCUserStateDriverStateKeyPath;
 
 @interface VCUserStateManager : NSObject
 
-@property(nonatomic, strong) NSNumber * underwayFareId;
 @property(nonatomic, strong) NSString * riderState;
 @property(nonatomic, strong) NSString * driverState;
 @property(nonatomic, strong) NSString * rideProcessState;
@@ -67,6 +66,6 @@ NSString *const VCUserStateDriverStateKeyPath;
 - (void) clearUser;
 
 - (void) refreshProfileWithCompletion: (void ( ^ ) ( ))completion;
-
+- (void) saveProfile;
 
 @end

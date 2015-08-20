@@ -8,6 +8,6 @@
 
 #import "RKObjectRequestOperation.h"
 
-@interface VCObjectRequestOperation : RKObjectRequestOperation
+@interface VCObjectRequestOperation : RKManagedObjectRequestOperation
 
 @end
