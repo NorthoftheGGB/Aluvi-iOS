@@ -7,10 +7,13 @@
 //
 
 #import "VCOnboardingSetRouteViewController.h"
+@import AddressBookUI;
 #import <Masonry.h>
 #import "VCTicketViewController.h"
 #import "VCStyle.h"
 #import "VCMapConstants.h"
+#import "Route.h"
+#import "VCButtonSmall.h"
 
 @interface VCOnboardingSetRouteViewController () <VCTicketViewControllerDelegate>
 
@@ -19,6 +22,9 @@
 @property (strong, nonatomic) IBOutlet UIView *buttonsView;
 @property (strong, nonatomic) VCTicketViewController * ticketViewController;
 @property (nonatomic) NSInteger editLocationType;
+@property (strong, nonatomic) Route * route;
+@property (strong, nonatomic) IBOutlet VCButtonSmall *pickupPointButton;
+@property (strong, nonatomic) IBOutlet VCButtonSmall *dropOffPointButton;
 @end
 
 @implementation VCOnboardingSetRouteViewController
@@ -28,6 +34,7 @@
     if(self != nil){
         _pickupPointPicked = NO;
         _dropOffPointPicked = NO;
+        _route = [[Route alloc] init];
     }
     return self;
 }
@@ -57,6 +64,7 @@
     
     _ticketViewController = [[VCTicketViewController alloc] init];
     [self addChildViewController:_ticketViewController];
+    _ticketViewController.view.frame = _buttonsView.frame;
     
     [self.view insertSubview:_ticketViewController.view atIndex:0];
   
@@ -68,7 +76,6 @@
     }];
     [_ticketViewController.view setNeedsLayout];
 
-    [_ticketViewController.view setNeedsLayout];
     _ticketViewController.delegate = self;
     [_ticketViewController didMoveToParentViewController:self];
     [_ticketViewController placeInEditLocationMode:editLocationType];
@@ -84,12 +91,12 @@
 }
 
 - (IBAction)didTapOnboardingPickupPointButton:(id)sender {
-    _editLocationType = 1;
+    _editLocationType = kHomeType;
     [self transitionToTicketViewController: kHomeType];
 }
 
 - (IBAction)didTapOnboardingWorkLocationButton:(id)sender {
-    _editLocationType = 2;
+    _editLocationType = kWorkType;
     [self transitionToTicketViewController: kWorkType];
 }
 
@@ -100,8 +107,35 @@
 
 #pragma delegate
 - (void) overrideUpdateLocation:(CLPlacemark*) placemark type:(NSInteger) type {
+    
+    switch(type){
+        case kHomeType:
+        {
+            _route.home = [[CLLocation alloc] initWithLatitude:placemark.location.coordinate.latitude longitude:placemark.location.coordinate.longitude];
+            _route.homePlaceName = ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);
+            [self updateFromButton: _route.homePlaceName];
+        }
+            break;
+        case kWorkType:
+        {
+            _route.work = [[CLLocation alloc] initWithLatitude:placemark.location.coordinate.latitude longitude:placemark.location.coordinate.longitude];
+            _route.workPlaceName = ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);
+            [self updateToButton: _route.workPlaceName];
+        }
+            break;
+        case kPickupZoneType:
+        {
+            _route.pickupZoneCenter = [[CLLocation alloc] initWithLatitude:placemark.location.coordinate.latitude longitude:placemark.location.coordinate.longitude];
+            _route.pickupZoneCenterPlaceName = ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);
+            [self updateToButton: _route.pickupZoneCenterPlaceName];
+        }
+            break;
+    }
+    
     [UIView animateWithDuration:.2 animations:^{
-        _buttonsView.frame = self.view.frame;
+        CGRect frame = _buttonsView.frame;
+        frame.origin.y = 0;
+        _buttonsView.frame = frame;
     } completion:^(BOOL finished) {
         
     }];
@@ -109,16 +143,29 @@
 
 - (void)overrideCancelledUpdateLocation {
     [UIView animateWithDuration:.3 animations:^{
-        [_buttonsView mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.view.mas_left);
-            make.top.equalTo(self.view.mas_top);
-            make.right.equalTo(self.view.mas_right);
-            make.bottom.equalTo(self.view.mas_bottom);
-        }];
+        CGRect frame = _buttonsView.frame;
+        frame.origin.y = 0;
+        _buttonsView.frame = frame;
     } completion:^(BOOL finished) {
         
     }];
 }
+
+- (void) updateFromButton:(NSString *) addressString{
+    NSString * title = [NSString stringWithFormat:@"FROM: %@", addressString];
+    [_pickupPointButton setTitle:title forState:UIControlStateNormal];
+}
+
+- (void) updatePickupZoneButton:(NSString *) addressString{
+    NSString * title = [NSString stringWithFormat:@"Within 2 Miles Of: %@", addressString];
+    [_pickupPointButton setTitle:title forState:UIControlStateNormal];
+}
+
+- (void) updateToButton:(NSString *) addressString{
+    NSString * title = [NSString stringWithFormat:@"TO: %@", addressString];
+    [_dropOffPointButton setTitle:title forState:UIControlStateNormal];
+}
+
 
 
 @end

@@ -36,8 +36,6 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
- 
-    
     VCLogInViewController * vc0 = [[VCLogInViewController alloc] init];
     vc0.index = 0;
     vc0.delegate = self;

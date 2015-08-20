@@ -7,6 +7,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCOnboardingSetRouteViewController">
             <connections>
                 <outlet property="buttonsView" destination="iN0-l3-epB" id="zof-f8-rFn"/>
+                <outlet property="dropOffPointButton" destination="wio-dM-s1h" id="h2n-CC-25L"/>
+                <outlet property="pickupPointButton" destination="mWN-wU-Arg" id="RhO-sA-c1f"/>
                 <outlet property="view" destination="JKs-8A-DdP" id="7Rh-kt-ja3"/>
             </connections>
         </placeholder>
