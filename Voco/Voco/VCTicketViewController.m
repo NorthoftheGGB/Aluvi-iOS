@@ -1345,6 +1345,7 @@
         make.left.equalTo(self.view.mas_left);
         make.bottom.equalTo(self.view.mas_bottom);
         make.right.equalTo(self.view.mas_right);
+        make.height.mas_equalTo(58);
     }];
     [_locationUpdateDoneButton setNeedsLayout];
     

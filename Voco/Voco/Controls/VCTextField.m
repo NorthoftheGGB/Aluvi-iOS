@@ -22,6 +22,12 @@
     UIFont *customFont = [UIFont fontWithName:@"Bryant-Regular" size:14];
     
     [self setFont:customFont];
+    
+    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 5)];
+    self.leftView = paddingView;
+    self.leftViewMode = UITextFieldViewModeAlways;
+    
+
 
 }
 /*
