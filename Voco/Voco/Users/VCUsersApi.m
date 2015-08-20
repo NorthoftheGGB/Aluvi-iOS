@@ -51,8 +51,7 @@
     }
     
     {
-        RKResponseDescriptor * newUserResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping
-                                                                                                                mappingForClass:[VCLoginResponse class]]
+        RKResponseDescriptor * newUserResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[VCLoginResponse getMapping]
                                                                                                         method:RKRequestMethodPOST
                                                                                                    pathPattern:API_USERS
                                                                                                        keyPath:nil

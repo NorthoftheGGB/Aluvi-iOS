@@ -94,7 +94,7 @@ static VCUserStateManager *sharedSingleton;
                   
                   [[VCCommuteManager instance] loadFromServer];
                   
-                 
+                  success();
                   
               } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                   failure(operation, error);
@@ -141,6 +141,11 @@ static VCUserStateManager *sharedSingleton;
     [VCUsersApi createUser:objectManager firstName:firstName lastName:lastName email:email password:password phone:phone referralCode:referralCode driver:driver success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         
         VCLoginResponse * loginResponse = mappingResult.firstObject;
+        if(loginResponse == nil){
+            failure(@"Problem creating account.  Please try again");
+            return;
+        }
+        
         [self setLoggedIn:loginResponse];
         [[VCDebug sharedInstance] apiLog:@"API: Login success"];
         [[VCDebug sharedInstance] setLoggedInUserIdentifier: email];
