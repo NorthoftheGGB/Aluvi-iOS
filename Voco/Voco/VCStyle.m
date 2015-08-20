@@ -49,7 +49,7 @@
 }
 
 + (UIFont *) boldFont {
-    return [UIFont fontWithName:@"Bryant-Medium" size:14 ];
+    return [UIFont fontWithName:@"Bryant-Medium" size:16 ];
 }
 
 + (UIFont *) regularFont {
