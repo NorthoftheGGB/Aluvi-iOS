@@ -1059,7 +1059,7 @@
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[VCCommuteManager instance] requestRidesFor:tomorrow
-                                         success:^{
+                                        success: ^{
                                              [hud hide:YES];
                                              
                                              _ticket = [[VCCommuteManager instance] getDefaultTicket];

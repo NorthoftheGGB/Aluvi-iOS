@@ -617,6 +617,16 @@
 		849A3CFB1B1E5EFF004446AF /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CFA1B1E5EFF004446AF /* Social.framework */; };
 		849A3CFC1B1E5FD7004446AF /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CF81B1E5EF3004446AF /* Accounts.framework */; };
 		849A3CFD1B1E5FDC004446AF /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CFA1B1E5EFF004446AF /* Social.framework */; };
+		84A348F01B85896100DC7187 /* VCPasswordRecoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A348EF1B85896100DC7187 /* VCPasswordRecoveryViewController.m */; };
+		84A348F11B85896100DC7187 /* VCPasswordRecoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A348EF1B85896100DC7187 /* VCPasswordRecoveryViewController.m */; };
+		84A348F21B85896100DC7187 /* VCPasswordRecoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A348EF1B85896100DC7187 /* VCPasswordRecoveryViewController.m */; };
+		84A348F31B85896100DC7187 /* VCPasswordRecoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A348EF1B85896100DC7187 /* VCPasswordRecoveryViewController.m */; };
+		84A348F41B85896100DC7187 /* VCPasswordRecoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A348EF1B85896100DC7187 /* VCPasswordRecoveryViewController.m */; };
+		84A348F71B85896E00DC7187 /* VCPasswordRecoveryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A348F51B85896E00DC7187 /* VCPasswordRecoveryViewController.xib */; };
+		84A348F81B85896E00DC7187 /* VCPasswordRecoveryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A348F51B85896E00DC7187 /* VCPasswordRecoveryViewController.xib */; };
+		84A348F91B85896E00DC7187 /* VCPasswordRecoveryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A348F51B85896E00DC7187 /* VCPasswordRecoveryViewController.xib */; };
+		84A348FA1B85896E00DC7187 /* VCPasswordRecoveryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A348F51B85896E00DC7187 /* VCPasswordRecoveryViewController.xib */; };
+		84A348FB1B85896E00DC7187 /* VCPasswordRecoveryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84A348F51B85896E00DC7187 /* VCPasswordRecoveryViewController.xib */; };
 		84B30A591B82E54A0095F31D /* VCOnboardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B30A571B82E54A0095F31D /* VCOnboardingViewController.m */; };
 		84B30A5A1B82E54A0095F31D /* VCOnboardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B30A571B82E54A0095F31D /* VCOnboardingViewController.m */; };
 		84B30A5B1B82E54A0095F31D /* VCOnboardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B30A571B82E54A0095F31D /* VCOnboardingViewController.m */; };
@@ -1345,6 +1355,9 @@
 		849A3CF81B1E5EF3004446AF /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		849A3CFA1B1E5EFF004446AF /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		84A348ED1B8582D500DC7187 /* VCOnboardingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCOnboardingViewController.h; sourceTree = "<group>"; };
+		84A348EF1B85896100DC7187 /* VCPasswordRecoveryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPasswordRecoveryViewController.m; sourceTree = "<group>"; };
+		84A348F51B85896E00DC7187 /* VCPasswordRecoveryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCPasswordRecoveryViewController.xib; sourceTree = "<group>"; };
+		84A348F61B85896E00DC7187 /* VCPasswordRecoveryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPasswordRecoveryViewController.h; sourceTree = "<group>"; };
 		84B1FBF61B547C6500A00196 /* Voco 19.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 19.xcdatamodel"; sourceTree = "<group>"; };
 		84B1FBF71B557AA600A00196 /* Voco 20.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 20.xcdatamodel"; sourceTree = "<group>"; };
 		84B30A571B82E54A0095F31D /* VCOnboardingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCOnboardingViewController.m; sourceTree = "<group>"; };
@@ -1850,6 +1863,7 @@
 		4FE641B61941562C0059BED1 /* Sign-In and Registration */ = {
 			isa = PBXGroup;
 			children = (
+				84A348EE1B85893700DC7187 /* Other */,
 				84B30A631B82E5C40095F31D /* Base */,
 				84B30A6B1B82E6A40095F31D /* Onboarding View Controllers */,
 				84A348ED1B8582D500DC7187 /* VCOnboardingViewController.h */,
@@ -2081,6 +2095,16 @@
 				D19278A31B6738D1009BFBF8 /* MBRegion.m */,
 			);
 			name = MapBox;
+			sourceTree = "<group>";
+		};
+		84A348EE1B85893700DC7187 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				84A348F51B85896E00DC7187 /* VCPasswordRecoveryViewController.xib */,
+				84A348F61B85896E00DC7187 /* VCPasswordRecoveryViewController.h */,
+				84A348EF1B85896100DC7187 /* VCPasswordRecoveryViewController.m */,
+			);
+			name = Other;
 			sourceTree = "<group>";
 		};
 		84B30A631B82E5C40095F31D /* Base */ = {
@@ -2772,6 +2796,7 @@
 				841648911B64A47D00CD20AC /* driver-cancel-hud-icon-select@2x.png in Resources */,
 				369992ED1B82E84800F47C5E /* Images.xcassets in Resources */,
 				841648921B64A47D00CD20AC /* VCDriverSubMenuItemTableViewCell.xib in Resources */,
+				84A348FA1B85896E00DC7187 /* VCPasswordRecoveryViewController.xib in Resources */,
 				36638D831B659CAE004EDB09 /* VCDriverTicketView.xib in Resources */,
 				841648971B64A47D00CD20AC /* VCLogInViewController.xib in Resources */,
 			);
@@ -2856,6 +2881,7 @@
 				36FA80881B7D831C00C65DF2 /* driver-hov-toggle@2x.png in Resources */,
 				841649CB1B658F4900CD20AC /* VCLogInViewController.xib in Resources */,
 				36E48E681B7AA6920034DFEB /* nav_bg.png in Resources */,
+				84A348F81B85896E00DC7187 /* VCPasswordRecoveryViewController.xib in Resources */,
 				369DBC1A1B6D22F700449CB4 /* test.jpg in Resources */,
 				36049F891B8156370090ECAE /* VCOnboardingSetRouteViewController.xib in Resources */,
 			);
@@ -2951,6 +2977,7 @@
 				84F223151B82611B00E5F7B7 /* driver-cancel-hud-icon-select@2x.png in Resources */,
 				369992EE1B82E84900F47C5E /* Images.xcassets in Resources */,
 				84F223161B82611B00E5F7B7 /* VCDriverSubMenuItemTableViewCell.xib in Resources */,
+				84A348FB1B85896E00DC7187 /* VCPasswordRecoveryViewController.xib in Resources */,
 				84F223171B82611B00E5F7B7 /* VCDriverTicketView.xib in Resources */,
 				84F223181B82611B00E5F7B7 /* VCLogInViewController.xib in Resources */,
 			);
@@ -3035,6 +3062,7 @@
 				4FC7590519AACD840093DBEA /* VCDriverSubMenuItemTableViewCell.xib in Resources */,
 				36FA80871B7D831C00C65DF2 /* driver-hov-toggle@2x.png in Resources */,
 				4FC758B919AA8C270093DBEA /* VCLogInViewController.xib in Resources */,
+				84A348F71B85896E00DC7187 /* VCPasswordRecoveryViewController.xib in Resources */,
 				36E48E671B7AA6920034DFEB /* nav_bg.png in Resources */,
 				36049F881B8156370090ECAE /* VCOnboardingSetRouteViewController.xib in Resources */,
 			);
@@ -3082,6 +3110,7 @@
 				84B30A601B82E54A0095F31D /* VCOnboardingViewController.xib in Resources */,
 				F4D8FEDC19B1745A00BC0B69 /* VCMenuItemModeTableViewCell.xib in Resources */,
 				F4D8FEE219B1745A00BC0B69 /* temp-user-profile-icon@2x.png in Resources */,
+				84A348F91B85896E00DC7187 /* VCPasswordRecoveryViewController.xib in Resources */,
 				F4D8FEE419B1745A00BC0B69 /* (null) in Resources */,
 				36E48E781B7ABFBE0034DFEB /* Bryant-Bold.ttf in Resources */,
 				F4D8FEE919B1745A00BC0B69 /* driver-cancel-hud-icon@2x.png in Resources */,
@@ -3381,6 +3410,7 @@
 				841647A21B64A47D00CD20AC /* VCPushReceiver.m in Sources */,
 				36000CB31B72D5D2008E84AE /* VCCarInfoViewController.m in Sources */,
 				841647A31B64A47D00CD20AC /* VCSubMenuItemTableViewCell.m in Sources */,
+				84A348F31B85896100DC7187 /* VCPasswordRecoveryViewController.m in Sources */,
 				841647A51B64A47D00CD20AC /* VCDriverStateResponse.m in Sources */,
 				8444153B1B72BBE5008C7898 /* VCMapHelper.m in Sources */,
 				84B30A691B82E5DE0095F31D /* VCOnboardingChildViewController.m in Sources */,
@@ -3506,6 +3536,7 @@
 				36000CB11B72D5D2008E84AE /* VCCarInfoViewController.m in Sources */,
 				841648D91B658F4900CD20AC /* VCSubMenuItemTableViewCell.m in Sources */,
 				841648DB1B658F4900CD20AC /* VCDriverStateResponse.m in Sources */,
+				84A348F11B85896100DC7187 /* VCPasswordRecoveryViewController.m in Sources */,
 				844415391B72BBE5008C7898 /* VCMapHelper.m in Sources */,
 				841648DC1B658F4900CD20AC /* MQBoundingBox.m in Sources */,
 				84B30A671B82E5DE0095F31D /* VCOnboardingChildViewController.m in Sources */,
@@ -3631,6 +3662,7 @@
 				84F2225E1B82611B00E5F7B7 /* VCPushReceiver.m in Sources */,
 				84F2225F1B82611B00E5F7B7 /* VCCarInfoViewController.m in Sources */,
 				84F222601B82611B00E5F7B7 /* VCSubMenuItemTableViewCell.m in Sources */,
+				84A348F41B85896100DC7187 /* VCPasswordRecoveryViewController.m in Sources */,
 				84F222631B82611B00E5F7B7 /* VCDriverStateResponse.m in Sources */,
 				84F222641B82611B00E5F7B7 /* VCMapHelper.m in Sources */,
 				84B30A6A1B82E5DE0095F31D /* VCOnboardingChildViewController.m in Sources */,
@@ -3756,6 +3788,7 @@
 				36000CB01B72D5D2008E84AE /* VCCarInfoViewController.m in Sources */,
 				F4C6B1EC197F06B100F6C10B /* VCDriverStateResponse.m in Sources */,
 				F4C6B1ED197F06B100F6C10B /* MQBoundingBox.m in Sources */,
+				84A348F01B85896100DC7187 /* VCPasswordRecoveryViewController.m in Sources */,
 				844415381B72BBE5008C7898 /* VCMapHelper.m in Sources */,
 				F4C6B1EE197F06B100F6C10B /* VCGeolocation.m in Sources */,
 				84B30A661B82E5DE0095F31D /* VCOnboardingChildViewController.m in Sources */,
@@ -3881,6 +3914,7 @@
 				F4D8FE3C19B1745A00BC0B69 /* VCPushReceiver.m in Sources */,
 				36000CB21B72D5D2008E84AE /* VCCarInfoViewController.m in Sources */,
 				F4D8FE3D19B1745A00BC0B69 /* VCSubMenuItemTableViewCell.m in Sources */,
+				84A348F21B85896100DC7187 /* VCPasswordRecoveryViewController.m in Sources */,
 				F4D8FE3F19B1745A00BC0B69 /* VCDriverStateResponse.m in Sources */,
 				8444153A1B72BBE5008C7898 /* VCMapHelper.m in Sources */,
 				84B30A681B82E5DE0095F31D /* VCOnboardingChildViewController.m in Sources */,
