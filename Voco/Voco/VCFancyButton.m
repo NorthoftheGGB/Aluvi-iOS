@@ -12,8 +12,7 @@
 
 @implementation VCFancyButton
 
-- (void)awakeFromNib{
-    
+- (void) style {
     self.layer.backgroundColor = [UIColor whiteColor].CGColor;
     self.layer.cornerRadius = 5.0;
     self.layer.masksToBounds = NO;
@@ -26,7 +25,12 @@
     [self setFrame:CGRectMake(0, 0, 150, 33)];
     [self setTitleColor:[VCStyle greyColor] forState:UIControlStateNormal];
     self.titleLabel.font = [UIFont fontWithName:@"Bryant-Regular" size:16.0];
+
+}
+
+- (void)awakeFromNib{
     
+    [self style];
     
 }
 

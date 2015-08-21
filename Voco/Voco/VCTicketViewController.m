@@ -45,6 +45,7 @@
 #import "VCMapStyle.h"
 #import "VCMapConstants.h"
 #import "VCStyle.h"
+#import "VCFancyButton.h"
 
 // provisional
 #import "VCRiderApi.h"
@@ -92,7 +93,7 @@
 // Ride Details
 @property (strong, nonatomic) VCRiderTicketView * riderTicketHUD;
 @property (strong, nonatomic) VCDriverTicketView * driverTicketHUD;
-@property (strong, nonatomic) UIButton *ridersOnboardButton;
+@property (strong, nonatomic) VCFancyButton *ridersOnboardButton;
 
 
 // State
@@ -620,6 +621,8 @@
     if(button != nil) {
         buttonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
         self.navigationItem.rightBarButtonItem = buttonItem;
+    } else {
+        self.navigationItem.rightBarButtonItem = nil;
     }
 }
 
@@ -848,8 +851,9 @@
                      } completion:^(BOOL finished) {
                          
                          
-                         _ridersOnboardButton = [UIButton buttonWithType:UIButtonTypeSystem];
-                         CGRect frame = CGRectMake(0, 0, 100, 50);
+                         _ridersOnboardButton = [[VCFancyButton alloc] init];
+                         [_ridersOnboardButton style];
+                         CGRect frame = CGRectMake(0, 0, 160, 50);
                          _ridersOnboardButton.frame = frame;
                         
                          [self.view addSubview:_ridersOnboardButton];
@@ -879,19 +883,25 @@
 }
 
 - (void)didTapRidersOnboardButton:(id)sender {
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[VCCommuteManager instance] ridesPickedUp:_ticket success:^{
+        hud.hidden = YES;
         [self updateRidersOnBoardButton];
     } failure:^{
+        hud.hidden = YES;
         // do we want to say something?
     }];
 
 }
 
 - (void)didTapRidersDroppedOff:(id)sender {
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[VCCommuteManager instance] ridesDroppedOff:_ticket success:^{
+        hud.hidden = YES;
         [self updateRidersOnBoardButton];
         [self updateTicketInterface];
     } failure:^{
+        hud.hidden = YES;
         // do we want to say something?
     }];
 }

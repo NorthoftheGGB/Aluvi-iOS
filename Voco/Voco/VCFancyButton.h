@@ -10,6 +10,7 @@
 
 @interface VCFancyButton : UIButton
 
+- (void) style;
 
 
 @end

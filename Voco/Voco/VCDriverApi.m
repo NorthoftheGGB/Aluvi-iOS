@@ -18,6 +18,7 @@
 #import "VCFare.h"
 #import "Earning.h"
 #import "VCApiError.h"
+#import "Ticket.h"
 
 @implementation VCDriverApi
 
@@ -50,22 +51,60 @@
         RKRequestDescriptor *requestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:requestMapping objectClass:[Car class] rootKeyPath:nil method:RKRequestMethodPOST];
         [objectManager addRequestDescriptor:requestDescriptor];
     }
+    
+    RKEntityMapping * ticketMapping = [Ticket createMappings:objectManager];
+
     {
-        RKObjectMapping * mapping = [VCFare getMapping];
-        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping
+        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:ticketMapping
                                                                                                      method:RKRequestMethodPOST
                                                                                                 pathPattern:API_POST_RIDE_COMPLETED
                                                                                                     keyPath:nil
                                                                                                 statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:responseDescriptor];
-    }   
+        
+        
+        [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
+            RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:API_POST_RIDE_COMPLETED];
+            
+            NSString * relativePath = [URL relativePath];
+            NSDictionary *argsDict = nil;
+            BOOL match = [pathMatcher matchesPath:relativePath tokenizeQueryStrings:NO parsedArguments:&argsDict];
+            if (match) {
+                NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
+                return fetchRequest;
+            }
+            return nil;
+        }];
+
+    }
+    
+    
+    
     {
-        RKResponseDescriptor * responseDescriptor2 = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSNull class]]
+        
+        RKResponseDescriptor * responseDescriptor2 = [RKResponseDescriptor responseDescriptorWithMapping:ticketMapping
                                                                                                   method:RKRequestMethodPOST
                                                                                              pathPattern:API_POST_RIDE_PICKUP
                                                                                                  keyPath:nil
                                                                                              statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:responseDescriptor2];
+        
+        
+        // We could also just return the single ticket
+        // however syncing all tickets has this appeal
+        [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
+            RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:API_POST_RIDE_COMPLETED];
+            
+            NSString * relativePath = [URL relativePath];
+            NSDictionary *argsDict = nil;
+            BOOL match = [pathMatcher matchesPath:relativePath tokenizeQueryStrings:NO parsedArguments:&argsDict];
+            if (match) {
+                NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
+                return fetchRequest;
+            }
+            return nil;
+        }];
+
     }
     {
         RKResponseDescriptor * responseDescriptor2 = [RKResponseDescriptor responseDescriptorWithMapping:[VCApiError getMapping]                                                                                             method:RKRequestMethodPOST

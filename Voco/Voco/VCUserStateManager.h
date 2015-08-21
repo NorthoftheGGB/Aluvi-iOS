@@ -77,6 +77,7 @@ NSString *const VCUserStateDriverStateKeyPath;
 - (void) clearUser;
 
 - (void) refreshProfileWithCompletion: (void ( ^ ) ( ))completion;
+- (void) saveProfileWithCompletion: (void ( ^ ) ( ))completion  failure:(void ( ^ ) (RKObjectRequestOperation *operation, NSError *error) )failure;
 - (void) saveProfile;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "VCOnboardingViewController.h"
+#import <MBProgressHUD.h>
 #import "VCUserStateManager.h"
 #import "VCInterfaceManager.h"
 #import "VCLogInViewController.h"
@@ -29,7 +30,6 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (strong, nonatomic) NSMutableDictionary * values;
-@property (strong, nonatomic) Route * route;
 
 @property (nonatomic) BOOL locked;
 @property (nonatomic) NSInteger currentIndex;
@@ -140,41 +140,59 @@
 }
 
 - (void) registerUser {
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
     [[VCUserStateManager instance] createUser:[RKObjectManager sharedManager]
-                 firstName:[_values objectForKey:FirstNameValueKey]
-                  lastName:[_values objectForKey:LastNameValueKey]
-                     email:[_values objectForKey:EmailValueKey]
-                  password:[_values objectForKey:PasswordValueKey]
-                     phone:[_values objectForKey:PhoneNumberValueKey]
-              referralCode:nil
-                    driver:[_values objectForKey:DriverValueKey]
-                    success:^() {
-                  
-                
-                  [[VCInterfaceManager instance] showRiderInterface];
-                        
-                        
-                  // User created!  we can send in the route in the background
-                  [[VCCommuteManager instance] storeCommuterSettings:_route success:^{
-                      
-                  } failure:^(NSString *errorMessage) {
-                      [UIAlertView showWithTitle:@"Woops" message:@"We had a problem saving your route to the server" cancelButtonTitle:@"Hmm" otherButtonTitles:nil tapBlock:nil];
-                  }];
-                  
-                  // Also attempt to send profile image in background
-                  [VCUsersApi updateProfileImage:[_values objectForKey:ProfileImageValueKey] success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                      [VCUsersApi getProfile:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                          [VCNotifications profileUpdated];
-                      } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                      }];
-                  } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                      [WRUtilities criticalError:error];
-                  }];
-                  
-                  
-              } failure:^(NSString * errorString) {
-                  [UIAlertView showWithTitle:@"Problem" message:errorString cancelButtonTitle:@"Ok I will" otherButtonTitles:nil tapBlock:nil];
-              }];
+                                    firstName:[_values objectForKey:FirstNameValueKey]
+                                     lastName:[_values objectForKey:LastNameValueKey]
+                                        email:[_values objectForKey:EmailValueKey]
+                                     password:[_values objectForKey:PasswordValueKey]
+                                        phone:[_values objectForKey:PhoneNumberValueKey]
+                                 referralCode:nil
+                                       driver:[_values objectForKey:DriverValueKey]
+                                      success:^() {
+                                          
+                                          hud.hidden = YES;
+                                          
+                                          dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                                              
+                                              
+                                              // User created!  we can send in the route in the background
+                                              [[VCCommuteManager instance] storeCommuterSettings:[_values objectForKey:RouteObjectValueKey ]  success:^{
+                                                  
+                                              } failure:^(NSString *errorMessage) {
+                                                  [UIAlertView showWithTitle:@"Woops" message:errorMessage cancelButtonTitle:@"Hmm" otherButtonTitles:nil tapBlock:nil];
+                                              }];
+                                              
+                                              // Also attempt to send profile image in background
+                                              
+                                              [[VCUserStateManager instance] refreshProfileWithCompletion:^{
+                                                  
+                                                  [VCUsersApi updateProfileImage:[_values objectForKey:ProfileImageValueKey] success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                      
+                                                      [VCUserStateManager instance].profile.workEmail = [_values objectForKey:WorkEmailValueKey];
+                                                      [[VCUserStateManager instance] saveProfileWithCompletion:^{
+                                                          //
+                                                      } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                          [WRUtilities criticalError:error];
+                                                      }];
+                                                      
+                                                  } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                      [WRUtilities criticalError:error];
+                                                  }];
+
+                                              }];
+                                              
+                                          });
+                                          
+                                          [[VCInterfaceManager instance] showRiderInterface];
+                                          
+                                          
+                                      } failure:^(NSString * errorString) {
+                                          hud.hidden = YES;
+                                          
+                                          [UIAlertView showWithTitle:@"Problem" message:errorString cancelButtonTitle:@"Ok I will" otherButtonTitles:nil tapBlock:nil];
+                                      }];
     
 }
 

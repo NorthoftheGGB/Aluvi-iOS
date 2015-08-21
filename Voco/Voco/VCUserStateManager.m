@@ -43,12 +43,6 @@ static VCUserStateManager *sharedSingleton;
 - (id) init {
     self = [super init];
     if(self != nil){
-        NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
-        _rideProcessState = [userDefaults objectForKey:kRideProcessStateKey];
-        _driveProcessState = [userDefaults objectForKey:kDriveProcessStateKey];
-        _riderState = [userDefaults objectForKey:kRiderStateKey];
-        _driverState = [userDefaults objectForKey:kDriverStateKey];
-        //_underwayFareId = [userDefaults objectForKey:kRideIdKey];
         NSData * profileData = [[NSUserDefaults standardUserDefaults] objectForKey:kProfileDataKey];
         if(profileData != nil) {
             @try {
@@ -69,14 +63,16 @@ static VCUserStateManager *sharedSingleton;
 
 - (void) setProfile:(VCProfile *)profile {
     _profile = profile;
-    [self saveProfile];
+    [self cacheProfile];
 }
 
-- (void) saveProfile {
+
+-(void) cacheProfile {
     NSData * profileData = [NSKeyedArchiver archivedDataWithRootObject:_profile];
     [[NSUserDefaults standardUserDefaults] setObject:profileData forKey:kProfileDataKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
+
 
 - (void) loginWithEmail:(NSString*) email
                password: (NSString *) password
@@ -93,6 +89,13 @@ static VCUserStateManager *sharedSingleton;
                   
                   
                   [[VCCommuteManager instance] loadFromServer];
+                  
+                  [[VCUserStateManager instance] refreshProfileWithCompletion:^{
+                      [VCNotifications profileUpdated];
+                      //success();
+                  } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                      // nothing necessary to do
+                  }];
                   
                   success();
                   
@@ -118,13 +121,7 @@ static VCUserStateManager *sharedSingleton;
         // failure(operation, error);
     }];
     
-    [[VCUserStateManager instance] refreshProfileWithCompletion:^{
-        [VCNotifications profileUpdated];
-        //success();
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        // can continue even with error
-        //failure(operation, error);
-    }];
+   
 }
 
 - (void) createUser:( RKObjectManager *) objectManager
@@ -137,7 +134,7 @@ static VCUserStateManager *sharedSingleton;
              driver:(NSNumber*) driver
             success:(void ( ^ ) () )success
             failure:(void ( ^ ) ( NSString* error))failure {
-
+    
     [VCUsersApi createUser:objectManager firstName:firstName lastName:lastName email:email password:password phone:phone referralCode:referralCode driver:driver success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         
         VCLoginResponse * loginResponse = mappingResult.firstObject;
@@ -153,12 +150,14 @@ static VCUserStateManager *sharedSingleton;
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [WRUtilities criticalError:error];
+        failure(@"Problem creating user");
     }];
     
 
 }
 
 - (void) logoutWithCompletion: (void ( ^ ) () )success {
+    [[VCCommuteManager instance] reset];
     [self finalizeLogout];
     success();
 }
@@ -244,27 +243,49 @@ static VCUserStateManager *sharedSingleton;
 
 - (void) refreshProfileWithCompletion: (void ( ^ ) ( ))completion  failure:(void ( ^ ) (RKObjectRequestOperation *operation, NSError *error) )failure  {
     [VCUsersApi getProfile:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        NSArray * array = [mappingResult array];
-        VCProfile * profile;
-        Car * car;
-        profile.carId = nil;
-        if([array[0] isKindOfClass:[VCProfile class]]){
-            profile = mappingResult.firstObject;
-            if([array count] > 1) {
-                car = array[1];
-            }
-        } else {
-            profile = array[1];
-            car = mappingResult.firstObject;
-        }
-        
-        profile.carId = car.id;
-        [self setProfile: profile];
+        [self loadProfileFromMappingResult:mappingResult];
+        [self cacheProfile];
+        [VCNotifications profileUpdated];
         completion();
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [WRUtilities criticalError:error];
     }];
+}
+
+- (void) saveProfileWithCompletion: (void ( ^ ) ( ))completion  failure:(void ( ^ ) (RKObjectRequestOperation *operation, NSError *error) )failure
+{
+    [self cacheProfile];
     
+    [VCUsersApi updateProfile:self.profile success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [self loadProfileFromMappingResult:mappingResult];
+        [self cacheProfile];
+        [VCNotifications profileUpdated];
+        completion();
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [WRUtilities criticalError:error];
+        failure(operation, error);
+    }];
+}
+
+
+- (void) loadProfileFromMappingResult:(RKMappingResult *) mappingResult {
+    NSArray * array = [mappingResult array];
+    VCProfile * profile;
+    Car * car;
+    profile.carId = nil;
+    if([array[0] isKindOfClass:[VCProfile class]]){
+        profile = mappingResult.firstObject;
+        if([array count] > 1) {
+            car = array[1];
+        }
+    } else {
+        profile = array[1];
+        car = mappingResult.firstObject;
+    }
+    
+    profile.carId = car.id;
+    [self setProfile: profile];
+
 }
 
 

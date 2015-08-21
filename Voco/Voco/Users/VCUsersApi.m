@@ -34,14 +34,6 @@
     RKRequestDescriptor * profileRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:profileUpdateMapping objectClass:[VCProfile class] rootKeyPath:nil method:RKRequestMethodPOST];
     [objectManager addRequestDescriptor:profileRequestDescriptor];
     
-    {
-        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSObject class]]
-                                                                                                 method:RKRequestMethodPOST
-                                                                                            pathPattern:API_USER_PROFILE
-                                                                                                keyPath:nil
-                                                                                            statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-        [objectManager addResponseDescriptor:responseDescriptor];
-    }
     
     {
         RKObjectMapping * newUserMapping = [VCNewUser getMapping];
@@ -126,9 +118,12 @@
         RKObjectMapping * mapping = [VCProfile getMapping];
         RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping method:RKRequestMethodPOST pathPattern:API_USER_PROFILE keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:responseDescriptor];
-        
     }
-    
+    {
+        RKObjectMapping * mapping = [Car createMappings:objectManager];
+        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping method:RKRequestMethodPOST pathPattern:API_USER_PROFILE keyPath:@"car" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor];
+    }
     {
         RKObjectMapping * mapping = [VCProfile getMapping];
         RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping method:RKRequestMethodPOST pathPattern:API_FILL_COMMUTER_PASS keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];

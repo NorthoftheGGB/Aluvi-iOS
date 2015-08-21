@@ -399,12 +399,17 @@ static VCCommuteManager * instance;
 
 - (void) ridesPickedUp:(Ticket *) ticket success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure {
     [VCDriverApi ridersPickedUp:ticket.ride_id success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [self loadActiveTickets];
+        [VCNotifications scheduleUpdated];
+        /*
+         Not necessary since we are synching tickets
         ticket.state = kInProgressState;
         NSError * error;
         [[VCCoreData managedObjectContext] save:&error];
         if(error != nil){
             [WRUtilities criticalError:error];
         }
+         */
         success();
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [WRUtilities subcriticaError:error];
@@ -414,12 +419,17 @@ static VCCommuteManager * instance;
 
 - (void) ridesDroppedOff:(Ticket *) ticket success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure {
     [VCDriverApi ticketCompleted:ticket.ride_id success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [self loadActiveTickets];
+        [VCNotifications scheduleUpdated];
+        /*
+         No necessary since we are synching tickets
         ticket.state = kCompleteState;
         NSError * error;
         [[VCCoreData managedObjectContext] save:&error];
         if(error != nil){
             [WRUtilities criticalError:error];
         }
+         */
         success();
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [WRUtilities subcriticaError:error];

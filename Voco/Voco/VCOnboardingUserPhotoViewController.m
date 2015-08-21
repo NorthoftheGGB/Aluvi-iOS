@@ -26,6 +26,18 @@
 
 @implementation VCOnboardingUserPhotoViewController
 
+- (void) viewDidLoad {
+    
+#ifdef SPOOF
+    UIImage * img = [UIImage imageNamed:@"logo_in"];
+    CGSize size = CGSizeMake(640, 750);
+    _profileImage = [img resizedImageToFitInSize:size scaleIfSmaller:YES];
+    _onboardingUserImage.image = _profileImage;
+    _onboardingUserImage.layer.cornerRadius = _onboardingUserImage.frame.size.width / 2;
+    _onboardingUserImage.clipsToBounds = YES;
+#endif
+}
+
 - (IBAction)onboardingTakePhoto:(id)sender {
     PKImagePickerViewController *imagePicker = [[PKImagePickerViewController alloc]init];
     imagePicker.delegate = self;

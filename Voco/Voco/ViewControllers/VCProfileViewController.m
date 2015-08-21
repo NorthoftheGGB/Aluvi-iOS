@@ -94,6 +94,7 @@
     _emailTextField.text = profile.email;
     _phoneTextField.text = profile.phone;
     _passwordTextField.text = @"********";
+    _workEmailTextField.text = profile.workEmail;
     [_userImageView sd_setImageWithURL:[NSURL URLWithString:profile.smallImageUrl]
                    placeholderImage:[UIImage imageNamed:@"temp-user-profile-icon"]
                     options:SDWebImageRefreshCached
@@ -144,19 +145,14 @@
     [VCUserStateManager instance].profile.email = _emailTextField.text;
     [VCUserStateManager instance].profile.phone = _phoneTextField.text;
     [VCUserStateManager instance].profile.workEmail = _workEmailTextField.text;
-    [[VCUserStateManager instance] saveProfile];
-    
-    if(notify){
-        [VCNotifications profileUpdated];
-    }
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [VCUsersApi updateProfile:[VCUserStateManager instance].profile
-                      success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                          [hud hide:YES];
-                      } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                          [hud hide:YES];
-                      }];
+    [[VCUserStateManager instance] saveProfileWithCompletion:^{
+        [hud hide:YES];
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [hud hide:YES];
+    }];
+    
 }
 
 - (IBAction)didTapLogoutButton:(id)sender {
