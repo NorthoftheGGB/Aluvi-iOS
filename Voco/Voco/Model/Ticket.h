@@ -20,7 +20,7 @@
 #define kCommuteSchedulerFailedState @"commute_scheduler_failed"
 #define kDriverCancelledState @"driver_cancelled"
 #define kRiderCancelledState @"rider_cancelled"
-#define kCompleteState @"complete"
+#define kCompleteState @"completed"
 #define kPaymentProblemState @"payment_problem"
 
 // Trip State

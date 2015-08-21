@@ -127,7 +127,7 @@ static VCDialogs *sharedSingleton;
 - (void) commuteFulfilled {
     
     
-    [UIAlertView showWithTitle:@"Commuter Ride Scheduled!" message:@"Your Commute to and from work has been Fulfilled!" cancelButtonTitle:@"Great!" otherButtonTitles:@[@"More Functionality"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+    [UIAlertView showWithTitle:@"Commuter Ride Scheduled!" message:@"Your Commute to and from work has been Fulfilled!" cancelButtonTitle:@"Great!" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
         
     }];
 }
