@@ -25,7 +25,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+#ifdef SPOOF
+    _onboardingFullNameTextField.text = @"ng ng";
+    _onboardingPhoneNumberTextField.text = @"9876787656";
+    _onboardingWorkEmailTextField.text = @"asdf@asdf.com";
+#endif
 }
 
 - (void)didReceiveMemoryWarning {

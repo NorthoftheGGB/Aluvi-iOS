@@ -89,8 +89,8 @@
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
 
-#ifndef RELEASE
-    _emailTextField.text = @"gg@gg.com";
+#ifdef SPOOF
+    _emailTextField.text = [NSString stringWithFormat: @"%@gg@gg.com", [NSDate date]];
     _passwordTextField.text = @"gg";
 #endif
 }

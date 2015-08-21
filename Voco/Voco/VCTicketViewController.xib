@@ -322,11 +322,11 @@
             <rect key="frame" x="0.0" y="0.0" width="265" height="124"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We are finding your commute buddies. Oh, friendship." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQY-E9-fr5" customClass="VCLabelExtraBold">
-                    <rect key="frame" x="46" y="21" width="173" height="82"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We are finding your commute buddies. You might want to brush up on your puns." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQY-E9-fr5" customClass="VCLabelExtraBold">
+                    <rect key="frame" x="31" y="21" width="203" height="82"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="82" id="jcn-OR-jgZ"/>
-                        <constraint firstAttribute="width" constant="173" id="pm2-3f-yOp"/>
+                        <constraint firstAttribute="width" constant="203" id="pm2-3f-yOp"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.35686274509999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
