@@ -9,6 +9,7 @@
 #import "VCDriverTicketView.h"
 #import <SDWebImage/UIButton+WebCache.h>
 #import <Masonry.h>
+#import "VCRiderView.h"
 #import "Rider.h"
 #import "VCStyle.h"
 
@@ -16,9 +17,9 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *totalFareLabel;
 @property (strong, nonatomic) IBOutlet UILabel *totalRidersLabel;
-@property (strong, nonatomic) IBOutlet UIView *riderOneView;
-@property (strong, nonatomic) IBOutlet UIView *riderTwoView;
-@property (strong, nonatomic) IBOutlet UIView *riderThreeView;
+@property (strong, nonatomic) IBOutlet VCRiderView *riderOneView;
+@property (strong, nonatomic) IBOutlet VCRiderView *riderTwoView;
+@property (strong, nonatomic) IBOutlet VCRiderView *riderThreeView;
 @property (strong, nonatomic) IBOutlet UIButton *riderOneButton;
 @property (strong, nonatomic) IBOutlet UIButton *riderTwoButton;
 @property (strong, nonatomic) IBOutlet UIButton *riderThreeButton;
@@ -54,19 +55,14 @@
     
     _totalRidersLabel.text = [NSString stringWithFormat:@"%ld Riders", length];
     if(length > 0){
-        Rider * rider = _riders[0];
-        _riderOneView.hidden = NO;
-        [self showButton:_riderOneButton WithRider:rider];
+        [self showRiderView:_riderOneView withRider:_riders[0]];
     }
     if(length > 1){
-        Rider * rider = _riders[1];
-        _riderTwoView.hidden = NO;
-        [self showButton:_riderTwoButton WithRider:rider];
+        [self showRiderView:_riderTwoView withRider:_riders[1]];
+
     }
     if(length > 2){
-        Rider * rider = _riders[2];
-        _riderThreeView.hidden = NO;
-        [self showButton:_riderThreeButton WithRider:rider];
+        [self showRiderView:_riderThreeView withRider:_riders[2]];
     }
     _totalFareLabel.text = [NSString stringWithFormat:@"%.2f", [ticket.estimatedEarnings doubleValue] / 100];
     
@@ -76,6 +72,13 @@
 
 
 
+- (void) showRiderView: (VCRiderView *) riderView withRider: (Rider *) rider {
+    
+    [self showButton:riderView.button WithRider:rider];
+    riderView.label.text = [rider fullName];
+    riderView.hidden = NO;
+    
+}
 
 
 - (void) showButton: (UIButton * ) button WithRider: (Rider *) rider {

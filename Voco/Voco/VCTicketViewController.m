@@ -849,7 +849,8 @@
                          
                          
                          _ridersOnboardButton = [UIButton buttonWithType:UIButtonTypeSystem];
-                         CGRect frame = CGRectMake(0, 0, 100, 50);
+                         _ridersOnboardButton.backgroundColor = [VCStyle greenColor];
+                         CGRect frame = CGRectMake(0, 0, 160, 50);
                          _ridersOnboardButton.frame = frame;
                         
                          [self.view addSubview:_ridersOnboardButton];
