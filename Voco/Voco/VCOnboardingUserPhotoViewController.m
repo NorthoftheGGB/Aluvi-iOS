@@ -75,5 +75,10 @@
     
 }
 
+-(void)imageSelectionError:(NSError*)error {
+    NSString * errorMessage = [NSString stringWithFormat:@"Please make sure the camera is enabled.  %@", [error debugDescription]];
+    [UIAlertView showWithTitle:@"Image Capture Error" message:errorMessage cancelButtonTitle:   @"OK" otherButtonTitles:nil tapBlock:nil];
+}
+
 
 @end

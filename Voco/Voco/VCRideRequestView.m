@@ -91,7 +91,11 @@
 
 - (void) updateWithRoute:(Route *) route {
    
-    _route = [route copy];
+    if(route != nil){
+        _route = [route copy];
+    } else {
+        _route = [[Route alloc] init];
+    }
     if(route.pickupTime != nil) {
         _toWorkTimeLabel.text = route.pickupTime;
     }

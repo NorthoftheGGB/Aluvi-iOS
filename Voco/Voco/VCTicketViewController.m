@@ -1277,23 +1277,50 @@
     
     if([VCMapHelper validCoordinate:location]) {
         
-        if(type == kHomeType || type == kWorkType){
-            _activeAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
-                                                                coordinate:location
-                                                                  andTitle:locationName];
-            ((RMPointAnnotation *)_activeAnnotation).image = [VCMapStyle annotationImageForType:type];
-        } else if (type == kPickupZoneType){
-            _activeAnnotation = [[RMAnnotation alloc] initWithMapView:self.map
-                                                           coordinate:location
-                                                             andTitle:locationName];
-            _activeAnnotation.userInfo = kPickupZoneAnnotationType;
+        if(_activeAnnotation != nil) {
+            [self.map removeAnnotation:_activeAnnotation];
+            _activeAnnotation = nil;
+        }
+        
+        
+        NSString * title = @"";
+        switch (_editLocationType) {
+            case kHomeType:
+                title = @"Home";
+                _activeAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
+                                                                    coordinate:_route.home.coordinate
+                                                                      andTitle:title];
+                [self.map setZoom:[VCMapStyle defaultZoomForType:_editLocationType] atCoordinate:_route.home.coordinate animated:YES];
+                ((RMPointAnnotation *)_activeAnnotation).image = [VCMapStyle annotationImageForType:_editLocationType];
+                
+                break;
+            case kWorkType:
+                title = @"Work";
+                _activeAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
+                                                                    coordinate:_route.work.coordinate
+                                                                      andTitle:title];
+                [self.map setZoom:[VCMapStyle defaultZoomForType:_editLocationType] atCoordinate:_route.work.coordinate animated:YES];
+                ((RMPointAnnotation *)_activeAnnotation).image = [VCMapStyle annotationImageForType:_editLocationType];
+                break;
+            case kPickupZoneType:
+                title = @"Pickup Zone";
+                _activeAnnotation = [[RMAnnotation alloc] initWithMapView:self.map
+                                                               coordinate:_route.pickupZoneCenter.coordinate
+                                                                 andTitle:title];
+                _activeAnnotation.userInfo = kPickupZoneAnnotationType;
+                [self.map setZoom:[VCMapStyle defaultZoomForType:_editLocationType] atCoordinate:_route.pickupZoneCenter.coordinate animated:YES];
+                break;
+            default:
+                break;
         }
         
         [self.map addAnnotation:_activeAnnotation];
-        
+        [self.map setZoom:[VCMapStyle defaultZoomForType:type] atCoordinate:location animated:YES];
+
+    } else {
+        [self zoomToCurrentLocation];
     }
     
-    [self.map setZoom:[VCMapStyle defaultZoomForType:type] atCoordinate:location animated:YES];
     
     
     [UIView animateWithDuration:0.35
@@ -1330,6 +1357,7 @@
 
 - (void) placeInEditLocationMode: (NSInteger) editLocationType {
     _editLocationType = editLocationType;
+   
     [self placeInEditLocationMode];
 }
 
