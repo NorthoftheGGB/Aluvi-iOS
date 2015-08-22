@@ -59,6 +59,6 @@
         </view>
     </objects>
     <resources>
-        <image name="profile-button.png" width="61" height="84"/>
+        <image name="profile-button.png" width="22" height="22"/>
     </resources>
 </document>
