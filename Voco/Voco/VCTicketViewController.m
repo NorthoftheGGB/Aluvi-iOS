@@ -94,7 +94,7 @@
 @property (strong, nonatomic) VCRiderTicketView * riderTicketHUD;
 @property (strong, nonatomic) VCDriverTicketView * driverTicketHUD;
 @property (strong, nonatomic) VCFancyButton *ridersOnboardButton;
-
+@property (nonatomic) NSInteger riderTicketHUDBottom;
 
 // State
 @property (nonatomic) BOOL appeared;
@@ -768,6 +768,33 @@
     [self clearRoute];
 }
 
+- (void)pan:(UIPanGestureRecognizer *)recognizer
+{
+    if (recognizer.state == UIGestureRecognizerStateChanged ||
+        recognizer.state == UIGestureRecognizerStateEnded) {
+        
+        CGPoint translation = [recognizer translationInView:self.view];
+        
+        _riderTicketHUDBottom += translation.y;
+        
+        // recognize values of _riderTicketHUDBottom that are not good
+        if(_riderTicketHUDBottom > 100){
+            return;
+        }
+        
+       
+        
+        [_riderTicketHUD mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.view.mas_left);
+            make.bottom.equalTo(self.view.mas_bottom).with.offset(_riderTicketHUDBottom);
+            make.right.equalTo(self.view.mas_right);
+            make.height.mas_equalTo(_riderTicketHUD.frame.size.height);
+        }];
+        
+        
+        [recognizer setTranslation:CGPointZero inView:self.view];
+    }
+}
 
 
 
@@ -775,6 +802,9 @@
     _riderTicketHUD = [WRUtilities getViewFromNib:@"VCRiderTicketView" class:[VCRiderTicketView class]];
     _riderTicketHUD.delegate = self;
     [_riderTicketHUD updateInterfaceWithTicket:_ticket];
+    UIPanGestureRecognizer *pangr = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
+    [_riderTicketHUD.upButton addGestureRecognizer:pangr];
+
     
     [self.view addSubview:_riderTicketHUD];
     [_riderTicketHUD mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -792,6 +822,7 @@
                         options:0
                      animations:^{
                      
+                         _riderTicketHUDBottom = 0;
                          [_riderTicketHUD mas_remakeConstraints:^(MASConstraintMaker *make) {
                              make.left.equalTo(self.view.mas_left);
                              make.bottom.equalTo(self.view.mas_bottom);

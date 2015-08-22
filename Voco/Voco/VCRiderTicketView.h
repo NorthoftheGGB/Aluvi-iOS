@@ -19,6 +19,7 @@
 
 @interface VCRiderTicketView : UIView
 
+@property (strong, nonatomic) IBOutlet UIButton *upButton;
 @property (weak, nonatomic) id<VCRiderTicketViewDelegate> delegate;
 
 - (void) updateInterfaceWithTicket: (Ticket*) ticket;
