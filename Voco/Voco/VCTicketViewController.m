@@ -94,7 +94,7 @@
 @property (strong, nonatomic) VCRiderTicketView * riderTicketHUD;
 @property (strong, nonatomic) VCDriverTicketView * driverTicketHUD;
 @property (strong, nonatomic) VCFancyButton *ridersOnboardButton;
-
+@property (nonatomic) NSInteger riderTicketHUDBottom;
 
 // State
 @property (nonatomic) BOOL appeared;
@@ -768,6 +768,33 @@
     [self clearRoute];
 }
 
+- (void)pan:(UIPanGestureRecognizer *)recognizer
+{
+    if (recognizer.state == UIGestureRecognizerStateChanged ||
+        recognizer.state == UIGestureRecognizerStateEnded) {
+        
+        CGPoint translation = [recognizer translationInView:self.view];
+        
+        _riderTicketHUDBottom += translation.y;
+        
+        // recognize values of _riderTicketHUDBottom that are not good
+        if(_riderTicketHUDBottom > 100){
+            return;
+        }
+        
+       
+        
+        [_riderTicketHUD mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.view.mas_left);
+            make.bottom.equalTo(self.view.mas_bottom).with.offset(_riderTicketHUDBottom);
+            make.right.equalTo(self.view.mas_right);
+            make.height.mas_equalTo(_riderTicketHUD.frame.size.height);
+        }];
+        
+        
+        [recognizer setTranslation:CGPointZero inView:self.view];
+    }
+}
 
 
 
@@ -775,6 +802,9 @@
     _riderTicketHUD = [WRUtilities getViewFromNib:@"VCRiderTicketView" class:[VCRiderTicketView class]];
     _riderTicketHUD.delegate = self;
     [_riderTicketHUD updateInterfaceWithTicket:_ticket];
+    UIPanGestureRecognizer *pangr = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
+    [_riderTicketHUD.upButton addGestureRecognizer:pangr];
+
     
     [self.view addSubview:_riderTicketHUD];
     [_riderTicketHUD mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -792,6 +822,7 @@
                         options:0
                      animations:^{
                      
+                         _riderTicketHUDBottom = 0;
                          [_riderTicketHUD mas_remakeConstraints:^(MASConstraintMaker *make) {
                              make.left.equalTo(self.view.mas_left);
                              make.bottom.equalTo(self.view.mas_bottom);
@@ -1277,23 +1308,50 @@
     
     if([VCMapHelper validCoordinate:location]) {
         
-        if(type == kHomeType || type == kWorkType){
-            _activeAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
-                                                                coordinate:location
-                                                                  andTitle:locationName];
-            ((RMPointAnnotation *)_activeAnnotation).image = [VCMapStyle annotationImageForType:type];
-        } else if (type == kPickupZoneType){
-            _activeAnnotation = [[RMAnnotation alloc] initWithMapView:self.map
-                                                           coordinate:location
-                                                             andTitle:locationName];
-            _activeAnnotation.userInfo = kPickupZoneAnnotationType;
+        if(_activeAnnotation != nil) {
+            [self.map removeAnnotation:_activeAnnotation];
+            _activeAnnotation = nil;
+        }
+        
+        
+        NSString * title = @"";
+        switch (_editLocationType) {
+            case kHomeType:
+                title = @"Home";
+                _activeAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
+                                                                    coordinate:_route.home.coordinate
+                                                                      andTitle:title];
+                [self.map setZoom:[VCMapStyle defaultZoomForType:_editLocationType] atCoordinate:_route.home.coordinate animated:YES];
+                ((RMPointAnnotation *)_activeAnnotation).image = [VCMapStyle annotationImageForType:_editLocationType];
+                
+                break;
+            case kWorkType:
+                title = @"Work";
+                _activeAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
+                                                                    coordinate:_route.work.coordinate
+                                                                      andTitle:title];
+                [self.map setZoom:[VCMapStyle defaultZoomForType:_editLocationType] atCoordinate:_route.work.coordinate animated:YES];
+                ((RMPointAnnotation *)_activeAnnotation).image = [VCMapStyle annotationImageForType:_editLocationType];
+                break;
+            case kPickupZoneType:
+                title = @"Pickup Zone";
+                _activeAnnotation = [[RMAnnotation alloc] initWithMapView:self.map
+                                                               coordinate:_route.pickupZoneCenter.coordinate
+                                                                 andTitle:title];
+                _activeAnnotation.userInfo = kPickupZoneAnnotationType;
+                [self.map setZoom:[VCMapStyle defaultZoomForType:_editLocationType] atCoordinate:_route.pickupZoneCenter.coordinate animated:YES];
+                break;
+            default:
+                break;
         }
         
         [self.map addAnnotation:_activeAnnotation];
-        
+        [self.map setZoom:[VCMapStyle defaultZoomForType:type] atCoordinate:location animated:YES];
+
+    } else {
+        [self zoomToCurrentLocation];
     }
     
-    [self.map setZoom:[VCMapStyle defaultZoomForType:type] atCoordinate:location animated:YES];
     
     
     [UIView animateWithDuration:0.35
@@ -1330,6 +1388,7 @@
 
 - (void) placeInEditLocationMode: (NSInteger) editLocationType {
     _editLocationType = editLocationType;
+   
     [self placeInEditLocationMode];
 }
 

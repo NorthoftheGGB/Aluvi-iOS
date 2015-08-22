@@ -9,6 +9,7 @@
 #import "VCDebug.h"
 #import "VCPushReceiver.h"
 #import "VCApi.h"
+#import "VCCommuteManager.h"
 
 
 #define kLoggedInUserIdentifier @"DEBUG_LOGGED_IN_USER_IDENTIFIER"
@@ -41,7 +42,7 @@ static VCDebug * instance;
         blockPushMessagesText = @"Unblock Push Messages";
     }
     
-    NSMutableArray * buttons =  [@[@"Refresh Push Token", alertsEnabledText, blockPushMessagesText, @"Purge Tickets"] mutableCopy];
+    NSMutableArray * buttons =  [@[@"Refresh Push Token", alertsEnabledText, blockPushMessagesText, @"Statue", @"Purge Tickets"] mutableCopy];
 #ifdef NIGHTLY
     [buttons addObject:@"Schedule Tickets"];
 #endif
@@ -81,6 +82,17 @@ static VCDebug * instance;
             }
             case 4:
             {
+                Ticket * ticket = [[VCCommuteManager instance] getDefaultTicket];
+                Ticket * backHomeTicket = [[VCCommuteManager instance] getTicketBackHome];
+                NSString * status = @"No Status";
+                if(ticket != nil && backHomeTicket != nil){
+                    status = [NSString stringWithFormat:@"My Commute: %@ %@ \nBack Home: %@ %@",
+                              ticket.state, ticket.trip_state, backHomeTicket.state, backHomeTicket.trip_state ];
+                }
+                [UIAlertView showWithTitle:@"Ticket Status" message:status cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+            }
+            case 5:
+            {
                 NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:
                                      [NSURL URLWithString:
                                       [NSString stringWithFormat:@"%@%@", API_BASE_URL, @"v2/debug/purge"]
@@ -92,7 +104,7 @@ static VCDebug * instance;
                 break;
 
             }
-            case 5:
+            case 6:
             {
                 NSURLRequest *req = [NSURLRequest requestWithURL:
                                      [NSURL URLWithString: @"http://54.148.6.205:3000/commuter_rides/schedule_trips"]

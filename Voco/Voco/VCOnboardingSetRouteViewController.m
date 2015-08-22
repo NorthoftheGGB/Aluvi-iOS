@@ -148,7 +148,7 @@
             _route.homePlaceName = ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);
             _route.pickupZoneCenter = [[CLLocation alloc] initWithLatitude:placemark.location.coordinate.latitude longitude:placemark.location.coordinate.longitude];
             _route.pickupZoneCenterPlaceName = ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);
-            [self updateToButton: _route.pickupZoneCenterPlaceName];
+            [self updateFromButton: _route.pickupZoneCenterPlaceName];
         }
             break;
     }

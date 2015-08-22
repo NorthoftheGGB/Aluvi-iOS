@@ -2084,9 +2084,9 @@
 			isa = PBXGroup;
 			children = (
 				36638D7C1B659CAE004EDB09 /* VCDriverTicketView.xib */,
-				36638D841B65A988004EDB09 /* VCRiderTicketView.xib */,
 				36F9F6551B6AE4A300440D03 /* VCDriverTicketView.h */,
 				36F9F6561B6AE4A300440D03 /* VCDriverTicketView.m */,
+				36638D841B65A988004EDB09 /* VCRiderTicketView.xib */,
 				36F9F65B1B6AF58E00440D03 /* VCRiderTicketView.h */,
 				36F9F65C1B6AF58E00440D03 /* VCRiderTicketView.m */,
 				84F223201B8266D300E5F7B7 /* VCRiderView.h */,
@@ -4286,7 +4286,6 @@
 					"$(inherited)",
 					"COCOAPODS=1",
 					"API_BASE_URL=@\\\"http\\:\\/\\/52.24.74.155:3000\\/api\\/\\\"",
-					"SPOOF=1",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
