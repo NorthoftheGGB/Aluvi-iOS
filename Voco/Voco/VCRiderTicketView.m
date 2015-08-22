@@ -32,6 +32,7 @@
 @property (strong, nonatomic) IBOutlet VCLabelSmall *riderOneLabel;
 @property (strong, nonatomic) IBOutlet VCLabelSmall *riderTwoLabel;
 
+
 @property (nonatomic, strong) NSArray * riders;
 
 
@@ -53,6 +54,7 @@
     _peerTwoButton.clipsToBounds = YES;
     _driverImageButton.layer.cornerRadius = _driverImageButton.frame.size.width / 2;
     _driverImageButton.clipsToBounds = YES;
+    
 
 }
 
@@ -107,6 +109,7 @@
 
 
 - (IBAction)didTapUpButton:(id)sender {
+    
 }
 
 - (IBAction)didTapRiderLateButton:(id)sender {
