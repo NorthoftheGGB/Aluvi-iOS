@@ -219,12 +219,12 @@
 
 
 - (void) scheduleUpdated:(NSNotification *) notification {
-    Ticket * defaulTicket = [[VCCommuteManager instance] getDefaultTicket];
-    if(_ticket != nil && defaulTicket == nil){
+    Ticket * defaultTicket = [[VCCommuteManager instance] getDefaultTicket];
+    if(_ticket != nil && defaultTicket == nil){
         _ticket = nil;
         [self updateTicketInterface];
-    } else if(_ticket == nil && defaulTicket != nil){
-        _ticket = defaulTicket;
+    } else if(_ticket == nil && defaultTicket != nil){
+        _ticket = defaultTicket;
         [self updateTicketInterface];
     }
 }
@@ -276,7 +276,7 @@
 - (void) fareCancelledByDriver:(NSNotification *) notification {
     NSDictionary * payload = notification.object;
     NSNumber * fareId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
-    if(_ticket != nil && [fareId isEqualToNumber:_ticket.fare_id]){
+    if(_ticket != nil && [fareId isEqualToNumber:_ticket.ride_id ]){
         [self resetInterfaceToHome];
     }
     _ticket = nil;

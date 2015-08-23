@@ -4286,6 +4286,7 @@
 					"$(inherited)",
 					"COCOAPODS=1",
 					"API_BASE_URL=@\\\"http\\:\\/\\/52.24.74.155:3000\\/api\\/\\\"",
+					"SPOOF=1",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

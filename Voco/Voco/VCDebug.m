@@ -93,14 +93,22 @@ static VCDebug * instance;
             }
             case 5:
             {
-                NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:
-                                     [NSURL URLWithString:
-                                      [NSString stringWithFormat:@"%@%@", API_BASE_URL, @"v2/debug/purge"]
-                                     ]];
-                [req setHTTPMethod:@"POST"];
-                [req addValue:[NSString stringWithFormat:@"Token token=\"%@\"", [VCApi apiToken] ] forHTTPHeaderField:@"Authorization"];
-                NSURLConnection *conn = [NSURLConnection connectionWithRequest:req delegate:nil];
-                [conn start];
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                    
+                    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:
+                                                [NSURL URLWithString:
+                                                 [NSString stringWithFormat:@"%@%@", API_BASE_URL, @"v2/debug/purge"]
+                                                 ]];
+                    [req setHTTPMethod:@"POST"];
+                    [req addValue:[NSString stringWithFormat:@"Token token=\"%@\"", [VCApi apiToken] ] forHTTPHeaderField:@"Authorization"];
+                    NSURLResponse* response;
+                    NSError* error;
+                    [NSURLConnection sendSynchronousRequest:req returningResponse:&response error:&error];
+                    if(error !=nil){
+                        [WRUtilities criticalError:error];
+                    }
+                    [[VCCommuteManager instance] refreshTickets];
+                });
                 break;
 
             }

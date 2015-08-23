@@ -310,6 +310,7 @@ static VCCommuteManager * instance;
     components = [[NSDateComponents alloc] init];
     [components setHour:[[f numberFromString:pickupTimeParts[0]] intValue] ];
     [components setMinute:[[f numberFromString:pickupTimeParts[1]] intValue]];
+    [components setTimeZone:[NSTimeZone systemTimeZone]];
     homeToWorkRide.pickupTime = [gregorian dateByAddingComponents:components toDate:thisDate options:0];
     
     Ticket * workToHomeRide = (Ticket *) [NSEntityDescription insertNewObjectForEntityForName:@"Ticket" inManagedObjectContext:[VCCoreData managedObjectContext]];
@@ -330,6 +331,7 @@ static VCCommuteManager * instance;
     components = [[NSDateComponents alloc] init];
     [components setHour:[[f numberFromString:pickupTimeParts[0]] intValue] + 12 ];
     [components setMinute:[[f numberFromString:pickupTimeParts[1]] intValue]];
+    [components setTimeZone:[NSTimeZone systemTimeZone]];
     workToHomeRide.pickupTime = [gregorian dateByAddingComponents:components toDate:thisDate options:0];
     
     VCCommuterRideRequest * request = [[VCCommuterRideRequest alloc] init];
