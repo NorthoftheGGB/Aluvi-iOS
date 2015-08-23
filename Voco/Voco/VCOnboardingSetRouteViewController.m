@@ -120,6 +120,8 @@
 }
 
 - (IBAction)driverSwitchValueChanged:(id)sender {
+    UISwitch * driverSwitch = (UISwitch *) sender;
+    _route.driving = driverSwitch.on;
 }
 
 #pragma delegate

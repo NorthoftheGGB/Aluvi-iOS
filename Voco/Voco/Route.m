@@ -111,9 +111,25 @@
     return copy;
 }
 
-
 - (BOOL) routeCoordinateSettingsValid {
+    if(_driving){
+        return [self zoneToWorkCoordinatesValid];
+    } else {
+        return [self pickupToWorkCoordinatesValid];
+    }
+}
+
+
+- (BOOL) pickupToWorkCoordinatesValid {
     if( self.home == nil || self.work == nil){
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
+- (BOOL) zoneToWorkCoordinatesValid {
+    if( self.pickupZoneCenter == nil || self.work == nil){
         return NO;
     } else {
         return YES;

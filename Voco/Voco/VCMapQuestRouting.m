@@ -11,14 +11,14 @@
 #import "MQRouteResponse.h"
 #import "MBRegion.h"
 
-#define MAPQUEST_API_KEY @"Fmjtd|luur2guan0,b5=o5-9azxgz"
+#define MAPQUEST_API_KEY @"BZWnaZwEAPHiKE3bTU6DFNEqcOM9H3nP"
 
 static RKObjectManager * objectManager;
 
 @implementation VCMapQuestRouting
 
 + (void) setup {
-    objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString: @"http://open.mapquestapi.com/"]];
+    objectManager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString: @"http://www.mapquestapi.com/"]];
     RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[MQRouteResponse getMapping] method:RKRequestMethodGET pathPattern:@"directions/v2/route" keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
 }

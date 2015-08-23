@@ -204,6 +204,33 @@
 
 
 - (IBAction)didTapScheduleButton:(id)sender {
+    [self updatePickupTime];
+    if(_route.pickupTime == nil){
+        [UIAlertView showWithTitle:@"Required Field" message:@"Pickup Time is Required" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        return;
+    }
+    [self updateReturnTime];
+    if(_route.returnTime == nil){
+        [UIAlertView showWithTitle:@"Required Field" message:@"Return Time is Required" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        return;
+    }
+    if(_route.driving){
+        if(_route.pickupZoneCenter == nil){
+            [UIAlertView showWithTitle:@"Required Field" message:@"Pickup Zone is Required" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+            return;
+        }
+    } else {
+        if(_route.home == nil){
+            [UIAlertView showWithTitle:@"Required Field" message:@"Pickup Location is Required" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+            return;
+        }
+    }
+    if(_route.work == nil){
+        [UIAlertView showWithTitle:@"Required Field" message:@"Work Location is Required" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        return;
+    }
+    
+    
     if(_cancelable){
         [_delegate rideRequestViewDidCancelCommute:self];
     } else {
@@ -236,17 +263,29 @@
     [self updateInterfaceForDriving:_drivingSwitch.on];
 }
 
-- (IBAction)morningPickupTimeValueChanged:(UIStepper *)sender {
-    int value = [sender value];
+- (void) updatePickupTime {
+    int value = [_toWorkTimeStepper value];
     NSString * time = [_morningOptions objectAtIndex:value];
     _toWorkTimeLabel.text = time;
     _commutePreferencesHaveChanged = YES;
     _route.pickupTime = time;
 }
+
+- (IBAction)morningPickupTimeValueChanged:(UIStepper *)sender {
+    [self updatePickupTime];
+}
+
+- (void) updateReturnTime {
+    int value = [_toHomeTimeStepper value];
+    NSString * time = [_eveningOptions objectAtIndex:value];
+    _toHomeTimeLabel.text = time;
+    _commutePreferencesHaveChanged = YES;
+    _route.returnTime = time;
+}
 - (IBAction)eveningPickupValueChanged:(UIStepper *)sender {
     int value = [sender value];
     NSString * time = [_eveningOptions objectAtIndex:value];
-    _toHomeTimeLabel.text = time;
+    _toWorkTimeLabel.text = time;
     _commutePreferencesHaveChanged = YES;
     _route.returnTime = time;
 }

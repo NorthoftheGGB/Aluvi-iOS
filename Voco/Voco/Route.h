@@ -29,6 +29,9 @@
 + (RKObjectMapping *) getInverseMapping;
 
 - (BOOL) routeCoordinateSettingsValid;
+- (BOOL) pickupToWorkCoordinatesValid;
+- (BOOL) zoneToWorkCoordinatesValid;
+
 - (BOOL) hasCachedPath;
 - (void) clearCachedPath;
 
