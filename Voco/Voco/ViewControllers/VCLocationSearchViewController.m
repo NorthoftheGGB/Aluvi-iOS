@@ -75,12 +75,21 @@
     MKMapItem *mapItem = [_searchItems objectAtIndex:[indexPath row]];
     UITableViewCell * cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"CELL"];
     cell.textLabel.text = mapItem.name;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@",
-                                 [mapItem.placemark.addressDictionary objectForKey:@"City"],
-                                 [mapItem.placemark.addressDictionary objectForKey:@"State"]
-                                 ];
-    
-    ABCreateStringWithAddressDictionary(mapItem.placemark.addressDictionary, NO);
+    NSString * city =  [mapItem.placemark.addressDictionary objectForKey:@"City"];
+    NSString * state = [mapItem.placemark.addressDictionary objectForKey:@"State"];
+    if(city != nil && state != nil){
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@, %@",
+                                     [mapItem.placemark.addressDictionary objectForKey:@"City"],
+                                     [mapItem.placemark.addressDictionary objectForKey:@"State"]
+                                     ];
+    } else if(city == nil && state != nil){
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@",
+                                     [mapItem.placemark.addressDictionary objectForKey:@"State"]
+                                     ];
+    } else {
+        cell.detailTextLabel.text = @"";
+    }
+      ABCreateStringWithAddressDictionary(mapItem.placemark.addressDictionary, NO);
     return cell;
 }
 
