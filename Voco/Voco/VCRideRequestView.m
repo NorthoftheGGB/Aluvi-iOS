@@ -278,16 +278,12 @@
 - (void) updateReturnTime {
     int value = [_toHomeTimeStepper value];
     NSString * time = [_eveningOptions objectAtIndex:value];
-    _toWorkTimeLabel.text = time;
+    _toHomeTimeLabel.text = time;
     _commutePreferencesHaveChanged = YES;
     _route.returnTime = time;
 }
 - (IBAction)eveningPickupValueChanged:(UIStepper *)sender {
-    int value = [sender value];
-    NSString * time = [_eveningOptions objectAtIndex:value];
-    _toWorkTimeLabel.text = time;
-    _commutePreferencesHaveChanged = YES;
-    _route.returnTime = time;
+    [self updateReturnTime];
 }
 
 - (void) updateLocation:(CLPlacemark*) placemark type:(NSInteger) type {
