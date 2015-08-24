@@ -226,6 +226,9 @@
     } else if(_ticket == nil && defaultTicket != nil){
         _ticket = defaultTicket;
         [self updateTicketInterface];
+    } else if([_ticket.ride_id isEqualToNumber:defaultTicket.ride_id]){
+        [[VCCoreData managedObjectContext]  refreshObject:_ticket mergeChanges:YES];
+        [self updateTicketInterface];
     }
 }
 
@@ -264,6 +267,8 @@
 }
 
 - (void) fareCompleted:(NSNotification *) notification {
+    /* handled via schedule updated, or should be
+
     NSDictionary * payload = notification.object;
     NSNumber * fareId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
     if(_ticket != nil && [fareId isEqualToNumber:_ticket.fare_id]){
@@ -271,9 +276,11 @@
     }
     _ticket = nil;
     [self updateTicketInterface];
+     */
 }
 
 - (void) fareCancelledByDriver:(NSNotification *) notification {
+    /* handled via schedule updated, or should be
     NSDictionary * payload = notification.object;
     NSNumber * fareId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
     if(_ticket != nil && [fareId isEqualToNumber:_ticket.ride_id ]){
@@ -281,9 +288,11 @@
     }
     _ticket = nil;
     [self updateTicketInterface];
+     */
 }
 
 - (void) fareCancelledByRider: (NSNotification *) notification {
+    /* handled via schedule updated, or should be
     NSDictionary * payload = notification.object;
     NSNumber * fareId = [payload objectForKey:VC_PUSH_FARE_ID_KEY];
     if(_ticket != nil && [fareId isEqualToNumber:_ticket.fare_id]){
@@ -291,6 +300,7 @@
     }
     _ticket = nil;
     [self updateTicketInterface];
+     */
     
 }
 
@@ -463,6 +473,9 @@
     
     if(self.map != nil && _lastLocation != nil) {
         [self.map setZoom:14 atCoordinate:_lastLocation.coordinate animated:YES];
+    } else {
+        CLLocationCoordinate2D defaultCoordinate = CLLocationCoordinate2DMake(37.779140, -122.428330);
+        [self.map setZoom:10 atCoordinate:defaultCoordinate animated:YES];
     }
 }
 
@@ -630,6 +643,8 @@
 - (void) updateTicketInterface {
     [self clearMap];
     [self removeHuds];
+    [self hideWaitinMessageView];
+    
     
     if(_ticket == nil) {
         [self setRightButtonForState:kCommuteStateNone];
@@ -640,6 +655,8 @@
             [self showDefaultRoute];
             [self addOriginAnnotation: [_route getDefaultOrigin]];
             [self addDestinationAnnotation: _route.work];
+        } else {
+            [self zoomToCurrentLocation];
         }
         
         //provisional

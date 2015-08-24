@@ -75,7 +75,7 @@
 - (void) showRiderView: (VCRiderView *) riderView withRider: (Rider *) rider {
     
     [self showButton:riderView.button WithRider:rider];
-    riderView.label.text = [rider fullName];
+    riderView.label.text = [rider firstName];
     riderView.hidden = NO;
     
 }

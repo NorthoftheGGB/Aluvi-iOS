@@ -79,7 +79,7 @@
     
     _carLabel.text = [ticket.car summary];
     _licensePlateLabel.text = ticket.car.licensePlate;
-    _driverNameLabel.text = ticket.driver.fullName;
+    _driverNameLabel.text = ticket.driver.firstName;
     
     _peersLabel.text = [NSString stringWithFormat:@"%lu Other Riders", (unsigned long)[_riders count]];
     
@@ -88,7 +88,7 @@
 - (void) showRiderView: (VCRiderView *) riderView withRider: (Rider *) rider {
     
     [self showButton:riderView.button WithURLString:rider.smallImageUrl];
-    riderView.label.text = [rider fullName];
+    riderView.label.text = [rider firstName];
     riderView.hidden = NO;
     
 }

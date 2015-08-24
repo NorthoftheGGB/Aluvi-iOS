@@ -348,7 +348,8 @@ static VCCommuteManager * instance;
     
     // And attempt to store the rides on the server
     // TODO: This will happen in single request to the server, which will create and supply the tickets
-    [VCRiderApi requestRide:request success:^(RKObjectRequestOperation *operation, VCCommuterRideRequestCreated * response) {
+    [VCRiderApi requestRide:request
+                    success:^(RKObjectRequestOperation *operation, VCCommuterRideRequestCreated * response) {
 
         
         homeToWorkRide.ride_id = response.outgoingRideId;
@@ -373,6 +374,7 @@ static VCCommuteManager * instance;
             
             
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            [WRUtilities criticalError:error];
             failure();
     }];
     

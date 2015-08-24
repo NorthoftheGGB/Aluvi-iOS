@@ -278,7 +278,7 @@
 - (void) updateReturnTime {
     int value = [_toHomeTimeStepper value];
     NSString * time = [_eveningOptions objectAtIndex:value];
-    _toHomeTimeLabel.text = time;
+    _toWorkTimeLabel.text = time;
     _commutePreferencesHaveChanged = YES;
     _route.returnTime = time;
 }
