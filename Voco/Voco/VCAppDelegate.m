@@ -197,9 +197,10 @@
     
 }
 
-- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
-    //[VCLocalNotificationReceiver handleLocalNotification:notification];
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler {
+    [VCPushReceiver handleTappedRemoteNotification:userInfo];
 }
+
 
 -(BOOL)pushNotificationOnOrOff{
     

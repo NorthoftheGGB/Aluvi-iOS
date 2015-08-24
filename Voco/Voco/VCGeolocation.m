@@ -74,7 +74,7 @@ static void * XXContext = &XXContext;
 #pragma mark - CLLocationManagerDelegate Methods
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
-	if(status != kCLAuthorizationStatusAuthorized){
+	if(status != kCLAuthorizationStatusAuthorizedAlways){
         //This block gets called both if they decline and the first time Location Services asks for access when it doesn't already have access
         //So it gets called twice, which is confusing.
         /*

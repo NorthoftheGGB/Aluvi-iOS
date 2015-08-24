@@ -71,6 +71,7 @@
                          cancelButtonTitle:@"OK"
                          otherButtonTitles:nil tapBlock:nil];
             }
+                break;
                 
             default:
             {

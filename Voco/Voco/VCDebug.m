@@ -42,7 +42,7 @@ static VCDebug * instance;
         blockPushMessagesText = @"Unblock Push Messages";
     }
     
-    NSMutableArray * buttons =  [@[@"Refresh Push Token", alertsEnabledText, blockPushMessagesText, @"Statue", @"Purge Tickets"] mutableCopy];
+    NSMutableArray * buttons =  [@[@"Refresh Push Token", alertsEnabledText, blockPushMessagesText, @"Status", @"Purge Tickets"] mutableCopy];
 #ifdef NIGHTLY
     [buttons addObject:@"Schedule Tickets"];
 #endif
