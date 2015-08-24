@@ -29,7 +29,7 @@
 - (void) viewDidLoad {
     
 #ifdef SPOOF
-    UIImage * img = [UIImage imageNamed:@"logo_in"];
+    UIImage * img = [UIImage imageNamed:@"profile_placeholder2@2x"];
     CGSize size = CGSizeMake(640, 750);
     _profileImage = [img resizedImageToFitInSize:size scaleIfSmaller:YES];
     _onboardingUserImage.image = _profileImage;

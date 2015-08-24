@@ -15,15 +15,12 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lets see your beautiful face:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bn9-jf-6QI" customClass="VCLabel">
-                    <rect key="frame" x="8" y="35" width="216" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lets see your beautiful face:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bn9-jf-6QI" customClass="VCLabelExtraBold">
+                    <rect key="frame" x="29" y="54" width="263" height="50"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1e2-5n-qyg">
-                    <rect key="frame" x="99" y="75" width="122" height="122"/>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tQr-S7-Z8b" customClass="VCButtonBold">
                     <rect key="frame" x="0.0" y="502" width="321" height="58"/>
                     <color key="tintColor" red="0.35686274509999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -35,8 +32,11 @@
                         <action selector="nextButtonPersonalInfo:" destination="-1" eventType="touchUpInside" id="L5u-2f-Bi9"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1e2-5n-qyg">
+                    <rect key="frame" x="99" y="119" width="122" height="122"/>
+                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ris-86-hAd" customClass="VCFancyButton">
-                    <rect key="frame" x="54" y="234" width="213" height="30"/>
+                    <rect key="frame" x="54" y="276" width="213" height="30"/>
                     <state key="normal" title="TAKE OR CHOOSE PHOTO">
                         <color key="titleColor" red="0.35686274509999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
