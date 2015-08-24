@@ -137,7 +137,7 @@
         </view>
     </objects>
     <resources>
-        <image name="button-select.png" width="160" height="46"/>
+        <image name="button-select.png" width="61" height="84"/>
         <image name="logo_in.png" width="246" height="246"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
