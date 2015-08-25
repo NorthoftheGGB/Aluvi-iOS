@@ -38,6 +38,11 @@
 #endif
 }
 
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
 - (IBAction)onboardingTakePhoto:(id)sender {
     PKImagePickerViewController *imagePicker = [[PKImagePickerViewController alloc]init];
     imagePicker.delegate = self;

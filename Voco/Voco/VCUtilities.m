@@ -24,7 +24,7 @@
 + (NSDate *) beginningOfToday {
     NSDate *date = [NSDate date];
     NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
-    NSUInteger preservedComponents = (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit);
+    NSUInteger preservedComponents = (NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay);
     NSDateComponents * components = [calendar components:preservedComponents fromDate:date];
     [components setHour:0];
     [components setMinute:0];

@@ -83,7 +83,6 @@
                                   }];
         } else {
             [WRUtilities subcriticalErrorWithString:[error.userInfo objectForKey:@"com.stripe.lib:ErrorMessageKey"]];
-            [WRUtilities criticalError:error];
             [hud hide:YES];
 
         }

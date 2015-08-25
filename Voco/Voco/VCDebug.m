@@ -43,7 +43,7 @@ static VCDebug * instance;
     }
     
     NSMutableArray * buttons =  [@[@"Refresh Push Token", alertsEnabledText, blockPushMessagesText, @"Status", @"Purge Tickets"] mutableCopy];
-#ifdef NIGHTLY
+#if defined(DEVELOPMENT) || defined(NIGHTLY)
     [buttons addObject:@"Schedule Tickets"];
 #endif
     
@@ -114,11 +114,18 @@ static VCDebug * instance;
             }
             case 6:
             {
-                NSURLRequest *req = [NSURLRequest requestWithURL:
-                                     [NSURL URLWithString: @"http://54.148.6.205:3000/commuter_rides/schedule_trips"]
-                                     ];
+#if defined(DEVELOPMENT) || defined(NIGHTLY)
+                NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:
+                                     [NSURL URLWithString:
+                                                             [NSString stringWithFormat:@"%@%@", API_BASE_URL, @"v2/debug/schedule_commute"]
+                                     ]];
+                [req setHTTPMethod:@"POST"];
+                [req addValue:[NSString stringWithFormat:@"Token token=\"%@\"", [VCApi apiToken] ] forHTTPHeaderField:@"Authorization"];
                 NSURLConnection *conn = [NSURLConnection connectionWithRequest:req delegate:nil];
                 [conn start];
+#else
+                [UIAlertView showWithTitle:@"Not Allowed"  message:@"Sorry, can't let you do that!"  cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+#endif
 
             }
                 

@@ -98,9 +98,11 @@
     }
     if(route.pickupTime != nil) {
         _toWorkTimeLabel.text = route.pickupTime;
+        [_toWorkTimeStepper setValue:[_morningOptions indexOfObjectIdenticalTo:route.pickupTime]];
     }
     if(route.returnTime != nil) {
         _toHomeTimeLabel.text = route.returnTime;
+        [_toHomeTimeStepper setValue:[_eveningOptions indexOfObjectIdenticalTo:route.returnTime]];
     }
     [self updateFromButton:route.homePlaceName];
     [self updateToButton:route.workPlaceName];
