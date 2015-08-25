@@ -132,16 +132,6 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeholder-profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="rSS-yk-gN7">
                     <rect key="frame" x="110" y="73" width="107" height="107"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bx5-T3-QEG">
-                    <rect key="frame" x="184" y="149" width="32" height="32"/>
-                    <color key="backgroundColor" red="0.53615618040000002" green="1" blue="0.88207398150000005" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="didTapTakePhotoButton:" destination="-1" eventType="touchUpInside" id="8xz-eO-Ugg"/>
-                    </connections>
-                </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fYN-K8-URI" customClass="VCTextField">
                     <rect key="frame" x="49" y="182" width="110" height="40"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -170,6 +160,16 @@
                         <action selector="done:" destination="-1" eventType="editingDidEndOnExit" id="gOt-dM-2rt"/>
                     </connections>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bx5-T3-QEG">
+                    <rect key="frame" x="185" y="148" width="32" height="32"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="camera.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapTakePhotoButton:" destination="-1" eventType="touchUpInside" id="8xz-eO-Ugg"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -178,6 +178,7 @@
         </view>
     </objects>
     <resources>
+        <image name="camera.png" width="32" height="32"/>
         <image name="placeholder-profile.png" width="640" height="750"/>
         <image name="profile-button.png" width="22" height="22"/>
     </resources>
