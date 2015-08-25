@@ -173,7 +173,8 @@
     if(!_appeared){
         
         RMMapboxSource *tileSource = [[RMMapboxSource alloc] initWithMapID:@"aluvimaps.32wfoe6l"];
-        self.map = [[RMMapView alloc] initWithFrame:self.view.frame andTilesource:tileSource];
+        CLLocationCoordinate2D centerCoordinate = [self defaultCoordinate];
+        self.map = [[RMMapView alloc] initWithFrame:self.view.frame andTilesource:tileSource centerCoordinate:centerCoordinate zoomLevel:10 maxZoomLevel:16 minZoomLevel:0 backgroundImage:nil];
         self.map.adjustTilesForRetinaDisplay = YES;
         self.map.delegate = self;
         self.map.userTrackingMode = RMUserTrackingModeNone;
