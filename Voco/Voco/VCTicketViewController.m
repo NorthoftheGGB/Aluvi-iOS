@@ -31,6 +31,7 @@
 #import "IIViewDeckController.h"
 #import "VCFare.h"
 #import "VCUtilities.h"
+#import "NSDate+Pretty.h"
 
 #import "VCDriverTicketView.h"
 #import "VCRiderTicketView.h"
@@ -806,13 +807,17 @@
         
         CGPoint translation = [recognizer translationInView:self.view];
         
-        _riderTicketHUDBottom += translation.y;
+        long offset = _riderTicketHUDBottom;
+        offset += translation.y;
         
         // recognize values of _riderTicketHUDBottom that are not good
-        if(_riderTicketHUDBottom > 100){
+        if(offset < 0){
             return;
         }
-        
+        if(offset > _riderTicketHUD.frame.size.height - 40){
+            return;
+        }
+        _riderTicketHUDBottom = offset;
        
         
         [_riderTicketHUD mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -974,36 +979,54 @@
         [[VCCommuteManager instance] reset];
         [self resetInterfaceToHome];
     } else {
-        [UIAlertView showWithTitle:@"Cancel Ride?" message:@"Are you sure you want to cancel this ride?" cancelButtonTitle:@"No!" otherButtonTitles:@[@"Yes, Cancel this ride"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-            switch(buttonIndex){
-                case 1:
-                {
-                    [self cancel];
+        if([_ticket.direction isEqualToString:@"a"]){
+            [UIAlertView showWithTitle:@"Cancel Ride?" message:@"Are you cancelling both directions of your commute, or just your commute to work?" cancelButtonTitle:@"Do Nothing" otherButtonTitles:@[@"Cancel Only Commute to Work", @"Cancel Both Directions"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                switch(buttonIndex){
+                    case 1:
+                    {
+                        [self cancel];
+                    }
+                        break;
+                    case 2:
+                    {
+                        [self cancelEntireTrip];
+                    }
+                        break;
+                    default:
+                        break;
                 }
-                    break;
-                default:
-                    break;
-            }
-        }];
+            }];
+            
+        } else {
+            [UIAlertView showWithTitle:@"Cancel Ride?" message:@"Are you sure you want to cancel this ride?" cancelButtonTitle:@"No!" otherButtonTitles:@[@"Yes,    Cancel this ride"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                switch(buttonIndex){
+                    case 1:
+                    {
+                        [self cancel];
+                    }
+                        break;
+                    default:
+                        break;
+                }
+            }];
+            
+        }
     }
 }
 
+
+
 - (void) cancel {
     
-    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Canceling..";
+    
     if( [@[kCreatedState, kRequestedState] containsObject: _ticket.state]) {
-        // Here we are cancelling BOTH legs of the trip
-        [[VCCommuteManager instance] cancelTrip:_ticket.trip_id success:^{
-            _ticket = nil;
-            [self resetInterfaceToHome];
-            hud.hidden = YES;
-        } failure:^{
-            hud.hidden = YES;
-        }];
+        
+        [self cancelEntireTrip];
         
     } else {
         
+        MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"Canceling Ride..";
         [[VCCommuteManager instance] cancelRide:_ticket success:^{
             [[VCCoreData managedObjectContext]  refreshObject:_ticket mergeChanges:YES];
             if([_ticket.trip_state isEqualToString:@"aborted"] || _ticket.isDeleted){
@@ -1020,6 +1043,18 @@
     
 }
 
+- (void) cancelEntireTrip {
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Canceling..";
+    // Here we are cancelling BOTH legs of the trip
+    [[VCCommuteManager instance] cancelTrip:_ticket.trip_id success:^{
+        _ticket = nil;
+        [self resetInterfaceToHome];
+        hud.hidden = YES;
+    } failure:^{
+        hud.hidden = YES;
+    }];
+}
 
 
 
@@ -1065,9 +1100,10 @@
         [self.map removeAnnotation:_meetingPointAnnotation];
         _meetingPointAnnotation = nil;
     }
+    NSString * title = [NSString stringWithFormat:@"Meet Here at %@", [_ticket.pickupTime time]  ];
     _meetingPointAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
                                                               coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-                                                                andTitle:@"Meeting Point"];
+                                                                andTitle:title];
     _meetingPointAnnotation.image = [VCMapStyle homePinImage];
     [self.map addAnnotation:_meetingPointAnnotation];
 }
@@ -1647,19 +1683,19 @@
     if (annotation.isUserLocationAnnotation)
         return nil;
     
-    if ([annotation.userInfo isKindOfClass:[NSString class]] &&
-        [annotation.userInfo isEqualToString:kPickupZoneAnnotationType]){
-        RMCircle *circle = [[RMCircle alloc] initWithView:mapView radiusInMeters:3218];
+    if ([annotation.userInfo isKindOfClass:[NSString class]]) {
+        if( [annotation.userInfo isEqualToString:kPickupZoneAnnotationType]){
+            RMCircle *circle = [[RMCircle alloc] initWithView:mapView radiusInMeters:3218];
         
-        // style circle's line and fill color, and width.
-        circle.lineColor = [UIColor colorWithRed:.5 green:.466 blue:.733 alpha:.75];
-        circle.fillColor = [UIColor colorWithRed:.5 green:.466 blue:.733 alpha:.25];
-        circle.lineWidthInPixels = 5.0;
-        return circle;
-    } else if ([annotation.userInfo isKindOfClass:[NSString class]] &&
-               [annotation.userInfo isEqualToString:kPickupPointsAnnotationType]){
-        RMMarker * marker = [[RMMarker alloc] initWithUIImage:[UIImage imageNamed:@"pin"]];
-        return marker;
+            // style circle's line and fill color, and width.
+            circle.lineColor = [UIColor colorWithRed:.5 green:.466 blue:.733 alpha:.75];
+            circle.fillColor = [UIColor colorWithRed:.5 green:.466 blue:.733 alpha:.25];
+            circle.lineWidthInPixels = 5.0;
+            return circle;
+        } else if ([annotation.userInfo isEqualToString:kPickupPointsAnnotationType]){
+            RMMarker * marker = [[RMMarker alloc] initWithUIImage:[UIImage imageNamed:@"pin"]];
+            return marker;
+        }
     } else if ([annotation.title isEqualToString:@"pedestrian"]) {
         RMShape *shape = [[RMShape alloc] initWithView:mapView];
         shape.lineColor = [[UIColor redColor] colorWithAlphaComponent:0.7];
@@ -1683,6 +1719,10 @@
             [shape addLineToCoordinate:location.coordinate];
         return shape;
     }
+    
+    // Default
+    RMMarker * marker = [[RMMarker alloc] initWithUIImage:[UIImage imageNamed:@"pin"]];
+    return marker;
 }
 
 

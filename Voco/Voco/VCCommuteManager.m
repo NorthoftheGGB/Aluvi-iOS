@@ -239,9 +239,9 @@ static VCCommuteManager * instance;
     NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
     
     // start by retrieving day, weekday, month and year components for the given day
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     [gregorian setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"PST"]];
-    NSDateComponents *tomorrowComponents = [gregorian components:(NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:tomorrow];
+    NSDateComponents *tomorrowComponents = [gregorian components:(NSDayCalendarUnit | NSCalendarUnitMonth | NSYearCalendarUnit) fromDate:tomorrow];
     NSInteger theDay = [tomorrowComponents day];
     NSInteger theMonth = [tomorrowComponents month];
     NSInteger theYear = [tomorrowComponents year];
