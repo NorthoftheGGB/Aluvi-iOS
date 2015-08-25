@@ -177,6 +177,7 @@ static VCCommuteManager * instance;
                                          success();
                                          
                                      } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                         [WRUtilities criticalError:error];
                                          failure(@"Failed to store route,  please try again");
                                      }];
     

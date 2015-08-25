@@ -14,5 +14,6 @@
 + (UIImage *) workPinImage;
 + (UIImage *) annotationImageForType: (NSInteger) type;
 + (NSInteger) defaultZoomForType: (NSInteger) type;
++ (NSInteger) defaultZoomForTypeSelection: (NSInteger) type;
 
 @end

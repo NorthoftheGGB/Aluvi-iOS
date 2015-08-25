@@ -127,29 +127,43 @@
 #pragma delegate
 - (void) overrideUpdateLocation:(CLPlacemark*) placemark type:(NSInteger) type {
     
+    
+    NSString * placeName = ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);
+    if(placeName == nil || [placeName isEqualToString:@""]){
+        placeName = [placemark.addressDictionary objectForKey:@"Name"];
+    }
+    if(placeName == nil || [placeName isEqualToString:@""]){
+        NSArray * values = [placemark.addressDictionary allValues];
+        if([values count] > 0){
+            placeName = [values objectAtIndex:0];
+        }
+    }
+    if(placeName == nil || [placeName isEqualToString:@""]){
+        placeName = @"My Location";
+    }
     switch(type){
         case kHomeType:
         {
             _route.home = [[CLLocation alloc] initWithLatitude:placemark.location.coordinate.latitude longitude:placemark.location.coordinate.longitude];
-            _route.homePlaceName = ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);
+            _route.homePlaceName = placeName;
             _route.pickupZoneCenter = [[CLLocation alloc] initWithLatitude:placemark.location.coordinate.latitude longitude:placemark.location.coordinate.longitude];
-            _route.pickupZoneCenterPlaceName = ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);
+            _route.pickupZoneCenterPlaceName = placeName;
             [self updateFromButton: _route.homePlaceName];
         }
             break;
         case kWorkType:
         {
             _route.work = [[CLLocation alloc] initWithLatitude:placemark.location.coordinate.latitude longitude:placemark.location.coordinate.longitude];
-            _route.workPlaceName = ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);
+            _route.workPlaceName = placeName;
             [self updateToButton: _route.workPlaceName];
         }
             break;
         case kPickupZoneType:
         {
             _route.home = [[CLLocation alloc] initWithLatitude:placemark.location.coordinate.latitude longitude:placemark.location.coordinate.longitude];
-            _route.homePlaceName = ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);
+            _route.homePlaceName = placeName;
             _route.pickupZoneCenter = [[CLLocation alloc] initWithLatitude:placemark.location.coordinate.latitude longitude:placemark.location.coordinate.longitude];
-            _route.pickupZoneCenterPlaceName = ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);
+            _route.pickupZoneCenterPlaceName = placeName;
             [self updateFromButton: _route.pickupZoneCenterPlaceName];
         }
             break;

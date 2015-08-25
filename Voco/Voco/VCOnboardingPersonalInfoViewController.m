@@ -39,9 +39,7 @@
 }
 
 
-
-
-- (IBAction)nextButtonTutorial:(id)sender {
+-(void) complete {
     // validation
     NSArray * parts = [_onboardingFullNameTextField.text componentsSeparatedByString:@" "];
     if([parts count] < 2){
@@ -59,7 +57,7 @@
     
     NSString * firstName = parts[0];
     NSString * lastName = parts[1];
-
+    
     NSDictionary * values = @{
                               FirstNameValueKey : firstName,
                               LastNameValueKey : lastName,
@@ -70,18 +68,29 @@
     [self.delegate VCOnboardingChildViewControllerDidFinish:self];
 }
 
+
+- (IBAction)nextButtonTutorial:(id)sender {
+    [self complete];
+}
+
 - (IBAction)didEndOnExit:(id)sender {
     UITextField * textField = sender;
     switch (textField.tag) {
         case kFullNameField:
-            
+            [_onboardingPhoneNumberTextField becomeFirstResponder];
+            break;
+        case kPhoneNumberField:
+            [_onboardingWorkEmailTextField becomeFirstResponder];
+            break;
+        case kWorkEmailField:
+            [self complete];
             break;
             
         default:
             break;
     }
     [sender resignFirstResponder];
-    
+
 }
 
 

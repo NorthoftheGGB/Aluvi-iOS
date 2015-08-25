@@ -23,11 +23,7 @@
 
 #import "VCLabel.h"
 #import "VCButtonBold.h"
-#import "VCEditLocationWidget.h"
 #import "VCCommuteManager.h"
-#import "VCAbstractRideDetailsView.h"
-#import "VCRideDetailsView.h"
-#import "VCRideOverviewHudView.h"
 #import "NSDate+Pretty.h"
 #import "VCUserStateManager.h"
 #import "VCMapQuestRouting.h"
@@ -154,7 +150,6 @@
     }
     
     // Provisional
-    /*
     [VCRiderApi getPickupPointsWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         _pickupPoints = [mappingResult array];
         [self buildPickupPointAnnotations];
@@ -162,7 +157,7 @@
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [WRUtilities criticalError:error];
     }];
-     */
+    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scheduleUpdated:) name:kNotificationScheduleUpdated object:nil];
 
@@ -188,9 +183,16 @@
         _appeared = YES;
         
         // Delay execution of my block for the MapBox software to fully load and move to correct place on the map
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.25), dispatch_get_main_queue(), ^{
-            [self updateTicketInterface];
-        });
+        if(_editLocationType == 0) {
+            [self zoomToCurrentLocation];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.25), dispatch_get_main_queue(), ^{
+                [self updateTicketInterface];
+            });
+        } else if(_activeAnnotation == nil) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.25), dispatch_get_main_queue(), ^{
+                [self zoomToCurrentLocation];
+            });
+        }
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tripFulfilled:) name:kNotificationTypeTripFulfilled object:nil];
@@ -468,14 +470,26 @@
     }
 }
 
+- (CLLocationCoordinate2D) defaultCoordinate{
+    CLLocationCoordinate2D defaultCoordinate = CLLocationCoordinate2DMake(37.779140, -122.428330);
+    return defaultCoordinate;
+}
+
 - (void) zoomToCurrentLocation {
     NSLog(@"Zoom To Current");
     
-    if(self.map != nil && _lastLocation != nil) {
-        [self.map setZoom:14 atCoordinate:_lastLocation.coordinate animated:YES];
+    if(_editLocationType == 0) {
+        if(self.map != nil && _lastLocation != nil) {
+            [self.map setZoom:14 atCoordinate:_lastLocation.coordinate animated:YES];
+        } else {
+            [self.map setZoom:10 atCoordinate:[self defaultCoordinate] animated:YES];
+        }
     } else {
-        CLLocationCoordinate2D defaultCoordinate = CLLocationCoordinate2DMake(37.779140, -122.428330);
-        [self.map setZoom:10 atCoordinate:defaultCoordinate animated:YES];
+        if(self.map != nil && _lastLocation != nil) {
+            [self.map setZoom:[VCMapStyle defaultZoomForTypeSelection:_editLocationType] atCoordinate:_lastLocation.coordinate animated:YES];
+        } else {
+            [self.map setZoom:[VCMapStyle defaultZoomForTypeSelection:_editLocationType]  atCoordinate:[self defaultCoordinate] animated:YES];
+        }
     }
 }
 
@@ -645,7 +659,6 @@
     [self removeHuds];
     [self hideWaitinMessageView];
     
-    
     if(_ticket == nil) {
         [self setRightButtonForState:kCommuteStateNone];
         
@@ -657,6 +670,7 @@
             [self addDestinationAnnotation: _route.work];
         } else {
             [self zoomToCurrentLocation];
+                
         }
         
         //provisional

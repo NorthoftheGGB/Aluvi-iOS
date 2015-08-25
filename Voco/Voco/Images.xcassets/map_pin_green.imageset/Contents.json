@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "location_map_pin_dark_green6-small-1.png"
+      "filename" : "dropoff.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "location_map_pin_dark_green6-small-2.png"
+      "filename" : "dropoff-1.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "location_map_pin_dark_green6-small.png"
+      "filename" : "dropoff-2.png"
     }
   ],
   "info" : {
