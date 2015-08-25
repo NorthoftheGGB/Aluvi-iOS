@@ -150,7 +150,6 @@
     }
     
     // Provisional
-    /*
     [VCRiderApi getPickupPointsWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         _pickupPoints = [mappingResult array];
         [self buildPickupPointAnnotations];
@@ -158,7 +157,7 @@
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [WRUtilities criticalError:error];
     }];
-     */
+    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scheduleUpdated:) name:kNotificationScheduleUpdated object:nil];
 

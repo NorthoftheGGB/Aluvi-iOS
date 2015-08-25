@@ -179,7 +179,7 @@
     </objects>
     <resources>
         <image name="placeholder-profile.png" width="640" height="750"/>
-        <image name="profile-button.png" width="22" height="22"/>
+        <image name="profile-button.png" width="61" height="84"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

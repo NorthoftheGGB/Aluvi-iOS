@@ -78,11 +78,14 @@
                                   } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                       [self somethingDidntGoRight];
                                       [WRUtilities criticalError:error];
+                                      [hud hide:YES];
                                       
                                   }];
         } else {
-            [WRUtilities subcriticalErrorWithString:@"Something didn't go right.  Want to try that again?"];
+            [WRUtilities subcriticalErrorWithString:[error.userInfo objectForKey:@"com.stripe.lib:ErrorMessageKey"]];
             [WRUtilities criticalError:error];
+            [hud hide:YES];
+
         }
     }];
 }
