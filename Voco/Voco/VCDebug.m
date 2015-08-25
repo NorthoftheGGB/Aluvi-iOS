@@ -114,11 +114,16 @@ static VCDebug * instance;
             }
             case 6:
             {
+#if defined(DEVELOPMENT) || defined(NIGHTLY)
                 NSURLRequest *req = [NSURLRequest requestWithURL:
-                                     [NSURL URLWithString: @"http://54.148.6.205:3000/commuter_rides/schedule_trips"]
-                                     ];
+                                     [NSURL URLWithString:
+                                                             [NSString stringWithFormat:@"%@%@", API_BASE_URL, @"v2/debug/schedule_commute"]
+                                     ]];
                 NSURLConnection *conn = [NSURLConnection connectionWithRequest:req delegate:nil];
                 [conn start];
+#else
+                [UIAlertView showWithTitle:@"Not Allowed"  message:@"Sorry, can't let you do that!"  cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+#endif
 
             }
                 
