@@ -232,7 +232,9 @@
         
 
     } failure:^{
-        //
+        if(hud != nil){
+            hud.hidden = YES;
+        }
     }];
 }
 
