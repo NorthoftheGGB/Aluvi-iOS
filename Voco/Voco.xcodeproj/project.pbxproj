@@ -69,6 +69,11 @@
 		360C67DB1B8BDF95008F4BB0 /* profile_placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 360C67D31B8BDF95008F4BB0 /* profile_placeholder@2x.png */; };
 		360C67DC1B8BDF95008F4BB0 /* profile_placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 360C67D31B8BDF95008F4BB0 /* profile_placeholder@2x.png */; };
 		360C67DD1B8BDF95008F4BB0 /* profile_placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 360C67D31B8BDF95008F4BB0 /* profile_placeholder@2x.png */; };
+		360C67DF1B8BE554008F4BB0 /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 360C67DE1B8BE554008F4BB0 /* camera@2x.png */; };
+		360C67E01B8BE555008F4BB0 /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 360C67DE1B8BE554008F4BB0 /* camera@2x.png */; };
+		360C67E11B8BE555008F4BB0 /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 360C67DE1B8BE554008F4BB0 /* camera@2x.png */; };
+		360C67E21B8BE555008F4BB0 /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 360C67DE1B8BE554008F4BB0 /* camera@2x.png */; };
+		360C67E31B8BE555008F4BB0 /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 360C67DE1B8BE554008F4BB0 /* camera@2x.png */; };
 		362A55A61B85B4A10090FF1B /* logo_in.png in Resources */ = {isa = PBXBuildFile; fileRef = 362A55A51B85B4A10090FF1B /* logo_in.png */; };
 		362A55A71B85B4A10090FF1B /* logo_in.png in Resources */ = {isa = PBXBuildFile; fileRef = 362A55A51B85B4A10090FF1B /* logo_in.png */; };
 		362A55A81B85B4A10090FF1B /* logo_in.png in Resources */ = {isa = PBXBuildFile; fileRef = 362A55A51B85B4A10090FF1B /* logo_in.png */; };
@@ -1153,6 +1158,7 @@
 		36049F9D1B8162B80090ECAE /* VCOnboardingPersonalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCOnboardingPersonalInfoViewController.m; sourceTree = "<group>"; };
 		360C67D21B8BDF95008F4BB0 /* profile_placeholder2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile_placeholder2@2x.png"; sourceTree = "<group>"; };
 		360C67D31B8BDF95008F4BB0 /* profile_placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile_placeholder@2x.png"; sourceTree = "<group>"; };
+		360C67DE1B8BE554008F4BB0 /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@2x.png"; sourceTree = "<group>"; };
 		362A55A51B85B4A10090FF1B /* logo_in.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_in.png; sourceTree = "<group>"; };
 		36638D741B658A5A004EDB09 /* VCRideRequestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCRideRequestView.xib; sourceTree = "<group>"; };
 		36638D7C1B659CAE004EDB09 /* VCDriverTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCDriverTicketView.xib; sourceTree = "<group>"; };
@@ -1857,6 +1863,7 @@
 		4FE641E1194168E80059BED1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				360C67DE1B8BE554008F4BB0 /* camera@2x.png */,
 				360C67D21B8BDF95008F4BB0 /* profile_placeholder2@2x.png */,
 				360C67D31B8BDF95008F4BB0 /* profile_placeholder@2x.png */,
 				362A55A51B85B4A10090FF1B /* logo_in.png */,
@@ -2676,6 +2683,7 @@
 				36000C971B72B295008E84AE /* VCReceiptViewController.xib in Resources */,
 				8416480E1B64A47D00CD20AC /* directions-button-selected@2x.png in Resources */,
 				369DBC1C1B6D22F900449CB4 /* test.jpg in Resources */,
+				360C67E21B8BE555008F4BB0 /* camera@2x.png in Resources */,
 				8416480F1B64A47D00CD20AC /* VCMenuItemTableViewCell.xib in Resources */,
 				369992E61B82E57A00F47C5E /* Icon-Small@3x.png in Resources */,
 				841648101B64A47D00CD20AC /* camera-icon@2x.png in Resources */,
@@ -2791,6 +2799,7 @@
 				841649701B658F4900CD20AC /* zoom-ride-bounds@2x.png in Resources */,
 				36E48E861B7B01100034DFEB /* Default@2x.png in Resources */,
 				841649761B658F4900CD20AC /* current-location-arrow-select@2x.png in Resources */,
+				360C67E01B8BE555008F4BB0 /* camera@2x.png in Resources */,
 				841649771B658F4900CD20AC /* VCSubMenuItemTableViewCell.xib in Resources */,
 				841649781B658F4900CD20AC /* map_pin_fill-512.png in Resources */,
 				841649791B658F4900CD20AC /* driver-call-hud-icon-select@2x.png in Resources */,
@@ -2859,6 +2868,7 @@
 				84F222CB1B82611B00E5F7B7 /* VCReceiptViewController.xib in Resources */,
 				84F222CC1B82611B00E5F7B7 /* directions-button-selected@2x.png in Resources */,
 				84F222CE1B82611B00E5F7B7 /* test.jpg in Resources */,
+				360C67E31B8BE555008F4BB0 /* camera@2x.png in Resources */,
 				84F222D01B82611B00E5F7B7 /* VCMenuItemTableViewCell.xib in Resources */,
 				369992E71B82E57A00F47C5E /* Icon-Small@3x.png in Resources */,
 				84F222D11B82611B00E5F7B7 /* camera-icon@2x.png in Resources */,
@@ -2974,6 +2984,7 @@
 				36638D7D1B659CAE004EDB09 /* VCDriverTicketView.xib in Resources */,
 				36E48E851B7B01100034DFEB /* Default@2x.png in Resources */,
 				F4C6B267197F06B100F6C10B /* current-location-arrow-select@2x.png in Resources */,
+				360C67DF1B8BE554008F4BB0 /* camera@2x.png in Resources */,
 				4F184A271991E156006EA959 /* VCSubMenuItemTableViewCell.xib in Resources */,
 				F4C6B268197F06B100F6C10B /* map_pin_fill-512.png in Resources */,
 				369DBC141B6D228E00449CB4 /* test.jpg in Resources */,
@@ -3080,6 +3091,7 @@
 				F4D8FEEE19B1745A00BC0B69 /* menu-payments-icon@2x.png in Resources */,
 				F4D8FEF019B1745A00BC0B69 /* VCTicketViewController.xib in Resources */,
 				F4D8FEF219B1745A00BC0B69 /* search-location@2x.png in Resources */,
+				360C67E11B8BE555008F4BB0 /* camera@2x.png in Resources */,
 				369DBC181B6D22F400449CB4 /* test_big.jpg in Resources */,
 				F4D8FEF719B1745A00BC0B69 /* search-location-select@2x.png in Resources */,
 				4FD1297F19D62462000E7C39 /* ride-bounds-button@2x.png in Resources */,
