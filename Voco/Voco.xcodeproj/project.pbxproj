@@ -4356,7 +4356,7 @@
 				INFOPLIST_FILE = "Aluvi Distribution-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = Aluvi;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "0ddff358-d2ff-4300-9211-e0a98b8877b9";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4384,7 +4384,7 @@
 				INFOPLIST_FILE = "Aluvi Distribution-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = Aluvi;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "0ddff358-d2ff-4300-9211-e0a98b8877b9";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
