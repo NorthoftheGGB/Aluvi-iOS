@@ -56,5 +56,21 @@
     return [UIFont fontWithName:@"Bryant-Regular" size:16 ];
 }
 
++ (UIButton *) barButton {
+    UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.layer.backgroundColor = [UIColor whiteColor].CGColor;
+    button.layer.cornerRadius = 5.0;
+    button.layer.masksToBounds = NO;
+    button.layer.borderWidth = 1.0f;
+    button.layer.borderColor = [UIColor whiteColor].CGColor;
+    button.layer.shadowColor = [VCStyle drkBlueColor].CGColor;
+    button.layer.shadowOpacity = 1;
+    button.layer.shadowRadius = 0;
+    button.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
+    [button setFrame:CGRectMake(0, 0, 150, 28)];
+    [button setTitleColor:[VCStyle greyColor] forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont fontWithName:@"Bryant-Regular" size:16.0];
+    return button;
+}
 
 @end
