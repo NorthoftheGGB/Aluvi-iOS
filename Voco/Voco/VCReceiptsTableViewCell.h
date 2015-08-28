@@ -10,10 +10,10 @@
 
 @interface VCReceiptsTableViewCell : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet UIView *receiptDate;
+@property (strong, nonatomic) IBOutlet UILabel *receiptDate;
 
-@property (strong, nonatomic) IBOutlet UIView *receiptTripType;
+@property (strong, nonatomic) IBOutlet UILabel *receiptTripType;
 
-@property (strong, nonatomic) IBOutlet UIView *receiptTripTotalFare;
+@property (strong, nonatomic) IBOutlet UILabel *receiptTripTotalFare;
 
 @end

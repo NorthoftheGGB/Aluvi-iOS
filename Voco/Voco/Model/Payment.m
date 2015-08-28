@@ -45,6 +45,7 @@
     
     entityMapping.identificationAttributes = @[ @"id" ];
     
+    /*
     [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
         RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:API_GET_PAYMENTS];
         
@@ -58,17 +59,18 @@
         
         return nil;
     }];
-    
+    */
     
     [entityMapping addConnectionForRelationship:@"ticket" connectedBy:@{@"ride_id" : @"ride_id"}];
     [entityMapping addConnectionForRelationship:@"driver" connectedBy:@{@"driver_id" : @"id"}];
-    
+    /*
     RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping
                                                                                              method:RKRequestMethodGET
                                                                                         pathPattern:API_GET_PAYMENTS
                                                                                             keyPath:nil
                                                                                         statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
+     */
 }
 
 @end

@@ -20,6 +20,7 @@
 @property (strong, nonatomic) PTKView * cardView;
 @property (weak, nonatomic) IBOutlet UIView *PTKViewContainer;
 @property (weak, nonatomic) IBOutlet UILabel *commuterAccountBalance;
+@property (weak, nonatomic) IBOutlet UIButton *processPayoutButton;
 
 @end
 
@@ -87,7 +88,16 @@
 
 - (void) updateFieldValues {
     _commuterAccountBalance.text = [NSString stringWithFormat:@"$%.2f", [[VCUserStateManager instance].profile.commuterBalanceCents doubleValue] / 100];
-
+    
+    if( [[VCUserStateManager instance] isHovDriver]){
+        _processPayoutButton.hidden = NO;
+        if ([[VCUserStateManager instance].profile.commuterBalanceCents intValue] > 1000){
+            _processPayoutButton.enabled = YES;
+        }
+    } else {
+        _processPayoutButton.hidden = YES;
+    }
+    
 }
 
 
@@ -133,6 +143,10 @@
             [self didTapSave:self];
         }
     }];
+}
+
+- (IBAction)didTapProcessPayoutButton:(id)sender {
+    
 }
 
 @end

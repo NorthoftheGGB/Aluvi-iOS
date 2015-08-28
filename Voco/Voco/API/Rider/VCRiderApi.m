@@ -16,6 +16,7 @@
 #import "VCRequestUpdate.h"
 #import "Payment.h"
 #import "VCPickupPoint.h"
+#import "Receipt.h"
 
 
 @implementation VCRiderApi
@@ -102,6 +103,29 @@
                                                                                             pathPattern:API_GET_PICKUP_POINTS keyPath:nil
                                                                                             statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:responseDescriptor];
+        
+    }
+    
+    {
+        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[Receipt createMappings:objectManager]
+                                                                                                 method:RKRequestMethodGET
+                                                                                            pathPattern:API_GET_RECEIPTS
+                                                                                                keyPath:nil
+                                                                                            statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor];
+        
+        [objectManager addFetchRequestBlock:^NSFetchRequest *(NSURL *URL) {
+            RKPathMatcher *pathMatcher = [RKPathMatcher pathMatcherWithPattern:API_GET_RECEIPTS];
+            
+            NSString * relativePath = [URL relativePath];
+            NSDictionary *argsDict = nil;
+            BOOL match = [pathMatcher matchesPath:relativePath tokenizeQueryStrings:NO parsedArguments:&argsDict];
+            if (match) {
+                NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Receipt"];
+                return fetchRequest;
+            }
+            return nil;
+        }];
         
     }
 
@@ -206,18 +230,6 @@
                                               }];
 }
 
-+ (void) payments:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
-          failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
-    [[RKObjectManager sharedManager]  getObjectsAtPath:API_GET_PAYMENTS
-                                            parameters:nil
-                                               success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                                   success(operation, mappingResult);
-                                               }
-                                               failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                   failure(operation, error);
-                                               }];
-}
-
 
 + (void) getPickupPointsWithSuccess:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                  failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
@@ -233,6 +245,17 @@
 
 }
 
+
++ (void) refreshReceiptsWithSuccess:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                                  failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+    
+    [[RKObjectManager sharedManager] getObjectsAtPath:API_GET_RECEIPTS parameters:nil
+                                              success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                  success(operation, mappingResult);
+                                              } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                  failure(operation, error);
+                                              }];
+}
 
 
 
