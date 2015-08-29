@@ -214,7 +214,7 @@
 }
 
 
-/*
+
 + (void) earnings:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
           failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     [[RKObjectManager sharedManager]  getObjectsAtPath:API_GET_EARNINGS
@@ -226,7 +226,6 @@
                                                    failure(operation, error);
                                                }];
 }
- */
 
 + (void) updateDefaultCar: (Car *) car
                   success: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success

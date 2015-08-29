@@ -646,11 +646,6 @@
 		84B30A681B82E5DE0095F31D /* VCOnboardingChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B30A651B82E5DE0095F31D /* VCOnboardingChildViewController.m */; };
 		84B30A691B82E5DE0095F31D /* VCOnboardingChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B30A651B82E5DE0095F31D /* VCOnboardingChildViewController.m */; };
 		84B30A6A1B82E5DE0095F31D /* VCOnboardingChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B30A651B82E5DE0095F31D /* VCOnboardingChildViewController.m */; };
-		84F1EF781B900A9E001B39A9 /* Receipt.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1EF771B900A9E001B39A9 /* Receipt.m */; };
-		84F1EF791B900A9E001B39A9 /* Receipt.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1EF771B900A9E001B39A9 /* Receipt.m */; };
-		84F1EF7A1B900A9E001B39A9 /* Receipt.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1EF771B900A9E001B39A9 /* Receipt.m */; };
-		84F1EF7B1B900A9E001B39A9 /* Receipt.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1EF771B900A9E001B39A9 /* Receipt.m */; };
-		84F1EF7C1B900A9E001B39A9 /* Receipt.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F1EF771B900A9E001B39A9 /* Receipt.m */; };
 		84F222311B82611B00E5F7B7 /* VCDriverRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = F473F02D1952DA8F00D8C900 /* VCDriverRegistration.m */; };
 		84F222321B82611B00E5F7B7 /* VCPushApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B1F193D8FE500354886 /* VCPushApi.m */; };
 		84F222331B82611B00E5F7B7 /* VCPasswordTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFBA440195E608600A51B84 /* VCPasswordTextField.m */; };
@@ -1358,11 +1353,6 @@
 		84BB90071B7D9A8F00D7397B /* Voco 22.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 22.xcdatamodel"; sourceTree = "<group>"; };
 		84BB90081B7DD53F00D7397B /* Voco 23.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 23.xcdatamodel"; sourceTree = "<group>"; };
 		84BB90091B7DF07700D7397B /* Voco 24.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 24.xcdatamodel"; sourceTree = "<group>"; };
-		84F1EF6E1B900984001B39A9 /* Voco 25.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 25.xcdatamodel"; sourceTree = "<group>"; };
-		84F1EF761B900A9E001B39A9 /* Receipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Receipt.h; path = Model/Receipt.h; sourceTree = "<group>"; };
-		84F1EF771B900A9E001B39A9 /* Receipt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Receipt.m; path = Model/Receipt.m; sourceTree = "<group>"; };
-		84F1EF7D1B900F1C001B39A9 /* Voco 26.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 26.xcdatamodel"; sourceTree = "<group>"; };
-		84F1EF7E1B9019DD001B39A9 /* Voco 27.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 27.xcdatamodel"; sourceTree = "<group>"; };
 		84F2231E1B82611B00E5F7B7 /* COPY.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = COPY.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F2231F1B82611C00E5F7B7 /* Aluvi Distribution Nightly copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Aluvi Distribution Nightly copy-Info.plist"; path = "/Users/matthewxi/software-development/Clients/Will_OBrien/aluvi-ios/Voco/Aluvi Distribution Nightly copy-Info.plist"; sourceTree = "<absolute>"; };
 		84F223201B8266D300E5F7B7 /* VCRiderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRiderView.h; sourceTree = "<group>"; };
@@ -2018,7 +2008,6 @@
 		8435C5951B7AE5F9000401CA /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				84F1EF6D1B90094C001B39A9 /* Old */,
 				F4FA0BFB192BF6BF005D8645 /* Voco.xcdatamodeld */,
 				F471E3DF19A9590E00DF688D /* Rider.h */,
 				F471E3E019A9590E00DF688D /* Rider.m */,
@@ -2028,8 +2017,10 @@
 				F473F03B195B971B00D8C900 /* Car.m */,
 				F45F7C011935880500A94721 /* Ticket.h */,
 				F45F7C021935880500A94721 /* Ticket.m */,
-				84F1EF761B900A9E001B39A9 /* Receipt.h */,
-				84F1EF771B900A9E001B39A9 /* Receipt.m */,
+				F4F5FFBC19779E23001A1C0E /* Payment.h */,
+				F4F5FFBD19779E23001A1C0E /* Payment.m */,
+				F4C6B1A91978DEFB00F6C10B /* Earning.h */,
+				F4C6B1AA1978DF2A00F6C10B /* Earning.m */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -2105,17 +2096,6 @@
 				36049F971B815EFD0090ECAE /* VCOnboardingPersonalInfoViewController.xib */,
 			);
 			name = "Onboarding View Controllers";
-			sourceTree = "<group>";
-		};
-		84F1EF6D1B90094C001B39A9 /* Old */ = {
-			isa = PBXGroup;
-			children = (
-				F4F5FFBC19779E23001A1C0E /* Payment.h */,
-				F4F5FFBD19779E23001A1C0E /* Payment.m */,
-				F4C6B1A91978DEFB00F6C10B /* Earning.h */,
-				F4C6B1AA1978DF2A00F6C10B /* Earning.m */,
-			);
-			name = Old;
 			sourceTree = "<group>";
 		};
 		F45F7BE71935756000A94721 /* ViewControllers */ = {
@@ -3422,7 +3402,6 @@
 				36000C9D1B72B2AC008E84AE /* VCReceiptViewController.m in Sources */,
 				841647BB1B64A47D00CD20AC /* VCApiError.m in Sources */,
 				841647BC1B64A47D00CD20AC /* Route.m in Sources */,
-				84F1EF7B1B900A9E001B39A9 /* Receipt.m in Sources */,
 				841647BD1B64A47D00CD20AC /* VCRiderRecieptDetailViewController.m in Sources */,
 				841647BE1B64A47D00CD20AC /* VCLabel.m in Sources */,
 				84F223251B8266D300E5F7B7 /* VCRiderView.m in Sources */,
@@ -3545,7 +3524,6 @@
 				36000C9B1B72B2AC008E84AE /* VCReceiptViewController.m in Sources */,
 				841648F11B658F4900CD20AC /* Route.m in Sources */,
 				841648F21B658F4900CD20AC /* VCCommuteManager.m in Sources */,
-				84F1EF791B900A9E001B39A9 /* Receipt.m in Sources */,
 				841648F31B658F4900CD20AC /* VCApiError.m in Sources */,
 				84F223231B8266D300E5F7B7 /* VCRiderView.m in Sources */,
 				841648F41B658F4900CD20AC /* VCRiderRecieptDetailViewController.m in Sources */,
@@ -3668,7 +3646,6 @@
 				84F222751B82611B00E5F7B7 /* VCReceiptViewController.m in Sources */,
 				84F222761B82611B00E5F7B7 /* VCApiError.m in Sources */,
 				84F222771B82611B00E5F7B7 /* Route.m in Sources */,
-				84F1EF7C1B900A9E001B39A9 /* Receipt.m in Sources */,
 				84F222781B82611B00E5F7B7 /* VCRiderRecieptDetailViewController.m in Sources */,
 				84F222791B82611B00E5F7B7 /* VCLabel.m in Sources */,
 				84F223261B826C2F00E5F7B7 /* VCRiderView.m in Sources */,
@@ -3791,7 +3768,6 @@
 				36000C9A1B72B2AC008E84AE /* VCReceiptViewController.m in Sources */,
 				F425906D1995E30000FA928E /* VCCommuteManager.m in Sources */,
 				F4C6B29E197F437800F6C10B /* VCApiError.m in Sources */,
-				84F1EF781B900A9E001B39A9 /* Receipt.m in Sources */,
 				F4C6B201197F06B100F6C10B /* VCRiderRecieptDetailViewController.m in Sources */,
 				84F223221B8266D300E5F7B7 /* VCRiderView.m in Sources */,
 				F48FBCCE19ECCF3B009352A0 /* VCCodes.m in Sources */,
@@ -3914,7 +3890,6 @@
 				36000C9C1B72B2AC008E84AE /* VCReceiptViewController.m in Sources */,
 				F4D8FE5519B1745A00BC0B69 /* VCApiError.m in Sources */,
 				F496FE9419FDB9FE00632055 /* Route.m in Sources */,
-				84F1EF7A1B900A9E001B39A9 /* Receipt.m in Sources */,
 				F4D8FE5619B1745A00BC0B69 /* VCRiderRecieptDetailViewController.m in Sources */,
 				F4D8FE5719B1745A00BC0B69 /* VCLabel.m in Sources */,
 				84F223241B8266D300E5F7B7 /* VCRiderView.m in Sources */,
@@ -4018,7 +3993,7 @@
 				INFOPLIST_FILE = "Aluvi Distribution copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "Aluvi Nightly";
-				PROVISIONING_PROFILE = "7f671519-3b88-43f2-8c1b-8abe3cd3c17c";
+				PROVISIONING_PROFILE = "68dcce79-3510-4698-8511-4c7f5b50826e";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4047,7 +4022,7 @@
 				INFOPLIST_FILE = "Aluvi Distribution copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "Aluvi Nightly";
-				PROVISIONING_PROFILE = "7f671519-3b88-43f2-8c1b-8abe3cd3c17c";
+				PROVISIONING_PROFILE = "68dcce79-3510-4698-8511-4c7f5b50826e";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -4381,7 +4356,7 @@
 				INFOPLIST_FILE = "Aluvi Distribution-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = Aluvi;
-				PROVISIONING_PROFILE = "0ddff358-d2ff-4300-9211-e0a98b8877b9";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4409,7 +4384,7 @@
 				INFOPLIST_FILE = "Aluvi Distribution-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = Aluvi;
-				PROVISIONING_PROFILE = "0ddff358-d2ff-4300-9211-e0a98b8877b9";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -4596,9 +4571,6 @@
 		F4FA0BFB192BF6BF005D8645 /* Voco.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				84F1EF7E1B9019DD001B39A9 /* Voco 27.xcdatamodel */,
-				84F1EF7D1B900F1C001B39A9 /* Voco 26.xcdatamodel */,
-				84F1EF6E1B900984001B39A9 /* Voco 25.xcdatamodel */,
 				84BB90091B7DF07700D7397B /* Voco 24.xcdatamodel */,
 				84BB90081B7DD53F00D7397B /* Voco 23.xcdatamodel */,
 				84BB90071B7D9A8F00D7397B /* Voco 22.xcdatamodel */,
@@ -4652,7 +4624,7 @@
 				F4B7BFAA19A2EF7400D934D6 /* Voco 11.xcdatamodel */,
 				F4FA0BFC192BF6BF005D8645 /* Voco.xcdatamodel */,
 			);
-			currentVersion = F4C6B1AD1978E4D400F6C10B /* Voco 27.xcdatamodel */;
+			currentVersion = F4792AF319764523005AB652 /* Voco 24.xcdatamodel */;
 			path = Voco.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

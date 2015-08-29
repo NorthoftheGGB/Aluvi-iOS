@@ -20,7 +20,6 @@
 @property (strong, nonatomic) PTKView * cardView;
 @property (weak, nonatomic) IBOutlet UIView *PTKViewContainer;
 @property (weak, nonatomic) IBOutlet UILabel *commuterAccountBalance;
-@property (weak, nonatomic) IBOutlet UIButton *processPayoutButton;
 
 @end
 
@@ -49,55 +48,11 @@
     [[VCUserStateManager instance] refreshProfileWithCompletion:^{
         [self updateFieldValues];
     }];
-    
-    UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
-    numberToolbar.barStyle = UIBarStyleBlackTranslucent;
-    numberToolbar.items = [NSArray arrayWithObjects:
-                           [[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelCardEntry)],
-                           [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                           [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneWithCardEntry)],
-                           nil];
-    [numberToolbar sizeToFit];
-    _cardView.cardNumberField.inputAccessoryView = numberToolbar;
-    _cardView.cardExpiryField.inputAccessoryView = numberToolbar;
-    _cardView.cardCVCField.inputAccessoryView = numberToolbar;
 }
-
-- (void) viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    if(_delegate != nil){
-        [_cardView becomeFirstResponder];
-    }
-}
-
-- (void) cancelCardEntry {
-    [_cardView resignFirstResponder];
-    if(_delegate != nil && [_delegate respondsToSelector:@selector(VCPaymentsViewControllerDidCancel:)]){
-        [_delegate VCPaymentsViewControllerDidCancel:self];
-    }
-}
-
-- (void) doneWithCardEntry {
-    [_cardView resignFirstResponder];
-    [self didTapSave:nil];
-}
-
-
-
-
 
 - (void) updateFieldValues {
     _commuterAccountBalance.text = [NSString stringWithFormat:@"$%.2f", [[VCUserStateManager instance].profile.commuterBalanceCents doubleValue] / 100];
-    
-    if( [[VCUserStateManager instance] isHovDriver]){
-        _processPayoutButton.hidden = NO;
-        if ([[VCUserStateManager instance].profile.commuterBalanceCents intValue] > 1000){
-            _processPayoutButton.enabled = YES;
-        }
-    } else {
-        _processPayoutButton.hidden = YES;
-    }
-    
+
 }
 
 
@@ -120,9 +75,6 @@
                                 cardToken:token.tokenId
                                   success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                       [hud hide:YES];
-                                      if(_delegate != nil){
-                                          [_delegate VCPaymentsViewControllerDidUpdatePaymentMethod:self];
-                                      }
                                   } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                       [self somethingDidntGoRight];
                                       [WRUtilities criticalError:error];
@@ -143,10 +95,6 @@
             [self didTapSave:self];
         }
     }];
-}
-
-- (IBAction)didTapProcessPayoutButton:(id)sender {
-    
 }
 
 @end

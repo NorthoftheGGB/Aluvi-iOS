@@ -37,7 +37,5 @@
 + (void) getPickupPointsWithSuccess:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
             failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure ;
 
-+ (void) refreshReceiptsWithSuccess:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
-                            failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
 @end

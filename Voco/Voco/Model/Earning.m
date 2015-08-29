@@ -36,14 +36,13 @@
     
     [entityMapping addConnectionForRelationship:@"ticket" connectedBy:@{@"ticket_id" : @"ride_id"}];
 
-    /*
+    
     RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping
                                                                                              method:RKRequestMethodGET
                                                                                         pathPattern:API_GET_EARNINGS
                                                                                             keyPath:nil
                                                                                         statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:responseDescriptor];
-     */
 }
 
 @end
