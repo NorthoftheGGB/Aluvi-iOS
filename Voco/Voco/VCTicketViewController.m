@@ -1122,7 +1122,6 @@
 }
 
 - (void)buildPickupPointAnnotations {
-    return;
     if(_pickupPoints != nil){
         _pickupPointAnnotations = [[NSMutableArray alloc] init];
         for (VCPickupPoint* pickupPoint in _pickupPoints)
@@ -1137,7 +1136,6 @@
 }
 
 - (void)addPickupPointAnnotations {
-    return;
     [self.map addAnnotations:_pickupPointAnnotations];
 }
 
