@@ -19,8 +19,8 @@
 
 #define API_GET_ACTIVE_TICKETS @"v2/rides/tickets"
 
-#define API_GET_PAYMENTS @"rides/payments"
-#define API_GET_EARNINGS @"rides/earnings"
+#define API_GET_RECEIPTS @"v2/rides/receipts"
+
 
 #define API_ROUTE @"v2/rides/route"
 

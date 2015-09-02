@@ -234,7 +234,8 @@ static VCCommuteManager * instance;
 
 
 
-- (void) requestRidesFor:(NSDate *) tomorrow success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure  {
+- (void) requestRidesFor:(NSDate *) tomorrow success:(void ( ^ ) ()) success conflict:( void ( ^ ) ()) conflict paymentRequired:( void ( ^ ) ()) paymentRequired failure:( void ( ^ ) ()) failure {
+    
     // Look for pre-existing request for tomorrow, error if it exists
     NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];
     
@@ -375,8 +376,21 @@ static VCCommuteManager * instance;
             
             
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            [WRUtilities criticalError:error];
-            failure();
+            [[VCCoreData managedObjectContext] deleteObject:homeToWorkRide];
+            [[VCCoreData managedObjectContext] deleteObject:workToHomeRide];
+            NSInteger statusCode = operation.HTTPRequestOperation.response.statusCode;
+            switch(statusCode){
+                case 405:
+                    conflict();
+                    break;
+                case 402:
+                    paymentRequired();
+                    break;
+                default:
+                    [WRUtilities criticalError:error];
+                    failure();
+                    break;
+            }
     }];
     
 }

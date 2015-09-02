@@ -25,5 +25,6 @@
 + (UIFont *) boldFont;
 + (UIFont *) regularFont;
 
++ (UIButton *) barButton;
 
 @end

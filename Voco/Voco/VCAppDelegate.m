@@ -102,8 +102,8 @@
         [VCPushReceiver handleTappedRemoteNotification:[launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey]];
     }
     
-    // RKLogConfigureByName("RestKit/Network", RKLogLevelInfo);
-    // RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
+    RKLogConfigureByName("RestKit/Network", RKLogLevelInfo);
+    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
     
     
     [self.window makeKeyAndVisible];

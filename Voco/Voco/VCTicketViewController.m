@@ -43,10 +43,12 @@
 #import "VCMapConstants.h"
 #import "VCStyle.h"
 #import "VCFancyButton.h"
+#import "VCPaymentsViewController.h"
 
 // provisional
 #import "VCRiderApi.h"
 #import "VCPickupPoint.h"
+
 
 #define kCommuteStateBackEmpty -1
 #define kCommuteStateNone 0
@@ -56,7 +58,7 @@
 
 #define kNotificationLocationFound @"kNotificationLocationFound"
 
-@interface VCTicketViewController () <RMMapViewDelegate, CLLocationManagerDelegate, VCRideRequestViewDelegate, VCLocationSearchViewControllerDelegate, VCRiderTicketViewDelegate, VCDriverTicketViewDelegate>
+@interface VCTicketViewController () <RMMapViewDelegate, CLLocationManagerDelegate, VCRideRequestViewDelegate, VCLocationSearchViewControllerDelegate, VCRiderTicketViewDelegate, VCDriverTicketViewDelegate, VCPaymentsViewControllerDelegate>
 
 // Model
 @property(strong, nonatomic) Route * route;
@@ -119,6 +121,8 @@
 // Colors
 @property (nonatomic, strong) UIColor * barButtonItemColor;
 
+//Payments
+@property (nonatomic, strong) VCPaymentsViewController * paymentsViewController;
 
 @end
 
@@ -603,8 +607,7 @@
     [button setFrame:CGRectMake(0, 0, 150, 28)];
     [button setTitleColor:[VCStyle greyColor] forState:UIControlStateNormal];
     button.titleLabel.font = [UIFont fontWithName:@"Bryant-Regular" size:16.0];
-    [button addTarget:self action:@selector(didTapScheduleMenuButton:) forControlEvents:UIControlEventTouchUpInside];
-    
+
     UIBarButtonItem *buttonItem;
     //self.toolbarItems = @[buttonItem];
     switch(state){
@@ -1172,12 +1175,52 @@
                                              _ticket = [[VCCommuteManager instance] getDefaultTicket];
                                              [self updateTicketInterface];
                                              
+                                         } conflict:^{
+                                             [hud hide:YES];
+                                             [UIAlertView showWithTitle:@"Already Requested" message:@"We already have rides requested for you for tomorrow.  Please cancel your rides before making another request " cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                                             [[VCCommuteManager instance] refreshTickets];
+                                         } paymentRequired:^{
+                                             [hud hide:YES];
+                                             [UIAlertView showWithTitle:@"Credit Card Required" message:@"We need a credit card to verify your identity, and for future charges.  Remember - your first ride is still free!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                                 [self showPaymentMethodDetailsView];
+                                             }];
                                          } failure:^{
                                              [hud hide:YES];
                                              [UIAlertView showWithTitle:@"Error" message:@"There was a problem sending your request, you might want to try that again" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
                                          }];
     
 }
+
+- (void) showPaymentMethodDetailsView {
+    _paymentsViewController = [[VCPaymentsViewController alloc] init];
+    _paymentsViewController.delegate = self;
+    CGRect frame = _paymentsViewController.view.frame;
+    frame.origin.x = 0;
+    frame.origin.y = -self.view.frame.size.height;
+    frame.size.width = self.view.frame.size.width;
+    frame.size.height = self.view.frame.size.height;
+    _paymentsViewController.view.frame = frame;
+    
+    // add the view to the superview
+    [[[[UIApplication sharedApplication] delegate] window] addSubview:_paymentsViewController.view];
+    
+    [UIView animateWithDuration:0.4
+                          delay:0
+         usingSpringWithDamping:0.5
+          initialSpringVelocity:0.5
+                        options:0
+                     animations:^{
+                         // final placement
+                         CGRect frame = _paymentsViewController.view.frame;
+                         frame.origin.y = 0;
+                         _paymentsViewController.view.frame = frame;
+                     } completion:^(BOOL finished) {
+                         
+                     }];
+
+}
+
+
 
 - (void) showWaitingMessageView {
     [self.view addSubview:_waitingMessageView];
@@ -1752,5 +1795,35 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationLocationFound object:nil userInfo:@{}];
     
 }
+
+
+////////////////////
+//////////////////// Payments
+////////////////////
+
+- (void) removePaymentsView {
+    UIView * view = _paymentsViewController.view;
+    [UIView animateWithDuration:0.35
+                     animations:^{
+                         CGRect frame = view.frame;
+                         frame.origin.y =  -self.view.frame.size.height;;
+                         view.frame = frame;
+                     }
+                     completion:^(BOOL finished) {
+                         [view removeFromSuperview];
+                     }];
+
+}
+
+- (void)VCPaymentsViewControllerDidCancel:(VCPaymentsViewController *)paymentsViewController {
+    [self removePaymentsView];
+}
+
+- (void)VCPaymentsViewControllerDidUpdatePaymentMethod:(VCPaymentsViewController *)paymentsViewController {
+    [self removePaymentsView];
+    [self scheduleCommuteForTomorrow];
+    
+}
+
 
 @end
