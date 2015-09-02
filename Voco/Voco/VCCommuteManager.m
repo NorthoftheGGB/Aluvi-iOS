@@ -241,7 +241,7 @@ static VCCommuteManager * instance;
     // start by retrieving day, weekday, month and year components for the given day
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     [gregorian setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"PST"]];
-    NSDateComponents *tomorrowComponents = [gregorian components:(NSDayCalendarUnit | NSCalendarUnitMonth | NSYearCalendarUnit) fromDate:tomorrow];
+    NSDateComponents *tomorrowComponents = [gregorian components:(NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear) fromDate:tomorrow];
     NSInteger theDay = [tomorrowComponents day];
     NSInteger theMonth = [tomorrowComponents month];
     NSInteger theYear = [tomorrowComponents year];
