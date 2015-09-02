@@ -11,7 +11,6 @@
 
 @interface VCReceiptViewController : VCScrollableFormViewController
 
-@property (strong, nonatomic) IBOutlet UITableView *receiptViewTable;
 
 
 - (IBAction)didTouchPrintReceipts:(id)sender;

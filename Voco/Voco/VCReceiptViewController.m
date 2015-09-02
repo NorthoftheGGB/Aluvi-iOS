@@ -48,9 +48,6 @@
                                 managedObjectContext:[VCCoreData managedObjectContext]
                                 sectionNameKeyPath:nil cacheName:nil];
     
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-    
     NSError *error;
     BOOL success = [_fetchedResultsController performFetch:&error];
     if(error != nil){

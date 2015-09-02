@@ -158,7 +158,6 @@
     [VCRiderApi getPickupPointsWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         _pickupPoints = [mappingResult array];
         [self buildPickupPointAnnotations];
-        [self addPickupPointAnnotations];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [WRUtilities criticalError:error];
     }];
@@ -1142,6 +1141,10 @@
     [self.map addAnnotations:_pickupPointAnnotations];
 }
 
+- (void)removePickupPointAnnotations {
+    [self.map removeAnnotations:_pickupPointAnnotations];
+}
+
 ///////////
 ///////////  Route and Scheduling
 ///////////
@@ -1526,6 +1529,8 @@
         make.height.mas_equalTo(58);
     }];
     [_locationUpdateDoneButton setNeedsLayout];
+    
+    [self addPickupPointAnnotations];
     
 }
 
