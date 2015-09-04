@@ -14,6 +14,7 @@
 #import "VCUserStateManager.h"
 #import "VCUsersApi.h"
 #import "VCStyle.h"
+#import "Receipt.h"
 
 @interface VCPaymentsViewController () <PTKViewDelegate>
 
@@ -21,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIView *PTKViewContainer;
 @property (weak, nonatomic) IBOutlet UILabel *commuterAccountBalance;
 @property (weak, nonatomic) IBOutlet UIButton *processPayoutButton;
-@property (strong, nonatomic) IBOutlet UILabel *payWithCardLabel;
+@property (strong, nonatomic) IBOutlet UILabel *defaultCardLabel;
 @property (strong, nonatomic) IBOutlet UILabel *getPaidToCardLabel;
 @property (strong, nonatomic) IBOutlet UILabel *paymentsDescriptionLabel;
 
@@ -91,17 +92,68 @@
 
 
 - (void) updateFieldValues {
-    _commuterAccountBalance.text = [NSString stringWithFormat:@"$%.2f", [[VCUserStateManager instance].profile.commuterBalanceCents doubleValue] / 100];
-    
+    VCProfile * profile = [VCUserStateManager instance].profile;
+    double accountBalance = [profile.commuterBalanceCents integerValue];
+    if(accountBalance > 0) {
+        _commuterAccountBalance.text = [NSString stringWithFormat:@"You've Collected $%.2f", accountBalance / 100.0f];
+    } else if (accountBalance < 0) {
+        _commuterAccountBalance.text = [NSString stringWithFormat:@"You've Spent $%.2f", -accountBalance/ 100.0f];
+    } else {
+        _commuterAccountBalance.text = @"No Balance";
+    }
+        
     if( [[VCUserStateManager instance] isHovDriver]){
         _processPayoutButton.hidden = NO;
-        if ([[VCUserStateManager instance].profile.commuterBalanceCents intValue] > 1000){
+        if (accountBalance > 1000){
             _processPayoutButton.enabled = YES;
         }
     } else {
         _processPayoutButton.hidden = YES;
     }
     
+    
+    if(profile.cardLastFour == nil && profile.recipientCardLastFour == nil){
+        _defaultCardLabel.text = @"No Payment Method Entered";
+    }
+    
+    _getPaidToCardLabel.hidden = YES;
+    if(profile.cardLastFour != nil){
+        NSString * text = [NSString stringWithFormat:@"%@ ending in %@", profile.cardBrand, profile.cardLastFour ];
+        if( profile.recipientCardLastFour != nil
+           && [profile.recipientCardLastFour isEqualToString:profile.cardLastFour]
+           && [profile.recipientCardBrand isEqualToString:profile.cardBrand]
+           ){
+            _defaultCardLabel.text = text;
+        } else {
+            _defaultCardLabel.text = [NSString stringWithFormat:@"Pay with %@", text];
+            if(profile.recipientCardLastFour != nil){
+                _getPaidToCardLabel.hidden = NO;
+                _getPaidToCardLabel.text = [NSString stringWithFormat:@"Get paid to %@ ending in  %@", profile.recipientCardBrand, profile.recipientCardLastFour];
+            }
+        }
+    }
+    
+}
+
+- (void) updateLastTransaction {
+    NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"Receipt"];
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"type = 'payment' OR type = 'payout'"];
+    [request setPredicate:predicate];
+    NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
+    NSSortDescriptor * sort2 = [NSSortDescriptor sortDescriptorWithKey:@"receiptId" ascending:YES];
+    [request setSortDescriptors:@[sort, sort2]];
+
+    NSError *error;
+    NSArray * receipts = [[VCCoreData managedObjectContext] executeFetchRequest:request error:&error];
+    if(receipts == nil){
+        [WRUtilities criticalError:error];
+    }
+    Receipt * lastTransaction = receipts[0];
+    if([lastTransaction.type isEqualToString:@"payment"]){
+        _paymentsDescriptionLabel.text = [NSString stringWithFormat:@"Last Charge: $%.2f", [lastTransaction.amount doubleValue]];
+    } else {
+        _paymentsDescriptionLabel.text = [NSString stringWithFormat:@"Last Withdrawal: $%.2f", -[lastTransaction.amount doubleValue]];
+    }
 }
 
 
