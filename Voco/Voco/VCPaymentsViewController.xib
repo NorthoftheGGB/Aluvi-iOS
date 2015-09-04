@@ -8,6 +8,9 @@
             <connections>
                 <outlet property="PTKViewContainer" destination="xO2-CQ-cvv" id="Td5-N5-RhX"/>
                 <outlet property="commuterAccountBalance" destination="dJ5-sd-d9F" id="PTd-7m-dFu"/>
+                <outlet property="getPaidToCardLabel" destination="Ijc-oZ-jdg" id="3H2-bq-Vah"/>
+                <outlet property="payWithCardLabel" destination="CYr-IO-g4E" id="wOf-9h-hlf"/>
+                <outlet property="paymentsDescriptionLabel" destination="bvs-Le-u2g" id="lnx-a0-ffB"/>
                 <outlet property="processPayoutButton" destination="Dso-Zg-Ngo" id="1MV-2s-4UE"/>
                 <outlet property="view" destination="iN0-l3-epB" id="m2l-22-ijd"/>
             </connections>
@@ -56,7 +59,7 @@
                         <action selector="didTapSave:" destination="-1" eventType="touchUpInside" id="2EW-A7-0w3"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You can withdraw anytime!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvs-Le-u2g" customClass="VCLabelSmall">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You can withdraw anytime! OR " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvs-Le-u2g" customClass="VCLabelSmall">
                     <rect key="frame" x="20" y="335" width="255" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.35686274509999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
