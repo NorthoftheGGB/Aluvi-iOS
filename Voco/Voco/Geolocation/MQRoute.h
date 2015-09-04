@@ -14,6 +14,7 @@
 
 @property(nonatomic, strong) MQShape * shape;
 @property(nonatomic, strong) MQBoundingBox * boundingBox;
+@property(nonatomic, strong) NSNumber * distance;
 
 + (RKObjectMapping *) getMapping;
 

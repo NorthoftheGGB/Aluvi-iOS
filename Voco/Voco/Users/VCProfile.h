@@ -35,6 +35,9 @@
 @property(nonatomic, strong) NSString * smallImageUrl;
 @property(nonatomic, strong) NSString * largeImageUrl;
 
+@property(nonatomic, strong) NSNumber * freeRides;
+
+
 + (RKObjectMapping *) getMapping;
 
 @end

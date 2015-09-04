@@ -146,9 +146,21 @@
 }
 
 - (IBAction)didTapProcessPayoutButton:(id)sender {
+    if([VCUserStateManager instance].profile.recipientCardLastFour == nil) {
+        [self getPayoutCard];
+    } else {
+        [self requestPayout];
+    }
+}
+
+
+- (void) getPayoutCard {
     
 }
 
+- (void) requestPayout {
+    
+}
 
 
 

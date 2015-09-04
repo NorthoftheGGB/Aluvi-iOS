@@ -17,7 +17,7 @@
     RKObjectMapping * boundingBoxMapping = [MQBoundingBox getMapping];
     [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"shape" toKeyPath:@"shape" withMapping:shapeMapping]];
     [mapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"boundingBox" toKeyPath:@"boundingBox" withMapping:boundingBoxMapping]];
-
+    [mapping addAttributeMappingsFromArray:@[@"distance"]];
     return mapping;
 }
 

@@ -31,7 +31,8 @@
                                                   @"recipient_card_last_four" : @"recipientCardLastFour",
                                                   @"recipient_card_brand" : @"recipientCardBrand",
                                                   @"image_small" : @"smallImageUrl",
-                                                  @"image_large" : @"largeImageUrl"
+                                                  @"image_large" : @"largeImageUrl",
+                                                  @"free_rides" : @"freeRides"
                                                   }];
     
     return mapping;
@@ -57,6 +58,7 @@
         _smallImageUrl = [decoder decodeObjectForKey:@"small_image"];
         _largeImageUrl = [decoder decodeObjectForKey:@"large_image"];
         _carId = [decoder decodeObjectForKey: @"carId"];
+        _freeRides = [decoder decodeObjectForKey: @"freeRides"];
 
     }
     return self;
@@ -80,6 +82,6 @@
     [encoder encodeObject: _smallImageUrl forKey:@"small_image"];
     [encoder encodeObject: _largeImageUrl forKey:@"large_image"];
     [encoder encodeObject: _carId forKey:@"carId"];
-
+    [encoder encodeObject: _freeRides forKey:@"freeRides"];
 }
 @end

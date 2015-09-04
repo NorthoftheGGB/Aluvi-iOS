@@ -55,7 +55,6 @@
                     </state>
                     <connections>
                         <action selector="didTapProcessPayoutButton:" destination="-1" eventType="touchUpInside" id="Wdy-EB-bHO"/>
-                        <action selector="didTapSave:" destination="-1" eventType="touchUpInside" id="2EW-A7-0w3"/>
                     </connections>
                 </button>
             </subviews>
