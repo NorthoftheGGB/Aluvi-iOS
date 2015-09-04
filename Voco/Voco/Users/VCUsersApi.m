@@ -130,6 +130,14 @@
         [objectManager addResponseDescriptor:responseDescriptor];
         
     }
+    {
+        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSNull class]] method:RKRequestMethodPOST pathPattern:API_CREATE_SUPPORT_REQUEST keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor];
+    }
+    {
+        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSNull class]] method:RKRequestMethodPOST pathPattern:API_CREATE_SUPPORT_REQUEST keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor];
+    }
     
 }
 
@@ -308,5 +316,38 @@
     [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation]; // NOTE: Must be enqueued rather than started
     
 }
+
+
++ (void) createSupportRequest:(NSString*) messageText
+                      success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                      failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+    NSDictionary * params = @{@"message" : messageText};
+    [[RKObjectManager sharedManager] postObject:nil
+                                           path:API_CREATE_SUPPORT_REQUEST
+                                     parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                         success(operation, mappingResult);
+                                     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                         failure(operation, error);
+                                     }];
     
-    @end
+    
+}
+
++ (void) printReceiptsToEmailWithSuccess:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                                 failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure  {
+    
+    [[RKObjectManager sharedManager] postObject:nil
+                                           path:API_PRINT_RECEIPTS_TO_EMAIL
+                                     parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                         success(operation, mappingResult);
+                                         
+                                     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                         [WRUtilities criticalError:error];
+                                         failure(operation, error);
+                                     }];
+    
+
+}
+
+
+@end

@@ -70,4 +70,11 @@
 + (void) updateProfileImage:(UIImage *)image success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                     failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
++ (void) createSupportRequest:(NSString*) messageText
+                      success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                      failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
+
++ (void) printReceiptsToEmailWithSuccess:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                                 failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
+
 @end

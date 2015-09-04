@@ -7,7 +7,9 @@
 //
 
 #import "VCReceiptViewController.h"
+#import <MBProgressHUD.h>
 #import "VCRiderApi.h"
+#import "VCUsersApi.h"
 #import "VCStyle.h"
 #import "VCReceiptsTableViewCell.h"
 #import "Receipt.h"
@@ -69,6 +71,14 @@
 
 
 - (IBAction)didTouchPrintReceipts:(id)sender {
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [VCUsersApi printReceiptsToEmailWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        hud.hidden = YES;
+        [UIAlertView showWithTitle:@"Submitted" message:@"You will receive full receipts via email" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        hud.hidden = YES;
+        [UIAlertView showWithTitle:@"Errors" message:@"There was a problem submitting your request" cancelButtonTitle:@"I'll try again" otherButtonTitles:nil tapBlock:nil];
+    }];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -86,7 +96,7 @@
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     VCReceiptsTableViewCell * cell = [WRUtilities getViewFromNib:@"VCReceiptsTableViewCell" class:[VCReceiptsTableViewCell class]];
     Receipt * receipt = [_fetchedResultsController objectAtIndexPath:indexPath];
-    cell.receiptDate.text = [receipt.date pretty];
+    cell.receiptDate.text = [receipt.date monthAndDay];
     cell.receiptTripType.text = receipt.type;
     cell.receiptTripTotalFare.text = [NSString stringWithFormat:@"%.2f", [receipt.amount doubleValue] / 100.0f];
     return cell;
