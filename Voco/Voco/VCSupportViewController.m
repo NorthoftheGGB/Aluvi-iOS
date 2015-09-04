@@ -10,6 +10,7 @@
 #import <MBProgressHUD.h>
 #import "VCApi.h"
 #import "VCStyle.h"
+#import "VCUsersApi.h"
 
 @interface VCSupportViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *messageTextView;
@@ -77,17 +78,15 @@
     [self.view endEditing:YES];
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    NSDictionary * params = @{@"message" : _messageTextView.text};
-    [[RKObjectManager sharedManager] postObject:nil
-                                           path:API_CREATE_SUPPORT_REQUEST
-                                     parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                         hud.hidden = YES;
-                                         [UIAlertView showWithTitle:@"Submitted" message:@"We will contact you shortly" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
-
-                                     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                         hud.hidden = YES;
-                                         [UIAlertView showWithTitle:@"Errors" message:@"There was a problem submitting your support request" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
-                                     }];
+    [VCUsersApi createSupportRequest:_messageTextView.text
+                             success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                 hud.hidden = YES;
+                                 [UIAlertView showWithTitle:@"Submitted" message:@"We will contact you shortly" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                 hud.hidden = YES;
+                                 [UIAlertView showWithTitle:@"Errors" message:@"There was a problem submitting your support request" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                             }];
     
+        
 }
 @end
