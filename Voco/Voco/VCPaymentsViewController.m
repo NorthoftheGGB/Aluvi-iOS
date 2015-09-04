@@ -21,6 +21,10 @@
 @property (weak, nonatomic) IBOutlet UIView *PTKViewContainer;
 @property (weak, nonatomic) IBOutlet UILabel *commuterAccountBalance;
 @property (weak, nonatomic) IBOutlet UIButton *processPayoutButton;
+@property (strong, nonatomic) IBOutlet UILabel *payWithCardLabel;
+@property (strong, nonatomic) IBOutlet UILabel *getPaidToCardLabel;
+@property (strong, nonatomic) IBOutlet UILabel *paymentsDescriptionLabel;
+
 
 @end
 
