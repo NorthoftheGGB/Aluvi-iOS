@@ -4018,7 +4018,7 @@
 				INFOPLIST_FILE = "Aluvi Distribution copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "Aluvi Nightly";
-				PROVISIONING_PROFILE = "7f671519-3b88-43f2-8c1b-8abe3cd3c17c";
+				PROVISIONING_PROFILE = "08c118a1-1753-4c2f-9bc1-68893b73207e";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4047,7 +4047,7 @@
 				INFOPLIST_FILE = "Aluvi Distribution copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "Aluvi Nightly";
-				PROVISIONING_PROFILE = "7f671519-3b88-43f2-8c1b-8abe3cd3c17c";
+				PROVISIONING_PROFILE = "08c118a1-1753-4c2f-9bc1-68893b73207e";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
