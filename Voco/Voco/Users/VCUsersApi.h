@@ -77,4 +77,8 @@
 + (void) printReceiptsToEmailWithSuccess:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                                  failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
++ (void) payoutRequestedWithSuccess:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                                 failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
+
+
 @end

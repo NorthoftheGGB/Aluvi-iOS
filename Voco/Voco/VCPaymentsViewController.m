@@ -11,15 +11,22 @@
 #import <PTKView.h>
 #import <PTKTextField.h>
 #import <MBProgressHUD.h>
-#import "VCUserStateManager.h"
 #import "VCUsersApi.h"
-#import "VCStyle.h"
+#import "VCRiderApi.h"
+#import "VCUserStateManager.h"
 #import "Receipt.h"
+#import "VCStyle.h"
+
+#define kCardView 1001
+#define kDebitCardView 1002
 
 @interface VCPaymentsViewController () <PTKViewDelegate>
 
 @property (strong, nonatomic) PTKView * cardView;
+@property (strong, nonatomic) PTKView * debitCardView;
+
 @property (weak, nonatomic) IBOutlet UIView *PTKViewContainer;
+@property (weak, nonatomic) IBOutlet UIView *PTKDebitViewContainer;
 @property (weak, nonatomic) IBOutlet UILabel *commuterAccountBalance;
 @property (weak, nonatomic) IBOutlet UIButton *processPayoutButton;
 @property (strong, nonatomic) IBOutlet UILabel *defaultCardLabel;
@@ -44,28 +51,33 @@
 - (void) viewDidLoad {
     [super viewDidLoad];
     [self setGradient];
-    _cardView = [[PTKView alloc] initWithFrame:CGRectMake(15,20,290,55)];
-    _cardView.delegate = self;
     
+    _cardView = [[PTKView alloc] initWithFrame:CGRectMake(15,20,290,55)];
+    _cardView.tag = kCardView;
+    _cardView.delegate = self;
     [_PTKViewContainer addSubview:_cardView];
     
-    [self updateFieldValues];
+    _debitCardView = [[PTKView alloc] initWithFrame:CGRectMake(15,20,290,55)];
+    _debitCardView.tag = kDebitCardView;
+    _debitCardView.delegate = self;
+    [_PTKDebitViewContainer addSubview:_debitCardView];
 
-    [[VCUserStateManager instance] refreshProfileWithCompletion:^{
-        [self updateFieldValues];
-    }];
+
     
     UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
     numberToolbar.barStyle = UIBarStyleBlackTranslucent;
     numberToolbar.items = [NSArray arrayWithObjects:
-                           [[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelCardEntry)],
+                           [[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancelCardEntry)],
                            [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                           [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneWithCardEntry)],
+                           [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(doneWithCardEntry)],
                            nil];
     [numberToolbar sizeToFit];
     _cardView.cardNumberField.inputAccessoryView = numberToolbar;
     _cardView.cardExpiryField.inputAccessoryView = numberToolbar;
     _cardView.cardCVCField.inputAccessoryView = numberToolbar;
+    _debitCardView.cardNumberField.inputAccessoryView = numberToolbar;
+    _debitCardView.cardExpiryField.inputAccessoryView = numberToolbar;
+    _debitCardView.cardCVCField.inputAccessoryView = numberToolbar;
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -73,6 +85,20 @@
     if(_delegate != nil){
         [_cardView becomeFirstResponder];
     }
+    
+    [self updateFieldValues];
+    
+    [[VCUserStateManager instance] refreshProfileWithCompletion:^{
+        [self updateFieldValues];
+    }];
+    
+    [self updateLastTransaction];
+    [VCRiderApi refreshReceiptsWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [self updateLastTransaction];
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [WRUtilities criticalError:error];
+    }];
+
 }
 
 - (void) cancelCardEntry {
@@ -83,8 +109,13 @@
 }
 
 - (void) doneWithCardEntry {
-    [_cardView resignFirstResponder];
-    [self didTapSave:nil];
+    if([_cardView isFirstResponder]){
+        [_cardView resignFirstResponder];
+        [self didTapSave:_cardView];
+    } else if([_debitCardView isFirstResponder]){
+        [_debitCardView resignFirstResponder];
+        [self didTapSave:_debitCardView];
+    }
 }
 
 
@@ -102,15 +133,8 @@
         _commuterAccountBalance.text = @"No Balance";
     }
         
-    if( [[VCUserStateManager instance] isHovDriver]){
-        _processPayoutButton.hidden = NO;
-        if (accountBalance > 1000){
-            _processPayoutButton.enabled = YES;
-        }
-    } else {
-        _processPayoutButton.hidden = YES;
-    }
-    
+
+
     
     if(profile.cardLastFour == nil && profile.recipientCardLastFour == nil){
         _defaultCardLabel.text = @"No Payment Method Entered";
@@ -133,6 +157,19 @@
         }
     }
     
+    if (accountBalance > 1000){
+        _processPayoutButton.hidden = NO;
+        _processPayoutButton.enabled = YES;
+        if(profile.recipientCardLastFour == nil){
+            _getPaidToCardLabel.hidden = NO;
+            _getPaidToCardLabel.text = @"No Debit Card Entered";
+        }
+    } else {
+        _processPayoutButton.hidden = YES;
+        _processPayoutButton.enabled = NO;
+        
+    }
+    
 }
 
 - (void) updateLastTransaction {
@@ -148,23 +185,27 @@
     if(receipts == nil){
         [WRUtilities criticalError:error];
     }
+    if([receipts count] > 0){
     Receipt * lastTransaction = receipts[0];
-    if([lastTransaction.type isEqualToString:@"payment"]){
-        _paymentsDescriptionLabel.text = [NSString stringWithFormat:@"Last Charge: $%.2f", [lastTransaction.amount doubleValue]];
-    } else {
-        _paymentsDescriptionLabel.text = [NSString stringWithFormat:@"Last Withdrawal: $%.2f", -[lastTransaction.amount doubleValue]];
+        if([lastTransaction.type isEqualToString:@"payment"]){
+            _paymentsDescriptionLabel.text = [NSString stringWithFormat:@"Last Charge: $%.2f", [lastTransaction.amount doubleValue]];
+        } else {
+            _paymentsDescriptionLabel.text = [NSString stringWithFormat:@"Last Withdrawal: $%.2f", -[lastTransaction.amount doubleValue]];
+        }
     }
 }
 
 
 - (IBAction)didTapSave:(id)sender {
     
+    PTKView * selectedCardView = sender;
+    
     
     STPCard *card = [[STPCard alloc] init];
-    card.number = _cardView.card.number;
-    card.expMonth = _cardView.card.expMonth;
-    card.expYear = _cardView.card.expYear;
-    card.cvc = _cardView.card.cvc;
+    card.number = selectedCardView.card.number;
+    card.expMonth = selectedCardView.card.expMonth;
+    card.expYear = selectedCardView.card.expYear;
+    card.cvc = selectedCardView.card.cvc;
     
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Saving user info";
@@ -172,19 +213,38 @@
  
     [Stripe createTokenWithCard:card completion:^(STPToken *token, NSError *error) {
         if (error == nil ) {
-            [VCUsersApi updateDefaultCard:[RKObjectManager sharedManager]
+            
+            if(selectedCardView.tag == kCardView){
+            
+                [VCUsersApi updateDefaultCard:[RKObjectManager sharedManager]
                                 cardToken:token.tokenId
                                   success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                                       [hud hide:YES];
                                       if(_delegate != nil){
                                           [_delegate VCPaymentsViewControllerDidUpdatePaymentMethod:self];
                                       }
+                                      [self updateFieldValues];
                                   } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                      [self somethingDidntGoRight];
+                                      [self somethingDidntGoRight:selectedCardView];
                                       [WRUtilities criticalError:error];
                                       [hud hide:YES];
                                       
                                   }];
+            } else if(selectedCardView.tag == kDebitCardView){
+                [VCUsersApi updateRecipientCard:[RKObjectManager sharedManager]
+                                      cardToken:token.tokenId
+                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                            [hud hide:YES];
+                                            if(_delegate != nil){
+                                                [_delegate VCPaymentsViewControllerDidUpdatePaymentMethod:self];
+                                            }
+                                            [self updateFieldValues];
+                                        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            [self somethingDidntGoRight:selectedCardView];
+                                            [WRUtilities criticalError:error];
+                                            [hud hide:YES];
+                                        }];
+            }
         } else {
             [WRUtilities subcriticalErrorWithString:[error.userInfo objectForKey:@"com.stripe.lib:ErrorMessageKey"]];
             [hud hide:YES];
@@ -193,15 +253,19 @@
     }];
 }
 
-- (void) somethingDidntGoRight {
+- (void) somethingDidntGoRight:(PTKView *) selectedCardView {
     [UIAlertView showWithTitle:@"Woops" message:@"Something didn't go right. Want to try that again?" cancelButtonTitle:@"No" otherButtonTitles:@[@"Yeah"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
         if(buttonIndex == 1){
-            [self didTapSave:self];
+            [self didTapSave:selectedCardView];
         }
     }];
 }
 
 - (IBAction)didTapProcessPayoutButton:(id)sender {
+    [self processPayout];
+}
+
+- (void) processPayout {
     if([VCUserStateManager instance].profile.recipientCardLastFour == nil) {
         [self getPayoutCard];
     } else {
@@ -209,13 +273,42 @@
     }
 }
 
-
 - (void) getPayoutCard {
-    
+    [UIAlertView showWithTitle:@"We need a debit card" message:@"We need a debit card to withdraw fund to" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        [_debitCardView becomeFirstResponder];
+    }];
 }
 
 - (void) requestPayout {
-    
+    NSString * message = [NSString stringWithFormat:@"$%.2f will be deposited into your %@ debit card ending in %@",
+                          [[VCUserStateManager instance].profile.commuterBalanceCents intValue] / 100.0f,
+    [VCUserStateManager instance].profile.cardBrand,
+                          [VCUserStateManager instance].profile.cardLastFour
+                          ];
+    [UIAlertView showWithTitle:@"Withdraw Funds" message:message cancelButtonTitle:@"Not Now" otherButtonTitles:@[@"OK, Do it!"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+        switch (buttonIndex) {
+            case 1:
+            {
+                MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                hud.labelText = @"Requesting Withdrawal";
+                [VCUsersApi payoutRequestedWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                    hud.hidden = YES;
+                    [UIAlertView showWithTitle:@"Success" message:@"Your withdrawal will be processed shortly.  You will receive a push message once funds are transfered" cancelButtonTitle:@"Ok Great!" otherButtonTitles:nil tapBlock:nil];
+                } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                    hud.hidden = YES;
+                    [UIAlertView showWithTitle:@"Sorry" message:@"We ran into a problem.  Want to try that again?" cancelButtonTitle:@"Not Now"otherButtonTitles:@[@"Yes try again please"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                        if(buttonIndex == 1){
+                            [self processPayout];
+                        }
+                    }];
+                }];
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }];
 }
 
 

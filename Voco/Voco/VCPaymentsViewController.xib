@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCPaymentsViewController">
             <connections>
+                <outlet property="PTKDebitViewContainer" destination="acL-Ir-cgb" id="RLk-UC-Hxm"/>
                 <outlet property="PTKViewContainer" destination="xO2-CQ-cvv" id="Td5-N5-RhX"/>
                 <outlet property="commuterAccountBalance" destination="dJ5-sd-d9F" id="PTd-7m-dFu"/>
                 <outlet property="defaultCardLabel" destination="CYr-IO-g4E" id="l6t-Ue-4c6"/>
@@ -38,16 +39,6 @@
                     <color key="textColor" red="0.30588235289999999" green="0.63921568630000003" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gy1-ot-JAw" customClass="VCButtonBold">
-                    <rect key="frame" x="0.0" y="498" width="320" height="70"/>
-                    <state key="normal" title="SAVE">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="didTapSave:" destination="-1" eventType="touchUpInside" id="0Li-HN-NqQ"/>
-                    </connections>
-                </button>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dso-Zg-Ngo" customClass="VCFancyButton">
                     <rect key="frame" x="0.0" y="415" width="320" height="70"/>
                     <state key="normal" title="Withdraw">

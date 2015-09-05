@@ -138,6 +138,10 @@
         RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSNull class]] method:RKRequestMethodPOST pathPattern:API_CREATE_SUPPORT_REQUEST keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:responseDescriptor];
     }
+    {
+        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:[RKObjectMapping mappingForClass:[NSNull class]] method:RKRequestMethodPOST pathPattern:API_PAYOUT_REQUESTED keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor];
+    }
     
 }
 
@@ -349,5 +353,18 @@
 
 }
 
++ (void) payoutRequestedWithSuccess:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                            failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+    
+    [[RKObjectManager sharedManager] postObject:nil
+                                           path:API_PAYOUT_REQUESTED
+                                     parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                         success(operation, mappingResult);
+                                         
+                                     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                         [WRUtilities criticalError:error];
+                                         failure(operation, error);
+                                     }];
+}
 
 @end

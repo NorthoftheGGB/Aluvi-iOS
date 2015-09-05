@@ -43,6 +43,7 @@
 #define API_FILL_COMMUTER_PASS @"v2users/fill_commuter_pass"
 #define API_CREATE_SUPPORT_REQUEST @"v2/users/support"
 #define API_PRINT_RECEIPTS_TO_EMAIL @"v2/users/receipts"
+#define API_PAYOUT_REQUESTED @"v2/users/request_payout"
 
 // drivers
 #define API_DRIVER_REGISTRATION @"drivers/driver_registration"
