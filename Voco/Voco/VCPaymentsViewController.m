@@ -103,7 +103,11 @@
 }
 
 - (void) cancelCardEntry {
-    [_cardView resignFirstResponder];
+    if([_cardView isFirstResponder]){
+        [_cardView resignFirstResponder];
+    } else if([_debitCardView isFirstResponder]){
+        [_debitCardView resignFirstResponder];
+    }
     if(_delegate != nil && [_delegate respondsToSelector:@selector(VCPaymentsViewControllerDidCancel:)]){
         [_delegate VCPaymentsViewControllerDidCancel:self];
     }
