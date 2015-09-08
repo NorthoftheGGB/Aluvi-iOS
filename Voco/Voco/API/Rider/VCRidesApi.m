@@ -8,7 +8,6 @@
 
 #import "VCRidesApi.h"
 #import "VCApi.h"
-#import "VCCommuterRideRequestCreated.h"
 #import "VCDevice.h"
 #import "Ticket.h"
 #import "VCRideIdentity.h"
@@ -82,8 +81,7 @@
         
           }
     {
-        RKObjectMapping * mapping = [VCCommuterRideRequestCreated getMapping];
-        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping
+        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:ticketMapping
                                                                                                  method:RKRequestMethodPOST
                                                                                             pathPattern:API_POST_RIDE_REQUEST keyPath:nil
                                                                                             statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
@@ -132,7 +130,7 @@
 }
 
 + (void) requestRide:(VCCommuterRideRequest *) request
-             success:(void ( ^ ) ( RKObjectRequestOperation *operation , VCCommuterRideRequestCreated * response ))success
+             success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult * mappingResult ))success
              failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     
     [[VCDebug sharedInstance] apiLog:@"API: request ride"];
@@ -145,10 +143,7 @@
                                             
                                             NSLog(@"Ride request accepted by server!");
                                             
-                                            
-                                            VCCommuterRideRequestCreated * response  = mappingResult.firstObject;
-                                            
-                                            success(operation, response);
+                                            success(operation, mappingResult);
                                         }
                                         failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                             [[VCDebug sharedInstance] apiLog:@"API: request ride failure"];

@@ -331,7 +331,6 @@
 		841647DE1B64A47D00CD20AC /* VCReferralCodeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEC41966369700AD4229 /* VCReferralCodeTextField.m */; };
 		841647DF1B64A47D00CD20AC /* WRUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C0E1935976E00A94721 /* WRUtilities.m */; };
 		841647E01B64A47D00CD20AC /* VCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641D91941607B0059BED1 /* VCTextField.m */; };
-		841647E11B64A47D00CD20AC /* VCCommuterRideRequestCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C09193589A600A94721 /* VCCommuterRideRequestCreated.m */; };
 		841647E31B64A47D00CD20AC /* VCDriverInterestedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8905219469F0F007C4671 /* VCDriverInterestedRequest.m */; };
 		841647E71B64A47D00CD20AC /* NSDate+Pretty.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C10193597F500A94721 /* NSDate+Pretty.m */; };
 		841647E91B64A47D00CD20AC /* VCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FA0BF9192BF6BF005D8645 /* VCAppDelegate.m */; };
@@ -499,7 +498,6 @@
 		841649151B658F4900CD20AC /* VCDriverSubMenuItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC7590E19AACFF50093DBEA /* VCDriverSubMenuItemTableViewCell.m */; };
 		841649161B658F4900CD20AC /* VCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641D91941607B0059BED1 /* VCTextField.m */; };
 		841649171B658F4900CD20AC /* VCSupportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFCF2C919A5381900A4A24E /* VCSupportViewController.m */; };
-		841649191B658F4900CD20AC /* VCCommuterRideRequestCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C09193589A600A94721 /* VCCommuterRideRequestCreated.m */; };
 		8416491B1B658F4900CD20AC /* VCDriverInterestedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8905219469F0F007C4671 /* VCDriverInterestedRequest.m */; };
 		8416491D1B658F4900CD20AC /* NSDate+Pretty.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C10193597F500A94721 /* NSDate+Pretty.m */; };
 		8416491E1B658F4900CD20AC /* VCLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC758B419AA8C270093DBEA /* VCLogInViewController.m */; };
@@ -752,7 +750,6 @@
 		84F2229D1B82611B00E5F7B7 /* VCFancyButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 36FA80811B7D61AD00C65DF2 /* VCFancyButton.m */; };
 		84F2229E1B82611B00E5F7B7 /* VCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641D91941607B0059BED1 /* VCTextField.m */; };
 		84F2229F1B82611B00E5F7B7 /* VCReceiptsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000CA41B72C185008E84AE /* VCReceiptsTableViewCell.m */; };
-		84F222A01B82611B00E5F7B7 /* VCCommuterRideRequestCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C09193589A600A94721 /* VCCommuterRideRequestCreated.m */; };
 		84F222A11B82611B00E5F7B7 /* VCMapStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 8435C58E1B7ABE4C000401CA /* VCMapStyle.m */; };
 		84F222A21B82611B00E5F7B7 /* VCDriverInterestedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8905219469F0F007C4671 /* VCDriverInterestedRequest.m */; };
 		84F222A51B82611B00E5F7B7 /* VCDriverTicketView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36F9F6561B6AE4A300440D03 /* VCDriverTicketView.m */; };
@@ -943,7 +940,6 @@
 		F4C6B222197F06B100F6C10B /* VCReferralCodeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEC41966369700AD4229 /* VCReferralCodeTextField.m */; };
 		F4C6B223197F06B100F6C10B /* WRUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C0E1935976E00A94721 /* WRUtilities.m */; };
 		F4C6B224197F06B100F6C10B /* VCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641D91941607B0059BED1 /* VCTextField.m */; };
-		F4C6B225197F06B100F6C10B /* VCCommuterRideRequestCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C09193589A600A94721 /* VCCommuterRideRequestCreated.m */; };
 		F4C6B228197F06B100F6C10B /* VCDriverInterestedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8905219469F0F007C4671 /* VCDriverInterestedRequest.m */; };
 		F4C6B22A197F06B100F6C10B /* NSDate+Pretty.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C10193597F500A94721 /* NSDate+Pretty.m */; };
 		F4C6B22C197F06B100F6C10B /* VCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FA0BF9192BF6BF005D8645 /* VCAppDelegate.m */; };
@@ -1061,7 +1057,6 @@
 		F4D8FE7A19B1745A00BC0B69 /* VCReferralCodeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F9ECEC41966369700AD4229 /* VCReferralCodeTextField.m */; };
 		F4D8FE7B19B1745A00BC0B69 /* WRUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C0E1935976E00A94721 /* WRUtilities.m */; };
 		F4D8FE7C19B1745A00BC0B69 /* VCTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641D91941607B0059BED1 /* VCTextField.m */; };
-		F4D8FE7D19B1745A00BC0B69 /* VCCommuterRideRequestCreated.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C09193589A600A94721 /* VCCommuterRideRequestCreated.m */; };
 		F4D8FE7F19B1745A00BC0B69 /* VCDriverInterestedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8905219469F0F007C4671 /* VCDriverInterestedRequest.m */; };
 		F4D8FE8419B1745A00BC0B69 /* NSDate+Pretty.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7C10193597F500A94721 /* NSDate+Pretty.m */; };
 		F4D8FE8719B1745A00BC0B69 /* VCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FA0BF9192BF6BF005D8645 /* VCAppDelegate.m */; };
@@ -1401,8 +1396,6 @@
 		F45F7BFF19357C6100A94721 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F45F7C011935880500A94721 /* Ticket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ticket.h; path = Model/Ticket.h; sourceTree = "<group>"; };
 		F45F7C021935880500A94721 /* Ticket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Ticket.m; path = Model/Ticket.m; sourceTree = "<group>"; };
-		F45F7C08193589A600A94721 /* VCCommuterRideRequestCreated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCCommuterRideRequestCreated.h; path = API/Rider/Responses/VCCommuterRideRequestCreated.h; sourceTree = "<group>"; };
-		F45F7C09193589A600A94721 /* VCCommuterRideRequestCreated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCCommuterRideRequestCreated.m; path = API/Rider/Responses/VCCommuterRideRequestCreated.m; sourceTree = "<group>"; };
 		F45F7C0D1935976E00A94721 /* WRUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WRUtilities.h; sourceTree = "<group>"; };
 		F45F7C0E1935976E00A94721 /* WRUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WRUtilities.m; sourceTree = "<group>"; };
 		F45F7C10193597F500A94721 /* NSDate+Pretty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Pretty.m"; sourceTree = "<group>"; };
@@ -2152,13 +2145,13 @@
 				F4D8904119468A66007C4671 /* Users */,
 				F4FE1B2E193EDFEE00354886 /* Geo */,
 				F4FE1AEE1936BDE500354886 /* Devices */,
-				F45F7BF3193578B500A94721 /* Rider */,
+				F45F7BF3193578B500A94721 /* Rides */,
 				F4FE1B0419384D9500354886 /* Driver */,
 			);
 			name = Api;
 			sourceTree = "<group>";
 		};
-		F45F7BF3193578B500A94721 /* Rider */ = {
+		F45F7BF3193578B500A94721 /* Rides */ = {
 			isa = PBXGroup;
 			children = (
 				F45F7BF4193578DE00A94721 /* VCRidesApi.h */,
@@ -2169,12 +2162,10 @@
 				F4FE1B23193E722B00354886 /* VCRideIdentity.m */,
 				F473F01B195113D100D8C900 /* VCRequestUpdate.h */,
 				F473F01C195113D100D8C900 /* VCRequestUpdate.m */,
-				F45F7C08193589A600A94721 /* VCCommuterRideRequestCreated.h */,
-				F45F7C09193589A600A94721 /* VCCommuterRideRequestCreated.m */,
 				8435C5971B7B0C70000401CA /* VCPickupPoint.h */,
 				8435C5981B7B0C70000401CA /* VCPickupPoint.m */,
 			);
-			name = Rider;
+			name = Rides;
 			sourceTree = "<group>";
 		};
 		F45F7C0C1935976400A94721 /* Utilities */ = {
@@ -3461,7 +3452,6 @@
 				36FA80851B7D61AD00C65DF2 /* VCFancyButton.m in Sources */,
 				841647E01B64A47D00CD20AC /* VCTextField.m in Sources */,
 				36000CA81B72C185008E84AE /* VCReceiptsTableViewCell.m in Sources */,
-				841647E11B64A47D00CD20AC /* VCCommuterRideRequestCreated.m in Sources */,
 				8435C5921B7ABE4C000401CA /* VCMapStyle.m in Sources */,
 				841647E31B64A47D00CD20AC /* VCDriverInterestedRequest.m in Sources */,
 				36F9F65A1B6AE4A300440D03 /* VCDriverTicketView.m in Sources */,
@@ -3585,7 +3575,6 @@
 				36000CA61B72C185008E84AE /* VCReceiptsTableViewCell.m in Sources */,
 				841649171B658F4900CD20AC /* VCSupportViewController.m in Sources */,
 				8435C5901B7ABE4C000401CA /* VCMapStyle.m in Sources */,
-				841649191B658F4900CD20AC /* VCCommuterRideRequestCreated.m in Sources */,
 				8416491B1B658F4900CD20AC /* VCDriverInterestedRequest.m in Sources */,
 				36F9F6581B6AE4A300440D03 /* VCDriverTicketView.m in Sources */,
 				8416491D1B658F4900CD20AC /* NSDate+Pretty.m in Sources */,
@@ -3707,7 +3696,6 @@
 				84F2229D1B82611B00E5F7B7 /* VCFancyButton.m in Sources */,
 				84F2229E1B82611B00E5F7B7 /* VCTextField.m in Sources */,
 				84F2229F1B82611B00E5F7B7 /* VCReceiptsTableViewCell.m in Sources */,
-				84F222A01B82611B00E5F7B7 /* VCCommuterRideRequestCreated.m in Sources */,
 				84F222A11B82611B00E5F7B7 /* VCMapStyle.m in Sources */,
 				84F222A21B82611B00E5F7B7 /* VCDriverInterestedRequest.m in Sources */,
 				84F222A51B82611B00E5F7B7 /* VCDriverTicketView.m in Sources */,
@@ -3831,7 +3819,6 @@
 				36000CA51B72C185008E84AE /* VCReceiptsTableViewCell.m in Sources */,
 				4FFCF2CB19A5381900A4A24E /* VCSupportViewController.m in Sources */,
 				8435C58F1B7ABE4C000401CA /* VCMapStyle.m in Sources */,
-				F4C6B225197F06B100F6C10B /* VCCommuterRideRequestCreated.m in Sources */,
 				F4C6B228197F06B100F6C10B /* VCDriverInterestedRequest.m in Sources */,
 				36F9F6571B6AE4A300440D03 /* VCDriverTicketView.m in Sources */,
 				F4C6B22A197F06B100F6C10B /* NSDate+Pretty.m in Sources */,
@@ -3953,7 +3940,6 @@
 				36FA80841B7D61AD00C65DF2 /* VCFancyButton.m in Sources */,
 				F4D8FE7C19B1745A00BC0B69 /* VCTextField.m in Sources */,
 				36000CA71B72C185008E84AE /* VCReceiptsTableViewCell.m in Sources */,
-				F4D8FE7D19B1745A00BC0B69 /* VCCommuterRideRequestCreated.m in Sources */,
 				8435C5911B7ABE4C000401CA /* VCMapStyle.m in Sources */,
 				F4D8FE7F19B1745A00BC0B69 /* VCDriverInterestedRequest.m in Sources */,
 				36F9F6591B6AE4A300440D03 /* VCDriverTicketView.m in Sources */,

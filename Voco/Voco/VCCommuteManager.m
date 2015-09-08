@@ -350,31 +350,10 @@ static VCCommuteManager * instance;
     // And attempt to store the rides on the server
     // TODO: This will happen in single request to the server, which will create and supply the tickets
     [VCRidesApi requestRide:request
-                    success:^(RKObjectRequestOperation *operation, VCCommuterRideRequestCreated * response) {
-
-        
-        homeToWorkRide.ride_id = response.outgoingRideId;
-        homeToWorkRide.trip_id = response.tripId;
-        homeToWorkRide.uploaded = [NSNumber numberWithBool:YES];
-        homeToWorkRide.direction = @"a";
-        homeToWorkRide.state = kRequestedState;
-        
-        workToHomeRide.ride_id = response.returnRideId;
-        workToHomeRide.trip_id = response.tripId;
-        workToHomeRide.uploaded = [NSNumber numberWithBool:YES];
-        workToHomeRide.direction = @"b";
-        workToHomeRide.state = kRequestedState;
-
-        [VCCoreData saveContext];
-            
-        [self refreshTicketsWithSuccess:^{
-                success();
-            } failure:^{
-                failure();
-            }];
-            
-            
-        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                    success:^(RKObjectRequestOperation *operation, RKMappingResult * response) {
+                        success();
+    }
+                    failure:^(RKObjectRequestOperation *operation, NSError *error) {
             [[VCCoreData managedObjectContext] deleteObject:homeToWorkRide];
             [[VCCoreData managedObjectContext] deleteObject:workToHomeRide];
             NSInteger statusCode = operation.HTTPRequestOperation.response.statusCode;
