@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Voco. All rights reserved.
 //
 
-#import "VCRiderApi.h"
+#import "VCRidesApi.h"
 #import "VCApi.h"
 #import "VCCommuterRideRequestCreated.h"
 #import "VCDevice.h"
@@ -19,7 +19,7 @@
 #import "Receipt.h"
 
 
-@implementation VCRiderApi
+@implementation VCRidesApi
 
 + (void) setup: (RKObjectManager *) objectManager {
     

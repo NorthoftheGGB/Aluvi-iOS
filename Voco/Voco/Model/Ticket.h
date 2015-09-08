@@ -22,6 +22,7 @@
 #define kRiderCancelledState @"rider_cancelled"
 #define kCompleteState @"completed"
 #define kPaymentProblemState @"payment_problem"
+#define kAbortedState @"aborted"
 
 // Trip State
 #define kTripRequestedState @"requested"

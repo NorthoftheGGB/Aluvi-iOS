@@ -8,7 +8,7 @@
 
 #import "VCCommuteManager.h"
 #import "Ticket.h"
-#import "VCRiderApi.h"
+#import "VCRidesApi.h"
 #import "VCDriverApi.h"
 #import "VCNotifications.h"
 #import "VCUtilities.h"
@@ -216,7 +216,7 @@ static VCCommuteManager * instance;
 }
 
 - (void) refreshTicketsWithSuccess:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure  {
-    [VCRiderApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [VCRidesApi refreshScheduledRidesWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [self loadActiveTickets];
         [VCNotifications scheduleUpdated];
         if(success != nil){
@@ -349,7 +349,7 @@ static VCCommuteManager * instance;
     
     // And attempt to store the rides on the server
     // TODO: This will happen in single request to the server, which will create and supply the tickets
-    [VCRiderApi requestRide:request
+    [VCRidesApi requestRide:request
                     success:^(RKObjectRequestOperation *operation, VCCommuterRideRequestCreated * response) {
 
         
@@ -396,7 +396,7 @@ static VCCommuteManager * instance;
 
 - (void) cancelRide:(Ticket *) ride success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure {
     
-    [VCRiderApi cancelRide:ride success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [VCRidesApi cancelRide:ride success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [self loadActiveTickets];
         [VCNotifications scheduleUpdated];
         success();
@@ -407,7 +407,7 @@ static VCCommuteManager * instance;
 }
 
 - (void) cancelTrip:(NSNumber *) tripId success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure {
-    [VCRiderApi cancelTrip:tripId success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [VCRidesApi cancelTrip:tripId success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [self loadActiveTickets];
         [VCNotifications scheduleUpdated];
         success();

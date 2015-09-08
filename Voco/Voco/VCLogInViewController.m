@@ -11,7 +11,7 @@
 #import "VCUserStateManager.h"
 #import "VCInterfaceManager.h"
 #import "VCCommuteManager.h"
-#import "VCRiderApi.h"
+#import "VCRidesApi.h"
 #import "VCTextField.h"
 #import "VCButtonBold.h"
 #import "VCButton.h"

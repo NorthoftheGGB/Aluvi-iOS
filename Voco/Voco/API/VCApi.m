@@ -9,7 +9,7 @@
 #import "VCApi.h"
 #import <RestKit/RestKit.h>
 #import "VCApi.h"
-#import "VCRiderApi.h"
+#import "VCRidesApi.h"
 #import "VCDriverApi.h"
 #import "VCUsersApi.h"
 #import "VCDevicesApi.h"
@@ -30,7 +30,7 @@ static NSString * apiToken;
     objectManager.managedObjectStore = [VCCoreData managedObjectStore];
     //[[NSURLCache sharedURLCache].cach
     
-    [VCRiderApi setup: objectManager];
+    [VCRidesApi setup: objectManager];
     [VCDriverApi setup: objectManager];
     [VCUsersApi setup: objectManager];
     [VCDevicesApi setup:objectManager];

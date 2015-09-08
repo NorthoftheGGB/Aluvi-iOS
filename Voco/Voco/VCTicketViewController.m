@@ -46,7 +46,7 @@
 #import "VCPaymentsViewController.h"
 
 // provisional
-#import "VCRiderApi.h"
+#import "VCRidesApi.h"
 #import "VCPickupPoint.h"
 
 
@@ -155,7 +155,7 @@
     }
     
     // Provisional
-    [VCRiderApi getPickupPointsWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [VCRidesApi getPickupPointsWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         _pickupPoints = [mappingResult array];
         [self buildPickupPointAnnotations];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -721,7 +721,7 @@
         }
         
         
-    } else if([@[kCompleteState, kRiderCancelledState, kDriverCancelledState] containsObject:_ticket.state]){
+    } else if([@[kCompleteState, kRiderCancelledState, kDriverCancelledState, kAbortedState] containsObject:_ticket.state]){
         if([_ticket.direction isEqualToString:@"a"]){
             [self setRightButtonForState:kCommuteStateBackHome];
         } else {

@@ -12,7 +12,7 @@
 #import "VCCommuterRideRequestCreated.h"
 #import "VCCommuterRideRequest.h"
 
-@interface VCRiderApi : NSObject
+@interface VCRidesApi : NSObject
 
 + (void) setup: (RKObjectManager *) objectManager;
 

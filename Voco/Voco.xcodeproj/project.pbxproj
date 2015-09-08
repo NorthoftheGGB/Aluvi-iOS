@@ -257,7 +257,7 @@
 		8416477B1B64A47D00CD20AC /* VCBaseValidatorTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F157A1195E8DB1009A33C8 /* VCBaseValidatorTextField.m */; };
 		8416477C1B64A47D00CD20AC /* VCLoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904F19469018007C4671 /* VCLoginResponse.m */; };
 		8416477F1B64A47D00CD20AC /* VCRideIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B23193E722B00354886 /* VCRideIdentity.m */; };
-		841647811B64A47D00CD20AC /* VCRiderApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BF5193578DE00A94721 /* VCRiderApi.m */; };
+		841647811B64A47D00CD20AC /* VCRidesApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BF5193578DE00A94721 /* VCRidesApi.m */; };
 		841647821B64A47D00CD20AC /* VCMenuItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE17011989E801004D4413 /* VCMenuItemTableViewCell.m */; };
 		841647841B64A47D00CD20AC /* VCButtonBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DF194162360059BED1 /* VCButtonBold.m */; };
 		841647851B64A47D00CD20AC /* Rider.m in Sources */ = {isa = PBXBuildFile; fileRef = F471E3E019A9590E00DF688D /* Rider.m */; };
@@ -427,7 +427,7 @@
 		841648B41B658F4900CD20AC /* VCBaseValidatorTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F157A1195E8DB1009A33C8 /* VCBaseValidatorTextField.m */; };
 		841648B51B658F4900CD20AC /* VCLoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904F19469018007C4671 /* VCLoginResponse.m */; };
 		841648B91B658F4900CD20AC /* VCRideIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B23193E722B00354886 /* VCRideIdentity.m */; };
-		841648BA1B658F4900CD20AC /* VCRiderApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BF5193578DE00A94721 /* VCRiderApi.m */; };
+		841648BA1B658F4900CD20AC /* VCRidesApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BF5193578DE00A94721 /* VCRidesApi.m */; };
 		841648BB1B658F4900CD20AC /* VCMenuItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE17011989E801004D4413 /* VCMenuItemTableViewCell.m */; };
 		841648BC1B658F4900CD20AC /* VCButtonBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DF194162360059BED1 /* VCButtonBold.m */; };
 		841648BF1B658F4900CD20AC /* VCUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8777219775D7E00870945 /* VCUtilities.m */; };
@@ -663,7 +663,7 @@
 		84F2223A1B82611B00E5F7B7 /* VCStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E48E611B7A80FE0034DFEB /* VCStyle.m */; };
 		84F2223B1B82611B00E5F7B7 /* VCLoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904F19469018007C4671 /* VCLoginResponse.m */; };
 		84F2223D1B82611B00E5F7B7 /* VCRideIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B23193E722B00354886 /* VCRideIdentity.m */; };
-		84F2223E1B82611B00E5F7B7 /* VCRiderApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BF5193578DE00A94721 /* VCRiderApi.m */; };
+		84F2223E1B82611B00E5F7B7 /* VCRidesApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BF5193578DE00A94721 /* VCRidesApi.m */; };
 		84F2223F1B82611B00E5F7B7 /* VCMenuItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE17011989E801004D4413 /* VCMenuItemTableViewCell.m */; };
 		84F222401B82611B00E5F7B7 /* VCButtonBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DF194162360059BED1 /* VCButtonBold.m */; };
 		84F222411B82611B00E5F7B7 /* Rider.m in Sources */ = {isa = PBXBuildFile; fileRef = F471E3E019A9590E00DF688D /* Rider.m */; };
@@ -886,7 +886,7 @@
 		F4C6B1CD197F06B100F6C10B /* VCBaseValidatorTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F157A1195E8DB1009A33C8 /* VCBaseValidatorTextField.m */; };
 		F4C6B1CE197F06B100F6C10B /* VCLoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904F19469018007C4671 /* VCLoginResponse.m */; };
 		F4C6B1CF197F06B100F6C10B /* VCRideIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B23193E722B00354886 /* VCRideIdentity.m */; };
-		F4C6B1D0197F06B100F6C10B /* VCRiderApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BF5193578DE00A94721 /* VCRiderApi.m */; };
+		F4C6B1D0197F06B100F6C10B /* VCRidesApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BF5193578DE00A94721 /* VCRidesApi.m */; };
 		F4C6B1D2197F06B100F6C10B /* VCButtonBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DF194162360059BED1 /* VCButtonBold.m */; };
 		F4C6B1D4197F06B100F6C10B /* VCUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8777219775D7E00870945 /* VCUtilities.m */; };
 		F4C6B1D8197F06B100F6C10B /* VCLabelSmall.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DC1941621E0059BED1 /* VCLabelSmall.m */; };
@@ -989,7 +989,7 @@
 		F4D8FE1519B1745A00BC0B69 /* VCBaseValidatorTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F4F157A1195E8DB1009A33C8 /* VCBaseValidatorTextField.m */; };
 		F4D8FE1619B1745A00BC0B69 /* VCLoginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D8904F19469018007C4671 /* VCLoginResponse.m */; };
 		F4D8FE1819B1745A00BC0B69 /* VCRideIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B23193E722B00354886 /* VCRideIdentity.m */; };
-		F4D8FE1A19B1745A00BC0B69 /* VCRiderApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BF5193578DE00A94721 /* VCRiderApi.m */; };
+		F4D8FE1A19B1745A00BC0B69 /* VCRidesApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F45F7BF5193578DE00A94721 /* VCRidesApi.m */; };
 		F4D8FE1B19B1745A00BC0B69 /* VCMenuItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE17011989E801004D4413 /* VCMenuItemTableViewCell.m */; };
 		F4D8FE1D19B1745A00BC0B69 /* VCButtonBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE641DF194162360059BED1 /* VCButtonBold.m */; };
 		F4D8FE1F19B1745A00BC0B69 /* Rider.m in Sources */ = {isa = PBXBuildFile; fileRef = F471E3E019A9590E00DF688D /* Rider.m */; };
@@ -1391,8 +1391,8 @@
 		F42590761997004E00FA928E /* Voco 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 8.xcdatamodel"; sourceTree = "<group>"; };
 		F4259077199709CB00FA928E /* Voco 9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 9.xcdatamodel"; sourceTree = "<group>"; };
 		F425907819982A1900FA928E /* Voco 10.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Voco 10.xcdatamodel"; sourceTree = "<group>"; };
-		F45F7BF4193578DE00A94721 /* VCRiderApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRiderApi.h; path = API/Rider/VCRiderApi.h; sourceTree = "<group>"; };
-		F45F7BF5193578DE00A94721 /* VCRiderApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRiderApi.m; path = API/Rider/VCRiderApi.m; sourceTree = "<group>"; };
+		F45F7BF4193578DE00A94721 /* VCRidesApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRidesApi.h; path = API/Rider/VCRidesApi.h; sourceTree = "<group>"; };
+		F45F7BF5193578DE00A94721 /* VCRidesApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRidesApi.m; path = API/Rider/VCRidesApi.m; sourceTree = "<group>"; };
 		F45F7BF71935798B00A94721 /* VCApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCApi.h; path = API/VCApi.h; sourceTree = "<group>"; };
 		F45F7BF81935798B00A94721 /* VCApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCApi.m; path = API/VCApi.m; sourceTree = "<group>"; };
 		F45F7BFA19357B8A00A94721 /* VCCommuterRideRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCCommuterRideRequest.h; path = API/Rider/VCCommuterRideRequest.h; sourceTree = "<group>"; };
@@ -2161,8 +2161,8 @@
 		F45F7BF3193578B500A94721 /* Rider */ = {
 			isa = PBXGroup;
 			children = (
-				F45F7BF4193578DE00A94721 /* VCRiderApi.h */,
-				F45F7BF5193578DE00A94721 /* VCRiderApi.m */,
+				F45F7BF4193578DE00A94721 /* VCRidesApi.h */,
+				F45F7BF5193578DE00A94721 /* VCRidesApi.m */,
 				F45F7BFA19357B8A00A94721 /* VCCommuterRideRequest.h */,
 				F45F7BFB19357B8A00A94721 /* VCCommuterRideRequest.m */,
 				F4FE1B22193E722B00354886 /* VCRideIdentity.h */,
@@ -3366,7 +3366,7 @@
 				36E48E651B7A80FF0034DFEB /* VCStyle.m in Sources */,
 				8416477C1B64A47D00CD20AC /* VCLoginResponse.m in Sources */,
 				8416477F1B64A47D00CD20AC /* VCRideIdentity.m in Sources */,
-				841647811B64A47D00CD20AC /* VCRiderApi.m in Sources */,
+				841647811B64A47D00CD20AC /* VCRidesApi.m in Sources */,
 				841647821B64A47D00CD20AC /* VCMenuItemTableViewCell.m in Sources */,
 				841647841B64A47D00CD20AC /* VCButtonBold.m in Sources */,
 				841647851B64A47D00CD20AC /* Rider.m in Sources */,
@@ -3492,7 +3492,7 @@
 				841648B41B658F4900CD20AC /* VCBaseValidatorTextField.m in Sources */,
 				841648B51B658F4900CD20AC /* VCLoginResponse.m in Sources */,
 				841648B91B658F4900CD20AC /* VCRideIdentity.m in Sources */,
-				841648BA1B658F4900CD20AC /* VCRiderApi.m in Sources */,
+				841648BA1B658F4900CD20AC /* VCRidesApi.m in Sources */,
 				841648BB1B658F4900CD20AC /* VCMenuItemTableViewCell.m in Sources */,
 				841648BC1B658F4900CD20AC /* VCButtonBold.m in Sources */,
 				841648BF1B658F4900CD20AC /* VCUtilities.m in Sources */,
@@ -3612,7 +3612,7 @@
 				84F2223A1B82611B00E5F7B7 /* VCStyle.m in Sources */,
 				84F2223B1B82611B00E5F7B7 /* VCLoginResponse.m in Sources */,
 				84F2223D1B82611B00E5F7B7 /* VCRideIdentity.m in Sources */,
-				84F2223E1B82611B00E5F7B7 /* VCRiderApi.m in Sources */,
+				84F2223E1B82611B00E5F7B7 /* VCRidesApi.m in Sources */,
 				84F2223F1B82611B00E5F7B7 /* VCMenuItemTableViewCell.m in Sources */,
 				84F222401B82611B00E5F7B7 /* VCButtonBold.m in Sources */,
 				84F222411B82611B00E5F7B7 /* Rider.m in Sources */,
@@ -3737,7 +3737,7 @@
 				F4C6B1CD197F06B100F6C10B /* VCBaseValidatorTextField.m in Sources */,
 				F4C6B1CE197F06B100F6C10B /* VCLoginResponse.m in Sources */,
 				F4C6B1CF197F06B100F6C10B /* VCRideIdentity.m in Sources */,
-				F4C6B1D0197F06B100F6C10B /* VCRiderApi.m in Sources */,
+				F4C6B1D0197F06B100F6C10B /* VCRidesApi.m in Sources */,
 				4FFE17031989E801004D4413 /* VCMenuItemTableViewCell.m in Sources */,
 				F4C6B1D2197F06B100F6C10B /* VCButtonBold.m in Sources */,
 				F4C6B1D4197F06B100F6C10B /* VCUtilities.m in Sources */,
@@ -3858,7 +3858,7 @@
 				36E48E641B7A80FF0034DFEB /* VCStyle.m in Sources */,
 				F4D8FE1619B1745A00BC0B69 /* VCLoginResponse.m in Sources */,
 				F4D8FE1819B1745A00BC0B69 /* VCRideIdentity.m in Sources */,
-				F4D8FE1A19B1745A00BC0B69 /* VCRiderApi.m in Sources */,
+				F4D8FE1A19B1745A00BC0B69 /* VCRidesApi.m in Sources */,
 				F4D8FE1B19B1745A00BC0B69 /* VCMenuItemTableViewCell.m in Sources */,
 				F4D8FE1D19B1745A00BC0B69 /* VCButtonBold.m in Sources */,
 				F4D8FE1F19B1745A00BC0B69 /* Rider.m in Sources */,

@@ -10,7 +10,7 @@
 #import "VCApi.h"
 #import "VCDevicesApi.h"
 #import "VCPushApi.h"
-#import "VCRiderApi.h"
+#import "VCRidesApi.h"
 #import "VCDriverApi.h"
 #import "VCNotifications.h"
 #import "VCInterfaceManager.h"

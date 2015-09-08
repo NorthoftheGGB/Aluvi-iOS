@@ -8,7 +8,7 @@
 
 #import "VCReceiptViewController.h"
 #import <MBProgressHUD.h>
-#import "VCRiderApi.h"
+#import "VCRidesApi.h"
 #import "VCUsersApi.h"
 #import "VCStyle.h"
 #import "VCReceiptsTableViewCell.h"
@@ -62,7 +62,7 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [VCRiderApi refreshReceiptsWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [VCRidesApi refreshReceiptsWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSLog(@"Refreshed Receipts");
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [WRUtilities criticalError:error];

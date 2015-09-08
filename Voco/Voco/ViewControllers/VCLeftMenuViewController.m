@@ -26,7 +26,7 @@
 #import "VCDriverSubMenuItemTableViewCell.h"
 #import "NSDate+Pretty.h"
 #import "VCUserStateManager.h"
-#import "VCRiderApi.h"
+#import "VCRidesApi.h"
 #import "VCUtilities.h"
 #import "VCNotifications.h"
 #import "VCReceiptViewController.h"

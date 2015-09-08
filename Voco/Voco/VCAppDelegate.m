@@ -12,7 +12,7 @@
 #import <Crashlytics/Crashlytics.h>
 #import <Parse/Parse.h>
 #import <ParseCrashReporting/ParseCrashReporting.h>
-#import "VCRiderApi.h"
+#import "VCRidesApi.h"
 #import "VCDriverApi.h"
 #import "VCPushReceiver.h"
 #import "WRUtilities.h"

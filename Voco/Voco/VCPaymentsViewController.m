@@ -12,7 +12,7 @@
 #import <PTKTextField.h>
 #import <MBProgressHUD.h>
 #import "VCUsersApi.h"
-#import "VCRiderApi.h"
+#import "VCRidesApi.h"
 #import "VCUserStateManager.h"
 #import "Receipt.h"
 #import "VCStyle.h"
@@ -94,7 +94,7 @@
     }];
     
     [self updateLastTransaction];
-    [VCRiderApi refreshReceiptsWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [VCRidesApi refreshReceiptsWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [self updateLastTransaction];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [WRUtilities criticalError:error];
