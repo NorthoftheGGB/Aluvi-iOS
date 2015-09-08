@@ -182,7 +182,7 @@
         self.map.delegate = self;
         self.map.userTrackingMode = RMUserTrackingModeNone;
         self.map.showsUserLocation = YES;
-        [self.map setConstraintsSouthWest:CLLocationCoordinate2DMake(26, -126) northEast:CLLocationCoordinate2DMake(49, -63)];
+        [self.map setConstraintsSouthWest:CLLocationCoordinate2DMake(23, -130) northEast:CLLocationCoordinate2DMake(50, -60)];
         [self.view insertSubview:self.map atIndex:0];
         
         _appeared = YES;
@@ -1164,6 +1164,12 @@
 }
 
 - (void) scheduleCommuteForTomorrow {
+    // check that route is valid
+    if(![[VCCommuteManager instance].route routeCoordinateSettingsValid] ){
+        [UIAlertView showWithTitle:@"Problem!" message:@"Something isn't right with your commuter coordinates or time, please check that everything is filled in correctly and try again" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        return;
+    }
+    
     NSDateComponents *dayComponent = [[NSDateComponents alloc] init];
     dayComponent.day = 1;
     

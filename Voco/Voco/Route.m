@@ -112,6 +112,7 @@
 }
 
 - (BOOL) routeCoordinateSettingsValid {
+
     if(_driving){
         return [self zoneToWorkCoordinatesValid];
     } else {
@@ -123,6 +124,10 @@
 - (BOOL) pickupToWorkCoordinatesValid {
     if( self.home == nil || self.work == nil){
         return NO;
+    } else if( [self coordinatesOutOfRange: self.home]
+              || [self coordinatesOutOfRange: self.work]
+              ) {
+        return NO;
     } else {
         return YES;
     }
@@ -131,9 +136,24 @@
 - (BOOL) zoneToWorkCoordinatesValid {
     if( self.pickupZoneCenter == nil || self.work == nil){
         return NO;
+    } else if( [self coordinatesOutOfRange: self.pickupZoneCenter]
+              || [self coordinatesOutOfRange: self.work]
+              ) {
+        return NO;
     } else {
         return YES;
     }
+}
+
+              
+- (BOOL) coordinatesOutOfRange: (CLLocation *) location {
+    if( location.coordinate.latitude < 23 && location.coordinate.latitude > 50 ){
+        return YES;
+    }
+    if( location.coordinate.longitude < -130 && location.coordinate.longitude < -60 ){
+        return YES;
+    }
+    return NO;
 }
 
 - (BOOL) hasCachedPath {

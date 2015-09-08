@@ -233,7 +233,6 @@ static VCCommuteManager * instance;
 
 
 
-
 - (void) requestRidesFor:(NSDate *) tomorrow success:(void ( ^ ) ()) success conflict:( void ( ^ ) ()) conflict paymentRequired:( void ( ^ ) ()) paymentRequired failure:( void ( ^ ) ()) failure {
     
     // Look for pre-existing request for tomorrow, error if it exists

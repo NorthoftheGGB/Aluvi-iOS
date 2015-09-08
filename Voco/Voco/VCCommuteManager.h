@@ -26,7 +26,6 @@
 - (void) loadFromServer;
 - (void) clear;
 
-
 - (void) requestRidesFor:(NSDate *) tomorrow success:(void ( ^ ) ()) success conflict:( void ( ^ ) ()) conflict paymentRequired:( void ( ^ ) ()) paymentRequired failure:( void ( ^ ) ()) failure;
 - (void) cancelRide:(Ticket *) ride success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
 - (void) cancelTrip:(NSNumber *) tripId success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
@@ -34,7 +33,7 @@
 - (void) ridesDroppedOff:(Ticket *) ticket success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
 - (void) refreshTickets;
 - (void) refreshTicketsWithSuccess:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
-
+- (void) routeIsValid;
 
 - (BOOL) scheduledCommuteAvailable;
 - (BOOL) returnTicketValid;
