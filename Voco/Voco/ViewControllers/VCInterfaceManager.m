@@ -47,10 +47,14 @@ static int mode;
 }
 
 - (void) showRiderSigninInterface {
+    
     VCOnboardingViewController * vc = [[VCOnboardingViewController alloc] init];
     vc.view.frame = [[UIApplication sharedApplication] delegate].window.frame;
+
+    UINavigationController * nc = [[UINavigationController alloc] initWithRootViewController:vc];
+    nc.navigationBarHidden = YES;
     
-    [[UIApplication sharedApplication] delegate].window.rootViewController = vc;
+    [[UIApplication sharedApplication] delegate].window.rootViewController = nc;
     [vc.view setNeedsLayout];
 
     deckController = nil;

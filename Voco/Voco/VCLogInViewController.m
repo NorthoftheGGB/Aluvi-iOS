@@ -376,7 +376,7 @@
 
 - (IBAction)didTapForgotPassword:(id)sender {
     VCPasswordRecoveryViewController * passwordRecoveryViewController = [[VCPasswordRecoveryViewController alloc] init];
-    [self.navigationController pushViewController:passwordRecoveryViewController animated:YES];
+    [self.delegate VCOnboardingChildViewController:self didRequestPushController:passwordRecoveryViewController];
     
 }
 

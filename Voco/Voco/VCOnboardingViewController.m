@@ -98,6 +98,8 @@
     [self.scrollView addSubview:vc3.view];
     
     _viewControllers = @[vc0,vc1,vc2,vc3];
+    
+    self.navigationController.navigationBarHidden = YES;
 
 }
 
@@ -106,7 +108,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) VCOnboardingChildViewController:(VCOnboardingChildViewController *)onboardingChildViewController didSetValues:(NSDictionary *)values {
+- (void) VCOnboardingChildViewController:(VCOnboardingChildViewController *)onboardingChildViewController
+                            didSetValues:(NSDictionary *)values {
     [_values setValuesForKeysWithDictionary:values];
 }
 
@@ -124,6 +127,10 @@
     }
 }
 
+- (void)VCOnboardingChildViewController:(VCOnboardingChildViewController *)onboardingChildViewController
+               didRequestPushController:(UIViewController *)viewController {
+    [self.navigationController pushViewController:viewController animated:YES];
+}
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if(_locked) {

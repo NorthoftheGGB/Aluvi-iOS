@@ -41,6 +41,12 @@
     
 }
 
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = NO;
+}
+
 - (void) didTapBack {
     
 }
