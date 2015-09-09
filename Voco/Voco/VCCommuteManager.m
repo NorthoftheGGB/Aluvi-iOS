@@ -351,6 +351,8 @@ static VCCommuteManager * instance;
     // TODO: This will happen in single request to the server, which will create and supply the tickets
     [VCRidesApi requestRide:request
                     success:^(RKObjectRequestOperation *operation, RKMappingResult * response) {
+                        [self loadActiveTickets];
+                        [VCNotifications scheduleUpdated];
                         success();
     }
                     failure:^(RKObjectRequestOperation *operation, NSError *error) {
