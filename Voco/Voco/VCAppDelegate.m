@@ -81,12 +81,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
 
-    
-#if DEBUG==12
-    [[VCInterfaceModes instance] showDebugInterface];
-#else
     [[VCInterfaceManager instance] showInterface];
-#endif
     self.window.backgroundColor = [UIColor whiteColor];
     
 
@@ -102,9 +97,10 @@
         [VCPushReceiver handleTappedRemoteNotification:[launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey]];
     }
     
-    RKLogConfigureByName("RestKit/Network", RKLogLevelInfo);
-    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
-    
+#if DEBUG
+    //RKLogConfigureByName("RestKit/Network", RKLogLevelInfo);
+    //RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
+#endif
     
     [self.window makeKeyAndVisible];
 
