@@ -92,6 +92,11 @@
 		367795631B7D4FC6005D45BE /* VCButtonSmall.m in Sources */ = {isa = PBXBuildFile; fileRef = 367795611B7D4FC6005D45BE /* VCButtonSmall.m */; };
 		367795641B7D4FC6005D45BE /* VCButtonSmall.m in Sources */ = {isa = PBXBuildFile; fileRef = 367795611B7D4FC6005D45BE /* VCButtonSmall.m */; };
 		367795651B7D4FC6005D45BE /* VCButtonSmall.m in Sources */ = {isa = PBXBuildFile; fileRef = 367795611B7D4FC6005D45BE /* VCButtonSmall.m */; };
+		368816AC1B9FE39000865AA5 /* map_point@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 368816AB1B9FE39000865AA5 /* map_point@2x.png */; };
+		368816AD1B9FE39000865AA5 /* map_point@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 368816AB1B9FE39000865AA5 /* map_point@2x.png */; };
+		368816AE1B9FE39000865AA5 /* map_point@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 368816AB1B9FE39000865AA5 /* map_point@2x.png */; };
+		368816AF1B9FE39000865AA5 /* map_point@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 368816AB1B9FE39000865AA5 /* map_point@2x.png */; };
+		368816B01B9FE39000865AA5 /* map_point@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 368816AB1B9FE39000865AA5 /* map_point@2x.png */; };
 		369992C51B82DA6C00F47C5E /* VCLabelExtraBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 369992C41B82DA6C00F47C5E /* VCLabelExtraBold.m */; };
 		369992C61B82DA6C00F47C5E /* VCLabelExtraBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 369992C41B82DA6C00F47C5E /* VCLabelExtraBold.m */; };
 		369992C71B82DA6C00F47C5E /* VCLabelExtraBold.m in Sources */ = {isa = PBXBuildFile; fileRef = 369992C41B82DA6C00F47C5E /* VCLabelExtraBold.m */; };
@@ -1125,6 +1130,7 @@
 		36638D841B65A988004EDB09 /* VCRiderTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCRiderTicketView.xib; sourceTree = "<group>"; };
 		367795601B7D4FC6005D45BE /* VCButtonSmall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCButtonSmall.h; sourceTree = "<group>"; };
 		367795611B7D4FC6005D45BE /* VCButtonSmall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCButtonSmall.m; sourceTree = "<group>"; };
+		368816AB1B9FE39000865AA5 /* map_point@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_point@2x.png"; sourceTree = "<group>"; };
 		369992C31B82DA6C00F47C5E /* VCLabelExtraBold.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCLabelExtraBold.h; sourceTree = "<group>"; };
 		369992C41B82DA6C00F47C5E /* VCLabelExtraBold.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCLabelExtraBold.m; sourceTree = "<group>"; };
 		369992CA1B82E57A00F47C5E /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40.png"; sourceTree = "<group>"; };
@@ -1795,6 +1801,7 @@
 		4FE641E1194168E80059BED1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				368816AB1B9FE39000865AA5 /* map_point@2x.png */,
 				360C67DE1B8BE554008F4BB0 /* camera@2x.png */,
 				360C67D21B8BDF95008F4BB0 /* profile_placeholder2@2x.png */,
 				360C67D31B8BDF95008F4BB0 /* profile_placeholder@2x.png */,
@@ -2615,6 +2622,7 @@
 				369992DC1B82E57A00F47C5E /* Icon-60@3x.png in Resources */,
 				360C67DC1B8BDF95008F4BB0 /* profile_placeholder@2x.png in Resources */,
 				841648091B64A47D00CD20AC /* temp-call-button@2x.png in Resources */,
+				368816AF1B9FE39000865AA5 /* map_point@2x.png in Resources */,
 				369992E41B82E57A00F47C5E /* Icon-Small@2x.png in Resources */,
 				8416480A1B64A47D00CD20AC /* call-button-select@2x.png in Resources */,
 				8416480B1B64A47D00CD20AC /* call-button@2x.png in Resources */,
@@ -2779,6 +2787,7 @@
 				841649CB1B658F4900CD20AC /* VCLogInViewController.xib in Resources */,
 				36E48E681B7AA6920034DFEB /* nav_bg.png in Resources */,
 				84A348F81B85896E00DC7187 /* VCPasswordRecoveryViewController.xib in Resources */,
+				368816AD1B9FE39000865AA5 /* map_point@2x.png in Resources */,
 				369DBC1A1B6D22F700449CB4 /* test.jpg in Resources */,
 				36049F891B8156370090ECAE /* VCOnboardingSetRouteViewController.xib in Resources */,
 			);
@@ -2792,6 +2801,7 @@
 				369992DD1B82E57A00F47C5E /* Icon-60@3x.png in Resources */,
 				360C67DD1B8BDF95008F4BB0 /* profile_placeholder@2x.png in Resources */,
 				84F222C61B82611B00E5F7B7 /* temp-call-button@2x.png in Resources */,
+				368816B01B9FE39000865AA5 /* map_point@2x.png in Resources */,
 				369992E51B82E57A00F47C5E /* Icon-Small@2x.png in Resources */,
 				84F222C71B82611B00E5F7B7 /* call-button-select@2x.png in Resources */,
 				84F222C81B82611B00E5F7B7 /* call-button@2x.png in Resources */,
@@ -2956,6 +2966,7 @@
 				36FA80871B7D831C00C65DF2 /* driver-hov-toggle@2x.png in Resources */,
 				4FC758B919AA8C270093DBEA /* VCLogInViewController.xib in Resources */,
 				84A348F71B85896E00DC7187 /* VCPasswordRecoveryViewController.xib in Resources */,
+				368816AC1B9FE39000865AA5 /* map_point@2x.png in Resources */,
 				36E48E671B7AA6920034DFEB /* nav_bg.png in Resources */,
 				36049F881B8156370090ECAE /* VCOnboardingSetRouteViewController.xib in Resources */,
 			);
@@ -3017,6 +3028,7 @@
 				F4D8FEF719B1745A00BC0B69 /* search-location-select@2x.png in Resources */,
 				4FD1297F19D62462000E7C39 /* ride-bounds-button@2x.png in Resources */,
 				F4D8FEFB19B1745A00BC0B69 /* menu-profile-icon@2x.png in Resources */,
+				368816AE1B9FE39000865AA5 /* map_point@2x.png in Resources */,
 				F4D8FEFC19B1745A00BC0B69 /* zoom-ride-bounds-select@2x.png in Resources */,
 				F4D8FEFD19B1745A00BC0B69 /* InfoPlist.strings in Resources */,
 				4FAB576E19D0C637009055D7 /* menu-badge@2x.jpg in Resources */,
