@@ -78,5 +78,7 @@ NSString *const VCUserStateDriverStateKeyPath;
 
 - (void) refreshProfileWithCompletion: (void ( ^ ) ( ))completion;
 - (void) saveProfileWithCompletion: (void ( ^ ) ( ))completion  failure:(void ( ^ ) (RKObjectRequestOperation *operation, NSError *error) )failure;
+- (void) updateDefaultCard: (NSString *) token success:(void ( ^ ) ( ))success  failure:(void ( ^ ) (RKObjectRequestOperation *operation, NSError *error) )failure;
+- (void) updateRecipientCard: (NSString *) token success:(void ( ^ ) ( ))success  failure:(void ( ^ ) (RKObjectRequestOperation *operation, NSError *error) )failure;
 
 @end

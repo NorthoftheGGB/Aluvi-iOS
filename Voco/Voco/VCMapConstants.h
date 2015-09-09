@@ -16,5 +16,9 @@
 
 #define kPickupZoneAnnotationType @"kPickupZoneTypeString"
 #define kPickupPointsAnnotationType @"kPickupPointsAnnotationType"
+#define kUserPickupPointAnnotationType @"kUserPickupPointAnnotationType"
+#define kWorkAnnotationType @"kWorkAnnotationType"
+#define kMeetingPointAnnotationType @"kMeetingPointAnnotationType"
+#define kDropOffPointAnnotationType @"kDropOffPointAnnotationType"
 
 #endif

@@ -308,9 +308,6 @@ static void * XXContext = &XXContext;
         if([cell isKindOfClass:[VCMenuItemTableViewCell class]]) {
             [(VCMenuItemTableViewCell*) cell select];
         }
-        else if([cell isKindOfClass:[VCSubMenuItemTableViewCell class]]){
-            [(VCSubMenuItemTableViewCell*) cell select];
-        }
     }
     
     if(cell == nil) {
@@ -327,13 +324,7 @@ static void * XXContext = &XXContext;
     if([cell isKindOfClass:[VCMenuItemTableViewCell class]]) {
         [(VCMenuItemTableViewCell*) cell deselect];
     }
-    else if([cell isKindOfClass:[VCSubMenuItemTableViewCell class]]){
-        [(VCSubMenuItemTableViewCell*) cell deselect];
-    }
-    else if([cell isKindOfClass:[VCDriverSubMenuItemTableViewCell class]]){
-        [(VCDriverSubMenuItemTableViewCell *) cell deselect];
-    }
-}
+  }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // setCenterViewControllers

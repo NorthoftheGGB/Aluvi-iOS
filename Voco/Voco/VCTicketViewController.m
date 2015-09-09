@@ -736,7 +736,7 @@
 }
 
 - (void) removeHuds {
-    [_ridersPickedUpButton removeFromSuperview];
+    [_ridersOnboardButton removeFromSuperview];
     [_rideCompleteButton removeFromSuperview];
     [_riderTicketHUD removeFromSuperview];
     [_driverTicketHUD removeFromSuperview];
@@ -1078,6 +1078,10 @@
                                                          andTitle:@"Home"];
         _originAnnotation.userInfo = kPickupZoneAnnotationType;
     } else {
+        
+        // Use RMAnnnotation for everything
+        // with RMMarker in the delegate
+        // that should fix this up.
         _originAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
                                                             coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
                                                               andTitle:@"Home"];
@@ -1190,7 +1194,7 @@
                                              [[VCCommuteManager instance] refreshTickets];
                                          } paymentRequired:^{
                                              [hud hide:YES];
-                                             [UIAlertView showWithTitle:@"Credit Card Required" message:@"We need a credit card to verify your identity, and for future charges.  Remember - your first ride is still free!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                             [UIAlertView showWithTitle:@"Credit Card Required" message:@"You've used your free ride, we hope it went well. We'll need your credit card information now to schedule additional rides!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                                                  [self showPaymentMethodDetailsView];
                                              }];
                                          } failure:^{
@@ -1748,6 +1752,8 @@
         } else if ([annotation.userInfo isEqualToString:kPickupPointsAnnotationType]){
             RMMarker * marker = [[RMMarker alloc] initWithUIImage:[UIImage imageNamed:@"pin"]];
             return marker;
+        } else if  ([annotation.userInfo isEqualToString:kUserPickupPointAnnotationType]){
+            
         }
     } else if ([annotation.title isEqualToString:@"pedestrian"]) {
         RMShape *shape = [[RMShape alloc] initWithView:mapView];

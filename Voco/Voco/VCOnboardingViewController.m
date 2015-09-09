@@ -103,6 +103,10 @@
 
 }
 
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -168,7 +172,7 @@
                                               [[VCCommuteManager instance] storeCommuterSettings:[_values objectForKey:RouteObjectValueKey ]  success:^{
                                                   
                                               } failure:^(NSString *errorMessage) {
-                                                  [UIAlertView showWithTitle:@"Woops" message:errorMessage cancelButtonTitle:@"Hmm" otherButtonTitles:nil tapBlock:nil];
+                                                  [UIAlertView showWithTitle:@"Whoops" message:errorMessage cancelButtonTitle:@"Hmm" otherButtonTitles:nil tapBlock:nil];
                                               }];
                                               
                                               // Also attempt to send profile image in background

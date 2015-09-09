@@ -157,7 +157,7 @@ static VCUserStateManager *sharedSingleton;
 }
 
 - (void) logoutWithCompletion: (void ( ^ ) () )success {
-    [[VCCommuteManager instance] reset];
+    [[VCCommuteManager instance] clear];
     [self finalizeLogout];
     success();
 }
@@ -266,6 +266,38 @@ static VCUserStateManager *sharedSingleton;
         failure(operation, error);
     }];
 }
+
+- (void) updateDefaultCard: (NSString *) token success:(void ( ^ ) ( ))success  failure:(void ( ^ ) (RKObjectRequestOperation *operation, NSError *error) )failure {
+    
+    [VCUsersApi updateDefaultCard:[RKObjectManager sharedManager]
+                        cardToken:token
+                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                             [self loadProfileFromMappingResult:mappingResult];
+                             [self cacheProfile];
+                             success();
+                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                             [WRUtilities criticalError:error];
+                             failure(operation, error);
+                         }];
+
+}
+
+- (void) updateRecipientCard: (NSString *) token success:(void ( ^ ) ( ))success  failure:(void ( ^ ) (RKObjectRequestOperation *operation, NSError *error) )failure {
+    
+    [VCUsersApi updateRecipientCard:[RKObjectManager sharedManager]
+                          cardToken:token
+                            success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                [self loadProfileFromMappingResult:mappingResult];
+                                [self cacheProfile];
+                                success();
+                            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                [WRUtilities criticalError:error];
+                                failure(operation, error);
+                            }];
+
+}
+
+
 
 
 - (void) loadProfileFromMappingResult:(RKMappingResult *) mappingResult {

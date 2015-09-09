@@ -103,7 +103,7 @@
         hud.hidden = YES;
         [VCCoreData saveContext];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [UIAlertView showWithTitle:@"Woops" message:@"We had a problem.  Please try again" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        [UIAlertView showWithTitle:@"Whoops" message:@"We had a problem.  Please try again" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
         hud.hidden = YES;
     }];
     

@@ -11,6 +11,7 @@
 #import <PTKView.h>
 #import <PTKTextField.h>
 #import <MBProgressHUD.h>
+#import "VCUserStateManager.h"
 #import "VCUsersApi.h"
 #import "VCRidesApi.h"
 #import "VCUserStateManager.h"
@@ -220,35 +221,35 @@
         if (error == nil ) {
             
             if(selectedCardView.tag == kCardView){
-            
-                [VCUsersApi updateDefaultCard:[RKObjectManager sharedManager]
-                                cardToken:token.tokenId
-                                  success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                      [hud hide:YES];
-                                      if(_delegate != nil){
-                                          [_delegate VCPaymentsViewControllerDidUpdatePaymentMethod:self];
-                                      }
-                                      [self updateFieldValues];
-                                  } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                      [self somethingDidntGoRight:selectedCardView];
-                                      [WRUtilities criticalError:error];
-                                      [hud hide:YES];
-                                      
-                                  }];
+                
+                [[VCUserStateManager instance] updateDefaultCard:token.tokenId
+                                                         success:^{
+                                                             [hud hide:YES];
+                                                             if(_delegate != nil){
+                                                                 [_delegate VCPaymentsViewControllerDidUpdatePaymentMethod:self];
+                                                             }
+                                                             [self updateFieldValues];
+                                                             
+                                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                             [self somethingDidntGoRight:selectedCardView];
+                                                             [WRUtilities criticalError:error];
+                                                             [hud hide:YES];
+                                                         }];
+                
             } else if(selectedCardView.tag == kDebitCardView){
-                [VCUsersApi updateRecipientCard:[RKObjectManager sharedManager]
-                                      cardToken:token.tokenId
-                                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                                            [hud hide:YES];
-                                            if(_delegate != nil){
-                                                [_delegate VCPaymentsViewControllerDidUpdatePaymentMethod:self];
-                                            }
-                                            [self updateFieldValues];
-                                        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                            [self somethingDidntGoRight:selectedCardView];
-                                            [WRUtilities criticalError:error];
-                                            [hud hide:YES];
-                                        }];
+                
+                [[VCUserStateManager instance] updateDefaultCard:token.tokenId
+                                                         success:^{
+                                                             [hud hide:YES];
+                                                             if(_delegate != nil){
+                                                                 [_delegate VCPaymentsViewControllerDidUpdatePaymentMethod:self];
+                                                             }
+                                                             [self updateFieldValues];
+                                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                             [self somethingDidntGoRight:selectedCardView];
+                                                             [WRUtilities criticalError:error];
+                                                             [hud hide:YES];
+                                                         }];
             }
         } else {
             [WRUtilities subcriticalErrorWithString:[error.userInfo objectForKey:@"com.stripe.lib:ErrorMessageKey"]];
@@ -259,7 +260,7 @@
 }
 
 - (void) somethingDidntGoRight:(PTKView *) selectedCardView {
-    [UIAlertView showWithTitle:@"Woops" message:@"Something didn't go right. Want to try that again?" cancelButtonTitle:@"No" otherButtonTitles:@[@"Yeah"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+    [UIAlertView showWithTitle:@"Whoops" message:@"Something didn't go right. Want to try that again?" cancelButtonTitle:@"No" otherButtonTitles:@[@"Yeah"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
         if(buttonIndex == 1){
             [self didTapSave:selectedCardView];
         }

@@ -101,7 +101,7 @@ static NSDateFormatter *formatter = nil;
     if(!formatter){
         formatter = [[NSDateFormatter alloc] init];
     }
-    [formatter setDateFormat:@"hh:mm a"];
+    [formatter setDateFormat:@"h:mm a"];
     return [formatter stringFromDate:self];
 }
 

@@ -58,6 +58,15 @@
         [objectManager addResponseDescriptor:responseDescriptor];
 
     }
+    {
+        
+        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:ticketMapping
+                                                                                                 method:RKRequestMethodFromString(@"DELETE")
+                                                                                            pathPattern:API_DELETE_TRIP
+                                                                                                keyPath:nil
+                                                                                            statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor];
+    }
     
 
     
