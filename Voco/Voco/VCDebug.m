@@ -107,6 +107,7 @@ static VCDebug * instance;
                     if(error !=nil){
                         [WRUtilities criticalError:error];
                     }
+                    [VCCoreData clearUserData];
                     [[VCCommuteManager instance] refreshTickets];
                 });
                 break;
