@@ -69,11 +69,11 @@
             <rect key="frame" x="0.0" y="0.0" width="265" height="124"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We are finding your commute buddies. You might want to brush up on your puns." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQY-E9-fr5" customClass="VCLabelExtraBold">
-                    <rect key="frame" x="31" y="21" width="203" height="82"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="At 9pm we'll announce the commute groups for tomorrow. Go about your business until then - we'll send you an alert." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQY-E9-fr5" customClass="VCLabelExtraBold">
+                    <rect key="frame" x="8" y="0.0" width="249" height="124"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="82" id="jcn-OR-jgZ"/>
-                        <constraint firstAttribute="width" constant="203" id="pm2-3f-yOp"/>
+                        <constraint firstAttribute="height" constant="108" id="jcn-OR-jgZ"/>
+                        <constraint firstAttribute="width" constant="249" id="pm2-3f-yOp"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.35686274509999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
