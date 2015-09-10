@@ -8,7 +8,7 @@
 
 #import "VCMapHelper.h"
 
-#define kMapPadding .01
+#define kMapPadding .05
 
 @implementation VCMapHelper
 

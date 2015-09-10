@@ -177,6 +177,9 @@
         
         RMMapboxSource *tileSource = [[RMMapboxSource alloc] initWithMapID:@"aluvimaps.32wfoe6l"];
         CLLocationCoordinate2D centerCoordinate = [self defaultCoordinate];
+        if([_route getDefaultOrigin] != nil){
+            centerCoordinate = [_route getDefaultOrigin].coordinate;
+        }
         self.map = [[RMMapView alloc] initWithFrame:self.view.frame andTilesource:tileSource centerCoordinate:centerCoordinate zoomLevel:10 maxZoomLevel:16 minZoomLevel:0 backgroundImage:nil];
         self.map.adjustTilesForRetinaDisplay = YES;
         self.map.delegate = self;
