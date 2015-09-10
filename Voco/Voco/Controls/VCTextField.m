@@ -7,6 +7,7 @@
 //
 
 #import "VCTextField.h"
+#import "VCStyle.h"
 
 @implementation VCTextField
 
@@ -26,7 +27,7 @@
     UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 5)];
     self.leftView = paddingView;
     self.leftViewMode = UITextFieldViewModeAlways;
-    
+     [[VCStyle drkBlueColor] setFill];
 
 
 }
