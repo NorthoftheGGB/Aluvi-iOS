@@ -12,6 +12,7 @@
 #import "VCButtonBold.h"
 #import "VCTextField.h"
 #import "VCUsersApi.h"
+#import "VCStyle.h"
 
 
 @interface VCPasswordRecoveryViewController ()
@@ -33,13 +34,26 @@
     return self;
 }
 
+- (void) setGradient {
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = self.view.bounds;
+    gradient.colors = [VCStyle gradientColors];
+    gradient.startPoint = CGPointMake(0.0, 0.5);
+    gradient.endPoint = CGPointMake(1.0, 0.5);
+    [self.view.layer insertSublayer:gradient atIndex:0];
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self.scrollView setContentSize: _contentView.frame.size];
     [self.scrollView addSubview: _contentView];
+    [self setGradient];
     
 }
+
+
 
 
 - (void)viewWillAppear:(BOOL)animated {
