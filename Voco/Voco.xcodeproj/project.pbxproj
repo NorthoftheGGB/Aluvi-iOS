@@ -2572,6 +2572,9 @@
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = Voco;
 				TargetAttributes = {
+					841648A21B658F4900CD20AC = {
+						DevelopmentTeam = 269WB9G8WE;
+					};
 					84F2222E1B82611B00E5F7B7 = {
 						DevelopmentTeam = 269WB9G8WE;
 					};
@@ -3994,7 +3997,7 @@
 				INFOPLIST_FILE = "Aluvi Development copy2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "Aluvi Development copy";
-				PROVISIONING_PROFILE = "d46c3493-fac3-4c80-b03a-13d5918c9f8a";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4055,7 +4058,7 @@
 				INFOPLIST_FILE = "Aluvi Development copy2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "Aluvi Development copy";
-				PROVISIONING_PROFILE = "d46c3493-fac3-4c80-b03a-13d5918c9f8a";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -4176,7 +4179,7 @@
 				INFOPLIST_FILE = "Voco Dev-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "Aluvi Dev";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "0c2e0ce2-3365-4569-ac6d-a057468a3770";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4239,7 +4242,7 @@
 				INFOPLIST_FILE = "Voco Dev-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "Aluvi Dev";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "0c2e0ce2-3365-4569-ac6d-a057468a3770";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
