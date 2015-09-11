@@ -213,10 +213,15 @@ static VCUserStateManager *sharedSingleton;
                          if(response.driverState != nil) {
                              self.driverState = response.driverState;
                          }
-                         success();
+                         [VCNotifications userStateUpdated];
+                         if(success != nil) {
+                             success();
+                         }
                      } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                          [WRUtilities criticalError:error];
-                         failure(@"Could not synchronize user state");
+                         if(failure != nil) {
+                             failure(@"Could not synchronize user state");
+                         }
                      }];
 }
 

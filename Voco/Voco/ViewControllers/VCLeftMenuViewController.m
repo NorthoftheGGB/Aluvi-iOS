@@ -118,6 +118,7 @@ static void * XXContext = &XXContext;
     // Listen for notifications about updated rides
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scheduleUpdated:) name:kNotificationScheduleUpdated object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(profileUpdated:) name:kNotificationTypeProfileUpdated object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userStateUpdated:) name:kNotificationTypeUserStateUpdated object:nil];
 
     
 }
@@ -139,6 +140,9 @@ static void * XXContext = &XXContext;
     [_tableView reloadData];
 }
 
+- (void) userStateUpdated:(NSNotification *) notification {
+    [_tableView reloadData];
+}
 
 
 - (void)didReceiveMemoryWarning

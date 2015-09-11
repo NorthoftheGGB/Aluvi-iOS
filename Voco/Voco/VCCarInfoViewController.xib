@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCCarInfoViewController">
             <connections>
+                <outlet property="cancelButton" destination="dDo-bn-SV9" id="jbh-fb-v1I"/>
                 <outlet property="carInfoField" destination="17U-B3-qrJ" id="DgV-DH-Fex"/>
                 <outlet property="licensePlateField" destination="9aa-TZ-zcJ" id="i8e-m3-kuj"/>
                 <outlet property="view" destination="iN0-l3-epB" id="dIO-Fz-1k0"/>
@@ -50,11 +51,22 @@
                         <action selector="didTapSave:" destination="-1" eventType="touchUpInside" id="ADb-bq-wma"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dDo-bn-SV9">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
+                    <state key="normal" title="Cancel">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapCancelButton:" destination="-1" eventType="touchUpInside" id="BIO-AT-3Ox"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <color key="tintColor" red="0.30588235289999999" green="0.63921568630000003" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <nil key="simulatedTopBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="147" y="362"/>
         </view>
     </objects>
 </document>

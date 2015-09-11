@@ -16,6 +16,7 @@
 @interface VCCarInfoViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *licensePlateField;
 @property (strong, nonatomic) IBOutlet UITextField *carInfoField;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
 @property (strong, nonatomic) Car * car;
 
@@ -40,6 +41,7 @@
     gradient.endPoint = CGPointMake(1.0, 0.5);
     [self.view.layer insertSublayer:gradient atIndex:0];
 }
+
 
 -(void)viewDidLoad{
     [super viewDidLoad];
@@ -74,6 +76,14 @@
     }
     
 
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    if(_delegate != nil){
+        _cancelButton.hidden = NO;
+    } else {
+        _cancelButton.hidden = YES;
+    }
 }
 
 
@@ -136,5 +146,11 @@
                                             }];
     
     
+}
+
+- (IBAction)didTapCancelButton:(id)sender {
+    if(_delegate != nil){
+        [_delegate VCCarInfoViewControllerDidCancel:self];
+    }
 }
 @end

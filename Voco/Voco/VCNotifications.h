@@ -14,10 +14,12 @@
 #define kNotificationTypeFareComplete @"fare_complete"
 #define kNotificationTypeProfileUpdated @"profile_updated"
 #define kNotificationScheduleNeedsRefresh @"schedule_needs_refresh"
+#define kNotificationTypeUserStateUpdated @"user_state_updated"
 
 @interface VCNotifications : NSObject
 
 + (void) scheduleUpdated;
 + (void) profileUpdated;
++ (void) userStateUpdated;
 
 @end

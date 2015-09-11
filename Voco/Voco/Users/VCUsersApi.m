@@ -214,7 +214,6 @@
                    success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                    failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
     VCProfile * profile = [[VCProfile alloc] init];
-    profile.defaultCardToken = token;
     [objectManager postObject:profile path:API_USER_PROFILE parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         success(operation, mappingResult);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {

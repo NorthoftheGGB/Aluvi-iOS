@@ -17,4 +17,8 @@
 + (void) profileUpdated {
     [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationTypeProfileUpdated object:nil userInfo:@{}];
 }
+
++ (void) userStateUpdated {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationTypeUserStateUpdated object:nil userInfo:@{}];
+}
 @end

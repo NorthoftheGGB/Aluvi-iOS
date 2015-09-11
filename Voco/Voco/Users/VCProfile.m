@@ -21,7 +21,6 @@
                                                   @"phone" : @"phone",
                                                   @"email" : @"email",
                                                   @"work_email" : @"workEmail",
-                                                  @"default_card_token" : @"defaultCardToken",
                                                   @"commuter_refill_amount_cents" : @"commuterRefillAmountCents",
                                                   @"commuter_balance_cents" : @"commuterBalanceCents",
                                                   @"commuter_refill_enabled" : @"commuterRefillEnabled",
@@ -49,7 +48,6 @@
         _commuterRefillAmountCents = [decoder decodeObjectForKey: @"commuterRefillAmountCents"];
         _commuterBalanceCents = [decoder decodeObjectForKey: @"commuterBalanceCents"];
         _commuterRefillEnabled = [decoder decodeObjectForKey: @"commuterRefillEnabled"];
-        _defaultCardToken = [decoder decodeObjectForKey: @"defaultCardToken"];
         _cardLastFour = [decoder decodeObjectForKey: @"cardLastFour"];
         _cardBrand = [decoder decodeObjectForKey: @"cardBrand"];
         _bankAccountName = [decoder decodeObjectForKey: @"bankAccountName"];
@@ -73,7 +71,6 @@
     [encoder encodeObject: _commuterRefillAmountCents forKey: @"commuterRefillAmountCents"];
     [encoder encodeObject: _commuterBalanceCents forKey: @"commuterBalanceCents"];
     [encoder encodeObject: _commuterRefillEnabled forKey: @"commuterRefillEnabled"];
-    [encoder encodeObject: _defaultCardToken forKey: @"defaultCardToken"];
     [encoder encodeObject: _cardLastFour forKey: @"cardLastFour"];
     [encoder encodeObject: _cardBrand forKey: @"cardBrand"];
     [encoder encodeObject: _bankAccountName forKey: @"bankAccountName"];
