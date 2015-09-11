@@ -49,7 +49,7 @@
 - (IBAction)didTapCreateAccount:(id)sender;
 
 - (IBAction)didTapForgotPassword:(id)sender;
-- (IBAction)didTapTermsAndConditions:(id)sender;
+//- (IBAction)didTapTermsAndConditions:(id)sender;
 - (IBAction)didTapModeToggleButton:(id)sender;
 
 
