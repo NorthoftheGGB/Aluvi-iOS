@@ -50,7 +50,7 @@
                                 sectionNameKeyPath:nil cacheName:nil];
     
     NSError *error;
-    BOOL success = [_fetchedResultsController performFetch:&error];
+    [_fetchedResultsController performFetch:&error];
     if(error != nil){
         [WRUtilities criticalError:error];
     }
@@ -160,6 +160,8 @@
         case NSFetchedResultsChangeDelete:
             [self.receiptTableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
                           withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        default:
             break;
     }
 }

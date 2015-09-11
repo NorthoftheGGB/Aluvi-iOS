@@ -13,7 +13,6 @@
 #import "MBRegion.h"
 
 // State
-#define kCreatedState @"created"
 #define kRequestedState @"requested"
 #define kScheduledState @"scheduled"
 #define kInProgressState @"started"

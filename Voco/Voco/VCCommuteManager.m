@@ -259,7 +259,7 @@ static VCCommuteManager * instance;
     NSDate *nextDate = [gregorian dateByAddingComponents:offsetComponents toDate:thisDate options:0];
     
     // build the predicate
-    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"rideDate > %@ && rideDate < %@ && state IN %@ ", thisDate, nextDate, @[kCreatedState, kRequestedState, kScheduledState]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat: @"rideDate > %@ && rideDate < %@ && state IN %@ ", thisDate, nextDate, @[kRequestedState, kScheduledState]];
     [fetch setPredicate:predicate];
     
     NSError * error;
@@ -283,6 +283,8 @@ static VCCommuteManager * instance;
     };
     if([rides count] == 1){
         [WRUtilities subcriticalErrorWithString:@"Orphaned commuter ride found. Autocleaning the database, should be OK to continue"];
+        Ticket * ticket = rides[0];
+        NSLog(@"%ld", (long)[ticket.ride_id integerValue]);
         [[VCCoreData managedObjectContext] deleteObject:rides[0]];
         [[VCCoreData managedObjectContext] save:&error];
         if(error != nil){
@@ -293,57 +295,31 @@ static VCCommuteManager * instance;
     // OK to proceed with ride creation and request
     NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
     
-    Ticket * homeToWorkRide = (Ticket *) [NSEntityDescription insertNewObjectForEntityForName:@"Ticket" inManagedObjectContext:[VCCoreData managedObjectContext]];
-    homeToWorkRide.rideDate = tomorrow;
-    homeToWorkRide.originLatitude = [NSNumber numberWithDouble: [_route getDefaultOrigin].coordinate.latitude];
-    homeToWorkRide.originLongitude = [NSNumber numberWithDouble: [_route getDefaultOrigin].coordinate.longitude];
-    homeToWorkRide.originPlaceName = @"Pickup";
-    homeToWorkRide.originShortName = @"Pickup";
-    homeToWorkRide.destinationLatitude = [NSNumber numberWithDouble: _route.work.coordinate.latitude];
-    homeToWorkRide.destinationLongitude = [NSNumber numberWithDouble: _route.work.coordinate.longitude];
-    homeToWorkRide.destinationPlaceName = _route.workPlaceName;
-    homeToWorkRide.destinationShortName = @"Work";
-    homeToWorkRide.rideType = kRideRequestTypeCommuter;
-    homeToWorkRide.state = kCreatedState;
-    homeToWorkRide.driving = [NSNumber numberWithBool:_route.driving];
     NSArray * pickupTimeParts = [_route.pickupTime componentsSeparatedByString:@":"];
     [f setNumberStyle:NSNumberFormatterDecimalStyle];
     components = [[NSDateComponents alloc] init];
     [components setHour:[[f numberFromString:pickupTimeParts[0]] intValue] ];
     [components setMinute:[[f numberFromString:pickupTimeParts[1]] intValue]];
     [components setTimeZone:[NSTimeZone systemTimeZone]];
-    homeToWorkRide.pickupTime = [gregorian dateByAddingComponents:components toDate:thisDate options:0];
+    NSDate * homeToWorkRidePickupTime = [gregorian dateByAddingComponents:components toDate:thisDate options:0];
     
-    Ticket * workToHomeRide = (Ticket *) [NSEntityDescription insertNewObjectForEntityForName:@"Ticket" inManagedObjectContext:[VCCoreData managedObjectContext]];
-    workToHomeRide.rideDate = tomorrow;
-    workToHomeRide.originLatitude =[NSNumber numberWithDouble: _route.work.coordinate.latitude];
-    workToHomeRide.originLongitude = [NSNumber numberWithDouble: _route.work.coordinate.longitude];
-    workToHomeRide.originPlaceName = _route.workPlaceName;
-    workToHomeRide.originShortName = @"Work";
-    workToHomeRide.destinationLatitude = [NSNumber numberWithDouble: [_route getDefaultOrigin].coordinate.latitude];
-    workToHomeRide.destinationLongitude = [NSNumber numberWithDouble: [_route getDefaultOrigin].coordinate.longitude];
-    workToHomeRide.destinationPlaceName = @"Drop Off";
-    workToHomeRide.destinationShortName = @"Drop Off";
-    workToHomeRide.rideType = kRideRequestTypeCommuter;
-    workToHomeRide.state = kCreatedState;
-    workToHomeRide.driving = [NSNumber numberWithBool:_route.driving];
     pickupTimeParts = [_route.returnTime componentsSeparatedByString:@":"];
     [f setNumberStyle:NSNumberFormatterDecimalStyle];
     components = [[NSDateComponents alloc] init];
     [components setHour:[[f numberFromString:pickupTimeParts[0]] intValue] + 12 ];
     [components setMinute:[[f numberFromString:pickupTimeParts[1]] intValue]];
     [components setTimeZone:[NSTimeZone systemTimeZone]];
-    workToHomeRide.pickupTime = [gregorian dateByAddingComponents:components toDate:thisDate options:0];
+    NSDate * workToHomeRidePickupTime = [gregorian dateByAddingComponents:components toDate:thisDate options:0];
     
     VCCommuterRideRequest * request = [[VCCommuterRideRequest alloc] init];
-    request.departureLatitude = homeToWorkRide.originLatitude;
-    request.departureLongitude = homeToWorkRide.originLongitude;
-    request.departurePlaceName = homeToWorkRide.originPlaceName;
-    request.destinationLatitude = homeToWorkRide.destinationLatitude;
-    request.destinationLongitude = homeToWorkRide.destinationLongitude;
-    request.destinationPlaceName = homeToWorkRide.destinationPlaceName;
-    request.pickupTime = homeToWorkRide.pickupTime;
-    request.returnPickupTime = workToHomeRide.pickupTime;
+    request.departureLatitude = [NSNumber numberWithDouble: [_route getDefaultOrigin].coordinate.latitude];
+    request.departureLongitude = [NSNumber numberWithDouble: [_route getDefaultOrigin].coordinate.longitude];
+    request.departurePlaceName = @"Pickup";
+    request.destinationLatitude = [NSNumber numberWithDouble: _route.work.coordinate.latitude];
+    request.destinationLongitude = [NSNumber numberWithDouble: _route.work.coordinate.longitude];
+    request.destinationPlaceName = @"Work";
+    request.pickupTime = homeToWorkRidePickupTime;
+    request.returnPickupTime = workToHomeRidePickupTime;
     request.driving = [NSNumber numberWithBool:_route.driving];
 
     
@@ -356,8 +332,7 @@ static VCCommuteManager * instance;
                         success();
     }
                     failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            [[VCCoreData managedObjectContext] deleteObject:homeToWorkRide];
-            [[VCCoreData managedObjectContext] deleteObject:workToHomeRide];
+
             NSInteger statusCode = operation.HTTPRequestOperation.response.statusCode;
             switch(statusCode){
                 case 405:
@@ -400,15 +375,6 @@ static VCCommuteManager * instance;
     [VCDriverApi ridersPickedUp:ticket.ride_id success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [self loadActiveTickets];
         [VCNotifications scheduleUpdated];
-        /*
-         Not necessary since we are synching tickets
-        ticket.state = kInProgressState;
-        NSError * error;
-        [[VCCoreData managedObjectContext] save:&error];
-        if(error != nil){
-            [WRUtilities criticalError:error];
-        }
-         */
         success();
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [WRUtilities subcriticaError:error];

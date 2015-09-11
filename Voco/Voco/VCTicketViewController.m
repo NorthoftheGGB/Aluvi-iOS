@@ -29,7 +29,6 @@
 #import "VCMapQuestRouting.h"
 #import "VCButton.h"
 #import "IIViewDeckController.h"
-#import "VCFare.h"
 #import "VCUtilities.h"
 #import "NSDate+Pretty.h"
 
@@ -44,6 +43,7 @@
 #import "VCStyle.h"
 #import "VCFancyButton.h"
 #import "VCPaymentsViewController.h"
+#import "VCCarInfoViewController.h"
 
 // provisional
 #import "VCRidesApi.h"
@@ -58,7 +58,7 @@
 
 #define kNotificationLocationFound @"kNotificationLocationFound"
 
-@interface VCTicketViewController () <RMMapViewDelegate, CLLocationManagerDelegate, VCRideRequestViewDelegate, VCLocationSearchViewControllerDelegate, VCRiderTicketViewDelegate, VCDriverTicketViewDelegate, VCPaymentsViewControllerDelegate>
+@interface VCTicketViewController () <RMMapViewDelegate, CLLocationManagerDelegate, VCRideRequestViewDelegate, VCLocationSearchViewControllerDelegate, VCRiderTicketViewDelegate, VCDriverTicketViewDelegate, VCPaymentsViewControllerDelegate, VCCarInfoViewControllerDelegate>
 
 // Model
 @property(strong, nonatomic) Route * route;
@@ -123,11 +123,11 @@
 
 //Payments
 @property (nonatomic, strong) VCPaymentsViewController * paymentsViewController;
+@property (nonatomic, strong) VCCarInfoViewController * carInfoViewController;
 
 @end
 
 @implementation VCTicketViewController
-
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -615,7 +615,7 @@
     switch(state){
         case kCommuteStateNone:
         {
-            [button setTitle:@"SCHEDULE RIDE" forState:UIControlStateNormal];
+            [button setTitle:@"COMMUTE TOMORROW" forState:UIControlStateNormal];
             [button removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
             [button addTarget:self action:@selector(didTapScheduleMenuButton:) forControlEvents:UIControlEventTouchUpInside];
             break;
@@ -684,7 +684,7 @@
         //add pickup points
         [self addPickupPointAnnotations];
         
-    } else if([@[kCreatedState, kRequestedState] containsObject:_ticket.state]){
+    } else if([@[kRequestedState] containsObject:_ticket.state]){
         
         [self setRightButtonForState:kCommuteStatePending];
         [self addOriginAnnotation: [_ticket originLocation] ];
@@ -1025,7 +1025,7 @@
 - (void) cancel {
     
     
-    if( [@[kCreatedState, kRequestedState] containsObject: _ticket.state]) {
+    if( [@[kRequestedState] containsObject: _ticket.state]) {
         
         [self cancelEntireTrip];
         
@@ -1137,7 +1137,7 @@
         {
             RMPointAnnotation * annotation = [[RMPointAnnotation alloc] initWithMapView:self.map
                                                                              coordinate:CLLocationCoordinate2DMake(pickupPoint.location.coordinate.latitude, pickupPoint.location.coordinate.longitude)
-                                                                               andTitle:[NSString stringWithFormat:@"%@", pickupPoint.numberOfRiders]];
+                                                                               andTitle:[NSString stringWithFormat:@"%@ people using this pickup point", pickupPoint.numberOfRiders]];
             annotation.userInfo = kPickupPointsAnnotationType;
             [_pickupPointAnnotations addObject:annotation];
         }
@@ -1174,6 +1174,14 @@
     // check that route is valid
     if(![[VCCommuteManager instance].route routeCoordinateSettingsValid] ){
         [UIAlertView showWithTitle:@"Problem!" message:@"Something isn't right with your commuter coordinates or time, please check that everything is filled in correctly and try again" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        return;
+    }
+    
+    // if the user is the drive, check that they have the necessary credentials entered
+    if(_route.driving && ![[VCUserStateManager instance] isHovDriver]){
+        [UIAlertView showWithTitle:@"Driver Details Required" message:@"We need some details about your vehicle before you we can request your commute" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+            [self showCarDetailsView];
+        }];
         return;
     }
     
@@ -1234,6 +1242,35 @@
                          
                      }];
 
+}
+
+- (void) showCarDetailsView {
+    _carInfoViewController = [[VCCarInfoViewController alloc] init];
+    _carInfoViewController.delegate = self;
+    CGRect frame = _carInfoViewController.view.frame;
+    frame.origin.x = 0;
+    frame.origin.y = -self.view.frame.size.height;
+    frame.size.width = self.view.frame.size.width;
+    frame.size.height = self.view.frame.size.height;
+    _carInfoViewController.view.frame = frame;
+    
+    // add the view to the superview
+    [[[[UIApplication sharedApplication] delegate] window] addSubview:_carInfoViewController.view];
+    
+    [UIView animateWithDuration:0.4
+                          delay:0
+         usingSpringWithDamping:0.5
+          initialSpringVelocity:0.5
+                        options:0
+                     animations:^{
+                         // final placement
+                         CGRect frame = _carInfoViewController.view.frame;
+                         frame.origin.y = 0;
+                         _carInfoViewController.view.frame = frame;
+                     } completion:^(BOOL finished) {
+                         
+                     }];
+    
 }
 
 
@@ -1297,70 +1334,12 @@
 
 
 
-- (IBAction)didTapRidersPickedUp:(id)sender {
-
-    
-    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Notifying Server";
-    
-    [VCDriverApi ridersPickedUp:_ticket.fare_id
-                        success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                            [self moveFromPickupToRideInProgressInteface];
-                            _ticket.state = kInProgressState;
-                            [VCCoreData saveContext];
-                            [VCUserStateManager instance].driveProcessState = kUserStateRideStarted;
-                            [hud hide:YES];
-                            
-                        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                            [hud hide:YES];
-                            
-                        }];
-    
-}
-
-- (IBAction)didTapRideCompleted:(id)sender {
-    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Notifying Server";
-    
-    [VCDriverApi ticketCompleted:_ticket.ride_id
-                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-                             [VCUserStateManager instance].driveProcessState = kUserStateRideCompleted;
-                             //[self showRideCompletedInterface];
-                             VCFare * fare = mappingResult.firstObject;
-                             
-                             _ticket.state = kCompleteState;
-                             [VCCoreData saveContext];
-                             [VCNotifications scheduleUpdated];
-                             [hud hide:YES];
-                             
-                             //[_driverCallHUD removeFromSuperview];
-                             //[_driverCancelHUD removeFromSuperview];
-                             [_rideCompleteButton removeFromSuperview];
-                             [self resetInterfaceToHome];
-                             
-                             [UIAlertView showWithTitle:@"Receipt"
-                                                message:[NSString stringWithFormat:@"Thanks for driving.  You earned %@ on this ride.",
-                                                         [VCUtilities formatCurrencyFromCents:fare.driverEarnings]]
-                                      cancelButtonTitle:@"OK"
-                                      otherButtonTitles:nil
-                                               tapBlock:nil];
-                             _ticket = nil;
-                             
-                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                             [hud hide:YES];
-                             
-                         }];
-    
-}
-
-
 
 
 #pragma mark - VCRideRequestViewDelegate
 
 - (void) rideRequestViewDidCancel: (VCRideRequestView *) rideRequestView {
     [self removeRideRequestView: rideRequestView];
-    
 }
 
 
@@ -1478,7 +1457,7 @@
     }
     
     
-    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
     [UIView animateWithDuration:0.35
                      animations:^{
                          CGRect frame = rideRequestView.frame;
@@ -1567,6 +1546,7 @@
         [self showRideRequestView];
         [self placeInRouteMode];
     }
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
     _activePlacemark = nil;
 
 }
@@ -1592,6 +1572,7 @@
         }
         
     }
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
 }
 
 
@@ -1845,5 +1826,32 @@
     
 }
 
+
+///////////////
+/////////////// Car Info
+///////////////
+- (void) removeCarInfoView {
+    UIView * view = _carInfoViewController.view;
+    [UIView animateWithDuration:0.35
+                     animations:^{
+                         CGRect frame = view.frame;
+                         frame.origin.y =  -self.view.frame.size.height;;
+                         view.frame = frame;
+                     }
+                     completion:^(BOOL finished) {
+                         [view removeFromSuperview];
+                     }];
+    
+}
+
+- (void)VCCarInfoViewControllerDidCancel:(VCCarInfoViewController *)carInfoViewController
+{
+    [self removeCarInfoView];
+}
+
+- (void)VCCarInfoViewControllerDidUpdateDetails:(VCCarInfoViewController *)carInfoViewController {
+    [self removeCarInfoView];
+    [self scheduleCommuteForTomorrow];
+}
 
 @end

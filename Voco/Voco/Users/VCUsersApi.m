@@ -11,7 +11,6 @@
 #import "VCNewUser.h"
 #import "VCLoginResponse.h"
 #import "VCDriverInterestedRequest.h"
-#import "VCDriverStateResponse.h"
 #import "VCUserStateResponse.h"
 #import "VCFillCommuterPass.h"
 #import "VCApiError.h"
@@ -76,15 +75,6 @@
         [objectManager addRequestDescriptor:driverInterestedRequestDescriptor];
     }
     
-    {
-        RKResponseDescriptor * driverInterestedResponseDescriptor =
-        [RKResponseDescriptor responseDescriptorWithMapping:[VCDriverStateResponse getMapping]
-                                                     method:RKRequestMethodPOST
-                                                pathPattern:API_DRIVER_INTERESTED
-                                                    keyPath:nil
-                                                statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-        [objectManager addResponseDescriptor:driverInterestedResponseDescriptor];
-    }
     
     {
         RKResponseDescriptor * responseDescriptor =
@@ -124,6 +114,19 @@
         RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping method:RKRequestMethodPOST pathPattern:API_USER_PROFILE keyPath:@"car" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
         [objectManager addResponseDescriptor:responseDescriptor];
     }
+    
+    
+    {
+        RKObjectMapping * mapping = [VCProfile getMapping];
+        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping method:RKRequestMethodPOST pathPattern:API_CAR_UPDATE keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor];
+    }
+    {
+        RKObjectMapping * mapping = [Car createMappings:objectManager];
+        RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping method:RKRequestMethodPOST pathPattern:API_CAR_UPDATE keyPath:@"car" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+        [objectManager addResponseDescriptor:responseDescriptor];
+    }
+    
     {
         RKObjectMapping * mapping = [VCProfile getMapping];
         RKResponseDescriptor * responseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:mapping method:RKRequestMethodPOST pathPattern:API_FILL_COMMUTER_PASS keyPath:nil statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
@@ -193,28 +196,6 @@
     
     [objectManager postObject:nil path:API_FORGOT_PASSWORD parameters:@{ @"email" : email }
                       success:success failure:failure];
-}
-
-+ (void) driverInterested:( RKObjectManager *) objectManager
-                     name:(NSString*) name
-                    email:(NSString*) email
-                   region:(NSString*) region
-                    phone:(NSString*) phone
-       driverReferralCode:(NSString*) driverReferralCode
-                  success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
-                  failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
-    VCDriverInterestedRequest * driverInterestedRequest = [[VCDriverInterestedRequest alloc] init];
-    driverInterestedRequest.email = email;
-    driverInterestedRequest.name = name;
-    driverInterestedRequest.phone = phone;
-    driverInterestedRequest.region = region;
-    driverInterestedRequest.driverReferralCode = driverReferralCode;
-    [objectManager postObject:driverInterestedRequest path:API_DRIVER_INTERESTED parameters:nil
-                      success:^( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ) {
-                          VCDriverStateResponse * response = mappingResult.firstObject;
-                          [VCUserStateManager instance].driverState = response.state;
-                          success(operation, mappingResult);
-                      }failure:failure];
 }
 
 + (void) getUserState:( RKObjectManager *) objectManager
@@ -366,5 +347,17 @@
                                          failure(operation, error);
                                      }];
 }
+
++ (void) updateDefaultCar: (Car *) car
+                  success: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                  failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure {
+    [[RKObjectManager sharedManager] postObject:car path:API_CAR_UPDATE parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        success(operation, mappingResult);
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        failure(operation, error);
+    }];
+}
+
+
 
 @end

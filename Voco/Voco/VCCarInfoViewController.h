@@ -9,7 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "VCCenterViewBaseViewController.h"
 
+@class VCCarInfoViewController;
+
+@protocol VCCarInfoViewControllerDelegate <NSObject>
+
+- (void) VCCarInfoViewControllerDidUpdateDetails: (VCCarInfoViewController *) carInfoViewController;
+- (void)  VCCarInfoViewControllerDidCancel: (VCCarInfoViewController *) carInfoViewController;
+
+@end
+
 @interface VCCarInfoViewController : VCCenterViewBaseViewController
-
-
+@property(nonatomic, weak) id<VCCarInfoViewControllerDelegate> delegate;
 @end

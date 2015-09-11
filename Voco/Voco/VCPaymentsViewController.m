@@ -17,6 +17,8 @@
 #import "VCUserStateManager.h"
 #import "Receipt.h"
 #import "VCStyle.h"
+#import "NSDate+Pretty.h"
+#import "VCLabelSmall.h"
 
 #define kCardView 1001
 #define kDebitCardView 1002
@@ -30,10 +32,11 @@
 @property (weak, nonatomic) IBOutlet UIView *PTKDebitViewContainer;
 @property (weak, nonatomic) IBOutlet UILabel *commuterAccountBalance;
 @property (weak, nonatomic) IBOutlet UIButton *processPayoutButton;
-@property (strong, nonatomic) IBOutlet UILabel *defaultCardLabel;
-@property (strong, nonatomic) IBOutlet UILabel *getPaidToCardLabel;
-@property (strong, nonatomic) IBOutlet UILabel *paymentsDescriptionLabel;
-
+@property (weak, nonatomic) IBOutlet UILabel *defaultCardLabel;
+@property (weak, nonatomic) IBOutlet UILabel *getPaidToCardLabel;
+@property (weak, nonatomic) IBOutlet UILabel *paymentsDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+@property (weak, nonatomic) IBOutlet VCLabelSmall *lastTransactionLabel;
 
 @end
 
@@ -147,6 +150,7 @@
     }
     
     _getPaidToCardLabel.hidden = YES;
+    _debitCardView.hidden = YES;
     if(profile.cardLastFour != nil){
         NSString * text = [NSString stringWithFormat:@"%@ ending in %@", profile.cardBrand, profile.cardLastFour ];
         if( profile.recipientCardLastFour != nil
@@ -159,6 +163,7 @@
             if(profile.recipientCardLastFour != nil){
                 _getPaidToCardLabel.hidden = NO;
                 _getPaidToCardLabel.text = [NSString stringWithFormat:@"Get paid to %@ ending in  %@", profile.recipientCardBrand, profile.recipientCardLastFour];
+                _debitCardView.hidden = NO;
             }
         }
     }
@@ -166,15 +171,18 @@
     if (accountBalance > 1000){
         _processPayoutButton.hidden = NO;
         _processPayoutButton.enabled = YES;
+        _paymentsDescriptionLabel.hidden = NO;
         if(profile.recipientCardLastFour == nil){
             _getPaidToCardLabel.hidden = NO;
             _getPaidToCardLabel.text = @"No Debit Card Entered";
+            _debitCardView.hidden = NO;
         }
     } else {
         _processPayoutButton.hidden = YES;
         _processPayoutButton.enabled = NO;
-        
+        _paymentsDescriptionLabel.hidden = YES;
     }
+    
     
 }
 
@@ -194,10 +202,15 @@
     if([receipts count] > 0){
     Receipt * lastTransaction = receipts[0];
         if([lastTransaction.type isEqualToString:@"payment"]){
-            _paymentsDescriptionLabel.text = [NSString stringWithFormat:@"Last Charge: $%.2f", [lastTransaction.amount doubleValue]];
+            _lastTransactionLabel.text = [NSString stringWithFormat:@"Last Charged $%.2f on %@", [lastTransaction.amount doubleValue], [lastTransaction.date typicalDate]
+                                              ];
         } else {
-            _paymentsDescriptionLabel.text = [NSString stringWithFormat:@"Last Withdrawal: $%.2f", -[lastTransaction.amount doubleValue]];
+            _lastTransactionLabel.text = [NSString stringWithFormat:@"Last Deposited $%.2f on %@", -[lastTransaction.amount doubleValue],
+                                              [lastTransaction.date typicalDate]];
         }
+        _lastTransactionLabel.hidden = NO;
+    } else {
+        _lastTransactionLabel.hidden = YES;
     }
 }
 
@@ -205,7 +218,6 @@
 - (IBAction)didTapSave:(id)sender {
     
     PTKView * selectedCardView = sender;
-    
     
     STPCard *card = [[STPCard alloc] init];
     card.number = selectedCardView.card.number;
@@ -317,6 +329,8 @@
     }];
 }
 
-
+- (IBAction)didTapCancel:(id)sender {
+    [self cancelCardEntry];
+}
 
 @end

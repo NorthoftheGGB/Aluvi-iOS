@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -8,9 +8,11 @@
             <connections>
                 <outlet property="PTKDebitViewContainer" destination="acL-Ir-cgb" id="RLk-UC-Hxm"/>
                 <outlet property="PTKViewContainer" destination="xO2-CQ-cvv" id="Td5-N5-RhX"/>
+                <outlet property="cancelButton" destination="5MU-rY-cyb" id="4WS-wF-ztt"/>
                 <outlet property="commuterAccountBalance" destination="dJ5-sd-d9F" id="PTd-7m-dFu"/>
                 <outlet property="defaultCardLabel" destination="CYr-IO-g4E" id="l6t-Ue-4c6"/>
                 <outlet property="getPaidToCardLabel" destination="Ijc-oZ-jdg" id="3H2-bq-Vah"/>
+                <outlet property="lastTransactionLabel" destination="6NT-gx-M0y" id="h91-wW-eq0"/>
                 <outlet property="paymentsDescriptionLabel" destination="bvs-Le-u2g" id="lnx-a0-ffB"/>
                 <outlet property="processPayoutButton" destination="Dso-Zg-Ngo" id="1MV-2s-4UE"/>
                 <outlet property="view" destination="iN0-l3-epB" id="m2l-22-ijd"/>
@@ -73,10 +75,28 @@
                     <color key="textColor" red="0.35686274509999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5MU-rY-cyb">
+                    <rect key="frame" x="-5" y="0.0" width="325" height="57"/>
+                    <state key="normal" title="Cancel">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapCancel:" destination="-1" eventType="touchUpInside" id="tJ4-th-xL2"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vic-Ui-f0M">
+                    <rect key="frame" x="0.0" y="513" width="312" height="55"/>
+                    <state key="normal" title="Save">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="didTapSave:" destination="-1" eventType="touchUpInside" id="dYi-QX-hVd"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <color key="tintColor" red="0.30588235289999999" green="0.63921568630000003" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <nil key="simulatedTopBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="326" y="215"/>
         </view>

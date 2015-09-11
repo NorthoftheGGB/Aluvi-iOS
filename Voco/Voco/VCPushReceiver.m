@@ -11,7 +11,6 @@
 #import "VCDevicesApi.h"
 #import "VCPushApi.h"
 #import "VCRidesApi.h"
-#import "VCDriverApi.h"
 #import "VCNotifications.h"
 #import "VCInterfaceManager.h"
 #import <MBProgressHUD.h>

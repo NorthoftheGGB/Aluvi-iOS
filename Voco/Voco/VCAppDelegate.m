@@ -99,7 +99,7 @@
     
 #if DEBUG
     //RKLogConfigureByName("RestKit/Network", RKLogLevelInfo);
-    //RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelTrace);
+    //RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelDebug);
 #endif
     
     [self.window makeKeyAndVisible];

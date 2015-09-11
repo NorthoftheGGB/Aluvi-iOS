@@ -33,7 +33,6 @@
 - (void) ridesDroppedOff:(Ticket *) ticket success:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
 - (void) refreshTickets;
 - (void) refreshTicketsWithSuccess:(void ( ^ ) ()) success failure:( void ( ^ ) ()) failure;
-- (void) routeIsValid;
 
 - (BOOL) scheduledCommuteAvailable;
 - (BOOL) returnTicketValid;
