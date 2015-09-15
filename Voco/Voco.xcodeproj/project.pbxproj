@@ -1254,6 +1254,7 @@
 		8435C5981B7B0C70000401CA /* VCPickupPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPickupPoint.m; sourceTree = "<group>"; };
 		844415361B72BBE5008C7898 /* VCMapHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCMapHelper.h; sourceTree = "<group>"; };
 		844415371B72BBE5008C7898 /* VCMapHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCMapHelper.m; sourceTree = "<group>"; };
+		845112E51BA8C983002F9B84 /* VCApiKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCApiKeys.h; sourceTree = "<group>"; };
 		84573B8B1BA24D76007AD8B4 /* VCDriverApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCDriverApi.m; sourceTree = "<group>"; };
 		84573B8C1BA24D76007AD8B4 /* VCDriverApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCDriverApi.h; sourceTree = "<group>"; };
 		849A3CC61B1E5D14004446AF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -2373,6 +2374,7 @@
 				F425906C1995E30000FA928E /* VCCommuteManager.m */,
 				F4F6B8B619A9898E004312A1 /* VCNotifications.h */,
 				F4F6B8B719A9898E004312A1 /* VCNotifications.m */,
+				845112E51BA8C983002F9B84 /* VCApiKeys.h */,
 				F48FBCCB19ECCF15009352A0 /* Vars */,
 			);
 			name = Application;

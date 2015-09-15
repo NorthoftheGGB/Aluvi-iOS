@@ -18,6 +18,7 @@
 #import "VCStyle.h"
 #import "NSDate+Pretty.h"
 #import "VCLabelSmall.h"
+#import "VCApiKeys.h"
 
 #define kCardView 1001
 #define kDebitCardView 1002
@@ -231,8 +232,8 @@
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Saving user info";
  
- 
-    [Stripe createTokenWithCard:card completion:^(STPToken *token, NSError *error) {
+    STPAPIClient *client = [[STPAPIClient alloc] initWithPublishableKey:STRIPE_API_KEY];
+    [client createTokenWithCard:card completion:^(STPToken* token, NSError* error) {
         if (error == nil ) {
             if(token.tokenId == nil){
                 [hud hide:YES];
