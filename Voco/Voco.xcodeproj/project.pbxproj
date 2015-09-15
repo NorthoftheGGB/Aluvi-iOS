@@ -84,6 +84,11 @@
 		360CFA5E1BA8CB5A00D61347 /* VCTutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 360CFA561BA8CB5A00D61347 /* VCTutorialViewController.xib */; };
 		360CFA5F1BA8CB5A00D61347 /* VCTutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 360CFA561BA8CB5A00D61347 /* VCTutorialViewController.xib */; };
 		360CFA601BA8CB5A00D61347 /* VCTutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 360CFA561BA8CB5A00D61347 /* VCTutorialViewController.xib */; };
+		360CFA621BA8D24300D61347 /* tutorial.png in Resources */ = {isa = PBXBuildFile; fileRef = 360CFA611BA8D24300D61347 /* tutorial.png */; };
+		360CFA631BA8D24300D61347 /* tutorial.png in Resources */ = {isa = PBXBuildFile; fileRef = 360CFA611BA8D24300D61347 /* tutorial.png */; };
+		360CFA641BA8D24300D61347 /* tutorial.png in Resources */ = {isa = PBXBuildFile; fileRef = 360CFA611BA8D24300D61347 /* tutorial.png */; };
+		360CFA651BA8D24300D61347 /* tutorial.png in Resources */ = {isa = PBXBuildFile; fileRef = 360CFA611BA8D24300D61347 /* tutorial.png */; };
+		360CFA661BA8D24300D61347 /* tutorial.png in Resources */ = {isa = PBXBuildFile; fileRef = 360CFA611BA8D24300D61347 /* tutorial.png */; };
 		362A55A61B85B4A10090FF1B /* logo_in.png in Resources */ = {isa = PBXBuildFile; fileRef = 362A55A51B85B4A10090FF1B /* logo_in.png */; };
 		362A55A71B85B4A10090FF1B /* logo_in.png in Resources */ = {isa = PBXBuildFile; fileRef = 362A55A51B85B4A10090FF1B /* logo_in.png */; };
 		362A55A81B85B4A10090FF1B /* logo_in.png in Resources */ = {isa = PBXBuildFile; fileRef = 362A55A51B85B4A10090FF1B /* logo_in.png */; };
@@ -1112,6 +1117,7 @@
 		360CFA541BA8CB5A00D61347 /* VCTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCTutorialViewController.h; sourceTree = "<group>"; };
 		360CFA551BA8CB5A00D61347 /* VCTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCTutorialViewController.m; sourceTree = "<group>"; };
 		360CFA561BA8CB5A00D61347 /* VCTutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCTutorialViewController.xib; sourceTree = "<group>"; };
+		360CFA611BA8D24300D61347 /* tutorial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial.png; sourceTree = "<group>"; };
 		362A55A51B85B4A10090FF1B /* logo_in.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_in.png; sourceTree = "<group>"; };
 		36638D741B658A5A004EDB09 /* VCRideRequestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCRideRequestView.xib; sourceTree = "<group>"; };
 		36638D7C1B659CAE004EDB09 /* VCDriverTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCDriverTicketView.xib; sourceTree = "<group>"; };
@@ -1782,6 +1788,7 @@
 		4FE641E1194168E80059BED1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				360CFA611BA8D24300D61347 /* tutorial.png */,
 				368816AB1B9FE39000865AA5 /* map_point@2x.png */,
 				360C67DE1B8BE554008F4BB0 /* camera@2x.png */,
 				360C67D21B8BDF95008F4BB0 /* profile_placeholder2@2x.png */,
@@ -2593,6 +2600,7 @@
 				8416480A1B64A47D00CD20AC /* call-button-select@2x.png in Resources */,
 				8416480B1B64A47D00CD20AC /* call-button@2x.png in Resources */,
 				36E48E6A1B7AA6920034DFEB /* nav_bg.png in Resources */,
+				360CFA651BA8D24300D61347 /* tutorial.png in Resources */,
 				36000C971B72B295008E84AE /* VCReceiptViewController.xib in Resources */,
 				8416480E1B64A47D00CD20AC /* directions-button-selected@2x.png in Resources */,
 				369DBC1C1B6D22F900449CB4 /* test.jpg in Resources */,
@@ -2711,6 +2719,7 @@
 				36E48E861B7B01100034DFEB /* Default@2x.png in Resources */,
 				841649761B658F4900CD20AC /* current-location-arrow-select@2x.png in Resources */,
 				360C67E01B8BE555008F4BB0 /* camera@2x.png in Resources */,
+				360CFA631BA8D24300D61347 /* tutorial.png in Resources */,
 				841649781B658F4900CD20AC /* map_pin_fill-512.png in Resources */,
 				841649791B658F4900CD20AC /* driver-call-hud-icon-select@2x.png in Resources */,
 				362A55A71B85B4A10090FF1B /* logo_in.png in Resources */,
@@ -2774,6 +2783,7 @@
 				84F222C71B82611B00E5F7B7 /* call-button-select@2x.png in Resources */,
 				84F222C81B82611B00E5F7B7 /* call-button@2x.png in Resources */,
 				84F222C91B82611B00E5F7B7 /* nav_bg.png in Resources */,
+				360CFA661BA8D24300D61347 /* tutorial.png in Resources */,
 				84F222CB1B82611B00E5F7B7 /* VCReceiptViewController.xib in Resources */,
 				84F222CC1B82611B00E5F7B7 /* directions-button-selected@2x.png in Resources */,
 				84F222CE1B82611B00E5F7B7 /* test.jpg in Resources */,
@@ -2892,6 +2902,7 @@
 				36E48E851B7B01100034DFEB /* Default@2x.png in Resources */,
 				F4C6B267197F06B100F6C10B /* current-location-arrow-select@2x.png in Resources */,
 				360C67DF1B8BE554008F4BB0 /* camera@2x.png in Resources */,
+				360CFA621BA8D24300D61347 /* tutorial.png in Resources */,
 				F4C6B268197F06B100F6C10B /* map_pin_fill-512.png in Resources */,
 				369DBC141B6D228E00449CB4 /* test.jpg in Resources */,
 				362A55A61B85B4A10090FF1B /* logo_in.png in Resources */,
@@ -2965,6 +2976,7 @@
 				F4D8FEA919B1745A00BC0B69 /* current-location-button-selected@2x.png in Resources */,
 				F4D8FEAE19B1745A00BC0B69 /* VCLocationSearchViewController.xib in Resources */,
 				36E48E831B7B01100034DFEB /* Default@3x.png in Resources */,
+				360CFA641BA8D24300D61347 /* tutorial.png in Resources */,
 				36049F9A1B815EFD0090ECAE /* VCOnboardingPersonalInfoViewController.xib in Resources */,
 				F4D8FEB619B1745A00BC0B69 /* VCRiderRecieptDetailViewController.xib in Resources */,
 				F4D8FEB819B1745A00BC0B69 /* confirm-location@2x.png in Resources */,
