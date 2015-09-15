@@ -43,7 +43,7 @@
 
 
 - (NSString *) summary {
-    return [NSString stringWithFormat:@"%@ %@ %@", self.year, self.make, self.model];
+    return [NSString stringWithFormat:@"%@ %@ %@", self.color, self.make, self.model];
 }
 
 @end

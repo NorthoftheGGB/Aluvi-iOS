@@ -101,11 +101,6 @@
 @property (weak, nonatomic) Ticket * showingTicket;
 
 
-//Ride Status
-@property (strong, nonatomic) IBOutlet VCButton *ridersPickedUpButton;
-@property (strong, nonatomic) IBOutlet VCButton *rideCompleteButton;
-
-
 //Ride requeset
 @property (nonatomic, strong) VCRideRequestView * rideRequestView;
 @property (strong, nonatomic) IBOutlet UIView *waitingMessageView;
@@ -756,7 +751,6 @@
 
 - (void) removeHuds {
     [_ridersOnboardButton removeFromSuperview];
-    [_rideCompleteButton removeFromSuperview];
     [_riderTicketHUD removeFromSuperview];
     [_driverTicketHUD removeFromSuperview];
 }
@@ -1342,20 +1336,6 @@
     NSString *url = [@"telprompt://" stringByAppendingString:phoneNumber];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 }
-
-- (void) moveFromPickupToRideInProgressInteface {
-    CGRect rideCompletedFrame = _rideCompleteButton.frame;
-    rideCompletedFrame.origin.x = 18;
-    rideCompletedFrame.origin.y = self.view.frame.size.height - 46;
-    _rideCompleteButton.frame = rideCompletedFrame;
-    
-    [UIView transitionWithView:self.view duration:.35 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-        [self.view addSubview:_rideCompleteButton];
-        [_ridersPickedUpButton removeFromSuperview];
-    } completion:^(BOOL finished) {
-    }];
-}
-
 
 
 
