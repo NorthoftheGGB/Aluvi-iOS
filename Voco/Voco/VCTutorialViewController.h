@@ -10,4 +10,5 @@
 
 @interface VCTutorialViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UIScrollView *tutorialScrollView;
 @end
