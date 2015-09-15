@@ -69,9 +69,9 @@
 @property (strong, nonatomic) CLGeocoder * geocoder;
 @property (nonatomic) MBRegion *rideRegion;
 @property (strong, nonatomic) RMAnnotation * originAnnotation;
-@property (strong, nonatomic) RMPointAnnotation * destinationAnnotation;
-@property (strong, nonatomic) RMPointAnnotation * meetingPointAnnotation;
-@property (strong, nonatomic) RMPointAnnotation * dropOffPointAnnotation;
+@property (strong, nonatomic) RMAnnotation * destinationAnnotation;
+@property (strong, nonatomic) RMAnnotation * meetingPointAnnotation;
+@property (strong, nonatomic) RMAnnotation * dropOffPointAnnotation;
 @property (strong, nonatomic) RMAnnotation * activeAnnotation;
 @property (strong, nonatomic) IBOutlet UIButton *currentLocationButton;
 @property (strong, nonatomic) CLLocationManager * locationManager;
@@ -1085,10 +1085,12 @@
         // Use RMAnnnotation for everything
         // with RMMarker in the delegate
         // that should fix this up.
-        _originAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
+        _originAnnotation = [[RMAnnotation alloc] initWithMapView:self.map
                                                             coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
                                                               andTitle:@"Home"];
-        ((RMPointAnnotation *) _originAnnotation ).image = [VCMapStyle homePinImage];
+        
+        _originAnnotation.userInfo = kUserPickupPointAnnotationType;
+        
     }
     [self.map addAnnotation:_originAnnotation];
 }
@@ -1098,10 +1100,10 @@
         [self.map removeAnnotation:_destinationAnnotation];
         _destinationAnnotation = nil;
     }
-    _destinationAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
+    _destinationAnnotation = [[RMAnnotation alloc] initWithMapView:self.map
                                                              coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
                                                                andTitle:@"Work"];
-    _destinationAnnotation.image = [VCMapStyle workPinImage];
+    _destinationAnnotation.userInfo = kWorkAnnotationType;
     [self.map addAnnotation:_destinationAnnotation];
 }
 
@@ -1111,10 +1113,10 @@
         _meetingPointAnnotation = nil;
     }
     NSString * title = [NSString stringWithFormat:@"Meet Here at %@", [_ticket.pickupTime time]  ];
-    _meetingPointAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
+    _meetingPointAnnotation = [[RMAnnotation alloc] initWithMapView:self.map
                                                               coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
                                                                 andTitle:title];
-    _meetingPointAnnotation.image = [VCMapStyle homePinImage];
+    _meetingPointAnnotation.userInfo = kMeetingPointAnnotationType;
     [self.map addAnnotation:_meetingPointAnnotation];
 }
 
@@ -1123,10 +1125,10 @@
         [self.map removeAnnotation:_dropOffPointAnnotation];
         _dropOffPointAnnotation = nil;
     }
-    _dropOffPointAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
+    _dropOffPointAnnotation = [[RMAnnotation alloc] initWithMapView:self.map
                                                               coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
                                                                 andTitle:@"Drop Off"];
-    _dropOffPointAnnotation.image = [VCMapStyle workPinImage];
+    _dropOffPointAnnotation.userInfo = kDropOffPointAnnotationType;
     [self.map addAnnotation:_dropOffPointAnnotation];
 }
 
@@ -1135,7 +1137,7 @@
         _pickupPointAnnotations = [[NSMutableArray alloc] init];
         for (VCPickupPoint* pickupPoint in _pickupPoints)
         {
-            RMPointAnnotation * annotation = [[RMPointAnnotation alloc] initWithMapView:self.map
+            RMAnnotation * annotation = [[RMAnnotation alloc] initWithMapView:self.map
                                                                              coordinate:CLLocationCoordinate2DMake(pickupPoint.location.coordinate.latitude, pickupPoint.location.coordinate.longitude)
                                                                                andTitle:[NSString stringWithFormat:@"%@ people using this pickup point", pickupPoint.numberOfRiders]];
             annotation.userInfo = kPickupPointsAnnotationType;
@@ -1422,20 +1424,21 @@
         switch (_editLocationType) {
             case kHomeType:
                 title = @"Home";
-                _activeAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
+                _activeAnnotation = [[RMAnnotation alloc] initWithMapView:self.map
                                                                     coordinate:_route.home.coordinate
                                                                       andTitle:title];
                 [self.map setZoom:[VCMapStyle defaultZoomForType:_editLocationType] atCoordinate:_route.home.coordinate animated:YES];
-                ((RMPointAnnotation *)_activeAnnotation).image = [VCMapStyle annotationImageForType:_editLocationType];
+                _activeAnnotation.userInfo = kUserPickupPointAnnotationType;
                 
                 break;
             case kWorkType:
                 title = @"Work";
-                _activeAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
+                _activeAnnotation = [[RMAnnotation alloc] initWithMapView:self.map
                                                                     coordinate:_route.work.coordinate
                                                                       andTitle:title];
                 [self.map setZoom:[VCMapStyle defaultZoomForType:_editLocationType] atCoordinate:_route.work.coordinate animated:YES];
-                ((RMPointAnnotation *)_activeAnnotation).image = [VCMapStyle annotationImageForType:_editLocationType];
+                _activeAnnotation.userInfo = kWorkAnnotationType;
+
                 break;
             case kPickupZoneType:
                 title = @"Pickup Zone";
@@ -1621,10 +1624,14 @@
     
     
     if(_editLocationType == kHomeType || _editLocationType == kWorkType ){
-        _activeAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
+        _activeAnnotation = [[RMAnnotation alloc] initWithMapView:self.map
                                                             coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
                                                               andTitle:title];
-        ((RMPointAnnotation *)_activeAnnotation).image = [VCMapStyle annotationImageForType:_editLocationType ];
+        if(_editLocationType == kHomeType){
+            _activeAnnotation.userInfo = kUserPickupPointAnnotationType;
+        } else if(_editLocationType == kWorkType){
+            _activeAnnotation.userInfo = kWorkAnnotationType;
+        }
     } else if (_editLocationType == kPickupZoneType) {
         _activeAnnotation = [[RMAnnotation alloc] initWithMapView:self.map
                                                        coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
@@ -1683,11 +1690,15 @@
     switch (_editLocationType) {
         case kHomeType:
         case kWorkType:
-            _activeAnnotation = [[RMPointAnnotation alloc] initWithMapView:self.map
+            _activeAnnotation = [[RMAnnotation alloc] initWithMapView:self.map
                                                                 coordinate:_activePlacemark.coordinate
                                                                   andTitle:title];
             [self.map setZoom:[VCMapStyle defaultZoomForType:_editLocationType] atCoordinate:_activePlacemark.coordinate animated:YES];
-            ((RMPointAnnotation *)_activeAnnotation).image = [VCMapStyle annotationImageForType:_editLocationType];
+            if(_editLocationType == kHomeType){
+                _activeAnnotation.userInfo = kUserPickupPointAnnotationType;
+            } else if(_editLocationType == kWorkType){
+                _activeAnnotation.userInfo = kWorkAnnotationType;
+            }
             break;
         case kPickupZoneType:
             _activeAnnotation = [[RMAnnotation alloc] initWithMapView:self.map
@@ -1734,10 +1745,20 @@
             circle.lineWidthInPixels = 5.0;
             return circle;
         } else if ([annotation.userInfo isEqualToString:kPickupPointsAnnotationType]){
-            RMMarker * marker = [[RMMarker alloc] initWithUIImage:[UIImage imageNamed:@"pin"]];
+            RMMarker * marker = [[RMMarker alloc] initWithUIImage:[UIImage imageNamed:@"map_point"]];
             return marker;
         } else if  ([annotation.userInfo isEqualToString:kUserPickupPointAnnotationType]){
-            
+            RMMarker * marker = [[RMMarker alloc] initWithUIImage:[VCMapStyle homePinImage]];
+            return marker;
+        } else if ([annotation.userInfo isEqualToString:kWorkAnnotationType]){
+            RMMarker * marker = [[RMMarker alloc] initWithUIImage:[VCMapStyle workPinImage]];
+            return marker;
+        } else if ([annotation.userInfo isEqualToString:kMeetingPointAnnotationType]){
+            RMMarker * marker = [[RMMarker alloc] initWithUIImage:[VCMapStyle homePinImage]];
+            return marker;
+        } else if ([annotation.userInfo isEqualToString:kDropOffPointAnnotationType]){
+            RMMarker * marker = [[RMMarker alloc] initWithUIImage:[VCMapStyle workPinImage]];
+            return marker;
         }
     } else if ([annotation.title isEqualToString:@"pedestrian"]) {
         RMShape *shape = [[RMShape alloc] initWithView:mapView];
