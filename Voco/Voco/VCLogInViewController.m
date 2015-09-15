@@ -299,6 +299,8 @@
 }
 
 - (void) completeLogin {
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kSkipTutorial];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
     [[VCCommuteManager instance] refreshTicketsWithSuccess:^{
         [_hud hide:YES];

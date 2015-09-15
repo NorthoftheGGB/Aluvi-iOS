@@ -11,6 +11,9 @@
 #define kOnBoardingMode 2
 #define kServiceMode 3
 
+#define kSkipTutorial @"kSkipTutorial"
+
+
 @interface VCInterfaceManager : NSObject
 
 + (VCInterfaceManager * ) instance;

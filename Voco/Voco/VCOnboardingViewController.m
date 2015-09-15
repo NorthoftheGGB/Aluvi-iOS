@@ -22,6 +22,7 @@
 #import "VCNotifications.h"
 
 
+
 @interface VCOnboardingViewController ()<VCOnboardingChildViewControllerDelegate, UIScrollViewDelegate>
 
 @property (strong, nonatomic) UIPageViewController *pageController;
@@ -65,7 +66,7 @@
     
     CGRect frame = [[[UIApplication sharedApplication] delegate] window].frame;
     CGSize size = frame.size;
-    size.width = size.width * 4;
+    size.width = size.width * 7;
     self.scrollView.frame = self.view.frame;
     [self.scrollView setContentSize:size];
     self.scrollView.contentInset=UIEdgeInsetsMake(0.0,0.0,0.0,0.0);
@@ -77,21 +78,27 @@
     [self.scrollView.layer insertSublayer:[VCStyle gradientLayer:gradientFrame] atIndex:0];
     [self.view setNeedsLayout];
     
-    
-    vc0.view.frame = frame;
+    CGRect frame1 = frame;
+    frame1.origin.x = 3 * frame.size.width;
+    vc0.view.frame = frame1;
     
     CGRect frame2 = frame;
-    frame2.origin.x = frame.size.width;
+    frame2.origin.x = 4 * frame.size.width;
     vc1.view.frame = frame2;
     
     CGRect frame3 = frame;
-    frame3.origin.x = 2 * frame.size.width;
+    frame3.origin.x = 5 * frame.size.width;
     vc2.view.frame = frame3;
     
     CGRect frame4 = frame;
-    frame4.origin.x = 3 * frame.size.width;
+    frame4.origin.x = 6 * frame.size.width;
     vc3.view.frame = frame4;
     
+    UIImageView * imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tutorial"]];
+    CGRect imageViewFrame = frame;
+    imageViewFrame.size.width = frame.size.width * 3;
+    imageView.frame = imageViewFrame;
+    [self.scrollView addSubview:imageView];
     [self.scrollView addSubview:vc0.view];
     [self.scrollView addSubview:vc1.view];
     [self.scrollView addSubview:vc2.view];
@@ -100,6 +107,13 @@
     _viewControllers = @[vc0,vc1,vc2,vc3];
     
     self.navigationController.navigationBarHidden = YES;
+    
+    
+    _currentIndex = 3;
+    if([[NSUserDefaults standardUserDefaults] boolForKey:kSkipTutorial]){
+        [self.scrollView setContentOffset:CGPointMake(3 * frame.size.width, 0) animated:NO];
+    } else {
+    }
 
 }
 
@@ -165,6 +179,9 @@
                                           
                                           hud.hidden = YES;
                                           
+                                          [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kSkipTutorial];
+                                          [[NSUserDefaults standardUserDefaults] synchronize];
+                                          
                                           dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                                               
                                               
@@ -195,6 +212,7 @@
                                               }];
                                               
                                           });
+                                          
                                           
                                           [[VCInterfaceManager instance] showRiderInterface];
                                           
