@@ -34,6 +34,7 @@
 
 
 @property (nonatomic, strong) NSArray * riders;
+@property (nonatomic, strong) Driver * driver;
 
 
 - (IBAction)didTapUpButton:(id)sender;
@@ -64,6 +65,7 @@
      _totalCostLabel.text = [NSString stringWithFormat:@"%.2f", [ticket.fixedPrice doubleValue] / 100];
     
     _riders= [ticket.riders sortedArrayUsingDescriptors:@[sortDescriptor]];
+    _driver = ticket.driver;
 
     long length = [_riders count];
     _riderOneView.hidden = YES;
@@ -115,11 +117,16 @@
 }
 
 - (IBAction)didTapDriverImageButton:(id)sender {
+    [_delegate VCRiderTicketView:self didTapCallDrive:_driver.phone];
 }
 
 - (IBAction)didTapPeerOneButton:(id)sender {
+    Rider * rider = _riders[0];
+    [_delegate VCRiderTicketView:self didTapCallRider:rider.phone];
 }
 
 - (IBAction)didTapPeerTwoButton:(id)sender {
+    Rider * rider = _riders[1];
+    [_delegate VCRiderTicketView:self didTapCallRider:rider.phone];
 }
 @end

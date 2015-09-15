@@ -8,8 +8,7 @@
 
 #import "VCPaymentsViewController.h"
 #import <Stripe.h>
-#import <PTKView.h>
-#import <PTKTextField.h>
+#import <STPPaymentCardTextField.h>
 #import <MBProgressHUD.h>
 #import "VCUserStateManager.h"
 #import "VCUsersApi.h"
@@ -23,10 +22,10 @@
 #define kCardView 1001
 #define kDebitCardView 1002
 
-@interface VCPaymentsViewController () <PTKViewDelegate>
+@interface VCPaymentsViewController () <STPPaymentCardTextFieldDelegate>
 
-@property (strong, nonatomic) PTKView * cardView;
-@property (strong, nonatomic) PTKView * debitCardView;
+@property (strong, nonatomic) STPPaymentCardTextField * cardView;
+@property (strong, nonatomic) STPPaymentCardTextField * debitCardView;
 
 @property (weak, nonatomic) IBOutlet UIView *PTKViewContainer;
 @property (weak, nonatomic) IBOutlet UIView *PTKDebitViewContainer;
@@ -56,12 +55,12 @@
     [super viewDidLoad];
     [self setGradient];
     
-    _cardView = [[PTKView alloc] initWithFrame:CGRectMake(15,20,290,55)];
+    _cardView = [[STPPaymentCardTextField alloc] initWithFrame:CGRectMake(15,20,290,55)];
     _cardView.tag = kCardView;
     _cardView.delegate = self;
     [_PTKViewContainer addSubview:_cardView];
     
-    _debitCardView = [[PTKView alloc] initWithFrame:CGRectMake(15,20,290,55)];
+    _debitCardView = [[STPPaymentCardTextField alloc] initWithFrame:CGRectMake(15,20,290,55)];
     _debitCardView.tag = kDebitCardView;
     _debitCardView.delegate = self;
     [_PTKDebitViewContainer addSubview:_debitCardView];
@@ -77,12 +76,8 @@
                            [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(doneWithCardEntry)],
                            nil];
     [numberToolbar sizeToFit];
-    _cardView.cardNumberField.inputAccessoryView = numberToolbar;
-    _cardView.cardExpiryField.inputAccessoryView = numberToolbar;
-    _cardView.cardCVCField.inputAccessoryView = numberToolbar;
-    _debitCardView.cardNumberField.inputAccessoryView = numberToolbar;
-    _debitCardView.cardExpiryField.inputAccessoryView = numberToolbar;
-    _debitCardView.cardCVCField.inputAccessoryView = numberToolbar;
+    _cardView.inputAccessoryView = numberToolbar;
+    _debitCardView.inputAccessoryView = numberToolbar;
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -225,7 +220,7 @@
     }
 }
 
-- (void) saveCard:(PTKView*)selectedCardView {
+- (void) saveCard:(STPPaymentCardTextField*)selectedCardView {
     
     STPCard *card = [[STPCard alloc] init];
     card.number = selectedCardView.card.number;
@@ -283,7 +278,7 @@
     }];
 }
 
-- (void) somethingDidntGoRight:(PTKView *) selectedCardView {
+- (void) somethingDidntGoRight:(STPPaymentCardTextField *) selectedCardView {
     [UIAlertView showWithTitle:@"Whoops" message:@"Something didn't go right. Want to try that again?" cancelButtonTitle:@"No" otherButtonTitles:@[@"Yeah"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
         if(buttonIndex == 1){
             [self didTapSave:selectedCardView];

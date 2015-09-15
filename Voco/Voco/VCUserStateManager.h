@@ -75,7 +75,6 @@ NSString *const VCUserStateDriverStateKeyPath;
 - (BOOL) isHovDriver;
 
 
-- (void) clearRideState;
 - (void) clearUser;
 
 - (void) refreshProfileWithCompletion: (void ( ^ ) ( ))completion;

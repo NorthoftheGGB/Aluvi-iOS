@@ -388,9 +388,16 @@
 }
 
 - (void) showRoute:(NSArray*) polyline withRegion:(MBRegion * ) region withZoom:(BOOL) withZoom{
+
     if (_routeOverlay != nil) {
         [_map removeAnnotation:_routeOverlay];
     }
+    
+    if( [polyline count] > 1000){
+        // invalid route
+        return;
+    }
+    
     
     if(! [region isValidRegion]){
         return;
@@ -778,7 +785,7 @@
 
 - (void) clearMap {
     if (_originAnnotation != nil) {
-        
+    
         [self.map removeAnnotation:_originAnnotation];
         _originAnnotation = nil;
     }
@@ -883,8 +890,12 @@
     [self callPhone:phoneNumber];
 }
 
-- (void)VCDriverTicketViewDidTapCommuteCompleted:(VCDriverTicketView *)driverTicketView {
-    
+- (void) VCRiderTicketView:(VCRiderTicketView *)riderTicketView didTapCallRider:(NSString *)phoneNumber {
+    [self callPhone:phoneNumber];
+}
+
+- (void) VCRiderTicketView:(VCDriverTicketView *)riderTicketView didTapCallDriver:(NSString *)phoneNumber {
+    [self callPhone:phoneNumber];
 }
 
 - (void) showDriverTicketHUD {

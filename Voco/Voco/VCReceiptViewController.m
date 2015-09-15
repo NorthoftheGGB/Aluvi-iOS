@@ -48,6 +48,7 @@
     _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                 managedObjectContext:[VCCoreData managedObjectContext]
                                 sectionNameKeyPath:nil cacheName:nil];
+    _fetchedResultsController.delegate = self;
     
     NSError *error;
     [_fetchedResultsController performFetch:&error];
@@ -63,7 +64,7 @@
     
     [VCRidesApi refreshReceiptsWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSLog(@"Refreshed Receipts");
-        [_receiptTableView reloadData];
+       
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [WRUtilities criticalError:error];
     }];
