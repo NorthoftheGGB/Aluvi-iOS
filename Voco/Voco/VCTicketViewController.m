@@ -1767,19 +1767,29 @@
             circle.lineWidthInPixels = 5.0;
             return circle;
         } else if ([annotation.userInfo isEqualToString:kPickupPointsAnnotationType]){
-            RMMarker * marker = [[RMMarker alloc] initWithUIImage:[UIImage imageNamed:@"map_point"]];
+            RMMarker * marker = [[RMMarker alloc] initWithUIImage:[UIImage imageNamed:@"map_point"] anchorPoint:CGPointMake(.5,1)];
+            marker.canShowCallout = YES;
+            marker.annotation = annotation;
             return marker;
         } else if  ([annotation.userInfo isEqualToString:kUserPickupPointAnnotationType]){
-            RMMarker * marker = [[RMMarker alloc] initWithUIImage:[VCMapStyle homePinImage]];
+            RMMarker * marker = [[RMMarker alloc] initWithUIImage:[VCMapStyle homePinImage] anchorPoint:CGPointMake(.5,1)];
+            marker.canShowCallout = YES;
+            marker.annotation = annotation;
             return marker;
         } else if ([annotation.userInfo isEqualToString:kWorkAnnotationType]){
-            RMMarker * marker = [[RMMarker alloc] initWithUIImage:[VCMapStyle workPinImage]];
+            RMMarker * marker = [[RMMarker alloc] initWithUIImage:[VCMapStyle workPinImage] anchorPoint:CGPointMake(.5,1)];
+            marker.canShowCallout = YES;
+            marker.annotation = annotation;
             return marker;
         } else if ([annotation.userInfo isEqualToString:kMeetingPointAnnotationType]){
-            RMMarker * marker = [[RMMarker alloc] initWithUIImage:[VCMapStyle homePinImage]];
+            RMMarker * marker = [[RMMarker alloc] initWithUIImage:[VCMapStyle homePinImage] anchorPoint:CGPointMake(.5,1)];
+            marker.canShowCallout = YES;
+            marker.annotation = annotation;
             return marker;
         } else if ([annotation.userInfo isEqualToString:kDropOffPointAnnotationType]){
-            RMMarker * marker = [[RMMarker alloc] initWithUIImage:[VCMapStyle workPinImage]];
+            RMMarker * marker = [[RMMarker alloc] initWithUIImage:[VCMapStyle workPinImage] anchorPoint:CGPointMake(.5,1)];
+            marker.canShowCallout = YES;
+            marker.annotation = annotation;
             return marker;
         }
     } else if ([annotation.title isEqualToString:@"pedestrian"]) {
@@ -1809,6 +1819,34 @@
     // Default
     RMMarker * marker = [[RMMarker alloc] initWithUIImage:[UIImage imageNamed:@"pin"]];
     return marker;
+}
+
+- (NSComparator)annotationSortingComparatorForMapView:(RMMapView *)mapView {
+    NSComparator sort =^(RMAnnotation *annotation1, RMAnnotation *annotation2)
+    {
+        // Sort user location annotations above all.
+        //
+        if (   annotation1.isUserLocationAnnotation && ! annotation2.isUserLocationAnnotation)
+            return NSOrderedDescending;
+        
+        if ( ! annotation1.isUserLocationAnnotation &&   annotation2.isUserLocationAnnotation)
+            return NSOrderedAscending;
+        
+        // Amongst user location annotations, sort properly.
+        if([annotation1.userInfo isKindOfClass:[NSString class]]){
+            if ([annotation1.userInfo isEqualToString:kPickupPointsAnnotationType]){
+                return NSOrderedAscending;
+            }
+        }
+        if([annotation2.userInfo isKindOfClass:[NSString class]]){
+            if ([annotation2.userInfo isEqualToString:kPickupPointsAnnotationType]){
+                return NSOrderedDescending;
+            }
+        }
+        
+        return NSOrderedSame;
+    };
+    return sort;
 }
 
 
