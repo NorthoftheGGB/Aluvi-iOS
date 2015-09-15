@@ -120,10 +120,10 @@
 - (void) doneWithCardEntry {
     if([_cardView isFirstResponder]){
         [_cardView resignFirstResponder];
-        [self didTapSave:_cardView];
+        [self saveCard:_cardView];
     } else if([_debitCardView isFirstResponder]){
         [_debitCardView resignFirstResponder];
-        [self didTapSave:_debitCardView];
+        [self saveCard:_debitCardView];
     }
 }
 
@@ -217,7 +217,10 @@
 
 - (IBAction)didTapSave:(id)sender {
     
-    PTKView * selectedCardView = sender;
+    [self doneWithCardEntry];
+}
+
+- (void) saveCard:(PTKView*)selectedCardView {
     
     STPCard *card = [[STPCard alloc] init];
     card.number = selectedCardView.card.number;
