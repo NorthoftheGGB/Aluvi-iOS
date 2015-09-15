@@ -85,6 +85,9 @@
     [super viewWillAppear:animated];
     if(_delegate != nil){
         [_cardView becomeFirstResponder];
+        _cancelButton.hidden = NO;
+    } else {
+        _cancelButton.hidden = YES;
     }
     
     [self updateFieldValues];
