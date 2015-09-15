@@ -74,6 +74,16 @@
 		360C67E11B8BE555008F4BB0 /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 360C67DE1B8BE554008F4BB0 /* camera@2x.png */; };
 		360C67E21B8BE555008F4BB0 /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 360C67DE1B8BE554008F4BB0 /* camera@2x.png */; };
 		360C67E31B8BE555008F4BB0 /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 360C67DE1B8BE554008F4BB0 /* camera@2x.png */; };
+		360CFA571BA8CB5A00D61347 /* VCTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 360CFA551BA8CB5A00D61347 /* VCTutorialViewController.m */; };
+		360CFA581BA8CB5A00D61347 /* VCTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 360CFA551BA8CB5A00D61347 /* VCTutorialViewController.m */; };
+		360CFA591BA8CB5A00D61347 /* VCTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 360CFA551BA8CB5A00D61347 /* VCTutorialViewController.m */; };
+		360CFA5A1BA8CB5A00D61347 /* VCTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 360CFA551BA8CB5A00D61347 /* VCTutorialViewController.m */; };
+		360CFA5B1BA8CB5A00D61347 /* VCTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 360CFA551BA8CB5A00D61347 /* VCTutorialViewController.m */; };
+		360CFA5C1BA8CB5A00D61347 /* VCTutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 360CFA561BA8CB5A00D61347 /* VCTutorialViewController.xib */; };
+		360CFA5D1BA8CB5A00D61347 /* VCTutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 360CFA561BA8CB5A00D61347 /* VCTutorialViewController.xib */; };
+		360CFA5E1BA8CB5A00D61347 /* VCTutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 360CFA561BA8CB5A00D61347 /* VCTutorialViewController.xib */; };
+		360CFA5F1BA8CB5A00D61347 /* VCTutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 360CFA561BA8CB5A00D61347 /* VCTutorialViewController.xib */; };
+		360CFA601BA8CB5A00D61347 /* VCTutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 360CFA561BA8CB5A00D61347 /* VCTutorialViewController.xib */; };
 		362A55A61B85B4A10090FF1B /* logo_in.png in Resources */ = {isa = PBXBuildFile; fileRef = 362A55A51B85B4A10090FF1B /* logo_in.png */; };
 		362A55A71B85B4A10090FF1B /* logo_in.png in Resources */ = {isa = PBXBuildFile; fileRef = 362A55A51B85B4A10090FF1B /* logo_in.png */; };
 		362A55A81B85B4A10090FF1B /* logo_in.png in Resources */ = {isa = PBXBuildFile; fileRef = 362A55A51B85B4A10090FF1B /* logo_in.png */; };
@@ -1099,6 +1109,9 @@
 		360C67D21B8BDF95008F4BB0 /* profile_placeholder2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile_placeholder2@2x.png"; sourceTree = "<group>"; };
 		360C67D31B8BDF95008F4BB0 /* profile_placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile_placeholder@2x.png"; sourceTree = "<group>"; };
 		360C67DE1B8BE554008F4BB0 /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@2x.png"; sourceTree = "<group>"; };
+		360CFA541BA8CB5A00D61347 /* VCTutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCTutorialViewController.h; sourceTree = "<group>"; };
+		360CFA551BA8CB5A00D61347 /* VCTutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCTutorialViewController.m; sourceTree = "<group>"; };
+		360CFA561BA8CB5A00D61347 /* VCTutorialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCTutorialViewController.xib; sourceTree = "<group>"; };
 		362A55A51B85B4A10090FF1B /* logo_in.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_in.png; sourceTree = "<group>"; };
 		36638D741B658A5A004EDB09 /* VCRideRequestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCRideRequestView.xib; sourceTree = "<group>"; };
 		36638D7C1B659CAE004EDB09 /* VCDriverTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCDriverTicketView.xib; sourceTree = "<group>"; };
@@ -1732,6 +1745,9 @@
 				84A348ED1B8582D500DC7187 /* VCOnboardingViewController.h */,
 				84B30A571B82E54A0095F31D /* VCOnboardingViewController.m */,
 				84B30A581B82E54A0095F31D /* VCOnboardingViewController.xib */,
+				360CFA541BA8CB5A00D61347 /* VCTutorialViewController.h */,
+				360CFA551BA8CB5A00D61347 /* VCTutorialViewController.m */,
+				360CFA561BA8CB5A00D61347 /* VCTutorialViewController.xib */,
 			);
 			name = "Sign-In and Registration";
 			sourceTree = "<group>";
@@ -2639,6 +2655,7 @@
 				369992E21B82E57A00F47C5E /* Icon-Small.png in Resources */,
 				369992D61B82E57A00F47C5E /* Icon-40@2x.png in Resources */,
 				8416487A1B64A47D00CD20AC /* VCRiderProfileViewController.xib in Resources */,
+				360CFA5F1BA8CB5A00D61347 /* VCTutorialViewController.xib in Resources */,
 				841648801B64A47D00CD20AC /* driver-hov-toggle-select@2x.png in Resources */,
 				369992D41B82E57A00F47C5E /* Icon-40.png in Resources */,
 				841648841B64A47D00CD20AC /* directions-button@2x.png in Resources */,
@@ -2690,6 +2707,7 @@
 				8416496F1B658F4900CD20AC /* menu-mycar-icon@2x.png in Resources */,
 				36E48E6D1B7ABF9F0034DFEB /* Bryant-Regular.ttf in Resources */,
 				841649701B658F4900CD20AC /* zoom-ride-bounds@2x.png in Resources */,
+				360CFA5D1BA8CB5A00D61347 /* VCTutorialViewController.xib in Resources */,
 				36E48E861B7B01100034DFEB /* Default@2x.png in Resources */,
 				841649761B658F4900CD20AC /* current-location-arrow-select@2x.png in Resources */,
 				360C67E01B8BE555008F4BB0 /* camera@2x.png in Resources */,
@@ -2818,6 +2836,7 @@
 				369992E31B82E57A00F47C5E /* Icon-Small.png in Resources */,
 				369992D71B82E57A00F47C5E /* Icon-40@2x.png in Resources */,
 				84F223061B82611B00E5F7B7 /* VCRiderProfileViewController.xib in Resources */,
+				360CFA601BA8CB5A00D61347 /* VCTutorialViewController.xib in Resources */,
 				84F223081B82611B00E5F7B7 /* driver-hov-toggle-select@2x.png in Resources */,
 				369992D51B82E57A00F47C5E /* Icon-40.png in Resources */,
 				84F2230A1B82611B00E5F7B7 /* directions-button@2x.png in Resources */,
@@ -2869,6 +2888,7 @@
 				F4C6B260197F06B100F6C10B /* zoom-ride-bounds@2x.png in Resources */,
 				36E48E6C1B7ABF9F0034DFEB /* Bryant-Regular.ttf in Resources */,
 				36638D7D1B659CAE004EDB09 /* VCDriverTicketView.xib in Resources */,
+				360CFA5C1BA8CB5A00D61347 /* VCTutorialViewController.xib in Resources */,
 				36E48E851B7B01100034DFEB /* Default@2x.png in Resources */,
 				F4C6B267197F06B100F6C10B /* current-location-arrow-select@2x.png in Resources */,
 				360C67DF1B8BE554008F4BB0 /* camera@2x.png in Resources */,
@@ -2961,6 +2981,7 @@
 				F4D8FED819B1745A00BC0B69 /* map_pin_fill-512.png in Resources */,
 				F4D8FED919B1745A00BC0B69 /* driver-call-hud-icon-select@2x.png in Resources */,
 				36E48E871B7B01100034DFEB /* Default@2x.png in Resources */,
+				360CFA5E1BA8CB5A00D61347 /* VCTutorialViewController.xib in Resources */,
 				36E48E6E1B7ABF9F0034DFEB /* Bryant-Regular.ttf in Resources */,
 				84B30A601B82E54A0095F31D /* VCOnboardingViewController.xib in Resources */,
 				F4D8FEE219B1745A00BC0B69 /* temp-user-profile-icon@2x.png in Resources */,
@@ -3302,6 +3323,7 @@
 				8435C58C1B7A799C000401CA /* VCTicketPayload.m in Sources */,
 				8435C59C1B7B0C70000401CA /* VCPickupPoint.m in Sources */,
 				841647D61B64A47D00CD20AC /* Ticket.m in Sources */,
+				360CFA5A1BA8CB5A00D61347 /* VCTutorialViewController.m in Sources */,
 				841647D71B64A47D00CD20AC /* VCObjectRequestOperation.m in Sources */,
 				841647D81B64A47D00CD20AC /* VCValidation.m in Sources */,
 				84B30A5C1B82E54A0095F31D /* VCOnboardingViewController.m in Sources */,
@@ -3415,6 +3437,7 @@
 				8435C58A1B7A799C000401CA /* VCTicketPayload.m in Sources */,
 				8416490C1B658F4900CD20AC /* Ticket.m in Sources */,
 				8435C59A1B7B0C70000401CA /* VCPickupPoint.m in Sources */,
+				360CFA581BA8CB5A00D61347 /* VCTutorialViewController.m in Sources */,
 				8416490D1B658F4900CD20AC /* VCObjectRequestOperation.m in Sources */,
 				8416490E1B658F4900CD20AC /* VCValidation.m in Sources */,
 				8416490F1B658F4900CD20AC /* MQRoute.m in Sources */,
@@ -3528,6 +3551,7 @@
 				84F222901B82611B00E5F7B7 /* VCTicketPayload.m in Sources */,
 				84F222911B82611B00E5F7B7 /* VCPickupPoint.m in Sources */,
 				84F222921B82611B00E5F7B7 /* Ticket.m in Sources */,
+				360CFA5B1BA8CB5A00D61347 /* VCTutorialViewController.m in Sources */,
 				84F222931B82611B00E5F7B7 /* VCObjectRequestOperation.m in Sources */,
 				84F222941B82611B00E5F7B7 /* VCValidation.m in Sources */,
 				84B30A5D1B82E54A0095F31D /* VCOnboardingViewController.m in Sources */,
@@ -3641,6 +3665,7 @@
 				8435C5891B7A799C000401CA /* VCTicketPayload.m in Sources */,
 				F4C6B218197F06B100F6C10B /* Ticket.m in Sources */,
 				8435C5991B7B0C70000401CA /* VCPickupPoint.m in Sources */,
+				360CFA571BA8CB5A00D61347 /* VCTutorialViewController.m in Sources */,
 				F4C6B21A197F06B100F6C10B /* VCObjectRequestOperation.m in Sources */,
 				F4C6B21C197F06B100F6C10B /* VCValidation.m in Sources */,
 				F4C6B21E197F06B100F6C10B /* MQRoute.m in Sources */,
@@ -3754,6 +3779,7 @@
 				8435C58B1B7A799C000401CA /* VCTicketPayload.m in Sources */,
 				8435C59B1B7B0C70000401CA /* VCPickupPoint.m in Sources */,
 				F4D8FE6F19B1745A00BC0B69 /* Ticket.m in Sources */,
+				360CFA591BA8CB5A00D61347 /* VCTutorialViewController.m in Sources */,
 				F4D8FE7119B1745A00BC0B69 /* VCObjectRequestOperation.m in Sources */,
 				F4D8FE7319B1745A00BC0B69 /* VCValidation.m in Sources */,
 				84B30A5B1B82E54A0095F31D /* VCOnboardingViewController.m in Sources */,
