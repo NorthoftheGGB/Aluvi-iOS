@@ -622,9 +622,9 @@
     button.layer.shadowOpacity = 1;
     button.layer.shadowRadius = 0;
     button.layer.shadowOffset = CGSizeMake(0.0f, 2.0f);
-    [button setFrame:CGRectMake(0, 0, 150, 28)];
+    [button setFrame:CGRectMake(0, 0, 170, 28)];
     [button setTitleColor:[VCStyle greyColor] forState:UIControlStateNormal];
-    button.titleLabel.font = [UIFont fontWithName:@"Bryant-Regular" size:16.0];
+    button.titleLabel.font = [UIFont fontWithName:@"Bryant-Regular" size:14.0];
 
     UIBarButtonItem *buttonItem;
     //self.toolbarItems = @[buttonItem];
@@ -1229,7 +1229,7 @@
                                              [[VCCommuteManager instance] refreshTickets];
                                          } paymentRequired:^{
                                              [hud hide:YES];
-                                             [UIAlertView showWithTitle:@"Credit Card Required" message:@"You've used your free ride, we hope it went well. We'll need your credit card information now to schedule additional rides!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                             [UIAlertView showWithTitle:@"Credit Card Required" message:@"You've used your free ride, we hope it went well. We'll need your credit card information now to schedule additional rides! Aluvi charges ¢.25-30/mile. When there are more riders the cost to you is less!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                                                  [self showPaymentMethodDetailsView];
                                              }];
                                          } failure:^{
