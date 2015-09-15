@@ -213,6 +213,11 @@
  
     [Stripe createTokenWithCard:card completion:^(STPToken *token, NSError *error) {
         if (error == nil ) {
+            if(token.tokenId == nil){
+                [hud hide:YES];
+                [WRUtilities criticalErrorWithString:[NSString stringWithFormat:@"Stripe Token Invalid %@", token.tokenId]];
+                return;
+            }
             
             if(selectedCardView.tag == kCardView){
             
@@ -225,9 +230,9 @@
                                       }
                                       [self updateFieldValues];
                                   } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                      [hud hide:YES];
                                       [self somethingDidntGoRight:selectedCardView];
                                       [WRUtilities criticalError:error];
-                                      [hud hide:YES];
                                       
                                   }];
             } else if(selectedCardView.tag == kDebitCardView){
@@ -240,15 +245,14 @@
                                             }
                                             [self updateFieldValues];
                                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                            [hud hide:YES];
                                             [self somethingDidntGoRight:selectedCardView];
                                             [WRUtilities criticalError:error];
-                                            [hud hide:YES];
                                         }];
             }
         } else {
-            [WRUtilities subcriticalErrorWithString:[error.userInfo objectForKey:@"com.stripe.lib:ErrorMessageKey"]];
             [hud hide:YES];
-
+            [WRUtilities subcriticalErrorWithString:[error.userInfo objectForKey:@"com.stripe.lib:ErrorMessageKey"]];
         }
     }];
 }
