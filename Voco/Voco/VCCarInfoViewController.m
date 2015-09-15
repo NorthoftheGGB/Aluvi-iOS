@@ -12,6 +12,7 @@
 #import "VCUsersApi.h"
 #import "Car.h"
 #import "VCStyle.h"
+#import "VCNotifications.h"
 
 @interface VCCarInfoViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *licensePlateField;
@@ -137,6 +138,7 @@
                                                 if(_delegate != nil){
                                                     [_delegate VCCarInfoViewControllerDidUpdateDetails:self];
                                                 }
+                                                [VCNotifications userStateUpdated];
 
                                             }
                                             failure:^(NSString * errorMessage) {
