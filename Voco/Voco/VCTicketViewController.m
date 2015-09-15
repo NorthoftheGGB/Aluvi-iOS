@@ -77,6 +77,7 @@
 @property (strong, nonatomic) CLLocationManager * locationManager;
 @property (strong, nonatomic) CLLocation * lastLocation;
 @property (nonatomic) BOOL initialZoomComplete;
+@property (nonatomic) BOOL showingPickupPoints;
 
 // provisional
 @property (strong, nonatomic) NSArray * pickupPoints;
@@ -140,6 +141,7 @@
         _geocoder = [[CLGeocoder alloc] init];
         _initialZoomComplete = NO;
         _inAddressLookupMode = NO;
+        _showingPickupPoints = NO;
     }
     return self;
 }
@@ -158,6 +160,9 @@
     [VCRidesApi getPickupPointsWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         _pickupPoints = [mappingResult array];
         [self buildPickupPointAnnotations];
+        if(_showingPickupPoints && self.map != nil){
+            [self addPickupPointAnnotations];
+        }
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [WRUtilities criticalError:error];
     }];
@@ -200,6 +205,10 @@
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.25), dispatch_get_main_queue(), ^{
                 [self zoomToCurrentLocation];
             });
+        }
+        
+        if(_showingPickupPoints){
+            [self addPickupPointAnnotations];
         }
     }
     
@@ -809,7 +818,7 @@
         [self.map removeAnnotation:_activeAnnotation];
         _activeAnnotation = nil;
     }
-    [self.map removeAnnotations:_pickupPointAnnotations];
+    [self removePickupPointAnnotations];
     [self clearRoute];
 }
 
@@ -1158,10 +1167,12 @@
 }
 
 - (void)addPickupPointAnnotations {
+    _showingPickupPoints = YES;
     [self.map addAnnotations:_pickupPointAnnotations];
 }
 
 - (void)removePickupPointAnnotations {
+    _showingPickupPoints = NO;
     [self.map removeAnnotations:_pickupPointAnnotations];
 }
 
