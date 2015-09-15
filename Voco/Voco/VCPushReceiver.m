@@ -10,8 +10,7 @@
 #import "VCApi.h"
 #import "VCDevicesApi.h"
 #import "VCPushApi.h"
-#import "VCRiderApi.h"
-#import "VCDriverApi.h"
+#import "VCRidesApi.h"
 #import "VCNotifications.h"
 #import "VCInterfaceManager.h"
 #import <MBProgressHUD.h>
@@ -223,6 +222,11 @@
         } else if ([type isEqualToString:kPushTypeRideCompleted]){
             
             [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationTypeFareComplete object:payload userInfo:@{}];
+            
+        } else if ([type isEqualToString:kPushTypeRiderWithdrew]) {
+            
+            NSString * message =[[payload objectForKey:@"aps" ] objectForKey:@"alert"];
+            [UIAlertView showWithTitle:@"Rider Withdrew" message:message cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
             
         } else {
 #ifdef DEBUG

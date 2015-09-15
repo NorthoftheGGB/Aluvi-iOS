@@ -13,7 +13,6 @@
 #import "MBRegion.h"
 
 // State
-#define kCreatedState @"created"
 #define kRequestedState @"requested"
 #define kScheduledState @"scheduled"
 #define kInProgressState @"started"
@@ -22,6 +21,7 @@
 #define kRiderCancelledState @"rider_cancelled"
 #define kCompleteState @"completed"
 #define kPaymentProblemState @"payment_problem"
+#define kAbortedState @"aborted"
 
 // Trip State
 #define kTripRequestedState @"requested"

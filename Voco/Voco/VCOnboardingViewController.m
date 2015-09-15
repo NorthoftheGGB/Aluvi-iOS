@@ -98,7 +98,13 @@
     [self.scrollView addSubview:vc3.view];
     
     _viewControllers = @[vc0,vc1,vc2,vc3];
+    
+    self.navigationController.navigationBarHidden = YES;
 
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -106,7 +112,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) VCOnboardingChildViewController:(VCOnboardingChildViewController *)onboardingChildViewController didSetValues:(NSDictionary *)values {
+- (void) VCOnboardingChildViewController:(VCOnboardingChildViewController *)onboardingChildViewController
+                            didSetValues:(NSDictionary *)values {
     [_values setValuesForKeysWithDictionary:values];
 }
 
@@ -124,6 +131,10 @@
     }
 }
 
+- (void)VCOnboardingChildViewController:(VCOnboardingChildViewController *)onboardingChildViewController
+               didRequestPushController:(UIViewController *)viewController {
+    [self.navigationController pushViewController:viewController animated:YES];
+}
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if(_locked) {
@@ -161,7 +172,7 @@
                                               [[VCCommuteManager instance] storeCommuterSettings:[_values objectForKey:RouteObjectValueKey ]  success:^{
                                                   
                                               } failure:^(NSString *errorMessage) {
-                                                  [UIAlertView showWithTitle:@"Woops" message:errorMessage cancelButtonTitle:@"Hmm" otherButtonTitles:nil tapBlock:nil];
+                                                  [UIAlertView showWithTitle:@"Whoops" message:errorMessage cancelButtonTitle:@"Hmm" otherButtonTitles:nil tapBlock:nil];
                                               }];
                                               
                                               // Also attempt to send profile image in background

@@ -8,9 +8,7 @@
 
 #import "VCDialogs.h"
 #import <RestKit/RestKit.h>
-#import "VCFareDriverAssignment.h"
 #import "VCUserStateManager.h"
-#import "VCDriverApi.h"
 #import "NSDate+Pretty.h"
 #import "VCUtilities.h"
 

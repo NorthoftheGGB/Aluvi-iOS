@@ -89,6 +89,7 @@
                                                         @"trip_state" : @"trip_state",
                                                         @"pickup_time" : @"pickupTime",
                                                         @"fixed_price" : @"fixedPrice",
+                                                        @"estimated_earnings" : @"estimatedEarnings",
                                                         @"direction" : @"direction"
                                                         }];
     

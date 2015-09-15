@@ -14,7 +14,6 @@
 #import "VCLoginResponse.h"
 #import "VCUserStateResponse.h"
 #import "VCInterfaceManager.h"
-#import "VCDriverApi.h"
 #import "VCCommuteManager.h"
 #import "Car.h"
 #import "VCNotifications.h"
@@ -43,6 +42,10 @@ static VCUserStateManager *sharedSingleton;
 - (id) init {
     self = [super init];
     if(self != nil){
+        NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
+        _riderState = [userDefaults objectForKey:kRiderStateKey];
+        _driverState = [userDefaults objectForKey:kDriverStateKey];
+        
         NSData * profileData = [[NSUserDefaults standardUserDefaults] objectForKey:kProfileDataKey];
         if(profileData != nil) {
             @try {
@@ -66,6 +69,19 @@ static VCUserStateManager *sharedSingleton;
     [self cacheProfile];
 }
 
+- (void) setRiderState:(NSString *) __riderState {
+        _riderState = __riderState;
+        NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setObject:self.riderState forKey:kRiderStateKey];
+        [userDefaults synchronize];
+}
+
+- (void) setDriverState:(NSString *) __driverState {
+        _driverState = __driverState;
+        NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setObject:self.driverState forKey:kDriverStateKey];
+        [userDefaults synchronize];
+}
 
 -(void) cacheProfile {
     NSData * profileData = [NSKeyedArchiver archivedDataWithRootObject:_profile];
@@ -157,7 +173,7 @@ static VCUserStateManager *sharedSingleton;
 }
 
 - (void) logoutWithCompletion: (void ( ^ ) () )success {
-    [[VCCommuteManager instance] reset];
+    [[VCCommuteManager instance] clear];
     [self finalizeLogout];
     success();
 }
@@ -185,6 +201,11 @@ static VCUserStateManager *sharedSingleton;
 }
 
 - (void) synchronizeUserState {
+    [self synchronizeUserStateWithSuccess:nil failure:nil];
+}
+
+- (void) synchronizeUserStateWithSuccess: (void ( ^ ) ()) success failure:(void ( ^ ) ( NSString * errorMessage)) failure {
+
     [VCUsersApi getUserState:[RKObjectManager sharedManager]
                      success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                          VCUserStateResponse * response = mappingResult.firstObject;
@@ -192,16 +213,21 @@ static VCUserStateManager *sharedSingleton;
                          if(response.driverState != nil) {
                              self.driverState = response.driverState;
                          }
+                         [VCNotifications userStateUpdated];
+                         if(success != nil) {
+                             success();
+                         }
                      } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                         NSLog(@"Could not synchronize user state");
+                         [WRUtilities criticalError:error];
+                         if(failure != nil) {
+                             failure(@"Could not synchronize user state");
+                         }
                      }];
 }
 
 - (void) clearUserState {
     NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults removeObjectForKey:kRideIdKey];
-    [userDefaults removeObjectForKey:kRideProcessStateKey];
-    [userDefaults removeObjectForKey:kDriveProcessStateKey];
     [userDefaults removeObjectForKey:kDriverStateKey];
     [userDefaults removeObjectForKey:kRiderStateKey];
     [userDefaults removeObjectForKey:kProfileDataKey];
@@ -213,18 +239,6 @@ static VCUserStateManager *sharedSingleton;
     _driverState = nil;
 
 }
-
-- (void) clearRideState {
-    NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults removeObjectForKey:kRideIdKey];
-    [userDefaults removeObjectForKey:kRideProcessStateKey];
-    [userDefaults removeObjectForKey:kDriveProcessStateKey];
-    [userDefaults synchronize];
-    //_underwayFareId = nil;
-    _rideProcessState = nil;
-    _driveProcessState = nil;
-}
-
 
 - (BOOL) isLoggedIn {
     if(self.riderState != nil || self.driverState != nil ){
@@ -267,9 +281,45 @@ static VCUserStateManager *sharedSingleton;
     }];
 }
 
+- (void) updateDefaultCard: (NSString *) token success:(void ( ^ ) ( ))success  failure:(void ( ^ ) (RKObjectRequestOperation *operation, NSError *error) )failure {
+    
+    [VCUsersApi updateDefaultCard:[RKObjectManager sharedManager]
+                        cardToken:token
+                         success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                             [self loadProfileFromMappingResult:mappingResult];
+                             [self cacheProfile];
+                             success();
+                         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                             [WRUtilities criticalError:error];
+                             failure(operation, error);
+                         }];
+
+}
+
+- (void) updateRecipientCard: (NSString *) token success:(void ( ^ ) ( ))success  failure:(void ( ^ ) (RKObjectRequestOperation *operation, NSError *error) )failure {
+    
+    [VCUsersApi updateRecipientCard:[RKObjectManager sharedManager]
+                          cardToken:token
+                            success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                [self loadProfileFromMappingResult:mappingResult];
+                                [self cacheProfile];
+                                success();
+                            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                [WRUtilities criticalError:error];
+                                failure(operation, error);
+                            }];
+
+}
+
+
+
 
 - (void) loadProfileFromMappingResult:(RKMappingResult *) mappingResult {
     NSArray * array = [mappingResult array];
+    if([array count] < 1){
+        [WRUtilities criticalErrorWithString:@"Profile did not return all data"];
+        return;
+    }
     VCProfile * profile;
     Car * car;
     profile.carId = nil;
@@ -296,6 +346,23 @@ static VCUserStateManager *sharedSingleton;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         //
     }];
+}
+
+- (void) updateDefaultCar: (Car *) car
+                  success: (void ( ^ ) ()) success
+                  failure:(void ( ^ ) ( NSString * errorMessage)) failure {
+    [VCUsersApi updateDefaultCar:car success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [self loadProfileFromMappingResult:mappingResult];
+        [self cacheProfile];
+        [self synchronizeUserStateWithSuccess:^{
+            success();
+        } failure:^(NSString *errorMessage) {
+            failure(errorMessage);
+        }];
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        failure(@"We had a problem saving car details.  Why don't you try that again...");
+    }];
+    
 }
 
 

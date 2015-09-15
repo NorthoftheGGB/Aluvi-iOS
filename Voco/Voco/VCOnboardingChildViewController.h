@@ -25,6 +25,7 @@
 
 - (void) VCOnboardingChildViewControllerDidFinish: (VCOnboardingChildViewController*) onboardingChildViewController;
 - (void) VCOnboardingChildViewController: (VCOnboardingChildViewController *) onboardingChildViewController didSetValues:(NSDictionary *) values;
+- (void) VCOnboardingChildViewController: (VCOnboardingChildViewController *) onboardingChildViewController didRequestPushController: (UIViewController *) viewController;
 @end
 
 @interface VCOnboardingChildViewController : UIViewController

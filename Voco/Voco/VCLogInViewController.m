@@ -8,10 +8,12 @@
 
 #import "VCLogInViewController.h"
 #import <MBProgressHUD.h>
+#import "US2ConditionEmail.h"
+#import "US2Validator.h"
 #import "VCUserStateManager.h"
 #import "VCInterfaceManager.h"
 #import "VCCommuteManager.h"
-#import "VCRiderApi.h"
+#import "VCRidesApi.h"
 #import "VCTextField.h"
 #import "VCButtonBold.h"
 #import "VCButton.h"
@@ -47,7 +49,7 @@
 - (IBAction)didTapCreateAccount:(id)sender;
 
 - (IBAction)didTapForgotPassword:(id)sender;
-- (IBAction)didTapTermsAndConditions:(id)sender;
+//- (IBAction)didTapTermsAndConditions:(id)sender;
 - (IBAction)didTapModeToggleButton:(id)sender;
 
 
@@ -93,6 +95,13 @@
     _emailTextField.text = [NSString stringWithFormat: @"%@gg@gg.com", [NSDate date]];
     _passwordTextField.text = @"gg";
 #endif
+    
+    // Set up some validation
+    US2ConditionEmail *emailCondition = [[US2ConditionEmail alloc] init];
+    US2Validator *validator = [[US2Validator alloc] init];
+    [validator addCondition:emailCondition];
+    _emailTextField.validator = validator;
+    _emailTextField.fieldName = @"Email";
 }
 
 
@@ -232,6 +241,7 @@
 
 - (void) login {
     
+
     
     if(![_emailTextField validate]){
         return;
@@ -376,7 +386,7 @@
 
 - (IBAction)didTapForgotPassword:(id)sender {
     VCPasswordRecoveryViewController * passwordRecoveryViewController = [[VCPasswordRecoveryViewController alloc] init];
-    [self.navigationController pushViewController:passwordRecoveryViewController animated:YES];
+    [self.delegate VCOnboardingChildViewController:self didRequestPushController:passwordRecoveryViewController];
     
 }
 

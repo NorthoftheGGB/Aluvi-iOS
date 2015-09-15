@@ -8,7 +8,7 @@
 
 #import "VCReceiptViewController.h"
 #import <MBProgressHUD.h>
-#import "VCRiderApi.h"
+#import "VCRidesApi.h"
 #import "VCUsersApi.h"
 #import "VCStyle.h"
 #import "VCReceiptsTableViewCell.h"
@@ -18,7 +18,6 @@
 
 @interface VCReceiptViewController () <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *receiptTableView;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property(strong, nonatomic) NSFetchedResultsController * fetchedResultsController;
 @end
@@ -51,7 +50,7 @@
                                 sectionNameKeyPath:nil cacheName:nil];
     
     NSError *error;
-    BOOL success = [_fetchedResultsController performFetch:&error];
+    [_fetchedResultsController performFetch:&error];
     if(error != nil){
         [WRUtilities criticalError:error];
     }
@@ -62,8 +61,9 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [VCRiderApi refreshReceiptsWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [VCRidesApi refreshReceiptsWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSLog(@"Refreshed Receipts");
+        [_receiptTableView reloadData];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [WRUtilities criticalError:error];
     }];
@@ -103,7 +103,7 @@
 }
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-    [self.tableView beginUpdates];
+    [self.receiptTableView beginUpdates];
 }
 
 - (void)controller:(NSFetchedResultsController *)controller
@@ -112,7 +112,7 @@
      forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath {
     
-    UITableView *tableView = self.tableView;
+    UITableView *tableView = self.receiptTableView;
     
     switch(type) {
             
@@ -153,19 +153,21 @@
     switch(type) {
             
         case NSFetchedResultsChangeInsert:
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+            [self.receiptTableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
                           withRowAnimation:UITableViewRowAnimationFade];
             break;
             
         case NSFetchedResultsChangeDelete:
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+            [self.receiptTableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
                           withRowAnimation:UITableViewRowAnimationFade];
+            break;
+        default:
             break;
     }
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [self.tableView endUpdates];
+    [self.receiptTableView endUpdates];
 }
 
 @end

@@ -16,11 +16,8 @@
 #define API_POST_RIDE_CANCELLED @"v2/rides/cancel"
 #define API_DELETE_TRIP @"v2/rides/trips/:trip_id"
 
-
 #define API_GET_ACTIVE_TICKETS @"v2/rides/tickets"
-
 #define API_GET_RECEIPTS @"v2/rides/receipts"
-
 
 #define API_ROUTE @"v2/rides/route"
 
@@ -30,7 +27,7 @@
 #define API_GEO_RIDER_PATH @"geo/rider"
 #define API_GEO_RIDERS @"geo/riders"
 
-// devices API - RESTful
+// devices API
 #define API_DEVICES @"devices/"
 
 // users API
@@ -44,10 +41,7 @@
 #define API_CREATE_SUPPORT_REQUEST @"v2/users/support"
 #define API_PRINT_RECEIPTS_TO_EMAIL @"v2/users/receipts"
 #define API_PAYOUT_REQUESTED @"v2/users/request_payout"
-
-// drivers
-#define API_DRIVER_REGISTRATION @"drivers/driver_registration"
-#define API_CAR_UPDATE @"drivers/car"
+#define API_CAR_UPDATE @"v2/users/car"
 
 
 // state

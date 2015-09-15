@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <RestKit/RestKit.h>
 #import "VCProfile.h"
+#import "Car.h"
 
 @interface VCUsersApi : NSObject
 
@@ -28,15 +29,6 @@
              driver:(NSNumber*) driver
             success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
             failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
-
-+ (void) driverInterested:( RKObjectManager *) objectManager
-                     name:(NSString*) name
-                    email:(NSString*) email
-                   region:(NSString*) region
-                    phone:(NSString*) phone
-       driverReferralCode:(NSString*) driverReferralCode
-                  success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
-                  failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
 
 + (void) forgotPassword:( RKObjectManager *) objectManager email:(NSString*) email
                 success:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
@@ -79,6 +71,11 @@
 
 + (void) payoutRequestedWithSuccess:(void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
                                  failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
+
++ (void) updateDefaultCar: (Car *) car
+                  success: (void ( ^ ) ( RKObjectRequestOperation *operation , RKMappingResult *mappingResult ))success
+                  failure:(void ( ^ ) ( RKObjectRequestOperation *operation , NSError *error ))failure;
+
 
 
 @end

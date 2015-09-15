@@ -47,6 +47,30 @@ static UIAlertView * networkUnavailableErrorView = nil;
             }
             
             NSString * errString = [error debugDescription];
+            if([error.domain isEqualToString:@"org.restkit.RestKit.ErrorDomain"]
+               && error.code == -1011) {
+                
+                NSString * trace;
+                
+                NSError * jsonError;
+                NSData *objectData = [ [error.userInfo objectForKey:NSLocalizedRecoverySuggestionErrorKey] dataUsingEncoding:NSUTF8StringEncoding];
+                NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
+                                                                     options:NSJSONReadingMutableContainers
+                                                                       error:&jsonError];
+                if(json == nil){
+                    trace = @"No Trace Available";
+                } else {
+                    trace = [json objectForKey:@"error"];
+                }
+                
+                errString = [NSString stringWithFormat:@"Domain: %@\nCode: %i\n URL: %@\n %@\n Trace: %@",
+                         error.domain,
+                         (int) error.code,
+                         [error.userInfo objectForKey:@"NSErrorFailingURLKey" ],
+                         [error.userInfo objectForKey:NSLocalizedDescriptionKey ],
+                             trace
+                             ];
+            }
             
             criticalErrorView = [UIAlertView showWithTitle:@"System Error"
                                                    message:errString

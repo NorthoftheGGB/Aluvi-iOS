@@ -8,14 +8,15 @@
 
 #import "VCCarInfoViewController.h"
 #import <MBProgressHUD.h>
-#import "VCStyle.h"
 #import "VCUserStateManager.h"
+#import "VCUsersApi.h"
 #import "Car.h"
-#import "VCDriverApi.h"
+#import "VCStyle.h"
 
 @interface VCCarInfoViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *licensePlateField;
 @property (strong, nonatomic) IBOutlet UITextField *carInfoField;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
 @property (strong, nonatomic) Car * car;
 
@@ -40,6 +41,7 @@
     gradient.endPoint = CGPointMake(1.0, 0.5);
     [self.view.layer insertSublayer:gradient atIndex:0];
 }
+
 
 -(void)viewDidLoad{
     [super viewDidLoad];
@@ -73,18 +75,46 @@
  
     }
     
-    
-    
+
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    if(_delegate != nil){
+        _cancelButton.hidden = NO;
+    } else {
+        _cancelButton.hidden = YES;
+    }
 }
 
 
 - (IBAction)liscencePlateFieldDidEndOnExit:(id)sender {
+    [_licensePlateField resignFirstResponder];
+    [_carInfoField becomeFirstResponder];
 }
 
 - (IBAction)carInfoFieldDidEndOnExit:(id)sender {
+    [_carInfoField resignFirstResponder];
+    [self save];
 }
 
 - (IBAction)didTapSave:(id)sender {
+    [self save];
+}
+
+- (void) save {
+    if(_licensePlateField.text == nil
+       || [_licensePlateField.text isEqualToString:@""]
+       ){
+        [UIAlertView showWithTitle:@"Error" message:@"You must enter the license plate" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        return;
+    }
+    if(_carInfoField.text == nil
+       || [_carInfoField.text isEqualToString:@""]
+       ){
+        [UIAlertView showWithTitle:@"Error" message:@"You must enter car info" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        return;
+    }
+    _car = [[VCCoreData managedObjectContext] insertNewObjectForEntityForName:@"Car"];
     _car.licensePlate = _licensePlateField.text;
     NSArray * carInfo = [_carInfoField.text componentsSeparatedByString:@","];
     @try {
@@ -93,21 +123,34 @@
         _car.color = carInfo[2];
     }
     @catch (NSException *exception) {
-        //
+        [UIAlertView showWithTitle:@"Error" message:@"Car info should be formatted as 'Make, Model, Color'" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        return;
     }
     @finally {
         //
     }
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [VCDriverApi updateDefaultCar:_car success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        hud.hidden = YES;
-        [VCCoreData saveContext];
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [UIAlertView showWithTitle:@"Woops" message:@"We had a problem.  Please try again" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
-        hud.hidden = YES;
-    }];
+    [[VCUserStateManager instance] updateDefaultCar:_car
+                                            success:^() {
+                                                [[VCCoreData managedObjectContext] deleteObject:_car]; // we aren't actually saving this one, just for mappping
+                                                hud.hidden = YES;
+                                                if(_delegate != nil){
+                                                    [_delegate VCCarInfoViewControllerDidUpdateDetails:self];
+                                                }
+
+                                            }
+                                            failure:^(NSString * errorMessage) {
+                                                [[VCCoreData managedObjectContext] deleteObject:_car]; // we aren't actually saving this one, just for mapping
+                                                [UIAlertView showWithTitle:@"Whoops" message:@"errorMessage" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                                                hud.hidden = YES;
+                                            }];
     
     
-    
+}
+
+- (IBAction)didTapCancelButton:(id)sender {
+    if(_delegate != nil){
+        [_delegate VCCarInfoViewControllerDidCancel:self];
+    }
 }
 @end

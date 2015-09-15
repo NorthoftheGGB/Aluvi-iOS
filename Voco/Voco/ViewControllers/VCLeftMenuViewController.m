@@ -20,13 +20,9 @@
 #import "VCCarInfoViewController.h"
 #import "VCMenuItemTableViewCell.h"
 #import "VCMenuUserInfoTableViewCell.h"
-#import "VCMenuDriverClockOnTableViewCell.h"
-#import "VCSubMenuItemTableViewCell.h"
-#import "VCMenuItemModeTableViewCell.h"
-#import "VCDriverSubMenuItemTableViewCell.h"
 #import "NSDate+Pretty.h"
 #import "VCUserStateManager.h"
-#import "VCRiderApi.h"
+#import "VCRidesApi.h"
 #import "VCUtilities.h"
 #import "VCNotifications.h"
 #import "VCReceiptViewController.h"
@@ -122,6 +118,7 @@ static void * XXContext = &XXContext;
     // Listen for notifications about updated rides
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scheduleUpdated:) name:kNotificationScheduleUpdated object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(profileUpdated:) name:kNotificationTypeProfileUpdated object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userStateUpdated:) name:kNotificationTypeUserStateUpdated object:nil];
 
     
 }
@@ -143,6 +140,9 @@ static void * XXContext = &XXContext;
     [_tableView reloadData];
 }
 
+- (void) userStateUpdated:(NSNotification *) notification {
+    [_tableView reloadData];
+}
 
 
 - (void)didReceiveMemoryWarning
@@ -308,9 +308,6 @@ static void * XXContext = &XXContext;
         if([cell isKindOfClass:[VCMenuItemTableViewCell class]]) {
             [(VCMenuItemTableViewCell*) cell select];
         }
-        else if([cell isKindOfClass:[VCSubMenuItemTableViewCell class]]){
-            [(VCSubMenuItemTableViewCell*) cell select];
-        }
     }
     
     if(cell == nil) {
@@ -327,13 +324,7 @@ static void * XXContext = &XXContext;
     if([cell isKindOfClass:[VCMenuItemTableViewCell class]]) {
         [(VCMenuItemTableViewCell*) cell deselect];
     }
-    else if([cell isKindOfClass:[VCSubMenuItemTableViewCell class]]){
-        [(VCSubMenuItemTableViewCell*) cell deselect];
-    }
-    else if([cell isKindOfClass:[VCDriverSubMenuItemTableViewCell class]]){
-        [(VCDriverSubMenuItemTableViewCell *) cell deselect];
-    }
-}
+  }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // setCenterViewControllers

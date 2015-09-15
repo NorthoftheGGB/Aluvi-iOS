@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 @import CoreLocation;
 #import "VCProfile.h"
+#import "Car.h"
 
 NSString *const VCUserStateDriverStateKeyPath;
 
@@ -69,6 +70,7 @@ NSString *const VCUserStateDriverStateKeyPath;
 - (void) logoutWithCompletion: (void ( ^ ) () )success;
 - (void) finalizeLogout;
 - (void) synchronizeUserState;
+- (void) synchronizeUserStateWithSuccess: (void ( ^ ) ()) success failure:(void ( ^ ) ( NSString * errorMessage)) failure;
 - (BOOL) isLoggedIn;
 - (BOOL) isHovDriver;
 
@@ -78,5 +80,10 @@ NSString *const VCUserStateDriverStateKeyPath;
 
 - (void) refreshProfileWithCompletion: (void ( ^ ) ( ))completion;
 - (void) saveProfileWithCompletion: (void ( ^ ) ( ))completion  failure:(void ( ^ ) (RKObjectRequestOperation *operation, NSError *error) )failure;
+- (void) updateDefaultCard: (NSString *) token success:(void ( ^ ) ( ))success  failure:(void ( ^ ) (RKObjectRequestOperation *operation, NSError *error) )failure;
+- (void) updateRecipientCard: (NSString *) token success:(void ( ^ ) ( ))success  failure:(void ( ^ ) (RKObjectRequestOperation *operation, NSError *error) )failure;
+- (void) updateDefaultCar: (Car *) car
+                  success: (void ( ^ ) ()) success
+                  failure:(void ( ^ ) ( NSString * errorMessage)) failure;
 
 @end

@@ -73,8 +73,7 @@
         [self showRiderView:_riderOneView withRider:_riders[0]];
     }
     if(length > 1){
-        _riderTwoView.hidden = NO;
-        [self showRiderView:_riderOneView withRider:_riders[1]];
+        [self showRiderView:_riderTwoView withRider:_riders[1]];
     }
     
     _carLabel.text = [ticket.car summary];

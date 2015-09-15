@@ -22,6 +22,7 @@
 #define kPushTypeTripUnfulfilled @"trip_unfulfilled"
 #define kPushTypeGeneric @"generic"
 #define kPushTypeCommuteReminder @"commute_reminder"
+#define kPushTypeRiderWithdrew @"rider_withdrew_from_fare"
 
 
 #define kPushTypeRideCompleted @"ride_receipt"
