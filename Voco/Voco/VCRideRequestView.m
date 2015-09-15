@@ -243,7 +243,7 @@
 }
 
 - (IBAction)didTapFromButton:(id)sender {
-    [_delegate rideRequestView:self didTapEditLocation:CLLocationCoordinate2DMake(_route.home.coordinate.latitude, _route.home.coordinate.longitude) locationName:@"Home" type:kHomeType];
+    [_delegate rideRequestView:self didTapEditLocation:CLLocationCoordinate2DMake(_route.home.coordinate.latitude, _route.home.coordinate.longitude) locationName:@"Home" type:kPreferredPickupPointType];
 }
 
 - (IBAction)didTapToButton:(id)sender {
@@ -290,7 +290,7 @@
 
 - (void) updateLocation:(CLPlacemark*) placemark type:(NSInteger) type {
     switch (type) {
-        case kHomeType:
+        case kPreferredPickupPointType:
         {
             _route.home = [[CLLocation alloc] initWithLatitude:placemark.location.coordinate.latitude longitude:placemark.location.coordinate.longitude];
             _route.homePlaceName = ABCreateStringWithAddressDictionary(placemark.addressDictionary, NO);

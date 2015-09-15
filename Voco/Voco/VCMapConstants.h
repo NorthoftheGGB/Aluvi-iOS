@@ -9,10 +9,11 @@
 #ifndef Voco_MapContants_h
 #define Voco_MapContants_h
 
-#define kHomeType 3000
+#define kPreferredPickupPointType 3000
 #define kWorkType 3001
 #define kPickupZoneType 3002
 #define kMeetingPointType 3003
+#define kPickupPointsType 3004
 
 #define kPickupZoneAnnotationType @"kPickupZoneTypeString"
 #define kPickupPointsAnnotationType @"kPickupPointsAnnotationType"

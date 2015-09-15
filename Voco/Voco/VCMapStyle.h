@@ -12,6 +12,7 @@
 
 + (UIImage *) homePinImage;
 + (UIImage *) workPinImage;
++ (UIImage *) pickupPointPinImage;
 + (UIImage *) annotationImageForType: (NSInteger) type;
 + (NSInteger) defaultZoomForType: (NSInteger) type;
 + (NSInteger) defaultZoomForTypeSelection: (NSInteger) type;

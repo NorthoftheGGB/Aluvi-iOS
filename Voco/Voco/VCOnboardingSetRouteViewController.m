@@ -95,7 +95,7 @@
     if(_driverSwitch.on){
         _editLocationType = kPickupZoneType;
     } else {
-        _editLocationType = kHomeType;
+        _editLocationType = kPreferredPickupPointType;
     }
     [self transitionToTicketViewController: _editLocationType];
 }
@@ -142,7 +142,7 @@
         placeName = @"My Location";
     }
     switch(type){
-        case kHomeType:
+        case kPreferredPickupPointType:
         {
             _route.home = [[CLLocation alloc] initWithLatitude:placemark.location.coordinate.latitude longitude:placemark.location.coordinate.longitude];
             _route.homePlaceName = placeName;

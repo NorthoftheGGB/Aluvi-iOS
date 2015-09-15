@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16D097570B794591321C25CD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1575CF58839CCB22ADD218 /* libPods.a */; };
 		36000C8E1B7289D7008E84AE /* VCPaymentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000C8D1B7289D7008E84AE /* VCPaymentsViewController.m */; };
 		36000C8F1B7289D7008E84AE /* VCPaymentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000C8D1B7289D7008E84AE /* VCPaymentsViewController.m */; };
 		36000C901B7289D7008E84AE /* VCPaymentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 36000C8D1B7289D7008E84AE /* VCPaymentsViewController.m */; };
@@ -203,6 +204,7 @@
 		36FB728C1B6D6B4200F8A6AF /* VCPaymentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36FB728A1B6D6B4200F8A6AF /* VCPaymentsViewController.xib */; };
 		36FB728D1B6D6B4200F8A6AF /* VCPaymentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36FB728A1B6D6B4200F8A6AF /* VCPaymentsViewController.xib */; };
 		36FB728E1B6D6B4200F8A6AF /* VCPaymentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36FB728A1B6D6B4200F8A6AF /* VCPaymentsViewController.xib */; };
+		471B11C1713710A24E6BAAB7 /* (null) in Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (Weak, ); }; };
 		4F1849E5198F625A006EA959 /* driver-cancel-hud-icon-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849E3198F625A006EA959 /* driver-cancel-hud-icon-select@2x.png */; };
 		4F1849E8198F625A006EA959 /* driver-cancel-hud-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849E4198F625A006EA959 /* driver-cancel-hud-icon@2x.png */; };
 		4F1849EC198F67A4006EA959 /* driver-call-hud-icon-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F1849EB198F67A4006EA959 /* driver-call-hud-icon-select@2x.png */; };
@@ -243,6 +245,7 @@
 		4FFE17031989E801004D4413 /* VCMenuItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE17011989E801004D4413 /* VCMenuItemTableViewCell.m */; };
 		4FFE17061989E801004D4413 /* VCMenuItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE17021989E801004D4413 /* VCMenuItemTableViewCell.xib */; };
 		4FFE171E198A1890004D4413 /* menu-map-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FFE171D198A1890004D4413 /* menu-map-icon@2x.png */; };
+		6054377C524A9C77909AFEF5 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F1575CF58839CCB22ADD218 /* libPods.a */; };
 		841647721B64A47D00CD20AC /* VCPushApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FE1B1F193D8FE500354886 /* VCPushApi.m */; };
 		841647731B64A47D00CD20AC /* VCPasswordTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFBA440195E608600A51B84 /* VCPasswordTextField.m */; };
 		841647741B64A47D00CD20AC /* VCCarModelTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FE712CC197368C80071020C /* VCCarModelTextField.m */; };
@@ -345,7 +348,7 @@
 		841648011B64A47D00CD20AC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BED192BF6BF005D8645 /* CoreData.framework */; };
 		841648021B64A47D00CD20AC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BEB192BF6BF005D8645 /* UIKit.framework */; };
 		841648031B64A47D00CD20AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BE7192BF6BF005D8645 /* Foundation.framework */; };
-		841648041B64A47D00CD20AC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 351E93948BFC43989C411DB5 /* libPods.a */; };
+		841648041B64A47D00CD20AC /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		841648051B64A47D00CD20AC /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CC61B1E5D14004446AF /* Bolts.framework */; };
 		841648061B64A47D00CD20AC /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CC81B1E5D14004446AF /* ParseCrashReporting.framework */; };
 		841648081B64A47D00CD20AC /* VCCommuterPassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB019661C3400AD4229 /* VCCommuterPassViewController.xib */; };
@@ -498,7 +501,6 @@
 		841649361B658F4900CD20AC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BED192BF6BF005D8645 /* CoreData.framework */; };
 		841649371B658F4900CD20AC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BEB192BF6BF005D8645 /* UIKit.framework */; };
 		841649381B658F4900CD20AC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BE7192BF6BF005D8645 /* Foundation.framework */; };
-		841649391B658F4900CD20AC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 351E93948BFC43989C411DB5 /* libPods.a */; };
 		8416493A1B658F4900CD20AC /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CC61B1E5D14004446AF /* Bolts.framework */; };
 		8416493B1B658F4900CD20AC /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CC81B1E5D14004446AF /* ParseCrashReporting.framework */; };
 		8416493D1B658F4900CD20AC /* VCCommuterPassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB019661C3400AD4229 /* VCCommuterPassViewController.xib */; };
@@ -572,6 +574,17 @@
 		84573B8F1BA24D76007AD8B4 /* VCDriverApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 84573B8B1BA24D76007AD8B4 /* VCDriverApi.m */; };
 		84573B901BA24D76007AD8B4 /* VCDriverApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 84573B8B1BA24D76007AD8B4 /* VCDriverApi.m */; };
 		84573B911BA24D76007AD8B4 /* VCDriverApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 84573B8B1BA24D76007AD8B4 /* VCDriverApi.m */; };
+		84573B941BA79EFF007AD8B4 /* VCPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84573B931BA79EFF007AD8B4 /* VCPointAnnotation.m */; };
+		84573B951BA79EFF007AD8B4 /* VCPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84573B931BA79EFF007AD8B4 /* VCPointAnnotation.m */; };
+		84573B961BA79EFF007AD8B4 /* VCPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84573B931BA79EFF007AD8B4 /* VCPointAnnotation.m */; };
+		84573B971BA79EFF007AD8B4 /* VCPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84573B931BA79EFF007AD8B4 /* VCPointAnnotation.m */; };
+		84573B981BA79EFF007AD8B4 /* VCPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84573B931BA79EFF007AD8B4 /* VCPointAnnotation.m */; };
+		84573B9A1BA7AA17007AD8B4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84573B991BA7AA17007AD8B4 /* libPods.a */; };
+		84573B9C1BA7AFD6007AD8B4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84573B9B1BA7AFD6007AD8B4 /* Settings.bundle */; };
+		84573B9D1BA7AFD6007AD8B4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84573B9B1BA7AFD6007AD8B4 /* Settings.bundle */; };
+		84573B9E1BA7AFD6007AD8B4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84573B9B1BA7AFD6007AD8B4 /* Settings.bundle */; };
+		84573B9F1BA7AFD6007AD8B4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84573B9B1BA7AFD6007AD8B4 /* Settings.bundle */; };
+		84573BA01BA7AFD6007AD8B4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84573B9B1BA7AFD6007AD8B4 /* Settings.bundle */; };
 		849A3CCC1B1E5D14004446AF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CC61B1E5D14004446AF /* Bolts.framework */; };
 		849A3CCF1B1E5D14004446AF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CC61B1E5D14004446AF /* Bolts.framework */; };
 		849A3CD01B1E5D14004446AF /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CC71B1E5D14004446AF /* Parse.framework */; };
@@ -743,7 +756,7 @@
 		84F222BE1B82611B00E5F7B7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BED192BF6BF005D8645 /* CoreData.framework */; };
 		84F222BF1B82611B00E5F7B7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BEB192BF6BF005D8645 /* UIKit.framework */; };
 		84F222C01B82611B00E5F7B7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BE7192BF6BF005D8645 /* Foundation.framework */; };
-		84F222C11B82611B00E5F7B7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 351E93948BFC43989C411DB5 /* libPods.a */; };
+		84F222C11B82611B00E5F7B7 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		84F222C21B82611B00E5F7B7 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CC61B1E5D14004446AF /* Bolts.framework */; };
 		84F222C31B82611B00E5F7B7 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 849A3CC81B1E5D14004446AF /* ParseCrashReporting.framework */; };
 		84F222C51B82611B00E5F7B7 /* VCCommuterPassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB019661C3400AD4229 /* VCCommuterPassViewController.xib */; };
@@ -909,7 +922,6 @@
 		F4C6B238197F06B100F6C10B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BED192BF6BF005D8645 /* CoreData.framework */; };
 		F4C6B239197F06B100F6C10B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BEB192BF6BF005D8645 /* UIKit.framework */; };
 		F4C6B23A197F06B100F6C10B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BE7192BF6BF005D8645 /* Foundation.framework */; };
-		F4C6B23B197F06B100F6C10B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 351E93948BFC43989C411DB5 /* libPods.a */; };
 		F4C6B23E197F06B100F6C10B /* VCCommuterPassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB019661C3400AD4229 /* VCCommuterPassViewController.xib */; };
 		F4C6B241197F06B100F6C10B /* call-button-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C6019761C20007609E8 /* call-button-select@2x.png */; };
 		F4C6B242197F06B100F6C10B /* call-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C6119761C21007609E8 /* call-button@2x.png */; };
@@ -1018,7 +1030,7 @@
 		F4D8FE9419B1745A00BC0B69 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BED192BF6BF005D8645 /* CoreData.framework */; };
 		F4D8FE9519B1745A00BC0B69 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BEB192BF6BF005D8645 /* UIKit.framework */; };
 		F4D8FE9619B1745A00BC0B69 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4FA0BE7192BF6BF005D8645 /* Foundation.framework */; };
-		F4D8FE9719B1745A00BC0B69 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 351E93948BFC43989C411DB5 /* libPods.a */; };
+		F4D8FE9719B1745A00BC0B69 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		F4D8FE9A19B1745A00BC0B69 /* VCCommuterPassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9ECEB019661C3400AD4229 /* VCCommuterPassViewController.xib */; };
 		F4D8FE9D19B1745A00BC0B69 /* temp-call-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F30991219B02BCD00DFCDD1 /* temp-call-button@2x.png */; };
 		F4D8FE9E19B1745A00BC0B69 /* call-button-select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FCD7C6019761C20007609E8 /* call-button-select@2x.png */; };
@@ -1075,7 +1087,6 @@
 
 /* Begin PBXFileReference section */
 		0D14E3F5E1EECB39D89015B1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		351E93948BFC43989C411DB5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		36000C8C1B7289D7008E84AE /* VCPaymentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPaymentsViewController.h; sourceTree = "<group>"; };
 		36000C8D1B7289D7008E84AE /* VCPaymentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPaymentsViewController.m; sourceTree = "<group>"; };
 		36000C931B72B295008E84AE /* VCReceiptViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCReceiptViewController.xib; sourceTree = "<group>"; };
@@ -1141,6 +1152,7 @@
 		36FA80861B7D831C00C65DF2 /* driver-hov-toggle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "driver-hov-toggle@2x.png"; sourceTree = "<group>"; };
 		36FA808B1B7D8FFC00C65DF2 /* menu-backhome-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-backhome-icon@2x.png"; sourceTree = "<group>"; };
 		36FB728A1B6D6B4200F8A6AF /* VCPaymentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCPaymentsViewController.xib; sourceTree = "<group>"; };
+		4F1575CF58839CCB22ADD218 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F1849E3198F625A006EA959 /* driver-cancel-hud-icon-select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "driver-cancel-hud-icon-select@2x.png"; sourceTree = "<group>"; };
 		4F1849E4198F625A006EA959 /* driver-cancel-hud-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "driver-cancel-hud-icon@2x.png"; sourceTree = "<group>"; };
 		4F1849EB198F67A4006EA959 /* driver-call-hud-icon-select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "driver-call-hud-icon-select@2x.png"; sourceTree = "<group>"; };
@@ -1256,6 +1268,10 @@
 		844415371B72BBE5008C7898 /* VCMapHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCMapHelper.m; sourceTree = "<group>"; };
 		84573B8B1BA24D76007AD8B4 /* VCDriverApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCDriverApi.m; sourceTree = "<group>"; };
 		84573B8C1BA24D76007AD8B4 /* VCDriverApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCDriverApi.h; sourceTree = "<group>"; };
+		84573B921BA79EFF007AD8B4 /* VCPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPointAnnotation.h; sourceTree = "<group>"; };
+		84573B931BA79EFF007AD8B4 /* VCPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPointAnnotation.m; sourceTree = "<group>"; };
+		84573B991BA7AA17007AD8B4 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "/Users/matthewxi/software-development/Clients/Will_OBrien/aluvi-ios/Pods/../build/Debug-iphoneos/libPods.a"; sourceTree = "<absolute>"; };
+		84573B9B1BA7AFD6007AD8B4 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		849A3CC61B1E5D14004446AF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		849A3CC71B1E5D14004446AF /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		849A3CC81B1E5D14004446AF /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
@@ -1503,9 +1519,11 @@
 				841648011B64A47D00CD20AC /* CoreData.framework in Frameworks */,
 				841648021B64A47D00CD20AC /* UIKit.framework in Frameworks */,
 				841648031B64A47D00CD20AC /* Foundation.framework in Frameworks */,
-				841648041B64A47D00CD20AC /* libPods.a in Frameworks */,
+				841648041B64A47D00CD20AC /* (null) in Frameworks */,
 				841648051B64A47D00CD20AC /* Bolts.framework in Frameworks */,
 				841648061B64A47D00CD20AC /* ParseCrashReporting.framework in Frameworks */,
+				471B11C1713710A24E6BAAB7 /* (null) in Frameworks */,
+				16D097570B794591321C25CD /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1534,9 +1552,9 @@
 				841649361B658F4900CD20AC /* CoreData.framework in Frameworks */,
 				841649371B658F4900CD20AC /* UIKit.framework in Frameworks */,
 				841649381B658F4900CD20AC /* Foundation.framework in Frameworks */,
-				841649391B658F4900CD20AC /* libPods.a in Frameworks */,
 				8416493A1B658F4900CD20AC /* Bolts.framework in Frameworks */,
 				8416493B1B658F4900CD20AC /* ParseCrashReporting.framework in Frameworks */,
+				6054377C524A9C77909AFEF5 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1565,7 +1583,7 @@
 				84F222BE1B82611B00E5F7B7 /* CoreData.framework in Frameworks */,
 				84F222BF1B82611B00E5F7B7 /* UIKit.framework in Frameworks */,
 				84F222C01B82611B00E5F7B7 /* Foundation.framework in Frameworks */,
-				84F222C11B82611B00E5F7B7 /* libPods.a in Frameworks */,
+				84F222C11B82611B00E5F7B7 /* (null) in Frameworks */,
 				84F222C21B82611B00E5F7B7 /* Bolts.framework in Frameworks */,
 				84F222C31B82611B00E5F7B7 /* ParseCrashReporting.framework in Frameworks */,
 			);
@@ -1575,6 +1593,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84573B9A1BA7AA17007AD8B4 /* libPods.a in Frameworks */,
 				F4C6B237197F06B100F6C10B /* CoreGraphics.framework in Frameworks */,
 				849A3CF31B1E5EAF004446AF /* CFNetwork.framework in Frameworks */,
 				844070291B64700B00EF35E1 /* MobileCoreServices.framework in Frameworks */,
@@ -1595,7 +1614,6 @@
 				F4C6B238197F06B100F6C10B /* CoreData.framework in Frameworks */,
 				F4C6B239197F06B100F6C10B /* UIKit.framework in Frameworks */,
 				F4C6B23A197F06B100F6C10B /* Foundation.framework in Frameworks */,
-				F4C6B23B197F06B100F6C10B /* libPods.a in Frameworks */,
 				849A3CCC1B1E5D14004446AF /* Bolts.framework in Frameworks */,
 				849A3CD41B1E5D14004446AF /* ParseCrashReporting.framework in Frameworks */,
 			);
@@ -1626,7 +1644,7 @@
 				F4D8FE9419B1745A00BC0B69 /* CoreData.framework in Frameworks */,
 				F4D8FE9519B1745A00BC0B69 /* UIKit.framework in Frameworks */,
 				F4D8FE9619B1745A00BC0B69 /* Foundation.framework in Frameworks */,
-				F4D8FE9719B1745A00BC0B69 /* libPods.a in Frameworks */,
+				F4D8FE9719B1745A00BC0B69 /* (null) in Frameworks */,
 				849A3CCF1B1E5D14004446AF /* Bolts.framework in Frameworks */,
 				849A3CD71B1E5D14004446AF /* ParseCrashReporting.framework in Frameworks */,
 			);
@@ -1904,6 +1922,8 @@
 				8435C58E1B7ABE4C000401CA /* VCMapStyle.m */,
 				844415361B72BBE5008C7898 /* VCMapHelper.h */,
 				844415371B72BBE5008C7898 /* VCMapHelper.m */,
+				84573B921BA79EFF007AD8B4 /* VCPointAnnotation.h */,
+				84573B931BA79EFF007AD8B4 /* VCPointAnnotation.m */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -2260,6 +2280,7 @@
 		F4FA0BE6192BF6BF005D8645 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84573B991BA7AA17007AD8B4 /* libPods.a */,
 				849A3CFA1B1E5EFF004446AF /* Social.framework */,
 				849A3CF81B1E5EF3004446AF /* Accounts.framework */,
 				849A3CF01B1E5E50004446AF /* libz.dylib */,
@@ -2288,7 +2309,7 @@
 				F4FA0BEB192BF6BF005D8645 /* UIKit.framework */,
 				F4FA0BED192BF6BF005D8645 /* CoreData.framework */,
 				F4FA0C05192BF6BF005D8645 /* XCTest.framework */,
-				351E93948BFC43989C411DB5 /* libPods.a */,
+				4F1575CF58839CCB22ADD218 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2313,6 +2334,7 @@
 		F4FA0BF0192BF6BF005D8645 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				84573B9B1BA7AFD6007AD8B4 /* Settings.bundle */,
 				841648A11B64A47D00CD20AC /* Aluvi Distribution copy-Info.plist */,
 				841649D51B658F4A00CD20AC /* Aluvi Development copy2-Info.plist */,
 				F4C97B3619F8C104006521C1 /* Voco Dev-Info.plist */,
@@ -2577,6 +2599,7 @@
 				8416480A1B64A47D00CD20AC /* call-button-select@2x.png in Resources */,
 				8416480B1B64A47D00CD20AC /* call-button@2x.png in Resources */,
 				36E48E6A1B7AA6920034DFEB /* nav_bg.png in Resources */,
+				84573B9F1BA7AFD6007AD8B4 /* Settings.bundle in Resources */,
 				36000C971B72B295008E84AE /* VCReceiptViewController.xib in Resources */,
 				8416480E1B64A47D00CD20AC /* directions-button-selected@2x.png in Resources */,
 				369DBC1C1B6D22F900449CB4 /* test.jpg in Resources */,
@@ -2691,6 +2714,7 @@
 				36E48E6D1B7ABF9F0034DFEB /* Bryant-Regular.ttf in Resources */,
 				841649701B658F4900CD20AC /* zoom-ride-bounds@2x.png in Resources */,
 				36E48E861B7B01100034DFEB /* Default@2x.png in Resources */,
+				84573B9D1BA7AFD6007AD8B4 /* Settings.bundle in Resources */,
 				841649761B658F4900CD20AC /* current-location-arrow-select@2x.png in Resources */,
 				360C67E01B8BE555008F4BB0 /* camera@2x.png in Resources */,
 				841649781B658F4900CD20AC /* map_pin_fill-512.png in Resources */,
@@ -2756,6 +2780,7 @@
 				84F222C71B82611B00E5F7B7 /* call-button-select@2x.png in Resources */,
 				84F222C81B82611B00E5F7B7 /* call-button@2x.png in Resources */,
 				84F222C91B82611B00E5F7B7 /* nav_bg.png in Resources */,
+				84573BA01BA7AFD6007AD8B4 /* Settings.bundle in Resources */,
 				84F222CB1B82611B00E5F7B7 /* VCReceiptViewController.xib in Resources */,
 				84F222CC1B82611B00E5F7B7 /* directions-button-selected@2x.png in Resources */,
 				84F222CE1B82611B00E5F7B7 /* test.jpg in Resources */,
@@ -2870,6 +2895,7 @@
 				36E48E6C1B7ABF9F0034DFEB /* Bryant-Regular.ttf in Resources */,
 				36638D7D1B659CAE004EDB09 /* VCDriverTicketView.xib in Resources */,
 				36E48E851B7B01100034DFEB /* Default@2x.png in Resources */,
+				84573B9C1BA7AFD6007AD8B4 /* Settings.bundle in Resources */,
 				F4C6B267197F06B100F6C10B /* current-location-arrow-select@2x.png in Resources */,
 				360C67DF1B8BE554008F4BB0 /* camera@2x.png in Resources */,
 				F4C6B268197F06B100F6C10B /* map_pin_fill-512.png in Resources */,
@@ -2979,6 +3005,7 @@
 				4FD1297F19D62462000E7C39 /* ride-bounds-button@2x.png in Resources */,
 				F4D8FEFB19B1745A00BC0B69 /* menu-profile-icon@2x.png in Resources */,
 				368816AE1B9FE39000865AA5 /* map_point@2x.png in Resources */,
+				84573B9E1BA7AFD6007AD8B4 /* Settings.bundle in Resources */,
 				F4D8FEFC19B1745A00BC0B69 /* zoom-ride-bounds-select@2x.png in Resources */,
 				F4D8FEFD19B1745A00BC0B69 /* InfoPlist.strings in Resources */,
 				4FAB576E19D0C637009055D7 /* menu-badge@2x.jpg in Resources */,
@@ -3231,6 +3258,7 @@
 				841647841B64A47D00CD20AC /* VCButtonBold.m in Sources */,
 				841647851B64A47D00CD20AC /* Rider.m in Sources */,
 				841647861B64A47D00CD20AC /* VCUtilities.m in Sources */,
+				84573B971BA79EFF007AD8B4 /* VCPointAnnotation.m in Sources */,
 				841647891B64A47D00CD20AC /* VCLabelSmall.m in Sources */,
 				8416478A1B64A47D00CD20AC /* Driver.m in Sources */,
 				8416478B1B64A47D00CD20AC /* VCDialogs.m in Sources */,
@@ -3344,6 +3372,7 @@
 				841648B91B658F4900CD20AC /* VCRideIdentity.m in Sources */,
 				841648BA1B658F4900CD20AC /* VCRidesApi.m in Sources */,
 				841648BB1B658F4900CD20AC /* VCMenuItemTableViewCell.m in Sources */,
+				84573B951BA79EFF007AD8B4 /* VCPointAnnotation.m in Sources */,
 				841648BC1B658F4900CD20AC /* VCButtonBold.m in Sources */,
 				841648BF1B658F4900CD20AC /* VCUtilities.m in Sources */,
 				841648C11B658F4900CD20AC /* VCLabelSmall.m in Sources */,
@@ -3457,6 +3486,7 @@
 				84F222401B82611B00E5F7B7 /* VCButtonBold.m in Sources */,
 				84F222411B82611B00E5F7B7 /* Rider.m in Sources */,
 				84F222431B82611B00E5F7B7 /* VCUtilities.m in Sources */,
+				84573B981BA79EFF007AD8B4 /* VCPointAnnotation.m in Sources */,
 				84F222441B82611B00E5F7B7 /* VCLabelSmall.m in Sources */,
 				84F222451B82611B00E5F7B7 /* Driver.m in Sources */,
 				84F222461B82611B00E5F7B7 /* VCDialogs.m in Sources */,
@@ -3570,6 +3600,7 @@
 				F4C6B1D0197F06B100F6C10B /* VCRidesApi.m in Sources */,
 				4FFE17031989E801004D4413 /* VCMenuItemTableViewCell.m in Sources */,
 				F4C6B1D2197F06B100F6C10B /* VCButtonBold.m in Sources */,
+				84573B941BA79EFF007AD8B4 /* VCPointAnnotation.m in Sources */,
 				F4C6B1D4197F06B100F6C10B /* VCUtilities.m in Sources */,
 				F4C6B1D8197F06B100F6C10B /* VCLabelSmall.m in Sources */,
 				36F9F65D1B6AF58E00440D03 /* VCRiderTicketView.m in Sources */,
@@ -3683,6 +3714,7 @@
 				F4D8FE1D19B1745A00BC0B69 /* VCButtonBold.m in Sources */,
 				F4D8FE1F19B1745A00BC0B69 /* Rider.m in Sources */,
 				F4D8FE2019B1745A00BC0B69 /* VCUtilities.m in Sources */,
+				84573B961BA79EFF007AD8B4 /* VCPointAnnotation.m in Sources */,
 				F4D8FE2319B1745A00BC0B69 /* VCLabelSmall.m in Sources */,
 				F4D8FE2419B1745A00BC0B69 /* Driver.m in Sources */,
 				F4D8FE2519B1745A00BC0B69 /* VCDialogs.m in Sources */,
@@ -4100,6 +4132,10 @@
 				);
 				INFOPLIST_FILE = "Voco Dev-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/matthewxi/software-development/Clients/Will_OBrien/aluvi-ios/Pods/../build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "Aluvi Dev";
 				PROVISIONING_PROFILE = "0c2e0ce2-3365-4569-ac6d-a057468a3770";
 				WRAPPER_EXTENSION = app;
@@ -4163,6 +4199,10 @@
 				);
 				INFOPLIST_FILE = "Voco Dev-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/matthewxi/software-development/Clients/Will_OBrien/aluvi-ios/Pods/../build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "Aluvi Dev";
 				PROVISIONING_PROFILE = "0c2e0ce2-3365-4569-ac6d-a057468a3770";
 				WRAPPER_EXTENSION = app;
