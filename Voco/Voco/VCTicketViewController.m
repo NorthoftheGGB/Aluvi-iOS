@@ -1218,7 +1218,7 @@
                                              [[VCCommuteManager instance] refreshTickets];
                                          } paymentRequired:^{
                                              [hud hide:YES];
-                                             [UIAlertView showWithTitle:@"Credit Card Required" message:@"You've used your free ride, we hope it went well. We'll need your credit card information now to schedule additional rides!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                             [UIAlertView showWithTitle:@"Credit Card Required" message:@"You've used your free ride, we hope it went well. We'll need your credit card information now to schedule additional rides! Aluvi charges ¢.25-30/mile. When there are more riders the cost to you is less!" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                                                  [self showPaymentMethodDetailsView];
                                              }];
                                          } failure:^{
