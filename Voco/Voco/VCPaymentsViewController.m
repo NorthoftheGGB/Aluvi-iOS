@@ -217,7 +217,12 @@
 
 - (IBAction)didTapSave:(id)sender {
     
-    [self doneWithCardEntry];
+    if(_cardView.card != nil){
+        [self saveCard:_cardView];
+    }
+    if(_debitCardView.card != nil){
+        [self saveCard:_debitCardView];
+    }
 }
 
 - (void) saveCard:(PTKView*)selectedCardView {
