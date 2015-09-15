@@ -55,7 +55,7 @@
 
 -(void)awakeFromNib{
     
-        [self setGradient];
+    [self setGradient];
     
     _morningOptions = @[
                         @"5:00", @"5:15", @"5:30", @"5:45",
@@ -98,11 +98,13 @@
     }
     if(route.pickupTime != nil) {
         _toWorkTimeLabel.text = route.pickupTime;
-        [_toWorkTimeStepper setValue:[_morningOptions indexOfObjectIdenticalTo:route.pickupTime]];
+        NSInteger value = [_morningOptions indexOfObject:route.pickupTime];
+        _toWorkTimeStepper.value = value;
     }
     if(route.returnTime != nil) {
         _toHomeTimeLabel.text = route.returnTime;
-        [_toHomeTimeStepper setValue:[_eveningOptions indexOfObjectIdenticalTo:route.returnTime]];
+        NSInteger value = [_eveningOptions indexOfObject:route.returnTime];
+        [_toHomeTimeStepper setValue:value];
     }
     [self updateFromButton:route.homePlaceName];
     [self updateToButton:route.workPlaceName];
