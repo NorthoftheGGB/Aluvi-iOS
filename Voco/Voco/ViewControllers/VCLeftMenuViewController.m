@@ -85,7 +85,6 @@ static void * XXContext = &XXContext;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
-        
         if([[VCUserStateManager instance] isHovDriver]){
             _tableCellList = [NSMutableArray arrayWithArray: @[kUserInfoCell, kCommuteCell, kBackHomeCell, kMyCarCell, kPaymentCell, kReceiptsCell,  kSupportCell, kLogoutCell, kTriageCell ]];
             

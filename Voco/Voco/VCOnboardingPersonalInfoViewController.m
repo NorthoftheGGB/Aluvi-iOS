@@ -6,17 +6,21 @@
 //  Copyright (c) 2015 Voco. All rights reserved.
 //
 
+#import "VCOnboardingPersonalInfoViewController.h"
+#import "US2ConditionEmail.h"
+#import "US2Validator.h"
+#import "VCTextField.h"
+
 #define kFullNameField 1
 #define kPhoneNumberField 2
 #define kWorkEmailField 3
 
-#import "VCOnboardingPersonalInfoViewController.h"
 
 @interface VCOnboardingPersonalInfoViewController ()
 
 @property (strong, nonatomic) IBOutlet UITextField *onboardingFullNameTextField;
 @property (strong, nonatomic) IBOutlet UITextField *onboardingPhoneNumberTextField;
-@property (strong, nonatomic) IBOutlet UITextField *onboardingWorkEmailTextField;
+@property (strong, nonatomic) IBOutlet VCTextField *onboardingWorkEmailTextField;
 - (IBAction)nextButtonTutorial:(id)sender;
 
 @end
@@ -31,6 +35,13 @@
     _onboardingPhoneNumberTextField.text = @"9876787656";
     _onboardingWorkEmailTextField.text = @"asdf@asdf.com";
 #endif
+    
+    // Set up some validation
+    US2ConditionEmail *emailCondition = [[US2ConditionEmail alloc] init];
+    US2Validator *validator = [[US2Validator alloc] init];
+    [validator addCondition:emailCondition];
+    _onboardingWorkEmailTextField.validator = validator;
+    _onboardingWorkEmailTextField.fieldName = @"Work Email";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,6 +65,31 @@
         [UIAlertView showWithTitle:@"Error" message:@"Work email is required for commuter compensation" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
         return;
     }
+    
+    
+    NSError *error             = NULL;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern: @"['a-zA-Z\\s]" options:0 error:&error];
+    NSUInteger numberOfMatches = [regex numberOfMatchesInString:_onboardingFullNameTextField.text options:0 range:NSMakeRange(0, _onboardingFullNameTextField.text.length)];
+    
+    if(numberOfMatches != _onboardingFullNameTextField.text.length){
+        [UIAlertView showWithTitle:@"Error" message:@"Please enter only valid characters in your name" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        return;
+    }
+    
+    error             = NULL;
+    regex = [NSRegularExpression regularExpressionWithPattern: @"[0-9]" options:0 error:&error];
+    numberOfMatches = [regex numberOfMatchesInString:_onboardingPhoneNumberTextField.text options:0 range:NSMakeRange(0, _onboardingPhoneNumberTextField.text.length)];
+    if(numberOfMatches != _onboardingPhoneNumberTextField.text.length){
+        [UIAlertView showWithTitle:@"Error" message:@"Please enter only numbers for your phone number" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        return;
+    }
+    
+    if(_onboardingWorkEmailTextField.text != nil && ![_onboardingWorkEmailTextField.text isEqualToString:@""]){
+        if(![_onboardingWorkEmailTextField validate]){
+            return;
+        }
+    }
+    
     
     NSString * firstName = parts[0];
     NSString * lastName = parts[1];

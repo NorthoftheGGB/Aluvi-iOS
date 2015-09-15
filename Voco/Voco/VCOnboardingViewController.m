@@ -137,8 +137,8 @@
         [self registerUser];
     } else {
         NSInteger width = [[[UIApplication sharedApplication] delegate] window].frame.size.width;
-        CGRect visible = CGRectMake(320 * (onboardingChildViewController.index + 1), 0, width, self.view.frame.size.height);
-        _currentIndex = onboardingChildViewController.index + 1;
+        CGRect visible = CGRectMake(320 * (onboardingChildViewController.index + 1 + 3), 0, width, self.view.frame.size.height);
+        _currentIndex = onboardingChildViewController.index + 1 + 3;
         _locked = NO;
         _scrollView.userInteractionEnabled = NO;
         [self.scrollView scrollRectToVisible:visible animated:YES];

@@ -166,6 +166,7 @@
         [UIAlertView showWithTitle:@"Username/Password" message:@"Please fill in your desired email and password" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
         return;
     }
+
     
     if(![_emailTextField validate]){
         return;
