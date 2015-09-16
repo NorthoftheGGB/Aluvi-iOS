@@ -55,8 +55,8 @@
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = frame;
     gradient.colors = [VCStyle gradientColors];
-    gradient.startPoint = CGPointMake(-1, 0.5);
-    gradient.endPoint = CGPointMake(3.0, 0.5);
+    gradient.startPoint = CGPointMake(-0.5, 0.5);
+    gradient.endPoint = CGPointMake(3, 0.5);
     return gradient;
 }
 

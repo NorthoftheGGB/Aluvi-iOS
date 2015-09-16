@@ -50,7 +50,7 @@
 }
 
 + (NSArray *) gradient2Colors{
-    return @[[self drkGreenCGColor], [self greenCGColor], [self greenCGColor], [self blueCGColor] ];
+    return @[[self drkGreenCGColor], [self greenCGColor], [self blueCGColor] ];
 }
 
 + (CAGradientLayer *) gradient2Layer: (CGRect) frame {
