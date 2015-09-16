@@ -1745,6 +1745,7 @@
             circle.lineColor = [UIColor colorWithRed:.5 green:.466 blue:.733 alpha:.75];
             circle.fillColor = [UIColor colorWithRed:.5 green:.466 blue:.733 alpha:.25];
             circle.lineWidthInPixels = 5.0;
+            
             return circle;
         } else if ([annotation.userInfo isEqualToString:kPickupPointsAnnotationType]){
             RMMarker * marker = [[RMMarker alloc] initWithUIImage:[UIImage imageNamed:@"map_point"] anchorPoint:CGPointMake(.5,1)];
