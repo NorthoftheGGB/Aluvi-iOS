@@ -75,7 +75,7 @@
     
     CGRect gradientFrame = frame;
     gradientFrame.size.width = size.width;
-    [self.scrollView.layer insertSublayer:[VCStyle gradientLayer:gradientFrame] atIndex:0];
+    [self.scrollView.layer insertSublayer:[VCStyle gradient2Layer:gradientFrame] atIndex:0];
     [self.view setNeedsLayout];
     
     CGRect frame1 = frame;

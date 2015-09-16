@@ -19,6 +19,10 @@
 + (NSArray *) gradientColors;
 + (CAGradientLayer *) gradientLayer: (CGRect) frame;
 
+
++ (NSArray *) gradient2Colors;
++ (CAGradientLayer *) gradient2Layer: (CGRect) frame;
+
 + (UIColor *) greyColor;
 + (UIColor *) drkBlueColor;
 

@@ -10,6 +10,15 @@
 
 @implementation VCStyle
 
++ (UIColor *) drkGreenColor {
+    return [UIColor colorWithRed:0.22 green:0.54 blue:0.41 alpha:1];
+}
+
++ (id) drkGreenCGColor {
+    return (id) [[self drkGreenColor] CGColor];
+}
+
+
 + (UIColor *) greenColor {
     return [UIColor colorWithRed:.31 green:.65 blue:.50 alpha:1];
 }
@@ -39,6 +48,22 @@
     gradient.endPoint = CGPointMake(1.0, 0.5);
     return gradient;
 }
+
++ (NSArray *) gradient2Colors{
+    return @[[self drkGreenCGColor], [self greenCGColor], [self greenCGColor], [self blueCGColor] ];
+}
+
++ (CAGradientLayer *) gradient2Layer: (CGRect) frame {
+    CAGradientLayer *gradient2 = [CAGradientLayer layer];
+    gradient2.frame = frame;
+    gradient2.colors = [VCStyle gradient2Colors];
+    gradient2.startPoint = CGPointMake(0.0, 0.5);
+    gradient2.endPoint = CGPointMake(1.0, 0.5);
+    return gradient2;
+}
+
+
+
 
 + (UIColor *) greyColor{
     return [UIColor colorWithRed:.36 green:.40 blue:.40 alpha:1];
