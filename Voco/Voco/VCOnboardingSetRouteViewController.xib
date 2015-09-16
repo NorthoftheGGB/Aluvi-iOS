@@ -42,8 +42,11 @@
                         <action selector="didTapOnboardingWorkLocationButton:" destination="-1" eventType="touchUpInside" id="B1h-rM-goY"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="haZ-gZ-Gmr" customClass="VCButtonBold">
-                    <rect key="frame" x="0.0" y="510" width="321" height="58"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="haZ-gZ-Gmr" customClass="VCButtonBold">
+                    <rect key="frame" x="0.0" y="510" width="320" height="58"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="58" id="BNf-aP-wP1"/>
+                    </constraints>
                     <state key="normal" title="NEXT ≥">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
@@ -82,6 +85,12 @@
                 </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="tintColor" red="0.35686274509999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="haZ-gZ-Gmr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7Nt-Yo-DfH"/>
+                <constraint firstAttribute="bottom" secondItem="haZ-gZ-Gmr" secondAttribute="bottom" id="OP5-zU-VTi"/>
+                <constraint firstAttribute="trailing" secondItem="haZ-gZ-Gmr" secondAttribute="trailing" id="wUJ-Pz-YsE"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
         <view contentMode="scaleToFill" id="JKs-8A-DdP">
