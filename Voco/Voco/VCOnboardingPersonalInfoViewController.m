@@ -84,6 +84,11 @@
         return;
     }
     
+    if([_onboardingPhoneNumberTextField.text length] != 10){
+        [UIAlertView showWithTitle:@"Error" message:@"Phone number should be exactly ten numerals" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        return;
+    }
+    
     if(_onboardingWorkEmailTextField.text != nil && ![_onboardingWorkEmailTextField.text isEqualToString:@""]){
         if(![_onboardingWorkEmailTextField validate]){
             return;
