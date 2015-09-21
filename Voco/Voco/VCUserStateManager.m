@@ -209,9 +209,9 @@ static VCUserStateManager *sharedSingleton;
     [VCUsersApi getUserState:[RKObjectManager sharedManager]
                      success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                          VCUserStateResponse * response = mappingResult.firstObject;
-                         self.riderState = response.riderState;
+                         _riderState = response.riderState;
                          if(response.driverState != nil) {
-                             self.driverState = response.driverState;
+                             _driverState = response.driverState;
                          }
                          [VCNotifications userStateUpdated];
                          if(success != nil) {

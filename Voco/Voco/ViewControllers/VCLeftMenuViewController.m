@@ -85,16 +85,20 @@ static void * XXContext = &XXContext;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
-        if([[VCUserStateManager instance] isHovDriver]){
-            _tableCellList = [NSMutableArray arrayWithArray: @[kUserInfoCell, kCommuteCell, kBackHomeCell, kMyCarCell, kPaymentCell, kReceiptsCell,  kSupportCell, kLogoutCell, kTriageCell ]];
-            
-        } else {
-            _tableCellList = [NSMutableArray arrayWithArray: @[kUserInfoCell, kCommuteCell, kBackHomeCell, kPaymentCell, kReceiptsCell, kSupportCell, kLogoutCell, kTriageCell ]];
-        }
+
         _selectedCellTag = kCommuteCellInteger;
 
     }
     return self;
+}
+
+- (void) setUpCells {
+    if([[VCUserStateManager instance] isHovDriver]){
+        _tableCellList = [NSMutableArray arrayWithArray: @[kUserInfoCell, kCommuteCell, kBackHomeCell, kMyCarCell, kPaymentCell, kReceiptsCell,  kSupportCell, kLogoutCell, kTriageCell ]];
+        
+    } else {
+        _tableCellList = [NSMutableArray arrayWithArray: @[kUserInfoCell, kCommuteCell, kBackHomeCell, kPaymentCell, kReceiptsCell, kSupportCell, kLogoutCell, kTriageCell ]];
+    }
 }
 
 - (void) setGradient {
@@ -131,8 +135,9 @@ static void * XXContext = &XXContext;
 }
 
 - (void) profileUpdated:(NSNotification *) notification {
-   
-    [_tableView reloadRowsAtIndexPaths:@[ [NSIndexPath indexPathForItem:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    if([_tableView numberOfRowsInSection:0] > 0){
+        [_tableView reloadRowsAtIndexPaths:@[ [NSIndexPath indexPathForItem:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
 }
 
 - (void) scheduleUpdated:(NSNotification *) notification {
@@ -140,6 +145,7 @@ static void * XXContext = &XXContext;
 }
 
 - (void) userStateUpdated:(NSNotification *) notification {
+    [self setUpCells];
     [_tableView reloadData];
 }
 

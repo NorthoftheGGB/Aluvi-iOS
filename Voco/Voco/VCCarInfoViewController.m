@@ -138,7 +138,6 @@
                                                 if(_delegate != nil){
                                                     [_delegate VCCarInfoViewControllerDidUpdateDetails:self];
                                                 }
-                                                [VCNotifications userStateUpdated];
 
                                             }
                                             failure:^(NSString * errorMessage) {

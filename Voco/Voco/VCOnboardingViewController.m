@@ -179,7 +179,7 @@
                                           
                                           hud.hidden = YES;
                                           
-                                          [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kSkipTutorial];
+                                          [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kSkipTutorial];
                                           [[NSUserDefaults standardUserDefaults] synchronize];
                                           
                                           dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
