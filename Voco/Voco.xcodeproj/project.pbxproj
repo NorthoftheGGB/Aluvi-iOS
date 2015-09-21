@@ -4065,6 +4065,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -4128,6 +4129,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -4205,7 +4207,7 @@
 				INFOPLIST_FILE = "Aluvi Distribution-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = Aluvi;
-				PROVISIONING_PROFILE = "0ddff358-d2ff-4300-9211-e0a98b8877b9";
+				PROVISIONING_PROFILE = "502443dd-2f26-43ae-bb01-23fdf2ce08c0";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4233,7 +4235,7 @@
 				INFOPLIST_FILE = "Aluvi Distribution-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = Aluvi;
-				PROVISIONING_PROFILE = "0ddff358-d2ff-4300-9211-e0a98b8877b9";
+				PROVISIONING_PROFILE = "502443dd-2f26-43ae-bb01-23fdf2ce08c0";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
