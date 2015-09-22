@@ -138,20 +138,15 @@
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[VCUserStateManager instance] updateDefaultCar:_car
                                             success:^() {
-                                                [[VCCoreData managedObjectContext] deleteObject:_car]; // we aren't actually saving this one, just for mappping
                                                 hud.hidden = YES;
                                                 if(_delegate != nil){
                                                     [_delegate VCCarInfoViewControllerDidUpdateDetails:self];
                                                 }
-
                                             }
                                             failure:^(NSString * errorMessage) {
-                                                [[VCCoreData managedObjectContext] deleteObject:_car]; // we aren't actually saving this one, just for mapping
-                                                [UIAlertView showWithTitle:@"Whoops" message:@"errorMessage" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
                                                 hud.hidden = YES;
-                                            }];
-    
-    
+                                                [UIAlertView showWithTitle:@"Whoops" message:@"errorMessage" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                                            }]; 
 }
 
 - (IBAction)didTapCancelButton:(id)sender {
