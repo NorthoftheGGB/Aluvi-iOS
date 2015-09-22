@@ -115,7 +115,12 @@
         [UIAlertView showWithTitle:@"Error" message:@"You must enter car info" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
         return;
     }
-    _car = [[VCCoreData managedObjectContext] insertNewObjectForEntityForName:@"Car"];
+    
+    //
+    // Very sloppy handling of Cars here and in api
+    // needs a refactor
+    //
+    _car = [Car new];
     _car.licensePlate = _licensePlateField.text;
     NSArray * carInfo = [_carInfoField.text componentsSeparatedByString:@","];
     @try {

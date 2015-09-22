@@ -136,6 +136,7 @@ static VCCommuteManager * instance;
                                     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                         // Woops!
                                     }];
+    [self refreshTickets];
 
 }
 
@@ -204,6 +205,7 @@ static VCCommuteManager * instance;
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:kCommutePolylineKey];
     [[NSUserDefaults standardUserDefaults]  synchronize];
     _route = nil;
+    _activeTickets = nil;
 }
 
 

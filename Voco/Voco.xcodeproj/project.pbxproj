@@ -2525,7 +2525,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = VC;
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Voco;
 				TargetAttributes = {
 					841648A21B658F4900CD20AC = {
@@ -3842,6 +3842,7 @@
 				);
 				INFOPLIST_FILE = "Aluvi Distribution copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vocotransportation.aluvi.nightly;
 				PRODUCT_NAME = "Aluvi Nightly";
 				PROVISIONING_PROFILE = "a1bcb06b-4485-45cc-9123-c1182ec594ed";
 				WRAPPER_EXTENSION = app;
@@ -3871,6 +3872,7 @@
 				);
 				INFOPLIST_FILE = "Aluvi Distribution copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vocotransportation.aluvi.nightly;
 				PRODUCT_NAME = "Aluvi Nightly";
 				PROVISIONING_PROFILE = "a1bcb06b-4485-45cc-9123-c1182ec594ed";
 				WRAPPER_EXTENSION = app;
@@ -3932,6 +3934,7 @@
 				);
 				INFOPLIST_FILE = "Aluvi Development copy2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vocotransportation.aluvi.dev;
 				PRODUCT_NAME = "Aluvi Development copy";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -3993,6 +3996,7 @@
 				);
 				INFOPLIST_FILE = "Aluvi Development copy2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vocotransportation.aluvi.dev;
 				PRODUCT_NAME = "Aluvi Development copy";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -4021,6 +4025,7 @@
 				);
 				INFOPLIST_FILE = "Aluvi Distribution Nightly copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vocotransportation.aluvi.nightlycopy;
 				PRODUCT_NAME = COPY;
 				PROVISIONING_PROFILE = "afb4ff4a-276f-4c5d-a70e-b56c4adab789";
 				WRAPPER_EXTENSION = app;
@@ -4050,6 +4055,7 @@
 				);
 				INFOPLIST_FILE = "Aluvi Distribution Nightly copy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vocotransportation.aluvi.nightlycopy;
 				PRODUCT_NAME = COPY;
 				PROVISIONING_PROFILE = "afb4ff4a-276f-4c5d-a70e-b56c4adab789";
 				WRAPPER_EXTENSION = app;
@@ -4115,6 +4121,7 @@
 				);
 				INFOPLIST_FILE = "Voco Dev-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vocotransportation.aluvi.dev;
 				PRODUCT_NAME = "Aluvi Dev";
 				PROVISIONING_PROFILE = "0c2e0ce2-3365-4569-ac6d-a057468a3770";
 				WRAPPER_EXTENSION = app;
@@ -4179,6 +4186,7 @@
 				);
 				INFOPLIST_FILE = "Voco Dev-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vocotransportation.aluvi.dev;
 				PRODUCT_NAME = "Aluvi Dev";
 				PROVISIONING_PROFILE = "0c2e0ce2-3365-4569-ac6d-a057468a3770";
 				WRAPPER_EXTENSION = app;
@@ -4206,6 +4214,7 @@
 				);
 				INFOPLIST_FILE = "Aluvi Distribution-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vocotransportation.aluvi;
 				PRODUCT_NAME = Aluvi;
 				PROVISIONING_PROFILE = "502443dd-2f26-43ae-bb01-23fdf2ce08c0";
 				WRAPPER_EXTENSION = app;
@@ -4234,6 +4243,7 @@
 				);
 				INFOPLIST_FILE = "Aluvi Distribution-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vocotransportation.aluvi;
 				PRODUCT_NAME = Aluvi;
 				PROVISIONING_PROFILE = "502443dd-2f26-43ae-bb01-23fdf2ce08c0";
 				WRAPPER_EXTENSION = app;
@@ -4258,6 +4268,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -4326,6 +4337,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "VocoTests/VocoTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.voco.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -4344,6 +4356,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Voco/Voco-Prefix.pch";
 				INFOPLIST_FILE = "VocoTests/VocoTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.voco.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

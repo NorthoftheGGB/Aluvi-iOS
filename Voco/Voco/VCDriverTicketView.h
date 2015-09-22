@@ -13,8 +13,8 @@
 
 @protocol VCDriverTicketViewDelegate <NSObject>
 
-- (void) VCDriverTicketViewDidTapRidersOnBoard: (VCDriverTicketView *) driverTicketView success:(void ( ^ ) ()) success;
-- (void) VCDriverTicketViewDidTapCommuteCompleted: (VCDriverTicketView *) driverTicketView;
+//- (void) VCDriverTicketViewDidTapRidersOnBoard: (VCDriverTicketView *) driverTicketView success:(void ( ^ ) ()) success;
+//- (void) VCDriverTicketViewDidTapCommuteCompleted: (VCDriverTicketView *) driverTicketView;
 - (void) VCDriverTicketView: (VCDriverTicketView *) driverTicketView didTapCallRider:(NSString *)phoneNumber;
 
 @end

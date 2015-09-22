@@ -85,8 +85,8 @@ static void * XXContext = &XXContext;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
-
         _selectedCellTag = kCommuteCellInteger;
+        [self setUpCells];
 
     }
     return self;

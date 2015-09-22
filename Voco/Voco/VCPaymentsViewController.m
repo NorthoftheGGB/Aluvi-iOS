@@ -255,9 +255,9 @@
                                                              [self updateFieldValues];
                                                              
                                                          } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                             [hud hide:YES];
                                                              [self somethingDidntGoRight:selectedCardView];
                                                              [WRUtilities criticalError:error];
-                                                             [hud hide:YES];
                                                          }];
                 
             } else if(selectedCardView.tag == kDebitCardView){
@@ -270,9 +270,9 @@
                                                              }
                                                              [self updateFieldValues];
                                                          } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                             [hud hide:YES];
                                                              [self somethingDidntGoRight:selectedCardView];
                                                              [WRUtilities criticalError:error];
-                                                             [hud hide:YES];
                                                          }];
             }
         } else {
