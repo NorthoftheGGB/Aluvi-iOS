@@ -19,7 +19,7 @@ pod 'RKCLLocationValueTransformer'
 pod 'Fabric'
 pod 'Crashlytics'
 pod 'Mapbox-iOS-SDK', :git => 'https://github.com/deepwinter/mapbox-ios-sdk.git', :branch => 'release'
-pod 'ViewDeck'
+pod 'ViewDeck', '~> 2.2.11'
 pod 'Masonry'
 pod 'PKImagePicker', :git => 'https://github.com/deepwinter/PKImagePickerDemo.git'
 
