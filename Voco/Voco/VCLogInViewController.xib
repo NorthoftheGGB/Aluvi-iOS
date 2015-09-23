@@ -76,11 +76,11 @@
                         <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="vzs-P2-9IZ"/>
                     </connections>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nKh-oZ-fFv" customClass="VCButtonSmall">
-                    <rect key="frame" x="60" y="340" width="194" height="21"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nKh-oZ-fFv" customClass="VCButtonSmall">
+                    <rect key="frame" x="42" y="317" width="212" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="3el-U1-WcJ"/>
-                        <constraint firstAttribute="width" constant="194" id="pxK-Bx-JTv"/>
+                        <constraint firstAttribute="width" constant="212" id="pxK-Bx-JTv"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <state key="normal" title="Forget your password?">
@@ -117,20 +117,32 @@
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By using aluvi, you are agreeing to our terms of service." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0O-qi-Qrj" customClass="VCLabelSmall">
+                    <rect key="frame" x="42" y="460" width="230" height="42"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="230" id="DpQ-Yd-mnV"/>
+                        <constraint firstAttribute="height" constant="42" id="kHk-sp-p0N"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <color key="tintColor" red="0.30588235289999999" green="0.63921568630000003" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="nKh-oZ-fFv" firstAttribute="top" secondItem="IuW-TQ-BC9" secondAttribute="bottom" constant="34" id="3Br-3y-B7V"/>
+                <constraint firstItem="6Zz-e1-it2" firstAttribute="top" secondItem="W0O-qi-Qrj" secondAttribute="bottom" constant="8" id="1x2-Kv-o6Y"/>
+                <constraint firstItem="nKh-oZ-fFv" firstAttribute="top" secondItem="IuW-TQ-BC9" secondAttribute="bottom" constant="11" id="3Br-3y-B7V"/>
                 <constraint firstItem="IuW-TQ-BC9" firstAttribute="top" secondItem="6s6-1F-8gQ" secondAttribute="bottom" constant="8" id="52y-Q8-Rxk"/>
                 <constraint firstItem="6s6-1F-8gQ" firstAttribute="top" secondItem="ftZ-Nq-tWy" secondAttribute="top" constant="210" id="8yy-Ib-scd"/>
                 <constraint firstItem="6Zz-e1-it2" firstAttribute="leading" secondItem="ftZ-Nq-tWy" secondAttribute="leading" id="IP0-hb-Ukm"/>
                 <constraint firstAttribute="trailing" secondItem="6Zz-e1-it2" secondAttribute="trailing" id="OU7-cH-kuM"/>
-                <constraint firstItem="nKh-oZ-fFv" firstAttribute="leading" secondItem="ftZ-Nq-tWy" secondAttribute="leading" constant="60" id="aki-Qz-zvX"/>
+                <constraint firstItem="nKh-oZ-fFv" firstAttribute="leading" secondItem="ftZ-Nq-tWy" secondAttribute="leading" constant="42" id="aki-Qz-zvX"/>
                 <constraint firstItem="aeN-S3-80a" firstAttribute="leading" secondItem="ftZ-Nq-tWy" secondAttribute="leading" constant="96" id="gKd-ii-lWG"/>
                 <constraint firstItem="IuW-TQ-BC9" firstAttribute="leading" secondItem="ftZ-Nq-tWy" secondAttribute="leading" constant="42" id="ihq-DH-67n"/>
                 <constraint firstItem="aeN-S3-80a" firstAttribute="top" secondItem="ftZ-Nq-tWy" secondAttribute="top" constant="29" id="m76-qg-wD6"/>
                 <constraint firstItem="6s6-1F-8gQ" firstAttribute="leading" secondItem="ftZ-Nq-tWy" secondAttribute="leading" constant="42" id="rgs-hb-vtq"/>
+                <constraint firstItem="W0O-qi-Qrj" firstAttribute="leading" secondItem="6Zz-e1-it2" secondAttribute="leading" constant="42" id="wr0-Sp-MZh"/>
                 <constraint firstAttribute="bottom" secondItem="6Zz-e1-it2" secondAttribute="bottom" id="xXy-wJ-Ugv"/>
             </constraints>
             <point key="canvasLocation" x="499" y="93"/>
