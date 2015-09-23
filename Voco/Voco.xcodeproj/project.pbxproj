@@ -135,6 +135,10 @@
 		36BF69C21BB24F0500A46CB9 /* Loading_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36BF69C01BB24F0500A46CB9 /* Loading_background@2x.png */; };
 		36BF69C31BB24F0500A46CB9 /* Loading_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36BF69C01BB24F0500A46CB9 /* Loading_background@2x.png */; };
 		36BF69C41BB24F0500A46CB9 /* Loading_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36BF69C01BB24F0500A46CB9 /* Loading_background@2x.png */; };
+		36BF69C61BB25B5100A46CB9 /* phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36BF69C51BB25B5100A46CB9 /* phone@2x.png */; };
+		36BF69C71BB25B5100A46CB9 /* phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36BF69C51BB25B5100A46CB9 /* phone@2x.png */; };
+		36BF69C81BB25B5100A46CB9 /* phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36BF69C51BB25B5100A46CB9 /* phone@2x.png */; };
+		36BF69C91BB25B5100A46CB9 /* phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36BF69C51BB25B5100A46CB9 /* phone@2x.png */; };
 		36E48E621B7A80FE0034DFEB /* VCStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E48E611B7A80FE0034DFEB /* VCStyle.m */; };
 		36E48E631B7A80FF0034DFEB /* VCStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E48E611B7A80FE0034DFEB /* VCStyle.m */; };
 		36E48E641B7A80FF0034DFEB /* VCStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E48E611B7A80FE0034DFEB /* VCStyle.m */; };
@@ -918,6 +922,7 @@
 		369DBC1D1B6D24AD00449CB4 /* test_big@x2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "test_big@x2.jpg"; sourceTree = "<group>"; };
 		36BF69B51BB2476C00A46CB9 /* VCLoadingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCLoadingViewController.xib; sourceTree = "<group>"; };
 		36BF69C01BB24F0500A46CB9 /* Loading_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Loading_background@2x.png"; sourceTree = "<group>"; };
+		36BF69C51BB25B5100A46CB9 /* phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone@2x.png"; sourceTree = "<group>"; };
 		36E48E601B7A80FE0034DFEB /* VCStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCStyle.h; sourceTree = "<group>"; };
 		36E48E611B7A80FE0034DFEB /* VCStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCStyle.m; sourceTree = "<group>"; };
 		36E48E661B7AA6920034DFEB /* nav_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_bg.png; sourceTree = "<group>"; };
@@ -1533,6 +1538,7 @@
 		4FE641E1194168E80059BED1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				36BF69C51BB25B5100A46CB9 /* phone@2x.png */,
 				36BF69C01BB24F0500A46CB9 /* Loading_background@2x.png */,
 				360CFA611BA8D24300D61347 /* tutorial.png */,
 				368816AB1B9FE39000865AA5 /* map_point@2x.png */,
@@ -2367,6 +2373,7 @@
 				36E48E791B7ABFBE0034DFEB /* Bryant-Bold.ttf in Resources */,
 				8416484E1B64A47D00CD20AC /* driver-cancel-hud-icon@2x.png in Resources */,
 				36049F901B815AE90090ECAE /* VCOnboardingUserPhotoViewController.xib in Resources */,
+				36BF69C91BB25B5100A46CB9 /* phone@2x.png in Resources */,
 				841648501B64A47D00CD20AC /* receipt-down-arrow@2x.png in Resources */,
 				36BF69B91BB2476C00A46CB9 /* VCLoadingViewController.xib in Resources */,
 				841648521B64A47D00CD20AC /* menu-payments-icon@2x.png in Resources */,
@@ -2473,6 +2480,7 @@
 				8416499F1B658F4900CD20AC /* current-location-button@2x.png in Resources */,
 				841649A31B658F4900CD20AC /* hamburger@2x.png in Resources */,
 				841649AB1B658F4900CD20AC /* VCProfileViewController.xib in Resources */,
+				36BF69C71BB25B5100A46CB9 /* phone@2x.png in Resources */,
 				841649AC1B658F4900CD20AC /* menu-support-icon@2x.png in Resources */,
 				841649B01B658F4900CD20AC /* VCRiderProfileViewController.xib in Resources */,
 				841649B71B658F4900CD20AC /* driver-hov-toggle-select@2x.png in Resources */,
@@ -2560,6 +2568,7 @@
 				4FFE171E198A1890004D4413 /* menu-map-icon@2x.png in Resources */,
 				4F3DB5BC1981ED4E00DDD094 /* current-location-button@2x.png in Resources */,
 				4F35FA9719A80615004FB423 /* hamburger@2x.png in Resources */,
+				36BF69C61BB25B5100A46CB9 /* phone@2x.png in Resources */,
 				4FFCF2C119A25F2100A4A24E /* VCProfileViewController.xib in Resources */,
 				4F184A081991753F006EA959 /* menu-support-icon@2x.png in Resources */,
 				F4C6B285197F06B100F6C10B /* VCRiderProfileViewController.xib in Resources */,
@@ -2593,6 +2602,7 @@
 				F4D8FE9A19B1745A00BC0B69 /* VCCommuterPassViewController.xib in Resources */,
 				F4D8FE9D19B1745A00BC0B69 /* temp-call-button@2x.png in Resources */,
 				F4D8FE9E19B1745A00BC0B69 /* call-button-select@2x.png in Resources */,
+				36BF69C81BB25B5100A46CB9 /* phone@2x.png in Resources */,
 				F4D8FE9F19B1745A00BC0B69 /* call-button@2x.png in Resources */,
 				36E48E691B7AA6920034DFEB /* nav_bg.png in Resources */,
 				362A55A81B85B4A10090FF1B /* logo_in.png in Resources */,
