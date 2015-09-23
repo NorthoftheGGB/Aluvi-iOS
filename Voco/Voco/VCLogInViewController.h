@@ -16,5 +16,7 @@
 
 @interface VCLogInViewController : VCOnboardingChildViewController
 
+@property (strong, nonatomic) IBOutlet UIButton *termsOfServiceLinkButton;
 
+- (IBAction)didTapTemsOfServiceLinkButton:(id)sender;
 @end

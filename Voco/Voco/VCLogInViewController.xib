@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="emailTextField" destination="6s6-1F-8gQ" id="EnB-hU-xgc"/>
                 <outlet property="passwordTextField" destination="IuW-TQ-BC9" id="7qh-dZ-Nqd"/>
+                <outlet property="termsOfServiceLinkButton" destination="8HI-Bh-dA8" id="LW7-Z1-Y62"/>
                 <outlet property="view" destination="ftZ-Nq-tWy" id="bVr-Th-WLn"/>
             </connections>
         </placeholder>
@@ -157,6 +158,9 @@
                             </fragment>
                         </attributedString>
                     </state>
+                    <connections>
+                        <action selector="didTapTemsOfServiceLinkButton:" destination="-1" eventType="touchUpInside" id="Iip-9Y-hLl"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
