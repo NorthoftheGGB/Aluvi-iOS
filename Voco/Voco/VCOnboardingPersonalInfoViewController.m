@@ -102,7 +102,7 @@
     NSDictionary * values = @{
                               FirstNameValueKey : firstName,
                               LastNameValueKey : lastName,
-                              PhoneNumberValueKey : _onboardingFullNameTextField.text,
+                              PhoneNumberValueKey : _onboardingPhoneNumberTextField.text,
                               WorkEmailValueKey : _onboardingWorkEmailTextField.text,
                               };
     [self.delegate VCOnboardingChildViewController:self didSetValues:values];
