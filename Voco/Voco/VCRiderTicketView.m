@@ -117,7 +117,7 @@
 }
 
 - (IBAction)didTapDriverImageButton:(id)sender {
-    [_delegate VCRiderTicketView:self didTapCallDrive:_driver.phone];
+    [_delegate VCRiderTicketView:self didTapCallDriver:_driver.phone];
 }
 
 - (IBAction)didTapPeerOneButton:(id)sender {

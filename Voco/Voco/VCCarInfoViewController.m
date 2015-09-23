@@ -116,20 +116,17 @@
         return;
     }
     
-    //
-    // Very sloppy handling of Cars here and in api
-    // needs a refactor
-    //
-    _car = [Car new];
+
+    _car =  [[VCCoreData managedObjectContext] insertNewObjectForEntityForName:@"Car"];
     _car.licensePlate = _licensePlateField.text;
-    NSArray * carInfo = [_carInfoField.text componentsSeparatedByString:@","];
+    NSArray * carInfo = [_carInfoField.text componentsSeparatedByString:@" "];
     @try {
         _car.make = carInfo[0];
         _car.model = carInfo[1];
         _car.color = carInfo[2];
     }
     @catch (NSException *exception) {
-        [UIAlertView showWithTitle:@"Error" message:@"Car info should be formatted as 'Make, Model, Color'" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+        [UIAlertView showWithTitle:@"Error" message:@"Car info should be formatted as 'Make Model Color'" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
         return;
     }
     @finally {
@@ -142,8 +139,10 @@
                                                 if(_delegate != nil){
                                                     [_delegate VCCarInfoViewControllerDidUpdateDetails:self];
                                                 }
+                                                [[VCCoreData managedObjectContext] save:nil];
                                             }
                                             failure:^(NSString * errorMessage) {
+                                                [[VCCoreData managedObjectContext] delete:_car];
                                                 hud.hidden = YES;
                                                 [UIAlertView showWithTitle:@"Whoops" message:@"errorMessage" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
                                             }]; 

@@ -62,6 +62,7 @@
                                       // Call logout and Bump the user back out to the login screen
                                       [[VCUserStateManager instance] clearUser];
                                   }];
+                error = nil; // mark error as handled
             }
                 break;
             case 406:
