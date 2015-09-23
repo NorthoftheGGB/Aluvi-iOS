@@ -122,7 +122,7 @@ static VCDebug * instance;
                                      ]];
                 [req setHTTPMethod:@"POST"];
                 [req addValue:[NSString stringWithFormat:@"Token token=\"%@\"", [VCApi apiToken] ] forHTTPHeaderField:@"Authorization"];
-                NSURLConnection *conn = [NSURLConnection connectionWithRequest:req delegate:nil];
+                NSURLConnection *conn = [NSURLConnection connectionWithRequest:req delegate:self];
                 [conn start];
 #else
                 [UIAlertView showWithTitle:@"Not Allowed"  message:@"Sorry, can't let you do that!"  cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
