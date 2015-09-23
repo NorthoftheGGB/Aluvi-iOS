@@ -232,6 +232,7 @@
     card.expYear = selectedCardView.card.expYear;
     card.cvc = selectedCardView.card.cvc;
     
+    
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Saving user info";
  
@@ -256,13 +257,15 @@
                                                              
                                                          } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                                              [hud hide:YES];
-                                                             [self somethingDidntGoRight:selectedCardView];
-                                                             [WRUtilities criticalError:error];
+                                                             if(error != nil) {
+                                                                 [self somethingDidntGoRight:selectedCardView];
+                                                                 [WRUtilities criticalError:error];
+                                                             }
                                                          }];
                 
             } else if(selectedCardView.tag == kDebitCardView){
                 
-                [[VCUserStateManager instance] updateDefaultCard:token.tokenId
+                [[VCUserStateManager instance] updateRecipientCard:token.tokenId
                                                          success:^{
                                                              [hud hide:YES];
                                                              if(_delegate != nil){
@@ -271,8 +274,11 @@
                                                              [self updateFieldValues];
                                                          } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                                              [hud hide:YES];
-                                                             [self somethingDidntGoRight:selectedCardView];
-                                                             [WRUtilities criticalError:error];
+                                                             if(error != nil) {
+                                                                 [self somethingDidntGoRight:selectedCardView];
+                                                                 [WRUtilities criticalError:error];
+                                                             }
+                                                             
                                                          }];
             }
         } else {

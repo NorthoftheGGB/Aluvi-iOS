@@ -42,16 +42,26 @@
                 
             case 400:
             {
-                /*
-                 Currently not handling at this level
-                VCApiError * apiError =  [[error userInfo] objectForKey:RKObjectMapperErrorObjectsKey][0];
-                if(apiError != nil){
-                    [UIAlertView showWithTitle:@"Error" message:apiError.error cancelButtonTitle:@"Oh, ok" otherButtonTitles:nil tapBlock:nil];
-                } else {
-                    NSLog(@"Error %li", (long)statusCode);
-                    [UIAlertView showWithTitle:@"Error" message:@"Unspecified Error" cancelButtonTitle:@"Ok, I'll try that again I guess" otherButtonTitles:nil tapBlock:nil];
+                if([error.domain isEqualToString:@"org.restkit.RestKit.ErrorDomain"]
+                   && error.code == -1011) {
+                    
+                    NSString * message;
+                    
+                    NSError * jsonError;
+                    NSData *objectData = [ [error.userInfo objectForKey:NSLocalizedRecoverySuggestionErrorKey] dataUsingEncoding:NSUTF8StringEncoding];
+                    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
+                                                                         options:NSJSONReadingMutableContainers
+                                                                           error:&jsonError];
+                    if(json == nil){
+                        message = @"No Message Available";
+                    } else {
+                        message = [json objectForKey:@"error"];
+                    }
+                     [UIAlertView showWithTitle:@"Error" message:message cancelButtonTitle:@"Ok" otherButtonTitles:nil tapBlock:nil];
+                    error = nil;
                 }
-                 */
+
+                
             }
                 break;
 

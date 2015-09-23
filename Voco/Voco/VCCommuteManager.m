@@ -118,11 +118,13 @@ static VCCommuteManager * instance;
 }
 
 - (void) loadFromServer {
+    if(![[VCUserStateManager instance] isLoggedIn]){
+        return;
+    }
     
     /*TODO
      Refactor: move API call to a API library file
      */
-    // overwrite if possible
     [[RKObjectManager sharedManager] getObject:nil
                                           path:API_ROUTE
                                     parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
