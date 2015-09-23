@@ -47,9 +47,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.scrollView setContentSize: _contentView.frame.size];
-    [self.scrollView addSubview: _contentView];
     [self setGradient];
+    self.automaticallyAdjustsScrollViewInsets = false;
+    
+    _contentView.frame = self.scrollView.frame;
+    //   [self.scrollView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+    [self.scrollView setContentSize:_contentView.frame.size];
+    [self.scrollView addSubview:_contentView];
     
 }
 
