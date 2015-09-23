@@ -127,6 +127,8 @@ static VCUserStateManager *sharedSingleton;
     self.riderState = loginResponse.riderState;
     if(loginResponse.driverState != nil){
         self.driverState = loginResponse.driverState;
+    } else {
+        self.driverState = nil;
     }
     
     //TODO refactor to utilize enqueueBatchOfObjectRequestOperations:progress:completion:
@@ -232,9 +234,6 @@ static VCUserStateManager *sharedSingleton;
     [userDefaults removeObjectForKey:kRiderStateKey];
     [userDefaults removeObjectForKey:kProfileDataKey];
     [userDefaults synchronize];
-    //_underwayFareId = nil;
-    _rideProcessState = nil;
-    _driveProcessState = nil;
     _riderState = nil;
     _driverState = nil;
 

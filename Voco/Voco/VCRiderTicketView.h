@@ -14,7 +14,7 @@
 @protocol VCRiderTicketViewDelegate <NSObject>
 
 - (void) VCRiderTicketView: (VCRiderTicketView *) riderTicketView didTapCallRider:(NSString *)phoneNumber;
-- (void) VCRiderTicketView: (VCRiderTicketView *) riderTicketView didTapCallDrive:(NSString *)phoneNumber;
+- (void) VCRiderTicketView: (VCRiderTicketView *) riderTicketView didTapCallDriver:(NSString *)phoneNumber;
 
 @end
 

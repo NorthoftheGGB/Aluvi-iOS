@@ -42,6 +42,8 @@
                 
             case 400:
             {
+                /*
+                 Currently not handling at this level
                 VCApiError * apiError =  [[error userInfo] objectForKey:RKObjectMapperErrorObjectsKey][0];
                 if(apiError != nil){
                     [UIAlertView showWithTitle:@"Error" message:apiError.error cancelButtonTitle:@"Oh, ok" otherButtonTitles:nil tapBlock:nil];
@@ -49,6 +51,7 @@
                     NSLog(@"Error %li", (long)statusCode);
                     [UIAlertView showWithTitle:@"Error" message:@"Unspecified Error" cancelButtonTitle:@"Ok, I'll try that again I guess" otherButtonTitles:nil tapBlock:nil];
                 }
+                 */
             }
                 break;
 
@@ -62,14 +65,18 @@
                                       // Call logout and Bump the user back out to the login screen
                                       [[VCUserStateManager instance] clearUser];
                                   }];
+                error = nil; // mark error as handled
             }
                 break;
             case 406:
             {
+                /*
+                 Currently not handling at this level
                 [UIAlertView showWithTitle:@"Bad Request"
                                    message:[error debugDescription]
                          cancelButtonTitle:@"OK"
                          otherButtonTitles:nil tapBlock:nil];
+                 */
             }
                 break;
                 
