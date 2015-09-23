@@ -469,4 +469,6 @@
                                                                                     documentAttributes:nil];
     _attributedString = [stringBuilder generatedAttributedString];
 }
+- (IBAction)didTapTemsOfServiceLinkButton:(id)sender {
+}
 @end
