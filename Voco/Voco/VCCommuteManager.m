@@ -411,7 +411,8 @@ static VCCommuteManager * instance;
 
 
 - (void) loadActiveTickets {
-    if([[VCUserStateManager instance] isLoggedIn]){
+    if(![[VCUserStateManager instance] isLoggedIn]){
+        _activeTickets = [NSArray array];
         return;
     }
     
