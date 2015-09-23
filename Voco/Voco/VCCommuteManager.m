@@ -13,6 +13,7 @@
 #import "VCNotifications.h"
 #import "VCUtilities.h"
 #import "VCCommuterRideRequest.h"
+#import "VCUserStateManager.h"
 
 // TODO refactor these out of this class
 #import "VCApi.h"
@@ -410,6 +411,9 @@ static VCCommuteManager * instance;
 
 
 - (void) loadActiveTickets {
+    if([[VCUserStateManager instance] isLoggedIn]){
+        return;
+    }
     
     //set up filter by date > today at midnight.
     NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Ticket"];

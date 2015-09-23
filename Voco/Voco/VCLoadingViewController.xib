@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Bryant-Medium.ttf">
+            <string>Bryant-Medium</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCLoadingViewController"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loading_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="jWr-8H-ejC">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_in.png" translatesAutoresizingMaskIntoConstraints="NO" id="qDK-6h-gtZ">
+                    <rect key="frame" x="96" y="29" width="123" height="123"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="123" id="8m5-fn-tG1"/>
+                        <constraint firstAttribute="width" constant="123" id="BBe-sF-cxk"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ALUVI" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4z-A4-8Zg">
+                    <rect key="frame" x="114" y="160" width="92" height="21"/>
+                    <fontDescription key="fontDescription" name="Bryant-Medium" family="Bryant" pointSize="20"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="jWr-8H-ejC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="6zd-VJ-6Oa"/>
+                <constraint firstItem="jWr-8H-ejC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="FLp-CD-gNn"/>
+                <constraint firstItem="qDK-6h-gtZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="29" id="OfW-BN-T6H"/>
+                <constraint firstAttribute="trailing" secondItem="jWr-8H-ejC" secondAttribute="trailing" id="SfN-QU-pcj"/>
+                <constraint firstAttribute="bottom" secondItem="jWr-8H-ejC" secondAttribute="bottom" id="jdA-9q-IdO"/>
+                <constraint firstItem="qDK-6h-gtZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="96" id="qSv-dP-I4A"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Loading_background.png" width="320" height="480"/>
+        <image name="logo_in.png" width="246" height="246"/>
+    </resources>
+</document>
