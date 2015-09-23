@@ -16,7 +16,7 @@
 
 static VCDebug * instance;
 
-@interface VCDebug ()
+@interface VCDebug () <NSURLConnectionDelegate>
 
 @property (nonatomic, strong) NSString * userIdentifier;
 @property (nonatomic) BOOL pushTokenConfirmationEnabled;
@@ -199,5 +199,10 @@ static VCDebug * instance;
     [self log:[NSString stringWithFormat:@"Remote Notification: %@", string]];
 }
 
+
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    [WRUtilities criticalError:error];
+}
 
 @end
