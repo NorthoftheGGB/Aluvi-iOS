@@ -36,7 +36,7 @@
                 // Notify user there is an internet connectivity problem
                 // UI should be locked by reachability
                 [WRUtilities showNetworkUnavailableMessage];
-              
+                error = nil;
             }
                 break;
                 
@@ -92,7 +92,7 @@
                 
             default:
             {
-                if(statusCode >= 500) {
+                if(statusCode >= 500 && error != nil) {
                     [WRUtilities criticalError:error];
                 } 
             }
