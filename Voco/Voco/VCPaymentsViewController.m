@@ -144,12 +144,13 @@
 
 
     
-    if(profile.cardLastFour == nil && profile.recipientCardLastFour == nil){
+    if(profile.cardLastFour == nil){
         _defaultCardLabel.text = @"No Payment Method Entered";
     }
     
     _getPaidToCardLabel.hidden = YES;
     _debitCardView.hidden = YES;
+    //need to DRY this out
     if(profile.cardLastFour != nil){
         NSString * text = [NSString stringWithFormat:@"%@ ending in %@", profile.cardBrand, profile.cardLastFour ];
         if( profile.recipientCardLastFour != nil
@@ -163,7 +164,21 @@
                 _getPaidToCardLabel.hidden = NO;
                 _getPaidToCardLabel.text = [NSString stringWithFormat:@"Get paid to %@ ending in  %@", profile.recipientCardBrand, profile.recipientCardLastFour];
                 _debitCardView.hidden = NO;
+            } else if (accountBalance > 1000) {
+                _getPaidToCardLabel.text = @"No Debit Card Entered";
+                _debitCardView.hidden = NO;
             }
+        }
+    } else {
+        
+        if (profile.recipientCardLastFour != nil){
+            _getPaidToCardLabel.text = [NSString stringWithFormat:@"Withdraw to %@ ending in  %@", profile.recipientCardBrand, profile.recipientCardLastFour];
+            _debitCardView.hidden = NO;
+            _getPaidToCardLabel.hidden = NO;
+        } else if (accountBalance > 1000) {
+            _getPaidToCardLabel.text = @"No Debit Card Entered";
+            _debitCardView.hidden = NO;
+            _getPaidToCardLabel.hidden = NO;
         }
     }
     
@@ -171,11 +186,6 @@
         _processPayoutButton.hidden = NO;
         _processPayoutButton.enabled = YES;
         _paymentsDescriptionLabel.hidden = NO;
-        if(profile.recipientCardLastFour == nil){
-            _getPaidToCardLabel.hidden = NO;
-            _getPaidToCardLabel.text = @"No Debit Card Entered";
-            _debitCardView.hidden = NO;
-        }
     } else {
         _processPayoutButton.hidden = YES;
         _processPayoutButton.enabled = NO;
@@ -232,6 +242,7 @@
     card.expYear = selectedCardView.card.expYear;
     card.cvc = selectedCardView.card.cvc;
     
+    
     MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Saving user info";
  
@@ -256,13 +267,15 @@
                                                              
                                                          } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                                              [hud hide:YES];
-                                                             [self somethingDidntGoRight:selectedCardView];
-                                                             [WRUtilities criticalError:error];
+                                                             if(error != nil) {
+                                                                 [self somethingDidntGoRight:selectedCardView];
+                                                                 [WRUtilities criticalError:error];
+                                                             }
                                                          }];
                 
             } else if(selectedCardView.tag == kDebitCardView){
                 
-                [[VCUserStateManager instance] updateDefaultCard:token.tokenId
+                [[VCUserStateManager instance] updateRecipientCard:token.tokenId
                                                          success:^{
                                                              [hud hide:YES];
                                                              if(_delegate != nil){
@@ -271,8 +284,11 @@
                                                              [self updateFieldValues];
                                                          } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                                              [hud hide:YES];
-                                                             [self somethingDidntGoRight:selectedCardView];
-                                                             [WRUtilities criticalError:error];
+                                                             if(error != nil) {
+                                                                 [self somethingDidntGoRight:selectedCardView];
+                                                                 [WRUtilities criticalError:error];
+                                                             }
+                                                             
                                                          }];
             }
         } else {
@@ -311,8 +327,8 @@
 - (void) requestPayout {
     NSString * message = [NSString stringWithFormat:@"$%.2f will be deposited into your %@ debit card ending in %@",
                           [[VCUserStateManager instance].profile.commuterBalanceCents intValue] / 100.0f,
-    [VCUserStateManager instance].profile.cardBrand,
-                          [VCUserStateManager instance].profile.cardLastFour
+                          [VCUserStateManager instance].profile.recipientCardBrand,
+                          [VCUserStateManager instance].profile.recipientCardLastFour
                           ];
     [UIAlertView showWithTitle:@"Withdraw Funds" message:message cancelButtonTitle:@"Not Now" otherButtonTitles:@[@"OK, Do it!"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
         switch (buttonIndex) {

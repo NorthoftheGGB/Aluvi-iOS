@@ -936,7 +936,10 @@
                          
                          
                      } completion:^(BOOL finished) {
-                         
+                         if(_ridersOnboardButton != nil) {
+                             [_ridersOnboardButton removeFromSuperview];
+                             _ridersOnboardButton = nil;
+                         }
                          
                          _ridersOnboardButton = [[VCFancyButton alloc] init];
                          [_ridersOnboardButton style];
