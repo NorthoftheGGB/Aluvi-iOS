@@ -88,6 +88,22 @@
 		36638D851B65A988004EDB09 /* VCRiderTicketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D841B65A988004EDB09 /* VCRiderTicketView.xib */; };
 		36638D891B65A989004EDB09 /* VCRiderTicketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D841B65A988004EDB09 /* VCRiderTicketView.xib */; };
 		36638D8B1B65A989004EDB09 /* VCRiderTicketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36638D841B65A988004EDB09 /* VCRiderTicketView.xib */; };
+		366EBB4C1BB388F5004B4FC2 /* tutorial640x960.png in Resources */ = {isa = PBXBuildFile; fileRef = 366EBB481BB388F5004B4FC2 /* tutorial640x960.png */; };
+		366EBB4D1BB388F5004B4FC2 /* tutorial640x960.png in Resources */ = {isa = PBXBuildFile; fileRef = 366EBB481BB388F5004B4FC2 /* tutorial640x960.png */; };
+		366EBB4E1BB388F5004B4FC2 /* tutorial640x960.png in Resources */ = {isa = PBXBuildFile; fileRef = 366EBB481BB388F5004B4FC2 /* tutorial640x960.png */; };
+		366EBB4F1BB388F5004B4FC2 /* tutorial640x960.png in Resources */ = {isa = PBXBuildFile; fileRef = 366EBB481BB388F5004B4FC2 /* tutorial640x960.png */; };
+		366EBB501BB388F5004B4FC2 /* tutorial640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 366EBB491BB388F5004B4FC2 /* tutorial640x1136.png */; };
+		366EBB511BB388F5004B4FC2 /* tutorial640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 366EBB491BB388F5004B4FC2 /* tutorial640x1136.png */; };
+		366EBB521BB388F5004B4FC2 /* tutorial640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 366EBB491BB388F5004B4FC2 /* tutorial640x1136.png */; };
+		366EBB531BB388F5004B4FC2 /* tutorial640x1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 366EBB491BB388F5004B4FC2 /* tutorial640x1136.png */; };
+		366EBB541BB388F5004B4FC2 /* tutorial750x1334.png in Resources */ = {isa = PBXBuildFile; fileRef = 366EBB4A1BB388F5004B4FC2 /* tutorial750x1334.png */; };
+		366EBB551BB388F5004B4FC2 /* tutorial750x1334.png in Resources */ = {isa = PBXBuildFile; fileRef = 366EBB4A1BB388F5004B4FC2 /* tutorial750x1334.png */; };
+		366EBB561BB388F5004B4FC2 /* tutorial750x1334.png in Resources */ = {isa = PBXBuildFile; fileRef = 366EBB4A1BB388F5004B4FC2 /* tutorial750x1334.png */; };
+		366EBB571BB388F5004B4FC2 /* tutorial750x1334.png in Resources */ = {isa = PBXBuildFile; fileRef = 366EBB4A1BB388F5004B4FC2 /* tutorial750x1334.png */; };
+		366EBB581BB388F5004B4FC2 /* tutorial1080x1920.png in Resources */ = {isa = PBXBuildFile; fileRef = 366EBB4B1BB388F5004B4FC2 /* tutorial1080x1920.png */; };
+		366EBB591BB388F5004B4FC2 /* tutorial1080x1920.png in Resources */ = {isa = PBXBuildFile; fileRef = 366EBB4B1BB388F5004B4FC2 /* tutorial1080x1920.png */; };
+		366EBB5A1BB388F5004B4FC2 /* tutorial1080x1920.png in Resources */ = {isa = PBXBuildFile; fileRef = 366EBB4B1BB388F5004B4FC2 /* tutorial1080x1920.png */; };
+		366EBB5B1BB388F5004B4FC2 /* tutorial1080x1920.png in Resources */ = {isa = PBXBuildFile; fileRef = 366EBB4B1BB388F5004B4FC2 /* tutorial1080x1920.png */; };
 		367795621B7D4FC6005D45BE /* VCButtonSmall.m in Sources */ = {isa = PBXBuildFile; fileRef = 367795611B7D4FC6005D45BE /* VCButtonSmall.m */; };
 		367795631B7D4FC6005D45BE /* VCButtonSmall.m in Sources */ = {isa = PBXBuildFile; fileRef = 367795611B7D4FC6005D45BE /* VCButtonSmall.m */; };
 		367795641B7D4FC6005D45BE /* VCButtonSmall.m in Sources */ = {isa = PBXBuildFile; fileRef = 367795611B7D4FC6005D45BE /* VCButtonSmall.m */; };
@@ -898,6 +914,10 @@
 		36638D741B658A5A004EDB09 /* VCRideRequestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCRideRequestView.xib; sourceTree = "<group>"; };
 		36638D7C1B659CAE004EDB09 /* VCDriverTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCDriverTicketView.xib; sourceTree = "<group>"; };
 		36638D841B65A988004EDB09 /* VCRiderTicketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCRiderTicketView.xib; sourceTree = "<group>"; };
+		366EBB481BB388F5004B4FC2 /* tutorial640x960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial640x960.png; sourceTree = "<group>"; };
+		366EBB491BB388F5004B4FC2 /* tutorial640x1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial640x1136.png; sourceTree = "<group>"; };
+		366EBB4A1BB388F5004B4FC2 /* tutorial750x1334.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial750x1334.png; sourceTree = "<group>"; };
+		366EBB4B1BB388F5004B4FC2 /* tutorial1080x1920.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial1080x1920.png; sourceTree = "<group>"; };
 		367795601B7D4FC6005D45BE /* VCButtonSmall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCButtonSmall.h; sourceTree = "<group>"; };
 		367795611B7D4FC6005D45BE /* VCButtonSmall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCButtonSmall.m; sourceTree = "<group>"; };
 		368816AB1B9FE39000865AA5 /* map_point@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_point@2x.png"; sourceTree = "<group>"; };
@@ -1533,6 +1553,10 @@
 		4FE641E1194168E80059BED1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				366EBB481BB388F5004B4FC2 /* tutorial640x960.png */,
+				366EBB491BB388F5004B4FC2 /* tutorial640x1136.png */,
+				366EBB4A1BB388F5004B4FC2 /* tutorial750x1334.png */,
+				366EBB4B1BB388F5004B4FC2 /* tutorial1080x1920.png */,
 				36BF69C51BB25B5100A46CB9 /* phone@2x.png */,
 				36BF69C01BB24F0500A46CB9 /* Loading_background@2x.png */,
 				360CFA611BA8D24300D61347 /* tutorial.png */,
@@ -2320,6 +2344,7 @@
 				369992DC1B82E57A00F47C5E /* Icon-60@3x.png in Resources */,
 				360C67DC1B8BDF95008F4BB0 /* profile_placeholder@2x.png in Resources */,
 				841648091B64A47D00CD20AC /* temp-call-button@2x.png in Resources */,
+				366EBB571BB388F5004B4FC2 /* tutorial750x1334.png in Resources */,
 				36BF69C41BB24F0500A46CB9 /* Loading_background@2x.png in Resources */,
 				368816AF1B9FE39000865AA5 /* map_point@2x.png in Resources */,
 				369992E41B82E57A00F47C5E /* Icon-Small@2x.png in Resources */,
@@ -2351,6 +2376,7 @@
 				36FB728E1B6D6B4200F8A6AF /* VCPaymentsViewController.xib in Resources */,
 				8416482C1B64A47D00CD20AC /* menu-receipts-icon@2x.png in Resources */,
 				8416482F1B64A47D00CD20AC /* confirm-location-select.png in Resources */,
+				366EBB4F1BB388F5004B4FC2 /* tutorial640x960.png in Resources */,
 				841648341B64A47D00CD20AC /* menu-mycar-icon@2x.png in Resources */,
 				369992D81B82E57A00F47C5E /* Icon-40@3x.png in Resources */,
 				841648361B64A47D00CD20AC /* zoom-ride-bounds@2x.png in Resources */,
@@ -2360,6 +2386,7 @@
 				8416483D1B64A47D00CD20AC /* map_pin_fill-512.png in Resources */,
 				8416483F1B64A47D00CD20AC /* driver-call-hud-icon-select@2x.png in Resources */,
 				36E48E881B7B01100034DFEB /* Default@2x.png in Resources */,
+				366EBB5B1BB388F5004B4FC2 /* tutorial1080x1920.png in Resources */,
 				36E48E6F1B7ABF9F0034DFEB /* Bryant-Regular.ttf in Resources */,
 				84B30A611B82E54A0095F31D /* VCOnboardingViewController.xib in Resources */,
 				841648461B64A47D00CD20AC /* temp-user-profile-icon@2x.png in Resources */,
@@ -2386,6 +2413,7 @@
 				8416486F1B64A47D00CD20AC /* hamburger@2x.png in Resources */,
 				36E48E741B7ABFAE0034DFEB /* Bryant-Medium.ttf in Resources */,
 				841648761B64A47D00CD20AC /* VCProfileViewController.xib in Resources */,
+				366EBB531BB388F5004B4FC2 /* tutorial640x1136.png in Resources */,
 				841648771B64A47D00CD20AC /* menu-support-icon@2x.png in Resources */,
 				369992E21B82E57A00F47C5E /* Icon-Small.png in Resources */,
 				369992D61B82E57A00F47C5E /* Icon-40@2x.png in Resources */,
@@ -2433,10 +2461,12 @@
 				8416494F1B658F4900CD20AC /* VCLocationSearchViewController.xib in Resources */,
 				841649571B658F4900CD20AC /* VCRiderRecieptDetailViewController.xib in Resources */,
 				36E48E721B7ABFAE0034DFEB /* Bryant-Medium.ttf in Resources */,
+				366EBB4D1BB388F5004B4FC2 /* tutorial640x960.png in Resources */,
 				841649591B658F4900CD20AC /* confirm-location@2x.png in Resources */,
 				8416495C1B658F4900CD20AC /* VCSupportViewController.xib in Resources */,
 				841649651B658F4900CD20AC /* menu-receipts-icon@2x.png in Resources */,
 				36FA808D1B7D8FFC00C65DF2 /* menu-backhome-icon@2x.png in Resources */,
+				366EBB511BB388F5004B4FC2 /* tutorial640x1136.png in Resources */,
 				8416496A1B658F4900CD20AC /* confirm-location-select.png in Resources */,
 				8416496F1B658F4900CD20AC /* menu-mycar-icon@2x.png in Resources */,
 				36E48E6D1B7ABF9F0034DFEB /* Bryant-Regular.ttf in Resources */,
@@ -2471,6 +2501,7 @@
 				8416499E1B658F4900CD20AC /* menu-map-icon@2x.png in Resources */,
 				8416499F1B658F4900CD20AC /* current-location-button@2x.png in Resources */,
 				841649A31B658F4900CD20AC /* hamburger@2x.png in Resources */,
+				366EBB551BB388F5004B4FC2 /* tutorial750x1334.png in Resources */,
 				841649AB1B658F4900CD20AC /* VCProfileViewController.xib in Resources */,
 				36BF69C71BB25B5100A46CB9 /* phone@2x.png in Resources */,
 				841649AC1B658F4900CD20AC /* menu-support-icon@2x.png in Resources */,
@@ -2484,6 +2515,7 @@
 				36BF69B71BB2476C00A46CB9 /* VCLoadingViewController.xib in Resources */,
 				841649C11B658F4900CD20AC /* VCMenuUserInfoTableViewCell.xib in Resources */,
 				369DBC1F1B6D24AD00449CB4 /* test_big@x2.jpg in Resources */,
+				366EBB591BB388F5004B4FC2 /* tutorial1080x1920.png in Resources */,
 				36FB728C1B6D6B4200F8A6AF /* VCPaymentsViewController.xib in Resources */,
 				841649C61B658F4900CD20AC /* driver-cancel-hud-icon-select@2x.png in Resources */,
 				36F9F6631B6B0C5E00440D03 /* VCRiderTicketView.xib in Resources */,
@@ -2520,10 +2552,12 @@
 				F4C6B252197F06B100F6C10B /* VCRiderRecieptDetailViewController.xib in Resources */,
 				F4C6B253197F06B100F6C10B /* confirm-location@2x.png in Resources */,
 				36E48E711B7ABFAE0034DFEB /* Bryant-Medium.ttf in Resources */,
+				366EBB4C1BB388F5004B4FC2 /* tutorial640x960.png in Resources */,
 				4FFCF2CE19A5381900A4A24E /* VCSupportViewController.xib in Resources */,
 				4F184A021991753F006EA959 /* menu-receipts-icon@2x.png in Resources */,
 				F4C6B25C197F06B100F6C10B /* confirm-location-select.png in Resources */,
 				36FA808C1B7D8FFC00C65DF2 /* menu-backhome-icon@2x.png in Resources */,
+				366EBB501BB388F5004B4FC2 /* tutorial640x1136.png in Resources */,
 				4F1849F91991753F006EA959 /* menu-mycar-icon@2x.png in Resources */,
 				F4C6B260197F06B100F6C10B /* zoom-ride-bounds@2x.png in Resources */,
 				36E48E6C1B7ABF9F0034DFEB /* Bryant-Regular.ttf in Resources */,
@@ -2558,6 +2592,7 @@
 				F4C6B27C197F06B100F6C10B /* InfoPlist.strings in Resources */,
 				4FFE171E198A1890004D4413 /* menu-map-icon@2x.png in Resources */,
 				4F3DB5BC1981ED4E00DDD094 /* current-location-button@2x.png in Resources */,
+				366EBB541BB388F5004B4FC2 /* tutorial750x1334.png in Resources */,
 				4F35FA9719A80615004FB423 /* hamburger@2x.png in Resources */,
 				36BF69C61BB25B5100A46CB9 /* phone@2x.png in Resources */,
 				4FFCF2C119A25F2100A4A24E /* VCProfileViewController.xib in Resources */,
@@ -2571,6 +2606,7 @@
 				36BF69B61BB2476C00A46CB9 /* VCLoadingViewController.xib in Resources */,
 				4F184A1519918750006EA959 /* VCMenuUserInfoTableViewCell.xib in Resources */,
 				36638D751B658A5A004EDB09 /* VCRideRequestView.xib in Resources */,
+				366EBB581BB388F5004B4FC2 /* tutorial1080x1920.png in Resources */,
 				369DBC1E1B6D24AD00449CB4 /* test_big@x2.jpg in Resources */,
 				36FB728B1B6D6B4200F8A6AF /* VCPaymentsViewController.xib in Resources */,
 				4F1849E5198F625A006EA959 /* driver-cancel-hud-icon-select@2x.png in Resources */,
@@ -2619,6 +2655,7 @@
 				36FB728D1B6D6B4200F8A6AF /* VCPaymentsViewController.xib in Resources */,
 				F4D8FEC519B1745A00BC0B69 /* menu-receipts-icon@2x.png in Resources */,
 				F4D8FEC919B1745A00BC0B69 /* confirm-location-select.png in Resources */,
+				366EBB5A1BB388F5004B4FC2 /* tutorial1080x1920.png in Resources */,
 				F4D8FECE19B1745A00BC0B69 /* menu-mycar-icon@2x.png in Resources */,
 				F4D8FECF19B1745A00BC0B69 /* zoom-ride-bounds@2x.png in Resources */,
 				36049F8A1B8156370090ECAE /* VCOnboardingSetRouteViewController.xib in Resources */,
@@ -2630,6 +2667,7 @@
 				36E48E6E1B7ABF9F0034DFEB /* Bryant-Regular.ttf in Resources */,
 				84B30A601B82E54A0095F31D /* VCOnboardingViewController.xib in Resources */,
 				F4D8FEE219B1745A00BC0B69 /* temp-user-profile-icon@2x.png in Resources */,
+				366EBB561BB388F5004B4FC2 /* tutorial750x1334.png in Resources */,
 				84A348F91B85896E00DC7187 /* VCPasswordRecoveryViewController.xib in Resources */,
 				F4D8FEE419B1745A00BC0B69 /* (null) in Resources */,
 				36E48E781B7ABFBE0034DFEB /* Bryant-Bold.ttf in Resources */,
@@ -2641,6 +2679,7 @@
 				F4D8FEF219B1745A00BC0B69 /* search-location@2x.png in Resources */,
 				360C67E11B8BE555008F4BB0 /* camera@2x.png in Resources */,
 				369DBC181B6D22F400449CB4 /* test_big.jpg in Resources */,
+				366EBB4E1BB388F5004B4FC2 /* tutorial640x960.png in Resources */,
 				F4D8FEF719B1745A00BC0B69 /* search-location-select@2x.png in Resources */,
 				4FD1297F19D62462000E7C39 /* ride-bounds-button@2x.png in Resources */,
 				F4D8FEFB19B1745A00BC0B69 /* menu-profile-icon@2x.png in Resources */,
@@ -2657,6 +2696,7 @@
 				F4D8FF1319B1745A00BC0B69 /* menu-support-icon@2x.png in Resources */,
 				F4D8FF1619B1745A00BC0B69 /* VCRiderProfileViewController.xib in Resources */,
 				F4D8FF1B19B1745A00BC0B69 /* driver-hov-toggle-select@2x.png in Resources */,
+				366EBB521BB388F5004B4FC2 /* tutorial640x1136.png in Resources */,
 				F4D8FF1F19B1745A00BC0B69 /* directions-button@2x.png in Resources */,
 				36000CAC1B72D5A2008E84AE /* VCCarInfoViewController.xib in Resources */,
 				360C67DB1B8BDF95008F4BB0 /* profile_placeholder@2x.png in Resources */,
