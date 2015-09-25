@@ -9,7 +9,7 @@
 #import "VCConstants.h"
 
 #ifdef STRIPE_MODE_LIVE
-NSString *const kStringApiKey = @"pk_live_4Ub7D8qgqi87KpWFkMRtEkzJ";
+NSString *const kStripeApiKey = @"pk_live_4Ub7D8qgqi87KpWFkMRtEkzJ";
 #else
-NSString *const kStringApiKey = @"pk_test_qebkNcGfOXsQJ6aSrimJt3mf";
+NSString *const kStripeApiKey = @"pk_test_qebkNcGfOXsQJ6aSrimJt3mf";
 #endif
