@@ -211,15 +211,16 @@
     if([receipts count] > 0){
     Receipt * lastTransaction = receipts[0];
         if([lastTransaction.type isEqualToString:@"payment"]){
-            _lastTransactionLabel.text = [NSString stringWithFormat:@"Last Charged $%.2f on %@", [lastTransaction.amount doubleValue], [lastTransaction.date typicalDate]
+            _lastTransactionLabel.text = [NSString stringWithFormat:@"Last Charged $%.2f on %@", [lastTransaction.amount doubleValue] / 100.0f, [lastTransaction.date typicalDate]
                                               ];
         } else {
-            _lastTransactionLabel.text = [NSString stringWithFormat:@"Last Deposited $%.2f on %@", -[lastTransaction.amount doubleValue],
+            _lastTransactionLabel.text = [NSString stringWithFormat:@"Last Deposited $%.2f on %@", -[lastTransaction.amount doubleValue] / 100.0f,
                                               [lastTransaction.date typicalDate]];
         }
         _lastTransactionLabel.hidden = NO;
     } else {
         _lastTransactionLabel.hidden = YES;
+        
     }
 }
 
