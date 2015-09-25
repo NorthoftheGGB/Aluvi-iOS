@@ -63,10 +63,8 @@
     [super viewWillAppear:animated];
     
     [VCRidesApi refreshReceiptsWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        NSLog(@"Refreshed Receipts");
-       
+        NSLog(@"Refreshed Receipts");       
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [WRUtilities criticalError:error];
     }];
 }
 

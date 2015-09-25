@@ -167,7 +167,6 @@ static VCUserStateManager *sharedSingleton;
         success();
         
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [WRUtilities criticalError:error];
         failure(@"Problem creating user");
     }];
     
@@ -220,7 +219,6 @@ static VCUserStateManager *sharedSingleton;
                              success();
                          }
                      } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                         [WRUtilities criticalError:error];
                          if(failure != nil) {
                              failure(@"Could not synchronize user state");
                          }
@@ -261,7 +259,7 @@ static VCUserStateManager *sharedSingleton;
         [VCNotifications profileUpdated];
         completion();
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [WRUtilities criticalError:error];
+        failure(operation, error);
     }];
 }
 
@@ -275,7 +273,6 @@ static VCUserStateManager *sharedSingleton;
         [VCNotifications profileUpdated];
         completion();
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [WRUtilities criticalError:error];
         failure(operation, error);
     }];
 }
@@ -289,7 +286,6 @@ static VCUserStateManager *sharedSingleton;
                              [self cacheProfile];
                              success();
                          } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                             [WRUtilities criticalError:error];
                              failure(operation, error);
                          }];
 
@@ -304,10 +300,8 @@ static VCUserStateManager *sharedSingleton;
                                 [self cacheProfile];
                                 success();
                             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                [WRUtilities criticalError:error];
                                 failure(operation, error);
                             }];
-
 }
 
 

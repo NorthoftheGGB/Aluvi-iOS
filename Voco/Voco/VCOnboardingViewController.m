@@ -20,6 +20,7 @@
 #import "VCStyle.h"
 #import "VCUsersApi.h"
 #import "VCNotifications.h"
+#import "UIImage+DeviceSpecificMedia.h"
 
 
 
@@ -94,7 +95,7 @@
     frame4.origin.x = 6 * frame.size.width;
     vc3.view.frame = frame4;
     
-    UIImageView * imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tutorial"]];
+    UIImageView * imageView = [[UIImageView alloc] initWithImage:[UIImage imageForDeviceWithName:@"tutorial"]];
     CGRect imageViewFrame = frame;
     imageViewFrame.size.width = frame.size.width * 3;
     imageView.frame = imageViewFrame;
@@ -202,11 +203,11 @@
                                                       [[VCUserStateManager instance] saveProfileWithCompletion:^{
                                                           //
                                                       } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                          [WRUtilities criticalError:error];
+                                                          //
                                                       }];
                                                       
                                                   } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                                      [WRUtilities criticalError:error];
+                                                      //
                                                   }];
 
                                               }];
