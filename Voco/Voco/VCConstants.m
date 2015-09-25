@@ -6,7 +6,7 @@
 //  Copyright © 2015 Voco. All rights reserved.
 //
 
-#import "VCContants.h"
+#import "VCConstants.h"
 
 #ifdef STRIPE_MODE_LIVE
 NSString *const kStringApiKey = @"pk_live_4Ub7D8qgqi87KpWFkMRtEkzJ";
