@@ -159,7 +159,6 @@
             [self addPickupPointAnnotations];
         }
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [WRUtilities criticalError:error];
     }];
     
     
@@ -1554,12 +1553,14 @@
         [self showRideRequestView];
         [self placeInRouteMode];
     }
+    _editLocationType = 0;
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     _activePlacemark = nil;
 
 }
 - (IBAction)didTapCancelLocationEdit:(id)sender {
     
+    _editLocationType = 0;
     if(_delegate != nil) {
         [_delegate overrideCancelledUpdateLocation];
     } else {
@@ -1617,6 +1618,9 @@
 
 
 - (void)longPressOnMap:(RMMapView *)map at:(CGPoint)point {
+    if(_editLocationType == 0){
+        return;
+    }
     
     
     CLLocation * location = [[CLLocation alloc] initWithLatitude:[map pixelToCoordinate:point].latitude longitude:[map pixelToCoordinate:point].longitude];

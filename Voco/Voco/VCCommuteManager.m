@@ -181,7 +181,6 @@ static VCCommuteManager * instance;
                                          success();
                                          
                                      } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                         [WRUtilities criticalError:error];
                                          failure(@"Failed to store route,  please try again");
                                      }];
     
@@ -228,7 +227,6 @@ static VCCommuteManager * instance;
             success();
         }
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [WRUtilities criticalError:error];
         if(failure != nil){
             failure();
         }
@@ -279,7 +277,6 @@ static VCCommuteManager * instance;
                 [self cancelTrip: ((Ticket *)rides[0]).trip_id success:^{
                      [UIAlertView showWithTitle:@"OK" message:@"OK" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
                 } failure:^{
-                    [WRUtilities criticalError:error];
                 }];
                
             }
@@ -347,7 +344,6 @@ static VCCommuteManager * instance;
                     paymentRequired();
                     break;
                 default:
-                    [WRUtilities criticalError:error];
                     failure();
                     break;
             }
@@ -362,7 +358,6 @@ static VCCommuteManager * instance;
         [VCNotifications scheduleUpdated];
         success();
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [WRUtilities criticalError:error];
         failure();
     }];
 }
@@ -391,18 +386,8 @@ static VCCommuteManager * instance;
     [VCDriverApi ticketCompleted:ticket.ride_id success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [self loadActiveTickets];
         [VCNotifications scheduleUpdated];
-        /*
-         No necessary since we are synching tickets
-        ticket.state = kCompleteState;
-        NSError * error;
-        [[VCCoreData managedObjectContext] save:&error];
-        if(error != nil){
-            [WRUtilities criticalError:error];
-        }
-         */
         success();
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [WRUtilities subcriticaError:error];
         failure();
     }];
 }

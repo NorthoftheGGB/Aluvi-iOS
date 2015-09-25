@@ -100,7 +100,6 @@
     [VCRidesApi refreshReceiptsWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [self updateLastTransaction];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [WRUtilities criticalError:error];
     }];
 
 }
@@ -269,7 +268,6 @@
                                                              [hud hide:YES];
                                                              if(error != nil) {
                                                                  [self somethingDidntGoRight:selectedCardView];
-                                                                 [WRUtilities criticalError:error];
                                                              }
                                                          }];
                 
@@ -286,7 +284,6 @@
                                                              [hud hide:YES];
                                                              if(error != nil) {
                                                                  [self somethingDidntGoRight:selectedCardView];
-                                                                 [WRUtilities criticalError:error];
                                                              }
                                                              
                                                          }];

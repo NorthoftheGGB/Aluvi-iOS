@@ -325,7 +325,6 @@
                                          success(operation, mappingResult);
                                          
                                      } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                         [WRUtilities criticalError:error];
                                          failure(operation, error);
                                      }];
     
@@ -341,7 +340,6 @@
                                          success(operation, mappingResult);
                                          
                                      } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                                         [WRUtilities criticalError:error];
                                          failure(operation, error);
                                      }];
 }

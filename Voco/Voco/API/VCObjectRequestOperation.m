@@ -78,26 +78,37 @@
                 error = nil; // mark error as handled
             }
                 break;
+                
+            case 402:
+                // Handled by
+                break;
+                
+            case 405:
+                break;
+                
             case 406:
             {
-                /*
-                 Currently not handling at this level
+                
                 [UIAlertView showWithTitle:@"Bad Request"
                                    message:[error debugDescription]
                          cancelButtonTitle:@"OK"
                          otherButtonTitles:nil tapBlock:nil];
-                 */
+                
+                [WRUtilities criticalError:error];
+                error = nil;
+
             }
                 break;
                 
             default:
             {
-                if(statusCode >= 500 && error != nil) {
+                if(error != nil) {
                     [WRUtilities criticalError:error];
-                } 
+                }
             }
                 break;
         }
+
         if (failure) {
             failure(operation, error);
         }

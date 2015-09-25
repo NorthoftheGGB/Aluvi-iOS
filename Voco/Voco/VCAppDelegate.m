@@ -8,7 +8,6 @@
 
 #import "VCAppDelegate.h"
 #import <RestKit/RestKit.h>
-#import <Stripe.h>
 #import <Crashlytics/Crashlytics.h>
 #import <Parse/Parse.h>
 #import <ParseCrashReporting/ParseCrashReporting.h>
