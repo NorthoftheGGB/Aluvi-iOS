@@ -2304,8 +2304,8 @@
 			targets = (
 				F4C6B1BC197F06B100F6C10B /* Aluvi Development */,
 				841648A21B658F4900CD20AC /* Usama Development */,
-				F4D8FE0619B1745A00BC0B69 /* Aluvi Distribution Alpha */,
 				8416476D1B64A47D00CD20AC /* Aluvi Distribution Nightly */,
+				F4D8FE0619B1745A00BC0B69 /* Aluvi Distribution Alpha */,
 				F4FA0C03192BF6BF005D8645 /* VocoTests */,
 			);
 		};
