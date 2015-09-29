@@ -263,8 +263,11 @@
                                                              [hud hide:YES];
                                                              if(_delegate != nil){
                                                                  [_delegate VCPaymentsViewControllerDidUpdatePaymentMethod:self];
+                                                             } else {
+                                                                 [UIAlertView showWithTitle:@"OK!" message:@"Your payment method has been updated" cancelButtonTitle:@"Ok" otherButtonTitles:nil tapBlock:nil];
                                                              }
                                                              [self updateFieldValues];
+                                                     
                                                              
                                                          } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                                                              [hud hide:YES];
@@ -280,6 +283,8 @@
                                                              [hud hide:YES];
                                                              if(_delegate != nil){
                                                                  [_delegate VCPaymentsViewControllerDidUpdatePaymentMethod:self];
+                                                             } else {
+                                                                 [UIAlertView showWithTitle:@"OK!" message:@"You withdrawal method has been updated.  You can now withdraw your current balance at any time." cancelButtonTitle:@"Ok" otherButtonTitles:nil tapBlock:nil];
                                                              }
                                                              [self updateFieldValues];
                                                          } failure:^(RKObjectRequestOperation *operation, NSError *error) {
