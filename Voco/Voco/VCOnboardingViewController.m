@@ -22,6 +22,7 @@
 #import "VCNotifications.h"
 #import "UIImage+DeviceSpecificMedia.h"
 
+#define kTutorialSize 4
 
 
 @interface VCOnboardingViewController ()<VCOnboardingChildViewControllerDelegate, UIScrollViewDelegate>
@@ -67,7 +68,7 @@
     
     CGRect frame = [[[UIApplication sharedApplication] delegate] window].frame;
     CGSize size = frame.size;
-    size.width = size.width * 7;
+    size.width = size.width * (kTutorialSize+4);
     self.scrollView.frame = self.view.frame;
     [self.scrollView setContentSize:size];
     self.scrollView.contentInset=UIEdgeInsetsMake(0.0,0.0,0.0,0.0);
@@ -80,24 +81,24 @@
     [self.view setNeedsLayout];
     
     CGRect frame1 = frame;
-    frame1.origin.x = 3 * frame.size.width;
+    frame1.origin.x = kTutorialSize * frame.size.width;
     vc0.view.frame = frame1;
     
     CGRect frame2 = frame;
-    frame2.origin.x = 4 * frame.size.width;
+    frame2.origin.x = (kTutorialSize+1) * frame.size.width;
     vc1.view.frame = frame2;
     
     CGRect frame3 = frame;
-    frame3.origin.x = 5 * frame.size.width;
+    frame3.origin.x = (kTutorialSize+2) * frame.size.width;
     vc2.view.frame = frame3;
     
     CGRect frame4 = frame;
-    frame4.origin.x = 6 * frame.size.width;
+    frame4.origin.x = (kTutorialSize+3) * frame.size.width;
     vc3.view.frame = frame4;
     
     UIImageView * imageView = [[UIImageView alloc] initWithImage:[UIImage imageForDeviceWithName:@"tutorial"]];
     CGRect imageViewFrame = frame;
-    imageViewFrame.size.width = frame.size.width * 3;
+    imageViewFrame.size.width = frame.size.width * kTutorialSize;
     imageView.frame = imageViewFrame;
     [self.scrollView addSubview:imageView];
     [self.scrollView addSubview:vc0.view];
@@ -110,9 +111,9 @@
     self.navigationController.navigationBarHidden = YES;
     
     
-    _currentIndex = 3;
+    _currentIndex = kTutorialSize;
     if([[NSUserDefaults standardUserDefaults] boolForKey:kSkipTutorial]){
-        [self.scrollView setContentOffset:CGPointMake(3 * frame.size.width, 0) animated:NO];
+        [self.scrollView setContentOffset:CGPointMake(kTutorialSize * frame.size.width, 0) animated:NO];
     } else {
     }
 
@@ -138,8 +139,8 @@
         [self registerUser];
     } else {
         NSInteger width = [[[UIApplication sharedApplication] delegate] window].frame.size.width;
-        CGRect visible = CGRectMake(320 * (onboardingChildViewController.index + 1 + 3), 0, width, self.view.frame.size.height);
-        _currentIndex = onboardingChildViewController.index + 1 + 3;
+        CGRect visible = CGRectMake(320 * (onboardingChildViewController.index + 1 + kTutorialSize), 0, width, self.view.frame.size.height);
+        _currentIndex = onboardingChildViewController.index + 1 + kTutorialSize;
         _locked = NO;
         _scrollView.userInteractionEnabled = NO;
         [self.scrollView scrollRectToVisible:visible animated:YES];
