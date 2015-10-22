@@ -94,5 +94,9 @@
     [VCDebug showTriage];
 }
 
+- (IBAction)didTapRequestAssistance:(id)sender {
+    NSString *url = [@"telprompt://" stringByAppendingString:@"4153025454"];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+}
 
 @end
