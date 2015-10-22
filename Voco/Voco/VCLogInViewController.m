@@ -155,6 +155,8 @@
 }
 
 - (IBAction)didTapLogIn:(id)sender {
+    _emailTextField.text = [_emailTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+   
     [self login];
 }
 
@@ -167,6 +169,8 @@
         return;
     }
 
+    
+    _emailTextField.text = [_emailTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
     if(![_emailTextField validate]){
         return;
@@ -242,7 +246,6 @@
 
 - (void) login {
     
-
     
     if(![_emailTextField validate]){
         return;
@@ -436,7 +439,6 @@
     if([textField.text length] > 0){
         textField.backgroundColor = [UIColor whiteColor];
     }
-    
     switch(textField.tag){
         case kPhoneFieldTag:
             if ([_emailTextField validate]){
