@@ -94,10 +94,10 @@ static void * XXContext = &XXContext;
 
 - (void) setUpCells {
     if([[VCUserStateManager instance] isHovDriver]){
-        _tableCellList = [NSMutableArray arrayWithArray: @[kUserInfoCell, kCommuteCell, kBackHomeCell, kMyCarCell, kPaymentCell, kReceiptsCell,  kSupportCell, kLogoutCell, kTriageCell ]];
+        _tableCellList = [NSMutableArray arrayWithArray: @[kUserInfoCell, kCommuteCell, kBackHomeCell, kMyCarCell, kPaymentCell, kReceiptsCell,  kSupportCell, kLogoutCell ]];
         
     } else {
-        _tableCellList = [NSMutableArray arrayWithArray: @[kUserInfoCell, kCommuteCell, kBackHomeCell, kPaymentCell, kReceiptsCell, kSupportCell, kLogoutCell, kTriageCell ]];
+        _tableCellList = [NSMutableArray arrayWithArray: @[kUserInfoCell, kCommuteCell, kBackHomeCell, kPaymentCell, kReceiptsCell, kSupportCell, kLogoutCell ]];
     }
 }
 
