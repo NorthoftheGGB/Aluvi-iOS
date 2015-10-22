@@ -37,14 +37,17 @@ static VCDebug * instance;
     if([VCDebug sharedInstance].alertsEnabled){
         alertsEnabledText = @"Disable Error Alerts";
     }
+    
+    NSMutableArray * buttons =  [@[@"Refresh Push Token", alertsEnabledText, @"Status", @"Purge Tickets"] mutableCopy];
+    
+#if defined(DEVELOPMENT) || defined(NIGHTLY)
+    [buttons addObject:@"Schedule Tickets"];
+    
     NSString * blockPushMessagesText = @"Block Push Messages";
     if([VCDebug sharedInstance].blockPushMessages){
         blockPushMessagesText = @"Unblock Push Messages";
     }
-    
-    NSMutableArray * buttons =  [@[@"Refresh Push Token", alertsEnabledText, blockPushMessagesText, @"Status", @"Purge Tickets"] mutableCopy];
-#if defined(DEVELOPMENT) || defined(NIGHTLY)
-    [buttons addObject:@"Schedule Tickets"];
+    [buttons addObject:blockPushMessagesText];
 #endif
     
 
@@ -72,16 +75,6 @@ static VCDebug * instance;
             }
             case 3:
             {
-                if([VCDebug sharedInstance].blockPushMessages){
-                    [VCDebug sharedInstance].blockPushMessages = false;
-                } else {
-                    [VCDebug sharedInstance].blockPushMessages = true;
-                    
-                }
-                break;
-            }
-            case 4:
-            {
                 Ticket * ticket = [[VCCommuteManager instance] getDefaultTicket];
                 Ticket * backHomeTicket = [[VCCommuteManager instance] getTicketBackHome];
                 NSString * status = @"No Status";
@@ -91,7 +84,7 @@ static VCDebug * instance;
                 }
                 [UIAlertView showWithTitle:@"Ticket Status" message:status cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
             }
-            case 5:
+            case 4:
             {
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                     
@@ -113,7 +106,7 @@ static VCDebug * instance;
                 break;
 
             }
-            case 6:
+            case 5:
             {
 #if defined(DEVELOPMENT) || defined(NIGHTLY)
                 NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:
@@ -129,6 +122,17 @@ static VCDebug * instance;
 #endif
 
             }
+            case 6:
+            {
+                if([VCDebug sharedInstance].blockPushMessages){
+                    [VCDebug sharedInstance].blockPushMessages = false;
+                } else {
+                    [VCDebug sharedInstance].blockPushMessages = true;
+                    
+                }
+                break;
+            }
+
                 
                 break;
                 
