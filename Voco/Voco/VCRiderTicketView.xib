@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="TwM-TO-NEf" customClass="VCRiderTicketView">
-            <rect key="frame" x="0.0" y="5" width="320" height="245"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="245"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hZ4-1q-QkQ">
@@ -39,16 +38,12 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d21-V1-hVK">
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d21-V1-hVK">
                             <rect key="frame" x="160" y="0.0" width="160" height="123"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1M3-bc-0He">
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1M3-bc-0He">
                                     <rect key="frame" x="26" y="8" width="107" height="107"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="107" id="Z8e-El-1Zt"/>
-                                        <constraint firstAttribute="height" constant="107" id="xAM-ut-QCm"/>
-                                    </constraints>
                                     <state key="normal" backgroundImage="test_big@x2.jpg">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -61,19 +56,6 @@
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstItem="1M3-bc-0He" firstAttribute="leading" secondItem="d21-V1-hVK" secondAttribute="leading" constant="26" id="Btz-TY-aDe"/>
-                                <constraint firstItem="1M3-bc-0He" firstAttribute="top" secondItem="d21-V1-hVK" secondAttribute="top" constant="8" id="F9n-B9-kCD"/>
-                                <constraint firstItem="1M3-bc-0He" firstAttribute="leading" secondItem="d21-V1-hVK" secondAttribute="leading" constant="26" id="J8T-Ks-NGv"/>
-                                <constraint firstItem="1M3-bc-0He" firstAttribute="top" secondItem="d21-V1-hVK" secondAttribute="topMargin" id="OU0-X3-x4b"/>
-                                <constraint firstItem="1M3-bc-0He" firstAttribute="leading" secondItem="d21-V1-hVK" secondAttribute="leading" constant="26" id="bZE-ER-ZCZ"/>
-                                <constraint firstAttribute="trailing" secondItem="1M3-bc-0He" secondAttribute="trailing" constant="27" id="d4N-2M-1hr"/>
-                                <constraint firstAttribute="bottom" secondItem="1M3-bc-0He" secondAttribute="bottom" constant="8" id="fag-0e-9Cj"/>
-                                <constraint firstItem="1M3-bc-0He" firstAttribute="centerY" secondItem="d21-V1-hVK" secondAttribute="centerY" id="hEv-Vo-ugo"/>
-                                <constraint firstItem="1M3-bc-0He" firstAttribute="top" secondItem="d21-V1-hVK" secondAttribute="top" constant="8" id="rpL-wt-WvZ"/>
-                                <constraint firstItem="1M3-bc-0He" firstAttribute="top" secondItem="d21-V1-hVK" secondAttribute="top" constant="8" id="y4U-qm-hM7"/>
-                                <constraint firstItem="1M3-bc-0He" firstAttribute="bottom" secondItem="d21-V1-hVK" secondAttribute="bottomMargin" id="zQV-kL-Oqh"/>
-                            </constraints>
                         </view>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qLM-Gy-Sat" customClass="VCRiderView">
                             <rect key="frame" x="92" y="122" width="101" height="123"/>
