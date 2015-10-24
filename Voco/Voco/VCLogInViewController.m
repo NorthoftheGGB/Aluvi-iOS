@@ -441,6 +441,7 @@
     }
     switch(textField.tag){
         case kPhoneFieldTag:
+            _emailTextField.text = [_emailTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             if ([_emailTextField validate]){
                 [_passwordTextField becomeFirstResponder];
             }
