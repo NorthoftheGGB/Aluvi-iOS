@@ -2,6 +2,14 @@ source 'https://github.com/CocoaPods/Specs.git'
 xcodeproj 'Voco/Voco.xcodeproj'
 platform :ios, '8.0'
 
+post_install do |installer|
+	installer.pods_project.targets.each do |target|
+		target.build_configurations.each do |config|
+			config.build_settings['ENABLE_BITCODE'] = 'NO'
+		end
+	end
+end
+
 # ignore all warnings from all pods
 inhibit_all_warnings!
 pod 'RestKit', :git => 'https://github.com/RestKit/RestKit.git', :tag => 'v0.25.0'
