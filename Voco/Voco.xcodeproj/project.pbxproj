@@ -632,14 +632,14 @@
 		84F223231B8266D300E5F7B7 /* VCRiderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F223211B8266D300E5F7B7 /* VCRiderView.m */; };
 		84F223241B8266D300E5F7B7 /* VCRiderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F223211B8266D300E5F7B7 /* VCRiderView.m */; };
 		84F223251B8266D300E5F7B7 /* VCRiderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F223211B8266D300E5F7B7 /* VCRiderView.m */; };
-		84FEDB3D1BB5BE0200EE3006 /* VCConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FEDB3B1BB5BE0100EE3006 /* VCConstants.m */; settings = {ASSET_TAGS = (); }; };
-		84FEDB3E1BB5BE0200EE3006 /* VCConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FEDB3B1BB5BE0100EE3006 /* VCConstants.m */; settings = {ASSET_TAGS = (); }; };
-		84FEDB3F1BB5BE0200EE3006 /* VCConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FEDB3B1BB5BE0100EE3006 /* VCConstants.m */; settings = {ASSET_TAGS = (); }; };
-		84FEDB401BB5BE0200EE3006 /* VCConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FEDB3B1BB5BE0100EE3006 /* VCConstants.m */; settings = {ASSET_TAGS = (); }; };
-		84FEDB431BB5C1E800EE3006 /* UIImage+DeviceSpecificMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FEDB421BB5C1E800EE3006 /* UIImage+DeviceSpecificMedia.m */; settings = {ASSET_TAGS = (); }; };
-		84FEDB441BB5C1E800EE3006 /* UIImage+DeviceSpecificMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FEDB421BB5C1E800EE3006 /* UIImage+DeviceSpecificMedia.m */; settings = {ASSET_TAGS = (); }; };
-		84FEDB451BB5C1E800EE3006 /* UIImage+DeviceSpecificMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FEDB421BB5C1E800EE3006 /* UIImage+DeviceSpecificMedia.m */; settings = {ASSET_TAGS = (); }; };
-		84FEDB461BB5C1E800EE3006 /* UIImage+DeviceSpecificMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FEDB421BB5C1E800EE3006 /* UIImage+DeviceSpecificMedia.m */; settings = {ASSET_TAGS = (); }; };
+		84FEDB3D1BB5BE0200EE3006 /* VCConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FEDB3B1BB5BE0100EE3006 /* VCConstants.m */; };
+		84FEDB3E1BB5BE0200EE3006 /* VCConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FEDB3B1BB5BE0100EE3006 /* VCConstants.m */; };
+		84FEDB3F1BB5BE0200EE3006 /* VCConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FEDB3B1BB5BE0100EE3006 /* VCConstants.m */; };
+		84FEDB401BB5BE0200EE3006 /* VCConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FEDB3B1BB5BE0100EE3006 /* VCConstants.m */; };
+		84FEDB431BB5C1E800EE3006 /* UIImage+DeviceSpecificMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FEDB421BB5C1E800EE3006 /* UIImage+DeviceSpecificMedia.m */; };
+		84FEDB441BB5C1E800EE3006 /* UIImage+DeviceSpecificMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FEDB421BB5C1E800EE3006 /* UIImage+DeviceSpecificMedia.m */; };
+		84FEDB451BB5C1E800EE3006 /* UIImage+DeviceSpecificMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FEDB421BB5C1E800EE3006 /* UIImage+DeviceSpecificMedia.m */; };
+		84FEDB461BB5C1E800EE3006 /* UIImage+DeviceSpecificMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FEDB421BB5C1E800EE3006 /* UIImage+DeviceSpecificMedia.m */; };
 		D144A4D71B6ADDA900D36D3B /* MBRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = D19278A31B6738D1009BFBF8 /* MBRegion.m */; };
 		D19278A41B6738D1009BFBF8 /* MBRegion.m in Sources */ = {isa = PBXBuildFile; fileRef = D19278A31B6738D1009BFBF8 /* MBRegion.m */; };
 		F425906819958E9700FA928E /* VCTicketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F73CA02197F2AB0001B6663 /* VCTicketViewController.m */; };
@@ -3382,6 +3382,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3410,6 +3411,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Voco Transportation Inc (269WB9G8WE)";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3440,6 +3442,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3501,6 +3504,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3690,6 +3694,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Voco Transportation Inc (269WB9G8WE)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Voco Transportation Inc (269WB9G8WE)";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -3718,6 +3723,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Voco Transportation Inc (269WB9G8WE)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Voco Transportation Inc (269WB9G8WE)";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

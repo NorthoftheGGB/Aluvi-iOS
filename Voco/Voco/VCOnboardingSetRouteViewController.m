@@ -122,6 +122,11 @@
 - (IBAction)driverSwitchValueChanged:(id)sender {
     UISwitch * driverSwitch = (UISwitch *) sender;
     _route.driving = driverSwitch.on;
+    if(_route.driving){
+        _pickupPointButton.titleLabel.text = @"Pickup Area";
+    } else {
+        _pickupPointButton.titleLabel.text = @"Pickup Point";
+    }
 }
 
 #pragma delegate
