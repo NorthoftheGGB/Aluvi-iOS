@@ -24,7 +24,7 @@
 #import "VCTicketViewController.h"
 #import "VCDevicesApi.h"
 #import "VCCommuteManager.h"
-
+#import "RavenClient.h"
 
 @interface VCAppDelegate ()
 
@@ -50,7 +50,9 @@
     if([[NSBundle mainBundle] objectForInfoDictionaryKey:@"Fabric"] != nil){
         [Fabric with:@[CrashlyticsKit]];
     }
-    
+    RavenClient *client = [RavenClient clientWithDSN:@"https://993151c24b4547a98343d2564d50c528:0d708d9425f2473b8e958a579e1f7a0f@app.getsentry.com/55891"];
+    [RavenClient setSharedClient:client];
+    [client setupExceptionHandler];
 
     [VCDialogs instance];
     
