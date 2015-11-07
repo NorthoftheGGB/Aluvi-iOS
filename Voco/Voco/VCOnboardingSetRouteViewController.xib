@@ -98,17 +98,23 @@
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="93J-LY-qbQ">
-                            <rect key="frame" x="-34" y="-429" width="51" height="31"/>
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="93J-LY-qbQ">
+                            <rect key="frame" x="198" y="0.0" width="51" height="31"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="49" id="bjY-Mc-V1r"/>
+                                <constraint firstAttribute="height" constant="31" id="sK4-bJ-0xi"/>
+                            </constraints>
                             <color key="onTintColor" red="0.2784313725" green="0.60784313729999995" blue="0.63921568630000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="driverSwitchValueChanged:" destination="-1" eventType="valueChanged" id="L6u-tg-VzX"/>
                             </connections>
                         </switch>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="93J-LY-qbQ" secondAttribute="trailing" constant="5" id="5OZ-sH-j0j"/>
+                        <constraint firstItem="93J-LY-qbQ" firstAttribute="top" secondItem="5UF-Cg-AUT" secondAttribute="top" id="EH3-7G-FgZ"/>
                         <constraint firstAttribute="height" constant="46" id="SlT-nV-HJ3"/>
                         <constraint firstItem="Ejh-Yr-lLV" firstAttribute="top" secondItem="5UF-Cg-AUT" secondAttribute="top" id="T9H-52-bw3"/>
                         <constraint firstAttribute="width" constant="252" id="dcr-F8-W2X"/>

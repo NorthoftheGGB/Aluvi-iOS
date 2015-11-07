@@ -585,6 +585,7 @@
     frame.size.width = self.view.frame.size.width;
     frame.size.height = self.view.frame.size.height;
     _rideRequestView.frame = frame;
+    [_rideRequestView setNeedsDisplay];
     
     // add the view to the superview
     [[[[UIApplication sharedApplication] delegate] window] addSubview:_rideRequestView];
@@ -1276,6 +1277,7 @@
     frame.size.width = self.view.frame.size.width;
     frame.size.height = self.view.frame.size.height;
     _carInfoViewController.view.frame = frame;
+    
     
     // add the view to the superview
     [[[[UIApplication sharedApplication] delegate] window] addSubview:_carInfoViewController.view];
