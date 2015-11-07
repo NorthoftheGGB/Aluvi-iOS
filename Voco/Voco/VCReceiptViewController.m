@@ -39,8 +39,6 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setGradient];
-    
     NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"Receipt"];
     NSSortDescriptor * sort = [NSSortDescriptor sortDescriptorWithKey:@"date" ascending:YES];
     NSSortDescriptor * sort2 = [NSSortDescriptor sortDescriptorWithKey:@"receiptId" ascending:YES];
@@ -61,6 +59,8 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    [self setGradient];
     
     [VCRidesApi refreshReceiptsWithSuccess:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSLog(@"Refreshed Receipts");       

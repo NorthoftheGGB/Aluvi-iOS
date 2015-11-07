@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCOnboardingPersonalInfoViewController">
@@ -17,9 +17,13 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="WORK EMAIL" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3EK-wi-p25" customClass="VCTextField">
+                <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="WORK EMAIL" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3EK-wi-p25" customClass="VCTextField">
                     <rect key="frame" x="45" y="244" width="230" height="44"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="eqP-9g-28T"/>
+                        <constraint firstAttribute="width" constant="230" id="sxe-9m-cms"/>
+                    </constraints>
                     <color key="textColor" red="0.30588235289999999" green="0.63921568630000003" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="done"/>
@@ -42,9 +46,13 @@
                         <action selector="nextButtonTutorial:" destination="-1" eventType="touchUpInside" id="rUZ-dE-iqL"/>
                     </connections>
                 </button>
-                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="PHONE #" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X06-Pu-wDo" customClass="VCTextField">
+                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="PHONE #" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X06-Pu-wDo" customClass="VCTextField">
                     <rect key="frame" x="45" y="182" width="230" height="44"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="230" id="0Yg-rc-B4e"/>
+                        <constraint firstAttribute="height" constant="44" id="Zv6-6N-UZV"/>
+                    </constraints>
                     <color key="textColor" red="0.30588235289999999" green="0.63921568630000003" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="next"/>
@@ -52,9 +60,13 @@
                         <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="B2m-Zm-Y6k"/>
                     </connections>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="FULL NAME" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QLa-Hu-tTJ" customClass="VCTextField">
+                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="FULL NAME" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QLa-Hu-tTJ" customClass="VCTextField">
                     <rect key="frame" x="45" y="119" width="230" height="44"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="RQN-XH-P0Z"/>
+                        <constraint firstAttribute="width" constant="230" id="aZh-J9-ASK"/>
+                    </constraints>
                     <color key="textColor" red="0.30588235289999999" green="0.63921568630000003" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
@@ -62,14 +74,22 @@
                         <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="IPz-Aj-CHE"/>
                     </connections>
                 </textField>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="All about YOU:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEK-iG-n8t" customClass="VCLabelExtraBold">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All about YOU:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEK-iG-n8t" customClass="VCLabelExtraBold">
                     <rect key="frame" x="29" y="54" width="263" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="6Lo-8e-Qf0"/>
+                        <constraint firstAttribute="width" constant="263" id="NgU-o4-78E"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(Optional for work-related reimbursement) " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tov-Mj-CQv" customClass="VCLabelSmall">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Optional for work-related reimbursement) " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tov-Mj-CQv" customClass="VCLabelSmall">
                     <rect key="frame" x="21" y="286" width="278" height="33"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="278" id="fwd-Ze-DLJ"/>
+                        <constraint firstAttribute="height" constant="33" id="kRF-q1-IQc"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.35686274509999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -78,9 +98,19 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <color key="tintColor" red="0.30588235289999999" green="0.63921568630000003" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="QLa-Hu-tTJ" firstAttribute="top" secondItem="XEK-iG-n8t" secondAttribute="bottom" constant="15" id="BgJ-yc-jKB"/>
                 <constraint firstAttribute="trailing" secondItem="Y3l-La-QIL" secondAttribute="trailing" id="EUV-5S-EvJ"/>
+                <constraint firstItem="QLa-Hu-tTJ" firstAttribute="centerX" secondItem="sne-h3-hEL" secondAttribute="centerX" id="H4C-y5-17h"/>
+                <constraint firstItem="3EK-wi-p25" firstAttribute="centerX" secondItem="sne-h3-hEL" secondAttribute="centerX" id="XMc-Wl-HWJ"/>
+                <constraint firstItem="Tov-Mj-CQv" firstAttribute="top" secondItem="X06-Pu-wDo" secondAttribute="bottom" constant="60" id="dIZ-F5-MyE"/>
+                <constraint firstItem="Tov-Mj-CQv" firstAttribute="centerX" secondItem="sne-h3-hEL" secondAttribute="centerX" id="eah-cT-Txt"/>
+                <constraint firstItem="3EK-wi-p25" firstAttribute="top" secondItem="X06-Pu-wDo" secondAttribute="bottom" constant="18" id="g5R-qo-FfY"/>
+                <constraint firstItem="XEK-iG-n8t" firstAttribute="centerX" secondItem="sne-h3-hEL" secondAttribute="centerX" id="gb9-Zp-DLj"/>
                 <constraint firstItem="Y3l-La-QIL" firstAttribute="leading" secondItem="sne-h3-hEL" secondAttribute="leading" id="mJ4-nS-gXm"/>
+                <constraint firstItem="X06-Pu-wDo" firstAttribute="centerX" secondItem="sne-h3-hEL" secondAttribute="centerX" id="nNL-fN-xnZ"/>
+                <constraint firstItem="X06-Pu-wDo" firstAttribute="top" secondItem="QLa-Hu-tTJ" secondAttribute="bottom" constant="19" id="qLm-ZI-rvF"/>
                 <constraint firstAttribute="bottom" secondItem="Y3l-La-QIL" secondAttribute="bottom" id="sas-TA-qYs"/>
+                <constraint firstItem="XEK-iG-n8t" firstAttribute="top" secondItem="sne-h3-hEL" secondAttribute="top" constant="54" id="vZ9-ti-Mbx"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="376" y="351"/>

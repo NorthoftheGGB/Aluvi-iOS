@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCOnboardingUserPhotoViewController">
@@ -15,14 +15,18 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time to take a selfie:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bn9-jf-6QI" customClass="VCLabelExtraBold">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time to take a selfie:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bn9-jf-6QI" customClass="VCLabelExtraBold">
                     <rect key="frame" x="29" y="54" width="263" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="W6c-IW-d27"/>
+                        <constraint firstAttribute="width" constant="263" id="ply-ZX-dn2"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tQr-S7-Z8b" customClass="VCButtonBold">
-                    <rect key="frame" x="0.0" y="510" width="319" height="58"/>
+                    <rect key="frame" x="0.0" y="510" width="320" height="58"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="58" id="GxP-oU-vCt"/>
                     </constraints>
@@ -35,11 +39,12 @@
                         <action selector="nextButtonPersonalInfo:" destination="-1" eventType="touchUpInside" id="L5u-2f-Bi9"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile_placeholder2.png" translatesAutoresizingMaskIntoConstraints="NO" id="1e2-5n-qyg">
-                    <rect key="frame" x="99" y="119" width="122" height="122"/>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ris-86-hAd" customClass="VCFancyButton">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ris-86-hAd" customClass="VCFancyButton">
                     <rect key="frame" x="54" y="276" width="213" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="2Or-yq-5b6"/>
+                        <constraint firstAttribute="width" constant="213" id="O92-Z4-sXC"/>
+                    </constraints>
                     <state key="normal" title="TAKE OR CHOOSE PHOTO">
                         <color key="titleColor" red="0.35686274509999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -48,14 +53,35 @@
                         <action selector="onboardingTakePhoto:" destination="-1" eventType="touchUpInside" id="3qD-UG-A07"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_placeholder2.png" translatesAutoresizingMaskIntoConstraints="NO" id="1e2-5n-qyg">
+                    <rect key="frame" x="99" y="121" width="122" height="122"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="122" id="bD9-39-SGB"/>
+                        <constraint firstAttribute="height" constant="122" id="wEJ-Da-UFC"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="tQr-S7-Z8b" firstAttribute="leading" secondItem="ntK-Um-kVY" secondAttribute="leading" id="6Mv-d6-1OO"/>
+                <constraint firstItem="bn9-jf-6QI" firstAttribute="top" secondItem="ntK-Um-kVY" secondAttribute="top" constant="54" id="7E9-PH-3f3"/>
                 <constraint firstItem="tQr-S7-Z8b" firstAttribute="leading" secondItem="ntK-Um-kVY" secondAttribute="leading" id="Ajb-aF-q7d"/>
+                <constraint firstItem="bn9-jf-6QI" firstAttribute="centerX" secondItem="ntK-Um-kVY" secondAttribute="centerX" id="CnT-Hx-9We"/>
+                <constraint firstItem="ris-86-hAd" firstAttribute="centerX" secondItem="ntK-Um-kVY" secondAttribute="centerX" id="IWq-MA-UmZ"/>
                 <constraint firstAttribute="trailing" secondItem="tQr-S7-Z8b" secondAttribute="trailing" constant="1" id="IlS-k6-raC"/>
+                <constraint firstItem="ris-86-hAd" firstAttribute="top" secondItem="1e2-5n-qyg" secondAttribute="bottom" constant="33" id="Opf-yz-cxO"/>
+                <constraint firstAttribute="bottom" secondItem="tQr-S7-Z8b" secondAttribute="bottom" id="OxS-BT-1NW"/>
+                <constraint firstItem="1e2-5n-qyg" firstAttribute="centerX" secondItem="ntK-Um-kVY" secondAttribute="centerX" id="Rub-fh-9kn"/>
+                <constraint firstItem="1e2-5n-qyg" firstAttribute="top" secondItem="bn9-jf-6QI" secondAttribute="bottom" constant="17" id="Siq-oa-t9P"/>
+                <constraint firstAttribute="trailing" secondItem="tQr-S7-Z8b" secondAttribute="trailing" id="SnN-IB-HQ8"/>
                 <constraint firstAttribute="bottom" secondItem="tQr-S7-Z8b" secondAttribute="bottom" id="rCf-Bd-cwu"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="IlS-k6-raC"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="328" y="313"/>
         </view>
     </objects>

@@ -41,15 +41,18 @@
 }
 
 
-- (void) viewDidLoad {
-    
-    [_buttonsView.layer insertSublayer:[self gradientLayer:self.view.frame] atIndex:0];
-    _buttonsView.frame = self.view.frame;
+- (void) viewWillAppear:(BOOL)animated{
+    CGRect frame = self.view.frame;
+    frame.origin.x = 0;
+    frame.origin.y = 0;
+    [super viewWillAppear:animated];
+    [_buttonsView.layer insertSublayer:[self gradientLayer:frame] atIndex:0];
+    _buttonsView.frame = frame;
     [self.view addSubview:_buttonsView];
     [_buttonsView setNeedsLayout];
-    
 
 }
+
 
 - (CAGradientLayer *) gradientLayer: (CGRect) frame {
     CAGradientLayer *gradient = [CAGradientLayer layer];

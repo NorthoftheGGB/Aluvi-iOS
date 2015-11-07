@@ -10,7 +10,7 @@
 #import "NSDate+Pretty.h"
 #import "VCDebug.h"
 #import "VCUsersApi.h"
-
+#import "RavenClient.h"
 
 static UIAlertView * criticalErrorView = nil;
 static UIAlertView * networkUnavailableErrorView = nil;
@@ -39,6 +39,8 @@ static UIAlertView * networkUnavailableErrorView = nil;
     NSString * errorString = [NSString stringWithFormat:@"%@ Critical Error: %@", [[NSDate date] pretty], [error debugDescription]];
     NSLog(@"%@", errorString);
     [[VCDebug sharedInstance] apiLog:errorString];
+    
+    RavenCaptureError(error);
     
     if([[VCDebug sharedInstance] alertsEnabled]) {
         

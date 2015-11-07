@@ -43,11 +43,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setGradient];
     
     UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [tapBackground setNumberOfTapsRequired:1];
     [self.view addGestureRecognizer:tapBackground];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self setGradient];
 }
 
 

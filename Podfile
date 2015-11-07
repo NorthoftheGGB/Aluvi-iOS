@@ -30,6 +30,7 @@ pod 'Mapbox-iOS-SDK', :git => 'https://github.com/deepwinter/mapbox-ios-sdk.git'
 pod 'ViewDeck', '~> 2.2.11'
 pod 'Masonry'
 pod 'PKImagePicker', :git => 'https://github.com/deepwinter/PKImagePickerDemo.git'
+pod 'Raven'
 
  
 link_with 'Usama Development', 'Aluvi Distributio Alpha', 'Aluvi Distribution Nightly'

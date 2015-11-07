@@ -286,12 +286,13 @@
                                                   }
                                                       break;
                                                       
-                                                  case 403:
+                                                  case 401:
                                                       [UIAlertView showWithTitle:@"Incorrect Password" message:@"That's not the correct password for this email address, how about trying again." cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
                                                       break;
                                                       
                                                   default:
-                                                      [UIAlertView showWithTitle:@"Login Failed!" message:@"Invalid Email or Password.  " cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                                                      [WRUtilities criticalError:error];
+                                                      [UIAlertView showWithTitle:@"Login Failed!" message:@"We had a problem talking with the server.  Please try again.  " cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
                                                       break;
                                               }
                                               [_hud hide:YES];

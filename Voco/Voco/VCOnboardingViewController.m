@@ -53,6 +53,7 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    if(_currentIndex == 0) {
     VCLogInViewController * vc0 = [[VCLogInViewController alloc] init];
     vc0.index = 0;
     vc0.delegate = self;
@@ -65,6 +66,10 @@
     VCOnboardingChildViewController * vc3 = [[VCOnboardingPersonalInfoViewController alloc] init];
     vc3.index = 3;
     vc3.delegate = self;
+    
+    [self addChildViewController:vc1];
+    [self addChildViewController:vc2];
+    [self addChildViewController:vc3];
     
     CGRect frame = [[[UIApplication sharedApplication] delegate] window].frame;
     CGSize size = frame.size;
@@ -110,11 +115,12 @@
     
     self.navigationController.navigationBarHidden = YES;
     
-    
     _currentIndex = kTutorialSize;
     if([[NSUserDefaults standardUserDefaults] boolForKey:kSkipTutorial]){
         [self.scrollView setContentOffset:CGPointMake(kTutorialSize * frame.size.width, 0) animated:NO];
     } else {
+    }
+        
     }
 
 }
@@ -139,7 +145,7 @@
         [self registerUser];
     } else {
         NSInteger width = [[[UIApplication sharedApplication] delegate] window].frame.size.width;
-        CGRect visible = CGRectMake(320 * (onboardingChildViewController.index + 1 + kTutorialSize), 0, width, self.view.frame.size.height);
+        CGRect visible = CGRectMake(width * (onboardingChildViewController.index + 1 + kTutorialSize), 0, width, self.view.frame.size.height);
         _currentIndex = onboardingChildViewController.index + 1 + kTutorialSize;
         _locked = NO;
         _scrollView.userInteractionEnabled = NO;
