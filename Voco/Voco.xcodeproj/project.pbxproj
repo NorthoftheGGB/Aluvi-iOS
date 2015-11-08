@@ -620,6 +620,14 @@
 		84F223231B8266D300E5F7B7 /* VCRiderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F223211B8266D300E5F7B7 /* VCRiderView.m */; };
 		84F223241B8266D300E5F7B7 /* VCRiderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F223211B8266D300E5F7B7 /* VCRiderView.m */; };
 		84F223251B8266D300E5F7B7 /* VCRiderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F223211B8266D300E5F7B7 /* VCRiderView.m */; };
+		84FDDBEE1BEEEA9000F30786 /* AccelerationDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FDDBED1BEEEA9000F30786 /* AccelerationDetector.m */; };
+		84FDDBEF1BEEEA9000F30786 /* AccelerationDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FDDBED1BEEEA9000F30786 /* AccelerationDetector.m */; };
+		84FDDBF01BEEEA9000F30786 /* AccelerationDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FDDBED1BEEEA9000F30786 /* AccelerationDetector.m */; };
+		84FDDBF11BEEEA9000F30786 /* AccelerationDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FDDBED1BEEEA9000F30786 /* AccelerationDetector.m */; };
+		84FDDBF51BEEEBDA00F30786 /* LoggingData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84FDDBF31BEEEBDA00F30786 /* LoggingData.xcdatamodeld */; };
+		84FDDBF61BEEEBDA00F30786 /* LoggingData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84FDDBF31BEEEBDA00F30786 /* LoggingData.xcdatamodeld */; };
+		84FDDBF71BEEEBDA00F30786 /* LoggingData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84FDDBF31BEEEBDA00F30786 /* LoggingData.xcdatamodeld */; };
+		84FDDBF81BEEEBDA00F30786 /* LoggingData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84FDDBF31BEEEBDA00F30786 /* LoggingData.xcdatamodeld */; };
 		84FEDB3D1BB5BE0200EE3006 /* VCConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FEDB3B1BB5BE0100EE3006 /* VCConstants.m */; };
 		84FEDB3E1BB5BE0200EE3006 /* VCConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FEDB3B1BB5BE0100EE3006 /* VCConstants.m */; };
 		84FEDB3F1BB5BE0200EE3006 /* VCConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FEDB3B1BB5BE0100EE3006 /* VCConstants.m */; };
@@ -1098,6 +1106,9 @@
 		84F2231F1B82611C00E5F7B7 /* Aluvi Distribution Nightly copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Aluvi Distribution Nightly copy-Info.plist"; path = "/Users/matthewxi/software-development/Clients/Will_OBrien/aluvi-ios/Voco/Aluvi Distribution Nightly copy-Info.plist"; sourceTree = "<absolute>"; };
 		84F223201B8266D300E5F7B7 /* VCRiderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRiderView.h; sourceTree = "<group>"; };
 		84F223211B8266D300E5F7B7 /* VCRiderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRiderView.m; sourceTree = "<group>"; };
+		84FDDBEC1BEEEA9000F30786 /* AccelerationDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccelerationDetector.h; sourceTree = "<group>"; };
+		84FDDBED1BEEEA9000F30786 /* AccelerationDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccelerationDetector.m; sourceTree = "<group>"; };
+		84FDDBF41BEEEBDA00F30786 /* LoggingData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LoggingData.xcdatamodel; sourceTree = "<group>"; };
 		84FEDB3B1BB5BE0100EE3006 /* VCConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCConstants.m; sourceTree = "<group>"; };
 		84FEDB3C1BB5BE0200EE3006 /* VCConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCConstants.h; sourceTree = "<group>"; };
 		84FEDB411BB5C1E800EE3006 /* UIImage+DeviceSpecificMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+DeviceSpecificMedia.h"; sourceTree = "<group>"; };
@@ -1793,6 +1804,14 @@
 			name = Old;
 			sourceTree = "<group>";
 		};
+		84FDDBF21BEEEBB000F30786 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				84FDDBF31BEEEBDA00F30786 /* LoggingData.xcdatamodeld */,
+			);
+			name = Logging;
+			sourceTree = "<group>";
+		};
 		F45F7BE71935756000A94721 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1805,6 +1824,7 @@
 		F45F7BED193575C100A94721 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				84FDDBF21BEEEBB000F30786 /* Logging */,
 				8435C5951B7AE5F9000401CA /* Core Data */,
 				8435C5961B7AE604000401CA /* Local */,
 				F473E290195E824400226203 /* Base */,
@@ -1980,6 +2000,8 @@
 		F4D8777019775D6D00870945 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				84FDDBEC1BEEEA9000F30786 /* AccelerationDetector.h */,
+				84FDDBED1BEEEA9000F30786 /* AccelerationDetector.m */,
 				F45F7C0C1935976400A94721 /* Utilities */,
 				F4D8777119775D7E00870945 /* VCUtilities.h */,
 				F4D8777219775D7E00870945 /* VCUtilities.m */,
@@ -2904,6 +2926,7 @@
 				367795651B7D4FC6005D45BE /* VCButtonSmall.m in Sources */,
 				36F9F6601B6AF58E00440D03 /* VCRiderTicketView.m in Sources */,
 				8416478D1B64A47D00CD20AC /* VCLeftMenuViewController.m in Sources */,
+				84FDDBF71BEEEBDA00F30786 /* LoggingData.xcdatamodeld in Sources */,
 				8416478F1B64A47D00CD20AC /* VCRoutingNumberTextField.m in Sources */,
 				36049F961B815C490090ECAE /* VCOnboardingUserPhotoViewController.m in Sources */,
 				841647911B64A47D00CD20AC /* VCProfile.m in Sources */,
@@ -2941,6 +2964,7 @@
 				841647B61B64A47D00CD20AC /* VCInterfaceManager.m in Sources */,
 				841647B81B64A47D00CD20AC /* VCRequestUpdate.m in Sources */,
 				841647B91B64A47D00CD20AC /* VCCoreData.m in Sources */,
+				84FDDBF01BEEEA9000F30786 /* AccelerationDetector.m in Sources */,
 				36000C911B7289D7008E84AE /* VCPaymentsViewController.m in Sources */,
 				36000C9D1B72B2AC008E84AE /* VCReceiptViewController.m in Sources */,
 				841647BB1B64A47D00CD20AC /* VCApiError.m in Sources */,
@@ -3019,6 +3043,7 @@
 				36F9F65E1B6AF58E00440D03 /* VCRiderTicketView.m in Sources */,
 				841648C21B658F4900CD20AC /* Driver.m in Sources */,
 				841648C41B658F4900CD20AC /* VCDialogs.m in Sources */,
+				84FDDBF61BEEEBDA00F30786 /* LoggingData.xcdatamodeld in Sources */,
 				841648C51B658F4900CD20AC /* MQRouteResponse.m in Sources */,
 				36049F941B815C490090ECAE /* VCOnboardingUserPhotoViewController.m in Sources */,
 				841648C61B658F4900CD20AC /* VCLeftMenuViewController.m in Sources */,
@@ -3056,6 +3081,7 @@
 				841648EC1B658F4900CD20AC /* VCInterfaceManager.m in Sources */,
 				841648EE1B658F4900CD20AC /* Rider.m in Sources */,
 				841648EF1B658F4900CD20AC /* VCRequestUpdate.m in Sources */,
+				84FDDBEF1BEEEA9000F30786 /* AccelerationDetector.m in Sources */,
 				841648F01B658F4900CD20AC /* VCCoreData.m in Sources */,
 				36000C8F1B7289D7008E84AE /* VCPaymentsViewController.m in Sources */,
 				36000C9B1B72B2AC008E84AE /* VCReceiptViewController.m in Sources */,
@@ -3134,6 +3160,7 @@
 				F4C6B1D9197F06B100F6C10B /* Driver.m in Sources */,
 				F4C6B1DA197F06B100F6C10B /* VCDialogs.m in Sources */,
 				F4C6B1DB197F06B100F6C10B /* MQRouteResponse.m in Sources */,
+				84FDDBF51BEEEBDA00F30786 /* LoggingData.xcdatamodeld in Sources */,
 				4FFE13901989AE09004D4413 /* VCLeftMenuViewController.m in Sources */,
 				36049F931B815C490090ECAE /* VCOnboardingUserPhotoViewController.m in Sources */,
 				F4C6B1DD197F06B100F6C10B /* VCRoutingNumberTextField.m in Sources */,
@@ -3171,6 +3198,7 @@
 				F471E3E119A9590E00DF688D /* Rider.m in Sources */,
 				F4C6B1FE197F06B100F6C10B /* VCRequestUpdate.m in Sources */,
 				F4C6B1FF197F06B100F6C10B /* VCCoreData.m in Sources */,
+				84FDDBEE1BEEEA9000F30786 /* AccelerationDetector.m in Sources */,
 				F496FE9119FDB9FE00632055 /* Route.m in Sources */,
 				36000C8E1B7289D7008E84AE /* VCPaymentsViewController.m in Sources */,
 				36000C9A1B72B2AC008E84AE /* VCReceiptViewController.m in Sources */,
@@ -3249,6 +3277,7 @@
 				367795641B7D4FC6005D45BE /* VCButtonSmall.m in Sources */,
 				36F9F65F1B6AF58E00440D03 /* VCRiderTicketView.m in Sources */,
 				F4D8FE2719B1745A00BC0B69 /* VCLeftMenuViewController.m in Sources */,
+				84FDDBF81BEEEBDA00F30786 /* LoggingData.xcdatamodeld in Sources */,
 				F4D8FE2919B1745A00BC0B69 /* VCRoutingNumberTextField.m in Sources */,
 				36049F951B815C490090ECAE /* VCOnboardingUserPhotoViewController.m in Sources */,
 				F4D8FE2B19B1745A00BC0B69 /* VCProfile.m in Sources */,
@@ -3286,6 +3315,7 @@
 				F4D8FE5019B1745A00BC0B69 /* VCInterfaceManager.m in Sources */,
 				F4D8FE5219B1745A00BC0B69 /* VCRequestUpdate.m in Sources */,
 				F4D8FE5319B1745A00BC0B69 /* VCCoreData.m in Sources */,
+				84FDDBF11BEEEA9000F30786 /* AccelerationDetector.m in Sources */,
 				36000C901B7289D7008E84AE /* VCPaymentsViewController.m in Sources */,
 				36000C9C1B72B2AC008E84AE /* VCReceiptViewController.m in Sources */,
 				F4D8FE5519B1745A00BC0B69 /* VCApiError.m in Sources */,
@@ -4079,6 +4109,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		84FDDBF31BEEEBDA00F30786 /* LoggingData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				84FDDBF41BEEEBDA00F30786 /* LoggingData.xcdatamodel */,
+			);
+			currentVersion = 84FDDBF41BEEEBDA00F30786 /* LoggingData.xcdatamodel */;
+			name = LoggingData.xcdatamodeld;
+			path = Loggined/LoggingData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		F4FA0BFB192BF6BF005D8645 /* Voco.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
