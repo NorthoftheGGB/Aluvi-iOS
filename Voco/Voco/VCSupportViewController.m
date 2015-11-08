@@ -11,6 +11,7 @@
 #import "VCApi.h"
 #import "VCStyle.h"
 #import "VCUsersApi.h"
+#import "VCDebug.h"
 
 @interface VCSupportViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *messageTextView;
@@ -42,11 +43,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setGradient];
     
     UITapGestureRecognizer* tapBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [tapBackground setNumberOfTapsRequired:1];
     [self.view addGestureRecognizer:tapBackground];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self setGradient];
 }
 
 
@@ -87,6 +91,15 @@
                                  [UIAlertView showWithTitle:@"Errors" message:@"There was a problem submitting your support request" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
                              }];
     
-        
 }
+
+- (IBAction)didTapTriageMode:(id)sender {
+    [VCDebug showTriage];
+}
+
+- (IBAction)didTapRequestAssistance:(id)sender {
+    NSString *url = [@"telprompt://" stringByAppendingString:@"4153025454"];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+}
+
 @end

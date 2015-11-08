@@ -155,6 +155,8 @@
 }
 
 - (IBAction)didTapLogIn:(id)sender {
+    _emailTextField.text = [_emailTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+   
     [self login];
 }
 
@@ -167,6 +169,8 @@
         return;
     }
 
+    
+    _emailTextField.text = [_emailTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
     if(![_emailTextField validate]){
         return;
@@ -242,7 +246,6 @@
 
 - (void) login {
     
-
     
     if(![_emailTextField validate]){
         return;
@@ -283,12 +286,13 @@
                                                   }
                                                       break;
                                                       
-                                                  case 403:
+                                                  case 401:
                                                       [UIAlertView showWithTitle:@"Incorrect Password" message:@"That's not the correct password for this email address, how about trying again." cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
                                                       break;
                                                       
                                                   default:
-                                                      [UIAlertView showWithTitle:@"Login Failed!" message:@"Invalid Email or Password.  " cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                                                      [WRUtilities criticalError:error];
+                                                      [UIAlertView showWithTitle:@"Login Failed!" message:@"We had a problem talking with the server.  Please try again.  " cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
                                                       break;
                                               }
                                               [_hud hide:YES];
@@ -436,9 +440,9 @@
     if([textField.text length] > 0){
         textField.backgroundColor = [UIColor whiteColor];
     }
-    
     switch(textField.tag){
         case kPhoneFieldTag:
+            _emailTextField.text = [_emailTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
             if ([_emailTextField validate]){
                 [_passwordTextField becomeFirstResponder];
             }

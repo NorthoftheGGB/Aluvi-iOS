@@ -585,6 +585,7 @@
     frame.size.width = self.view.frame.size.width;
     frame.size.height = self.view.frame.size.height;
     _rideRequestView.frame = frame;
+    [_rideRequestView setNeedsDisplay];
     
     // add the view to the superview
     [[[[UIApplication sharedApplication] delegate] window] addSubview:_rideRequestView];
@@ -1153,9 +1154,12 @@
         _pickupPointAnnotations = [[NSMutableArray alloc] init];
         for (VCPickupPoint* pickupPoint in _pickupPoints)
         {
+            NSString * peopleUsingText = [NSString stringWithFormat:@"%@ people using this pickup point.", pickupPoint.numberOfRiders];
+           
+            
             RMAnnotation * annotation = [[RMAnnotation alloc] initWithMapView:self.map
                                                                              coordinate:CLLocationCoordinate2DMake(pickupPoint.location.coordinate.latitude, pickupPoint.location.coordinate.longitude)
-                                                                               andTitle:[NSString stringWithFormat:@"%@ people using this pickup point", pickupPoint.numberOfRiders]];
+                                                                               andTitle:peopleUsingText];
             annotation.userInfo = kPickupPointsAnnotationType;
             [_pickupPointAnnotations addObject:annotation];
         }
@@ -1273,6 +1277,7 @@
     frame.size.width = self.view.frame.size.width;
     frame.size.height = self.view.frame.size.height;
     _carInfoViewController.view.frame = frame;
+    
     
     // add the view to the superview
     [[[[UIApplication sharedApplication] delegate] window] addSubview:_carInfoViewController.view];
@@ -1529,6 +1534,12 @@
     }];
     [_locationUpdateDoneButton setNeedsLayout];
     
+    for( RMAnnotation * annotation in _pickupPointAnnotations ) {
+        NSString * title = annotation.title;
+        annotation.title = @"Tap to use this pickup point";
+        annotation.subtitle = title;
+    }
+    
     [self addPickupPointAnnotations];
     
 }
@@ -1540,6 +1551,10 @@
     _locationSearchField.text = @"";
     [_locationUpdateDoneButton removeFromSuperview];
     [self updateTicketInterface];
+    
+    for( RMAnnotation * annotation in _pickupPointAnnotations ) {
+        annotation.subtitle = annotation.title;
+    }
 }
 
 - (IBAction)didTapLocationEditDone:(id)sender {
@@ -1618,12 +1633,14 @@
 
 
 - (void)longPressOnMap:(RMMapView *)map at:(CGPoint)point {
+    CLLocation * location = [[CLLocation alloc] initWithLatitude:[map pixelToCoordinate:point].latitude longitude:[map pixelToCoordinate:point].longitude];
+    [self selectLocationOnMap:map atLocation:location];
+}
+
+- (void) selectLocationOnMap: (RMMapView *)map atLocation:(CLLocation *) location {
     if(_editLocationType == 0){
         return;
     }
-    
-    
-    CLLocation * location = [[CLLocation alloc] initWithLatitude:[map pixelToCoordinate:point].latitude longitude:[map pixelToCoordinate:point].longitude];
     
     NSString * title = _activeAnnotation.title;
     if(_activeAnnotation != nil){
@@ -1634,8 +1651,8 @@
     
     if(_editLocationType == kHomeType || _editLocationType == kWorkType ){
         _activeAnnotation = [[RMAnnotation alloc] initWithMapView:self.map
-                                                            coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-                                                              andTitle:title];
+                                                       coordinate:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+                                                         andTitle:title];
         if(_editLocationType == kHomeType){
             _activeAnnotation.userInfo = kUserPickupPointAnnotationType;
         } else if(_editLocationType == kWorkType){
@@ -1651,6 +1668,7 @@
     [self.map addAnnotation:_activeAnnotation];
     
     [self updateLocationDetails:location];
+
 }
 
 
@@ -1758,11 +1776,15 @@
             RMMarker * marker = [[RMMarker alloc] initWithUIImage:[UIImage imageNamed:@"map_point"] anchorPoint:CGPointMake(.5,1)];
             marker.canShowCallout = YES;
             marker.annotation = annotation;
+            UIButton * label = [UIButton buttonWithType:UIButtonTypeContactAdd];
+            marker.rightCalloutAccessoryView = label;
+
             return marker;
         } else if  ([annotation.userInfo isEqualToString:kUserPickupPointAnnotationType]){
             RMMarker * marker = [[RMMarker alloc] initWithUIImage:[VCMapStyle homePinImage] anchorPoint:CGPointMake(.5,1)];
             marker.canShowCallout = YES;
             marker.annotation = annotation;
+       
             return marker;
         } else if ([annotation.userInfo isEqualToString:kWorkAnnotationType]){
             RMMarker * marker = [[RMMarker alloc] initWithUIImage:[VCMapStyle workPinImage] anchorPoint:CGPointMake(.5,1)];
@@ -1836,6 +1858,17 @@
     };
     return sort;
 }
+- (void)tapOnCalloutAccessoryControl:(UIControl *)control forAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map {
+    if(_editLocationType == 0){
+        return;
+    }
+    CLLocation * location = [[CLLocation alloc] initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
+    [self selectLocationOnMap:map atLocation:location];
+    [self.map deselectAnnotation:annotation animated:YES];
+}
+
+
+
 
 
 ////////////////

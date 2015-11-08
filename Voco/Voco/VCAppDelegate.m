@@ -8,9 +8,8 @@
 
 #import "VCAppDelegate.h"
 #import <RestKit/RestKit.h>
+#import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
-#import <Parse/Parse.h>
-#import <ParseCrashReporting/ParseCrashReporting.h>
 #import "VCRidesApi.h"
 #import "VCDriverApi.h"
 #import "VCPushReceiver.h"
@@ -19,16 +18,13 @@
 #import "VCUserStateManager.h"
 #import "VCDialogs.h"
 #import "VCGeolocation.h"
-#import "VCApi.h"
 #import "VCInterfaceManager.h"
 #import "VCMapQuestRouting.h"
 #import "VCUsersApi.h"
 #import "VCTicketViewController.h"
 #import "VCDevicesApi.h"
-#import <Fabric/Fabric.h>
-#import <Crashlytics/Crashlytics.h>
 #import "VCCommuteManager.h"
-
+#import "RavenClient.h"
 
 @interface VCAppDelegate ()
 
@@ -40,17 +36,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    /* Font debugging
-    for (NSString* family in [UIFont familyNames])
-    {
-        NSLog(@"FONT %@", family);
-        
-        for (NSString* name in [UIFont fontNamesForFamilyName: family])
-        {
-            NSLog(@"  %@", name);
-        }
-    }
-     */
     
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"nav_bg.png"] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setShadowImage:[UIImage new]];
@@ -65,7 +50,9 @@
     if([[NSBundle mainBundle] objectForInfoDictionaryKey:@"Fabric"] != nil){
         [Fabric with:@[CrashlyticsKit]];
     }
-    
+    RavenClient *client = [RavenClient clientWithDSN:@"https://993151c24b4547a98343d2564d50c528:0d708d9425f2473b8e958a579e1f7a0f@app.getsentry.com/55891"];
+    [RavenClient setSharedClient:client];
+    [client setupExceptionHandler];
 
     [VCDialogs instance];
     
@@ -75,7 +62,6 @@
     [[RMConfiguration sharedInstance] setAccessToken:@"pk.eyJ1Ijoic25hY2tzIiwiYSI6Il83eXFHMzAifQ.M1ipZJb-b--TvC0vxHvPVg"];
 
   
-
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
 
@@ -83,9 +69,6 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
 
-    
-   ///put background color and makeKeyVisible here
-    
     NSLog(@"Registering for push notifications...");
 #if !(TARGET_IPHONE_SIMULATOR)
     [VCPushReceiver registerForRemoteNotifications];

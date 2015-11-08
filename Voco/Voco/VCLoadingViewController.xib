@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCLoadingViewController"/>
@@ -14,7 +14,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_in.png" translatesAutoresizingMaskIntoConstraints="NO" id="qDK-6h-gtZ">
-                    <rect key="frame" x="96" y="29" width="123" height="123"/>
+                    <rect key="frame" x="99" y="29" width="123" height="123"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="123" id="8m5-fn-tG1"/>
                         <constraint firstAttribute="width" constant="123" id="BBe-sF-cxk"/>
@@ -26,9 +26,9 @@
                 <constraint firstItem="jWr-8H-ejC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="6zd-VJ-6Oa"/>
                 <constraint firstItem="jWr-8H-ejC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="FLp-CD-gNn"/>
                 <constraint firstItem="qDK-6h-gtZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="29" id="OfW-BN-T6H"/>
+                <constraint firstItem="qDK-6h-gtZ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Qnl-ZS-Zr8"/>
                 <constraint firstAttribute="trailing" secondItem="jWr-8H-ejC" secondAttribute="trailing" id="SfN-QU-pcj"/>
                 <constraint firstAttribute="bottom" secondItem="jWr-8H-ejC" secondAttribute="bottom" id="jdA-9q-IdO"/>
-                <constraint firstItem="qDK-6h-gtZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="96" id="qSv-dP-I4A"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>

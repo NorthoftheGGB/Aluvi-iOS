@@ -78,7 +78,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self setGradient];
     self.automaticallyAdjustsScrollViewInsets = false;
     
     _contentView.frame = self.scrollView.frame;
@@ -112,6 +111,11 @@
     _versionLabel.text = [NSString stringWithFormat:@"v%@b%@", version, build];
     
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self setGradient];
+}
+
 
 - (void) didTapHamburger {
     [self dismissKeyboard:self];

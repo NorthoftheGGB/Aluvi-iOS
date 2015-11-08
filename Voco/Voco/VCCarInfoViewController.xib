@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCCarInfoViewController">
@@ -21,9 +21,13 @@
                     <rect key="frame" x="0.0" y="65" width="320" height="437"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <textField opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Licence Plate #" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9aa-TZ-zcJ" customClass="VCTextField">
+                <textField opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Licence Plate #" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9aa-TZ-zcJ" customClass="VCTextField">
                     <rect key="frame" x="45" y="120" width="230" height="44"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="4TS-0l-y2K"/>
+                        <constraint firstAttribute="width" constant="230" id="SGG-k6-ArW"/>
+                    </constraints>
                     <color key="textColor" red="0.35686274509999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
@@ -31,15 +35,23 @@
                         <action selector="liscencePlateFieldDidEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="g7S-jh-c2k"/>
                     </connections>
                 </textField>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Color, Make, and Model:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbq-LZ-Cgc" customClass="VCLabelSmall">
-                    <rect key="frame" x="45" y="174" width="222" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color, Make, and Model:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbq-LZ-Cgc" customClass="VCLabelSmall">
+                    <rect key="frame" x="49" y="174" width="222" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="3p6-hm-zRY"/>
+                        <constraint firstAttribute="width" constant="222" id="hw3-T5-gnu"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.35686274509999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Red Ford Tarus" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="17U-B3-qrJ" customClass="VCTextField">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Red Ford Tarus" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="17U-B3-qrJ" customClass="VCTextField">
                     <rect key="frame" x="45" y="193" width="230" height="44"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="230" id="12q-K7-T8Y"/>
+                        <constraint firstAttribute="height" constant="44" id="azf-vP-qGW"/>
+                    </constraints>
                     <color key="textColor" red="0.35686274509999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
@@ -47,14 +59,21 @@
                         <action selector="carInfoFieldDidEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="Omf-ff-GOM"/>
                     </connections>
                 </textField>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="by signing up to drive you agree that your vehicle has available space for AT LEAST 3 passengers " lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="srR-oV-C86" customClass="VCLabelSmall">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by signing up to drive you agree that your vehicle has available space for AT LEAST 3 passengers " lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="srR-oV-C86" customClass="VCLabelSmall">
                     <rect key="frame" x="45" y="244" width="230" height="81"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="230" id="Cnz-i8-Z3s"/>
+                        <constraint firstAttribute="height" constant="81" id="McP-u9-09Y"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.35686274509999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AMG-Y9-JU3" customClass="VCButtonBold">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AMG-Y9-JU3" customClass="VCButtonBold">
                     <rect key="frame" x="0.0" y="510" width="320" height="58"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="58" id="0jv-oa-H0l"/>
+                    </constraints>
                     <state key="normal" title="SAVE">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -63,8 +82,11 @@
                         <action selector="didTapSave:" destination="-1" eventType="touchUpInside" id="ADb-bq-wma"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dDo-bn-SV9">
-                    <rect key="frame" x="-2" y="0.0" width="322" height="81"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dDo-bn-SV9">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="57"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="57" id="BeN-xn-Az7"/>
+                    </constraints>
                     <state key="normal" title="Cancel">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -76,6 +98,22 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <color key="tintColor" red="0.30588235289999999" green="0.63921568630000003" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="wbq-LZ-Cgc" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="8gk-yb-sWt"/>
+                <constraint firstAttribute="trailing" secondItem="dDo-bn-SV9" secondAttribute="trailing" id="Fge-JA-2HU"/>
+                <constraint firstItem="srR-oV-C86" firstAttribute="top" secondItem="17U-B3-qrJ" secondAttribute="bottom" constant="7" id="KBn-vS-tCt"/>
+                <constraint firstItem="srR-oV-C86" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="M26-89-xWE"/>
+                <constraint firstItem="dDo-bn-SV9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Q4x-nr-VNf"/>
+                <constraint firstAttribute="trailing" secondItem="AMG-Y9-JU3" secondAttribute="trailing" id="SqY-w3-4LC"/>
+                <constraint firstItem="dDo-bn-SV9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="T3W-8q-Xd8"/>
+                <constraint firstItem="wbq-LZ-Cgc" firstAttribute="top" secondItem="9aa-TZ-zcJ" secondAttribute="bottom" constant="10" id="aSI-YX-GVE"/>
+                <constraint firstItem="9aa-TZ-zcJ" firstAttribute="top" secondItem="dDo-bn-SV9" secondAttribute="bottom" constant="63" id="cI7-VL-Cx4"/>
+                <constraint firstItem="9aa-TZ-zcJ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="l4u-JW-wCz"/>
+                <constraint firstItem="17U-B3-qrJ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="puO-1e-vQM"/>
+                <constraint firstItem="17U-B3-qrJ" firstAttribute="top" secondItem="9aa-TZ-zcJ" secondAttribute="bottom" constant="29" id="uUZ-Ie-FrS"/>
+                <constraint firstItem="AMG-Y9-JU3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="w0H-xi-7SW"/>
+                <constraint firstAttribute="bottom" secondItem="AMG-Y9-JU3" secondAttribute="bottom" id="yyJ-VK-Oao"/>
+            </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="147" y="362"/>

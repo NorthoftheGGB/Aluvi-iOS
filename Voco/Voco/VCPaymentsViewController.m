@@ -55,7 +55,6 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
-    [self setGradient];
     
     _cardView = [[STPPaymentCardTextField alloc] initWithFrame:CGRectMake(15,20,290,55)];
     _cardView.tag = kCardView;
@@ -84,6 +83,8 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self setGradient];
+
     if(_delegate != nil){
         [_cardView becomeFirstResponder];
         _cancelButton.hidden = NO;

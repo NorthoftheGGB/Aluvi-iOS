@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCLogInViewController">
@@ -42,14 +42,14 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_in.png" translatesAutoresizingMaskIntoConstraints="NO" id="aeN-S3-80a">
-                    <rect key="frame" x="96" y="29" width="123" height="123"/>
+                    <rect key="frame" x="99" y="29" width="123" height="123"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="123" id="2Gj-74-7Rq"/>
                         <constraint firstAttribute="width" constant="123" id="ZDs-a2-Shb"/>
                     </constraints>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="EMAIL" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6s6-1F-8gQ" customClass="VCTextField">
-                    <rect key="frame" x="42" y="210" width="230" height="44"/>
+                    <rect key="frame" x="45" y="210" width="230" height="44"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="tintColor" red="0.35686274509999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -69,7 +69,7 @@
                     </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nKh-oZ-fFv" customClass="VCButtonSmall">
-                    <rect key="frame" x="42" y="317" width="212" height="21"/>
+                    <rect key="frame" x="54" y="317" width="212" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="3el-U1-WcJ"/>
                         <constraint firstAttribute="width" constant="212" id="pxK-Bx-JTv"/>
@@ -84,7 +84,7 @@
                     </connections>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="PASSWORD" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="IuW-TQ-BC9" customClass="VCTextField">
-                    <rect key="frame" x="42" y="262" width="230" height="44"/>
+                    <rect key="frame" x="45" y="262" width="230" height="44"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="tintColor" red="0.28627450980000002" green="0.039215686270000001" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -104,13 +104,13 @@
                     </connections>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Everyone needs to get to work." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1TI-eN-VaK" customClass="VCLabelSmall">
-                    <rect key="frame" x="38" y="160" width="239" height="21"/>
+                    <rect key="frame" x="0.0" y="0.0" width="237" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0O-qi-Qrj" customClass="VCLabelSmall">
-                    <rect key="frame" x="42" y="460" width="230" height="29"/>
+                    <rect key="frame" x="45" y="460" width="230" height="29"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="230" id="DpQ-Yd-mnV"/>
                         <constraint firstAttribute="height" constant="29" id="kHk-sp-p0N"/>
@@ -127,7 +127,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8HI-Bh-dA8" customClass="VCButtonSmall">
-                    <rect key="frame" x="42" y="472" width="181" height="30"/>
+                    <rect key="frame" x="70" y="472" width="181" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="181" id="843-V7-x8u"/>
                         <constraint firstAttribute="height" constant="30" id="K73-rx-La9"/>
@@ -168,19 +168,19 @@
             <constraints>
                 <constraint firstItem="6Zz-e1-it2" firstAttribute="top" secondItem="8HI-Bh-dA8" secondAttribute="bottom" constant="8" id="0pa-SG-SU7"/>
                 <constraint firstItem="6Zz-e1-it2" firstAttribute="top" secondItem="W0O-qi-Qrj" secondAttribute="bottom" constant="21" id="1x2-Kv-o6Y"/>
+                <constraint firstItem="aeN-S3-80a" firstAttribute="centerX" secondItem="ftZ-Nq-tWy" secondAttribute="centerX" id="2tS-hk-6dV"/>
+                <constraint firstItem="6s6-1F-8gQ" firstAttribute="centerX" secondItem="ftZ-Nq-tWy" secondAttribute="centerX" id="31d-eX-abW"/>
                 <constraint firstItem="nKh-oZ-fFv" firstAttribute="top" secondItem="IuW-TQ-BC9" secondAttribute="bottom" constant="11" id="3Br-3y-B7V"/>
                 <constraint firstItem="IuW-TQ-BC9" firstAttribute="top" secondItem="6s6-1F-8gQ" secondAttribute="bottom" constant="8" id="52y-Q8-Rxk"/>
                 <constraint firstItem="6s6-1F-8gQ" firstAttribute="top" secondItem="ftZ-Nq-tWy" secondAttribute="top" constant="210" id="8yy-Ib-scd"/>
                 <constraint firstItem="6Zz-e1-it2" firstAttribute="leading" secondItem="ftZ-Nq-tWy" secondAttribute="leading" id="IP0-hb-Ukm"/>
+                <constraint firstItem="8HI-Bh-dA8" firstAttribute="centerX" secondItem="ftZ-Nq-tWy" secondAttribute="centerX" id="Mad-hP-41q"/>
                 <constraint firstAttribute="trailing" secondItem="6Zz-e1-it2" secondAttribute="trailing" id="OU7-cH-kuM"/>
-                <constraint firstItem="nKh-oZ-fFv" firstAttribute="leading" secondItem="ftZ-Nq-tWy" secondAttribute="leading" constant="42" id="aki-Qz-zvX"/>
-                <constraint firstItem="8HI-Bh-dA8" firstAttribute="leading" secondItem="ftZ-Nq-tWy" secondAttribute="leading" constant="42" id="dJV-hB-TwH"/>
-                <constraint firstItem="aeN-S3-80a" firstAttribute="leading" secondItem="ftZ-Nq-tWy" secondAttribute="leading" constant="96" id="gKd-ii-lWG"/>
-                <constraint firstItem="IuW-TQ-BC9" firstAttribute="leading" secondItem="ftZ-Nq-tWy" secondAttribute="leading" constant="42" id="ihq-DH-67n"/>
+                <constraint firstItem="W0O-qi-Qrj" firstAttribute="centerX" secondItem="ftZ-Nq-tWy" secondAttribute="centerX" id="YZP-mt-Xbq"/>
+                <constraint firstItem="nKh-oZ-fFv" firstAttribute="centerX" secondItem="ftZ-Nq-tWy" secondAttribute="centerX" id="agv-EO-bui"/>
                 <constraint firstItem="aeN-S3-80a" firstAttribute="top" secondItem="ftZ-Nq-tWy" secondAttribute="top" constant="29" id="m76-qg-wD6"/>
-                <constraint firstItem="6s6-1F-8gQ" firstAttribute="leading" secondItem="ftZ-Nq-tWy" secondAttribute="leading" constant="42" id="rgs-hb-vtq"/>
-                <constraint firstItem="W0O-qi-Qrj" firstAttribute="leading" secondItem="6Zz-e1-it2" secondAttribute="leading" constant="42" id="wr0-Sp-MZh"/>
                 <constraint firstAttribute="bottom" secondItem="6Zz-e1-it2" secondAttribute="bottom" id="xXy-wJ-Ugv"/>
+                <constraint firstItem="IuW-TQ-BC9" firstAttribute="centerX" secondItem="ftZ-Nq-tWy" secondAttribute="centerX" id="zJc-Zr-5HZ"/>
             </constraints>
             <point key="canvasLocation" x="499" y="93"/>
         </view>
@@ -189,9 +189,4 @@
         <image name="button-select.png" width="246" height="246"/>
         <image name="logo_in.png" width="246" height="246"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>

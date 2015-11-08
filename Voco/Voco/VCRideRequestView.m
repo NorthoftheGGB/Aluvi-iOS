@@ -55,7 +55,6 @@
 
 -(void)awakeFromNib{
     
-    [self setGradient];
     
     _morningOptions = @[
                         @"5:00", @"5:15", @"5:30", @"5:45",
@@ -89,6 +88,9 @@
     
 }
 
+- (void) drawRect:(CGRect)rect {
+    [self setGradient];
+}
 
 
 

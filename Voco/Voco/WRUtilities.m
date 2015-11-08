@@ -9,7 +9,8 @@
 #import "WRUtilities.h"
 #import "NSDate+Pretty.h"
 #import "VCDebug.h"
-
+#import "VCUsersApi.h"
+#import "RavenClient.h"
 
 static UIAlertView * criticalErrorView = nil;
 static UIAlertView * networkUnavailableErrorView = nil;
@@ -38,6 +39,8 @@ static UIAlertView * networkUnavailableErrorView = nil;
     NSString * errorString = [NSString stringWithFormat:@"%@ Critical Error: %@", [[NSDate date] pretty], [error debugDescription]];
     NSLog(@"%@", errorString);
     [[VCDebug sharedInstance] apiLog:errorString];
+    
+    RavenCaptureError(error);
     
     if([[VCDebug sharedInstance] alertsEnabled]) {
         
@@ -75,13 +78,22 @@ static UIAlertView * networkUnavailableErrorView = nil;
             criticalErrorView = [UIAlertView showWithTitle:@"System Error"
                                                    message:errString
                                          cancelButtonTitle:@"Done"
-                                         otherButtonTitles:@[@"Copy"]
+                                         otherButtonTitles:@[@"Send"]
                                                   tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                                                       switch (buttonIndex) {
                                                           case 1:
                                                           {
                                                               UIPasteboard *pb = [UIPasteboard generalPasteboard];
                                                               [pb setString:errString];
+                                                              
+                                                              
+                                                              [VCUsersApi createSupportRequest:errString
+                                                                                       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                                                           [UIAlertView showWithTitle:@"Submitted" message:@"We will contact you shortly" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                                                                                       } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                                                           [UIAlertView showWithTitle:@"Errors" message:@"There was a problem submitting your support request" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                                                                                       }];
+
                                                           }
                                                               break;
                                                               
@@ -154,13 +166,21 @@ static UIAlertView * networkUnavailableErrorView = nil;
             criticalErrorView = [UIAlertView showWithTitle:@"Triage"
                                                    message:error
                                          cancelButtonTitle:@"Done"
-                                         otherButtonTitles:@[@"Copy"]
+                                         otherButtonTitles:@[@"Send"]
                                                   tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                                                       switch (buttonIndex) {
                                                           case 1:
                                                           {
                                                               UIPasteboard *pb = [UIPasteboard generalPasteboard];
                                                               [pb setString:error];
+                                                              
+                                                              
+                                                              [VCUsersApi createSupportRequest:error
+                                                                                       success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                                                                                           [UIAlertView showWithTitle:@"Submitted" message:@"We will contact you shortly" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                                                                                       } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                                                                                           [UIAlertView showWithTitle:@"Errors" message:@"There was a problem submitting your support request" cancelButtonTitle:@"OK" otherButtonTitles:nil tapBlock:nil];
+                                                                                       }];
                                                           }
                                                               break;
                                                               

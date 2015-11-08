@@ -47,8 +47,6 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
-    [self setGradient];
-
     NSNumber * carId = [VCUserStateManager instance].profile.carId;
     if(carId != nil){
         NSFetchRequest * fetch = [NSFetchRequest fetchRequestWithEntityName:@"Car"];
@@ -76,10 +74,13 @@
  
     }
     
-
 }
 
+
 - (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self setGradient];
+    
     if(_delegate != nil){
         _cancelButton.hidden = NO;
     } else {

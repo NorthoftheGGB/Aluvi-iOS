@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCOnboardingSetRouteViewController">
@@ -18,9 +18,13 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mWN-wU-Arg" customClass="VCButtonSmall">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mWN-wU-Arg" customClass="VCButtonSmall">
                     <rect key="frame" x="45" y="119" width="230" height="44"/>
                     <color key="backgroundColor" white="1" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="230" id="aNx-fp-Tin"/>
+                        <constraint firstAttribute="height" constant="44" id="dRD-wD-bgy"/>
+                    </constraints>
                     <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <state key="normal" title="Pickup Point">
                         <color key="titleColor" red="0.30588235289999999" green="0.63921568630000003" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -30,9 +34,13 @@
                         <action selector="didTapOnboardingPickupPointButton:" destination="-1" eventType="touchUpInside" id="j1z-ps-FXi"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wio-dM-s1h" customClass="VCButtonSmall">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wio-dM-s1h" customClass="VCButtonSmall">
                     <rect key="frame" x="45" y="191" width="230" height="44"/>
                     <color key="backgroundColor" white="1" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="230" id="8AA-Yh-QX6"/>
+                        <constraint firstAttribute="height" constant="44" id="m1d-83-hW8"/>
+                    </constraints>
                     <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <state key="normal" title="Work Location">
                         <color key="titleColor" red="0.30588235289999999" green="0.63921568630000003" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -57,39 +65,79 @@
                         <action selector="didTapNextButtonUserPhoto:" destination="-1" eventType="touchUpInside" id="pWR-In-HX0"/>
                     </connections>
                 </button>
-                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="93J-LY-qbQ">
-                    <rect key="frame" x="217" y="292" width="51" height="31"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <color key="onTintColor" red="0.2784313725" green="0.60784313729999995" blue="0.63921568630000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <connections>
-                        <action selector="driverSwitchValueChanged:" destination="-1" eventType="valueChanged" id="L6u-tg-VzX"/>
-                    </connections>
-                </switch>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Want to be the Driver?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ejh-Yr-lLV" customClass="VCLabel">
-                    <rect key="frame" x="37" y="297" width="172" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a location near your house to get picked up and a work location.  We do not need your home address." lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQ7-GK-YI7" customClass="VCLabelExtraBold">
+                    <rect key="frame" x="29" y="23" width="263" height="88"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="263" id="Vcd-dx-igL"/>
+                        <constraint firstAttribute="height" constant="88" id="j5y-c1-JkD"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose place to get picked up and a work location:" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQ7-GK-YI7" customClass="VCLabelExtraBold">
-                    <rect key="frame" x="29" y="54" width="263" height="50"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(Your pickup point will become a circular area 2mi in diameter)" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Inu-cK-TI7" customClass="VCLabelSmall">
-                    <rect key="frame" x="37" y="326" width="255" height="43"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(When driving, your pickup area will be a circular area 2mi in diameter)" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Inu-cK-TI7" customClass="VCLabelSmall">
+                    <rect key="frame" x="33" y="326" width="255" height="72"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="72" id="C35-8M-IMm"/>
+                        <constraint firstAttribute="width" constant="255" id="puN-nv-p6X"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.35686274509999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5UF-Cg-AUT" userLabel="Driver Toggle View">
+                    <rect key="frame" x="34" y="429" width="252" height="46"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Want to be the Driver?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ejh-Yr-lLV" customClass="VCLabel">
+                            <rect key="frame" x="0.0" y="0.0" width="172" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="a7t-Oy-j3d"/>
+                                <constraint firstAttribute="width" constant="172" id="gVh-jz-7BG"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="93J-LY-qbQ">
+                            <rect key="frame" x="198" y="0.0" width="51" height="31"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="49" id="bjY-Mc-V1r"/>
+                                <constraint firstAttribute="height" constant="31" id="sK4-bJ-0xi"/>
+                            </constraints>
+                            <color key="onTintColor" red="0.2784313725" green="0.60784313729999995" blue="0.63921568630000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="driverSwitchValueChanged:" destination="-1" eventType="valueChanged" id="L6u-tg-VzX"/>
+                            </connections>
+                        </switch>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="93J-LY-qbQ" secondAttribute="trailing" constant="5" id="5OZ-sH-j0j"/>
+                        <constraint firstItem="93J-LY-qbQ" firstAttribute="top" secondItem="5UF-Cg-AUT" secondAttribute="top" id="EH3-7G-FgZ"/>
+                        <constraint firstAttribute="height" constant="46" id="SlT-nV-HJ3"/>
+                        <constraint firstItem="Ejh-Yr-lLV" firstAttribute="top" secondItem="5UF-Cg-AUT" secondAttribute="top" id="T9H-52-bw3"/>
+                        <constraint firstAttribute="width" constant="252" id="dcr-F8-W2X"/>
+                        <constraint firstItem="Ejh-Yr-lLV" firstAttribute="leading" secondItem="5UF-Cg-AUT" secondAttribute="leading" id="g4y-E1-B2w"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <color key="tintColor" red="0.35686274509999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="haZ-gZ-Gmr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7Nt-Yo-DfH"/>
+                <constraint firstItem="Inu-cK-TI7" firstAttribute="top" secondItem="wio-dM-s1h" secondAttribute="bottom" constant="91" id="Aib-OV-Sbs"/>
+                <constraint firstItem="5UF-Cg-AUT" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="BeZ-nN-qge"/>
+                <constraint firstItem="Inu-cK-TI7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="D8O-VE-AkQ"/>
                 <constraint firstAttribute="bottom" secondItem="haZ-gZ-Gmr" secondAttribute="bottom" id="OP5-zU-VTi"/>
+                <constraint firstItem="5UF-Cg-AUT" firstAttribute="top" secondItem="Inu-cK-TI7" secondAttribute="bottom" constant="31" id="RmS-zJ-v3C"/>
+                <constraint firstItem="mWN-wU-Arg" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="W2k-eM-WgN"/>
+                <constraint firstItem="QQ7-GK-YI7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Y71-2e-a2f"/>
+                <constraint firstItem="wio-dM-s1h" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="grv-pT-2v2"/>
+                <constraint firstItem="mWN-wU-Arg" firstAttribute="top" secondItem="QQ7-GK-YI7" secondAttribute="bottom" constant="8" id="h9P-TD-qLG"/>
+                <constraint firstItem="wio-dM-s1h" firstAttribute="top" secondItem="mWN-wU-Arg" secondAttribute="bottom" constant="28" id="wCd-fA-tUw"/>
                 <constraint firstAttribute="trailing" secondItem="haZ-gZ-Gmr" secondAttribute="trailing" id="wUJ-Pz-YsE"/>
+                <constraint firstItem="QQ7-GK-YI7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="23" id="xJv-5q-UIP"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
