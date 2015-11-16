@@ -2548,7 +2548,7 @@
 						};
 					};
 					F4D8FE0619B1745A00BC0B69 = {
-						DevelopmentTeam = 269WB9G8WE;
+						DevelopmentTeam = 5UEL897WR2;
 					};
 					F4FA0C03192BF6BF005D8645 = {
 						TestTargetID = F4FA0BE3192BF6BF005D8645;
@@ -3183,7 +3183,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "buildNumber=$GREENHOUSE_BUILD_NUMBER\nstringLength=${#buildNumber}\n    if [ $stringLength -ne 0 ]; then\n        echo \"Updating build number to $buildNumber\"\n        /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n    else\n        echo \"Missing build number, skip updating\"\nfi";
+			shellScript = "#buildNumber=$GREENHOUSE_BUILD_NUMBER + 100\n#stringLength=${#buildNumber}\n#    if [ $stringLength -ne 0 ]; then\n#        echo \"Updating build number to $buildNumber\"\n#        /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n#    else\n#        echo \"Missing build number, skip updating\"\n#fi";
 		};
 		F4C6B1BD197F06B100F6C10B /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4396,7 +4396,7 @@
 			baseConfigurationReference = D570C24C905CF2756FACB77F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Voco Transportation Inc (269WB9G8WE)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Voco Transportation Inc (269WB9G8WE)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4467,7 +4467,7 @@
 			baseConfigurationReference = 0D14E3F5E1EECB39D89015B1 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-3";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Voco Transportation Inc (269WB9G8WE)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Voco Transportation Inc (269WB9G8WE)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
