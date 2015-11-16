@@ -36,6 +36,7 @@
                 // Notify user there is an internet connectivity problem
                 // UI should be locked by reachability
                 [WRUtilities showNetworkUnavailableMessage];
+                [WRUtilities criticalError:error];
                 error = nil;
             }
                 break;
