@@ -4454,7 +4454,7 @@
 					"\"$(SDKROOT)/usr/include/libxml2\"",
 				);
 				INFOPLIST_FILE = "Aluvi Distribution-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vocotransportation.aluvi;
 				PRODUCT_NAME = Aluvi;
 				PROVISIONING_PROFILE = "aedd7f62-b4c2-49c6-b7fb-4a34e1dc0800";
@@ -4526,7 +4526,7 @@
 					"\"$(SDKROOT)/usr/include/libxml2\"",
 				);
 				INFOPLIST_FILE = "Aluvi Distribution-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vocotransportation.aluvi;
 				PRODUCT_NAME = Aluvi;
 				PROVISIONING_PROFILE = "aedd7f62-b4c2-49c6-b7fb-4a34e1dc0800";
