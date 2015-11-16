@@ -8,6 +8,10 @@
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleIcons</key>
+	<dict/>
+	<key>CFBundleIcons~ipad</key>
+	<dict/>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -17,25 +21,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0.1</string>
+	<string>1.3</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
-	<key>Fabric</key>
-	<dict>
-		<key>APIKey</key>
-		<string>531b451b5ea5c0dc8f72ba102e736a6a2edb31c0</string>
-		<key>Kits</key>
-		<array>
-			<dict>
-				<key>KitInfo</key>
-				<dict/>
-				<key>KitName</key>
-				<string>Crashlytics</string>
-			</dict>
-		</array>
-	</dict>
+	<string>3</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -43,12 +33,14 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Aluvi works best when you share your location with us.  Is this OK ?</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Aluvi works best when you share your location with us. </string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Bryant-Regular.ttf</string>
-		<string>Bryant-Medium.ttf</string>
+		<string>Bryant-Meduim.ttf</string>
 		<string>Bryant-Bold.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
