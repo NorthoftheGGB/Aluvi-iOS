@@ -2803,7 +2803,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "buildNumber=$GREENHOUSE_BUILD_NUMBER\nstringLength=${#buildNumber}\n    if [ $stringLength -ne 0 ]; then\n        echo \"Updating build number to $buildNumber\"\n        /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n    else\n        echo \"Missing build number, skip updating\"\nfi";
+			shellScript = "#buildNumber=$GREENHOUSE_BUILD_NUMBER\n#stringLength=${#buildNumber}\n#if [ $stringLength -ne 0 ]; then\n#    echo \"Updating build number to $buildNumber\"\n#    /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n#else\n#    echo \"Missing build number, skip updating\"\n#fi";
 		};
 		F4C6B1BD197F06B100F6C10B /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
