@@ -79,13 +79,7 @@
 {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = false;
-    
-    _contentView.frame = self.scrollView.frame;
- //   [self.scrollView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
-    [self.scrollView setContentSize:_contentView.frame.size];
-    [self.scrollView addSubview:_contentView];
-
-    
+   
     VCProfile * profile = [VCUserStateManager instance].profile;
     
     _firstNameTextField.text = profile.firstName;
@@ -113,6 +107,12 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    CGRect frame = self.view.frame;
+    _contentView.frame = frame;
+    //   [self.scrollView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+    [self.scrollView setContentSize:_contentView.frame.size];
+    [self.scrollView addSubview:_contentView];
     [self setGradient];
 }
 
