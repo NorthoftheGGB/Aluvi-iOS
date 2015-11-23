@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCPaymentsViewController">
@@ -23,8 +23,8 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pce-5Y-CAV">
-                    <rect key="frame" x="0.0" y="65" width="320" height="422"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pce-5Y-CAV">
+                    <rect key="frame" x="0.0" y="65" width="320" height="430"/>
                     <color key="backgroundColor" white="1" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xO2-CQ-cvv" userLabel="Card View">
@@ -85,8 +85,11 @@
                         <action selector="didTapCancel:" destination="-1" eventType="touchUpInside" id="tJ4-th-xL2"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vic-Ui-f0M" customClass="VCButtonBold">
-                    <rect key="frame" x="0.0" y="495" width="320" height="73"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vic-Ui-f0M" customClass="VCButtonBold">
+                    <rect key="frame" x="0.0" y="498" width="320" height="70"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="70" id="vrT-wL-SE2"/>
+                    </constraints>
                     <state key="normal" title="Save">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -98,6 +101,15 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <color key="tintColor" red="0.30588235289999999" green="0.63921568630000003" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="vic-Ui-f0M" secondAttribute="trailing" id="0GL-F9-6sr"/>
+                <constraint firstItem="Pce-5Y-CAV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="SF6-dk-j5W"/>
+                <constraint firstItem="vic-Ui-f0M" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="WkN-1K-XN5"/>
+                <constraint firstItem="Pce-5Y-CAV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="65" id="fUQ-lx-gkb"/>
+                <constraint firstAttribute="bottom" secondItem="vic-Ui-f0M" secondAttribute="bottom" id="nYM-cW-w3f"/>
+                <constraint firstItem="vic-Ui-f0M" firstAttribute="top" secondItem="Pce-5Y-CAV" secondAttribute="bottom" constant="3" id="vUs-L4-ovS"/>
+                <constraint firstAttribute="trailing" secondItem="Pce-5Y-CAV" secondAttribute="trailing" id="yAc-F9-76g"/>
+            </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="326" y="215"/>
