@@ -115,18 +115,17 @@ static void * XXContext = &XXContext;
 {
     [super viewDidLoad];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    [self setGradient];
-    
     
     // Listen for notifications about updated rides
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scheduleUpdated:) name:kNotificationScheduleUpdated object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(profileUpdated:) name:kNotificationTypeProfileUpdated object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userStateUpdated:) name:kNotificationTypeUserStateUpdated object:nil];
-
-    
 }
 
+
 - (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self setGradient];
     [_tableView reloadData];
 }
 
@@ -148,7 +147,7 @@ static void * XXContext = &XXContext;
     [self setUpCells];
     [_tableView reloadData];
 }
-
+    
 
 - (void)didReceiveMemoryWarning
 {
