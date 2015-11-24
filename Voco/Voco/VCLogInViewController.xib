@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCLogInViewController">
@@ -103,12 +103,6 @@
                         <action selector="didEndOnExit:" destination="-1" eventType="editingDidEndOnExit" id="j8o-qZ-i3f"/>
                     </connections>
                 </textField>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Everyone needs to get to work." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1TI-eN-VaK" customClass="VCLabelSmall">
-                    <rect key="frame" x="0.0" y="0.0" width="237" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0O-qi-Qrj" customClass="VCLabelSmall">
                     <rect key="frame" x="45" y="460" width="230" height="29"/>
                     <constraints>
@@ -162,6 +156,16 @@
                         <action selector="didTapTemsOfServiceLinkButton:" destination="-1" eventType="touchUpInside" id="Iip-9Y-hLl"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Everyone needs to get to work." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1TI-eN-VaK" customClass="VCLabelSmall">
+                    <rect key="frame" x="42" y="181" width="237" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="5YN-Pb-41O"/>
+                        <constraint firstAttribute="width" constant="237" id="Xcc-aS-usb"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <color key="tintColor" red="0.30588235289999999" green="0.63921568630000003" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -171,8 +175,10 @@
                 <constraint firstItem="aeN-S3-80a" firstAttribute="centerX" secondItem="ftZ-Nq-tWy" secondAttribute="centerX" id="2tS-hk-6dV"/>
                 <constraint firstItem="6s6-1F-8gQ" firstAttribute="centerX" secondItem="ftZ-Nq-tWy" secondAttribute="centerX" id="31d-eX-abW"/>
                 <constraint firstItem="nKh-oZ-fFv" firstAttribute="top" secondItem="IuW-TQ-BC9" secondAttribute="bottom" constant="11" id="3Br-3y-B7V"/>
+                <constraint firstAttribute="centerX" secondItem="1TI-eN-VaK" secondAttribute="centerX" id="4GW-DK-Qlk"/>
                 <constraint firstItem="IuW-TQ-BC9" firstAttribute="top" secondItem="6s6-1F-8gQ" secondAttribute="bottom" constant="8" id="52y-Q8-Rxk"/>
                 <constraint firstItem="6s6-1F-8gQ" firstAttribute="top" secondItem="ftZ-Nq-tWy" secondAttribute="top" constant="210" id="8yy-Ib-scd"/>
+                <constraint firstItem="6s6-1F-8gQ" firstAttribute="top" secondItem="1TI-eN-VaK" secondAttribute="bottom" constant="8" id="E8I-AH-t3R"/>
                 <constraint firstItem="6Zz-e1-it2" firstAttribute="leading" secondItem="ftZ-Nq-tWy" secondAttribute="leading" id="IP0-hb-Ukm"/>
                 <constraint firstItem="8HI-Bh-dA8" firstAttribute="centerX" secondItem="ftZ-Nq-tWy" secondAttribute="centerX" id="Mad-hP-41q"/>
                 <constraint firstAttribute="trailing" secondItem="6Zz-e1-it2" secondAttribute="trailing" id="OU7-cH-kuM"/>
@@ -182,11 +188,16 @@
                 <constraint firstAttribute="bottom" secondItem="6Zz-e1-it2" secondAttribute="bottom" id="xXy-wJ-Ugv"/>
                 <constraint firstItem="IuW-TQ-BC9" firstAttribute="centerX" secondItem="ftZ-Nq-tWy" secondAttribute="centerX" id="zJc-Zr-5HZ"/>
             </constraints>
-            <point key="canvasLocation" x="499" y="93"/>
+            <point key="canvasLocation" x="476" y="98"/>
         </view>
     </objects>
     <resources>
         <image name="button-select.png" width="246" height="246"/>
         <image name="logo_in.png" width="246" height="246"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>
