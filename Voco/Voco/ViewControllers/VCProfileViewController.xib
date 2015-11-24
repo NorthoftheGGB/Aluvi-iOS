@@ -51,7 +51,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="58" id="zTW-sA-4XG"/>
                     </constraints>
-                    <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="tintColor" red="0.30588235289999999" green="0.63921568630000003" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <state key="normal" title="SAVE CHANGES">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -105,7 +105,7 @@
                                 <action selector="done:" destination="-1" eventType="editingDidEndOnExit" id="0fp-AN-LnS"/>
                             </connections>
                         </textField>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In case you missed it, here are our Driver and Rider Terms of Service" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPx-xB-6Nm">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In case you missed it, here are our Driver and Rider Terms of Service" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPx-xB-6Nm">
                             <rect key="frame" x="49" y="240" width="222" height="46"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="46" id="bhq-a7-opl"/>
@@ -178,59 +178,86 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VMq-3E-TLo">
-                    <rect key="frame" x="33" y="46" width="268" height="162"/>
+                    <rect key="frame" x="33" y="46" width="255" height="162"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeholder-profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="rSS-yk-gN7">
-                            <rect key="frame" x="81" y="28" width="107" height="107"/>
-                        </imageView>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fYN-K8-URI" customClass="VCTextField">
-                            <rect key="frame" x="20" y="133" width="110" height="40"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                                    <integer key="value" value="14"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="done:" destination="-1" eventType="editingDidEndOnExit" id="0ds-mI-yxv"/>
-                            </connections>
-                        </textField>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bx5-T3-QEG">
-                            <rect key="frame" x="156" y="103" width="32" height="32"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BP9-fH-M3f">
+                            <rect key="frame" x="74" y="27" width="107" height="107"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeholder-profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="rSS-yk-gN7">
+                                    <rect key="frame" x="0.0" y="0.0" width="107" height="107"/>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bx5-T3-QEG">
+                                    <rect key="frame" x="75" y="75" width="32" height="32"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <state key="normal" image="camera.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="didTapTakePhotoButton:" destination="-1" eventType="touchUpInside" id="8xz-eO-Ugg"/>
+                                    </connections>
+                                </button>
+                            </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <state key="normal" image="camera.png">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="didTapTakePhotoButton:" destination="-1" eventType="touchUpInside" id="8xz-eO-Ugg"/>
-                            </connections>
-                        </button>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Qf9-53-MIF" customClass="VCTextField">
-                            <rect key="frame" x="138" y="133" width="110" height="40"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                                    <integer key="value" value="14"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="done:" destination="-1" eventType="editingDidEndOnExit" id="gOt-dM-2rt"/>
-                            </connections>
-                        </textField>
+                            <constraints>
+                                <constraint firstItem="bx5-T3-QEG" firstAttribute="top" secondItem="BP9-fH-M3f" secondAttribute="top" constant="75" id="IGb-OW-iGe"/>
+                                <constraint firstAttribute="bottom" secondItem="bx5-T3-QEG" secondAttribute="bottom" id="N0u-Sv-Cgv"/>
+                                <constraint firstAttribute="trailing" secondItem="bx5-T3-QEG" secondAttribute="trailing" id="VZn-Sg-Pc4"/>
+                                <constraint firstItem="bx5-T3-QEG" firstAttribute="leading" secondItem="BP9-fH-M3f" secondAttribute="leading" constant="75" id="eha-Z6-P2c"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Vb-Y3-D8l">
+                            <rect key="frame" x="12" y="131" width="230" height="40"/>
+                            <subviews>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Qf9-53-MIF" customClass="VCTextField">
+                                    <rect key="frame" x="115" y="0.0" width="115" height="40"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                            <integer key="value" value="14"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="done:" destination="-1" eventType="editingDidEndOnExit" id="gOt-dM-2rt"/>
+                                    </connections>
+                                </textField>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fYN-K8-URI" customClass="VCTextField">
+                                    <rect key="frame" x="0.0" y="0.0" width="115" height="40"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                            <integer key="value" value="14"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="done:" destination="-1" eventType="editingDidEndOnExit" id="0ds-mI-yxv"/>
+                                    </connections>
+                                </textField>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="230" id="gQJ-NR-gAK"/>
+                                <constraint firstAttribute="height" constant="40" id="plV-qE-veW"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="centerX" secondItem="BP9-fH-M3f" secondAttribute="centerX" id="62z-md-LGQ"/>
+                        <constraint firstAttribute="bottom" secondItem="0Vb-Y3-D8l" secondAttribute="bottom" constant="-9" id="Eiv-QL-2vi"/>
                         <constraint firstAttribute="height" constant="162" id="Xqk-pC-saY"/>
+                        <constraint firstAttribute="centerX" secondItem="0Vb-Y3-D8l" secondAttribute="centerX" id="dBK-0Z-0hx"/>
+                        <constraint firstItem="BP9-fH-M3f" firstAttribute="top" secondItem="VMq-3E-TLo" secondAttribute="top" constant="27" id="hkf-wB-Gek"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <color key="tintColor" red="0.30588235289999999" green="0.63921568630000003" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="centerX" secondItem="pdq-XS-eox" secondAttribute="centerX" id="5Cg-Pt-ymV"/>
                 <constraint firstAttribute="trailing" secondItem="pdq-XS-eox" secondAttribute="trailing" id="6wi-NV-NaN"/>
                 <constraint firstItem="pdq-XS-eox" firstAttribute="top" secondItem="VMq-3E-TLo" secondAttribute="bottom" constant="8" id="HXM-s6-kVN"/>
                 <constraint firstItem="GJP-fi-epG" firstAttribute="leading" secondItem="bC0-fy-Fem" secondAttribute="leading" id="Jba-ez-0O0"/>
@@ -239,7 +266,7 @@
                 <constraint firstItem="VMq-3E-TLo" firstAttribute="top" secondItem="bC0-fy-Fem" secondAttribute="top" constant="46" id="VWL-5y-5Ri"/>
                 <constraint firstAttribute="trailing" secondItem="GJP-fi-epG" secondAttribute="trailing" id="Xko-Dd-TQh"/>
                 <constraint firstAttribute="bottom" secondItem="GJP-fi-epG" secondAttribute="bottom" id="e3E-u0-ooG"/>
-                <constraint firstAttribute="trailing" secondItem="VMq-3E-TLo" secondAttribute="trailing" constant="19" id="fwZ-Gi-LCg"/>
+                <constraint firstAttribute="trailing" secondItem="VMq-3E-TLo" secondAttribute="trailing" constant="32" id="fwZ-Gi-LCg"/>
                 <constraint firstItem="pdq-XS-eox" firstAttribute="leading" secondItem="bC0-fy-Fem" secondAttribute="leading" id="hwR-7n-v2p"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
