@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pce-5Y-CAV">
-                    <rect key="frame" x="0.0" y="65" width="320" height="430"/>
+                    <rect key="frame" x="0.0" y="65" width="328" height="438"/>
                     <color key="backgroundColor" white="1" alpha="0.80000000000000004" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xO2-CQ-cvv" userLabel="Card View">
@@ -86,9 +86,9 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vic-Ui-f0M" customClass="VCButtonBold">
-                    <rect key="frame" x="0.0" y="498" width="320" height="70"/>
+                    <rect key="frame" x="0.0" y="510" width="320" height="58"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="70" id="vrT-wL-SE2"/>
+                        <constraint firstAttribute="height" constant="58" id="vrT-wL-SE2"/>
                     </constraints>
                     <state key="normal" title="Save">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -99,7 +99,7 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <color key="tintColor" red="0.30588235289999999" green="0.63921568630000003" blue="0.4941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="vic-Ui-f0M" secondAttribute="trailing" id="0GL-F9-6sr"/>
@@ -107,8 +107,8 @@
                 <constraint firstItem="vic-Ui-f0M" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="WkN-1K-XN5"/>
                 <constraint firstItem="Pce-5Y-CAV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="65" id="fUQ-lx-gkb"/>
                 <constraint firstAttribute="bottom" secondItem="vic-Ui-f0M" secondAttribute="bottom" id="nYM-cW-w3f"/>
-                <constraint firstItem="vic-Ui-f0M" firstAttribute="top" secondItem="Pce-5Y-CAV" secondAttribute="bottom" constant="3" id="vUs-L4-ovS"/>
-                <constraint firstAttribute="trailing" secondItem="Pce-5Y-CAV" secondAttribute="trailing" id="yAc-F9-76g"/>
+                <constraint firstItem="vic-Ui-f0M" firstAttribute="top" secondItem="Pce-5Y-CAV" secondAttribute="bottom" constant="7" id="vUs-L4-ovS"/>
+                <constraint firstAttribute="trailing" secondItem="Pce-5Y-CAV" secondAttribute="trailing" constant="-8" id="yAc-F9-76g"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

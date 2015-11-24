@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCReceiptViewController">
@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view opaque="NO" alpha="0.79999999999999982" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JHU-uS-oQN">
+                <view opaque="NO" alpha="0.79999999999999982" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JHU-uS-oQN">
                     <rect key="frame" x="0.0" y="65" width="320" height="446"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This Week's Receipts:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QKe-eA-7fl" customClass="VCLabel">
@@ -35,8 +35,11 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ej-Ss-mEV" customClass="VCButtonBold">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ej-Ss-mEV" customClass="VCButtonBold">
                     <rect key="frame" x="0.0" y="510" width="321" height="58"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="58" id="c2s-Me-dhb"/>
+                    </constraints>
                     <state key="normal" title="Print All Receipts to Email">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -47,6 +50,15 @@
                 </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="9ej-Ss-mEV" secondAttribute="trailing" constant="-1" id="9bg-q7-Ikh"/>
+                <constraint firstItem="JHU-uS-oQN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="65" id="MV8-cO-h2r"/>
+                <constraint firstItem="9ej-Ss-mEV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Rom-eu-OnY"/>
+                <constraint firstAttribute="bottom" secondItem="9ej-Ss-mEV" secondAttribute="bottom" id="Uia-JK-4fS"/>
+                <constraint firstItem="JHU-uS-oQN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="V5T-X8-lGD"/>
+                <constraint firstAttribute="trailing" secondItem="JHU-uS-oQN" secondAttribute="trailing" id="gEd-ao-u4k"/>
+                <constraint firstAttribute="bottom" secondItem="JHU-uS-oQN" secondAttribute="bottom" constant="57" id="jg2-Qy-9cL"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
