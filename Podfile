@@ -19,7 +19,7 @@ pod 'UIAlertView+Blocks', :git => 'https://github.com/deepwinter/UIAlertView-Blo
 pod 'M13Checkbox', '~> 1.1.0'
 pod 'US2FormValidator', '~> 1.1.2'
 pod 'BlocksKit', '~> 2.2.2'
-pod 'Stripe'
+pod 'Stripe', '~> 5.1.4'
 pod 'DTCoreText'
 pod 'ASImageResize', '~> 1.0.3'
 pod 'SDWebImage', '~> 3.7.1'

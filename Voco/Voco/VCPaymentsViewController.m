@@ -146,7 +146,7 @@
 
     
     if(profile.cardLastFour == nil){
-        _defaultCardLabel.text = @"No Payment Method Entered";
+        _defaultCardLabel.text = @"Please enter a payment method. We'll charge .98¢/mile, the rest goes to your driver.";
     }
     
     _getPaidToCardLabel.hidden = YES;
