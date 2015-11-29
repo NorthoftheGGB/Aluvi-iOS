@@ -3833,7 +3833,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vocotransportation.aluvi;
 				PRODUCT_NAME = Aluvi;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "142adf65-ead2-49f9-9a27-9a7064ec7baf";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3905,7 +3905,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vocotransportation.aluvi;
 				PRODUCT_NAME = Aluvi;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "142adf65-ead2-49f9-9a27-9a7064ec7baf";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
