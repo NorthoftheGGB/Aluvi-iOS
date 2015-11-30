@@ -63,7 +63,7 @@
     [super viewWillAppear:animated];
 }
 
-- (void) didTapBack {
+- (IBAction) didTapBack {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
